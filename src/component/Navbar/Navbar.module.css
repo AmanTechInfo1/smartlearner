@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #ED2025;
+    font-family: 'Montserrat', sans-serif !important;
+    width: 100%;
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.01rem;
+    font-weight: 400;
+    transition: ease 0.3s;
+}
+.navbar a:hover{
+ color: rgb(160, 139, 139);
+}
+.navContainer{
+    display: flex;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 100%;
+    align-items: center;
+}
+.leftRow{
+    width: 100%;
+
+}
+.topContact{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+.topContact p{
+    color: white;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+.rightRow{
+    display: flex;
+width: 100%;
+text-align: right;
+justify-content: right;
+color: white;
+align-items: center;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.rightRow li{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.socialLinks{
+    margin-right: 30px;
+}
+.socialLinks ul{
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.socialIcons{
+    display: flex;
+    align-items: center;
+}
+.quickLinks{
+    display: flex;
+    align-items: center;
+    
+}
+.quickLinks ul{
+    padding-left: 0;
+    margin-bottom: 0px;
+}
+#quickLinksMenu{
+    display: flex;
+   align-items: center;
+    text-align: right;
+}
+.shoppingCart{
+    margin-left: 50px;
+    margin-right: 30px;
+}
+@media (max-width: 1164px) {
+    .topContact{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rightRow{
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+    .quickLinks{
+        margin-top: 20px;
+        align-items: right;
+        justify-content: right;
+    }
+    .socialIcons{
+        margin-top: 20px;
+        align-items: right;
+        justify-content: right;
+      
+    }
+}
+@media (max-width: 760px) {
+    .topContact{
+        flex-direction: row;
+        
+    }
+    .navContainer{
+        display: inline;
+       
+    }
+    .rightRow{
+       padding-top: 0px;
+       padding-bottom: 0px;
+       align-items: left;
+       text-align: left;
+       justify-content: left;
+        flex-direction: row-reverse;
+    }
+  
+    .quickLinks{
+        display: flex;
+        align-items: left;
+        text-align: left;
+        justify-content: left;
+        flex-direction: row;
+    }
+    #quickLinksMenu{
+        align-items: left;
+        text-align: left;
+        justify-content: left;
+    }
+}
+@media (max-width: 540px) {
+    .topContact{
+        display: flex;
+        flex-direction: column;
+    }
+    .rightRow{
+        display: flex;
+        flex-direction: column;
+    }
+    .socialIcons{
+        margin-top: 0px;
+        align-items: left;
+        text-align: left;
+        justify-content: left;
+    }
+    .quickLinks{
+        margin-top: 10px;
+    }
+    .shoppingCart{
+        margin-left: auto;
+    }
+}
+@media (max-width: 330px) {
+    #quickLinksMenu{
+        display: block;
+      
+    }
+    .quickLinks{
+text-align: left;
+width: 100%;
+    }
+}
