@@ -22,7 +22,7 @@ const navLinks = [
     display: "FAQS",
   },
   {
-    path: "/Login",
+    path: "/Login-Register",
     display: "Login/Register",
   },
 ];

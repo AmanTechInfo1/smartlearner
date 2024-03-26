@@ -33,8 +33,9 @@ import PracticeMCQS from "../Pages/CheckList/PracticeMCQS"
 import Contact from "../Pages/Contact"
 import About from "../Pages/About"
 import FAQS from "../Pages/FAQS"
-import Login from "../Pages/Login"
-import Register from "../Pages/Register"
+
+
+import LoginRegister from "../Pages/LoginRegister"
 
 
 
@@ -45,14 +46,14 @@ export default function Routers() {
       <Route path="/home" element={<Home/>} />
       <Route path="/about-us" element={<About/>} />
       <Route path="/faqs" element={<FAQS/>} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/Register" element={<Register/>} />
+      <Route path="/Login-Register" element={<LoginRegister/>} />
+      
       <Route path="/Driving-Instructor-Training" element={<DrivingInstructorTraining/>} />
       <Route path="/Driving-Instructor-Franchise" element={<DrivingInstructorFranchise/>} />
       <Route path="/Stantard-Check-Test" element={<StantardCheckTest/>} />
       <Route path="/Driving-Lessons" element={<DrivingLessons/>} />
-      <Route path="/School-Of-Mom&Dad" element={<SchoolOfMomDad/>} />
-      <Route path="/Intensive-Courses" element={<IntensiveCourses/>} />
+      <Route path="/School-Of-Mom-and-Dad" element={<SchoolOfMomDad/>} />
+      <Route path="/Intensive-Driving-Courses" element={<IntensiveCourses/>} />
       <Route path="/Theory-Support" element={<TheorySupport/>} />
       <Route path="/ADI-Training-Portal" element={<ADITrainingPortal/>} />
       <Route path="/Simulated-Driving-Lesson" element={<SimulatedDrivingLesson/>} />
@@ -70,14 +71,13 @@ export default function Routers() {
       <Route path="/Go-Cv" element={<GoCv/>} />
       <Route path="/Our-Office-Green-Efforts" element={<OurOfficeGreenEfforts/>} />
       <Route path="/The-Honest-Truth" element={<TheHonestTruth/>} />
-      <Route path="Theory-Subscription" element={<TheorySubscription/>} />
+      <Route path="/Theory-Subscription" element={<TheorySubscription/>} />
       <Route path="/Theory-Portal" element={<TheoryPortal/>} />
       <Route path="/WorkSheets" element={<Worksheet/>} />
       <Route path="/Personalised-Quiz" element={<PersonalisedQuiz/>} />
       <Route path="/AIVideos" element={<AIVideos/>} />
       <Route path="/PracticeMCQS" element={<PracticeMCQS/>} />
       <Route path="/Contact-Us" element={<Contact/>} />
-
     </Routes>
   )
 }

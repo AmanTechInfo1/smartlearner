@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.shopWrapper{
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:2rem 1rem;
+}
+.shopGridView{
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
+
+ /* ////////////////products//////////////////////////////// */
+
+  .gridViewSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Gap between grid items */
+    margin-top: 20px;
+  }
+  .gridViewSection ul{
+    padding: 0px;
+  }
+  .productCard {
+    width: 100%; /* Take full width of each grid cell */
+  }
+  .ratingAndPrice{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+  }
+  .productCard img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .productDetails {
+    background-color: black;
+    padding: 10px;
+    color: white;
+  }
+
+  .cardDetails li{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0px;
+  }
+  .rating {
+    margin-bottom: 10px;
+  }
+  
+  .rating span {
+    color: gold;
+  }
+  
+  .filled {
+    color: gold;
+  }
+  
+  .price,
+  .duration,
+  .location {
+    margin-bottom: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .bookNow,
+  .more {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .bookNow:hover,
+  .more:hover {
+    background-color: #0056b3;
+  }
+  

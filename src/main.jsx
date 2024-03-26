@@ -1,15 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+//import App from './App.jsx'
 import './index.css'
+import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
 
-import { BrowserRouter } from 'react-router-dom';
+//import { BrowserRouter } from 'react-router-dom';
+import { FilterContextProvider } from './component/Context/FilterContext.jsx';
+import store from './redux/store/index.js';
+import { router } from './routing.jsx';
+import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-    
+    <Provider store={store}>
+      <FilterContextProvider>
+      <RouterProvider router={router} />
+      </FilterContextProvider>
+      <Toaster
+        position="top-right"
+      />
+    </Provider>
   </React.StrictMode>,
 )

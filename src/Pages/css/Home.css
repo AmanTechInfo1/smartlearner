@@ -186,6 +186,7 @@ input[type="radio"] {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
+  
 }
 
 input[type="radio"]:checked {
@@ -228,6 +229,9 @@ input[type="radio"]:checked {
   border: none;
   text-indent: 8px;
   font-size: 13px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
 }
 .submitFleid button {
   float: right;
@@ -454,8 +458,8 @@ input[type="radio"]:checked {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
-  padding: 80px 0px 80px 0px;
+  font-family: "Roboto", Sans-serif;
+  padding: 60px 0px 60px 0px;
   background-color: #eb0009;
 }
 
@@ -467,10 +471,10 @@ input[type="radio"]:checked {
   color: #fff;
   font-family: "Montserrat", sans-serif;
 }
-.headingDiv {
+.headingDiv h2 {
   line-height: 1;
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 55px;
+  font-weight: 600;
   color: #fff;
 }
 .buttonDiv a {
@@ -762,10 +766,6 @@ input[type="radio"]:checked {
  /* /////////////// reviews section ///////////////// */
  .facebookReviewsSection {
    text-align: center;
-
-
-  
-   
   }
   .facebookReviewsSection #heading1{
     padding: 2rem 0;

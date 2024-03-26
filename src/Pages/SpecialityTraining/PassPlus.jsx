@@ -3,7 +3,7 @@
 export default function PassPlus() {
   return (
     <div>
-      
+  
     </div>
   )
 }

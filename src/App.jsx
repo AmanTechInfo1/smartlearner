@@ -1,14 +1,12 @@
 
 
 import './App.css'
-import Layouts from './Layouts/Layouts'
+// import Layouts from './Layouts/Layouts'
 
 function App() {
-
-
   return (
     <>
-     <Layouts/>
+     {/* <Layouts/> */}
     </>
   )
 }
