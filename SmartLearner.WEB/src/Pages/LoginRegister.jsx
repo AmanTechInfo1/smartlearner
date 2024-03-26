@@ -138,8 +138,9 @@ export default function LoginRegister() {
                   <div id={styles.registerAccount}>
                     <FaUser id={styles.loginFormsIcons}/>
                     <select name="role" value={role} onChange={handleInputChange}>
-                      <option value="user">User</option>
-                      <option value="admin">Admin</option>
+                      <option value="trainee instructor">Trainee Instructor</option>
+                      <option value="theory learner">Theory Learner</option>
+                      <option value="customer">Customer</option>
                     </select>
                   </div>
                 </>

@@ -1,7 +1,7 @@
 // import React from 'react'
-import "./Footer.css";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import styles from './Footer.module.css'
 import logo from "../../assets/images/smartlearnerLogo.png";
 import { otherLinks, quickLinks } from "../../assets/data/quicklinks";
 import paypal from "../../assets/images/pay-pal.png";
@@ -13,10 +13,10 @@ import ssl from "../../assets/images/ssl-logo.png";
 
 export default function Footer() {
   return (
-    <div className="Footer">
-      <section className="container">
-        <div className="footerContent">
-          <div className="col-1">
+    <div className={styles.Footer}>
+      <section className={styles.container}>
+        <div className={styles.footerContent}>
+          <div className={styles.col1}>
             <a href="https://smartlearner.com">
               <img src={logo} alt="" />
             </a>
@@ -28,7 +28,7 @@ export default function Footer() {
               emailing lessons summary directly to you.
             </p>
           </div>
-          <div className="col-2">
+          <div className={styles.col2}>
             <h3>Blogs</h3>
             <article>
               <a href="/">
@@ -49,10 +49,10 @@ export default function Footer() {
               </p>
             </article>
           </div>
-          <div className="col-3">
+          <div className={styles.col3}>
             <h3>OPENING HOURS</h3>
-            <div className="hoursLists">
-              <table className="tabel">
+            <div className={styles.hoursLists}>
+              <table className={styles.tabel}>
                 <thead>
                   <tr>
                     <th>Day</th>
@@ -102,37 +102,37 @@ export default function Footer() {
           </div>
         </div>
       </section>
-      <section className="lowerFooter">
-        <div className="container">
-          <div className="innerSection">
-            <div className="lowerCol-1">
+      <section className={styles.lowerFooter}>
+        <div className={styles.container}>
+          <div className={styles.innerSection}>
+            <div className={styles.lowerCol1}>
               <h3>Quick Links</h3>
-              <div className="quicklinks">
+              <div className={styles.quicklinks}>
                 {quickLinks.map((item, index) => (
                   <a key={index} href={item.url}>
                     {item.name}
-                    <span id="arrowIcon" ><MdOutlineKeyboardDoubleArrowRight/></span>
+                    <span id={styles.arrowIcon} ><MdOutlineKeyboardDoubleArrowRight/></span>
                   </a>
                 ))}
               </div>
             </div>
-            <div className="lowerCol-2">
+            <div className={styles.lowerCol2}>
               <h3>Other Links</h3>
-              <div className="quicklinks">
-                <ul type="none" id="quicklinks">
+              <div className={styles.quicklinks}>
+                <ul type="none" id={styles.quicklinks}>
                   {otherLinks.map((item, index) => (
                     <li key={index}>
                       <a href={item.url}>
                         {item.name}
-                        <span id="arrowIcon" ><MdOutlineKeyboardDoubleArrowRight/></span>
+                        <span id={styles.arrowIcon} ><MdOutlineKeyboardDoubleArrowRight/></span>
                       </a>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            <div className="lowerCol-3">
-              <ul type="none" className="footerImg">
+            <div className={styles.lowerCol3}>
+              <ul type="none" className={styles.footerImg}>
                 <li>
                   <img src={paypal} alt="paypalimg" />
                 </li>
@@ -149,12 +149,12 @@ export default function Footer() {
                   <img src={americanExpress} alt="AmericanExpressimg" />
                 </li>
               </ul>
-              <img src={ssl} alt="sslLogo" id="sslLogo" />
+              <img src={ssl} alt="sslLogo" id={styles.sslLogo} />
             </div>
           </div>
         </div>
       </section>
-      <div className="copyRight">
+      <div className={styles.copyRight}>
         <p>CopyRight @ 2024 | Managed By Savvytechguru.com</p>
       </div>
     </div>

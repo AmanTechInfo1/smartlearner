@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Cart.module.css";
 import { FaTrash } from "react-icons/fa";
+
 import { useCartContext } from "../../../component/Context/CartContext";
 
 export default function Cart() {
@@ -50,7 +51,7 @@ export default function Cart() {
             <tbody>
               {preprocessedCart.map((item) => (
                 <tr key={item.id}>
-                  <td data-label="Name">
+                  <td id={styles.productTd} data-label="Product:">
                     <div id={styles.tdName}>
                       {" "}
                       <img
@@ -58,12 +59,13 @@ export default function Cart() {
                         alt=""
                         height="40px"
                         width="50px"
+                        id={styles.productTdImg}
                       />
                       <p>{item.name}</p>
                     </div>
                   </td>
-                  <td data-label="price">${item.price}</td>
-                  <td data-label="Quantity">
+                  <td id={styles.productTd} data-label="Price:">${item.price}</td>
+                  <td id={styles.productTd} data-label="Quantity:">
                     <div className={styles.quantityControl}>
                       <button
                         onClick={() => handleDecrease(item.id)}
@@ -80,8 +82,8 @@ export default function Cart() {
                       </button>
                     </div>
                   </td>
-                  <td data-lable="Subtotal">${item.price * item.quantity}</td>
-                  <td data-label="Remove">
+                  <td id={styles.productTd} data-label="Subtotal:">${item.price * item.quantity}</td>
+                  <td id={styles.productTd} data-label="Remove:">
                     <FaTrash id={styles.removeTrash} onClick={()=>removeProduct(item.id)
 
                     }/>

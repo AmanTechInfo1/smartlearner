@@ -38,7 +38,7 @@
     line-height: 1.2;
     color: black;
 }
-.col-1{
+.col1{
     flex-grow: 1;
     box-sizing: border-box;
     width: 100%;
@@ -47,7 +47,7 @@
     padding-right: 15px;
     padding-left: 15px;
 }
-.col-1 a img{
+.col1 a img{
     width: 300px;
     margin-bottom: 20px;
   
@@ -60,7 +60,7 @@
     font-size: 1rem;
     font-weight: 400;
 }
-.col-2{
+.col2{
     flex-grow: 1;
     box-sizing: border-box;
     width: 100%;
@@ -85,7 +85,7 @@ article a h4{
 article a h4:hover{
     color: #ed2025;
 }
-.col-3{
+.col3{
    flex-grow: 1;
     box-sizing: border-box;
     width: 100%;
@@ -146,7 +146,7 @@ table td{
  display: flex;
 }
 
-.lowerCol-1{
+.lowerCol1{
     max-width: 33.333333%;
    
    display: block;
@@ -162,7 +162,7 @@ table td{
     padding-right: 15px;
     padding-left: 15px;
 }
-.lowerCol-3{
+.lowerCol3{
     max-width: 33.333333%;
     width: 100%;
     min-height: 1px;
@@ -232,19 +232,19 @@ table td{
 .footerContent{
     display: block
 }
-.col-1{
+.col1{
     max-width: 100%;
     width: 100%;
 }
-.col-2{
+.col2{
     max-width: 100%;
     width: 100%;
 }
-.col-3{
+.col3{
     max-width: 100%;
     width: 100%;
 }
-.lowerCol-2{
+.lowerCol2{
     margin-top: 1rem;
 }
 }
@@ -252,22 +252,22 @@ table td{
     .innerSection{
         display: block;
     }
-    .lowerCol-1{
+    .lowerCol1{
         max-width: 100%;
     width: 100%;
     }
-    .lowerCol-2{
+    .lowerCol2{
         max-width: 100%;
     width: 100%;
     }
-    .lowerCol-3{
+    .lowerCol3{
         max-width: 100%;
     width: 100%;
     }
     
 }
 @media (max-width: 350px) {
-    .col-1 a img{
+    .col1 a img{
         width: 220px;
     }
 }

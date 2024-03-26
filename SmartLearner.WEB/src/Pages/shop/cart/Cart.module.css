@@ -20,36 +20,56 @@ table {
     border-spacing: 0;
     padding: 1rem;
   }
-  
+  table td{
+    vertical-align: middle;
+  }
+  tr{
+    margin: 0px 1rem;
+  }
   th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+
   #tdName{
     display: flex;
     align-items: center;
+   gap: 20px;
    
   }
+  
+.quantityControl button{
+padding: 2px 0.7rem;
+border: none;
+
+}
+.quantityControl span{
+    padding: 1px 2rem;
+  
+}
   #removeTrash{
     color: #eb0009;
     cursor: pointer;
   }
   @media screen and (max-width: 600px) {
-    table {
-      border: 0;
-      padding: 0px 2rem;
-    }
+   #tdName{
+    gap: 20px;
+   }
+     #productTd{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+     }
+   
   
     table thead {
       display: none;
     }
     table tr {
-      border-bottom: 3px solid #ddd;
+      border: 2px solid #ddd;
       display: block;
       margin-bottom: .625em;
     }
@@ -64,16 +84,14 @@ table {
       font-weight: bold;
       text-transform: uppercase;
     }
+    .quantityControl span{
+        padding: 1px 1rem;
+      
+    }
   }
-  .quantityControl{
-    margin-right: 1rem;
-}
-.quantityControl button{
-padding: 2px 1rem;
-border: none;
 
-}
-.quantityControl span{
-    padding: 1px 2rem;
-  
-}
+  @media screen and (max-width: 400px){
+    #productTdImg{
+        display: none;
+    }
+  }
