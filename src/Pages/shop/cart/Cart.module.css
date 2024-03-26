@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cartDetails{
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "Roboto", Sans-serif;
+}
+.cartDetails p{
+    padding: 0px;
+    margin: 0px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 1rem;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  #tdName{
+    display: flex;
+    align-items: center;
+   
+  }
+  #removeTrash{
+    color: #eb0009;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+      padding: 0px 2rem;
+    }
+  
+    table thead {
+      display: none;
+    }
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+    }
+    table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  .quantityControl{
+    margin-right: 1rem;
+}
+.quantityControl button{
+padding: 2px 1rem;
+border: none;
+
+}
+.quantityControl span{
+    padding: 1px 2rem;
+  
+}

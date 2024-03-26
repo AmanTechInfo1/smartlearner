@@ -36,6 +36,8 @@ import PracticeMCQS from "./Pages/CheckList/PracticeMCQS";
 import AIVideos from "./Pages/AddOns/AIVideos";
 import Contact from "./Pages/Contact";
 import Shop from "./Pages/shop/Shop";
+import ProductDetails from "./Pages/shop/ProductDetails";
+import Cart from "./Pages/shop/cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -83,7 +85,9 @@ export const router = createBrowserRouter([
       { path: "/AIVideos", element: <AIVideos /> },
       { path: "/PracticeMCQS", element: <PracticeMCQS /> },
       { path: "/Contact-Us", element: <Contact /> },
-      {path:"/shop", element:<Shop/>}
+      {path:"/shop", element:<Shop/>},
+      {path:"/product/:id", element:<ProductDetails/>},
+      {path:"/cart", element:<Cart/>},
     ],
   },
   { path: "/Login-Register", element: <LoginRegister /> },

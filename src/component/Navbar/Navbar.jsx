@@ -86,7 +86,7 @@ const Navbar = () => {
               ))}
             </ul>
             <div className={styles.shoppingCart}>
-              <FaShoppingCart size={20} />
+            <NavLink to={'/cart'}> <FaShoppingCart size={20} /></NavLink> 
             </div>
           </div>
         </div>
