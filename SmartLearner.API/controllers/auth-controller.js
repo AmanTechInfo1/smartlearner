@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const register = async (req, res) => {
   try {
+    debugger;
     console.log(req.body);
     const { username, password, email, mobile, accountType } = req.body;
 
@@ -10,9 +11,6 @@ const register = async (req, res) => {
     if (userExist) {
       return res.status(400).json({ msg: "email already exists" });
     }
-
-    //hash the password
-  
 
     const userCreated = await User.create({
       username,
@@ -24,12 +22,15 @@ const register = async (req, res) => {
 
     res.status(201).json({
       msg: "Registration Succesfull",
+      success: true,
       token: await userCreated.generateToken(),
       userId: userCreated._id.toString(),
     });
   } catch (error) {
-    // res.status(500).json("internal server error");
-    next(error);
+    res.status(201).json({
+      msg: error.message || "Registration Failed",
+      success: false,
+    });
   }
 };
 
@@ -55,12 +56,12 @@ const login = async (req, res) => {
       });
     } else {
       res.status(401).json({ message: "Invalid email or password" });
-   
+
     }
   } catch (error) {
     res.status(500).json("internal server error");
     next(error);
-   
+
   }
 };
 
