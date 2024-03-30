@@ -8,10 +8,20 @@
   background-size: cover;
   font-family: "Roboto", Sans-serif;
 }
+
+input:invalid {
+  border-color: red;
+}
+
+/* Add this CSS to target the select element */
+select:invalid {
+  border-color: red;
+}
 .loginRegisterSection {
   display: flex;
   align-items: center;
   max-width: 1140px;
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 0;
@@ -31,7 +41,18 @@
   max-width: 40%;
   align-items: center;
   justify-content: center;
+  margin: 10px;
+  animation: slideFromLeft 1s ease-out; /* Animation for sliding from bottom */
 }
+@keyframes slideFromLeft {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .loginRegistration {
   border-style: solid;
   border-width: 7px 0px 0px 0px;
@@ -42,7 +63,11 @@
   margin-bottom: 0px;
 
   padding: 20px 20px 20px 20px;
+
+ 
 }
+
+
 
 .loginRegistration form {
   max-width: 300px;
@@ -62,7 +87,7 @@
 .loginRegistration label {
   display: flex;
   align-items: center;
-  border-bottom: 3px solid #ccc !important;
+  border-bottom: 2px solid #ccc !important;
   padding: 0px 0px 0px 10px !important;
 }
 .loginRegistration label input {
@@ -92,7 +117,7 @@
   color: #aaa;
 }
 #registerAccount {
-  border: 1px solid #666;
+  border: 1px solid #ccc !important;
   display: flex;
 
   padding: 10px 10px 10px 10px;
@@ -148,6 +173,7 @@
   .loginheading {
     max-width: 50%;
     width: 100%;
+    padding: 15px;
   }
   .loginformContainer {
     max-width: 50%;
@@ -162,6 +188,7 @@
     max-width: 100%;
     text-align: center;
     width: 100%;
+    padding: 10px;
   }
   .loginformContainer {
     max-width: 600px;

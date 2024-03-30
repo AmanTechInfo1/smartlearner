@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -11,11 +12,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   email: {
     type: String,
     required: true,
   },
-  phone: {
+  mobile: {
     type: String,
     required: true,
   },
@@ -23,6 +25,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+ 
   isAdmin: {
     type: Boolean,
     default: false,
@@ -45,6 +48,11 @@ userSchema.pre("save", async function () {
     next(error);
   }
 });
+
+// ////////// Compare the password ////////////////////////
+userSchema.methods.comparePassword = async function (password){
+  return await bcrypt.compare(password, this.password);
+}
 
 ////////json we token (JWT) ///////
 userSchema.methods.generateToken = async function () {
