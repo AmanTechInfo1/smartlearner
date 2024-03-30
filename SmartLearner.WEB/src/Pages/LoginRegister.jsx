@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./css/LoginRegister.module.css";
 import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa"; // Import necessary icons
 import { MdEmail } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+
 
 export default function LoginRegister() {
   const [loginFormData, setLoginFormData] = useState({
@@ -95,7 +95,6 @@ export default function LoginRegister() {
       });
 
       if (response.ok) {
-
         setRegistered(true); // Set registered status to true
       }
 
@@ -146,6 +145,7 @@ export default function LoginRegister() {
                         : handleRegistrationInputChange
                     }
                     placeholder="Username"
+                    required // Added required attribute
                   />
                 </label>
                 <br />
@@ -165,6 +165,7 @@ export default function LoginRegister() {
                         : handleRegistrationInputChange
                     }
                     placeholder="Password"
+                    required // Added required attribute
                   />
                   {showPassword ? (
                     <FaEyeSlash
@@ -189,6 +190,7 @@ export default function LoginRegister() {
                         value={registrationFormData.confirmPassword}
                         onChange={handleRegistrationInputChange}
                         placeholder="Confirm Password"
+                        required // Added required attribute
                       />
                       {confirmShowPassword ? (
                         <FaEyeSlash
@@ -211,6 +213,7 @@ export default function LoginRegister() {
                         value={registrationFormData.email}
                         onChange={handleRegistrationInputChange}
                         placeholder="Email"
+                        required // Added required attribute
                       />
                     </label>
                     <br />
@@ -222,6 +225,7 @@ export default function LoginRegister() {
                         value={registrationFormData.mobile}
                         onChange={handleRegistrationInputChange}
                         placeholder="Mobile Number"
+                        required // Added required attribute
                       />
                     </label>
                     <br />
@@ -231,6 +235,7 @@ export default function LoginRegister() {
                         name="accountType"
                         value={registrationFormData.accountType}
                         onChange={handleRegistrationInputChange}
+                        required // Added required attribute
                       >
                         <option disabled value="">
                           Account Type
@@ -251,6 +256,7 @@ export default function LoginRegister() {
                     name="privacyPolicyChecked"
                     checked={registrationFormData.privacyPolicyChecked}
                     onChange={handleRegistrationInputChange}
+                    required // Added required attribute
                   />
                   <p>
                     {isLogin
