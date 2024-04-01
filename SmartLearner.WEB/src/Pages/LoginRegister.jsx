@@ -12,10 +12,12 @@ export default function LoginRegister() {
   const navigate = useNavigate();
   const { loading } = useSelector((state) => state.auth);
   const [loginFormData, setLoginFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
+
+  const navigate = useNavigate();
   const [registrationFormData, setRegistrationFormData] = useState({
     username: "",
     password: "",
@@ -37,14 +39,39 @@ export default function LoginRegister() {
     setLoginFormData({ ...loginFormData, [name]: value });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
 
     // Perform basic validation
-    if (!loginFormData.username || !loginFormData.password) {
-      setErrorMessage("Username and password are required.");
-      return;
+  
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginFormData),
+      });
+
+      console.log(`Login Form data`,response);
+
+      if(response.ok){
+        alert("Login Successfull")
+        setLoginFormData({
+          email: "",
+          password: "",
+          })
+          navigate("/")
+
+      }else{
+        alert("invalid credential")
+        console.log("invalid Cradentials")
+      }
+
+    } catch (error) {
+      console.log(error);
     }
 
     // Implement login functionality
@@ -100,10 +127,17 @@ export default function LoginRegister() {
     //     body: JSON.stringify(requestData),
     //   });
 
-    //   if (response.ok) {
 
-    //     setRegistered(true); // Set registered status to true
-    //   }
+      if (response.ok) {
+        setRegistrationFormData({
+          username: "",
+          email: "",
+          mobile: "",
+          password: "",
+          accountType: "",
+        });
+        setRegistered(true); // Set registered status to true
+      }
 
     //   console.log(response);
     // } catch (error) {
@@ -156,6 +190,7 @@ export default function LoginRegister() {
                         placeholder="Username"
                       />
                     </label>
+
                     <br />
                     <label>
                       <FaLock id={styles.loginFormsIcons} />
@@ -173,6 +208,7 @@ export default function LoginRegister() {
                             : handleRegistrationInputChange
                         }
                         placeholder="Password"
+
                       />
                       {showPassword ? (
                         <FaEyeSlash
@@ -275,6 +311,7 @@ export default function LoginRegister() {
                     <br />
                   </form>
                 ) : (
+
                   <p>
                     Thank you for applying for membership to our site. We will
                     review your details and send you an email letting you know
