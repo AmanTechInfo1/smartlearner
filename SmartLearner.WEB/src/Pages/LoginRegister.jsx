@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import styles from "./css/LoginRegister.module.css";
 import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa"; // Import necessary icons
 import { MdEmail } from "react-icons/md";
+import {useNavigate} from "react-router-dom"
 
 
 export default function LoginRegister() {
   const [loginFormData, setLoginFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
+
+  const navigate = useNavigate();
   const [registrationFormData, setRegistrationFormData] = useState({
     username: "",
     password: "",
@@ -31,14 +34,39 @@ export default function LoginRegister() {
     setLoginFormData({ ...loginFormData, [name]: value });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
 
     // Perform basic validation
-    if (!loginFormData.username || !loginFormData.password) {
-      setErrorMessage("Username and password are required.");
-      return;
+  
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginFormData),
+      });
+
+      console.log(`Login Form data`,response);
+
+      if(response.ok){
+        alert("Login Successfull")
+        setLoginFormData({
+          email: "",
+          password: "",
+          })
+          navigate("/")
+
+      }else{
+        alert("invalid credential")
+        console.log("invalid Cradentials")
+      }
+
+    } catch (error) {
+      console.log(error);
     }
 
     // Implement login functionality
@@ -95,6 +123,13 @@ export default function LoginRegister() {
       });
 
       if (response.ok) {
+        setRegistrationFormData({
+          username: "",
+          email: "",
+          mobile: "",
+          password: "",
+          accountType: "",
+        });
         setRegistered(true); // Set registered status to true
       }
 
@@ -132,11 +167,13 @@ export default function LoginRegister() {
                 <label>
                   <FaUser id={styles.loginFormsIcons} />
                   <input
-                    type="text"
-                    name="username"
+                    type={
+                      isLogin ? "email" : "username"
+                    }
+                    name={isLogin ? "email":"username"}
                     value={
                       isLogin
-                        ? loginFormData.username
+                        ? loginFormData.email
                         : registrationFormData.username
                     }
                     onChange={
@@ -144,7 +181,9 @@ export default function LoginRegister() {
                         ? handleLoginInputChange
                         : handleRegistrationInputChange
                     }
-                    placeholder="Username"
+                    placeholder={
+                      isLogin ? "email" : "username"
+                    }
                     required // Added required attribute
                   />
                 </label>

@@ -15,8 +15,8 @@ export default function ContactUs() {
     postalCode: "",
     mobileNo: "",
     email: "",
-    tutionType: "Online",
-    instructorType: "Any",
+    tutionType: "",
+    instructorType: "",
     message: "",
   });
 
@@ -31,10 +31,7 @@ export default function ContactUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, you can use formData state here
-    if (!accountType) {
-      setErrorMessage("All fields are required.");
-      return;
-    }
+ 
     console.log(formData);
   };
 
