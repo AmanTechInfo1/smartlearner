@@ -9,7 +9,7 @@ import Loader from "../component/loader/Loader";
 
 export default function LoginRegister() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+ 
   const { loading } = useSelector((state) => state.auth);
   const [loginFormData, setLoginFormData] = useState({
     email: "",
@@ -17,7 +17,7 @@ export default function LoginRegister() {
   });
 
 
-  const navigate = useNavigate();
+ 
   const [registrationFormData, setRegistrationFormData] = useState({
     username: "",
     password: "",

@@ -28,10 +28,44 @@ export default function ContactUs() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission, you can use formData state here
- 
+    try {
+      const response = await fetch(`http://localhost:5000/api/form/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log(` Form send successfull`,response);
+
+      if(response.ok){
+        alert(" Successfull")
+        setFormData({
+          firstName: "",
+          lastName: "",
+          address: "",
+          postalCode: "",
+          mobileNo: "",
+          email: "",
+          tutionType: "",
+          instructorType: "",
+          message: "",
+          })
+         
+
+      }else{
+      
+        console.log("error")
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log(formData);
   };
 
