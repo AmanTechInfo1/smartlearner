@@ -4,6 +4,9 @@ const userRoleServices = require("../services/userRoleService");
 const emailServices = require("../services/emailService");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const md5 = require("md5");
+const crypto = require("crypto");
+const PasswordHash = require("../utilities/PasswordHash");
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -36,19 +39,38 @@ class AccountService {
 
   async loginUserAsync(credentials) {
     try {
+      const passwordHashF = new PasswordHash(8, true);
       const { email, password } = credentials;
 
       // Find user by email
       const user = await User.findOne({ email });
       if (!user) {
-        throw new Error("Invalid email or password");
+        throw new Error("Invalid Email");
       }
 
-      // Check if the password matches
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      // const hash = crypto.createHash("md5").update(password).digest("hex");
+      // console.log(hash);
+      // console.log(user.password);
+
+      // Compare the hashed input password with the hashed password stored in the database
+      // if (hash !== user.password) {
+      //   throw new Error("Invalid Password");
+      // }
+      const isPasswordValid = passwordHashF.CheckPassword(
+        password,
+        user.password
+      );
       if (!isPasswordValid) {
         throw new Error("Invalid email or password");
       }
+      console.log(isverified);
+      // const hashedPassword = await bcrypt.hash(password, 10);
+      // console.log(hashedPassword);
+      // // Check if the password matches
+      // const isPasswordValid = await bcrypt.compare(password, user.password);
+      // if (!isPasswordValid) {
+      //   throw new Error("Invalid email or password");
+      // }
 
       // Fetch userRole
       const userRole = await userRoleServices.getUserRoleAsync(user._id);
