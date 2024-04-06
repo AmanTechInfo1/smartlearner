@@ -4,7 +4,8 @@ import Layouts from './Layouts/Layouts';
 import NotFound from "./Pages/NotFound";
 import About from "./Pages/About";
 import FAQS from "./Pages/FAQS";
-import LoginRegister from "./Pages/LoginRegister";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login"
 import DrivingInstructorTraining from "./Pages/Join-our-team/DrivingInstructorTraining";
 import DrivingInstructorFranchise from "./Pages/Join-our-team/DrivingInstructorFranchise";
 import StantardCheckTest from "./Pages/Join-our-team/StantardCheckTest";
@@ -39,6 +40,10 @@ import Shop from "./Pages/shop/Shop";
 import ProductDetails from "./Pages/shop/ProductDetails";
 import Cart from "./Pages/shop/cart/Cart";
 import Thanks from "./Pages/Thanks";
+import AdminApp from "./area/admin/AdminApp";
+import AdminHome from "./area/admin/AdminHome";
+import AdminUsers from "./area/admin/AdminUsers";
+import SingleUser from "./area/admin/SingleUser";
 
 export const router = createBrowserRouter([
   {
@@ -91,10 +96,30 @@ export const router = createBrowserRouter([
       {path:"/cart", element:<Cart/>},
     ],
   },
-  { path: "/login-register", element: <LoginRegister /> },
+  { path: "/register", element: <Register /> },
+  { path: "/login", element: <Login /> },
   { path: "/thanks", element: <Thanks /> },
 
   {
-    
-  }
+    path: "/admin",
+    element: <AdminApp />,
+    children: [
+      {
+        path: "/admin",
+        element: <AdminHome />,
+      },
+   
+      {
+        path: "/admin/users",
+        element: <AdminUsers />,
+      },
+      {
+        path:"/admin/singleuser",
+        element: <SingleUser/>
+      }
+
+    ],
+  },
+ 
+ 
 ]);

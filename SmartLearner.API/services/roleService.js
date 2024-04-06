@@ -1,0 +1,60 @@
+const Role = require("../models/roleModel");
+
+class RoleService {
+  async createRoleAsync(roleData) {
+    try {
+      const role = await Role.create(roleData);
+      return role;
+    } catch (err) {
+      throw new Error("Could not create role");
+    }
+  }
+
+  async getRolesAsync() {
+    try {
+      const roles = await Role.find();
+      return roles;
+    } catch (err) {
+      throw new Error("Could not fetch roles");
+    }
+  }
+
+  async getRoleByIdAsync(roleId) {
+    try {
+      const role = await Role.findById(roleId);
+      return role;
+    } catch (err) {
+      throw new Error("Could not fetch role");
+    }
+  }
+
+  async getRoleByNameAsync(roleName) {
+    try {
+      const role = await Role.findOne({ name: roleName });
+      return role;
+    } catch (err) {
+      throw new Error("Could not fetch role");
+    }
+  }
+
+  async updateRoleAsync(roleId, roleData) {
+    try {
+      const role = await Role.findByIdAndUpdate(roleId, roleData, {
+        new: true,
+      });
+      return role;
+    } catch (err) {
+      throw new Error("Could not update role");
+    }
+  }
+
+  async deleteRoleAsync(roleId) {
+    try {
+      await Role.findByIdAndDelete(roleId);
+    } catch (err) {
+      throw new Error("Could not delete role");
+    }
+  }
+}
+
+module.exports = new RoleService();
