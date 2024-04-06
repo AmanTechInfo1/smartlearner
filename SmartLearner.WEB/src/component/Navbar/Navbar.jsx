@@ -14,15 +14,15 @@ import { NavLink } from "react-router-dom";
 
 const navLinks = [
   {
-    path: "/About",
+    path: "/about",
     display: "About",
   },
   {
-    path: "/FAQS",
+    path: "/faqs",
     display: "FAQS",
   },
   {
-    path: "/Login-Register",
+    path: "/login",
     display: "Login/Register",
   },
 ];

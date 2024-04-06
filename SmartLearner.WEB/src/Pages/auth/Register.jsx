@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import styles from "./css/LoginRegister.module.css";
-import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa"; // Import necessary icons
+import styles from ".././css/LoginRegister.module.css";
+import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { registerUser } from "../features/authSlice";
-import Loader from "../component/loader/Loader";
+import { registerUser } from "../../features/authSlice";
+import Loader from "../../component/loader/Loader";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function Register() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmShowPassword, setConfirmShowPassword] = useState(false);
-  const [registered, setRegistered] = useState(false); // Track registration status
+  const [registered, setRegistered] = useState(false); 
 
   const handleRegistrationInputChange = (e) => {
     const { name, value, type, checked } = e.target;

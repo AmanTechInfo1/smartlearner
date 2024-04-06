@@ -4,8 +4,8 @@ import Layouts from './Layouts/Layouts';
 import NotFound from "./Pages/NotFound";
 import About from "./Pages/About";
 import FAQS from "./Pages/FAQS";
-import Register from "./Pages/Register";
-import Login from "./Pages/Login"
+import Register from "./Pages/auth/Register";
+import Login from "./Pages/auth/Login"
 import DrivingInstructorTraining from "./Pages/Join-our-team/DrivingInstructorTraining";
 import DrivingInstructorFranchise from "./Pages/Join-our-team/DrivingInstructorFranchise";
 import StantardCheckTest from "./Pages/Join-our-team/StantardCheckTest";
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
-      { path: "/about-us", element: <About /> },
+      { path: "/about", element: <About /> },
       { path: "/faqs", element: <FAQS /> },
       { path: "/Driving-Instructor-Training", element: <DrivingInstructorTraining /> },
       { path: "/Driving-Instructor-Franchise", element: <DrivingInstructorFranchise /> },

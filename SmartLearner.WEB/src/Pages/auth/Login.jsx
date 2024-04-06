@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styles from "./css/LoginRegister.module.css";
-import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"; // Import necessary icons
+import styles from '.././css/LoginRegister.module.css';
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
-import Loader from "../component/loader/Loader";
+import Loader from "../../component/loader/Loader";
 
 export default function Login() {
   const dispatch = useDispatch();
