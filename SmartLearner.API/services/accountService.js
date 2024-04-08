@@ -20,8 +20,10 @@ class AccountService {
       }
 
       // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const passwordHash = new PasswordHash(8, true);
+      const hashedPassword = passwordHash.HashPassword(password);
 
+      console.log(hashedPassword);
       // Create the user
       const user = await User.create({
         username,
@@ -39,7 +41,7 @@ class AccountService {
 
   async loginUserAsync(credentials) {
     try {
-      const passwordHashF = new PasswordHash(8, true);
+      const passwordHash = new PasswordHash(8, true);
       const { email, password } = credentials;
 
       // Find user by email
@@ -56,7 +58,7 @@ class AccountService {
       // if (hash !== user.password) {
       //   throw new Error("Invalid Password");
       // }
-      const isPasswordValid = passwordHashF.CheckPassword(
+      const isPasswordValid = passwordHash.CheckPassword(
         password,
         user.password
       );
