@@ -6,70 +6,79 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../../features/authSlice";
 import Loader from "../../component/loader/Loader";
+import { registerformSchema } from "../../formSchemas";
+import { Controller, useForm } from "react-hook-form";
+import { AccountTypes } from "../../constants";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { loading } = useSelector((state) => state.auth);
-  const [registrationFormData, setRegistrationFormData] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    mobile: "",
-    accountType: "",
-    privacyPolicyChecked: false,
-  });
-  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmShowPassword, setConfirmShowPassword] = useState(false);
-  const [registered, setRegistered] = useState(false); 
+  const [registered, setRegistered] = useState(false);
 
-  const handleRegistrationInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-    setRegistrationFormData({ ...registrationFormData, [name]: newValue });
-  };
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(registerformSchema),
+  });
 
-  const handleRegistration = async (e) => {
-    e.preventDefault();
-    setErrorMessage("");
+  // const [registrationFormData, setRegistrationFormData] = useState({
+  //   username: "",
+  //   password: "",
+  //   confirmPassword: "",
+  //   email: "",
+  //   mobile: "",
+  //   accountType: "",
+  //   privacyPolicyChecked: false,
+  // });
+  // const [errorMessage, setErrorMessage] = useState("");
 
-    // Extracting necessary fields from registrationFormData
-    const { username, password, email, mobile, accountType } =
-      registrationFormData;
+  // const handleRegistrationInputChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   const newValue = type === "checkbox" ? checked : value;
+  //   setRegistrationFormData({ ...registrationFormData, [name]: newValue });
+  // };
 
-    // Perform basic validation
-    if (!username || !password || !email || !mobile || !accountType) {
-      setErrorMessage("All fields are required.");
-      return;
-    }
+  const handleRegistration = async (data) => {
+    console.log(data);
+    // const { username, password, email, mobile, accountType } =
+    //   registrationFormData;
 
-    if (!registrationFormData.privacyPolicyChecked) {
-      setErrorMessage("Please accept the privacy policy.");
-      return;
-    }
+    // // Perform basic validation
+    // if (!username || !password || !email || !mobile || !accountType) {
+    //   setErrorMessage("All fields are required.");
+    //   return;
+    // }
 
-    if (password !== registrationFormData.confirmPassword) {
-      setErrorMessage("Passwords do not match.");
-      return;
-    }
+    // if (!registrationFormData.privacyPolicyChecked) {
+    //   setErrorMessage("Please accept the privacy policy.");
+    //   return;
+    // }
 
-    // Constructing the data object to be sent in the request body
-    const requestData = {
-      username,
-      password,
-      email,
-      mobile,
-      accountType,
-    };
+    // if (password !== registrationFormData.confirmPassword) {
+    //   setErrorMessage("Passwords do not match.");
+    //   return;
+    // }
+
+    // // Constructing the data object to be sent in the request body
+    // const requestData = {
+    //   username,
+    //   password,
+    //   email,
+    //   mobile,
+    //   accountType,
+    // };
 
     // Dispatch registerUser action
-    dispatch(registerUser({ requestData, navigate }));
+    //dispatch(registerUser({ requestData, navigate }));
 
     // Implement registration functionality
-    console.log(requestData);
+    //console.log(requestData);
   };
 
   const handleSignInClick = () => {
@@ -93,30 +102,43 @@ export default function Register() {
               <section className={styles.loginRegistration}>
                 <h2>Create Account</h2>
                 {!registered ? (
-                  <form onSubmit={handleRegistration}>
-                    {errorMessage && (
-                      <p style={{ color: "red" }}>{errorMessage}</p>
-                    )}
+                  <form onSubmit={handleSubmit(handleRegistration)}>
                     <label>
                       <FaUser id={styles.loginFormsIcons} />
-                      <input
-                        type="text"
+                      <Controller
                         name="username"
-                        value={registrationFormData.username}
-                        onChange={handleRegistrationInputChange}
-                        placeholder="Username"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type="text"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Username"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                     </label>
-
+                    {errors?.username && (
+                      <p style={{ color: "red" }}>
+                        {errors?.username?.message}
+                      </p>
+                    )}
                     <br />
                     <label>
                       <FaLock id={styles.loginFormsIcons} />
-                      <input
-                        type={showPassword ? "text" : "password"}
+                      <Controller
                         name="password"
-                        value={registrationFormData.password}
-                        onChange={handleRegistrationInputChange}
-                        placeholder="Password"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Password"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                       {showPassword ? (
                         <FaEyeSlash
@@ -130,15 +152,26 @@ export default function Register() {
                         />
                       )}
                     </label>
+                    {errors?.password && (
+                      <p style={{ color: "red" }}>
+                        {errors?.password?.message}
+                      </p>
+                    )}
                     <br />
                     <label>
                       <FaLock id={styles.loginFormsIcons} />
-                      <input
-                        type={confirmShowPassword ? "text" : "password"}
+                      <Controller
                         name="confirmPassword"
-                        value={registrationFormData.confirmPassword}
-                        onChange={handleRegistrationInputChange}
-                        placeholder="Confirm Password"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type={confirmShowPassword ? "text" : "password"}
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Confirm Password"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                       {confirmShowPassword ? (
                         <FaEyeSlash
@@ -152,53 +185,88 @@ export default function Register() {
                         />
                       )}
                     </label>
+                    {errors?.confirmPassword && (
+                      <p style={{ color: "red" }}>
+                        {errors?.confirmPassword?.message}
+                      </p>
+                    )}
                     <br />
                     <label>
                       <MdEmail id={styles.loginFormsIcons} />
-                      <input
-                        type="email"
+                      <Controller
                         name="email"
-                        value={registrationFormData.email}
-                        onChange={handleRegistrationInputChange}
-                        placeholder="Email"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type="email"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Email Address"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                     </label>
+                    {errors?.email && (
+                      <p style={{ color: "red" }}>
+                        {errors?.email?.message}
+                      </p>
+                    )}
                     <br />
                     <label>
                       <FaMobile id={styles.loginFormsIcons} />
-                      <input
-                        type="tel"
-                        name="mobile"
-                        value={registrationFormData.mobile}
-                        onChange={handleRegistrationInputChange}
-                        placeholder="Mobile Number"
+                      <Controller
+                        name="phoneNumber"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type="tel"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Mobile Number"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                     </label>
                     <br />
                     <div id={styles.registerAccount}>
                       <FaUser id={styles.loginFormsIcons} />
-                      <select
-                        name="accountType"
-                        value={registrationFormData.accountType}
-                        onChange={handleRegistrationInputChange}
-                      >
-                        <option disabled value="">
-                          Account Type
-                        </option>
-                        <option value="trainee instructor">
-                          Trainee Instructor
-                        </option>
-                        <option value="theory learner">Theory Learner</option>
-                        <option value="customer">Customer</option>
-                      </select>
+                      <Controller
+                        name="roleName"
+                        control={control}
+                        render={({ field }) => (
+                          <select {...field}>
+                            <option disabled value="">
+                              Account Type
+                            </option>
+                            {AccountTypes.map((accountType) => (
+                              <option
+                                key={accountType.value}
+                                value={accountType.value}
+                              >
+                                {accountType.label}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                        defaultValue=""
+                      />
                     </div>
                     <br />
                     <div className={styles.formPrivacyPolicies}>
-                      <input
-                        type="checkbox"
-                        name="privacyPolicyChecked"
-                        checked={registrationFormData.privacyPolicyChecked}
-                        onChange={handleRegistrationInputChange}
+                      <Controller
+                        name="privacyPolicy"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <input
+                            type="checkbox"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Mobile Number"
+                          />
+                        )}
+                        defaultValue={""}
                       />
                       <p>I agree to the privacy policy</p>
                     </div>
@@ -219,8 +287,10 @@ export default function Register() {
               <div className={styles.formFooter}>
                 <p>
                   Already have an account?{" "}
-                  <button onClick={handleSignInClick}>  <Link to='/login'>Sign In</Link></button>
-                  
+                  <button onClick={handleSignInClick}>
+                    {" "}
+                    <Link to="/login">Sign In</Link>
+                  </button>
                 </p>
               </div>
             </div>
