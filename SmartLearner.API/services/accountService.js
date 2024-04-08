@@ -63,7 +63,6 @@ class AccountService {
       if (!isPasswordValid) {
         throw new Error("Invalid email or password");
       }
-      console.log(isverified);
       // const hashedPassword = await bcrypt.hash(password, 10);
       // console.log(hashedPassword);
       // // Check if the password matches

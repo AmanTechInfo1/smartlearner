@@ -1,133 +1,196 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .adminPageContainer {
-    display: flex;
-    gap: 20px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    padding: 20px;
-    overflow: hidden;
-    color: black;
-  }
-  
-  .productTableContainer {
-    width: 75%;
-    background-color: #fff; /* Set background color for product table container */
-  }
-  
-/* Remaining CSS styles are not shown for brevity */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.adminPageContainer {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+  border-radius: 5px;
+  padding: 20px;
+  overflow: hidden;
+  color: black;
+}
+
+.productTableContainer {
+  width: 80%;
+}
+.productTableContainer h2{
+  color: #fff;
+}
 
 .categoryTableContainer {
-    width: 25%;
-    background-color: #e0e0e0;
-  }
-  
-
-  #productRemoveBtn{
-    background-color: red;
-  }
-  #paginationbtn{
-    background-color: dodgerblue;
-  }
-  
-  .productTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  #firstId{
-    display: flex;
-    justify-content: space-around;
-   
-  }
-  #firstId input{
-    cursor: pointer;
-  }
-  .productTable th,
-  .productTable td {
-    border: 1px solid #ddd;
-    padding: 12px;
-  }
-  
-  .productTable th {
-    background-color: #f2f2f2;
-  }
-  
-  .categoryTable {
-    width: 100%;
-   
-    background-color: #fff; 
-   
-  }
-#categoryTable{
-    overflow-y: auto; 
-    max-height: 500px;
+  width: 20%;
+  background-color: #e0e0e0;
 }
-  #categoryTableategoryTable::-webkit-scrollbar {
-    width: 8px;
-  }
+.categoryTableContainer h3 {
+  text-align: center;
+}
+
+
+.productTable {
+  width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+#firstId {
+  display: flex;
+  justify-content: space-around;
+}
+#firstId input {
+  cursor: pointer;
+  color: #49a09d;
+background-color: #49a09d;
+}
+.productTable th,
+.productTable td {
+  padding: 12px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+.productTable tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	.productTable td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}
+.productTable th {
+  background-color: #55608f;
+  text-align: left;
+  border: none;
+
+}
+
+.categoryTable {
+  width: 100%;
+  background-color: #fff;
+}
+#categoryTable {
+  overflow-y: auto;
+  max-height: 500px;
+}
+#categoryTableategoryTable::-webkit-scrollbar {
+  width: 8px;
+}
+
+#categoryTable::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.categoryTable th,
+.categoryTable td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.categoryTable th {
+  background-color: #f2f2f2;
+}
+.pagination {
+  text-align: center;
+}
+
+
+/* ////////////////////////////////////////BTN////////////////////////// */
+
+
+.pdButtons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.adminPageContainer button {
+  background-image: linear-gradient(
+    to right,
+    #074eb9 0%,
+    #04dcec 51%,
+    #074eb9 100%
+  );
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
   
-  #categoryTable::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-  }
-  
-  
-  
-  .categoryTable th,
-  .categoryTable td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-  }
-  
-  .categoryTable th {
-    background-color: #f2f2f2;
-  }
-  .pagination{
-text-align: center;
-  }
-  .pdButtons{
-    display: flex;
-    align-items: center;
-    text-align: center;
+}
+#productRemoveBtn {
+ 
+  background-image: linear-gradient(to right, #f6d365 0%, #f03400 51%, #f6d365 100%);
+}
+#paginationbtn {
+  color: rgba(256, 256, 256);
+  border: 2px double transparent;
+      background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+#paginationbtn:hover {
+  box-shadow: rgba(111, 76, 255, 0.5) 0px 0px 20px 0px;
+}
+
+button:hover {
+  background-position: right center;
+}
+
+@media (max-width: 1150px){
+  .adminPageContainer {
+    flex-direction: column; 
     justify-content: center;
+   
   }
-  
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 5px;
+  .productTableContainer
+   {
+    width: 100%; 
   }
-  
-  button:hover {
-    background-color: #45a049;
+  .categoryTableContainer{
+width: 60%;
+margin-top: 10px ;
+margin-left: 30px;
   }
-  
-  .fadeIn {
-    animation-name: fadeIn;
-    animation-duration: 1s;
+}
+
+@media (max-width: 600px){
+  .productTable tbody{
+    padding-top: 20px;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+
+  #firstId{
+    justify-content: flex-end;
   }
-  
+ #firstId input{
+  display: none;
+ }
+}
+

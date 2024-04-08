@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 class PasswordHash {
   constructor(iteration_count_log2, portable_hashes) {
     this.itoa64 =
@@ -67,28 +69,26 @@ class PasswordHash {
     }
 
     const count_log2 = this.itoa64.indexOf(setting[3]);
+
     if (count_log2 < 7 || count_log2 > 30) return output;
 
-    const count = 1 << count_log2;
+    let count = 1 << count_log2;
     const salt = setting.substring(4, 12);
     if (salt.length !== 8) {
       return output;
     }
 
-    var hash = require("crypto")
+    let hash = crypto
       .createHash("md5")
-      .update(salt + password)
+      .update(salt + password, "binary")
       .digest("binary");
-    console.log(hash);
-
     do {
-      hash = require("crypto")
+      hash = crypto
         .createHash("md5")
-        .update(hash + password)
+        .update(hash + password, "binary")
         .digest("binary");
-      console.log(hash);
     } while (--count);
-
+    
     output = setting.substring(0, 12) + this.encode64(hash, 16);
 
     return output;

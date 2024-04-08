@@ -29,8 +29,9 @@ const AdminUsers = () => {
   };
 
   const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  user.email.toLowerCase().includes(searchTerm.toLowerCase())
+);
   const handleSave = (editedUser) => {
     setUsers(users.map(user => (user.id === editedUser.id ? editedUser : user)));
   };
@@ -42,7 +43,7 @@ const AdminUsers = () => {
       ) : (
         <>
           <div className={styles.usersHeading}>
-            <h2 className={styles.userHeading}>Users</h2> {/* Button to toggle AddUserForm */}
+            <h2 className={styles.userHeading}>Users</h2> 
             <button className={styles.addButton} onClick={() => setAddUserFormVisible(true)}>Add User</button>
           </div>
           <div className={styles.userTable}>
@@ -51,7 +52,7 @@ const AdminUsers = () => {
               <input
                 type="text"
                 className={styles.usersSearchInput}
-                placeholder="Search users"
+                placeholder="Search users by email"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
