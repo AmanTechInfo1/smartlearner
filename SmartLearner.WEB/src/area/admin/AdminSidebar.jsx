@@ -29,11 +29,9 @@ export default function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <Link to='/admin' > <li className={styles.adminSidebarListItem}><BsGrid1X2Fill className={styles.adminIcon} />Dashboard</li> </Link>
            
  
-        <li className={styles.adminSidebarListItem}>
-          <a href="">
-            <BsFillArchiveFill className={styles.adminIcon} />Products
-          </a>
-        </li>
+      
+          <Link to='/admin/products' ><li className={styles.adminSidebarListItem}>  <BsFillArchiveFill className={styles.adminIcon} />Products</li></Link>
+         
         <li className={styles.adminSidebarListItem}>
           <a href="">
             <BsFillGrid3X3GapFill className={styles.adminIcon} />Categories

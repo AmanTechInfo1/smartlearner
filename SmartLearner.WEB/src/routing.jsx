@@ -44,6 +44,11 @@ import AdminApp from "./area/admin/AdminApp";
 import AdminHome from "./area/admin/AdminHome";
 import AdminUsers from "./area/admin/AdminUsers";
 import SingleUser from "./area/admin/SingleUser";
+import AdminProductPage from "./area/admin/adminProductPage/AdminProductPage";
+import AddProductPage from "./area/admin/adminProductPage/AddProductPage"
+
+
+
 
 export const router = createBrowserRouter([
   {
@@ -116,7 +121,15 @@ export const router = createBrowserRouter([
       {
         path:"/admin/singleuser",
         element: <SingleUser/>
-      }
+      },
+      {
+        path:"/admin/products",
+        element: <AdminProductPage/>
+      },
+      {
+path:"/admin/add-products",
+element:<AddProductPage/>
+      },
 
     ],
   },

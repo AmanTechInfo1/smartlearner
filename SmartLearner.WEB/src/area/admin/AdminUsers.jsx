@@ -7,8 +7,8 @@ import { BsSearch } from 'react-icons/bs';
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [addUserFormVisible, setAddUserFormVisible] = useState(false); // State for toggling AddUserForm visibility
-  const [selectedUser, setSelectedUser] = useState(null); // State for selected user details
+  const [addUserFormVisible, setAddUserFormVisible] = useState(false); 
+  const [selectedUser, setSelectedUser] = useState(null); 
 
   const handleAddUser = (newUser) => {
     setUsers([...users, newUser]);
