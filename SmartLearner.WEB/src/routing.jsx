@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home";
-import Layouts from './Layouts/Layouts';
+import Layouts from "./Layouts/Layouts";
 import NotFound from "./Pages/NotFound";
 import About from "./Pages/About";
 import FAQS from "./Pages/FAQS";
 import Register from "./Pages/auth/Register";
-import Login from "./Pages/auth/Login"
+import Login from "./Pages/auth/Login";
 import DrivingInstructorTraining from "./Pages/Join-our-team/DrivingInstructorTraining";
 import DrivingInstructorFranchise from "./Pages/Join-our-team/DrivingInstructorFranchise";
 import StantardCheckTest from "./Pages/Join-our-team/StantardCheckTest";
@@ -40,15 +40,15 @@ import Shop from "./Pages/shop/Shop";
 import ProductDetails from "./Pages/shop/ProductDetails";
 import Cart from "./Pages/shop/cart/Cart";
 import Thanks from "./Pages/Thanks";
-import AdminApp from "./area/admin/AdminApp";
 import AdminHome from "./area/admin/AdminHome";
 import AdminUsers from "./area/admin/AdminUsers";
 import SingleUser from "./area/admin/SingleUser";
 import AdminProductPage from "./area/admin/adminProductPage/AdminProductPage";
-import AddProductPage from "./area/admin/adminProductPage/AddProductPage"
-
-
-
+import AddProductPage from "./area/admin/adminProductPage/AddProductPage";
+import RequireAuth from "./component/RequireAuth ";
+import { ROLES } from "./constants";
+import AdminLayout from "./area/admin/AdminLayout";
+import Roles from "./area/admin/roles/Roles";
 
 export const router = createBrowserRouter([
   {
@@ -61,78 +61,92 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/home",
+        path: "home",
         element: <Home />,
       },
-      { path: "/about", element: <About /> },
-      { path: "/faqs", element: <FAQS /> },
-      { path: "/Driving-Instructor-Training", element: <DrivingInstructorTraining /> },
-      { path: "/Driving-Instructor-Franchise", element: <DrivingInstructorFranchise /> },
-      { path: "/Stantard-Check-Test", element: <StantardCheckTest /> },
-      { path: "/Driving-Lessons", element: <DrivingLessons /> },
-      { path: "/School-Of-Mom-and-Dad", element: <SchoolOfMomDad /> },
-      { path: "/Intensive-Driving-Courses", element: <IntensiveCourses /> },
-      { path: "/Theory-Support", element: <TheorySupport /> },
-      { path: "/ADI-Training-Portal", element: <ADITrainingPortal /> },
-      { path: "/Simulated-Driving-Lesson", element: <SimulatedDrivingLesson /> },
-      { path: "/Extended-Test", element: <ExtendedTest /> },
-      { path: "/Pass-Plus", element: <PassPlus /> },
-      { path: "/Ageing-Driver-Support", element: <AgeingDriverSupport /> },
-      { path: "/Safe-Road-User-Award", element: <SafeRoadUserAward /> },
-      { path: "/Trailer-Training", element: <TrailerTraining /> },
-      { path: "/Taxi-Training", element: <TaxiTraining /> },
-      { path: "/Corporate-Responsbilities", element: <CorporateResponsbilities /> },
-      { path: "/Electric-Car-Scheme", element: <ElectricCarScheme /> },
-      { path: "/Going-Green-Project", element: <GoingGreenProject /> },
-      { path: "/Communities-Champions", element: <CommunitiesChampions /> },
-      { path: "/We-Proudly-Support", element: <WeProudlySupport /> },
-      { path: "/Go-Cv", element: <GoCv /> },
-      { path: "/Our-Office-Green-Efforts", element: <OurOfficeGreenEfforts /> },
-      { path: "/The-Honest-Truth", element: <TheHonestTruth /> },
-      { path: "/Theory-Subscription", element: <TheorySubscription /> },
-      { path: "/Theory-Portal", element: <TheoryPortal /> },
-      { path: "/WorkSheets", element: <Worksheet /> },
-      { path: "/Personalised-Quiz", element: <PersonalisedQuiz /> },
-      { path: "/AIVideos", element: <AIVideos /> },
-      { path: "/PracticeMCQS", element: <PracticeMCQS /> },
-      { path: "/Contact-Us", element: <Contact /> },
-      {path:"/shop", element:<Shop/>},
-      {path:"/product/:id", element:<ProductDetails/>},
-      {path:"/cart", element:<Cart/>},
+      { path: "about", element: <About /> },
+      { path: "faqs", element: <FAQS /> },
+      {
+        path: "Driving-Instructor-Training",
+        element: <DrivingInstructorTraining />,
+      },
+      {
+        path: "Driving-Instructor-Franchise",
+        element: <DrivingInstructorFranchise />,
+      },
+      { path: "Stantard-Check-Test", element: <StantardCheckTest /> },
+      { path: "Driving-Lessons", element: <DrivingLessons /> },
+      { path: "School-Of-Mom-and-Dad", element: <SchoolOfMomDad /> },
+      { path: "Intensive-Driving-Courses", element: <IntensiveCourses /> },
+      { path: "Theory-Support", element: <TheorySupport /> },
+      { path: "ADI-Training-Portal", element: <ADITrainingPortal /> },
+      { path: "Simulated-Driving-Lesson", element: <SimulatedDrivingLesson /> },
+      { path: "Extended-Test", element: <ExtendedTest /> },
+      { path: "Pass-Plus", element: <PassPlus /> },
+      { path: "Ageing-Driver-Support", element: <AgeingDriverSupport /> },
+      { path: "Safe-Road-User-Award", element: <SafeRoadUserAward /> },
+      { path: "Trailer-Training", element: <TrailerTraining /> },
+      { path: "Taxi-Training", element: <TaxiTraining /> },
+      {
+        path: "Corporate-Responsbilities",
+        element: <CorporateResponsbilities />,
+      },
+      { path: "Electric-Car-Scheme", element: <ElectricCarScheme /> },
+      { path: "Going-Green-Project", element: <GoingGreenProject /> },
+      { path: "Communities-Champions", element: <CommunitiesChampions /> },
+      { path: "We-Proudly-Support", element: <WeProudlySupport /> },
+      { path: "Go-Cv", element: <GoCv /> },
+      { path: "Our-Office-Green-Efforts", element: <OurOfficeGreenEfforts /> },
+      { path: "The-Honest-Truth", element: <TheHonestTruth /> },
+      { path: "Theory-Subscription", element: <TheorySubscription /> },
+      { path: "Theory-Portal", element: <TheoryPortal /> },
+      { path: "WorkSheets", element: <Worksheet /> },
+      { path: "Personalised-Quiz", element: <PersonalisedQuiz /> },
+      { path: "AIVideos", element: <AIVideos /> },
+      { path: "PracticeMCQS", element: <PracticeMCQS /> },
+      { path: "Contact-Us", element: <Contact /> },
+      { path: "shop", element: <Shop /> },
+      { path: "product/:id", element: <ProductDetails /> },
+      { path: "cart", element: <Cart /> },
     ],
   },
-  { path: "/register", element: <Register /> },
-  { path: "/login", element: <Login /> },
-  { path: "/thanks", element: <Thanks /> },
+  { path: "register", element: <Register /> },
+  { path: "login", element: <Login /> },
+  { path: "thanks", element: <Thanks /> },
 
   {
-    path: "/admin",
-    element: <AdminApp />,
+    path: "admin",
+    element: (
+      <RequireAuth
+        allowedRoles={[ROLES.ADMIN]}
+        element={<AdminLayout />}
+      ></RequireAuth>
+    ),
     children: [
       {
-        path: "/admin",
+        path: "dashboard",
         element: <AdminHome />,
       },
-   
       {
-        path: "/admin/users",
+        path: "roles",
+        element: <Roles />,
+      },
+      {
+        path: "users",
         element: <AdminUsers />,
       },
       {
-        path:"/admin/singleuser",
-        element: <SingleUser/>
+        path: "singleuser",
+        element: <SingleUser />,
       },
       {
-        path:"/admin/products",
-        element: <AdminProductPage/>
+        path: "products",
+        element: <AdminProductPage />,
       },
       {
-path:"/admin/add-products",
-element:<AddProductPage/>
+        path: "add-products",
+        element: <AddProductPage />,
       },
-
     ],
   },
- 
- 
 ]);

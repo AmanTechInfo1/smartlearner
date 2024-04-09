@@ -11,7 +11,8 @@ const PasswordHash = require("../utilities/PasswordHash");
 class AccountService {
   async registerUserAsync(userData) {
     try {
-      const { username, email, password, phoneNumber } = userData;
+      const { username, email, password, phoneNumber, privacyPolicy } =
+        userData;
 
       // Check if user with the same email already exists
       const existingUser = await User.findOne({ email });
@@ -29,6 +30,7 @@ class AccountService {
         email,
         password: hashedPassword,
         phoneNumber,
+        privacyPolicy,
       });
 
       return user;
@@ -84,9 +86,9 @@ class AccountService {
           username: user.username,
           email: user.email,
           role: role.name,
+          token,
+          expiresIn: 3600,
         },
-        token,
-        expiresIn: 3600, // Expiry in seconds (1 hour)
       };
     } catch (err) {
       throw new Error(err.message);
@@ -145,7 +147,7 @@ class AccountService {
       const passwordHash = new PasswordHash(8, true);
       // Hash the new password
       const hashedPassword = passwordHash.HashPassword(newPassword);
-      
+
       // Update user's password in the database
       await User.findOneAndUpdate({ email }, { password: hashedPassword });
 
@@ -169,6 +171,26 @@ class AccountService {
       throw new Error(err.message);
     }
   }
+  async getAllUsersAsync(pageNumber, pageSize, query) {
+    try {
+      const skip = (pageNumber - 1) * pageSize;
+      let filter = { isDeleted: false };
+  
+      if (query) {
+        const regex = new RegExp(query, 'i');
+        filter.$or = [
+          { email: regex },
+          { username: regex }
+        ];
+      }
+      const users = await User.find(filter).skip(skip).limit(pageSize);
+      return users;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+  
+  
 }
 
 module.exports = new AccountService();

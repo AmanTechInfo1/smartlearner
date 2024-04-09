@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const accountController = require('../controllers/accountController');
+const multer = require('multer');
+const upload = multer();
 
-router.post('/register', accountController.registerUser);
-router.post('/login', accountController.loginUser);
-// router.get('/protected-route', authMiddleware, accountController.protectedRoute);
+const accountController = require('../controllers/accountController');
+const authMiddleware = require('../middlewares/authMiddleware');
+
+router.post('/register', upload.none(), accountController.registerUser);
+router.post('/login', upload.none(), accountController.loginUser);
+router.get('/users', authMiddleware, accountController.getAllUsers);
 
 module.exports = router;

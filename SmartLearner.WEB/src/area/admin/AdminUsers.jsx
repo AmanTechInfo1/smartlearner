@@ -1,109 +1,106 @@
 import React, { useState } from "react";
-import AddUserForm from "./AddUserForm"; // Importing the AddUserForm component
-import SingleUser from "./SingleUser"; // Importing the SingleUser component
-import styles from './css/AdminApp.module.css';
-import { BsSearch } from 'react-icons/bs';
+import styles from "./css/AdminApp.module.css";
+import { Table } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 
 const AdminUsers = () => {
-  const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [addUserFormVisible, setAddUserFormVisible] = useState(false); 
-  const [selectedUser, setSelectedUser] = useState(null); 
+  const dispatch = useDispatch();
+  const { loading, users, usersCount } = useSelector((state) => state.user);
+  const [state, setState] = useState({
+    search: "",
+    page: 1,
+    pageSize: 10,
+  });
 
-  const handleAddUser = (newUser) => {
-    setUsers([...users, newUser]);
-    setAddUserFormVisible(false); // Hide the form after adding user
+  const onShowSizeChange = (current, pageSize) => {
+    setState({ ...state, page: 1, pagesize: pageSize });
+  };
+  const itemRender = (current, type, originalElement) => {
+    if (type === "prev") {
+      return <button className="btn btn-sm btn-primary">Previous</button>;
+    }
+    if (type === "next") {
+      return <button className="btn btn-sm btn-primary">Next</button>;
+    }
+    return originalElement;
   };
 
-  const removeUser = (id) => {
-    const updatedUsers = users.filter((user) => user.id !== id);
-    setUsers(updatedUsers);
-  };
+  const columns = [
+    {
+      title: "UserName",
+      dataIndex: "username",
+      sorter: (a, b) => a.username.length - b.username.length,
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      sorter: (a, b) => a.email.length - b.email.length,
+    },
+    {
+      title: "Action",
+      render: (text, record) => (
+        <div
+          className="d-flex justify-content-around"
+          data-popper-placement="bottom-end"
+        >
+          <Link
+            to={`/update-client/${record.clientIdentifier}/${companyId}`}
+            className="dropdown-item px-2 text-success"
+            onClick={() => {
+              handleEditClick(record.clientIdentifier);
+            }}
+          >
+            <i className="fa fa-pencil m-r-5" />
+          </Link>
+          <Link
+            className="dropdown-item px-2 text-danger"
+            to="#"
+            onClick={() => {
+              handleDeleteClick(record.clientIdentifier);
+            }}
+          >
+            <i className="fa fa-trash-o m-r-5" />
+          </Link>
+        </div>
+      ),
+    },
+  ];
 
-  const editUser = (user) => {
-    setSelectedUser(user);
-  };
-
-  const closeSingleUser = () => {
-    setSelectedUser(null);
-  };
-
-  const filteredUsers = users.filter((user) =>
-  user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  user.email.toLowerCase().includes(searchTerm.toLowerCase())
-);
-  const handleSave = (editedUser) => {
-    setUsers(users.map(user => (user.id === editedUser.id ? editedUser : user)));
-  };
+  const handleSave = (editedUser) => {};
 
   return (
-    <div className={styles.usersContainer}>
-      {selectedUser ? (
-        <SingleUser user={selectedUser} closeSingleUser={closeSingleUser} onSave={handleSave}  />
-      ) : (
-        <>
-          <div className={styles.usersHeading}>
-            <h2 className={styles.userHeading}>Users</h2> 
-            <button className={styles.addButton} onClick={() => setAddUserFormVisible(true)}>Add User</button>
-          </div>
-          <div className={styles.userTable}>
-            <div className={styles.userTableHeading}>
-              <BsSearch className={styles.usersSearchIcon} />
-              <input
-                type="text"
-                className={styles.usersSearchInput}
-                placeholder="Search users by email"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-            <div className={styles.userTableDetails}>
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Roles</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredUsers.map((user) => (
-                    <tr key={user.id}>
-                      <td data-label="id">{user.id}</td>
-                      <td data-label="Avatar">
-                        {user.avatar && (
-                          <img
-                            src={URL.createObjectURL(user.avatar)}
-                            alt="Avatar"
-                            className={styles.userAvatar}
-                            height='35px'
-                            width='40px'
-                          />
-                        )}
-                      </td>
-                      <td data-label="Name">{user.name}</td>
-                      <td data-label="Email">{user.email}</td>
-                      <td data-label="Phone">{user.phone}</td>
-                      <td data-label="Roles">{user.roles}</td>
-                      <td>
-                        <button className={styles.editButton} onClick={() => editUser(user)}>Edit</button>
-                        <button className={styles.removeButton} onClick={() => removeUser(user.id)}>Remove</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {/* Conditional rendering of AddUserForm */}
-            {addUserFormVisible && <AddUserForm handleAddUser={handleAddUser} closeForm={() => setAddUserFormVisible(false)} />}
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div className={styles.usersContainer}>
+        <div className={styles.usersHeading}>
+          <h2 className={styles.userHeading}>Users</h2>
+          <button
+            className={styles.addButton}
+            onClick={() => setAddUserFormVisible(true)}
+          >
+            Add User
+          </button>
+        </div>
+        <Table
+          className="table-striped"
+          pagination={{
+            current: state.page,
+            pageSize: state.pageSize,
+            total: usersCount,
+            showTotal: (total, range) =>
+              `Showing ${range[0]} to ${range[1]} of ${total} entries`,
+            showSizeChanger: true,
+            onShowSizeChange: onShowSizeChange,
+            itemRender: itemRender,
+            onChange: (page, pageSize) =>
+              setState({ ...state, page, pagesize: pageSize }),
+          }}
+          style={{ overflowX: "auto" }}
+          columns={columns}
+          dataSource={users}
+          rowKey={(record) => record.clientIdentifier}
+        />
+      </div>
+    </>
   );
 };
 

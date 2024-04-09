@@ -6,15 +6,23 @@ class AccountController {
   async registerUser(req, res, next) {
     try {
       var userData = req.body;
+
       const user = await accountService.registerUserAsync(userData);
 
       if (userData?.roleName) {
-        const role = await roleService.getRoleByNameAsync(userData?.roleName);
+        const role = await roleService.getRoleByNameAsync(
+          userData?.roleName.toLowerCase()
+        );
         if (!role) {
           throw new Error("Role not found");
         }
         await userRoleServices.assignRoleToUserAsync(user._id, role._id);
-        res.status(201).json(user);
+        const resultObject = {
+          message: "User registered successfully",
+          statusCode: 201,
+          success: true,
+        };
+        res.status(201).json(resultObject);
       } else {
         throw new Error("Provide appropriate Role");
       }
@@ -22,11 +30,33 @@ class AccountController {
       next(err);
     }
   }
-  
+
   async loginUser(req, res, next) {
     try {
       const response = await accountService.loginUserAsync(req.body);
-      res.status(201).json(response);
+      const resultObject = {
+        message: "Logged IN successfully",
+        statusCode: 201,
+        success: true,
+        data: response,
+      };
+      res.status(201).json(resultObject);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async getAllUsers(req, res, next) {
+    try {
+      const { page, pageSize, search } = req.query;
+      const response = await accountService.getAllUsersAsync(page, pageSize, search);
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 201,
+        success: true,
+        data: response,
+      };
+      res.status(201).json(resultObject);
     } catch (err) {
       next(err);
     }

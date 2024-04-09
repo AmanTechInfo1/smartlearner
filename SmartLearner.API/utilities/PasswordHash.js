@@ -138,6 +138,7 @@ class PasswordHash {
   }
 
   HashPassword(password) {
+    console.log(password);
     if (password.length > 4096) {
       return "*";
     }

@@ -1,61 +1,33 @@
 import React, { useState } from "react";
-import styles from '.././css/LoginRegister.module.css';
+import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-
 import Loader from "../../component/loader/Loader";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginformSchema } from "../../formSchemas";
+import { loginUser } from "../../features/authSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { loading } = useSelector((state) => state.auth);
-  const [loginFormData, setLoginFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLoginInputChange = (e) => {
-    const { name, value } = e.target;
-    setLoginFormData({ ...loginFormData, [name]: value });
-  };
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginformSchema),
+  });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setErrorMessage("");
-
-    // Perform basic validation
-    try {
-      const response = await fetch(`http://localhost:5000/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginFormData),
-      });
-
-      console.log(`Login Form data`, response);
-
-      if (response.ok) {
-        alert("Login Successful");
-        setLoginFormData({
-          email: "",
-          password: "",
-        });
-        navigate("/");
-      } else {
-        setErrorMessage("Invalid credentials");
-        console.log("Invalid Credentials");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-    // Implement login functionality
-    console.log(loginFormData);
+  const handleLogin = async (data) => {
+    const formData = new FormData();
+    formData.append('email', data.email);
+    formData.append('password', data.password);
+    dispatch(loginUser({ loginData: data, navigate }));
   };
 
   return (
@@ -70,29 +42,41 @@ export default function Login() {
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>
                 <h2>Login</h2>
-                <form onSubmit={handleLogin}>
-                  {errorMessage && (
-                    <p style={{ color: "red" }}>{errorMessage}</p>
-                  )}
+                <form onSubmit={handleSubmit(handleLogin)}>
                   <label>
                     <FaUser id={styles.loginFormsIcons} />
-                    <input
-                      type="text"
+                    <Controller
                       name="email"
-                      value={loginFormData.email}
-                      onChange={handleLoginInputChange}
-                      placeholder="Email"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="email"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Email Address"
+                        />
+                      )}
+                      defaultValue={""}
                     />
                   </label>
+                  {errors?.email && (
+                    <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                  )}
                   <br />
                   <label>
                     <FaLock id={styles.loginFormsIcons} />
-                    <input
-                      type={showPassword ? "text" : "password"}
+                    <Controller
                       name="password"
-                      value={loginFormData.password}
-                      onChange={handleLoginInputChange}
-                      placeholder="Password"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Password"
+                        />
+                      )}
+                      defaultValue={""}
                     />
                     {showPassword ? (
                       <FaEyeSlash
@@ -106,6 +90,9 @@ export default function Login() {
                       />
                     )}
                   </label>
+                  {errors?.password && (
+                    <p style={{ color: "red" }}>{errors?.password?.message}</p>
+                  )}
                   <br />
                   <div className={styles.formPrivacyPolicies}>
                     <input type="checkbox" name="signInChecked" />

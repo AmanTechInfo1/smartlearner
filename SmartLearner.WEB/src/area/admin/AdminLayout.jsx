@@ -8,7 +8,7 @@ import AdminUsers from './AdminUsers'
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
-export default function AdminApp() {
+export default function AdminLayout() {
 
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
   const OpenSidebar = () => {

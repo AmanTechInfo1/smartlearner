@@ -18,3 +18,9 @@ export const AccountTypes = [
     value: "customer",
   },
 ];
+export const ROLES = {
+  ADMIN: "admin",
+  CUSTOMER: "customer",
+  TRAINEEINSTRUCTOR: "traineeinstructor",
+  THEORYLEARNER: "theorylearner",
+};

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
-import { registerUser } from "../../features/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../component/loader/Loader";
 import { registerformSchema } from "../../formSchemas";
 import { Controller, useForm } from "react-hook-form";
 import { AccountTypes } from "../../constants";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { registerUser } from "../../features/authSlice";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -17,72 +17,25 @@ export default function Register() {
   const { loading } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [confirmShowPassword, setConfirmShowPassword] = useState(false);
-  const [registered, setRegistered] = useState(false);
 
   const {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(registerformSchema),
   });
 
-  // const [registrationFormData, setRegistrationFormData] = useState({
-  //   username: "",
-  //   password: "",
-  //   confirmPassword: "",
-  //   email: "",
-  //   mobile: "",
-  //   accountType: "",
-  //   privacyPolicyChecked: false,
-  // });
-  // const [errorMessage, setErrorMessage] = useState("");
-
-  // const handleRegistrationInputChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   const newValue = type === "checkbox" ? checked : value;
-  //   setRegistrationFormData({ ...registrationFormData, [name]: newValue });
-  // };
-
   const handleRegistration = async (data) => {
-    console.log(data);
-    // const { username, password, email, mobile, accountType } =
-    //   registrationFormData;
-
-    // // Perform basic validation
-    // if (!username || !password || !email || !mobile || !accountType) {
-    //   setErrorMessage("All fields are required.");
-    //   return;
-    // }
-
-    // if (!registrationFormData.privacyPolicyChecked) {
-    //   setErrorMessage("Please accept the privacy policy.");
-    //   return;
-    // }
-
-    // if (password !== registrationFormData.confirmPassword) {
-    //   setErrorMessage("Passwords do not match.");
-    //   return;
-    // }
-
-    // // Constructing the data object to be sent in the request body
-    // const requestData = {
-    //   username,
-    //   password,
-    //   email,
-    //   mobile,
-    //   accountType,
-    // };
-
-    // Dispatch registerUser action
-    //dispatch(registerUser({ requestData, navigate }));
-
-    // Implement registration functionality
-    //console.log(requestData);
-  };
-
-  const handleSignInClick = () => {
-    setRegistered(false); // Reset registration status
+    const formData = new FormData();
+    formData.append("username", data.username);
+    formData.append("email", data.username);
+    formData.append("password", data.username);
+    formData.append("phoneNumber", data.username);
+    formData.append("roleName", data.username);
+    formData.append("privacyPolicy", data.username);
+    dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 
   return (
@@ -101,193 +54,192 @@ export default function Register() {
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>
                 <h2>Create Account</h2>
-                {!registered ? (
-                  <form onSubmit={handleSubmit(handleRegistration)}>
-                    <label>
-                      <FaUser id={styles.loginFormsIcons} />
-                      <Controller
-                        name="username"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type="text"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Username"
-                          />
-                        )}
-                        defaultValue={""}
-                      />
-                    </label>
-                    {errors?.username && (
-                      <p style={{ color: "red" }}>
-                        {errors?.username?.message}
-                      </p>
-                    )}
-                    <br />
-                    <label>
-                      <FaLock id={styles.loginFormsIcons} />
-                      <Controller
-                        name="password"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type={showPassword ? "text" : "password"}
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Password"
-                          />
-                        )}
-                        defaultValue={""}
-                      />
-                      {showPassword ? (
-                        <FaEyeSlash
-                          id={styles.loginFormsIcons}
-                          onClick={() => setShowPassword(false)}
-                        />
-                      ) : (
-                        <FaEye
-                          id={styles.loginFormsIcons}
-                          onClick={() => setShowPassword(true)}
+                <form onSubmit={handleSubmit(handleRegistration)}>
+                  <label>
+                    <FaUser id={styles.loginFormsIcons} />
+                    <Controller
+                      name="username"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Username"
                         />
                       )}
-                    </label>
-                    {errors?.password && (
-                      <p style={{ color: "red" }}>
-                        {errors?.password?.message}
-                      </p>
-                    )}
-                    <br />
-                    <label>
-                      <FaLock id={styles.loginFormsIcons} />
-                      <Controller
-                        name="confirmPassword"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type={confirmShowPassword ? "text" : "password"}
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Confirm Password"
-                          />
-                        )}
-                        defaultValue={""}
-                      />
-                      {confirmShowPassword ? (
-                        <FaEyeSlash
-                          onClick={() => setConfirmShowPassword(false)}
-                          id={styles.loginFormsIcons}
-                        />
-                      ) : (
-                        <FaEye
-                          onClick={() => setConfirmShowPassword(true)}
-                          id={styles.loginFormsIcons}
+                      defaultValue={""}
+                    />
+                  </label>
+                  {errors?.username && (
+                    <p style={{ color: "red" }}>{errors?.username?.message}</p>
+                  )}
+                  <br />
+                  <label>
+                    <FaLock id={styles.loginFormsIcons} />
+                    <Controller
+                      name="password"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Password"
                         />
                       )}
-                    </label>
-                    {errors?.confirmPassword && (
-                      <p style={{ color: "red" }}>
-                        {errors?.confirmPassword?.message}
-                      </p>
-                    )}
-                    <br />
-                    <label>
-                      <MdEmail id={styles.loginFormsIcons} />
-                      <Controller
-                        name="email"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type="email"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Email Address"
-                          />
-                        )}
-                        defaultValue={""}
+                      defaultValue={""}
+                    />
+                    {showPassword ? (
+                      <FaEyeSlash
+                        id={styles.loginFormsIcons}
+                        onClick={() => setShowPassword(false)}
                       />
-                    </label>
-                    {errors?.email && (
-                      <p style={{ color: "red" }}>
-                        {errors?.email?.message}
-                      </p>
-                    )}
-                    <br />
-                    <label>
-                      <FaMobile id={styles.loginFormsIcons} />
-                      <Controller
-                        name="phoneNumber"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type="tel"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Mobile Number"
-                          />
-                        )}
-                        defaultValue={""}
+                    ) : (
+                      <FaEye
+                        id={styles.loginFormsIcons}
+                        onClick={() => setShowPassword(true)}
                       />
-                    </label>
-                    <br />
-                    <div id={styles.registerAccount}>
-                      <FaUser id={styles.loginFormsIcons} />
-                      <Controller
-                        name="roleName"
-                        control={control}
-                        render={({ field }) => (
-                          <select {...field}>
-                            <option disabled value="">
-                              Account Type
+                    )}
+                  </label>
+                  {errors?.password && (
+                    <p style={{ color: "red" }}>{errors?.password?.message}</p>
+                  )}
+                  <br />
+                  <label>
+                    <FaLock id={styles.loginFormsIcons} />
+                    <Controller
+                      name="confirmPassword"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type={confirmShowPassword ? "text" : "password"}
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Confirm Password"
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                    {confirmShowPassword ? (
+                      <FaEyeSlash
+                        onClick={() => setConfirmShowPassword(false)}
+                        id={styles.loginFormsIcons}
+                      />
+                    ) : (
+                      <FaEye
+                        onClick={() => setConfirmShowPassword(true)}
+                        id={styles.loginFormsIcons}
+                      />
+                    )}
+                  </label>
+                  {errors?.confirmPassword && (
+                    <p style={{ color: "red" }}>
+                      {errors?.confirmPassword?.message}
+                    </p>
+                  )}
+                  <br />
+                  <label>
+                    <MdEmail id={styles.loginFormsIcons} />
+                    <Controller
+                      name="email"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="email"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Email Address"
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </label>
+                  {errors?.email && (
+                    <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                  )}
+                  <br />
+                  <label>
+                    <FaMobile id={styles.loginFormsIcons} />
+                    <Controller
+                      name="phoneNumber"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="tel"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Mobile Number"
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </label>
+                  {errors?.phoneNumber && (
+                    <p style={{ color: "red" }}>
+                      {errors?.phoneNumber?.message}
+                    </p>
+                  )}
+                  <br />
+                  <div id={styles.registerAccount}>
+                    <FaUser id={styles.loginFormsIcons} />
+                    <Controller
+                      name="roleName"
+                      control={control}
+                      render={({ field }) => (
+                        <select {...field}>
+                          <option disabled value="">
+                            Account Type
+                          </option>
+                          {AccountTypes.map((accountType) => (
+                            <option
+                              key={accountType.value}
+                              value={accountType.value}
+                            >
+                              {accountType.label}
                             </option>
-                            {AccountTypes.map((accountType) => (
-                              <option
-                                key={accountType.value}
-                                value={accountType.value}
-                              >
-                                {accountType.label}
-                              </option>
-                            ))}
-                          </select>
-                        )}
-                        defaultValue=""
-                      />
-                    </div>
-                    <br />
-                    <div className={styles.formPrivacyPolicies}>
-                      <Controller
-                        name="privacyPolicy"
-                        control={control}
-                        render={({ field: { value, onChange } }) => (
-                          <input
-                            type="checkbox"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Mobile Number"
-                          />
-                        )}
-                        defaultValue={""}
-                      />
-                      <p>I agree to the privacy policy</p>
-                    </div>
-                    <br />
-                    <div className={styles.loginFormBtn}>
-                      <button type="submit">Create Account</button>
-                    </div>
-                    <br />
-                  </form>
-                ) : (
-                  <p>
-                    Thank you for applying for membership to our site. We will
-                    review your details and send you an email letting you know
-                    whether your application has been successful or not.
-                  </p>
-                )}
+                          ))}
+                        </select>
+                      )}
+                      defaultValue=""
+                    />
+                  </div>
+                  {errors?.roleName && (
+                    <p style={{ color: "red" }}>{errors?.roleName?.message}</p>
+                  )}
+                  <br />
+                  <div className={styles.formPrivacyPolicies}>
+                    <Controller
+                      name="privacyPolicy"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="checkbox"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Mobile Number"
+                        />
+                      )}
+                      defaultValue={false}
+                    />
+                    <p>I agree to the privacy policy</p>
+                  </div>
+                  {errors?.privacyPolicy && (
+                    <p style={{ color: "red" }}>
+                      {errors?.privacyPolicy?.message}
+                    </p>
+                  )}
+                  <br />
+                  <div className={styles.loginFormBtn}>
+                    <button type="submit">Create Account</button>
+                  </div>
+                  <br />
+                </form>
               </section>
               <div className={styles.formFooter}>
                 <p>
                   Already have an account?{" "}
-                  <button onClick={handleSignInClick}>
+                  <button>
                     {" "}
                     <Link to="/login">Sign In</Link>
                   </button>

@@ -25,7 +25,19 @@ export const registerformSchema = yup.object({
   phoneNumber: yup.string().required("Mobile Number is required").trim(),
   roleName: yup.string().required("Account Type is required").trim(),
   privacyPolicy: yup
-    .boolean()
+    .boolean("Privacy Policy must be checked")
     .oneOf([true], "Privacy Policy must be checked")
     .required("Privacy Policy must be checked"),
+});
+
+export const loginformSchema = yup.object({
+  email: yup
+    .string()
+    .required("Email is required")
+    .matches(emailrgx, "Invalid Email")
+    .trim(),
+  password: yup
+    .string()
+    .required("Password is required")
+    .trim(),
 });
