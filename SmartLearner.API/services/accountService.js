@@ -20,7 +20,8 @@ class AccountService {
       }
 
       // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const passwordHash = new PasswordHash(8, true);
+      const hashedPassword = passwordHash.HashPassword(password);
 
       // Create the user
       const user = await User.create({
@@ -39,7 +40,7 @@ class AccountService {
 
   async loginUserAsync(credentials) {
     try {
-      const passwordHashF = new PasswordHash(8, true);
+      const passwordHash = new PasswordHash(8, true);
       const { email, password } = credentials;
 
       // Find user by email
@@ -47,29 +48,13 @@ class AccountService {
       if (!user) {
         throw new Error("Invalid Email");
       }
-
-      // const hash = crypto.createHash("md5").update(password).digest("hex");
-      // console.log(hash);
-      // console.log(user.password);
-
-      // Compare the hashed input password with the hashed password stored in the database
-      // if (hash !== user.password) {
-      //   throw new Error("Invalid Password");
-      // }
-      const isPasswordValid = passwordHashF.CheckPassword(
+      const isPasswordValid = passwordHash.CheckPassword(
         password,
         user.password
       );
       if (!isPasswordValid) {
         throw new Error("Invalid email or password");
       }
-      // const hashedPassword = await bcrypt.hash(password, 10);
-      // console.log(hashedPassword);
-      // // Check if the password matches
-      // const isPasswordValid = await bcrypt.compare(password, user.password);
-      // if (!isPasswordValid) {
-      //   throw new Error("Invalid email or password");
-      // }
 
       // Fetch userRole
       const userRole = await userRoleServices.getUserRoleAsync(user._id);
@@ -110,8 +95,9 @@ class AccountService {
 
   async changePasswordAsync(userId, newPassword) {
     try {
+      const passwordHash = new PasswordHash(8, true);
       // Hash the new password
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      const hashedPassword = passwordHash.HashPassword(newPassword);
 
       // Update user's password
       await User.findByIdAndUpdate(userId, { password: hashedPassword });
@@ -127,8 +113,9 @@ class AccountService {
       // Generate a random password
       const newPassword = Math.random().toString(36).slice(-8);
 
+      const passwordHash = new PasswordHash(8, true);
       // Hash the new password
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      const hashedPassword = passwordHash.HashPassword(newPassword);
 
       // Update user's password in the database
       await User.findOneAndUpdate({ email }, { password: hashedPassword });
@@ -155,8 +142,10 @@ class AccountService {
       );
 
       // Hash the new password
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
-
+      const passwordHash = new PasswordHash(8, true);
+      // Hash the new password
+      const hashedPassword = passwordHash.HashPassword(newPassword);
+      
       // Update user's password in the database
       await User.findOneAndUpdate({ email }, { password: hashedPassword });
 

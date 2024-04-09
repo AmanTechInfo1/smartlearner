@@ -19,7 +19,6 @@ class PasswordHash {
   get_random_bytes(count) {
     let output = "";
     try {
-      const crypto = require("crypto");
       output = crypto.randomBytes(count);
     } catch (err) {
       console.error("Error generating random bytes:", err);
@@ -29,15 +28,17 @@ class PasswordHash {
   }
 
   encode64(input, count) {
+    const inputString = input.toString("utf8");
+
     let output = "";
     let i = 0;
     do {
-      let value = input.charCodeAt(i++);
+      let value = inputString.charCodeAt(i++);
       output += this.itoa64[value & 0x3f];
-      if (i < count) value |= input.charCodeAt(i) << 8;
+      if (i < count) value |= inputString.charCodeAt(i) << 8;
       output += this.itoa64[(value >> 6) & 0x3f];
       if (i++ >= count) break;
-      if (i < count) value |= input.charCodeAt(i) << 16;
+      if (i < count) value |= inputString.charCodeAt(i) << 16;
       output += this.itoa64[(value >> 12) & 0x3f];
       if (i++ >= count) break;
       output += this.itoa64[(value >> 18) & 0x3f];
@@ -48,12 +49,16 @@ class PasswordHash {
 
   gensalt_private(input) {
     let output = "$P$";
+
     output +=
       this.itoa64[
-        Math.min(this.iteration_count_log2 + (PHP_VERSION >= "5" ? 5 : 3), 30)
+        Math.min(
+          this.iteration_count_log2 +
+            (parseFloat(process.versions.node) >= 5 ? 5 : 3),
+          30
+        )
       ];
     output += this.encode64(input, 6);
-
     return output;
   }
 
@@ -88,7 +93,7 @@ class PasswordHash {
         .update(hash + password, "binary")
         .digest("binary");
     } while (--count);
-    
+
     output = setting.substring(0, 12) + this.encode64(hash, 16);
 
     return output;
@@ -102,6 +107,7 @@ class PasswordHash {
     output += String.fromCharCode(
       this.iteration_count_log2 / 10 + "0".charCodeAt(0)
     );
+
     output += String.fromCharCode(
       (this.iteration_count_log2 % 10) + "0".charCodeAt(0)
     );
@@ -138,7 +144,7 @@ class PasswordHash {
 
     let random = "";
 
-    if (CRYPT_BLOWFISH === 1 && !this.portable_hashes) {
+    if (this.isBlowfishSupported() && !this.portable_hashes) {
       random = this.get_random_bytes(16);
       const hash = this.crypt_private(password, this.gensalt_blowfish(random));
       if (hash.length === 60) return hash;
@@ -164,6 +170,12 @@ class PasswordHash {
         .digest("binary");
 
     return hash === stored_hash;
+  }
+
+  isBlowfishSupported() {
+    return (
+      typeof require !== "undefined" && typeof require("bcrypt") !== "undefined"
+    );
   }
 }
 
