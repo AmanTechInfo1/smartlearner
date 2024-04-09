@@ -218,10 +218,12 @@ const AdminProductPage = () => {
       </div>
 
       <div className={styles.categoryTableContainer}>
-        <h3>Categories</h3>
+      <h3>Category List</h3>
         <div id={styles.categoryTable}>
           <table className={styles.categoryTable}>
-            <thead></thead>
+          <tr>
+                <th>categories</th>
+              </tr>
             <tbody>
               {categories.map((category) => (
                 <tr key={category}>

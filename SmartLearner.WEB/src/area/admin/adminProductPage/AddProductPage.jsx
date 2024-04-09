@@ -1,53 +1,83 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import styles from './css/AdminProducts.module.css'; // Import module CSS file for styling
 
-const AddProductPage = () => {
-  const [newProduct, setNewProduct] = useState({ id: "", name: "", price: "" });
+export default function AddProductPage() {
+  const [formData, setFormData] = useState({
+    productName: '',
+    description: '',
+    category: '',
+    price: '',
+    discount: '',
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNewProduct({ ...newProduct, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
-    
-    const id = Date.now().toString();
-    const productWithId = { ...newProduct, id };
-    console.log("New Product:", productWithId);
-    setNewProduct({ id: "", name: "", price: "" });
+    // Handle form submission logic here
+    console.log(formData);
   };
 
   return (
-    <div>
-      <h2>Add Product</h2>
+    <div className={styles.AddProductContainer}>
+      <h1>Add Product</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="productName">Product Name:</label>
+        <div className={styles.formGroup}>
+          <label>Product Name:</label>
           <input
             type="text"
-            id="productName"
-            name="name"
-            value={newProduct.name}
+            name="productName"
+            value={formData.productName}
             onChange={handleChange}
-            required
           />
         </div>
-        <div>
-          <label htmlFor="productPrice">Product Price:</label>
+        <div className={styles.formGroup}>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label>Category:</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          >
+        
+          </select>
+        </div>
+        <div className={styles.formGroup}>
+          <label>Price:</label>
           <input
             type="number"
-            id="productPrice"
             name="price"
-            value={newProduct.price}
+            value={formData.price}
             onChange={handleChange}
-            required
           />
         </div>
-        <button type="submit">Add Product</button>
+        <div className={styles.formGroup}>
+          <label>Discount:</label>
+          <input
+            type="number"
+            name="discount"
+            value={formData.discount}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.actions}>
+          <button type="submit">Create</button>
+          <button type="button">Cancel</button>
+        </div>
       </form>
     </div>
   );
-};
-
-export default AddProductPage;
+}
