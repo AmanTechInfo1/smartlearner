@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./css/AdminApp.module.css";
 import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+import { getAllUsers } from "../../features/userSlice";
+import { Link } from "react-router-dom";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 const AdminUsers = () => {
   const dispatch = useDispatch();
@@ -12,9 +16,14 @@ const AdminUsers = () => {
     pageSize: 10,
   });
 
+  useEffect(() => {
+    dispatch(getAllUsers(state.search, state.page, state.pageSize));
+  }, [dispatch, state.search, state.page, state.pageSize]);
+
   const onShowSizeChange = (current, pageSize) => {
     setState({ ...state, page: 1, pagesize: pageSize });
   };
+
   const itemRender = (current, type, originalElement) => {
     if (type === "prev") {
       return <button className="btn btn-sm btn-primary">Previous</button>;
@@ -37,6 +46,11 @@ const AdminUsers = () => {
       sorter: (a, b) => a.email.length - b.email.length,
     },
     {
+      title: "Mobile Number",
+      dataIndex: "phoneNumber",
+      sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
+    },
+    {
       title: "Action",
       render: (text, record) => (
         <div
@@ -44,22 +58,22 @@ const AdminUsers = () => {
           data-popper-placement="bottom-end"
         >
           <Link
-            to={`/update-client/${record.clientIdentifier}/${companyId}`}
+            to={`/update-client/`}
             className="dropdown-item px-2 text-success"
             onClick={() => {
-              handleEditClick(record.clientIdentifier);
+              handleEditClick(record._id);
             }}
           >
-            <i className="fa fa-pencil m-r-5" />
+            <LiaUserEditSolid />
           </Link>
           <Link
             className="dropdown-item px-2 text-danger"
             to="#"
             onClick={() => {
-              handleDeleteClick(record.clientIdentifier);
+              handleDeleteClick(record._id);
             }}
           >
-            <i className="fa fa-trash-o m-r-5" />
+            <RiDeleteBin6Fill />
           </Link>
         </div>
       ),
@@ -97,7 +111,7 @@ const AdminUsers = () => {
           style={{ overflowX: "auto" }}
           columns={columns}
           dataSource={users}
-          rowKey={(record) => record.clientIdentifier}
+          rowKey={(record) => record._id}
         />
       </div>
     </>

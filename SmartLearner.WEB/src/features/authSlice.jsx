@@ -68,9 +68,9 @@ export const loginUser = createAsyncThunk(
   async ({ loginData, navigate }, { rejectWithValue, dispatch }) => {
     try {
       const response = await http.post(`/api/account/login`, loginData);
-      console.log(response);
       const data = response.data;
       if (data.success) {
+        debugger;
         const user = data.data.user;
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
@@ -107,11 +107,10 @@ export const logoutUser = createAsyncThunk(
 export const autologoutUser =
   (expiration, navigate) => async (dispatch) => {
     try {
-        const expirationMilliseconds = expiration * 1000;
       setTimeout(() => {
         dispatch(logoutUser());
         navigate("/login");
-      }, expirationMilliseconds);
+      }, expiration);
     } catch (error) {
       console.error("Error occurred:", error);
     }

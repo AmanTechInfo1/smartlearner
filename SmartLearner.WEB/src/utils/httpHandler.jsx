@@ -18,7 +18,7 @@ const get = async (url) => {
       maxRedirects: 0,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
       },
     });
 

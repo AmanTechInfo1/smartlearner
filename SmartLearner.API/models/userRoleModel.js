@@ -5,4 +5,5 @@ const userRoleSchema = new mongoose.Schema({
   roleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Roles' }
 });
 
-module.exports = mongoose.model('UserRole', userRoleSchema);
+const UserRole = mongoose.model('UserRole', userRoleSchema);
+module.exports = UserRole;

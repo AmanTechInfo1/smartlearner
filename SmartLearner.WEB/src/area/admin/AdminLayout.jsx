@@ -23,6 +23,9 @@ export default function AdminLayout() {
       <main className={styles.mainContainer}>
       <Outlet/>
       </main>
+
+
+   
   
       </div>
     </div>

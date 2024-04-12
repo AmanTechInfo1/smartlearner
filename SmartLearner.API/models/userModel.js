@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   modifiedOn: { type: Date },
   isDeleted: { type: Boolean, required: true, default: false },
   deletedOn: { type: Date },
+  isBcryptHashed: { type: Boolean, required: true, default: false },
 });
 
 const User = mongoose.model("User", userSchema);

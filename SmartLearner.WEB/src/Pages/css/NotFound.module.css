@@ -4,6 +4,9 @@
     padding: 40px 0;
     background: #fff;
     font-family: "Roboto", sans-serif;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
   }
   
   .container {
