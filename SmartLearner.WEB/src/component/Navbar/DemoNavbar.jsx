@@ -1,14 +1,14 @@
+import React from "react";
+import styles from "./DemoNavbar.module.css"; // Import CSS module
+import logo from "../../assets/images/smartlearnerLogo.png";
 
-import styles from './Navbar.module.css'
 import {
   FaShoppingCart,
 } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/smartlearnerLogo.png";
 
-
-
-const Navbar = () => {
+export default function DemoNavbar() {
   return (
     <div className={styles.demoNavbar}> 
       <div className={styles.navbar}>
@@ -34,6 +34,4 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}

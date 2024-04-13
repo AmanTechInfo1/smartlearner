@@ -5,7 +5,7 @@
 }
 
 .adminAppPanel {
-  background-color: #1d2634;
+  background-color: white;
   color: #fff; /* White text color */
   font-family: "Montserrat", sans-serif;
 }
@@ -108,7 +108,7 @@
 #adminSidebar {
   grid-area: sidebar;
   height: 100%;
-  background-color: #263043;
+  background-color: #cd3d2e;
   overflow-y: auto;
   transition: all 0.5s;
 }
@@ -172,7 +172,7 @@
   grid-area: main;
   overflow-y: auto;
   padding: 20px;
-  color: #fff; /* White text color */
+  color: black;
 }
 
 .mainTitle {
@@ -192,29 +192,29 @@
   flex-direction: column;
   justify-content: space-around;
   padding: 20px;
-  border-radius: 15px; /* Rounded cards */
+  border-radius: 15px;
 
-  transition: transform 0.3s ease; /* Smooth transition */
+  transition: transform 0.3s ease;
 }
 
 .card:first-child {
-  background-color: #2962ff;
+  background-color: #ff39396b;
+  color: black;
 }
 
 .card:nth-child(2) {
-  background: linear-gradient(
-    to bottom,
-    #ff9966,
-    #ff1a1a
-  ); /* Slightly different red gradient */
+  background: #ff39396b;
+  color: black;
 }
 
 .card:nth-child(3) {
-  background-color: #2e7d32;
+  background-color: #ff39396b;
+  color: black;
 }
 
 .card:nth-child(4) {
-  background-color: #d50000;
+  background-color: #ff39396b;
+  color: black;
 }
 
 .cardInner {
@@ -228,12 +228,12 @@
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Hover effect */
-  background: linear-gradient(
+  transform: translateY(-5px);
+  /* background: linear-gradient(
     to bottom,
     #ff3333,
     #cc0000
-  ); /* Lighter red gradient on hover */
+  ); */
 }
 
 .charts {
@@ -243,16 +243,16 @@
   margin-top: 60px;
   height: 300px;
 }
-/* Add animation to charts */
+
 .charts .chart {
-  background: #ff6666; /* Reddish color for charts */
+  background: #ff6666;
   border-radius: 15px;
   padding: 20px;
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
 }
 .charts .chart:hover {
-  transform: translateY(-5px); /* Hover effect */
-  background: #ff1a1a; /* Darker red on hover */
+  transform: translateY(-5px);
+  background: #ff1a1a;
 }
 /* End Main */
 
@@ -433,7 +433,6 @@
   background-color: white;
   color: black;
 }
-/* AdminApp.module.css */
 
 .userTableHeading {
   display: flex;
@@ -445,12 +444,11 @@
 }
 
 .userTableHeading:hover {
- 
   border-bottom: 2px solid red; /* Change border color on hover */
 }
 
 .usersSearchIcon {
-font-size: 18px;
+  font-size: 18px;
   margin-right: 5px;
   color: red; /* Add margin between icon and input */
 }
@@ -471,24 +469,23 @@ font-size: 18px;
   color: transparent; /* Hide placeholder on focus */
 }
 
-
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1300px) {
   .userTableDetails {
-    overflow-x: auto; /* Add horizontal scrollbar */
+    overflow-x: auto;
   }
 
-  table {
+  .userTableDetails table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
   }
-  
-  th, td {
+
+  th,
+  td {
     text-align: left;
     padding: 8px;
   }
- 
 }
 
 /* //////// ////// /single user container /////////// */
@@ -506,7 +503,7 @@ font-size: 18px;
 }
 
 .singleUserCard {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -514,8 +511,8 @@ font-size: 18px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 0 solid rgba(0, 0, 0, .125);
-  border-radius: .25rem;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .singleUserCardBody {
@@ -537,7 +534,7 @@ font-size: 18px;
 
 .singleUserMb3,
 .singleUserMy3 {
-  margin-bottom: 1rem!important;
+  margin-bottom: 1rem !important;
 }
 
 .singleUserBgGray300 {
@@ -545,9 +542,116 @@ font-size: 18px;
 }
 
 .singleUserH100 {
-  height: 100%!important;
+  height: 100% !important;
 }
 
 .singleUserShadowNone {
-  box-shadow: none!important;
+  box-shadow: none !important;
+}
+/* ///////////////////////////////Product component /////////////////////////// */
+
+/* AdminApp.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+/* Column classes */
+.col {
+  flex: 0 0 auto;
+  padding: 0 15px;
+}
+
+.colSm12 {
+  width: 100%;
+}
+
+.colMd12 {
+  width: 100%;
+}
+
+.colLg8 {
+  width: 66.66667%;
+}
+
+.colXl8 {
+  width: 66.66667%;
+}
+
+.colLg4 {
+  width: 33.33333%;
+}
+
+.colXl4 {
+  width: 33.33333%;
+}
+
+/* Common block styles */
+.tm-block {
+  background-color: #343a40;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tm-bg-primary-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.tm-block-title {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Product table styles */
+.tm-product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tm-product-table th,
+.tm-product-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.mb3 {
+  margin-bottom: 15px;
 }

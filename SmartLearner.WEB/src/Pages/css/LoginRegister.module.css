@@ -108,6 +108,7 @@
 #loginFormsIcons {
   color: #aaa;
   font-size: 22px;
+  cursor: pointer;
 }
 .loginRegistration label input::placeholder {
   color: #aaa;

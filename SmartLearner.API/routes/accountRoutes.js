@@ -1,9 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const accountController = require('../controllers/accountController');
+const multer = require("multer");
+const upload = multer();
 
-router.post('/register', accountController.registerUser);
-router.post('/login', accountController.loginUser);
-// router.get('/protected-route', authMiddleware, accountController.protectedRoute);
+const accountController = require("../controllers/accountController");
+const { requireAuth } = require("../middlewares/authMiddleware");
+
+router.post("/register", upload.none(), accountController.registerUser);
+router.post("/login", upload.none(), accountController.loginUser);
+router.get("/users", requireAuth, accountController.getAllUsers);
 
 module.exports = router;

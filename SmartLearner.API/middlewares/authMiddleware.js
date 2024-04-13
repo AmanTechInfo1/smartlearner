@@ -1,24 +1,24 @@
 const jwt = require("jsonwebtoken");
 
-const authMiddleware = (req, res, next) => {
-  // Get token from request header
+const requireAuth = (req, res, next) => {
   const token = req.header("Authorization");
-
-  // Check if token exists
-  if (!token) {
-    return res.status(401).json({ message: "Access denied. No token provided." });
-  }
-
-  try {
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "My name is Akash");
-
-    // Add user object to request for further processing
-    req.user = decoded;
-    next(); // Move to next middleware or route handler
-  } catch (error) {
-    res.status(401).json({ message: "Invalid token." });
+  // check json web token exists & is verified
+  if (token) {
+    //const tokenWithoutBearer = token.replace("Bearer ", "");
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET || "SMARTLEARNERJWT",
+      (err) => {
+        if (err) {
+          console.log(err.message);
+          res.redirect("/login");
+        } else {
+          next();
+        }
+      }
+    );
+  } else {
+    res.redirect("/login");
   }
 };
-
-module.exports = authMiddleware;
+module.exports = { requireAuth };

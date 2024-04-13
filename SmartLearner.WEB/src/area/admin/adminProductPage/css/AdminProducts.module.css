@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.adminPageContainer {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+  border-radius: 5px;
+  padding: 20px;
+  overflow: hidden;
+  color: black;
+}
+
+.productTableContainer {
+  width: 80%;
+}
+.productTableContainer h2{
+  color: #fff;
+}
+
+.categoryTableContainer {
+  width: 20%;
+
+}
+.categoryTableContainer h3 {
+  text-align: center;
+  color: white;
+}
+
+
+
+.productTable {
+  width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+#firstId {
+  display: flex;
+  justify-content: space-around;
+}
+#firstId input {
+  cursor: pointer;
+  color: #49a09d;
+background-color: #49a09d;
+}
+.productTable th,
+.productTable td {
+  padding: 12px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+.productTable   tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	.productTable   td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}
+.productTable th {
+  background-color: #55608f;
+  text-align: left;
+  border: none;
+
+}
+
+.categoryTable {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 500px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.categoryTable   tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	.categoryTable   td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}
+#categoryTable{
+  overflow-y: auto;
+  max-height: 500px;
+}
+#categoryTableategoryTable::-webkit-scrollbar {
+  width: 8px;
+}
+
+#categoryTable::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.categoryTable th,
+.categoryTable td {
+
+  padding: 12px;
+  text-align: left;
+  background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+.categoryTable th {
+  background-color: #55608f;
+  border: none;
+}
+.pagination {
+  text-align: center;
+}
+.pdButtons p{
+  margin-bottom: 0;
+  color: #fff;
+
+}
+
+/* ////////////////////////////////////////BTN////////////////////////// */
+
+
+.pdButtons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.adminPageContainer button {
+  background-image: linear-gradient(
+    to right,
+    #074eb9 0%,
+    #04dcec 51%,
+    #074eb9 100%
+  );
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  
+}
+#productRemoveBtn {
+ 
+  background-image: linear-gradient(to right, #f6d365 0%, #f03400 51%, #f6d365 100%);
+}
+#paginationbtn {
+  color: rgba(256, 256, 256);
+  border: 2px double transparent;
+      background-image: linear-gradient(rgba(13, 14, 33, 0.063), rgba(13, 14, 33, 0.173)), radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+#paginationbtn:hover {
+  box-shadow: rgba(111, 76, 255, 0.5) 0px 0px 20px 0px;
+}
+
+button:hover {
+  background-position: right center;
+}
+
+@media (max-width: 1150px){
+  .adminPageContainer {
+    flex-direction: column; 
+    justify-content: center;
+   
+  }
+  .productTableContainer
+   {
+    width: 100%; 
+  }
+  .categoryTableContainer{
+width: 60%;
+margin-top: 10px ;
+margin-left: 30px;
+  }
+}
+
+@media (max-width: 600px){
+  .productTable tbody{
+    padding-top: 20px;
+  }
+
+
+  #firstId{
+    justify-content: flex-end;
+  }
+ #firstId input{
+  display: none;
+ }
+}
+/* ///////////////////Add product component ////////////////////// */
+.AddProductContainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="number"],
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+ .actions button:hover {
+  background-color: #0056b3;
+}
+
+
