@@ -1,0 +1,245 @@
+/* ContactUs.css */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* ContactUs.module.css */
+.contactHead{
+    background-image: url("../../assets/images/inner-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: "Montserrat", sans-serif;
+}
+ul{
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+.contactHead h1{
+    padding: 10% 0;
+    color: #fff;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.contactUsDetails{
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 0px;
+  }
+
+.contactUsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  .contactInfo {
+    flex: 1; /* Take up remaining space */
+  padding: 20px;
+    padding: 30px;
+    box-shadow: 0 0 10px #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0px 10px; /* Add some space between divs */
+    max-width: 42%;
+  }
+  .contactInfo h4{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-family: "Montserrat", sans-serif;
+  }
+  .contactInfo h4 span{
+    color: #ed2025;
+  }
+  .contactInfo p{
+    background: #e2e2e2;
+    padding: 10px;
+    margin: 10px 0;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+
+  }
+  .contactInfo a{
+    text-decoration: none;
+    color: black;
+  }
+  .contactInfo a:hover{
+    color: #ed2025;
+    transition: ease 0.3s;
+  }
+  #addressIcon{
+    margin-right: 10px;
+  }
+  #linksIconId{
+    display: flex;
+  }
+  #linksIconId li a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    margin-right: 10px;
+  }
+  #linksIconId li a:hover{
+    background-color: #ed2025;
+    transition: ease 0.3s;
+  }
+  
+  .map {
+    flex: 1; /* Take up remaining space */
+    height: 400px; /* adjust height as needed */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 58%;
+    margin: 0px 10px; /* Add some space between divs */
+  }
+  .contactUsFormContainer{
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contactUsFormContainer h2{
+    text-align: center;
+    font-size: 28px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+  }
+  .contactUsFormContainer p{
+    line-height: 28px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+
+
+
+
+/* FormComponent.module.css */
+
+.formContainer {
+    margin: 15px 20px;
+    background: #f6f6f6;
+    padding: 40px;
+    border: 5px double #999;
+   
+    font-family: "Montserrat", sans-serif;
+  }
+  .formContainer label{
+    margin-bottom: 10px;
+    color: #ed2025;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+  }
+  .contantUsFormColoumn{
+    display: flex;
+    gap: 20px;
+  }
+  
+
+  
+  .column input{
+   
+    width: 100%;
+    padding: 1rem .75rem;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+   outline: none;
+   
+   overflow: visible;
+  }
+  .column input:focus{
+    border: 2px solid #ed2025;
+    transition: ease 0.2s;
+  
+  }
+  .column select,
+  .column textarea {
+    width: 100%;
+    padding: 1rem .75rem;
+    margin-bottom: 20px;
+    outline: none;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+  .column select:focus{
+    border: 2px solid #ed2025;
+    transition: ease 0.2s;
+  }
+  .column textarea:focus{
+    border: 2px solid #ed2025;
+    transition: ease 0.2s;
+  }
+  .message textarea {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .submit {
+    display: flex;
+    width: 100%; /* Ensure button takes full width */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .submit button {
+    width: 15%; /* Ensure button takes full width */
+    padding: 14px;
+    background-color: #ed2025;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit button:hover {
+    background-color: #7b0608;
+  }
+  
+  @media (max-width: 767px) {
+    .contantUsFormColoumn{
+        display: block;
+        
+    }
+  
+  }
+  
+  
+
+  @media (max-width: 775px) {
+    .contactUsContainer{
+        display: block;
+    }
+    .contactInfo{
+        max-width: 100%;
+    }
+    .map{
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+  }
+  @media (max-width: 428px){
+    .contactInfo{
+        padding: 20px 15px;
+    }
+  }
+  

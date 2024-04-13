@@ -160,7 +160,7 @@ export default function Header() {
                       </div>
                     </div>
                   ) : (
-                    <NavLink to={link.path} className="headerLinks">
+                    <NavLink to={link.path} className="headerlinks">
                       {link.display}
                     </NavLink>
                   )}

@@ -9,14 +9,7 @@
   font-family: "Roboto", Sans-serif;
 }
 
-input:invalid {
-  border-color: red;
-}
 
-/* Add this CSS to target the select element */
-select:invalid {
-  border-color: red;
-}
 .loginRegisterSection {
   display: flex;
   align-items: center;
@@ -77,6 +70,8 @@ select:invalid {
   padding-top: 20px;
 }
 
+
+
 .loginRegistration h2 {
   color: #e90606;
   font-size: 2rem;
@@ -100,7 +95,7 @@ select:invalid {
   display: block !important;
   align-items: flex-start;
   border-radius: 2px;
-  outline: 0 !important;
+  outline:none;
   cursor: text !important;
   font-size: 15px !important;
   height: 40px !important;
@@ -109,9 +104,11 @@ select:invalid {
   margin: 0 !important;
   position: static;
 }
+
 #loginFormsIcons {
   color: #aaa;
   font-size: 22px;
+  cursor: pointer;
 }
 .loginRegistration label input::placeholder {
   color: #aaa;
@@ -168,6 +165,10 @@ select:invalid {
   border: none;
   background-color: #e90606;
   padding-left: 10px;
+}
+.formFooter a{
+  color: #fff;
+  text-decoration: none;
 }
 @media (max-width: 967px) {
   .loginheading {
