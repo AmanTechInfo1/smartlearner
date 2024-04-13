@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.homepage{
+  background-color: black;
+  font-family: "Antonio", sans-serif;
+}
+.homeSection{
+ padding: 1rem;
+width: 100%;
+}
+.homeContainer{
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.homeContent{
+  text-align: right;
+}
+.homeContent img{
+  max-width: 300px;
+  width: 100%;
+}
+.innerHomeHeading h2{
+  font-size: 4rem;
+  color: #fff;
+}
+.arrowImgSection img{
+  padding: 0.9rem 0px;
+  max-width: 500px;
+  width: 100%;
+}
+.userIdentificationImg img{
+  padding-top: 1rem;
+  max-width: 250px;
+  width: 100%;
+}
+.homeUserHand #userHand{
+  width: 100%;
+  max-width: 200px;
+}
+ #LplateImg{
+  max-width: 150px;
+  width: 100%;
+}
+@media (max-width: 418px){
+  .innerHomeHeading h2{
+    font-size: 3rem;
+   
+  }
+}
