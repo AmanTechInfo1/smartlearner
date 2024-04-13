@@ -102,7 +102,11 @@ export default function Home() {
       </section>
       <section className={styles.homeSection}>
 <div>
-  <div></div>
+  <div> <ul class={styles.numberTriangle}>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul></div>
 </div>
 
       </section>
