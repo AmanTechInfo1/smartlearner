@@ -95,7 +95,7 @@ article a h4:hover{
     padding-left: 15px;
 }
 
-table {
+.hoursLists table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 1rem;
@@ -106,7 +106,7 @@ table {
     text-align: left;
     
 }
-table th {
+.hoursLists table th {
     color: #111111;
     font-size: 16px;
     font-weight: bold;
@@ -118,7 +118,7 @@ table th {
     padding: 5px;
     border-top: 1px solid #dee2e6;
 }
-table td{
+.hoursLists table td{
     vertical-align: bottom;
     border-bottom: 1px solid #dee2e6;
     padding: 5px;

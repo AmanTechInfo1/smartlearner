@@ -4,66 +4,239 @@
   box-sizing: border-box;
 }
 
-.homepage{
+.homepage {
   background-color: black;
   font-family: "Antonio", sans-serif;
 }
-.homeSection{
- padding: 1rem;
-width: 100%;
+.homeSection {
+  padding: 1rem;
+  width: 100%;
 }
-.homeContainer{
+.homeContainer {
   padding: 2rem 1rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
-.homeContent{
+.homeContent {
   text-align: right;
 }
-.homeContent img{
+.homeContent img {
   max-width: 300px;
   width: 100%;
 }
-.innerHomeHeading h2{
+.innerHomeHeading h2 {
   font-size: 4rem;
   color: #fff;
 }
-.arrowImgSection img{
+.arrowImgSection img {
   padding: 0.9rem 0px;
   max-width: 500px;
   width: 100%;
 }
-.userIdentificationImg img{
+.userIdentificationImg img {
   padding-top: 1rem;
   max-width: 250px;
   width: 100%;
 }
-.homeUserHand #userHand{
+.homeUserHand #userHand {
   width: 100%;
   max-width: 200px;
 }
- #LplateImg{
+#LplateImg {
   max-width: 150px;
   width: 100%;
 }
-@media (max-width: 418px){
-  .innerHomeHeading h2{
+@media (max-width: 418px) {
+  .innerHomeHeading h2 {
     font-size: 3rem;
-   
   }
 }
 
-.numberTriangle li {
-  width: 0;
-  height: 0;
+.secondSectionContent {
+  padding: 2rem 0px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.listContent {
+  display: flex;
+  justify-content: center;
+}
+.listContent span img {
+  max-width: 100px;
+  width: 100%;
+  margin-right: 1rem;
+}
+.listContent li {
+  padding: 0.2rem;
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: #fff;
+}
 
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 52px solid white;
+/* //////////////////////// */
+.formContainer {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+
+  border-radius: 5px;
+}
+.formContent {
+  padding: 2rem 0px;
   text-align: center;
-  line-height: 52px;
-  font-size: 24px;
-  margin-right: 10px;
+}
+.formContent h2 {
+  font-size: 3.9rem;
+  font-weight: 900;
+  color: #ed2025;
+}
+.formContent p {
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+  color: #ed2025;
+}
+
+.homeFormGroup {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.homeFormGroup textarea {
+  height: 40px;
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 0%;
+  outline: none;
+}
+.homeFormGroup textarea:focus {
+  border: 2px solid #ed2025;
+  transition: ease 0.2s;
+}
+label {
+  padding: 8px;
+  background-color: #fff;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+  height: 40px;
+}
+
+.homeForminputField {
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  height: 40px;
+  outline: none;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+}
+.homeForminputField:focus {
+
+  border-color: #ff0000;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); 
+}
+.homeFormSubmitButton {
+  background-color: #ed2025;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.homeFormSubmitButton:hover {
+  background-color: #890306;
+  border: 1px solid white;
+}
+.hallFameContent{
+  text-align: center;
+  padding: 1rem 0px;
+}
+.semiCircle img{
+  max-width: 600px;
+  width: 100%;
+}
+.trophyImg img{
+  max-width: 270px;
+  width: 100%;
+ margin-top: -70px;
+}
+.trophyFrame{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+.trophyFrame img{
+ height: 160px;
+ display: grid;
+ justify-content: space-around;
+ width: 160px;
+ background-color: #fff;
+ border-radius: 8px;
+ border: nones;
+ 
+}
+
+@media (max-width: 618px){
+  .listContent span img {
+    max-width: 70px;
+    width: 100%;
+  }
+  .listContent li {
+    padding: 0.2rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #fff;
+  }
+}
+@media (max-width: 452px){
+  .secondSectionContent{
+    padding: 1rem 0px;
+  }
+  .listContent span img {
+    max-width: 60px;
+    margin-right: 0.8rem;
+    width: 100%;
+  }
+  .listContent li {
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #fff;
+  }
+}
+@media (max-width: 400px){
+  .trophyFrame{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: unset;
+  }
+  .listContent span img {
+    max-width: 40px;
+    margin-right: 0.5rem;
+    width: 100%;
+  }
+  .listContent li {
+    padding: 0.2rem;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #fff;
+  }
+  .homeFormGroup{
+    display: block;
+    margin-bottom: 10px;
+  }
+  .homeFormGroup label{
+    margin-bottom: 5px;
+    background-color: #ed2025;
+    color: #fff;
+  }
 }

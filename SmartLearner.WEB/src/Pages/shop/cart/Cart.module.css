@@ -14,19 +14,19 @@
     margin: 0px;
 }
 
-table {
+.cartHeading table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     padding: 1rem;
   }
-  table td{
+.cartHeading  table td{
     vertical-align: middle;
   }
-  tr{
+.cartHeading  tr{
     margin: 0px 1rem;
   }
-  th, td {
+.cartHeading  th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -65,20 +65,20 @@ border: none;
      }
    
   
-    table thead {
+ .cartHeading   table thead {
       display: none;
     }
-    table tr {
+  .cartHeading  table tr {
       border: 2px solid #ddd;
       display: block;
       margin-bottom: .625em;
     }
-    table td {
+  .cartHeading  table td {
       display: block;
       text-align: right;
       font-size: 13px;
     }
-    table td::before {
+  .cartHeading  table td::before {
       content: attr(data-label);
       float: left;
       font-weight: bold;
