@@ -55,8 +55,8 @@
 }
 
 .secondSectionContent {
-  padding: 2rem 0px;
-  max-width: 900px;
+  padding: 2rem 1rem;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -169,7 +169,7 @@ label {
 .trophyFrame{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 30px;
+  gap: 35px;
   justify-content: space-around;
   text-align: center;
   align-items: center;
@@ -178,13 +178,191 @@ label {
  height: 160px;
  display: grid;
  justify-content: space-around;
- width: 160px;
+ width: 185px;
  background-color: #fff;
  border-radius: 8px;
  border: nones;
  
 }
+/* ////////////////////////////////////////////// */
+.carContent{
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0px 1rem;
+}
+.carContainer {
+  background-image: url("../../assets/images/smokecar.png");
+  text-align: center;
+  position: relative;
+  background-size: contain;
+background-repeat: no-repeat;
+  background-position: right;
 
+  animation: moveBackground 3s linear infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+  }
+}
+.carContainer h2{
+  font-size: 6rem;
+  color: #fff;
+  text-align: left;
+}
+.mainFeatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1140px;
+padding: 25px 25px 15px 25px ;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.column {
+
+  padding: 10px 0px;
+  background-color: #ed2025;
+  border-radius: 20px;
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+.column:hover {
+  transform: scale(1.05); 
+}
+.column h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.column p {
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 0px;
+}
+.spiralImgContainer{
+  text-align: center;
+}
+.spiralImgContainer img{
+  max-width: 500px;
+  width: 100%;
+  animation: spiral 2s linear infinite, verticalFlip 3s infinite;
+}
+@keyframes verticalFlip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(-1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+.whyChooseText {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.whyChooseText p{
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-2000%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+   
+    transform: rotate(0deg);
+  }
+  100% {
+    
+    transform: rotate(360deg);
+  }
+}
+
+.starImgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.starImgContainer img {
+ max-width: 150px;
+ width: 100%;
+  animation: slideFromLeft 1s ease-out, rotate 1s linear;
+
+}
+
+.starImgContainer img:nth-child(5) {
+ animation-delay: 4s;
+ 
+}
+.starImgContainer img:nth-child(4) {
+ animation-delay: 3s;
+
+}
+.starImgContainer img:nth-child(3) {
+  animation-delay: 2s;
+ 
+}
+.starImgContainer img:nth-child(2) {
+  animation-delay: 1s; 
+ 
+}
+.starImgContainer img:nth-child(1) {
+  animation-delay: 0s; 
+ 
+}
+
+
+
+
+
+/* /////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+
+@media(max-width:750px){
+
+  .whyChooseText p{
+    font-size: 2rem;
+  }
+  .starImgContainer img {
+    max-width: 95px;
+    width: 100%;
+ 
+   
+   }
+   
+}
+
+@media (max-width: 700px){
+
+  .carContainer h2{
+    font-size: 4rem;
+    
+  }
+}
 @media (max-width: 618px){
   .listContent span img {
     max-width: 70px;
@@ -197,7 +375,31 @@ label {
     color: #fff;
   }
 }
+@media (max-width: 482px){
+  .whyChooseText p{
+    font-size: 1.5rem;
+  }
+  .starImgContainer img {
+    max-width: 65px;
+    width: 100%;
+ 
+   
+   }
+
+}
 @media (max-width: 452px){
+  .whyChooseText p{
+    font-size: 1.5rem;
+  }
+  .starImgContainer img {
+    max-width: 65px;
+    width: 100%;
+ 
+   
+   }
+
+
+
   .secondSectionContent{
     padding: 1rem 0px;
   }
@@ -214,6 +416,12 @@ label {
   }
 }
 @media (max-width: 400px){
+  .starImgContainer img {
+    max-width: 45px;
+    width: 100%;
+ 
+   
+   }
   .trophyFrame{
     display: grid;
     justify-content: center;
@@ -238,5 +446,27 @@ label {
     margin-bottom: 5px;
     background-color: #ed2025;
     color: #fff;
+  }
+  .carContainer h2{
+    font-size: 3rem;
+    
+  }
+  .carContainer {
+
+    background-size: 250px;
+    background-position: right;
+    animation: moveBackground 2s linear infinite;
+  
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      background-position: left;
+    }
+    50% {
+      background-position: right;
+    }
+    100% {
+    }
   }
 }

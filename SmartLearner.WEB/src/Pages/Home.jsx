@@ -9,30 +9,9 @@ import img2 from "../assets/images/1 (2).png";
 import img3 from "../assets/images/1 (3).png";
 import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
 import userIdentificationImg from "../assets/images/userIndentification.png";
-import hallOfFame from "../assets/images/hallOfFame.png"
-// import Accordion from "react-bootstrap/Accordion";
-
-// import Lplateimg from "..//assets/images/L-Plate.jpg";
-// import leftCarimg from "../assets/images/car-red.png";
-// import giftVoucherImage from "../assets/images/Screenshot-2022-12-23-113404.png";
-// import { GoPlay } from "react-icons/go";
-// import {
-//   FaSearch,
-//   FaTrophy,
-//   FaRegMoneyBillAlt,
-//   FaBookOpen,
-//   FaCar,
-//   FaCarSide,
-//   FaFacebook,
-//   FaInstagram,
-//   FaSnapchat,
-//   FaTwitter,
-//   FaYoutube,
-// } from "react-icons/fa";
-
-// import { FaLocationDot, FaCommentSms } from "react-icons/fa6";
-// import { Areas } from "../assets/data/chooseyourareas";
-// import { faqs } from "../assets/data/Faqs";
+import hallOfFame from "../assets/images/hallOfFame.png";
+import starImg from "../assets/images/star.png"
+import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -55,20 +34,22 @@ export default function Home() {
     e.preventDefault();
     console.log(formData);
   };
+  const [expandedCol, setExpandedCol] = useState(null);
 
-  // const [drivenBefore, setDrivenBefore] = useState("");
-  // const [preferredType, setPreferredType] = useState("");
-  // const [location, setLocation] = useState("");
+  const data = [
+    { id: 1, title: 'Column 1', shortInfo: 'Short info 1', fullInfo: 'Full info 1' },
+    { id: 2, title: 'Column 2', shortInfo: 'Short info 2', fullInfo: 'Full info 2' },
+    { id: 3, title: 'Column 3', shortInfo: 'Short info 3', fullInfo: 'Full info 3' }
+  ];
 
-  // const locationSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Handle form submission here
-  //   console.log("Form submitted:", { drivenBefore, preferredType, location });
-  // };
+  const handleColumnClick = (id) => {
+    if (expandedCol === id) {
+      setExpandedCol(null);
+    } else {
+      setExpandedCol(id);
+    }
+  };
 
-  // useEffect(() => {
-  //   toast.success('Successfully toasted!')
-  // }, [])
 
   return (
     <div className={styles.homepage}>
@@ -206,17 +187,17 @@ export default function Home() {
 
           <div className={styles.hallFameContent}>
             <div className={styles.semiCircle}>
-           <img src={hallOfFame} alt="hallOfFame" />
+              <img src={hallOfFame} alt="hallOfFame" />
             </div>
             <div className={styles.trophyImg}>
-            <img src={tropfyImg} alt="tropfyImg" />
+              <img src={tropfyImg} alt="tropfyImg" />
             </div>
-           
+
             <div className={styles.trophyFrame}>
-            <img src="" alt="" />
-            <img src="" alt="" />            
-            <img src="" alt="" />
-            <img src="" alt="" />
+              <img src="" alt="" />
+              <img src="" alt="" />
+              <img src="" alt="" />
+              <img src="" alt="" />
             </div>
           </div>
         </div>
@@ -224,7 +205,77 @@ export default function Home() {
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
       <section>
-        <div></div>
+        <div className={styles.carContent}>
+          <div className={styles.carContainer}>
+            <h2>
+              BOOK <br /> NOW WITH <br />
+              SMARTLEARNER
+            </h2>
+          </div>
+          <div className={styles.mainFeatures}>
+            <div className={styles.column}>
+              <h3>
+                Afordable <br />
+                Prices{" "}
+              </h3>
+              <p>
+                We are always looking at industry prices to ensure our learners
+                get the best valued lessons
+              </p>
+            </div>
+            <div className={styles.column}>
+              <h3>
+                Automated SMS <br /> Alerts
+              </h3>
+              <p>
+                You will receive SMS alerts on your phoine to remind you of your
+                lessons
+              </p>
+            </div>
+            <div className={styles.column}>
+              <h3>
+                Unique Learning <br />
+                Plans
+              </h3>
+              <p>
+                Our Instructor cater to your unique learning styles and create
+                lesson plans around them
+              </p>
+            </div>
+          </div>
+          <div className={styles.spiralImgContainer}>
+            <img src={spiralImg} alt="spiralImg" />
+          </div>
+          <div className={styles.whyChooseText}>
+            <p>
+              See why more than 10,000 people choose Smartlearner to Pass their
+              Driving Test{" "}
+            </p>
+          </div>
+          <div className={styles.starImgContainer}>
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+          </div>
+        </div>
+
+      </section>
+
+      <section>
+      <div className={styles.carousel}>
+      {data.map((item) => (
+        <div key={item.id} className={`column ${expandedCol === item.id ? 'expanded' : ''}`} onClick={() => handleColumnClick(item.id)}>
+          <h2>{item.title}</h2>
+          {expandedCol === item.id ? (
+            <p>{item.fullInfo}</p>
+          ) : (
+            <p>{item.shortInfo}</p>
+          )}
+        </div>
+      ))}
+    </div>
       </section>
     </div>
   );
