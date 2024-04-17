@@ -48,6 +48,7 @@
   max-width: 150px;
   width: 100%;
 }
+
 @media (max-width: 418px) {
   .innerHomeHeading h2 {
     font-size: 3rem;
@@ -336,7 +337,137 @@ padding: 25px 25px 15px 25px ;
 }
 
 
+/* /////////////////////////////coursel ///////////////////// */
 
+.carousel {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carouselColumn {
+  width: 30%;
+  height:auto;
+  background-color: rgb(167, 167, 167);
+  border-radius: 30px;
+  padding: 20px;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
+
+  overflow: hidden;
+  position: relative;
+}
+.carouselColumnHeading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.carouselColumnHeading img{
+  max-width: 50px;
+  width: 100px;
+}
+.carouselColumn h2 {
+  margin-top: 0;
+  text-align: center;
+}
+.carouselStarImgContainer{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carouselStarImgContainer img {
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 75px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 75px;
+}
+
+.carouselColumn li{
+  margin-bottom: 1rem;
+}
+.expandedColData {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.expanded {
+  width: 50%;
+  height: 500px; 
+}
+
+
+
+/* increament decreament */
+.btnGroup {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #f5f8fb;
+  transition: border 0.3s ease;
+}
+
+.btnGroup:hover {
+  border: 1px solid #4097fe;
+}
+
+.incrementBtn,
+.decrementBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4097fe;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.incrementBtn:hover,
+.decrementBtn:hover {
+  background-color: #f3f9ff;
+}
+
+.counterText {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #f5f8fb;
+  border-right: 1px solid #f5f8fb;
+  margin-bottom: 0px;
+}
+
+@media screen and (min-width: 800px) {
+  .carousel {
+    transform: translateX(0); /* Reset transform for screens wider than 800px */
+  }
+
+  .carouselColumn {
+    width: 100%; /* Full width for all columns on wider screens */
+  }
+
+  .carouselColumn + .carouselColumn {
+    width: auto; /* Auto width for subsequent columns on wider screens */
+  }
+}
 
 
 /* /////////////////////////////////////////////////////////////////////////// */

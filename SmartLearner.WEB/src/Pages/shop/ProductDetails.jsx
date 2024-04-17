@@ -5,7 +5,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { products } from "../../assets/data/Products";
 import { useCartContext} from "../../component/Context/CartContext";
-import { NavLink } from "react-router-dom";
+
 export default function ProductDetails() {
   const { id } = useParams();
   const product = products.find((product) => product.id === parseInt(id));
