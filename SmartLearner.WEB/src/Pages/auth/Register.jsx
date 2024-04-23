@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -10,6 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { AccountTypes } from "../../constants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../features/authSlice";
+import LoadingWeb from "../../Layouts/loaderWeb/LoadingWeb";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -38,9 +39,19 @@ export default function Register() {
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 
+  const [webLoading, setwebLoading] = useState(true);
+  useEffect(() => {
+   
+    const timeout2 = setTimeout(() => {
+      setwebLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout2);
+  }, []);
+
   return (
     <>
-      {!loading ? (
+      {!webLoading ? (
         <div className={styles.loginRegisterPage}>
           <section className={styles.loginRegisterSection}>
             <div className={styles.loginheading}>
@@ -249,7 +260,7 @@ export default function Register() {
           </section>
         </div>
       ) : (
-        <Loader />
+        <LoadingWeb/>
       )}
     </>
   );

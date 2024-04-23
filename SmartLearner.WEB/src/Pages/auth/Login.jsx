@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import Loader from "../../component/loader/Loader";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginformSchema } from "../../formSchemas";
 import { loginUser } from "../../features/authSlice";
+import LoadingWeb from "../../Layouts/loaderWeb/LoadingWeb";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -30,9 +30,23 @@ export default function Login() {
     dispatch(loginUser({ loginData: data, navigate }));
   };
 
+
+
+  // ////////////////////////////////////
+  const [webLoading, setwebLoading] = useState(true);
+  useEffect(() => {
+   
+    const timeout2 = setTimeout(() => {
+      setwebLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout2);
+  }, []);
+
+
   return (
     <>
-      {!loading ? (
+      {!webLoading ? (
         <div className={styles.loginRegisterPage}>
           <section className={styles.loginRegisterSection}>
             <div className={styles.loginheading}>
@@ -117,7 +131,7 @@ export default function Login() {
           </section>
         </div>
       ) : (
-        <Loader />
+        <LoadingWeb />
       )}
     </>
   );

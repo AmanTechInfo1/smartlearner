@@ -55,7 +55,7 @@ import DemoHeader from "./component/Header/DemoHeader";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layouts />,
+    element:  <Layouts />,
     errorElement: <NotFound />,
     children: [
       {
