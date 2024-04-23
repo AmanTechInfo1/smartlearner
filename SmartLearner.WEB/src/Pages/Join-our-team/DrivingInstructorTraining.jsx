@@ -11,30 +11,18 @@ import {
   FaInstagram,
   FaSnapchat,
   FaTwitter,
-  FaYoutube
+  FaYoutube,
 } from "react-icons/fa";
 import styles from "./Drivinginstructortraining.module.css";
 import ReCAPTCHA from "react-google-recaptcha";
-import  { useState, useEffect } from 'react';
-import {testimonialsData} from "../../assets/data/testimonials"
+import Testimonials from "../../component/testemonials/Testimonials";
+import Review from "../../component/Reviews/Review";
+
 export default function DrivingInstructorTraining() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission here
   };
-
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex(prevIndex => (prevIndex + 1) % testimonialsData.length);
-    }, 2000); // Change the interval time (in milliseconds) as needed
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentTestimonial = testimonialsData[currentTestimonialIndex];
-
 
   return (
     <div className={styles.drivingInstructorTraining}>
@@ -277,74 +265,15 @@ export default function DrivingInstructorTraining() {
           <h3>Call us today. Full package prices starting from just £999!</h3>
         </div>
       </section>
-{/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
-<section className={styles.testimonialsContainer}>
-<div className={styles.tmcontainer}>
-      <h4>Testimonials</h4>
-      <div className={styles.testimonial}>
-        
-        <div className={styles.testimonialContent}>
-        <p className={styles.testimonialName}>{currentTestimonial.name}</p>
-          <p className={styles.testimonialComment}>{currentTestimonial.comment}</p>
-          <img src={currentTestimonial.image} alt={currentTestimonial.name} className={styles.testimonialImage} />
-          <p className={styles.testimonialimgName}>{currentTestimonial.name}</p>
-        </div>
-       
-      </div>
-    </div>
-</section>
- {/* /////////////////// Reviews section /////////////////*/}
+      {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
+      <section>
+        <Testimonials />
+      </section>
 
- <section className={styles.facebookReviewsSection}>
-        
-        <div className={styles.facebookReviewsContainer}>
-        <h4 id={styles.heading1}>Our Reviews</h4>
-        <hr />
-          <div className={styles.reviewsList}>
-
-          </div>
-          <div className={styles.followUsLinks}>
-            <h4>Follow us!</h4>
-            <hr />
-            <div className={styles.socialFollowIcons}>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram id={styles.FollowIcons}  />
-              </a>
-              <a
-                href="https://www.snapchat.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaSnapchat id={styles.FollowIcons}  />
-              </a>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter id={styles.FollowIcons}  />
-              </a>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaYoutube id={styles.FollowIcons}  />
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* /////////////////// Reviews section /////////////////*/}
+      <section>
+        {" "}
+        <Review />
       </section>
     </div>
   );

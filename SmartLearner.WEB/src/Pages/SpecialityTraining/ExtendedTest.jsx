@@ -1,24 +1,16 @@
 // import React from 'react'
 import styles from "./ExtendedTest.module.css";
 import carSideimg from "../../assets/images/car-red.png";
-import Accordion from "react-bootstrap/Accordion";
-import { faqs } from "../../assets/data/Faqs";
 import { GoPlay } from "react-icons/go";
 import {
- 
   FaRegMoneyBillAlt,
-  
   FaBookOpen,
-  // FaCarSide,
-  // FaFacebook,
-  // FaInstagram,
-  // FaSnapchat,
-  // FaTwitter,
-  // FaYoutube,
+
 } from "react-icons/fa";
 import { FaCommentSms } from "react-icons/fa6";
-import ReCAPTCHA from "react-google-recaptcha";
 import  { useState, useEffect } from 'react';
+import ShortFaqs from "../../component/shortFaqs/ShortFaqs";
+import EnquiryForm from "../../component/forms/EnquiryForm";
 
 
 
@@ -45,11 +37,6 @@ export default function ExtendedTest() {
 
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
-  };
-
 
 
   return (
@@ -59,7 +46,7 @@ export default function ExtendedTest() {
         <div className={styles.maincontent}>
           <div className={styles.content}>
             <div className={styles.heading1}>
-              <h1>DRIVING INSTRUCTOR TRAINING</h1>
+              <h1>Extended Test TRAINING</h1>
             </div>
 
             <div className={styles.heading2}>
@@ -101,58 +88,8 @@ export default function ExtendedTest() {
       </section>
 
       {/*///////////////////////////////// Enquire Form/////////////////////////// */}
-      <section className={styles.formContainer}>
-        <section className={styles.innerFormSection}>
-          <div className={styles.enquiryForm}>
-            <h4>Enquiry Form</h4>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formGroup}>
-                <label htmlFor="fullName">
-                  Full Name<span>*</span>
-                </label>
-                <input type="text" id="fullName" name="fullName" required />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="email">
-                  Email Address<span>*</span>
-                </label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="contactNumber">
-                  Contact Number<span>*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="contactNumber"
-                  name="contactNumber"
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="additionalInfo">
-                  Additional Information<span>*</span>
-                </label>
-                <textarea
-                  id={styles.additionalInfo}
-                  name="additionalInfo"
-                  rows="4"
-                ></textarea>
-              </div>
-              <div className={styles.formGroup}>
-                <ReCAPTCHA
-                  id="recaptcha"
-                  sitekey="your_site_key" // Replace 'your_site_key' with your actual reCAPTCHA site key
-                />
-              </div>
-              <div className={styles.formBtn}>
-                <button type="submit" id={styles.formBtn}>
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </section>
+      <section>
+        <EnquiryForm/>
       </section>
     
 
@@ -219,21 +156,8 @@ export default function ExtendedTest() {
 
       {/*  ////////////////////////Faqs ////////////////////// */}
 
-      <section className="faqs-section">
-        <div className="faqs-container">
-          <h4>FAQ</h4>
-          <p>Most frequent questions and answers</p>
-          <Accordion defaultActiveKey="0">
-            {faqs.map((item, index) => (
-              <Accordion.Item key={index} eventKey={index.toString()}>
-                <Accordion.Header>
-                  <h5>{item.question}</h5>
-                </Accordion.Header>
-                <Accordion.Body>{item.answer}</Accordion.Body>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-        </div>
+      <section >
+       <ShortFaqs/>
       </section>
     </div>
   );

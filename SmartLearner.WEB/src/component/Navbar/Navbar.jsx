@@ -4,7 +4,7 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/smartlearnerLogo.png";
+import logo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 
 
 

@@ -46,6 +46,7 @@
   }
   .productCard{
     padding: 5px;
+    background-color: #fff;
     border: 1px solid rgba(167, 166, 166, 0.737);
     border-radius: 4px;
   }

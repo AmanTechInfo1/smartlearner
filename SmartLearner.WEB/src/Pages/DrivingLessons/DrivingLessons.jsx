@@ -1,14 +1,13 @@
 // import React from 'react'
+
 import styles from "./DrivingLesson.module.css";
 import Lplateimg from "../../assets/images/L-Plate.jpg";
 import leftCarimg from "../../assets/images/car-red.png"
 import giftVoucherImage from "../../assets/images/Screenshot-2022-12-23-113404.png"
 import automaticDrivingImg from "../../assets/images/auto-gear.png"
 import manualDrivingImg from "../../assets/images/manual-gear-1.png"
-import { useState } from "react";
 import { GoPlay } from "react-icons/go";
 import {
-  FaSearch,
   FaTrophy,
   FaRegMoneyBillAlt,
   FaBookOpen,
@@ -20,18 +19,11 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
-import { FaLocationDot, FaCommentSms } from "react-icons/fa6";
+import {  FaCommentSms } from "react-icons/fa6";
+import DrivenForm from "../../component/forms/DrivenForm";
 
 export default function DrivingLessons() {
-  const [drivenBefore, setDrivenBefore] = useState("");
-  const [preferredType, setPreferredType] = useState("");
-  const [location, setLocation] = useState("");
 
-  const locationSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", { drivenBefore, preferredType, location });
-  };
   return (
     <div className={styles.DrivingLessons}>
       <section className={styles.imageSection}>
@@ -61,81 +53,7 @@ export default function DrivingLessons() {
       </section>
 
       {/* --------------------------------Drivin Section------------------------------------------- */}
-      <section className="driverSection" style={{backgroundColor:"#ffd840"}}>
-        <div className="innerFormSection">
-          <div className="search-Form">
-            <form onSubmit={locationSubmit} id="locationForm">
-              <div className="infoDetails">
-                <div className="redio-box">
-                  <h3>Have you driven before?</h3>
-
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="yes"
-                      checked={drivenBefore === "yes"}
-                      onChange={(e) => setDrivenBefore(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Yes
-                  </label>
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="no"
-                      checked={drivenBefore === "no"}
-                      onChange={(e) => setDrivenBefore(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    No
-                  </label>
-                </div>
-                <div className="redio-box">
-                  <h3>What do you prefer?</h3>
-
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="manual"
-                      checked={preferredType === "manual"}
-                      onChange={(e) => setPreferredType(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Manual
-                  </label>
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="auto"
-                      checked={preferredType === "auto"}
-                      onChange={(e) => setPreferredType(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Auto
-                  </label>
-                </div>
-              </div>
-              <div className="submitFleid">
-                <p>
-                  <FaLocationDot />
-                </p>
-
-                <input
-                  name="passcode"
-                  type="text"
-                  placeholder="ENTER POSTCODE PREFIX E.G. CV6"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-                <button type="submit">
-                  <FaSearch />
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
+    <DrivenForm/>
       {/* ////////////////////////////Features section //////////////////////// */}
       <section className="features">
         <div className="mainFeatures">

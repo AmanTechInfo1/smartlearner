@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .imageSection {
+    position: relative;
+    width: 100%;
+    padding: 5rem 0;
+    background-color: #4C9C43;
+  }
+  .maincontent {
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 0px 20px 0px 0px;
+  }
+  
+  .heading1 h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+  }
+  .heading2 p {
+    color: #ffffff;
+    font-size: 22px;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 0.8rem;
+    margin-bottom: 20px;
+  }
+
+
+  .video {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .video img {
+    width: 100%;
+    max-width: 400px;
+  }
+  @media (max-width: 1020px) {
+    .content {
+      padding-top: 75px;
+    }
+    .heading1 h1 {
+      font-size: 1.5rem;
+      line-height: 1.7em;
+    }
+    .heading2 p {
+      font-size: 18px;
+    }
+    .video {
+      padding: 75px;
+    }
+  }
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 0px;
+    }
+  
+    .maincontent {
+      display: block;
+    }
+    .heading1 {
+      padding-top: 1rem;
+    }
+    .content {
+      max-width: 100%;
+    }
+    .video {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 350px) {
+    .video {
+      padding: 40px;
+    }
+    .heading1 h1 {
+        font-size: 15px;
+        line-height: 20px;
+       
+      }
+      .heading2 p {
+        font-size: 16px;
+      } 
+  }
+   /*//////////////////////////////// save planet //////////////////// */
+
+.electricCar2ndSection{
+  display: flex;
+  align-items: center;
+margin-right: auto;
+margin-left: auto;
+max-width: 1400px;
+width: 100%;
+padding: 2rem 0px;
+}
+.electricCarImgSection{
+  max-width: 600px;
+ width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+.electricCarImgSection img{
+  margin-top: 1rem;
+
+  max-width: 400px;
+ width: 100%;
+
+}
+.ourCSRresponsbilities{
+  text-align: center;
+  padding: 1rem;
+  max-width: 700px;
+  width: 100%;
+
+}
+.ourCSRresponsbilities h2{
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #4C9C43;
+}
+.ourCSRresponsbilities p{
+  margin-bottom: 1rem;
+ 
+ 
+}
+@media (max-width: 1020px) {
+  .electricCarImgSection{
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .electricCar2ndSection{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .ourCSRresponsbilities{
+    max-width: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 450px){
+  .electricCarImgSection img{
+
+    max-width: 250px;
+   width: 100%;
+  
+  }
+  .ourCSRresponsbilities h2{
+    font-size: 1.5rem;
+  }
+}
+
+/* ////////////////////////////////////////////// */
+.treeSection {
+text-align: center;
+}
+.treeSection img{
+  max-width: 1000px;
+width: 100%;
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.vsElectrictabSection{
+  background-color: #4C9C43;
+}
+.vsElectricSection{
+  padding: 2rem;
+ 
+  display: flex;
+  align-items: center;
+ 
+  max-width: 1550px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.vsElectricSection h1{
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+}
+.electricTabSection {
+  text-align: center;
+width: 100%;
+}
+.electricTabSection img{
+  max-width: 150px;
+  width: 100%;
+}
+.electricTabSection h2{
+  font-size: 2.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+
+
+
+/* ////////////////////////////// tab section ////////////////////// */
+.tabsection {
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0px 1rem;
+  font-family: "Roboto", Sans-serif;
+}
+
+.tabs {
+  display: flex;
+
+}
+
+.tab {
+  padding: 20px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: none;
+
+}
+
+.tab.active {
+  background-color: #233d20;
+  color: white;
+}
+
+.tabContent {
+  padding: 20px;
+  border-top: none;
+  height: 450px;
+  background-color: #233d20;
+}
+
+.tabContent p {
+  text-align: left;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 35px;
+
+}
+
+
+
+@media screen and (max-width: 1080px){
+.vsElectricSection{
+  display: block;
+}
+}
+@media screen and (max-width: 768px) {
+  .electricTabSection h2{
+    font-size: 2rem;
+  }
+  .tabs {
+    flex-direction: column; 
+  }
+
+  .tab {
+    width: 100%; 
+    border-bottom: 1px solid #ddd;
+  }
+}
+ /* /////////////////////////why choose us css/////////// */
+ .features {
+  padding: 2rem 0;
+}
+.features h4{
+  color: #4C9C43;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 1.2em;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+.features p{
+  color: #7a7a7a;
+  line-height: 28px;
+  text-align: center;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+.mainFeatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  max-width: 1400px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.column {
+  padding: 25px 25px 55px 25px;
+  background-color: #ffffff;
+ 
+ 
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+ 
+  transition: box-shadow 0.3s ease;
+}
+
+.column:hover {
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid #4C9C43;
+}
+.column span {
+  font-size: 50px;
+  color: #706c6c;
+  display: inline-block;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.column h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000000;
+}
+.column p {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #7a7a7a;
+}
+.column span{
+  background-color: #4C9C43;
+  padding: 30px;
+border-radius: 50%;
+font-size: 50px;
+color: #FFF;
+}
+#featuresIcon {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
+  
+}
+.column span:hover {
+  transform: scale(1.2);
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  color: #4C9C43;
+}
+#featuresIconSRU{
+  font-size: 6rem;
+}
+@media (max-width: 1085px){
+  .features h4{
+      font-size: 45px;
+  }
+}
+@media (max-width: 767px){
+  .features h4{
+      font-size: 30px;
+  }
+  .mainFeatures{
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}

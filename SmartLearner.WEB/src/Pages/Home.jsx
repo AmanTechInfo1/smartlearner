@@ -12,81 +12,16 @@ import userIdentificationImg from "../assets/images/userIndentification.png";
 import hallOfFame from "../assets/images/hallOfFame.png";
 import starImg from "../assets/images/star.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
-
-const data = [
-  {
-    id: 1,
-    title: "MANUAL",
-    shortInfo: "Short info 1",
-    fullInfo: [
-      { itemName: "1 HOUR MANUAL", itemPrice: "$34", itemQuantity: 1 },
-      { itemName: "1.5 HOUR MANUAL", itemPrice: "$51", itemQuantity: 1 },
-      { itemName: "2 HOUR MANUAL", itemPrice: "$64", itemQuantity: 1 },
-      { itemName: "5 HOUR MANUAL", itemPrice: "$160", itemQuantity: 1 },
-      { itemName: "10 HOUR MANUAL", itemPrice: "$310", itemQuantity: 1 },
-      { itemName: "20 HOUR MANUAL", itemPrice: "$600", itemQuantity: 1 },
-    ],
-  },
-  {
-    id: 2,
-    title: "AUTOMATIC",
-    shortInfo: "Short info 2",
-    fullInfo: [
-      { itemName: "1 HOUR AUTOMATIC", itemPrice: "$34", itemQuantity: 1 },
-      { itemName: "1.5 HOUR AUTOMATIC", itemPrice: "$51", itemQuantity: 1 },
-      { itemName: "2 HOUR AUTOMATIC", itemPrice: "$64", itemQuantity: 1 },
-      { itemName: "5 HOUR AUTOMATIC", itemPrice: "$160", itemQuantity: 1 },
-      { itemName: "10 HOUR AUTOMATIC", itemPrice: "$310", itemQuantity: 1 },
-      { itemName: "20 HOUR AUTOMATIC", itemPrice: "$600", itemQuantity: 1 },
-    ],
-  },
-  {
-    id: 3,
-    title: "THEORY",
-    shortInfo: "Short info 3",
-    fullInfo: [
-      { itemName: "1 HOUR THEORY", itemPrice: "$34", itemQuantity: 1 },
-      { itemName: "1.5 HOUR THEORY", itemPrice: "$51", itemQuantity: 1 },
-      { itemName: "2 HOUR THEORY", itemPrice: "$64", itemQuantity: 1 },
-      { itemName: "5 HOUR THEORY", itemPrice: "$160", itemQuantity: 1 },
-      { itemName: "10 HOUR THEORY", itemPrice: "$310", itemQuantity: 1 },
-      { itemName: "20 HOUR THEORY", itemPrice: "$600", itemQuantity: 1 },
-    ],
-  },
-];
+import Carousel from "./Carousel";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaSnapchat,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function Home() {
-
-  const [quantities, setQuantities] = useState({});
-
-  const handleIncrease = (id, e) => {
-    e.stopPropagation();
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] || 0) + 1, // Increment quantity for the specific item
-    }));
-  };
-
-  const handleDecrease = (id, e) => {
-    e.stopPropagation();
-    if (quantities[id] > 1) {
-      setQuantities((prevQuantities) => ({
-        ...prevQuantities,
-        [id]: prevQuantities[id] - 1, // Decrement quantity for the specific item
-      }));
-    }
-  };
-
-  const [expandedCol, setExpandedCol] = useState(null);
-
-  const handleColumnClick = (id) => {
-    if (expandedCol === id) {
-      setExpandedCol(null);
-    } else {
-      setExpandedCol(id);
-    }
-  };
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -107,6 +42,15 @@ export default function Home() {
     e.preventDefault();
     console.log(formData);
   };
+  const images = [
+    "src/assets/images/xain-img-150x150.jpg",
+    "src/assets/images/kevin-img-150x150.jpg",
+    "src/assets/images/xain-img-150x150.jpg",
+    "src/assets/images/kevin-img-150x150.jpg",
+    "src/assets/images/xain-img-150x150.jpg",
+    "src/assets/images/kevin-img-150x150.jpg",
+    // Add more image URLs as needed
+  ];
 
   return (
     <div className={styles.homepage}>
@@ -318,66 +262,68 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* //////////////carousel section///////////////// */}
 
-      <section>
-    
-        <div className={styles.carousel}>
-       
-          {data.map((item) => (
-            <div
-              key={item.id}
-              className={`${styles.carouselColumn} ${
-                expandedCol === item.id ? styles.expanded : ""
-              }`}
-              onClick={() => handleColumnClick(item.id)}
-            >
-              <div className={styles.carouselColumnHeading}><img src={LplateImg} alt="" /> <h2>{item.title}</h2></div>
-             
-              {expandedCol === item.id ? (
-                <ul type="none">
-                  {item.fullInfo.map((info, index) => (
-                    <li key={index} className={styles.expandedColData}>
-                      <p>{info.itemName}</p>
-                      <p>{info.itemPrice}</p>
-                      <div className={styles.btnGroup}>
-                        <button
-                          className={styles.incrementBtn}
-                          onClick={(e) => handleIncrease(info.itemName, e)}
-                        >
-                          <span className={styles.materialSymbolsOutlined}>
-                            +
-                          </span>
-                        </button>
-                        {/* Display quantity for the specific item */}
-                        <p className={styles.counterText}>
-                          {quantities[info.itemName] || 0}
-                        </p>
-                        <button
-                          className={styles.decrementBtn}
-                          onClick={(e) => handleDecrease(info.itemName, e)}
-                        >
-                          <span className={styles.materialSymbolsOutlined}>
-                            -
-                          </span>
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className={styles.carouselStarImgContainer}>
-                  <img src={starImg} alt="starImg" />
-                  <img src={starImg} alt="starImg" />
-                  <img src={starImg} alt="starImg" />
-                  <img src={starImg} alt="starImg" />
-                  <img src={starImg} alt="starImg" />
-                </div>
-              )}
+      <>
+        <Carousel />
+      </>
+      {/* ////////////////////////Reviews section //////////////////////// */}
+      <section className={styles.facebookReviewsSection}>
+        <div className={styles.facebookReviewsContainer}>
+          <h4 id={styles.heading1}>Our Reviews</h4>
+          <hr />
+          <div className={styles.reviewsList}></div>
+          <div className={styles.followUsLinks}>
+            <h4>Follow us!</h4>
+            <hr />
+            <div className={styles.socialFollowIcons}>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook id={styles.FollowIcons} />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram id={styles.FollowIcons} />
+              </a>
+              <a
+                href="https://www.snapchat.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaSnapchat id={styles.FollowIcons} />
+              </a>
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter id={styles.FollowIcons} />
+              </a>
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube id={styles.FollowIcons} />
+              </a>
             </div>
-          ))}
-         
+          </div>
         </div>
-       
+      </section>
+      {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
+      <section className={styles.imageSliderContainer}>
+        <h2>Pass With Us</h2>
+        <div className={styles.slider}>
+          {images.map((image, index) => (
+            <img key={index} src={image} alt={`Slide ${index + 1}`} />
+          ))}
+        </div>
       </section>
     </div>
   );
