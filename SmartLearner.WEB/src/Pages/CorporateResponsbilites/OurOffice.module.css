@@ -1,4 +1,4 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,8 +6,8 @@
 .imageSection {
   position: relative;
   width: 100%;
-  padding: 5rem 0;
-  background-color: #1e4e19;
+  padding: 8rem 0;
+  background-color: #4c9c43;
 }
 .maincontent {
   display: flex;
@@ -28,9 +28,9 @@
 
 .heading1 h1 {
   color: #ffffff;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 700;
+
   text-align: center;
   font-family: "Montserrat", sans-serif;
 }
@@ -56,7 +56,7 @@
     padding-top: 75px;
   }
   .heading1 h1 {
-    font-size: 1.5rem;
+    font-size: 3rem;
     line-height: 1.7em;
   }
   .heading2 p {
@@ -77,6 +77,9 @@
   .heading1 {
     padding-top: 1rem;
   }
+  .heading1 h1 {
+    font-size: 2.5rem;
+  }
   .content {
     max-width: 100%;
   }
@@ -89,151 +92,173 @@
     padding: 40px;
   }
   .heading1 h1 {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 2rem;
+    line-height: 28px;
   }
   .heading2 p {
     font-size: 16px;
   }
 }
-.treeSection {
+/* ///////////////////////////////////////// */
+.OurOffice2ndSection {
   padding: 2rem 0px;
-  text-align: center;
-  max-width: 1440px;
   margin-right: auto;
   margin-left: auto;
-}
-.treeSection h2 {
-  font-size: 3rem;
-  color: #1e4e19;
-  font-weight: 700;
-}
-.treeSection img {
-  max-width: 1000px;
-  width: 100%;
-  animation: slideIn 1s ease forwards;
-}
-@keyframes slideIn {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ////////////////////////////////// */
-
-.greenPurposeSection {
-  background-color: #1e4e19;
+  max-width: 1400px;
   font-family: "Roboto", sans-serif;
-  padding: 2rem 0px;
 }
-
-.greenPurposeHeading {
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 2rem;
-}
-.greenPurposeHeading h2 {
+.OurOffice2ndSection h2 {
+  text-align: center;
   font-size: 3rem;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #fff;
-}
-.greenPurposeHeading hr {
-  border: 2px solid white;
-  max-width: 700px;
-  width: 100%;
-  text-align: center;
-  max-width: 900px;
-  margin-right: auto;
-  margin-left: auto;
-  opacity: 1;
-}
-.greenPurposeSection {
-}
-.greenPurposeDetails {
-  text-align: center;
+  color: #4c9c43;
   padding: 1rem 0px;
 }
-.greenPurposeDetails img {
-  max-width: 500px;
+.OurOffice2ndDiv {
+  display: flex;
+  padding: 0px 1rem;
+  gap: 20px;
+}
+.OurOffice2ndDivImg {
   width: 100%;
 }
-.greenPurposeDetailsContent {
-  display: flex;
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
-  gap: 20px;
-  padding: 0px 1rem;
+.OurOffice2ndDivParagraph {
+  padding: 1rem 0px;
+  width: 100%;
 }
-.detailsofGreenGo {
-  padding: 1rem;
-  margin-top: 1rem;
-  background-color: #0d7002;
+.OurOffice2ndDiv img {
+  width: 100%;
 }
-.detailsofGreenGo h2 {
-  color: #fff;
-  font-size: 2rem;
-}
-.detailsofGreenGo p {
-  color: #fff;
-  line-height: 35px;
+.OurOffice2ndDiv p {
+  margin-bottom: 1rem;
+  font-size: 16px;
+
   text-align: justify;
 }
-#goGreenBtn {
-  text-align: center;
-}
-#goGreenBtn button {
-  padding: 10px 50px;
-  border: 2px solid white;
-  color: white;
-  font-weight: 600;
-  border-radius: 4px;
-  background-color: #1e4e19;
-}
-#goGreenBtn button:hover {
-  background-color: #13310f;
-}
-@media (max-width: 780px) {
-  .greenPurposeDetailsContent {
+@media (max-width: 767px) {
+  .OurOffice2ndDiv {
     display: block;
   }
+  .OurOffice2ndSection h2 {
+    font-size: 2rem;
+  }
 }
-.socialFollowIcons {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 800px;
+@media (max-width: 428px) {
+  .OurOffice2ndSection h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* //////////////////////////////////////////////////////////// */
+
+.OurOfficeListSection {
+  background-color: #4c9c43;
+  font-family: "Roboto", sans-serif;
+}
+.OurOfficedluoifs {
   margin-right: auto;
   margin-left: auto;
-  padding: 2rem 0;
+  max-width: 1400px;
+  padding: 2rem 1rem;
 }
-
-.socialFollowIcons a {
+.OurOfficeListDivHeading {
+  text-align: center;
+}
+.OurOfficedluoifs span {
+  background-color: #fff;
+  color: #4c9c43;
+  padding: 30px;
+  border-radius: 50%;
   display: inline-block;
-  background-color: white;
-  border-radius: 6px;
-  padding: 8px 10px 8px 10px;
+  font-size: 50px;
+}
+#featuresListIcon {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  display: block;
+}
+.OurOfficedluoifs span:hover {
+  transform: scale(1.2);
+  background-color: #4c9c43;
+  transition: 0.3s ease-in-out;
+  color: #fff;
+}
+.OurOfficeListDivHeading h2 {
+  font-size: 3rem;
+  color: #fff;
+}
+.OurOfficeListDivHeading p {
+  color: #fff;
+  margin: 1rem 0px;
+}
+.OurOfficeListsDivSection {
+  display: flex;
+  gap: 20px;
+}
+.OurOfficeListDetails {
+  width: 100%;
+  padding: 2rem 1rem;
+}
+.OurOfficeListDetails h2 {
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+}
+.OurOfficeListDetails ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1rem 0px;
+}
+.OurOfficeListDetails ul li p {
+  color: #fff;
+}
+.OurOfficeListDetails ul li span {
+  background-color: #fff;
+  color: #4c9c43;
+  padding: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 50px;
+}
+#listArrowIcon {
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  display: block;
+}
 
-  transition: transform 0.3s;
+.OurOfficeListDetails ul li span:hover {
+  transform: scale(1.2);
+  background-color: #4c9c43;
+  transition: 0.3s ease-in-out;
+  color: #fff;
 }
-#FollowIcons {
-  color: #1e4e19;
-  font-size: 1.7rem;
+@media (max-width: 767px) {
+  .OurOfficeListsDivSection {
+    display: block;
+  }
+  .OurOfficeListDivHeading h2 {
+    font-size: 2rem;
+  }
 }
-.socialFollowIcons a:hover {
-  transform: translateY(-5px);
-}
-
-.socialFollowIcons i {
-  font-size: 24px;
-  color: #333; /* Change color as needed */
+@media (max-width: 450px) {
+  .OurOfficeListDetails h2 {
+    font-size: 2rem;
+  }
+  .OurOfficeListDivHeading h2 {
+    font-size: 1.5rem;
+  }
+  .OurOfficedluoifs span {
+    padding: 20px;
+  }
+  #featuresIcon {
+    width: 6rem;
+    height: 6rem;
+    position: relative;
+    display: block;
+  }
 }
 /* /////////////////////////going Green/////////// */
 .features {

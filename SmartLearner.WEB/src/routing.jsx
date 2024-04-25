@@ -55,7 +55,7 @@ import DemoHeader from "./component/Header/DemoHeader";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element:  <Layouts />,
+    element: <Layouts />,
     errorElement: <NotFound />,
     children: [
       {
@@ -110,10 +110,14 @@ export const router = createBrowserRouter([
       { path: "shop", element: <Shop /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
+      {
+        path: "product-details",
+        element: <ProductDetails></ProductDetails>,
+      },
     ],
   },
   { path: "demonavbar", element: <DemoHeader /> },
- 
+
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
   { path: "thanks", element: <Thanks /> },
@@ -123,8 +127,7 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}
-      ></RequireAuth>
+        element={<AdminLayout />}></RequireAuth>
     ),
     children: [
       {

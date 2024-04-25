@@ -143,8 +143,14 @@
   }
 }
 
-@media screen and (max-width: 490px) {
+@media (max-width: 490px) {
   .logo img {
     display: none;
+  }
+}
+@media (max-width: 320px) {
+  .contactInfo{
+    display: flex;
+    flex-direction: column;
   }
 }

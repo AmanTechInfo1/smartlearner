@@ -108,7 +108,7 @@ export default function Carousel() {
   
     const cartData = {
       selectedItems: selectedItems,
-      totalItemsPrice: totalItemsPrice.toFixed(2)
+      totalItemsPrice: `$${totalItemsPrice.toFixed(2)}`
     };
   
     console.log(cartData);

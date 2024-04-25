@@ -364,6 +364,7 @@ width: 100%;
   background-color: #4C9C43;
   padding: 30px;
 border-radius: 50%;
+display: inline-block;
 font-size: 50px;
 color: #FFF;
 }
