@@ -79,6 +79,7 @@ function Countdown() {
     clearInterval(countdownInterval);
     localStorage.removeItem("eventName");
     localStorage.removeItem("countdownEndTime");
+
     setDays(0);
     setHours(0);
     setMinutes(0);

@@ -18,7 +18,6 @@ export default function Header() {
       display: "Home",
     },
     {
-
       display: "Join Our Team",
       active: false,
       dropdownItems: [
@@ -31,6 +30,10 @@ export default function Header() {
           display: "Driving Instructor Franchise",
         },
         { path: "/Stantard-Check-Test", display: "Stantard CheckTest" },
+        {
+          path: "/hazard-perception",
+          display: "Hazard",
+        },
       ],
     },
     {
@@ -57,11 +60,13 @@ export default function Header() {
       display: "ADI Training Portal",
     },
     {
-
       display: "Speciality Training",
       active: false,
       dropdownItems: [
-        { path: "/Simulated-Driving-Lesson", display: "Simulated Driving Lesson" },
+        {
+          path: "/Simulated-Driving-Lesson",
+          display: "Simulated Driving Lesson",
+        },
         { path: "/Extended-Test", display: "Extended Test" },
         { path: "/Pass-Plus", display: "Pass Plus" },
         { path: "/Ageing-Driver-Support", display: "Ageing Driver Support" },
@@ -80,20 +85,19 @@ export default function Header() {
         { path: "/Communities-Champions", display: "Communities Champions" },
         { path: "/We-Proudly-Support", display: "We Proudly Support" },
         { path: "/Go-Cv", display: "Go Cv" },
-        { path: "/Our-Office-Green-Efforts", display: "Our Office Green Efforts" },
+        {
+          path: "/Our-Office-Green-Efforts",
+          display: "Our Office Green Efforts",
+        },
         { path: "/The-Honest-Truth", display: "The Honest Truth" },
       ],
     },
     {
       path: "/Theory-Subscription",
       display: "Theory Subscription",
-      dropdownItems: [
-        { path: "/Theory-Portal", display: "Theory Portal" },
-
-      ],
+      dropdownItems: [{ path: "/Theory-Portal", display: "Theory Portal" }],
     },
     {
-
       display: "Add-Ons",
       active: false,
       dropdownItems: [
@@ -103,7 +107,6 @@ export default function Header() {
       ],
     },
     {
-
       display: "CheckList",
       active: false,
       dropdownItems: [{ path: "/PracticeMCQS", display: "Practice-MCQS" }],
@@ -130,17 +133,16 @@ export default function Header() {
             <ul
               className={isNavOpen ? "open slide-down" : ""}
               type="None"
-              id="mainMenu"
-            >
+              id="mainMenu">
               {navLinks.map((link, index) => (
                 <li id="headerLinks" key={index}>
                   {link.dropdownItems ? (
                     <div className="dropdown">
                       <NavLink
                         to={link.path}
-                        className={`headerlinks ${link.active ? "/" : "inactive"
-                          }`}
-                      >
+                        className={`headerlinks ${
+                          link.active ? "/" : "inactive"
+                        }`}>
                         {link.display}
                       </NavLink>
                       <div className="dropdown-content">
@@ -150,8 +152,7 @@ export default function Header() {
                               <NavLink
                                 to={item.path}
                                 key={idx}
-                                id="dropdown-content"
-                              >
+                                id="dropdown-content">
                                 {item.display}
                               </NavLink>
                             ))}

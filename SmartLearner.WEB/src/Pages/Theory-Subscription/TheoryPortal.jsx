@@ -21,6 +21,7 @@ import {
   FaBoxOpen,
   FaVideo,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function TheoryPortal() {
   return (
@@ -279,10 +280,12 @@ export default function TheoryPortal() {
         <section className={styles.features}>
           <div className={styles.mainFeatures}>
             <div className={styles.column}>
-              <span>
-                <FaBoxOpen id={styles.featuresIcon} />
-              </span>
-              <h3>Hazard perception</h3>
+              <Link to="/hazard-perception">
+                <span>
+                  <FaBoxOpen id={styles.featuresIcon} />
+                </span>
+                <h3>Hazard perception</h3>
+              </Link>
             </div>
             <div className={styles.column}>
               <span>

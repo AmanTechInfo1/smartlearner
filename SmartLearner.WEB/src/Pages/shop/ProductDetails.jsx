@@ -13,6 +13,7 @@ import Testimonials from "../../component/testemonials/Testimonials";
 import Review from "../../component/Reviews/Review";
 import ShortFaqs from "../../component/shortFaqs/ShortFaqs";
 import DrivenForm from "../../component/forms/DrivenForm";
+import ProductSlider from "./ProductSlider";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -162,6 +163,9 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+      <section>
+        <ProductSlider />
+      </section>
       <section className={styles.productDetailsProductTab}>
         <ProductTab></ProductTab>
       </section>
