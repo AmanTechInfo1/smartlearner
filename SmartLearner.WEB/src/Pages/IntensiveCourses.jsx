@@ -2,6 +2,8 @@
 import styles from "./css/IntensiveCourses.module.css";
 import ClockImg from "../assets/images/clock.png";
 import { useState } from "react";
+import DrivenForm from "../component/forms/DrivenForm"
+import CallBackForm from "../component/forms/CallBackForm"
 import {
   FaSearch,
   FaCarSide,
@@ -15,7 +17,7 @@ import {
   FaTwitter,
   FaYoutube
 } from "react-icons/fa";
-import { FaLocationDot, FaCommentSms } from "react-icons/fa6";
+import {  FaCommentSms } from "react-icons/fa6";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function IntensiveCourses() {
@@ -47,15 +49,6 @@ export default function IntensiveCourses() {
     });
   };
 
-  const [drivenBefore, setDrivenBefore] = useState("");
-  const [preferredType, setPreferredType] = useState("");
-  const [location, setLocation] = useState("");
-
-  const locationSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", { drivenBefore, preferredType, location });
-  };
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -104,78 +97,7 @@ export default function IntensiveCourses() {
       </section>
       {/* --------------------------------Drivin Section------------------------------------------- */}
       <section className="driverSection" style={{ backgroundColor: "#ffd840" }}>
-        <div className="innerFormSection">
-          <div className="search-Form">
-            <form onSubmit={locationSubmit} id="locationForm">
-              <div className="infoDetails">
-                <div className="redio-box">
-                  <h3>Have you driven before?</h3>
-
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="yes"
-                      checked={drivenBefore === "yes"}
-                      onChange={(e) => setDrivenBefore(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Yes
-                  </label>
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="no"
-                      checked={drivenBefore === "no"}
-                      onChange={(e) => setDrivenBefore(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    No
-                  </label>
-                </div>
-                <div className="redio-box">
-                  <h3>What do you prefer?</h3>
-
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="manual"
-                      checked={preferredType === "manual"}
-                      onChange={(e) => setPreferredType(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Manual
-                  </label>
-                  <label className="redio-btn">
-                    <input
-                      type="radio"
-                      value="auto"
-                      checked={preferredType === "auto"}
-                      onChange={(e) => setPreferredType(e.target.value)}
-                    />
-                    <span className="checkmark"></span>
-                    Auto
-                  </label>
-                </div>
-              </div>
-              <div className="submitFleid">
-                <p>
-                  <FaLocationDot />
-                </p>
-
-                <input
-                  name="passcode"
-                  type="text"
-                  placeholder="ENTER POSTCODE PREFIX E.G. CV6"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
-                <button type="submit">
-                  <FaSearch />
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+       <DrivenForm/>
       </section>
       {/* ////////////////////////// Intensive Courses Details ///////////////////////////// */}
 
@@ -295,62 +217,7 @@ export default function IntensiveCourses() {
           </p>
         </div>
         <div className={styles.intensivedrivingFormContainer}>
-          <div className={styles.intensivedrivingForm}>
-            <h4>Request a Callback</h4>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.intensivedrivingformGroup}>
-                <label htmlFor="fullName">Full Name:</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.intensivedrivingformGroup}>
-                <label htmlFor="contactNumber">Contact Number:</label>
-                <input
-                  type="tel"
-                  id="contactNumber"
-                  name="contactNumber"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.intensivedrivingformGroup}>
-                <label htmlFor="postCode">Post Code:</label>
-                <input
-                  type="text"
-                  id="postCode"
-                  name="postCode"
-                  value={formData.postCode}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className={styles.intensivedrivingformGroup}>
-                <label htmlFor="additionalInfo">Additional Information:</label>
-                <textarea
-                  id="additionalInfo"
-                  name="additionalInfo"
-                  value={formData.additionalInfo}
-                  onChange={handleChange}
-                  rows="4"
-                ></textarea>
-              </div>
-              {/* Add your reCAPTCHA component here */}
-              <ReCAPTCHA
-                id="recaptcha"
-                sitekey="your_site_key" // Replace 'your_site_key' with your actual reCAPTCHA site key
-              />
-              <div className={styles.intensivedrivingformGroup}>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
+       <CallBackForm/>
         </div>
       </section>
       {/* /////////////////////////////// Tab Questions ///////////////////////////// */}

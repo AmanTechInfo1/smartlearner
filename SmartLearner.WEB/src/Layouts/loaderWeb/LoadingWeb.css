@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.loader_Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.loader_Container p {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Antonio", sans-serif;
+}

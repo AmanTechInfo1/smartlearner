@@ -393,15 +393,16 @@ textarea {
 }
 /* /////////////////////////Tab section /////////////////////// */
 /* TabsSection.module.css */
-
 .tabsection {
   max-width: 1350px;
   margin: 0 auto;
+  padding: 0px 1rem;
   font-family: "Roboto", Sans-serif;
 }
 
 .tabs {
   display: flex;
+  flex-wrap: wrap; 
 }
 
 .tab {
@@ -422,12 +423,26 @@ textarea {
   border-top: none;
   background-color: #eb0009;
 }
+
 .tabContent p {
   text-align: left;
   font-size: 1rem;
   color: #fff;
   line-height: 28px;
 }
+
+@media screen and (max-width: 768px) {
+  .tabs {
+    flex-direction: column; 
+  }
+
+  .tab {
+    width: 100%; 
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+
 /* ////////////////////////////////Area cover section////////////////////////// */
 .coverAreaSection {
   max-width: 1200px;

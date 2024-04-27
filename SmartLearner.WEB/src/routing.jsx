@@ -39,6 +39,7 @@ import Contact from "./Pages/Contact";
 import Shop from "./Pages/shop/Shop";
 import ProductDetails from "./Pages/shop/ProductDetails";
 import Cart from "./Pages/shop/cart/Cart";
+import HazardPerception from "./Pages/Theory-Subscription/Hazard/HazardPerception";
 import Thanks from "./Pages/Thanks";
 import AdminHome from "./area/admin/AdminHome";
 import AdminUsers from "./area/admin/AdminUsers";
@@ -110,10 +111,11 @@ export const router = createBrowserRouter([
       { path: "shop", element: <Shop /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
+      { path: "hazard-perception", element: <HazardPerception /> },
     ],
   },
   { path: "demonavbar", element: <DemoHeader /> },
- 
+
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
   { path: "thanks", element: <Thanks /> },
@@ -123,8 +125,7 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}
-      ></RequireAuth>
+        element={<AdminLayout />}></RequireAuth>
     ),
     children: [
       {

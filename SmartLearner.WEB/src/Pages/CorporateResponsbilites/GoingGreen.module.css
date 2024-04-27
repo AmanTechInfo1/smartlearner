@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.imageSection {
+  position: relative;
+  width: 100%;
+  padding: 5rem 0;
+  background-color: #1e4e19;
+}
+.maincontent {
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 0px 20px 0px 0px;
+}
+
+.heading1 h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+.heading2 p {
+  color: #ffffff;
+  font-size: 22px;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.video {
+  width: 100%;
+  text-align: center;
+}
+
+.video img {
+  width: 100%;
+  max-width: 400px;
+}
+@media (max-width: 1020px) {
+  .content {
+    padding-top: 75px;
+  }
+  .heading1 h1 {
+    font-size: 1.5rem;
+    line-height: 1.7em;
+  }
+  .heading2 p {
+    font-size: 18px;
+  }
+  .video {
+    padding: 75px;
+  }
+}
+@media (max-width: 767px) {
+  .content {
+    padding-top: 0px;
+  }
+
+  .maincontent {
+    display: block;
+  }
+  .heading1 {
+    padding-top: 1rem;
+  }
+  .content {
+    max-width: 100%;
+  }
+  .video {
+    max-width: 100%;
+  }
+}
+@media (max-width: 350px) {
+  .video {
+    padding: 40px;
+  }
+  .heading1 h1 {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .heading2 p {
+    font-size: 16px;
+  }
+}
+.treeSection {
+  padding: 2rem 0px;
+  text-align: center;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.treeSection h2 {
+  font-size: 3rem;
+  color: #1e4e19;
+  font-weight: 700;
+}
+.treeSection img {
+  max-width: 1000px;
+  width: 100%;
+  animation: slideIn 1s ease forwards;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ////////////////////////////////// */
+
+.greenPurposeSection {
+  background-color: #1e4e19;
+  font-family: "Roboto", sans-serif;
+  padding: 2rem 0px;
+}
+
+.greenPurposeHeading {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 2rem;
+}
+.greenPurposeHeading h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+.greenPurposeHeading hr {
+  border: 2px solid white;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 1;
+}
+.greenPurposeSection {
+}
+.greenPurposeDetails {
+  text-align: center;
+  padding: 1rem 0px;
+}
+.greenPurposeDetails img {
+  max-width: 500px;
+  width: 100%;
+}
+.greenPurposeDetailsContent {
+  display: flex;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  gap: 20px;
+  padding: 0px 1rem;
+}
+.detailsofGreenGo {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #0d7002;
+}
+.detailsofGreenGo h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+.detailsofGreenGo p {
+  color: #fff;
+  line-height: 35px;
+  text-align: justify;
+}
+#goGreenBtn {
+  text-align: center;
+}
+#goGreenBtn button {
+  padding: 10px 50px;
+  border: 2px solid white;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  background-color: #1e4e19;
+}
+#goGreenBtn button:hover {
+  background-color: #13310f;
+}
+@media (max-width: 780px) {
+  .greenPurposeDetailsContent {
+    display: block;
+  }
+}
+.socialFollowIcons {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem 0;
+}
+
+.socialFollowIcons a {
+  display: inline-block;
+  background-color: white;
+  border-radius: 6px;
+  padding: 8px 10px 8px 10px;
+
+  transition: transform 0.3s;
+}
+#FollowIcons {
+  color: #1e4e19;
+  font-size: 1.7rem;
+}
+.socialFollowIcons a:hover {
+  transform: translateY(-5px);
+}
+
+.socialFollowIcons i {
+  font-size: 24px;
+  color: #333; /* Change color as needed */
+}
+/* /////////////////////////going Green/////////// */
+.features {
+  padding: 2rem 0;
+}
+.features h4 {
+  color: #4c9c43;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 1.2em;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+.features p {
+  color: #7a7a7a;
+  line-height: 28px;
+  text-align: center;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+.mainFeatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  max-width: 1400px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.column {
+  padding: 25px 25px 55px 25px;
+  background-color: #ffffff;
+
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+
+  transition: box-shadow 0.3s ease;
+}
+
+.column:hover {
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid #4c9c43;
+}
+.column span {
+  font-size: 50px;
+  color: #706c6c;
+  display: inline-block;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.column h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000000;
+}
+.column p {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #7a7a7a;
+}
+.column span {
+  background-color: #4c9c43;
+  padding: 30px;
+  border-radius: 50%;
+  font-size: 50px;
+  color: #fff;
+}
+#featuresIcon {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
+}
+.column span:hover {
+  transform: scale(1.2);
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  color: #4c9c43;
+}
+#featuresIconSRU {
+  font-size: 6rem;
+}
+@media (max-width: 1085px) {
+  .features h4 {
+    font-size: 45px;
+  }
+}
+@media (max-width: 767px) {
+  .features h4 {
+    font-size: 30px;
+  }
+  .mainFeatures {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}

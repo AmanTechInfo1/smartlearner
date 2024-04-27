@@ -1,65 +1,34 @@
-// Header.jsx
-import React, { useState } from 'react';
-import styles from './DemoHeader.module.css'; // Import your CSS module
-import { Link } from 'react-router-dom';
-const DemoHeader = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+function DemoHeader() {
   return (
-    <div className={styles.headerNavBarContainer}>
-    <header className={styles.header}>
-    
-      <nav className={`${styles.headerMenu} ${isMenuOpen ? styles.active : ''}`}>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li>
-            <a href="#">Driving Lessons</a>
-            <div className={styles.dropdown}>
-              <ul>
-                <li><a href="#">Option 1</a></li>
-                <li><a href="#">Option 2</a></li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a href="#">Theory</a>
-            <div className={styles.dropdown}>
-              <ul>
-                <li><a href="#">Option 1</a></li>
-                <li><a href="#">Option 2</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="#">Join Our Team</a>
-          <div className={styles.dropdown}>
-              <ul>
-                <li><a href="#">Option 1</a></li>
-                <li><a href="#">Option 2</a></li>
-              </ul>
-            </div></li>
-    
-          <li><a href="#">CSR</a>
-          <div className={styles.dropdown}>
-              <ul>
-                <li><a href="#">Option 1</a></li>
-                <li><a href="#">Option 2</a></li>
-              </ul>
-            </div></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <div className={styles.toggle} onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>
-    </div>
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-};
+}
 
 export default DemoHeader;

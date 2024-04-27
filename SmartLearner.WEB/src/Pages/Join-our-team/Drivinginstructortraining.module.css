@@ -570,59 +570,7 @@ text-align: center;
         font-size: 30px;
     }
 }
-/* /////////////////////testimonials ///////////////// */
-.testimonialsContainer{
-    background-color: #eb0009;
-    padding: 100px 0;
-    font-family: "Montserrat", sans-serif;
-}
-.tmcontainer{
-    max-width: 1140px;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-    
-}
-.tmcontainer h4{
-    color: #ffffff;
-    font-size: 65px;
-    font-weight: 600;
-}
-.testimonialContent{
-    background-color: #fff;
-    padding: 1rem 2rem;
-}
-.testimonialName{
-    color: #eb0009;
-    font-size: 1.75rem;
-    font-weight: 700;
-}
-.testimonialComment{
-    font-size: 1.3em;
-    font-style: italic;
-    line-height: 28px;
-    text-align: center;
-}
-.testimonialImage{
-    height: auto;
-    max-width: 100%;
-    border-radius: 50%;
-}
-@media (max-width: 1200px){
-    .testimonialsContainer{
-        padding: 100px 30px 100px 30px;
-    }
-   
-   
-}
-@media (max-width: 500PX){
-    .tmcontainer h4{
-        font-size: 45px;
-    }
-    .testimonialComment{
-        font-size: 16PX;
-    }
-}
+
 /* //////////////reveiw section ///////////////////// */
 /* /////////////// reviews section ///////////////// */
 .facebookReviewsSection {
