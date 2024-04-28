@@ -51,8 +51,6 @@ import { ROLES } from "./constants";
 import AdminLayout from "./area/admin/AdminLayout";
 import Roles from "./area/admin/roles/Roles";
 
-import DemoHeader from "./component/Header/DemoHeader";
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -114,7 +112,6 @@ export const router = createBrowserRouter([
       { path: "hazard-perception", element: <HazardPerception /> },
     ],
   },
-  { path: "demonavbar", element: <DemoHeader /> },
 
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },

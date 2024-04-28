@@ -75,7 +75,7 @@
 
 .video {
   position: relative;
-  z-index: 1;
+  
   max-width: 50%;
   width: 100%;
   text-align: center;

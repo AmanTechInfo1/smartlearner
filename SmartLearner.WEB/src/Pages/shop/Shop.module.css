@@ -307,6 +307,9 @@
 
 .productTab {
   padding: 2rem 0px;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
 }
 /* ///////////////////////////////////// */
 .TSvideosContanierSection {
@@ -765,5 +768,54 @@
 @media (max-width: 324px) {
   .productBookButton {
     display: block;
+  }
+}
+/* //////////////////////////////////////// */
+/* ////////////////////////////////////// */
+/* //////////////////////////////////////// */
+/* ////////////////////////////////////// */
+/* ////////////////////////////////////////// */
+.callbackFormSection {
+  padding: 2rem 0px;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.callbackFormContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+
+  box-shadow: 0 0 10px #ccc;
+}
+.callbackFormContentPG {
+  width: 100%;
+  padding: 50px 30px;
+  box-shadow: 0 0 10px #ccc;
+}
+.callbackFormContentPG p {
+  text-align: center;
+}
+@media (max-width: 728px) {
+  .callbackFormContent {
+    display: block;
+    padding: 15px;
+  }
+  .callbackFormContentPG {
+    margin-bottom: 1rem;
+  }
+  .callbackFormContentPG {
+    padding: 30px 15px;
+  }
+}
+@media (max-width: 528px) {
+  .callbackFormContent {
+    padding: 15px;
+  }
+
+  .callbackFormContentPG {
+    padding: 30px 15px;
   }
 }

@@ -32,8 +32,7 @@ export default function TheorySupport() {
             <iframe
               width="100%"
               height="600px"
-              // src="src\assets\videos\Video-1886-041219-B.mp4"
-            ></iframe>
+              src="src\assets\videos\Video-1886-041219-B.mp4"></iframe>
           </div>
         </div>
         {/* ///////////////////////////////// */}
@@ -62,8 +61,7 @@ export default function TheorySupport() {
                         {[...Array(5)].map((_, index) => (
                           <span
                             key={index}
-                            className={index < rating ? styles.filled : ""}
-                          >
+                            className={index < rating ? styles.filled : ""}>
                             <FaStar />
                           </span>
                         ))}
@@ -113,8 +111,9 @@ export default function TheorySupport() {
                       <button
                         className={styles.bookNow}
                         disabled={inCart}
-                        onClick={() => addToCart({ id, name, price }, quantity)}
-                      >
+                        onClick={() =>
+                          addToCart({ id, name, price }, quantity)
+                        }>
                         {inCart === true ? (
                           <span>In Cart</span>
                         ) : (
@@ -240,17 +239,16 @@ export default function TheorySupport() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testimonials/>
+        <Testimonials />
       </section>
-
 
       {/* ///////////////////////Reviews//////// */}
       <section>
-        <Review/>
+        <Review />
       </section>
       {/* //////////////faqs//////////////////////// */}
       <section>
-        <ShortFaqs/>
+        <ShortFaqs />
       </section>
     </div>
   );
