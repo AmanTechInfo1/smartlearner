@@ -1,7 +1,7 @@
 // import React from 'react'
 
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import styles from './Footer.module.css'
+import styles from "./Footer.module.css";
 import logo from "../../assets/images/smartlearnerLogo.png";
 import { otherLinks, quickLinks } from "../../assets/data/quicklinks";
 import paypal from "../../assets/images/pay-pal.png";
@@ -109,9 +109,11 @@ export default function Footer() {
               <h3>Quick Links</h3>
               <div className={styles.quicklinks}>
                 {quickLinks.map((item, index) => (
-                  <a key={index} href={item.url}>
-                    {item.name}
-                    <span id={styles.arrowIcon} ><MdOutlineKeyboardDoubleArrowRight/></span>
+                  <a key={index} href={item.path}>
+                    {item.display}
+                    <span id={styles.arrowIcon}>
+                      <MdOutlineKeyboardDoubleArrowRight />
+                    </span>
                   </a>
                 ))}
               </div>
@@ -122,9 +124,11 @@ export default function Footer() {
                 <ul type="none" id={styles.quicklinks}>
                   {otherLinks.map((item, index) => (
                     <li key={index}>
-                      <a href={item.url}>
-                        {item.name}
-                        <span id={styles.arrowIcon} ><MdOutlineKeyboardDoubleArrowRight/></span>
+                      <a href={item.path}>
+                        {item.display}
+                        <span id={styles.arrowIcon}>
+                          <MdOutlineKeyboardDoubleArrowRight />
+                        </span>
                       </a>
                     </li>
                   ))}

@@ -13,13 +13,12 @@ import hallOfFame from "../assets/images/hallOfFame.png";
 import starImg from "../assets/images/star.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "./Carousel";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaSnapchat,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import Review from "../component/Reviews/Review";
+// //////////////////
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+//
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -51,6 +50,36 @@ export default function Home() {
     "src/assets/images/kevin-img-150x150.jpg",
     // Add more image URLs as needed
   ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+
+    autoplay: true,
+    autoplaySpeed: 1000,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <div className={styles.homepage}>
@@ -118,8 +147,7 @@ export default function Home() {
                     value={formData.service}
                     onChange={handleInputChange}
                     className={styles.homeForminputField}
-                    required
-                  >
+                    required>
                     <option disabled value="">
                       Select a service
                     </option>
@@ -268,61 +296,26 @@ export default function Home() {
         <Carousel />
       </>
       {/* ////////////////////////Reviews section //////////////////////// */}
-      <section className={styles.facebookReviewsSection}>
-        <div className={styles.facebookReviewsContainer}>
-          <h4 id={styles.heading1}>Our Reviews</h4>
-          <hr />
-          <div className={styles.reviewsList}></div>
-          <div className={styles.followUsLinks}>
-            <h4>Follow us!</h4>
-            <hr />
-            <div className={styles.socialFollowIcons}>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.snapchat.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaSnapchat id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaYoutube id={styles.FollowIcons} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Review />
       {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
       <section className={styles.imageSliderContainer}>
         <h2>Pass With Us</h2>
-        <div className={styles.slider}>
-          {images.map((image, index) => (
-            <img key={index} src={image} alt={`Slide ${index + 1}`} />
-          ))}
+        <div
+          style={{
+            maxWidth: "1200px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            padding: "4rem 2rem",
+            width: "100%",
+            margin: "2rem auto",
+          }}>
+          <Slider {...settings}>
+            {images.map((image, index) => (
+              <div className={styles.imgSlider}>
+                <img key={index} src={image} alt="" />
+              </div>
+            ))}
+          </Slider>
         </div>
       </section>
     </div>

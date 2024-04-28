@@ -20,7 +20,7 @@
 
 .content {
   position: relative;
-  z-index: 1;
+
   color: white;
   text-align: center;
   padding: 0px 20px 0px 0px;
@@ -98,7 +98,7 @@
 }
 .supportingOurCommunity {
   text-align: center;
-  padding: 2REM 0PX;
+  padding: 2rem 0px;
 }
 .supportingOurCommunity h2 {
   font-size: 3rem;
@@ -126,82 +126,81 @@
   transition: 0.3s ease-in-out;
   color: #2049ff;
 }
-.communitySection{
-    background-color: #2049ff;
-padding: 2rem 0px;
-margin: 2rem 0px;
+.communitySection {
+  background-color: #2049ff;
+  padding: 2rem 0px;
+  margin: 2rem 0px;
 }
-.communitySectiondiv{
-    max-width: 1400px;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0px 1rem;
-    display: flex;
-    
-    gap: 20px;
-    justify-content: center;
+.communitySectiondiv {
+  max-width: 1400px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0px 1rem;
+  display: flex;
+
+  gap: 20px;
+  justify-content: center;
 }
-@media (max-width: 750px){
-.communitySectiondiv{
+@media (max-width: 750px) {
+  .communitySectiondiv {
     display: block;
+  }
 }
+.communitySectiondiv ul {
+  width: 100%;
+  padding: 1rem;
+  background-color: #082ed4;
 }
-.communitySectiondiv ul{
-    width: 100%;
-    padding: 1rem;
-    background-color: #082ed4;
+.communitySectiondiv ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 10px;
 }
-.communitySectiondiv ul li{
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    gap: 10px;
+.communitySectiondiv ul li p {
+  color: #fff;
 }
-.communitySectiondiv ul li p{
-    color: #fff;
+.communitySectiondiv ul h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
-.communitySectiondiv ul h2{
-    text-align: center;
-    color: #fff;
+#communityIcons {
+  color: #fff;
+  font-size: 6rem;
+}
+.communityChempionContentDetails {
+  padding: 2rem 0px;
+  background-color: #2049ff;
+  color: #fff;
+  text-align: center;
+  margin: 2rem 0px;
+}
+.communityChempionContentDetailsdiv {
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.communityChempionContentDetailsdiv h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+.communityChempionContentDetails p {
+  text-align: center;
+  line-height: 35px;
+  margin-bottom: 1rem;
+}
+@media (max-width: 650px) {
+  .communityChempionContentDetailsdiv h2 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+  }
 }
-#communityIcons{
-    color: #fff;
-    font-size: 6rem;
-}
-.communityChempionContentDetails{
-    padding: 2rem 0px;
-    background-color: #2049ff;
-    color: #fff;
-    text-align: center;
-    margin: 2rem 0px;
-}
-.communityChempionContentDetailsdiv{
-    
-    max-width: 1400px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.communityChempionContentDetailsdiv h2{
-    font-size: 3rem;
-    font-weight: 700;
-    text-align: center;
-}
-.communityChempionContentDetails p{
-    text-align: center;
-    line-height: 35px;
-    margin-bottom: 1rem;
-}
-@media (max-width: 650px){
-    .communityChempionContentDetailsdiv h2{
-        font-size: 2.5rem;
-    }
-}
-@media (max-width: 450px){
-    .communityChempionContentDetailsdiv h2{
-        font-size: 2rem;
-    }
+@media (max-width: 450px) {
+  .communityChempionContentDetailsdiv h2 {
+    font-size: 2rem;
+  }
 }

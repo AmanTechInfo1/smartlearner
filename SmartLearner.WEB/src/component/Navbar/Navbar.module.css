@@ -3,8 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-
+#navContainer {
+  background-color: black;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
 
 .navbar {
   display: flex;
@@ -13,7 +16,7 @@
   align-items: center;
   background-color: #ed2025;
   color: #fff;
-  margin: 20px 0px;
+
   font-family: "Antonio", sans-serif;
 }
 
@@ -22,7 +25,7 @@
   padding: 8px 20px;
   flex-direction: row;
 }
-.logo{
+.logo {
   position: relative;
   left: 132px;
 }
@@ -96,10 +99,9 @@
   color: rgb(160, 139, 139);
 }
 @media screen and (max-width: 1390px) {
-
 }
 @media screen and (max-width: 990px) {
-  .logo{
+  .logo {
     left: 0;
   }
   .navbar {
@@ -149,7 +151,7 @@
   }
 }
 @media (max-width: 320px) {
-  .contactInfo{
+  .contactInfo {
     display: flex;
     flex-direction: column;
   }
