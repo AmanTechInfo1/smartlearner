@@ -17,6 +17,7 @@ export default function Shop() {
   return (
     <>
       <div className={styles.shopWrapper}>
+        <h2>Shop</h2>
         <div className={styles.shopPage}>
           <div className={styles.shopGridView}>
             <div>
