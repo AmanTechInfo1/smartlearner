@@ -1,43 +1,39 @@
-import  { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { products } from "../../assets/data/Products";
 import { FilterReducer } from "./Reducer/FilterReducer"; // Import the reducer from FilterReducer.js
-
-
 
 const FilterContext = createContext();
 
 const initialState = {
-    filter_products: [],
-    all_products: [],
-    grid_view: true,
-    sorting_value: "lowest",
-    filters: {
-      text: "",
-    },
-  };
-  
+  filter_products: [],
+  all_products: [],
+  grid_view: true,
+  sorting_value: "lowest",
+  filters: {
+    text: "",
+  },
+};
 
 export const FilterContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(FilterReducer, initialState);
+  const [state, dispatch] = useReducer(FilterReducer, initialState);
 
-    //  to set grid view
-const setGridView =()=>{
-    return dispatch ({type:"SET_GRIDVIEW"})
-
-}
+  //  to set grid view
+  const setGridView = () => {
+    return dispatch({ type: "SET_GRIDVIEW" });
+  };
 
   // to set the list view
   const setListView = () => {
     return dispatch({ type: "SET_LIST_VIEW" });
   };
- // sorting function
- const sorting = (event) => {
+  // sorting function
+  const sorting = (event) => {
     let userValue = event.target.value;
     dispatch({ type: "GET_SORT_VALUE", payload: userValue });
   };
 
-// update the filter values
-const updateFilterValue = (event) => {
+  // update the filter values
+  const updateFilterValue = (event) => {
     let name = event.target.name;
     let value = event.target.value;
 
@@ -47,15 +43,14 @@ const updateFilterValue = (event) => {
   useEffect(() => {
     dispatch({ type: "FILTER_PRODUCTS" });
     dispatch({ type: "SORTING_PRODUCTS" });
-  }, [products, state.sorting_value, state.filters]);  
+  }, [products, state.sorting_value, state.filters]);
 
+  useEffect(() => {
+    dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
+  }, [products]);
 
-    useEffect(() => {
-        dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
-    }, [products]);
-
-    return (
-         <FilterContext.Provider
+  return (
+    <FilterContext.Provider
       value={{
         ...state,
         setGridView,
@@ -65,9 +60,9 @@ const updateFilterValue = (event) => {
       }}>
       {children}
     </FilterContext.Provider>
-    );
+  );
 };
 
 export const useFilterContext = () => {
-    return useContext(FilterContext);
+  return useContext(FilterContext);
 };

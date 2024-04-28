@@ -10,6 +10,10 @@
   padding: 2rem 1rem;
   font-family: "Roboto", Sans-serif;
 }
+.shopWrapper h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
 .shopGridView {
   display: grid;
   grid-template-columns: 0.2fr 1fr;
