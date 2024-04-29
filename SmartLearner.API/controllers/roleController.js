@@ -14,7 +14,8 @@ class RoleController {
 
   async getRoles(req, res, next) {
     try {
-      const roles = await roleService.getRolesAsync();
+      const { page, pagesize, search } = req.query;
+      const roles = await roleService.getRolesAsync(page, pagesize, search);
       res.json(roles);
     } catch (err) {
       next(err);

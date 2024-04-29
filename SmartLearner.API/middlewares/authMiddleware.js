@@ -2,9 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const requireAuth = (req, res, next) => {
   const token = req.header("Authorization");
-  // check json web token exists & is verified
   if (token) {
-    //const tokenWithoutBearer = token.replace("Bearer ", "");
     jwt.verify(
       token,
       process.env.JWT_SECRET || "SMARTLEARNERJWT",

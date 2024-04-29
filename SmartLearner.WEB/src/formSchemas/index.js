@@ -41,3 +41,9 @@ export const loginformSchema = yup.object({
     .required("Password is required")
     .trim(),
 });
+
+export const createRoleSchema = yup
+  .object({
+    name: yup.string().required("Role Name is required").trim(),
+  })
+  .required();

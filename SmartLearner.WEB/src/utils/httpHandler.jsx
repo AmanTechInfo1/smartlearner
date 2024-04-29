@@ -35,7 +35,7 @@ const post = async (url, params, opt) => {
     opt = {
       ...opt,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
       },
     };
 
@@ -47,25 +47,6 @@ const post = async (url, params, opt) => {
   }
 };
 
-const put = async (url, params, opt) => {
-  try {
-    let token = await getToken();
-    if (!opt) opt = {};
-    opt = {
-      ...opt,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const response = await axios.put(`${apiUrl}${url}`, params, opt);
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-};
-
-const http = { get, post, put };
+const http = { get, post };
 
 export default http;
