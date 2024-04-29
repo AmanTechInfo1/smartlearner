@@ -4,16 +4,38 @@ class RoleService {
   async createRoleAsync(roleData) {
     try {
       const role = await Role.create(roleData);
-      return role;
+      const totalCount = await Role.countDocuments();
+      const resultObject = {
+        message: "Added successfully",
+        statusCode: 201,
+        success: true,
+        data: { role, totalCount }
+      };
+      return resultObject;
     } catch (err) {
       throw new Error("Could not create role");
     }
   }
 
-  async getRolesAsync() {
+  async getRolesAsync(pageNumber, pagesize, query) {
     try {
-      const roles = await Role.find();
-      return roles;
+      const skip = (pageNumber - 1) * (pagesize || 20);
+      let filter = {};
+      if (query) {
+        const regex = new RegExp(query, "i");
+        filter.$or = [{ name: regex }];
+      }
+      const totalCount = await Role.countDocuments(filter);
+      const roles = await Role.find(filter).skip(skip).limit(pagesize || 20);
+
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 201,
+        success: true,
+        data: { roles, totalCount },
+      };
+
+      return resultObject;
     } catch (err) {
       throw new Error("Could not fetch roles");
     }

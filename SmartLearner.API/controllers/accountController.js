@@ -50,13 +50,7 @@ class AccountController {
     try {
       const { page, pagesize, search } = req.query;
       const response = await accountService.getAllUsersAsync(page, pagesize, search);
-      const resultObject = {
-        message: "Fetched successfully",
-        statusCode: 201,
-        success: true,
-        data: response,
-      };
-      res.status(201).json(resultObject);
+      res.status(201).json(response);
     } catch (err) {
       next(err);
     }
