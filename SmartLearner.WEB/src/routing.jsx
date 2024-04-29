@@ -50,6 +50,7 @@ import RequireAuth from "./component/RequireAuth ";
 import { ROLES } from "./constants";
 import AdminLayout from "./area/admin/AdminLayout";
 import Roles from "./area/admin/roles/Roles";
+import Products from "./area/admin/products/Products";
 
 export const router = createBrowserRouter([
   {
@@ -143,7 +144,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "products",
-        element: <AdminProductPage />,
+        element: <Products />,
       },
       {
         path: "add-products",
