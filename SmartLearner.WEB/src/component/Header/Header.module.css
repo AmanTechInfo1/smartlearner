@@ -105,6 +105,10 @@ nav #firstUl li a:hover {
     width: 100%;
     padding: 15px;
   }
+  .dropdownContent {
+    z-index: 1;
+    left: 10px;
+  }
 
   .menuIcon {
     display: block;

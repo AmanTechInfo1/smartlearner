@@ -12,6 +12,7 @@ export const products = [
       postcode: ['B10','B11', 'B12', 'B13', 'B25', 'B26', 'B27', 'B28', 'B33', 'B34', 'B36', 'B37', 'B40', 'B5','B8','B9','B91','B92','CV1','CV10', 'CV11','CV12','CV2', 'CV3','CV31', 'CV32','CV34','CV4','CV5','CV6','CV7','CV8' ,'LE17'],
       areaIncluded: ['Balsall Common', 'Bedworth', 'Berkswell', 'Bulkington','Coventry','Meriden','Nuneaton', 'Solihull'],
       rating: 4.5,
+      discription: "sajdklsjadhsakjdcbsakmcjbsamkcjsbadksahguduasyhd"
     },
     {
       id: 2,

@@ -10,7 +10,7 @@ function Header() {
   const toggleMenu = () => {
     const menuList = menuRef.current;
     if (menuList.style.maxHeight === "0px") {
-      menuList.style.maxHeight = "500px";
+      menuList.style.maxHeight = "800px";
     } else {
       menuList.style.maxHeight = "0px";
     }
@@ -24,7 +24,7 @@ function Header() {
           id={styles.firstUl}
           ref={menuRef}
           className={`${styles.menuList} ${isMenuOpen ? styles.open : ""}`}
-          style={{ maxHeight: isMenuOpen ? "500px" : "0px" }} // Set initial maxHeight
+          style={{ maxHeight: isMenuOpen ? "800px" : "0px" }} // Set initial maxHeight
         >
           <li>
             <Link to="/">Home</Link>
