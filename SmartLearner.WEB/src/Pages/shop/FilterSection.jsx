@@ -22,7 +22,7 @@ export default function FilterSection() {
 
   // we need to have the individual data of each in an array format
   const categoryData = getUniqueData(all_products, "category");
-  console.log(categoryData);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.filterSearch}>
@@ -54,6 +54,25 @@ export default function FilterSection() {
             );
           })}
         </div>
+      </div>
+
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p>
+          <h2> {price}</h2>
+        </p>
+        <input
+          type="range"
+          name="price"
+          value={price}
+          onChange={updateFilterValue}
+        />
+      </div>
+
+      <div className="filter-clear">
+        <button className="btn" onClick={clearFilters}>
+          Clear Filters
+        </button>
       </div>
     </div>
   );

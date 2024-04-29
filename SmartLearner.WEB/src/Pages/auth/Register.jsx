@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -31,17 +31,16 @@ export default function Register() {
   const handleRegistration = async (data) => {
     const formData = new FormData();
     formData.append("username", data.username);
-    formData.append("email", data.username);
-    formData.append("password", data.username);
-    formData.append("phoneNumber", data.username);
-    formData.append("roleName", data.username);
-    formData.append("privacyPolicy", data.username);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("phoneNumber", data.phoneNumber);
+    formData.append("roleName", data.roleName);
+    formData.append("privacyPolicy", data.privacyPolicy);
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 
   const [webLoading, setwebLoading] = useState(true);
   useEffect(() => {
-   
     const timeout2 = setTimeout(() => {
       setwebLoading(false);
     }, 500);
@@ -205,8 +204,7 @@ export default function Register() {
                           {AccountTypes.map((accountType) => (
                             <option
                               key={accountType.value}
-                              value={accountType.value}
-                            >
+                              value={accountType.value}>
                               {accountType.label}
                             </option>
                           ))}
@@ -260,7 +258,7 @@ export default function Register() {
           </section>
         </div>
       ) : (
-        <LoadingWeb/>
+        <LoadingWeb />
       )}
     </>
   );
