@@ -3,6 +3,7 @@ const connectDB = require("./config/database");
 const errorHandler = require("./middlewares/errorHandler");
 const accountRoutes = require("./routes/accountRoutes");
 const roleRoutes = require("./routes/roleRoutes");
+const productRoutes = require("./routes/productRoutes");
 const cors = require("cors");
 
 const app = express();
@@ -12,7 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use("/api/account", accountRoutes);
-app.use("/api", roleRoutes);
+app.use("/api/roles", roleRoutes);
+app.use("/api/product", productRoutes);
 
 app.use(errorHandler);
 // Start server
