@@ -21,11 +21,11 @@ const Navbar = () => {
         <div className={styles.navLinks}>
           <ul type="none" id={styles.navLinksUl}>
             <li>
-              <Link to="https://smartlearner.com/about">ABOUT</Link>
+              <Link to="/about">ABOUT</Link>
             </li>
             <span>|</span>
             <li>
-              <Link to="https://smartlearner.com/faqs/">FAQS</Link>
+              <Link to="/faqs">FAQS</Link>
             </li>
             <span>|</span>
             <li>

@@ -6,67 +6,38 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import React from "react";
 import styles from "./css/ContactUs.module.css"; // Import CSS module
+// /////////////////
+import { Controller, useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { contactFormSchema } from "../formSchemas/index";
+import { contactUsData } from "../features/contactUsSlice";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function ContactUs() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    postalCode: "",
-    mobileNo: "",
-    email: "",
-    tutionType: "",
-    instructorType: "",
-    message: "",
+  const dispatch = useDispatch();
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(contactFormSchema),
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const handleContactUsForm = async (data) => {
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("address", data.address);
+    formData.append("postalCode", data.postalCode);
+    formData.append("mobileNo", data.mobileNo);
+    formData.append("email", data.email);
+    formData.append("tutionType", data.tutionType);
+    formData.append("instructorType", data.instructorType);
+    formData.append("message", data.message);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Handle form submission, you can use formData state here
-    try {
-      const response = await fetch(`http://localhost:5000/api/form/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      console.log(` Form send successfull`,response);
-
-      if(response.ok){
-        alert(" Successfull")
-        setFormData({
-          firstName: "",
-          lastName: "",
-          address: "",
-          postalCode: "",
-          mobileNo: "",
-          email: "",
-          tutionType: "",
-          instructorType: "",
-          message: "",
-          })
-         
-
-      }else{
-      
-        console.log("error")
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log(formData);
+    dispatch(contactUsData({ requestData: data, reset }));
   };
 
   return (
@@ -131,8 +102,7 @@ export default function ContactUs() {
               style={{ border: 0 }}
               allowFullScreen=""
               aria-hidden="false"
-              tabIndex="0"
-            ></iframe>
+              tabIndex="0"></iframe>
           </div>
         </div>
       </div>
@@ -142,118 +112,165 @@ export default function ContactUs() {
         </h2>
         <p>Please fill out the fields given below</p>
         <div className={styles.formContainer}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(handleContactUsForm)}>
             <div className={styles.contantUsFormColoumn}>
               <div className={styles.column}>
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
+                <Controller
                   name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  placeholder="First Name"
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="First Name"
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="address">Address</label>
-                <input
-                  type="text"
-                  id="address"
+                <Controller
                   name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  placeholder="Address"
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="Address"
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="mobileNo">Mobile No.</label>
-                <input
-                  type="text"
-                  id="mobileNo"
+                <Controller
                   name="mobileNo"
-                  value={formData.mobileNo}
-                  onChange={handleChange}
-                  placeholder="Mobile No."
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="Mobile No."
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="tutionType">Tution Type</label>
-                <select
-                  id="tutionType"
+                <Controller
                   name="tutionType"
-                  value={formData.tutionType}
-                  onChange={handleChange}
-                  required
-                >
-                  <option disabled value="">
-                    --Select Tution Type--
-                  </option>
-                  <option value="Auto">Auto</option>
-                  <option value="Manual">Manual</option>
-                </select>
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <select
+                      value={value}
+                      onChange={onChange}
+                      className={styles.homeForminputField}
+                      required>
+                      <option disabled value="">
+                        --Select Tution Type--
+                      </option>
+                      <option value="Auto">Auto</option>
+                      <option value="Manual">Manual</option>
+                    </select>
+                  )}
+                />
               </div>
+
               <div className={styles.column}>
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
+                <Controller
                   name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  placeholder="Last Name"
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="Last Name"
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="postalCode">Postal Code</label>
-                <input
-                  type="text"
-                  id="postalCode"
+                <Controller
                   name="postalCode"
-                  value={formData.postalCode}
-                  onChange={handleChange}
-                  placeholder="Postal Code"
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="text"
+                      placeholder="Postal Code"
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
+                <Controller
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  required
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      value={value}
+                      onChange={onChange}
+                      type="email"
+                      placeholder="Email Address"
+                      className={styles.homeForminputField}
+                      required
+                    />
+                  )}
                 />
 
-                <label htmlFor="instructorType">Instructor Type</label>
-                <select
-                  id="instructorType"
+                <Controller
                   name="instructorType"
-                  value={formData.instructorType}
-                  onChange={handleChange}
-                  required
-                >
-                  <option disabled value="">
-                    --Select Instruction Type--
-                  </option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="No prefrence">No Prefrence</option>
-                </select>
+                  control={control}
+                  defaultValue=""
+                  render={({ field: { value, onChange } }) => (
+                    <select
+                      value={value}
+                      onChange={onChange}
+                      className={styles.homeForminputField}
+                      required>
+                      <option disabled value="">
+                        --Select Instruction Type--
+                      </option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="No preference">No Preference</option>
+                    </select>
+                  )}
+                />
               </div>
             </div>
+
             <div className={styles.message}>
-              <label htmlFor="message">Any Special Instructions</label>
-              <textarea
-                id="message"
+              <Controller
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
+                control={control}
+                defaultValue=""
+                render={({ field: { value, onChange } }) => (
+                  <textarea
+                    value={value}
+                    onChange={onChange}
+                    placeholder="Any Special Instructions"
+                    className={styles.homeForminputField}
+                    required
+                  />
+                )}
+              />
             </div>
+
             <div className={styles.submit}>
               <button type="submit">Submit</button>
             </div>

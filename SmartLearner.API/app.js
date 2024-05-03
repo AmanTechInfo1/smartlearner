@@ -4,6 +4,12 @@ const errorHandler = require("./middlewares/errorHandler");
 const accountRoutes = require("./routes/accountRoutes");
 const roleRoutes = require("./routes/roleRoutes");
 const productRoutes = require("./routes/productRoutes");
+const serviceRoutes = require("./routes/servicesRoutes");
+const enquiryRoutes = require("./routes/enquiryRoutes");
+const callBackRoutes = require("./routes/callBackRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const drivenFormRoutes = require("./routes/drivenFormRoutes");
+
 const cors = require("cors");
 
 const app = express();
@@ -15,6 +21,11 @@ app.use(cors());
 app.use("/api/account", accountRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/product", productRoutes);
+app.use("/api/serviceForm", serviceRoutes);
+app.use("/api/enquiryForm", enquiryRoutes);
+app.use("/api/callbackForm", callBackRoutes);
+app.use("/api/contactForm", contactRoutes);
+app.use("/api/drivenForm", drivenFormRoutes);
 
 app.use(errorHandler);
 // Start server

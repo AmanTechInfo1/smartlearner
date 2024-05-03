@@ -48,11 +48,11 @@ const Roles = () => {
     const role = roles.find((role) => role._id === id);
     setRoleObj(role);
     toggleEditRoleModal();
-  }
+  };
 
   const handleDeleteClick = (id) => {
     console.log(id);
-  }
+  };
 
   const columns = [
     {
@@ -67,15 +67,13 @@ const Roles = () => {
       render: (text, record) => (
         <div
           className="d-flex justify-content-center"
-          data-popper-placement="bottom-end"
-        >
+          data-popper-placement="bottom-end">
           <Link
             to={"#"}
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
-            }}
-          >
+            }}>
             <LiaUserEditSolid />
           </Link>
           <Link
@@ -83,8 +81,7 @@ const Roles = () => {
             to={"#"}
             onClick={() => {
               handleDeleteClick(record._id);
-            }}
-          >
+            }}>
             <RiDeleteBin6Fill />
           </Link>
         </div>
@@ -97,10 +94,7 @@ const Roles = () => {
       <div className={styles.usersContainer}>
         <div className={styles.usersHeading}>
           <h2 className={styles.userHeading}>Roles</h2>
-          <button
-            className={styles.addButton}
-            onClick={toggleAddRoleModal}
-          >
+          <button className={styles.addButton} onClick={toggleAddRoleModal}>
             Add Role
           </button>
         </div>

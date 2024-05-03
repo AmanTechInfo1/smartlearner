@@ -55,15 +55,13 @@ const AdminUsers = () => {
       render: (text, record) => (
         <div
           className="d-flex justify-content-around"
-          data-popper-placement="bottom-end"
-        >
+          data-popper-placement="bottom-end">
           <Link
             to={`/update-client/`}
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
-            }}
-          >
+            }}>
             <LiaUserEditSolid />
           </Link>
           <Link
@@ -71,8 +69,7 @@ const AdminUsers = () => {
             to="#"
             onClick={() => {
               handleDeleteClick(record._id);
-            }}
-          >
+            }}>
             <RiDeleteBin6Fill />
           </Link>
         </div>
@@ -89,8 +86,7 @@ const AdminUsers = () => {
           <h2 className={styles.userHeading}>Users</h2>
           <button
             className={styles.addButton}
-            onClick={() => setAddUserFormVisible(true)}
-          >
+            onClick={() => setAddUserFormVisible(true)}>
             Add User
           </button>
         </div>
