@@ -3,8 +3,8 @@ const productService = require('../services/productService');
 class ProductController {
   async createProduct(req, res, next) {
     try {
-      const product = await productService.createProductAsync(req.body);
-      res.status(201).json(product);
+      const result = await productService.createProductAsync(req.body);
+      res.status(201).json(result);
     } catch (err) {
       next(err);
     }
@@ -13,8 +13,8 @@ class ProductController {
   async getProducts(req, res, next) {
     try {
       const { page, pageSize, search } = req.query;
-      const { products, totalCount } = await productService.getProductsAsync(page, pageSize, search);
-      res.json({ products, totalCount });
+      const result = await productService.getProductsAsync(page, pageSize, search);
+      res.json(result);
     } catch (err) {
       next(err);
     }

@@ -21,18 +21,9 @@ class CategoryController {
     }
   }
 
-  async getCategoryById(req, res, next) {
-    try {
-      const category = await categoryService.getCategoryByIdAsync(req.params.id);
-      res.json(category);
-    } catch (err) {
-      next(err);
-    }
-  }
-
   async updateCategory(req, res, next) {
     try {
-      const category = await categoryService.updateCategoryAsync(req.params.id, req.body);
+      const category = await categoryService.updateCategoryAsync(req.query.id, req.body);
       res.json(category);
     } catch (err) {
       next(err);
@@ -41,8 +32,8 @@ class CategoryController {
 
   async deleteCategory(req, res, next) {
     try {
-      await categoryService.deleteCategoryAsync(req.params.id);
-      res.sendStatus(204);
+      const result = await categoryService.deleteCategoryAsync(req.query.id);
+      res.json(result);
     } catch (err) {
       next(err);
     }

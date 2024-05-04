@@ -1,12 +1,12 @@
 import React from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
-import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createRoleSchema } from '../../../../formSchemas';
-import { createRole } from '../../../../features/rolesSlice';
+import { useDispatch } from 'react-redux';
+import { categorySchema } from '../../../../formSchemas/category';
+import { updateCategory } from '../../../../features/categorySlice';
 
-function EditRoleModal(props) {
+function EditCategoryModal(props) {
     const dispatch = useDispatch();
 
     const {
@@ -15,27 +15,29 @@ function EditRoleModal(props) {
         formState: { errors },
         reset
     } = useForm({
-        resolver: yupResolver(createRoleSchema),
+        resolver: yupResolver(categorySchema),
     });
 
     const onSubmit = async (data) => {
         const formData = new FormData();
-        formData.append('name', data?.name);
-        dispatch(createRole(formData, reset, props.toggleAddRoleModal));
+        formData.append("name", data?.name);
+        formData.append("description", data?.description);
+        dispatch(updateCategory(props?.categoryObj?._id, formData, reset, props.toggleEditCategoryModal));
     };
+
     return (
         <>
             <Modal
-                isOpen={props.editRoleModalOpen}
-                toggle={() => props.toggleEditRoleModal()}>
+                isOpen={props.showEditCategoryModal}
+                toggle={() => props.toggleEditCategoryModal()}>
                 <ModalHeader
-                    toggle={() => props.toggleEditRoleModal()}>
-                    Update Role
+                    toggle={() => props.toggleEditCategoryModal()}>
+                    Update Category
                 </ModalHeader>
                 <ModalBody>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <label>Role Name</label>
+                            <label>Category Name</label>
                             <Controller
                                 name="name"
                                 control={control}
@@ -48,9 +50,27 @@ function EditRoleModal(props) {
                                         autoComplete="false"
                                     />
                                 )}
-                                defaultValue={props?.roleObj?.name}
+                                defaultValue={props?.categoryObj?.name}
                             />
                             {errors?.name?.message ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : ""}
+                        </div>
+                        <div className="form-group">
+                            <label>Description</label>
+                            <Controller
+                                name="description"
+                                control={control}
+                                render={({ field: { value, onChange } }) => (
+                                    <input
+                                        className={`form-control  ${errors?.description ? "error-input" : ""}`}
+                                        type="text"
+                                        value={value}
+                                        onChange={onChange}
+                                        autoComplete="false"
+                                    />
+                                )}
+                                defaultValue={props?.categoryObj?.description}
+                            />
+                            {errors?.description?.message ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : ""}
                         </div>
                         <div className="form-group text-center mt-3">
                             <button
@@ -67,4 +87,4 @@ function EditRoleModal(props) {
     )
 }
 
-export default EditRoleModal
+export default EditCategoryModal

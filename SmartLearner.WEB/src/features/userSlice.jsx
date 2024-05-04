@@ -26,7 +26,6 @@ const userSlice = createSlice({
 
 export const getAllUsers = (search, page, pagesize) => async (dispatch) => {
   try {
-    debugger;
     const response = await httpHandler.get(
       `/api/account/users?search=${search}&page=${page}&pagesize=${pagesize}`
     );

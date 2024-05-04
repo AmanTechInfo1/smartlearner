@@ -6,7 +6,7 @@ import {
   BsPeopleFill,
   BsListCheck,
   BsMenuButtonWideFill,
-  BsFillGearFill, 
+  BsFillGearFill,
 } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import styles from "./css/AdminApp.module.css";
@@ -54,6 +54,19 @@ export default function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             Roles
           </li>
         </Link>
+        <Link to="/admin/categories">
+          <li className={styles.adminSidebarListItem}>
+            <BsFillGrid3X3GapFill className={styles.adminIcon} />
+            Categories
+          </li>
+        </Link>
+        <Link to="/admin/postcodes">
+          <li className={styles.adminSidebarListItem}>
+            {" "}
+            <BsFillArchiveFill className={styles.adminIcon} />
+            Postcodes
+          </li>
+        </Link>
         <Link to="/admin/products">
           <li className={styles.adminSidebarListItem}>
             {" "}
@@ -61,13 +74,6 @@ export default function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             Products
           </li>
         </Link>
-        <li className={styles.adminSidebarListItem}>
-          <a href="">
-            <BsFillGrid3X3GapFill className={styles.adminIcon} />
-            Categories
-          </a>
-        </li>
-
         <li className={styles.adminSidebarListItem}>
           <a href="">
             <BsListCheck className={styles.adminIcon} />

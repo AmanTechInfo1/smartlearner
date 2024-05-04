@@ -2,11 +2,11 @@ import React from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addcategorySchema } from '../../../../formSchemas/product';
 import { useDispatch } from 'react-redux';
-import { createCategory } from '../../../../features/categorySlice';
+import { createPostcode } from '../../../../features/postcodeSlice';
+import { postcodeSchema } from '../../../../formSchemas/postcode';
 
-function AddCategoryModal(props) {
+function AddPostcodeModal(props) {
     const dispatch = useDispatch();
 
     const {
@@ -15,35 +15,36 @@ function AddCategoryModal(props) {
         formState: { errors },
         reset
     } = useForm({
-        resolver: yupResolver(addcategorySchema),
+        resolver: yupResolver(postcodeSchema),
     });
 
     const onSubmit = async (data) => {
         const formData = new FormData();
-        formData.append("name", data?.name);
-        formData.append("description", data?.description);
-        dispatch(createCategory(formData, reset, props.toggleAddCategoryModal));
+        formData.append("postcode", data?.postcode);
+        formData.append("city", data?.city);
+        formData.append("country", data?.country);
+        dispatch(createPostcode(formData, reset, props.toggleAddPostcodeModal));
     };
 
     return (
         <>
             <Modal
-                isOpen={props.showAddCategoryModal}
-                toggle={() => props.toggleAddCategoryModal()}>
+                isOpen={props.showAddPostcodeModal}
+                toggle={() => props.toggleAddPostcodeModal()}>
                 <ModalHeader
-                    toggle={() => props.toggleAddCategoryModal()}>
-                    Create Category
+                    toggle={() => props.toggleAddPostcodeModal()}>
+                    Create Postcode
                 </ModalHeader>
                 <ModalBody>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <label>Category Name</label>
+                            <label>Postcode</label>
                             <Controller
-                                name="name"
+                                name="postcode"
                                 control={control}
                                 render={({ field: { value, onChange } }) => (
                                     <input
-                                        className={`form-control  ${errors?.name ? "error-input" : ""}`}
+                                        className={`form-control  ${errors?.postcode ? "error-input" : ""}`}
                                         type="text"
                                         value={value}
                                         onChange={onChange}
@@ -52,16 +53,16 @@ function AddCategoryModal(props) {
                                 )}
                                 defaultValue={""}
                             />
-                            {errors?.name?.message ? <p style={{ color: "red" }}>{errors?.name?.message}</p> : ""}
+                            {errors?.postcode?.message ? <p style={{ color: "red" }}>{errors?.postcode?.message}</p> : ""}
                         </div>
                         <div className="form-group">
-                            <label>Description</label>
+                            <label>City</label>
                             <Controller
-                                name="description"
+                                name="city"
                                 control={control}
                                 render={({ field: { value, onChange } }) => (
                                     <input
-                                        className={`form-control  ${errors?.description ? "error-input" : ""}`}
+                                        className={`form-control  ${errors?.city ? "error-input" : ""}`}
                                         type="text"
                                         value={value}
                                         onChange={onChange}
@@ -70,7 +71,25 @@ function AddCategoryModal(props) {
                                 )}
                                 defaultValue={""}
                             />
-                            {errors?.description?.message ? <p style={{ color: "red" }}>{errors?.description?.message}</p> : ""}
+                            {errors?.city?.message ? <p style={{ color: "red" }}>{errors?.city?.message}</p> : ""}
+                        </div>
+                        <div className="form-group">
+                            <label>Country</label>
+                            <Controller
+                                name="country"
+                                control={control}
+                                render={({ field: { value, onChange } }) => (
+                                    <input
+                                        className={`form-control  ${errors?.country ? "error-input" : ""}`}
+                                        type="text"
+                                        value={value}
+                                        onChange={onChange}
+                                        autoComplete="false"
+                                    />
+                                )}
+                                defaultValue={""}
+                            />
+                            {errors?.country?.message ? <p style={{ color: "red" }}>{errors?.country?.message}</p> : ""}
                         </div>
                         <div className="form-group text-center mt-3">
                             <button
@@ -87,4 +106,4 @@ function AddCategoryModal(props) {
     )
 }
 
-export default AddCategoryModal
+export default AddPostcodeModal

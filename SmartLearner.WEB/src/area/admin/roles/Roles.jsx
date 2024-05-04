@@ -9,6 +9,7 @@ import { getAllRoles } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
+import { Button } from "reactstrap";
 
 const Roles = () => {
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ const Roles = () => {
           className="d-flex justify-content-center"
           data-popper-placement="bottom-end"
         >
-          <Link
+          <Button
             to={"#"}
             className="dropdown-item px-2 text-success"
             onClick={() => {
@@ -77,7 +78,7 @@ const Roles = () => {
             }}
           >
             <LiaUserEditSolid />
-          </Link>
+          </Button>
           <Link
             className="dropdown-item px-2 text-danger"
             to={"#"}
