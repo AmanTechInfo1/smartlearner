@@ -22,6 +22,15 @@ class RoleController {
     }
   }
 
+  async getRoleList(req, res, next) {
+    try {
+      const roles = await roleService.getRoleListAsync();
+      res.json(roles);
+    } catch (err) {
+      next(err);
+    }
+  }
+
   async getRoleById(req, res, next) {
     try {
       const role = await roleService.getRoleByIdAsync(req.params.id);

@@ -3,8 +3,8 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createRoleSchema } from '../../../../formSchemas';
 import { createRole } from '../../../../features/rolesSlice';
+import { createRoleSchema } from '../../../../formSchemas/account';
 
 function AddRoleModal(props) {
     const dispatch = useDispatch();

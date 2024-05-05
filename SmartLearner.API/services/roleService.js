@@ -41,12 +41,43 @@ class RoleService {
     }
   }
 
+  async getRoleListAsync() {
+    try {
+      const roles = await Role.find();
+
+      const resultObject = {
+        success: true,
+        message: "All roles fetched successfully",
+        data: roles,
+      };
+
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
   async getRoleByIdAsync(roleId) {
     try {
       const role = await Role.findById(roleId);
-      return role;
+      const resultObject = {
+        success: true,
+        message: "",
+        data: role,
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch role");
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
     }
   }
 

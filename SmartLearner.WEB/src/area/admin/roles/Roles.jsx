@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { getAllRoles } from "../../../features/rolesSlice";
+import { getAllRoles, getRoleById } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
@@ -13,7 +13,13 @@ import { Button } from "reactstrap";
 
 const Roles = () => {
   const dispatch = useDispatch();
-  const { loading, roles, rolesCount } = useSelector((state) => state.roles);
+  const { roleLoading, roles, rolesCount } = useSelector((state) => state.roles);
+  const [state, setState] = useState({
+    search: "",
+    page: 1,
+    pageSize: 10,
+  });
+
   const [addRoleModalOpen, setAddRoleModalOpen] = useState(false);
   const toggleAddRoleModal = () => setAddRoleModalOpen(!addRoleModalOpen);
 
@@ -21,11 +27,7 @@ const Roles = () => {
   const toggleEditRoleModal = () => setEditRoleModalOpen(!editRoleModalOpen);
 
   const [roleObj, setRoleObj] = useState();
-  const [state, setState] = useState({
-    search: "",
-    page: 1,
-    pageSize: 10,
-  });
+  
 
   useEffect(() => {
     dispatch(getAllRoles(state.search, state.page, state.pageSize));
@@ -46,8 +48,7 @@ const Roles = () => {
   };
 
   const handleEditClick = (id) => {
-    const role = roles.find((role) => role._id === id);
-    setRoleObj(role);
+    dispatch(getRoleById(id));
     toggleEditRoleModal();
   }
 
@@ -105,7 +106,7 @@ const Roles = () => {
             Add Role
           </button>
         </div>
-        {!loading ? (
+        {!roleLoading ? (
           <Table
             className="table-striped"
             pagination={{

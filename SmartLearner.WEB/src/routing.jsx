@@ -42,9 +42,7 @@ import Cart from "./Pages/shop/cart/Cart";
 import HazardPerception from "./Pages/Theory-Subscription/Hazard/HazardPerception";
 import Thanks from "./Pages/Thanks";
 import AdminHome from "./area/admin/AdminHome";
-import AdminUsers from "./area/admin/AdminUsers";
 import SingleUser from "./area/admin/SingleUser";
-import AdminProductPage from "./area/admin/adminProductPage/AdminProductPage";
 import AddProductPage from "./area/admin/adminProductPage/AddProductPage";
 import RequireAuth from "./component/RequireAuth ";
 import { ROLES } from "./constants";
@@ -53,6 +51,7 @@ import Roles from "./area/admin/roles/Roles";
 import Products from "./area/admin/products/Products";
 import Categories from "./area/admin/categories/Categories";
 import Postcodes from "./area/admin/postcodes/PostCodes";
+import Users from "./area/admin/users/Users";
 
 export const router = createBrowserRouter([
   {
@@ -138,7 +137,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <AdminUsers />,
+        element: <Users />,
       },
       {
         path: "singleuser",
