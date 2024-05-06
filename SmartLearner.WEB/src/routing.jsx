@@ -51,6 +51,8 @@ import { ROLES } from "./constants";
 import AdminLayout from "./area/admin/AdminLayout";
 import Roles from "./area/admin/roles/Roles";
 import Products from "./area/admin/products/Products";
+import MockTest from "./Pages/Theory-Subscription/mockTest/MockTest";
+import MyAccount from "./Pages/auth/myAccount/MyAccount";
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +113,8 @@ export const router = createBrowserRouter([
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "hazard-perception", element: <HazardPerception /> },
+      {path:"mcq-Part1", element: <MockTest/>},
+      {path:'my-account', element: <MyAccount/>},
     ],
   },
 

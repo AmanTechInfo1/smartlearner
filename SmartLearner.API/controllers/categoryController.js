@@ -10,7 +10,7 @@ class CategoryController {
       next(err);
     }
   }
-
+  
   async getCategories(req, res, next) {
     try {
       const { page, pagesize, search } = req.query;

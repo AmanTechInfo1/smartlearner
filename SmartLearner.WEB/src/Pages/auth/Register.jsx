@@ -4,7 +4,6 @@ import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Loader from "../../component/loader/Loader";
 import { registerformSchema } from "../../formSchemas";
 import { Controller, useForm } from "react-hook-form";
 import { AccountTypes } from "../../constants";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useFilterContext } from "../../component/Context/FilterContext";
-import { FaCheck } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import styles from "./Filter.module.css";
 
 export default function FilterSection() {
@@ -24,22 +24,26 @@ export default function FilterSection() {
   const categoryData = getUniqueData(all_products, "category");
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.filterSearch}>
+    <div className={styles.filterWrapper}>
+      <div className={styles.searchBox}>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
+            className={styles.searchInput}
             name="text"
-            placeholder="Search"
+            placeholder="Type to search..."
             value={text}
             onChange={updateFilterValue}
           />
+          <div className={styles.searchButton}>
+            <FaSearch id={styles.searchBtn} />
+          </div>
         </form>
       </div>
 
       <div className={styles.filterCategory}>
         <h3>Category</h3>
-        <div>
+        <div className={styles.filterCategories}>
           {categoryData.map((curElem, index) => {
             return (
               <button
@@ -56,23 +60,20 @@ export default function FilterSection() {
         </div>
       </div>
 
-      <div className="filter_price">
-        <h3>Price</h3>
-        <p>
-          <h2> {price}</h2>
-        </p>
-        <input
-          type="range"
-          name="price"
-          value={price}
-          onChange={updateFilterValue}
-        />
-      </div>
-
-      <div className="filter-clear">
-        <button className="btn" onClick={clearFilters}>
-          Clear Filters
-        </button>
+      <div className={styles.filteredPrice}>
+        <h3> Search by Price</h3>
+        <div className={styles.filteredPriceRange}>
+          {" "}
+          <p>
+            {minPrice}- <span>--{price}--</span>-{maxPrice}
+          </p>
+          <input
+            type="range"
+            name="price"
+            value={price}
+            onChange={updateFilterValue}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,31 +1,25 @@
-import React, { useState, useRef } from "react";
-import styles from "./Header.module.css";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
 import { FaBars } from "react-icons/fa";
 
 function Header() {
-  const [isMenuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
-  const menuRef = useRef(null); // Ref for menu element
-
-  const toggleMenu = () => {
-    const menuList = menuRef.current;
-    if (menuList.style.maxHeight === "0px") {
-      menuList.style.maxHeight = "800px";
-    } else {
-      menuList.style.maxHeight = "0px";
-    }
-    setMenuOpen(isMenuOpen); // Toggle menu visibility
-  };
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div id={styles.navContainer}>
-      <nav className={styles.nav}>
+    <div className={styles.headerContainer}>
+      <nav>
+        <div
+          className={`${styles.menu} ${menuOpen ? styles.open : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}>
+          <span className={styles.barIcon}>
+            <FaBars id={styles.barIcon} />
+          </span>
+        </div>
         <ul
-          id={styles.firstUl}
-          ref={menuRef}
-          className={`${styles.menuList} ${isMenuOpen ? styles.open : ""}`}
-          style={{ maxHeight: isMenuOpen ? "800px" : "0px" }} // Set initial maxHeight
-        >
+          className={
+            menuOpen ? `${styles.menuList} ${styles.open}` : styles.menuList
+          }>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -74,7 +68,7 @@ function Header() {
                 <Link to="/ADI-Training-Portal">ADI Training Portal</Link>
               </li>
               <li>
-                <Link to="https://smartlearner.com/about/">About Us</Link>
+                <Link to="/about">About Us</Link>
               </li>
             </ul>
           </li>
@@ -111,10 +105,6 @@ function Header() {
             <Link to="/Contact-Us">Contact</Link>
           </li>
         </ul>
-        <div className={styles.menuIcon} onClick={toggleMenu}>
-          {" "}
-          <FaBars />
-        </div>
       </nav>
     </div>
   );
