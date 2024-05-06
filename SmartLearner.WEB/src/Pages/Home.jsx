@@ -14,6 +14,12 @@ import starImg from "../assets/images/star.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "./Carousel";
 import Review from "../component/Reviews/Review";
+import { Link } from "react-router-dom";
+import hallOfFame1 from "../assets/images/halloffame1.png"
+import hallOfFame2 from "../assets/images/halloffame2.png"
+import hallOfFame3 from "../assets/images/halloffame3.png"
+import hallOfFame4 from "../assets/images/halloffame4.png"
+
 // //////////////////
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -95,25 +101,27 @@ export default function Home() {
           <img src={trustPilot} alt="trustPilot" />
         </div>
         <div className={styles.homeContainer}>
-          <div className={styles.innerHomeHeading}>
-            <h2>
-              START YOUR
-              <br /> DRIVING <br /> JOURNEY
-            </h2>
-          </div>
+  <div className={styles.innerHomeHeading}>
+    <h2>
+      START YOUR<br/>
+      <span>DRIVING</span><br/> 
+      <span>JOURNEY</span>
+    </h2>
+  </div>
 
-          <div className={styles.arrowImgSection}>
-            <img src={arrowImg} alt="arrowImg" />
-          </div>
-          <div className={styles.userIdentificationImg}>
-            <img src={userIdentificationImg} alt="userIdentificationImg" />
-          </div>
+  <div className={styles.arrowImgSection}>
+    <img src={arrowImg} className={`${styles.animate__animated} ${styles.animate__bounce}`} alt="arrowImg" />
+  </div>
+  <div className={styles.userIdentificationImg}>
+    <img src={userIdentificationImg} className={`${styles.animate__animated} ${styles.animate__fadeInUp}`} alt="userIdentificationImg" />
+  </div>
 
-          <div className={styles.homeUserHand}>
-            <img id={styles.userHand} src={homeUserHand} alt="homeUserHand" />
-            <img id={styles.LplateImg} src={LplateImg} alt="LplateImg" />
-          </div>
-        </div>
+  <div className={styles.homeUserHand}>
+    <img id={styles.userHand} src={homeUserHand} className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`} alt="homeUserHand" />
+    <img id={styles.LplateImg} src={LplateImg} className={`${styles.animate__animated} ${styles.animate__fadeInRight}`} alt="LplateImg" />
+  </div>
+</div>
+
       </section>
 
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
@@ -125,19 +133,21 @@ export default function Home() {
                 <span>
                   <img src={img1} alt="1" />
                 </span>
-                Apply for your Provisonal License
+                <Link to='GOV.com'> Apply for your Provisonal License</Link>
+               
               </li>
               <li>
                 <span>
                   <img src={img2} alt="2" />
                 </span>
-                Pass your Theory Test with Smartlearner
+                <Link to='/Theory-Portal'>Pass your Theory Test with Smartlearner</Link>
+                
               </li>
               <li>
                 <span>
                   <img src={img3} alt="3" />
                 </span>
-                Book Your lessons with Smartlearner
+                <Link to='/Driving-Lessons'>Book Your lessons with Smartlearner</Link>
               </li>
             </ul>
           </div>
@@ -272,10 +282,10 @@ export default function Home() {
             </div>
 
             <div className={styles.trophyFrame}>
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
+              <img src={hallOfFame1} alt="hallOfFame1" />
+              <img src={hallOfFame2} alt="hallOfFame2" />
+              <img src={hallOfFame3} alt="hallOfFame3" />
+              <img src={hallOfFame4} alt="hallOfFame4" />
             </div>
           </div>
         </div>

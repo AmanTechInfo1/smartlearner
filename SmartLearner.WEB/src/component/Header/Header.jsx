@@ -68,7 +68,7 @@ function Header() {
                 <Link to="/ADI-Training-Portal">ADI Training Portal</Link>
               </li>
               <li>
-                <Link to="https://smartlearner.com/about/">About Us</Link>
+                <Link to="/about">About Us</Link>
               </li>
             </ul>
           </li>

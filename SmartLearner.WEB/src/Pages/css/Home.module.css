@@ -12,13 +12,6 @@
   padding: 1rem;
   width: 100%;
 }
-.homeContainer {
-  padding: 2rem 1rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
 .homeContent {
   text-align: right;
 }
@@ -26,27 +19,163 @@
   max-width: 300px;
   width: 100%;
 }
+.homeContainer {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+position: relative;
+  
+}
+
+.innerHomeHeading{
+  text-align: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
 .innerHomeHeading h2 {
   font-size: 4rem;
   color: #fff;
+  
+  font-weight: 700;
+  background: black;
+  animation: text 3s 1;
+  animation-iteration-count: infinite;
 }
+@keyframes text {
+  0%{
+    color: black;
+    margin-bottom: -40px;
+  }
+  30%{
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85%{
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+}
+
 .arrowImgSection img {
+ 
   padding: 0.9rem 0px;
   max-width: 500px;
   width: 100%;
+ 
+  animation-duration: 2s; 
+}
+.animate__animated {
+  animation-duration: 11;
+  animation-fill-mode: both;
+}
+
+.animate__bounce {
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
 }
 .userIdentificationImg img {
   padding-top: 1rem;
   max-width: 250px;
   width: 100%;
 }
+.animate__animated {
+  animation-duration: 8s;
+  animation-fill-mode: both;
+}
+.animate__fadeInUp {
+  animation-name: fadeInUp;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .homeUserHand #userHand {
   width: 100%;
   max-width: 200px;
 }
+/* Assuming you're using CSS Modules and 'styles' represents your imported styles */
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInLeft {
+  animation-name: fadeInLeft;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 #LplateImg {
   max-width: 150px;
   width: 100%;
+}
+
+.animate__animated {
+  animation-duration:  4s;
+  animation-fill-mode: both;
+  
+}
+
+.animate__fadeInRight {
+  animation-name: fadeInRight;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 418px) {
@@ -72,9 +201,29 @@
 }
 .listContent li {
   padding: 0.2rem;
+
+  color: #fff;
+}
+.listContent ul li a {
+  box-shadow: inset 0 0 0 0 #de1515;
+  color: #fff;
   font-size: 1.9rem;
   font-weight: 500;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+.listContent ul li a:hover {
   color: #fff;
+  
+  box-shadow: inset 550px 0 0 0 #de1515;
+  width: 100%;
+}
+
+/* Presentational styles */
+.listContent ul li a {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+
+  text-decoration: none;
 }
 
 /* //////////////////////// */
@@ -297,7 +446,6 @@
     transform: rotate(360deg);
   }
 }
-
 .starImgContainer {
   display: flex;
   justify-content: center;
@@ -306,24 +454,43 @@
 .starImgContainer img {
   max-width: 150px;
   width: 100%;
-  animation: slideFromLeft 1s ease-out, rotate 1s linear;
+  animation: slideFromLeft 1s ease-out infinite, rotate 1s linear infinite;
 }
 
 .starImgContainer img:nth-child(5) {
-  animation-delay: 4s;
+  animation-delay: 8s;
 }
 .starImgContainer img:nth-child(4) {
-  animation-delay: 3s;
+  animation-delay: 6s;
 }
 .starImgContainer img:nth-child(3) {
-  animation-delay: 2s;
+  animation-delay: 4s;
 }
 .starImgContainer img:nth-child(2) {
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 .starImgContainer img:nth-child(1) {
   animation-delay: 0s;
 }
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 /* /////////////////////////////coursel ///////////////////// */
 

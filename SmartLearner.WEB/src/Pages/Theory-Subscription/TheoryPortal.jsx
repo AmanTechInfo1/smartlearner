@@ -119,7 +119,8 @@ export default function TheoryPortal() {
             width="560"
             height="315"
             src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
-            title="YouTube video player"></iframe>
+            title="YouTube video player"
+          ></iframe>
         </div>
       </section>
       {/* ////////////////////////////////////////////// */}
@@ -288,10 +289,13 @@ export default function TheoryPortal() {
               </Link>
             </div>
             <div className={styles.column}>
-              <span>
-                <FaBoxOpen id={styles.featuresIcon} />
-              </span>
-              <h3>Mock test</h3>
+              <Link to="/mcq-Part1">
+                {" "}
+                <span>
+                  <FaBoxOpen id={styles.featuresIcon} />
+                </span>
+                <h3>Mock test</h3>
+              </Link>
             </div>
           </div>
         </section>
@@ -341,7 +345,8 @@ export default function TheoryPortal() {
                 style={{ border: 0 }}
                 allowFullScreen=""
                 aria-hidden="false"
-                tabIndex="0"></iframe>
+                tabIndex="0"
+              ></iframe>
             </div>
           </div>
         </div>
