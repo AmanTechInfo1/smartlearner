@@ -50,18 +50,18 @@ const Roles = () => {
   const handleEditClick = (id) => {
     dispatch(getRoleById(id));
     toggleEditRoleModal();
-  }
+  };
 
   const handleDeleteClick = (id) => {
     console.log(id);
-  }
+  };
 
   const columns = [
     {
       title: "Role Name",
       dataIndex: "name",
       align: "center",
-      sorter: (a, b) => a.username.length - b.username.length,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: "Action",
@@ -76,8 +76,7 @@ const Roles = () => {
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
-            }}
-          >
+            }}>
             <LiaUserEditSolid />
           </Button>
           <Link
@@ -85,8 +84,7 @@ const Roles = () => {
             to={"#"}
             onClick={() => {
               handleDeleteClick(record._id);
-            }}
-          >
+            }}>
             <RiDeleteBin6Fill />
           </Link>
         </div>
@@ -99,10 +97,7 @@ const Roles = () => {
       <div className={styles.usersContainer}>
         <div className={styles.usersHeading}>
           <h2 className={styles.userHeading}>Roles</h2>
-          <button
-            className={styles.addButton}
-            onClick={toggleAddRoleModal}
-          >
+          <button className={styles.addButton} onClick={toggleAddRoleModal}>
             Add Role
           </button>
         </div>

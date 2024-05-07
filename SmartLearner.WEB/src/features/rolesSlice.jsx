@@ -59,24 +59,24 @@ const rolesSlice = createSlice({
 });
 
 export const getAllRoles = (search, page, pagesize) => async (dispatch) => {
-    try {
-        dispatch(setLoading());
-        const response = await httpHandler.get(
-            `/api/roles/all-roles?search=${search}&page=${page}&pagesize=${pagesize}`
-        );
-        if (response.data.success) {
-            dispatch(getAllRolesSuccess(response.data.data));
-        } else {
-            toast.error(response.data.message);
-            dispatch(getAllRolesFailure());
-        }
-    } catch (error) {
-        toast.error(error.message);
-        dispatch(getAllRolesFailure());
+  try {
+    dispatch(setLoading());
+    const response = await httpHandler.get(
+      `/api/roles/all-roles?search=${search}&page=${page}&pagesize=${pagesize}`
+    );
+    if (response.data.success) {
+      dispatch(getAllRolesSuccess(response.data.data));
+    } else {
+      toast.error(response.data.message);
+      dispatch(getAllRolesFailure());
     }
+  } catch (error) {
+    toast.error(error.message);
+    dispatch(getAllRolesFailure());
+  }
 };
-
-export const createRole = (data, reset, toggleAddRoleModal) => async (dispatch) => {
+export const createRole =
+  (data, reset, toggleAddRoleModal) => async (dispatch) => {
     try {
         dispatch(setLoading());
         const response = await httpHandler.post(`/api/roles/add-role`, data);
@@ -92,25 +92,28 @@ export const createRole = (data, reset, toggleAddRoleModal) => async (dispatch) 
             dispatch(createRoleFailure());
         }
     } catch (error) {
-        toast.error(error.message);
-        dispatch(createRoleFailure());
+      toast.error(error.message);
+      dispatch(createRoleFailure());
     }
-}
+  };
 
-export const editRole = () => async (dispatch) => {
+export const editRole =
+  (id, data, reset, toggleEditRoleModal) => async (dispatch) => {
     try {
-        dispatch(setLoading());
-        const response = await httpHandler.post(`/api/roles/update-role/${id}`);
-        if (response.data.success) {
-            toast.success(response.data.message);
-            dispatch(editRoleSuccess());
-        } else {
-            toast.error(response.data.message);
-            dispatch(editRoleFailure());
-        }
-    } catch (error) {
-        toast.error(error.message);
+      dispatch(setLoading());
+      const response = await httpHandler.post(`/api/roles/update-role/${id}`, data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+        dispatch(editRoleSuccess(response.data.data));
+        reset();
+        toggleEditRoleModal();
+      } else {
+        toast.error(response.data.message);
         dispatch(editRoleFailure());
+      }
+    } catch (error) {
+      toast.error(error.message);
+      dispatch(editRoleFailure());
     }
 }
 

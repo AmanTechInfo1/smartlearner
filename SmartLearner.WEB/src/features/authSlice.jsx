@@ -103,16 +103,15 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-export const autologoutUser =
-  (expiration, navigate) => async (dispatch) => {
-    try {
-      setTimeout(() => {
-        dispatch(logoutUser());
-        navigate("/login");
-      }, expiration);
-    } catch (error) {
-      console.error("Error occurred:", error);
-    }
-  };
+export const autologoutUser = (expiration, navigate) => async (dispatch) => {
+  try {
+    setTimeout(() => {
+      dispatch(logoutUser());
+      navigate("/login");
+    }, expiration);
+  } catch (error) {
+    console.error("Error occurred:", error);
+  }
+};
 
 export default authSlice.reducer;

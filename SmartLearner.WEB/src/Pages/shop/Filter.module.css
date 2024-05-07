@@ -1,13 +1,84 @@
 /* FilterSection.module.css */
 
-.wrapper {
+.filterWrapper {
   padding: 5rem 0;
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
+.searchBox form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(250, 250, 250);
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 8px 10px;
+}
+.searchBox form input {
+  border: none;
+  outline: none;
+  padding-left: 7px;
+  border-radius: 20px 0px 0px 20px;
 
-.filterSearch input {
+  background-color: rgb(250, 250, 250);
+}
+.searchBox form input .searchButton #searchBtn {
+  color: red;
+}
+.filterCategory h3 {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.filterCategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+.filterCategories button {
+  background-color: rgb(250, 250, 250);
+  border: none;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 8px;
+  max-width: 170px;
+}
+.filterCategories button:hover {
+  background-color: rgb(242, 242, 242);
+}
+.filteredPrice h3 {
+  font-size: 20px;
+
+  margin-bottom: 1rem;
+}
+
+.filteredPrice p {
+  display: flex;
+  justify-content: space-between;
+}
+.filteredPrice input {
+  width: 100%;
+}
+@media (max-width: 728px) {
+  .searchBox {
+    max-width: 350px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .filterCategories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+  .filteredPriceRange {
+    max-width: 350px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+/* .filterSearch input {
   padding: 0.6rem 1rem;
   width: 80%;
 }
@@ -95,4 +166,4 @@
 .filterClear .btn {
   background-color: #ec7063;
   color: #000;
-}
+} */

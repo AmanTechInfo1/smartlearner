@@ -10,14 +10,15 @@ function EditRoleModal(props) {
     const dispatch = useDispatch();
     const { roleLoading, role } = useSelector((state) => state.roles);
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-        reset
-    } = useForm({
-        resolver: yupResolver(createRoleSchema),
-    });
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset
+    
+  } = useForm({
+    resolver: yupResolver(createRoleSchema),
+  });
 
     const onSubmit = async (data) => {
         const formData = new FormData();
@@ -75,4 +76,4 @@ function EditRoleModal(props) {
     )
 }
 
-export default EditRoleModal
+export default EditRoleModal;

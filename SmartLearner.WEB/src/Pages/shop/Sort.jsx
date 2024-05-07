@@ -7,30 +7,30 @@ export default function Sort() {
   const { filter_products, sorting } = useFilterContext();
   return (
     <>
-      {/* 1st column  */}
-      <div className={styles.productData}>
-        <p>{`${filter_products.length} Product Available`}</p>
-      </div>
+      <section className={styles.sortListProductSection}>
+        {" "}
+        <div className={styles.sortproductDataLength}>
+          <p>{`${filter_products.length} Total Products`}</p>
+        </div>
+        <div className={styles.sortSelectionForm}>
+          <form action="#">
+            <label htmlFor="sort"></label>
+            <select
+              name="sort"
+              id={styles.sort}
+              className={styles.sortSelectionStyle}
+              onClick={sorting}>
+              <option value="lowest">Sort by price: Low to High</option>
 
-      {/* 3rd column  */}
-      <div className={styles.sortSelection}>
-        <form action="#">
-          <label htmlFor="sort"></label>
-          <select
-            name="sort"
-            id={styles.sort}
-            className={styles.sortSelectionStyle}
-            onClick={sorting}>
-            <option value="lowest">Price(lowest)</option>
-            <option value="#" disabled></option>
-            <option value="highest">Price(highest)</option>
-            <option value="#" disabled></option>
-            <option value="a-z">Price(a-z)</option>
-            <option value="#" disabled></option>
-            <option value="z-a">Price(z-a)</option>
-          </select>
-        </form>
-      </div>
+              <option value="highest">Sort by price: High to Low</option>
+
+              <option value="a-z">Sort by ascending: (A - Z)</option>
+
+              <option value="z-a">sort by descending order: (Z - A)</option>
+            </select>
+          </form>
+        </div>
+      </section>
     </>
   );
 }
