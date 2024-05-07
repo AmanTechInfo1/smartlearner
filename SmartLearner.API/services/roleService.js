@@ -41,12 +41,43 @@ class RoleService {
     }
   }
 
+  async getRoleListAsync() {
+    try {
+      const roles = await Role.find();
+
+      const resultObject = {
+        success: true,
+        message: "All roles fetched successfully",
+        data: roles,
+      };
+
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
   async getRoleByIdAsync(roleId) {
     try {
       const role = await Role.findById(roleId);
-      return role;
+      const resultObject = {
+        success: true,
+        message: "",
+        data: role,
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch role");
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
     }
   }
 
@@ -61,12 +92,24 @@ class RoleService {
 
   async updateRoleAsync(roleId, roleData) {
     try {
-      const role = await Role.findByIdAndUpdate(roleId, roleData, {
+      const role = await Role.findByIdAndUpdate(roleId, { name: roleData.name }, {
         new: true,
       });
-      return role;
+      const resultObject = {
+        message: "Updated successfully",
+        statusCode: 201,
+        success: true,
+        data: { role },
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not update role");
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 

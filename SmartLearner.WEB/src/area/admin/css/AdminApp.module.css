@@ -9,6 +9,13 @@
   color: #fff; /* White text color */
   font-family: "Montserrat", sans-serif;
 }
+.adminIcon1{
+color: #fa0d0d;
+vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+  margin-right: 10px;
+}
 
 .adminIcon,
 .adminIconHeader,
@@ -16,7 +23,8 @@
   vertical-align: middle;
   line-height: 1px;
   font-size: 26px;
-  color: #fff; /* White color */
+  color: #fff; 
+  /* White color */
 }
 
 .adminIcon .adminIconHeader {
@@ -60,6 +68,7 @@
 
 .searchContainer input {
   outline: none;
+  border: 1px solid black;
 }
 
 .searchContainer input:focus {

@@ -1,10 +1,10 @@
-import React from "react";
-import { Modal, ModalBody, ModalHeader } from "reactstrap";
-import { useDispatch } from "react-redux";
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { createRoleSchema } from "../../../../formSchemas";
-import { createRole } from "../../../../features/rolesSlice";
+import React from 'react'
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { useDispatch } from 'react-redux';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { createRole } from '../../../../features/rolesSlice';
+import { createRoleSchema } from '../../../../formSchemas/account';
 
 function AddRoleModal(props) {
   const dispatch = useDispatch();
@@ -16,9 +16,13 @@ function AddRoleModal(props) {
     reset,
   } = useForm({
     resolver: yupResolver(createRoleSchema),
+    defaultValues: {
+      name: "",
+    },
   });
 
   const onSubmit = async (data) => {
+    console.log(data);
     const formData = new FormData();
     formData.append("name", data?.name);
     dispatch(createRole(formData, reset, props.toggleAddRoleModal));
@@ -39,9 +43,10 @@ function AddRoleModal(props) {
               <Controller
                 name="name"
                 control={control}
+                defaultValue=" "
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
+                    className={`form-control ${
                       errors?.name ? "error-input" : ""
                     }`}
                     type="text"
@@ -50,7 +55,6 @@ function AddRoleModal(props) {
                     autoComplete="false"
                   />
                 )}
-                defaultValue={""}
               />
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>

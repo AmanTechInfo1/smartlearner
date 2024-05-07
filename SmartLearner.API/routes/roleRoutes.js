@@ -7,8 +7,9 @@ const upload = multer();
 
 router.post('/add-role', upload.none(), requireAuth, roleController.createRole);
 router.get('/all-roles', requireAuth, roleController.getRoles);
-router.get('/roles/:id', roleController.getRoleById);
-router.post('/update-role/:id', roleController.updateRole);
+router.get('/rolelist', roleController.getRoleList);
+router.get('/role/:id', roleController.getRoleById);
+router.post('/update-role/:id', upload.none(), requireAuth, roleController.updateRole);
 router.delete('/roles/:id', roleController.deleteRole);
 
 module.exports = router;

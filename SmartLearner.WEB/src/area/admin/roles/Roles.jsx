@@ -5,14 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { getAllRoles } from "../../../features/rolesSlice";
+import { getAllRoles, getRoleById } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
+import { Button } from "reactstrap";
 
 const Roles = () => {
   const dispatch = useDispatch();
-  const { loading, roles, rolesCount } = useSelector((state) => state.roles);
+  const { roleLoading, roles, rolesCount } = useSelector((state) => state.roles);
+  const [state, setState] = useState({
+    search: "",
+    page: 1,
+    pageSize: 10,
+  });
+
   const [addRoleModalOpen, setAddRoleModalOpen] = useState(false);
   const toggleAddRoleModal = () => setAddRoleModalOpen(!addRoleModalOpen);
 
@@ -20,11 +27,7 @@ const Roles = () => {
   const toggleEditRoleModal = () => setEditRoleModalOpen(!editRoleModalOpen);
 
   const [roleObj, setRoleObj] = useState();
-  const [state, setState] = useState({
-    search: "",
-    page: 1,
-    pageSize: 10,
-  });
+  
 
   useEffect(() => {
     dispatch(getAllRoles(state.search, state.page, state.pageSize));
@@ -45,8 +48,7 @@ const Roles = () => {
   };
 
   const handleEditClick = (id) => {
-    const role = roles.find((role) => role._id === id);
-    setRoleObj(role);
+    dispatch(getRoleById(id));
     toggleEditRoleModal();
   };
 
@@ -59,7 +61,7 @@ const Roles = () => {
       title: "Role Name",
       dataIndex: "name",
       align: "center",
-      sorter: (a, b) => a.username.length - b.username.length,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: "Action",
@@ -67,15 +69,16 @@ const Roles = () => {
       render: (text, record) => (
         <div
           className="d-flex justify-content-center"
-          data-popper-placement="bottom-end">
-          <Link
+          data-popper-placement="bottom-end"
+        >
+          <Button
             to={"#"}
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
             }}>
             <LiaUserEditSolid />
-          </Link>
+          </Button>
           <Link
             className="dropdown-item px-2 text-danger"
             to={"#"}
@@ -98,7 +101,7 @@ const Roles = () => {
             Add Role
           </button>
         </div>
-        {!loading ? (
+        {!roleLoading ? (
           <Table
             className="table-striped"
             pagination={{

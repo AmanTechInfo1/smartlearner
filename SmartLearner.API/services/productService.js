@@ -5,9 +5,22 @@ class ProductService {
   async createProductAsync(productData) {
     try {
       const product = await Product.create(productData);
-      return product;
+      const totalCount = await Product.countDocuments();
+      const resultObject = {
+        message: "Product Added Successfully",
+        statusCode: 201,
+        success: true,
+        data: { product, totalCount }
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not create product");
+      const resultObject = {
+        message: "Product add failed",
+        statusCode: 400,
+        success: false,
+        data: null
+      };
+      return resultObject;
     }
   }
 
@@ -16,14 +29,26 @@ class ProductService {
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
-        // Example query: { name: { $regex: 'searchTerm', $options: 'i' } }
-        filter.$or = [{ name: { $regex: query, $options: 'i' } }];
+        const regex = new RegExp(query, "i");
+        filter.$or = [{ name: regex }, { price: regex }];
       }
       const totalCount = await Product.countDocuments(filter);
       const products = await Product.find(filter).skip(skip).limit(pageSize || 20);
-      return { products, totalCount };
+      const resultObject = {
+        message: "Products fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: { products, totalCount },
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch products");
+      const resultObject = {
+        message: "Could not fetch products",
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 

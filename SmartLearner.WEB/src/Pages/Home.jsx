@@ -15,10 +15,10 @@ import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-ima
 import Carousel from "./Carousel";
 import Review from "../component/Reviews/Review";
 import { Link } from "react-router-dom";
-import hallOfFame1 from "../assets/images/halloffame1.png"
-import hallOfFame2 from "../assets/images/halloffame2.png"
-import hallOfFame3 from "../assets/images/halloffame3.png"
-import hallOfFame4 from "../assets/images/halloffame4.png"
+import hallOfFame1 from "../assets/images/halloffame1.png";
+import hallOfFame2 from "../assets/images/halloffame2.png";
+import hallOfFame3 from "../assets/images/halloffame3.png";
+import hallOfFame4 from "../assets/images/halloffame4.png";
 
 // //////////////////
 import Slider from "react-slick";
@@ -101,27 +101,46 @@ export default function Home() {
           <img src={trustPilot} alt="trustPilot" />
         </div>
         <div className={styles.homeContainer}>
-  <div className={styles.innerHomeHeading}>
-    <h2>
-      START YOUR<br/>
-      <span>DRIVING</span><br/> 
-      <span>JOURNEY</span>
-    </h2>
-  </div>
+          <div className={styles.innerHomeHeading}>
+            <h2>
+              START YOUR
+              <br />
+              <span>DRIVING</span>
+              <br />
+              <span>JOURNEY</span>
+            </h2>
+          </div>
 
-  <div className={styles.arrowImgSection}>
-    <img src={arrowImg} className={`${styles.animate__animated} ${styles.animate__bounce}`} alt="arrowImg" />
-  </div>
-  <div className={styles.userIdentificationImg}>
-    <img src={userIdentificationImg} className={`${styles.animate__animated} ${styles.animate__fadeInUp}`} alt="userIdentificationImg" />
-  </div>
+          <div className={styles.arrowImgSection}>
+            <img
+              src={arrowImg}
+              className={`${styles.animate__animated} ${styles.animate__bounce}`}
+              alt="arrowImg"
+            />
+          </div>
+          <div className={styles.userIdentificationImg}>
+            <img
+              src={userIdentificationImg}
+              className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
+              alt="userIdentificationImg"
+            />
+          </div>
 
-  <div className={styles.homeUserHand}>
-    <img id={styles.userHand} src={homeUserHand} className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`} alt="homeUserHand" />
-    <img id={styles.LplateImg} src={LplateImg} className={`${styles.animate__animated} ${styles.animate__fadeInRight}`} alt="LplateImg" />
-  </div>
-</div>
-
+          <div className={styles.homeUserHand}>
+            <img
+              id={styles.userHand}
+              src={homeUserHand}
+              className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
+              alt="homeUserHand"
+            />
+            <img
+              id={styles.LplateImg}
+              src={LplateImg}
+              className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
+              alt="LplateImg"
+            />
+          </div>
+        </div>
       </section>
 
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
@@ -133,27 +152,32 @@ export default function Home() {
                 <span>
                   <img src={img1} alt="1" />
                 </span>
-                <Link to='GOV.com'> Apply for your Provisonal License</Link>
-               
+                <Link to="GOV.com"> Apply for your Provisonal License</Link>
               </li>
               <li>
                 <span>
                   <img src={img2} alt="2" />
                 </span>
-                <Link to='/Theory-Portal'>Pass your Theory Test with Smartlearner</Link>
-                
+                <Link to="/Theory-Portal">
+                  Pass your Theory Test with Smartlearner
+                </Link>
               </li>
               <li>
                 <span>
                   <img src={img3} alt="3" />
                 </span>
-                <Link to='/Driving-Lessons'>Book Your lessons with Smartlearner</Link>
+                <Link to="/Driving-Lessons">
+                  Book Your lessons with Smartlearner
+                </Link>
               </li>
             </ul>
           </div>
           <div className={styles.formContent}>
-            <h2>BOOK ME IN</h2>
-            <p>Contact Form</p>
+            <div className={styles.formContentHeading}>
+              <h2>BOOK ME IN</h2>
+              <p>Contact Form</p>
+            </div>
+
             <div className={styles.formContainer}>
               <form onSubmit={handleSubmit(handleServiceForm)}>
                 <div className={styles.homeFormGroup}>
@@ -177,11 +201,10 @@ export default function Home() {
                     )}
                     defaultValue=""
                   />
-                  {errors?.service && (
-                    <p style={{ color: "red" }}>{errors?.service?.message}</p>
-                  )}
-                </div>
-
+                </div>{" "}
+                {errors?.service && (
+                  <p style={{ color: "red" }}>{errors?.service?.message}</p>
+                )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="name">NAME</label>
 
@@ -199,11 +222,10 @@ export default function Home() {
                     )}
                     defaultValue={""}
                   />
-                  {errors?.name && (
-                    <p style={{ color: "red" }}>{errors?.name?.message}</p>
-                  )}
                 </div>
-
+                {errors?.name && (
+                  <p style={{ color: "red" }}>{errors?.name?.message}</p>
+                )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="email">EMAIL</label>
                   <Controller
@@ -220,10 +242,10 @@ export default function Home() {
                     )}
                     defaultValue={""}
                   />
-                  {errors?.email && (
-                    <p style={{ color: "red" }}>{errors?.email?.message}</p>
-                  )}
                 </div>
+                {errors?.email && (
+                  <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="message">MESSAGE</label>
                   <Controller
@@ -241,10 +263,10 @@ export default function Home() {
                     )}
                     defaultValue={""}
                   />
-                  {errors?.message && (
-                    <p style={{ color: "red" }}>{errors?.message?.message}</p>
-                  )}
                 </div>
+                {errors?.message && (
+                  <p style={{ color: "red" }}>{errors?.message?.message}</p>
+                )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="postcode">POSTCODE</label>
                   <Controller
@@ -262,10 +284,10 @@ export default function Home() {
                     )}
                     defaultValue={""}
                   />
-                  {errors?.postcode && (
-                    <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
-                  )}
                 </div>
+                {errors?.postcode && (
+                  <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
+                )}
                 <button type="submit" className={styles.homeFormSubmitButton}>
                   Submit
                 </button>

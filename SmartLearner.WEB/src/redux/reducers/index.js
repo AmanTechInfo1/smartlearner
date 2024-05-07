@@ -8,6 +8,8 @@ import callbackSlice from "../../features/callbackSlice";
 import enquiryForm from "../../features/enquirySlice";
 import contactUsSlice from "../../features/contactUsSlice";
 import drivenformSlice from "../../features/drivenformSlice";
+import productSlice from "../../features/productSlice";
+import postcodeSlice from "../../features/postcodeSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -19,6 +21,12 @@ const rootReducer = combineReducers({
   enquiryForm: enquiryForm,
   contactForm: contactUsSlice,
   drivenForm: drivenformSlice,
+    auth: authSlice,
+    user: userSlice,
+    roles: rolesSlice,
+    category: categorySlice,
+    postcode: postcodeSlice,
+    product: productSlice,
 });
 
 export default rootReducer;

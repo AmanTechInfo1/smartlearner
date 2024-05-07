@@ -10,6 +10,7 @@ import { FilterContextProvider } from './component/Context/FilterContext.jsx';
 import store from './redux/store/index.js';
 import { router } from './routing.jsx';
 import { Toaster } from 'react-hot-toast';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

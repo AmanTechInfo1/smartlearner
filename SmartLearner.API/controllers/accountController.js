@@ -6,7 +6,7 @@ class AccountController {
   async registerUser(req, res, next) {
     try {
       var userData = req.body;
-
+      console.log(userData);
       const user = await accountService.registerUserAsync(userData);
 
       if (userData?.roleName) {
