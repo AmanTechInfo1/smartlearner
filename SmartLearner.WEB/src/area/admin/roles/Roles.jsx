@@ -9,6 +9,7 @@ import { getAllRoles } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
+import { Button } from "reactstrap";
 
 const Roles = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const Roles = () => {
       title: "Role Name",
       dataIndex: "name",
       align: "center",
-      sorter: (a, b) => a.username.length - b.username.length,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: "Action",
@@ -68,14 +69,14 @@ const Roles = () => {
         <div
           className="d-flex justify-content-center"
           data-popper-placement="bottom-end">
-          <Link
-            to={"#"}
+          <Button
+            //to={"#"}
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
             }}>
             <LiaUserEditSolid />
-          </Link>
+          </Button>
           <Link
             className="dropdown-item px-2 text-danger"
             to={"#"}

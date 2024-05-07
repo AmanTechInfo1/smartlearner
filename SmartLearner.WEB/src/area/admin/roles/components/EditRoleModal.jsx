@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createRoleSchema } from "../../../../formSchemas";
-import { createRole } from "../../../../features/rolesSlice";
+import { editRole } from "../../../../features/rolesSlice";
 
 function EditRoleModal(props) {
   const dispatch = useDispatch();
@@ -13,15 +13,18 @@ function EditRoleModal(props) {
     handleSubmit,
     control,
     formState: { errors },
-    reset,
+    reset
+    
   } = useForm({
     resolver: yupResolver(createRoleSchema),
   });
 
   const onSubmit = async (data) => {
     const formData = new FormData();
+    //formData.append("id", props.roleObj._id);
     formData.append("name", data?.name);
-    dispatch(createRole(formData, reset, props.toggleAddRoleModal));
+    dispatch(editRole(props.roleObj._id, formData, reset,  props.toggleEditRoleModal));
+    props.toggleEditRoleModal();
   };
   return (
     <>

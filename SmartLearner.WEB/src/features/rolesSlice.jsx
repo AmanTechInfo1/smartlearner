@@ -81,22 +81,25 @@ export const createRole =
     }
   };
 
-export const editRole = () => async (dispatch) => {
-  try {
-    dispatch(setLoading());
-    const response = await httpHandler.post(`/api/update-role/${id}`);
-    if (response.data.success) {
-      toast.success(response.data.message);
-      dispatch(editRoleSuccess());
-    } else {
-      toast.error(response.data.message);
+export const editRole =
+  (id, data, reset, toggleEditRoleModal) => async (dispatch) => {
+    try {
+      dispatch(setLoading());
+      const response = await httpHandler.post(`/api/roles/update-role/${id}`, data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+        dispatch(editRoleSuccess(response.data.data));
+        reset();
+        toggleEditRoleModal();
+      } else {
+        toast.error(response.data.message);
+        dispatch(editRoleFailure());
+      }
+    } catch (error) {
+      toast.error(error.message);
       dispatch(editRoleFailure());
     }
-  } catch (error) {
-    toast.error(error.message);
-    dispatch(editRoleFailure());
-  }
-};
+  };
 export const {
   getAllRolesSuccess,
   getAllRolesFailure,
