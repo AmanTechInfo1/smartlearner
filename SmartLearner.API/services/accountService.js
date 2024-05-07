@@ -87,7 +87,7 @@ class AccountService {
       }
 
       // Generate JWT token with expiry
-      const jwtAge = 2 * 60 * 60;
+      const jwtAge = 24 * 60 * 60;
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",

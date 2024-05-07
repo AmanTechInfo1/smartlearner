@@ -4,12 +4,12 @@ import { FaUser, FaLock, FaMobile, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { registerformSchema } from "../../formSchemas";
 import { Controller, useForm } from "react-hook-form";
 import { AccountTypes } from "../../constants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../features/authSlice";
 import LoadingWeb from "../../Layouts/loaderWeb/LoadingWeb";
+import { registerformSchema } from "../../formSchemas/account";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -225,7 +225,6 @@ export default function Register() {
                           type="checkbox"
                           value={value}
                           onChange={onChange}
-                          placeholder="Mobile Number"
                         />
                       )}
                       defaultValue={false}

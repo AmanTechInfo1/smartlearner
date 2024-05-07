@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginformSchema } from "../../formSchemas";
 import { loginUser } from "../../features/authSlice";
 import LoadingWeb from "../../Layouts/loaderWeb/LoadingWeb";
+import { loginformSchema } from "../../formSchemas/account";
 
 export default function Login() {
   const dispatch = useDispatch();

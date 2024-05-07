@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import styles from "./products.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../features/productSlice";
-import AddProductModal from "./components/AddProductModal";
-import EditProductModal from "./components/EditProductModal";
+import styles from "../css/AdminApp.module.css";
 import { Table } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllUsers } from "../../../features/userSlice";
+import { Link } from "react-router-dom";
+import { LiaUserEditSolid } from "react-icons/lia";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import AddUserModal from "./components/AddUserModal";
+import { getListRoles } from "../../../features/rolesSlice";
 
-const Products = () => {
+const Users = () => {
     const dispatch = useDispatch();
-    const { loading, products, productCount } = useSelector((state) => state.product);
-    const [showAddProductModalOpen, setAddProductModalOpen] = useState(false);
-    const toggleAddProductModal = () => setAddProductModalOpen(!showAddProductModalOpen);
+    const { loading, users, usersCount } = useSelector((state) => state.user);
+    const [showUserAddModal, setUserAddModal] = useState(false);
+    const toggleAddUserModal = () => setUserAddModal(!showUserAddModal);
 
-    const [showEditProductModalOpen, setEditProductModalOpen] = useState(false);
-    const toggleEditProductModal = () => setEditProductModalOpen(!showAddProductModalOpen);
     const [state, setState] = useState({
         search: "",
         page: 1,
@@ -21,8 +22,8 @@ const Products = () => {
     });
 
     useEffect(() => {
-        dispatch(getAllProducts(state.search, state.page, state.pageSize))
-    }, [dispatch, state.search, state.page, state.pageSize])
+        dispatch(getAllUsers(state.search, state.page, state.pageSize));
+    }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
         setState({ ...state, page: 1, pagesize: pageSize });
@@ -38,47 +39,34 @@ const Products = () => {
         return originalElement;
     };
 
+    const handleEditClick = (id) => {
+        debugger
+    }
     const columns = [
         {
-            title: "Name",
-            dataIndex: "name",
-            align: "center",
+            title: "UserName",
+            dataIndex: "username",
             sorter: (a, b) => a.username.length - b.username.length,
         },
         {
-            title: "Price",
-            dataIndex: "price",
-            align: "center",
-            sorter: (a, b) => a.username.length - b.username.length,
+            title: "Email",
+            dataIndex: "email",
+            sorter: (a, b) => a.email.length - b.email.length,
         },
         {
-            title: "Stock",
-            dataIndex: "stock",
-            align: "center",
-            sorter: (a, b) => a.username.length - b.username.length,
-        },
-        {
-            title: "Transmission",
-            dataIndex: "transmission",
-            align: "center",
-            sorter: (a, b) => a.username.length - b.username.length,
-        },
-        {
-            title: "Postcode",
-            dataIndex: "postcode",
-            align: "center",
-            sorter: (a, b) => a.username.length - b.username.length,
+            title: "Mobile Number",
+            dataIndex: "phoneNumber",
+            sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
         },
         {
             title: "Action",
-            align: "center",
             render: (text, record) => (
                 <div
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-around"
                     data-popper-placement="bottom-end"
                 >
                     <Link
-                        to={"#"}
+                        to={`#`}
                         className="dropdown-item px-2 text-success"
                         onClick={() => {
                             handleEditClick(record._id);
@@ -88,7 +76,7 @@ const Products = () => {
                     </Link>
                     <Link
                         className="dropdown-item px-2 text-danger"
-                        to={"#"}
+                        to="#"
                         onClick={() => {
                             handleDeleteClick(record._id);
                         }}
@@ -100,16 +88,22 @@ const Products = () => {
         },
     ];
 
+    const handleAddUserClick = () => {
+        dispatch(getListRoles());
+        toggleAddUserModal();
+    }
+    const handleSave = (editedUser) => { };
+
     return (
         <>
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
-                    <h2 className={styles.userHeading}>Products</h2>
+                    <h2 className={styles.userHeading}>Users</h2>
                     <button
                         className={styles.addButton}
-                        onClick={toggleAddProductModal}
+                        onClick={handleAddUserClick}
                     >
-                        Add Product
+                        Add User
                     </button>
                 </div>
                 <Table
@@ -117,7 +111,7 @@ const Products = () => {
                     pagination={{
                         current: state.page,
                         pageSize: state.pageSize,
-                        total: productCount,
+                        total: usersCount,
                         showTotal: (total, range) =>
                             `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                         showSizeChanger: true,
@@ -128,21 +122,16 @@ const Products = () => {
                     }}
                     style={{ overflowX: "auto" }}
                     columns={columns}
-                    dataSource={products}
+                    dataSource={users}
                     rowKey={(record) => record._id}
                 />
             </div>
-            <AddProductModal
-                showAddProductModalOpen={showAddProductModalOpen}
-                toggleAddProductModal={toggleAddProductModal}
-            />
-            <EditProductModal
-                //roleObj={roleObj}
-                showEditProductModalOpen={showEditProductModalOpen}
-                toggleEditProductModal={toggleEditProductModal}
+            <AddUserModal
+                showUserAddModal={showUserAddModal}
+                toggleAddUserModal={toggleAddUserModal}
             />
         </>
     );
 };
 
-export default Products;
+export default Users;

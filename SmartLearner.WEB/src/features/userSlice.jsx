@@ -6,13 +6,21 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     users: [],
-    usersCount: 12,
+    usersCount: null,
     loading: false,
   },
   reducers: {
+    createUserSuccess: (state, action) => {
+      state.users.push(action.payload.user);
+      state.usersCount = action.payload.totalCount;
+      state.loading = false;
+    },
+    createUserFailure: (state, action) => {
+      state.loading = false;
+    },
     getAllUsersSuccess: (state, action) => {
-      state.users = action.payload.data.users;
-      state.usersCount = action.payload.data.totalCount;
+      state.users = action.payload.users;
+      state.usersCount = action.payload.totalCount;
       state.loading = false;
     },
     getAllUsersFailure: (state) => {
@@ -26,7 +34,6 @@ const userSlice = createSlice({
 
 export const getAllUsers = (search, page, pagesize) => async (dispatch) => {
   try {
-    debugger;
     const response = await httpHandler.get(
       `/api/account/users?search=${search}&page=${page}&pagesize=${pagesize}`
     );
@@ -42,6 +49,24 @@ export const getAllUsers = (search, page, pagesize) => async (dispatch) => {
   }
 };
 
-export const { getAllUsersSuccess, getAllUsersFailure, setLoading } =
+export const createUser = (data, reset, toggleAddUserModal) => async (dispatch) => {
+  try {
+    const response = await httpHandler.post(`/api/account/register`, data);
+    if (response.data.success) {
+      toast.success(response.data.message);
+      reset();
+      toggleAddUserModal();
+      dispatch(createUserSuccess(response.data.data));
+    } else {
+      toast.error(response.data.message);
+      dispatch(createUserFailure());
+    }
+  } catch (error) {
+    toast.error(error.message);
+    dispatch(createUserFailure());
+  }
+};
+
+export const { getAllUsersSuccess, getAllUsersFailure, createUserSuccess, createUserFailure, setLoading } =
   userSlice.actions;
 export default userSlice.reducer;
