@@ -2,7 +2,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { enquiryData } from "../../features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { enquiryFormSchema } from "../../formSchemas";
+import { enquiryFormSchema } from "../../formSchemas/enquiryForm/enquiryFormSchema";
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();

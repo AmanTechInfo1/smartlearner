@@ -27,7 +27,7 @@ import "slick-carousel/slick/slick-theme.css";
 ///////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { serviceFormSchema } from "../formSchemas/index";
+import { serviceFormSchema } from "../formSchemas/serviceForm/serviceFormSchema";
 import { servicesData } from "../features/servicesSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -55,24 +55,23 @@ export default function Home() {
   };
 
   const images = [
-    "src/assets/images/xain-img-150x150.jpg",
-    "src/assets/images/kevin-img-150x150.jpg",
-    "src/assets/images/xain-img-150x150.jpg",
-    "src/assets/images/kevin-img-150x150.jpg",
-    "src/assets/images/xain-img-150x150.jpg",
-    "src/assets/images/kevin-img-150x150.jpg",
-    // Add more image URLs as needed
+    "src/assets/images/passwithUs1.JPG",
+    "src/assets/images/passwithus2.JPG",
+    "src/assets/images/passwithus3.JPG",
+    "src/assets/images/passwithus4.JPG",
+    
+    
   ];
 
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 2000,
 
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 2000,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
@@ -93,6 +92,23 @@ export default function Home() {
       },
     ],
   };
+
+  const partners = [
+    "src/assets/images/our partners/BYLC_Logo.png",
+    "src/assets/images/our partners/gocv-1024x546.png",
+    "src/assets/images/our partners/Highways_England_logo.svg.png",
+    "src/assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png",
+
+    "src/assets/images/our partners/JLR-Logo-2008.png",
+    "src/assets/images/our partners/logoCoventry.jpg",
+    "src/assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png",
+    "src/assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png",
+    "src/assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png",
+    "src/assets/images/our partners/Sqa_logo.png",
+    "src/assets/images/our partners/The-Tree-Council-Logo-1.png",
+    "src/assets/images/our partners/THT_logo_1854x.png",
+    "src/assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png",
+  ];
 
   return (
     <div className={styles.homepage}>
@@ -190,7 +206,8 @@ export default function Home() {
                       <select
                         {...field}
                         className={styles.homeForminputField}
-                        required>
+                        required
+                      >
                         <option disabled value="">
                           Select a service
                         </option>
@@ -202,8 +219,10 @@ export default function Home() {
                     defaultValue=""
                   />
                 </div>{" "}
-                {errors?.service && (
-                  <p style={{ color: "red" }}>{errors?.service?.message}</p>
+                {errors?.postcode && (
+                  <small style={{ color: "red" }}>
+                    {errors?.service?.message}
+                  </small>
                 )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="name">NAME</label>
@@ -223,8 +242,10 @@ export default function Home() {
                     defaultValue={""}
                   />
                 </div>
-                {errors?.name && (
-                  <p style={{ color: "red" }}>{errors?.name?.message}</p>
+                {errors?.postcode && (
+                  <small style={{ color: "red" }}>
+                    {errors?.name?.message}
+                  </small>
                 )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="email">EMAIL</label>
@@ -243,8 +264,10 @@ export default function Home() {
                     defaultValue={""}
                   />
                 </div>
-                {errors?.email && (
-                  <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                {errors?.postcode && (
+                  <small style={{ color: "red" }}>
+                    {errors?.email?.message}
+                  </small>
                 )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="message">MESSAGE</label>
@@ -264,8 +287,10 @@ export default function Home() {
                     defaultValue={""}
                   />
                 </div>
-                {errors?.message && (
-                  <p style={{ color: "red" }}>{errors?.message?.message}</p>
+                {errors?.postcode && (
+                  <small style={{ color: "red" }}>
+                    {errors?.message?.message}
+                  </small>
                 )}
                 <div className={styles.homeFormGroup}>
                   <label htmlFor="postcode">POSTCODE</label>
@@ -286,7 +311,9 @@ export default function Home() {
                   />
                 </div>
                 {errors?.postcode && (
-                  <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
+                  <small style={{ color: "red" }}>
+                    {errors?.postcode?.message}
+                  </small>
                 )}
                 <button type="submit" className={styles.homeFormSubmitButton}>
                   Submit
@@ -389,7 +416,8 @@ export default function Home() {
             padding: "4rem 2rem",
             width: "100%",
             margin: "2rem auto",
-          }}>
+          }}
+        >
           <Slider {...settings}>
             {images.map((image, index) => (
               <div className={styles.imgSlider}>
@@ -397,6 +425,16 @@ export default function Home() {
               </div>
             ))}
           </Slider>
+        </div>
+      </section>
+      {/* /////////////////////////////////////Our Partners////////////////////////// */}
+
+      <section className={styles.ourPartnersSection}>
+        <h2>Our Partners</h2>
+        <div className={styles.partnerSection}>
+          {partners.map((images, index) => (
+            <img key={index} src={images} alt="" />
+          ))}
         </div>
       </section>
     </div>
