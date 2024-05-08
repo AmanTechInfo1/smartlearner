@@ -1,5 +1,4 @@
 import styles from "./css/Home.module.css";
-import { useState } from "react";
 import LplateImg from "..//assets/images/L-Plate.jpg";
 import arrowImg from "../assets/images/arrow-img2.png";
 import trustPilot from "..//assets/images/trustpilot-inline-white.png";
@@ -26,10 +25,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 ///////////////////
 import { Controller, useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { serviceFormSchema } from "../formSchemas/index";
+import { useDispatch } from "react-redux";
 import { servicesData } from "../features/servicesSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { serviceFormSchema } from "../formSchemas/master";
 
 export default function Home() {
   const dispatch = useDispatch();

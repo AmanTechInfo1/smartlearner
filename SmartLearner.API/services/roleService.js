@@ -116,8 +116,21 @@ class RoleService {
   async deleteRoleAsync(roleId) {
     try {
       await Role.findByIdAndDelete(roleId);
+      const resultObject = {
+        message: "Deleted successfully",
+        statusCode: 201,
+        success: true,
+        data: null,
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not delete role");
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 }

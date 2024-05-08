@@ -6,7 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { drivenFormData } from "../../features/drivenformSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { drivenBeforeFormSchema } from "../../formSchemas";
+import { drivenBeforeFormSchema } from "../../formSchemas/master";
 
 export default function DrivenForm() {
   const dispatch = useDispatch();
