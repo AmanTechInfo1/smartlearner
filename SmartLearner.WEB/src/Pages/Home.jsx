@@ -19,6 +19,24 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
+import passwithUs1 from "../assets/images/passwithus1.jpg";
+import passwithUs2 from "../assets/images/passwithus2.jpg";
+import passwithus3 from "../assets/images/passwithus3.jpg";
+import passwithUs4 from "../assets/images/passwithus4.jpg";
+
+import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
+import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
+import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
+import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
+import OurPartners5 from "../assets/images/our partners/JLR-Logo-2008 (1).png";
+
+import OurPartners7 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png";
+import OurPartners8 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png";
+import OurPartners9 from "../assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png";
+import OurPartners10 from "../assets/images/our partners/The-Tree-Council-Logo-1.png";
+import OurPartners11 from "../assets/images/our partners/Sqa_logo.png";
+import OurPartners12 from "../assets/images/our partners/THT_logo_1854x.png";
+import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
 
 // //////////////////
 import Slider from "react-slick";
@@ -54,15 +72,6 @@ export default function Home() {
     dispatch(servicesData({ requestData: data, reset }));
   };
 
-  const images = [
-    "src/assets/images/passwithUs1.JPG",
-    "src/assets/images/passwithus2.JPG",
-    "src/assets/images/passwithus3.JPG",
-    "src/assets/images/passwithus4.JPG",
-    
-    
-  ];
-
   const settings = {
     dots: true,
     infinite: true,
@@ -70,7 +79,7 @@ export default function Home() {
 
     autoplay: true,
     autoplaySpeed: 2000,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
       {
@@ -92,23 +101,6 @@ export default function Home() {
       },
     ],
   };
-
-  const partners = [
-    "src/assets/images/our partners/BYLC_Logo.png",
-    "src/assets/images/our partners/gocv-1024x546.png",
-    "src/assets/images/our partners/Highways_England_logo.svg.png",
-    "src/assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png",
-
-    "src/assets/images/our partners/JLR-Logo-2008.png",
-    "src/assets/images/our partners/logoCoventry.jpg",
-    "src/assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png",
-    "src/assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png",
-    "src/assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png",
-    "src/assets/images/our partners/Sqa_logo.png",
-    "src/assets/images/our partners/The-Tree-Council-Logo-1.png",
-    "src/assets/images/our partners/THT_logo_1854x.png",
-    "src/assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png",
-  ];
 
   return (
     <div className={styles.homepage}>
@@ -419,11 +411,20 @@ export default function Home() {
           }}
         >
           <Slider {...settings}>
-            {images.map((image, index) => (
-              <div className={styles.imgSlider}>
-                <img key={index} src={image} alt="" />
-              </div>
-            ))}
+            <div className={styles.imgSlider}>
+              <img src={passwithUs1} alt="" />
+            </div>
+            <div className={styles.imgSlider}>
+              {" "}
+              <img src={passwithUs2} alt="" />
+            </div>
+            <div className={styles.imgSlider}>
+              {" "}
+              <img src={passwithus3} alt="" />
+            </div>
+            <div className={styles.imgSlider}>
+              <img src={passwithUs4} alt="" />
+            </div>
           </Slider>
         </div>
       </section>
@@ -432,9 +433,20 @@ export default function Home() {
       <section className={styles.ourPartnersSection}>
         <h2>Our Partners</h2>
         <div className={styles.partnerSection}>
-          {partners.map((images, index) => (
-            <img key={index} src={images} alt="" />
-          ))}
+          <img src={OurPartners1} alt="" />
+          <img src={OurPartners1} alt="" />
+          <img src={OurPartners2} alt="" />
+          <img src={OurPartners3} alt="" />
+          <img src={OurPartners4} alt="" />
+          <img src={OurPartners5} alt="" />
+
+          <img src={OurPartners7} alt="" />
+          <img src={OurPartners8} alt="" />
+          <img src={OurPartners9} alt="" />
+          <img src={OurPartners10} alt="" />
+          <img src={OurPartners11} alt="" />
+          <img src={OurPartners12} alt="" />
+          <img src={OurPartners13} alt="" />
         </div>
       </section>
     </div>
