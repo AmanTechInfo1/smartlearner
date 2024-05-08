@@ -9,7 +9,7 @@ import styles from "./css/ContactUs.module.css"; // Import CSS module
 // /////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { contactFormSchema } from "../formSchemas/index";
+import { contactFormSchema } from "../formSchemas/contact/contactFormSchema";
 import { contactUsData } from "../features/contactUsSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 
