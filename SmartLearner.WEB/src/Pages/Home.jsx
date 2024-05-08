@@ -27,7 +27,7 @@ import "slick-carousel/slick/slick-theme.css";
 ///////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { serviceFormSchema } from "../formSchemas/index";
+import { serviceFormSchema } from "../formSchemas/serviceForm/serviceFormSchema";
 import { servicesData } from "../features/servicesSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 

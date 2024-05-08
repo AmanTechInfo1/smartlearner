@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { servicesData } from "../../features/servicesSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { callBackFormSchema } from "../../formSchemas";
+import { callBackFormSchema } from "../../formSchemas/callBackForm/callBackFormSchema";
 
 
 export default function CallBackForm() {
