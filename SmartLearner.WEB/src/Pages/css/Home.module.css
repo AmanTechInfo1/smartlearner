@@ -633,6 +633,10 @@
 @media (max-width: 800px) {
   .carousel {
     min-width: 800px;
+    margin: 0px 1rem;
+  }
+  .listContent ul li a{
+    font-size: 1.5rem;
   }
 }
 
@@ -740,6 +744,7 @@
   color: white;
   text-align: center;
 }
+
 .imgSlider img{
   max-width: 300px;
   aspect-ratio: 1/1;
@@ -816,9 +821,10 @@
     font-weight: normal;
     color: #fff;
   }
-  .carousel {
-    min-width: 650px;
+  .listContent ul li a{
+    font-size: 1rem;
   }
+ 
 }
 @media (max-width: 482px) {
   .whyChooseText p {

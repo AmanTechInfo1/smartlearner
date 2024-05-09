@@ -2,7 +2,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { enquiryData } from "../../features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { enquiryFormSchema } from "../../formSchemas/enquiryForm/enquiryFormSchema";
+import { enquiryFormSchema } from "../../formSchemas/master";
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();
@@ -14,16 +14,16 @@ export default function EnquiryForm() {
   } = useForm({
     resolver: yupResolver(enquiryFormSchema),
   });
+
   const handleEnquiryForm = async (data) => {
     const formData = new FormData();
-
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("message", data.message);
-
     dispatch(enquiryData({ requestData: data, reset }));
   };
+
   return (
     <div>
       <section className={styles.formContainer}>

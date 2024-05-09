@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { getAllRoles, getRoleById } from "../../../features/rolesSlice";
+import { deleteRole, getAllRoles, getRoleById } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
@@ -27,7 +27,7 @@ const Roles = () => {
   const toggleEditRoleModal = () => setEditRoleModalOpen(!editRoleModalOpen);
 
   const [roleObj, setRoleObj] = useState();
-  
+
 
   useEffect(() => {
     dispatch(getAllRoles(state.search, state.page, state.pageSize));
@@ -53,7 +53,7 @@ const Roles = () => {
   };
 
   const handleDeleteClick = (id) => {
-    console.log(id);
+    dispatch(deleteRole(id));
   };
 
   const columns = [
@@ -79,14 +79,14 @@ const Roles = () => {
             }}>
             <LiaUserEditSolid />
           </Button>
-          <Link
+          <Button
             className="dropdown-item px-2 text-danger"
             to={"#"}
             onClick={() => {
               handleDeleteClick(record._id);
             }}>
             <RiDeleteBin6Fill />
-          </Link>
+          </Button>
         </div>
       ),
     },
