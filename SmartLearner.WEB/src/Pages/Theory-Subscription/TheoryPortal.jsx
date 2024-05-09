@@ -22,6 +22,8 @@ import {
   FaVideo,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Quiz from "../../component/quizes/Quizes";
+
 
 export default function TheoryPortal() {
   return (
@@ -356,6 +358,9 @@ export default function TheoryPortal() {
         <div className={styles.thAdditionalSupportHeader}>
           <h2>Book Your Theory</h2>
         </div>
+        <section>
+         <Quiz/>
+        </section>
       </section>
 
       {/* ///////////////////////////////////////////////////////////// */}
