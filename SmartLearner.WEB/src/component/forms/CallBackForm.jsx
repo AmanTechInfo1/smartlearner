@@ -3,12 +3,9 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { servicesData } from "../../features/servicesSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { callBackFormSchema } from "../../formSchemas/callBackForm/callBackFormSchema";
-
+import { callBackFormSchema } from "../../formSchemas/master";
 
 export default function CallBackForm() {
-
-
   const dispatch = useDispatch();
   const {
     handleSubmit,

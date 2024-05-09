@@ -52,6 +52,15 @@ const rolesSlice = createSlice({
             state.role = null;
             state.roleLoading = false;
         },
+        deleteRoleSuccess: (state, action) => {
+            const roleId = action.payload;
+            state.roles = state.roles.filter(role => role._id !== roleId);
+            state.rolesCount = state.rolesCount - 1;
+            state.roleLoading = false;
+        },
+        deleteRoleFailure: (state, action) => {
+            state.roleLoading = false;
+        },
         setLoading: (state) => {
             state.roleLoading = true;
         },
@@ -59,63 +68,63 @@ const rolesSlice = createSlice({
 });
 
 export const getAllRoles = (search, page, pagesize) => async (dispatch) => {
-  try {
-    dispatch(setLoading());
-    const response = await httpHandler.get(
-      `/api/roles/all-roles?search=${search}&page=${page}&pagesize=${pagesize}`
-    );
-    if (response.data.success) {
-      dispatch(getAllRolesSuccess(response.data.data));
-    } else {
-      toast.error(response.data.message);
-      dispatch(getAllRolesFailure());
-    }
-  } catch (error) {
-    toast.error(error.message);
-    dispatch(getAllRolesFailure());
-  }
-};
-export const createRole =
-  (data, reset, toggleAddRoleModal) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/roles/add-role`, data);
+        const response = await httpHandler.get(
+            `/api/roles/all-roles?search=${search}&page=${page}&pagesize=${pagesize}`
+        );
         if (response.data.success) {
-            toast.success(response.data.message);
-            dispatch(createRoleSuccess(response.data.data));
-            setTimeout(() => {
-                reset();
-                toggleAddRoleModal();
-            }, 100);
+            dispatch(getAllRolesSuccess(response.data.data));
         } else {
             toast.error(response.data.message);
-            dispatch(createRoleFailure());
+            dispatch(getAllRolesFailure());
         }
     } catch (error) {
-      toast.error(error.message);
-      dispatch(createRoleFailure());
+        toast.error(error.message);
+        dispatch(getAllRolesFailure());
     }
-  };
+};
+export const createRole =
+    (data, reset, toggleAddRoleModal) => async (dispatch) => {
+        try {
+            dispatch(setLoading());
+            const response = await httpHandler.post(`/api/roles/add-role`, data);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                dispatch(createRoleSuccess(response.data.data));
+                setTimeout(() => {
+                    reset();
+                    toggleAddRoleModal();
+                }, 100);
+            } else {
+                toast.error(response.data.message);
+                dispatch(createRoleFailure());
+            }
+        } catch (error) {
+            toast.error(error.message);
+            dispatch(createRoleFailure());
+        }
+    };
 
 export const editRole =
-  (id, data, reset, toggleEditRoleModal) => async (dispatch) => {
-    try {
-      dispatch(setLoading());
-      const response = await httpHandler.post(`/api/roles/update-role/${id}`, data);
-      if (response.data.success) {
-        toast.success(response.data.message);
-        dispatch(editRoleSuccess(response.data.data));
-        reset();
-        toggleEditRoleModal();
-      } else {
-        toast.error(response.data.message);
-        dispatch(editRoleFailure());
-      }
-    } catch (error) {
-      toast.error(error.message);
-      dispatch(editRoleFailure());
+    (id, data, reset, toggleEditRoleModal) => async (dispatch) => {
+        try {
+            dispatch(setLoading());
+            const response = await httpHandler.post(`/api/roles/update-role/${id}`, data);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                dispatch(editRoleSuccess(response.data.data));
+                reset();
+                toggleEditRoleModal();
+            } else {
+                toast.error(response.data.message);
+                dispatch(editRoleFailure());
+            }
+        } catch (error) {
+            toast.error(error.message);
+            dispatch(editRoleFailure());
+        }
     }
-}
 
 export const getListRoles = () => async (dispatch) => {
     try {
@@ -149,7 +158,24 @@ export const getRoleById = (id) => async (dispatch) => {
     }
 }
 
+export const deleteRole = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(`/api/roles/delete-role/${id}`);
+        debugger
+        if (response.data.success) {
+            dispatch(deleteRoleSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(deleteRoleFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(deleteRoleFailure());
+    }
+}
+
 export const { getAllRolesSuccess, getAllRolesFailure, createRoleSuccess, createRoleFailure, editRoleSuccess, editRoleFailure,
-    getListRolesSuccess, getListRolesFailure, getRoleByIdSuccess, getRoleByIdFailure, setLoading } =
+    getListRolesSuccess, getListRolesFailure, getRoleByIdSuccess, getRoleByIdFailure, deleteRoleSuccess, deleteRoleFailure, setLoading } =
     rolesSlice.actions;
 export default rolesSlice.reducer;

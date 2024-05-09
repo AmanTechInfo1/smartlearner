@@ -8,10 +8,10 @@ import React from "react";
 import styles from "./css/ContactUs.module.css"; // Import CSS module
 // /////////////////
 import { Controller, useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { contactFormSchema } from "../formSchemas/contact/contactFormSchema";
+import { useDispatch } from "react-redux";
 import { contactUsData } from "../features/contactUsSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { contactFormSchema } from "../formSchemas/master";
 
 export default function ContactUs() {
   const dispatch = useDispatch();
