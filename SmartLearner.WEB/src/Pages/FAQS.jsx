@@ -1,57 +1,162 @@
-import React, { useState } from 'react';
+import React from "react";
+import styles from "./css/Faqs.module.css";
+import Accordion from "react-bootstrap/Accordion";
+import { faqs } from "../assets/data/Faqs";
 
-const ProductTable = ({ data }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleAddToBasket = (id) => {
-    // Add logic to add the product to the basket
-    console.log(`Added product with id ${id} to basket`);
-  };
-
-  const handleQuantityChange = (itemIndex, change) => {
-    const newData = [...data];
-    const newQuantity = newData[selectedItem].fullInfo[itemIndex].quantity + change;
-    if (newQuantity >= 0) {
-      newData[selectedItem].fullInfo[itemIndex].quantity = newQuantity;
-      setData(newData);
-    }
-  };
-
+import { FaStar } from "react-icons/fa";
+import poster from "../assets/images/video-poster-img.jpg";
+import ProductTab from "./shop/ProductTab";
+import CallBackForm from "../component/forms/CallBackForm";
+import chooseUsImg from "../assets/images/choose-img.jpg";
+import DrivenForm from "../component/forms/DrivenForm";
+import { FaArrowRight } from "react-icons/fa";
+import Testimonials from "../component/testemonials/Testimonials";
+import Review from "../component/Reviews/Review";
+export default function FAQS() {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Short Info</th>
-          <th>Full Info</th>
-          <th>Add to Basket</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, itemIndex) => (
-          <tr key={item.id}>
-            <td>{item.title}</td>
-            <td>{item.shortInfo}</td>
-            <td>
-              <ul>
-                {item.fullInfo.map((info, index) => (
-                  <li key={index}>
-                    {info.itemName}: {info.itemPrice}
-                    <button onClick={() => handleQuantityChange(index, -1)}>-</button>
-                    {info.quantity}
-                    <button onClick={() => handleQuantityChange(index, 1)}>+</button>
-                  </li>
-                ))}
-              </ul>
-            </td>
-            <td>
-              <button onClick={() => handleAddToBasket(item.id)}>Add to Basket</button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
+    <>
+      <section>
+        <section className={styles.theorySupportHeadingContent}>
+          <div className={styles.TSfirstContent}>
+            <h2>FAQS</h2>
+          </div>
+        </section>
+        <section className={styles.faqsAccordion}>
+          <section className={styles.faqsAccordionIndex}>
+            <h2>FAQS</h2>
+            <Accordion defaultActiveKey="0">
+              {faqs.map((item, index) => (
+                <Accordion.Item key={index} eventKey={index.toString()}>
+                  <Accordion.Header>
+                    <h5>{item.question}</h5>
+                  </Accordion.Header>
+                  <Accordion.Body>{item.answer}</Accordion.Body>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </section>
+        </section>
+        <section>
+          {" "}
+          {/* //////////CallBack Form section///////////// */}
+          <section className={styles.callbackFormSection}>
+            <div className={styles.callbackFormContent}>
+              <div className={styles.callbackFormContentPG}>
+                <p>
+                  We launched our 1-2-1 theory sessions in 2019 and since then
+                  we have helped many people pass who thought they never could.
+                  Our theory sessions focus on building your knowledge from the
+                  ground up to ensure you don’t just know the answers but
+                  understand them. We have had people from all over the country
+                  coming to us looking for help in preparing for their exam.
+                  Currently we have a 90% pass rate which is 41.5% higher than
+                  the national average!
+                </p>
+              </div>
+              <CallBackForm />
+            </div>
+            <div className={styles.productTab}>
+              <ProductTab />
+            </div>
+          </section>
+        </section>
+        {/* /////////////////////////////////////////////// */}
+        <section className={styles.TSvideosContanierSection}>
+          <div className={styles.theorySupportContentVideosec}>
+            <video controls poster={poster} preload="none">
+              <source
+                src="src/assets/videos/Video-1smartlearner-B.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </section>
+        {/* ////////////////////////// */}
+        <section className={styles.whyChooseshortSection}>
+          <div className={styles.whyChooseshortSectionContent}>
+            <div className={styles.whyChooseshortSectionImage}>
+              <img src={chooseUsImg} alt="Image" />
+            </div>
+            <div className={styles.whyChooseshortSectionText}>
+              <h2>
+                WHY CHOOSE <span>SMARTLEARNER ?</span>
+              </h2>
+              <p>
+                We are the highest-rated and fastest-growing independent driving
+                school in the West Midlands. We offer everything you could ever
+                need to get yourself on the road. We take into consideration
+                your times requirements, lesson location and anything else you
+                require then choose the perfect instructor for you. We even
+                offer 1-2-1 theory and simulator training with a tutor for those
+                who feel need additional support to pass their exams. So, forget
+                the rest and learn with the best! Call us today on{" "}
+                <a href="">
+                  {" "}
+                  <span>0800 118 2001</span>{" "}
+                </a>
+                to get yourself booked in.
+              </p>
+              <div className={styles.whyChooseshortSectionButtons}>
+                <button className={styles.whyChooseshortSectionReadmore}>
+                  Read More
+                </button>
+                <button className={styles.whyChooseshortSectionCallus}>
+                  Call Us
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* //////////////////////////////// */}
+        <section className={styles.drivenBefore}>
+          <h2>Search for driving lessons in your area</h2>
+          <DrivenForm />
+        </section>
+        {/* ////////////////////////////////// */}
+        <section className={styles.nextFormSection}>
+          <div className={styles.nextFormContainer}>
+            <div className={styles.nextFormDetailsContainer}>
+              <div className={styles.nextFormDetailsContainerHeading}>
+                {" "}
+                <h3>REQUEST FOR A CALLBACK</h3>
+                <span>
+                  <FaArrowRight id={styles.rightArow} />
+                </span>
+              </div>
 
-export default ProductTable;
+              <ul type="none">
+                <li>
+                  {" "}
+                  <FaStar id={styles.redStar} /> Highest-rated Independent
+                  driving school in the West Midlands
+                </li>
+                <li>
+                  {" "}
+                  <FaStar id={styles.redStar} /> Manual and Automatic tuition
+                </li>
+                <li>
+                  {" "}
+                  <FaStar id={styles.redStar} /> Over 40 instructors both male
+                  and female
+                </li>
+              </ul>
+            </div>
+            <div className={styles.nextFormContainer}>
+              <CallBackForm />
+            </div>
+          </div>
+        </section>
+        {/* ///////////////Testimonials////// */}
+        <section>
+          <Testimonials />
+        </section>
+
+        {/* ///////////////////////Reviews//////// */}
+        <section>
+          <Review />
+        </section>
+        {/* //////////////faqs//////////////////////// */}
+      </section>
+    </>
+  );
+}

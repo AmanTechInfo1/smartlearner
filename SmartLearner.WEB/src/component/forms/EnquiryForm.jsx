@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
-import styles from "../../Pages/SpecialityTraining/ExtendedTest.module.css";
-import ReCAPTCHA from "react-google-recaptcha";
+import { Controller, useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { enquiryData } from "../../features/enquirySlice";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { enquiryFormSchema } from "../../formSchemas/master";
 
 export default function EnquiryForm() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    contactNumber: "",
-    additionalInfo: ""
+  const dispatch = useDispatch();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(enquiryFormSchema),
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+  const handleEnquiryForm = async (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("phoneNumber", data.phoneNumber);
+    formData.append("message", data.message);
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (
@@ -27,57 +30,99 @@ export default function EnquiryForm() {
         <section className={styles.innerFormSection}>
           <div className={styles.enquiryForm}>
             <h4>Enquiry Form</h4>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(handleEnquiryForm)}>
               <div className={styles.formGroup}>
                 <label htmlFor="fullName">
                   Full Name<span>*</span>
                 </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
+
+                <Controller
+                  name="name"
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      id="fullName"
+                      type="text"
+                      value={value}
+                      onChange={onChange}
+                      placeholder="Enter Full Name"
+                    />
+                  )}
+                  defaultValue={""}
                 />
+                {errors?.name && (
+                  <p style={{ color: "red" }}>{errors?.name?.message}</p>
+                )}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="email">
                   Email Address<span>*</span>
                 </label>
-                <input
-                  type="email"
-                  id="email"
+
+                <Controller
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      id="email"
+                      type="email"
+                      value={value}
+                      onChange={onChange}
+                      placeholder="Email Address"
+                    />
+                  )}
+                  defaultValue={""}
                 />
+                {errors?.email && (
+                  <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                )}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="contactNumber">
                   Contact Number<span>*</span>
                 </label>
-                <input
-                  type="tel"
-                  id="contactNumber"
-                  name="contactNumber"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  required
+
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      id="contactNumber"
+                      type="tel"
+                      value={value}
+                      onChange={onChange}
+                      placeholder="Mobile Number"
+                    />
+                  )}
+                  defaultValue={""}
                 />
+                {errors?.phoneNumber && (
+                  <p style={{ color: "red" }}>{errors?.phoneNumber?.message}</p>
+                )}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="additionalInfo">
                   Additional Information<span>*</span>
                 </label>
-                <textarea
-                  id={styles.additionalInfo}
-                  name="additionalInfo"
-                  value={formData.additionalInfo}
-                  onChange={handleChange}
-                  rows="4"
-                ></textarea>
+
+                <Controller
+                  name="message"
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <textarea
+                      id={styles.additionalInfo}
+                      type="message"
+                      value={value}
+                      onChange={onChange}
+                      placeholder="Message"
+                      required
+                    />
+                  )}
+                  defaultValue={""}
+                />
+                {errors?.message && (
+                  <p style={{ color: "red" }}>{errors?.message?.message}</p>
+                )}
               </div>
               <div className={styles.formGroup}>
                 <ReCAPTCHA

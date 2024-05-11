@@ -70,6 +70,7 @@ export const loginUser = createAsyncThunk(
       const response = await http.post(`/api/account/login`, loginData);
       const data = response.data;
       if (data.success) {
+        debugger
         const user = data.data.user;
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
@@ -103,16 +104,15 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-export const autologoutUser =
-  (expiration, navigate) => async (dispatch) => {
-    try {
-      setTimeout(() => {
-        dispatch(logoutUser());
-        navigate("/login");
-      }, expiration);
-    } catch (error) {
-      console.error("Error occurred:", error);
-    }
-  };
+export const autologoutUser = (expiration, navigate) => async (dispatch) => {
+  try {
+    setTimeout(() => {
+      dispatch(logoutUser());
+      navigate("/login");
+    }, expiration);
+  } catch (error) {
+    console.error("Error occurred:", error);
+  }
+};
 
 export default authSlice.reducer;

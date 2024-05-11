@@ -28,9 +28,9 @@ export default function AdminHeader({ OpenSidebar }) {
         <BsSearch className={styles.searchIcon} onClick={performSearch} />
       </div>
       <div className={styles.adminHeaderRight}>
-        <BsFillBellFill className={styles.adminIcon} />
-        <BsFillEnvelopeFill className={styles.adminIcon} />
-      <Link to='/login'><BsPersonCircle className={styles.adminIcon} /></Link>  
+        <BsFillBellFill className={styles.adminIcon1} />
+        <BsFillEnvelopeFill className={styles.adminIcon1} />
+      <Link to='/login'><BsPersonCircle className={styles.adminIcon1} /></Link>  
       </div>
     </header>
   );

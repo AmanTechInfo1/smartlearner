@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Hazard.module.css";
 import { FaHome } from "react-icons/fa";
 import { IoMdArrowDropright  } from "react-icons/io";
+import HazardVideos from "./HazardVideos";
 
 export default function HazardPerception() {
   return (
@@ -98,6 +99,12 @@ export default function HazardPerception() {
         </div>
       </section>
       {/* ////////////////////////////////////////////////////// */}
+
+      <section className={styles.hazardVideoContainerSection}>
+        <div><h2>Hazard perception videos</h2>
+        <p>Below we have created videos to guide you through hazard perception clips.</p></div>
+        <HazardVideos/>
+      </section>
     </>
   );
 }

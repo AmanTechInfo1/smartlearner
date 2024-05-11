@@ -82,7 +82,7 @@ class AccountService {
       // Fetch user's Role
       const role = await roleServices.getRoleByIdAsync(userRole.roleId);
 
-      if (!role) {
+      if (!role.success) {
         throw new Error("Invalid user");
       }
 
@@ -100,7 +100,7 @@ class AccountService {
           _id: user._id,
           username: user.username,
           email: user.email,
-          role: role.name,
+          role: role.data.name,
           token,
           expiresIn: jwtAge * 1000,
         },

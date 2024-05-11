@@ -75,4 +75,4 @@ function EditRoleModal(props) {
     )
 }
 
-export default EditRoleModal
+export default EditRoleModal;

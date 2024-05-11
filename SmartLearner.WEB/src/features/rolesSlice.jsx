@@ -84,27 +84,27 @@ export const getAllRoles = (search, page, pagesize) => async (dispatch) => {
         dispatch(getAllRolesFailure());
     }
 };
-
-export const createRole = (data, reset, toggleAddRoleModal) => async (dispatch) => {
-    try {
-        dispatch(setLoading());
-        const response = await httpHandler.post(`/api/roles/add-role`, data);
-        if (response.data.success) {
-            toast.success(response.data.message);
-            dispatch(createRoleSuccess(response.data.data));
-            setTimeout(() => {
-                reset();
-                toggleAddRoleModal();
-            }, 100);
-        } else {
-            toast.error(response.data.message);
+export const createRole =
+    (data, reset, toggleAddRoleModal) => async (dispatch) => {
+        try {
+            dispatch(setLoading());
+            const response = await httpHandler.post(`/api/roles/add-role`, data);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                dispatch(createRoleSuccess(response.data.data));
+                setTimeout(() => {
+                    reset();
+                    toggleAddRoleModal();
+                }, 100);
+            } else {
+                toast.error(response.data.message);
+                dispatch(createRoleFailure());
+            }
+        } catch (error) {
+            toast.error(error.message);
             dispatch(createRoleFailure());
         }
-    } catch (error) {
-        toast.error(error.message);
-        dispatch(createRoleFailure());
-    }
-}
+    };
 
 export const editRole = (id, data, reset, toggleEditRoleModal) => async (dispatch) => {
     try {
@@ -177,6 +177,6 @@ export const deleteRole = (id) => async (dispatch) => {
 };
 
 export const { getAllRolesSuccess, getAllRolesFailure, createRoleSuccess, createRoleFailure, editRoleSuccess, editRoleFailure,
-    getListRolesSuccess, getListRolesFailure, getRoleByIdSuccess, getRoleByIdFailure, setLoading } =
+    getListRolesSuccess, getListRolesFailure, getRoleByIdSuccess, getRoleByIdFailure, deleteRoleSuccess, deleteRoleFailure, setLoading } =
     rolesSlice.actions;
 export default rolesSlice.reducer;

@@ -4,7 +4,7 @@ import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { getAllRoles, getRoleById } from "../../../features/rolesSlice";
+import { deleteRole, getAllRoles, getRoleById } from "../../../features/rolesSlice";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../../component/loader/Loader";
@@ -26,7 +26,7 @@ const Roles = () => {
   const toggleEditRoleModal = () => setEditRoleModalOpen(!editRoleModalOpen);
 
   const [roleObj, setRoleObj] = useState();
-  
+
 
   useEffect(() => {
     dispatch(getAllRoles(state.search, state.page, state.pageSize));
@@ -49,18 +49,18 @@ const Roles = () => {
   const handleEditClick = (id) => {
     dispatch(getRoleById(id));
     toggleEditRoleModal();
-  }
+  };
 
   const handleDeleteClick = (id) => {
-    console.log(id);
-  }
+    dispatch(deleteRole(id));
+  };
 
   const columns = [
     {
       title: "Role Name",
       dataIndex: "name",
       align: "center",
-      sorter: (a, b) => a.username.length - b.username.length,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: "Action",
@@ -75,19 +75,17 @@ const Roles = () => {
             className="dropdown-item px-2 text-success"
             onClick={() => {
               handleEditClick(record._id);
-            }}
-          >
+            }}>
             <LiaUserEditSolid />
           </Button>
-          <Link
+          <Button
             className="dropdown-item px-2 text-danger"
             to={"#"}
             onClick={() => {
               handleDeleteClick(record._id);
-            }}
-          >
+            }}>
             <RiDeleteBin6Fill />
-          </Link>
+          </Button>
         </div>
       ),
     },
@@ -98,10 +96,7 @@ const Roles = () => {
       <div className={styles.usersContainer}>
         <div className={styles.usersHeading}>
           <h2 className={styles.userHeading}>Roles</h2>
-          <button
-            className={styles.addButton}
-            onClick={toggleAddRoleModal}
-          >
+          <button className={styles.addButton} onClick={toggleAddRoleModal}>
             Add Role
           </button>
         </div>

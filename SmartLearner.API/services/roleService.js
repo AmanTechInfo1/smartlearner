@@ -92,20 +92,45 @@ class RoleService {
 
   async updateRoleAsync(roleId, roleData) {
     try {
-      const role = await Role.findByIdAndUpdate(roleId, roleData, {
+      const role = await Role.findByIdAndUpdate(roleId, { name: roleData.name }, {
         new: true,
       });
-      return role;
+      const resultObject = {
+        message: "Updated successfully",
+        statusCode: 201,
+        success: true,
+        data: { role },
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not update role");
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 
   async deleteRoleAsync(roleId) {
     try {
       await Role.findByIdAndDelete(roleId);
+      const resultObject = {
+        message: "Deleted successfully",
+        statusCode: 201,
+        success: true,
+        data: null,
+      };
+      return resultObject;
     } catch (err) {
-      throw new Error("Could not delete role");
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 }
