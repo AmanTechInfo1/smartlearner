@@ -3,26 +3,26 @@ import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createRole } from '../../../../features/rolesSlice';
+import { editRole } from '../../../../features/rolesSlice';
 import { createRoleSchema } from '../../../../formSchemas/account';
 
 function EditRoleModal(props) {
     const dispatch = useDispatch();
     const { roleLoading, role } = useSelector((state) => state.roles);
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-        reset
-    } = useForm({
-        resolver: yupResolver(createRoleSchema),
-    });
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset
+  } = useForm({
+    resolver: yupResolver(createRoleSchema),
+  });
 
     const onSubmit = async (data) => {
         const formData = new FormData();
         formData.append('name', data?.name);
-        dispatch(createRole(formData, reset, props.toggleAddRoleModal));
+        dispatch(editRole(formData, reset, props.toggleAddRoleModal));
     };
 
     return (

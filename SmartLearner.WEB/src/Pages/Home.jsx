@@ -14,6 +14,30 @@ import starImg from "../assets/images/star.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "./Carousel";
 import Review from "../component/Reviews/Review";
+import { Link } from "react-router-dom";
+import hallOfFame1 from "../assets/images/halloffame1.png";
+import hallOfFame2 from "../assets/images/halloffame2.png";
+import hallOfFame3 from "../assets/images/halloffame3.png";
+import hallOfFame4 from "../assets/images/halloffame4.png";
+import passwithUs1 from "../assets/images/passwithUs1.jpg";
+import passwithUs2 from "../assets/images/passwithus2.jpg";
+import passwithus3 from "../assets/images/passwithus3.jpg";
+import passwithUs4 from "../assets/images/passwithus4.jpg";
+
+import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
+import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
+import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
+import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
+import OurPartners5 from "../assets/images/our partners/JLR-Logo-2008 (1).png";
+
+import OurPartners7 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png";
+import OurPartners8 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png";
+import OurPartners9 from "../assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png";
+import OurPartners10 from "../assets/images/our partners/The-Tree-Council-Logo-1.png";
+import OurPartners11 from "../assets/images/our partners/Sqa_logo.png";
+import OurPartners12 from "../assets/images/our partners/THT_logo_1854x.png";
+import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
+
 // //////////////////
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
