@@ -47,13 +47,13 @@ import AddProductPage from "./area/admin/adminProductPage/AddProductPage";
 import RequireAuth from "./component/RequireAuth ";
 import { ROLES } from "./constants";
 import AdminLayout from "./area/admin/AdminLayout";
-import Roles from "./area/admin/roles/Roles";
 import Products from "./area/admin/products/Products";
 import MockTest from "./Pages/Theory-Subscription/mockTest/MockTest";
 import MyAccount from "./Pages/auth/myAccount/MyAccount";
 import Categories from "./area/admin/categories/Categories";
 import Postcodes from "./area/admin/postcodes/PostCodes";
 import Users from "./area/admin/users/Users";
+import Roles from "./area/admin/roles/Roles";
 
 export const router = createBrowserRouter([
   {
@@ -114,8 +114,8 @@ export const router = createBrowserRouter([
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "hazard-perception", element: <HazardPerception /> },
-      {path:"mcq-Part1", element: <MockTest/>},
-      {path:'my-account', element: <MyAccount/>},
+      { path: "mcq-Part1", element: <MockTest /> },
+      { path: 'my-account', element: <MyAccount /> },
     ],
   },
 

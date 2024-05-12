@@ -22,7 +22,6 @@ function AddRoleModal(props) {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("name", data?.name);
     dispatch(createRole(formData, reset, props.toggleAddRoleModal));

@@ -1,0 +1,116 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* /////////////// reviews section ///////////////// */
+.facebookReviewsSection {
+    text-align: center;
+    padding: 2rem 0;
+    background: url("../../../assets/images/Reviews.jpg") repeat center bottom;
+
+}
+
+
+.facebookReviewsContainer {
+    padding: 2rem 0;
+}
+
+.facebookReviewsContainer hr {
+    border: 2px solid #fff;
+    opacity: 1;
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+}
+
+
+#heading1 {
+    color: white;
+    font-family: "Arial", Sans-serif;
+    font-size: 65px;
+
+}
+
+.reviewsList {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.review {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.followUsLinks {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.followUsLinks hr {
+    border: 1.05px solid #fff;
+    text-align: center;
+    width: 38%;
+    margin: 0 auto;
+}
+
+.followUsLinks h4 {
+    margin-top: 1.8rem;
+    font-family: "Arial", Sans-serif;
+    color: #FFFFFF;
+    line-height: 1;
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+}
+
+.socialFollowIcons {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 0;
+
+}
+
+.socialFollowIcons a {
+    display: inline-block;
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px 10px 8px 10px;
+
+    transition: transform 0.3s;
+}
+
+#FollowIcons {
+    color: #eb0009;
+    font-size: 1.7rem;
+}
+
+.socialFollowIcons a:hover {
+    transform: translateY(-5px);
+}
+
+.socialFollowIcons i {
+    font-size: 24px;
+    color: #333;
+}
+
+@media (max-width: 770px) {
+    .facebookReviewsSection #heading1 {
+        font-size: 45px;
+    }
+
+    #heading2 {
+        font-size: 45px;
+    }
+
+    .followUsLinks h4 {
+        font-size: 2.8em;
+    }
+}
