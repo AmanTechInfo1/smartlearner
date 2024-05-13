@@ -1,148 +1,150 @@
 .headerContainer {
-    padding-bottom: 16px;
-    padding-top: 8px;
-    background-color: black;
+  padding-bottom: 16px;
+  padding-top: 8px;
+  background-color: black;
 }
 
 .active {
-    background-color: #c4080b;
+  background-color: #c4080b;
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ed2025;
-    color: white;
-    padding: 15px 0px;
-    font-family: "Antonio", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ed2025;
+  color: white;
+  padding: 15px 0px;
+  font-family: "Antonio", sans-serif;
 }
 
 nav .title {
-    font-size: 1.5rem;
-    margin: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
+  font-size: 1.5rem;
+  margin: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
 }
 
 nav ul {
-    display: flex;
-    gap: 50px;
+  display: flex;
+  gap: 50px;
+  margin-bottom: 0px;
 }
 
 nav ul li {
-    list-style: none;
-    font-size: 18px;
+  list-style: none;
+  font-size: 18px;
 }
 
 nav ul li a {
-    display: block;
-    text-decoration: none;
-    color: white;
+  display: block;
+  text-decoration: none;
+  color: white;
 }
 
 nav ul li:hover {
-    color: black;
+  color: black;
 }
 
 nav ul li a:hover {
-    color: black;
+  color: black;
 }
 
 nav .menu {
-    display: none;
+  display: none;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    align-items: center;
-    width: 2.25rem;
-    height: 2rem;
+  align-items: center;
+  width: 2.25rem;
+  height: 2rem;
 }
 
 #dropDownNav {
-    position: relative;
+  position: relative;
 }
 
 .dropdownContent {
-    position: absolute;
-    top: 100%;
-    left: 0px;
-    font-family: "Antonio", sans-serif;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.904);
-    min-width: 200px;
-    width: 100%;
-    z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  font-family: "Antonio", sans-serif;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.904);
+  min-width: 200px;
+  width: 100%;
+  z-index: 1;
+  padding-left: 0px;
 }
 
 #dropDownNav:hover .dropdownContent {
-    display: block;
+  display: block;
 }
 
 .dropdownContent li {
-    padding: 10px 12px;
-    border-bottom: 1px solid #fff;
+  padding: 10px 12px;
+  border-bottom: 1px solid #fff;
 }
 
 .dropdownContent li:hover {
-    background-color: #ed2025;
+  background-color: #ed2025;
 }
 
 .dropdownContent li a:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .dropdownContent li:active {
-    background-color: #ed2025;
+  background-color: #ed2025;
 }
 
 .barIcon {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.521);
-    border: 1px solid #fff;
-    display: inline-block;
-    padding: 0.7rem;
-    font-size: 18px;
-    border-radius: 50%;
-    margin-right: auto;
-    margin-left: auto;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.521);
+  border: 1px solid #fff;
+  display: inline-block;
+  padding: 0.7rem;
+  font-size: 18px;
+  border-radius: 50%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #barIcon {
-    width: 1em;
-    height: 1em;
-    position: relative;
-    display: block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
 }
 
 @media (max-width: 728px) {
-    nav .menu {
-        display: flex;
-        justify-content: center;
-    }
+  nav .menu {
+    display: flex;
+    justify-content: center;
+  }
 
-    nav {
-        flex-direction: column;
-    }
+  nav {
+    flex-direction: column;
+  }
 
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 20px;
-    }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
 
-    nav ul.open {
-        display: flex;
-    }
+  nav ul.open {
+    display: flex;
+  }
 
-    nav ul li {
-        width: 100%;
-    }
+  nav ul li {
+    width: 100%;
+  }
 
-    nav ul li {
-        padding: 0.2rem 0.5rem;
-        border-bottom: 1px solid #fff;
-    }
+  nav ul li {
+    padding: 0.2rem 0.5rem;
+    border-bottom: 1px solid #fff;
+  }
 }

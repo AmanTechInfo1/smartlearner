@@ -7,58 +7,57 @@
     display: flex;
     align-items: center;
     min-height: 100vh;
-}
-
-.container {
+  }
+  
+  .container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
-
-.colSm12 {
+  }
+  
+  .colSm12 {
     position: relative;
     width: 100%;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-}
-
-.colSm10 {
+  }
+  
+  .colSm10 {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-}
-
-.colSmOffset1 {
+  }
+  
+  .colSmOffset1 {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 1100px;
-    /* Set maximum width */
-}
-
-.textCenter {
+    max-width: 1100px; /* Set maximum width */
+  }
+  
+  .textCenter {
     text-align: center;
-}
-
-.fourZeroFourBg {
+  }
+  
+  .fourZeroFourBg {
     background-image: url(../../assets/images/dribbble_1.gif);
     height: 400px;
     background-position: center;
-}
-
-.fourZeroFourBg h1 {
+  }
+  
+  .fourZeroFourBg h1 {
     font-size: 80px;
-}
-
-.h2 {
+  }
+  
+  .h2 {
     font-size: 30px;
-}
-
-.link404 {
+  }
+  
+  .link404 {
     text-decoration: none;
     color: #fff !important;
     padding: 10px 20px;
@@ -66,25 +65,24 @@
     margin: 20px 0;
     display: inline-block;
     border-radius: 3px;
-
+  
     /* Hover Animation */
     transition: transform 0.3s ease-in-out;
-}
-
-.link404:hover {
-    transform: scale(1.1);
-    /* Scale up slightly on hover */
-}
-
-.contentBox404 {
+  }
+  
+  .link404:hover {
+    transform: scale(1.1); /* Scale up slightly on hover */
+  }
+  
+  .contentBox404 {
     margin-top: -50px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
     .colSmOffset1 {
-        width: 90%;
-        max-width: none;
-        /* Remove maximum width */
+      width: 90%;
+      max-width: none; /* Remove maximum width */
     }
-}
+  }
+  

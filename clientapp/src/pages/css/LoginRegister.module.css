@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.loginRegisterPage {
+  background-image: url(../../assets/images/bg-light.png);
+  background-size: cover;
+  font-family: "Roboto", Sans-serif;
+}
+
+
+.loginRegisterSection {
+  display: flex;
+  align-items: center;
+  max-width: 1140px;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
+}
+.loginheading {
+  max-width: 60%;
+  width: 100%;
+  padding: 10px 50px 10px 10px;
+}
+.loginheading h1 {
+  font-size: 4em;
+  color: #e90606;
+  font-weight: 600;
+}
+.loginformContainer {
+  width: 100%;
+  max-width: 40%;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  animation: slideFromLeft 1s ease-out; /* Animation for sliding from bottom */
+}
+@keyframes slideFromLeft {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.loginRegistration {
+  border-style: solid;
+  border-width: 7px 0px 0px 0px;
+  border-color: #e90606;
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  padding: 20px 20px 20px 20px;
+
+ 
+}
+
+
+
+.loginRegistration form {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+
+
+.loginRegistration h2 {
+  color: #e90606;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.loginRegistration label {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #ccc !important;
+  padding: 0px 0px 0px 10px !important;
+}
+.loginRegistration label input {
+  border: none !important;
+  text-align: left;
+  padding: 0px 0px 0px 10px !important;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  display: block !important;
+  align-items: flex-start;
+  border-radius: 2px;
+  outline:none;
+  cursor: text !important;
+  font-size: 15px !important;
+  height: 40px !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  position: static;
+}
+
+#loginFormsIcons {
+  color: #aaa;
+  font-size: 22px;
+  cursor: pointer;
+}
+.loginRegistration label input::placeholder {
+  color: #aaa;
+}
+#registerAccount {
+  border: 1px solid #ccc !important;
+  display: flex;
+
+  padding: 10px 10px 10px 10px;
+}
+#registerAccount select {
+  border: none;
+  width: 100%;
+  text-decoration: none;
+  outline: none;
+  padding-left: 10px;
+  color: #aaa;
+}
+.formPrivacyPolicies {
+  display: flex;
+  padding-left: 10px;
+}
+.formPrivacyPolicies p {
+  margin-bottom: 0;
+  color: #aaa;
+  padding-left: 10px;
+}
+.loginFormBtn {
+  text-align: center;
+}
+.loginFormBtn button {
+  padding: 12px 80px;
+  font-size: 15px;
+  font-weight: 400;
+  background-color: #e90606;
+  color: #ffffff;
+  border: none;
+}
+.formFooter {
+  background-color: #e90606;
+  text-align: center;
+  padding: 20px 10px;
+}
+.formFooter p {
+  margin-bottom: 0;
+  color: #020000;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.formFooter button {
+  color: #fff;
+  font-family: "Roboto", Sans-serif;
+  font-weight: 500;
+  border: none;
+  background-color: #e90606;
+  padding-left: 10px;
+}
+.formFooter a{
+  color: #fff;
+  text-decoration: none;
+}
+@media (max-width: 967px) {
+  .loginheading {
+    max-width: 50%;
+    width: 100%;
+    padding: 15px;
+  }
+  .loginformContainer {
+    max-width: 50%;
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .loginRegisterSection {
+    display: block;
+  }
+  .loginheading {
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+  }
+  .loginformContainer {
+    max-width: 600px;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .loginRegistration {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .formFooter {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

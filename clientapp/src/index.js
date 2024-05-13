@@ -1,21 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { RouterProvider } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import { router } from './routing';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { RouterProvider } from "react-router-dom";
+
+import { Toaster } from "react-hot-toast";
+import { router } from "./routing";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { FilterContextProvider } from "./components/context/FilterContext";
+import { CartProvider } from "./components/context/CartContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <FilterContextProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </FilterContextProvider>
+
       <Toaster position="top-right" />
     </Provider>
     {/* <App /> */}
