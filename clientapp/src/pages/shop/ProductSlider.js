@@ -6,8 +6,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { products } from "../../assets/data/Products";
 import { FaStar, FaAngleDoubleRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../../components/context/CartContext";
 
 export default function ProductSlider() {
+  
+  const { addToCart } = useCartContext();
+
   const theoryProducts = products.filter(
     (product) => product.category === "Theory"
   );

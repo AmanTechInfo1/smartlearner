@@ -5,50 +5,52 @@ import AdminLayout from "./components/layouts/AdminLayout";
 import Roles from "./containers/roles/Roles";
 import Layout from "./components/layouts/Layout";
 
-import Home from "./Pages/Home";
-import NotFound from "./Pages/NotFound";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
-import About from "./Pages/About";
-import FAQS from "./Pages/FAQS";
-import Register from "./Pages/auth/Register";
-import Login from "./Pages/auth/Login";
-import DrivingInstructorTraining from "./Pages/Join-our-team/DrivingInstructorTraining";
-import DrivingInstructorFranchise from "./Pages/Join-our-team/DrivingInstructorFranchise";
-import StantardCheckTest from "./Pages/Join-our-team/StantardCheckTest";
-import DrivingLessons from "./Pages/DrivingLessons/DrivingLessons";
-import SchoolOfMomDad from "./Pages/DrivingLessons/SchoolOfMomDad";
-import IntensiveCourses from "./Pages/IntensiveCourses";
-import TheorySupport from "./Pages/TheorySupport";
-import ADITrainingPortal from "./Pages/ADITrainingPortal";
-import SimulatedDrivingLesson from "./Pages/SpecialityTraining/SimulatedDrivingLesson";
-import ExtendedTest from "./Pages/SpecialityTraining/ExtendedTest";
-import PassPlus from "./Pages/SpecialityTraining/PassPlus";
-import AgeingDriverSupport from "./Pages/SpecialityTraining/AgeingDriverSupport";
-import SafeRoadUserAward from "./Pages/SpecialityTraining/SafeRoadUserAward";
-import TrailerTraining from "./Pages/SpecialityTraining/TrailerTraining";
-import TaxiTraining from "./Pages/SpecialityTraining/TaxiTraining";
-import CorporateResponsbilities from "./Pages/CorporateResponsbilites/CorporateResponsbilities";
-import ElectricCarScheme from "./Pages/CorporateResponsbilites/ElectricCarScheme";
-import GoingGreenProject from "./Pages/CorporateResponsbilites/GoingGreenProject";
-import WeProudlySupport from "./Pages/CorporateResponsbilites/WeProudlySupport";
-import CommunitiesChampions from "./Pages/CorporateResponsbilites/CommunitiesChampions";
-import GoCv from "./Pages/CorporateResponsbilites/GoCv";
-import OurOfficeGreenEfforts from "./Pages/CorporateResponsbilites/OurOfficeGreenEfforts";
-import TheHonestTruth from "./Pages/CorporateResponsbilites/TheHonestTruth";
-import TheorySubscription from "./Pages/Theory-Subscription/TheorySubscription";
-import TheoryPortal from "./Pages/Theory-Subscription/TheoryPortal";
-import Worksheet from "./Pages/AddOns/Worksheet";
-import PersonalisedQuiz from "./Pages/AddOns/PersonalisedQuiz";
-import PracticeMCQS from "./Pages/CheckList/PracticeMCQS";
-import AIVideos from "./Pages/AddOns/AIVideos";
-import Contact from "./Pages/Contact";
-import Shop from "./Pages/shop/Shop";
-import ProductDetails from "./Pages/shop/ProductDetails";
-import Cart from "./Pages/shop/cart/Cart";
-import HazardPerception from "./Pages/Theory-Subscription/Hazard/HazardPerception";
-import Thanks from "./Pages/Thanks";
-import MockTest from "./Pages/Theory-Subscription/mockTest/MockTest";
-import MyAccount from "./Pages/auth/myAccount/MyAccount";
+import About from "./pages/About";
+import FAQS from "./pages/FAQS";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
+import DrivingInstructorTraining from "./pages/Join-our-team/DrivingInstructorTraining";
+import DrivingInstructorFranchise from "./pages/Join-our-team/DrivingInstructorFranchise";
+import StantardCheckTest from "./pages/Join-our-team/StantardCheckTest";
+import DrivingLessons from "./pages/DrivingLessons/DrivingLessons";
+import SchoolOfMomDad from "./pages/DrivingLessons/SchoolOfMomDad";
+import IntensiveCourses from "./pages/IntensiveCourses";
+import TheorySupport from "./pages/TheorySupport";
+import ADITrainingPortal from "./pages/ADITrainingPortal";
+import SimulatedDrivingLesson from "./pages/SpecialityTraining/SimulatedDrivingLesson";
+import ExtendedTest from "./pages/SpecialityTraining/ExtendedTest";
+import PassPlus from "./pages/SpecialityTraining/PassPlus";
+import AgeingDriverSupport from "./pages/SpecialityTraining/AgeingDriverSupport";
+import SafeRoadUserAward from "./pages/SpecialityTraining/SafeRoadUserAward";
+import TrailerTraining from "./pages/SpecialityTraining/TrailerTraining";
+import TaxiTraining from "./pages/SpecialityTraining/TaxiTraining";
+import CorporateResponsbilities from "./pages/CorporateResponsbilites/CorporateResponsbilities";
+import ElectricCarScheme from "./pages/CorporateResponsbilites/ElectricCarScheme";
+import GoingGreenProject from "./pages/CorporateResponsbilites/GoingGreenProject";
+import WeProudlySupport from "./pages/CorporateResponsbilites/WeProudlySupport";
+import CommunitiesChampions from "./pages/CorporateResponsbilites/CommunitiesChampions";
+import GoCv from "./pages/CorporateResponsbilites/GoCv";
+import OurOfficeGreenEfforts from "./pages/CorporateResponsbilites/OurOfficeGreenEfforts";
+import TheHonestTruth from "./pages/CorporateResponsbilites/TheHonestTruth";
+import TheorySubscription from "./pages/Theory-Subscription/TheorySubscription";
+import TheoryPortal from "./pages/Theory-Subscription/TheoryPortal";
+import Worksheet from "./pages/AddOns/Worksheet";
+import PersonalisedQuiz from "./pages/AddOns/PersonalisedQuiz";
+import PracticeMCQS from "./pages/CheckList/PracticeMCQS";
+import AIVideos from "./pages/AddOns/AIVideos";
+import Contact from "./pages/Contact";
+import Shop from "./pages/shop/Shop";
+import ProductDetails from "./pages/shop/ProductDetails";
+import Cart from "./pages/shop/cart/Cart";
+import HazardPerception from "./pages/Theory-Subscription/Hazard/HazardPerception";
+import Thanks from "./pages/Thanks";
+import MockTest from "./pages/Theory-Subscription/mockTest/MockTest";
+import MyAccount from "./pages/auth/myAccount/MyAccount";
+import Quiz from "./components/quizes/Quiz";
+
 
 
 
@@ -108,11 +110,12 @@ export const router = createBrowserRouter([
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
-      { path: "product/:id", element: <ProductDetails /> },
+      { path: "product/:id", element: <ProductDetails/>  },
       { path: "cart", element: <Cart /> },
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
+      {path: "quiz", element:<Quiz/>}
     ],
   },
   { path: "register", element: <Register /> },

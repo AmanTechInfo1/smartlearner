@@ -16,16 +16,24 @@ const productSlice = createSlice({
             state.loading = false;
         },
         getAllProductsFailure: (state) => {
-            state.categories = [];
-            state.categoryCount = null;
+            state.products = [];
+            state.productCount = null;
             state.loading = false;
         },
         createProductSuccess: (state, action) => {
-            state.categories.push(action.payload.category);
-            state.categoryCount = action.payload.totalCount;
+            state.products.push(action.payload.product);
+            state.productCount = action.payload.totalCount;
             state.loading = false;
         },
-        createProductFailure: (state, action) => {
+        createProductFailure: (state) => {
+            state.loading = false;
+        },
+        createCategorySuccess: (state, action) => {
+            state.products.push(action.payload.category);
+            state.productCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        createCategoryFailure: (state) => {
             state.loading = false;
         },
         setLoading: (state) => {
@@ -69,9 +77,16 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
         toast.error(error.message);
         dispatch(createCategoryFailure());
     }
-}
+};
 
-export const { getAllProductsSuccess, getAllProductsFailure, createProductSuccess, createProductFailure, setLoading } =
-    productSlice.actions;
+export const {
+    getAllProductsSuccess,
+    getAllProductsFailure,
+    createProductSuccess,
+    createProductFailure,
+    createCategorySuccess,
+    createCategoryFailure,
+    setLoading,
+} = productSlice.actions;
 
 export default productSlice.reducer;

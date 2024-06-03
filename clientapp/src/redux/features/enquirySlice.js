@@ -30,12 +30,12 @@ export const enquiryData = createAsyncThunk(
     try {
       const response = await http.get(`/api/enquiryForm/enquiry`, requestData);
       const data = response.data;
-      if (!resultData.success) {
-        toast.error(resultData.msg || "Something went wrong");
+      if (!data.success) {
+        toast.error(data.msg || "Something went wrong");
       } else {
-        toast.success(resultData.msg || "submitted Successfully");
+        toast.success(data.msg || "submitted Successfully");
         reset();
-        return resultData;
+        return data;
       }
 
       return data;

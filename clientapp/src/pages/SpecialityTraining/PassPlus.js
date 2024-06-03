@@ -14,13 +14,22 @@ import {
 import { FaCity, FaRoad } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Review from "../../components/views/Review"
+import { useCartContext } from "../../components/context/CartContext";
+
 
 
 
 export default function PassPlus() {
+
+  const { addToCart } = useCartContext(); 
+  
+ 
+
   const theoryProducts = products.filter(
     (product) => product.category === "Theory"
   );
+
+
 
   return (
     <div>
