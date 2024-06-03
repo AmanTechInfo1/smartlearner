@@ -26,7 +26,6 @@ const questions = [
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timer, setTimer] = useState(60); 
   const [totalTimer, setTotalTimer] = useState(3600); 
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -34,7 +33,6 @@ const Quiz = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
       setTotalTimer((prevTotalTimer) => {
         if (prevTotalTimer > 0) {
           return prevTotalTimer - 1;
@@ -59,7 +57,6 @@ const Quiz = () => {
       const nextQuestion = currentQuestion + 1;
       if (nextQuestion < questions.length) {
         setCurrentQuestion(nextQuestion);
-        setTimer(60); 
         setSelectedOption(null);
       } else {
         setShowResult(true);
@@ -71,7 +68,6 @@ const Quiz = () => {
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
-      setTimer(60); 
       setSelectedOption(null);
     } else {
       setShowResult(true);
@@ -81,14 +77,12 @@ const Quiz = () => {
   const handlePreviousQuestion = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setTimer(60); 
       setSelectedOption(null);
     }
   };
 
   const handleQuestionSelect = (questionIndex) => {
     setCurrentQuestion(questionIndex);
-    setTimer(60);
     setSelectedOption(null);
   };
 
@@ -98,7 +92,6 @@ const Quiz = () => {
 
   const restartQuiz = () => {
     setCurrentQuestion(0);
-    setTimer(60);
     setTotalTimer(3600);
     setScore(0);
     setShowResult(false);
@@ -115,7 +108,6 @@ const Quiz = () => {
         <div className={styles.totalTimer}>
           Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60}
         </div>
-        <div className={styles.timer}>Time left: {timer}s</div>
         <div className={styles.questionCount}>
           Question {currentQuestion + 1}/{questions.length}
         </div>
@@ -148,7 +140,6 @@ const Quiz = () => {
           <button onClick={handleNextQuestion} disabled={currentQuestion === questions.length - 1 || selectedOption === null}>
             Next
           </button>
-         
         </div>
         <div className={styles.questionSelect}>
           {questions.map((_, index) => (
