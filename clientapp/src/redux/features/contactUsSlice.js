@@ -29,7 +29,7 @@ export const contactUsData = createAsyncThunk(
   async ({requestData,reset}, { rejectWithValue }) => {
     try {
       const response = await http.get(`/api/contactForm/contact`, requestData);
-      const data = response.data;
+      const resultData = response.data;
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
@@ -38,7 +38,7 @@ export const contactUsData = createAsyncThunk(
         return resultData;
       }
 
-      return data;
+      return resultData;
     } catch (error) {
       toast.error("Failed to fetch data");
       return rejectWithValue(error.message);

@@ -29,7 +29,7 @@ export const enquiryData = createAsyncThunk(
   async ({requestData,reset},  { rejectWithValue }) => {
     try {
       const response = await http.get(`/api/enquiryForm/enquiry`, requestData);
-      const data = response.data;
+      const resultData = response.data;
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
@@ -38,7 +38,7 @@ export const enquiryData = createAsyncThunk(
         return resultData;
       }
 
-      return data;
+      return resultData;
     } catch (error) {
       toast.error("Failed to fetch data");
       return rejectWithValue(error.message);

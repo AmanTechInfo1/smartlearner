@@ -35,7 +35,7 @@ export const drivenFormData = createAsyncThunk(
         `/api/callbackForm/callback`,
         requestData
       );
-      const data = response.data;
+      const resultData = response.data;
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
@@ -43,7 +43,7 @@ export const drivenFormData = createAsyncThunk(
         reset();
         return resultData;
       }
-      return data;
+      return resultData;
     } catch (error) {
       toast.error("Failed to fetch data");
       return rejectWithValue(error.message);

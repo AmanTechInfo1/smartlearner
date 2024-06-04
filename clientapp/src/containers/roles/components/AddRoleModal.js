@@ -1,69 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { useDispatch } from 'react-redux';
-import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { createRoleSchema } from '../../../schemas/account';
 import { createRole } from '../../../redux/features/roleSlice';
 
 function AddRoleModal(props) {
   const dispatch = useDispatch();
-
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(createRoleSchema),
-    defaultValues: {
-      name: "",
-    },
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
   });
 
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("name", data?.name);
-    dispatch(createRole(formData, reset, props.toggleAddRoleModal));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const validateForm = async () => {
+    try {
+      await createRoleSchema.validate(formData, { abortEarly: false });
+      setErrors({});
+      return true;
+    } catch (validationErrors) {
+      const newErrors = {};
+      validationErrors.inner.forEach(error => {
+        newErrors[error.path] = error.message;
+      });
+      setErrors(newErrors);
+      return false;
+    }
+  };
+
+  const reset = () => {
+    setFormData({ name: "" });
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const isValid = await validateForm();
+    if (isValid) {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      dispatch(createRole(formDataToSend, reset, props.toggleAddRoleModal));
+    }
   };
 
   return (
     <>
       <Modal
         isOpen={props.addRoleModalOpen}
-        toggle={() => props.toggleAddRoleModal()}>
-        <ModalHeader toggle={() => props.toggleAddRoleModal()}>
+        toggle={props.toggleAddRoleModal}
+      >
+        <ModalHeader toggle={props.toggleAddRoleModal}>
           Create Role
         </ModalHeader>
         <ModalBody>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={onSubmit}>
             <div className="form-group">
               <label>Role Name</label>
-              <Controller
+              <input
+                className={`form-control ${errors.name ? "error-input" : ""}`}
+                type="text"
                 name="name"
-                control={control}
-                defaultValue=" "
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`form-control ${errors?.name ? "error-input" : ""
-                      }`}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    autoComplete="false"
-                  />
-                )}
+                value={formData.name}
+                onChange={handleInputChange}
+                autoComplete="false"
               />
-              {errors?.name?.message ? (
-                <p style={{ color: "red" }}>{errors?.name?.message}</p>
-              ) : (
-                ""
-              )}
+              {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
             </div>
             <div className="form-group text-center mt-3">
               <button
                 className="btn btn-primary account-btn btn-lg"
-                type="submit">
+                type="submit"
+              >
                 Submit
               </button>
             </div>
