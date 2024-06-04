@@ -36,9 +36,9 @@ export const callBackData = createAsyncThunk(
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
-        toast.success(resultData.msg || "submitted Successfully");
+        toast.success(data.msg || "submitted Successfully");
         reset();
-        return resultData;
+        return data;
       }
       return resultData;
     } catch (error) {

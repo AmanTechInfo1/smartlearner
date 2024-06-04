@@ -14,28 +14,31 @@ const servicesSlice = createSlice({
     builder
       .addCase(servicesData.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(servicesData.fulfilled, (state, action) => {
         state.loading = false;
+        state.error = null;
       })
-      .addCase(servicesData.rejected, (state) => {
+      .addCase(servicesData.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.payload || "Failed to fetch data";
       });
   },
 });
 
 export const servicesData = createAsyncThunk(
   "serviceForm/servicesData",
-  async ({requestData,reset}, { rejectWithValue }) => {
+  async ({ requestData, reset }, { rejectWithValue }) => {
     try {
       const response = await http.get(`/api/serviceForm/service`, requestData);
       const resultData = response.data;
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
-        toast.success(resultData.msg || "submitted Successfully");
+        toast.success(data.msg || "Submitted successfully");
         reset();
-        return resultData;
+        return data;
       }
       return resultData;
     } catch (error) {
@@ -44,6 +47,8 @@ export const servicesData = createAsyncThunk(
     }
   }
 );
+
+
 
 // Add more async thunks and action creators as needed
 

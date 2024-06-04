@@ -1,18 +1,15 @@
 import React from "react";
 import styles from "./Cart.module.css";
 import { FaTrash } from "react-icons/fa";
-
 import { useCartContext } from "../../../components/context/CartContext";
 
 export default function Cart() {
-  const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+  const { cart, clearCart, total_price, shipping_fee, increaseQuantity, decreaseQuantity, removeProduct } = useCartContext();
 
   // Function to merge products with the same ID
   const mergeCartItems = (cartItems) => {
     const mergedCart = cartItems.reduce((acc, currentItem) => {
-      const existingItemIndex = acc.findIndex(
-        (item) => item.id === currentItem.id
-      );
+      const existingItemIndex = acc.findIndex((item) => item.id === currentItem.id);
       if (existingItemIndex !== -1) {
         acc[existingItemIndex].quantity += currentItem.quantity;
       } else {
@@ -27,11 +24,11 @@ export default function Cart() {
   const preprocessedCart = mergeCartItems(cart);
 
   if (cart.length === 0) {
-    return <h3>No Cart in Item </h3>;
+    return <h3>No items in Cart</h3>;
   }
 
   return (
-    <div className={styles.shoopingCart}>
+    <div className={styles.shoppingCart}>
       <div className={styles.cartDetails}>
         <div className={styles.cartHeading}>
           <table>
@@ -49,7 +46,6 @@ export default function Cart() {
                 <tr key={item.id}>
                   <td id={styles.productTd} data-label="Product:">
                     <div id={styles.tdName}>
-                      {" "}
                       <img
                         src={item.image}
                         alt=""
@@ -66,14 +62,16 @@ export default function Cart() {
                   <td id={styles.productTd} data-label="Quantity:">
                     <div className={styles.quantityControl}>
                       <button
-                        onClick={() => handleDecrease(item.id)}
-                        className={styles.decreaseButton}>
+                        onClick={() => decreaseQuantity(item.id)}
+                        className={styles.decreaseButton}
+                      >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
-                        onClick={() => handleIncrease(item.id)}
-                        className={styles.increaseButton}>
+                        onClick={() => increaseQuantity(item.id)}
+                        className={styles.increaseButton}
+                      >
                         +
                       </button>
                     </div>

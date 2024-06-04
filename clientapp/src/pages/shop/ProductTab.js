@@ -4,8 +4,12 @@ import { products } from "../../assets/data/Products";
 import styles from "./ProductTab.module.css";
 import { FaStar, FaAngleDoubleRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../../components/context/CartContext";
 
 export default function ProductTab() {
+  const { addToCart } = useCartContext();
+
+
   const [activeCategory, setActiveCategory] = useState("Intensive");
   const [activeCategoryProducts, setActiveCategoryProducts] = useState([]);
 

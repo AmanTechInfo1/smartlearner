@@ -12,8 +12,12 @@ import { FaArrowRight } from "react-icons/fa";
 import Testimonials from "../components/testimonials/Testimonials";
 import Review from "../components/views/Review";
 import ShortFaqs from "../components/shortFaqs/ShortFaqs";
+import { useCartContext } from "../components/context/CartContext";
 
 export default function TheorySupport() {
+
+  const { addToCart } = useCartContext(); 
+
   const theoryProducts = products.filter(
     (product) => product.category === "Theory"
   );

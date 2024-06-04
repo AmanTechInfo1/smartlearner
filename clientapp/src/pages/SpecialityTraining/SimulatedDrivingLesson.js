@@ -16,12 +16,19 @@ import { AiOutlineLike } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import EnquiryForm from "../../components/forms/EnquiryForm";
 import Review from "../../components/views/Review";
+import { useCartContext } from "../../components/context/CartContext";
+
+
 
 export default function SimulatedDrivingLesson() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
-  };
+
+  const { addToCart } = useCartContext(); 
+
+  
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // Handle form submission here
+  // };
   const theoryProducts = products.filter(
     (product) => product.category === "Theory"
   );

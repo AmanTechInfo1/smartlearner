@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { enquiryData } from "../../redux/features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { enquiryFormSchema } from "../../schemas/master";
-import styles from "../../Pages/SpecialityTraining/ExtendedTest.module.css"
-
+import styles from "../../pages/SpecialityTraining/ExtendedTest.module.css"
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();
