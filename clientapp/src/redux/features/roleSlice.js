@@ -31,6 +31,15 @@ const roleSlice = createSlice({
             state.roleLoading = false;
         },
         editRoleSuccess: (state, action) => {
+            const updatedRole = action.payload.role;
+            const updatedRoles = state.roles.map(role => {
+                if (role._id === updatedRole._id) {
+                    return updatedRole;
+                }
+                return role;
+            });
+
+            state.roles = updatedRoles;
             state.roleLoading = false;
         },
         editRoleFailure: (state, action) => {
@@ -142,7 +151,6 @@ export const getRoleById = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
         const response = await httpHandler.get(`/api/roles/role/${id}`);
-        debugger
         if (response.data.success) {
             dispatch(getRoleByIdSuccess(response.data.data));
         } else {

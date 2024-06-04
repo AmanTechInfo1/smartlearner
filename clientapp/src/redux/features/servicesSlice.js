@@ -32,16 +32,15 @@ export const servicesData = createAsyncThunk(
   async ({ requestData, reset }, { rejectWithValue }) => {
     try {
       const response = await http.get(`/api/serviceForm/service`, requestData);
-      const data = response.data;
-      if (!data.success) {
-        toast.error(data.msg || "Something went wrong");
-        return rejectWithValue(data.msg || "Something went wrong");
+      const resultData = response.data;
+      if (!resultData.success) {
+        toast.error(resultData.msg || "Something went wrong");
       } else {
         toast.success(data.msg || "Submitted successfully");
         reset();
         return data;
       }
-    
+      return resultData;
     } catch (error) {
       toast.error("Failed to fetch data");
       return rejectWithValue(error.message);

@@ -67,15 +67,15 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
         if (response.data.success) {
             toast.success(response.data.message);
             reset();
-            dispatch(createCategorySuccess(response.data.data));
+            //dispatch(createCategorySuccess(response.data.data));
             toggleAddCategoryModal();
         } else {
             toast.error(response.data.message);
-            dispatch(createCategoryFailure());
+            //dispatch(createCategoryFailure());
         }
     } catch (error) {
         toast.error(error.message);
-        dispatch(createCategoryFailure());
+        //dispatch(createCategoryFailure());
     }
 };
 
