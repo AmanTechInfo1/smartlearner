@@ -1,6 +1,6 @@
-import styles from './Quiz.module.css';
-import ResultQuiz from './ResultQuiz';
 import React, { useState, useEffect } from 'react';
+import ResultQuiz from './ResultQuiz';
+import styles from './Quiz.module.css';
 
 const questions = [
   {
@@ -21,15 +21,17 @@ const questions = [
       { answerText: "Tony Stark", isCorrect: false },
     ],
   },
-  
 ];
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [totalTimer, setTotalTimer] = useState(3600); 
+  const [totalTimer, setTotalTimer] = useState(3600);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [startTime, setStartTime] = useState(Date.now());
+  const [endTime, setEndTime] = useState(null);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,6 +40,7 @@ const Quiz = () => {
           return prevTotalTimer - 1;
         } else {
           clearInterval(interval);
+          setEndTime(Date.now());
           setShowResult(true);
           return 0;
         }
@@ -48,6 +51,22 @@ const Quiz = () => {
   }, []);
 
   const handleAnswerOptionClick = (index, isCorrect) => {
+    const currentQuestionData = questions[currentQuestion];
+    const userAnswer = currentQuestionData.answerOptions[index].answerText;
+
+    const answerText = userAnswer || "Not Answered";
+
+    const correctAnswer = currentQuestionData.answerOptions.find(option => option.isCorrect).answerText;
+
+    setAnsweredQuestions((prev) => [
+      ...prev,
+      {
+        questionText: currentQuestionData.questionText,
+        userAnswer: answerText, // Use the answerText here
+        correctAnswer,
+      },
+    ]);
+
     setSelectedOption(index);
     if (isCorrect) {
       setScore(score + 1);
@@ -59,6 +78,7 @@ const Quiz = () => {
         setCurrentQuestion(nextQuestion);
         setSelectedOption(null);
       } else {
+        setEndTime(Date.now());
         setShowResult(true);
       }
     }, 2000);
@@ -70,6 +90,7 @@ const Quiz = () => {
       setCurrentQuestion(nextQuestion);
       setSelectedOption(null);
     } else {
+      setEndTime(Date.now());
       setShowResult(true);
     }
   };
@@ -87,6 +108,7 @@ const Quiz = () => {
   };
 
   const endQuiz = () => {
+    setEndTime(Date.now());
     setShowResult(true);
   };
 
@@ -96,10 +118,23 @@ const Quiz = () => {
     setScore(0);
     setShowResult(false);
     setSelectedOption(null);
+    setStartTime(Date.now());
+    setEndTime(null);
+    setAnsweredQuestions([]);
   };
 
   if (showResult) {
-    return <ResultQuiz score={score} totalQuestions={questions.length} onRestart={restartQuiz} />;
+    return (
+      <ResultQuiz
+        score={score}
+        totalQuestions={questions.length}
+        onRestart={restartQuiz}
+        quizName="Theory Training - Mock Test"
+        startTime={startTime}
+        endTime={endTime}
+        questions={answeredQuestions} // pass the answered questions
+      />
+    );
   }
 
   return (
@@ -143,7 +178,11 @@ const Quiz = () => {
         </div>
         <div className={styles.questionSelect}>
           {questions.map((_, index) => (
-            <button key={index} onClick={() => handleQuestionSelect(index)}>
+            <button
+              key={index}
+              onClick={() => handleQuestionSelect(index)}
+              style={{ border: answeredQuestions[index] ? "2px solid pink" : "none" }}
+            >
               {index + 1}
             </button>
           ))}
