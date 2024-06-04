@@ -4,6 +4,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const accountRoutes = require("./routes/accountRoutes");
 const roleRoutes = require("./routes/roleRoutes");
 const productRoutes = require("./routes/productRoutes");
+const quizRoutes = require("./routes/quizRoutes");
 const serviceRoutes = require("./routes/servicesRoutes");
 const enquiryRoutes = require("./routes/enquiryRoutes");
 const callBackRoutes = require("./routes/callBackRoutes");
@@ -26,6 +27,7 @@ app.use("/api/enquiryForm", enquiryRoutes);
 app.use("/api/callbackForm", callBackRoutes);
 app.use("/api/contactForm", contactRoutes);
 app.use("/api/drivenForm", drivenFormRoutes);
+app.use("/api/quiz", quizRoutes);
 
 app.use(errorHandler);
 // Start server

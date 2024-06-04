@@ -46,6 +46,10 @@ class AccountService {
       const passwordHash = new PasswordHash(8, true);
       const { email, password } = credentials;
 
+      // const salt = await bcrypt.genSalt();
+      // const hashedPassword = await bcrypt.hash(password, salt);
+
+      // console.log("hashedPassword",hashedPassword,"hashedPassword")
       // Find user by email
       const user = await User.findOne({ email });
       if (!user) {

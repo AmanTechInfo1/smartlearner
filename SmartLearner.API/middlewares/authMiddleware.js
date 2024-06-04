@@ -11,6 +11,8 @@ const requireAuth = (req, res, next) => {
           console.log(err.message);
           res.redirect("/login");
         } else {
+          const decoded = jwt.decode(token, { complete: true });
+          req.userId = decoded.payload.id
           next();
         }
       }
