@@ -36,9 +36,9 @@ export const servicesData = createAsyncThunk(
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
-        toast.success(data.msg || "Submitted successfully");
+        toast.success(resultData.msg || "Submitted successfully");
         reset();
-        return data;
+        return resultData;
       }
       return resultData;
     } catch (error) {
