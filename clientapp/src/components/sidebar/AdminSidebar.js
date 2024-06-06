@@ -50,14 +50,14 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                     <Link to="/admin/categories">
                         <li className={styles.adminSidebarListItem}>
                             <BsFillGrid3X3GapFill className={styles.adminIcon} />
-                            Categories
+                           product Category
                         </li>
                     </Link>
                     <Link to="/admin/postcodes">
                         <li className={styles.adminSidebarListItem}>
                             {" "}
                             <BsFillArchiveFill className={styles.adminIcon} />
-                            Postcodes
+                           product Postcodes
                         </li>
                     </Link>
                     <Link to="/admin/products">

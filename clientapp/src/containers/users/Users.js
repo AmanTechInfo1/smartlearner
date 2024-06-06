@@ -7,19 +7,28 @@ import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { LiaUserEditSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../../redux/features/userSlice';
+import { getAllUsers, getListUsers, getUserById,deleteUser } from '../../redux/features/userSlice';
+import EditUserModal from './components/EditUserModal';
+import Loader from '../../components/loader/Loader';
 
 function Users() {
     const dispatch = useDispatch();
     const { loading, users, usersCount } = useSelector((state) => state.user);
-    const [showUserAddModal, setUserAddModal] = useState(false);
-    const toggleAddUserModal = () => setUserAddModal(!showUserAddModal);
-
     const [state, setState] = useState({
         search: "",
         page: 1,
         pageSize: 10,
     });
+
+    
+
+    const [showUserAddModal, setUserAddModal] = useState(false);
+    const toggleAddUserModal = () => setUserAddModal(!showUserAddModal);
+
+    const [editUserModalOpen, setEditUserModalOpen] = useState(false);
+    const toggleEditUserModal = () => setEditUserModalOpen(!editUserModalOpen);
+    
+    const [UserObj, setUserObj] = useState();
 
     useEffect(() => {
         dispatch(getAllUsers(state.search, state.page, state.pageSize));
@@ -38,11 +47,19 @@ function Users() {
         }
         return originalElement;
     };
-
-    const handleEditClick = (id) => {
-        debugger
+    const handleAddUserClick = () => {
+        dispatch(getListUsers());
+        toggleAddUserModal();
     }
 
+    const handleEditClick = (id) => {
+        dispatch(getUserById(id));
+        toggleEditUserModal();
+    };
+
+    const handleDeleteClick = (id) => {
+        dispatch(deleteUser(id));
+    };
     const columns = [
         {
             title: "UserName",
@@ -89,12 +106,8 @@ function Users() {
         },
     ];
 
-    const handleAddUserClick = () => {
-        dispatch(getListRoles());
-        toggleAddUserModal();
-    }
-    const handleSave = (editedUser) => { };
-    const handleDeleteClick = () => { };
+    
+   
     return (
         <>
             <div className={styles.usersContainer}>
@@ -107,29 +120,38 @@ function Users() {
                         Add User
                     </button>
                 </div>
-                <Table
-                    className="table-striped"
-                    pagination={{
-                        current: state.page,
-                        pageSize: state.pageSize,
-                        total: usersCount,
-                        showTotal: (total, range) =>
-                            `Showing ${range[0]} to ${range[1]} of ${total} entries`,
-                        showSizeChanger: true,
-                        onShowSizeChange: onShowSizeChange,
-                        itemRender: itemRender,
-                        onChange: (page, pageSize) =>
-                            setState({ ...state, page, pagesize: pageSize }),
-                    }}
-                    style={{ overflowX: "auto" }}
-                    columns={columns}
-                    dataSource={users}
-                    rowKey={(record) => record._id}
-                />
+                {!loading ? (
+                    <Table
+                        className="table-striped"
+                        pagination={{
+                            current: state.page,
+                            pageSize: state.pageSize,
+                            total: usersCount,
+                            showTotal: (total, range) =>
+                                `Showing ${range[0]} to ${range[1]} of ${total} entries`,
+                            showSizeChanger: true,
+                            onShowSizeChange: onShowSizeChange,
+                            itemRender: itemRender,
+                            onChange: (page, pageSize) =>
+                                setState({ ...state, page, pagesize: pageSize }),
+                        }}
+                        style={{ overflowX: "auto" }}
+                        columns={columns}
+                        dataSource={users}
+                        rowKey={(record) => record._id}
+                    />
+                ) : (
+                    <Loader/>
+                )}
             </div>
             <AddUserModal
                 showUserAddModal={showUserAddModal}
                 toggleAddUserModal={toggleAddUserModal}
+            />
+            <EditUserModal
+            UserObj={UserObj}
+            editUserModalOpen={editUserModalOpen}
+            toggleEditRoleModal={toggleEditUserModal}
             />
         </>
     )

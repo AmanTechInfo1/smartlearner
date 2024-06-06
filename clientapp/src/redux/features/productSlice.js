@@ -36,6 +36,16 @@ const productSlice = createSlice({
         createCategoryFailure: (state) => {
             state.loading = false;
         },
+        deleteProductSuccess: (state, action) => {
+            state.products = state.products.filter(
+                (product) => product._id !== action.payload.id
+            );
+            state.productCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        deleteProductFailure: (state) => {
+            state.loading = false;
+        },
         setLoading: (state) => {
             state.loading = true;
         },
@@ -67,15 +77,32 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
         if (response.data.success) {
             toast.success(response.data.message);
             reset();
-            //dispatch(createCategorySuccess(response.data.data));
+            dispatch(createCategorySuccess(response.data.data));
             toggleAddCategoryModal();
         } else {
             toast.error(response.data.message);
-            //dispatch(createCategoryFailure());
+            dispatch(createCategoryFailure());
         }
     } catch (error) {
         toast.error(error.message);
-        //dispatch(createCategoryFailure());
+        dispatch(createCategoryFailure());
+    }
+};
+
+export const deleteProduct = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.delete(`/api/product/delete-product/${id}`);
+        if (response.data.success) {
+            toast.success(response.data.message);
+            dispatch(deleteProductSuccess({ id, totalCount: response.data.totalCount }));
+        } else {
+            toast.error(response.data.message);
+            dispatch(deleteProductFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(deleteProductFailure());
     }
 };
 
@@ -86,6 +113,8 @@ export const {
     createProductFailure,
     createCategorySuccess,
     createCategoryFailure,
+    deleteProductSuccess,
+    deleteProductFailure,
     setLoading,
 } = productSlice.actions;
 

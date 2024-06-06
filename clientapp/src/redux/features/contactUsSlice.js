@@ -33,9 +33,9 @@ export const contactUsData = createAsyncThunk(
       if (!resultData.success) {
         toast.error(resultData.msg || "Something went wrong");
       } else {
-        toast.success(data.msg || "submitted Successfully");
+        toast.success(resultData.msg || "submitted Successfully");
         reset();
-        return data;
+        return resultData;
       }
 
       return resultData;

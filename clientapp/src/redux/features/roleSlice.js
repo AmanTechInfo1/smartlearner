@@ -22,7 +22,7 @@ const roleSlice = createSlice({
             state.rolesCount = null;
             state.roleLoading = false;
         },
-        createRoleSuccess: (state, action) => {
+        createRoleSuccess: (state, action) => { 
             state.roles.push(action.payload.role);
             state.rolesCount = action.payload.totalCount;
             state.roleLoading = false;
