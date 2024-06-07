@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AddUserModal from './components/AddUserModal';
 import { Table } from 'antd';
 import styles from "../../assets/css/admin.module.css";
-import { getListRoles } from '../../redux/features/roleSlice';
+import { getListRoles,getRoleById } from '../../redux/features/roleSlice';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { LiaUserEditSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
@@ -28,7 +28,7 @@ function Users() {
     const [editUserModalOpen, setEditUserModalOpen] = useState(false);
     const toggleEditUserModal = () => setEditUserModalOpen(!editUserModalOpen);
     
-    const [UserObj, setUserObj] = useState();
+    const [userObj, setUserObj] = useState();
 
     useEffect(() => {
         dispatch(getAllUsers(state.search, state.page, state.pageSize));
@@ -56,7 +56,7 @@ function Users() {
 
     const handleEditClick = (id) => {
         dispatch(getUserById(id));
-        dispatch(getListRoles());
+        dispatch(getRoleById(id));
         toggleEditUserModal();
     };
 
@@ -86,10 +86,12 @@ function Users() {
                     className="d-flex justify-content-around"
                     data-popper-placement="bottom-end"
                 >
+                   
                     <Link
-                        to={`#`}
+                       
                         className="dropdown-item px-2 text-success"
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.preventDefault();
                             handleEditClick(record._id);
                         }}
                     >
@@ -153,9 +155,9 @@ function Users() {
                 toggleAddUserModal={toggleAddUserModal}
             />
             <EditUserModal
-            UserObj={UserObj}
+            userObj={userObj}
             editUserModalOpen={editUserModalOpen}
-            toggleEditRoleModal={toggleEditUserModal}
+            toggleEditUserModal={toggleEditUserModal}
             />
         </>
     )
