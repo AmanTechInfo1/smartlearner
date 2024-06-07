@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const PasswordHash = require("../utilities/PasswordHash");
 const roleService = require("../services/roleService");
 const { ROLES } = require("../utilities/constatnt");
+const Role = require("../models/roleModel");
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -223,6 +224,96 @@ class AccountService {
       return resultObject;
     } catch (err) {
       throw new Error(err.message);
+    }
+  }
+
+
+  async getOneUsersAsync(params_id) {
+    try {
+      
+      const users = await User.findById({"_id":params_id});
+      
+      const totalCount = await User.countDocuments({"_id":params_id});
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: { users, totalCount },
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+
+  
+  async getAllUsersRolesAsync() {
+    try {
+
+      const role = await Role.aggregate([
+        {
+          $addFields:{
+            "uniqueId":"$_id"
+          }
+        }
+      ]);
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 201,
+        success: true,
+        data: { role },
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+
+  async updateUserAsync(roleId, roleData) {
+    try {
+      const role = await User.findByIdAndUpdate(roleId, roleData, {
+        new: true,
+      });
+      const resultObject = {
+        message: "Updated successfully",
+        statusCode: 201,
+        success: true,
+        data: { role },
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
+  async deleteUserAsync(roleId) {
+    try {
+      await User.findByIdAndDelete(roleId);
+      const resultObject = {
+        message: "Deleted successfully",
+        statusCode: 201,
+        success: true,
+        data: null,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
     }
   }
 }

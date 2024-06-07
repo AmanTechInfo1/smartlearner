@@ -11,7 +11,12 @@ function AddUserModal(props) {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const { roleLoading, rolesList } = useSelector((state) => state.roles);
+    
+    const { roleLoading, rolesList } = useSelector((state) => {
+
+        console.log(state.roles,"dashdkashdkjasdsa")
+        return state.roles
+    });
 
     const {
         handleSubmit,
@@ -30,7 +35,7 @@ function AddUserModal(props) {
         formData.append("phoneNumber", data.phoneNumber);
         formData.append("roleName", data.roleName);
         formData.append("privacyPolicy", data.privacyPolicy);
-        dispatch(createUser(data, reset, props.toggleAddUserModal));
+        dispatch(createUser(data, reset, props.toggleAddUserModal,props.state));
     };
 
     return (

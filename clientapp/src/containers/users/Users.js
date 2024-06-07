@@ -48,12 +48,15 @@ function Users() {
         return originalElement;
     };
     const handleAddUserClick = () => {
-        dispatch(getListUsers());
+        // dispatch(getListUsers());
+        dispatch(getListRoles());
+        
         toggleAddUserModal();
     }
 
     const handleEditClick = (id) => {
         dispatch(getUserById(id));
+        dispatch(getListRoles());
         toggleEditUserModal();
     };
 
@@ -145,6 +148,7 @@ function Users() {
                 )}
             </div>
             <AddUserModal
+                state={state}
                 showUserAddModal={showUserAddModal}
                 toggleAddUserModal={toggleAddUserModal}
             />

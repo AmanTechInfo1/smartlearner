@@ -55,6 +55,43 @@ class AccountController {
       next(err);
     }
   }
+  async getAllUsers(req, res, next) {
+    try {
+      const { page, pagesize, search } = req.query;
+      const response = await accountService.getAllUsersAsync(page, pagesize, search);
+      res.status(201).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async getOneUsers(req, res, next) {
+    try {
+      const { page, pagesize, search } = req.query;
+      const response = await accountService.getOneUsersAsync(req.params.id);
+      res.status(200).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async updateUser(req, res, next) {
+    try {
+      const role = await accountService.updateUserAsync(req.params.id, req.body);
+      res.json(role);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async deleteUser(req, res, next) {
+    try {
+      const result = await accountService.deleteUserAsync(req.params.id);
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new AccountController();

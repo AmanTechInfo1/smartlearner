@@ -93,7 +93,7 @@ export const getAllUsers = (search, page, pagesize) => async (dispatch) => {
 };
 
 export const createUser =
-  (data, reset, toggleAddUserModal) => async (dispatch) => {
+  (data, reset, toggleAddUserModal,statedata) => async (dispatch) => {
     try {
       dispatch(setLoading());
       const response = await httpHandler.post(`/api/account/register`, data);
@@ -102,6 +102,7 @@ export const createUser =
         reset();
         toggleAddUserModal();
         dispatch(createUserSuccess(response.data.data));
+        dispatch(getAllUsers(statedata.search, statedata.page, statedata.pageSize));
       } else {
         toast.error(response.data.message);
         dispatch(createUserFailure());
