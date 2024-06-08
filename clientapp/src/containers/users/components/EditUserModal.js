@@ -6,37 +6,38 @@ import { editUser } from '../../../redux/features/userSlice';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import Loader from '../../../components/loader/Loader';
 
-function EditUserModal({ userObj, editUserModalOpen, toggleEditUserModal }) {
+function EditUserModal(props) {
     const dispatch = useDispatch();
     const rolesList = useSelector(state => state.roles.rolesList);
-    const roleLoading = useSelector(state => state.roles.loading);
+    
 
+    const { loading, user } = useSelector((state)=> state.user)
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        phoneNumber: '',
-        roleName: '',
-        privacyPolicy: false,
+        username: user ? user.username : "",
+        email: user ? user.email : "",
+        password: user ? user.password : "",
+        confirmPassword: user ? user.confirmPassword : "",
+        phoneNumber: user ? user.phoneNumber : "",
+        roleName: user ? user.roleName : "",
+        privacyPolicy: user ? user.roleName : false,
     });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     useEffect(() => {
-    if (userObj) {
+    if (user) {
         setFormData({
-            username: userObj.username || '',
-            email: userObj.email || '',
-            password: '',
-            confirmPassword: '',
-            phoneNumber: userObj.phoneNumber || '',
-            roleName: userObj.roleName || '',
-            privacyPolicy: userObj.privacyPolicy || false,
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            confirmPassword: user.confirmPassword,
+            phoneNumber: user.phoneNumber,
+            roleName: user.roleName ,
+            privacyPolicy: user.privacyPolicy,
         });
     }
-}, [userObj]);
+}, [user]);
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -72,15 +73,15 @@ function EditUserModal({ userObj, editUserModalOpen, toggleEditUserModal }) {
             formDataToSend.append("phoneNumber", formData.phoneNumber);
             formDataToSend.append("roleName", formData.roleName);
             formDataToSend.append("privacyPolicy", formData.privacyPolicy);
-            dispatch(editUser(userObj._id, formDataToSend, toggleEditUserModal));
+            dispatch(editUser(user._id, formDataToSend, props.toggleEditUserModal));
         }
     };
 
     return (
         <>
-            {!roleLoading ? (
-                <Modal isOpen={editUserModalOpen} toggle={toggleEditUserModal}>
-                    <ModalHeader toggle={toggleEditUserModal}>Update User</ModalHeader>
+            {!loading ? (
+                <Modal isOpen={props.editUserModalOpen} toggle={props.toggleEditUserModal}>
+                    <ModalHeader toggle={props.toggleEditUserModal}>Update User</ModalHeader>
                     <ModalBody>
                         <form onSubmit={onSubmit}>
                             <div className="form-group">

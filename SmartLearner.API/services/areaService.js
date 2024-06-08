@@ -1,54 +1,54 @@
-const Postcode = require("../models/postcodeModel");
+const Area = require("../models/areaModal");
 
-class PostcodeService {
-  async createPostcodeAsync(postcodeData) {
+class AreaService {
+  async createAreaAsync(areaData) {
     try {
-      const postcode = await Postcode.create(postcodeData);
-      const totalCount = await Postcode.countDocuments();
+      const area = await Area.create(areaData);
+      const totalCount = await Area.countDocuments();
       const resultObject = {
         message: "Added successfully",
         statusCode: 201,
         success: true,
-        data: { postcode, totalCount }
+        data: { area, totalCount }
       };
       return resultObject;
     } catch (err) {
-      throw new Error("Could not create postcode");
+      throw new Error("Could not create area");
     }
   }
 
-  async getPostcodesAsync(pageNumber, pageSize, query) {
+  async getAreasAsync(pageNumber, pageSize, query) {
     try {
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
-        filter.$or = [{ code: regex }, { area: regex }];
+        filter.$or = [{ name: regex }, { description: regex }];
       }
-      const totalCount = await Postcode.countDocuments(filter);
-      const postcodes = await Postcode.find(filter).skip(skip).limit(pageSize || 20);
+      const totalCount = await Area.countDocuments(filter);
+      const areas = await Area.find(filter).skip(skip).limit(pageSize || 20);
 
       const resultObject = {
         message: "Fetched successfully",
         statusCode: 201,
         success: true,
-        data: { postcodes, totalCount },
+        data: { areas, totalCount },
       };
 
       return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch postcodes");
+      throw new Error("Could not fetch areas");
     }
   }
 
-  async getPostcodeListAsync() {
+  async getAreaListAsync() {
     try {
-      const postcodes = await Postcode.find();
+      const areas = await Area.find();
 
       const resultObject = {
         success: true,
-        message: "All postcodes fetched successfully",
-        data: postcodes,
+        message: "All areas fetched successfully",
+        data: areas,
       };
 
       return resultObject;
@@ -62,13 +62,13 @@ class PostcodeService {
     }
   }
 
-  async getPostcodeByIdAsync(postcodeId) {
+  async getAreaByIdAsync(areaId) {
     try {
-      const postcode = await Postcode.findById(postcodeId);
+      const area = await Area.findById(areaId);
       const resultObject = {
         success: true,
         message: "",
-        data: postcode,
+        data: area,
       };
       return resultObject;
     } catch (err) {
@@ -81,14 +81,14 @@ class PostcodeService {
     }
   }
 
-  async updatePostcodeAsync(postcodeId, postcodeData) {
+  async updateAreaAsync(areaId, areaData) {
     try {
-      const postcode = await Postcode.findByIdAndUpdate(postcodeId, postcodeData, { new: true });
+      const area = await Area.findByIdAndUpdate(areaId, areaData, { new: true });
       const resultObject = {
         message: "Updated successfully",
         statusCode: 201,
         success: true,
-        data: { postcode },
+        data: { area },
       };
       return resultObject;
     } catch (err) {
@@ -102,9 +102,9 @@ class PostcodeService {
     }
   }
 
-  async deletePostcodeAsync(postcodeId) {
+  async deleteAreaAsync(areaId) {
     try {
-      await Postcode.findByIdAndDelete(postcodeId);
+      await Area.findByIdAndDelete(areaId);
       const resultObject = {
         message: "Deleted successfully",
         statusCode: 201,
@@ -124,4 +124,4 @@ class PostcodeService {
   }
 }
 
-module.exports = new PostcodeService();
+module.exports = new AreaService();

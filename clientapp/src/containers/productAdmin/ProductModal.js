@@ -8,6 +8,7 @@ import { Table } from "antd";
 import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { getListAreas } from "../../redux/features/areaSlice";
 
 const ProductModal = () => {
     const dispatch = useDispatch();
@@ -43,6 +44,10 @@ const ProductModal = () => {
         return originalElement;
     };
 
+    const handleAddUserClick = () =>{
+        dispatch(getListAreas())
+        toggleAddProductModal();
+    }
     const handleEditClick = (id) => {
         const product = products.find((product) => product._id === id);
         setEditProduct(product);
@@ -113,7 +118,7 @@ const ProductModal = () => {
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
                     <h2 className={styles.userHeading}>Products</h2>
-                    <button className={styles.addButton} onClick={toggleAddProductModal}>
+                    <button className={styles.addButton} onClick={handleAddUserClick}>
                         Add Product
                     </button>
                 </div>

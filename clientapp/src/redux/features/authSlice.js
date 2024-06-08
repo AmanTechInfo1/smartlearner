@@ -70,7 +70,7 @@ export const loginUser = createAsyncThunk(
       const response = await http.post(`/api/account/login`, loginData);
       const data = response.data;
       if (data.success) {
-        debugger;
+       
         const user = data.data.user;
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");

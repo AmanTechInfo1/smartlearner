@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
-import AddQuiz from "./component/AddQuiz";
-import EditQuiz from "./component/EditQuiz";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteQuiz, getAllQuizzes, getQuizById } from "../../../redux/features/quizSlice";
+import styles from "../../assets/css/admin.module.css";
 import { Table } from "antd";
-import styles from "../../../assets/css/admin.module.css";
+import { useSelector, useDispatch } from "react-redux";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { Button } from "reactstrap";
-import Loader from "../../../components/loader/Loader";
+import AddAreaModal from "./component/AddAreaModal";
+import EditAreaModal from "./component/EditAreaModal";
+import Loader from "../../components/loader/Loader";
+import { deleteArea, getAllAreas, getAreaById } from "../../redux/features/areaSlice";
+import { Link } from "react-router-dom";
 
-const Quiz = () => {
+function Area() {
     const dispatch = useDispatch();
-    const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
-    const [quizObj, setQuizObj] = useState();
-
-    const [showAddQuizModal, setShowAddQuizModal] = useState(false);
-    const toggleAddQuizModal = () => setShowAddQuizModal(!showAddQuizModal);
-
-    const [showEditQuizModal, setShowEditQuizModal] = useState(false);
-    const toggleEditQuizModal = () => setShowEditQuizModal(!showEditQuizModal);
-
+    const { loading, areas, areasCount } = useSelector((state) => state.area);
     const [state, setState] = useState({
         search: "",
         page: 1,
         pageSize: 10,
     });
 
+    const [addAreaModalOpen, setAddAreaModalOpen] = useState(false);
+    const toggleAddAreaModal = () => setAddAreaModalOpen(!addAreaModalOpen);
+
+    const [editAreaModalOpen, setEditAreaModalOpen] = useState(false);
+    const toggleEditAreaModal = () => setEditAreaModalOpen(!editAreaModalOpen);
+
+    const [areaObj, setAreaObj] = useState();
+
     useEffect(() => {
-        dispatch(getAllQuizzes(state.search, state.page, state.pageSize));
+        dispatch(getAllAreas(state.search, state.page, state.pageSize));
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
@@ -46,58 +46,43 @@ const Quiz = () => {
     };
 
     const handleEditClick = (id) => {
-        dispatch(getQuizById(id));
-        toggleEditQuizModal();
+        dispatch(getAreaById(id));
+        toggleEditAreaModal();
     };
 
-    const handleDelete = (id) => {
-        dispatch(deleteQuiz(id));
+    const handleDeleteClick = (id) => {
+        dispatch(deleteArea(id));
     };
 
     const columns = [
         {
-            title: "Quiz Name",
+            title: "Area Name",
             dataIndex: "name",
             align: "center",
             sorter: (a, b) => a.name.length - b.name.length,
         },
         {
-            title: "Category",
-            dataIndex: "category",
-            align: "center",
-            sorter: (a, b) => a.category.length - b.category.length,
-            render: (text) => (
-                <span title={text}>
-                    {text.length > 40 ? `${text.substring(0, 40)}...` : text}
-                </span>
-            ),
-        },
-        {
             title: "Action",
-            align: "left",
+            align: "center",
             render: (text, record) => (
-                <div
-                    className="d-flex justify-content-center"
-                    data-popper-placement="bottom-end"
-                >
-                    <Button
-                        className="dropdown-item px-2 text-success"
-                        onClick={(e) => {
-                            e.preventDefault();
+                <div className="d-flex justify-content-center" data-popper-placement="bottom-end">
+                    <Link
+                        onClick={(event) => {
+                            event.preventDefault();
                             handleEditClick(record._id);
                         }}
                     >
                         <LiaUserEditSolid />
-                    </Button>
-                    <Button
+                    </Link>
+                    <Link
                         className="dropdown-item px-2 text-danger"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleDelete(record._id);
+                        to={"#"}
+                        onClick={() => {
+                            handleDeleteClick(record._id);
                         }}
                     >
                         <RiDeleteBin6Fill />
-                    </Button>
+                    </Link>
                 </div>
             ),
         },
@@ -107,12 +92,9 @@ const Quiz = () => {
         <>
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
-                    <h2 className={styles.userHeading}>Quizzes</h2>
-                    <button
-                        className={styles.addButton}
-                        onClick={toggleAddQuizModal}
-                    >
-                        Add Quiz
+                    <h2 className={styles.userHeading}>Area</h2>
+                    <button className={styles.addButton} onClick={toggleAddAreaModal}>
+                        Add Area
                     </button>
                 </div>
                 {!loading ? (
@@ -121,7 +103,7 @@ const Quiz = () => {
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: quizzesCount,
+                            total: areasCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,
@@ -132,24 +114,24 @@ const Quiz = () => {
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
-                        dataSource={quizzes}
+                        dataSource={areas}
                         rowKey={(record) => record._id}
                     />
                 ) : (
                     <Loader />
                 )}
             </div>
-            <AddQuiz
-                showAddQuizModal={showAddQuizModal}
-                toggleAddQuizModal={toggleAddQuizModal}
+            <AddAreaModal
+                addAreaModalOpen={addAreaModalOpen}
+                toggleAddAreaModal={toggleAddAreaModal}
             />
-            <EditQuiz
-                quizObj={quizObj}
-                showEditQuizModal={showEditQuizModal}
-                toggleEditQuizModal={toggleEditQuizModal}
+            <EditAreaModal
+                areaObj={areaObj}
+                editAreaModalOpen={editAreaModalOpen}
+                toggleEditAreaModal={toggleEditAreaModal}
             />
         </>
     );
-};
+}
 
-export default Quiz;
+export default Area;

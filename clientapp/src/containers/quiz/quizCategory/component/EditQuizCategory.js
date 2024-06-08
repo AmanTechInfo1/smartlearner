@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { editCategory } from '../../../redux/features/categorySlice';
-import { categorySchema } from '../../../schemas/category/index';
-import Loader from '../../../components/loader/Loader';
+import { editQuizCategory } from '../../../../redux/features/quizCategorySlice';
+import { quizCategorySchema } from '../../../../schemas/quizCategory';
+import Loader from '../../../../components/loader/Loader';
 
-function EditCategories(props) {
+
+function EditQuizCategory(props) {
     const dispatch = useDispatch();
-    const { loading, category } = useSelector((state) => state.category);
-    
+    const { loading, quizCategory } = useSelector((state) => state.quizCategory);
+
     const [formData, setFormData] = useState({
-        name: category ? category.name : "",
-        description: category ? category.description : "",
+        name: quizCategory ? quizCategory.name : "",
+        description: quizCategory ? quizCategory.description : "",
     });
-    
+
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        if (category) {
+        if (quizCategory) {
             setFormData({
-                name: category.name,
-                description: category.description,
+                name: quizCategory.name,
+                description: quizCategory.description,
             });
         }
-    }, [category]);
+    }, [quizCategory]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +36,7 @@ function EditCategories(props) {
 
     const validateForm = async () => {
         try {
-            await categorySchema.validate(formData, { abortEarly: false });
+            await quizCategorySchema.validate(formData, { abortEarly: false });
             setErrors({});
             return true;
         } catch (validationErrors) {
@@ -55,24 +56,24 @@ function EditCategories(props) {
             const formDataToSend = new FormData();
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
-            
-            dispatch(editCategory(category._id, formDataToSend, props.toggleEditCategoryModal));
+
+            dispatch(editQuizCategory(quizCategory._id, formDataToSend, props.toggleEditQuizCategoryModal));
         }
     };
-    
+
     return (
         <>
             {!loading ? (
                 <Modal
-                    isOpen={props.showEditCategoryModal}
-                    toggle={props.toggleEditCategoryModal}>
-                    <ModalHeader toggle={props.toggleEditCategoryModal}>
-                        Update Category
+                    isOpen={props.showEditQuizCategoryModal}
+                    toggle={props.toggleEditQuizCategoryModal}>
+                    <ModalHeader toggle={props.toggleEditQuizCategoryModal}>
+                        Update Quiz Category
                     </ModalHeader>
                     <ModalBody>
                         <form onSubmit={onSubmit}>
                             <div className="form-group">
-                                <label>Category Name</label>
+                                <label>Quiz Category Name</label>
                                 <input
                                     name="name"
                                     className={`form-control ${errors.name ? "error-input" : ""}`}
@@ -113,4 +114,4 @@ function EditCategories(props) {
     );
 }
 
-export default EditCategories;
+export default EditQuizCategory;

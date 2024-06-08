@@ -60,6 +60,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                            product Postcodes
                         </li>
                     </Link>
+                    <Link to="/admin/product-area">
+                        <li className={styles.adminSidebarListItem}>
+                            {" "}
+                            <BsFillArchiveFill className={styles.adminIcon} />
+                           product Area
+                        </li>
+                    </Link>
                     <Link to="/admin/products">
                         <li className={styles.adminSidebarListItem}>
                             {" "}
@@ -67,18 +74,22 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                             Products
                         </li>
                     </Link>
-                    <li className={styles.adminSidebarListItem}>
-                        <Link to="#">
+                    
+                        <Link to="/admin/quiz-category">
+                        <li className={styles.adminSidebarListItem}>
                             <BsListCheck className={styles.adminIcon} />
-                            Inventory
+                            Quiz Category
+                            </li>
                         </Link>
-                    </li>
-                    <li className={styles.adminSidebarListItem}>
-                        <Link to="#">
+                    
+                    
+                        <Link to="/admin/quiz">
+                        <li className={styles.adminSidebarListItem}>
                             <BsMenuButtonWideFill className={styles.adminIcon} />
-                            Reports
+                            Quizes
+                            </li>
                         </Link>
-                    </li>
+                  
                     <li className={styles.adminSidebarListItem}>
                         <Link to="#">
                             <BsFillGearFill className={styles.adminIcon} />

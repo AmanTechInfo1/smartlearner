@@ -54,16 +54,18 @@ const userSlice = createSlice({
       state.loading = false;
     },
     editUserSuccess: (state, action) => {
-      const updatedUser = action.payload;
-      const updatedUsers = state.users.map((user) => {
-        if (user._id === updatedUser._id) {
-          return updatedUser;
-        }
-        return user;
-      });
-
-      state.users = updatedUsers;
+      const updatedUser = action.payload.user;
+      state.users = state.users.map(user => user.id === updatedUser.id ? updatedUser : user);
       state.loading = false;
+      // const updatedUsers = state.users.map((user) => {
+      //   if (user._id === updatedUser._id) {
+      //     return updatedUser;
+      //   }
+      //   return user;
+      // });
+
+      // state.users = updatedUsers;
+      
     },
     editUserFailure: (state) => {
       state.loading = false;

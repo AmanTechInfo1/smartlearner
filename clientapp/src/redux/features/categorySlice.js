@@ -6,52 +6,65 @@ const categorySlice = createSlice({
     name: "category",
     initialState: {
         categories: [],
-        categoryCount: null,
-        categoryLoading: false,
+        categoriesCount: null,
+        loading: false,
+        categoriesList: [],
+        category: null,
     },
     reducers: {
         getAllCategoriesSuccess: (state, action) => {
             state.categories = action.payload.categories;
-            state.categoryCount = action.payload.totalCount;
-            state.categoryLoading = false;
+            state.categoriesCount = action.payload.totalCount;
+            state.loading = false;
         },
         getAllCategoriesFailure: (state) => {
             state.categories = [];
-            state.categoryCount = null;
-            state.categoryLoading = false;
+            state.categoriesCount = null;
+            state.loading = false;
         },
-        createCategorySuccess: (state, action) => {
+        createCategorySuccess: (state, action) => { 
             state.categories.push(action.payload.category);
-            state.categoryCount = action.payload.totalCount;
-            state.categoryLoading = false;
+            state.categoriesCount = action.payload.totalCount;
+            state.loading = false;
         },
-        createCategoryFailure: (state, action) => {
-            state.categoryLoading = false;
+        createCategoryFailure: (state) => {
+            state.loading = false;
         },
-        updateCategorySuccess: (state, action) => {
-            const updatedCategories = state.categories.map((category) =>
-                category._id === action.payload.category._id ? action.payload.category : category
-            );
-            return {
-                ...state,
-                categories: updatedCategories,
-                categoryLoading: false,
-            };
+        editCategorySuccess: (state, action) => {
+            const updatedCategory = action.payload.category;
+            state.categories = state.categories.map(category => category._id === updatedCategory._id ? updatedCategory : category);
+            state.loading = false;
         },
-        updateCategoryFailure: (state, action) => {
-            state.categoryLoading = false;
+        editCategoryFailure: (state) => {
+            state.loading = false;
+        },
+        getListCategorySuccess: (state, action) => {
+            state.categoriesList = action.payload;
+            state.loading = false;
+        },
+        getListCategoryFailure: (state) => {
+            state.categoriesList = [];
+            state.loading = false;
+        },
+        getCategoryByIdSuccess: (state, action) => {
+            state.category = action.payload;
+            state.loading = false;
+        },
+        getCategoryByIdFailure: (state) => {
+            state.category = null;
+            state.loading = false;
         },
         deleteCategorySuccess: (state, action) => {
             const categoryId = action.payload;
             state.categories = state.categories.filter(category => category._id !== categoryId);
-            state.categoryCount = state.categoryCount - 1;
-            state.categoryLoading = false;
+            state.categoriesCount = state.categoriesCount - 1;
+            state.loading = false;
         },
-        deleteCategoryFailure: (state, action) => {
-            state.categoryLoading = false;
+        deleteCategoryFailure: (state) => {
+            state.loading = false;
         },
         setLoading: (state) => {
-            state.categoryLoading = true;
+            state.loading = true;
         },
     },
 });
@@ -60,7 +73,7 @@ export const getAllCategories = (search, page, pagesize) => async (dispatch) => 
     try {
         dispatch(setLoading());
         const response = await httpHandler.get(
-            `/api/product/get-categories?search=${search}&page=${page}&pagesize=${pagesize}`
+            `/api/product/all-categories?search=${search}&page=${page}&pagesize=${pagesize}`
         );
         if (response.data.success) {
             dispatch(getAllCategoriesSuccess(response.data.data));
@@ -74,65 +87,106 @@ export const getAllCategories = (search, page, pagesize) => async (dispatch) => 
     }
 };
 
-export const createCategory = (data, reset, toggleAddCategoryModal) => async (dispatch) => {
-    try {
-        dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/add-category`, data);
-        if (response.data.success) {
-            toast.success(response.data.message);
-            reset();
-            dispatch(createCategorySuccess(response.data.data));
-            toggleAddCategoryModal();
-        } else {
-            toast.error(response.data.message);
+export const createCategory =
+    (data, reset, toggleAddCategoryModal) => async (dispatch) => {
+        try {
+            dispatch(setLoading());
+            const response = await httpHandler.post(`/api/product/add-category`, data);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                reset();
+                toggleAddCategoryModal();
+                dispatch(createCategorySuccess(response.data.data));
+            } else {
+                toast.error(response.data.message);
+                dispatch(createCategoryFailure());
+            }
+        } catch (error) {
+            toast.error(error.message);
             dispatch(createCategoryFailure());
         }
-    } catch (error) {
-        toast.error(error.message);
-        dispatch(createCategoryFailure());
-    }
-}
+    };
 
-export const updateCategory = (categoryID, data, reset, toggleEditCategoryModal) => async (dispatch) => {
+export const editCategory = (id, data, toggleEditCategoryModal) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/update-category?id=${categoryID}`, data);
+        const response = await httpHandler.post(`/api/product/update-category/${id}`, data);
         if (response.data.success) {
+            dispatch(editCategorySuccess(response.data.data));
             toast.success(response.data.message);
-            reset();
             toggleEditCategoryModal();
-            dispatch(updateCategorySuccess(response.data.data));
-        }
-        else {
+        } else {
             toast.error(response.data.message);
-            dispatch(updateCategoryFailure());
+            dispatch(editCategoryFailure());
         }
     } catch (error) {
         toast.error(error.message);
-        dispatch(updateCategoryFailure());
+        dispatch(editCategoryFailure());
     }
-}
+};
 
-export const deleteCategory = (categoryID) => async (dispatch) => {
+export const getListCategories = () => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/delete-category?id=${categoryID}`);
+        const response = await httpHandler.get(`/api/product/categorylist`);
         if (response.data.success) {
-            toast.success(response.data.message);
-            dispatch(deleteCategorySuccess(categoryID));
+            dispatch(getListCategorySuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getListCategoryFailure());
         }
-        else {
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getListCategoryFailure());
+    }
+};
+
+export const getCategoryById = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(`/api/product/category/${id}`);
+        if (response.data.success) {
+            dispatch(getCategoryByIdSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getCategoryByIdFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getCategoryByIdFailure());
+    }
+};
+
+export const deleteCategory = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(`/api/product/delete-category/${id}`);
+        if (response.data.success) {
+            dispatch(deleteCategorySuccess(id));
+        } else {
             toast.error(response.data.message);
             dispatch(deleteCategoryFailure());
         }
-    }
-    catch (error) {
+    } catch (error) {
         toast.error(error.message);
         dispatch(deleteCategoryFailure());
     }
-}
-export const { getAllCategoriesSuccess, getAllCategoriesFailure, createCategorySuccess, createCategoryFailure, updateCategorySuccess,
-    updateCategoryFailure, deleteCategorySuccess, deleteCategoryFailure, setLoading } =
-    categorySlice.actions;
+};
+
+export const {
+    getAllCategoriesSuccess,
+    getAllCategoriesFailure,
+    createCategorySuccess,
+    createCategoryFailure,
+    getListCategorySuccess,
+    getListCategoryFailure,
+    editCategorySuccess,
+    editCategoryFailure,
+    getCategoryByIdSuccess,
+    getCategoryByIdFailure,
+    deleteCategorySuccess,
+    deleteCategoryFailure,
+    setLoading
+} = categorySlice.actions;
 
 export default categorySlice.reducer;

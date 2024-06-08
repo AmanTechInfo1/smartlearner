@@ -1,56 +1,80 @@
-const { nullable } = require("zod");
 const Category = require("../models/categoryModel");
 
 class CategoryService {
   async createCategoryAsync(categoryData) {
     try {
-      const category = await Category.create({
-        ...categoryData,
-        createdOn: new Date(),
-      });
+      const category = await Category.create(categoryData);
       const totalCount = await Category.countDocuments();
       const resultObject = {
-        message: "Category added successfully",
+        message: "Added successfully",
         statusCode: 201,
         success: true,
         data: { category, totalCount }
       };
       return resultObject;
     } catch (err) {
-      const resultObject = {
-        message: "Category Add Failed",
-        statusCode: 400,
-        success: false,
-        data: null
-      };
-      return resultObject;
+      throw new Error("Could not create category");
     }
   }
 
   async getCategoriesAsync(pageNumber, pageSize, query) {
     try {
       const skip = (pageNumber - 1) * (pageSize || 20);
-      let filter = { isDeleted: false };
+      let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
-        filter.$or = [{ name: regex }];
+        filter.$or = [{ name: regex }, { description: regex }];
       }
       const totalCount = await Category.countDocuments(filter);
-      const categories = await Category.find(filter).sort({ createdOn: -1 }).skip(skip).limit(pageSize || 20);
+      const categories = await Category.find(filter).skip(skip).limit(pageSize || 20);
 
       const resultObject = {
-        message: "Categories fetched successfully",
-        statusCode: 200,
+        message: "Fetched successfully",
+        statusCode: 201,
         success: true,
         data: { categories, totalCount },
       };
 
       return resultObject;
     } catch (err) {
+      throw new Error("Could not fetch categories");
+    }
+  }
+
+  async getCategoryListAsync() {
+    try {
+      const categories = await Category.find();
+
       const resultObject = {
-        message: "Could not fetch categories",
-        statusCode: 400,
+        success: true,
+        message: "All categories fetched successfully",
+        data: categories,
+      };
+
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
         success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
+  async getCategoryByIdAsync(categoryId) {
+    try {
+      const category = await Category.findById(categoryId);
+      const resultObject = {
+        success: true,
+        message: "",
+        data: category,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        success: false,
+        message: err.message,
         data: null,
       };
       return resultObject;
@@ -59,15 +83,10 @@ class CategoryService {
 
   async updateCategoryAsync(categoryId, categoryData) {
     try {
-      const category = await Category.findByIdAndUpdate(categoryId, {
-        name: categoryData.name,
-        description: categoryData.description
-      }, {
-        new: true,
-      });
+      const category = await Category.findByIdAndUpdate(categoryId, categoryData, { new: true });
       const resultObject = {
-        message: "Category updated successfully",
-        statusCode: 200,
+        message: "Updated successfully",
+        statusCode: 201,
         success: true,
         data: { category },
       };
@@ -85,15 +104,10 @@ class CategoryService {
 
   async deleteCategoryAsync(categoryId) {
     try {
-      await Category.findByIdAndUpdate(
-        categoryId,
-        {
-          isDeleted: true,
-          deletedOn: new Date(),
-        });
+      await Category.findByIdAndDelete(categoryId);
       const resultObject = {
-        message: "Category deleted successfully",
-        statusCode: 200,
+        message: "Deleted successfully",
+        statusCode: 201,
         success: true,
         data: null,
       };

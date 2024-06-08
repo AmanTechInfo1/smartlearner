@@ -2,13 +2,21 @@ import React from "react";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productSchema } from "../../../schemas/product/index";
 import { createProductSuccess } from "../../../redux/features/productSlice";
 import ReactSelect from "react-select";
 
 function AddProductModel(props) {
   const dispatch = useDispatch();
+
+  const {  areasList } = useSelector((state) => {
+
+    
+    return state.area
+});
+const {categoriesList} = useSelector((state)=>{ return state.category})
+
 
   const {
     handleSubmit,
@@ -22,6 +30,7 @@ function AddProductModel(props) {
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("name", data?.name);
+    formData.append("category",data?.category)
     formData.append("description", data?.description);
     formData.append("image", data?.image[0]);
     formData.append("price", data?.price);
@@ -70,6 +79,40 @@ function AddProductModel(props) {
                 ""
               )}
             </div>
+
+            <div className="form-group">
+              <label>Category</label>
+              <Controller
+                name="category"
+                control={control}
+                render={({ field }) => (
+                  <select
+                    {...field}
+                    className={`form-control ${
+                      errors.roleName ? "error-input" : ""
+                    }`}
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    {categoriesList.map((category) => (
+                      <option key={category._id} value={category.name}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                defaultValue=""
+              />
+
+              {errors?.name?.message ? (
+                <p style={{ color: "red" }}>{errors?.name?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+
+
             <div className="form-group">
               <label>Description</label>
               <Controller
@@ -131,10 +174,11 @@ function AddProductModel(props) {
                     className={`form-control  ${
                       errors?.name ? "error-input" : ""
                     }`}
-                    type="text"
+                    type="number"
                     value={value}
                     onChange={onChange}
                     autoComplete="false"
+                    placeholder="$"
                   />
                 )}
                 defaultValue={""}
@@ -150,28 +194,23 @@ function AddProductModel(props) {
               <Controller
                 name="transmission"
                 control={control}
-                render={({ field: { value, onChange } }) => (
-                    <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
+                render={({ field }) => (
+                  <select
+                    {...field}
+                    className={`form-control ${
+                      errors.roleName ? "error-input" : ""
                     }`}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    autoComplete="false"
-                  />
-                //   <ReactSelect
-                //     options={TransmissionOptions}
-                //     value={companyOptions.find(
-                //       (option) => option.value === value
-                //     )}
-                //     onChange={(selected) => onChange(selected?.value)}
-                //     isClearable
-                //     isSearchable
-                //   />
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    <option value="automatic">Automatic</option>
+                    <option value="manual">Manual</option>
+                  </select>
                 )}
                 defaultValue=""
               />
+
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>
               ) : (
@@ -182,27 +221,21 @@ function AddProductModel(props) {
             <div className="form-group">
               <label>Experience</label>
               <Controller
-                name="experience"
+                name="transmission"
                 control={control}
-                render={({ field: { value, onChange } }) => (
-                    <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
+                render={({ field }) => (
+                  <select
+                    {...field}
+                    className={`form-control ${
+                      errors.roleName ? "error-input" : ""
                     }`}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    autoComplete="false"
-                  />
-                //   <ReactSelect
-                //     options={experienceOptions}
-                //     value={experienceOptions.find(
-                //       (option) => option.value === value
-                //     )}
-                //     onChange={(selected) => onChange(selected?.value)}
-                //     isClearable
-                //     isSearchable
-                //   />
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    <option value="automatic">Beginner</option>
+                    <option value="manual">Experience</option>
+                  </select>
                 )}
                 defaultValue=""
               />
@@ -242,16 +275,22 @@ function AddProductModel(props) {
               <Controller
                 name="areaIncluded"
                 control={control}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
+                render={({ field }) => (
+                  <select
+                    {...field}
+                    className={`form-control ${
+                      errors.areaName ? "error-input" : ""
                     }`}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    autoComplete="false"
-                  />
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    {areasList.map((area) => (
+                      <option key={area._id} value={area.name}>
+                        {area.name}
+                      </option>
+                    ))}
+                  </select>
                 )}
                 defaultValue={""}
               />
@@ -271,7 +310,7 @@ function AddProductModel(props) {
                     className={`form-control  ${
                       errors?.name ? "error-input" : ""
                     }`}
-                    type="text"
+                    type="number"
                     value={value}
                     onChange={onChange}
                     autoComplete="false"

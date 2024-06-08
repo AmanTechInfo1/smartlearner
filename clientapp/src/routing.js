@@ -57,6 +57,8 @@ import Categories from "./containers/categories/Categories";
 import Postcode from "./containers/postcode/Postcode";
 import ProductModal from "./containers/productAdmin/ProductModal";
 import AdminHome from "./components/admin/AdminHome";
+import Area from "./containers/productArea/Area";
+import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
 
 
 
@@ -163,6 +165,14 @@ export const router = createBrowserRouter([
         path: "/admin/products",
         element: <ProductModal/>,
       },
+      {
+        path:"/admin/product-area",
+        element: <Area/>
+      },
+      {
+        path:"/admin/quiz-category",
+        element:<QuizCategory/>,
+      }
       
     ],
   },

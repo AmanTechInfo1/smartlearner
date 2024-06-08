@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddPostcodeModel from "./components/AddPostcodeModel";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/loader/Loader";
-import { deletePostcode, getAllPostcodes } from "../../redux/features/postcodeSlice";
+import { deletePostcode, getAllPostcodes, getPostcodeById } from "../../redux/features/postcodeSlice";
 import { Table } from "antd";
 import styles from '../../assets/css/admin.module.css';
 import { LiaUserEditSolid } from "react-icons/lia";
@@ -10,22 +10,26 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import EditPostcodeModel from "./components/EditPostcodeModel";
 import { Button } from "reactstrap";
 import { confirmAlert } from "react-confirm-alert";
+import { Link } from "react-router-dom";
 
 const Postcode = () => {
     const dispatch = useDispatch();
-    const { postcodeLoading, postcodes, postcodeCount } = useSelector((state) => state.postcode);
-    const [postcodeObj, setPostcodeObj] = useState();
+    const { loading, postcodes, postcodesCount } = useSelector((state) => state.postcode);
+   
+    const [state, setState] = useState({
+        search: "",
+        page: 1,
+        pageSize: 10,
+    });
+   
+    
     const [showAddPostcodeModal, setShowAddPostcodeModal] = useState(false);
     const toggleAddPostcodeModal = () => setShowAddPostcodeModal(!showAddPostcodeModal);
 
     const [showEditPostcodeModal, setShowEditPostcodeModal] = useState(false);
     const toggleEditPostcodeModal = () => setShowEditPostcodeModal(!showEditPostcodeModal);
 
-    const [state, setState] = useState({
-        search: "",
-        page: 1,
-        pageSize: 10,
-    });
+    const [postcodeObj, setPostcodeObj] = useState();
 
     useEffect(() => {
         dispatch(getAllPostcodes(state.search, state.page, state.pageSize))
@@ -46,26 +50,12 @@ const Postcode = () => {
     };
 
     const handleEditClick = (id) => {
-        const postcode = postcodes.find((postcode) => postcode._id === id);
-        setPostcodeObj(postcode);
-        setShowEditPostcodeModal(true);
+dispatch(getPostcodeById(id));
+toggleEditPostcodeModal();
+        
     }
 
-    const handleDeleteClick = (id) => {
-        confirmAlert({
-            title: "Confirm to delete",
-            message: "Are you sure to do this.",
-            buttons: [
-                {
-                    label: "Yes",
-                    onClick: () => handleDelete(id),
-                },
-                {
-                    label: "No",
-                },
-            ],
-        });
-    };
+  
 
     const handleDelete = (id) => {
         dispatch(deletePostcode(id));
@@ -98,24 +88,26 @@ const Postcode = () => {
                     className="d-flex justify-content-center"
                     data-popper-placement="bottom-end"
                 >
-                    <Button
-                        to={"#"}
+                    <Link
+                      
                         className="dropdown-item px-2 text-success"
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault();
                             handleEditClick(record._id);
                         }}
                     >
                         <LiaUserEditSolid />
-                    </Button>
-                    <Button
+                    </Link>
+                    <Link
                         className="dropdown-item px-2 text-danger"
-                        to={"#"}
-                        onClick={() => {
-                            handleDeleteClick(record._id);
+                        
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleDelete(record._id);
                         }}
                     >
                         <RiDeleteBin6Fill />
-                    </Button>
+                    </Link>
                 </div>
             ),
         },
@@ -133,13 +125,13 @@ const Postcode = () => {
                         Add Postcode
                     </button>
                 </div>
-                {!postcodeLoading ? (
+                {!loading ? (
                     <Table
                         className="table-striped"
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: postcodeCount,
+                            total: postcodesCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,
@@ -158,6 +150,7 @@ const Postcode = () => {
                 )}
             </div>
             <AddPostcodeModel
+            
                 showAddPostcodeModal={showAddPostcodeModal}
                 toggleAddPostcodeModal={toggleAddPostcodeModal}
             />

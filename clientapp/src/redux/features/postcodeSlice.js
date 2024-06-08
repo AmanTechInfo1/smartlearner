@@ -6,52 +6,65 @@ const postcodeSlice = createSlice({
     name: "postcode",
     initialState: {
         postcodes: [],
-        postcodeCount: null,
-        postcodeLoading: false,
+        postcodesCount: null,
+        loading: false,
+        postcodesList: [],
+        postcode: null,
     },
     reducers: {
         getAllPostcodesSuccess: (state, action) => {
             state.postcodes = action.payload.postcodes;
-            state.postcodeCount = action.payload.totalCount;
-            state.postcodeLoading = false;
+            state.postcodesCount = action.payload.totalCount;
+            state.loading = false;
         },
         getAllPostcodesFailure: (state) => {
             state.postcodes = [];
-            state.postcodeCount = null;
-            state.postcodeLoading = false;
+            state.postcodesCount = null;
+            state.loading = false;
         },
-        createPostcodeSuccess: (state, action) => {
+        createPostcodeSuccess: (state, action) => { 
             state.postcodes.push(action.payload.postcode);
-            state.postcodeCount = action.payload.totalCount;
-            state.postcodeLoading = false;
+            state.postcodesCount = action.payload.totalCount;
+            state.loading = false;
         },
-        createPostcodeFailure: (state, action) => {
-            state.postcodeLoading = false;
+        createPostcodeFailure: (state) => {
+            state.loading = false;
         },
-        updatePostcodeSuccess: (state, action) => {
-            const updatedPostcodes = state.postcodes.map((postcode) =>
-                postcode._id === action.payload.postcode._id ? action.payload.postcode : postcode
-            );
-            return {
-                ...state,
-                postcodes: updatedPostcodes,
-                postcodeLoading: false,
-            };
+        editPostcodeSuccess: (state, action) => {
+            const updatedPostcode = action.payload.postcode;
+            state.postcodes = state.postcodes.map(postcode => postcode._id === updatedPostcode._id ? updatedPostcode : postcode);
+            state.loading = false;
         },
-        updatePostcodeFailure: (state, action) => {
-            state.postcodeLoading = false;
+        editPostcodeFailure: (state) => {
+            state.loading = false;
+        },
+        getListPostcodeSuccess: (state, action) => {
+            state.postcodesList = action.payload;
+            state.loading = false;
+        },
+        getListPostcodeFailure: (state) => {
+            state.postcodesList = [];
+            state.loading = false;
+        },
+        getPostcodeByIdSuccess: (state, action) => {
+            state.postcode = action.payload;
+            state.loading = false;
+        },
+        getPostcodeByIdFailure: (state) => {
+            state.postcode = null;
+            state.loading = false;
         },
         deletePostcodeSuccess: (state, action) => {
             const postcodeId = action.payload;
             state.postcodes = state.postcodes.filter(postcode => postcode._id !== postcodeId);
-            state.postcodeCount = state.postcodeCount - 1;
-            state.postcodeLoading = false;
+            state.postcodesCount = state.postcodesCount - 1;
+            state.loading = false;
         },
-        deletePostcodeFailure: (state, action) => {
-            state.postcodeLoading = false;
+        deletePostcodeFailure: (state) => {
+            state.loading = false;
         },
         setLoading: (state) => {
-            state.postcodeLoading = true;
+            state.loading = true;
         },
     },
 });
@@ -60,7 +73,7 @@ export const getAllPostcodes = (search, page, pagesize) => async (dispatch) => {
     try {
         dispatch(setLoading());
         const response = await httpHandler.get(
-            `/api/product/get-postcodes?search=${search}&page=${page}&pagesize=${pagesize}`
+            `/api/product/all-postcodes?search=${search}&page=${page}&pagesize=${pagesize}`
         );
         if (response.data.success) {
             dispatch(getAllPostcodesSuccess(response.data.data));
@@ -74,65 +87,108 @@ export const getAllPostcodes = (search, page, pagesize) => async (dispatch) => {
     }
 };
 
-export const createPostcode = (data, reset, toggleAddPostcodeModal) => async (dispatch) => {
-    try {
-        dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/add-postcode`, data);
-        if (response.data.success) {
-            toast.success(response.data.message);
-            reset();
-            dispatch(createPostcodeSuccess(response.data.data));
-            toggleAddPostcodeModal();
-        } else {
-            toast.error(response.data.message);
+export const createPostcode =
+    (data, reset, toggleAddPostcodeModal) => async (dispatch) => {
+        try {
+            dispatch(setLoading());
+            const response = await httpHandler.post(`/api/product/add-postcode`, data);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                reset();
+                toggleAddPostcodeModal();
+                dispatch(createPostcodeSuccess(response.data.data));
+              
+                
+            } else {
+                toast.error(response.data.message);
+                dispatch(createPostcodeFailure());
+            }
+        } catch (error) {
+            toast.error(error.message);
             dispatch(createPostcodeFailure());
         }
-    } catch (error) {
-        toast.error(error.message);
-        dispatch(createPostcodeFailure());
-    }
-}
+    };
 
-export const updatePostcode = (postcodeID, data, reset, toggleEditPostcodeModal) => async (dispatch) => {
+export const editPostcode = (id, data, toggleEditPostcodeModal) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/update-postcode?id=${postcodeID}`, data);
+        const response = await httpHandler.post(`/api/product/update-postcode/${id}`, data);
         if (response.data.success) {
+            dispatch(editPostcodeSuccess(response.data.data));
             toast.success(response.data.message);
-            reset();
             toggleEditPostcodeModal();
-            dispatch(updatePostcodeSuccess(response.data.data));
-        }
-        else {
+        } else {
             toast.error(response.data.message);
-            dispatch(updatePostcodeFailure());
+            dispatch(editPostcodeFailure());
         }
     } catch (error) {
         toast.error(error.message);
-        dispatch(updatePostcodeFailure());
+        dispatch(editPostcodeFailure());
     }
-}
+};
 
-export const deletePostcode = (postcodeID) => async (dispatch) => {
+export const getListPostcodes = () => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/delete-postcode?id=${postcodeID}`);
+        const response = await httpHandler.get(`/api/product/postcodelist`);
         if (response.data.success) {
-            toast.success(response.data.message);
-            dispatch(deletePostcodeSuccess(postcodeID));
+            dispatch(getListPostcodeSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getListPostcodeFailure());
         }
-        else {
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getListPostcodeFailure());
+    }
+};
+
+export const getPostcodeById = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(`/api/product/postcode/${id}`);
+        if (response.data.success) {
+            dispatch(getPostcodeByIdSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getPostcodeByIdFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getPostcodeByIdFailure());
+    }
+};
+
+export const deletePostcode = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(`/api/product/delete-postcode/${id}`);
+        if (response.data.success) {
+            dispatch(deletePostcodeSuccess(id));
+        } else {
             toast.error(response.data.message);
             dispatch(deletePostcodeFailure());
         }
-    }
-    catch (error) {
+    } catch (error) {
         toast.error(error.message);
         dispatch(deletePostcodeFailure());
     }
-}
-export const { getAllPostcodesSuccess, getAllPostcodesFailure, createPostcodeSuccess, createPostcodeFailure, updatePostcodeSuccess,
-    updatePostcodeFailure, deletePostcodeSuccess, deletePostcodeFailure, setLoading } =
-    postcodeSlice.actions;
+};
+
+export const {
+    getAllPostcodesSuccess,
+    getAllPostcodesFailure,
+    createPostcodeSuccess,
+    createPostcodeFailure,
+    getListPostcodeSuccess,
+    getListPostcodeFailure,
+    editPostcodeSuccess,
+    editPostcodeFailure,
+    getPostcodeByIdSuccess,
+    getPostcodeByIdFailure,
+    deletePostcodeSuccess,
+    deletePostcodeFailure,
+    setLoading
+} = postcodeSlice.actions;
 
 export default postcodeSlice.reducer;

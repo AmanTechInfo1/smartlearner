@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import AddCategories from "./component/AddCategories";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/loader/Loader";
-import { deleteCategory, getAllCategories } from "../../redux/features/categorySlice";
+import { deleteCategory, getAllCategories, getCategoryById } from "../../redux/features/categorySlice";
 import { Table } from "antd";
 import styles from "../../assets/css/admin.module.css";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import EditCategories from "./component/EditCategories";
 import { Button } from "reactstrap";
-import { confirmAlert } from 'react-confirm-alert';
+
 
 const Categories = () => {
     const dispatch = useDispatch();
-    const { categoryLoading, categories, categoryCount } = useSelector((state) => state.category);
+    const { loading, categories, categoriesCount } = useSelector((state) => state.category);
     const [categoryObj, setCategoryObj] = useState();
+
     const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
     const toggleAddCategoryModal = () => setShowAddCategoryModal(!showAddCategoryModal);
 
@@ -24,7 +25,7 @@ const Categories = () => {
     const [state, setState] = useState({
         search: "",
         page: 1,
-        pageSize: 10,
+        pageSize: 10, 
     });
 
     useEffect(() => {
@@ -46,26 +47,9 @@ const Categories = () => {
     };
 
     const handleEditClick = (id) => {
-        const category = categories.find((category) => category._id === id);
-        setCategoryObj(category);
-        setShowEditCategoryModal(true);
+        dispatch(getCategoryById(id))
+        toggleEditCategoryModal();
     }
-
-    const handleDeleteClick = (id) => {
-        confirmAlert({
-            title: "Confirm to delete",
-            message: "Are you sure to do this.",
-            buttons: [
-                {
-                    label: "Yes",
-                    onClick: () => handleDelete(id),
-                },
-                {
-                    label: "No",
-                },
-            ],
-        });
-    };
 
     const handleDelete = (id) => {
         dispatch(deleteCategory(id));
@@ -100,7 +84,8 @@ const Categories = () => {
                     <Button
                         to={"#"}
                         className="dropdown-item px-2 text-success"
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault();
                             handleEditClick(record._id);
                         }}
                     >
@@ -109,8 +94,9 @@ const Categories = () => {
                     <Button
                         className="dropdown-item px-2 text-danger"
                         to={"#"}
-                        onClick={() => {
-                            handleDeleteClick(record._id);
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleDelete(record._id);
                         }}
                     >
                         <RiDeleteBin6Fill />
@@ -132,13 +118,13 @@ const Categories = () => {
                         Add Category
                     </button>
                 </div>
-                {!categoryLoading ? (
+                {!loading ? (
                     <Table
                         className="table-striped"
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: categoryCount,
+                            total: categoriesCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,

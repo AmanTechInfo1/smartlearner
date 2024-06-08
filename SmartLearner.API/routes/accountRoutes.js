@@ -10,7 +10,7 @@ router.post("/register", upload.none(), accountController.registerUser);
 router.post("/login", upload.none(), accountController.loginUser);
 router.get("/users", requireAuth, accountController.getAllUsers);
 router.get('/user/:id', upload.none(), accountController.getOneUsers);
-router.post('/user/:id', upload.none(), accountController.updateUser);
+router.post('/update-user/:id', upload.none(), accountController.updateUser);
 router.post('/delete-user/:id', upload.none(), accountController.deleteUser);
 
 module.exports = router;
