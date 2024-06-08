@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import AddQuiz from "./component/AddQuiz";
-import EditQuiz from "./component/EditQuiz";
+import AddQuizModal from "./component/AddQuizModal";
+import EditQuizModal from "./component/EditQuizModal";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteQuiz, getAllQuizzes, getQuizById } from "../../../redux/features/quizSlice";
 import { Table } from "antd";
-import styles from "../../../assets/css/admin.module.css";
+import styles from "../../assets/css/admin.module.css";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Button } from "reactstrap";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../components/loader/Loader";
+import { deleteQuiz, getAllQuizzes, getQuizById } from "../../redux/features/quizSlice";
 
-const Quiz = () => {
+
+const QuizModal = () => {
     const dispatch = useDispatch();
-    const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
+ const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
     const [quizObj, setQuizObj] = useState();
 
     const [showAddQuizModal, setShowAddQuizModal] = useState(false);
@@ -51,12 +52,12 @@ const Quiz = () => {
     };
 
     const handleDelete = (id) => {
-        dispatch(deleteQuiz(id));
+        dispatch(deleteQuiz(id))
     };
 
     const columns = [
         {
-            title: "Quiz Name",
+            title: "Name",
             dataIndex: "name",
             align: "center",
             sorter: (a, b) => a.name.length - b.name.length,
@@ -139,11 +140,11 @@ const Quiz = () => {
                     <Loader />
                 )}
             </div>
-            <AddQuiz
+            <AddQuizModal
                 showAddQuizModal={showAddQuizModal}
                 toggleAddQuizModal={toggleAddQuizModal}
             />
-            <EditQuiz
+            <EditQuizModal
                 quizObj={quizObj}
                 showEditQuizModal={showEditQuizModal}
                 toggleEditQuizModal={toggleEditQuizModal}
@@ -152,4 +153,4 @@ const Quiz = () => {
     );
 };
 
-export default Quiz;
+export default QuizModal;

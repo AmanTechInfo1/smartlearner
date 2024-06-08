@@ -59,6 +59,7 @@ import ProductModal from "./containers/productAdmin/ProductModal";
 import AdminHome from "./components/admin/AdminHome";
 import Area from "./containers/productArea/Area";
 import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
+import QuizModal from "./containers/quiz/QuizModal";
 
 
 
@@ -133,12 +134,11 @@ export const router = createBrowserRouter([
 
   {
     path: "admin",
-     // element: (
-    //     <RequireAuth
-    //         allowedRoles={[ROLES.ADMIN]}
-    //         element={<AdminLayout />}></RequireAuth>
-    // ),
-    element: <AdminLayout/>,
+     element: (
+        <RequireAuth
+            allowedRoles={[ROLES.ADMIN]}
+            element={<AdminLayout />}></RequireAuth>
+    ),
     children: [
       {
         path: "/admin/dashboard",
@@ -172,7 +172,12 @@ export const router = createBrowserRouter([
       {
         path:"/admin/quiz-category",
         element:<QuizCategory/>,
+      },
+      {
+        path:"/admin/quiz",
+        element:<QuizModal/>
       }
+
       
     ],
   },

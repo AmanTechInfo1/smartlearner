@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { getListAreas } from "../../redux/features/areaSlice";
+import { getListCategories } from "../../redux/features/categorySlice";
 
 const ProductModal = () => {
     const dispatch = useDispatch();
@@ -46,6 +47,7 @@ const ProductModal = () => {
 
     const handleAddUserClick = () =>{
         dispatch(getListAreas())
+        dispatch(getListCategories())
         toggleAddProductModal();
     }
     const handleEditClick = (id) => {

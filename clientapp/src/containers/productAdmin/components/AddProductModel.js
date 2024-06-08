@@ -27,6 +27,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
     resolver: yupResolver(productSchema),
   });
 
+console.log(errors,"ajwsdfhxsdfgrt")
+
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("name", data?.name);

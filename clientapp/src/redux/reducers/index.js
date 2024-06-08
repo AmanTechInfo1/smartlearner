@@ -12,6 +12,7 @@ import productSlice from "../features/productSlice";
 import postcodeSlice from "../features/postcodeSlice";
 import areaSlice from "../features/areaSlice";
 import quizCategorySlice from "../features/quizCategorySlice";
+import quizSlice from "../features/quizSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
     product: productSlice,
     area: areaSlice,
     quizCategory: quizCategorySlice,
+    quiz: quizSlice,
 });
 
 export default rootReducer;

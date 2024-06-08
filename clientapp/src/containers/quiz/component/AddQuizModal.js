@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './AddQuiz.module.css';
+import styles from '../../../assets/css/admin.module.css';
 
-const AddQuiz = ({ addQuestion }) => {
+const AddQuizModal = ({ addQuestion }) => {
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['', '', '', '']);
   const [answer, setAnswer] = useState('');
@@ -69,4 +69,4 @@ const AddQuiz = ({ addQuestion }) => {
   );
 };
 
-export default AddQuiz;
+export default AddQuizModal;
