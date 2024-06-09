@@ -11,7 +11,7 @@ import Loader from "../../components/loader/Loader";
 import { deleteQuiz, getAllQuizzes, getQuizById } from "../../redux/features/quizSlice";
 
 
-const QuizModal = () => {
+const QuizzesModal = () => {
     const dispatch = useDispatch();
  const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
     const [quizObj, setQuizObj] = useState();
@@ -57,7 +57,7 @@ const QuizModal = () => {
 
     const columns = [
         {
-            title: "Name",
+            title: "Quiz Title",
             dataIndex: "name",
             align: "center",
             sorter: (a, b) => a.name.length - b.name.length,
@@ -153,4 +153,4 @@ const QuizModal = () => {
     );
 };
 
-export default QuizModal;
+export default QuizzesModal;

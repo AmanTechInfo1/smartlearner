@@ -59,7 +59,9 @@ import ProductModal from "./containers/productAdmin/ProductModal";
 import AdminHome from "./components/admin/AdminHome";
 import Area from "./containers/productArea/Area";
 import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
-import QuizModal from "./containers/quiz/QuizModal";
+import QuizzesModal from "./containers/quiz/QuizzesModal";
+import EditQuizModal from "./containers/quiz/component/EditQuizModal";
+
 
 
 
@@ -175,7 +177,11 @@ export const router = createBrowserRouter([
       },
       {
         path:"/admin/quiz",
-        element:<QuizModal/>
+        element:<QuizzesModal/>,
+      },
+      {
+        path:"/admin/edit-quiz",
+        element:<EditQuizModal/>
       }
 
       
