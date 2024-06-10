@@ -1,6 +1,7 @@
 const { ObjectId } = require('mongodb');
 const AttemptQuizQuestion = require('../models/attemptQuizQuestionModel');
 const QuizQuestion = require('../models/quizQuestionModel');
+const QuizCategoryModel = require('../models/quizCategoryModel');
 
 class quizService {
   async createQuizAsync(quizData) {
@@ -24,6 +25,124 @@ class quizService {
       return resultObject;
     }
   }
+
+
+  async getQuizCategoryAsync() {
+    try {
+      const quiz = await QuizCategoryModel.find();
+      const totalCount = await QuizCategoryModel.countDocuments();
+      const resultObject = {
+        message: "Quiz Category Fetch Successfully",
+        statusCode: 201,
+        success: true,
+        data: { quiz, totalCount }
+      };
+      return resultObject;
+    } catch (err) {
+
+      console.log(err,"errerrerrerrerr")
+      throw new Error("Could not fetch role");
+    }
+  }
+
+
+
+  
+
+  async deleteQuizCategoryAsync(categoryId) {
+    try {
+      await QuizCategoryModel.findByIdAndDelete(categoryId);
+      const resultObject = {
+        message: "Deleted successfully",
+        statusCode: 201,
+        success: true,
+        data: null,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
+  async getOneQuizCategoryAsync(id) {
+    try {
+      const quiz = await QuizCategoryModel.findById(id);
+      const totalCount = await QuizCategoryModel.countDocuments();
+      const resultObject = {
+        message: "Quiz Category Fetch Successfully",
+        statusCode: 201,
+        success: true,
+        data: quiz
+      };
+      return resultObject;
+    } catch (err) {
+
+      console.log(err,"errerrerrerrerr")
+      throw new Error("Could not fetch role");
+    }
+  }
+
+
+  
+
+  async createQuizCategoryAsync(quizData) {
+    try {
+
+      console.log(quizData,"quizDataquizDataquizData")
+      const quiz = await QuizCategoryModel.create(quizData);
+      const totalCount = await QuizCategoryModel.countDocuments();
+      const resultObject = {
+        message: "Quiz Category Added Successfully",
+        statusCode: 201,
+        success: true,
+        data: { quiz, totalCount }
+      };
+      return resultObject;
+    } catch (err) {
+      console.log(err,"errerrerrerrerr")
+      const resultObject = {
+        message: "Quiz Category add failed",
+        statusCode: 400,
+        success: false,
+        data: null
+      };
+      return resultObject;
+    }
+  }
+  async updateQuizCategoryAsync(uId,quizData) {
+    try {
+
+      console.log(quizData,"quizDataquizDataquizData")
+      const quiz = await QuizCategoryModel.findByIdAndUpdate(uId,quizData);
+      const totalCount = await QuizCategoryModel.countDocuments();
+      const resultObject = {
+        message: "Quiz Category Added Successfully",
+        statusCode: 201,
+        success: true,
+        data: quiz
+      };
+      return resultObject;
+    } catch (err) {
+      console.log(err,"errerrerrerrerr")
+      const resultObject = {
+        message: "Quiz Category add failed",
+        statusCode: 400,
+        success: false,
+        data: null
+      };
+      return resultObject;
+    }
+  }
+
+
+
+  
 
 
 

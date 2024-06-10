@@ -6,6 +6,7 @@ const QuizQuestionSchema = new mongoose.Schema({
   description: { type: String, required: true },
   option: { type: Array, required: true },
   answer: { type: String, required: true },
+  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'quizCategory' }
 });
 const QuizQuestion = mongoose.model("quizQuestion", QuizQuestionSchema);
 module.exports = QuizQuestion;

@@ -48,6 +48,7 @@ const QuizCategory = () => {
 
     const handleEditClick = (id) => {
         dispatch(getQuizCategoryById(id));
+        // dispatch(getAllQuizCategories(id))
         toggleEditQuizCategoryModal();
     };
 
@@ -141,10 +142,12 @@ const QuizCategory = () => {
                 )}
             </div>
             <AddQuizCategory
+                state={state}
                 showAddQuizCategoryModal={showAddQuizCategoryModal}
                 toggleAddQuizCategoryModal={toggleAddQuizCategoryModal}
             />
             <EditQuizCategory
+                state={state}
                 quizCategoryObj={quizCategoryObj}
                 showEditQuizCategoryModal={showEditQuizCategoryModal}
                 toggleEditQuizCategoryModal={toggleEditQuizCategoryModal}

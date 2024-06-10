@@ -15,14 +15,14 @@ import { Link } from "react-router-dom";
 const Postcode = () => {
     const dispatch = useDispatch();
     const { loading, postcodes, postcodesCount } = useSelector((state) => state.postcode);
-   
+
     const [state, setState] = useState({
         search: "",
         page: 1,
         pageSize: 10,
     });
-   
-    
+
+
     const [showAddPostcodeModal, setShowAddPostcodeModal] = useState(false);
     const toggleAddPostcodeModal = () => setShowAddPostcodeModal(!showAddPostcodeModal);
 
@@ -50,12 +50,12 @@ const Postcode = () => {
     };
 
     const handleEditClick = (id) => {
-dispatch(getPostcodeById(id));
-toggleEditPostcodeModal();
-        
+        dispatch(getPostcodeById(id));
+        toggleEditPostcodeModal();
+
     }
 
-  
+
 
     const handleDelete = (id) => {
         dispatch(deletePostcode(id));
@@ -89,7 +89,7 @@ toggleEditPostcodeModal();
                     data-popper-placement="bottom-end"
                 >
                     <Link
-                      
+
                         className="dropdown-item px-2 text-success"
                         onClick={(e) => {
                             e.preventDefault();
@@ -100,7 +100,7 @@ toggleEditPostcodeModal();
                     </Link>
                     <Link
                         className="dropdown-item px-2 text-danger"
-                        
+
                         onClick={(e) => {
                             e.preventDefault();
                             handleDelete(record._id);
@@ -150,7 +150,7 @@ toggleEditPostcodeModal();
                 )}
             </div>
             <AddPostcodeModel
-            
+
                 showAddPostcodeModal={showAddPostcodeModal}
                 toggleAddPostcodeModal={toggleAddPostcodeModal}
             />

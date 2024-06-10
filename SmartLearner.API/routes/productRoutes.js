@@ -6,7 +6,18 @@ const postcodeController = require('../controllers/postcodeController');
 const areaController = require('../controllers/areaController');
 const { requireAuth } = require("../middlewares/authMiddleware");
 const multer = require("multer");
-const upload = multer();
+const { imageSaverMiddleware } = require('../middlewares/imageSaverMiddleware');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Destination directory where files will be saved
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname); // Use the original filename for the uploaded file
+    }
+});
+
+// Initialize multer with storage configuration
+const upload = multer({ storage: storage });
 
 //Category Routes
 router.post('/add-category', upload.none(), categoryController.createCategory);
@@ -34,7 +45,11 @@ router.post('/update-area/:id', upload.none(), areaController.updateArea);
 router.post('/delete-area/:id', upload.none(), areaController.deleteArea);
 
 //Product Routes
-router.post('/add-product', upload.none(), requireAuth, productController.createProduct);
+router.post('/add-product', imageSaverMiddleware, requireAuth, productController.createProduct);
+router.post('/edit-product/:id', imageSaverMiddleware, requireAuth, productController.updateProduct);
 router.get('/get-products', upload.none(), requireAuth, productController.getProducts);
+router.get('/get-products/:id', upload.none(), requireAuth, productController.getProductById);
+router.get('/delete-product/:id',upload.none(), requireAuth, productController.deleteProduct);
+
 
 module.exports = router;
