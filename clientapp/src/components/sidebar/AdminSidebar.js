@@ -50,21 +50,21 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                     <Link to="/admin/categories">
                         <li className={styles.adminSidebarListItem}>
                             <BsFillGrid3X3GapFill className={styles.adminIcon} />
-                           product Category
+                            Product Category
                         </li>
                     </Link>
                     <Link to="/admin/postcodes">
                         <li className={styles.adminSidebarListItem}>
                             {" "}
                             <BsFillArchiveFill className={styles.adminIcon} />
-                           product Postcodes
+                            Product Post Code
                         </li>
                     </Link>
                     <Link to="/admin/product-area">
                         <li className={styles.adminSidebarListItem}>
                             {" "}
                             <BsFillArchiveFill className={styles.adminIcon} />
-                           product Area
+                            Product Area
                         </li>
                     </Link>
                     <Link to="/admin/products">
@@ -74,22 +74,22 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                             Products
                         </li>
                     </Link>
-                    
-                        <Link to="/admin/quiz-category">
+
+                    <Link to="/admin/quiz-category">
                         <li className={styles.adminSidebarListItem}>
                             <BsListCheck className={styles.adminIcon} />
                             Quiz Category
-                            </li>
-                        </Link>
-                    
-                    
-                        <Link to="/admin/quiz">
+                        </li>
+                    </Link>
+
+
+                    <Link to="/admin/quiz">
                         <li className={styles.adminSidebarListItem}>
                             <BsMenuButtonWideFill className={styles.adminIcon} />
                             Quizes
-                            </li>
-                        </Link>
-                  
+                        </li>
+                    </Link>
+
                     <li className={styles.adminSidebarListItem}>
                         <Link to="#">
                             <BsFillGearFill className={styles.adminIcon} />

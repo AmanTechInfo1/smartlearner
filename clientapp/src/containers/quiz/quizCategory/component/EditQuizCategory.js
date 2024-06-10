@@ -57,7 +57,7 @@ function EditQuizCategory(props) {
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
 
-            dispatch(editQuizCategory(quizCategory._id, formDataToSend, props.toggleEditQuizCategoryModal));
+            dispatch(editQuizCategory(quizCategory._id, formData, props.toggleEditQuizCategoryModal,props.state));
         }
     };
 

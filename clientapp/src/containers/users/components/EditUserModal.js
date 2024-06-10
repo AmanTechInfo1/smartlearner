@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSchema } from '../../../schemas/account';
+import { edituserSchema, userSchema } from '../../../schemas/account';
 import { editUser } from '../../../redux/features/userSlice';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import Loader from '../../../components/loader/Loader';
@@ -15,8 +15,6 @@ function EditUserModal(props) {
     const [formData, setFormData] = useState({
         username: user ? user.username : "",
         email: user ? user.email : "",
-        password: user ? user.password : "",
-        confirmPassword: user ? user.confirmPassword : "",
         phoneNumber: user ? user.phoneNumber : "",
         roleName: user ? user.roleName : "",
         privacyPolicy: user ? user.roleName : false,
@@ -30,8 +28,6 @@ function EditUserModal(props) {
         setFormData({
             username: user.username,
             email: user.email,
-            password: user.password,
-            confirmPassword: user.confirmPassword,
             phoneNumber: user.phoneNumber,
             roleName: user.roleName ,
             privacyPolicy: user.privacyPolicy,
@@ -49,7 +45,7 @@ function EditUserModal(props) {
 
     const validateForm = async () => {
         try {
-            await userSchema.validate(formData, { abortEarly: false });
+            await edituserSchema.validate(formData, { abortEarly: false });
             setErrors({});
             return true;
         } catch (validationErrors) {
@@ -69,11 +65,10 @@ function EditUserModal(props) {
             const formDataToSend = new FormData();
             formDataToSend.append("username", formData.username);
             formDataToSend.append("email", formData.email);
-            formDataToSend.append("password", formData.password);
             formDataToSend.append("phoneNumber", formData.phoneNumber);
             formDataToSend.append("roleName", formData.roleName);
             formDataToSend.append("privacyPolicy", formData.privacyPolicy);
-            dispatch(editUser(user._id, formDataToSend, props.toggleEditUserModal));
+            dispatch(editUser(user.uniqueId, formDataToSend, props.toggleEditUserModal));
         }
     };
 
@@ -95,48 +90,6 @@ function EditUserModal(props) {
                                     autoComplete="false"
                                 />
                                 {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <div className="input-group">
-                                    <input
-                                        className={`form-control ${errors.password ? 'error-input' : ''}`}
-                                        type={showPassword ? 'text' : 'password'}
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleInputChange}
-                                        autoComplete="false"
-                                    />
-                                    <button
-                                        className="btn btn-outline-secondary"
-                                        type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                    >
-                                        {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                                    </button>
-                                </div>
-                                {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Confirm Password</label>
-                                <div className="input-group">
-                                    <input
-                                        className={`form-control ${errors.confirmPassword ? 'error-input' : ''}`}
-                                        type={showConfirmPassword ? 'text' : 'password'}
-                                        name="confirmPassword"
-                                        value={formData.confirmPassword}
-                                        onChange={handleInputChange}
-                                        autoComplete="false"
-                                    />
-                                    <button
-                                        className="btn btn-outline-secondary"
-                                        type="button"
-                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                    >
-                                        {showConfirmPassword ? <FaRegEye /> : <FaRegEyeSlash />}
-                                    </button>
-                                </div>
-                                {errors.confirmPassword && <p style={{ color: 'red' }}>{errors.confirmPassword}</p>}
                             </div>
                             <div className="form-group">
                                 <label>Email</label>

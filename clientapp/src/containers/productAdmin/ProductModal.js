@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../assets/css/admin.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts, deleteProduct } from "../../redux/features/productSlice";
+import { getAllProducts, deleteProduct, getAllProductsById } from "../../redux/features/productSlice";
 import AddProductModel from "./components/AddProductModel";
 import EditProductModal from "./components/EditProductModal";
 import { Table } from "antd";
@@ -9,10 +9,23 @@ import { Link } from "react-router-dom";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { getListAreas } from "../../redux/features/areaSlice";
+import { getListCategories } from "../../redux/features/categorySlice";
+import { getListPostcodes } from "../../redux/features/postcodeSlice";
+import { imageBaseUrl } from "../../utils/constants";
 
 const ProductModal = () => {
     const dispatch = useDispatch();
-    const { loading, products, productCount } = useSelector((state) => state.product);
+    const { loading, productCount } = useSelector((state) => state.product);
+    const products = useSelector(
+        (state) => {
+            return state.product.products.map((itp)=>{
+                return {
+                    ...itp,
+                    imageSrc:<img width={48} height={48} src={imageBaseUrl+itp.image}/>
+                }
+            })
+        }
+    );
     const [showAddProductModalOpen, setAddProductModalOpen] = useState(false);
     const [showEditProductModalOpen, setEditProductModalOpen] = useState(false);
     const [editProduct, setEditProduct] = useState(null);
@@ -44,13 +57,20 @@ const ProductModal = () => {
         return originalElement;
     };
 
-    const handleAddUserClick = () =>{
+    const handleAddUserClick = () => {
         dispatch(getListAreas())
+        dispatch(getListCategories())
+        dispatch(getListPostcodes())
+
         toggleAddProductModal();
     }
     const handleEditClick = (id) => {
-        const product = products.find((product) => product._id === id);
-        setEditProduct(product);
+        dispatch(getListAreas())
+        dispatch(getListCategories())
+        dispatch(getListPostcodes())
+        dispatch(getAllProductsById(id));
+        // setEditProduct(product);
+        // toggleAddProductModal();
         toggleEditProductModal();
     };
 
@@ -59,6 +79,11 @@ const ProductModal = () => {
     };
 
     const columns = [
+        {
+            title: "Image",
+            dataIndex: "imageSrc",
+            align: "center",
+        },
         {
             title: "Name",
             dataIndex: "name",
@@ -72,10 +97,40 @@ const ProductModal = () => {
             sorter: (a, b) => a.price - b.price,
         },
         {
-            title: "Stock",
-            dataIndex: "stock",
+            title: "Transmission",
+            dataIndex: "transmission",
             align: "center",
-            sorter: (a, b) => a.stock - b.stock,
+            sorter: (a, b) => a.transmission.length - b.transmission.length,
+        },
+        {
+            title: "Area Included",
+            dataIndex: "areaIncluded",
+            align: "center",
+            sorter: (a, b) => a.areaIncluded.length - b.areaIncluded.length,
+        },
+        {
+            title: "Category",
+            dataIndex: "category",
+            align: "center",
+            sorter: (a, b) => a.category.length - b.category.length,
+        },
+        {
+            title: "Experience",
+            dataIndex: "experience",
+            align: "center",
+            sorter: (a, b) => a.experience.length - b.experience.length,
+        },
+        {
+            title: "Price",
+            dataIndex: "price",
+            align: "center",
+            sorter: (a, b) => a.price.length - b.price.length,
+        },
+        {
+            title: "Rating",
+            dataIndex: "rating",
+            align: "center",
+            sorter: (a, b) => a.rating.length - b.rating.length,
         },
         {
             title: "Transmission",
@@ -97,7 +152,11 @@ const ProductModal = () => {
                     <Link
                         to={"#"}
                         className="dropdown-item px-2 text-success"
-                        onClick={() => handleEditClick(record._id)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleEditClick(record._id)
+                        }
+                        }
                     >
                         <LiaUserEditSolid />
                     </Link>
@@ -138,17 +197,19 @@ const ProductModal = () => {
                     style={{ overflowX: "auto" }}
                     columns={columns}
                     dataSource={products}
-                    rowKey={(record) => record._id}
+                // rowKey={(record) => record._id}
                 />
             </div>
             <AddProductModel
                 showAddProductModalOpen={showAddProductModalOpen}
                 toggleAddProductModal={toggleAddProductModal}
+                state={state}
             />
             <EditProductModal
                 showEditProductModalOpen={showEditProductModalOpen}
                 toggleEditProductModal={toggleEditProductModal}
                 product={editProduct}
+                state={state}
             />
         </>
     );

@@ -56,6 +56,76 @@ class QuizController {
     }
   }
 
+
+  async getQuizCategory(req, res, next) {
+    try {
+      const { page, pageSize, search } = req.query;
+      const result = await quizService.getQuizCategoryAsync(page, pageSize, search);
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async oneQuizCategory(req, res, next) {
+    try {
+      const result = await quizService.getOneQuizCategoryAsync(req.params.id);
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+  
+  async addQuizCategory(req, res, next) {
+    try {
+      var quizData = req.body;
+      console.log(req.body,"quizDataquizDataquizData");
+      const quiz = await quizService.createQuizCategoryAsync(quizData);
+      
+      res.status(201).json(quiz);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+  
+  async updateQuizCategory(req, res, next) {
+    try {
+      var quizData = req.body;
+      console.log(req.body,"quizDataquizDataquizData");
+      const quiz = await quizService.updateQuizCategoryAsync(req.params.id,quizData);
+      
+      res.status(201).json(quiz);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+  async deleteQuizCategory(req, res, next) {
+    try {
+      const result = await quizService.deleteQuizCategoryAsync(req.params.id);
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+  async addNewQuiz(req, res, next) {
+    try {
+      var quizData = req.body;
+      console.log(quizData);
+      const quiz = await quizService.createQuizAsync(quizData);
+      
+      res.status(201).json(quiz);
+    } catch (err) {
+      next(err);
+    }
+  }
+
 }
 
 module.exports = new QuizController();

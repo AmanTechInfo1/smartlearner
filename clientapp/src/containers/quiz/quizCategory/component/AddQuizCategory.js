@@ -38,6 +38,8 @@ const AddQuizCategory = (props) => {
         }
     };
 
+
+    console.log(errors,"errorserrorserrorserrors")
     const onSubmit = async (e) => {
         e.preventDefault();
         const isValid = await validateForm();
@@ -47,7 +49,7 @@ const AddQuizCategory = (props) => {
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
 
-            dispatch(createQuizCategory(formDataToSend, props.toggleAddQuizCategoryModal));
+            dispatch(createQuizCategory(formData, props.toggleAddQuizCategoryModal,props.state));
             setLoading(false);
         }
     };

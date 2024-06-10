@@ -6,6 +6,7 @@ const productSlice = createSlice({
     name: "product",
     initialState: {
         products: [],
+        oneproduct: {},
         productCount: null,
         loading: false,
     },
@@ -20,12 +21,31 @@ const productSlice = createSlice({
             state.productCount = null;
             state.loading = false;
         },
+        getOneProductsSuccess: (state, action) => {
+
+            console.log("getOneProductsSuccess",action.payload)
+            state.oneproduct = action.payload
+        },
+        getOneProductsFailure: (state) => {
+            state.products = [];
+            state.oneproduct = {}
+            state.productCount = null;
+            state.loading = false;
+        },
         createProductSuccess: (state, action) => {
-            state.products.push(action.payload.product);
-            state.productCount = action.payload.totalCount;
+            // state.products.push(action.payload.product);
+            // state.productCount = action.payload.totalCount;
             state.loading = false;
         },
         createProductFailure: (state) => {
+            state.loading = false;
+        },
+        editProductSuccess: (state, action) => {
+            // state.products.push(action.payload.product);
+            // state.productCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        editProductFailure: (state) => {
             state.loading = false;
         },
         createCategorySuccess: (state, action) => {
@@ -70,6 +90,26 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
     }
 };
 
+export const getAllProductsById = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/product/get-products/${id}`
+        );
+
+        console.log(response.statusText,"response.dataresponse.data")
+        if (response.data) {
+            dispatch(getOneProductsSuccess(response.data));
+        } else {
+            toast.error(response.statusText);
+            dispatch(getOneProductsFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getAllProductsFailure());
+    }
+};
+
 export const createCategory = (data, reset, toggleAddCategoryModal) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -89,10 +129,50 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
     }
 };
 
+
+
+export const createProduct = (data, reset, toggleAddCategoryModal,state) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(`/api/product/add-product`, data,{headers:{"Content-Type":"multipart/form-data"}});
+        if (response.data.success) {
+            toast.success(response.data.message);
+            reset();
+            dispatch(createProductSuccess(response.data.data));
+            toggleAddCategoryModal();
+            dispatch(getAllProducts(state.search, state.page, state.pageSize))
+        } else {
+            toast.error(response.data.message);
+            dispatch(createProductFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(createProductFailure());
+    }
+};
+
+export const editProduct = (id,data,reset,toggleEditProductModal,state) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(`/api/product/edit-product/${id}`, data,{headers:{"Content-Type":"multipart/form-data"}});
+        if (response.data.success) {
+            toast.success(response.data.message);
+            reset();
+            toggleEditProductModal();
+            dispatch(getAllProducts(state.search, state.page, state.pageSize))
+        } else {
+            toast.error(response.data.message);
+            dispatch(editProductFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(editProductFailure());
+    }
+};
 export const deleteProduct = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.delete(`/api/product/delete-product/${id}`);
+        const response = await httpHandler.get(`/api/product/delete-product/${id}`);
         if (response.data.success) {
             toast.success(response.data.message);
             dispatch(deleteProductSuccess({ id, totalCount: response.data.totalCount }));
@@ -109,8 +189,12 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const {
     getAllProductsSuccess,
     getAllProductsFailure,
+    getOneProductsSuccess,
+    getOneProductsFailure,
     createProductSuccess,
     createProductFailure,
+    editProductSuccess,
+    editProductFailure,
     createCategorySuccess,
     createCategoryFailure,
     deleteProductSuccess,

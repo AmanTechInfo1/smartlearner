@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { productSchema } from "../../../schemas/product/index";
-import { createProductSuccess } from "../../../redux/features/productSlice";
+import { createProduct, createProductSuccess } from "../../../redux/features/productSlice";
 import ReactSelect from "react-select";
 
 function AddProductModel(props) {
   const dispatch = useDispatch();
+  const [image,setImage] = useState();
 
-  const {  areasList } = useSelector((state) => {
-
-    
+  const { areasList } = useSelector((state) => {
     return state.area
-});
-const {categoriesList} = useSelector((state)=>{ return state.category})
+  });
+  const { categoriesList } = useSelector((state) => { return state.category })
+  const { postcodesList } = useSelector((state) => { return state.postcode})
+
+
 
 
   const {
@@ -27,22 +29,35 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
     resolver: yupResolver(productSchema),
   });
 
+  console.log(errors,"errorserrorserrors")
+
   const onSubmit = async (data) => {
+
+
+    // console.log(data,"datadatadatadatadata")
     const formData = new FormData();
+    console.log(data,"data?.imagedata?.imagedata?.image")
     formData.append("name", data?.name);
-    formData.append("category",data?.category)
+    formData.append("category", data?.category)
     formData.append("description", data?.description);
-    formData.append("image", data?.image[0]);
+    formData.append("image", image);
     formData.append("price", data?.price);
     formData.append("transmission", data?.transmission);
     formData.append("experience", data?.experience);
     formData.append("postcode", data?.postcode);
     formData.append("areaIncluded", data?.areaIncluded);
     formData.append("rating", data?.rating);
-    dispatch(
-      createProductSuccess(formData, reset, props.toggleAddProductModal)
-    );
+    // dispatch(
+    //   createProductSuccess(formData, reset, props.toggleAddProductModal)
+    // );
+
+    
+    dispatch(createProduct(formData, reset, props.toggleAddProductModal,props.state));
   };
+
+
+
+
 
   return (
     <>
@@ -62,9 +77,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 control={control}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
-                    }`}
+                    className={`form-control  ${errors?.name ? "error-input" : ""
+                      }`}
                     type="text"
                     value={value}
                     onChange={onChange}
@@ -88,15 +102,14 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 render={({ field }) => (
                   <select
                     {...field}
-                    className={`form-control ${
-                      errors.roleName ? "error-input" : ""
-                    }`}
+                    className={`form-control ${errors.roleName ? "error-input" : ""
+                      }`}
                   >
                     <option disabled value="">
                       Select...
                     </option>
                     {categoriesList.map((category) => (
-                      <option key={category._id} value={category.name}>
+                      <option key={category._id} value={category._id}>
                         {category.name}
                       </option>
                     ))}
@@ -120,9 +133,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 control={control}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
-                      errors?.description ? "error-input" : ""
-                    }`}
+                    className={`form-control  ${errors?.description ? "error-input" : ""
+                      }`}
                     type="text"
                     value={value}
                     onChange={onChange}
@@ -144,18 +156,18 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 control={control}
                 render={({ field: { onChange } }) => (
                   <input
-                    className={`form-control ${
-                      errors?.image ? "error-input" : ""
-                    }`}
+                    className={`form-control ${errors?.image ? "error-input" : ""
+                      }`}
                     type="file"
                     onChange={(e) => {
-                      const file = e.target.files[0];
+                      const file = e.target.files;
+                      setImage(file[0])
+                      console.log(file,"filefilefilefilefilefile")
                       onChange(file);
                     }}
                     autoComplete="off"
                   />
                 )}
-                defaultValue={""}
               />
 
               {errors?.name?.message ? (
@@ -171,9 +183,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 control={control}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
-                    }`}
+                    className={`form-control  ${errors?.name ? "error-input" : ""
+                      }`}
                     type="number"
                     value={value}
                     onChange={onChange}
@@ -197,15 +208,14 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 render={({ field }) => (
                   <select
                     {...field}
-                    className={`form-control ${
-                      errors.roleName ? "error-input" : ""
-                    }`}
+                    className={`form-control ${errors.roleName ? "error-input" : ""
+                      }`}
                   >
                     <option disabled value="">
                       Select...
                     </option>
-                    <option value="automatic">Automatic</option>
-                    <option value="manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
                   </select>
                 )}
                 defaultValue=""
@@ -221,20 +231,19 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
             <div className="form-group">
               <label>Experience</label>
               <Controller
-                name="transmission"
+                name="experience"
                 control={control}
                 render={({ field }) => (
                   <select
                     {...field}
-                    className={`form-control ${
-                      errors.roleName ? "error-input" : ""
-                    }`}
+                    className={`form-control ${errors.roleName ? "error-input" : ""
+                      }`}
                   >
                     <option disabled value="">
                       Select...
                     </option>
-                    <option value="automatic">Beginner</option>
-                    <option value="manual">Experience</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Experience">Experience</option>
                   </select>
                 )}
                 defaultValue=""
@@ -252,10 +261,98 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 name="postcode"
                 control={control}
                 render={({ field: { value, onChange } }) => (
+                  <select
+                    name="postcode"
+                    value={value}
+                    onChange={onChange}
+                    className={`form-control ${errors.roleName ? "error-input" : ""
+                      }`}
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    {postcodesList.map((category) => (
+                      <option key={category._id} value={category._id}>
+                        {category.postcode}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                defaultValue=""
+              />
+
+              {errors?.postcode?.message ? (
+                <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+{/* 
+            <div className="form-group">
+              <label>Postcode</label>
+              <Controller
+                name="postcode"
+                control={control}
+                render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
-                    }`}
+                    value={formData.postcode}
+                    onChange={handleInputChange}
+                    name="postcode"
+                    className={`form-control  ${errors?.name ? "error-input" : ""
+                      }`}
+                    type="text"
+                    autoComplete="false"
+                  />
+                )}
+                defaultValue={""}
+              />
+              {errors?.postcode?.message ? (
+                <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
+              ) : (
+                ""
+              )}
+            </div> */}
+            <div className="form-group">
+              <label>AreaIncluded</label>
+              <Controller
+                name="areaIncluded"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <select
+                    name="areaIncluded"
+                    value={value}
+                    onChange={onChange}
+                    className={`form-control ${errors.areaName ? "error-input" : ""
+                      }`}
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    {areasList.map((area) => (
+                      <option key={area._id} value={area._id}>
+                        {area.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                defaultValue={""}
+              />
+              {errors?.name?.message ? (
+                <p style={{ color: "red" }}>{errors?.name?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+
+            {/* <div className="form-group">
+              <label>Postcode</label>
+              <Controller
+                name="postcode"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <input
+                    className={`form-control  ${errors?.name ? "error-input" : ""
+                      }`}
                     type="text"
                     value={value}
                     onChange={onChange}
@@ -278,9 +375,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 render={({ field }) => (
                   <select
                     {...field}
-                    className={`form-control ${
-                      errors.areaName ? "error-input" : ""
-                    }`}
+                    className={`form-control ${errors.areaName ? "error-input" : ""
+                      }`}
                   >
                     <option disabled value="">
                       Select...
@@ -299,7 +395,7 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
               ) : (
                 ""
               )}
-            </div>
+            </div> */}
             <div className="form-group">
               <label>Rating</label>
               <Controller
@@ -307,9 +403,8 @@ const {categoriesList} = useSelector((state)=>{ return state.category})
                 control={control}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className={`form-control  ${
-                      errors?.name ? "error-input" : ""
-                    }`}
+                    className={`form-control  ${errors?.name ? "error-input" : ""
+                      }`}
                     type="number"
                     value={value}
                     onChange={onChange}
