@@ -1,4 +1,4 @@
-import styles from "./css/Home.module.css";
+import styles from "./css/home.module.css";
 import LplateImg from "..//assets/images/L-Plate.jpg";
 import arrowImg from "../assets/images/arrow-img2.png";
 import trustPilot from "..//assets/images/trustpilot-inline-white.png";

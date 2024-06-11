@@ -13,6 +13,7 @@ import postcodeSlice from "../features/postcodeSlice";
 import areaSlice from "../features/areaSlice";
 import quizCategorySlice from "../features/quizCategorySlice";
 import quizSlice from "../features/quizSlice";
+import dashboardSlice from "../features/dashboardSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -24,12 +25,12 @@ const rootReducer = combineReducers({
   enquiryForm: enquiryForm,
   contactForm: contactUsSlice,
   drivenForm: drivenformSlice,
-    
-    postcode: postcodeSlice,
-    product: productSlice,
-    area: areaSlice,
-    quizCategory: quizCategorySlice,
-    quiz: quizSlice,
+  quiz: quizSlice,
+  dashboard: dashboardSlice,
+  postcode: postcodeSlice,
+  product: productSlice,
+  area: areaSlice,
+  quizCategory: quizCategorySlice,
 });
 
 export default rootReducer;

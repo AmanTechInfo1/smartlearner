@@ -1,5 +1,6 @@
 import axios from "axios";
-const apiUrl = "http://localhost:5000";
+import { baseUrl } from "./constants";
+const apiUrl = baseUrl;
 async function getToken() {
     // return authorization header with jwt token
     let user = JSON.parse(localStorage.getItem("user"));
@@ -35,6 +36,7 @@ const post = async (url, params, opt) => {
         opt = {
             ...opt,
             headers: {
+                ...opt.headers,
                 Authorization: `${token}`,
             },
         };

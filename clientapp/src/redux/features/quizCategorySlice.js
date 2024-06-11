@@ -10,10 +10,11 @@ const quizCategorySlice = createSlice({
         loading: false,
         quizCategoriesList: [],
         quizCategory: null,
+        quizOneCategories:{}
     },
     reducers: {
         getAllQuizCategoriesSuccess: (state, action) => {
-            state.quizCategories = action.payload.quizCategories;
+            state.quizCategories = action.payload.quiz;
             state.quizCategoriesCount = action.payload.totalCount;
             state.loading = false;
         },
@@ -22,17 +23,38 @@ const quizCategorySlice = createSlice({
             state.quizCategoriesCount = null;
             state.loading = false;
         },
-        createQuizCategorySuccess: (state, action) => { 
-            state.quizCategories.push(action.payload.quizCategory);
+        getQuizCategoriesSuccess: (state, action) => {
+            state.quizOneCategories = action.payload;
             state.quizCategoriesCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        getQuizCategoriesFailure: (state) => {
+            state.quizOneCategories = {};
+            state.quizCategoriesCount = null;
+            state.loading = false;
+        },
+        
+        getQuizCategoriesSuccess: (state, action) => {
+            state.quizCategories = action.payload.quiz;
+            state.quizCategoriesCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        getQuizCategoriesFailure: (state) => {
+            state.quizCategories = [];
+            state.quizCategoriesCount = null;
+            state.loading = false;
+        },
+        createQuizCategorySuccess: (state, action) => { 
+            // state.quizCategories.push(action.payload.quizCategory);
+            // state.quizCategoriesCount = action.payload.totalCount;
             state.loading = false;
         },
         createQuizCategoryFailure: (state) => {
             state.loading = false;
         },
         editQuizCategorySuccess: (state, action) => {
-            const updatedQuizCategory = action.payload.quizCategory;
-            state.quizCategories = state.quizCategories.map(quizCategory => quizCategory._id === updatedQuizCategory._id ? updatedQuizCategory : quizCategory);
+            // const updatedQuizCategory = action.payload.quizCategory;
+            // state.quizCategories = state.quizCategories.map(quizCategory => quizCategory._id === updatedQuizCategory._id ? updatedQuizCategory : quizCategory);
             state.loading = false;
         },
         editQuizCategoryFailure: (state) => {
@@ -69,11 +91,11 @@ const quizCategorySlice = createSlice({
     },
 });
 
-export const getAllQuizCategories = (search, page, pagesize) => async (dispatch) => {
+export const getAllQuizCategories = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
         const response = await httpHandler.get(
-            `/api/product/all-quizCategories?search=${search}&page=${page}&pagesize=${pagesize}`
+            `/api/quiz/getQuizCategory/${id}`
         );
         if (response.data.success) {
             dispatch(getAllQuizCategoriesSuccess(response.data.data));
@@ -87,16 +109,35 @@ export const getAllQuizCategories = (search, page, pagesize) => async (dispatch)
     }
 };
 
-export const createQuizCategory =
-    (data, reset, toggleAddQuizCategoryModal) => async (dispatch) => {
+
+
+export const getQuizCategories = (search, page, pagesize) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/quiz/getQuizCategory?search=${search}&page=${page}&pagesize=${pagesize}`
+        );
+        if (response.data.success) {
+            dispatch(getQuizCategoriesSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getQuizCategoriesFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getQuizCategoriesFailure());
+    }
+};
+
+export const createQuizCategory = (data, toggleAddQuizCategoryModal,state) => async (dispatch) => {
         try {
             dispatch(setLoading());
-            const response = await httpHandler.post(`/api/product/add-quizCategory`, data);
+            const response = await httpHandler.post(`/api/quiz/addQuizCategory`, data);
             if (response.data.success) {
                 toast.success(response.data.message);
-                reset();
                 toggleAddQuizCategoryModal();
                 dispatch(createQuizCategorySuccess(response.data.data));
+                dispatch(getAllQuizCategories(state.search, state.page, state.pageSize))
             } else {
                 toast.error(response.data.message);
                 dispatch(createQuizCategoryFailure());
@@ -107,14 +148,15 @@ export const createQuizCategory =
         }
     };
 
-export const editQuizCategory = (id, data, toggleEditQuizCategoryModal) => async (dispatch) => {
+export const editQuizCategory = (id, data, toggleEditQuizCategoryModal,state) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/update-quizCategory/${id}`, data);
+        const response = await httpHandler.post(`/api/quiz/updateQuizCategory/${id}`, data);
         if (response.data.success) {
             dispatch(editQuizCategorySuccess(response.data.data));
             toast.success(response.data.message);
             toggleEditQuizCategoryModal();
+            dispatch(getAllQuizCategories(state.search, state.page, state.pageSize))
         } else {
             toast.error(response.data.message);
             dispatch(editQuizCategoryFailure());
@@ -144,7 +186,7 @@ export const getListQuizCategories = () => async (dispatch) => {
 export const getQuizCategoryById = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.get(`/api/product/quizCategory/${id}`);
+        const response = await httpHandler.get(`/api/quiz/quizCategory/${id}`);
         if (response.data.success) {
             dispatch(getQuizCategoryByIdSuccess(response.data.data));
         } else {
@@ -160,7 +202,7 @@ export const getQuizCategoryById = (id) => async (dispatch) => {
 export const deleteQuizCategory = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/delete-quizCategory/${id}`);
+        const response = await httpHandler.post(`/api/quiz/delete-quizCategory/${id}`);
         if (response.data.success) {
             dispatch(deleteQuizCategorySuccess(id));
         } else {
@@ -176,6 +218,8 @@ export const deleteQuizCategory = (id) => async (dispatch) => {
 export const {
     getAllQuizCategoriesSuccess,
     getAllQuizCategoriesFailure,
+    getQuizCategoriesSuccess,
+    getQuizCategoriesFailure,
     createQuizCategorySuccess,
     createQuizCategoryFailure,
     getListQuizCategorySuccess,

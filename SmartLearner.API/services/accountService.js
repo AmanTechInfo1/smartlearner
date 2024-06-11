@@ -231,14 +231,67 @@ class AccountService {
   async getOneUsersAsync(params_id) {
     try {
       
-      const users = await User.findById({"_id":params_id});
+      let aagr=[
+        {
+          '$addFields': {
+            'uniqueId': {
+              '$toString': '$_id'
+            }
+          }
+        }, {
+          '$match': {
+            'uniqueId': params_id
+          }
+        }, {
+          '$lookup': {
+            'from': 'userroles', 
+            'localField': '_id', 
+            'foreignField': 'userId', 
+            'pipeline': [
+              {
+                '$lookup': {
+                  'from': 'roles', 
+                  'localField': 'roleId', 
+                  'foreignField': '_id', 
+                  'as': 'result'
+                }
+              }, {
+                '$unwind': {
+                  'path': '$result', 
+                  'preserveNullAndEmptyArrays': true
+                }
+              }, {
+                '$addFields': {
+                  'result': '$result.name'
+                }
+              }
+            ], 
+            'as': 'result'
+          }
+        }, {
+          '$unwind': {
+            'path': '$result', 
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'roleId': {
+              '$toString': '$result.roleId'
+            }, 
+            'roleName': {
+              '$toString': '$result.result'
+            }
+          }
+        }
+      ]
+      const users = await User.aggregate(aagr);
       
       const totalCount = await User.countDocuments({"_id":params_id});
       const resultObject = {
         message: "Fetched successfully",
         statusCode: 200,
         success: true,
-        data: { users, totalCount },
+        data: users[0],
       };
 
       return resultObject;

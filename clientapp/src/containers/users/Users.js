@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react'
 import AddUserModal from './components/AddUserModal';
 import { Table } from 'antd';
 import styles from "../../assets/css/admin.module.css";
-import { getListRoles,getRoleById } from '../../redux/features/roleSlice';
+import { getListRoles, getRoleById } from '../../redux/features/roleSlice';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
 import { LiaUserEditSolid } from 'react-icons/lia';
+import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, getListUsers, getUserById,deleteUser } from '../../redux/features/userSlice';
+import { getAllUsers, getListUsers, getUserById, deleteUser } from '../../redux/features/userSlice';
 import EditUserModal from './components/EditUserModal';
 import Loader from '../../components/loader/Loader';
+import EditPasswordModal from './components/EditPasswordModal';
 
 function Users() {
     const dispatch = useDispatch();
@@ -20,14 +22,16 @@ function Users() {
         pageSize: 10,
     });
 
-    
+
 
     const [showUserAddModal, setUserAddModal] = useState(false);
     const toggleAddUserModal = () => setUserAddModal(!showUserAddModal);
 
     const [editUserModalOpen, setEditUserModalOpen] = useState(false);
     const toggleEditUserModal = () => setEditUserModalOpen(!editUserModalOpen);
-    
+    const [editPasswordModalOpen, setEditPasswordModalOpen] = useState(false);
+    const toggleEditPasswordModal = () => setEditPasswordModalOpen(!editPasswordModalOpen);
+
     const [userObj, setUserObj] = useState();
 
     useEffect(() => {
@@ -50,14 +54,21 @@ function Users() {
     const handleAddUserClick = () => {
         // dispatch(getListUsers());
         dispatch(getListRoles());
-        
+
         toggleAddUserModal();
     }
 
     const handleEditClick = (id) => {
+        dispatch(getListRoles());
         dispatch(getUserById(id));
         dispatch(getRoleById(id));
         toggleEditUserModal();
+    };
+
+    const handlePasswordClick = (id) => {
+        dispatch(getUserById(id));
+        dispatch(getRoleById(id));
+        toggleEditPasswordModal();
     };
 
     const handleDeleteClick = (id) => {
@@ -86,9 +97,9 @@ function Users() {
                     className="d-flex justify-content-around"
                     data-popper-placement="bottom-end"
                 >
-                   
+
                     <Link
-                       
+
                         className="dropdown-item px-2 text-success"
                         onClick={(event) => {
                             event.preventDefault();
@@ -96,6 +107,16 @@ function Users() {
                         }}
                     >
                         <LiaUserEditSolid />
+                    </Link>
+                    <Link
+
+                        className="dropdown-item px-2 text-success"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            handlePasswordClick(record._id);
+                        }}
+                    >
+                        <RiLockPasswordFill />
                     </Link>
                     <Link
                         className="dropdown-item px-2 text-danger"
@@ -111,8 +132,8 @@ function Users() {
         },
     ];
 
-    
-   
+
+
     return (
         <>
             <div className={styles.usersContainer}>
@@ -146,7 +167,7 @@ function Users() {
                         rowKey={(record) => record._id}
                     />
                 ) : (
-                    <Loader/>
+                    <Loader />
                 )}
             </div>
             <AddUserModal
@@ -155,9 +176,16 @@ function Users() {
                 toggleAddUserModal={toggleAddUserModal}
             />
             <EditUserModal
-            userObj={userObj}
-            editUserModalOpen={editUserModalOpen}
-            toggleEditUserModal={toggleEditUserModal}
+                state={state}
+                userObj={userObj}
+                editUserModalOpen={editUserModalOpen}
+                toggleEditUserModal={toggleEditUserModal}
+            />
+            <EditPasswordModal
+                state={state}
+                userObj={userObj}
+                editUserModalOpen={editPasswordModalOpen}
+                toggleEditUserModal={toggleEditPasswordModal}
             />
         </>
     )
