@@ -60,7 +60,8 @@ import AdminHome from "./components/admin/AdminHome";
 import Area from "./containers/productArea/Area";
 import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
 import QuizzesModal from "./containers/quiz/QuizzesModal";
-import EditQuizModal from "./containers/quiz/component/EditQuizModal";
+import Checkout from "./pages/shop/checkout/Checkout";
+
 
 
 
@@ -126,6 +127,8 @@ export const router = createBrowserRouter([
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
+      {path:"checkout", element: <Checkout/>},
+
     ],
   },
   { path: "register", element: <Register /> },
@@ -179,10 +182,7 @@ export const router = createBrowserRouter([
         path:"/admin/quiz",
         element:<QuizzesModal/>,
       },
-      {
-        path:"/admin/edit-quiz",
-        element:<EditQuizModal/>
-      }
+    
 
       
     ],
