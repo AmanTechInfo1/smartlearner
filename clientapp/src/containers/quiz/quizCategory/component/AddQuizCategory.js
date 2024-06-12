@@ -1,4 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { quizCategorySchema } from '../../../../schemas/quizCategory';
+import { createQuizCategory } from '../../../../redux/features/quizCategorySlice';
+import Loader from '../../../../components/loader/Loader';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+
 
 
 const AddQuizCategory = (props) => {
