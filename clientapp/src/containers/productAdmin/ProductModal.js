@@ -96,7 +96,7 @@ const ProductModal = () => {
             align: "center",
             sorter: (a, b) => a.price - b.price,
         },
-        {
+         {
             title: "Transmission",
             dataIndex: "transmission",
             align: "center",
