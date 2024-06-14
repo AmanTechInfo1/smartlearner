@@ -138,6 +138,200 @@ color: rgb(3, 154, 3);
     .eCs2ndSectionhead h2{
       font-size: 3rem;
     }
-   
+  }
+  /* ////////////////////////////// */
+  .textMainSection{
+max-width: 1140px;
+width: 100%;
+margin-right: auto;
+margin-left: auto;
+padding: 2rem 1rem;
+  }
+  .textEscsection p{
+text-align: justify;
+max-width: 800px;
+width: 100%;
+margin-right: auto;
+margin-left: auto;
+color: white;
+font-size: 1.2rem;
+  }
+  .textEscsection p span{
+    color: rgb(3, 154, 3);
+  }
+  .treeImgsSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    
+  }
 
+  .treeImgsSection img{
+    max-width: 200px;
+    width: 100%;
+  }
+  .textMainSection hr{
+    opacity: 1;
+   border: 2px solid white;
+
+  }
+  .escBDSection{
+    max-width: 1200px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 1rem;
+  }
+  .escBdHeading hr{
+    opacity: 1;
+    border: 2px solid white;
+    margin-top: 2rem;
+  }
+  .escBdHeading h2{
+    color: rgb(3, 154, 3);
+    font-size: 3rem;
+    text-align: center;
+  }
+  .escBenifits{
+    padding-top: 2rem;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .escBDDiv{
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+  }
+ 
+  .escBDDiv section{
+   
+    padding: 1rem;
+    background-color: white;
+    border-radius: 40px;
+  }
+ 
+  .escBDDiv h2{
+    color: rgb(3, 154, 3);
+    font-size: 3rem;
+text-align: center;
+
+  }
+  .escBDDiv p{
+    text-align: justify;
+    color: rgb(3, 154, 3);
+    font-size: 1.2rem;
+
+  }
+  .escBDDiv div{
+    
+    padding: 1rem;
+    background-color: rgb(159, 1, 1);
+    border-radius: 40px;
+  }
+  .escBDDiv div h2{
+   
+    font-size: 3rem;
+text-align: center;
+    color: white;
+    
+  }
+  .escBDDiv div p{
+    text-align: justify;
+    color: white;
+    font-size: 1.2rem;
+  }
+  @media (max-width:  828px){
+    .escBDDiv div h2{
+      font-size: 2.5rem;
+    }
+    .treeImgsSection{
+      gap: 30px;
+    }
+  }
+  @media (max-width:  728px){
+    .treeImgsSection img{
+      max-width: 170px;
+      width: 100%;
+    }
+    .textEscsection p{
+      font-size: 1rem;
+    }
+  }
+  @media (max-width:  680px){
+    .escBdHeading h2{
+      font-size: 2.5rem;
+    }
+.escBenifits{
+  flex-direction: column;
+}
+
+.escBDDiv div p{
+
+  font-size: 1rem;
+}
+.escBDDiv section p{
+
+  font-size: 1rem;
+}
+.escBDDiv section h2{
+  font-size: 2.5rem;
+}
+.escBDDiv div h2{
+
+  font-size: 2rem;
+}
+  }
+  @media (max-width:  580px){
+    .treeImgsSection img{
+      max-width: 120px;
+      width: 100%;
+    }
+  }
+  @media (max-width:  450px){
+    .treeImgsSection img{
+      max-width: 80px;
+      width: 100%;
+    }
+  }
+  .csr3rdDivSecLinks{
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   
+    gap: 50px;
+  }
+  .csr3rdDivSecLinks a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-decoration: none;
+    transition: border 0.5s ease;
+  }
+  
+  .csr3rdDivSecLinks a:hover{
+    border: 1px solid rgb(3, 163, 3);
+  }
+  .csr3rdDivSecLinks p{
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .csr3rdDivSecLinks img{
+    max-width: 220px;
+    width: 100%;
   }
