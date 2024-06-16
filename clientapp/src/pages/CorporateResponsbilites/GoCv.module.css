@@ -1,101 +1,116 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
-.goCvFirstdiv{
-    background-color: #24295E;
-    padding: 3rem 1rem;
-   
-    border-bottom: 10px dashed rgb(24, 216, 24);
+.goCv {
+  background-color: black;
+  font-family: "Antonio", sans-serif;
+  color: white;
+  padding-bottom: 5rem;
 }
-.goCvFirstSection{
-    max-width: 1140px;   
- margin-right: auto;
- margin-left: auto;
- 
-    
-    
+.goCvFirstdiv {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.goCvFirstSection {
+  background-color: #24295e;
+  border-radius: 6em/2em;
+  padding: 3rem 1rem;
+
+  border-bottom: 10px dashed rgb(24, 216, 24);
 }
 
-.goCvFirstSectionHeading h2{
-    font-size: 4rem;
-    font-weight: 700;
-    text-align: center;
-    color: #fff;
-    font-family: "Roboto", sans-serif;
-    padding: 3rem 0px;
+.goCvFirstSectionHeading h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+
+  padding: 3rem 0px;
 }
-.goCvFirstSectionHeading hr{
-    border: 2px solid rgb(34, 243, 34);
-    opacity: 1;
-    max-width: 600px;
-    width: 100%;
-   
-    margin-right: auto;
-    margin-left: auto;
+.goCvFirstSectionHeading hr {
+  border: 2px solid rgb(34, 243, 34);
+  opacity: 1;
+  max-width: 600px;
+  width: 100%;
+
+  margin-right: auto;
+  margin-left: auto;
 }
-.goCvFirstSectionHeadingImg{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    text-align: center;
-    padding: 3rem 0px;
-    max-width: 1000px;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
+.goCvFirstSectionHeadingImg {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  padding: 3rem 0px;
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
-#smartlearnerLogo{
-    max-width: 300px;
-    width: 100%;
+#smartlearnerLogo {
+  max-width: 300px;
+  width: 100%;
 }
-.goCvFirstSectionHeadingImg img{
-    max-width: 130px;
-    width: 100%;
-    padding: 1rem 1rem;
+.goCvFirstSectionHeadingImg img {
+  max-width: 130px;
+  width: 100%;
+  padding: 1rem 1rem;
 }
-@media (max-width: 580px){
-.goCvFirstSectionHeadingImg{
+@media (max-width: 580px) {
+  .goCvFirstSectionHeadingImg {
     display: block;
-
-}
-.goCvFirstSectionHeading h2{
+  }
+  .goCvFirstSectionHeading h2 {
     font-size: 1.6rem;
+  }
 }
+#goCv2ndSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
-.goCv2ndSection{
-    text-align: center;
-    padding: 2rem 0px;
-    max-width: 1140px;
-    margin-right: auto;
-    margin-left: auto;
-    font-family: "Roboto", sans-serif;
+.goCv2ndSection {
+  text-align: center;
+  padding: 2rem 0px;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
 }
-.goCv2ndSection h2{
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: "Roboto", sans-serif;
+.goCv2ndSection h2 {
+  font-size: 2rem;
+  font-weight: 700;
 }
-.goCv2ndSection img{
-    max-width: 300px;
-    width: 100%;
-    margin: 1rem 0px;
+.goCv2ndSection img {
+  max-width: 200px;
+  width: 100%;
 }
-.goCv2ndSection p{
-    margin-bottom: 1rem;
-    font-size: 17px;
+.goCv2ndSection section {
+  max-width: 800px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
 }
-.goCvListsSection {
-    max-width: 1000px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0px 1rem;
+.goCv2ndSection section p {
+  text-align: justify;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
-.goCvListsSection h2{
-    text-align: center;
-    color: #eb0009;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 2rem 0px;
+@media (max-width: 627px) {
+  .goCv2ndSection section p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 450px) {
+  #goCv2ndSection {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.sponsorHeadin h2 {
+  text-align: center;
 }

@@ -2,187 +2,230 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}.TheHonestTruth {
+  background-color: black;
+  padding-bottom: 10rem;
+  padding-top: 1rem;
+  font-family: "Antonio", sans-serif;
 }
-.imageSection {
-  position: relative;
-  width: 100%;
-  padding: 1rem 0;
-  background-color: #ff1d20;
-}
-.maincontent {
-  display: flex;
+.THTSec {
   max-width: 1440px;
-  width: 100%;
-  align-items: center;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+}
+.eCSfrontSection {
+  background-color: rgb(197, 5, 5);
+  color: white;
+  border-radius: 8em/2em;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.eCSfrontSection h2 {
+  font-size: 7rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: white;
+}
+.eCSfrontSection hr {
+  opacity: 1;
+  border: 2px solid white;
+  margin: 0px;
+}
+.eCSfrontSection img {
+  margin: 2rem 0px;
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+.eCSfrontSection p {
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 700px;
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+@media (max-width: 780px) {
+  .eCSfrontSection h2 {
+    font-size: 5.5rem;
+  }
+  .eCSfrontSection p {
+    font-size: 1rem;
+  }
 }
 
-.content {
+@media (max-width: 428px) {
+  .eCSfrontSection h2 {
+    font-size: 4rem;
+  }
+}
+.videosContentSections h2{
   color: white;
   text-align: center;
+  font-size: 3rem;
+}
+.videosContentSections hr{
+  border: 2px solid white;
+  opacity: 1;
+}
+
+.innerTheorySupportContent{
+  max-width: 800px;
   width: 100%;
-  padding: 0px 1rem;
-}
-
-.heading1 h1 {
-  color: #ffffff;
-  font-size: 4rem;
-  font-weight: 700;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-}
-.heading2 p {
-  color: #ffffff;
-  font-size: 20px;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  padding-top: 1rem;
-  margin-bottom: 20px;
-}
-
-.video {
-  width: 100%;
-  text-align: center;
-}
-
-@media (max-width: 1020px) {
-  .content {
-    padding-top: 75px;
-  }
-  .heading1 h1 {
-    font-size: 3rem;
-  }
-  .heading2 p {
-    text-align: center;
-  }
-  .video {
-    padding: 0px 75px;
-  }
-}
-@media (max-width: 767px) {
-  .maincontent {
-    display: block;
-  }
-  .heading1 {
-    padding-top: 1rem;
-  }
-  .heading1 h1 {
-    font-size: 2.5rem;
-  }
-}
-@media (max-width: 350px) {
-  .video {
-    padding: 40px;
-  }
-  .heading1 h1 {
-    font-size: 2rem;
-    line-height: 28px;
-  }
-  .heading2 p {
-    font-size: 16px;
-  }
-}
-/* /////////////////////////////////////////////////// */
-.theHonestTruth2ndSection {
-  padding: 2rem 0px;
-  font-family: "Roboto", sans-serif;
-}
-.theHonestTruth2nddiv {
-  max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
+}
+.theorySupportContentVideo iframe {
+  padding: 1rem;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 3rem 1rem;
+  justify-content: center;
+  margin: 0;
+  line-height: 1;
+  border: none;
 }
-.theHonestTruth2ndsectionDetails {
+.theorySupportContentVideosec {
+  padding: 1rem 1rem;
+  max-width: 800px;
   width: 100%;
+  margin-right: auto;
+ 
+  margin-left: auto;
+}
+.theorySupportContentVideosec video {
+  width: 100%;
+}
+.textThtSection{
+  padding: 2rem 0px;
+}
+.textThtSection h2{
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.textThtSection h2 span{
+  color: #c3040b;
+}
+.textThtSection hr{
+  opacity: 1;
+  border: 2px solid white;
+}
+#textThtSection{
+  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+}
+#textThtSection p{
+font-size: 1.2rem;
+color: white;
+}
+#textThtSection button{
+  padding: 7px 1.5rem;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  border-radius: 2em/0.5em;
+  background-color: #ff0004;
+  margin: 2rem 0px;
+}
+#textThtSection button:hover{
+  border: 1px solid white;
+  background-color: #8a0305cd;
+}
+@media (max-width: 780px) {
+  .videosContentSections h2{
+    font-size: 2.5rem;
+  }
+  #textThtSection p{
+    font-size: 1rem;
+  }
+  #textThtSection button{
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 428px) {
+  .videosContentSections h2{
+    font-size: 2rem;
+  }
+}
+/* //////////////////////////////////////////// */
+.getInvolved{
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  background-color: #c3040b;
+  padding: 2rem;
+  border-radius: 8em/2em;
+}
+#getInvolvedHead h2{
+  font-size: 3rem;
+  text-align: center;
+  color: white;
+
+}
+#getInvolvedHead hr{
+  opacity: 1;
+  border: 2px solid white;
+ 
+}
+ 
+#downwordArrow{
+  
+  color: white;
+  font-size: 5rem;
+}
+.getInvolvedContentDiv{
+  padding: 1rem 2rem;
+}
+
+.getInContentSection {
   text-align: center;
 }
-.theHonestTruth2ndsectionDetails h2 {
-  font-size: 3rem;
-  font-weight: 600;
-  color: #ff1d20;
+#downwordArrow{
+  margin: 1rem 0px;
 }
-.theHonestTruth2ndsectionDetails hr {
+.getInContentSection h2{
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+
+}
+.getInContentSection hr{
+  opacity: 1;
+  border: 1px solid white;
   max-width: 500px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  border: 2px solid #ff1d20;
-  opacity: 1;
 }
-.theHonestTruth2ndsectionDetails p {
+.getInContentSection p{
+  color: white;
+  padding: 0px 2rem;
+  text-align: justify;
+  font-size: 1rem;
   margin-bottom: 1rem;
-}
-.theHonestTruth2ndsectionDetails button {
-  border: none;
-  border-radius: 6px;
-  padding: 10px 30px;
-  background-color: #ff1d20;
-  color: #fff;
-  font-weight: 600;
-  margin: 1rem 0px;
-}
-.theHonestTruth2ndsectionDetails button:hover {
-  background-color: black;
-}
-.theHonestTruthImgSection {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  text-align: center;
-  padding: 5rem;
-}
-.playIcon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  color: rgb(10, 10, 10); /* Adjust color and opacity as needed */
-  font-size: 170px;
-  filter: drop-shadow(1px 0 6px rgba(0, 0, 0, 0.3));
-}
-.playIcon:hover {
-  color: rgba(75, 75, 75, 0.719);
-}
-.theHonestTruthImgSection img {
-  width: 100%;
-}
-@media (max-width: 1020px) {
-  .theHonestTruth2ndsectionDetails h2 {
-    font-size: 2rem;
-  }
-  .playIcon {
-    font-size: 120px;
-  }
-}
-@media (max-width: 850px) {
-  .theHonestTruth2nddiv {
-    display: block;
-  }
-}
-@media (max-width: 500px) {
-  .theHonestTruth2ndsectionDetails h2 {
-    font-size: 1.7rem;
-  }
-  .theHonestTruthImgSection {
-    padding: 2rem;
-  }
 }
 /*//////////////////////////// Smartlearner stats /////////////////////////////// */
 .smartleanerStats {
-  background-color: #ff121a;
+  background-color: #c3040b;
 }
 .smartleanerStatsSection {
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Roboto", sans-serif;
+ 
   text-align: center;
 }
 .smartleanerStatsSection hr {
@@ -213,7 +256,7 @@
   gap: 20px;
 }
 .numberContainer {
-  padding: 55px;
+  padding: 45px;
 
   border: 1px solid #fff;
 
@@ -221,7 +264,7 @@
 }
 .numberContainer span {
   color: #fff;
-  font-size: 105px;
+  font-size: 80px;
   font-weight: 500;
 }
 .numberContainer p {
@@ -251,7 +294,7 @@
 .ourInvolmentSection {
   padding: 3rem 0px;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+ 
 }
 .ourInvolmentDiv {
   padding: 1rem;
@@ -286,7 +329,7 @@
 .getInvolvedsection {
   padding: 2rem 0px;
   background-color: #ff121a;
-  font-family: "Roboto", sans-serif;
+ 
 }
 .getInvolvedDiv {
   max-width: 1600px;
@@ -379,7 +422,7 @@
   font-weight: 700;
   line-height: 1.2em;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+ 
   margin-bottom: 20px;
 }
 .features p {
@@ -387,13 +430,13 @@
   line-height: 28px;
   text-align: center;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+ 
 }
 .mainFeatures {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  font-family: "Roboto", sans-serif;
+  
   text-align: center;
   max-width: 1500px;
   padding-left: 15px;
@@ -405,8 +448,9 @@
 }
 .column {
   padding: 25px 25px 55px 25px;
+  border-radius: 6em/2em;
   background-color: #ffffff;
-
+  place-items: center;
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
 
   transition: box-shadow 0.3s ease;
@@ -437,7 +481,7 @@
 }
 .column p {
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+ 
   font-weight: 300;
   line-height: 1.7em;
   color: #7a7a7a;

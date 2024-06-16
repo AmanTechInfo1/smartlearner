@@ -52,6 +52,7 @@ body{
 }
 ul {
   margin-bottom: 0rem;
+  padding-left: 0px;
 }
 .mainContainer {
   display: flex;
