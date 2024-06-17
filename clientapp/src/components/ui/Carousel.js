@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LplateImg from "../../assets/images/L-Plate.jpg";
 import starImg from "../../assets/images/star.png";
 import cartImg from "../../assets/images/cartImg.png";
-import styles from "../../pages/css/home.module.css";
+import styles from "../../pages/css/Home.module.css";
 
 
 

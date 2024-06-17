@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./ElectricCar.module.css";
-import electricCar from "../../assets/images/electric-Car.png";
-import electricCarScheme from "../../assets/images/electric carScheme.png";
+import electricCar from '../../assets/images/electric-Car.png'
+import electricCarScheme from '../../assets/images/electric carScheme.png'
+
 import treesImgs from "../../assets/images/trees-img.png";
 import BuildingImg from "../../assets/images/buliding img.png";
 import treeImg from "../../assets/images/tree img.png";
 import { Link } from "react-router-dom";
-
-
 export default function ElectricCarScheme() {
   return (
     <div className={styles.ElectricCarScheme}>
@@ -150,7 +149,7 @@ export default function ElectricCarScheme() {
             <hr/>
           </div>
         <section className={styles.csr3rdDivSecLinks}>
-           
+
             <Link>
               <img src={treeImg} alt="eclectric-Img" />
               <p>Going Green Project</p>
@@ -161,6 +160,7 @@ export default function ElectricCarScheme() {
             </Link>
           </section>
           </section>
+
       </div>
     </div>
   );
