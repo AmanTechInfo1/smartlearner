@@ -69,6 +69,8 @@ import QuizUModule from "./containers/quiz/quizUModule/QuizUModule";
 import QuizCategoryHome from "./components/takequizes/QuizCategoryHome";
 import QuizModuleHome from "./components/takequizes/QuizModuleHome";
 import Checkout from "./pages/shop/checkout/Checkout";
+import OrderInvoice from "./containers/orders/component/OrderInvoice";
+import Order from "./containers/orders/Order";
 
 
 
@@ -231,6 +233,14 @@ export const router = createBrowserRouter([
         path:"/admin/quiz",
         element:<QuizModal/>,
       },
+      {path: "/admin/order",
+        element:<Order/>
+      },
+
+      {path:"/admin/order-Invoice",
+        element: <OrderInvoice/>
+      },
+
     
 
       

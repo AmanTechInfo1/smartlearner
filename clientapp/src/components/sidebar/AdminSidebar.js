@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsFillArchiveFill, BsFillGearFill, BsFillGrid3X3GapFill, BsGrid1X2Fill, BsListCheck, BsMenuButtonWideFill, BsPeopleFill } from "react-icons/bs";
 import { LiaUserCogSolid } from "react-icons/lia";
 import { FaUserTie } from "react-icons/fa";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
     return (
@@ -105,12 +106,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
 
                     
 
-                    <li className={styles.adminSidebarListItem}>
-                        <Link to="#">
-                            <BsFillGearFill className={styles.adminIcon} />
-                            Setting
-                        </Link>
-                    </li>
+                    <Link to="/admin/order">
+                        <li className={styles.adminSidebarListItem}>
+                            <MdOutlineProductionQuantityLimits className={styles.adminIcon} />
+                            Orders
+                        </li>
+                    </Link>
+
                 </ul>
             </aside>
         </>
