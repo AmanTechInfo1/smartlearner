@@ -3,14 +3,7 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
 import { editQuizCategory } from '../../../../redux/features/quizCategorySlice';
-
-
-
-import { useDispatch, useSelector } from 'react-redux';
-import { quizCategorySchema } from '../../../../schemas/quizCategory';
-import { editQuizCategory } from '../../../../redux/features/quizCategorySlice';
 import Loader from '../../../../components/loader/Loader';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 const EditQuizCategory = (props) => {
     const dispatch = useDispatch();
