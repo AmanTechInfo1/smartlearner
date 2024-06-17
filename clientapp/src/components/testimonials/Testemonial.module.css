@@ -6,7 +6,7 @@
 /* /////////////////////testimonials ///////////////// */
 .testimonialsContainer{
     text-align: center;
-    padding: 70px 0;
+    padding: 2rem 1rem;
     font-family: "Antonio", sans-serif;
 }
 .tmcontainer{
@@ -26,14 +26,17 @@
     background-color: #eb0009;
     padding: 2rem;
 }
+.testimonialContent span p{
+    margin-bottom: 0px;
+}
 #comma1{
-    width: 100%;
+    
     text-align: left;
     font-size: 3rem;
     color: white;
 }
 #comma2{
-    width: 100%;
+    
     text-align: right;
     font-size: 3rem;
     color: white;
@@ -41,7 +44,7 @@
 .testimonialName{
     text-align: center;
     color: white;
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 .testimonialComment{
@@ -58,9 +61,7 @@
     border-radius: 50%;
 }
 @media (max-width: 1200px){
-    .testimonialsContainer{
-        padding: 100px 30px 100px 30px;
-    }
+   
    
    
 }

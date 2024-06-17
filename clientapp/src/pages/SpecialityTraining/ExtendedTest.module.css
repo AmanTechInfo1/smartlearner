@@ -372,51 +372,21 @@
           background-color: #fff;
           color: red;
       }
-      
-      @media (max-width: 1024px){
-          .formContainer{
-              padding: 100px 150px 100px 150px;
-          }
-          .innerFormSection{
-              max-width: 1024px;
-             
-          }
-          .enquiryForm{
-              padding: 75px 75px 75px 75px;
-          background-color: #fff;
-          }
-      }
+     
       @media (max-width: 767px){
-          .formContainer{
-              padding: 100px 75px 100px 75px;
-          }
-          .innerFormSection{
-              max-width: 767px;
-             
-          }
+          
+         
           .enquiryForm h4{
               font-size: 45px;
           }
-          .enquiryForm{
-              padding: 50px 50px 50px 50px;
-          background-color: #fff;
-          }
+          
       }
       @media (max-width: 524px){
-          .formContainer{
-              padding: 50px 30px 50px 30px;
-          }
+         
           .enquiryForm h4{
               font-size: 30px;
           }
-          .innerFormSection{
-              max-width: 524px;
-             
-          }
-          .enquiryForm{
-              padding: 30px 30px 30px 30px;
-          background-color: #fff;
-          }
+         
           
       }
       /*//////////////////////////// Smartlearner stats /////////////////////////////// */
