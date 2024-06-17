@@ -37,14 +37,12 @@ function Header() {
                         <li id={styles.dropDownNav}>
                             <Link to="/Theory-Support">Theory</Link>
                             <ul className={styles.dropdownContent}>
-                                <li>
-                                    <Link to="/Theory-Support">Theory Support</Link>
-                                </li>
+                                
                                 <li>
                                     <Link to="/Theory-Portal">Theory Portal</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">Theory Subscription</Link>
+                                    <Link to="/Theory-Subscription">Theory Subscription</Link>
                                 </li>
                             </ul>
                         </li>

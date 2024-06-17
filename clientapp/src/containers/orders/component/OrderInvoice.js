@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal,ModalHeader, ModalBody } from "react-bootstrap";
-const OrderInvoice = (props) => {
+const OrderInvoice = () => {
   const [dateCreated, setDateCreated] = useState('2024-06-17');
   const [hours, setHours] = useState(16);
   const [minutes, setMinutes] = useState(59);
@@ -10,10 +10,7 @@ const OrderInvoice = (props) => {
 
 
   return (
-    <><Modal
-    style={{ maxWidth: "800px", width: "100%" }}
-      isOpen={props.OrderInvoiceModalOpen}
-      toggle={props.toggleOrderInvoiceModal}>
+    <>
         
         <div className="container p-4 bg-white shadow rounded">
       <h2 className="h4 mb-3">Order #40114 details</h2>
@@ -122,7 +119,7 @@ const OrderInvoice = (props) => {
           <p className="fw-semibold">Paid: <span className="fw-semibold">£34.68</span></p>
         </div>
       </div>
-    </div></Modal></>
+    </div></>
     
   );
 };
