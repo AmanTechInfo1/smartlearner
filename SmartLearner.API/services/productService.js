@@ -108,6 +108,97 @@ class ProductService {
       return resultObject;
     }
   }
+  async getProductsCategoryAsync(pageNumber, pageSize, query) {
+    try {
+      const skip = (pageNumber - 1) * (pageSize || 20);
+      let filter = {};
+      if (query) {
+        const regex = new RegExp(query, "i");
+        filter.$or = [{ name: regex }, { price: regex }];
+      }
+
+
+      let aggr = [
+        // {
+        //   '$skip': skip
+        // }, {
+        //   '$limit': pageSize || 20
+        // }, 
+        {
+          '$lookup': {
+            'from': 'areas', 
+            'localField': 'areaIncluded', 
+            'foreignField': '_id', 
+            'as': 'areaIncludedresult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$areaIncludedresult', 
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$lookup': {
+            'from': 'postcodes', 
+            'localField': 'postcode', 
+            'foreignField': '_id', 
+            'as': 'postcoderesult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$postcoderesult', 
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$lookup': {
+            'from': 'categories', 
+            'localField': 'category', 
+            'foreignField': '_id', 
+            'as': 'categoryresult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$categoryresult', 
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'category': '$categoryresult.name', 
+            'postcode': '$postcoderesult.postcode', 
+            'areaIncluded': '$areaIncludedresult.name'
+          }
+        }, {
+            '$group': {
+                '_id': '$category', 
+                'data': {
+                    '$push': '$$ROOT'
+                }
+            }
+        }
+      ]
+      const totalCount = await Product.countDocuments(filter);
+      const products = await Product.aggregate(aggr);
+
+
+      console.log(products,"productsproducts")
+      const resultObject = {
+        message: "Products fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: { products, totalCount },
+      };
+      return resultObject;
+    } catch (err) {
+
+      console.log(err, "dsaukhdkusahdkas")
+      const resultObject = {
+        message: "Could not fetch products",
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
 
   async getProductByIdAsync(productId) {
     try {

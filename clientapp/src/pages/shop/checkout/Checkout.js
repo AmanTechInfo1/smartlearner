@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Checkout.css";
 import FinalCheckout from "./FinalCheckout";
+import { useSelector } from "react-redux";
 
 export default function Checkout() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,12 @@ export default function Checkout() {
   });
 
   const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+
+  const handleLocalChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
@@ -146,7 +153,7 @@ export default function Checkout() {
           </form>
         </div>
         {/* /////////////////////////////////////////////////////// */}
-        <FinalCheckout />
+        <FinalCheckout handleLocalChange={handleLocalChange}/>
       </div>
     </div>
   );

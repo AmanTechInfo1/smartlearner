@@ -57,8 +57,12 @@ class AccountService {
         throw new Error("Invalid Email");
       }
 
+      console.log(user.isBcryptHashed,"user.isBcryptHashed")
+
       if (user.isBcryptHashed) {
         const isPasswordValid = await bcrypt.compare(password, user.password);
+        
+        console.log(!isPasswordValid,"isPasswordValid")
         if (!isPasswordValid) {
           throw new Error("Invalid Password");
         }
@@ -77,13 +81,17 @@ class AccountService {
         user.isBcryptHashed = true;
         await user.save();
       }
+
+      console.log("85",user._id)
       // Fetch userRole
       const userRole = await userRoleServices.getUserRoleAsync(user._id);
 
+      console.log("89",userRole)
       if (!userRole) {
         throw new Error("Invalid user");
       }
 
+      console.log("94")
       // Fetch user's Role
       const role = await roleServices.getRoleByIdAsync(userRole.roleId);
 

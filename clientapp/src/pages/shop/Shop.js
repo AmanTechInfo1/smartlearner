@@ -13,8 +13,25 @@ import poster from "../../assets/images/video-poster-img.jpg";
 import Sort from "./Sort";
 import chooseUsImg from "../../assets/images/choose-img.jpg";
 import Testemonial from "../../components/testimonials/Testemonial";
+import { useDispatch } from "react-redux";
+import { getAllProducts } from "../../redux/features/productSlice";
+import { useEffect, useState } from "react";
 
 export default function Shop() {
+
+
+  const dispatch = useDispatch()
+  const [filter, setFilter] = useState({
+    "search": "",
+    "page": 1,
+    "pageSize": 20
+  })
+
+
+  useEffect(() => {
+    dispatch(getAllProducts(filter.search, filter.page, filter.pageSize));
+  }, [dispatch, filter.search, filter.page, filter.pageSize]);
+
   return (
     <>
       <div className={styles.shopWrapper}>
@@ -145,7 +162,7 @@ export default function Shop() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testemonial/>
+        <Testemonial />
       </section>
 
       {/* ///////////////////////Reviews//////// */}

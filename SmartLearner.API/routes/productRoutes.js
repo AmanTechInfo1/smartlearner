@@ -48,6 +48,7 @@ router.post('/delete-area/:id', upload.none(), areaController.deleteArea);
 router.post('/add-product', imageSaverMiddleware, requireAuth, productController.createProduct);
 router.post('/edit-product/:id', imageSaverMiddleware, requireAuth, productController.updateProduct);
 router.get('/get-products', upload.none(), requireAuth, productController.getProducts);
+router.get('/get-productsCategory', upload.none(), requireAuth, productController.getProductsCategory);
 router.get('/get-products/:id', upload.none(), requireAuth, productController.getProductById);
 router.get('/delete-product/:id',upload.none(), requireAuth, productController.deleteProduct);
 

@@ -133,6 +133,12 @@ const ProductModal = () => {
             sorter: (a, b) => a.rating.length - b.rating.length,
         },
         {
+            title: "Duration",
+            dataIndex: "duration",
+            align: "center",
+            sorter: (a, b) => a.duration.length - b.duration.length,
+        },
+        {
             title: "Transmission",
             dataIndex: "transmission",
             align: "center",

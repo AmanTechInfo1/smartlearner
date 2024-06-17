@@ -6,8 +6,10 @@ const productSlice = createSlice({
     name: "product",
     initialState: {
         products: [],
+        productsCategory: [],
         oneproduct: {},
         productCount: null,
+        productsCategoryCount: null,
         loading: false,
     },
     reducers: {
@@ -21,6 +23,17 @@ const productSlice = createSlice({
             state.productCount = null;
             state.loading = false;
         },
+        getAllProductsCategorySuccess: (state, action) => {
+            state.productsCategory = action.payload.products;
+            state.productsCategoryCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        getAllProductsCategoryFailure: (state) => {
+            state.productsCategory = [];
+            state.productsCategoryCount = null;
+            state.loading = false;
+        },
+
         getOneProductsSuccess: (state, action) => {
 
             console.log("getOneProductsSuccess",action.payload)
@@ -74,6 +87,8 @@ const productSlice = createSlice({
 
 export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
     try {
+
+        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/product/get-products?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -83,6 +98,25 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
         } else {
             toast.error(response.data.message);
             dispatch(getAllProductsFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getAllProductsFailure());
+    }
+};
+export const getAllProductsCategory = (search, page, pagesize) => async (dispatch) => {
+    try {
+
+        console.log(search, page, pagesize,"search, page, pagesize")
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/product/get-productsCategory?search=${search}&page=${page}&pagesize=${pagesize}`
+        );
+        if (response.data.success) {
+            dispatch(getAllProductsCategorySuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getAllProductsCategoryFailure());
         }
     } catch (error) {
         toast.error(error.message);
@@ -189,6 +223,8 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const {
     getAllProductsSuccess,
     getAllProductsFailure,
+    getAllProductsCategorySuccess,
+    getAllProductsCategoryFailure,
     getOneProductsSuccess,
     getOneProductsFailure,
     createProductSuccess,

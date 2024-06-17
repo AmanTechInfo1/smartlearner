@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './css/NotFound.module.css'; 
+import styles from './css/notfound.module.css'; 
 const NotFound = () => {
   return (
     <section className={styles.page404}>

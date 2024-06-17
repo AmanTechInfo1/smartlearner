@@ -21,7 +21,18 @@ class ProductController {
       next(err);
     }
   }
+  async getProductsCategory(req, res, next) {
+    try {
+      const { page, pageSize, search } = req.query;
+      const result = await productService.getProductsCategoryAsync(page, pageSize, search);
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
 
+
+  
   async getProductById(req, res, next) {
     try {
       const product = await productService.getProductByIdAsync(req.params.id);

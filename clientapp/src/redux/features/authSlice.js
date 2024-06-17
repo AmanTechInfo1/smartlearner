@@ -5,11 +5,18 @@ import { ROLES } from "../../constants";
 
 const initialState = {
   loading: false,
+  userDetails: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    UserDetails: (state, action) => {
+      state.userDetails = action.payload;
+      state.loading = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -70,8 +77,9 @@ export const loginUser = createAsyncThunk(
       const response = await http.post(`/api/account/login`, loginData);
       const data = response.data;
       if (data.success) {
-       
+
         const user = data.data.user;
+        dispatch(UserDetails(user))
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
         let expiration = user.expiresIn;
@@ -79,7 +87,8 @@ export const loginUser = createAsyncThunk(
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
-          toast.success("Ask Admin to assign you a role.");
+          navigate("/");
+          // toast.success("Ask Admin to assign you a role.");
         }
       } else {
         toast.error(data.message || "Something went wrong");
@@ -94,9 +103,12 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue,dispatch }) => {
     try {
       localStorage.removeItem("user");
+      dispatch(UserDetails({}))
+      toast.success("Logged Out Successfully");
+
       return "LoggedOut Successfully";
     } catch (error) {
       return rejectWithValue(error.message);
@@ -114,5 +126,10 @@ export const autologoutUser = (expiration, navigate) => async (dispatch) => {
     console.error("Error occurred:", error);
   }
 };
+
+
+export const {
+  UserDetails
+} = authSlice.actions;
 
 export default authSlice.reducer;

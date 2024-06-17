@@ -71,6 +71,8 @@ import QuizModuleHome from "./components/takequizes/QuizModuleHome";
 import Checkout from "./pages/shop/checkout/Checkout";
 import OrderInvoice from "./containers/orders/component/OrderInvoice";
 import Order from "./containers/orders/Order";
+import Products from "./pages/Product";
+import MyCart from "./pages/auth/MyCart";
 
 
 
@@ -104,6 +106,7 @@ export const router = createBrowserRouter([
       { path: "Driving-Lessons", element: <DrivingLessons /> },
       { path: "School-Of-Mom-and-Dad", element: <SchoolOfMomDad /> },
       { path: "Intensive-Driving-Courses", element: <IntensiveCourses /> },
+      { path: "Products", element: <Products /> },
       { path: "Theory-Support", element: <TheorySupport /> },
       { path: "ADI-Training-Portal", element: <ADITrainingPortal /> },
       { path: "Simulated-Driving-Lesson", element: <SimulatedDrivingLesson /> },
@@ -143,6 +146,7 @@ export const router = createBrowserRouter([
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
+  { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
 
 
