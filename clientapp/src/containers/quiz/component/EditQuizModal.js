@@ -8,9 +8,13 @@ import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Table } from "antd";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 const EditQuizModal = (props) => {
+
+    const {quizCategoriesList} = useSelector((state)=>{ return state.quizCategory})
+
   const [showQuizQuestionModal, setShowQuizQuestionModal] = useState(false);
   const toggleQuizQuestionModal = () =>
     setShowQuizQuestionModal(!showQuizQuestionModal);
@@ -126,6 +130,39 @@ const columns = [
           />
           {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
         </div>
+
+        <div className="form-group">
+              <label>Category</label>
+              <Controller
+                name="category"
+                control={control}
+                render={({ field }) => (
+                  <select
+                    {...field}
+                    className={`form-control ${
+                      errors.roleName ? "error-input" : ""
+                    }`}
+                  >
+                    <option disabled value="">
+                      Select...
+                    </option>
+                    {quizCategoriesList.map((category) => (
+                      <option key={category._id} value={category.name}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                defaultValue=""
+              />
+
+              {errors?.name?.message ? (
+                <p style={{ color: "red" }}>{errors?.name?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+
         <button className="btn btn-success" onClick={toggleQuizQuestionModal}>
           Add Questions
         </button>

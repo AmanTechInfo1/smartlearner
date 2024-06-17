@@ -1,0 +1,153 @@
+import React, { useState } from "react";
+import "./Checkout.css";
+import FinalCheckout from "./FinalCheckout";
+
+export default function Checkout() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    streetAddress1: "",
+    streetAddress2: "",
+    city: "",
+    county: "",
+    postcode: "",
+    phoneNumber: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  return (
+    <div className="chackoutPageD">
+      <div className="checkoutPage">
+        <div className="max-w-lg  p-4 bg-dark dark:bg-zinc-800 text-white dark:text-white">
+          <h1 className="text-3xl font-bold text-center mb-4">Checkout</h1>
+
+          <hr className="border-red-500 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Billing Address</h2>
+          <form>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="firstName">
+                First Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="lastName">
+                Last Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="companyName">
+                Company Name (Optional)
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block font-semibold mb-1"
+                htmlFor="streetAddress1"
+              >
+                Street Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded mb-2"
+                type="text"
+                id="streetAddress1"
+                placeholder="House number and street name"
+                value={formData.streetAddress1}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="streetAddress2"
+                placeholder="Apartment, suite, unit, etc. (Optional)"
+                value={formData.streetAddress2}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="city">
+                Town / City <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="city"
+                value={formData.city}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="county">
+                County (Optional)
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="county"
+                value={formData.county}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="postcode">
+                Postcode <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="postcode"
+                value={formData.postcode}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block font-semibold mb-1" htmlFor="phoneNumber">
+                Phone number <span className="text-red-500">*</span>
+              </label>
+              <input
+                className="w-full p-2 border border-zinc-300 rounded"
+                type="text"
+                id="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </form>
+        </div>
+        {/* /////////////////////////////////////////////////////// */}
+        <FinalCheckout />
+      </div>
+    </div>
+  );
+}

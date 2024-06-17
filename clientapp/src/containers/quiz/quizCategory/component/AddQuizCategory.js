@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
 import { createQuizCategory } from '../../../../redux/features/quizCategorySlice';
+import { quizCategorySchema } from '../../../../schemas/quizCategory';
+import Loader from '../../../../components/loader/Loader';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+
 
 
 const AddQuizCategory = (props) => {

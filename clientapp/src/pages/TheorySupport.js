@@ -9,10 +9,11 @@ import CallBackForm from "../components/forms/CallBackForm";
 import chooseUsImg from "../assets/images/choose-img.jpg";
 import DrivenForm from "../components/forms/DrivenForm";
 import { FaArrowRight } from "react-icons/fa";
-import Testimonials from "../components/testimonials/Testimonials";
+
 import Review from "../components/views/Review";
 import ShortFaqs from "../components/shortFaqs/ShortFaqs";
 import { useCartContext } from "../components/context/CartContext";
+import Testemonial from "../components/testimonials/Testemonial";
 
 export default function TheorySupport() {
 
@@ -243,7 +244,7 @@ export default function TheorySupport() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testimonials />
+        <Testemonial/>
       </section>
 
       {/* ///////////////////////Reviews//////// */}

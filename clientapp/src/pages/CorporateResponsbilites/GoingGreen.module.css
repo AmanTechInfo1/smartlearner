@@ -3,215 +3,370 @@
   padding: 0;
   box-sizing: border-box;
 }
-.imageSection {
-  position: relative;
-  width: 100%;
-  padding: 5rem 0;
-  background-color: #1e4e19;
+.goingGreenProject {
+  background-color: black;
+  padding-bottom: 7rem;
+  padding-top: 1rem;
+  font-family: "Antonio", sans-serif;
 }
-.maincontent {
-  display: flex;
+.mainGoingGreenProject {
   max-width: 1440px;
-  width: 100%;
-  align-items: center;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
-
-.content {
-  position: relative;
-
+.gGPFrontSection {
+  background-color: rgb(3, 154, 3);
   color: white;
+  border-radius: 13em/3em;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+}
+.gGPFrontSection h2 {
+  font-size: 8rem;
+  margin-bottom: 3rem;
   text-align: center;
-  padding: 0px 20px 0px 0px;
+  color: white;
 }
-
-.heading1 h1 {
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-}
-.heading2 p {
-  color: #ffffff;
-  font-size: 22px;
-  font-family: "Montserrat", sans-serif;
-  padding-top: 0.8rem;
-  margin-bottom: 20px;
-}
-
-.video {
-  width: 100%;
-  text-align: center;
-}
-
-.video img {
-  width: 100%;
-  max-width: 400px;
-}
-@media (max-width: 1020px) {
-  .content {
-    padding-top: 75px;
-  }
-  .heading1 h1 {
-    font-size: 1.5rem;
-    line-height: 1.7em;
-  }
-  .heading2 p {
-    font-size: 18px;
-  }
-  .video {
-    padding: 75px;
-  }
-}
-@media (max-width: 767px) {
-  .content {
-    padding-top: 0px;
-  }
-
-  .maincontent {
-    display: block;
-  }
-  .heading1 {
-    padding-top: 1rem;
-  }
-  .content {
-    max-width: 100%;
-  }
-  .video {
-    max-width: 100%;
-  }
-}
-@media (max-width: 350px) {
-  .video {
-    padding: 40px;
-  }
-  .heading1 h1 {
-    font-size: 15px;
-    line-height: 20px;
-  }
-  .heading2 p {
-    font-size: 16px;
-  }
-}
-.treeSection {
-  padding: 2rem 0px;
-  text-align: center;
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
-}
-.treeSection h2 {
-  font-size: 3rem;
-  color: #1e4e19;
-  font-weight: 700;
-}
-.treeSection img {
-  max-width: 1000px;
-  width: 100%;
-  animation: slideIn 1s ease forwards;
-}
-@keyframes slideIn {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ////////////////////////////////// */
-
-.greenPurposeSection {
-  background-color: #1e4e19;
-  font-family: "Roboto", sans-serif;
-  padding: 2rem 0px;
-}
-
-.greenPurposeHeading {
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 2rem;
-}
-.greenPurposeHeading h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #fff;
-}
-.greenPurposeHeading hr {
+.gGPFrontSection hr {
+  opacity: 1;
   border: 2px solid white;
-  max-width: 700px;
+  margin-bottom: 2rem;
+}
+.gGpFrontSectionD {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.gGpFrontImgS img {
+  max-width: 300px;
   width: 100%;
+}
+.gGpFrontListP p {
+  color: white;
+  font-size: 1.2rem;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+/* ///////////////////////////// */
+.secondrySection{
+  padding: 2rem 0px;
+}
+.secondryHeading h2{
   text-align: center;
-  max-width: 900px;
-  margin-right: auto;
-  margin-left: auto;
+  font-size: 5rem;
+  color: white;
+}
+.secondryHeading hr{
+  border: 2px solid white;
   opacity: 1;
 }
-
-.greenPurposeDetails {
-  text-align: center;
-  padding: 1rem 0px;
+.secondryImgSection {
+  max-width: 1140px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
+  gap: 30px;
+  padding: 5rem 1rem;
 }
-.greenPurposeDetails img {
+.secondryImgSection img{
+  max-width: 400px;
+  aspect-ratio: 1/1;
+  /* object-fit: contain; */
+  width: 100%;
+}
+.secondrySection hr{
+  opacity: 1;
+  border: 2px solid white;
+}
+@media (max-width:  728px){
+  .gGPFrontSection h2{
+    font-size: 6rem;
+  }
+  .gGpFrontListP p{
+    font-size: 1rem;
+  }
+  .secondryHeading h2{
+    font-size: 4rem;
+  }
+  .secondryImgSection{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 3rem 1rem;
+  }
+}
+@media (max-width:  567px){
+.gGpFrontSectionD{
+  flex-direction: column;
+}
+.gGpFrontImgS img{
+  max-width: 250px;
+  width: 100%;
+}
+.gGPFrontSection h2{
+  font-size: 5rem;
+}
+.secondryHeading h2{
+  font-size: 3.5rem;
+}
+}
+@media (max-width:  428px){
+  .gGPFrontSection h2{
+    font-size: 4rem;
+  }
+ 
+  .secondryHeading h2{
+    font-size: 3rem;
+  }
+}
+.prosConsSection{
+  padding: 2rem 0px;
+}
+.prosConsSection hr{
+  border: 1px solid rgb(167, 3, 3);
+  opacity: 1;
+  margin: 0px;
+}
+.ourProsConsdiv{
+  display: flex;
+  gap: 30px;
+  max-width: 1140px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.ourProsConsdiv hr{
+  border: 2px solid rgb(3, 154, 3);
+  opacity: 1;
+}
+.ourProsConsSection{
+  padding: 2rem 1rem;
+}
+.ourProsConsSection h2{
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.ourProsConsSection p{
+  color: white;
+  margin-bottom: 1rem;
+  text-align: justify;
+  font-size: 1rem;
+}
+.chartBarImgSec{
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.chartBarImgSec h2{
+  font-size: 5rem;
+  text-align: center;
+  color: rgb(3, 154, 3);
+}
+.chartBarImgSec img{
+  max-width: 500px;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+@media (max-width:  750px){
+  .chartBarImgSec h2{
+    font-size: 4.5rem;
+  }
+}
+@media (max-width:  610px){
+  .ourProsConsdiv{
+    flex-direction: column;
+  }
+  .chartBarImgSec h2{
+    font-size: 4rem;
+  }
+}
+@media (max-width:  450px){
+  .chartBarImgSec h2{
+    font-size: 3rem;
+  }
+}
+.treePlantationSection{
+  padding-bottom: 2rem;
+}
+.treePlantationDiv h2{
+  font-size: 3rem;
+  text-align: center;
+  color: rgb(3, 154, 3);
+}
+.treeIconDiv{
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.treeIconDiv img{
   max-width: 500px;
   width: 100%;
 }
-.greenPurposeDetailsContent {
+.treeIconImgSection{
   display: flex;
-  max-width: 1440px;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+}
+.headingtreeNo h2{
+  font-size: 7rem;
+  text-align: center;
+  margin-bottom: 8rem;
+  color: rgb(3, 154, 3);
+}
+.plantImgSection img{
+  max-width: 400px;
+  width: 100%;
+}
+#handPlant{
+  margin-bottom: 12rem;
+}
+#flowerPlant{
+  margin-top: 10rem;
+}
+/* ///////////////////////////////// */
+.ggOlSection ul{
+  max-width: 700px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
-  gap: 20px;
+  margin-top: -10rem;
+  padding-left: 0px;
+}
+.ggOlSection ul li{
+  display: flex;
+  gap: 30px;
+  align-items: center;
   padding: 0px 1rem;
+ 
 }
-.detailsofGreenGo {
-  padding: 1rem;
-  margin-top: 1rem;
-  background-color: #0d7002;
+.ggOlSection ul li span{
+  font-size: 3rem;
+  max-width: 50px;
+  width: 100%;
+  color: rgb(3, 154, 3);
 }
-.detailsofGreenGo h2 {
-  color: #fff;
+.ggOlSection ul li p{
+  color: white;
   font-size: 2rem;
-}
-.detailsofGreenGo p {
-  color: #fff;
-  line-height: 35px;
   text-align: justify;
 }
-#goGreenBtn {
-  text-align: center;
-}
-#goGreenBtn button {
-  padding: 10px 50px;
-  border: 2px solid white;
-  color: white;
-  font-weight: 600;
-  border-radius: 4px;
-  background-color: #1e4e19;
-}
-#goGreenBtn button:hover {
-  background-color: #13310f;
-}
-@media (max-width: 780px) {
-  .greenPurposeDetailsContent {
-    display: block;
+@media (max-width:  728px){
+  .treePlantationDiv h2{
+    font-size: 2.5rem;
+  }
+  .treeIconImgSection{
+    flex-direction: column;
+    gap: 15px;
+  }
+  .headingtreeNo h2{
+    margin-bottom: 0px;
+  }
+  #handPlant{
+    margin-bottom: 0px;
+  }
+  #flowerPlant{
+    margin-top: 0px;
+  }
+ 
+  .ggOlSection ul{
+    max-width: 500px;
+    width: 100%;
+    margin-top: 0px;
+  }
+  .ggOlSection ul li span{
+    font-size: 2rem;
+   
+  }
+  .ggOlSection ul li p{
+    
+    font-size: 1.2rem;
+    
   }
 }
+@media (max-width:  580px){
+  .treePlantationDiv h2{
+    font-size: 2rem;
+  }
+  .headingtreeNo h2{
+    font-size: 5rem;
+  }
+  .ggOlSection ul li span{
+    font-size: 1.5rem;
+    max-width: 30px;
+    width: 100%;
+   
+  }
+  .ggOlSection ul li p{
+    
+    font-size: 1rem;
+    
+  }
+}
+/* 
+//////////////////////////////////////// */
+/* ////////////////////////////////////// */
+
+.callUsSectiongg hr{
+  border: 2px solid rgb(167, 3, 3);
+  opacity: 1;
+}
+.getInvolved{
+  padding: 2rem 0px;
+  max-width: 500px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+.getInvolved h2{
+  font-size: 4rem;
+  color: rgb(3, 154, 3);
+  margin-bottom: 2rem;
+}
+.getInvolved p{
+  color: white;
+  font-size: 1.2rem;
+}
+.drivingLessonsCd {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 1rem 0px;
+}
+.drivingLessonsCd section {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(3, 154, 3);
+  padding: 5px 1rem;
+}
+.drivingLessonsCd section p {
+  margin: 0px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Antonio", sans-serif;
+}
+#IconsS{
+  font-size: 1.8rem;
+
+  color: white;
+}
+/* //////////////////////// */
+
 .socialFollowIcons {
   display: flex;
   justify-content: space-evenly;
   max-width: 800px;
   margin-right: auto;
   margin-left: auto;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
+  border-radius: 10px;
+  background-color: rgb(3, 154, 3);
 }
 
 .socialFollowIcons a {
@@ -222,119 +377,27 @@
 
   transition: transform 0.3s;
 }
+
 #FollowIcons {
-  color: #1e4e19;
+  color: rgb(3, 154, 3);
   font-size: 1.7rem;
 }
+
 .socialFollowIcons a:hover {
   transform: translateY(-5px);
 }
 
 .socialFollowIcons i {
   font-size: 24px;
-  color: #333; /* Change color as needed */
+  color: #333;
 }
-/* /////////////////////////going Green/////////// */
-.features {
-  padding: 2rem 0;
-}
-.features h4 {
-  color: #4c9c43;
-  font-size: 65px;
-  font-weight: 700;
-  line-height: 1.2em;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 20px;
-}
-.features p {
-  color: #7a7a7a;
-  line-height: 28px;
-  text-align: center;
-  font-weight: 400;
-  font-family: "Montserrat", sans-serif;
-}
-.mainFeatures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  max-width: 1400px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-.column {
-  padding: 25px 25px 55px 25px;
-  background-color: #ffffff;
-
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
-
-  transition: box-shadow 0.3s ease;
-}
-
-.column:hover {
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-  border: 1px solid #4c9c43;
-}
-.column span {
-  font-size: 50px;
-  color: #706c6c;
-  display: inline-block;
-  padding: 30px;
-  margin-right: auto;
-  margin-left: auto;
-}
-.column h3 {
-  font-size: 26px;
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #000000;
-}
-.column p {
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #7a7a7a;
-}
-.column span {
-  background-color: #4c9c43;
-  padding: 30px;
-  border-radius: 50%;
-  font-size: 50px;
-  color: #fff;
-}
-#featuresIcon {
-  width: 1em;
-  height: 1em;
-  position: relative;
-  display: block;
-}
-.column span:hover {
-  transform: scale(1.2);
-  background-color: #fff;
-  transition: 0.3s ease-in-out;
-  color: #4c9c43;
-}
-#featuresIconSRU {
-  font-size: 6rem;
-}
-@media (max-width: 1085px) {
-  .features h4 {
-    font-size: 45px;
+@media (max-width:  680px){
+  .getInvolved h2{
+    font-size: 3.5rem;
   }
 }
-@media (max-width: 767px) {
-  .features h4 {
-    font-size: 30px;
-  }
-  .mainFeatures {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+@media (max-width:  480px){
+  .getInvolved h2{
+    font-size: 3rem;
   }
 }

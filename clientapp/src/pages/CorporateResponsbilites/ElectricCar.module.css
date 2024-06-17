@@ -3,397 +3,335 @@
     padding: 0;
     box-sizing: border-box;
   }
-  .imageSection {
-    position: relative;
-    width: 100%;
-    padding: 5rem 0;
-    background-color: #4C9C43;
+  .ElectricCarScheme{
+    background-color: black;
+    padding-bottom: 10rem;
+    padding-top: 1rem;
+    font-family: 'Antonio', sans-serif;
   }
-  .maincontent {
-    display: flex;
+  .eCsfront{
     max-width: 1440px;
-    width: 100%;
-    align-items: center;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
-  
-  .content {
-    position: relative;
-    
+  .eCSfrontSection{
+    background-color: rgb(3, 154, 3);
     color: white;
+    border-radius: 13em/3em;
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .eCSfrontSection h2{
+    font-size: 8rem;
+    margin-bottom: 3rem;
     text-align: center;
-    padding: 0px 20px 0px 0px;
+    color: white;
   }
-  
-  .heading1 h1 {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
+  .eCSfrontSection hr{
+    opacity: 1;
+    border: 2px solid white;
+    margin-bottom: 2rem;
   }
-  .heading2 p {
-    color: #ffffff;
-    font-size: 22px;
-    font-family: "Montserrat", sans-serif;
-    padding-top: 0.8rem;
-    margin-bottom: 20px;
-  }
-
-
-  .video {
+  .eCSfrontSection p{
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 600px;
     width: 100%;
+    font-size: 1.2rem;
     text-align: center;
-  }
-  
-  .video img {
-    width: 100%;
-    max-width: 400px;
-  }
-  @media (max-width: 1020px) {
-    .content {
-      padding-top: 75px;
-    }
-    .heading1 h1 {
-      font-size: 1.5rem;
-      line-height: 1.7em;
-    }
-    .heading2 p {
-      font-size: 18px;
-    }
-    .video {
-      padding: 75px;
-    }
-  }
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 0px;
-    }
-  
-    .maincontent {
-      display: block;
-    }
-    .heading1 {
-      padding-top: 1rem;
-    }
-    .content {
-      max-width: 100%;
-    }
-    .video {
-      max-width: 100%;
-    }
-  }
-  @media (max-width: 350px) {
-    .video {
-      padding: 40px;
-    }
-    .heading1 h1 {
-        font-size: 15px;
-        line-height: 20px;
-       
-      }
-      .heading2 p {
-        font-size: 16px;
-      } 
-  }
-   /*//////////////////////////////// save planet //////////////////// */
+    margin-bottom: 1rem;
 
-.electricCar2ndSection{
-  display: flex;
-  align-items: center;
+  }
+  .eCs2ndSectionhead{
+    text-align: center;
+    padding: 2rem 0px;
+  }
+  .eCs2ndSectionhead h2{
+    font-size: 5rem;
+color: rgb(3, 154, 3);
+  }
+  .eCs2ndSectionhead span{
+    color: skyblue;
+  }
+  .eCs2ndSectionhead hr{
+    opacity: 1;
+    border: 2px solid white;
+  }
+  .eCs2ndSectionhead p{
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 1rem;
+  }
+  .electricCarSchemeSection{
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .ecs2ndimgSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  .ecs2ndimgSection img{
+    max-width: 450px;
+    width: 100%;
+  }
+  .ecs2ndListSection{
+    padding: 2rem 1rem;
+  } 
+  .ecs2ndListSection p{
+    font-size: 1.2rem;
+    color: white;
+    text-align: justify;
+  }
+  @media (max-width: 1000px){
+    .ecs2ndimgSection img{
+      max-width: 400px;
+      width: 100%;
+    }
+  }
+  @media (max-width: 900px){
+    .ecs2ndListSection p{
+      font-size: 1rem;
+      color: white;
+      text-align: justify;
+    }
+    .ecs2ndimgSection img{
+      max-width: 350px;
+      width: 100%;
+    }
+  }
+  @media (max-width:  780px){
+    .eCSfrontSection h2{
+      font-size: 6rem;
+    }
+    .eCs2ndSectionhead h2{
+      font-size: 4rem;
+    }
+    
+    .ecs2ndimgSection{
+      gap: 30px;
+    }
+   
+    .ecs2ndimgSection img{
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+  @media (max-width:  650px){
+    .ecs2ndimgSection img{
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+  @media (max-width:  428px){
+    .ecs2ndimgSection{
+      flex-direction: column;
+    }
+    .eCSfrontSection h2{
+      font-size: 4.5rem;
+    }
+    .eCs2ndSectionhead h2{
+      font-size: 3rem;
+    }
+  }
+  /* ////////////////////////////// */
+  .textMainSection{
+max-width: 1140px;
+width: 100%;
 margin-right: auto;
 margin-left: auto;
-max-width: 1400px;
+padding: 2rem 1rem;
+  }
+  .textEscsection p{
+text-align: justify;
+max-width: 800px;
 width: 100%;
-padding: 2rem 0px;
-}
-.electricCarImgSection{
-  max-width: 600px;
- width: 100%;
-  padding: 1rem;
-  text-align: center;
-}
-.electricCarImgSection img{
-  margin-top: 1rem;
-
-  max-width: 400px;
- width: 100%;
-
-}
-.ourCSRresponsbilities{
-  text-align: center;
-  padding: 1rem;
-  max-width: 700px;
-  width: 100%;
-
-}
-.ourCSRresponsbilities h2{
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #4C9C43;
-}
-.ourCSRresponsbilities p{
-  margin-bottom: 1rem;
- 
- 
-}
-@media (max-width: 1020px) {
-  .electricCarImgSection{
-    max-width: 100%;
-    width: 100%;
+margin-right: auto;
+margin-left: auto;
+color: white;
+font-size: 1.2rem;
+  }
+  .textEscsection p span{
+    color: rgb(3, 154, 3);
+  }
+  .treeImgsSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    
   }
 
-  .electricCar2ndSection{
-    display: block;
+  .treeImgsSection img{
+    max-width: 200px;
     width: 100%;
-    max-width: 100%;
+  }
+  .textMainSection hr{
+    opacity: 1;
+   border: 2px solid white;
+
+  }
+  .escBDSection{
+    max-width: 1200px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 1rem;
+  }
+  .escBdHeading hr{
+    opacity: 1;
+    border: 2px solid white;
+    margin-top: 2rem;
+  }
+  .escBdHeading h2{
+    color: rgb(3, 154, 3);
+    font-size: 3rem;
     text-align: center;
   }
-  
-  .ourCSRresponsbilities{
-    max-width: 100%;
+  .escBenifits{
+    padding-top: 2rem;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .escBDDiv{
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
     width: 100%;
   }
-}
-@media (max-width: 450px){
-  .electricCarImgSection img{
-
-    max-width: 250px;
-   width: 100%;
-  
+ 
+  .escBDDiv section{
+   
+    padding: 1rem;
+    background-color: white;
+    border-radius: 40px;
   }
-  .ourCSRresponsbilities h2{
-    font-size: 1.5rem;
-  }
-}
-
-/* ////////////////////////////////////////////// */
-.treeSection {
+ 
+  .escBDDiv h2{
+    color: rgb(3, 154, 3);
+    font-size: 3rem;
 text-align: center;
-}
-.treeSection img{
-  max-width: 1000px;
-width: 100%;
-  animation: slideIn 1s ease forwards;
+
+  }
+  .escBDDiv p{
+    text-align: justify;
+    color: rgb(3, 154, 3);
+    font-size: 1.2rem;
+
+  }
+  .escBDDiv div{
+    
+    padding: 1rem;
+    background-color: rgb(159, 1, 1);
+    border-radius: 40px;
+  }
+  .escBDDiv div h2{
+   
+    font-size: 3rem;
+text-align: center;
+    color: white;
+    
+  }
+  .escBDDiv div p{
+    text-align: justify;
+    color: white;
+    font-size: 1.2rem;
+  }
+  @media (max-width:  828px){
+    .escBDDiv div h2{
+      font-size: 2.5rem;
+    }
+    .treeImgsSection{
+      gap: 30px;
+    }
+  }
+  @media (max-width:  728px){
+    .treeImgsSection img{
+      max-width: 170px;
+      width: 100%;
+    }
+    .textEscsection p{
+      font-size: 1rem;
+    }
+  }
+  @media (max-width:  680px){
+    .escBdHeading h2{
+      font-size: 2.5rem;
+    }
+.escBenifits{
+  flex-direction: column;
 }
 
-@keyframes slideIn {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.escBDDiv div p{
+
+  font-size: 1rem;
 }
-.vsElectrictabSection{
-  background-color: #4C9C43;
+.escBDDiv section p{
+
+  font-size: 1rem;
 }
-.vsElectricSection{
-  padding: 2rem;
- 
-  display: flex;
-  align-items: center;
- 
-  max-width: 1550px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-.vsElectricSection h1{
-  color: white;
-  font-size: 5rem;
-  text-align: center;
-}
-.electricTabSection {
-  text-align: center;
-width: 100%;
-}
-.electricTabSection img{
-  max-width: 150px;
-  width: 100%;
-}
-.electricTabSection h2{
+.escBDDiv section h2{
   font-size: 2.5rem;
-  color: #fff;
-  text-align: center;
 }
+.escBDDiv div h2{
 
-
-
-
-/* ////////////////////////////// tab section ////////////////////// */
-.tabsection {
-  max-width: 1400px;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0px 1rem;
-  font-family: "Roboto", Sans-serif;
+  font-size: 2rem;
 }
-
-.tabs {
-  display: flex;
-
-}
-
-.tab {
-  padding: 20px 25px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  border-bottom: none;
-
-}
-
-.tab.active {
-  background-color: #233d20;
-  color: white;
-}
-
-.tabContent {
-  padding: 20px;
-  border-top: none;
-  height: 450px;
-  background-color: #233d20;
-}
-
-.tabContent p {
-  text-align: left;
-  font-size: 1rem;
-  color: #fff;
-  line-height: 35px;
-
-}
-
-
-
-@media screen and (max-width: 1080px){
-.vsElectricSection{
-  display: block;
-}
-}
-@media screen and (max-width: 768px) {
-  .electricTabSection h2{
-    font-size: 2rem;
   }
-  .tabs {
-    flex-direction: column; 
+  @media (max-width:  580px){
+    .treeImgsSection img{
+      max-width: 120px;
+      width: 100%;
+    }
   }
-
-  .tab {
-    width: 100%; 
-    border-bottom: 1px solid #ddd;
+  @media (max-width:  450px){
+    .treeImgsSection img{
+      max-width: 80px;
+      width: 100%;
+    }
   }
-}
- /* /////////////////////////why choose us css/////////// */
- .features {
-  padding: 2rem 0;
-}
-.features h4{
-  color: #4C9C43;
-  font-size: 65px;
-  font-weight: 700;
-  line-height: 1.2em;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 20px;
-}
-.features p{
-  color: #7a7a7a;
-  line-height: 28px;
-  text-align: center;
-  font-weight: 400;
-  font-family: "Montserrat", sans-serif;
-}
-.mainFeatures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  max-width: 1400px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-.column {
-  padding: 25px 25px 55px 25px;
-  background-color: #ffffff;
- 
- 
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
- 
-  transition: box-shadow 0.3s ease;
-}
-
-.column:hover {
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-  border: 1px solid #4C9C43;
-}
-.column span {
-  font-size: 50px;
-  color: #706c6c;
-  display: inline-block;
-  padding: 30px;
-  margin-right: auto;
-  margin-left: auto;
-}
-.column h3 {
-  font-size: 26px;
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #000000;
-}
-.column p {
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #7a7a7a;
-}
-.column span{
-  background-color: #4C9C43;
-  padding: 30px;
-border-radius: 50%;
-display: inline-block;
-font-size: 50px;
-color: #FFF;
-}
-#featuresIcon {
-  width: 1em;
-  height: 1em;
-  position: relative;
-  display: block;
+  .csr3rdDivSecLinks{
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   
+    gap: 50px;
+  }
+  .csr3rdDivSecLinks a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-decoration: none;
+    transition: border 0.5s ease;
+  }
   
-}
-.column span:hover {
-  transform: scale(1.2);
-  background-color: #fff;
-  transition: 0.3s ease-in-out;
-  color: #4C9C43;
-}
-#featuresIconSRU{
-  font-size: 6rem;
-}
-@media (max-width: 1085px){
-  .features h4{
-      font-size: 45px;
+  .csr3rdDivSecLinks a:hover{
+    border: 1px solid rgb(3, 163, 3);
   }
-}
-@media (max-width: 767px){
-  .features h4{
-      font-size: 30px;
+  .csr3rdDivSecLinks p{
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+    text-align: center;
   }
-  .mainFeatures{
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .csr3rdDivSecLinks img{
+    max-width: 220px;
+    width: 100%;
   }
-}

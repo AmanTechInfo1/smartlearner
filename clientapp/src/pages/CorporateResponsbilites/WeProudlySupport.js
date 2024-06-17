@@ -1,5 +1,5 @@
 // import React from 'react'
-import Lplateimg from "../../assets/images/L-Plate.jpg";
+import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import styles from "./WeSupport.module.css";
 import smartlearnerSupoort from "../../assets/images/smartlearnerSupportImg.png"
 import bylc from "../../assets/images/BYLC.png"
@@ -8,7 +8,7 @@ import jaguarlandrover from "../../assets/images/jaguar.jpg";
 import governmentLogo from "../../assets/images/Highways_England.jpg";
 import coventry from "../../assets/images/Coventry.jpg";
 import coventryAir from "../../assets/images/Electric-Fleet.jpg";
-import gocv from "../../assets/images/gocv.png";
+import gocv from "../../assets/images/gocv.png";  
 import greendino from "../../assets/images/Green-Dino.png";
 import coventrycollege from "../../assets/images/covcollege.png";
 import sqa from "../../assets/images/SQA.png";
@@ -21,32 +21,15 @@ import bedwortheagles from "../../assets/images/unitedToAchieve.jpg";
 
 export default function WeProudlySupport() {
   return (
-    <div>
+    <div className={styles.weProudlySupport}>
       <section className={styles.imageSection}>
-        <div className={styles.maincontent}>
-          <div className={styles.content}>
-            <div className={styles.heading1}>
-              <h1>AWARD-WINNING DRIVING LESSONS</h1>
-            </div>
-
-            <div className={styles.heading2}>
-              <h2>WE PROUDLY SUPPORT</h2>
-            </div>
-            <div className={styles.btn}>
-              <button id={styles.btn}>Contact Us</button>
-            </div>
-          </div>
-          <div className={styles.video}>
-            <img src={Lplateimg} alt="LogoImg" />
-          </div>
-        </div>
+      <img src={smartlearnerLogo} alt="smartlearner-Logo"/>
+        <h2>IN PARTNERSHIP WITH</h2>
       </section>
       {/* /////////////////////////////////////////// */}
 
       <section className={styles.whoDoWeSupport}>
-        <div>
-          <h2>Who Do We Support?</h2>
-        </div>
+        
         <div className={styles.mainFeatures}>
           <div className={styles.column}>
             <a href="https://www.intelligentinstructor.co.uk/intelligent-instructor-award-winners-2022/">

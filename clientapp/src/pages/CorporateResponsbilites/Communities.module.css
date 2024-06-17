@@ -3,204 +3,197 @@
   padding: 0;
   box-sizing: border-box;
 }
-.imageSection {
-  position: relative;
-  width: 100%;
-  padding: 5rem 0;
-  background-color: #2049ff;
+
+
+.OurOfficeGreenEfforts {
+  background-color: black;
+  padding-bottom: 6rem;
+  padding-top: 1rem;
+  font-family: "Antonio", sans-serif;
 }
-.maincontent {
-  display: flex;
+.eCsfront {
   max-width: 1440px;
-  width: 100%;
-  align-items: center;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
-
-.content {
-  position: relative;
-
+.eCSfrontSection {
+  background-color: rgb(8, 66, 180);
+  color: white;
+  border-radius: 13em/3em;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+}
+.eCSfrontSection h2 {
+  font-size: 8rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: white;
+}
+.eCSfrontSection hr {
+  opacity: 1;
+  border: 2px solid white;
+  margin-bottom: 2rem;
+}
+.eCSfrontSection h3{
+  font-size: 2rem;
   color: white;
   text-align: center;
-  padding: 0px 20px 0px 0px;
+  margin-bottom: 2rem;
 }
-
-.heading1 h1 {
-  color: #ffffff;
-  font-size: 3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-}
-.heading2 p {
-  color: #ffffff;
-  font-size: 22px;
-  font-family: "Montserrat", sans-serif;
-  padding-top: 0.8rem;
-  margin-bottom: 20px;
-}
-
-.video {
-  width: 100%;
-  text-align: center;
-}
-
-.video img {
-  width: 100%;
-  max-width: 400px;
-}
-@media (max-width: 1020px) {
-  .content {
-    padding-top: 75px;
-  }
-  .heading1 h1 {
-    font-size: 1.5rem;
-    line-height: 1.7em;
-  }
-  .heading2 p {
-    font-size: 18px;
-  }
-  .video {
-    padding: 75px;
-  }
-}
-@media (max-width: 767px) {
-  .content {
-    padding-top: 0px;
-  }
-
-  .maincontent {
-    display: block;
-  }
-  .heading1 {
-    padding-top: 1rem;
-  }
-  .content {
-    max-width: 100%;
-  }
-  .video {
-    max-width: 100%;
-  }
-}
-@media (max-width: 350px) {
-  .video {
-    padding: 40px;
-  }
-  .heading1 h1 {
-    font-size: 15px;
-    line-height: 20px;
-  }
-  .heading2 p {
-    font-size: 16px;
-  }
-}
-.supportingOurCommunity {
-  text-align: center;
-  padding: 2rem 0px;
-}
-.supportingOurCommunity h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  font-family: "Roboto", sans-serif;
-  color: #2049ff;
-}
-.supportingOurCommunity span {
-  background-color: #2049ff;
-  padding: 30px;
-  border-radius: 50%;
-  display: inline-block;
-  font-size: 50px;
-  color: #fff;
-}
-#featuresIcon2 {
-  width: 1.5em;
-  height: 1.5em;
-  position: relative;
-  display: block;
-}
-.supportingOurCommunity span:hover {
-  transform: scale(1.2);
-  background-color: #fff;
-  transition: 0.3s ease-in-out;
-  color: #2049ff;
-}
-.communitySection {
-  background-color: #2049ff;
-  padding: 2rem 0px;
-  margin: 2rem 0px;
-}
-.communitySectiondiv {
-  max-width: 1400px;
-  width: 100%;
+.eCSfrontSection p {
+  color: white;
   margin-right: auto;
   margin-left: auto;
-  padding: 0px 1rem;
-  display: flex;
-
-  gap: 20px;
-  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
-@media (max-width: 750px) {
-  .communitySectiondiv {
-    display: block;
+@media (max-width: 780px) {
+  .eCSfrontSection h2 {
+    font-size: 6rem;
   }
+ 
 }
-.communitySectiondiv ul {
-  width: 100%;
-  padding: 1rem;
-  background-color: #082ed4;
-}
-.communitySectiondiv ul li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  gap: 10px;
-}
-.communitySectiondiv ul li p {
-  color: #fff;
-}
-.communitySectiondiv ul h2 {
-  text-align: center;
-  color: #fff;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-#communityIcons {
-  color: #fff;
-  font-size: 6rem;
-}
-.communityChempionContentDetails {
-  padding: 2rem 0px;
-  background-color: #2049ff;
-  color: #fff;
-  text-align: center;
-  margin: 2rem 0px;
-}
-.communityChempionContentDetailsdiv {
-  max-width: 1400px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.communityChempionContentDetailsdiv h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  text-align: center;
-}
-.communityChempionContentDetails p {
-  text-align: center;
-  line-height: 35px;
-  margin-bottom: 1rem;
-}
-@media (max-width: 650px) {
-  .communityChempionContentDetailsdiv h2 {
+
+@media (max-width: 450px) {
+  .eCSfrontSection h2 {
+    font-size: 4.5rem;
+  }
+  .headinSection h2 {
     font-size: 2.5rem;
   }
 }
-@media (max-width: 450px) {
-  .communityChempionContentDetailsdiv h2 {
-    font-size: 2rem;
+#cCSecondrySection{
+  max-width: 1140px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+#cCSecondrySection hr{
+  opacity: 1;
+  border: 2px solid white;
+
+}
+.cCSecondryHeadin{
+display: flex;
+align-items: flex-end;
+justify-content: center;
+}
+.cCSecondryHeadin h2{
+  font-size: 5rem;
+  text-align: center;
+  color: rgb(8, 66, 180);
+}
+.cCSecondryHeadin img{
+  max-width: 120px;
+  margin-right: -2rem;
+  width: 100%;
+  z-index: 1;
+}
+.cCLists{
+  max-width: 800px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+}
+.cCLists p{
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: white;
+  text-align: justify;
+}
+.cCLists p span{
+  color: rgb(255, 179, 0);
+}
+@media (max-width: 780px) {
+  .cCSecondryHeadin h2{
+    font-size: 3.5rem;
   }
+  .cCLists p{
+    font-size: 1rem;
+  }
+  .cCSecondryHeadin img{
+    max-width: 90px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cCSecondryHeadin h2{
+    font-size: 2.5rem;
+  }
+  .cCSecondryHeadin img{
+    max-width: 60px;
+    width: 100%;
+  }
+}
+.cCsContentSection{
+  padding: 0px 1rem;
+}
+#cCsContentSection{
+  background-color: rgb(8, 66, 180);
+  color: white;
+  border-radius: 13em/3em;
+  padding: 2rem 4rem;
+}
+#cCsContentSection h2{
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+#cCsContentSection p{
+  text-align: justify;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 580px) {
+  #cCsContentSection h2{
+    font-size: 2.5rem;
+  }
+  #cCsContentSection{
+    padding: 1.5rem 1.5rem;
+  }
+  #cCsContentSection p{
+   
+    font-size: 1rem;
+   
+  }
+}
+.cCImagesSec{
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+.cCImagesdiv{
+ 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  place-items: center;
+  gap: 30px;
+}
+.cCImagesdiv img{
+  max-width: 350px;
+  width: 100%;
+}
+#schoolLocal{
+  margin-top: 2rem;
+  background-color: rgb(8, 66, 180);
+  color: white;
+  max-width: 500px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 3em/1em;
+  padding: 1rem 1rem;
+}
+#schoolLocal p{
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0px;
 }

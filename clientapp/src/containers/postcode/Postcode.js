@@ -8,8 +8,7 @@ import styles from '../../assets/css/admin.module.css';
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import EditPostcodeModel from "./components/EditPostcodeModel";
-import { Button } from "reactstrap";
-import { confirmAlert } from "react-confirm-alert";
+
 import { Link } from "react-router-dom";
 
 const Postcode = () => {

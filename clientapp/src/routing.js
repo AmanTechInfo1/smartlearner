@@ -68,6 +68,8 @@ import QuizModule from "./containers/quiz/quizModule/QuizModule";
 import QuizUModule from "./containers/quiz/quizUModule/QuizUModule";
 import QuizCategoryHome from "./components/takequizes/QuizCategoryHome";
 import QuizModuleHome from "./components/takequizes/QuizModuleHome";
+import Checkout from "./pages/shop/checkout/Checkout";
+
 
 
 
@@ -133,6 +135,8 @@ export const router = createBrowserRouter([
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
+      {path:"checkout", element: <Checkout/>},
+
     ],
   },
   { path: "register", element: <Register /> },
@@ -227,10 +231,7 @@ export const router = createBrowserRouter([
         path:"/admin/quiz",
         element:<QuizModal/>,
       },
-      {
-        path:"/admin/edit-quiz",
-        element:<EditQuizModal/>
-      }
+    
 
       
     ],

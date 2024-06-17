@@ -3,326 +3,261 @@
     padding: 0;
     box-sizing: border-box;
   }
-  .imageSection {
-    position: relative;
-    width: 100%;
-    padding: 5rem 0;
-    background-color: #4C9C43;
+  .csrPages{
+    background-color: black;
+    padding-bottom: 10rem;
+    padding-top: 1rem;
+    font-family: 'Antonio', sans-serif;
   }
-  .maincontent {
-    display: flex;
+  .csrpages{
     max-width: 1440px;
-    width: 100%;
-    align-items: center;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
-  
-  .content {
-    position: relative;
-  
+  .csrPageFront{
+    background-color: rgb(3, 154, 3);
     color: white;
-    text-align: center;
-    padding: 0px 20px 0px 0px;
+    border-radius: 13em/3em;
+    margin-bottom: 1rem;
   }
-  
-  .heading1 h1 {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
+  .csrSectionFornt h2{
+    font-size: 7rem;
+    color: white;
+    text-align: left;
+    font-family: 'Antonio', sans-serif;
   }
-  .heading2 p {
-    color: #ffffff;
-    font-size: 22px;
-    font-family: "Montserrat", sans-serif;
-    padding-top: 0.8rem;
-    margin-bottom: 20px;
+  .csrSectionFornt{
+    padding: 1rem;
+    padding-bottom: 4rem;
   }
-
-
-  .video {
-    width: 100%;
-    text-align: center;
+  .csrSectionFornt hr{
+   
+    opacity: 1;
+    border: 2px solid rgb(159, 1, 1);
   }
-  
-  .video img {
-    width: 100%;
-    max-width: 400px;
-  }
-  @media (max-width: 1020px) {
-    .content {
-      padding-top: 75px;
-    }
-    .heading1 h1 {
-      font-size: 1.5rem;
-      line-height: 1.7em;
-    }
-    .heading2 p {
-      font-size: 18px;
-    }
-    .video {
-      padding: 75px;
-    }
-  }
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 0px;
-    }
-  
-    .maincontent {
-      display: block;
-    }
-    .heading1 {
-      padding-top: 1rem;
-    }
-    .content {
-      max-width: 100%;
-    }
-    .video {
-      max-width: 100%;
-    }
-  }
-  @media (max-width: 350px) {
-    .video {
-      padding: 40px;
-    }
-    .heading1 h1 {
-        font-size: 15px;
-        line-height: 20px;
-       
-      }
-      .heading2 p {
-        font-size: 16px;
-      } 
-  }
-  /*//////////////////////////////// save planet //////////////////// */
-.ourCSRresponsbilities{
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+ 
+  .csrPagesLd p{
+    color: white;
+    font-size: 1.5rem;
     max-width: 1140px;
-    padding: 2rem 0px;
-
-}
-.ourCSRresponsbilities h2{
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #4C9C43;
-}
-.ourCSRresponsbilities p{
-    margin-bottom: 1rem;
-}
-
-  
-  /* /////////////////////////why choose us css/////////// */
-  .features {
-    padding: 2rem 0;
-  }
-  .features h4{
-    color: #4C9C43;
-    font-size: 65px;
-    font-weight: 700;
-    line-height: 1.2em;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    margin-bottom: 20px;
-  }
-  .features p{
-    color: #7a7a7a;
-    line-height: 28px;
-    text-align: center;
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-  }
-  .mainFeatures {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-    max-width: 1400px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 2rem;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
+   padding: 0.5rem;
+  
+   text-align: left;
+   margin-bottom: 0px;
+  }
+  /* //////////////////////////////////////// */
+  .csr2ndDivHS{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+
+  }
+  .csr2ndDivHeading h2{
+    color: white;
+    font-size: 7rem;
+    text-align: left;
+  }
+  .csr2ndDivImg img{
+    max-width: 400px;
     width: 100%;
   }
-  .column {
-    padding: 25px 25px 55px 25px;
-    background-color: #ffffff;
-   
-   
-    box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
-   
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .column:hover {
-    box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-    border: 1px solid #4C9C43;
-  }
-  .column span {
-    font-size: 50px;
-    color: #706c6c;
-    display: inline-block;
-    padding: 30px;
+  .csr2ndListDiv{
+    font-size: 1.5rem;
+    color: white;
+    max-width: 1140px;
     margin-right: auto;
     margin-left: auto;
   }
-  .column h3 {
-    font-size: 26px;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #000000;
-  }
-  .column p {
-    font-size: 16px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #7a7a7a;
-  }
-  .column span{
-    background-color: #4C9C43;
-    padding: 30px;
-border-radius: 50%;
-display: inline-block;
-font-size: 50px;
-color: #FFF;
-  }
-  #featuresIcon {
-    width: 1em;
-    height: 1em;
-    position: relative;
-    display: block;
-    
-  }
-  .column span:hover {
-    transform: scale(1.2);
-    background-color: #fff;
-    transition: 0.3s ease-in-out;
-    color: #4C9C43;
-  }
-  #featuresIconSRU{
-    font-size: 6rem;
-  }
-  @media (max-width: 1085px){
-    .features h4{
-        font-size: 45px;
-    }
+  .csr2ndListDiv p{
+    padding: 0.5rem 0px;
   }
   @media (max-width: 767px){
-    .features h4{
-        font-size: 30px;
+    .csrSectionFornt h2{
+      font-size: 5rem;
     }
-    .mainFeatures{
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .csrPagesLd p{
+      font-size: 1.2rem;
     }
-}
-/* ///////////////////////////// go green pledges //////////////////////// */
-.goGreenSection{
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 1140px;
-
-}
-
-.goGreenSectionHeading span{
-    background-color: #4C9C43;
-    padding: 30px;
-border-radius: 50%;
-font-size: 50px;
-color: #FFF;
-display: inline-block;
+    .csr2ndDivHeading h2{
+      font-size: 5rem;
+    }
+    .csr2ndListDiv{
+      font-size: 1rem;
+    }
   }
-  #featuresIcon2{
-    width: 1em;
-    height: 1em;
-    position: relative;
-    display: block;
-  }
-  .goGreenSectionHeading span:hover {
-    transform: scale(1.2);
-    background-color: #fff;
-    transition: 0.3s ease-in-out;
-    color: #4C9C43;
-  }
-  .goGreenSectionHeading h2{
-    font-size: 3rem;
-    font-weight: 700;
-    color: #4C9C43;
-  }
-.goGreenSectionHeading hr{
-    border: 2px solid #4C9C43;
-    max-width: 600px;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    opacity: 1;
-    padding: 0px 1rem;
-}
-.pladges{
+  @media (max-width: 567px){
+    .csrSectionFornt h2{
+      font-size: 4rem;
+    }
+    .csrPagesLd p{
+      font-size: 1rem;
+    }
+    .csr2ndDivHeading h2{
+      font-size: 4rem;
+    }
    
-   display: flex;
-   align-items: center;
-   gap: 10px;
-   justify-content: center;
-   margin-bottom: 1rem;
+  }
+  @media (max-width: 450px){
+    .csr2ndDivHS{
+      flex-direction: column;
+  
+    }
+    .csrSectionFornt h2{
+      font-size: 3.5rem;
+    }
+    .csr2ndDivHeading h2{
+      font-size: 3rem;
+    }
+    .csr2ndDivImg img{
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+  @media (max-width: 370px){
+    .csrSectionFornt h2{
+      font-size: 2.5rem;
+    }
+    .csrPagesLd p{
+      font-size: 15px;
+    }
+    .csr2ndListDiv{
+      font-size: 15px;
+    }
+    .csr2ndDivHeading h2{
+      font-size: 2.5rem;
+    }
+    .csr2ndDivImg img{
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+/* //////////////////////////////////////////// */
+.csr3rddiv hr{
+  opacity: 1;
+  border: 2px solid rgb(176, 6, 6);
 }
-.pladges p{
-font-size: 1.2rem;
-font-weight: 600
+.csr3rdDivSec{
+  padding: 2rem 0px;
 }
-.pladges span{
-    font-size: 2rem;
-    color: #4C9C43;
+.csr3rdDivSec h2{
+  font-size: 6rem;
+  color: white;
+  margin-bottom: 1rem;
+
+text-align: center;
+}
+.csr3rdDivSec p{
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  margin: 0.5rem 0px;
+
+}
+.csr3rdDivSec span{
+  color: rgb(3, 163, 3);
+}
+.csr3rdDivSecLinks{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+ 
+  gap: 50px;
+}
+.csr3rdDivSecLinks a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-decoration: none;
+  transition: border 0.5s ease;
 }
 
+.csr3rdDivSecLinks a:hover{
+  border: 1px solid rgb(3, 163, 3);
+}
+.csr3rdDivSecLinks p{
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.csr3rdDivSecLinks img{
+  max-width: 220px;
+  width: 100%;
+}
 @media (max-width: 767px){
-    .goGreenSectionHeading h2{
-        font-size: 2rem;
-        
-      }
+  .csr3rdDivSec h2{
+    font-size: 5rem;
+  }
 }
-
-
-
-
-/* ////////////////////social icons///////////////////////// */
-.socialFollowIcons {
-    display: flex;
-    justify-content:space-evenly;
-    max-width: 800px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 2rem 0;
-    
+@media (max-width: 467px){
+  .csr3rdDivSec h2{
+    font-size: 3.5rem;
   }
-
-  .socialFollowIcons a {
-    display: inline-block;
-    background-color: white;
-    border-radius: 6px;
-    padding: 8px 10px 8px 10px;
+  .csr3rdDivSec p{
+   font-size: 1rem;
   
-    transition: transform 0.3s;
   }
-#FollowIcons{
-    color: #4C9C43;
-    font-size: 1.7rem;
 }
-  .socialFollowIcons  a:hover {
-    transform: translateY(-5px);
-  }
+/* /////////////////////////////// */
+.smartlearnerPladgesSection{
+  padding: 2rem 0px;
+}
+#smartlearnerPladges{
+ text-align: center;
+}
+#smartlearnerPladges img{
+  max-width: 250px;
+  width: 100%;
+
+}
+#smartlearnerPladges h2{
+  color: white;
+  font-size: 5rem;
+  margin-bottom: 4rem;
+}
+#smartlearnerPladges hr{
   
-  .socialFollowIcons  i {
-    font-size: 24px;
-    color: #333; /* Change color as needed */
+  opacity: 1;
+  border: 2px solid rgb(174, 8, 8);
+}
+.smartlearnerPlLists{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 2rem 0px;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.smartlearnerPlLists img{
+  max-width: 180px;
+  width: 100%;
+}
+.smartlearnerPlLists p{
+  color: white;
+  font-size: 1.2rem;
+}
+@media (max-width: 767px){
+  .smartlearnerPlLists p{
+    color: white;
+    font-size: 1rem;
   }
+  .smartlearnerPlLists img{
+    max-width: 150px;
+    width: 100%;
+  }
+}
+@media (max-width: 450px){
+  .smartlearnerPlLists{
+    flex-direction: column;
+  }
+  #smartlearnerPladges h2{
+    font-size: 3.5rem;
+  }
+}

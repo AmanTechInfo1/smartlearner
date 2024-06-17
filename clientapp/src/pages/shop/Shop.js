@@ -4,7 +4,7 @@ import Review from "../../components/views/Review";
 import CallBackForm from "../../components/forms/CallBackForm";
 import DrivenForm from "../../components/forms/DrivenForm";
 import ShortFaqs from "../../components/shortFaqs/ShortFaqs";
-import Testimonials from "../../components/testimonials/Testimonials";
+
 import FilterSection from "./FilterSection";
 import ProductList from "./ProductList";
 import ProductTab from "./ProductTab";
@@ -12,6 +12,7 @@ import styles from "./Shop.module.css";
 import poster from "../../assets/images/video-poster-img.jpg";
 import Sort from "./Sort";
 import chooseUsImg from "../../assets/images/choose-img.jpg";
+import Testemonial from "../../components/testimonials/Testemonial";
 
 export default function Shop() {
   return (
@@ -144,7 +145,7 @@ export default function Shop() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testimonials />
+        <Testemonial/>
       </section>
 
       {/* ///////////////////////Reviews//////// */}

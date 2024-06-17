@@ -1,201 +1,199 @@
 // import React from 'react'
 import styles from "./Communities.module.css";
-import Champion from "../../assets/images/communityChempionImg.png";
-import { FaHandshake, FaTrophy, FaStar } from "react-icons/fa";
+import React from "react";
+import handShaking from "../../assets/images/hand-shakes.png";
+import communityChempionImg1 from "../../assets/images/community-champions/CChampion-1.jpg"
+import communityChempionImg2 from "../../assets/images/community-champions/CChampion-2.jpg"
+import communityChempionImg3 from "../../assets/images/community-champions/CChampion-3.jpg"
+import communityChempionImg4 from "../../assets/images/community-champions/CChampion-4.jpg"
+import communityChempionImg5 from "../../assets/images/community-champions/CChampion-5.jpg"
+import communityChempionImg6 from "../../assets/images/community-champions/CChampion-6.jpg"
+import communityChempionImg7 from "../../assets/images/community-champions/CChampion-7.jpg"
+import communityChempionImg8 from "../../assets/images/community-champions/CChampion-8.jpg"
+import communityChempionImg9 from "../../assets/images/community-champions/CChampion-9.jpg"
+import communityChempionImg10 from "../../assets/images/community-champions/CChampion-10.jpg"
+import communityChempionImg11 from "../../assets/images/community-champions/CChampion-11.jpg"
+import communityChempionImg12 from "../../assets/images/community-champions/CChampion-12.jpg"
+import communityChempionImg13 from "../../assets/images/community-champions/CChampion-13.jpg"
+import communityChempionImg14 from "../../assets/images/community-champions/CChampion-14.jpg"
+import communityChempionImg15 from "../../assets/images/community-champions/CChampion-15.jpg"
 
 export default function CommunitiesChampions() {
   return (
-    <div>
-      <section className={styles.imageSection}>
-        <div className={styles.maincontent}>
-          <div className={styles.content}>
-            <div className={styles.heading1}>
-              <h1>Community Champions</h1>
+    <div className={styles.OurOfficeGreenEfforts}>
+      <div className={styles.eCsfront}>
+        <section className={styles.eCSfrontSection}>
+          <h2>COMMUNITY CHAMPIONS</h2>
+          <hr />
+          <h3>"The local school for local people"</h3>
+          <p>
+            Winners of Intelligent Instructors Awards 2023 & 2024 'Commuity
+            Champion Of The Year'
+          </p>
+        </section>
+        <section className={styles.cCSecondrySection}>
+          <section id={styles.cCSecondrySection}>
+            <div className={styles.cCSecondryHeadin}>
+              <img src={handShaking} alt="handShake-Icon" />
+              <h2>
+                SUPPORTING OUR CITY <br />
+                AND COMMUNITY
+              </h2>
             </div>
-
-            <div className={styles.heading2}>
-              <p>“The local school for local people”</p>
+            <hr></hr>
+            <section className={styles.cCLists}>
               <p>
-                Winners of Intelligent Instructor Awards 2023 ‘ Community
-                Champion Of The Year’{" "}
-              </p>
-            </div>
-          </div>
-          <div className={styles.video}>
-            <img src={Champion} alt="Champion" />
-          </div>
-        </div>
-      </section>
-
-      {/* ////////////////////////////////////// */}
-
-      <section className={styles.supportingOurCommunity}>
-        <span>
-          <FaHandshake id={styles.featuresIcon2} />
-        </span>
-        <h2>SUPPORTING OUR CITY AND COMMUNITY</h2>
-      </section>
-      {/* /////////////////////////////////////////// */}
-
-      <section className={styles.communitySection}>
-        <div className={styles.communitySectiondiv}>
-          <ul type="none">
-            <h2>So Far</h2>
-            <li>
-              <FaTrophy id={styles.communityIcons} />
-              <p>
-                1. 315 EASTER EGG Campaign: We raised 500+ Easter Eggs in
-                support of Easter Eggs for Zoe's Place and Coventry and
+                <span>315 EASTER EGG Campaign:</span> We raised 500+ Easter
+                Eggsin support of Easter Eggs for Zoe's Place and Coventryand
                 Warwickshire Univerity Hospital.
               </p>
-            </li>
-            <li>
-              <FaTrophy id={styles.communityIcons} />
               <p>
-                2. SEND YOUR LOVE Campaign: Donated essential food and items for
-                vulnerable families through our local food bank. In partnership
-                with Coventry City Council.
+                <span>SEND YOUR LOVE Campaign:</span> Donated essential foodand
+                items for vulnerable families through our local foodbank. In
+                partnership with Coventry City Council.
               </p>
-            </li>
-            <li>
-              <FaTrophy id={styles.communityIcons} />
               <p>
-                3. BIKEATHON Project: Raised £300+ for Seed of Sight charity, as
-                well as worked with NHS to provide free diabetes health checks.
+                <span>BIKEATHON Project:</span> Raised £300+ for speed of
+                sightcharity, as well as worked with NHS to provide freediabetes
+                health checks.
               </p>
-            </li>
-            <li>
-              <FaTrophy id={styles.communityIcons} />
               <p>
-                4. CYCLE RECYCLER Competition: Advocating green modes of
-                transport and sustainability, we launched a competition for
+                <span>CYCLE RECYCLER Competition:</span> Advocating greenmodes
+                of transport and sustainability, we launched acompetition for
                 individuals to win 2 recycled bikes.
               </p>
-            </li>
-          </ul>
-          <ul type="none">
-            <h2>The Future</h2>
-            <li>
-              <FaStar id={styles.communityIcons} />
-              <p>
-                SmartLearner strives to consistently support, help and aid
-                individuals within our local community and city. If you would
-                like to be a part of our campaigns or have a recommendation in
-                regard to what charity or cause you may want us to support, feel
-                free to contact us via email at Admin@smartlearner.com or call
-                us on 02475092784
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-      {/* //////////////////////////////////////////// */}
+            </section>
+            <hr />
+            {/* /////////////////////////////// */}
+            <section className={styles.cCsContentSection}>
+              <div id={styles.cCsContentSection}>
+                <h2>315 EASTER EGG CAMPAIGN</h2>
+                <p>
+                  One of our most recognizable campaigns is the 315 EasterEgg
+                  project, launched in spring 2022. Partnering with Zoe'sPlace
+                  Baby Hospice and University Hospital Coventry &Warwickshire's
+                  children's ward, our mission was to bring joyand Easter eggs
+                  to the families, children, and staff of both establishments
+                </p>
+                <p>
+                  Our goal was to raise 315 Easter eggs, but we surpassed thisby
+                  collecting over 500 eggs from instructors,
+                  learners,individuals, and donors in the Coventry community.
+                </p>
+                <p>
+                  Our success attracted local MP Taiwo's attention, and
+                  thesurplus donations allowed us to extend our reach to
+                  variouscharities and homes across the West Midlands. We
+                  donatedEaster eggs to care homes in Coventry,
+                  Holbrooks'Community Centre, and care homes in Nuneaton,
+                  spreadingthe Easter spirit far and wide.
+                </p>
+              </div>
+              <hr />
+            </section>
+            {/* /////////////////////////////////// */}
+            <section className={styles.cCsContentSection}>
+              <div id={styles.cCsContentSection}>
+                <h2>
+                  SEND YOUR LOVE:
+                  <br />
+                  CHRISTMAS FOOD BANK
+                </h2>
+                <p>
+                  For years consecutively we collaborated with Coventry
+                  CityCouncil and our local food bank to raise and
+                  donatenecessary food and items to vulnerable families. Last
+                  year in2023, we were able to raise a total of £300+ worth
+                  ofdonations for the local community, breaking our previous
+                  year's record.
+                </p>
+                <p>
+                  Through this, we were ecstatic to know that we were morethan
+                  capable in supporting and assisting as many families as we can
+                  during the winter seasons. We could not haveachieved this
+                  without the sincere and kind support of ouroffice staff,
+                  instructors and the local individuals of our community.
+                </p>
+              </div>
+              <hr />
+            </section>
+            {/* ////////////////////////// */}
+            <section className={styles.cCsContentSection}>
+              <div id={styles.cCsContentSection}>
+                <h2>BIKEATHON £300 FORSPEED OF SIGHT</h2>
+                <p>
+                  At the annual Intelligent Instructor Conference and Expo,
+                  wepartnered with the NHS to offer free health
+                  checks,highlighting high blood pressure and diabetes
+                  awareness.
+                </p>
+                <p>
+                  Smartlearner also organized a Bikeathon, raising £1 perminute
+                  for the Speed of Sight charity.
+                </p>
+                <p>
+                  Instructors participated enthusiastically, and we raised£300
+                  to support inclusive driving events for people of
+                  allabilities. The charity empowers disabled individuals
+                  toengage in unique activities and experiences.
+                </p>
+              </div>
+              <hr />
+            </section>
 
-      <section className={styles.communityChempionContentDetails}>
-        <div className={styles.communityChempionContentDetailsdiv}>
-          {" "}
-          <h2>315 EASTER EGG CAMPAIGN</h2>
-          <p>
-            One of our most recognisable campaigns is the 315 Easter Egg project
-            that we launched within the spring season in 2022.
-          </p>
-          <p>
-            In partnership with Zoe’s Place Baby Hospice and University Hospital
-            Coventry & Warwickshire’s children’s ward; our mission was to make a
-            difference by bringing in more joy and more eggs to the families,
-            children and staff of both establishments!
-          </p>
-          <p>
-            The goal was to raise 315 Easter eggs to be distributed among these
-            foundations, we successfully exceeded our goal by raising 500+
-            Easter eggs from our instructors, learners, individuals and kind
-            donors within the Coventry community.
-          </p>
-          <p>
-            Gaining notoriety, we caught the attention of our local MP Taiwo;
-            and with the overflowing and surplus of donations we were able to
-            reach out to different charities and homes within the West Midlands
-            and spread the Easter spirit to more doors than we can imagine;
-            donating to care homes in coventry, Holbrooks’ community centre as
-            well as care homes situated in Nuneaton!{" "}
-          </p>
-        </div>
-      </section>
-      {/* ///////////////////////////////////////////////////////////// */}
+            {/* /////////////////////////////////////////////// */}
+            <section className={styles.cCsContentSection}>
+              <div id={styles.cCsContentSection}>
+                <h2>CYCLE RECYCLER BIKE <br></br>COMPETITION</h2>
+                <p>
+                  In summer 2022, SmartLearner Driving School teamed up with The
+                  Cycle Recycle to promote reusing materials and refurbishing
+                  old bicycles.
+                </p>
+                <p>
+                  Our goal was to raise 315 Easter eggs, but we surpassed thisby
+                  collecting over 500 eggs from instructors,
+                  learners,individuals, and donors in the Coventry community.
+                </p>
+                <p>
+                  Our campaign aimed to encourage our learners and community to
+                  adopt sustainable transport. We held a summer-long competition,
+                  attracting over 500 entries, with support from various
+                  businesses. Two lucky winners were selected through an
+                  automated raffle. Below are photos of the winners and one of
+                  the supporting business owners!
+                </p>
+              </div>
+              <hr />
+            </section>
+            {/* ////////////////////////////////////// */}
+              <section className={styles.cCImagesSec}>
+                  <div className={styles.cCImagesdiv}>
+                      <img src={communityChempionImg1} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg2} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg3} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg4} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg5} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg6} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg7} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg8} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg9} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg10} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg11} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg12} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg13} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg14} alt="communityChempion-Images"/>
+                      <img src={communityChempionImg15} alt="communityChempion-Images"/>
 
-      <section className={styles.communityChempionContentDetails}>
-        <div className={styles.communityChempionContentDetailsdiv}>
-          {" "}
-          <h2>SEND YOUR LOVE: CHRISTMAS FOOD BANK</h2>
-          <p>
-            For 2 years consecutively we collaborated with Coventry City Council
-            and our local food bank to raise and donate necessary food and items
-            to vulnerable families. Last year in 2022, we were able to raise a
-            total of £300+ worth of donations for the local community, breaking
-            our previous year’s record.
-          </p>
-          <p>
-            Through this, we were ecstatic to know that we were more than
-            capable in supporting and assisting as many families as we can
-            during the winter seasons. We could not have achieved this without
-            the sincere and kind support of our office staff, instructors and
-            the local individuals of our community.
-          </p>
-        </div>
-      </section>
-      {/* //////////////////////////////////////////////////////////////////// */}
-      <section className={styles.communityChempionContentDetails}>
-        <div className={styles.communityChempionContentDetailsdiv}>
-          <h2>BIKEATHON £300 FOR SPEED OF SIGHT</h2>
-          <p>
-            In attendance to the annual intelligent’s instructor conference and
-            expo, we worked hand in hand with NHS to provide free health checks
-            for instructors and individuals, raising awareness to high blood
-            pressure and diabetes. During the event, Smartlearner also held a
-            Bikeathon to raise money for the Speed of Sight charity. Instructors
-            came to participate in the bikeathon.
-          </p>
-          <p>
-            For every minute spent on the bike, £1 was raised and donated to the
-            charity. At the very end of the day we were able to raise a total of
-            £300 for the charity! This went to support driving track events for
-            people of all ages regardless of ability or disability.
-          </p>
-          <p>
-            The charity empowers disabled people of all ages and allows them to
-            participate in unique activities and experiences!
-          </p>
-        </div>
-      </section>
-      {/* ///////////////////////////////////////////////////////////// */}
-
-      <section className={styles.communityChempionContentDetails}>
-        <div className={styles.communityChempionContentDetailsdiv}>
-          {" "}
-          <h2>THE CYCLE RECYCLER BIKE COMPETITION</h2>
-          <p>
-            Summer 2022, SmartLearner Driving School collaborated with The Cycle
-            Recycler; a business that advocated reusing materials and revamping
-            old bicycles.
-          </p>
-          <p>
-            Through this competition and campaign, we wanted to shed more light
-            and encourage our learners and people within our community to try
-            alternative modes of transport as heavy representatives of
-            sustainability.
-          </p>
-          <p>
-            We held this competition through out the summer for 2 lucky
-            individuals to win. We reached many different businesses to support
-            our campaign and successfully gained as much as 500+ entries, which
-            was then added onto an automated raffle.
-          </p>
-          <p>
-            Below are pictures of two winners of our competition and one of the
-            business owners that support the project!
-          </p>
-        </div>
-      </section>
+                  </div>
+                  <div id={styles.schoolLocal}>
+                    <p>"The local School for local people"</p>
+                  </div>
+              </section>
+            {/* /////////////////////////////////// */}
+          </section>
+        </section>
+      </div>
     </div>
   );
 }
