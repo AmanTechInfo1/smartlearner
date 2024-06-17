@@ -1,29 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
-import { useDispatch, useSelector } from 'react-redux';
 import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
-import { editQuizCategory } from '../../../../redux/features/quizCategorySlice';
+import { createQuizCategory } from '../../../../redux/features/quizCategorySlice';
 
 
-const EditQuizCategory = (props) => {
+const AddQuizModule = (props) => {
     const dispatch = useDispatch();
-    const { loading, quizCategory } = useSelector((state) => state.quizCategory);
-
     const [formData, setFormData] = useState({
-        name: quizCategory ? quizCategory.name : "",
-        description: quizCategory ? quizCategory.description : "",
+        name: "",
+        description: "",
     });
-
     const [errors, setErrors] = useState({});
-
-    useEffect(() => {
-        if (quizCategory) {
-            setFormData({
-                name: quizCategory.name,
-                description: quizCategory.description,
-            });
-        }
-    }, [quizCategory]);
+    const [loading, setLoading] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -48,34 +37,39 @@ const EditQuizCategory = (props) => {
         }
     };
 
+
+    console.log(errors, "errorserrorserrorserrors")
     const onSubmit = async (e) => {
         e.preventDefault();
         const isValid = await validateForm();
         if (isValid) {
+            setLoading(true);
             const formDataToSend = new FormData();
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
 
-            dispatch(editQuizCategory(quizCategory._id, formData, props.toggleEditQuizCategoryModal, props.state));
+            dispatch(createQuizCategory(formData, props.toggleAddQuizCategoryModal, props.state));
+            setLoading(false);
         }
     };
 
     return (
         <>
             <Modal
-                isOpen={props.showEditQuizCategoryModal}
-                toggle={props.toggleEditQuizCategoryModal}>
-                <ModalHeader toggle={props.toggleEditQuizCategoryModal}>
-                    Update Quiz Category
+                isOpen={props.showAddQuizCategoryModal}
+                toggle={props.toggleAddQuizCategoryModal}>
+                <ModalHeader
+                    toggle={props.toggleAddQuizCategoryModal}>
+                    Add Quiz Module
                 </ModalHeader>
                 <ModalBody>
                     <form onSubmit={onSubmit}>
                         <div className="form-group">
-                            <label>Quiz Category Name</label>
+                            <label>Quiz Module Name</label>
                             <input
-                                name="name"
                                 className={`form-control ${errors.name ? "error-input" : ""}`}
                                 type="text"
+                                name="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 autoComplete="false"
@@ -85,9 +79,9 @@ const EditQuizCategory = (props) => {
                         <div className="form-group">
                             <label>Description</label>
                             <input
-                                name="description"
                                 className={`form-control ${errors.description ? "error-input" : ""}`}
                                 type="text"
+                                name="description"
                                 value={formData.description}
                                 onChange={handleInputChange}
                                 autoComplete="false"
@@ -106,8 +100,7 @@ const EditQuizCategory = (props) => {
                 </ModalBody>
             </Modal>
         </>
-    );
-}
+    )
+};
 
-
-export default EditQuizCategory
+export default AddQuizModule;

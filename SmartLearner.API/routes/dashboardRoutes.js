@@ -6,5 +6,7 @@ const { requireAuth } = require("../middlewares/authMiddleware");
 const dashboardController = require("../controllers/dashboardController");
 
 router.get("/getDashboardCards",requireAuth, dashboardController.getDashboardCards);
+router.get("/getCategoryCards",requireAuth, dashboardController.getCategoryCards);
+router.get("/getModuleCards/:id",requireAuth, dashboardController.getModuleCards);
 
 module.exports = router;

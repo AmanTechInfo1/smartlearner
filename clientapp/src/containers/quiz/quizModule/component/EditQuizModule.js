@@ -5,25 +5,25 @@ import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
 import { editQuizCategory } from '../../../../redux/features/quizCategorySlice';
 
 
-const EditQuizCategory = (props) => {
+const EditQuizModule = (props) => {
     const dispatch = useDispatch();
-    const { loading, quizCategory } = useSelector((state) => state.quizCategory);
+    const { loading, oneQuizModule } = useSelector((state) => state.quizCategory);
 
     const [formData, setFormData] = useState({
-        name: quizCategory ? quizCategory.name : "",
-        description: quizCategory ? quizCategory.description : "",
+        name: oneQuizModule ? oneQuizModule.name : "",
+        description: oneQuizModule ? oneQuizModule.description : "",
     });
 
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        if (quizCategory) {
+        if (oneQuizModule) {
             setFormData({
-                name: quizCategory.name,
-                description: quizCategory.description,
+                name: oneQuizModule.name,
+                description: oneQuizModule.description,
             });
         }
-    }, [quizCategory]);
+    }, [oneQuizModule]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -56,7 +56,7 @@ const EditQuizCategory = (props) => {
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
 
-            dispatch(editQuizCategory(quizCategory._id, formData, props.toggleEditQuizCategoryModal, props.state));
+            dispatch(editQuizCategory(oneQuizModule._id, formData, props.toggleEditQuizCategoryModal, props.state));
         }
     };
 
@@ -110,4 +110,4 @@ const EditQuizCategory = (props) => {
 }
 
 
-export default EditQuizCategory
+export default EditQuizModule

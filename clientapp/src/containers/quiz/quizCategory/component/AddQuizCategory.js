@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
+import { createQuizCategory } from '../../../../redux/features/quizCategorySlice';
 
 
 const AddQuizCategory = (props) => {
@@ -34,7 +38,7 @@ const AddQuizCategory = (props) => {
     };
 
 
-    console.log(errors,"errorserrorserrorserrors")
+    console.log(errors, "errorserrorserrorserrors")
     const onSubmit = async (e) => {
         e.preventDefault();
         const isValid = await validateForm();
@@ -44,63 +48,59 @@ const AddQuizCategory = (props) => {
             formDataToSend.append('name', formData.name);
             formDataToSend.append('description', formData.description);
 
-            dispatch(createQuizCategory(formData, props.toggleAddQuizCategoryModal,props.state));
+            dispatch(createQuizCategory(formData, props.toggleAddQuizCategoryModal, props.state));
             setLoading(false);
         }
     };
 
     return (
         <>
-            {!loading ? (
-                <Modal
-                    isOpen={props.showAddQuizCategoryModal}
+            <Modal
+                isOpen={props.showAddQuizCategoryModal}
+                toggle={props.toggleAddQuizCategoryModal}>
+                <ModalHeader
                     toggle={props.toggleAddQuizCategoryModal}>
-                    <ModalHeader
-                        toggle={props.toggleAddQuizCategoryModal}>
-                        Add Quiz Category
-                    </ModalHeader>
-                    <ModalBody>
-                        <form onSubmit={onSubmit}>
-                            <div className="form-group">
-                                <label>Quiz Category Name</label>
-                                <input
-                                    className={`form-control ${errors.name ? "error-input" : ""}`}
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    autoComplete="false"
-                                />
-                                {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Description</label>
-                                <input
-                                    className={`form-control ${errors.description ? "error-input" : ""}`}
-                                    type="text"
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleInputChange}
-                                    autoComplete="false"
-                                />
-                                {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
-                            </div>
-                            <div className="form-group text-center mt-3">
-                                <button
-                                    className="btn btn-primary account-btn btn-lg"
-                                    type="submit"
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </ModalBody>
-                </Modal>
-            ) : (
-                <Loader />
-            )}
+                    Add Quiz Category
+                </ModalHeader>
+                <ModalBody>
+                    <form onSubmit={onSubmit}>
+                        <div className="form-group">
+                            <label>Quiz Category Name</label>
+                            <input
+                                className={`form-control ${errors.name ? "error-input" : ""}`}
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                autoComplete="false"
+                            />
+                            {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+                        </div>
+                        <div className="form-group">
+                            <label>Description</label>
+                            <input
+                                className={`form-control ${errors.description ? "error-input" : ""}`}
+                                type="text"
+                                name="description"
+                                value={formData.description}
+                                onChange={handleInputChange}
+                                autoComplete="false"
+                            />
+                            {errors.description && <p style={{ color: 'red' }}>{errors.description}</p>}
+                        </div>
+                        <div className="form-group text-center mt-3">
+                            <button
+                                className="btn btn-primary account-btn btn-lg"
+                                type="submit"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </ModalBody>
+            </Modal>
         </>
-    );
+    )
 };
 
 export default AddQuizCategory;

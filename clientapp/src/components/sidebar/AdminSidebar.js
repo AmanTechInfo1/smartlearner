@@ -82,6 +82,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                         </li>
                     </Link>
 
+                    <Link to="/admin/quiz-module">
+                        <li className={styles.adminSidebarListItem}>
+                            <BsListCheck className={styles.adminIcon} />
+                            Quiz Module
+                        </li>
+                    </Link>
+
 
                     <Link to="/admin/quiz">
                         <li className={styles.adminSidebarListItem}>
@@ -89,6 +96,14 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
                             Quizes
                         </li>
                     </Link>
+                    <Link to="/admin/quizViewResult">
+                        <li className={styles.adminSidebarListItem}>
+                            <BsMenuButtonWideFill className={styles.adminIcon} />
+                            Quiz Result
+                        </li>
+                    </Link>
+
+                    
 
                     <li className={styles.adminSidebarListItem}>
                         <Link to="#">

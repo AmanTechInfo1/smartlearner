@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 const dashboardSlice = createSlice({
     name: "dashboard",
     initialState: {
+        Quizcards: [],
         cards: [],
         roleLoading: false
     },
@@ -15,6 +16,14 @@ const dashboardSlice = createSlice({
         },
         getDashboardFailure: (state, action) => {
             state.cards = {};
+            state.roleLoading = false;
+        },
+        getQuizDashboardSuccess: (state, action) => {
+            state.Quizcards = action.payload.quiz;
+            state.roleLoading = false;
+        },
+        getQuizDashboardFailure: (state, action) => {
+            state.Quizcards = [];
             state.roleLoading = false;
         },
         setLoading: (state, action) => {
@@ -41,5 +50,51 @@ export const getMyDashboard = () => async (dispatch) => {
     }
 };
 
-export const { getDashboardSuccess, getDashboardFailure, setLoading } = dashboardSlice.actions;
+
+
+
+export const getMyQuizCategory = () => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/dashboard/getCategoryCards`
+        );
+        if (response.data.success) {
+            dispatch(getQuizDashboardSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getQuizDashboardFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getDashboardFailure());
+    }
+};
+
+
+
+export const getMyQuizModule = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/dashboard/getModuleCards/${id}`
+        );
+        if (response.data.success) {
+            dispatch(getQuizDashboardSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getQuizDashboardFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getDashboardFailure());
+    }
+};
+
+export const { 
+    getDashboardSuccess,
+    getDashboardFailure, 
+    getQuizDashboardSuccess,
+    getQuizDashboardFailure, 
+    setLoading } = dashboardSlice.actions;
 export default dashboardSlice.reducer;

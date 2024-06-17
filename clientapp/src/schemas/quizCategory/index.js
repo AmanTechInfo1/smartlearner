@@ -9,3 +9,5 @@ export const quizCategorySchema = yup.object({
     .default(false),
   deletedOn: yup.date(),
 });
+
+

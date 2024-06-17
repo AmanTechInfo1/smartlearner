@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
-import AddQuizModal from "./component/AddQuizModal";
-import EditQuizModal from "./component/EditQuizModal";
+import AddQuizCategory from "./component/AddQuizModule";
 import { useDispatch, useSelector } from "react-redux";
+
+import { deleteQuizCategory, getAllQuizCategories, getQuizCategoryById } from "../../../redux/features/quizCategorySlice";
 import { Table } from "antd";
-import styles from "../../assets/css/admin.module.css";
+import styles from "../../../assets/css/admin.module.css";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Button } from "reactstrap";
-import Loader from "../../components/loader/Loader";
-import { deleteQuiz, getAllQuizzes, getQuizById } from "../../redux/features/quizSlice";
-
-
-const QuizzesModal = () => {
+import Loader from "../../../components/loader/Loader";
+import AddQuizModule from "./component/AddQuizModule";
+import EditQuizModule from "../quizUModule/component/EditQuizUModule";
+import { deleteQuizModule } from "../../../redux/features/quizSlice";
+const QuizModule = () => {
     const dispatch = useDispatch();
-    const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
-    const [quizObj, setQuizObj] = useState();
+    const { loading, quizCategories, quizCategoriesCount } = useSelector((state) => state.quizCategory);
+    const [quizCategoryObj, setQuizCategoryObj] = useState();
 
-    const [showAddQuizModal, setShowAddQuizModal] = useState(false);
-    const toggleAddQuizModal = () => setShowAddQuizModal(!showAddQuizModal);
+    const [showAddQuizCategoryModal, setShowAddQuizCategoryModal] = useState(false);
+    const toggleAddQuizCategoryModal = () => setShowAddQuizCategoryModal(!showAddQuizCategoryModal);
 
-    const [showEditQuizModal, setShowEditQuizModal] = useState(false);
-    const toggleEditQuizModal = () => setShowEditQuizModal(!showEditQuizModal);
+    const [showEditQuizCategoryModal, setShowEditQuizCategoryModal] = useState(false);
+    const toggleEditQuizCategoryModal = () => setShowEditQuizCategoryModal(!showEditQuizCategoryModal);
 
     const [state, setState] = useState({
         search: "",
         page: 1,
-        pageSize: 10,
+        pageSize: 10, 
     });
 
     useEffect(() => {
-        dispatch(getAllQuizzes(state.search, state.page, state.pageSize));
+        dispatch(getAllQuizCategories(state.search, state.page, state.pageSize));
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
@@ -47,38 +48,21 @@ const QuizzesModal = () => {
     };
 
     const handleEditClick = (id) => {
-        dispatch(getQuizById(id));
-        toggleEditQuizModal();
+        dispatch(getQuizCategoryById(id));
+        // dispatch(getAllQuizCategories(id))
+        toggleEditQuizCategoryModal();
     };
 
     const handleDelete = (id) => {
-        dispatch(deleteQuiz(id))
+        dispatch(deleteQuizModule(id));
     };
 
     const columns = [
         {
-            title: "Question",
-            dataIndex: "question",
+            title: "Name",
+            dataIndex: "name",
             align: "center",
-            sorter: (a, b) => a.question.length - b.question.length,
-        },
-        {
-            title: "Answer",
-            dataIndex: "answer",
-            align: "center",
-            sorter: (a, b) => a.answer.length - b.answer.length,
-        },
-        {
-            title: "Option",
-            dataIndex: "option",
-            align: "center",
-            sorter: (a, b) => a.answer.length - b.answer.length,
-            render: (text) => {
-                console.log("texttexttext", text )
-                return <span title={text}>
-                    {text.join(", ")}
-                </span>
-            },
+            sorter: (a, b) => a.name.length - b.name.length,
         },
         {
             title: "Description",
@@ -126,12 +110,12 @@ const QuizzesModal = () => {
         <>
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
-                    <h2 className={styles.userHeading}>Quizzes</h2>
+                    <h2 className={styles.userHeading}>Quiz Module</h2>
                     <button
                         className={styles.addButton}
-                        onClick={toggleAddQuizModal}
+                        onClick={toggleAddQuizCategoryModal}
                     >
-                        Add Quiz
+                        Add Quiz Module
                     </button>
                 </div>
                 {!loading ? (
@@ -140,7 +124,7 @@ const QuizzesModal = () => {
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: quizzesCount,
+                            total: quizCategoriesCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,
@@ -151,24 +135,26 @@ const QuizzesModal = () => {
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
-                        dataSource={quizzes}
+                        dataSource={quizCategories}
                         rowKey={(record) => record._id}
                     />
                 ) : (
                     <Loader />
                 )}
             </div>
-            <AddQuizModal
-                showAddQuizModal={showAddQuizModal}
-                toggleAddQuizModal={toggleAddQuizModal}
+            <AddQuizModule
+                state={state}
+                showAddQuizCategoryModal={showAddQuizCategoryModal}
+                toggleAddQuizCategoryModal={toggleAddQuizCategoryModal}
             />
-            <EditQuizModal
-                quizObj={quizObj}
-                showEditQuizModal={showEditQuizModal}
-                toggleEditQuizModal={toggleEditQuizModal}
+            <EditQuizModule
+                state={state}
+                quizCategoryObj={quizCategoryObj}
+                showEditQuizCategoryModal={showEditQuizCategoryModal}
+                toggleEditQuizCategoryModal={toggleEditQuizCategoryModal}
             />
         </>
     );
 };
 
-export default QuizzesModal;
+export default QuizModule;

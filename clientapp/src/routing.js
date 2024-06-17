@@ -61,6 +61,13 @@ import Area from "./containers/productArea/Area";
 import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
 import QuizzesModal from "./containers/quiz/QuizzesModal";
 import EditQuizModal from "./containers/quiz/component/EditQuizModal";
+import QuizModal from "./containers/quiz/quiz/QuizModal";
+import Quiz from "./components/takequizes/Quiz";
+import QuizResult from "./components/takequizes/QuizResult";
+import QuizModule from "./containers/quiz/quizModule/QuizModule";
+import QuizUModule from "./containers/quiz/quizUModule/QuizUModule";
+import QuizCategoryHome from "./components/takequizes/QuizCategoryHome";
+import QuizModuleHome from "./components/takequizes/QuizModuleHome";
 
 
 
@@ -147,6 +154,14 @@ export const router = createBrowserRouter([
         element: <AdminHome/>,
       },
       {
+        path: "/admin/quizCategoryHome",
+        element: <QuizCategoryHome/>,
+      },
+      {
+        path: "/admin/quizModuleId/:id",
+        element: <QuizModuleHome/>,
+      },
+      {
         path: "/admin/roles",
         element: <Roles/> ,
       },
@@ -176,8 +191,41 @@ export const router = createBrowserRouter([
         element:<QuizCategory/>,
       },
       {
+        path:"/admin/quiz-module",
+        element:<QuizUModule/>,
+      },
+      // {
+      //   path:"/admin/quiz",
+      //   element:<QuizzesModal/>,
+      // },
+      {
+        path:"/admin/takequiz/:cid/:id",
+        element:<Quiz/>,
+      },{
+        path:"/admin/takequiz/:cid",
+        element:<Quiz/>,
+      },{
+        path:"/admin/quizCategory",
+        element:<Quiz/>,
+      },{
+        path:"/admin/quizModule",
+        element:<Quiz/>,
+      },
+      {
+        path:"/admin/quizModule",
+        element:<QuizModule/>,
+      },
+      {
+        path:"/admin/quizResult",
+        element:<QuizResult/>,
+      },
+      {
+        path:"/admin/quizViewResult",
+        element:<QuizResult/>,
+      },
+      {
         path:"/admin/quiz",
-        element:<QuizzesModal/>,
+        element:<QuizModal/>,
       },
       {
         path:"/admin/edit-quiz",

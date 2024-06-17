@@ -214,6 +214,7 @@
     justify-content: space-around;
     padding: 20px;
     border-radius: 15px;
+    background-color: #ff39396b;
 
     transition: transform 0.3s ease;
 }

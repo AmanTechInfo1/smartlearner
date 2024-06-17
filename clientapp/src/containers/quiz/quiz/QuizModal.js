@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from "react";
-import AddQuizModal from "./component/AddQuizModal";
-import EditQuizModal from "./component/EditQuizModal";
 import { useDispatch, useSelector } from "react-redux";
+
+import { deleteQuizCategory, getAllQuizCategories, getListQuizCategories, getQuizCategoryById } from "../../../redux/features/quizCategorySlice";
 import { Table } from "antd";
-import styles from "../../assets/css/admin.module.css";
+import styles from "../../../assets/css/admin.module.css";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Button } from "reactstrap";
-import Loader from "../../components/loader/Loader";
-import { deleteQuiz, getAllQuizzes, getQuizById } from "../../redux/features/quizSlice";
+import Loader from "../../../components/loader/Loader";
+import AddQuizModal from "../component/AddQuizModal";
+import EditQuizModal from "../component/EditQuizModal";
+import { deleteQuiz, getAllQuizzes, getQuizById } from "../../../redux/features/quizSlice";
+import EditQuizUpdatedModal from "./component/EditQuizModal";
+import AddQuizUpdatedModal from "./component/AddQuizModal";
 
-
-const QuizzesModal = () => {
+const QuizModal = () => {
     const dispatch = useDispatch();
     const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
-    const [quizObj, setQuizObj] = useState();
+    const [quizCategoryObj, setQuizCategoryObj] = useState();
 
-    const [showAddQuizModal, setShowAddQuizModal] = useState(false);
-    const toggleAddQuizModal = () => setShowAddQuizModal(!showAddQuizModal);
+    const [showAddQuizCategoryModal, setShowAddQuizCategoryModal] = useState(false);
+    const toggleAddQuizCategoryModal = () => setShowAddQuizCategoryModal(!showAddQuizCategoryModal);
 
-    const [showEditQuizModal, setShowEditQuizModal] = useState(false);
-    const toggleEditQuizModal = () => setShowEditQuizModal(!showEditQuizModal);
+    const [showEditQuizCategoryModal, setShowEditQuizCategoryModal] = useState(false);
+    const toggleEditQuizCategoryModal = () => setShowEditQuizCategoryModal(!showEditQuizCategoryModal);
 
     const [state, setState] = useState({
         search: "",
         page: 1,
-        pageSize: 10,
+        pageSize: 10, 
     });
 
     useEffect(() => {
@@ -46,13 +49,18 @@ const QuizzesModal = () => {
         return originalElement;
     };
 
+    const handleAddClick = () => {
+        dispatch(getListQuizCategories());
+    }
     const handleEditClick = (id) => {
+        dispatch(getListQuizCategories());
         dispatch(getQuizById(id));
-        toggleEditQuizModal();
+        // dispatch(getAllQuizCategories(id))
+        toggleEditQuizCategoryModal();
     };
 
     const handleDelete = (id) => {
-        dispatch(deleteQuiz(id))
+        dispatch(deleteQuiz(id));
     };
 
     const columns = [
@@ -77,6 +85,7 @@ const QuizzesModal = () => {
                 console.log("texttexttext", text )
                 return <span title={text}>
                     {text.join(", ")}
+                    {/* {text} */}
                 </span>
             },
         },
@@ -90,6 +99,18 @@ const QuizzesModal = () => {
                     {text.length > 40 ? `${text.substring(0, 40)}...` : text}
                 </span>
             ),
+        },
+        {
+            title: "Category",
+            dataIndex: "categoryName",
+            align: "center",
+            sorter: (a, b) => a?.categoryName.length - b?.categoryName.length
+        },
+        {
+            title: "Module Name",
+            dataIndex: "moduleName",
+            align: "center",
+            sorter: (a, b) => a?.moduleName.length - b?.moduleName.length
         },
         {
             title: "Action",
@@ -126,10 +147,14 @@ const QuizzesModal = () => {
         <>
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
-                    <h2 className={styles.userHeading}>Quizzes</h2>
+                    <h2 className={styles.userHeading}>Quiz</h2>
                     <button
                         className={styles.addButton}
-                        onClick={toggleAddQuizModal}
+                        onClick={(e)=>{
+                            e.preventDefault()
+                            toggleAddQuizCategoryModal()
+                            handleAddClick()
+                        }}
                     >
                         Add Quiz
                     </button>
@@ -158,17 +183,19 @@ const QuizzesModal = () => {
                     <Loader />
                 )}
             </div>
-            <AddQuizModal
-                showAddQuizModal={showAddQuizModal}
-                toggleAddQuizModal={toggleAddQuizModal}
+            <AddQuizUpdatedModal
+                state={state}
+                showAddQuizCategoryModal={showAddQuizCategoryModal}
+                toggleAddQuizCategoryModal={toggleAddQuizCategoryModal}
             />
-            <EditQuizModal
-                quizObj={quizObj}
-                showEditQuizModal={showEditQuizModal}
-                toggleEditQuizModal={toggleEditQuizModal}
+            <EditQuizUpdatedModal  
+                state={state}
+                quizCategoryObj={quizCategoryObj}
+                showEditQuizCategoryModal={showEditQuizCategoryModal}
+                toggleEditQuizCategoryModal={toggleEditQuizCategoryModal}
             />
         </>
     );
 };
 
-export default QuizzesModal;
+export default QuizModal;

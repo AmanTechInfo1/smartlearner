@@ -6,6 +6,7 @@ const quizCategorySlice = createSlice({
     name: "quizCategory",
     initialState: {
         quizCategories: [],
+        quizCategoryModule:[],
         quizCategoriesCount: null,
         loading: false,
         quizCategoriesList: [],
@@ -76,6 +77,14 @@ const quizCategorySlice = createSlice({
             state.quizCategory = null;
             state.loading = false;
         },
+        getQuizCategoryModuleByIdSuccess: (state, action) => {
+            state.quizCategoryModule = action.payload;
+            state.loading = false;
+        },
+        getQuizCategoryModuleByIdFailure: (state) => {
+            state.quizCategoryModule = [];
+            state.loading = false;
+        },
         deleteQuizCategorySuccess: (state, action) => {
             const quizCategoryId = action.payload;
             state.quizCategories = state.quizCategories.filter(quizCategory => quizCategory._id !== quizCategoryId);
@@ -129,6 +138,8 @@ export const getQuizCategories = (search, page, pagesize) => async (dispatch) =>
     }
 };
 
+
+
 export const createQuizCategory = (data, toggleAddQuizCategoryModal,state) => async (dispatch) => {
         try {
             dispatch(setLoading());
@@ -170,7 +181,7 @@ export const editQuizCategory = (id, data, toggleEditQuizCategoryModal,state) =>
 export const getListQuizCategories = () => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.get(`/api/product/quizCategorylist`);
+        const response = await httpHandler.get(`/api/quiz/quizCategorylist`);
         if (response.data.success) {
             dispatch(getListQuizCategorySuccess(response.data.data));
         } else {
@@ -198,6 +209,27 @@ export const getQuizCategoryById = (id) => async (dispatch) => {
         dispatch(getQuizCategoryByIdFailure());
     }
 };
+
+
+
+export const getQuizCategoryModuleById = (id) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(`/api/quiz/quizCategoryModule/${id}`);
+        if (response.data.success) {
+            dispatch(getQuizCategoryModuleByIdSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getQuizCategoryModuleByIdFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getQuizCategoryModuleByIdFailure());
+    }
+};
+
+
+
 
 export const deleteQuizCategory = (id) => async (dispatch) => {
     try {
@@ -228,6 +260,8 @@ export const {
     editQuizCategoryFailure,
     getQuizCategoryByIdSuccess,
     getQuizCategoryByIdFailure,
+    getQuizCategoryModuleByIdSuccess,
+    getQuizCategoryModuleByIdFailure,
     deleteQuizCategorySuccess,
     deleteQuizCategoryFailure,
     setLoading
