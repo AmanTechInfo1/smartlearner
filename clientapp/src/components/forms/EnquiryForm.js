@@ -29,6 +29,7 @@ export default function EnquiryForm() {
   return (
     <div>
       <section className={styles.formContainer}>
+        <hr/>
         <section className={styles.innerFormSection}>
           <div className={styles.enquiryForm}>
             <h4>Enquiry Form</h4>

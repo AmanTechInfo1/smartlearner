@@ -275,22 +275,26 @@
   }
     /* ///////////////////////////ENquiry Form ///////////////// */
     .formContainer{
-        padding: 100px 0;
-         background-color: #eb0009;
+        padding: 2rem 0;
+        
+        }
+        .formContainer hr{
+          border: 2px solid #eb0009;
+          opacity: 1;
         }
       .innerFormSection{
-          max-width: 800px;
+          max-width: 700px;
           margin-left: auto;
           margin-right: auto;
       }
       .enquiryForm{
-          padding: 150px 150px 150px 150px;
-      background-color: #fff;
+          padding: 2rem;
+     
       }
       .enquiryForm h4{
           text-align: center;
-          font-family: "Montserrat", sans-serif;
-          color: #000000;
+          font-family: "Antonio", sans-serif;
+          color: white;
           font-size: 55px;
           font-weight: 600;
           padding-bottom: 50px;
@@ -304,6 +308,8 @@
         }
         .formGroup label{
           margin-bottom: 0.5rem;
+          color: #eb0009;
+          font-family: "Antonio", sans-serif;
         }
         .formGroup input{
           display: block;
@@ -319,6 +325,7 @@
           -webkit-transition: 0.5s;
           transition: 0.5s;
           outline: none;
+          font-family: "Antonio", sans-serif;
         }
         .formGroup input:focus {
           border: 1px solid #eb0009;
@@ -337,6 +344,7 @@
           -webkit-transition: 0.5s;
           transition: 0.5s;
           outline: none;
+          font-family: "Antonio", sans-serif;
         }
         .formGroup textarea:focus {
           border: 1px solid #eb0009;
@@ -357,7 +365,7 @@
           font-size: 14px;
           font-weight: 600;
           text-transform: uppercase;
-          font-family: "Montserrat", sans-serif;
+          font-family: "Antonio", sans-serif;
       }
       #formBtn:hover{
           border: 1px solid red;

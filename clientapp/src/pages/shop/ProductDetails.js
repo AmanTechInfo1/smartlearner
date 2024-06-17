@@ -9,11 +9,12 @@ import ProductTab from "./ProductTab";
 import poster from "../../assets/images/video-poster-img.jpg";
 import chooseUsImg from "../../assets/images/choose-img.jpg";
 import CallBackForm from "../../components/forms/CallBackForm";
-import Testimonials from "../../components/testimonials/Testimonials";
+
 import Review from "../../components/views/Review";
 import ShortFaqs from "../../components/shortFaqs/ShortFaqs";
 import DrivenForm from "../../components/forms/DrivenForm";
 import ProductSlider from "./ProductSlider";
+import Testemonial from "../../components/testimonials/Testemonial";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -258,7 +259,7 @@ export default function ProductDetails() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testimonials />
+       <Testemonial/>
       </section>
 
       {/* ///////////////////////Reviews//////// */}
