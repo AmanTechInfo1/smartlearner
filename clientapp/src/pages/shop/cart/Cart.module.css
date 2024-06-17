@@ -21,7 +21,7 @@
   width: 100px;
 }
 #carImg {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-right: auto;
   margin-left: auto;
   width: 100%;

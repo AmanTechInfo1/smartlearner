@@ -1,21 +1,45 @@
 import React, { useState } from "react";
 
 import './Checkout.css'
+import { useSelector } from "react-redux";
 
 export default function FinalCheckout(props) {
-    const [email, setEmail] = useState("");
-    const [orderNotes, setOrderNotes] = useState("");
+  const [email, setEmail] = useState("");
+  const [orderNotes, setOrderNotes] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleOrderNotesChange = (e) => {
+    setOrderNotes(e.target.value);
+  };
+
+
+  const myCart = useSelector((state) => {
+    return state.cart.cart
+  })
+
+
+
+  const calculateSubtotal = () => {
+    return myCart.reduce(
+      (acc, item) => acc + item.price * item.count,
+      0
+    );
+  };
+
+  const subtotal = calculateSubtotal();
+  const serviceCharge = subtotal * 0.02;
+  const total = subtotal + serviceCharge;
+
+
   
-    const handleEmailChange = (e) => {
-      setEmail(e.target.value);
-    };
-  
-    const handleOrderNotesChange = (e) => {
-      setOrderNotes(e.target.value);
-    };
-    return (
-        <>
-           <div className="modal-content">
+
+
+  return (
+    <>
+      <div className="modal-content">
         <form className="form-space">
           <div className="form-space">
             <label htmlFor="email" className="form-label text-white">
@@ -54,32 +78,32 @@ export default function FinalCheckout(props) {
                 <span>Service</span>
                 <span>Subtotal</span>
               </div>
-              <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
+              {/* <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>1 Hour - Manual 1x</span>
                 <span>$100.00</span>
-              </div>
+              </div> */}
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>Subtotal</span>
-                <span>$100.00</span>
+                <span>£{subtotal}</span>
               </div>
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>2% ONLINE SERVICE CHARGE</span>
-                <span>$2.00</span>
+                <span>£{serviceCharge}</span>
               </div>
 
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>Total</span>
-                <span>$102.00</span>
+                <span>£{total}</span>
               </div>
             </div>
             <div className="text-center mt-3">
-            <button className="btn-primary account-btn btn-lg" type="submit">
-              checkout
-            </button>
-          </div>
+              <button className="btn-primary account-btn btn-lg" type="submit">
+                checkout
+              </button>
+            </div>
           </div>
         </div>
       </div>
-        </>
-    );
+    </>
+  );
 }

@@ -1,7 +1,7 @@
 const accountService = require("../services/accountService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
-
+const bcrypt = require("bcrypt");
 class AccountController {
   async registerUser(req, res, next) {
     try {
@@ -77,6 +77,11 @@ class AccountController {
 
   async updateUser(req, res, next) {
     try {
+
+      console.log("password" in req.body)
+      const salt = await bcrypt.genSalt();
+      const hashedPassword = await bcrypt.hash(req.body["password"], salt);
+      req.body["password"]=hashedPassword
       const role = await accountService.updateUserAsync(req.params.id, req.body);
       res.json(role);
     } catch (err) {

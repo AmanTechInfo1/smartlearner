@@ -14,9 +14,11 @@ import areaSlice from "../features/areaSlice";
 import quizCategorySlice from "../features/quizCategorySlice";
 import quizSlice from "../features/quizSlice";
 import dashboardSlice from "../features/dashboardSlice";
+import cartSlice from "../features/cartSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
+  cart: cartSlice,
   user: userSlice,
   roles: rolesSlice,
   category: categorySlice,

@@ -41,6 +41,7 @@ console.log(errors,"ajwsdfhxsdfgrt")
     formData.append("name", data?.name);
     formData.append("category", data?.category)
     formData.append("description", data?.description);
+    formData.append("duration", data?.duration);
     formData.append("image", image);
     formData.append("price", data?.price);
     formData.append("transmission", data?.transmission);
@@ -146,6 +147,31 @@ console.log(errors,"ajwsdfhxsdfgrt")
               />
               {errors?.description?.message ? (
                 <p style={{ color: "red" }}>{errors?.description?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+
+            
+            <div className="form-group">
+              <label>Duration (in Weeks)</label>
+              <Controller
+                name="duration"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <input
+                    className={`form-control  ${errors?.duration ? "error-input" : ""
+                      }`}
+                    type="number"
+                    value={value}
+                    onChange={onChange}
+                    autoComplete="false"
+                  />
+                )}
+                defaultValue={""}
+              />
+              {errors?.duration?.message ? (
+                <p style={{ color: "red" }}>{errors?.duration?.message}</p>
               ) : (
                 ""
               )}

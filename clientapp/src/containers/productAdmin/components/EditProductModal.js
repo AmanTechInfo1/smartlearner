@@ -21,6 +21,7 @@ function EditProductModal(props) {
     name: oneproduct ? oneproduct.name : "",
     category: oneproduct ? oneproduct.category : "",
     description: oneproduct ? oneproduct.description : "",
+    duration: oneproduct ? oneproduct.duration : "",
     price: oneproduct ? oneproduct.price : "",
     transmission: oneproduct ? oneproduct.transmission : "",
     experience: oneproduct ? oneproduct.experience : "",
@@ -42,6 +43,7 @@ function EditProductModal(props) {
     const newformData = new FormData();
     newformData.append("name", formData?.name);
     newformData.append("description", formData?.description);
+    newformData.append("duration", formData?.duration);
     if(image){
       newformData.append("image", image);
 
@@ -66,6 +68,7 @@ function EditProductModal(props) {
       setFormData({
         name: oneproduct ? oneproduct.name : "",
         description: oneproduct ? oneproduct.description : "",
+        duration: oneproduct ? oneproduct.duration : "",
         price: oneproduct ? oneproduct.price : "",
         transmission: oneproduct ? oneproduct.transmission : "",
         experience: oneproduct ? oneproduct.experience : "",
@@ -78,6 +81,7 @@ function EditProductModal(props) {
       reset({
         name: oneproduct ? oneproduct.name : "",
         description: oneproduct ? oneproduct.description : "",
+        duration: oneproduct ? oneproduct.duration : "",
         price: oneproduct ? oneproduct.price : "",
         transmission: oneproduct ? oneproduct.transmission : "",
         experience: oneproduct ? oneproduct.experience : "",
@@ -195,6 +199,30 @@ function EditProductModal(props) {
               />
               {errors?.description?.message ? (
                 <p style={{ color: "red" }}>{errors?.description?.message}</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="form-group">
+              <label>Duration (in Weeks)</label>
+              <Controller
+                name="duration"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <input
+                    className={`form-control  ${errors?.duration ? "error-input" : ""
+                      }`}
+                    type="number"
+                    value={formData.duration}
+                    onChange={handleInputChange}
+                    name="duration"
+                    autoComplete="false"
+                  />
+                )}
+                defaultValue={""}
+              />
+              {errors?.duration?.message ? (
+                <p style={{ color: "red" }}>{errors?.duration?.message}</p>
               ) : (
                 ""
               )}
