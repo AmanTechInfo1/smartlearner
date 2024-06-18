@@ -1,7 +1,7 @@
 // import React from 'react'
 import styles from "./css/TheorySupport.module.css";
-import { products } from "../assets/data/Products";
-import { FaStar, FaAngleDoubleRight } from "react-icons/fa";
+
+import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import poster from "../assets/images/video-poster-img.jpg";
 import ProductTab from "./shop/ProductTab";
@@ -9,19 +9,27 @@ import CallBackForm from "../components/forms/CallBackForm";
 import chooseUsImg from "../assets/images/choose-img.jpg";
 import DrivenForm from "../components/forms/DrivenForm";
 import { FaArrowRight } from "react-icons/fa";
-
 import Review from "../components/views/Review";
 import ShortFaqs from "../components/shortFaqs/ShortFaqs";
-import { useCartContext } from "../components/context/CartContext";
 import Testemonial from "../components/testimonials/Testemonial";
+import TheorySupportCorousel from "../components/ui/TheorySupportCarousel";
+import starImg from "../assets/images/star.png";
+import { Element, scroller } from "react-scroll";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function TheorySupport() {
-
-  const { addToCart } = useCartContext(); 
-
-  const theoryProducts = products.filter(
-    (product) => product.category === "Theory"
-  );
+  const { section } = useParams();
+  useEffect(() => {
+    if (section) {
+      scroller.scrollTo(`${section}-section`, {
+        duration: 400,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70,
+      });
+    }
+  }, [section]);
 
   return (
     <div className={styles.theorySupportPage}>
@@ -32,109 +40,20 @@ export default function TheorySupport() {
       </section>
       {/* //////////////////////////////////////////////// CONTENT SECTION //////////////////////////////// */}
       <section className={styles.innerTheorySupportSection}>
-        <div className={styles.innerTheorySupportContent}>
-          <div className={styles.theorySupportContentVideo}>
-            <iframe
-              width="100%"
-              height="600px"
-              src="src\assets\videos\Video-1886-041219-B.mp4"></iframe>
+        <section className={styles.videosFramesSec}>
+          <div className={styles.innerTheorySupportContent}>
+            <div className={styles.theorySupportContentVideo}>
+              <iframe
+                width="100%"
+                height="600px"
+                src="https://www.youtube.com/embed/8PskOJsdGM8"
+                title="YouTube Video"
+              ></iframe>
+            </div>
           </div>
-        </div>
-        {/* ///////////////////////////////// */}
-        <div className={styles.chooseProductSection}>
-          <div className={styles.productGrid}>
-            {theoryProducts.map(
-              ({
-                id,
-                name,
-                image,
-                price,
-                duration,
-                experience,
-                Transmission,
-                postcode,
-                inCart,
-                quantity,
-                rating,
-              }) => (
-                <div key={id} className={styles.productCard}>
-                  <img src={image} alt={name} />
-                  <div className={styles.productDetails}>
-                    <h3>{name}</h3>
-                    <div className={styles.ratingAndPrice}>
-                      <div className={styles.rating}>
-                        {[...Array(5)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={index < rating ? styles.filled : ""}>
-                            <FaStar />
-                          </span>
-                        ))}
-                      </div>
-                      <p className={styles.price}>${price}</p>
-                    </div>
-                    <ul type="none" className={styles.cardDetails}>
-                      <li>
-                        <p>
-                          Course Duration{" "}
-                          <span id={styles.arrowIcon}>
-                            {" "}
-                            <FaAngleDoubleRight
-                              id={styles.productmenuArrowIcon}
-                            />
-                          </span>
-                        </p>{" "}
-                        <p className={styles.duration}>{duration}</p>
-                      </li>
-                      <li>
-                        <p>
-                          Experience{" "}
-                          <span id={styles.arrowIcon}>
-                            {" "}
-                            <FaAngleDoubleRight
-                              id={styles.productmenuArrowIcon}
-                            />
-                          </span>
-                        </p>{" "}
-                        <p className={styles.duration}>{experience}</p>
-                      </li>
-                      <li>
-                        <p>
-                          Transmission{" "}
-                          <span id={styles.arrowIcon}>
-                            {" "}
-                            <FaAngleDoubleRight
-                              id={styles.productmenuArrowIcon}
-                            />
-                          </span>
-                        </p>{" "}
-                        <p className={styles.duration}>{Transmission}</p>
-                      </li>
-                    </ul>
+        </section>
+        {/* ///////////////////////////////// Products //////////////////*/}
 
-                    <div className={styles.buttons}>
-                      <button
-                        className={styles.bookNow}
-                        disabled={inCart}
-                        onClick={() =>
-                          addToCart({ id, name, price }, quantity)
-                        }>
-                        {inCart === true ? (
-                          <span>In Cart</span>
-                        ) : (
-                          <span>Book Now</span>
-                        )}
-                      </button>
-                      <NavLink to={`/product/${id}`}>
-                        <button className={styles.more}>More Info</button>
-                      </NavLink>
-                    </div>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </div>
         {/* //////////CallBack Form section///////////// */}
         <section className={styles.callbackFormSection}>
           <div className={styles.callbackFormContent}>
@@ -156,6 +75,7 @@ export default function TheorySupport() {
           </div>
         </section>
       </section>
+
       {/* /////////////////////////////////////////////// */}
       <section className={styles.TSvideosContanierSection}>
         <div className={styles.theorySupportContentVideosec}>
@@ -208,6 +128,41 @@ export default function TheorySupport() {
         <h2>Search for driving lessons in your area</h2>
         <DrivenForm />
       </section>
+      {/* /////////////////////////////////////////////// */}
+
+      <section className={styles.dManualSection}>
+        <hr />
+        <Element name="Theory-package-section">
+          <section className={styles.dManualSections} id="automatic-section1">
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>THEORY SUPPORT</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Need support on passing your theory test? We offer 1-2-1 in
+                house, from the comfort of your house on Zoom, or if you want to
+                touch up you driving skills, get ahead or have fun, we have a
+                driving simulator in office!
+              </p>
+            </div>
+            <section>
+              <TheorySupportCorousel />
+            </section>
+          </section>
+
+          <hr />
+        </Element>
+      </section>
+
       {/* ////////////////////////////////// */}
       <section className={styles.nextFormSection}>
         <div className={styles.nextFormContainer}>
@@ -244,7 +199,7 @@ export default function TheorySupport() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testemonial/>
+        <Testemonial />
       </section>
 
       {/* ///////////////////////Reviews//////// */}

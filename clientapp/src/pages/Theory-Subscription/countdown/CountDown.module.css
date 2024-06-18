@@ -5,10 +5,11 @@
 }
 .theoryPortalCountDown {
   padding: 2rem 1rem;
+  font-family: 'Antonio',sans-serif;
 }
 .theoryPortalTimer h4 {
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  
 }
 .theoryPortalTimerInputField {
   background-color: rgb(255, 255, 255);

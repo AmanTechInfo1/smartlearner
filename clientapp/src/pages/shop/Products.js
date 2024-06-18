@@ -149,7 +149,7 @@ export default function Products({ curElem }) {
                     </div>
                   </div>)
                 }
-                <NavLink to={`/product/${id}`}>
+                <NavLink to={`/product/${_id}`}>
                   <button className={styles.more}>More Info</button>
                 </NavLink>
               </div>

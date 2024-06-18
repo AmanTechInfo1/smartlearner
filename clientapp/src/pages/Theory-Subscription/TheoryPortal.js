@@ -28,7 +28,7 @@ import QuizMain from "../../components/quizes/QuizMain";
 
 export default function TheoryPortal() {
   return (
-    <div>
+    <div className={styles.TheoryPortal}>
       <section className={styles.imageSection}>
         <div className={styles.maincontent}>
           <div className={styles.content}>

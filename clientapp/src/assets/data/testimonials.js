@@ -3,7 +3,7 @@ export const testimonialsData = [
       id: 1,
       name: "KEVIN",
       comment: "I joined SmartLearner as a Trainee Instructor 6 years ago and never looked back. Never short of work friendly team with a real focus on customer service.",
-      image: "src/assets/images/kevin-img-150x150.jpg", // URL to the image
+      image: "src/assets/images/kevin-img-150x150.jpg", 
     },
     {
       id: 2,

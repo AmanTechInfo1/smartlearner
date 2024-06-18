@@ -1,10 +1,9 @@
 import React from "react";
-import { useState } from "react";
+
 import styles from "./Shop.module.css";
 import { FaAngleDoubleRight, FaStar, FaArrowRight } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import { products } from "../../assets/data/Products";
-import { useCartContext } from "../../components/context/CartContext";
+
 import ProductTab from "./ProductTab";
 import poster from "../../assets/images/video-poster-img.jpg";
 import chooseUsImg from "../../assets/images/choose-img.jpg";
@@ -15,50 +14,50 @@ import ShortFaqs from "../../components/shortFaqs/ShortFaqs";
 import DrivenForm from "../../components/forms/DrivenForm";
 import ProductSlider from "./ProductSlider";
 import Testemonial from "../../components/testimonials/Testemonial";
+import { useDispatch, useSelector } from "react-redux";
+import { imageBaseUrl } from "../../utils/constants";
+import { getAddToCart, getDecreaseCart, getIncreaseCart } from "../../redux/features/cartSlice";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const product = products.find((product) => product.id === parseInt(id));
+  const dispatch = useDispatch();
+   
+  const product = useSelector((state) => state.product.oneproduct);
+  if (!product) return <p>Product not found</p>; 
+
   const {
+    _id,
     name,
     image,
     price,
-    stock,
     duration,
+    rating,
     postcode,
     areaIncluded,
     experience,
-    Transmission,
+    transmission,
     category,
   } = product;
-  const inCart = false;
-  const { addToCart } = useCartContext(); // Use the useCart hook to access addToCart function
 
-  const imageUrl = `http://localhost:5173/product/src/assets/images/${image}`;
-  const modifiedImageUrl = imageUrl.replace("/product/src/assets/images", "");
-
-  const [quantity, setQuantity] = useState(1);
+  const addToCart = () => {
+    dispatch(getAddToCart({ _id, count: 1, service: name, price }));
+  };
 
   const handleIncrease = () => {
-    quantity < stock ? setQuantity(quantity + 1) : setQuantity(stock);
+    dispatch(getIncreaseCart(id, 1));
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
-      quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1);
-    }
+    dispatch(getDecreaseCart(id, 1));
   };
-
-  const theoryProducts = products.filter(
-    (product) => product.category === "Theory"
-  );
+ 
 
   return (
     <div>
       <div className={styles.ProductDetailsPage}>
         <section className={styles.productDetailsPageSection}>
           <div className={styles.productDetailsPageImage}>
-            <img src={modifiedImageUrl} alt={name} />
+            <img src={imageBaseUrl+image} alt={name} />
           </div>
           <div className={styles.productDetailsPageDetails}>
             <div className={styles.productDetailsPagetNamePrice}>
@@ -92,53 +91,54 @@ export default function ProductDetails() {
                       <FaAngleDoubleRight id={styles.productmenuArrowIcon} />
                     </span>
                   </p>{" "}
-                  <p className={styles.cardMenu}>{Transmission}</p>
+                  <p className={styles.cardMenu}>{transmission}</p>
                 </li>
               </ul>
             </div>
-            <div className={styles.postCodeBlock}>
+            {/* <div className={styles.postCodeBlock}>
               <p className={styles.postcodes}>Postcodes Included</p>
               <ul type="none" className={styles.postcodeList}>
                 {postcode.map((postcodeItem, index) => (
                   <li key={index}>{postcodeItem}</li>
                 ))}
               </ul>
-            </div>
-            <div className={styles.areaIncludedBlock}>
+            </div> */}
+            {/* <div className={styles.areaIncludedBlock}>
               <p className={styles.areaIncluded}>Areas Included</p>
               <ul type="none" className={styles.areaIncludedList}>
                 {areaIncluded.map((areaIncludedItem, index) => (
                   <li key={index}>{areaIncludedItem}</li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
-            <div className={styles.productBookButton}>
-              <div className={styles.quantityControl}>
-                <button
-                  onClick={handleDecrease}
-                  className={styles.decreaseButton}>
-                  -
-                </button>
-                <span>{quantity}</span>
-                <button
-                  onClick={handleIncrease}
-                  className={styles.increaseButton}>
-                  +
-                </button>
-              </div>
-              <div className={styles.buttons}>
-                <button
+            
+                  <div id={styles.cartTableBtn}>
+                    {" "}
+                    <div className={styles.quantityControl}>
+                      <button
+                        onClick={handleDecrease}
+                        className={styles.decreaseButton}
+                        disabled={product.count <= 1}
+                      >
+                        -
+                      </button>
+                      <span>{product.count}</span>
+                      <button
+                         onClick={handleIncrease}
+                        className={styles.increaseButton}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <button
                   className={styles.bookNow}
-                  onClick={() => addToCart(product, quantity)}>
-                  {inCart === true ? (
-                    <span>In Cart </span>
-                  ) : (
-                    <span>Book Now</span>
-                  )}
+                  // disabled={inCart}
+                  onClick={addToCart}>
+                  Book Now
                 </button>
-              </div>
-            </div>
+                
             <div className={styles.productDetailsCategoryDiv}>
               <p>
                 Category: <span>{category}</span>{" "}

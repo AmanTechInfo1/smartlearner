@@ -35,7 +35,7 @@ export default function Checkout() {
 
           <hr className="border-red-500 mb-4" />
           <h2 className="text-xl font-semibold mb-2">Billing Address</h2>
-          <form>
+          <form role="form" action="https://gateway.verofy.com" method="post">
             <div className="mb-4">
               <label className="block font-semibold mb-1" htmlFor="firstName">
                 First Name <span className="text-red-500">*</span>

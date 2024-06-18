@@ -55,12 +55,7 @@ export default function ProductTab() {
             <div style={{ display: "grid", gridTemplateColumns: "33.33% 33.33% 33.33%" }}>
               {filter_productsCategory.filter((itm) => itm._id == activeCategory).length > 0 && filter_productsCategory.filter((itm) => itm._id == activeCategory)[0]["data"].map((product, id) => (
                 <div className={styles.gridViewWrapper}>
-                  {/* <div className={styles.gridViewSection}> */}
-                  {/* {
-                    product.map((curElem, id) => {
-                      return 
-                    })
-                  } */}
+                 
                   <div>
                     <Products key={id} curElem={product} />
                   </div>
