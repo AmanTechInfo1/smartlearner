@@ -45,6 +45,10 @@ body{
   background-size: 100% auto;
   font-family: "Montserrat", sans-serif;
 }
+.active{
+  color: black;
+  background-color: #ed2025;
+}
 ul {
   margin-bottom: 0rem;
   padding-left: 0px;

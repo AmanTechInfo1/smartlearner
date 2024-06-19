@@ -4,9 +4,6 @@
   background-color: black;
 }
 
-.active {
-  background-color: #c4080b;
-}
 
 nav {
   display: flex;
@@ -30,11 +27,17 @@ nav ul {
   display: flex;
   gap: 50px;
   margin-bottom: 0px;
+  padding-left: 0px;
 }
 
 nav ul li {
   list-style: none;
   font-size: 18px;
+
+}
+
+.activeDropdownLink {
+  background-color: red; 
 }
 
 nav ul li a {
