@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 // import Home from "./pages/Home";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Layout from "./components/layouts/Layout"
+import Layout from "./components/layouts/Layout";
 // import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import FAQS from "./pages/FAQS";
@@ -47,7 +47,6 @@ import Thanks from "./pages/Thanks";
 import { ROLES } from "./constants/index";
 import RequireAuth from "./utils/RequireAuth";
 
-
 import MockTest from "./pages/Theory-Subscription/mockTest/MockTest";
 import MyAccount from "./pages/auth/myAccount/MyAccount";
 import AdminLayout from "./components/layouts/AdminLayout";
@@ -73,24 +72,39 @@ import OrderInvoice from "./containers/orders/component/OrderInvoice";
 import Order from "./containers/orders/Order";
 import Products from "./pages/Product";
 import MyCart from "./pages/auth/MyCart";
-
-
-
-
+import AdiPartOne from "./pages/adiPages/AdiPartOne";
+import RoadProcedureBand from "./pages/adiPages/bands/RoadProcedureBand";
+import TrafficSignalBand from "./pages/adiPages/bands/TrafficSignalBand";
+import DDTLawBand from "./pages/adiPages/bands/DDTLawBand";
+import PublicationTechBand from "./pages/adiPages/bands/PublicationTechBand";
+import MockTestBand from "./pages/adiPages/bands/MockTestBand";
+import AdiPartTwo from "./pages/adiPages/adi-part2/AdiPartTwo";
+import AdiPartThree from "./pages/adiPages/adi-part3/AdiPartThree";
+import GdeMatrix from "./pages/adiPages/adi-part3/internalPages/GdeMatrix";
+import StandardCheckSheet from "./pages/adiPages/adi-part3/internalPages/StandardCheckSheet";
+import LearningStyles from "./pages/adiPages/adi-part3/internalPages/LearningStyles";
+import SmartTargets from "./pages/adiPages/adi-part3/internalPages/SmartTargets";
+import LessonPlanning from "./pages/adiPages/adi-part3/internalPages/LessonPlanning";
+import RiskManagement from "./pages/adiPages/adi-part3/internalPages/RiskManagement";
+import QuestioningTech from "./pages/adiPages/adi-part3/internalPages/QuestioningTech";
+import InstructionFeedBack from "./pages/adiPages/adi-part3/internalPages/InstructionFeedBack";
+import LessonLayouts from "./pages/adiPages/adi-part3/internalPages/LessonLayouts";
+import TrainingVideos from "./pages/adiPages/adi-part3/internalPages/TrainingVideos";
+import StartingOnRoad from "./pages/adiPages/adi-part3/internalPages/StartingOnRoad";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
-    errorElement: <NotFound/>,
+    element: <Layout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "home",
-        element: <Home/>,
+        element: <Home />,
       },
       { path: "about", element: <About /> },
       { path: "faqs", element: <FAQS /> },
@@ -111,7 +125,7 @@ export const router = createBrowserRouter([
       { path: "ADI-Training-Portal", element: <ADITrainingPortal /> },
       { path: "Simulated-Driving-Lesson", element: <SimulatedDrivingLesson /> },
       { path: "Extended-Test", element: <ExtendedTest /> },
-      { path: "Pass-Plus", element:<PassPlus/> },
+      { path: "Pass-Plus", element: <PassPlus /> },
       { path: "Ageing-Driver-Support", element: <AgeingDriverSupport /> },
       { path: "Safe-Road-User-Award", element: <SafeRoadUserAward /> },
       { path: "Trailer-Training", element: <TrailerTraining /> },
@@ -130,9 +144,9 @@ export const router = createBrowserRouter([
       { path: "Theory-Subscription", element: <TheorySubscription /> },
       { path: "Theory-Portal", element: <TheoryPortal /> },
       { path: "WorkSheets", element: <Worksheet /> },
-      { path: "Personalised-Quiz", element: <PersonalisedQuiz/>  },
+      { path: "Personalised-Quiz", element: <PersonalisedQuiz /> },
       { path: "AIVideos", element: <AIVideos /> },
-      { path: "PracticeMCQS", element: <PracticeMCQS/> },
+      { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
       { path: "product/:id", element: <ProductDetails /> },
@@ -140,8 +154,35 @@ export const router = createBrowserRouter([
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
-      {path:"checkout", element: <Checkout/>},
-
+      { path: "checkout", element: <Checkout /> },
+      { path: "adi-part-one", element: <AdiPartOne /> },
+      { path: "band-1-Road-Procedure", element: <RoadProcedureBand /> },
+      {
+        path: "band-2-traffic-signs-and-signals",
+        element: <TrafficSignalBand />,
+      },
+      {
+        path: "band-3-driving-tests-disabilities-and-the-law",
+        element: <DDTLawBand />,
+      },
+      {
+        path: "band-4-publications-techniques",
+        element: <PublicationTechBand />,
+      },
+      { path: "Adi-part-1-MockTest", element: <MockTestBand /> },
+      { path: "adi-part-2", element: <AdiPartTwo /> },
+      { path: "adi-part-3", element: <AdiPartThree /> },
+      {path:'gde-matrix', element:<GdeMatrix/>},
+      {path:'standards-check-sheet', element:<StandardCheckSheet/>},
+      {path:'learning-styles', element:<LearningStyles/>},
+      {path:'smart-targets', element:<SmartTargets/>},
+      {path:'lesson-plannings',element:<LessonPlanning/>},
+      {path:'risk-management', element:<RiskManagement/>},
+      {path:'question-techniques', element:<QuestioningTech/>},
+      {path:'instruction-and-feedback', element:<InstructionFeedBack/>},
+      {path:'lesson-plan-layouts',element:<LessonLayouts/>},
+      {path:'training-videos',element:<TrainingVideos/>},
+      {path:'starting-on-road', element:<StartingOnRoad/>}
     ],
   },
   { path: "register", element: <Register /> },
@@ -149,105 +190,99 @@ export const router = createBrowserRouter([
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
 
-
-
   {
     path: "admin",
-     element: (
-        <RequireAuth
-            allowedRoles={[ROLES.ADMIN]}
-            element={<AdminLayout />}></RequireAuth>
+    element: (
+      <RequireAuth
+        allowedRoles={[ROLES.ADMIN]}
+        element={<AdminLayout />}
+      ></RequireAuth>
     ),
     children: [
       {
         path: "/admin/dashboard",
-        element: <AdminHome/>,
+        element: <AdminHome />,
       },
       {
         path: "/admin/quizCategoryHome",
-        element: <QuizCategoryHome/>,
+        element: <QuizCategoryHome />,
       },
       {
         path: "/admin/quizModuleId/:id",
-        element: <QuizModuleHome/>,
+        element: <QuizModuleHome />,
       },
       {
         path: "/admin/roles",
-        element: <Roles/> ,
+        element: <Roles />,
       },
       {
         path: "/admin/users",
         element: <Users />,
       },
-      
+
       {
         path: "/admin/categories",
-        element: <Categories/>,
+        element: <Categories />,
       },
       {
         path: "/admin/postcodes",
-        element:<Postcode/>,
+        element: <Postcode />,
       },
       {
         path: "/admin/products",
-        element: <ProductModal/>,
+        element: <ProductModal />,
       },
       {
-        path:"/admin/product-area",
-        element: <Area/>
+        path: "/admin/product-area",
+        element: <Area />,
       },
       {
-        path:"/admin/quiz-category",
-        element:<QuizCategory/>,
+        path: "/admin/quiz-category",
+        element: <QuizCategory />,
       },
       {
-        path:"/admin/quiz-module",
-        element:<QuizUModule/>,
+        path: "/admin/quiz-module",
+        element: <QuizUModule />,
       },
       // {
       //   path:"/admin/quiz",
       //   element:<QuizzesModal/>,
       // },
       {
-        path:"/admin/takequiz/:cid/:id",
-        element:<Quiz/>,
-      },{
-        path:"/admin/takequiz/:cid",
-        element:<Quiz/>,
-      },{
-        path:"/admin/quizCategory",
-        element:<Quiz/>,
-      },{
-        path:"/admin/quizModule",
-        element:<Quiz/>,
+        path: "/admin/takequiz/:cid/:id",
+        element: <Quiz />,
       },
       {
-        path:"/admin/quizModule",
-        element:<QuizModule/>,
+        path: "/admin/takequiz/:cid",
+        element: <Quiz />,
       },
       {
-        path:"/admin/quizResult",
-        element:<QuizResult/>,
+        path: "/admin/quizCategory",
+        element: <Quiz />,
       },
       {
-        path:"/admin/quizViewResult",
-        element:<QuizResult/>,
+        path: "/admin/quizModule",
+        element: <Quiz />,
       },
       {
-        path:"/admin/quiz",
-        element:<QuizModal/>,
+        path: "/admin/quizModule",
+        element: <QuizModule />,
       },
-      {path: "/admin/order",
-        element:<Order/>
+      {
+        path: "/admin/quizResult",
+        element: <QuizResult />,
       },
+      {
+        path: "/admin/quizViewResult",
+        element: <QuizResult />,
+      },
+      {
+        path: "/admin/quiz",
+        element: <QuizModal />,
+      },
+      { path: "/admin/order", element: <Order /> },
 
-      {path:"/admin/order-Invoice",
-        element: <OrderInvoice/>
-      },
-
-    
-
-      
+      { path: "/admin/order-Invoice", element: <OrderInvoice /> },
     ],
   },
 ]);

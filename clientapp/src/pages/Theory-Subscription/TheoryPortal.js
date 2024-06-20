@@ -24,8 +24,6 @@ import {
 import { Link } from "react-router-dom";
 import QuizMain from "../../components/quizes/QuizMain";
 
-
-
 export default function TheoryPortal() {
   return (
     <div className={styles.TheoryPortal}>
@@ -140,30 +138,34 @@ export default function TheoryPortal() {
           <section className={styles.features}>
             <div className={styles.mainFeatures}>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/distractions">
+                <Link to="/alertness">
                   <span>
                     <FaExclamation id={styles.featuresIcon} />
                   </span>
                   <h3>Alertness</h3>
-                </a>
+                </Link>
+
                 <p>Topic 1</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/drink-driving">
+                <Link to="/attitude">
                   <span>
                     <FaAngry id={styles.featuresIcon} />
                   </span>
                   <h3>Attitude</h3>
-                </a>
+                </Link>
+
                 <p>Topic 2</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/drugs">
+                <Link to="/safety-your-vehicle">
+                  {" "}
                   <span>
                     <FaCar id={styles.featuresIcon} />
                   </span>
                   <h3>Safety & Your Vehicle</h3>
-                </a>
+                </Link>
+
                 <p>Topic 3</p>
               </div>
               <div className={styles.column}>
@@ -360,7 +362,7 @@ export default function TheoryPortal() {
           <h2>Book Your Theory</h2>
         </div>
         <section>
-         <QuizMain/>
+          <QuizMain />
         </section>
       </section>
 

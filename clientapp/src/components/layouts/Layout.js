@@ -7,55 +7,54 @@ import Header from "../header/Header";
 import Footer from "../footer/Footer";
 
 function Layout() {
-    const [loading, setLoading] = useState(true);
-    const [webLoading, setwebLoading] = useState(true);
-    const location = useLocation();
+  const [loading, setLoading] = useState(true);
+  const [webLoading, setwebLoading] = useState(true);
+  const location = useLocation();
 
-    useEffect(() => {
-        setLoading(true);
+  useEffect(() => {
+    setLoading(true);
 
-        const timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500);
 
-            setLoading(false);
-        }, 500);
+    return () => clearTimeout(timeout);
+  }, [location]);
 
-        return () => clearTimeout(timeout);
-    }, [location]);
+  useEffect(() => {
+    const timeout2 = setTimeout(() => {
+      setwebLoading(false);
+    }, 1000);
 
-    useEffect(() => {
+    return () => clearTimeout(timeout2);
+  }, []);
 
-        const timeout2 = setTimeout(() => {
-            setwebLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout2);
-    }, []);
-
-
-    return (
+  return (
+    <>
+      <div className="layout">
         <>
-            <div className="layout">
+          {webLoading ? (
+            <LoadingWeb />
+          ) : (
+            <>
+              <Navbar />
+              <Header />
+              {loading ? (
+                <LoadingWeb />
+              ) : (
                 <>
-                    {webLoading ? (
-                        <LoadingWeb />
-                    ) : (
-                        <>
-                            <Navbar />
-                            <Header />
-                            {loading ? (
-                                <LoadingWeb />
-                            ) : (
-                                <main>
-                                    <Outlet />
-                                </main>
-                            )}
-                            <Footer />
-                        </>
-                    )}
+                  <main>
+                    <Outlet />
+                  </main>
+                  <Footer />
                 </>
-            </div>
+              )}
+            </>
+          )}
         </>
-    )
+      </div>
+    </>
+  );
 }
 
-export default Layout
+export default Layout;

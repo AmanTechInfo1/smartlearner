@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import smartlearnerLogo from "../assets/images/White-Logo-Fixed-1024x174.png"
+import { Link } from "react-router-dom";
 
 export default function ADITrainingPortal() {
   return (
@@ -50,23 +51,25 @@ export default function ADITrainingPortal() {
             <div className={styles.adiTrainingPortalLearningInnerContent}>
               <FaBook id={styles.adiPortalFaIcons} />
               <h2>Part 1 - Theory</h2>
-              <button className={styles.adiPortalBtnLearning}>
+              <Link to="/adi-part-one"><button className={styles.adiPortalBtnLearning}>
                 Get Learning
-              </button>
+              </button></Link>
+              
             </div>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
               <FaCarSide id={styles.adiPortalFaIcons} />
               <h2>Part 2 - Driving Ability</h2>
-              <button className={styles.adiPortalBtnLearning}>
+              <Link to="/adi-part-2"><button className={styles.adiPortalBtnLearning}>
                 Get Learning
-              </button>
+              </button></Link>
+              
             </div>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
               <FaChalkboardTeacher id={styles.adiPortalFaIcons} />
               <h2>Part 3 - Teaching</h2>
-              <button className={styles.adiPortalBtnLearning}>
+              <Link to="/adi-part-3"><button className={styles.adiPortalBtnLearning}>
                 Get Learning
-              </button>
+              </button></Link>
             </div>
           </div>
         </div>
