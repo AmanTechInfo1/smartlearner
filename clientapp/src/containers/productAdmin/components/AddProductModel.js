@@ -26,7 +26,7 @@ function AddProductModel(props) {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(productSchema),
+    
   });
 
 console.log(errors,"ajwsdfhxsdfgrt")

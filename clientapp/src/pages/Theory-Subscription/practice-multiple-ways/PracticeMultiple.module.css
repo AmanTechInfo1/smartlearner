@@ -2,6 +2,7 @@
     font-family: 'Antonio', sans-serif;
     background-color: black;
     color: white;
+    padding-bottom: 5rem;
 }
 .imageSection {
    
@@ -416,5 +417,128 @@ p{
   }
   .routes a{
       margin-top: 1rem;
+  }
+}
+.thMultipleChioceHeader h2 {
+  text-align: center;
+  color: #ff0004;
+  font-size: 3rem;
+  font-weight: 700;
+  
+}
+.thMultipleChioceHeader p {
+  font-size: 18px;
+  text-align: center;
+}
+.thchoiceListSection {
+  background-color: #ff0004;
+}
+.features {
+  padding: 2rem 0;
+}
+.features h4 {
+  color: #ff0004;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 1.2em;
+  text-align: center;
+  
+  margin-bottom: 20px;
+}
+.features p {
+  color: #7a7a7a;
+  line-height: 28px;
+  text-align: center;
+  font-weight: 400;
+ 
+}
+.mainFeatures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  
+  text-align: center;
+  max-width: 1500px;
+  padding: 0px 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.column {
+  padding: 25px 25px 55px 25px;
+  background-color: #ffffff;
+
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+
+  transition: box-shadow 0.3s ease;
+}
+.column a {
+  text-decoration: none;
+  color: #ff0004;
+}
+
+.column:hover {
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid #ff0004;
+}
+.column span {
+  font-size: 50px;
+  color: #706c6c;
+  display: inline-block;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.column h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ff0004;
+}
+.column p {
+  font-size: 16px;
+ 
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #7a7a7a;
+}
+.column span {
+  background-color: #ff0004;
+  padding: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 50px;
+  color: #fff;
+}
+#featuresIcon {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  display: block;
+}
+.column span:hover {
+  transform: scale(1.2);
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  color: #ff0004;
+}
+#featuresIconSRU {
+  font-size: 6rem;
+}
+@media (max-width: 1085px) {
+  .features h4 {
+    font-size: 45px;
+  }
+}
+@media (max-width: 767px) {
+  .features h4 {
+    font-size: 30px;
+  }
+  .mainFeatures {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .thMultipleChioceHeader h2 {
+    font-size: 2rem;
   }
 }

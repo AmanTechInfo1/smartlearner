@@ -27,10 +27,7 @@ export default function MyAccount() {
           <span className="font-weight-semibold text-danger">Email</span>
           <span>fip@jukmuh.al</span>
         </div>
-        <div className="d-flex justify-content-between mb-4">
-          <span className="font-weight-semibold text-danger">Phone</span> 
-          <span>(239) 816-9029</span>
-        </div>
+        
         <div className="d-flex justify-content-between mb-4">
           <span className="font-weight-semibold text-danger">Mobile</span>
           <span>(320) 380-4539</span>

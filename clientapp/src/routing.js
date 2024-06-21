@@ -91,6 +91,20 @@ import InstructionFeedBack from "./pages/adiPages/adi-part3/internalPages/Instru
 import LessonLayouts from "./pages/adiPages/adi-part3/internalPages/LessonLayouts";
 import TrainingVideos from "./pages/adiPages/adi-part3/internalPages/TrainingVideos";
 import StartingOnRoad from "./pages/adiPages/adi-part3/internalPages/StartingOnRoad";
+import Alertness from "./pages/Theory-Subscription/practice-multiple-ways/Alertness";
+import Attitude from "./pages/Theory-Subscription/practice-multiple-ways/Attitude";
+import SafetyVehicle from "./pages/Theory-Subscription/practice-multiple-ways/SafetyVehicle";
+import SafetyMargins from "./pages/Theory-Subscription/practice-multiple-ways/SafetyMargins";
+import HazzardAwareness from "./pages/Theory-Subscription/practice-multiple-ways/HazzardAwareness";
+import VulnerableRoadUser from "./pages/Theory-Subscription/practice-multiple-ways/VulnerableRoadUser";
+import OtherVehicle from "./pages/Theory-Subscription/practice-multiple-ways/OtherVehicle";
+import VehicleHandling from "./pages/Theory-Subscription/practice-multiple-ways/VehicleHandling";
+import MotorwayRules from "./pages/Theory-Subscription/practice-multiple-ways/MotorwayRules";
+import RulesOfRoad from "./pages/Theory-Subscription/practice-multiple-ways/RulesOfRoad";
+import RoadTraffic from "./pages/Theory-Subscription/practice-multiple-ways/RoadTraffic";
+import EssentialDocuments from "./pages/Theory-Subscription/practice-multiple-ways/EssentialDocuments";
+import IncidentsAccidents from "./pages/Theory-Subscription/practice-multiple-ways/IncidentsAccidents";
+import VehicleLoading from "./pages/Theory-Subscription/practice-multiple-ways/VehicleLoading";
 
 export const router = createBrowserRouter([
   {
@@ -172,17 +186,32 @@ export const router = createBrowserRouter([
       { path: "Adi-part-1-MockTest", element: <MockTestBand /> },
       { path: "adi-part-2", element: <AdiPartTwo /> },
       { path: "adi-part-3", element: <AdiPartThree /> },
-      {path:'gde-matrix', element:<GdeMatrix/>},
-      {path:'standards-check-sheet', element:<StandardCheckSheet/>},
-      {path:'learning-styles', element:<LearningStyles/>},
-      {path:'smart-targets', element:<SmartTargets/>},
-      {path:'lesson-plannings',element:<LessonPlanning/>},
-      {path:'risk-management', element:<RiskManagement/>},
-      {path:'question-techniques', element:<QuestioningTech/>},
-      {path:'instruction-and-feedback', element:<InstructionFeedBack/>},
-      {path:'lesson-plan-layouts',element:<LessonLayouts/>},
-      {path:'training-videos',element:<TrainingVideos/>},
-      {path:'starting-on-road', element:<StartingOnRoad/>}
+      { path: "gde-matrix", element: <GdeMatrix /> },
+      { path: "standards-check-sheet", element: <StandardCheckSheet /> },
+      { path: "learning-styles", element: <LearningStyles /> },
+      { path: "smart-targets", element: <SmartTargets /> },
+      { path: "lesson-plannings", element: <LessonPlanning /> },
+      { path: "risk-management", element: <RiskManagement /> },
+      { path: "question-techniques", element: <QuestioningTech /> },
+      { path: "instruction-and-feedback", element: <InstructionFeedBack /> },
+      { path: "lesson-plan-layouts", element: <LessonLayouts /> },
+      { path: "training-videos", element: <TrainingVideos /> },
+      { path: "starting-on-road", element: <StartingOnRoad /> },
+      { path: "alertness", element: <Alertness /> },
+      { path: "attitude", element: <Attitude /> },
+      { path: "safety-your-vehicle", element: <SafetyVehicle /> },
+      { path: "safety-margins", element: <SafetyMargins /> },
+      { path: "hazard-awareness", element: <HazzardAwareness /> },
+      { path: "vulnerable-road-users", element: <VulnerableRoadUser /> },
+      { path: "other-vehicles", element: <OtherVehicle /> },
+      { path: "vehicle-handling", element: <VehicleHandling /> },
+      { path: "motorway-rules", element: <MotorwayRules /> },
+      { path: "rules-of-road", element: <RulesOfRoad /> },
+      { path: "road-and-traffic-signs", element: <RoadTraffic /> },
+      { path: "essential-Documents", element: <EssentialDocuments /> },
+      { path: "incidents-&-accidents", element: <IncidentsAccidents /> },
+      { path: "vehicle-loading", element: <VehicleHandling /> },
+      { path: "video-clips", element: <VehicleLoading /> },
     ],
   },
   { path: "register", element: <Register /> },

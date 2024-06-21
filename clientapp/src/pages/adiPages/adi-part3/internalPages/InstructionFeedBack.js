@@ -6,8 +6,8 @@ import EncourageImg from "../../../../assets/images/encouragingImg.png";
 import TechnicalInfo from "../../../../assets/images/TechnicalInfo.png";
 import ExampleImg from "../../../../assets/images/example.png";
 import apropriateTime from "../../../../assets/images/apropriateTime.png";
-import pupilImg from "../../../../assets/images/pupilQuestion.png"
-import nodiscrimination from "../../../../assets/images/noDiscrimination.png"
+import pupilImg from "../../../../assets/images/pupilQuestion.png";
+import nodiscrimination from "../../../../assets/images/noDiscrimination.png";
 
 export default function InstructionFeedBack() {
   return (
@@ -26,12 +26,11 @@ export default function InstructionFeedBack() {
                   <br /> learn with the best!
                 </h2>
               </div>
-              <div className={styles.btn}>
+              <div className={styles.btn}>  
                 <button id={styles.btn}>
                   <a
                     style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784
-"
+                    href="tel:02475092784"
                   >
                     Contact Us
                   </a>
@@ -541,11 +540,11 @@ export default function InstructionFeedBack() {
           </div>
         </section>
         {/* //////////////////////////////////////////////// */}
-        
+
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>
             <h2>Reflective Debrief</h2>
-           
+
             <ul type="none">
               <li>
                 <IoMdArrowDropright id="listrightIcon" />{" "}
@@ -605,7 +604,6 @@ export default function InstructionFeedBack() {
                   ten to fifteen minutes to complete.
                 </p>
               </li>
-              
             </ul>
           </div>
         </section>

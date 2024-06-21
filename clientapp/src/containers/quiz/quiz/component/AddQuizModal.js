@@ -89,6 +89,7 @@ const AddQuizUpdatedModal = (props) => {
         const formDataToSend = new FormData();
         formDataToSend.append('answer', answer);
         formDataToSend.append('description', description);
+     
         formDataToSend.append('category', category);
         formDataToSend.append('question', question);
         formDataToSend.append('module', module);
@@ -291,7 +292,7 @@ const AddQuizUpdatedModal = (props) => {
                                         {option[1]}
                                     </option>
                                 ))}
-                            </select>
+                            </select><p style={{color:'red'}}>please select answer </p>
 
                             {errors?.answer?.message ? (
                                 <p style={{ color: "red" }}>{errors?.answer?.message}</p>
@@ -352,7 +353,7 @@ const AddQuizUpdatedModal = (props) => {
                                         </option>
                                         {quizCategoryModule.map((category) => (
                                             <option key={category.uId} value={category.uId}>
-                                                {category.moduleName}
+                                                {category.moduleName}                                                                                                                                           
                                             </option>
                                         ))}
                                     </select>

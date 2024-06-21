@@ -4,7 +4,7 @@ import BookTestImg from "../../assets/images/booktest.jpg";
 import styles from "./TheoryPortal.module.css";
 import CountDown from "./countdown/CountDown";
 import {
-  FaArrowRight,
+  
   FaExclamation,
   FaAngry,
   FaCar,
@@ -169,111 +169,127 @@ export default function TheoryPortal() {
                 <p>Topic 3</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/insurance">
+                <Link to="/safety-margins">
+                  {" "}
                   <span>
                     <FaRuler id={styles.featuresIcon} />
                   </span>
                   <h3>Safety Margins</h3>
-                </a>
+                </Link>
+
                 <p>Topic 4</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/using-a-mobile-phone">
+                <Link to="/hazard-awareness">
                   <span>
                     <FaExclamationTriangle id={styles.featuresIcon} />
                   </span>
                   <h3>Hazard Awareness</h3>
-                </a>
+                </Link>
+
                 <p>Topic 5</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/seatbelts">
+                <Link to="/vulnerable-road-users">
+                  {" "}
                   <span>
                     <FaWalking id={styles.featuresIcon} />
                   </span>
                   <h3>Vulnerable Road Users</h3>
-                </a>
+                </Link>
+
                 <p>Topic 6</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/showing-off">
+                <Link to="/other-vehicles">
+                  {" "}
                   <span>
                     <FaCarCrash id={styles.featuresIcon} />
                   </span>
                   <h3>Other Vehicles</h3>
-                </a>
+                </Link>
+
                 <p>Topic 7</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/speeding">
+                <Link to="/vehicle-handling">
                   <span>
                     <FaTruck id={styles.featuresIcon} />
                   </span>
                   <h3>Vehicle Handling</h3>
-                </a>
+                </Link>
+
                 <p>Topic 8</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/tiredness">
+                <Link to="/motorway-rules">
                   <span>
                     <FaCarSide id={styles.featuresIcon} />
                   </span>
                   <h3>Motorway Rules</h3>
-                </a>
+                </Link>
+
                 <p>Topic 9</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/rules-of-road">
+                  {" "}
                   <span>
                     <FaRoad id={styles.featuresIcon} />
                   </span>
                   <h3>Rules Of The Road</h3>
-                </a>
+                </Link>
+
                 <p>Topic 10</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/road-and-traffic-signs">
+                  {" "}
                   <span>
                     <FaMapSigns id={styles.featuresIcon} />
                   </span>
                   <h3>Road And Traffic Signs</h3>
-                </a>
+                </Link>
+
                 <p>Topic 11</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/essential-Documents">
                   <span>
                     <FaIdCard id={styles.featuresIcon} />
                   </span>
                   <h3>Essential Documents</h3>
-                </a>
+                </Link>
+
                 <p>Topic 12</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/incidents-&-accidents">
                   <span>
                     <FaUserInjured id={styles.featuresIcon} />
                   </span>
                   <h3>Incidents & Accidents</h3>
-                </a>
+                </Link>
+
                 <p>Topic 13</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/vehicle-loading">
                   <span>
                     <FaBoxOpen id={styles.featuresIcon} />
                   </span>
                   <h3>Vehicle Loading</h3>
-                </a>
+                </Link>
+
                 <p>Topic 14</p>
               </div>
               <div className={styles.column}>
-                <a href="https://thehonesttruth.co.uk/pages/passing">
+                <Link to="/video-clips">
                   <span>
                     <FaVideo id={styles.featuresIcon} />
                   </span>
                   <h3>Video clips</h3>
-                </a>
+                </Link>
                 <p>Topic 15</p>
               </div>
             </div>
