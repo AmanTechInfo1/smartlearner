@@ -68,35 +68,45 @@ const QuizModal = () => {
             title: "Question",
             dataIndex: "question",
             align: "center",
-            sorter: (a, b) => a.question.length - b.question.length,
+            sorter: (a, b) => {
+                if (!a.question || !b.question) return 0; // Handle undefined or null cases
+                return a.question.length - b.question.length;
+            },
         },
         {
             title: "Answer",
             dataIndex: "answer",
             align: "center",
-            sorter: (a, b) => a.answer.length - b.answer.length,
+            sorter: (a, b) => {
+                if (!a.answer || !b.answer) return 0; // Handle undefined or null cases
+                return a.answer.length - b.answer.length;
+            },
         },
         {
             title: "Option",
             dataIndex: "option",
             align: "center",
-            sorter: (a, b) => a.answer.length - b.answer.length,
-            render: (text) => {
-                console.log("texttexttext", text )
-                return <span title={text}>
-                    {text.join(", ")}
-                    {/* {text} */}
-                </span>
+            sorter: (a, b) => {
+                if (!a.option || !b.option) return 0; // Handle undefined or null cases
+                return a.option.length - b.option.length;
             },
+            render: (text) => (
+                <span title={text}>
+                    {Array.isArray(text) ? text.join(", ") : text}
+                </span>
+            ),
         },
         {
             title: "Description",
             dataIndex: "description",
             align: "center",
-            sorter: (a, b) => a.description.length - b.description.length,
+            sorter: (a, b) => {
+                if (!a.description || !b.description) return 0; // Handle undefined or null cases
+                return a.description.length - b.description.length;
+            },
             render: (text) => (
                 <span title={text}>
-                    {text.length > 40 ? `${text.substring(0, 40)}...` : text}
+                    {text && text.length > 40 ? `${text.substring(0, 40)}...` : text}
                 </span>
             ),
         },
@@ -104,13 +114,19 @@ const QuizModal = () => {
             title: "Category",
             dataIndex: "categoryName",
             align: "center",
-            sorter: (a, b) => a?.categoryName.length - b?.categoryName.length
+            sorter: (a, b) => {
+                if (!a?.categoryName || !b?.categoryName) return 0; // Handle undefined or null cases
+                return a.categoryName.length - b.categoryName.length;
+            },
         },
         {
             title: "Module Name",
             dataIndex: "moduleName",
             align: "center",
-            sorter: (a, b) => a?.moduleName.length - b?.moduleName.length
+            sorter: (a, b) => {
+                if (!a?.moduleName || !b?.moduleName) return 0; // Handle undefined or null cases
+                return a.moduleName.length - b.moduleName.length;
+            },
         },
         {
             title: "Action",
