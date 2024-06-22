@@ -87,7 +87,7 @@ export const loginUser = createAsyncThunk(
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
-          navigate("/");
+          navigate("/home");
           // toast.success("Ask Admin to assign you a role.");
         }
       } else {

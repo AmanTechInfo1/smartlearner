@@ -17,7 +17,7 @@ function AdminHeader({ OpenSidebar }) {
                 <div className={styles.adminMenuIcon}>
                     <BsJustify className={styles.adminIcon} onClick={OpenSidebar} />
                 </div>
-                <div className={styles.searchContainer}>
+                {/* <div className={styles.searchContainer}>
                     <input
                         type="text"
                         placeholder="Search..."
@@ -27,11 +27,10 @@ function AdminHeader({ OpenSidebar }) {
                         className={styles.searchInput}
                     />
                     <BsSearch className={styles.searchIcon} onClick={performSearch} />
-                </div>
-                <div className={styles.adminHeaderRight}>
-                    <BsFillBellFill className={styles.adminIcon1} />
-                    <BsFillEnvelopeFill className={styles.adminIcon1} />
-                    <Link to='/login'><BsPersonCircle className={styles.adminIcon1} /></Link>
+                </div> */}
+                <div className={styles.adminHeaderRight} style={{textAlign:'right',width:'100%'}}>
+                    
+                    <Link to='/login' ><BsPersonCircle className={styles.adminIcon1} />LogOut</Link>
                 </div>
             </header>
         </>

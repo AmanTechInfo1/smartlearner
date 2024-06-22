@@ -12,7 +12,7 @@ export default function AdminHome() {
     "Product": <BsFillArchiveFill className={styles.cardIcon} />,
     "Category": <BsFillGrid3X3GapFill className={styles.cardIcon} />,
     "Users": <BsPeopleFill className={styles.cardIcon} />,
-    "Quiz Question": <MdQuiz className={styles.cardIcon} />
+    "Quizes": <MdQuiz className={styles.cardIcon} />
   };
 
   const { cards } = useSelector((state) => state.dashboard);
