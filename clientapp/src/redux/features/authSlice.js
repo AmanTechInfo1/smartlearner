@@ -87,7 +87,7 @@ export const loginUser = createAsyncThunk(
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
-          navigate("/home");
+          navigate("/");
           // toast.success("Ask Admin to assign you a role.");
         }
       } else {
@@ -95,7 +95,11 @@ export const loginUser = createAsyncThunk(
       }
       return data;
     } catch (error) {
-      toast.error(error.message);
+      if (error.response && error.response.status === 500) {
+        toast.error("Username or password is incorrect");
+      } else {
+        toast.error(error.message);
+      }
       return rejectWithValue(error.message);
     }
   }
