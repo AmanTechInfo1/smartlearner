@@ -8,6 +8,16 @@ class QuizController {
     try {
       var quizData = req.body;
       quizData["option"]=quizData.option.split(",")
+      quizData["optionImage"]=[
+        quizData.option1Image,
+        quizData.option2Image,
+        quizData.option3Image,
+        quizData.option4Image
+      ]
+      delete quizData.option1Image
+      delete quizData.option2Image
+      delete quizData.option3Image
+      delete quizData.option4Image
       console.log(quizData,"quizDataquizData")
       // console.log("quizDataquizDataquizData",quizData,"quizDataquizDataquizData");
       const quiz = await quizService.createQuizAsync(quizData);

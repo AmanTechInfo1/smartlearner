@@ -11,6 +11,7 @@ const enquiryRoutes = require("./routes/enquiryRoutes");
 const callBackRoutes = require("./routes/callBackRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const drivenFormRoutes = require("./routes/drivenFormRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 const path = require('path');
 
 const cors = require("cors");
@@ -35,6 +36,7 @@ app.use("/api/callbackForm", callBackRoutes);
 app.use("/api/contactForm", contactRoutes);
 app.use("/api/drivenForm", drivenFormRoutes);
 app.use("/api/quiz", quizRoutes);
+app.use("/api/order", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 

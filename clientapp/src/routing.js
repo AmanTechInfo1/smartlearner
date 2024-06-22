@@ -105,6 +105,11 @@ import RoadTraffic from "./pages/Theory-Subscription/practice-multiple-ways/Road
 import EssentialDocuments from "./pages/Theory-Subscription/practice-multiple-ways/EssentialDocuments";
 import IncidentsAccidents from "./pages/Theory-Subscription/practice-multiple-ways/IncidentsAccidents";
 import VehicleLoading from "./pages/Theory-Subscription/practice-multiple-ways/VehicleLoading";
+import PaymentProcessing from "./pages/shop/checkout/PaymentProcessing";
+import PaymentSuccess from "./pages/PaymentSuccess";
+
+
+
 
 
 export const router = createBrowserRouter([
@@ -164,6 +169,7 @@ export const router = createBrowserRouter([
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
+      { path: "paymentSuccess", element: <PaymentSuccess /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "hazard-perception", element: <HazardPerception /> },
@@ -213,6 +219,9 @@ export const router = createBrowserRouter([
       { path: "incidents-&-accidents", element: <IncidentsAccidents /> },
       { path: "vehicle-loading", element: <VehicleHandling /> },
       { path: "video-clips", element: <VehicleLoading /> },
+      {path:"checkout", element: <Checkout/>},
+      {path:"paymentProcessing", element: <PaymentProcessing/>},
+
     ],
   },
   { path: "register", element: <Register /> },
@@ -313,6 +322,13 @@ export const router = createBrowserRouter([
       { path: "/admin/order", element: <Order /> },
 
       { path: "/admin/order-Invoice", element: <OrderInvoice /> },
+      {path:"/admin/orderInvoice/:invoiceId",
+        element: <OrderInvoice/>
+      },
+
+    
+
+      
     ],
   },
 ]);

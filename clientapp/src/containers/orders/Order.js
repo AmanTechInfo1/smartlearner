@@ -3,16 +3,28 @@ import styles from "../../assets/css/admin.module.css";
 import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { LiaUserEditSolid } from "react-icons/lia";
+import { FaFileInvoice } from "react-icons/fa";
 import { deleteRole, getAllRoles, getRoleById, setRoleNull } from "../../redux/features/roleSlice";
 
 import Loader from "../../components/loader/Loader";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OrderInvoice from "./component/OrderInvoice";
+import { getAllOrders } from "../../redux/features/orderSlice";
 
 function Order() {
     const dispatch = useDispatch();
-    const { roleLoading, roles, rolesCount } = useSelector((state) => state.roles);
+    const navigate = useNavigate();
+    const { loading, orderCount } = useSelector((state) => state.order);
+    const orders = useSelector((state) => {
+        return state.order.orders.map((itm)=>{
+            return {
+                ...itm,
+                userName:itm.user.username,
+                completeAddress:`${itm.streetAddress1}, ${itm.streetAddress2!="" ? itm.streetAddress2+", " : ""} ${itm.city}, ${itm.county}, ${itm.postcode}`
+            }
+        })
+    });
     const [state, setState] = useState({
         search: "",
         page: 1,
@@ -28,7 +40,7 @@ function Order() {
 
 
     useEffect(() => {
-        dispatch(getAllRoles(state.search, state.page, state.pageSize));
+        dispatch(getAllOrders(state.search, state.page, state.pageSize));
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
@@ -54,20 +66,38 @@ function Order() {
 
     const columns = [
         {
-            title: "Order Name",
-            dataIndex: "name",
+            title: "Order Id",
+            dataIndex: "orderNo",
             align: "center",
             sorter: (a, b) => a.name.length - b.name.length,
         },
         {
             title: "User",
-            dataIndex: "name",
+            dataIndex: "userName",
             align: "center",
             sorter: (a, b) => a.name.length - b.name.length,
         },
         {
-            title: "Price",
-            dataIndex: "price",
+            title: "Complete Address",
+            dataIndex: "completeAddress",
+            align: "center",
+            sorter: (a, b) => a.name.length - b.name.length,
+        },
+        {
+            title: "Sub Total",
+            dataIndex: "subtotal",
+            align: "center",
+            sorter: (a, b) => a.price - b.price,
+        },
+        {
+            title: "Service Charge",
+            dataIndex: "serviceCharge",
+            align: "center",
+            sorter: (a, b) => a.price - b.price,
+        },
+        {
+            title: "Total",
+            dataIndex: "total",
             align: "center",
             sorter: (a, b) => a.price - b.price,
         },
@@ -86,6 +116,14 @@ function Order() {
                         }}
                     >
                         <LiaUserEditSolid />
+                    </Link>
+                    <Link
+                        onClick={(event) => {
+                            event.preventDefault();
+                            navigate(`/admin/orderInvoice/${record._id}`)
+                        }}
+                    >
+                        <FaFileInvoice />
                     </Link>
                     {/* <Link
                         className="dropdown-item px-2 text-danger"
@@ -106,13 +144,13 @@ function Order() {
                     <h2 className={styles.userHeading}>Orders</h2>
                     
                 </div>
-                {!roleLoading ? (
+                {!loading ? (
                     <Table
                         className="table-striped"
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: "",
+                            total: orderCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,
@@ -123,7 +161,7 @@ function Order() {
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
-                        dataSource={""}
+                        dataSource={orders}
                         rowKey={(record) => record._id}
                     />
                 ) : (

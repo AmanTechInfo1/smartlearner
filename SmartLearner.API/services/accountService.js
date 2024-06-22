@@ -119,6 +119,8 @@ class AccountService {
         },
       };
     } catch (err) {
+
+      console.log(err.message,"err.messageerr.message")
       throw new Error(err.message);
     }
   }

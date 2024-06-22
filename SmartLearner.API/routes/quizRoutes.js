@@ -5,14 +5,15 @@ const upload = multer();
 
 const quizController = require("../controllers/quizController");
 const { requireAuth } = require("../middlewares/authMiddleware");
-const { imageSaverMiddleware } = require("../middlewares/imageSaverMiddleware");
+const { imageSaverMiddleware, multipleimageSaverMiddleware } = require("../middlewares/imageSaverMiddleware");
 
-router.post("/addQuestion", imageSaverMiddleware,requireAuth, quizController.addNewQuiz);
+router.post("/addQuestion", multipleimageSaverMiddleware,requireAuth, quizController.addNewQuiz);
 router.post("/updateQuestion/:id", imageSaverMiddleware,requireAuth, quizController.updateQuiz);
 
 router.post("/answerQuestion", requireAuth, quizController.answerQuestion);
 router.get("/all-quizzes", requireAuth, quizController.getAllQuiz);
 router.get("/getQuizResult/:resType", requireAuth, quizController.getQuizResult);
+router.get("/getQuizResult/:userId/:resType", requireAuth, quizController.getQuizResult);
 router.get("/quiz/:id", requireAuth, quizController.getOneQuestion);
 router.get("/getRandomQuestion/:cid/:id", requireAuth, quizController.getQuestionId);
 router.get("/getRandomQuestion/:cid", requireAuth, quizController.getQuestion);

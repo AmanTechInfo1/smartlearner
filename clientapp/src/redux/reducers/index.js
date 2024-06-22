@@ -15,10 +15,12 @@ import quizCategorySlice from "../features/quizCategorySlice";
 import quizSlice from "../features/quizSlice";
 import dashboardSlice from "../features/dashboardSlice";
 import cartSlice from "../features/cartSlice";
+import orderSlice from "../features/orderSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
   cart: cartSlice,
+  order: orderSlice,
   user: userSlice,
   roles: rolesSlice,
   category: categorySlice,

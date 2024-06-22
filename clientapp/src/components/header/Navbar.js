@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./css/navbar.module.css";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/features/authSlice';
@@ -11,8 +11,7 @@ function Navbar() {
 
     const dispatch=useDispatch()
 
-
-
+    const navigate = useNavigate()
     let userDetails = useSelector((state) => {
         console.log(state, "statestatestate")
 
@@ -48,8 +47,15 @@ function Navbar() {
 
                             {
                                 userDetails.username ? <>
-                                    <li>
+                                    <li onClick={()=>{
+                                        navigate("/my-account")
+                                    }}>
                                         Welcome {userDetails.username}
+                                    </li>
+                                    <li onClick={()=>{
+                                        navigate("/my-orders")
+                                    }}>
+                                        My Orders
                                     </li>
                                     <li>
                                         <span onClick={()=>{

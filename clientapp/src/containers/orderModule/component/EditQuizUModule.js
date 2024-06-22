@@ -1,43 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { quizCategorySchema } from "../../../../schemas/quizCategory/index";
-import { createQuizCategory, getQuizCategoryModuleById } from '../../../../redux/features/quizCategorySlice';
+import { createQuizCategory } from '../../../../redux/features/quizCategorySlice';
 
 import { Controller, useForm } from "react-hook-form";
-import { createQuiz } from '../../../../redux/features/quizSlice';
+import { createQuiz, editQuiz, editQuizModule } from '../../../../redux/features/quizSlice';
 
-const AddQuizUpdatedModal = (props) => {
+const EditQuizModule = (props) => {
     const dispatch = useDispatch();
+    const oneproduct = useSelector((state) => state.quiz.oneQuizModule);
+
+
     const [formData, setFormData] = useState({
-        name: "",
-        description: "",
+        moduleName: oneproduct?.moduleName || "",
+        category: oneproduct?.category || ""
     });
+
+
+    console.log(formData,"formDataformDataformData")
+
 
 
     const [optionsData, setoptionsData] = useState({
-        "optionone": "",
-        "optiontwo": "",
-        "optionthree": "",
-        "optionfour": ""
+        "moduleName": "",
+        "category": ""
     });
 
 
 
 
-    const [option1Image, setoption1Image] = useState("");
-    const [questionImage, setquestionImage] = useState("");
-    const [option2Image, setoption2Image] = useState("");
-    const [option3Image, setoption3Image] = useState("");
-    const [option4Image, setoption4Image] = useState("");
 
 
-    const { quizCategoriesList, quizCategoryModule } = useSelector((state) => { return state.quizCategory })
+    const { quizCategoriesList } = useSelector((state) => { return state.quizCategory })
     // const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
 
     const handleInputChange = (e) => {
+
         const { name, value } = e.target;
+        console.log(name, value,"name, value")
         setFormData({
             ...formData,
             [name]: value,
@@ -69,49 +71,18 @@ const AddQuizUpdatedModal = (props) => {
     //     }
     // };
 
-    const getListAllCategoryById = (id) => {
-        setValue("category", id)
-        dispatch(getQuizCategoryModuleById(id));
-    };
+
     console.log(errors, "errorserrorserrorserrors")
     const onSubmit = async (data) => {
+        
 
-        console.log(data, "datadatadata")
-
-        let final_data = {}
-        final_data["option"] = [
-            optionsData.optionone,
-            optionsData.optiontwo,
-            optionsData.optionthree,
-            optionsData.optionfour,
-        ]
-
-        final_data["optionImage"] = [
-            option1Image,
-            option2Image,
-            option3Image,
-            option4Image,
-        ]
-
-        // 
-
-        const { answer, category, description, question, module, answerImage } = data
+        console.log(data,"datadatadatadatadata")
+        const { category, moduleName } = data
 
 
         const formDataToSend = new FormData();
-        formDataToSend.append('answer', answer);
-        formDataToSend.append('description', description);
-     
         formDataToSend.append('category', category);
-        formDataToSend.append('question', question);
-        formDataToSend.append('module', module);
-        // formDataToSend.append('answerImage', answerImage);
-        formDataToSend.append('option', final_data.option.join(","));
-        formDataToSend.append('option1Image', option1Image);
-        formDataToSend.append('option2Image', option2Image);
-        formDataToSend.append('option3Image', option3Image);
-        formDataToSend.append('option4Image', option4Image);
-        formDataToSend.append('questionImage', questionImage);
+        formDataToSend.append('moduleName', formData.moduleName);
         // final_data={
         //     ...final_data,
         //     answer,
@@ -125,34 +96,52 @@ const AddQuizUpdatedModal = (props) => {
         // // if (isValid) {
         // setLoading(true);
 
-        dispatch(createQuiz(formDataToSend, reset, props.toggleAddQuizCategoryModal, props.state));
+        dispatch(editQuizModule(oneproduct.uId,formDataToSend, reset, props.toggleEditQuizCategoryModal, props.state));
         // setLoading(false);
         // // }
     };
 
+
+    useEffect(() => {
+        if (oneproduct) {
+
+            setFormData({
+                "moduleName": oneproduct ? oneproduct?.moduleName : "",
+                "category":oneproduct ? oneproduct.category : ""
+            })
+
+            reset({
+                moduleName: oneproduct ? oneproduct.moduleName : "",
+                category:oneproduct ? oneproduct.category : ""
+            })
+        }
+    }, [oneproduct]);
+
+
     return (
         <>
             <Modal
-                isOpen={props.showAddQuizCategoryModal}
-                toggle={props.toggleAddQuizCategoryModal}>
+                isOpen={props.showEditQuizCategoryModal}
+                toggle={props.toggleEditQuizCategoryModal}>
                 <ModalHeader
-                    toggle={props.toggleAddQuizCategoryModal}>
-                    Add Quiz
+                    toggle={props.toggleEditQuizCategoryModal}>
+                    Edit Quiz Module
                 </ModalHeader>
                 <ModalBody>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <label>Question</label>
+                            <label>Module Name</label>
                             <Controller
-                                name="question"
+                                name="moduleName"
                                 control={control}
                                 render={({ field: { value, onChange } }) => (
                                     <input
                                         className={`form-control  ${errors?.question ? "error-input" : ""
                                             }`}
                                         type="text"
-                                        value={value}
-                                        onChange={onChange}
+                                        name='moduleName'
+                                        value={formData.moduleName}
+                                        onChange={handleInputChange}
                                         autoComplete="false"
                                     />
                                 )}
@@ -164,34 +153,7 @@ const AddQuizUpdatedModal = (props) => {
                                 ""
                             )}
                         </div>
-
-                        <div className="form-group">
-                            <label>Question Image</label>
-                            <Controller
-                                name="questionImage"
-                                control={control}
-                                render={({ field: { onChange } }) => (
-                                    <input
-                                        className={`form-control ${errors?.image ? "error-input" : ""
-                                            }`}
-                                        type="file"
-                                        onChange={(e) => {
-                                            const file = e.target.files;
-                                            setquestionImage(file[0])
-                                            console.log(file, "filefilefilefilefilefile")
-                                            onChange(file);
-                                        }}
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors?.optionone?.message ? (
-                                <p style={{ color: "red" }}>{errors?.optionone?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>Option 1</label>
                             <Controller
                                 name="optionone"
@@ -222,34 +184,6 @@ const AddQuizUpdatedModal = (props) => {
                                 ""
                             )}
                         </div>
-
-                        <div className="form-group">
-                            <label>Option 1 Image</label>
-                            <Controller
-                                name="Option1image"
-                                control={control}
-                                render={({ field: { onChange } }) => (
-                                    <input
-                                        className={`form-control ${errors?.image ? "error-input" : ""
-                                            }`}
-                                        type="file"
-                                        onChange={(e) => {
-                                            const file = e.target.files;
-                                            setoption1Image(file[0])
-                                            console.log(file, "filefilefilefilefilefile")
-                                            onChange(file);
-                                        }}
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors?.optionone?.message ? (
-                                <p style={{ color: "red" }}>{errors?.optionone?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-                        
                         <div className="form-group">
                             <label>Option 2</label>
                             <Controller
@@ -282,34 +216,6 @@ const AddQuizUpdatedModal = (props) => {
                                 ""
                             )}
                         </div>
-
-                        <div className="form-group">
-                            <label>Option 2 Image</label>
-                            <Controller
-                                name="Option2image"
-                                control={control}
-                                render={({ field: { onChange } }) => (
-                                    <input
-                                        className={`form-control ${errors?.image ? "error-input" : ""
-                                            }`}
-                                        type="file"
-                                        onChange={(e) => {
-                                            const file = e.target.files;
-                                            setoption2Image(file[0])
-                                            console.log(file, "filefilefilefilefilefile")
-                                            onChange(file);
-                                        }}
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors?.optiontwo?.message ? (
-                                <p style={{ color: "red" }}>{errors?.optiontwo?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-
                         <div className="form-group">
                             <label>Option 3</label>
                             <Controller
@@ -341,38 +247,6 @@ const AddQuizUpdatedModal = (props) => {
                                 ""
                             )}
                         </div>
-
-
-
-
-                        <div className="form-group">
-                            <label>Option 3 Image</label>
-                            <Controller
-                                name="Option3image"
-                                control={control}
-                                render={({ field: { onChange } }) => (
-                                    <input
-                                        className={`form-control ${errors?.image ? "error-input" : ""
-                                            }`}
-                                        type="file"
-                                        onChange={(e) => {
-                                            const file = e.target.files;
-                                            setoption3Image(file[0])
-                                            console.log(file, "filefilefilefilefilefile")
-                                            onChange(file);
-                                        }}
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors?.optionthree?.message ? (
-                                <p style={{ color: "red" }}>{errors?.optionthree?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-
-
                         <div className="form-group">
                             <label>Option 4</label>
                             <Controller
@@ -406,49 +280,17 @@ const AddQuizUpdatedModal = (props) => {
                             )}
                         </div>
 
-                        
-
-
-                        
-                        
                         <div className="form-group">
-                            <label>Option 4 Image</label>
-                            <Controller
-                                name="Option4image"
-                                control={control}
-                                render={({ field: { onChange } }) => (
-                                    <input
-                                        className={`form-control ${errors?.image ? "error-input" : ""
-                                            }`}
-                                        type="file"
-                                        onChange={(e) => {
-                                            const file = e.target.files;
-                                            setoption4Image(file[0])
-                                            console.log(file, "filefilefilefilefilefile")
-                                            onChange(file);
-                                        }}
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors?.optionfour?.message ? (
-                                <p style={{ color: "red" }}>{errors?.optionfour?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-
-                        {/* <div className="form-group">
                             <label>Answer</label>
                             <select
 
-                                onChange={(e) => {
-                                    setValue("answer", e.target.value)
+                                onChange={(e)=>{
+                                    setValue("answer",e.target.value)
                                 }}
                                 className={`form-control ${errors.roleName ? "error-input" : ""
                                     }`}
                             >
-                                <option selected disabled value="">
+                                <option disabled value="">
                                     Select...
                                 </option>
                                 {console.log(Object.entries(optionsData).map((category) => { return category[1] }), "Object.entries(optionsData)")}
@@ -468,45 +310,6 @@ const AddQuizUpdatedModal = (props) => {
 
 
 
-
-                        <div className="form-group">
-                            <label>Answer</label>
-                            <select
-
-                                onChange={(e) => {
-                                    setValue("answer", e.target.value)
-                                }}
-                                className={`form-control ${errors.roleName ? "error-input" : ""
-                                    }`}
-                            >
-                                <option selected disabled value="">
-                                    Select...
-                                </option>
-                                {console.log(Object.entries(optionsData).map((category) => { return category[1] }), "Object.entries(optionsData)")}
-
-                                <option value="Option1">
-                                    Option 1
-                                </option>
-                                <option value="Option2">
-                                    Option 2
-                                </option>
-                                <option value="Option3">
-                                    Option 3
-                                </option>
-                                <option value="Option4">
-                                    Option 4
-                                </option>
-                            </select>
-
-                            {errors?.answer?.message ? (
-                                <p style={{ color: "red" }}>{errors?.answer?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-
-
-
                         <div className="form-group">
                             <label>Category</label>
                             <Controller
@@ -515,9 +318,6 @@ const AddQuizUpdatedModal = (props) => {
                                 render={({ field }) => (
                                     <select
                                         {...field}
-                                        onChange={(e) => {
-                                            getListAllCategoryById(e.target.value)
-                                        }}
                                         className={`form-control ${errors.roleName ? "error-input" : ""
                                             }`}
                                     >
@@ -541,37 +341,7 @@ const AddQuizUpdatedModal = (props) => {
                             )}
                         </div>
 
-                        <div className="form-group">
-                            <label>Module</label>
-                            <Controller
-                                name="module"
-                                control={control}
-                                render={({ field }) => (
-                                    <select
-                                        {...field}
-                                        className={`form-control ${errors.roleName ? "error-input" : ""
-                                            }`}
-                                    >
-                                        <option disabled value="">
-                                            Select...
-                                        </option>
-                                        {quizCategoryModule.map((category) => (
-                                            <option key={category.uId} value={category.uId}>
-                                                {category.moduleName}                                                                                                                                           
-                                            </option>
-                                        ))}
-                                    </select>
-                                )}
-                                defaultValue=""
-                            />
-
-                            {errors?.name?.message ? (
-                                <p style={{ color: "red" }}>{errors?.name?.message}</p>
-                            ) : (
-                                ""
-                            )}
-                        </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>Description</label>
                             <Controller
                                 name="description"
@@ -593,7 +363,7 @@ const AddQuizUpdatedModal = (props) => {
                             ) : (
                                 ""
                             )}
-                        </div>
+                        </div> */}
 
 
                         <div className="form-group text-center mt-3">
@@ -611,4 +381,4 @@ const AddQuizUpdatedModal = (props) => {
     )
 };
 
-export default AddQuizUpdatedModal;
+export default EditQuizModule;

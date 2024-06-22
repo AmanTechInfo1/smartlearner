@@ -10,13 +10,15 @@ import { Button } from "reactstrap";
 import Loader from "../../../components/loader/Loader";
 import AddQuizModal from "../component/AddQuizModal";
 import EditQuizModal from "../component/EditQuizModal";
-import { deleteQuiz, getAllQuizzes, getQuizById } from "../../../redux/features/quizSlice";
-import EditQuizUpdatedModal from "./component/EditQuizModal";
-import AddQuizUpdatedModal from "./component/AddQuizModal";
+import { deleteQuizModule, getAllQuizzes, getAllQuizzesModule, getQuizById, getQuizModuleById } from "../../../redux/features/quizSlice";
+import EditQuizUpdatedModal from "./component/EditQuizUModule";
+import AddQuizUpdatedModal from "./component/AddQuizUModule";
+import AddQuizUModuleModal from "./component/AddQuizUModule";
+import EditQuizUModuleModal from "./component/EditQuizUModule";
 
-const QuizModal = () => {
+const QuizUModule = () => {
     const dispatch = useDispatch();
-    const { loading, quizzes, quizzesCount } = useSelector((state) => state.quiz);
+    const { loading, quizzesModule, quizzesModuleCount } = useSelector((state) => state.quiz);
     const [quizCategoryObj, setQuizCategoryObj] = useState();
 
     const [showAddQuizCategoryModal, setShowAddQuizCategoryModal] = useState(false);
@@ -32,7 +34,7 @@ const QuizModal = () => {
     });
 
     useEffect(() => {
-        dispatch(getAllQuizzes(state.search, state.page, state.pageSize));
+        dispatch(getAllQuizzesModule(state.search, state.page, state.pageSize));
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
@@ -54,79 +56,27 @@ const QuizModal = () => {
     }
     const handleEditClick = (id) => {
         dispatch(getListQuizCategories());
-        dispatch(getQuizById(id));
+        dispatch(getQuizModuleById(id));
         // dispatch(getAllQuizCategories(id))
         toggleEditQuizCategoryModal();
     };
 
     const handleDelete = (id) => {
-        dispatch(deleteQuiz(id));
+        dispatch(deleteQuizModule(id));
     };
 
     const columns = [
         {
-            title: "Question",
-            dataIndex: "question",
+            title: "Module Name",
+            dataIndex: "moduleName",
             align: "center",
-            sorter: (a, b) => {
-                if (!a.question || !b.question) return 0; // Handle undefined or null cases
-                return a.question.length - b.question.length;
-            },
-        },
-        {
-            title: "Answer",
-            dataIndex: "answer",
-            align: "center",
-            sorter: (a, b) => {
-                if (!a.answer || !b.answer) return 0; // Handle undefined or null cases
-                return a.answer.length - b.answer.length;
-            },
-        },
-        {
-            title: "Option",
-            dataIndex: "option",
-            align: "center",
-            sorter: (a, b) => {
-                if (!a.option || !b.option) return 0; // Handle undefined or null cases
-                return a.option.length - b.option.length;
-            },
-            render: (text) => (
-                <span title={text}>
-                    {Array.isArray(text) ? text.join(", ") : text}
-                </span>
-            ),
-        },
-        {
-            title: "Description",
-            dataIndex: "description",
-            align: "center",
-            sorter: (a, b) => {
-                if (!a.description || !b.description) return 0; // Handle undefined or null cases
-                return a.description.length - b.description.length;
-            },
-            render: (text) => (
-                <span title={text}>
-                    {text?.length > 40 ? `${text.substring(0, 40)}...` : text}
-                </span>
-            ),
+            sorter: (a, b) => a.moduleName.length - b.moduleName.length,
         },
         {
             title: "Category",
             dataIndex: "categoryName",
             align: "center",
-            sorter: (a, b) => {
-                if (!a?.categoryName || !b?.categoryName) return 0; // Handle undefined or null cases
-                return a.categoryName.length - b.categoryName.length;
-            },
-        },
-        {
-            title: "Module Name",
-            dataIndex: "moduleName",
-            align: "center",
-            sorter: (a, b) => {
-                if (!a?.moduleName || !b?.moduleName) return 0; // Handle undefined or null cases
-                return a.moduleName.length - b.moduleName.length;
-            },
+            sorter: (a, b) => a?.categoryName.length - b?.categoryName.length
         },
         {
             title: "Action",
@@ -163,7 +113,7 @@ const QuizModal = () => {
         <>
             <div className={styles.usersContainer}>
                 <div className={styles.usersHeading}>
-                    <h2 className={styles.userHeading}>Quiz</h2>
+                    <h2 className={styles.userHeading}>Quiz Modules</h2>
                     <button
                         className={styles.addButton}
                         onClick={(e)=>{
@@ -172,7 +122,7 @@ const QuizModal = () => {
                             handleAddClick()
                         }}
                     >
-                        Add Quiz
+                        Add Quiz Module
                     </button>
                 </div>
                 {!loading ? (
@@ -181,7 +131,7 @@ const QuizModal = () => {
                         pagination={{
                             current: state.page,
                             pageSize: state.pageSize,
-                            total: quizzesCount,
+                            total: quizzesModuleCount,
                             showTotal: (total, range) =>
                                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
                             showSizeChanger: true,
@@ -192,19 +142,19 @@ const QuizModal = () => {
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
-                        dataSource={quizzes}
+                        dataSource={quizzesModule}
                         rowKey={(record) => record._id}
                     />
                 ) : (
                     <Loader />
                 )}
             </div>
-            <AddQuizUpdatedModal
+            <AddQuizUModuleModal
                 state={state}
                 showAddQuizCategoryModal={showAddQuizCategoryModal}
                 toggleAddQuizCategoryModal={toggleAddQuizCategoryModal}
             />
-            <EditQuizUpdatedModal  
+            <EditQuizUModuleModal 
                 state={state}
                 quizCategoryObj={quizCategoryObj}
                 showEditQuizCategoryModal={showEditQuizCategoryModal}
@@ -214,4 +164,4 @@ const QuizModal = () => {
     );
 };
 
-export default QuizModal;
+export default QuizUModule;
