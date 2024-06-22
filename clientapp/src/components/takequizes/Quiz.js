@@ -7,6 +7,7 @@ import Confetti from 'react-confetti'
 
 import useWindowSize from 'react-use/lib/useWindowSize'
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { imageBaseUrl } from '../../utils/constants';
 const questions = [
   {
     questionText: "What is the capital of France?",
@@ -30,7 +31,7 @@ const questions = [
 
 const Quiz = () => {
 
-  const { cid,id } = useParams();
+  const { cid, id } = useParams();
 
 
 
@@ -57,7 +58,7 @@ const Quiz = () => {
   useEffect(() => {
 
 
-    dispatch(getRandomQuestion(cid,id))
+    dispatch(getRandomQuestion(cid, id))
     const interval = setInterval(() => {
       setTotalTimer((prevTotalTimer) => {
         if (prevTotalTimer > 0) {
@@ -74,14 +75,15 @@ const Quiz = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleAnswerOptionClick = (answerOption) => {
+  const handleAnswerOptionClick = (answerOption, answerImage) => {
 
     // alert(answerOption)
 
 
     let finData = {
       questionId: oneQuiz.questionId,
-      answer: answerOption
+      answer: answerOption,
+      answerImage: answerImage
     }
 
     setAnswered(answerOption)
@@ -95,7 +97,7 @@ const Quiz = () => {
 
     dispatch(getQuizRandomQuestionOutputFailure())
     dispatch(getQuizRandomQuestionFailure())
-    dispatch(getRandomQuestion(cid,id))
+    dispatch(getRandomQuestion(cid, id))
     // const nextQuestion = currentQuestion + 1;
     // if (nextQuestion < questions.length) {
     //   setCurrentQuestion(nextQuestion);
@@ -183,7 +185,15 @@ const Quiz = () => {
                   {/* {currentQuestion + 1}/{questions.length} */}
                   Question : {oneQuiz?.question}
                 </div>
+
+
+                <div className={styles.questionCount}>
+                  {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage!= "" ? imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
+                </div>
                 <div className={styles.OptionsText}>{"Options :-"} </div>
+
+
+
                 <div className={styles.answerSection}>
                   {/* {oneQuiz?.option?.map((answerOption, index) => {
                   let buttonClass = "";
@@ -204,19 +214,22 @@ const Quiz = () => {
                   );
                 })} */}
 
-                  {oneQuiz?.option?.map((answerOption) => {
+                  {oneQuiz?.option?.map((answerOption, index) => {
                     return (
                       <button
                         // key={index}
                         disabled={oneQuizOutput.answerAttempt}
-                        style={{ backgroundColor: oneQuizOutput.answerAttempt == "Incorrect" ? answerOption == answered ? "red" : oneQuizOutput.correctAnswer == answerOption ? "green" : "" : oneQuizOutput.correctAnswer == answerOption ? "green" : "" }}
-                        onClick={() => handleAnswerOptionClick(answerOption)}
+                        style={{ backgroundColor: oneQuizOutput.answerAttempt == "Incorrect" ? "Option" + (index + 1) == answered ? "red" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" }}
+                        onClick={() => handleAnswerOptionClick("Option" + (index + 1), "Image" + (index + 1))}
                       // disabled={selectedOption !== null}
                       >
-                        {answerOption}
+                        {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
                       </button>
                     );
                   })}
+
+
+
                 </div>
               </>
               : <>

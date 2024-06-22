@@ -79,7 +79,12 @@
   }
   
   .answerSection {
+    justify-content: center;
     margin-bottom: 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    display:grid;
+    grid-template-columns: 200px 200px;
   }
   
   .answerSection button {
@@ -89,6 +94,10 @@
     margin: 5px 0;
     font-size: 1em;
     cursor: pointer;
+  }
+
+  .answerSection button img{
+    width: 100%;
   }
   
   .navigationButtons {

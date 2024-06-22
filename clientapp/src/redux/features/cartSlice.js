@@ -5,10 +5,33 @@ import { toast } from "react-hot-toast";
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
-        cart: localStorage.getItem("cart")?JSON.parse(localStorage.getItem("cart"))["updatedCart"]:[],
-        loading: false
+        cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart"))["updatedCart"] : [],
+        loading: false,
+        hashcode: "",
+        payment: localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
     },
     reducers: {
+
+
+        removeCart: (state, action) => {
+
+            state.cart = [];
+        },
+
+        getCompleteCheckoutSuccess: (state, action) => {
+
+            localStorage.setItem("payment", JSON.stringify(action.payload.order))
+            state.payment = action.payload.order;
+        },
+        getCompleteCheckoutFailure: (state) => {
+            state.payment = {};
+        },
+        getGenerateHashCodeSuccess: (state, action) => {
+            state.hashcode = action.payload;
+        },
+        getGenerateHashCodeFailure: (state) => {
+            state.hashcode = "";
+        },
         IncreaseCart: (state, action) => {
 
             console.log(action.payload, "action.payload.id")
@@ -48,8 +71,13 @@ const cartSlice = createSlice({
         AddToCart: (state, action) => {
             console.log(action.payload)
             // state.cart.push(action.payload);
+            let updatedCart = []
+            if (state.cart) {
+                updatedCart = [...state.cart, action.payload]
+            } else {
+                updatedCart = [action.payload]
+            }
 
-            let updatedCart = [...state.cart, action.payload]
             console.log({ updatedCart }, "JSON.parse")
             localStorage.setItem("cart", JSON.stringify({ updatedCart }))
             return {
@@ -105,11 +133,77 @@ export const getAddToCart = (product) => async (dispatch) => {
     }
 };
 
+
+
+export const removingCart = (data, cb) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        dispatch(removeCart());
+
+    } catch (error) {
+        toast.error(error.message);
+    }
+}
+
+export const getCompleteCheckout = (data, cb) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(
+            `/api/order/CompleteCheckout`,
+            data
+        );
+        if (response.data.success) {
+            dispatch(getCompleteCheckoutSuccess(response.data.data));
+            cb()
+
+        } else {
+            toast.error(response.data.message);
+            dispatch(getCompleteCheckoutFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getCompleteCheckoutFailure());
+    }
+};
+
+
+
+export const generateHashcodeCheckout = (data, cb, form, additionalData) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(
+            `/api/order/generate_hash`,
+            data
+        );
+
+        console.log(response.data.hash_code, "responseresponseresponse")
+        if (response.data.hash_code) {
+            dispatch(getGenerateHashCodeSuccess(response.data.hash_code));
+            additionalData.value = response.data.hash_code;
+            form.appendChild(additionalData);
+            form.submit();
+
+        } else {
+            toast.error(response.data.message);
+            dispatch(getGenerateHashCodeFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getGenerateHashCodeFailure());
+    }
+};
+
+
 export const {
     IncreaseCart,
     DecreaseCart,
     AddToCart,
-    setLoading
+    setLoading,
+    removeCart,
+    getCompleteCheckoutSuccess,
+    getCompleteCheckoutFailure,
+    getGenerateHashCodeSuccess,
+    getGenerateHashCodeFailure
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

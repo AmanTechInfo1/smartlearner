@@ -12,7 +12,7 @@ const Cart = () => {
     { id: 2, service: "1 HOUR: Automatic", price: 34, quantity: 1 },
   ]);
 
-  
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -44,7 +44,7 @@ const Cart = () => {
   // };
 
   // const handleDecrease = (id,qty) => {
-    
+
   //   dispatch(getDecreaseCart(id,qty))
   //   // setCartItems((prevItems) =>
   //   //   prevItems.map((item) =>
@@ -56,10 +56,11 @@ const Cart = () => {
   // };
 
   const calculateSubtotal = () => {
-    return myCart.reduce(
-      (acc, item) => acc + item.price * item.count,
-      0
-    );
+
+    console.log(myCart, "myCartmyCartmyCart")
+
+
+    return myCart ? myCart != undefined ? myCart.length > 0 ? myCart.reduce((acc, item) => acc + item.price * item.count, 0) : 0 : 0 : 0;
   };
 
   const subtotal = calculateSubtotal();
@@ -83,7 +84,7 @@ const Cart = () => {
               src={carImg}
               alt="car image"
               className={styles.cartIconCarImg}
-            />  
+            />
           </marquee>
         </div>
         <div
@@ -96,7 +97,7 @@ const Cart = () => {
             </div>
 
             {
-              myCart.map((itm) => {
+              myCart && myCart.map((itm) => {
                 return <div id={styles.cartTableDetailsd}>{itm.service}</div>
               })
             }
@@ -109,7 +110,7 @@ const Cart = () => {
               PRICE
             </div>
             {
-              myCart.map((itm) => {
+              myCart && myCart.map((itm) => {
                 return <div id={styles.cartTableDetailsd}>{itm.price}</div>
               })
             }
@@ -120,14 +121,14 @@ const Cart = () => {
             </div>
 
             {
-              myCart.map((itm) => {
+              myCart && myCart.map((itm) => {
                 return <>
                   <div id={styles.cartTableBtn}>
                     {" "}
                     <div className={styles.quantityControl}>
                       <button
-                        onClick={()=>{
-                          handleDecrease(itm.id,1)
+                        onClick={() => {
+                          handleDecrease(itm.id, 1)
                         }}
                         className={styles.decreaseButton}
                       >
@@ -135,8 +136,8 @@ const Cart = () => {
                       </button>
                       <span>{itm.count}</span>
                       <button
-                        onClick={()=>{
-                          handleIncrease(itm.id,1)
+                        onClick={() => {
+                          handleIncrease(itm.id, 1)
                         }}
                         className={styles.increaseButton}
                       >
@@ -153,13 +154,13 @@ const Cart = () => {
             <div className="font-weight-bold" id={styles.cartTableDetails}>
               SUBTOTAL
             </div>
-            
+
             {
-              myCart.map((itm) => {
+              myCart && myCart.map((itm) => {
                 return <div id={styles.cartTableDetailsd}>{itm.price * itm.count}</div>
               })
             }
-            
+
           </div>
         </div>
         <div id={styles.couponCart}>
@@ -186,9 +187,11 @@ const Cart = () => {
               </div>
             </div>
 
-            <button className="btn btn-secondary" onClick={()=>{
-              navigate("/checkout")
-            }}>PROCEED TO CHECKOUT</button>
+            {
+              myCart && myCart.length > 0 && <button className="btn btn-secondary" onClick={() => {
+                navigate("/checkout")
+              }}>PROCEED TO CHECKOUT</button>
+            }
           </div>
         </div>
       </div>

@@ -1,42 +1,58 @@
 import React, { useState } from "react";
 
 import './Checkout.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getCompleteCheckout } from "../../../redux/features/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalCheckout(props) {
   const [email, setEmail] = useState("");
   const [orderNotes, setOrderNotes] = useState("");
 
+  const navigate = useNavigate()
+
+  const dispatch=useDispatch()
+
   const handleEmailChange = (e) => {
+
+    props.handleLocalChange(e.target.id,e.target.value)
     setEmail(e.target.value);
   };
 
   const handleOrderNotesChange = (e) => {
+    props.handleLocalChange(e.target.id,e.target.value)
     setOrderNotes(e.target.value);
   };
-
 
   const myCart = useSelector((state) => {
     return state.cart.cart
   })
-
-
-
   const calculateSubtotal = () => {
     return myCart.reduce(
       (acc, item) => acc + item.price * item.count,
       0
     );
   };
-
+  
   const subtotal = calculateSubtotal();
   const serviceCharge = subtotal * 0.02;
   const total = subtotal + serviceCharge;
+  const callFunApi = () => {
+    let finalArr={
+      ...props.formData,
+      "subtotal":subtotal,
+      "serviceCharge":serviceCharge,
+      "total":total,
+      "myCart":myCart 
+    }
 
+    console.log(finalArr,"formDataformData")
 
+    dispatch(getCompleteCheckout(finalArr,()=>{
+      navigate("/paymentProcessing")
+    }))
+  };
   
-
-
   return (
     <>
       <div className="modal-content">
@@ -60,7 +76,7 @@ export default function FinalCheckout(props) {
               Order Notes (Optional)
             </label>
             <textarea
-              id="order-notes"
+              id="ordernotes"
               rows="4"
               className="form-textarea"
               value={orderNotes}
@@ -97,7 +113,12 @@ export default function FinalCheckout(props) {
               </div>
             </div>
             <div className="text-center mt-3">
-              <button className="btn-primary account-btn btn-lg" type="submit">
+              <button 
+                className="btn-primary account-btn btn-lg"
+                onClick={()=>{
+                  callFunApi()
+                }}
+                type="submit" >
                 checkout
               </button>
             </div>

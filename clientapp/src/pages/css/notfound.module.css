@@ -48,6 +48,14 @@
     height: 400px;
     background-position: center;
   }
+
+
+  .paymetSucces {
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/success.gif);
+    height: 400px;
+    background-position: center;
+  }
   
   .fourZeroFourBg h1 {
     font-size: 80px;

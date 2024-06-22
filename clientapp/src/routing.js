@@ -73,6 +73,8 @@ import OrderInvoice from "./containers/orders/component/OrderInvoice";
 import Order from "./containers/orders/Order";
 import Products from "./pages/Product";
 import MyCart from "./pages/auth/MyCart";
+import PaymentProcessing from "./pages/shop/checkout/PaymentProcessing";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 
 
@@ -135,12 +137,14 @@ export const router = createBrowserRouter([
       { path: "PracticeMCQS", element: <PracticeMCQS/> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
+      { path: "paymentSuccess", element: <PaymentSuccess /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
       {path:"checkout", element: <Checkout/>},
+      {path:"paymentProcessing", element: <PaymentProcessing/>},
 
     ],
   },
@@ -241,7 +245,7 @@ export const router = createBrowserRouter([
         element:<Order/>
       },
 
-      {path:"/admin/order-Invoice",
+      {path:"/admin/orderInvoice/:invoiceId",
         element: <OrderInvoice/>
       },
 

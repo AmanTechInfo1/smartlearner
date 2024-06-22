@@ -26,7 +26,7 @@ export default function Products({ curElem }) {
 
   const myCart = useSelector((state) => {
 
-    return state.cart.cart.filter((itm) => (itm.id == _id))
+    return state.cart.cart ? state.cart.cart.filter((itm) => (itm.id == _id)) : []
 
   })
 

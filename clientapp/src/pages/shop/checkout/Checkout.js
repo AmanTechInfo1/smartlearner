@@ -22,8 +22,7 @@ export default function Checkout() {
   };
 
 
-  const handleLocalChange = (e) => {
-    const { id, value } = e.target;
+  const handleLocalChange = (id,value) => {
     setFormData({ ...formData, [id]: value });
   };
 
@@ -153,7 +152,7 @@ export default function Checkout() {
           </form>
         </div>
         {/* /////////////////////////////////////////////////////// */}
-        <FinalCheckout handleLocalChange={handleLocalChange}/>
+        <FinalCheckout formData={formData} setFormData={setFormData} handleLocalChange={handleLocalChange}/>
       </div>
     </div>
   );
