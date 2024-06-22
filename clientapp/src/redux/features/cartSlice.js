@@ -49,24 +49,37 @@ const cartSlice = createSlice({
                 cart: itemExists ? updatedCart : [...state.cart, action.payload]
             };
         },
+        // DecreaseCart: (state, action) => {
+
+        //     console.log(action.payload, "action.payload.id")
+
+        //     const updatedCart = state.cart.map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item);
+
+        //     const itemExists = state.cart.some(item => item.id === action.payload.id);
+
+
+        //     console.log({ updatedCart }, "JSON.parse")
+
+        //     let datew = [...state.cart, action.payload]
+        //     localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
+        //     return {
+        //         ...state,
+        //         cart: itemExists ? updatedCart : [...state.cart, action.payload]
+        //     };
+
+        // },
+
+
         DecreaseCart: (state, action) => {
-
-            console.log(action.payload, "action.payload.id")
-
-            const updatedCart = state.cart.map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item);
-
+            const updatedCart = state.cart
+                .map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item)
+                .filter(item => item.count > 0);
             const itemExists = state.cart.some(item => item.id === action.payload.id);
-
-
-            console.log({ updatedCart }, "JSON.parse")
-
-            let datew = [...state.cart, action.payload]
-            localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
+            localStorage.setItem("cart", JSON.stringify({ updatedCart }));
             return {
                 ...state,
-                cart: itemExists ? updatedCart : [...state.cart, action.payload]
+                cart: updatedCart,
             };
-
         },
         AddToCart: (state, action) => {
             console.log(action.payload)
