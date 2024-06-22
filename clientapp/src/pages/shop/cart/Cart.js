@@ -24,36 +24,8 @@ const Cart = () => {
     dispatch(emptyCart());
   };
 
-  // const calculateSubtotal = () => {
-  //   return myCart.reduce((acc, item) => acc + item.price * item.count, 0);
-  // const handleIncrease = (id,qty) => {
-
-  //   dispatch(getIncreaseCart(id,qty))
-  //   // setCartItems((prevItems) =>
-  //   //   prevItems.map((item) =>
-  //   //     item.id === id ? { ...item, quantity: item.quantity + qty } : item
-  //   //   )
-  //   // );
-  // };
-
-  // const handleDecrease = (id,qty) => {
-
-  //   dispatch(getDecreaseCart(id,qty))
-  //   // setCartItems((prevItems) =>
-  //   //   prevItems.map((item) =>
-  //   //     item.id === id && item.quantity > 1
-  //   //       ? { ...item, quantity: item.quantity - qty }
-  //   //       : item
-  //   //   )
-  //   // );
-  // };
-
   const calculateSubtotal = () => {
-
-    console.log(myCart, "myCartmyCartmyCart")
-
-
-    return myCart ? myCart != undefined ? myCart.length > 0 ? myCart.reduce((acc, item) => acc + item.price * item.count, 0) : 0 : 0 : 0;
+    return myCart.reduce((acc, item) => acc + item.price * item.count, 0);
   };
 
   const subtotal = calculateSubtotal();
@@ -72,37 +44,25 @@ const Cart = () => {
         </div>
         <div className="d-flex justify-content-left mb-4" id={styles.carImg}>
           <marquee direction="right">
-            <img
-              src={carImg}
-              alt="car image"
-              className={styles.cartIconCarImg}
-            />
+            <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
           </marquee>
         </div>
-        <div
-          className=" border-top border-bottom border-danger "
-          id={styles.cartTable}
-        >
-          <div id={styles.cartTableDetailsDiv}>
-            <div className="font-weight-bold" id={styles.cartTableDetails}>
-              SERVICE
-            </div>
-
-            {
-              myCart && myCart.map((itm) => {
-                return <div id={styles.cartTableDetailsd}>{itm.service}</div>
-              })
-            }
-
+        {myCart.length === 0 ? (
+          <div className="text-center">
+            <h2>Your cart is empty</h2>
+            <button
+              className="btn btn-primary mt-4"
+              onClick={() => navigate("/shop")}
+            >
+              Continue Shopping
+            </button>
           </div>
-          {/* ) :  */}
-          
-{/*           
-  return ( */}
+        ) : (
           <>
             <div
               className="border-top border-bottom border-danger"
-              id={styles.cartTable}>
+              id={styles.cartTable}
+            >
               <div id={styles.cartTableDetailsDiv}>
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   SERVICE
@@ -117,65 +77,49 @@ const Cart = () => {
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   PRICE
                 </div>
-                {
-                  myCart && myCart.map((itm) => {
-                    return <div id={styles.cartTableDetailsd}>{itm.price}</div>
-                  })
-                }
+                {myCart.map((itm) => (
+                  <div id={styles.cartTableDetailsd} key={itm.id}>{itm.price}</div>
+                ))}
               </div>
               <div className="text-center" id={styles.cartTableDetailsDiv}>
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   QUANTITY
                 </div>
-
-                {
-                  myCart && myCart.map((itm) => {
-                    return <>
-                      <div id={styles.cartTableBtn}>
-                        {" "}
-                        <div className={styles.quantityControl}>
-                          <button
-                            onClick={() => {
-                              handleDecrease(itm.id, 1)
-                            }}
-                            className={styles.decreaseButton}
-                          >
-                            -
-                          </button>
-                          <span>{itm.count}</span>
-                          <button
-                            onClick={() => {
-                              handleIncrease(itm.id, 1)
-                            }}
-                            className={styles.increaseButton}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </>
-                  })
-                }
-
+                {myCart.map((itm) => (
+                  <div id={styles.cartTableBtn} key={itm.id}>
+                    <div className={styles.quantityControl}>
+                      <button
+                        onClick={() => handleDecrease(itm.id, 1)}
+                        className={styles.decreaseButton}
+                      >
+                        -
+                      </button>
+                      <span>{itm.count}</span>
+                      <button
+                        onClick={() => handleIncrease(itm.id, 1)}
+                        className={styles.increaseButton}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
               <div className="text-center" id={styles.cartTableDetailsDiv}>
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   SUBTOTAL
                 </div>
-
-                {
-                  myCart && myCart.map((itm) => {
-                    return <div id={styles.cartTableDetailsd}>{itm.price * itm.count}</div>
-                  })
-                }
-
+                {myCart.map((itm) => (
+                  <div id={styles.cartTableDetailsd} key={itm.id}>
+                    {itm.price * itm.count}
+                  </div>
+                ))}
               </div>
-            </div >
-
+            </div>
             <div id={styles.couponCart}>
               <div className={styles.cartCouponInputs}>
                 {/* <input type="text" placeholder="Enter Coupon" />
-            <button className="btn btn-secondary">Apply Coupon</button> */}
+                <button className="btn btn-secondary">Apply Coupon</button> */}
               </div>
               <hr></hr>
               <div className={styles.basketDiv}>
@@ -187,67 +131,35 @@ const Cart = () => {
                       <span>2% ONLINE SERVICE CHARGE:</span>
                       <span>Total:</span>
                     </div>
-                    {myCart.map((itm) => (
-                      <div id={styles.cartTableDetailsd} key={itm.id}>
-                        {itm.price * itm.count}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div id={styles.couponCart}>
-                  <div className={styles.cartCouponInputs}>
-                    {/* <input type="text" placeholder="Enter Coupon" />
-                <button className="btn btn-secondary">Apply Coupon</button> */}
                   </div>
                   <hr></hr>
-                  <div className={styles.basketDiv}>
-                    <div className={styles.basketDetailsCart}>
-                      <div className={styles.basketHeadingTitles}>
-                        <h2>BASKET TOTAL</h2>
-                        <div className={styles.basketHeadingTitle}>
-                          <span>Subtotal:</span>
-                          <span>2% ONLINE SERVICE CHARGE:</span>
-                          <span>Total:</span>
-                        </div>
-                      </div>
-                      <hr></hr>
-                      <div className={styles.basketHeadingTitle}>
-                        <span>£{subtotal.toFixed(2)}</span>
-                        <span>£{serviceCharge.toFixed(2)}</span>
-                        <span>£{total.toFixed(2)}</span>
-                      </div>
-                    </div>
-                    <button
-
-                      className="btn btn-secondary"
-                      onClick={() => navigate("/checkout")}
-                    >
-                      {
-                        myCart && myCart.length > 0 && <button className="btn btn-secondary" onClick={() => {
-                          navigate("/checkout")
-                        }}>PROCEED TO CHECKOUT</button>
-                      }
-                    </button>
+                  <div className={styles.basketHeadingTitle}>
+                    <span>£{subtotal.toFixed(2)}</span>
+                    <span>£{serviceCharge.toFixed(2)}</span>
+                    <span>£{total.toFixed(2)}</span>
                   </div>
                 </div>
-                <div className="text-center mt-4">
-                  <button
-                    className="btn btn-danger"
-                    onClick={handleEmptyCart}
-                  >
-                    EMPTY CART
-                  </button>
-                </div>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => navigate("/checkout")}
+                >
+                  PROCEED TO CHECKOUT
+                </button>
               </div>
             </div>
+            <div className="text-center mt-4">
+              <button
+                className="btn btn-danger"
+                onClick={handleEmptyCart}
+              >
+                EMPTY CART
+              </button>
+            </div>
           </>
-  )
-    //     </div>
-    //   </div>
-    // </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
-  // )
-}
-
-
-  export default Cart
+export default Cart;
