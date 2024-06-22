@@ -39,9 +39,10 @@ const navigate = useNavigate();
                 </div> */}
         <div
           className={styles.adminHeaderRight}
-          style={{ textAlign: "right", width: "100%" }}
+         
         >
-          <span
+          <section
+          id={styles.adminLogout}
             onClick={() => {
               dispatch(logoutUser());
               navigate('/');
@@ -49,7 +50,7 @@ const navigate = useNavigate();
           >
             <BsPersonCircle className={styles.adminIcon1} />
             LogOut
-          </span>
+          </section>
         </div>
       </header>
     </>
