@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./PracticeMultiple.module.css";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import vulnerableroad from "../../../assets/images/Vulnerable-road-users.png";
-import roadSafty from "../../../assets/images/roadUserVulnerableuser.png"
+
+import roadSafty from "../../../assets/images/roadUserVulnerableuser.png";
+
 import { IoMdArrowDropright } from "react-icons/io";
 import {
   FaWalking,
@@ -12,6 +14,12 @@ import {
   FaMotorcycle,
   FaHorse,
 } from "react-icons/fa";
+import dogGuid from "../../../assets/images/guide-dog.jpg";
+import horseriding from "../../../assets/images/horse-rider.jpg";
+import motorbikecycle from "../../../assets/images/motorbikes-cyclist.jpg";
+import schoolChilderns from "../../../assets/images/childern-School.jpg";
+import disabilityScooters from "../../../assets/images/disability-scooter.jpeg";
+import { Link } from "react-router-dom";
 
 export default function VulnerableRoadUser() {
   return (
@@ -176,17 +184,172 @@ export default function VulnerableRoadUser() {
                   across like children can)
                 </p>
               </li>
-            
             </ul>
           </div>
         </section>
         {/* ////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection} style={{ textAlign: "center"}}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          style={{ textAlign: "center" }}
+        >
           <h2 style={{ textAlign: "center", color: "orange" }}>
-          Learn the warning signs!
+            Learn the warning signs!
           </h2>
           <hr style={{ opacity: "1", border: "2px solid orange" }}></hr>
-          <img src={roadSafty} alt="roadSafty" style={{ maxWidth:'800px', width:'100%'}}/>       
+          <img
+            src={roadSafty}
+            alt="roadSafty"
+            style={{ maxWidth: "800px", width: "100%" }}
+          />
+        </section>
+
+        {/* /////////////////////////////////////////////// */}
+        <section
+          className={styles.hazardTestWorkListSection}
+          style={{ textAlign: "center" }}
+        >
+          <h2 style={{ textAlign: "center", color: "orange" }}>
+            How to deal with Vulnerable Road Users
+          </h2>
+          <hr style={{ opacity: "1", border: "2px solid orange" }}></hr>
+        </section>
+        {/* /////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.hazardTestWorkListDiv}>
+            <img src={dogGuid} alt="dogGuide" />
+            <h2 style={{ color: "Orange", fontSize: "2rem" }}>
+              Disability Scooters
+            </h2>
+            <ul type="none">
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  Pedestrian with a white stick – This means that they are
+                  blind, so cannot see you approach or stop the vehicle. Allow
+                  extra time and care when crossing.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {/* ///////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.hazardTestWorkListDiv}>
+            <img src={horseriding} alt="horseriding" />
+            <h2 style={{ color: "Orange", fontSize: "2rem" }}>Horses</h2>
+            <ul type="none">
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  When you decide to overtake a horse rider, make sure you can
+                  do so safely before you move out. Leave them plenty of room
+                  and pass slowly. Passing too closely at speed could startle
+                  the horse and unseat the rider.
+                </p>
+              </li>
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  You should also never assume which way a horse rider is going
+                  to go. Horses and their riders move more slowly than other
+                  road users. They might not have time to cut across heavy
+                  traffic to take up a position in the right-hand lane. For this
+                  reason, a horse and rider may approach a roundabout in the
+                  left-hand lane even though they’re turning right.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {/* ////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.hazardTestWorkListDiv}>
+            <img src={motorbikecycle} alt="motorbikecycle" />
+            <h2 style={{ color: "Orange", fontSize: "2rem" }}>
+              Motorbike/Cyclists
+            </h2>
+            <ul type="none">
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  These vehicles require you to take extra care when you see
+                  them. They are most vulnerable at roundabouts and junctions.
+                  Cyclists may be in the left lane, but this doesn’t mean they
+                  are going left they could be going in any direction. They will
+                  stay in the left lane close to the side of the road for their
+                  own safety as horses can be easily scared by other cars and
+                  cyclists may be blown over by a strong gust of wind.
+                </p>
+              </li>
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  Note: You should NEVER overtake these road users at a
+                  junction.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {/* /////////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.hazardTestWorkListDiv}>
+            <img src={schoolChilderns} alt="schoolChilderns" />
+            <h2 style={{ color: "Orange", fontSize: "2rem" }}>
+              Children/Schools
+            </h2>
+            <ul type="none">
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  Children can pose a massive threat whilst driving. When
+                  driving through domestic areas and by schools, you should
+                  drive at a slower speed, just in case a child runs out from
+                  behind a parked car into the road. As children are often very
+                  small, they cannot be seen hidden behind parked cars.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {/* ////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.hazardTestWorkListDiv}>
+            <img src={disabilityScooters} alt="disabilityScooters" />
+            <h2 style={{ color: "Orange", fontSize: "2rem" }}>
+              Disability Scooters
+            </h2>
+            <ul type="none">
+              <li>
+                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  You must also be cautious if you see a disabled persons
+                  vehicle (Such as an electric scooter) these will usually be
+                  equipped with a yellow flashing light to indicate they are
+                  slow, their maximum speed is 8MPH.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+        {/* ///////////////////////////////////////////////////////////////// */}
+        <section>
+          <h2
+            style={{ textAlign: "center", color: "yellow", fontSize: "2rem" }}
+          >
+            Test yourself
+          </h2>
+          <div id={styles.btnDiv}>
+            <Link to="/">
+              <button id={styles.hazzardBtn}> 25 Questions​</button>
+            </Link>
+            <Link to="/">
+              <button id={styles.hazzardBtn}>75 Questions​</button>
+            </Link>
+            <Link to="/">
+              <button id={styles.hazzardBtn}>All Questions​</button>
+            </Link>
+          </div>
         </section>
 
         {/* ///////////////////////////////////////////////////// */}

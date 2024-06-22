@@ -62,50 +62,7 @@ export default function Alertness() {
                   ></iframe>
                 </div>
               </div>
-              {/* <ul type="none">
-                  <h2>
-                    Example: 2 triggers met (standards check is not triggered)
-                  </h2>
-                  <li>
-                    <IoMdArrowDropright id="listrightIcon" />{" "}
-                    <p>
-                      You took your pupils for 20 tests throughout the last 12
-                      months.
-                    </p>
-                  </li>
-
-                  <li>
-                    <IoMdArrowDropright id="listrightIcon" />{" "}
-                    <p>
-                      Across all 20 tests, your pupils made a combined total of
-                      95 driving faults. This is an average of 4.75 per test (95
-                      ÷ 20).
-                    </p>
-                  </li>
-                  <li>
-                    <IoMdArrowDropright id="listrightIcon" />{" "}
-                    <p>
-                      Across all 20 tests, your pupils made a combined total of
-                      12 serious driving faults. This is an average of 0.6 per
-                      test (12 ÷ 20).
-                    </p>
-                  </li>
-                  <li>
-                    <IoMdArrowDropright id="listrightIcon" />{" "}
-                    <p>
-                      Across all 20 tests, a driving examiner had to take
-                      physical action in one test. This is 5% of tests (1 ÷ 20,
-                      multiplied by 100).
-                    </p>
-                  </li>
-                  <li>
-                    <IoMdArrowDropright id="listrightIcon" />{" "}
-                    <p>
-                      You will not need to take a standards check because only 2
-                      of the 4 triggers have been met.
-                    </p>
-                  </li> 
-                </ul> */}
+            
             </div>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">

@@ -17,6 +17,7 @@ import enviromentIssue from '../../../assets/images/enviromentalIssueImg.jpg'
 import GeneralIssue from '../../../assets/images/generalTips.jpg'
 
 
+
 export default function SafetyVehicle() {
   return (
     <div className={styles.AdiPartOne}>
@@ -439,6 +440,8 @@ export default function SafetyVehicle() {
             </ul>
           </div>
         </section>
+        {/* //////////////////////////////////////////// */}
+       
         {/* //////////////////////////////////////////////////////// */}
       </div>
     </div>
