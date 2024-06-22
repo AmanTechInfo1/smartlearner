@@ -18,19 +18,19 @@ import { getAllProducts } from "../../redux/features/productSlice";
 import { useEffect, useState } from "react";
 
 export default function Shop() {
-
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState({
-    "search": "",
-    "page": 1,
-    "pageSize": 20
-  })
-
+    search: "",
+    page: 1,
+    pageSize: 20,
+  });
 
   useEffect(() => {
     dispatch(getAllProducts(filter.search, filter.page, filter.pageSize));
   }, [dispatch, filter.search, filter.page, filter.pageSize]);
+  const handleSearchChange = (search) => {
+    setFilter((prevFilter) => ({ ...prevFilter, search }));
+  };
 
   return (
     <>
@@ -39,7 +39,10 @@ export default function Shop() {
         <div className={styles.shopPage}>
           <div className={styles.shopGridView}>
             <div>
-              <FilterSection />
+              <FilterSection
+                search={filter.search}
+                setSearch={handleSearchChange}
+              />
             </div>
             <section className={styles.productView}>
               <div className={styles.sortFilters}>

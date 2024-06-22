@@ -130,7 +130,7 @@ export const getAllProductsById = (id) => async (dispatch) => {
         const response = await httpHandler.get(
             `/api/product/get-products/${id}`
         );
-
+        console.log("API Response:", response);
         console.log(response.statusText,"response.dataresponse.data")
         if (response.data) {
             dispatch(getOneProductsSuccess(response.data));

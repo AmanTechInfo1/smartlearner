@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import styles from "./Shop.module.css";
 import { FaAngleDoubleRight, FaStar, FaArrowRight } from "react-icons/fa";
@@ -17,20 +17,32 @@ import Testemonial from "../../components/testimonials/Testemonial";
 import { useDispatch, useSelector } from "react-redux";
 import { imageBaseUrl } from "../../utils/constants";
 import { getAddToCart, getDecreaseCart, getIncreaseCart } from "../../redux/features/cartSlice";
+import { getAllProductsById } from "../../redux/features/productSlice";
 
 export default function ProductDetails() {
-  const { id } = useParams();
+  const params = useParams();
   const dispatch = useDispatch();
-   
+
+  useEffect(() => {
+    dispatch(getAllProductsById(params.id));
+  }, [dispatch, params.id]);
+
   const product = useSelector((state) => state.product.oneproduct);
-  if (!product) return <p>Product not found</p>; 
+
+  const myCart = useSelector((state) =>
+    state.cart.cart.filter((itm) => itm.id === product?.id)
+  );
+
+  if (!product) return <p>Product not found</p>;
 
   const {
+    
     _id,
     name,
     image,
     price,
     duration,
+    description,
     rating,
     postcode,
     areaIncluded,
@@ -40,17 +52,16 @@ export default function ProductDetails() {
   } = product;
 
   const addToCart = () => {
-    dispatch(getAddToCart({ _id, count: 1, service: name, price }));
+    dispatch(getAddToCart({ id:_id, count: 1, service: name, price: price }));
   };
 
-  const handleIncrease = () => {
-    dispatch(getIncreaseCart(id, 1));
+  const handleIncrease = (id, qty) => {
+    dispatch(getIncreaseCart(id, qty));
   };
 
-  const handleDecrease = () => {
-    dispatch(getDecreaseCart(id, 1));
+  const handleDecrease = (id, qty) => {
+    dispatch(getDecreaseCart(id, qty));
   };
- 
 
   return (
     <div>
@@ -113,29 +124,29 @@ export default function ProductDetails() {
             </div> */}
 
             
-                  <div id={styles.cartTableBtn}>
-                    {" "}
-                    <div className={styles.quantityControl}>
-                      <button
-                        onClick={handleDecrease}
-                        className={styles.decreaseButton}
-                        disabled={product.count <= 1}
-                      >
-                        -
-                      </button>
-                      <span>{product.count}</span>
-                      <button
-                         onClick={handleIncrease}
-                        className={styles.increaseButton}
-                      >
-                        +
-                      </button>
-                    </div>
+                  
+                   
+          <div id={styles.cartTableBtn}>
+            <div className={styles.quantityControl}>
+              <button onClick={() => {
+                          handleDecrease(_id, 1)
+                        }} className={styles.decreaseButton}>
+                -
+              </button>
+              <span>{myCart.length > 0 ? myCart[0]["count"] : 0}</span>
+              <button onClick={() => {
+                          handleIncrease(_id, 1)
+                        }} className={styles.increaseButton}>
+                +
+              </button>
+            </div>
+         
+       
                   </div>
                   <button
                   className={styles.bookNow}
-                  // disabled={inCart}
-                  onClick={addToCart}>
+                 
+                  onClick={() => addToCart(product)}>
                   Book Now
                 </button>
                 
@@ -155,10 +166,7 @@ export default function ProductDetails() {
               <h2>Discription Manual</h2>
               <hr />
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus eveniet sint sunt facere sed in, pariatur dolorem
-                dignissimos tenetur nihil ipsa vero eos maxime dolor, explicabo
-                officiis expedita adipisci molestias?
+                {description}
               </p>
             </div>
           </div>

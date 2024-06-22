@@ -1,46 +1,33 @@
 import React from "react";
-import { useFilterContext } from "../../components/context/FilterContext";
+
 import { FaSearch } from "react-icons/fa";
 import styles from "./Filter.module.css";
 
-export default function FilterSection() {
-  const {
-    filters: { text, category, price, maxPrice, minPrice },
-    updateFilterValue,
-    all_products,
-    clearFilters,
-  } = useFilterContext();
 
-  // get the unique values of each property
-  const getUniqueData = (data, attr) => {
-    let newVal = data.map((curElem) => {
-      return curElem[attr];
-    });
 
-    return (newVal = ["all", ...new Set(newVal)]);
+
+export default function FilterSection({ search, setSearch }) {
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
   };
-
-  // we need to have the individual data of each in an array format
-  const categoryData = getUniqueData(all_products, "category");
 
   return (
     <div className={styles.filterWrapper}>
       <div className={styles.searchBox}>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form >
           <input
             type="text"
             className={styles.searchInput}
             name="text"
             placeholder="Type to search..."
-            value={text}
-            onChange={updateFilterValue}
+            value={search}
+            onChange={handleSearchChange}
           />
-          <div className={styles.searchButton}>
-            <FaSearch id={styles.searchBtn} />
-          </div>
+          
         </form>
       </div>
 
+      {/* 
       <div className={styles.filterCategory}>
         <h3>Category</h3>
         <div className={styles.filterCategories}>
@@ -74,7 +61,7 @@ export default function FilterSection() {
             onChange={updateFilterValue}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

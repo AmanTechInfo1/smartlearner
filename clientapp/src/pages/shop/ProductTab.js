@@ -5,12 +5,11 @@ import { products } from "../../assets/data/Products";
 import styles from './ProductTab.module.css'
 import { FaStar, FaAngleDoubleRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useCartContext } from "../../components/context/CartContext";
 import Products from "./Products";
 import { useSelector } from "react-redux";
 
 export default function ProductTab() {
-  const { addToCart } = useCartContext();
+
   let filter_productsCategory = useSelector((state) => {
     return state.product.productsCategory
   })
