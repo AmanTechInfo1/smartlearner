@@ -7,7 +7,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import AddRoleModal from "./components/AddRoleModal";
 import EditRoleModal from "./components/EditRoleModal";
 import Loader from "../../components/loader/Loader";
-import { deleteRole, getAllRoles, getRoleById, setRoleNull } from "../../redux/features/roleSlice";
+import { deleteRole, getAllRoles, getRoleById,  } from "../../redux/features/roleSlice";
 import { Link } from "react-router-dom";
 
 function Roles() {
