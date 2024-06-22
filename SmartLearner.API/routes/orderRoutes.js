@@ -9,6 +9,7 @@ router.post('/CompleteCheckout', upload.none(),requireAuth, OrderController.Comp
 router.get('/getMyOrder', upload.none(),requireAuth, OrderController.getMyOrder);
 router.get('/getAllOrder', upload.none(),requireAuth, OrderController.getAllOrder);
 router.get('/getOrder/:id', upload.none(),requireAuth, OrderController.getOneOrder);
+router.get('/myOrder', upload.none(),requireAuth, OrderController.getMyOrder);
 router.post('/generate_hash', upload.none(),requireAuth, OrderController.generate_hash);
 router.post('/paymentSuccess', upload.none(), OrderController.paymentSuccess);
 router.post('/paymentFailed', upload.none(), OrderController.paymentFailed);

@@ -57,6 +57,19 @@ class OrderController {
       next(err);
     }
   }
+  async getMyOrder(req, res, next) {
+    try {
+      const role = await orderService.getMyOrderAsync(req.userId);
+      res.status(201).json(role);
+    } catch (err) {
+
+      console.log(err)
+      next(err);
+    }
+  }
+
+
+  
   async paymentSuccess(req, res, next) {
     try {
       const data = req.body;
@@ -172,10 +185,9 @@ class OrderController {
 
   async getMyOrder(req, res, next) {
     try {
-
-      const data = req.body;
+      console.log(req.userId,"req.userId")
       const role = await orderService.getMyOrderAsync(req.userId);
-      res.status(201).json(role);
+      res.status(200).json(role);
     } catch (err) {
       next(err);
     }

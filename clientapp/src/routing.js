@@ -107,6 +107,7 @@ import IncidentsAccidents from "./pages/Theory-Subscription/practice-multiple-wa
 import VehicleLoading from "./pages/Theory-Subscription/practice-multiple-ways/VehicleLoading";
 import PaymentProcessing from "./pages/shop/checkout/PaymentProcessing";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import MyOrders from "./pages/shop/myOrders/MyOrders";
 
 
 
@@ -172,6 +173,7 @@ export const router = createBrowserRouter([
       { path: "paymentSuccess", element: <PaymentSuccess /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
+      { path: "my-orders", element: <MyOrders /> },
       { path: "hazard-perception", element: <HazardPerception /> },
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },

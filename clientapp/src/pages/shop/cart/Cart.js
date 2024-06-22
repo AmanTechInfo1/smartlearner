@@ -25,7 +25,7 @@ const Cart = () => {
   };
 
   const calculateSubtotal = () => {
-    return myCart.reduce((acc, item) => acc + item.price * item.count, 0);
+    return myCart ? myCart.length>0 ? myCart.reduce((acc, item) => acc + item.price * item.count, 0) : 0 : 0;
   };
 
   const subtotal = calculateSubtotal();
@@ -47,7 +47,7 @@ const Cart = () => {
             <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
           </marquee>
         </div>
-        {myCart.length === 0 ? (
+        {myCart && myCart.length === 0 ? (
           <div className="text-center">
             <h2>Your cart is empty</h2>
             <button
@@ -67,7 +67,7 @@ const Cart = () => {
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   SERVICE
                 </div>
-                {myCart.map((itm) => (
+                {myCart && myCart.map((itm) => (
                   <div id={styles.cartTableDetailsd} key={itm.id}>{itm.service}</div>
                 ))}
               </div>
@@ -77,7 +77,7 @@ const Cart = () => {
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   PRICE
                 </div>
-                {myCart.map((itm) => (
+                {myCart && myCart.map((itm) => (
                   <div id={styles.cartTableDetailsd} key={itm.id}>{itm.price}</div>
                 ))}
               </div>
@@ -85,7 +85,7 @@ const Cart = () => {
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   QUANTITY
                 </div>
-                {myCart.map((itm) => (
+                {myCart && myCart.map((itm) => (
                   <div id={styles.cartTableBtn} key={itm.id}>
                     <div className={styles.quantityControl}>
                       <button
@@ -109,7 +109,7 @@ const Cart = () => {
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   SUBTOTAL
                 </div>
-                {myCart.map((itm) => (
+                {myCart && myCart.map((itm) => (
                   <div id={styles.cartTableDetailsd} key={itm.id}>
                     {itm.price * itm.count}
                   </div>

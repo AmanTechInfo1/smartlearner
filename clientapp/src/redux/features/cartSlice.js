@@ -8,6 +8,7 @@ const cartSlice = createSlice({
         cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart"))["updatedCart"] : [],
         loading: false,
         hashcode: "",
+        myOrders:[],
         payment: localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
     },
     reducers: {
@@ -31,6 +32,12 @@ const cartSlice = createSlice({
         },
         getGenerateHashCodeFailure: (state) => {
             state.hashcode = "";
+        },
+        getOrdersSuccess: (state, action) => {
+            state.myOrders = action.payload;
+        },
+        getOrdersFailure: (state) => {
+            state.myOrders = [];
         },
         IncreaseCart: (state, action) => {
 
@@ -224,6 +231,27 @@ export const generateHashcodeCheckout = (data, cb, form, additionalData) => asyn
     }
 };
 
+export const getMyOrders = () => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/order/getMyOrder`
+        );
+
+        console.log(response.data.data, "responseresponseresponse")
+        if (response.data.data) {
+            dispatch(getOrdersSuccess(response.data.data.order));
+
+        } else {
+            toast.error(response.data.message);
+            dispatch(getOrdersFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getOrdersFailure());
+    }
+};
+
 
 export const {
     IncreaseCart,
@@ -235,6 +263,8 @@ export const {
     getCompleteCheckoutFailure,
     getGenerateHashCodeSuccess,
     getGenerateHashCodeFailure,
+    getOrdersSuccess,
+    getOrdersFailure,
     EmptyCart
 } = cartSlice.actions;
 

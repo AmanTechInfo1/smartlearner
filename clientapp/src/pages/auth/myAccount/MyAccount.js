@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImg from "../../../assets/images/car-red.png"
+import MyOrders from '../../shop/myOrders/MyOrders'
 
 export default function MyAccount() {
   return (
@@ -43,6 +44,8 @@ export default function MyAccount() {
         <button className="btn btn-info text-white align-self-start">ForgotPassword</button>
       </div>
     </div>
+
+    <MyOrders />
     </div>
   )
 }

@@ -129,6 +129,105 @@ class OrderService {
       throw new Error("Could not fetch role");
     }
   }
+  
+  async getMyOrderAsync(uid) {
+    try {
+      console.log(uid,"uiduifsdakfjdduiduiduid")
+      let aggr = [
+        {
+          '$match': {
+            'userId': new ObjectId(uid),
+            'orderPaymentStatus':"Completed"
+          }
+        }, {
+          '$lookup': {
+            'from': 'users',
+            'localField': 'userId',
+            'foreignField': '_id',
+            'as': 'user'
+          }
+        }, {
+          '$unwind': {
+            'path': '$user',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$unwind': {
+            'path': '$myCart',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$lookup': {
+            'from': 'products',
+            'localField': 'myCart.id',
+            'foreignField': '_id',
+            'as': 'myCartList'
+          }
+        }, {
+          '$project': {
+            'user.password': 0,
+            'user._id': 0,
+            'user.privacyPolicy': 0,
+            'user.isEmailVerified': 0,
+            'user.isActive': 0,
+            'user.isUpdated': 0,
+            'user.isDeleted': 0,
+            'user.isBcryptHashed': 0,
+            'user.createdOn': 0,
+            'user.__v': 0
+          }
+        }, {
+          '$unwind': {
+            'path': '$myCartList',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'myCartList.myCartcount': '$myCart.count',
+            'myCartList.myCartprice': '$myCart.price'
+          }
+        }, {
+          '$group': {
+            '_id': "$_id",
+            'myCartList': {
+              '$push': '$myCartList'
+            },
+            'data': {
+              '$first': '$$ROOT'
+            }
+          }
+        }, {
+          '$addFields': {
+            'data.myCartList': '$myCartList'
+          }
+        }, {
+          '$replaceRoot': {
+            'newRoot': '$data'
+          }
+        }
+      ]
+
+
+
+      const order = await Order.aggregate(aggr);
+
+
+      console.log(order,"orderorderorderorder")
+      const totalCount = await Order.countDocuments();
+      const resultObject = {
+        message: "Order Fetch Successfully",
+        statusCode: 200,
+        success: true,
+        data: { order: order, totalCount }
+      };
+      return resultObject;
+    } catch (err) {
+
+      console.log(err, "errerrerrerrerr")
+      throw new Error("Could not fetch role");
+    }
+  }
+
   async getOneOrderAsync(uid) {
     try {
 
@@ -333,68 +432,68 @@ class OrderService {
 
 
 
-  async getMyOrderAsync(idd) {
-    try {
+  // async getMyOrderAsync(idd) {
+  //   try {
 
 
-      let aggr = [
-        {
-          '$match': {
-            'user': new ObjectId(idd)
-          }
-        },
-        {
-          '$lookup': {
-            'from': 'users',
-            'localField': 'userId',
-            'foreignField': '_id',
-            'as': 'user'
-          }
-        }, {
-          '$unwind': {
-            'path': '$user',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'products',
-            'localField': 'myCart.id',
-            'foreignField': '_id',
-            'as': 'myCartList'
-          }
-        }, {
-          '$project': {
-            'user.password': 0,
-            'user._id': 0,
-            'user.privacyPolicy': 0,
-            'user.isEmailVerified': 0,
-            'user.isActive': 0,
-            'user.isUpdated': 0,
-            'user.isDeleted': 0,
-            'user.isBcryptHashed': 0,
-            'user.createdOn': 0,
-            'user.__v': 0
-          }
-        }
-      ]
+  //     let aggr = [
+  //       {
+  //         '$match': {
+  //           'user': new ObjectId(idd)
+  //         }
+  //       },
+  //       {
+  //         '$lookup': {
+  //           'from': 'users',
+  //           'localField': 'userId',
+  //           'foreignField': '_id',
+  //           'as': 'user'
+  //         }
+  //       }, {
+  //         '$unwind': {
+  //           'path': '$user',
+  //           'preserveNullAndEmptyArrays': true
+  //         }
+  //       }, {
+  //         '$lookup': {
+  //           'from': 'products',
+  //           'localField': 'myCart.id',
+  //           'foreignField': '_id',
+  //           'as': 'myCartList'
+  //         }
+  //       }, {
+  //         '$project': {
+  //           'user.password': 0,
+  //           'user._id': 0,
+  //           'user.privacyPolicy': 0,
+  //           'user.isEmailVerified': 0,
+  //           'user.isActive': 0,
+  //           'user.isUpdated': 0,
+  //           'user.isDeleted': 0,
+  //           'user.isBcryptHashed': 0,
+  //           'user.createdOn': 0,
+  //           'user.__v': 0
+  //         }
+  //       }
+  //     ]
 
 
 
-      const order = await Order.aggregate(aggr);
-      const totalCount = await Order.countDocuments();
-      const resultObject = {
-        message: "Order Fetch Successfully",
-        statusCode: 201,
-        success: true,
-        data: { order, totalCount }
-      };
-      return resultObject;
-    } catch (err) {
+  //     const order = await Order.aggregate(aggr);
+  //     const totalCount = await Order.countDocuments();
+  //     const resultObject = {
+  //       message: "Order Fetch Successfully",
+  //       statusCode: 201,
+  //       success: true,
+  //       data: { order, totalCount }
+  //     };
+  //     return resultObject;
+  //   } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
-      throw new Error("Could not fetch role");
-    }
-  }
+  //     console.log(err, "errerrerrerrerr")
+  //     throw new Error("Could not fetch role");
+  //   }
+  // }
 }
 
 module.exports = new OrderService();
