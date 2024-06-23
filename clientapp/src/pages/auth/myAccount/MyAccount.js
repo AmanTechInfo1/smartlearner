@@ -3,6 +3,9 @@ import profileImg from "../../../assets/images/car-red.png"
 import MyOrders from '../../shop/myOrders/MyOrders'
 
 export default function MyAccount() {
+
+
+  
   return (
     <div style={{backgroundColor:'black',fontFamily:"'Antonio', sans-serif",color:'white'}}>
       <h2 style={{color:'red',fontSize:'3rem',textAlign:'center'}}>MyAccount</h2>

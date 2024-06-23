@@ -9,6 +9,7 @@ const cartSlice = createSlice({
         loading: false,
         hashcode: "",
         myOrders:[],
+        myOrdersCount:null,
         payment: localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
     },
     reducers: {
@@ -35,6 +36,7 @@ const cartSlice = createSlice({
         },
         getOrdersSuccess: (state, action) => {
             state.myOrders = action.payload;
+            state.myOrdersCount = action.payload.totalCount;
         },
         getOrdersFailure: (state) => {
             state.myOrders = [];
