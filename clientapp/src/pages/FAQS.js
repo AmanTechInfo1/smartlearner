@@ -16,7 +16,7 @@ import Testemonial from "../components/testimonials/Testemonial";
 export default function FAQS() {
   return (
     <>
-      <section>
+      <section style={{backgroundColor:'black', color:'white'}}>
         <section className={styles.theorySupportHeadingContent}>
           <div className={styles.TSfirstContent}>
             <h2>FAQS</h2>

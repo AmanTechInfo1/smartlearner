@@ -3,7 +3,8 @@ const Enquiry = require("../models/EnquiryModel");
 const enquiryForm = async (req, res) => {
   try {
     const response = req.body;
-    await Enquiry.create(response);
+    console.log(response,"dasfhgdsasfsdsfgdsfgfdsf")
+   
     return res.status(200).json({ message: "message send successfully" });
   } catch (error) {
     console.error(error);

@@ -25,7 +25,7 @@ function Navbar() {
                 <div className={styles.navbar}>
                     <div className={styles.navbarContentImg}>
                         <div className={styles.contactInfo}>
-                            <a href="tel:+44 02475092784">02475092784</a>/
+                            <a href="tel:+4402475092784">02475092784</a>/
                             <a href="mailto:admin@smartlearner.com"> Admin@Smartlearner.com</a>
                         </div>
                         <div className={styles.logo}>
@@ -47,16 +47,12 @@ function Navbar() {
 
                             {
                                 userDetails.username ? <>
-                                    <li onClick={()=>{
+                                    <li style={{cursor:'pointer'}} onClick={()=>{
                                         navigate("/my-account")
                                     }}>
                                         Welcome {userDetails.username}
                                     </li>
-                                    <li onClick={()=>{
-                                        navigate("/my-orders")
-                                    }}>
-                                        My Orders
-                                    </li>
+                                    
                                     <li>
                                         <span onClick={()=>{
                                             dispatch(logoutUser())

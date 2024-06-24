@@ -4,7 +4,6 @@ import { enquiryData } from "../../redux/features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { enquiryFormSchema } from "../../schemas/master";
 import styles from "../../pages/SpecialityTraining/ExtendedTest.module.css"
-import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();
@@ -127,12 +126,7 @@ export default function EnquiryForm() {
                   <p style={{ color: "red" }}>{errors?.message?.message}</p>
                 )}
               </div>
-              <div className={styles.formGroup}>
-                <ReCAPTCHA
-                  id="recaptcha"
-                  sitekey="your_site_key" // Replace 'your_site_key' with your actual reCAPTCHA site key
-                />
-              </div>
+              
               <div className={styles.formBtn}>
                 <button type="submit" id={styles.formBtn}>
                   Submit

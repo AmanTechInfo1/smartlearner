@@ -5,6 +5,7 @@ import LoadingWeb from "../loader/LoadingWeb";
 import Navbar from "../header/Navbar";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import Scroll from "../Scroll";
 
 function Layout() {
   const [loading, setLoading] = useState(true);
@@ -43,6 +44,7 @@ function Layout() {
                 <LoadingWeb />
               ) : (
                 <>
+                <Scroll/>
                   <main>
                     <Outlet />
                   </main>

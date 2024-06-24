@@ -26,19 +26,16 @@ const enquirySlice = createSlice({
 
 export const enquiryData = createAsyncThunk(
   "enquiryForm/enquiryData",
-  async ({requestData,reset},  { rejectWithValue }) => {
+  async ({ requestData, reset }, { rejectWithValue }) => {
     try {
-      const response = await http.get(`/api/enquiryForm/enquiry`, requestData);
-      const resultData = response.data;
-      if (!resultData.success) {
-        toast.error(resultData.msg || "Something went wrong");
-      } else {
-        toast.success(resultData.msg || "submitted Successfully");
-        reset();
-        return resultData;
-      }
+      const response = await http.post(`/api/enquiryForm/enquiry`, requestData);
 
-      return resultData;
+      if (response.data.success) {
+        toast.success(response.data.message || "submitted Successfully");
+        reset();
+      } else {
+        toast.error(response.data.message || "something went wrong");
+      }
     } catch (error) {
       toast.error("Failed to fetch data");
       return rejectWithValue(error.message);

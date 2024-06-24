@@ -647,6 +647,7 @@
 @media (max-width: 800px) {
   .carousel {
     min-width: 770px;
+    justify-content: flex-start;
     margin: 0px 1rem;
   }
   .listContent ul li a{

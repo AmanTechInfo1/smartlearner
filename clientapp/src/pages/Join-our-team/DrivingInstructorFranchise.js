@@ -36,7 +36,7 @@ export default function DrivingInstructorFranchise() {
   const currentTestimonial = testimonialsData[currentTestimonialIndex];
 
   return (
-    <div className={styles.drivingInstructorTraining}>
+    <div className={styles.drivingInstructorTraining} style={{backgroundColor:'black',color:'white'}}>
       <section className={styles.imageSection}>
         <div className={styles.maincontent}>
           <div className={styles.content}>

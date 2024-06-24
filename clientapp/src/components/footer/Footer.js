@@ -9,6 +9,8 @@ import mastercard from "../../assets/images/Master-card.png";
 import discover from "../../assets/images/Discover.png";
 import americanExpress from "../../assets/images/American-express.png";
 import ssl from "../../assets/images/ssl-logo.png";
+import { Link } from 'react-router-dom';
+
 
 function Footer() {
     return (
@@ -109,12 +111,12 @@ function Footer() {
                                 <h3>Quick Links</h3>
                                 <div className={styles.quicklinks}>
                                     {quickLinks.map((item, index) => (
-                                        <a key={index} href={item.path}>
+                                        <Link key={index} to={item.path}>
                                             {item.display}
                                             <span id={styles.arrowIcon}>
                                                 <MdOutlineKeyboardDoubleArrowRight />
                                             </span>
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -124,12 +126,12 @@ function Footer() {
                                     <ul type="none" id={styles.quicklinks}>
                                         {otherLinks.map((item, index) => (
                                             <li key={index}>
-                                                <a href={item.path}>
+                                                <Link to={item.path}>
                                                     {item.display}
                                                     <span id={styles.arrowIcon}>
                                                         <MdOutlineKeyboardDoubleArrowRight />
                                                     </span>
-                                                </a>
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>

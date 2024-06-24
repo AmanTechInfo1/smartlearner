@@ -159,7 +159,7 @@ export default function Home() {
                 <span>
                   <img src={img1} alt="1" />
                 </span>
-                <Link to="GOV.com"> Apply for your Provisonal License</Link>
+                <a href="GOV.com"> Apply for your Provisonal License</a>
               </li>
               <li>
                 <span>

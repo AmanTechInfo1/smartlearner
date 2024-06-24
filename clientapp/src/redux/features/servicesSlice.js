@@ -31,22 +31,22 @@ export const servicesData = createAsyncThunk(
   "serviceForm/servicesData",
   async ({ requestData, reset }, { rejectWithValue }) => {
     try {
-      const response = await http.get(`/api/serviceForm/service`, requestData);
-      const resultData = response.data;
-      if (!resultData.success) {
-        toast.error(resultData.msg || "Something went wrong");
-      } else {
-        toast.success(resultData.msg || "Submitted successfully");
+      const response = await http.post(`/api/serviceForm/service`, requestData);
+     
+      if (response.data.success) {
+        toast.success(response.data.message || "submitted Successfully");
         reset();
-        return resultData;
+      } else {
+        toast.error(response.data.message || "something went wrong");
       }
-      return resultData;
     } catch (error) {
-      toast.error("Failed to fetch data");
+      toast.error("something went wrong");
       return rejectWithValue(error.message);
     }
   }
 );
+
+
 
 
 

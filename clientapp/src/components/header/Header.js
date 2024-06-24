@@ -100,22 +100,17 @@ function Header() {
                 className={styles.activeLink}
               >
                 {" "}
-                <li>Driving Instructor Franchise </li>
+                <li>Franchise </li>
               </NavLink>
 
-              <NavLink to="/Stantard-Check-Test" className={styles.activeLink}>
-                {" "}
-                <li>Stantard Check Test</li>
-              </NavLink>
+              
 
               <NavLink to="/ADI-Training-Portal" className={styles.activeLink}>
                 {" "}
-                <li>ADI Training Portal </li>
+                <li>PDI Training Portal </li>
               </NavLink>
 
-              <NavLink to="/about" className={styles.activeLink}>
-                <li> About Us</li>
-              </NavLink>
+              
             </ul>
           </li>
           <li id={styles.dropDownNav}>

@@ -17,7 +17,7 @@ import starImg from "../assets/images/star.png";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-
+import video from "../assets/videos/Video-1886-041219-B.mp4"
 export default function TheorySupport() {
   const { section } = useParams();
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function TheorySupport() {
         duration: 400,
         delay: 0,
         smooth: "easeInOutQuart",
-        offset: -70,
+        offset: -70, 
       });
     }
   }, [section]);
@@ -46,7 +46,7 @@ export default function TheorySupport() {
               <iframe
                 width="100%"
                 height="600px"
-                src="https://www.youtube.com/embed/8PskOJsdGM8"
+                src={video}
                 title="YouTube Video"
               ></iframe>
             </div>

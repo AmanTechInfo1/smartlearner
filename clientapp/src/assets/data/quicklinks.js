@@ -17,10 +17,10 @@ export const otherLinks = [
     display: "Blog",
   },
   {
-    path: "https://smartlearner.com/faqs/",
+    path: "/faqs",
     display: "FAQS",
   },
-  { path: "https://smartlearner.com/about", display: "About" },
+  { path: "/about", display: "About" },
   {
     path: "/",
     display: "T&C",
