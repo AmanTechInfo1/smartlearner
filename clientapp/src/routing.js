@@ -227,6 +227,9 @@ export const router = createBrowserRouter([
       {
         path: "/quizCategoryHome",
         element: <QuizCategoryHome />,
+      },{
+        path: "/quizGive",
+        element: <QuizCategoryHome />,
       },
 
     ],
