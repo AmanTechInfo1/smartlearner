@@ -224,12 +224,29 @@ export const router = createBrowserRouter([
       { path: "video-clips", element: <VehicleLoading /> },
       {path:"checkout", element: <Checkout/>},
       {path:"paymentProcessing", element: <PaymentProcessing/>},
+      
+      {
+        path: "/quizModuleId/:id",
+        element: <QuizModuleHome />,
+      },
       {
         path: "/quizCategoryHome",
         element: <QuizCategoryHome />,
       },{
         path: "/quizGive",
         element: <QuizCategoryHome />,
+      },
+      {
+        path: "/takequiz/:cid/:id",
+        element: <Quiz />,
+      },
+      {
+        path: "/takequiz/:cid",
+        element: <Quiz />,
+      },
+      {
+        path: "/quizResult",
+        element: <QuizResult />,
       },
 
     ],
@@ -252,14 +269,7 @@ export const router = createBrowserRouter([
         path: "/admin/dashboard",
         element: <AdminHome />,
       },
-      {
-        path: "/admin/quizCategoryHome",
-        element: <QuizCategoryHome />,
-      },
-      {
-        path: "/admin/quizModuleId/:id",
-        element: <QuizModuleHome />,
-      },
+    
       {
         path: "/admin/roles",
         element: <Roles />,
@@ -301,14 +311,7 @@ export const router = createBrowserRouter([
       //   path:"/admin/quiz",
       //   element:<QuizzesModal/>,
       // },
-      {
-        path: "/admin/takequiz/:cid/:id",
-        element: <Quiz />,
-      },
-      {
-        path: "/admin/takequiz/:cid",
-        element: <Quiz />,
-      },
+      
       {
         path: "/admin/quizCategory",
         element: <Quiz />,

@@ -124,7 +124,7 @@ const Quiz = () => {
 
   const endQuiz = () => {
 
-    navigate("/admin/quizResult")
+    navigate("/quizResult")
 
     // setEndTime(Date.now());
     // setShowResult(true);

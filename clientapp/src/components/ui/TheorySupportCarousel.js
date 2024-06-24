@@ -1,33 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/L-Plate.jpg";
 import starImg from "../../assets/images/star.png";
 import cartImg from "../../assets/images/cartImg.png";
 import styles from "../../pages/css/home.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsCategory } from "../../redux/features/productSlice";
 
-const data = [
-  {
-    id: 1,
-    title: "Theory Support",
-    shortInfo: "Short info 1",
-    fullInfo: [
-      {
-        itemName: "1 HOUR MANUAL",
-        des: "Perfect for all levels, we support you in both hazard perception ",
-        itemPrice: "$34",
-        itemQuantity: 0,
-      },
-      { itemName: "1.5 HOUR MANUAL", itemPrice: "$51", itemQuantity: 0 },
-      { itemName: "2 HOUR MANUAL", itemPrice: "$64", itemQuantity: 0 },
-      { itemName: "5 HOUR MANUAL", itemPrice: "$160", itemQuantity: 0 },
-      { itemName: "10 HOUR MANUAL", itemPrice: "$310", itemQuantity: 0 },
-      { itemName: "20 HOUR MANUAL", itemPrice: "$600", itemQuantity: 0 },
-    ],
-  },
-];
+
+
+
+// const data = [
+//   {
+//     id: 1,
+//     title: "Theory Support",
+//     shortInfo: "Short info 1",
+//     fullInfo: [
+//       {
+//         itemName: "1 HOUR MANUAL",
+//         des: "Perfect for all levels, we support you in both hazard perception ",
+//         itemPrice: "$34",
+//         itemQuantity: 0,
+//       },
+//       { itemName: "1.5 HOUR MANUAL", itemPrice: "$51", itemQuantity: 0 },
+//       { itemName: "2 HOUR MANUAL", itemPrice: "$64", itemQuantity: 0 },
+//       { itemName: "5 HOUR MANUAL", itemPrice: "$160", itemQuantity: 0 },
+//       { itemName: "10 HOUR MANUAL", itemPrice: "$310", itemQuantity: 0 },
+//       { itemName: "20 HOUR MANUAL", itemPrice: "$600", itemQuantity: 0 },
+//     ],
+//   },
+// ];
 
 function TheorySupportCorousel() {
   const [quantities, setQuantities] = useState({});
-  const [expandedCol, setExpandedCol] = useState(data[0].id);
+  const data = useSelector((state)=>{
+    return state.productSpecial.productsCategory
+}) 
+const [expandedCol, setExpandedCol] = useState(0);
+const dispatch = useDispatch()
 
   const handleIncrease = (id, e) => {
     e.stopPropagation();
@@ -95,6 +104,10 @@ function TheorySupportCorousel() {
     console.log(cartData);
     setQuantities({});
   };
+
+  useEffect(()=>{
+    dispatch(getAllProductsCategory("",0,0))
+},[""])
 
   return (
     <>

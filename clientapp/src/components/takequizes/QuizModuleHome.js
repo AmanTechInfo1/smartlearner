@@ -34,7 +34,7 @@ export default function QuizModuleHome() {
   return (
     <>
       <div className={styles.mainTitle}>
-        <h3>DASHBOARD</h3>
+       Quizz
       </div>
 
 
@@ -42,7 +42,7 @@ export default function QuizModuleHome() {
         {
           Quizcards.map((itm) => {
             return <div onClick={() => {
-              navigate("/admin/takequiz/"+ itm.category+"/" + itm._id)
+              navigate("/takequiz/"+ itm.category+"/" + itm._id)
             }} className={styles.card} style={{ backgroundImage: itm.bgColor }}>
               <div className={styles.cardInner}>
                 <h6>{itm.moduleName}</h6>
@@ -54,7 +54,7 @@ export default function QuizModuleHome() {
         }
 
         <div onClick={() => {
-          navigate(`/admin/takequiz/${Quizcards.length>0?Quizcards[0].category:""}`)
+          navigate(`/takequiz/${Quizcards.length>0?Quizcards[0].category:""}`)
         }} className={styles.card} style={{ backgroundImage: "" }}>
           <div className={styles.cardInner}>
             <h6>{"All Question"}</h6>

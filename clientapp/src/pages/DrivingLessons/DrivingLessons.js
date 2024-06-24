@@ -16,24 +16,21 @@ import IntensiveCorousel from "../../components/ui/IntensiveCorousel";
 import ManualCorousel from "../../components/ui/ManualCarousel";
 import AutomaticCorousel from "../../components/ui/AutomaticCarousel";
 import PassPlusCorousel from "../../components/ui/PassPlusCarousel";
-import { Element, scroller  } from "react-scroll";
+import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 
-
 export default function DrivingLessons() {
-
   const { section } = useParams();
   useEffect(() => {
     if (section) {
       scroller.scrollTo(`${section}-section`, {
         duration: 400,
         delay: 0,
-        smooth: 'easeInOutQuart',
+        smooth: "easeInOutQuart",
         offset: -70,
       });
     }
   }, [section]);
-
 
   const settings = {
     dots: true,
@@ -73,8 +70,8 @@ export default function DrivingLessons() {
             <h2>
               <span> 86% PASS </span>
               <br />
-              <span style={{ animationDelay: "0.5s" }}>RATE FOR FIRST</span>
-              <br /> <span style={{ animationDelay: "1s" }}>TIME PASSES</span>
+              <span>RATE FOR FIRST</span>
+              <br /> <span>TIME PASSES</span>
             </h2>
           </div>
           <div id={styles.dLFrontImg}>
@@ -86,12 +83,16 @@ export default function DrivingLessons() {
 
       <div className={styles.drivingLessonsCd}>
         <section className={styles.drivinglCall}>
-          <IoCall id={styles.IconsS} />
-          <p>02475 092 784</p>
+          <a href="tel:+4402475092784" className={styles.drivinglCall}>
+            <IoCall id={styles.IconsS} />
+            <p>02475 092 784</p>
+          </a>
         </section>
         <section>
-          <HiMailOpen id={styles.IconsS} />
-          <p>Admin@Smartlearner.com</p>
+          <a href="mailto:admin@smartlearner.com">
+            <HiMailOpen id={styles.IconsS} />
+            <p>Admin@Smartlearner.com</p>
+          </a>
         </section>
       </div>
       {/* /////////////////////////////////////////// */}
@@ -121,7 +122,6 @@ export default function DrivingLessons() {
       {/* ////////////////////////////////////////////// */}
 
       <section className={styles.imageSliderContainer}>
-        
         <div
           style={{
             maxWidth: "1200px",
@@ -154,151 +154,159 @@ export default function DrivingLessons() {
       {/* ///////////////////////////////////// */}
       <section className={styles.dManualSection}>
         <Element name="manual-section">
-        <section className={styles.dManualSections}>
-          {" "}
-          <div className={styles.dManualDiv}>
-            <h2>Manual</h2>
-            <span>
-              {" "}
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-            </span>
-          </div>
-          <div className={styles.manualPList}>
-            <p>
-              Discover the thrill of hands-on control with our manual driving
-              lessons.
-            </p>
-            <p>
-              From mastering the clutch to shifting gears seamlessly, our expert
-              instructors will guide you through the art of manual driving,
-              empowering you with the skills and confidence to navigate any road
-              with finesse and precision.
-            </p>
-          </div>
-          <section>
-            <ManualCorousel />
+          <section className={styles.dManualSections}>
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>Manual</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Discover the thrill of hands-on control with our manual driving
+                lessons.
+              </p>
+              <p>
+                From mastering the clutch to shifting gears seamlessly, our
+                expert instructors will guide you through the art of manual
+                driving, empowering you with the skills and confidence to
+                navigate any road with finesse and precision.
+              </p>
+            </div>
+            <section>
+              <ManualCorousel />
+            </section>
           </section>
-        </section>
 
-        <hr />
+          <hr />
         </Element>
       </section>
       {/* ////////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
         <Element name="automatic-section">
-        <section className={styles.dManualSections} >
-          {" "}
-          <div className={styles.dManualDiv}>
-            <h2>AUTOMATIC</h2>
-            <span>
-              {" "}
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-            </span>
-          </div>
-          <div className={styles.manualPList}>
-            <p>
-              Experience the ease and convenience of automatic drivingwith our
-              comprehensive lessons.
-            </p>
-            <p>
-              Our skilled instructors will help you navigate the roadsmoothly,
-              focusing on essential techniques and safe drivingpractices.
-              Whether you're a beginner or looking to refineyour skills, we'll
-              empower you to drive confidently in anysituation.
-            </p>
-          </div>
-          <section>
-            <AutomaticCorousel />
+          <section className={styles.dManualSections}>
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>AUTOMATIC</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Experience the ease and convenience of automatic drivingwith our
+                comprehensive lessons.
+              </p>
+              <p>
+                Our skilled instructors will help you navigate the roadsmoothly,
+                focusing on essential techniques and safe drivingpractices.
+                Whether you're a beginner or looking to refineyour skills, we'll
+                empower you to drive confidently in anysituation.
+              </p>
+            </div>
+            <section>
+              <AutomaticCorousel />
+            </section>
           </section>
-        </section>
 
-        <hr />
+          <hr />
         </Element>
       </section>
       {/* ////////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
-      <Element name="Intensive-section">
-        <section className={styles.dManualSections} >
-          {" "}
-          <div className={styles.dManualDiv}>
-            <h2>INTENSIVE</h2>
-            <span>
-              {" "}
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-            </span>
-          </div>
-          <div className={styles.manualPList}>
-            <p>
-              Designed for those eager to learn quickly and efficiently,
-              ourimmersive programs offer focused instruction and
-              hands-onexperience to help you become a confident driver in no
-              time.
-            </p>
-            <p>
-              Get behind the wheel and fast-track your path to
-              drivingindependence with our intensive driving courses
-            </p>
-          </div>
-          <section>
-            <IntensiveCorousel />
+        <Element name="Intensive-section">
+          <section className={styles.dManualSections}>
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>INTENSIVE</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Designed for those eager to learn quickly and efficiently,
+                ourimmersive programs offer focused instruction and
+                hands-onexperience to help you become a confident driver in no
+                time.
+              </p>
+              <p>
+                Get behind the wheel and fast-track your path to
+                drivingindependence with our intensive driving courses
+              </p>
+            </div>
+            <section>
+              <IntensiveCorousel />
+            </section>
           </section>
-        </section>
 
-        <hr />
+          <hr />
         </Element>
       </section>
       {/* ////////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
         <Element name="Pass-Plus-section">
-        <section className={styles.dManualSections} id="automatic-section4">
-          {" "}
-          <div className={styles.dManualDiv}>
-            <h2>PASS PLUS</h2>
-            <span>
-              {" "}
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-            </span>
-          </div>
-          <div className={styles.manualPList}>
-            <p>
-              Pass Plus is a short driving course totalling to six
-              hours,designed to help newly qualified drivers improve their
-              skillsand safety.
-            </p>
-            <p>
-              You can take it any time after you've passed your practicaldriving
-              test but it's usually most beneficial in your first year ofdriving
-              as most road accidents occur within the first 12months of a new
-              driver getting their licence.
-            </p>
-          </div>
-          <section>
-            <PassPlusCorousel />
+          <section className={styles.dManualSections} id="automatic-section4">
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>PASS PLUS</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Pass Plus is a short driving course totalling to six
+                hours,designed to help newly qualified drivers improve their
+                skillsand safety.
+              </p>
+              <p>
+                You can take it any time after you've passed your
+                practicaldriving test but it's usually most beneficial in your
+                first year ofdriving as most road accidents occur within the
+                first 12months of a new driver getting their licence.
+              </p>
+            </div>
+            <section>
+              <PassPlusCorousel />
+            </section>
           </section>
-        </section>
 
-        <hr />
+          <hr />
         </Element>
       </section>
       {/* /////////////////////////////////////////////// */}
-      <section   className={styles.dManualSection}>
-        <div  className=" text-white p-4 " style={{width: '100%', maxWidth: '1200px',marginLeft:'auto',marginRight:"auto"}}>
+      <section className={styles.dManualSection}>
+        <div
+          className=" text-white p-4 "
+          style={{
+            width: "100%",
+            maxWidth: "1200px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           <h2 className="text-center display-4 mb-4">What's included?</h2>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">TOWN DRIVING</h3>

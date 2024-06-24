@@ -19,24 +19,14 @@ import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-10
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
 import { useState, useEffect } from "react";
 import { testimonialsData } from "../../assets/data/testimonials";
+import Testemonial from "../../components/testimonials/Testemonial";
+import Review from "../../components/views/Review";
 
 export default function DrivingInstructorFranchise() {
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex(
-        (prevIndex) => (prevIndex + 1) % testimonialsData.length
-      );
-    }, 2000); // Change the interval time (in milliseconds) as needed
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentTestimonial = testimonialsData[currentTestimonialIndex];
+ 
 
   return (
-    <div className={styles.drivingInstructorTraining} style={{backgroundColor:'black',color:'white'}}>
+    <div className={styles.drivingInstructorTraining} style={{backgroundColor:'black',fontFamily:"'Antonio',sans-serif"}}>
       <section className={styles.imageSection}>
         <div className={styles.maincontent}>
           <div className={styles.content}>
@@ -268,79 +258,13 @@ export default function DrivingInstructorFranchise() {
       </section>
 
       {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
-      <section className={styles.testimonialsContainer}>
-        <div className={styles.tmcontainer}>
-          <h4>Testimonials</h4>
-          <div className={styles.testimonial}>
-            <div className={styles.testimonialContent}>
-              <p className={styles.testimonialName}>
-                {currentTestimonial.name}
-              </p>
-              <p className={styles.testimonialComment}>
-                {currentTestimonial.comment}
-              </p>
-              <img
-                src={currentTestimonial.image}
-                alt={currentTestimonial.name}
-                className={styles.testimonialImage}
-              />
-              <p className={styles.testimonialimgName}>
-                {currentTestimonial.name}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* /////////////////// Reviews section /////////////////*/}
+        <section><Testemonial/></section>
 
-      <section className={styles.facebookReviewsSection}>
-        <div className={styles.facebookReviewsContainer}>
-          <h4 id={styles.heading1}>Our Reviews</h4>
-          <hr />
-          <div className={styles.reviewsList}></div>
-          <div className={styles.followUsLinks}>
-            <h4>Follow us!</h4>
-            <hr />
-            <div className={styles.socialFollowIcons}>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.snapchat.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaSnapchat id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter id={styles.FollowIcons} />
-              </a>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaYoutube id={styles.FollowIcons} />
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* /////////////////// Reviews section /////////////////*/}
+      <section>
+        <Review/>
       </section>
+      
     </div>
   );
 }

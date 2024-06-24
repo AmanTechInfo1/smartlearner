@@ -138,7 +138,7 @@ const QuizResult = () => {
             <thead>
               <tr className="w-full bg-zinc-800 bg-dark dark:bg-zinc-700 text-white">
                 <th className="py-2 px-4 text-left border border-black">
-                  Category
+                  Quiz Name
                 </th><th className="py-2 px-4 text-left border border-black">
                   Module
                 </th><th className="py-2 px-4 text-left border border-black">
@@ -149,7 +149,7 @@ const QuizResult = () => {
                 <th className="py-2 px-4 text-left border border-black">
                   Answer Choose
                 </th>
-                <th className="py-2 px-4 text-left border border-black">Answer Submit Time</th>
+                <th className="py-2 px-4 text-left border border-black">Submit Time</th>
 
 
                 {
@@ -212,7 +212,7 @@ const QuizResult = () => {
             <button
               onClick={
                 () => {
-                  navigate("/admin/quizCategoryHome")
+                  navigate("/quizCategoryHome")
                 }
               }
               className="mt-4 bg-black text-white py-1 px-3 rounded"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Quiz.module.css";
-import Quiz from "./Quiz";
+import Quiz from "../takequizes/Quiz";
 
 export default function QuizMain() {
   const [quizStarted, setQuizStarted] = useState(false);

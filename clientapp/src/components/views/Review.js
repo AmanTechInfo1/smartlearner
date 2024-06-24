@@ -15,35 +15,35 @@ function Review() {
                         <hr />
                         <div className={styles.socialFollowIcons}>
                             <a
-                                href="https://www.facebook.com/"
+                                href="https://www.facebook.com/smartlearnerdrivingschool"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FaFacebook id={styles.FollowIcons} />
                             </a>
                             <a
-                                href="https://www.instagram.com/"
+                                href="https://www.instagram.com/smartlearnerdrivingschool"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FaInstagram id={styles.FollowIcons} />
                             </a>
                             <a
-                                href="https://www.snapchat.com/"
+                                href="https://www.snapchat.com/add/smartlearner"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FaSnapchat id={styles.FollowIcons} />
                             </a>
                             <a
-                                href="https://twitter.com/"
+                                href="https://twitter.com/smartlearner"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FaTwitter id={styles.FollowIcons} />
                             </a>
                             <a
-                                href="https://www.youtube.com/"
+                                href="https://www.youtube.com/channel/UCWqlTyiFfPNqgKeffuo68rghttp"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

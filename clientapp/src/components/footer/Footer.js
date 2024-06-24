@@ -19,9 +19,9 @@ function Footer() {
                 <section className={styles.container}>
                     <div className={styles.footerContent}>
                         <div className={styles.col1}>
-                            <a href="https://smartlearner.com">
+                            <Link href="Link">
                                 <img src={logo} alt="" />
-                            </a>
+                            </Link>
                             <p>
                                 SmartLearner was founded in 2004. SmartLearner is the leading
                                 independent driving school in the West Midlands. At SmartLearner

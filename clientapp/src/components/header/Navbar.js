@@ -29,9 +29,9 @@ function Navbar() {
                             <a href="mailto:admin@smartlearner.com"> Admin@Smartlearner.com</a>
                         </div>
                         <div className={styles.logo}>
-                            <a href="https://smartlearner.com">
+                            <Link to="/">
                                 <img src={logo} alt="smartlearnerLogo" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.navLinks}>

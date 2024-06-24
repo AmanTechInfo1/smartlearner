@@ -22,7 +22,7 @@ import {
   FaVideo,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import QuizMain from "../../components/quizes/QuizMain";
+import QuizMain from "../../components/takequizes/QuizMain";
 
 export default function TheoryPortal() {
   return (
@@ -378,7 +378,7 @@ export default function TheoryPortal() {
           <h2>Book Your Theory</h2>
         </div>
         <section>
-          <QuizMain />
+          <QuizMain/>
         </section>
       </section>
 

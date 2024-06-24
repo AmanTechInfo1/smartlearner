@@ -5,13 +5,14 @@ import httpHandler from "../../utils/httpHandler";
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
-        cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart"))["updatedCart"] : [],
+        cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")).updatedCart || [] : [],
         loading: false,
         hashcode: "",
         myOrders:[],
         myOrdersCount:null,
         payment: localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
-    },
+      },
+      
     reducers: {
 
 
@@ -160,7 +161,7 @@ export const getAddToCart = (product) => async (dispatch) => {
     try {
         dispatch(setLoading());
         toast.success("Product added to cart");
-        dispatch(AddToCart(product));
+        dispatch(AddToCart(product)); 
     } catch (error) {
         toast.error("Failed to add to cart");
     }

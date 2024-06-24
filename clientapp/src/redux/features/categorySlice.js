@@ -98,9 +98,11 @@ export const createCategory =
                 toggleAddCategoryModal();
                 dispatch(createCategorySuccess(response.data.data));
             } else {
+                
                 toast.error(response.data.message);
                 dispatch(createCategoryFailure());
             }
+            
         } catch (error) {
             toast.error(error.message);
             dispatch(createCategoryFailure());
