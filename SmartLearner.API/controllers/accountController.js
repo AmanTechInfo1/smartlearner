@@ -1,7 +1,7 @@
 const accountService = require("../services/accountService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 class AccountController {
   async registerUser(req, res, next) {
     try {

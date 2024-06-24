@@ -108,6 +108,7 @@ import VehicleLoading from "./pages/Theory-Subscription/practice-multiple-ways/V
 import PaymentProcessing from "./pages/shop/checkout/PaymentProcessing";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import MyOrders from "./pages/shop/myOrders/MyOrders";
+import ProductSpecialModal from "./containers/productSpecial/ProductSpecialModal";
 
 
 
@@ -272,6 +273,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin/products",
         element: <ProductModal />,
+      },
+      {
+        path: "/admin/productsSpecial",
+        element: <ProductSpecialModal />,
       },
       {
         path: "/admin/product-area",

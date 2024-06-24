@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 /.vs
 /SmartLearner.WEB/package-lock.json
+
+# Local Netlify folder
+.netlify
