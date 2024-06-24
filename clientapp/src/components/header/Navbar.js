@@ -50,10 +50,10 @@ function Navbar() {
                                     <li style={{cursor:'pointer'}} onClick={()=>{
                                         navigate("/my-account")
                                     }}>
-                                        Welcome {userDetails.username}
+                                       {userDetails.username}
                                     </li>
                                     
-                                    <li>
+                                    <li style={{cursor:'pointer'}}>
                                         <span onClick={()=>{
                                             dispatch(logoutUser())
                                         }}>Logout</span>

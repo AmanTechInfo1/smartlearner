@@ -18,6 +18,10 @@
 .adminHeaderRight {
   text-align: right;
  width: 100%;
+ display: inline-flex;
+ gap: 20px;
+ justify-content: end;
+ align-items: center;
 }
 #adminLogout {
  display: inline-flex;

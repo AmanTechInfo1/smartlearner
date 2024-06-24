@@ -383,7 +383,7 @@
           }
           .enquiryForm{
               padding: 75px 75px 75px 75px;
-          background-color: #fff;
+         
           }
       }
       @media (max-width: 767px){
@@ -399,7 +399,7 @@
           }
           .enquiryForm{
               padding: 50px 50px 50px 50px;
-          background-color: #fff;
+        
           }
       }
       @media (max-width: 524px){
@@ -415,7 +415,7 @@
           }
           .enquiryForm{
               padding: 30px 30px 30px 30px;
-          background-color: #fff;
+         
           }
           
       }

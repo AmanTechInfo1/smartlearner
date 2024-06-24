@@ -59,10 +59,12 @@ const Cart = () => {
           </div>
         ) : (
           <>
+          <div className={styles.cartoverflow}>
             <div
-              className="border-top border-bottom border-danger"
+              
               id={styles.cartTable}
             >
+              
               <div id={styles.cartTableDetailsDiv}>
                 <div className="font-weight-bold" id={styles.cartTableDetails}>
                   SERVICE
@@ -115,6 +117,7 @@ const Cart = () => {
                   </div>
                 ))}
               </div>
+            </div>
             </div>
             <div id={styles.couponCart}>
               <div className={styles.cartCouponInputs}>

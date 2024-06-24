@@ -41,6 +41,9 @@ const navigate = useNavigate();
           className={styles.adminHeaderRight}
          
         >
+          <section id={styles.adminLogout}>
+            <Link  to="/" style={{textDecoration:'none', color:'black'}}>Home</Link>
+          </section>
           <section
           id={styles.adminLogout}
             onClick={() => {

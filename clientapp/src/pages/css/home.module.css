@@ -969,3 +969,30 @@
     text-align: center;
   }
 }
+
+/* //////////////////////////////////////////// */
+
+
+
+.bookNow,
+.more {
+  padding: 8px 15px;
+  background-color: #111111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookNow:hover,
+.more:hover {
+  background-color: #eb0009;
+}
+
+.quantityControl button {
+  padding: 2px 0.8rem;
+  border: none;
+}
+.quantityControl span {
+  padding: 1px 0.7rem;
+}

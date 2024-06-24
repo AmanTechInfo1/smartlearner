@@ -39,12 +39,13 @@ function Layout() {
           ) : (
             <>
               <Navbar />
-              <Header />
+             
               {loading ? (
                 <LoadingWeb />
               ) : (
                 <>
                 <Scroll/>
+                <Header />
                   <main>
                     <Outlet />
                   </main>
