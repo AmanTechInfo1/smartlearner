@@ -224,6 +224,10 @@ export const router = createBrowserRouter([
       { path: "video-clips", element: <VehicleLoading /> },
       {path:"checkout", element: <Checkout/>},
       {path:"paymentProcessing", element: <PaymentProcessing/>},
+      {
+        path: "/quizCategoryHome",
+        element: <QuizCategoryHome />,
+      },
 
     ],
   },
