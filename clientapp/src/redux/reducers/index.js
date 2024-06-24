@@ -16,6 +16,7 @@ import quizSlice from "../features/quizSlice";
 import dashboardSlice from "../features/dashboardSlice";
 import cartSlice from "../features/cartSlice";
 import orderSlice from "../features/orderSlice";
+import productSpecialSlice from "../features/productSpecialSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   dashboard: dashboardSlice,
   postcode: postcodeSlice,
   product: productSlice,
+  productSpecial: productSpecialSlice,
   area: areaSlice,
   quizCategory: quizCategorySlice,
 });

@@ -174,7 +174,7 @@ class PasswordHash {
 
   isBlowfishSupported() {
     return (
-      typeof require !== "undefined" && typeof require("bcrypt") !== "undefined"
+      typeof require !== "undefined" && typeof require("bcryptjs") !== "undefined"
     );
   }
 }
