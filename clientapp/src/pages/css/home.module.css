@@ -391,7 +391,7 @@
 .column p {
   color: #fff;
   padding: 1rem 2rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 0px;
 }
 .spiralImgContainer {
@@ -646,13 +646,14 @@
 }
 @media (max-width: 800px) {
   .carousel {
-    min-width: 770px;
+    min-width: 750px;
     justify-content: flex-start;
     margin: 0px 1rem;
   }
   .listContent ul li a{
     font-size: 1.5rem;
   }
+ 
 }
 
 /* /////////////// reviews section ///////////////// */
@@ -852,6 +853,9 @@
   .imageSliderContainer h2 {
     font-size: 2.5rem;
   }
+  .column h3{
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: 452px) {
   .whyChooseText p {
@@ -995,4 +999,24 @@
 }
 .quantityControl span {
   padding: 1px 0.7rem;
+}
+@media (max-width: 428px){
+  .carouselColumn{
+    padding: 15px 8px;
+  }
+  .carousel {
+    min-width: 715px;
+   
+  }
+  .bookNow{
+    padding: 5px 8px;
+  }
+  .quantityControl button {
+    padding: 1px 0.5rem;
+    border: none;
+  }
+  .quantityControl span {
+    padding: 1px 0.4rem;
+  }
+  
 }

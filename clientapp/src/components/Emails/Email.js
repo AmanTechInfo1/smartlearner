@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Email.module.css"
+import smartlearnerlogo from "../../assets/images/smartlearnerLogo.png"
 export default function Email() {
   return (
     <div className={styles.emailReceivedPage}>
       <div className={styles.emailReceivedContainer}>
+        <img src={smartlearnerlogo} alt="" style={{maxWidth:'250px', width:'100%'}}/>
         <h1>Email Received</h1>
         <p>
           Here is the information of Sender:

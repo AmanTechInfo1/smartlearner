@@ -14,11 +14,9 @@ import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function ManualCorousel() {
   const [quantities, setQuantities] = useState({});
-  const [expandedCategory, setExpandedCategory] = useState(""); // Initialize with an empty string or the ID of the category you want expanded
+  const [expandedCategory, setExpandedCategory] = useState("");
 
-  const data = useSelector((state) => {
-    return state.product.productsCategory;
-  });
+  const data = useSelector((state) => state.product.productsCategory);
 
   const dispatch = useDispatch();
 
@@ -28,11 +26,20 @@ function ManualCorousel() {
 
   const myCart = useSelector((state) => state.cart.cart || []);
 
+  useEffect(() => {
+    const offersManualCategory = data.find(
+      (item) => item._id === "Offers manual"
+    );
+    if (offersManualCategory) {
+      setExpandedCategory(offersManualCategory._id);
+    }
+  }, [data]);
+
   const handleExpandCategory = (id) => {
     if (expandedCategory === id) {
-      setExpandedCategory(""); // Collapse the category if already expanded
+      setExpandedCategory("");
     } else {
-      setExpandedCategory(id); // Expand the clicked category
+      setExpandedCategory(id);
     }
   };
 
@@ -45,7 +52,7 @@ function ManualCorousel() {
   };
 
   const addToCart = (info, index) => {
-    const productId = `${info.itemId}_${index}`;
+    const productId = `${info.itemId}_${index}_${info.price}`;
     dispatch(
       getAddToCart({
         id: productId,
@@ -60,26 +67,11 @@ function ManualCorousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
-  // Function to get the first category ID or identifier
-  const getFirstCategoryId = () => {
-    if (data.length > 0) {
-      return data[0]._id; // Adjust this based on your data structure
-    }
-    return "";
-  };
-
-  useEffect(() => {
-    // Set the first category as expanded initially
-    const firstCategoryId = getFirstCategoryId();
-    setExpandedCategory(firstCategoryId);
-  }, [data]);
-
   return (
     <>
       <section className={styles.carouselContainer}>
         <div className={styles.carousel}>
-          {/* Display columns for categories "Theory", "One More", etc. */}
-          {["One More", "Theory Packages"].map((categoryName) =>
+          {["Offers manual", "manual"].map((categoryName) =>
             filteredData(categoryName).map((item) => (
               <div
                 key={item.id}
@@ -89,68 +81,96 @@ function ManualCorousel() {
                 onClick={() => handleExpandCategory(item._id)}
               >
                 <div className={styles.carouselColumnHeading}>
-                  <img src={LplateImg} alt="" />
-                  <h2>{item._id}</h2>
+                  <img src={LplateImg} alt="Category Image" />
+                  <h2>
+                    {item._id === "Offers manual"
+                      ? expandedCategory === item._id
+                        ? "One Time Spacial Offer"
+                        : "Offers"
+                      : "Manual"}
+                  </h2>
                 </div>
                 {expandedCategory === item._id ? (
                   <ul type="none">
                     {item.data.map((info, index) => (
-                      <li key={index} className={styles.expandedColData}>
-                        <p>{info.name}</p>
-                        <p>{info.price}</p>
-                        <div className={styles.btnGroup}>
-                          {myCart.length === 0 ||
-                          !myCart.find(
-                            (cartItem) =>
-                              cartItem.id === `${info.itemId}_${index}`
-                          ) ? (
-                            <button
-                              className={styles.bookNow}
-                              onClick={(e) => {
-                                e.stopPropagation(); // Prevent collapse on button click
-                                addToCart(info, index);
-                              }}
-                            >
-                              Book Now
-                            </button>
-                          ) : (
-                            <div id={styles.cartTableBtn}>
-                              <div className={styles.quantityControl}>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation(); // Prevent collapse on button click
-                                    handleDecrease(
-                                      `${info.itemId}_${index}`,
-                                      1
-                                    );
-                                  }}
-                                  className={styles.decreaseButton}
-                                >
-                                  -
-                                </button>
-                                <span>
-                                  {myCart.find(
-                                    (cartItem) =>
-                                      cartItem.id === `${info.itemId}_${index}`
-                                  )?.count || 0}
-                                </span>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation(); // Prevent collapse on button click
-                                    handleIncrease(
-                                      `${info.itemId}_${index}`,
-                                      1
-                                    );
-                                  }}
-                                  className={styles.increaseButton}
-                                >
-                                  +
-                                </button>
+                      <div key={index}>
+                        <li className={styles.expandedColData}>
+                          <h2 style={{ color: "white" }}>{info.description}</h2>
+                        </li>
+                        <li className={styles.expandedColData}>
+                          <span
+                            style={{
+                              color: "black",
+                              backgroundColor: "white",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              maxWidth: "220px",
+                              width: "100%",
+                              borderRadius: "6px",
+                              padding: "8px",
+                            }}
+                          >
+                            <p style={{ marginBottom: "0px" }}>{info.name}</p>
+                            <p style={{ marginBottom: "0px" }}>
+                              £-{info.price}
+                            </p>
+                          </span>
+                          <div className={styles.btnGroup}>
+                            {myCart.length === 0 ||
+                            !myCart.find(
+                              (cartItem) =>
+                                cartItem.id ===
+                                `${info.itemId}_${index}_${info.price}`
+                            ) ? (
+                              <button
+                                className={styles.bookNow}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  addToCart(info, index);
+                                }}
+                              >
+                                Book
+                              </button>
+                            ) : (
+                              <div id={styles.cartTableBtn}>
+                                <div className={styles.quantityControl}>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleDecrease(
+                                        `${info.itemId}_${index}_${info.price}`,
+                                        1
+                                      );
+                                    }}
+                                    className={styles.decreaseButton}
+                                  >
+                                    -
+                                  </button>
+                                  <span>
+                                    {myCart.find(
+                                      (cartItem) =>
+                                        cartItem.id ===
+                                        `${info.itemId}_${index}_${info.price}`
+                                    )?.count || 0}
+                                  </span>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleIncrease(
+                                        `${info.itemId}_${index}_${info.price}`,
+                                        1
+                                      );
+                                    }}
+                                    className={styles.increaseButton}
+                                  >
+                                    +
+                                  </button>
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </div>
-                      </li>
+                            )}
+                          </div>
+                        </li>
+                      </div>
                     ))}
                     <Link to="/cart">
                       <button className={styles.addtoCartButtoncontent}>
