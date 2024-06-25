@@ -109,6 +109,7 @@ import PaymentProcessing from "./pages/shop/checkout/PaymentProcessing";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import MyOrders from "./pages/shop/myOrders/MyOrders";
 import ProductSpecialModal from "./containers/productSpecial/ProductSpecialModal";
+import Email from "./components/Emails/Email";
 
 
 
@@ -224,6 +225,7 @@ export const router = createBrowserRouter([
       { path: "video-clips", element: <VehicleLoading /> },
       {path:"checkout", element: <Checkout/>},
       {path:"paymentProcessing", element: <PaymentProcessing/>},
+      {path:"email", element:<Email/>},
       
       {
         path: "/quizModuleId/:id",

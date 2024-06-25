@@ -79,7 +79,7 @@ function ManualCorousel() {
       <section className={styles.carouselContainer}>
         <div className={styles.carousel}>
           {/* Display columns for categories "Theory", "One More", etc. */}
-          {["One More", "Theory"].map((categoryName) =>
+          {["One More", "Theory Packages"].map((categoryName) =>
             filteredData(categoryName).map((item) => (
               <div
                 key={item.id}
@@ -106,7 +106,10 @@ function ManualCorousel() {
                           ) ? (
                             <button
                               className={styles.bookNow}
-                              onClick={() => addToCart(info, index)}
+                              onClick={(e) => {
+                                e.stopPropagation(); // Prevent collapse on button click
+                                addToCart(info, index);
+                              }}
                             >
                               Book Now
                             </button>
@@ -114,12 +117,13 @@ function ManualCorousel() {
                             <div id={styles.cartTableBtn}>
                               <div className={styles.quantityControl}>
                                 <button
-                                  onClick={() =>
+                                  onClick={(e) => {
+                                    e.stopPropagation(); // Prevent collapse on button click
                                     handleDecrease(
                                       `${info.itemId}_${index}`,
                                       1
-                                    )
-                                  }
+                                    );
+                                  }}
                                   className={styles.decreaseButton}
                                 >
                                   -
@@ -131,12 +135,13 @@ function ManualCorousel() {
                                   )?.count || 0}
                                 </span>
                                 <button
-                                  onClick={() =>
+                                  onClick={(e) => {
+                                    e.stopPropagation(); // Prevent collapse on button click
                                     handleIncrease(
                                       `${info.itemId}_${index}`,
                                       1
-                                    )
-                                  }
+                                    );
+                                  }}
                                   className={styles.increaseButton}
                                 >
                                   +
