@@ -29,6 +29,16 @@ export const enquiryData = createAsyncThunk(
   async ({ requestData, reset }, { rejectWithValue }) => {
     try {
       const response = await http.post(`/api/enquiryForm/enquiry`, requestData);
+      console.log(response.data,"response.data.success")
+      const resultData = response.data;
+      if (response.data.success) {
+        toast.success(response.data.message || "submitted Successfully");
+        reset();
+      } else {
+        toast.success(resultData.msg || "submitted Successfully");
+        reset();
+        return response.data;
+      }
 
       if (response.data.success) {
         toast.success(response.data.message || "submitted Successfully");

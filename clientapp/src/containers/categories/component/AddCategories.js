@@ -25,6 +25,8 @@ function AddCategories(props) {
         dispatch(createCategory(data, reset, props.toggleAddCategoryModal));
     };
 
+
+    console.log(errors,"errorserrorserrorserrors")
     return (
         <>
             <Modal

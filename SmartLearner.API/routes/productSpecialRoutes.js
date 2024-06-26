@@ -49,7 +49,7 @@ router.post('/delete-area/:id', upload.none(), areaController.deleteArea);
 router.post('/add-product', imageSaverMiddleware, requireAuth, productSpecialController.createProduct);
 router.post('/edit-product/:id', imageSaverMiddleware, requireAuth, productSpecialController.updateProduct);
 router.get('/get-products', upload.none(), requireAuth, productSpecialController.getProducts);
-router.get('/get-productsCategory', upload.none(), requireAuth, productSpecialController.getProductsCategory);
+router.get('/get-productsCategory', upload.none(), productSpecialController.getProductsCategory);
 router.get('/get-products/:id', upload.none(), requireAuth, productSpecialController.getProductById);
 router.get('/delete-product/:id',upload.none(), requireAuth, productSpecialController.deleteProduct);
 
