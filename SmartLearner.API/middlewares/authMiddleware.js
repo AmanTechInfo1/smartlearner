@@ -9,7 +9,9 @@ const requireAuth = (req, res, next) => {
       (err) => {
         if (err) {
           console.log(err.message);
-          res.redirect("/login");
+          res.status(401).json({
+            "msg":"Unauthorized Access"
+          });
         } else {
           const decoded = jwt.decode(token, { complete: true });
           req.userId = decoded.payload.id
@@ -18,7 +20,11 @@ const requireAuth = (req, res, next) => {
       }
     );
   } else {
-    res.redirect("/login");
+    // res.redirect("/login");
+    res.status(401).json({
+      "msg":"Unauthorized Access"
+    });
   }
 };
 module.exports = { requireAuth };
+  
