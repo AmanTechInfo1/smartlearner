@@ -30,8 +30,6 @@ export default function Products({ curElem }) {
 
   })
 
-  console.log(myCart.length > 0, "myCartmyCartmyCart")
-  // const { addToCart } = useCartContext(); // Use the useCart hook to access addToCart function
 
   const addToCart = (prodcu) => {
     dispatch(getAddToCart({id:_id,count:1,service:name,price:price}))

@@ -52,13 +52,13 @@ function AutomaticCarousel() {
   };
 
   const addToCart = (info, index) => {
-    const productId = `${info.itemId}_${index}_${info.price}`;
+    const productId = `${info._id}_${index}_${info.price}`;
     dispatch(
       getAddToCart({
         id: productId,
         count: 1,
-        service: info.itemName,
-        price: info.itemPrice,
+        service: info.name,
+        price: info.price,
       })
     );
   };
@@ -120,7 +120,7 @@ function AutomaticCarousel() {
                             !myCart.find(
                               (cartItem) =>
                                 cartItem.id ===
-                                `${info.itemId}_${index}_${info.price}`
+                                `${info._id}_${index}_${info.price}`
                             ) ? (
                               <button
                                 className={styles.bookNow}
@@ -136,9 +136,9 @@ function AutomaticCarousel() {
                                 <div className={styles.quantityControl}>
                                   <button
                                     onClick={(e) => {
-                                      e.stopPropagation();
+                                      e.stopPropagation()
                                       handleDecrease(
-                                        `${info.itemId}_${index}_${info.price}`,
+                                        `${info._id}_${index}_${info.price}`,
                                         1
                                       );
                                     }}
@@ -150,14 +150,14 @@ function AutomaticCarousel() {
                                     {myCart.find(
                                       (cartItem) =>
                                         cartItem.id ===
-                                        `${info.itemId}_${index}_${info.price}`
+                                        `${info._id}_${index}_${info.price}`
                                     )?.count || 0}
                                   </span>
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       handleIncrease(
-                                        `${info.itemId}_${index}_${info.price}`,
+                                        `${info._id}_${index}_${info.price}`,
                                         1
                                       );
                                     }}

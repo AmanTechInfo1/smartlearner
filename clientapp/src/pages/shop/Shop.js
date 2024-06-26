@@ -28,20 +28,17 @@ export default function Shop() {
   useEffect(() => {
     dispatch(getAllProducts(filter.search, filter.page, filter.pageSize));
   }, [dispatch, filter.search, filter.page, filter.pageSize]);
-  const handleSearchChange = (search) => {
-    setFilter((prevFilter) => ({ ...prevFilter, search }));
-  };
+  
 
   return (
-    <>
-      <div className={styles.shopWrapper}>
+    <div style={{backgroundColor:'black',color:'white'}}>
+      <div className={styles.shopWrapper} >
         <h2>Shop</h2>
         <div className={styles.shopPage}>
           <div className={styles.shopGridView}>
             <div>
               <FilterSection
-                search={filter.search}
-                setSearch={handleSearchChange}
+               
               />
             </div>
             <section className={styles.productView}>
@@ -176,6 +173,6 @@ export default function Shop() {
       <section>
         <ShortFaqs />
       </section>
-    </>
+    </div>
   );
 }

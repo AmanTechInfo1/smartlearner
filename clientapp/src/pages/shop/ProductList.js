@@ -11,7 +11,7 @@ export default function ProductList() {
   // const { filter_products, setGridView } = useFilterContext();
 
   let filter_products = useSelector((state) => {
-    return state.product.products
+    return state.product.sortedProducts
   })
 
   
@@ -25,24 +25,16 @@ export default function ProductList() {
 
 
   const dispatch = useDispatch();
-  // let filter_products = []
+ 
 
   useEffect(() => {
     dispatch(getAllProductsCategory(filter.search, filter.page, filter.pageSize));
   }, [dispatch, filter.search, filter.page, filter.pageSize]);
 
-  // useEffect(()=>{
-  //   dispatch(getAllProducts(filter.search, filter.page, filter.pageSize));
-  // },[""])
 
 
 
   return (<GridView products={filter_products} />)
 
-  // if (setGridView) {
-  //   return <GridView products={filter_products} />;
-  // }
-  // if (setGridView === false) {
-  //   return <ListView products={filter_products} />;
-  // }
+
 }

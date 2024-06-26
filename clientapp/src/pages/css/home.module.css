@@ -1000,7 +1000,14 @@
 .quantityControl span {
   padding: 1px 0.7rem;
 }
-@media (max-width: 428px){
+@media (max-width: 840px){
+  .carouselColumn{
+    padding: 15px 8px;
+  }
+}
+
+
+@media (max-width: 767px){
   .carouselColumn{
     padding: 15px 8px;
   }

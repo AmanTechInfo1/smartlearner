@@ -6,22 +6,48 @@ const productSlice = createSlice({
     name: "product",
     initialState: {
         products: [],
+        sortedProducts: [],
         productsCategory: [],
         oneproduct: {},
         productCount: null,
         productsCategoryCount: null,
         loading: false,
+        status: 'idle',
     },
     reducers: {
         getAllProductsSuccess: (state, action) => {
             state.products = action.payload.products;
+            state.sortedProducts = action.payload.products;
+            
             state.productCount = action.payload.totalCount;
             state.loading = false;
         },
         getAllProductsFailure: (state) => {
             state.products = [];
+            state.sortedProducts = [];
+           
             state.productCount = null;
             state.loading = false;
+        },
+        sortProducts: (state, action) => {
+            const { sortOption } = action.payload;
+            let sortedArray = [...state.products];
+            if (sortOption === "lowest") {
+                sortedArray.sort((a, b) => a.price - b.price);
+            } else if (sortOption === "highest") {
+                sortedArray.sort((a, b) => b.price - a.price);
+            } else if (sortOption === "a-z") {
+                sortedArray.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortOption === "z-a") {
+                sortedArray.sort((a, b) => b.name.localeCompare(a.name));
+            }
+            state.sortedProducts = sortedArray;
+        },
+        searchProducts: (state, action) => {
+            const searchTerm = action.payload.toLowerCase();
+            state.sortedProducts = state.products.filter(product =>
+                product.name.toLowerCase().includes(searchTerm)
+            );
         },
         getAllProductsCategorySuccess: (state, action) => {
             state.productsCategory = action.payload.products;
@@ -90,11 +116,14 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
 
         console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
+       
         const response = await httpHandler.get(
             `/api/product/get-products?search=${search}&page=${page}&pagesize=${pagesize}`
         );
         if (response.data.success) {
             dispatch(getAllProductsSuccess(response.data.data));
+         
+            dispatch(sortProducts(response.data.data))
         } else {
             toast.error(response.data.message);
             dispatch(getAllProductsFailure());
@@ -236,6 +265,9 @@ export const {
     deleteProductSuccess,
     deleteProductFailure,
     setLoading,
+    sortProducts,
+    searchProducts,
+
 } = productSlice.actions;
 
 export default productSlice.reducer;

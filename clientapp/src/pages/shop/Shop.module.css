@@ -18,7 +18,7 @@
   display: flex;
   gap: 30px;
 }
-@media (max-width: 728px) {
+@media (max-width: 750px) {
   .shopGridView {
     display: block;
   }
@@ -29,7 +29,8 @@
 }
 .gridViewSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 5 columns */
+      grid-auto-rows: minmax(100px, auto); 
   gap: 20px; /* Gap between grid items */
   margin-top: 20px;
 }
@@ -171,7 +172,7 @@
   font-size: 32px;
   font-weight: 500;
   line-height: 1.2;
-  color: #111111;
+  color: white;
   margin-bottom: 15px;
 }
 .productDetailsPagetNamePrice p {
@@ -191,6 +192,7 @@
 }
 .productDetailsPageCard ul li p {
   margin-bottom: 0px;
+  color: black;
 }
 #productmenuArrowIcon {
   font-weight: 900;
@@ -225,6 +227,7 @@
 }
 .quantityControl span {
   padding: 1px 2rem;
+  color: #111;
 }
 .productDetailsCategoryDiv p {
   font-size: 18px;
@@ -537,9 +540,28 @@
 }
 .gridViewSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 5 columns */
+ 
   gap: 10px; /* Gap between grid items */
   margin-top: 20px;
+}
+@media (max-width: 1152px) {
+  .gridViewSection{
+    grid-template-columns: repeat(2, 1fr); 
+  } 
+  .gridViewSection .productCard .quantityControl span{
+    
+    padding: 1px 1rem;
+  }
+  .gridViewSection .productCard .quantityControl button {
+    padding: 2px 0.5rem;
+    border: none;
+  }
+}
+@media (max-width: 510px) {
+  .gridViewSection{
+    grid-template-columns: repeat(1, 1fr); 
+  } 
 }
 .gridViewSection ul {
   padding: 0px;
@@ -685,7 +707,7 @@
   font-size: 32px;
   font-weight: 500;
   line-height: 1.2;
-  color: #111111;
+  color: white;
   margin-bottom: 15px;
 }
 .productDetailsPagetNamePrice p {
@@ -737,8 +759,9 @@
   padding: 2px 1rem;
   border: none;
 }
-.quantityControl span {
+.productDetailsPageSection .quantityControl span {
   padding: 1px 2rem;
+  color: white;
 }
 /* ///////////////////// media quary of product details ////////////////// */
 
@@ -828,4 +851,44 @@
   .callbackFormContentPG {
     padding: 30px 15px;
   }
+}
+/* //////////////////////////////////////////////// */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  list-style: none;
+  padding: 0;
+  color: #ed2025;
+}
+
+.pagination li {
+  margin: 0 5px;
+  background-color: #111;
+}
+
+.pagination a {
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagination  .active a{
+  background-color: white;
+
+ 
+  
+}
+
+.pagination .disabled a {
+  color: grey;
+  cursor: not-allowed;
+}
+
+.pagination a:hover {
+  background-color: #555;
+  border-color: #555;
 }

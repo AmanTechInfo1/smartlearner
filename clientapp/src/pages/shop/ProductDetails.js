@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./Shop.module.css";
 import { FaAngleDoubleRight, FaStar, FaArrowRight } from "react-icons/fa";
@@ -16,8 +16,12 @@ import ProductSlider from "./ProductSlider";
 import Testemonial from "../../components/testimonials/Testemonial";
 import { useDispatch, useSelector } from "react-redux";
 import { imageBaseUrl } from "../../utils/constants";
-import { getAddToCart, getDecreaseCart, getIncreaseCart } from "../../redux/features/cartSlice";
-import { getAllProductsById } from "../../redux/features/productSlice";
+import {
+  getAddToCart,
+  getDecreaseCart,
+  getIncreaseCart,
+} from "../../redux/features/cartSlice";
+import { getAllProducts, getAllProductsById } from "../../redux/features/productSlice";
 
 export default function ProductDetails() {
   const params = useParams();
@@ -27,16 +31,26 @@ export default function ProductDetails() {
     dispatch(getAllProductsById(params.id));
   }, [dispatch, params.id]);
 
-  const product = useSelector((state) => state.product.oneproduct);
+  const [filter, setFilter] = useState({
+    search: "",
+    page: 1,
+    pageSize: 20,
+  });
 
-  const myCart = useSelector((state) =>
-    state.cart.cart.filter((itm) => itm.id === product?.id)
-  );
+  useEffect(() => {
+    dispatch(getAllProducts(filter.search, filter.page, filter.pageSize));
+  }, [dispatch, filter.search, filter.page, filter.pageSize]);
+
+
+
+
+
+  const product = useSelector((state) => state.product.oneproduct);
+  const cartItems = useSelector((state) => state.cart.cart);
 
   if (!product) return <p>Product not found</p>;
 
   const {
-    
     _id,
     name,
     image,
@@ -52,7 +66,16 @@ export default function ProductDetails() {
   } = product;
 
   const addToCart = () => {
-    dispatch(getAddToCart({ id:_id, count: 1, service: name, price: price }));
+    const existingItem = cartItems.find((item) => item.id === _id);
+    if (existingItem) {
+      // Item already exists in cart, increase quantity
+      dispatch(getIncreaseCart(_id, 1));
+    } else {
+      // Item not in cart, add it with quantity 1
+      dispatch(
+        getAddToCart({ id: _id, count: 1, service: name, price: price })
+      );
+    }
   };
 
   const handleIncrease = (id, qty) => {
@@ -63,12 +86,13 @@ export default function ProductDetails() {
     dispatch(getDecreaseCart(id, qty));
   };
 
+  const myCart = cartItems.find((item) => item.id === _id);
   return (
-    <div>
+    <div style={{backgroundColor:'black', color:'white'}}>
       <div className={styles.ProductDetailsPage}>
         <section className={styles.productDetailsPageSection}>
           <div className={styles.productDetailsPageImage}>
-            <img src={imageBaseUrl+image} alt={name} />
+            <img src={imageBaseUrl + image} alt={name} />
           </div>
           <div className={styles.productDetailsPageDetails}>
             <div className={styles.productDetailsPagetNamePrice}>
@@ -123,33 +147,30 @@ export default function ProductDetails() {
               </ul>
             </div> */}
 
-            
-                  
-                   
-          <div id={styles.cartTableBtn}>
-            <div className={styles.quantityControl}>
-              <button onClick={() => {
-                          handleDecrease(_id, 1)
-                        }} className={styles.decreaseButton}>
-                -
-              </button>
-              <span>{myCart.length > 0 ? myCart[0]["count"] : 0}</span>
-              <button onClick={() => {
-                          handleIncrease(_id, 1)
-                        }} className={styles.increaseButton}>
-                +
-              </button>
-            </div>
-         
-       
-                  </div>
+            <div id={styles.cartTableBtn}>
+              {myCart ? (
+                <div className={styles.quantityControl}>
                   <button
-                  className={styles.bookNow}
-                 
-                  onClick={() => addToCart(product)}>
+                    onClick={() => handleDecrease(_id, 1)}
+                    className={styles.decreaseButton}
+                  >
+                    -
+                  </button>
+                  <span>{myCart.count}</span>
+                  <button
+                    onClick={() => handleIncrease(_id, 1)}
+                    className={styles.increaseButton}
+                  >
+                    +
+                  </button>
+                </div>
+              ) : (
+                <button className={styles.bookNow} onClick={() => addToCart()}>
                   Book Now
                 </button>
-                
+              )}
+            </div>
+
             <div className={styles.productDetailsCategoryDiv}>
               <p>
                 Category: <span>{category}</span>{" "}
@@ -165,9 +186,7 @@ export default function ProductDetails() {
             <div className={styles.productDetailsContent}>
               <h2>Discription Manual</h2>
               <hr />
-              <p>
-                {description}
-              </p>
+              <p>{description}</p>
             </div>
           </div>
         </div>
@@ -267,7 +286,7 @@ export default function ProductDetails() {
       </section>
       {/* ///////////////Testimonials////// */}
       <section>
-       <Testemonial/>
+        <Testemonial />
       </section>
 
       {/* ///////////////////////Reviews//////// */}
