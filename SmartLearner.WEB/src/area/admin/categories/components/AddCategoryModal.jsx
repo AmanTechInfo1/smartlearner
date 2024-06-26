@@ -25,6 +25,8 @@ function AddCategoryModal(props) {
         dispatch(createCategory(formData, reset, props.toggleAddCategoryModal));
     };
 
+
+    console.log(errors,"errorserrorserrorserrors")
     return (
         <>
             <Modal

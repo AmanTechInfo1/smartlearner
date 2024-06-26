@@ -22,6 +22,11 @@ const get = async (url) => {
             },
         });
 
+        if (response.status == 401) {
+            localStorage.removeItem("user");
+        } else {
+            return response
+        }
         return response;
     } catch (error) {
         throw error;
@@ -40,7 +45,11 @@ const post = async (url, params, opt) => {
         };
 
         const response = await axios.post(`${apiUrl}${url}`, params, opt);
-
+        if (response.status == 401) {
+            localStorage.removeItem("user");
+        } else {
+            return response
+        }
         return response;
     } catch (error) {
         throw error;
