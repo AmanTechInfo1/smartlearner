@@ -49,7 +49,7 @@ const QuizResult = () => {
 
   let url = window.location.pathname.split("/").pop()
 
-  const { oneQuiz, oneQuizOutput, quizResult } = useSelector(state => state.quiz)
+  const { oneQuiz, oneQuizOutput,loading, quizResult } = useSelector(state => state.quiz)
 
   const handleAnswerOptionClick = (answerOption) => {
 

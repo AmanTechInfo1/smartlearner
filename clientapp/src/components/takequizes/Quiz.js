@@ -48,7 +48,7 @@ const Quiz = () => {
   const [answered, setAnswered] = useState("");
 
 
-  const { oneQuiz, oneQuizOutput, quizResult } = useSelector(state => state.quiz)
+  const { oneQuiz, oneQuizOutput, loading, quizResult } = useSelector(state => state.quiz)
 
 
 
@@ -171,31 +171,33 @@ const Quiz = () => {
         <div className={styles.quiz}>
 
           {
-            oneQuiz?.question ?
-              <>
-                <div className={styles.totalTimer}>
-                  Category : {oneQuiz?.quizCategory}
-                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
-                </div>
-                <div className={styles.totalTimer}>
-                  {/* Module Name : {oneQuiz?.quizModuleName} */}
-                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
-                </div>
-                <div className={styles.questionCount}>
-                  {/* {currentQuestion + 1}/{questions.length} */}
-                  Question : <div dangerouslySetInnerHTML={{ __html: oneQuiz?.question.replace(">", "><br/>") }}></div>
-                </div>
+
+            loading ? <>Loading</> :
+              oneQuiz?.question ?
+                <>
+                  <div className={styles.totalTimer}>
+                    Category : {oneQuiz?.quizCategory}
+                    {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
+                  </div>
+                  <div className={styles.totalTimer}>
+                    {/* Module Name : {oneQuiz?.quizModuleName} */}
+                    {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
+                  </div>
+                  <div className={styles.questionCount}>
+                    {/* {currentQuestion + 1}/{questions.length} */}
+                    Question : <div dangerouslySetInnerHTML={{ __html: oneQuiz?.question.replace(">", "><br/>") }}></div>
+                  </div>
 
 
-                <div className={styles.questionCount}>
-                  {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage != "" ? oneQuiz?.questionImage.includes("https") ? oneQuiz?.questionImage : imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
-                </div>
-                <div className={styles.OptionsText}>{"Options :-"} </div>
+                  <div className={styles.questionCount}>
+                    {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage != "" ? oneQuiz?.questionImage.includes("https") ? oneQuiz?.questionImage : imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
+                  </div>
+                  <div className={styles.OptionsText}>{"Options :-"} </div>
 
 
 
-                <div className={styles.answerSection}>
-                  {/* {oneQuiz?.option?.map((answerOption, index) => {
+                  <div className={styles.answerSection}>
+                    {/* {oneQuiz?.option?.map((answerOption, index) => {
                   let buttonClass = "";
                   if (selectedOption === index) {
                     buttonClass = answerOption.isCorrect ? styles.correct : styles.incorrect;
@@ -214,29 +216,29 @@ const Quiz = () => {
                   );
                 })} */}
 
-                  {oneQuiz?.option?.map((answerOption, index) => {
-                    return (
-                      <button
-                        // key={index}
-                        disabled={oneQuizOutput.answerAttempt}
-                        style={{ backgroundColor: oneQuizOutput.answerAttempt == "Incorrect" ? "Option" + (index + 1) == answered ? "red" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" }}
-                        onClick={() => handleAnswerOptionClick("Option" + (index + 1), "Image" + (index + 1))}
-                      // disabled={selectedOption !== null}
-                      >
-                        {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? oneQuiz?.optionImage[index].includes("https") ? oneQuiz?.optionImage[index] : imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
-                      </button>
-                    );
-                  })}
+                    {oneQuiz?.option?.map((answerOption, index) => {
+                      return (
+                        <button
+                          // key={index}
+                          disabled={oneQuizOutput.answerAttempt}
+                          style={{ backgroundColor: oneQuizOutput.answerAttempt == "Incorrect" ? "Option" + (index + 1) == answered ? "red" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" }}
+                          onClick={() => handleAnswerOptionClick("Option" + (index + 1), "Image" + (index + 1))}
+                        // disabled={selectedOption !== null}
+                        >
+                          {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? oneQuiz?.optionImage[index].includes("https") ? oneQuiz?.optionImage[index] : imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
+                        </button>
+                      );
+                    })}
 
 
 
-                </div>
-              </>
-              : <>
-                <div className={styles.totalTimer}>
-                  No Question Available
-                </div>
-              </>}
+                  </div>
+                </>
+                : <>
+                  <div className={styles.totalTimer}>
+                    No Question Available
+                  </div>
+                </>}
           <div className={styles.navigationButtons}>
             {/* <button onClick={handlePreviousQuestion}>
               Previous
