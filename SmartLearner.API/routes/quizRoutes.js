@@ -17,6 +17,7 @@ router.get("/getQuizResult/:userId/:resType", requireAuth, quizController.getQui
 router.get("/quiz/:id", requireAuth, quizController.getOneQuestion);
 router.get("/getRandomQuestion/:cid/:id", requireAuth, quizController.getQuestionId);
 router.get("/getRandomQuestion/:cid", requireAuth, quizController.getQuestion);
+router.get("/getRandomQuestionCatName/:cid", requireAuth, quizController.getQuestionCatName);
 router.get("/getQuizCategory", requireAuth, quizController.getQuizCategory);
 router.get("/quizCategorylist", requireAuth, quizController.getListQuizCategory);
 router.get("/quizCategory/:id", requireAuth, quizController.oneQuizCategory);

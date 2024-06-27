@@ -25,6 +25,20 @@ class dashboardController {
       next(err);
     }
   }
+
+
+
+  
+  async getCategoryCardsByQuestion(req, res, next) {
+    try {
+
+      
+      const response = await quizService.getQuizCategoryByQuestionAsync();
+      res.status(201).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
   async getModuleCards(req, res, next) {
     try {
       

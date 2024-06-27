@@ -41,7 +41,8 @@ export default function QuizCategoryHome() {
         {
           Quizcards.map((itm) => {
             return <div onClick={()=>{
-              navigate("/quizModuleId/"+itm._id)
+              // navigate("/quizModuleId/"+itm._id)
+              navigate("/takequizCatName/"+itm.catUnqName)
             }} className={styles.card} style={{backgroundImage:itm.bgColor}}>
               <div className={styles.cardInner}>
                 <h3>{itm.name}</h3>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ResultQuiz from './ResultQuiz';
 import styles from './Quiz.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAnswerRandomQuestion, getQuizRandomQuestionFailure, getQuizRandomQuestionOutputFailure, getQuizResult, getRandomQuestion } from '../../redux/features/quizSlice';
+import { getAnswerRandomQuestion, getQuizRandomQuestionFailure, getQuizRandomQuestionOutputFailure, getQuizResult, getRandomQuestion, getRandomQuestionByName } from '../../redux/features/quizSlice';
 import Confetti from 'react-confetti'
 
 import useWindowSize from 'react-use/lib/useWindowSize'
@@ -58,7 +58,7 @@ const Quiz = () => {
   useEffect(() => {
 
 
-    dispatch(getRandomQuestion(cid, id))
+    dispatch(getRandomQuestionByName(cid))
     const interval = setInterval(() => {
       setTotalTimer((prevTotalTimer) => {
         if (prevTotalTimer > 0) {
@@ -97,7 +97,7 @@ const Quiz = () => {
 
     dispatch(getQuizRandomQuestionOutputFailure())
     dispatch(getQuizRandomQuestionFailure())
-    dispatch(getRandomQuestion(cid, id))
+    dispatch(getRandomQuestionByName(cid, id))
     // const nextQuestion = currentQuestion + 1;
     // if (nextQuestion < questions.length) {
     //   setCurrentQuestion(nextQuestion);
@@ -178,17 +178,17 @@ const Quiz = () => {
                   {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
                 </div>
                 <div className={styles.totalTimer}>
-                  Module Name : {oneQuiz?.quizModuleName}
+                  {/* Module Name : {oneQuiz?.quizModuleName} */}
                   {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
                 </div>
                 <div className={styles.questionCount}>
                   {/* {currentQuestion + 1}/{questions.length} */}
-                  Question : {oneQuiz?.question}
+                  Question : <div dangerouslySetInnerHTML={{ __html: oneQuiz?.question.replace(">", "><br/>") }}></div>
                 </div>
 
 
                 <div className={styles.questionCount}>
-                  {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage!= "" ? imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
+                  {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage != "" ? oneQuiz?.questionImage.includes("https") ? oneQuiz?.questionImage : imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
                 </div>
                 <div className={styles.OptionsText}>{"Options :-"} </div>
 
@@ -223,7 +223,7 @@ const Quiz = () => {
                         onClick={() => handleAnswerOptionClick("Option" + (index + 1), "Image" + (index + 1))}
                       // disabled={selectedOption !== null}
                       >
-                        {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
+                        {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? oneQuiz?.optionImage[index].includes("https") ? oneQuiz?.optionImage[index] : imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
                       </button>
                     );
                   })}

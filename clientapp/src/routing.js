@@ -232,11 +232,19 @@ export const router = createBrowserRouter([
         element: <QuizModuleHome />,
       },
       {
+        path: "/quizCatName/:id",
+        element: <QuizModuleHome />,
+      },
+      {
         path: "/quizCategoryHome",
         element: <QuizCategoryHome />,
       },{
         path: "/quizGive",
         element: <QuizCategoryHome />,
+      },
+      {
+        path: "/takequizCatName/:cid",
+        element: <Quiz />,
       },
       {
         path: "/takequiz/:cid/:id",

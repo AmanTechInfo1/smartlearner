@@ -139,6 +139,24 @@ export const getRandomQuestion = (cid,id) => async (dispatch) => {
     }
 };
 
+export const getRandomQuestionByName = (cid,id=undefined) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/quiz/getRandomQuestionCatName/${cid}${id?"/"+id:""}`
+        );
+        if (response.data.success) {
+            dispatch(getQuizRandomQuestionSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getQuizRandomQuestionFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getQuizRandomQuestionFailure());
+    }
+};
+
 
 
 export const getQuizResult = (type) => async (dispatch) => {

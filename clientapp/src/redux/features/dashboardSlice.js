@@ -76,8 +76,11 @@ export const getMyQuizCategory = () => async (dispatch) => {
 export const getMyQuizModule = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
+        // const response = await httpHandler.get(
+        //     `/api/dashboard/getModuleCards/${id}`
+        // );
         const response = await httpHandler.get(
-            `/api/dashboard/getModuleCards/${id}`
+            `/api/dashboard/getQuenameCards/${id}`
         );
         if (response.data.success) {
             dispatch(getQuizDashboardSuccess(response.data.data));

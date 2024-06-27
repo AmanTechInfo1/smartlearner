@@ -92,7 +92,7 @@ const EditQuizUpdatedModal = (props) => {
         formDataToSend.append('answer', answer);
         formDataToSend.append('description', description);
         formDataToSend.append('category', category);
-        formDataToSend.append('module', module);
+        // formDataToSend.append('module', module);
         formDataToSend.append('question', question);
         formDataToSend.append('option', final_data.option.join(","));
         // final_data={
@@ -372,7 +372,7 @@ const EditQuizUpdatedModal = (props) => {
                             )}
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>Module</label>
                             <Controller
                                 name="module"
@@ -401,7 +401,7 @@ const EditQuizUpdatedModal = (props) => {
                             ) : (
                                 ""
                             )}
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <label>Description</label>

@@ -52,6 +52,14 @@ class QuizController {
       next(err);
     }
   }
+  async getQuestionCatName(req, res, next) {
+    try {
+      const response = await quizService.getRandomQuizCatName(req.userId,req.params.cid);
+      res.status(201).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
   async getQuestionId(req, res, next) {
     try {
 

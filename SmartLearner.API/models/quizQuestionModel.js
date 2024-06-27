@@ -9,7 +9,7 @@ const QuizQuestionSchema = new mongoose.Schema({
   answer: { type: String, required: true },
   // answerImage: { type: String, required: true },
   category: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizCategory' },
-  module: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizmodules' }
+  // module: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizmodules' }
 });
 const QuizQuestion = mongoose.model("quizQuestion", QuizQuestionSchema);
 module.exports = QuizQuestion;

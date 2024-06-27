@@ -60,6 +60,47 @@ class quizService {
   }
 
 
+
+  
+
+  async getQuizCategoryByQuestionAsync() {
+    try {
+
+
+      let aggr = [
+        {
+          '$lookup': {
+            'from': 'quizquestions',
+            'localField': '_id',
+            'foreignField': 'category',
+            'as': 'result'
+          }
+        }, {
+          '$addFields': {
+            'count': {
+              '$size': '$result'
+            }
+          }
+        }
+      ]
+      const quiz = await QuizCategoryModel.aggregate(aggr);
+      const totalCount = await QuizCategoryModel.countDocuments();
+      const resultObject = {
+        message: "Quiz Category Fetch Successfully",
+        statusCode: 201,
+        success: true,
+        data: { quiz, totalCount }
+      };
+      return resultObject;
+    } catch (err) {
+
+      console.log(err, "errerrerrerrerr")
+      throw new Error("Could not fetch role");
+    }
+  }
+
+
+
   async getQuizCategoryAsync() {
     try {
 
@@ -870,6 +911,117 @@ class quizService {
         '$unwind': {
           'path': '$quizcategoriesresult',
           'preserveNullAndEmptyArrays': true
+        }
+      }, {
+        '$lookup': {
+          'from': 'quizmodules',
+          'localField': 'module',
+          'foreignField': '_id',
+          'as': 'quizmodulesresult'
+        }
+      }, {
+        '$unwind': {
+          'path': '$quizmodulesresult',
+          'preserveNullAndEmptyArrays': true
+        }
+      }, {
+        '$addFields': {
+          'quizCategory': '$quizcategoriesresult.name',
+          'quizModuleName': '$quizmodulesresult.moduleName'
+        }
+      }, {
+        '$project': {
+          'result': 0,
+          'answer': 0,
+          'sizeRes': 0,
+          '_id': 0
+        }
+      })
+
+
+      console.log(aggr, "aggraggraggr")
+
+      const products = await QuizQuestion.aggregate(aggr);
+
+
+      console.log(products, aggr, userId, moduleId, "productsproducts")
+      const resultObject = {
+        message: products.length > 0 ? "Question fetched successfully" : "No Question Available",
+        statusCode: products.length > 0 ? 200 : 400,
+        success: true,
+        data: products.length > 0 ? products[0] : {},
+      };
+      return resultObject;
+    } catch (err) {
+      console.log(err)
+      const resultObject = {
+        message: "Could not fetch products",
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+  async getRandomQuizCatName(userId, cid, moduleId = null) {
+    try {
+
+      let aggr = []
+      // if (moduleId != null) {
+      //   aggr.push({
+      //     '$match': {
+      //       'module': new ObjectId(moduleId)
+      //     }
+      //   }
+      //   )
+      // }
+
+
+      console.log(aggr, "aggraggraggr800")
+      aggr.push({
+        '$lookup': {
+          'from': 'attemptquizquestions',
+          'localField': '_id',
+          'foreignField': 'questionId',
+          'pipeline': [
+            {
+              '$match': {
+                'userId': {
+                  '$eq': new ObjectId(userId)
+                }
+              }
+            }
+          ],
+          'as': 'result'
+        }
+      }, {
+        '$addFields': {
+          'sizeRes': {
+            '$size': '$result'
+          },
+          'questionId': {
+            '$toString': '$_id'
+          }
+        }
+      }, {
+        '$match': {
+          'sizeRes': 0
+        }
+      }, {
+        '$lookup': {
+          'from': 'quizcategories',
+          'localField': 'category',
+          'foreignField': '_id',
+          'as': 'quizcategoriesresult'
+        }
+      }, {
+        '$unwind': {
+          'path': '$quizcategoriesresult',
+          'preserveNullAndEmptyArrays': true
+        }
+      },{
+        '$match': {
+          'quizcategoriesresult.catUnqName': cid
         }
       }, {
         '$lookup': {

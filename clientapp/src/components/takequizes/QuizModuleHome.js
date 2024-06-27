@@ -5,6 +5,7 @@ import { MdQuiz } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyDashboard, getMyQuizCategory, getMyQuizModule } from '../../redux/features/dashboardSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getRandomQuestionByName } from '../../redux/features/quizSlice';
 
 export default function QuizModuleHome() {
 
@@ -28,7 +29,7 @@ export default function QuizModuleHome() {
 
   let a = ""
   useEffect(() => {
-    dispatch(getMyQuizModule(id));
+    dispatch(getRandomQuestionByName(id));
   }, [id]);
 
   return (
