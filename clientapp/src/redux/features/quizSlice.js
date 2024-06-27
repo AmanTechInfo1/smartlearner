@@ -57,11 +57,11 @@ const quizSlice = createSlice({
 
         getQuizRandomQuestionOutputSuccess: (state, action) => {
             state.oneQuizOutput = action.payload;
-            state.loading = false;
+            // state.loading = false;
         },
         getQuizRandomQuestionOutputFailure: (state) => {
             state.oneQuizOutput = {};
-            state.loading = false;
+            // state.loading = false;
         },
         createQuizSuccess: (state, action) => { 
             state.quizzes.push(action.payload.quiz);
@@ -183,7 +183,7 @@ export const getQuizResult = (type) => async (dispatch) => {
 
 export const getAnswerRandomQuestion = (data) => async (dispatch) => {
     try {
-        dispatch(setLoading());
+        // dispatch(setLoading());
         const response = await httpHandler.post(
             `/api/quiz/answerQuestion`,data
         );
