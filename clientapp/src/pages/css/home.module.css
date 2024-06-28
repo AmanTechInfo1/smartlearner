@@ -12,7 +12,7 @@
   padding: 1rem;
   width: 100%;
 }
-.homeContent {
+.homeContent {  
   text-align: right;
 }
 .homeContent img {
@@ -902,15 +902,8 @@
     font-weight: normal;
     color: #fff;
   }
-  .homeFormGroup {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .homeFormGroup label {
-    margin-bottom: 5px;
-    background-color: #ed2025;
-    color: #fff;
-  }
+  
+ 
   .carContainer h2 {
     font-size: 3rem;
   }

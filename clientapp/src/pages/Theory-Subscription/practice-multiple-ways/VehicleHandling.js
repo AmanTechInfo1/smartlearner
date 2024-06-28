@@ -5,6 +5,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import handlngIconImg from "../../../assets/images/handling-icon-300x300.png";
 import { FaCheckCircle } from "react-icons/fa";
 import speedBreaker from "../../../assets/images/speedBreaker.jpeg";
+import { Link } from "react-router-dom";
 
 export default function VehicleHandling() {
   return (
@@ -24,14 +25,9 @@ export default function VehicleHandling() {
                 <h2>Vehicle handling</h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -50,7 +46,9 @@ export default function VehicleHandling() {
             </div>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize:'2rem'}}>What is Vehicle handling ?</h2>
+                <h2 style={{ color: "purple", fontSize: "2rem" }}>
+                  What is Vehicle handling ?
+                </h2>
                 <li>
                   <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
@@ -203,7 +201,7 @@ export default function VehicleHandling() {
                   speed. One of the most common measures is road humps
                   (sometimes called speed humps) but chicanes, speed tables, and
                   road narrowing are also used.
-                 </p>
+                </p>
               </li>
               <li>
                 <IoMdArrowDropright id="listrightIcon" />{" "}
@@ -218,10 +216,25 @@ export default function VehicleHandling() {
           </div>
         </section>
 
-        <section>
-          <h2 style={{textAlign:'center', fontSize:'2rem', color:'purple'}}>Test Yourself</h2>
+        <section className={styles.mockTestContainerSection}>
+          <div className={styles.mockTestHeadingContainerDIv}>
+            <h2 style={{ textAlign: "center", color: "red" }}>Test YourSelf</h2>
+          </div>
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+                Click the start quiz button to start the quiz and See your
+                result
+              </p>
+              <Link to="/takequizCatName/Vehicle-Handling">
+                {" "}
+                <button>Start Quiz</button>
+              </Link>
+            </section>
+          </div>
         </section>
-
         {/* //////////////////////////////////////////////////////////// */}
       </div>
     </div>

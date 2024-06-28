@@ -15,6 +15,7 @@ import vehicleS from '../../../assets/images/vehicalS.jpeg'
 import parking from '../../../assets/images/parkingImg.jpg'
 import enviromentIssue from '../../../assets/images/enviromentalIssueImg.jpg'
 import GeneralIssue from '../../../assets/images/generalTips.jpg'
+import { Link } from "react-router-dom";
 
 
 
@@ -33,14 +34,7 @@ export default function SafetyVehicle() {
                 <h2>Safety in your vehicle</h2>
               </div>
               <div className={styles.btn}>
-              <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
               </div>
             </div>
             <div className={styles.video}>
@@ -441,6 +435,25 @@ export default function SafetyVehicle() {
           </div>
         </section>
         {/* //////////////////////////////////////////// */}
+              {/* ////////////////////////////////////// */}
+              <section className={styles.mockTestContainerSection}>
+        <div className={styles.mockTestHeadingContainerDIv}>
+          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Safety-and-Your-Vehicle">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
+      </section>
        
         {/* //////////////////////////////////////////////////////// */}
       </div>

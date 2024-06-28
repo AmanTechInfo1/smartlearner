@@ -97,7 +97,7 @@ export default function ProductDetails() {
           <div className={styles.productDetailsPageDetails}>
             <div className={styles.productDetailsPagetNamePrice}>
               <h1>{name}</h1>
-              <p>${price}</p>
+              <p>£ {price}</p>
             </div>
             <div className={styles.productDetailsPageCard}>
               <ul type="none" className={styles.productDetailsPageCardMenu}>

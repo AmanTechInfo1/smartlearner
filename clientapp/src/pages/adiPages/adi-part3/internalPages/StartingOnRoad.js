@@ -3,6 +3,7 @@ import styles from "../../AdiPartOne.module.css";
 import { IoMdArrowDropright } from "react-icons/io";
 import Lplateimg from "../../../../assets/images/L-Plate.jpg";
 import EnquiryForm from "../../../../components/forms/EnquiryForm";
+import { Link } from "react-router-dom";
 
 export default function StartingOnRoad() {
   return (
@@ -22,7 +23,9 @@ export default function StartingOnRoad() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -279,6 +282,20 @@ export default function StartingOnRoad() {
             </div>
           </div>
         </section>
+        <section style={{textAlign:'center'}}>
+        <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2>
+       </section>
+        <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+               Click the start quiz button to start the quiz and See your result
+              </p>
+              <Link to="/takequizCatName/ADI---Part-3"> <button>Start Quiz</button></Link>
+             
+            </section>
+          </div>
         {/* ///////////////////////////////// */}
         <section>
             <EnquiryForm/>

@@ -12,6 +12,9 @@ import oneWayStreet from "../../../assets/images/one-wayStreet.jpg";
 import tramsImg from "../../../assets/images/tram-sign-drivers.png";
 import flashingHeadingImg from "../../../assets/images/flaSHINGHighlights.jpg";
 import horsesRoadImg from "../../../assets/images/horse-road-1024x576.jpg";
+import { Link } from "react-router-dom";
+
+
 
 export default function Attitude() {
   return (
@@ -28,14 +31,7 @@ export default function Attitude() {
                 <h2>Attitude</h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
               </div>
             </div>
             <div className={styles.video}>
@@ -302,6 +298,26 @@ export default function Attitude() {
             </ul>
           </div>
         </section>
+
+        {/* /////////////////// */}
+        <section className={styles.mockTestContainerSection}>
+        <div className={styles.mockTestHeadingContainerDIv}>
+          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Attitude">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
+      </section>
 
         {/* ////////////////////////////////////////////////////////////// */}
       </div>

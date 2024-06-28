@@ -125,6 +125,37 @@
       padding: 40px;
     }
   }
+
+  /* //////////////////////////////////// */
+   /* ///////////////////////////////////// */
+   .imagesHSection{
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 1rem;
+  }
+  .imagesHSection p{
+    text-align: center;
+    color: white;
+  }
+  #imagesHSection{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+    gap: 20px;
+  }
+  #imagesHSection section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+    gap: 20px;
+  }
+  #imagesHSection img{
+    max-width: 250px;
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
   /* ////////////////////////////////////////// */
   
   .hazardTestWorkListSection {
@@ -542,4 +573,185 @@ p{
   .thMultipleChioceHeader h2 {
     font-size: 2rem;
   }
+}
+/* ///////////////////////////////// */
+
+.smartlearnerPladgesSection{
+  padding: 2rem 0px;
+}
+#smartlearnerPladges{
+ text-align: center;
+}
+#smartlearnerPladges img{
+  max-width: 250px;
+  width: 100%;
+
+}
+#smartlearnerPladges h2{
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+}
+#smartlearnerPladges hr{
+  
+  opacity: 1;
+  border: 2px solid rgb(174, 8, 8);
+}
+
+
+.smartlearnerPlLists{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.smartlearnerPlLists img{
+  max-width: 180px;
+  width: 100%;
+}
+.smartlearnerPlLists h2{
+  color: #EB0009;
+}
+.smartlearnerPlLists p{
+  color: white;
+  font-size: 1rem;
+}
+@media (max-width: 767px){
+  .smartlearnerPlLists p{
+    color: white;
+    font-size: 1rem;
+  }
+  .smartlearnerPlLists img{
+    max-width: 150px;
+    width: 100%;
+  }
+}
+@media (max-width: 450px){
+  .smartlearnerPlLists{
+    flex-direction: column;
+  }
+  #smartlearnerPladges h2{
+    font-size: 3.5rem;
+  }
+}
+.faIconsSection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 1rem;
+
+  background-color: #EB0009;
+}
+.faIconsSection h2{
+  font-size: 3rem;
+}
+.faIconsSection span{
+  padding: 1rem;
+  background-color: white;
+  border-radius: 50%;
+}
+#faIconsSection{
+  font-size: 5rem;
+  color: red;
+  border-radius: 50%;
+}
+
+.hazardVideoContainerSection{
+  text-align: center;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hazardVideoContainerSection h2{
+  font-size: 2rem;
+  color: #ff0004;
+
+}
+.hazardVideoContainerSection p{
+  font-size: 17px;
+  color: #5d5d5d;
+}
+.hazardVideosGridContainer{
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 5 columns */
+  grid-auto-rows: minmax(100px, auto); /* Define row height */
+  gap: 10px; 
+  margin: 1rem;
+  max-width: 1040px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hazardGridItem{
+ 
+ 
+  text-align: center;
+}
+
+@media screen and (max-width: 860px) {
+  .hazardVideosGridContainer {
+    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hazardVideosGridContainer {
+    grid-template-columns: repeat(2, 1fr); /* Change to 1 column */
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .hazardVideosGridContainer {
+    grid-template-columns: repeat(1, 1fr); /* Change to 1 column */
+  }
+}
+/* ////////////////////////////// */
+/* /////////////////////////////////// */
+.quizStartDiv{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.startQuizSection{
+ 
+   box-shadow: 0 0 10px #ccc ;
+   text-align: center;
+   padding: 4rem;
+   font-family: "Roboto", sans-serif;
+}
+.startQuizSection h2{
+  font-size: 1.9rem;
+  font-weight: 300;
+  margin: 2rem 0px;
+}
+.startQuizSection h3{
+  font-size: 1.9rem;
+  font-weight: 300;
+  margin: 1.5rem 0px;
+}
+.startQuizSection p{
+  margin: 1rem 0px;
+  font-size: 16px;
+  font-weight: 300;
+}
+.startQuizSection button{
+  margin: 2rem 0px;
+  padding: 12px 40px;
+  border: none;
+  background-color: #eb0009;
+  color: #fff;
+  box-shadow: 0 0 10px #ccc ;
+
+}
+.startQuizSection button:hover{
+  background-color: black;
 }

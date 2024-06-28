@@ -77,7 +77,7 @@ export default function ProductSlider() {
                     </span>
                   ))}
                 </div>
-                <p className={styles.price}>${product.price}</p>
+                <p className={styles.price}>£{product.price}</p>
               </div>
               <ul className={styles.cardDetails}>
                 <li>

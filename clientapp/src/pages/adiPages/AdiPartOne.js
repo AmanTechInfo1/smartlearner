@@ -26,7 +26,8 @@ export default function AdiPartOne() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+                <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+                
               </div>
             </div>
             <div className={styles.video}>
@@ -310,7 +311,7 @@ export default function AdiPartOne() {
                 </p>
               </li>
             </ul>
-            <Link to="">
+            <Link to="/hazard-preception-part-2">
               <button id={styles.hazzardBtn}>Hazzard Perception</button>
             </Link>
           </div>

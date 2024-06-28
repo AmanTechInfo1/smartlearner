@@ -66,6 +66,7 @@ ul{
     font-weight: 400;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
+    color: #111;
 
   }
   .contactInfo a{
@@ -129,7 +130,7 @@ ul{
 
 .formContainer {
     margin: 15px 20px;
-    background: #f6f6f6;
+    background: #121212;
     padding: 40px;
     border: 5px double #999;
    
@@ -202,7 +203,7 @@ ul{
   }
   
   .submit button {
-    width: 15%; /* Ensure button takes full width */
+   
     padding: 14px;
     background-color: #ed2025;
     color: #fff;

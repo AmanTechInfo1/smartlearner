@@ -44,9 +44,10 @@ import "slick-carousel/slick/slick-theme.css";
 ///////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { servicesData } from "../redux/features/servicesSlice";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { serviceFormSchema } from "../schemas/master";
+import { enquiryData } from "../redux/features/enquirySlice";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -67,8 +68,8 @@ export default function Home() {
     formData.append("email", data.email);
     formData.append("postcode", data.postcode);
     formData.append("message", data.message);
-
-    dispatch(servicesData({ requestData: data, reset }));
+    formData.append("formType", "ServiceForm");
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   const settings = {

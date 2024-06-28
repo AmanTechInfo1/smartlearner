@@ -2,7 +2,7 @@
 import styles from "./css/TheorySupport.module.css";
 
 import { FaStar } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import poster from "../assets/images/video-poster-img.jpg";
 import ProductTab from "./shop/ProductTab";
 import CallBackForm from "../components/forms/CallBackForm";
@@ -17,7 +17,8 @@ import starImg from "../assets/images/star.png";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import video from "../assets/videos/Video-1886-041219-B.mp4"
+import video from "../assets/videos/Video-1886-041219-B.mp4";
+import video2 from "../assets/videos/Video-1smartlearner-B.mp4"
 export default function TheorySupport() {
   const { section } = useParams();
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function TheorySupport() {
         duration: 400,
         delay: 0,
         smooth: "easeInOutQuart",
-        offset: -70, 
+        offset: -70,
       });
     }
   }, [section]);
@@ -48,6 +49,7 @@ export default function TheorySupport() {
                 height="600px"
                 src={video}
                 title="YouTube Video"
+                poster={poster}
               ></iframe>
             </div>
           </div>
@@ -79,12 +81,17 @@ export default function TheorySupport() {
       {/* /////////////////////////////////////////////// */}
       <section className={styles.TSvideosContanierSection}>
         <div className={styles.theorySupportContentVideosec}>
-          <video controls poster={poster} preload="none">
-            <source
-              src="src/assets/videos/Video-1smartlearner-B.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div className={styles.innerTheorySupportContent}>
+            <div className={styles.theorySupportContentVideo}>
+              <iframe
+                width="100%"
+                height="600px"
+                src={video2}
+                poster={poster}
+                title="YouTube Video"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
       {/* ////////////////////////// */}
@@ -106,19 +113,25 @@ export default function TheorySupport() {
               theory and simulator training with a tutor for those who feel need
               additional support to pass their exams. So, forget the rest and
               learn with the best! Call us today on{" "}
-              <a href="">
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
                 {" "}
                 <span>0800 118 2001</span>{" "}
               </a>
               to get yourself booked in.
             </p>
             <div className={styles.whyChooseshortSectionButtons}>
-              <button className={styles.whyChooseshortSectionReadmore}>
-                Read More
-              </button>
-              <button className={styles.whyChooseshortSectionCallus}>
-                Call Us
-              </button>
+              <Link to="/about">
+                {" "}
+                <button className={styles.whyChooseshortSectionReadmore}>
+                  Read More
+                </button>
+              </Link>
+
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                <button className={styles.whyChooseshortSectionCallus}>
+                  Call Us
+                </button>
+              </a>
             </div>
           </div>
         </div>

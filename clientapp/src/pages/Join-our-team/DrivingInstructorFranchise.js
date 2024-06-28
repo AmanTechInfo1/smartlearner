@@ -41,11 +41,12 @@ export default function DrivingInstructorFranchise() {
               </h2>
             </div>
             <div className={styles.btn}>
-              <button id={styles.btn}>Contact Us</button>
+              <a href="tel:+4402475092784"> <button id={styles.btn}>Contact Us</button></a>
+             
             </div>
           </div>
           <div className={styles.video}>
-            <a href="/">
+            <a target="_blank" href="https://youtu.be/dmCmP4Tse1E">
               <img src={Lplateimg} alt="LogoImg" />
               <GoPlay className={styles.playIcon} />
             </a>
@@ -193,7 +194,7 @@ export default function DrivingInstructorFranchise() {
           <h1>Join Our Fleet Of Instructors!</h1>
         </div>
         <div className={styles.buttonDiv}>
-          <a href="tel:+123456789">
+          <a href="tel:+4402475092784">
             <button id={styles.buttonDiv}>Contact Us</button>
           </a>
         </div>

@@ -9,9 +9,10 @@ import styles from "./css/ContactUs.module.css"; // Import CSS module
 // /////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { contactUsData } from "../redux/features/contactUsSlice";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactFormSchema } from "../schemas/master";
+import { enquiryData } from "../redux/features/enquirySlice";
 
 export default function ContactUs() {
   const dispatch = useDispatch();
@@ -36,12 +37,12 @@ export default function ContactUs() {
     formData.append("tutionType", data.tutionType);
     formData.append("instructorType", data.instructorType);
     formData.append("message", data.message);
-
-    dispatch(contactUsData({ requestData: data, reset }));
+    formData.append("formType", "contactUsForm");
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (
-    <div className={styles.ContactUsPage}>
+    <div className={styles.ContactUsPage} style={{backgroundColor:'black', color:'white',paddingBottom:'5rem'}}>
       <div className={styles.contactHead}>
         <h1>Contact</h1>
       </div>
@@ -95,7 +96,7 @@ export default function ContactUs() {
             {/* Embed your map here, such as Google Maps iframe */}
             <iframe
               title="Google Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1234.5678!2dLongitude!3dLatitude!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDU4JzM4LjQiTiA3wrAzMCc0My44Ilc!5e0!3m2!1sen!2sus!4v1587265813612!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2431.76492499033!2d-1.510095!3d52.447173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c1a41cee7455%3A0x371db3a56741de7!2sSmartLearner%20Driving%20School!5e0!3m2!1sen!2sin!4v1719565626829!5m2!1sen!2sin"
               width="100%"
               height="100%"
               frameBorder="0"
@@ -103,6 +104,7 @@ export default function ContactUs() {
               allowFullScreen=""
               aria-hidden="false"
               tabIndex="0"></iframe>
+              
           </div>
         </div>
       </div>

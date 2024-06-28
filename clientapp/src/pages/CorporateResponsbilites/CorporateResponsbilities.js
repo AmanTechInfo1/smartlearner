@@ -14,7 +14,7 @@ export default function CorporateResponsbilities() {
         <div className={styles.csrPageFront}>
           <section className={styles.csrSectionFornt}>
             <h2>
-              CORPORATE <br /> SOCIAL <br /> RESPONSBILITIES
+              CORPORATE <br /> SOCIAL <br />RESPONSIBILITY
             </h2>
             <hr />
           </section>
@@ -72,15 +72,15 @@ export default function CorporateResponsbilities() {
             </p>
           </section>
           <section className={styles.csr3rdDivSecLinks}>
-            <Link>
+            <Link to='/Electric-Car-Scheme'>
               <img src={eclectricImg} alt="eclectric-Img" />
               <p>Electric Car Scheme</p>
             </Link>
-            <Link>
+            <Link to='/Going-Green-Project'>
               <img src={treeImg} alt="eclectric-Img" />
               <p>Going Green Project</p>
             </Link>
-            <Link>
+            <Link to='/Our-Office-Green-Efforts'>
               <img src={BuildingImg} alt="eclectric-Img" />
               <p>Our Office Efforts</p>
             </Link>

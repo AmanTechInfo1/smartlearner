@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import smartlearnerLogo from "../../../assets/images/White-Logo-Fixed-1024x174.png"
-
+import { Link } from "react-router-dom";
 
 
 export default function AdiPartTwo() {
@@ -411,36 +411,50 @@ export default function AdiPartTwo() {
           </div>
           </section>
         </section>
-       {/* ////////////////////////////////////////////////// */}
-       <section style={{textAlign:'center'}}>
+        {/* ////////////////////////////////////// */}
+        <section style={{textAlign:'center'}}>
         <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2>
        </section>
+        <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+               Click the start quiz button to start the quiz and See your result
+              </p>
+              <Link to="/takequizCatName/ADI---Part-2"> <button>Start Quiz</button></Link>
+             
+            </section>
+          </div>
+       {/* ////////////////////////////////////////////////// */}
+       
       </div>
       <section className={styles.adiPortalFooterSection}>
         <div className={styles.adiPortalFooterInnerContainer}>
           <img src={smartlearnerLogo} alt="smartlearnerLogo" />
           <div className={styles.adiFooterContactInfo}>
             {" "}
-            <a href="tel:+1234567890">
-              <FaPhone id={styles.adiFaIcons}/> +1 (234) 567-890
-            </a><br/>
-            <a href="mailto:example@example.com">
-              <FaEnvelope id={styles.adiFaIcons}/> example@example.com
+            <a  href="tel:+4402475092784">
+              <FaPhone id={styles.adiFaIcons} /> +1 (234) 567-890
+            </a>
+            <br />
+            <a href="mailto:admin@smartlearner.com">
+              <FaEnvelope id={styles.adiFaIcons} /> example@example.com
             </a>
           </div>
           <div className={styles.adiFooterAddressInfo}>
-            <FaLocationDot id={styles.adiFaIcons}/>
+            <FaLocationDot id={styles.adiFaIcons} />
             <p>4 Wheel Wright Building, Hen Lane, Coventry, CV6 4LB</p>
           </div>
           <div className={styles.adiSocialIcons}>
-            <a href="https://www.facebook.com">
-              <FaFacebook id={styles.adiSocialFaIcons}/>
+            <a href="https://www.facebook.com/smartlearnerdrivingschool">
+              <FaFacebook id={styles.adiSocialFaIcons} />
             </a>
-            <a href="https://www.twitter.com">
-              <FaTwitter id={styles.adiSocialFaIcons}/>
+            <a href="https://twitter.com/smartlearner">
+              <FaTwitter id={styles.adiSocialFaIcons} />
             </a>
-            <a href="https://www.instagram.com">
-              <FaInstagram id={styles.adiSocialFaIcons}/>
+            <a href="https://www.instagram.com/smartlearnerdrivingschool/">
+              <FaInstagram id={styles.adiSocialFaIcons} />
             </a>
           </div>
         </div>

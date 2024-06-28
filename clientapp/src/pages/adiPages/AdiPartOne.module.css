@@ -2,6 +2,7 @@
     font-family: 'Antonio', sans-serif;
     background-color: black;
     color: white;
+    padding-bottom: 5rem 0px;
 }
 .imageSection {
    
@@ -123,6 +124,37 @@
     .video {
       padding: 40px;
     }
+  }
+
+
+
+  /* ///////////////////////////////////// */
+  .imagesHSection{
+    max-width: 1140px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 2rem 1rem;
+  }
+  .imagesHSection p{
+    text-align: center;
+    color: white;
+  }
+  #imagesHSection{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+    gap: 20px;
+  }
+  #imagesHSection section{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+    gap: 20px;
+  }
+  #imagesHSection img{
+    max-width: 310px;
+    width: 100%;
   }
   /* ////////////////////////////////////////// */
   
@@ -417,4 +449,47 @@ p{
   .routes a{
       margin-top: 1rem;
   }
+}
+/* /////////////////////////////////// */
+.quizStartDiv{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.startQuizSection{
+ 
+   box-shadow: 0 0 10px #ccc ;
+   text-align: center;
+   padding: 4rem;
+   font-family: "Roboto", sans-serif;
+}
+.startQuizSection h2{
+  font-size: 1.9rem;
+  font-weight: 300;
+  margin: 2rem 0px;
+}
+.startQuizSection h3{
+  font-size: 1.9rem;
+  font-weight: 300;
+  margin: 1.5rem 0px;
+}
+.startQuizSection p{
+  margin: 1rem 0px;
+  font-size: 16px;
+  font-weight: 300;
+}
+.startQuizSection button{
+  margin: 2rem 0px;
+  padding: 12px 40px;
+  border: none;
+  background-color: #eb0009;
+  color: #fff;
+  box-shadow: 0 0 10px #ccc ;
+
+}
+.startQuizSection button:hover{
+  background-color: black;
 }

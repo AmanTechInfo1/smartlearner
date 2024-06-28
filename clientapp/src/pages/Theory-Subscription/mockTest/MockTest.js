@@ -3,10 +3,11 @@ import React from "react";
 import styles from "./MockTest.module.css";
 import { FaHome } from "react-icons/fa";
 import { IoMdArrowDropright } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function MockTest() {
   return (
-    <>
+    <div style={{backgroundColor:'black', color:"white", paddingBottom:'5rem'}}>
       <section className={styles.hazardHomeBannerSection}>
         <div className={styles.overlay}></div>
         <div className={styles.hazardHomeBannerHeader}>
@@ -100,9 +101,22 @@ export default function MockTest() {
       {/* ////////////////////////////////////////////////////// */}
       <section className={styles.mockTestContainerSection}>
         <div className={styles.mockTestHeadingContainerDIv}>
-          <h2>To pass you will need to score 43 out of 50.</h2>
+          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Band-1--Road-Procedures">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
         </div>
       </section>
-    </>
+    </div>
   );
 }
