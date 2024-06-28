@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./TheorySubscription.css";
 import subsIcon from "../../assets/images/subsIconSvg.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { checkOutMySubscription, getMySubscription, getMySubscriptionType } from "../../redux/features/dashboardSlice";
 const TheorySubscription = () => {
-  const plans = [
+  const [plans,setPlans] = useState([
     {
       title: "Free Trial",
       price: "$0",
       dec: "7 Day Free Trial",
       features: ["Enrol Everything For 7 Days"],
       mostPopular: false,
+      view:true
     },
     {
       title: "Standard Subscription",
@@ -20,6 +24,7 @@ const TheorySubscription = () => {
         "Can access addons £1.99 each",
       ],
       mostPopular: true,
+      view:true
     },
     {
       title: "Supported Subscription",
@@ -36,15 +41,34 @@ const TheorySubscription = () => {
         "24 hour access to theory portal",
       ],
       mostPopular: false,
+      view:true
     },
-  ];
+  ])
+
+
+  
+
+  const plannning = useSelector((state) => state.dashboard.plan);
+
+
+
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  useEffect(()=>{
+    dispatch(getMySubscriptionType(setPlans,()=>{}));
+  },["plans"])
+
+
+  console.log(plans,"plansplansplansplansplans")
 
   return (
     <div>
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
         {plans.map((plan, index) => (
-          <div key={index} className="card">
+          plannning.indexOf(plan.title)!=-1 && <div key={index} className="card">
             <div className="card-top">
               <div className="card-top__info">
                 <span className="card-top__info-icon">
@@ -66,7 +90,11 @@ const TheorySubscription = () => {
               </div>
             </div>
             <div className="card-bottom">
-              <button className="card-bottom__btn">
+              <button className="card-bottom__btn" onClick={()=>{
+                dispatch(checkOutMySubscription({"title":plan.title},()=>{
+                  navigate("/Theory-Portal")
+                }))
+              }}>
                 <span>Subscribe now</span>
               </button>
               <ul className="card-bottom__list">

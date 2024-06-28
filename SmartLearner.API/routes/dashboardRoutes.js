@@ -9,5 +9,8 @@ router.get("/getDashboardCards",requireAuth, dashboardController.getDashboardCar
 router.get("/getCategoryCards",requireAuth, dashboardController.getCategoryCardsByQuestion);
 router.get("/getModuleCards/:id",requireAuth, dashboardController.getModuleCards);
 router.get("/getQuenameCards/:id",requireAuth, dashboardController.getModuleCards);
+router.get("/getMySubsciption",requireAuth, dashboardController.getMySubsciption);
+router.post("/CheckoutMySubsciption",requireAuth, dashboardController.CheckoutMySubsciption);
+router.get("/getMySubscriptionType",requireAuth, dashboardController.getMySubscriptionType);
 
 module.exports = router;

@@ -21,10 +21,27 @@ import {
   FaBoxOpen,
   FaVideo,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import QuizMain from "../../components/takequizes/QuizMain";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMyDashboard, getMySubscription } from "../../redux/features/dashboardSlice";
 
 export default function TheoryPortal() {
+
+
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+  useEffect(()=>{
+    dispatch(getMySubscription(()=>{
+      navigate("/Theory-Subscription")
+    }));
+  },['dsa'])
+
+
+
   return (
     <div className={styles.TheoryPortal}>
       <section className={styles.imageSection}>

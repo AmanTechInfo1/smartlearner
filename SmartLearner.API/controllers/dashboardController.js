@@ -48,6 +48,35 @@ class dashboardController {
       next(err);
     }
   }
+  async getMySubsciption(req, res, next) {
+    try {
+      
+      const response = await accountService.getUserSubscription(req.userId);
+      res.status(200).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async CheckoutMySubsciption(req, res, next) {
+    try {
+
+      const reqData=req.body
+      
+      const response = await accountService.checkoutUserSubscription(req.userId,reqData);
+      res.status(200).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async getMySubscriptionType(req, res, next) {
+    try {
+      
+      const response = await accountService.getUserSubscriptionType(req.userId);
+      res.status(200).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
 
 }
 

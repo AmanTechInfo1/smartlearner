@@ -8,6 +8,7 @@ const PasswordHash = require("../utilities/PasswordHash");
 const roleService = require("../services/roleService");
 const { ROLES } = require("../utilities/constatnt");
 const Role = require("../models/roleModel");
+const PlanUser = require("../models/planUserModel");
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -57,12 +58,12 @@ class AccountService {
         throw new Error("Invalid Email");
       }
 
-      console.log(user.isBcryptHashed,"user.isBcryptHashed")
+      console.log(user.isBcryptHashed, "user.isBcryptHashed")
 
       if (user.isBcryptHashed) {
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        
-        console.log(!isPasswordValid,"isPasswordValid")
+
+        console.log(!isPasswordValid, "isPasswordValid")
         if (!isPasswordValid) {
           throw new Error("Invalid Password");
         }
@@ -82,11 +83,11 @@ class AccountService {
         await user.save();
       }
 
-      console.log("85",user._id)
+      console.log("85", user._id)
       // Fetch userRole
       const userRole = await userRoleServices.getUserRoleAsync(user._id);
 
-      console.log("89",userRole)
+      console.log("89", userRole)
       if (!userRole) {
         throw new Error("Invalid user");
       }
@@ -120,7 +121,7 @@ class AccountService {
       };
     } catch (err) {
 
-      console.log(err.message,"err.messageerr.message")
+      console.log(err.message, "err.messageerr.message")
       throw new Error(err.message);
     }
   }
@@ -240,8 +241,8 @@ class AccountService {
 
   async getOneUsersAsync(params_id) {
     try {
-      
-      let aagr=[
+
+      let aagr = [
         {
           '$addFields': {
             'uniqueId': {
@@ -254,20 +255,20 @@ class AccountService {
           }
         }, {
           '$lookup': {
-            'from': 'userroles', 
-            'localField': '_id', 
-            'foreignField': 'userId', 
+            'from': 'userroles',
+            'localField': '_id',
+            'foreignField': 'userId',
             'pipeline': [
               {
                 '$lookup': {
-                  'from': 'roles', 
-                  'localField': 'roleId', 
-                  'foreignField': '_id', 
+                  'from': 'roles',
+                  'localField': 'roleId',
+                  'foreignField': '_id',
                   'as': 'result'
                 }
               }, {
                 '$unwind': {
-                  'path': '$result', 
+                  'path': '$result',
                   'preserveNullAndEmptyArrays': true
                 }
               }, {
@@ -275,19 +276,19 @@ class AccountService {
                   'result': '$result.name'
                 }
               }
-            ], 
+            ],
             'as': 'result'
           }
         }, {
           '$unwind': {
-            'path': '$result', 
+            'path': '$result',
             'preserveNullAndEmptyArrays': true
           }
         }, {
           '$addFields': {
             'roleId': {
               '$toString': '$result.roleId'
-            }, 
+            },
             'roleName': {
               '$toString': '$result.result'
             }
@@ -295,8 +296,276 @@ class AccountService {
         }
       ]
       const users = await User.aggregate(aagr);
-      
-      const totalCount = await User.countDocuments({"_id":params_id});
+
+      const totalCount = await User.countDocuments({ "_id": params_id });
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: users[0],
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+  async getUserSubscription(params_id) {
+    try {
+
+      let aagr = [
+        {
+          '$addFields': {
+            'uniqueId': {
+              '$toString': '$_id'
+            }
+          }
+        }, {
+          '$match': {
+            'uniqueId': params_id
+          }
+        }, {
+          '$lookup': {
+            'from': 'userroles',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$lookup': {
+                  'from': 'roles',
+                  'localField': 'roleId',
+                  'foreignField': '_id',
+                  'as': 'result'
+                }
+              }, {
+                '$unwind': {
+                  'path': '$result',
+                  'preserveNullAndEmptyArrays': true
+                }
+              }, {
+                '$addFields': {
+                  'result': '$result.name'
+                }
+              }
+            ],
+            'as': 'result'
+          }
+        }, {
+          '$unwind': {
+            'path': '$result',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'roleId': {
+              '$toString': '$result.roleId'
+            },
+            'roleName': {
+              '$toString': '$result.result'
+            }
+          }
+        }, {
+          '$project': {
+            'password': 0,
+          }
+        }
+      ]
+      const users = await User.aggregate(aagr);
+
+      const totalCount = await User.countDocuments({ "_id": params_id });
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: users[0],
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+  async checkoutUserSubscription(params_id, reqData) {
+    try {
+
+      let aagr = [
+        {
+          '$addFields': {
+            'uniqueId': {
+              '$toString': '$_id'
+            }
+          }
+        }, {
+          '$match': {
+            'uniqueId': params_id
+          }
+        }, {
+          '$lookup': {
+            'from': 'userroles',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$lookup': {
+                  'from': 'roles',
+                  'localField': 'roleId',
+                  'foreignField': '_id',
+                  'as': 'result'
+                }
+              }, {
+                '$unwind': {
+                  'path': '$result',
+                  'preserveNullAndEmptyArrays': true
+                }
+              }, {
+                '$addFields': {
+                  'result': '$result.name'
+                }
+              }
+            ],
+            'as': 'result'
+          }
+        }, {
+          '$unwind': {
+            'path': '$result',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$lookup': {
+            'from': 'planusers',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'as': 'planresult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$planresult',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'roleId': {
+              '$toString': '$result.roleId'
+            },
+            'roleName': {
+              '$toString': '$result.result'
+            }
+          }
+        }, {
+          '$project': {
+            'password': 0,
+          }
+        }
+      ]
+      const users = await User.aggregate(aagr);
+
+      const totalCount = await User.countDocuments({ "_id": params_id });
+
+      let resultObject = {}
+      if ("Free Trial" == reqData.title) {
+
+        console.log(users[0], "users[0]")
+        if (users[0].isFreeTrialUsed) {
+          resultObject = {
+            message: "Free Trial Already Used",
+            statusCode: 400,
+            success: false,
+            data: users[0],
+          };
+        } else {
+
+          const updat = { "isFreeTrialUsed": true, "isSubscription": true }
+
+          const upre = User.findByIdAndUpdate(params_id, updat)
+
+          console.log(upre, params_id, updat, "upreupreupre")
+          PlanUser.create({
+            "planname": reqData.title,
+            "userId": params_id
+          })
+          resultObject = {
+            message: "Free Trial applied successfully",
+            statusCode: 200,
+            success: true,
+            data: users[0],
+          };
+        }
+      } else {
+
+      }
+
+
+
+
+      return resultObject;
+    } catch (err) {
+      console.log(err, "Dsadasdasdasdas")
+      throw new Error(err.message);
+    }
+  }
+  async getUserSubscriptionType(params_id) {
+    try {
+
+      let aagr = [
+        {
+          '$addFields': {
+            'uniqueId': {
+              '$toString': '$_id'
+            }
+          }
+        }, {
+          '$match': {
+            'uniqueId': params_id
+          }
+        }, {
+          '$lookup': {
+            'from': 'userroles',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$lookup': {
+                  'from': 'roles',
+                  'localField': 'roleId',
+                  'foreignField': '_id',
+                  'as': 'result'
+                }
+              }, {
+                '$unwind': {
+                  'path': '$result',
+                  'preserveNullAndEmptyArrays': true
+                }
+              }, {
+                '$addFields': {
+                  'result': '$result.name'
+                }
+              }
+            ],
+            'as': 'result'
+          }
+        }, {
+          '$unwind': {
+            'path': '$result',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
+          '$addFields': {
+            'roleId': {
+              '$toString': '$result.roleId'
+            },
+            'roleName': {
+              '$toString': '$result.result'
+            }
+          }
+        }, {
+          '$project': {
+            'password': 0,
+          }
+        }
+      ]
+      const users = await User.aggregate(aagr);
+
+      const totalCount = await User.countDocuments({ "_id": params_id });
       const resultObject = {
         message: "Fetched successfully",
         statusCode: 200,
@@ -311,14 +580,14 @@ class AccountService {
   }
 
 
-  
+
   async getAllUsersRolesAsync() {
     try {
 
       const role = await Role.aggregate([
         {
-          $addFields:{
-            "uniqueId":"$_id"
+          $addFields: {
+            "uniqueId": "$_id"
           }
         }
       ]);

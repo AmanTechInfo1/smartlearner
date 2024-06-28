@@ -7,6 +7,7 @@ const dashboardSlice = createSlice({
     initialState: {
         Quizcards: [],
         cards: [],
+        plan:[],
         roleLoading: false
     },
     reducers: {
@@ -16,6 +17,14 @@ const dashboardSlice = createSlice({
         },
         getDashboardFailure: (state, action) => {
             state.cards = {};
+            state.roleLoading = false;
+        },
+        getPlanSuccess: (state, action) => {
+            state.plan = action.payload;
+            state.roleLoading = false;
+        },
+        getPlanFailure: (state, action) => {
+            state.plan = [];
             state.roleLoading = false;
         },
         getQuizDashboardSuccess: (state, action) => {
@@ -43,6 +52,99 @@ export const getMyDashboard = () => async (dispatch) => {
         } else {
             toast.error(response.data.message);
             dispatch(getDashboardFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getDashboardFailure());
+    }
+};
+
+
+
+
+export const getMySubscription = (cb) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/dashboard/getMySubsciption`
+        );
+        if (response.data.success) {
+
+            let respData=response.data.data
+
+            if(respData.isSubscription){
+                
+            }else{
+                
+                cb()
+            }
+            // dispatch(getDashboardSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            // dispatch(getDashboardFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getDashboardFailure());
+    }
+};
+
+
+
+
+export const checkOutMySubscription = (data,cb) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.post(
+            `/api/dashboard/CheckoutMySubsciption`,data
+        );
+        if (response.data.success) {
+
+            let respData=response.data.data
+
+            if(respData.isSubscription){
+                
+            }else{
+                
+                cb()
+            }
+            // dispatch(getDashboardSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            // dispatch(getDashboardFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getDashboardFailure());
+    }
+};
+
+
+export const getMySubscriptionType = (setPlans,cb) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/dashboard/getMySubscriptionType`
+        );
+        if (response.data.success) {
+
+            let respData=response.data.data
+
+            if(respData.isFreeTrialUsed){
+                dispatch(getPlanSuccess(["Standard Subscription","Supported Subscription"]));
+            }else{
+
+                setPlans(prev=>{
+
+                    prev[0].view = false
+                    return prev
+                })
+                dispatch(getPlanSuccess(["Free Trial","Standard Subscription","Supported Subscription"]));
+                cb()
+            }
+        } else {
+            toast.error(response.data.message);
+            // dispatch(getDashboardFailure());
         }
     } catch (error) {
         toast.error(error.message);
@@ -97,6 +199,8 @@ export const getMyQuizModule = (id) => async (dispatch) => {
 export const { 
     getDashboardSuccess,
     getDashboardFailure, 
+    getPlanSuccess,
+    getPlanFailure, 
     getQuizDashboardSuccess,
     getQuizDashboardFailure, 
     setLoading } = dashboardSlice.actions;
