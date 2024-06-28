@@ -6,7 +6,7 @@ import HazardVideos from "./HazardVideos";
 
 export default function HazardPerception() {
   return (
-    <>
+    <div  style={{backgroundColor:'black',color:'white', paddingBottom:'5rem'}}>
       <section className={styles.hazardHomeBannerSection}>
         <div className={styles.overlay}></div>
         <div className={styles.hazardHomeBannerHeader}>
@@ -105,6 +105,6 @@ export default function HazardPerception() {
         <p>Below we have created videos to guide you through hazard perception clips.</p></div>
         <HazardVideos/>
       </section>
-    </>
+    </div>
   );
 }

@@ -311,7 +311,7 @@ export default function AdiPartOne() {
                 </p>
               </li>
             </ul>
-            <Link to="">
+            <Link to="/hazard-preception-part-2">
               <button id={styles.hazzardBtn}>Hazzard Perception</button>
             </Link>
           </div>

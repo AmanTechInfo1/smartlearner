@@ -108,6 +108,9 @@
   color: #ff0004;
 
 }
+p{
+  margin: 0px;
+}
 .hazardVideoContainerSection p{
   font-size: 17px;
   color: #5d5d5d;

@@ -229,7 +229,7 @@ export const router = createBrowserRouter([
       {path:"checkout", element: <Checkout/>},
       {path:"paymentProcessing", element: <PaymentProcessing/>},
       {path:"email", element:<Email/>},
-      {path:'hazard-preception', element:<HazardPreceptions/>},
+      {path:'hazard-preception-part-2', element:<HazardPreceptions/>},
       
       {
         path: "/quizModuleId/:id",
