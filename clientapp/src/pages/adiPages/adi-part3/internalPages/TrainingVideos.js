@@ -40,15 +40,9 @@ export default function TrainingVideos() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784
-"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>

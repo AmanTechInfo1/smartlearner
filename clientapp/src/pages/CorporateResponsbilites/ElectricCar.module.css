@@ -26,7 +26,26 @@
     margin-bottom: 3rem;
     text-align: center;
     color: white;
-  }
+    overflow: hidden; 
+    border-right: .2px solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: 10px;
+    animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+    animation-iteration-count: infinite; 
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
   .eCSfrontSection hr{
     opacity: 1;
     border: 2px solid white;
@@ -50,9 +69,29 @@
   .eCs2ndSectionhead h2{
     font-size: 5rem;
 color: rgb(3, 154, 3);
+animation: 4s slide-left;
+animation-iteration-count: infinite; 
+}
+@keyframes slide-left {
+  from {
+    margin-right: -100%;
   }
+  to {
+    margin-right: 0%;
+  }
+}
   .eCs2ndSectionhead span{
     color: skyblue;
+    animation: 4s slide-right;
+    animation-iteration-count: infinite; 
+  }
+  @keyframes slide-right {
+    from {
+      margin-left: -100%;
+    }
+    to {
+      margin-left: 0%;
+    }
   }
   .eCs2ndSectionhead hr{
     opacity: 1;
@@ -165,13 +204,27 @@ font-size: 1.2rem;
     align-items: center;
     justify-content: center;
     gap: 70px;
+    position: relative;
     
   }
 
   .treeImgsSection img{
     max-width: 200px;
     width: 100%;
+    opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 3s forwards;
+  animation-iteration-count: infinite; 
+}
+
+
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
   .textMainSection hr{
     opacity: 1;
    border: 2px solid white;
@@ -216,8 +269,9 @@ font-size: 1.2rem;
     padding: 1rem;
     background-color: white;
     border-radius: 40px;
+  
   }
- 
+
   .escBDDiv h2{
     color: rgb(3, 154, 3);
     font-size: 3rem;
@@ -230,6 +284,30 @@ text-align: center;
     font-size: 1.2rem;
 
   }
+  #escBDDivcd{
+    animation: 4s slide-right;
+    animation-iteration-count: infinite; 
+    }
+    @keyframes slide-right {
+      from {
+        margin-left: -100%;
+      }
+      to {
+        margin-left: 0%;
+      }
+    }
+    #escBDDivdc{
+      animation: 4s slide-left;
+      animation-iteration-count: infinite; 
+      }
+      @keyframes slide-left {
+        from {
+          margin-right: -100%;
+        }
+        to {
+          margin-right: 0%;
+        }
+      }
   .escBDDiv div{
     
     padding: 1rem;

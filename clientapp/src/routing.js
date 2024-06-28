@@ -110,6 +110,9 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import MyOrders from "./pages/shop/myOrders/MyOrders";
 import ProductSpecialModal from "./containers/productSpecial/ProductSpecialModal";
 import Email from "./components/Emails/Email";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import HazardPreceptions from "./pages/adiPages/adi-part3/internalPages/HazardPreceptions";
+import VideoClips from "./pages/Theory-Subscription/practice-multiple-ways/VideoClips";
 
 
 
@@ -221,11 +224,12 @@ export const router = createBrowserRouter([
       { path: "road-and-traffic-signs", element: <RoadTraffic /> },
       { path: "essential-Documents", element: <EssentialDocuments /> },
       { path: "incidents-&-accidents", element: <IncidentsAccidents /> },
-      { path: "vehicle-loading", element: <VehicleHandling /> },
-      { path: "video-clips", element: <VehicleLoading /> },
+      { path: "vehicle-loading", element: <VehicleLoading /> },
+      { path: "video-clips", element: <VideoClips/> },
       {path:"checkout", element: <Checkout/>},
       {path:"paymentProcessing", element: <PaymentProcessing/>},
       {path:"email", element:<Email/>},
+      {path:'hazard-preception', element:<HazardPreceptions/>},
       
       {
         path: "/quizModuleId/:id",
@@ -263,6 +267,7 @@ export const router = createBrowserRouter([
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
+  { path: "forgot-password", element: <ForgotPassword/> },
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
 

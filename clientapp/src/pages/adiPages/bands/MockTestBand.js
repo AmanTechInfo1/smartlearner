@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../AdiPartOne.module.css";
 
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
-
+import { Link } from "react-router-dom";
 
 export default function MockTestBand() {
   return (
@@ -22,7 +22,9 @@ export default function MockTestBand() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -57,9 +59,25 @@ export default function MockTestBand() {
             </li>
           </ul>
           <div id={styles.btnDiv}>
-           <h2 style={{fontSize:'3rem',color:'red',textAlign:'center'}}>Test YourSelf</h2>
+            <h2 style={{ fontSize: "3rem", color: "red", textAlign: "center" }}>
+              Test YourSelf
+            </h2>
           </div>
         </section>
+        {/* //////////////////////////////// */}
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Band-1--Road-Procedures">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
       </div>
     </div>
   );

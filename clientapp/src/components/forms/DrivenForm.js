@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { drivenFormData } from "../../redux/features/drivenformSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { drivenBeforeFormSchema } from "../../schemas/master";
+import { enquiryData } from "../../redux/features/enquirySlice";
 
 export default function DrivenForm() {
   const dispatch = useDispatch();
@@ -25,8 +26,8 @@ export default function DrivenForm() {
     formData.append("drivenBefore", data.drivenBefore);
     formData.append("preferredType", data.preferredType);
     formData.append("postcode", data.postcode);
-
-    dispatch(drivenFormData({ requestData: data, reset }));
+    formData.append("formType", "drivenForm");
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (

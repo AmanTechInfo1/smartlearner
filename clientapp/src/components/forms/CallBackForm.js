@@ -1,9 +1,10 @@
 // import React from 'react'
 import { Controller, useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-import { servicesData } from "../../redux/features/servicesSlice";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { callBackFormSchema } from "../../schemas/master";
+import { enquiryData } from "../../redux/features/enquirySlice";
 
 export default function CallBackForm() {
   const dispatch = useDispatch();
@@ -22,8 +23,8 @@ export default function CallBackForm() {
     formData.append("email", data.email);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("message", data.message);
-
-    dispatch(servicesData({ requestData: data, reset }));
+    formData.append("formType", "callbackForm");
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (

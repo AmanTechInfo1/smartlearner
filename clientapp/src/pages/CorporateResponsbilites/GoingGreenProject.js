@@ -7,15 +7,50 @@ import goingGreenImg3 from "../../assets/images/going-green-img3.jpg";
 import goingGreenImg4 from "../../assets/images/going-green-img4.jpg";
 import goingGreenImg5 from "../../assets/images/going-green-img5.jpg";
 import goingGreenImg6 from "../../assets/images/going-green-img6.jpg";
-import chartBar from "../../assets/images/chart-Bar.png"
-import treeIcon from '../../assets/images/tree-Icon.png'
-import handPlant from '../../assets/images/hand-plant.png'
-import flower from '../../assets/images/flower-img.png'
+
+import treeIcon from "../../assets/images/tree-Icon.png";
+import handPlant from "../../assets/images/hand-plant.png";
+import flower from "../../assets/images/flower-img.png";
 import { IoCall } from "react-icons/io5";
 import { HiMailOpen } from "react-icons/hi";
-import { FaFacebook, FaInstagram, FaSnapchat, FaTwitter, FaYoutube, } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaSnapchat,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
+import {useState, useEffect, useRef } from "react";
 
 export default function GoingGreenProject() {
+  const [animatedValue1, setAnimatedValue1] = useState(0);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimatedValue1((prevValue) => {
+        const newValue = prevValue + 1;
+        return newValue >= 135 ? 135 : newValue;
+      });
+     
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const barsRef = useRef([]);
+
+  useEffect(() => {
+    barsRef.current.forEach((bar, index) => {
+      setTimeout(() => {
+        bar.style.animation = `${styles.grow} 1s forwards infinite alternate`;
+        bar.style.height = `${bar.dataset.value}px`;
+      }, index * 500); // Delay each bar's animation
+    });
+  }, []);
+
+  const data = [80, 120, 160, 200, 240];
+
   return (
     <div className={styles.goingGreenProject}>
       <div className={styles.mainGoingGreenProject}>
@@ -78,7 +113,7 @@ export default function GoingGreenProject() {
                 positive impact on our community and our environment.
               </p>
             </div>
-            <hr/>
+            <hr />
             <div className={styles.ourProsConsSection}>
               <h2>OUR PURPOSE</h2>
               <p>
@@ -93,117 +128,147 @@ export default function GoingGreenProject() {
             </div>
           </div>
           <div className={styles.chartBarImgSec}>
-              <h2>GREEN PROJECT PROGRESS</h2>
-              <img src={chartBar} alt="Bar-Chart"/>
+            <h2>GREEN PROJECT PROGRESS</h2>
+            <div className={styles.chartContainer}>
+              {data.map((value, index) => (
+                <div
+                  key={index}
+                  ref={(el) => (barsRef.current[index] = el)}
+                  className={styles.bar}
+                  style={{ height: `${value}px` }}
+                  data-value={value}
+                />
+              ))}
+            </div>
           </div>
         </section>
         {/* /////////////////////////////////////////// */}
 
         <section className={styles.treePlantationSection}>
           <div className={styles.treePlantationDiv}>
-              <h2>So far we have planted a total of...</h2>
+            <h2>So far we have planted a total of...</h2>
           </div>
           <div className={styles.treeIconDiv}>
-            <img src={treeIcon} alt="treeIcon"/>
+            <img src={treeIcon} alt="treeIcon" />
           </div>
           <section className={styles.treeIconImgSection}>
             <div className={styles.plantImgSection}>
-              <img id={styles.handPlant} src={handPlant} alt="handPlant"/>
+              <span id={styles.handPlant1}>
+                <img id={styles.handPlant} src={handPlant} alt="handPlant" />
+              </span>
             </div>
-            <div className={styles.headingtreeNo}><h2>135+</h2></div>
+            <div className={styles.headingtreeNo}>
+              <h2>{animatedValue1}+</h2>
+            </div>
             <div className={styles.plantImgSection}>
-              <img id={styles.flowerPlant} src={flower} alt="flower"/>
+              <span className={styles.flowerPlant}>
+                <img id={styles.flowerPlant} src={flower} alt="flower" />
+              </span>
             </div>
           </section>
           <section className={styles.ggPListSection}>
-              <div className={styles.ggOlSection}>
-                  <ul typeo="none">
-                      <li>
-                        <span>3</span><p>Trees in Stretton Academy</p>
-                      </li>
-                      <li>
-                        <span>20</span><p>Wild cherry trees in PK school</p>
-                      </li>
-                      <li>
-                        <span>40</span><p>Trees in Everdon estates</p>
-                      </li>
-                      <li>
-                        <span>20</span><p>Wild cherry trees in PK school</p>
-                      </li>
-                      <li>
-                        <span>25</span><p>Brown beech trees for Park Gate Primary</p>
-                      </li>
-                      <li>
-                        <span>1</span><p>Established living willow dome structure for Park Gate</p>
-                      </li>
-                      <li>
-                        <span>7</span><p>Fruit apple trees for President Kenndedy</p>
-                      </li>
-                      <li>
-                        <span>20</span><p>Fruit Bushes for President Kenndedy</p>
-                      </li>
-                  </ul>
-              </div>
+            <div className={styles.ggOlSection}>
+              <ul typeo="none">
+                <li>
+                  <span>3</span>
+                  <p>Trees in Stretton Academy</p>
+                </li>
+                <li>
+                  <span>20</span>
+                  <p>Wild cherry trees in PK school</p>
+                </li>
+                <li>
+                  <span>40</span>
+                  <p>Trees in Everdon estates</p>
+                </li>
+                <li>
+                  <span>20</span>
+                  <p>Wild cherry trees in PK school</p>
+                </li>
+                <li>
+                  <span>25</span>
+                  <p>Brown beech trees for Park Gate Primary</p>
+                </li>
+                <li>
+                  <span>1</span>
+                  <p>Established living willow dome structure for Park Gate</p>
+                </li>
+                <li>
+                  <span>7</span>
+                  <p>Fruit apple trees for President Kenndedy</p>
+                </li>
+                <li>
+                  <span>20</span>
+                  <p>Fruit Bushes for President Kenndedy</p>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section className={styles.callUsSectiongg}>
-          <hr/>
+          <hr />
           <div className={styles.getInvolved}>
             <h2>GET INVOLVED</h2>
-            <p>Do you have land, a business or want to support us in our Green mission?</p>
+            <p>
+              Do you have land, a business or want to support us in our Green
+              mission?
+            </p>
           </div>
           {/* /////////////// calling details ////////////////// */}
 
-      <div className={styles.drivingLessonsCd}>
-          <section className={styles.drivinglCall}>
-            <IoCall id={styles.IconsS}/>
-              <p>02475 092 784</p>
-          </section>
-          <section>
-          <HiMailOpen id={styles.IconsS}/>
-          <p>Admin@Smartlearner.com</p>
-          </section>
-      </div>
+          <div className={styles.drivingLessonsCd}>
+            <section className={styles.drivinglCall}>
+            <a href="tel:+4402475092784" className={styles.drivinglCall}>
+            <IoCall id={styles.IconsS} />
+            <p>02475 092 784</p>
+          </a>
+            </section>
+            <section>
+            <a href="mailto:admin@smartlearner.com">
+            <HiMailOpen id={styles.IconsS} />
+            <p>Admin@Smartlearner.com</p>
+          </a>
+            </section>
+          </div>
         </section>
 
         <div className={styles.socialFollowIcons}>
-                            <a
-                                href="https://www.facebook.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FaFacebook id={styles.FollowIcons} />
-                            </a>
-                            <a
-                                href="https://www.instagram.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FaInstagram id={styles.FollowIcons} />
-                            </a>
-                            <a
-                                href="https://www.snapchat.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FaSnapchat id={styles.FollowIcons} />
-                            </a>
-                            <a
-                                href="https://twitter.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FaTwitter id={styles.FollowIcons} />
-                            </a>
-                            <a
-                                href="https://www.youtube.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FaYoutube id={styles.FollowIcons} />
-                            </a>
-                        </div>
-
+          <a
+            href="https://www.facebook.com/smartlearnerdrivingschool"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook id={styles.FollowIcons} />
+          </a>
+          <a
+            href="https://www.instagram.com/smartlearnerdrivingschool"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram id={styles.FollowIcons} />
+          </a>
+          <a
+            href="https://www.snapchat.com/add/smartlearner"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaSnapchat id={styles.FollowIcons} />
+          </a>
+          <a
+            href="https://twitter.com/smartlearner"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter id={styles.FollowIcons} />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCWqlTyiFfPNqgKeffuo68rghttp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube id={styles.FollowIcons} />
+          </a>
+        </div>
       </div>
     </div>
   );

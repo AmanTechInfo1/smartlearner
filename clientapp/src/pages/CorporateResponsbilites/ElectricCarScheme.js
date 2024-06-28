@@ -28,7 +28,7 @@ export default function ElectricCarScheme() {
           <section className={styles.eCs2ndSectionhead}>
             <h2>
               {" "}
-              <span>SKY BLUE CITY</span> TURNS GREEN
+              <span>SKY BLUE CITY</span> <span style={{color:'rgb(3, 154, 3)'}}>TURNS GREEN</span>
             </h2>
             <hr></hr>
             <p>In Partnership with Coventry City Council</p>
@@ -80,7 +80,7 @@ export default function ElectricCarScheme() {
             <h2>ELECTRIC ENGINES</h2>
           </div>
           <section className={styles.escBenifits}>
-            <div className={styles.escBDDiv}>
+            <div className={styles.escBDDiv} id={styles.escBDDivcd}>
               <section>
                 <h2>BENEFITS</h2>
                 <p>
@@ -95,7 +95,7 @@ export default function ElectricCarScheme() {
                 </p>
               </section>
             </div>
-            <div className={styles.escBDDiv}>
+            <div className={styles.escBDDiv}  id={styles.escBDDivdc}>
               <div>
                 {" "}
                 <h2>DISADVANTAGES</h2>
@@ -116,7 +116,7 @@ export default function ElectricCarScheme() {
             <hr/>
           </div>
           <section className={styles.escBenifits}>
-            <div className={styles.escBDDiv}>
+            <div className={styles.escBDDiv}  id={styles.escBDDivcd}>
               <section>
                 <h2>BENEFITS</h2>
                 <p>Gas powered cars have more power.</p>
@@ -124,7 +124,7 @@ export default function ElectricCarScheme() {
                 <p>Can be refilled quickly.</p>
               </section>
             </div>
-            <div className={styles.escBDDiv}>
+            <div className={styles.escBDDiv}  id={styles.escBDDivdc}>
               <div>
                 {" "}
                 <h2>DISADVANTAGES</h2>
@@ -150,11 +150,11 @@ export default function ElectricCarScheme() {
           </div>
         <section className={styles.csr3rdDivSecLinks}>
 
-            <Link>
+            <Link to="/Going-Green-Project"  id={styles.escBDDivcd}>
               <img src={treeImg} alt="eclectric-Img" />
               <p>Going Green Project</p>
             </Link>
-            <Link>
+            <Link to="/Our-Office-Green-Efforts"  id={styles.escBDDivdc}>
               <img src={BuildingImg} alt="eclectric-Img" />
               <p>Our Office Efforts</p>
             </Link>

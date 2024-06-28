@@ -22,7 +22,9 @@ export default function RoadProcedureBand() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -33,9 +35,9 @@ export default function RoadProcedureBand() {
         {/* ///////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>
-            <h2 >Road procedure</h2>
-            <hr style={{opacity:'1',border:'1px solid black'}}></hr>
-            <p className="text-dark">
+            <h2>Road procedure</h2>
+            <hr style={{ opacity: "1", border: "1px solid black" }}></hr>
+            <p>
               In this video, we will be discussing road procedure. This is one
               of the 4 main topics you will be tested on during your part 1 ADI
               theory test.{" "}
@@ -50,30 +52,23 @@ export default function RoadProcedureBand() {
                 ></iframe>
               </div>
             </div>
-
-            
           </div>
           <ul type="none">
             <li className="text-center mt-2 text-danger">
-              <p>
-                Practice Test
-              </p>
+              <p>Practice Test</p>
             </li>
           </ul>
-          <div id={styles.btnDiv}>
-            <Link to="">
-              <button id={styles.hazzardBtn}>25 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>50 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>75 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>All Questions</button>
-            </Link>
-            
+          {/* ////////////////////////////////////////// */}
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+               Click the start quiz button to start the quiz and See your result
+              </p>
+              <Link to="/takequizCatName/Band-1---Road-Procedure"> <button>Start Quiz</button></Link>
+             
+            </section>
           </div>
         </section>
       </div>

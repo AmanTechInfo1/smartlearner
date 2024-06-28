@@ -6,6 +6,9 @@ import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import { IoMdArrowDropright } from "react-icons/io";
 import motorwayCartflow from "../../../assets/images/motorway-contraflow.png";
 import absImg from "../../../assets/images/absImg.png";
+import { Link } from "react-router-dom";
+
+
 
 export default function SafetyMargins() {
   return (
@@ -25,14 +28,7 @@ export default function SafetyMargins() {
                 <h2>Safety Margins</h2>
               </div>
               <div className={styles.btn}>
-              <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
               </div>
             </div>
             <div className={styles.video}>
@@ -300,6 +296,25 @@ export default function SafetyMargins() {
         </section>
 
         {/* //////////////////////////////////////////////////////////////////// */}
+              {/* ////////////////////////////////////// */}
+              <section className={styles.mockTestContainerSection}>
+        <div className={styles.mockTestHeadingContainerDIv}>
+          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Safety-Margins">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
+      </section>
       </div>
     </div>
   );

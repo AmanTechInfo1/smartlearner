@@ -377,9 +377,7 @@ export default function TheoryPortal() {
         <div className={styles.thAdditionalSupportHeader}>
           <h2>Book Your Theory</h2>
         </div>
-        <section>
-          <QuizMain/>
-        </section>
+        
       </section>
 
       {/* ///////////////////////////////////////////////////////////// */}

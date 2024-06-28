@@ -90,7 +90,7 @@ export default function TheHonestTruth() {
               with emergency services, road safety organizations, and driving
               instructors to deliver straight forward road safety education.
             </p>
-            <button>MORE INFO</button>
+            <a style={{textDecoration:'none'}} href="https://www.thehonesttruth.co.uk/ "><button>MORE INFO</button></a>
           </div>
         </section>
 

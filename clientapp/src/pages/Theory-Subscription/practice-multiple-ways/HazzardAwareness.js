@@ -44,14 +44,7 @@ export default function HazzardAwareness() {
                 <h2>Hazard Awareness</h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>
-                  <a
-                    style={{ textDecoration: "none", color: "white" }}
-                    href="tel:02475092784"
-                  >
-                    Contact Us
-                  </a>
-                </button>
+              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
               </div>
             </div>
             <div className={styles.video}>
@@ -660,26 +653,24 @@ export default function HazzardAwareness() {
           </div>
         </section>
         {/* /////////////////////////////////////// */}
-        <section>
-          <h2
-            style={{ textAlign: "center", color: "yellow", fontSize: "2rem" }}
-          >
-            Test yourself
-          </h2>
-          <div id={styles.btnDiv}>
-            <Link to="/">
-              <button id={styles.hazzardBtn}> 25 Questions​</button>
+           <section className={styles.mockTestContainerSection}>
+        <div className={styles.mockTestHeadingContainerDIv}>
+          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h2>Start Quiz</h2>
+            <h3>All Questions</h3>
+            <p>
+              Click the start quiz button to start the quiz and See your result
+            </p>
+            <Link to="/takequizCatName/Hazard-Awareness">
+              {" "}
+              <button>Start Quiz</button>
             </Link>
-            <Link to="/">
-              <button id={styles.hazzardBtn}>75 Questions​</button>
-            </Link>
-            <Link to="/">
-              <button id={styles.hazzardBtn}>
-                All Questions​
-              </button>
-            </Link>
-          </div>
-        </section>
+          </section>
+        </div>
+      </section>
 
         {/* ////////////////////////////////////////////////////////////////////////// */}
       </div>

@@ -25,7 +25,9 @@ export default function AdiPartThree() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -259,23 +261,23 @@ export default function AdiPartThree() {
           <div className={styles.allRoutes}>
             <div className={styles.routes}>
               <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="/">Coventry Driving Test Routes</a>
+              <a href="https://smartlearner.com/wp-content/uploads/2023/02/CoventryDrivingTestRoutes.pdf">Coventry Driving Test Routes</a>
             </div>
             <div className={styles.routes}>
               <img src={testRoutesImg2} alt="testRoutesImg" />
-              <a href="/">Nuneaton Driving Test Routes</a>
+              <a href="https://smartlearner.com/wp-content/uploads/2023/02/NuneatonDrivingTestRoutes.pdf">Nuneaton Driving Test Routes</a>
             </div>
             <div className={styles.routes}>
               <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="/">Rugby Driving Test Routes</a>
+              <a href="https://smartlearner.com/wp-content/uploads/2023/02/Rugby-Driving-Test-Routes.pdf">Rugby Driving Test Routes</a>
             </div>
             <div className={styles.routes}>
               <img src={testRoutesImg2} alt="testRoutesImg" />
-              <a href="/">Hinckley Driving Test Routes</a>
+              <a href="https://smartlearner.com/wp-content/uploads/2023/02/HinckleyDrivingTest-Routes.pdf">Hinckley Driving Test Routes</a>
             </div>
             <div className={styles.routes}>
               <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="/">Warwick Driving Test Routes</a>
+              <a href="https://smartlearner.com/wp-content/uploads/2023/02/WarwickDrivingTestRoutes.pdf">Warwick Driving Test Routes</a>
             </div>
           </div>
         </section>

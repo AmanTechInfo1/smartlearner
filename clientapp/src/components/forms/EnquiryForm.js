@@ -22,6 +22,7 @@ export default function EnquiryForm() {
     formData.append("email", data.email);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("message", data.message);
+    formData.append("formType", "EnquiryForm");
     dispatch(enquiryData({ requestData: data, reset }));
   };
 

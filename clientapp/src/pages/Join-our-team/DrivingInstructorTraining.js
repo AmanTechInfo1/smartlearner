@@ -2,12 +2,12 @@
 
 import { IoCall } from "react-icons/io5";
 import { HiMailOpen } from "react-icons/hi";
-import moneyIcon from "../../assets/images/money-icon.png"
-import userTie from "../../assets/images/instructor-Icon.png"
-import workinghour from "../../assets/images/hour-Icon.png"
-import ladyUser from "../../assets/images/lady-working-icon.png"
+import moneyIcon from "../../assets/images/money-icon.png";
+import userTie from "../../assets/images/instructor-Icon.png";
+import workinghour from "../../assets/images/hour-Icon.png";
+import ladyUser from "../../assets/images/lady-working-icon.png";
 import styles from "./Drivinginstructortraining.module.css";
-import award from "../../assets/images/trophy-Icon.png"
+import award from "../../assets/images/trophy-Icon.png";
 import Review from "../../components/views/Review";
 import EnquiryForm from "../../components/forms/EnquiryForm";
 import Testemonial from "../../components/testimonials/Testemonial";
@@ -30,9 +30,10 @@ export default function DrivingInstructorTraining() {
           </p>
           <div className={styles.mainFeatures}>
             <div className={styles.column}>
+              
               <h3>Earn Over £30,000</h3>
               <span>
-                <img src={moneyIcon} alt="money-Icon"/>
+                <img src={moneyIcon} alt="money-Icon" />
               </span>
 
               <p>
@@ -42,15 +43,15 @@ export default function DrivingInstructorTraining() {
             <div className={styles.column}>
               <h3>Be Your Own Boss</h3>
               <span>
-                <img src={userTie} alt="user-Tie"/>
+                <img src={userTie} alt="user-Tie" />
               </span>
 
               <p>When you are an instructor you`re the boss.</p>
             </div>
-            <div className={styles.column}>
+            <div className={styles.column} >
               <h3>Flexible Working Hours</h3>
               <span>
-              <img src={workinghour} alt="Hour-Icon"/>
+                <img src={workinghour} alt="Hour-Icon" />
               </span>
 
               <p>Work hours that suit you and your family.</p>
@@ -58,7 +59,7 @@ export default function DrivingInstructorTraining() {
             <div className={styles.column}>
               <h3>Full Office Support</h3>
               <span>
-              <img src={ladyUser} alt="Lady-User"/>
+                <img src={ladyUser} alt="Lady-User" />
               </span>
 
               <p>We offer full office support to help ensure you succeed.</p>
@@ -68,20 +69,26 @@ export default function DrivingInstructorTraining() {
         {/* ////////////////////////////Book now section ///////////////////// */}
         <div className={styles.drivingLessonsCd}>
           <section className={styles.drivinglCall}>
-            <IoCall id={styles.IconsS}/>
+            <a href="tel:+4402475092784" className={styles.drivinglCall}>
+              <IoCall id={styles.IconsS} />
               <p>02475 092 784</p>
+            </a>
           </section>
           <section>
-          <HiMailOpen id={styles.IconsS}/>
-          <p>Admin@Smartlearner.com</p>
+            <a href="mailto:admin@smartlearner.com">
+              <HiMailOpen id={styles.IconsS} />
+              <p>Admin@Smartlearner.com</p>
+            </a>
           </section>
-      </div>
+        </div>
 
         {/* ////////////////How to become a Driving Instructor//////////////// */}
         <section className={styles.instructorContainer}>
           <div className={styles.innerInstructorContainer}>
-            <h4>Become an Driving <br/> Instructor</h4>
-           
+            <h4>
+              Become an Driving <br /> Instructor
+            </h4>
+
             <div className={styles.detailsContainer}>
               <div className={styles.trainingDetails}>
                 <h3>Step 1 - Preparation</h3>
@@ -161,7 +168,6 @@ export default function DrivingInstructorTraining() {
               </div>
             </div>
           </div>
-         
         </section>
         {/*///////////////////////////////// Enquire Form/////////////////////////// */}
         <section>
@@ -171,8 +177,11 @@ export default function DrivingInstructorTraining() {
 
         <section className={styles.infoTextContainer}>
           <div className={styles.infoTextHeading}>
-            <h1>Award-Winning <br/> Driving Instructor Training <br/> with <span>SmartLearner</span> </h1>
-            <img src={award} alt="award"/>
+            <h1>
+              Award-Winning <br /> Driving Instructor Training <br /> with{" "}
+              <span>SmartLearner</span>{" "}
+            </h1>
+            <img src={award} alt="award" />
           </div>
           <div className={styles.infoTextHeading2}>
             <h3>Call us today. Full package prices starting from just £999!</h3>

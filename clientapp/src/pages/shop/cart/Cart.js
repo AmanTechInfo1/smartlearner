@@ -80,7 +80,7 @@ const Cart = () => {
                   PRICE
                 </div>
                 {myCart && myCart.map((itm) => (
-                  <div id={styles.cartTableDetailsd} key={itm.id}>{itm.price}</div>
+                  <div id={styles.cartTableDetailsd} key={itm.id}>£ {itm.price}</div>
                 ))}
               </div>
               <div className="text-center" id={styles.cartTableDetailsDiv}>

@@ -26,7 +26,9 @@ export default function LessonLayouts() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>

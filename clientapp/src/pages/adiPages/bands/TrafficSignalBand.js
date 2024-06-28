@@ -22,7 +22,9 @@ export default function TrafficSignalBand() {
                 </h2>
               </div>
               <div className={styles.btn}>
-                <button id={styles.btn}>Contact Us</button>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button id={styles.btn}>Contact Us</button>
+                </a>
               </div>
             </div>
             <div className={styles.video}>
@@ -57,19 +59,19 @@ export default function TrafficSignalBand() {
               <p>Practice Test</p>
             </li>
           </ul>
-          <div id={styles.btnDiv}>
-            <Link to="">
-              <button id={styles.hazzardBtn}>25 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>50 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>75 Questions</button>
-            </Link>
-            <Link to="">
-              <button id={styles.hazzardBtn}>All Questions</button>
-            </Link>
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+                Click the start quiz button to start the quiz and See your
+                result
+              </p>
+              <Link to="/takequizCatName/Band-2---Traffic-Signs-and-Signals--Car-Control--Pedestrians-and-Mechanical-Knowledge">
+                {" "}
+                <button>Start Quiz</button>
+              </Link>
+            </section>
           </div>
         </section>
       </div>
