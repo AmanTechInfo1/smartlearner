@@ -33,7 +33,7 @@ export default function GoingGreenProject() {
         return newValue >= 135 ? 135 : newValue;
       });
      
-    }, 10);
+    }, 100);
 
     return () => clearInterval(interval);
   }, []);

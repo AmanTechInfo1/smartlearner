@@ -1,15 +1,10 @@
-// ContactUs.js
 import { FaBuilding } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import { useState } from "react";
+import { FaPhoneAlt, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import React from "react";
 import styles from "./css/ContactUs.module.css"; // Import CSS module
-// /////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
@@ -24,25 +19,35 @@ export default function ContactUs() {
     reset,
   } = useForm({
     resolver: yupResolver(contactFormSchema),
+    
   });
-
+ 
   const handleContactUsForm = async (data) => {
     const formData = new FormData();
     formData.append("firstName", data.firstName);
     formData.append("lastName", data.lastName);
     formData.append("address", data.address);
-    formData.append("postalCode", data.postalCode);
-    formData.append("mobileNo", data.mobileNo);
+    formData.append("postcode", data.postcode);
+    formData.append("phoneNumber", data.phoneNumber);
     formData.append("email", data.email);
     formData.append("tutionType", data.tutionType);
     formData.append("instructorType", data.instructorType);
     formData.append("message", data.message);
     formData.append("formType", "contactUsForm");
     dispatch(enquiryData({ requestData: data, reset }));
+   
   };
 
+
   return (
-    <div className={styles.ContactUsPage} style={{backgroundColor:'black', color:'white',paddingBottom:'5rem'}}>
+    <div
+      className={styles.ContactUsPage}
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        paddingBottom: "5rem",
+      }}
+    >
       <div className={styles.contactHead}>
         <h1>Contact</h1>
       </div>
@@ -68,7 +73,7 @@ export default function ContactUs() {
             </p>
             <p>
               <FaPhoneAlt id={styles.addressIcon} />
-              <a href="tel:07859 800 382"> +44 02475092784</a>
+              <a href="tel:+4402475092784"> +44 02475092784</a>
             </p>
             <hr />
             <h4>
@@ -76,17 +81,17 @@ export default function ContactUs() {
             </h4>
             <ul id={styles.linksIconId} type="none">
               <li>
-                <a href="#">
+                <a href="https://www.facebook.com/smartlearnerdrivingschool">
                   <FaFacebook id={styles.socialIconContactUs} />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://www.instagram.com/smartlearnerdrivingschool">
                   <FaInstagram id={styles.socialIconContactUs} />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://twitter.com/smartlearner">
                   <FaTwitter id={styles.socialIconContactUs} />
                 </a>
               </li>
@@ -103,8 +108,8 @@ export default function ContactUs() {
               style={{ border: 0 }}
               allowFullScreen=""
               aria-hidden="false"
-              tabIndex="0"></iframe>
-              
+              tabIndex="0"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -120,7 +125,6 @@ export default function ContactUs() {
                 <Controller
                   name="firstName"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -131,12 +135,14 @@ export default function ContactUs() {
                       required
                     />
                   )}
+                  defaultValue=""
                 />
-
+                {errors?.firstName && (
+                  <p style={{ color: "red" }}>{errors?.firstName?.message}</p>
+                )}
                 <Controller
                   name="address"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -147,12 +153,14 @@ export default function ContactUs() {
                       required
                     />
                   )}
-                />
-
-                <Controller
-                  name="mobileNo"
-                  control={control}
                   defaultValue=""
+                />
+                {errors?.address && (
+                  <p style={{ color: "red" }}>{errors?.address?.message}</p>
+                )}
+                <Controller
+                  name="phoneNumber"
+                  control={control}
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -163,18 +171,21 @@ export default function ContactUs() {
                       required
                     />
                   )}
+                  defaultValue=""
                 />
-
+                {errors?.phoneNumber && (
+                  <p style={{ color: "red" }}>{errors?.phoneNumber?.message}</p>
+                )}
                 <Controller
                   name="tutionType"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <select
                       value={value}
                       onChange={onChange}
                       className={styles.homeForminputField}
-                      required>
+                      required
+                    >
                       <option disabled value="">
                         --Select Tution Type--
                       </option>
@@ -182,14 +193,17 @@ export default function ContactUs() {
                       <option value="Manual">Manual</option>
                     </select>
                   )}
+                  defaultValue=""
                 />
+                {errors?.tutionType && (
+                  <p style={{ color: "red" }}>{errors?.tutionType?.message}</p>
+                )}
               </div>
 
               <div className={styles.column}>
                 <Controller
                   name="lastName"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -200,12 +214,14 @@ export default function ContactUs() {
                       required
                     />
                   )}
+                  defaultValue=""
                 />
-
+                {errors?.lastName && (
+                  <p style={{ color: "red" }}>{errors?.lastName?.message}</p>
+                )}
                 <Controller
                   name="postalCode"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -216,12 +232,14 @@ export default function ContactUs() {
                       required
                     />
                   )}
+                  defaultValue=""
                 />
-
+                {errors?.postalCode && (
+                  <p style={{ color: "red" }}>{errors?.postalCode?.message}</p>
+                )}
                 <Controller
                   name="email"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <input
                       value={value}
@@ -232,18 +250,21 @@ export default function ContactUs() {
                       required
                     />
                   )}
+                  defaultValue=""
                 />
-
+                {errors?.email && (
+                  <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                )}
                 <Controller
                   name="instructorType"
                   control={control}
-                  defaultValue=""
                   render={({ field: { value, onChange } }) => (
                     <select
                       value={value}
                       onChange={onChange}
                       className={styles.homeForminputField}
-                      required>
+                      required
+                    >
                       <option disabled value="">
                         --Select Instruction Type--
                       </option>
@@ -252,7 +273,11 @@ export default function ContactUs() {
                       <option value="No preference">No Preference</option>
                     </select>
                   )}
+                  defaultValue=""
                 />
+                {errors?.instructorType && (
+                  <p style={{ color: "red" }}>{errors?.instructorType?.message}</p>
+                )}
               </div>
             </div>
 
@@ -260,7 +285,6 @@ export default function ContactUs() {
               <Controller
                 name="message"
                 control={control}
-                defaultValue=""
                 render={({ field: { value, onChange } }) => (
                   <textarea
                     value={value}
@@ -270,7 +294,11 @@ export default function ContactUs() {
                     required
                   />
                 )}
+                defaultValue=""
               />
+              {errors?.message && (
+                <p style={{ color: "red" }}>{errors?.message?.message}</p>
+              )}
             </div>
 
             <div className={styles.submit}>

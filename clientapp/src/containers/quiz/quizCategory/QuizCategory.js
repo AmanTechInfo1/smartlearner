@@ -48,7 +48,6 @@ const QuizCategory = () => {
 
     const handleEditClick = (id) => {
         dispatch(getQuizCategoryById(id));
-        // dispatch(getAllQuizCategories(id))
         toggleEditQuizCategoryModal();
     };
 
@@ -61,16 +60,16 @@ const QuizCategory = () => {
             title: "Name",
             dataIndex: "name",
             align: "center",
-            sorter: (a, b) => a.name.length - b.name.length,
+            sorter: (a, b) => (a.name?.length || 0) - (b.name?.length || 0),
         },
         {
             title: "Description",
             dataIndex: "description",
             align: "center",
-            sorter: (a, b) => a.description.length - b.description.length,
+            sorter: (a, b) => (a.description?.length || 0) - (b.description?.length || 0),
             render: (text) => (
                 <span title={text}>
-                    {text.length > 40 ? `${text.substring(0, 40)}...` : text}
+                    {text?.length > 40 ? `${text.substring(0, 40)}...` : text}
                 </span>
             ),
         },
