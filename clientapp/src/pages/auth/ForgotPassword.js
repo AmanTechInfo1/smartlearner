@@ -50,8 +50,8 @@ export default function ForgotPassword() {
         <div className={styles.loginRegisterPage}>
           <section className={styles.loginRegisterSection}>
             <div className={styles.loginheading}>
-              <h1>Welcome</h1>
-              <p>Please sign in to your account using the form below.</p>
+              <h1>Forgot Password</h1>
+              <p>Please enter your email</p>
             </div>
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>

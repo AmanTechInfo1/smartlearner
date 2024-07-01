@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from ".././css/LoginRegister.module.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,24 +25,20 @@ export default function Login() {
 
   const handleLogin = async (data) => {
     const formData = new FormData();
-    formData.append('email', data.email);
-    formData.append('password', data.password);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
     dispatch(loginUser({ loginData: data, navigate }));
   };
-
-
 
   // ////////////////////////////////////
   const [webLoading, setwebLoading] = useState(true);
   useEffect(() => {
-   
     const timeout2 = setTimeout(() => {
       setwebLoading(false);
     }, 500);
 
     return () => clearTimeout(timeout2);
   }, []);
-
 
   return (
     <>
@@ -112,8 +108,17 @@ export default function Login() {
                     <input type="checkbox" name="signInChecked" />
                     <p>Keep me signed in</p>
                   </div>
+
                   <div className={styles.loginFormBtn}>
                     <button type="submit">Login</button>
+                  </div>
+                  <div style={{ textAlign: "center",marginTop:'20px' }}>
+                    <Link
+                      to="/forgot-password"
+                      style={{ textDecoration: "none", textAlign: "center", }}
+                    >
+                      Forgot Password?
+                    </Link>
                   </div>
                   <br />
                 </form>
