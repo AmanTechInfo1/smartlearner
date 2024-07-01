@@ -127,26 +127,35 @@ export default function Home() {
             />
           </div>
           <div className={styles.userIdentificationImg}>
-            <img
-              src={userIdentificationImg}
-              className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
-              alt="userIdentificationImg"
-            />
+            <div className={styles.imageContainersSectionImg}>
+              <img
+                src={userIdentificationImg}
+                className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
+                alt="userIdentificationImg"
+              />
+              <div className={styles.overlayers}>1</div>
+            </div>
           </div>
 
           <div className={styles.homeUserHand}>
-            <img
-              id={styles.userHand}
-              src={homeUserHand}
-              className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
-              alt="homeUserHand"
-            />
-            <img
-              id={styles.LplateImg}
-              src={LplateImg}
-              className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
-              alt="LplateImg"
-            />
+            <div className={styles.imageContainersSectionImg}>
+              <img
+                id={styles.userHand}
+                src={homeUserHand}
+                className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
+                alt="homeUserHand"
+              />
+              <div className={styles.overlayers}>2</div>
+            </div>
+            <div className={styles.imageContainersSectionImg}>
+              <img
+                id={styles.LplateImg}
+                src={LplateImg}
+                className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
+                alt="LplateImg"
+              />
+              <div className={styles.overlayers}>3</div>
+            </div>
           </div>
         </div>
       </section>
@@ -160,7 +169,10 @@ export default function Home() {
                 <span>
                   <img src={img1} alt="1" />
                 </span>
-                <a href="https://GOV.com" target="_blank"> Apply for your Provisonal License</a>
+                <a href="https://GOV.com" target="_blank">
+                  {" "}
+                  Apply for your Provisonal License
+                </a>
               </li>
               <li>
                 <span>
@@ -205,7 +217,7 @@ export default function Home() {
                         </option>
                         <option value="service1">Driving lessons</option>
                         <option value="service2">Theory support</option>
-                        <option value="service3">Instructor enquiry</option>
+                        <option value="service3">Instructor / simulator</option>
                       </select>
                     )}
                     defaultValue=""
