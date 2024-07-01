@@ -28,7 +28,7 @@ export default function FilterSection() {
                 
                 </form>
             </div>
-            {/* Additional filter components can go here */}
+           
         </div>
     );
 }

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-
 import { Controller, useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
-import { drivenFormData } from "../../redux/features/drivenformSlice";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { drivenBeforeFormSchema } from "../../schemas/master";
 import { enquiryData } from "../../redux/features/enquirySlice";
@@ -22,7 +20,6 @@ export default function DrivenForm() {
 
   const handleDrivenBeforeForm = async (data) => {
     const formData = new FormData();
-
     formData.append("drivenBefore", data.drivenBefore);
     formData.append("preferredType", data.preferredType);
     formData.append("postcode", data.postcode);
@@ -43,7 +40,6 @@ export default function DrivenForm() {
                 <Controller
                   name="drivenBefore"
                   control={control}
-                  defaultValue=""
                   render={({ field }) => (
                     <>
                       <label className="redio-btn">
@@ -64,20 +60,23 @@ export default function DrivenForm() {
                           checked={field.value === "no"}
                           onChange={() => field.onChange("no")}
                           required
-                        />
+                        /> 
                         <span className="checkmark"></span>
                         No
                       </label>
                     </>
                   )}
+                  defaultValue=""
                 />
+                {errors?.drivenBefore && (
+                  <p style={{ color: "red" }}>{errors?.drivenBefore?.message}</p>
+                )}
               </div>
               <div className="redio-box">
                 <h3>What do you prefer?</h3>
                 <Controller
                   name="preferredType"
                   control={control}
-                  defaultValue=""
                   render={({ field }) => (
                     <>
                       <label className="redio-btn">
@@ -104,7 +103,11 @@ export default function DrivenForm() {
                       </label>
                     </>
                   )}
+                  defaultValue=""
                 />
+                {errors?.preferredType && (
+                  <p style={{ color: "red" }}>{errors?.preferredType?.message}</p>
+                )}
               </div>
             </div>
             <div className="submitFleid">
@@ -114,7 +117,6 @@ export default function DrivenForm() {
               <Controller
                 name="location"
                 control={control}
-                defaultValue=""
                 render={({ field }) => (
                   <input
                     {...field}
@@ -124,7 +126,11 @@ export default function DrivenForm() {
                     required
                   />
                 )}
+                defaultValue=""
               />
+              {errors?.location && (
+                <p style={{ color: "red" }}>{errors?.location?.message}</p>
+              )}
               <button type="submit">
                 <FaSearch />
               </button>

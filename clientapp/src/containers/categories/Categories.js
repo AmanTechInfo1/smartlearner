@@ -10,7 +10,6 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import EditCategories from "./component/EditCategories";
 import { Button } from "reactstrap";
 
-
 const Categories = () => {
     const dispatch = useDispatch();
     const { loading, categories, categoriesCount } = useSelector((state) => state.category);
@@ -25,7 +24,7 @@ const Categories = () => {
     const [state, setState] = useState({
         search: "",
         page: 1,
-        pageSize: 10, 
+        pageSize: 10,
     });
 
     useEffect(() => {
@@ -33,7 +32,7 @@ const Categories = () => {
     }, [dispatch, state.search, state.page, state.pageSize])
 
     const onShowSizeChange = (current, pageSize) => {
-        setState({ ...state, page: 1, pagesize: pageSize });
+        setState({ ...state, page: 1, pageSize });
     };
 
     const itemRender = (current, type, originalElement) => {
@@ -60,16 +59,16 @@ const Categories = () => {
             title: "Name",
             dataIndex: "name",
             align: "center",
-            sorter: (a, b) => a.name.length - b.name.length,
+            sorter: (a, b) => (a.name?.length || 0) - (b.name?.length || 0),
         },
         {
             title: "Description",
             dataIndex: "description",
             align: "center",
-            sorter: (a, b) => a.description.length - b.description.length,
+            sorter: (a, b) => (a.description?.length || 0) - (b.description?.length || 0),
             render: (text) => (
                 <span title={text}>
-                    {text.length > 40 ? `${text.substring(0, 40)}...` : text}
+                    {text?.length > 40 ? `${text.substring(0, 40)}...` : text}
                 </span>
             ),
         },
@@ -131,7 +130,7 @@ const Categories = () => {
                             onShowSizeChange: onShowSizeChange,
                             itemRender: itemRender,
                             onChange: (page, pageSize) =>
-                                setState({ ...state, page, pagesize: pageSize }),
+                                setState({ ...state, page, pageSize }),
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
