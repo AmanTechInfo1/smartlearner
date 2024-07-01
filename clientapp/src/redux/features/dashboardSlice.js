@@ -8,7 +8,8 @@ const dashboardSlice = createSlice({
         Quizcards: [],
         cards: [],
         plan:[],
-        roleLoading: false
+        roleLoading: false,
+        currentplan:""
     },
     reducers: {
         getDashboardSuccess: (state, action) => {
@@ -25,6 +26,14 @@ const dashboardSlice = createSlice({
         },
         getPlanFailure: (state, action) => {
             state.plan = [];
+            state.roleLoading = false;
+        },
+        getCurrentPlanSuccess: (state, action) => {
+            state.currentplan = action.payload;
+            state.roleLoading = false;
+        },
+        getCurrentPlanFailure: (state, action) => {
+            state.currentplan = "";
             state.roleLoading = false;
         },
         getQuizDashboardSuccess: (state, action) => {
@@ -80,6 +89,7 @@ export const getMySubscription = (cb) => async (dispatch) => {
             }
             // dispatch(getDashboardSuccess(response.data.data));
         } else {
+            cb()
             toast.error(response.data.message);
             // dispatch(getDashboardFailure());
         }
@@ -100,12 +110,20 @@ export const checkOutMySubscription = (data,cb) => async (dispatch) => {
         );
         if (response.data.success) {
 
+            console.log(response.data,"response.data")
             let respData=response.data.data
 
-            if(respData.isSubscription){
-                
+            console.log(respData,"respDatarespDatarespData")
+
+            if(response.data.success){
+                toast.success(response.data.message);
+                cb()
             }else{
-                
+                toast.error(response.data.message);
+            }
+            if(respData.isSubscription){
+
+            }else{
                 cb()
             }
             // dispatch(getDashboardSuccess(response.data.data));
@@ -129,7 +147,9 @@ export const getMySubscriptionType = (setPlans,cb) => async (dispatch) => {
         if (response.data.success) {
 
             let respData=response.data.data
+            console.log(respData,"respDatarespData")
 
+            dispatch(getCurrentPlanSuccess(respData?.subscriptionType || ""))
             if(respData.isFreeTrialUsed){
                 dispatch(getPlanSuccess(["Standard Subscription","Supported Subscription"]));
             }else{
@@ -143,6 +163,7 @@ export const getMySubscriptionType = (setPlans,cb) => async (dispatch) => {
                 cb()
             }
         } else {
+            dispatch(getCurrentPlanFailure())
             toast.error(response.data.message);
             // dispatch(getDashboardFailure());
         }
@@ -201,6 +222,8 @@ export const {
     getDashboardFailure, 
     getPlanSuccess,
     getPlanFailure, 
+    getCurrentPlanSuccess,
+    getCurrentPlanFailure, 
     getQuizDashboardSuccess,
     getQuizDashboardFailure, 
     setLoading } = dashboardSlice.actions;
