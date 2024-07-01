@@ -54,14 +54,28 @@
     -webkit-background-clip: text;
     color: transparent;
   }
+  #SubDesc{
+    text-align: center;
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
   @media (max-width: 767px){
     #SubsHeading{
         font-size: 4rem;
+    }
+    #SubDesc{
+      font-size: 1.5rem;
     }
   }
   @media (max-width: 467px){
     #SubsHeading{
         font-size: 3rem;
+    }
+    #SubDesc{
+      font-size: 1rem;
     }
   }
   .card {

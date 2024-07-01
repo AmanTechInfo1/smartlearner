@@ -9,6 +9,7 @@ const roleService = require("../services/roleService");
 const { ROLES } = require("../utilities/constatnt");
 const Role = require("../models/roleModel");
 const PlanUser = require("../models/planUserModel");
+const { ObjectId } = require("mongodb");
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -285,6 +286,33 @@ class AccountService {
             'preserveNullAndEmptyArrays': true
           }
         }, {
+          '$lookup': {
+            'from': 'planusers',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$sort': {
+                  '_id': -1
+                }
+              }, {
+                '$limit': 1
+              }, {
+                '$match': {
+                  'planEndDate': {
+                    '$gte': new Date()
+                  }
+                }
+              }
+            ],
+            'as': 'planresult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$planresult',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
           '$addFields': {
             'roleId': {
               '$toString': '$result.roleId'
@@ -365,18 +393,62 @@ class AccountService {
             }
           }
         }, {
+          '$lookup': {
+            'from': 'planusers',
+            'localField': '_id',
+            'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$sort': {
+                  '_id': -1
+                }
+              }, {
+                '$limit': 1
+              }, {
+                '$match': {
+                  'planEndDate': {
+                    '$gte': new Date()
+                  }
+                }
+              }
+            ],
+            'as': 'planresult'
+          }
+        }, {
+          '$unwind': {
+            'path': '$planresult',
+            'preserveNullAndEmptyArrays': true
+          }
+        }, {
           '$project': {
             'password': 0,
           }
         }
       ]
-      const users = await User.aggregate(aagr);
+      const users = await User.aggregate(aagr)
+
+      const oneUser = users[0]
+
+
+      let msg = ""
+      console.log(oneUser.isSubscription, oneUser.planresult)
+
+      if (oneUser.isSubscription && oneUser.planresult == undefined) {
+
+        const updat = { "subscriptionType": "", "isSubscription": false }
+        msg = "Plan Expired"
+        const upre = await User.findByIdAndUpdate(new ObjectId(params_id), updat, { new: true })
+      }
+
+
+
+
 
       const totalCount = await User.countDocuments({ "_id": params_id });
       const resultObject = {
-        message: "Fetched successfully",
+        message: msg,
         statusCode: 200,
-        success: true,
+        success: false,
         data: users[0],
       };
 
@@ -435,6 +507,21 @@ class AccountService {
             'from': 'planusers',
             'localField': '_id',
             'foreignField': 'userId',
+            'pipeline': [
+              {
+                '$sort': {
+                  '_id': -1
+                }
+              }, {
+                '$limit': 1
+              }, {
+                '$match': {
+                  'planEndDate': {
+                    '$gte': new Date()
+                  }
+                }
+              }
+            ],
             'as': 'planresult'
           }
         }, {
@@ -459,6 +546,8 @@ class AccountService {
       ]
       const users = await User.aggregate(aagr);
 
+      console.log(users, "usersusersusersusers")
+
       const totalCount = await User.countDocuments({ "_id": params_id });
 
       let resultObject = {}
@@ -474,14 +563,22 @@ class AccountService {
           };
         } else {
 
-          const updat = { "isFreeTrialUsed": true, "isSubscription": true }
+          const updat = { "subscriptionType": reqData.title, "isSubscription": true }
 
-          const upre = User.findByIdAndUpdate(params_id, updat)
+          let addonDays = 90
+          if (reqData.title == "Free Trial") {
+            updat["isFreeTrialUsed"] = true
 
+            addonDays = 7
+          }
+
+          const upre = await User.findByIdAndUpdate(new ObjectId(params_id), updat, { new: true })
           console.log(upre, params_id, updat, "upreupreupre")
-          PlanUser.create({
+          const millisecondsInADay = 24 * 60 * 60 * 1000;
+          await PlanUser.create({
             "planname": reqData.title,
-            "userId": params_id
+            "userId": params_id,
+            "planEndDate": Date.now() + addonDays * millisecondsInADay
           })
           resultObject = {
             message: "Free Trial applied successfully",
@@ -490,12 +587,22 @@ class AccountService {
             data: users[0],
           };
         }
-      } else {
-
+      } else if (reqData.title == "Standard Subscription") {
+        resultObject = {
+          message: reqData.title+" applied successfully",
+          statusCode: 200,
+          success: true,
+          data: users[0],
+        };
       }
-
-
-
+      else {
+        resultObject = {
+          message: reqData.title+" applied successfully",
+          statusCode: 200,
+          success: true,
+          data: users[0],
+        };
+      }
 
       return resultObject;
     } catch (err) {

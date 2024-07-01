@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { checkOutMySubscription, getMySubscription, getMySubscriptionType } from "../../redux/features/dashboardSlice";
 const TheorySubscription = () => {
-  const [plans,setPlans] = useState([
+  const [plans, setPlans] = useState([
     {
       title: "Free Trial",
       price: "$0",
       dec: "7 Day Free Trial",
-      features: ["Enrol Everything For 7 Days"],
+      features: ["Enroll Everything For 7 Days"],
       mostPopular: false,
-      view:true
+      view: true
     },
     {
       title: "Standard Subscription",
@@ -24,7 +24,7 @@ const TheorySubscription = () => {
         "Can access addons £1.99 each",
       ],
       mostPopular: true,
-      view:true
+      view: true
     },
     {
       title: "Supported Subscription",
@@ -41,14 +41,16 @@ const TheorySubscription = () => {
         "24 hour access to theory portal",
       ],
       mostPopular: false,
-      view:true
+      view: true
     },
   ])
 
 
-  
+
 
   const plannning = useSelector((state) => state.dashboard.plan);
+  const currentplan = useSelector((state) => state.dashboard.currentplan);
+
 
 
 
@@ -56,19 +58,24 @@ const TheorySubscription = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  useEffect(()=>{
-    dispatch(getMySubscriptionType(setPlans,()=>{}));
-  },["plans"])
+  useEffect(() => {
+    dispatch(getMySubscriptionType(setPlans, () => { }));
+  }, ["plans"])
 
 
-  console.log(plans,"plansplansplansplansplans")
+  console.log(plans, "plansplansplansplansplans")
 
   return (
     <div>
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
+        {
+          currentplan!="" ? <p id="SubDesc">Current Plan = {currentplan}</p> : <p id="SubDesc">Currently you don`t have any plan</p>
+        }
+
+
         {plans.map((plan, index) => (
-          plannning.indexOf(plan.title)!=-1 && <div key={index} className="card">
+          plannning.indexOf(plan.title) != -1 && <div key={index} className="card">
             <div className="card-top">
               <div className="card-top__info">
                 <span className="card-top__info-icon">
@@ -90,8 +97,8 @@ const TheorySubscription = () => {
               </div>
             </div>
             <div className="card-bottom">
-              <button className="card-bottom__btn" onClick={()=>{
-                dispatch(checkOutMySubscription({"title":plan.title},()=>{
+              <button className="card-bottom__btn" onClick={() => {
+                dispatch(checkOutMySubscription({ "title": plan.title }, () => {
                   navigate("/Theory-Portal")
                 }))
               }}>
