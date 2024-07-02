@@ -49,6 +49,8 @@ import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { serviceFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
+import { FaLongArrowAltRight } from "react-icons/fa";
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -139,7 +141,7 @@ export default function Home() {
                     className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
                     alt="userIdentificationImg"
                   />
-                  <div className={styles.overlayers}>1</div>
+                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
                 </div>
                 <div className={styles.listContent}>
                   <ul type="none">
@@ -166,7 +168,7 @@ export default function Home() {
                     className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
                     alt="homeUserHand"
                   />
-                  <div className={styles.overlayers}>2</div>
+                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
                 </div>
                 <div className={styles.listContent}>
                   <ul type="none">
@@ -189,7 +191,7 @@ export default function Home() {
                     className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
                     alt="LplateImg"
                   />
-                  <div className={styles.overlayers}>3</div>
+                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
                 </div>
                 <div className={styles.listContent}>
                   <ul type="none">
