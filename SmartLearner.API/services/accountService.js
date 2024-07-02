@@ -441,6 +441,11 @@ class AccountService {
       }
 
 
+      
+      const userss = await User.aggregate(aagr)
+
+      const oneUsers = userss[0]
+
 
 
 
@@ -448,8 +453,8 @@ class AccountService {
       const resultObject = {
         message: msg,
         statusCode: 200,
-        success: false,
-        data: users[0],
+        success: true,
+        data: oneUsers,
       };
 
       return resultObject;
