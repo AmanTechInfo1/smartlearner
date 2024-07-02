@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import ResultQuiz from './ResultQuiz';
-import styles from './Quiz.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAnswerRandomQuestion, getQuizRandomQuestionFailure, getQuizRandomQuestionOutputFailure, getQuizResult, getRandomQuestion, getRandomQuestionByName } from '../../redux/features/quizSlice';
-import Confetti from 'react-confetti'
+import React, { useState, useEffect } from "react";
+import ResultQuiz from "./ResultQuiz";
+import styles from "./Quiz.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAnswerRandomQuestion,
+  getQuizRandomQuestionFailure,
+  getQuizRandomQuestionOutputFailure,
+  getQuizResult,
+  getRandomQuestion,
+  getRandomQuestionByName,
+} from "../../redux/features/quizSlice";
+import Confetti from "react-confetti";
 
-import useWindowSize from 'react-use/lib/useWindowSize'
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { imageBaseUrl } from '../../utils/constants';
+import useWindowSize from "react-use/lib/useWindowSize";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { imageBaseUrl } from "../../utils/constants";
+import Loader from "../loader/Loader";
+import LoadingWeb from "../loader/LoadingWeb";
 const questions = [
   {
     questionText: "What is the capital of France?",
@@ -30,13 +39,10 @@ const questions = [
 ];
 
 const Quiz = () => {
-
   const { cid, id } = useParams();
 
-
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalTimer, setTotalTimer] = useState(3600);
   const [score, setScore] = useState(0);
@@ -47,18 +53,14 @@ const Quiz = () => {
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
 
+  const { oneQuiz, oneQuizOutput, loading, quizResult } = useSelector(
+    (state) => state.quiz
+  );
 
-  const { oneQuiz, oneQuizOutput, loading, quizResult } = useSelector(state => state.quiz)
-
-
-
-  const { width, height } = useWindowSize()
-
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
-
-
-    dispatch(getRandomQuestionByName(cid))
+    dispatch(getRandomQuestionByName(cid));
     const interval = setInterval(() => {
       setTotalTimer((prevTotalTimer) => {
         if (prevTotalTimer > 0) {
@@ -76,28 +78,23 @@ const Quiz = () => {
   }, []);
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
-
     // alert(answerOption)
-
 
     let finData = {
       questionId: oneQuiz.questionId,
       answer: answerOption,
-      answerImage: answerImage
-    }
+      answerImage: answerImage,
+    };
 
-    setAnswered(answerOption)
+    setAnswered(answerOption);
 
-
-    dispatch(getAnswerRandomQuestion(finData))
-
+    dispatch(getAnswerRandomQuestion(finData));
   };
 
   const handleNextQuestion = () => {
-
-    dispatch(getQuizRandomQuestionOutputFailure())
-    dispatch(getQuizRandomQuestionFailure())
-    dispatch(getRandomQuestionByName(cid, id))
+    dispatch(getQuizRandomQuestionOutputFailure());
+    dispatch(getQuizRandomQuestionFailure());
+    dispatch(getRandomQuestionByName(cid, id));
     // const nextQuestion = currentQuestion + 1;
     // if (nextQuestion < questions.length) {
     //   setCurrentQuestion(nextQuestion);
@@ -109,8 +106,7 @@ const Quiz = () => {
   };
 
   const handlePreviousQuestion = () => {
-
-    dispatch(getQuizRandomQuestionOutputFailure())
+    dispatch(getQuizRandomQuestionOutputFailure());
     // if (currentQuestion > 0) {
     //   setCurrentQuestion(currentQuestion - 1);
     //   setSelectedOption(null);
@@ -123,8 +119,7 @@ const Quiz = () => {
   };
 
   const endQuiz = () => {
-
-    navigate("/quizResult")
+    navigate("/quizResult");
 
     // setEndTime(Date.now());
     // setShowResult(true);
@@ -157,47 +152,59 @@ const Quiz = () => {
 
   return (
     <>
-      {
-        oneQuizOutput.answerAttempt == "Correct" ? <Confetti
+      {oneQuizOutput.answerAttempt == "Correct" ? (
+        <Confetti
           run={oneQuizOutput.answerAttempt == "Correct"}
           width={width}
           wind={0}
           height={height}
-        /> : <>
-        </>
-      }
+        />
+      ) : (
+        <></>
+      )}
+      <div className={styles.quizContainer}>
+        <div className={styles.quizDiv}>
+          <div className={styles.quiz}>
+            {loading ? (
+              <><LoadingWeb/></>
+            ) : oneQuiz?.question ? (
+              <>
+                <div className={styles.totalTimer}>
+                  <span> Category : </span> <p>{oneQuiz?.quizCategory}</p>
+                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
+                </div>
+                <div className={styles.totalTimer}>
+                  {/* Module Name : {oneQuiz?.quizModuleName} */}
+                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
+                </div>
+                <div className={styles.questionCount}>
+                  {/* {currentQuestion + 1}/{questions.length} */}
+                  <span>Question:  </span>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: oneQuiz?.question.replace(">", "><br/>"),
+                    }}
+                  ></div>
+                </div>
 
-      <div className={styles.quizDiv}>
-        <div className={styles.quiz}>
+                <div className={styles.questionCount}>
+                  {oneQuiz?.questionImage && (
+                    <img
+                      width={200}
+                      src={`${
+                        oneQuiz?.questionImage != ""
+                          ? oneQuiz?.questionImage.includes("https")
+                            ? oneQuiz?.questionImage
+                            : imageBaseUrl + oneQuiz?.questionImage
+                          : ""
+                      }`}
+                    />
+                  )}
+                </div>
+                <div className={styles.OptionsText}>{"Options :-"} </div>
 
-          {
-
-            loading ? <>Loading</> :
-              oneQuiz?.question ?
-                <>
-                  <div className={styles.totalTimer}>
-                    Category : {oneQuiz?.quizCategory}
-                    {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
-                  </div>
-                  <div className={styles.totalTimer}>
-                    {/* Module Name : {oneQuiz?.quizModuleName} */}
-                    {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
-                  </div>
-                  <div className={styles.questionCount}>
-                    {/* {currentQuestion + 1}/{questions.length} */}
-                    Question : <div dangerouslySetInnerHTML={{ __html: oneQuiz?.question.replace(">", "><br/>") }}></div>
-                  </div>
-
-
-                  <div className={styles.questionCount}>
-                    {oneQuiz?.questionImage && <img width={200} src={`${oneQuiz?.questionImage != "" ? oneQuiz?.questionImage.includes("https") ? oneQuiz?.questionImage : imageBaseUrl + oneQuiz?.questionImage : ""}`} />}
-                  </div>
-                  <div className={styles.OptionsText}>{"Options :-"} </div>
-
-
-
-                  <div className={styles.answerSection}>
-                    {/* {oneQuiz?.option?.map((answerOption, index) => {
+                <div className={styles.answerSection}>
+                  {/* {oneQuiz?.option?.map((answerOption, index) => {
                   let buttonClass = "";
                   if (selectedOption === index) {
                     buttonClass = answerOption.isCorrect ? styles.correct : styles.incorrect;
@@ -216,45 +223,70 @@ const Quiz = () => {
                   );
                 })} */}
 
-                    {oneQuiz?.option?.map((answerOption, index) => {
-                      return (
-                        <button
-                          // key={index}
-                          disabled={oneQuizOutput.answerAttempt}
-                          style={{ backgroundColor: oneQuizOutput.answerAttempt == "Incorrect" ? "Option" + (index + 1) == answered ? "red" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" : oneQuizOutput.correctAnswer == "Option" + (index + 1) ? "green" : "" }}
-                          onClick={() => handleAnswerOptionClick("Option" + (index + 1), "Image" + (index + 1))}
+                  {oneQuiz?.option?.map((answerOption, index) => {
+                    return (
+                      <button
+                        // key={index}
+                        disabled={oneQuizOutput.answerAttempt}
+                        style={{
+                          backgroundColor:
+                            oneQuizOutput.answerAttempt == "Incorrect"
+                              ? "Option" + (index + 1) == answered
+                                ? "red"
+                                : oneQuizOutput.correctAnswer ==
+                                  "Option" + (index + 1)
+                                ? "green"
+                                : ""
+                              : oneQuizOutput.correctAnswer ==
+                                "Option" + (index + 1)
+                              ? "green"
+                              : "",
+                        }}
+                        onClick={() =>
+                          handleAnswerOptionClick(
+                            "Option" + (index + 1),
+                            "Image" + (index + 1)
+                          )
+                        }
                         // disabled={selectedOption !== null}
-                        >
-                          {answerOption != "" ? answerOption : ""} &nbsp; &nbsp; {oneQuiz?.optionImage[index] != "" && <img width={200} src={`${oneQuiz?.optionImage[index] != "" ? oneQuiz?.optionImage[index].includes("https") ? oneQuiz?.optionImage[index] : imageBaseUrl + oneQuiz?.optionImage[index] : ""}`} />}
-                        </button>
-                      );
-                    })}
-
-
-
-                  </div>
-                </>
-                : <>
-                  <div className={styles.totalTimer}>
-                    No Question Available
-                  </div>
-                </>}
-          <div className={styles.navigationButtons}>
-            {/* <button onClick={handlePreviousQuestion}>
+                      >
+                        {answerOption != "" ? answerOption : ""} &nbsp; &nbsp;{" "}
+                        {oneQuiz?.optionImage[index] != "" && (
+                          <img
+                            width={200}
+                            src={`${
+                              oneQuiz?.optionImage[index] != ""
+                                ? oneQuiz?.optionImage[index].includes("https")
+                                  ? oneQuiz?.optionImage[index]
+                                  : imageBaseUrl + oneQuiz?.optionImage[index]
+                                : ""
+                            }`}
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.totalTimer}>No Question Available</div>
+              </>
+            )}
+            <div className={styles.navigationButtons}>
+              {/* <button onClick={handlePreviousQuestion}>
               Previous
             </button> */}
-            {/* <button onClick={endQuiz}>End Quiz</button> */}
-            <button onClick={endQuiz}>View Result</button>
-            {
-              oneQuizOutput.answerAttempt ? <button onClick={handleNextQuestion}>
-                Next
-              </button> : <></>
-            }
-          </div>
+              {/* <button onClick={endQuiz}>End Quiz</button> */}
+              <button onClick={endQuiz}>View Result</button>
+              {oneQuizOutput.answerAttempt ? (
+                <button onClick={handleNextQuestion}>Next</button>
+              ) : (
+                <></>
+              )}
+            </div>
 
-
-
-          {/* <div className={styles.questionSelect}>
+            {/* <div className={styles.questionSelect}>
               {questions.map((_, index) => (
                 <button
                   key={index}
@@ -265,6 +297,7 @@ const Quiz = () => {
                 </button>
               ))}
             </div> */}
+          </div>
         </div>
       </div>
     </>

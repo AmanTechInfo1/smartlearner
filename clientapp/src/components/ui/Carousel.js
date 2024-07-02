@@ -27,9 +27,7 @@ function Corousel() {
   const myCart = useSelector((state) => state.cart.cart || []);
 
   useEffect(() => {
-    const offersManualCategory = data.find(
-      (item) => item._id === "manual"
-    );
+    const offersManualCategory = data.find((item) => item._id === "manual");
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
     }
@@ -71,128 +69,131 @@ function Corousel() {
     <>
       <section className={styles.carouselContainer}>
         <div className={styles.carousel}>
-          {["manual","Automatic","Theory Support","Intensive"].map((categoryName) =>
-            filteredData(categoryName).map((item) => (
-              <div
-                key={item.id}
-                className={`${styles.carouselColumn} ${
-                  expandedCategory === item._id ? styles.expanded : ""
-                }`}
-                onClick={() => handleExpandCategory(item._id)}
-              >
-                <div className={styles.carouselColumnHeading}>
-                  <img src={LplateImg} alt="Category Image" />
-                  <h2>
-                    {item._id === "Theory Support"
-                      ? expandedCategory === item._id
-                        ? "Theory Support"
-                        : "Theory"
-                      : item._id}
-                  </h2>
-                </div>
-                {expandedCategory === item._id ? (
-                  <ul type="none">
-                    {item.data.map((info, index) => (
-                      <div key={index}>
-                        <li className={styles.expandedColData}>
-                          <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li>
-                        <li className={styles.expandedColData}>
-                          <span
-                            style={{
-                              color: "black",
-                              backgroundColor: "white",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              maxWidth: "220px",
-                              width: "100%",
-                              borderRadius: "6px",
-                              padding: "8px",
-                            }}
-                          >
-                            <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px" }}>
-                              £-{info.price}
-                            </p>
-                          </span>
-                          <div className={styles.btnGroup}>
-                            {myCart.length === 0 ||
-                            !myCart.find(
-                              (cartItem) =>
-                                cartItem.id ===
-                                `${info._id}_${index}_${info.price}`
-                            ) ? (
-                              <button
-                                className={styles.bookNow}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  addToCart(info, index);
-                                }}
-                              >
-                                Book
-                              </button>
-                            ) : (
-                              <div id={styles.cartTableBtn}>
-                                <div className={styles.quantityControl}>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleDecrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.decreaseButton}
-                                  >
-                                    -
-                                  </button>
-                                  <span>
-                                    {myCart.find(
-                                      (cartItem) =>
-                                        cartItem.id ===
-                                        `${info._id}_${index}_${info.price}`
-                                    )?.count || 0}
-                                  </span>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleIncrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.increaseButton}
-                                  >
-                                    +
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </li>
-                      </div>
-                    ))}
-                    <Link to="/cart">
-                      <button className={styles.addtoCartButtoncontent}>
-                        <img src={cartImg} alt="cartImg" />
-                      </button>
-                    </Link>
-                  </ul>
-                ) : (
-                  <div
-                    className={`${styles.carouselStarImgContainer} ${
-                      expandedCategory === item._id ? styles.compress : ""
-                    }`}
-                  >
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
+          {["manual", "Automatic", "Theory Support", "Intensive"].map(
+            (categoryName) =>
+              filteredData(categoryName).map((item) => (
+                <div
+                  key={item.id}
+                  className={`${styles.carouselColumn} ${
+                    expandedCategory === item._id ? styles.expanded : ""
+                  }`}
+                  onClick={() => handleExpandCategory(item._id)}
+                >
+                  <div className={styles.carouselColumnHeading}>
+                    <img src={LplateImg} alt="Category Image" />
+                    <h2>
+                      {item._id === "Theory Support"
+                        ? expandedCategory === item._id
+                          ? "Theory Support".toUpperCase()
+                          : "Theory".toUpperCase()
+                        : item._id.toUpperCase()}
+                    </h2>
                   </div>
-                )}
-              </div>
-            ))
+                  {expandedCategory === item._id ? (
+                    <ul type="none">
+                      {item.data.map((info, index) => (
+                        <div key={index}>
+                          <li className={styles.expandedColData}>
+                            <h2 style={{ color: "white" }}>
+                              {info.description}
+                            </h2>
+                          </li>
+                          <li className={styles.expandedColData}>
+                            <span
+                              style={{
+                                color: "black",
+                                backgroundColor: "white",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                maxWidth: "220px",
+                                width: "100%",
+                                borderRadius: "6px",
+                                padding: "8px",
+                              }}
+                            >
+                              <p style={{ marginBottom: "0px" }}>{info.name}</p>
+                              <p style={{ marginBottom: "0px" }}>
+                                £-{info.price}
+                              </p>
+                            </span>
+                            <div className={styles.btnGroup}>
+                              {myCart.length === 0 ||
+                              !myCart.find(
+                                (cartItem) =>
+                                  cartItem.id ===
+                                  `${info._id}_${index}_${info.price}`
+                              ) ? (
+                                <button
+                                  className={styles.bookNow}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    addToCart(info, index);
+                                  }}
+                                >
+                                  Book
+                                </button>
+                              ) : (
+                                <div id={styles.cartTableBtn}>
+                                  <div className={styles.quantityControl}>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDecrease(
+                                          `${info._id}_${index}_${info.price}`,
+                                          1
+                                        );
+                                      }}
+                                      className={styles.decreaseButton}
+                                    >
+                                      -
+                                    </button>
+                                    <span>
+                                      {myCart.find(
+                                        (cartItem) =>
+                                          cartItem.id ===
+                                          `${info._id}_${index}_${info.price}`
+                                      )?.count || 0}
+                                    </span>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleIncrease(
+                                          `${info._id}_${index}_${info.price}`,
+                                          1
+                                        );
+                                      }}
+                                      className={styles.increaseButton}
+                                    >
+                                      +
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                        </div>
+                      ))}
+                      <Link to="/cart">
+                        <button className={styles.addtoCartButtoncontent}>
+                          <img src={cartImg} alt="cartImg" />
+                        </button>
+                      </Link>
+                    </ul>
+                  ) : (
+                    <div
+                      className={`${styles.carouselStarImgContainer} ${
+                        expandedCategory === item._id ? styles.compress : ""
+                      }`}
+                    >
+                      <img src={starImg} alt="starImg" />
+                      <img src={starImg} alt="starImg" />
+                      <img src={starImg} alt="starImg" />
+                      <img src={starImg} alt="starImg" />
+                      <img src={starImg} alt="starImg" />
+                    </div>
+                  )}
+                </div>
+              ))
           )}
         </div>
       </section>

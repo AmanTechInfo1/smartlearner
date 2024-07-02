@@ -85,9 +85,9 @@ function IntensiveCorousel() {
                   <h2>
                     {item._id === "Intensive"
                       ? expandedCategory === item._id
-                        ? "Manual | Automatic Intensive"
-                        : "Intensive"
-                      : "Intensive"}
+                        ? "MANUAL | AUTOMATIC | INTENSIVE"
+                        : "INTENSIVE"
+                      : "INTENSIVE"}
                   </h2>
                 </div>
                 {expandedCategory === item._id ? (

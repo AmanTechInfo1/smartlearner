@@ -16,11 +16,11 @@ export default function ElectricCarScheme() {
           <h2>ELECTRIC CAR SCHEME</h2>
           <hr />
           <p>
-            Here at SmartLearer Driving school we are commited to reducing our
+            Here at SmartLearner Driving school we are committed to reducing our
             carbon footprint!
           </p>
           <p>
-            Throughout 2024 and the future, we continiously strive to become an
+            Throughout 2024 and the future, we continuously strive to become an
             even more sustainable and eco-friendly company.
           </p>
         </section>

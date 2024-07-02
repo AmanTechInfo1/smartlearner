@@ -85,9 +85,9 @@ function Corousel() {
                   <h2>
                     {item._id === "Theory Support"
                       ? expandedCategory === item._id
-                        ? "Theory Support"
-                        : "Theory"
-                      : item._id}
+                        ? "THEORY SUPPORT"
+                        : "THEORY"
+                      : "THEORY SUPPORT"}
                   </h2>
                 </div>
                 {expandedCategory === item._id ? (

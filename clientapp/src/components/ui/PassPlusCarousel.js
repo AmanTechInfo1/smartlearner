@@ -85,9 +85,9 @@ function PassPlusCarousel() {
                   <h2>
                     {item._id === "Pass Plus"
                       ? expandedCategory === item._id
-                        ? "Pass Plus"
-                        : "Pass Plus"
-                      : "Pass Plus"}
+                        ? "PASS PLUS"
+                        : "PASS PLUS"
+                      : "PASS PLUS"}
                   </h2>
                 </div>
                 {expandedCategory === item._id ? (

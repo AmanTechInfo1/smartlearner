@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { jwtDecode } from "jwt-decode";
 import http from "../../utils/httpHandler";
 import toast from "react-hot-toast";
 import { ROLES } from "../../constants";
@@ -77,18 +78,20 @@ export const loginUser = createAsyncThunk(
       const response = await http.post(`/api/account/login`, loginData);
       const data = response.data;
       if (data.success) {
-
         const user = data.data.user;
-        dispatch(UserDetails(user))
+        dispatch(UserDetails(user));
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
-        let expiration = user.expiresIn;
-        dispatch(autologoutUser(expiration, navigate));
+
+        const decodedToken = jwtDecode(user.token);
+        const expirationTime = decodedToken.exp * 1000 - Date.now();
+
+        dispatch(autoLogoutUser(expirationTime, navigate));
+
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
           navigate("/");
-          // toast.success("Ask Admin to assign you a role.");
         }
       } else {
         toast.error(data.message || "Something went wrong");
@@ -107,12 +110,11 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
-  async (_, { rejectWithValue,dispatch }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       localStorage.removeItem("user");
-      dispatch(UserDetails({}))
+      dispatch(UserDetails({}));
       toast.success("Logged Out Successfully");
-
       return "LoggedOut Successfully";
     } catch (error) {
       return rejectWithValue(error.message);
@@ -120,20 +122,17 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-export const autologoutUser = (expiration, navigate) => async (dispatch) => {
+export const autoLogoutUser = (expiresIn, navigate) => async (dispatch) => {
   try {
     setTimeout(() => {
       dispatch(logoutUser());
       navigate("/login");
-    }, expiration);
+    }, expiresIn);
   } catch (error) {
     console.error("Error occurred:", error);
   }
 };
 
-
-export const {
-  UserDetails
-} = authSlice.actions;
+export const { UserDetails } = authSlice.actions;
 
 export default authSlice.reducer;

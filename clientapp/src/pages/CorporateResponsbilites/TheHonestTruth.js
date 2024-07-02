@@ -51,7 +51,7 @@ export default function TheHonestTruth() {
           <hr />
           <img src={tHTLogo} alt="tHTLogo" />
           <p>
-            SmartLearer have teamed up with First car on their 'The Honest
+            SmartLearner have teamed up with First car on their 'The Honest
             Truth' campaign to help deliver their road safety project across the
             West MidLands and Warwickshire!
           </p>
@@ -120,7 +120,7 @@ export default function TheHonestTruth() {
         {/* ///////////////////////////////////////////////////////////////////// */}
         <section className={styles.textThtSection}>
           <h2>
-            OUR INVOLVMENT IN <br /> <span>'THE HONEST TRUTH'</span>
+            OUR INVOLVEMENT IN <br /> <span>'THE HONEST TRUTH'</span>
           </h2>
           <hr />
           <div id={styles.textThtSection}>
@@ -155,7 +155,7 @@ export default function TheHonestTruth() {
               <hr />
               <p>
                 To get involved in the 'Honest Truth' project, book a lesson
-                with a Smart Learner Driving Instructor. As anaward-winning
+                with a Smart Learner Driving Instructor. As an award-winning
                 driving school in the West Midlands and Warwickshire, we provide
                 fully qualified, DVSA-approved local instructors.
               </p>
@@ -169,8 +169,8 @@ export default function TheHonestTruth() {
               <h2>BOOK YOUR LESSON</h2>
               <hr />
               <p>
-                At the start of your lessons, you'll receive a Truth Cardlisting
-                the 10 truths about safe driving. Your instructor willsign off
+                At the start of your lessons, you'll receive a Truth Card listing
+                the 10 truths about safe driving. Your instructor will sign off
                 each topic as you complete it.
               </p>
               <p>
@@ -188,11 +188,11 @@ export default function TheHonestTruth() {
               <hr />
               <p>
                 At the start of your lessons, you will receive a Truth
-                Cardlisting 10 truths. Your instructor will sign off each truth
+                Card listing 10 truths. Your instructor will sign off each truth
                 as you complete the related topics.
               </p>
               <p>
-                The 'Honest Truth' campaign aims to inform young driversabout
+                The 'Honest Truth' campaign aims to inform young drivers about
                 safe driving realistically and straight forwardly,hoping to
                 change their driving behavior.
               </p>

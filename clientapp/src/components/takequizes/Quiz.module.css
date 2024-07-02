@@ -1,159 +1,97 @@
-/* /////Start Quiz */
-
-.quizStartDiv{
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1100px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.startQuizSection{
- 
-   box-shadow: 0 0 10px #ccc ;
-   text-align: center;
-   padding: 4rem;
-   font-family: "Roboto", sans-serif;
-}
-.startQuizSection h2{
-  font-size: 1.9rem;
-  font-weight: 300;
-  margin: 2rem 0px;
-}
-.startQuizSection h3{
-  font-size: 1.9rem;
-  font-weight: 300;
-  margin: 1.5rem 0px;
-}
-.startQuizSection p{
-  margin: 1rem 0px;
-  font-size: 16px;
-  font-weight: 300;
-}
-.startQuizSection button{
-  margin: 2rem 0px;
-  padding: 12px 40px;
-  border: none;
-  background-color: #eb0009;
-  color: #fff;
-  box-shadow: 0 0 10px #ccc ;
-
-}
-.startQuizSection button:hover{
-  background-color: black;
-}
-.quizDiv{
- padding: 4rem 2rem;
+/* Quiz.module.css */
+.quizContainer{
   height: 100%;
-  
+  padding: 5rem 0px;
+  background-color: #000000; 
+}
+.quizDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  color: #ffffff; 
 }
 
 .quiz {
-    max-width: 600px;
-    margin: auto;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .timer {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  
-  .questionCount {
-    font-size: 1.2em;
-    margin-top: 10px;
-  }
-  
-  .questionText {
-    font-size: 1.5em;
-    margin-top: 0px;
-  }
+  background-color: #2c2c2c; /* dark gray background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+}
 
-  .OptionsText {
-    font-size: 1em;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .answerSection {
-    justify-content: center;
-    margin-bottom: 20px;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    display:grid;
-    grid-template-columns: 200px 200px;
-  }
-  
-  .answerSection button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    font-size: 1em;
-    cursor: pointer;
-  }
+.totalTimer,
+.questionCount,
+.OptionsText {
+  color: #ff4040; /* red text */
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.totalTimer,
+.questionCount{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.totalTimer p{
+  color: white;
+  margin-bottom: 0px;
+}
+.questionCount div{
+  color: white;
+}
 
-  .answerSection button img{
-    width: 100%;
-  }
-  
-  .navigationButtons {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .navigationButtons button {
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-  }
+.questionCount {
+  font-size: 20px;
+}
 
-.quizResult {
-    text-align: center;
-    font-size: 1.5em;
-    color: green;
-    margin-top: 20px;
+.answerSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.answerSection button {
+  background-color: #ff4040; /* red button background */
+  color: #ffffff; /* white text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answerSection button:hover {
+  background-color: #ff0000; /* darker red on hover */
+}
+
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigationButtons button {
+  background-color: #000000; /* black button background */
+  color: #ffffff; /* white text */
+  border: 1px solid #ff4040; /* red border */
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navigationButtons button:hover {
+  background-color: #2c2c2c; /* dark gray on hover */
+  color: #ff4040; /* red text on hover */
+}
+
+@media (max-width: 768px) {
+  .quiz {
+    width: 90%;
+    padding: 15px;
   }
-  .correct {
-    background-color: green;
-    color: white;
-  }
-  
-  .incorrect {
-    background-color: red;
-    color: white;
-  }
-  
-  .questionSelect {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .questionSelect button {
-    margin: 0 5px;
-    padding: 10px;
-    cursor: pointer;
-  }
-  .questionButton {
-    border: 1px solid transparent;
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
-  .answered {
-    background-color: pink;
-  }
-  #resultTableData{
-margin-left: auto;
-margin-right: auto;
-max-width: 1100px;
-  }
-  .restartQuizBtn{
-    width: 100%;
-    text-align: center;
-  }
+}

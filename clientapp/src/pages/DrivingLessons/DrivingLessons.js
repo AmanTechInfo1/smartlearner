@@ -242,13 +242,13 @@ export default function DrivingLessons() {
             <div className={styles.manualPList}>
               <p>
                 Designed for those eager to learn quickly and efficiently,
-                ourimmersive programs offer focused instruction and
+                our immersive programmes offer focused instruction and
                 hands-onexperience to help you become a confident driver in no
                 time.
               </p>
               <p>
                 Get behind the wheel and fast-track your path to
-                drivingindependence with our intensive driving courses
+                driving independence with our intensive driving courses
               </p>
             </div>
             <section>
@@ -285,7 +285,7 @@ export default function DrivingLessons() {
                 You can take it any time after you've passed your
                 practicaldriving test but it's usually most beneficial in your
                 first year ofdriving as most road accidents occur within the
-                first 12months of a new driver getting their licence.
+                first 12months of a new driver getting their license.
               </p>
             </div>
             <section>

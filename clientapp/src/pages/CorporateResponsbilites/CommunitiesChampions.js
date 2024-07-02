@@ -27,7 +27,7 @@ export default function CommunitiesChampions() {
           <hr />
           <h3>"The local school for local people"</h3>
           <p>
-            Winners of Intelligent Instructors Awards 2023 & 2024 'Commuity
+            Winners of Intelligent Instructors Awards 2023 & 2024 'Community
             Champion Of The Year'
           </p>
         </section>
@@ -44,22 +44,22 @@ export default function CommunitiesChampions() {
             <section className={styles.cCLists}>
               <p>
                 <span>315 EASTER EGG Campaign:</span> We raised 500+ Easter
-                Eggsin support of Easter Eggs for Zoe's Place and Coventryand
-                Warwickshire Univerity Hospital.
+                Eggs support of Easter Eggs for Zoe's Place and Coventry and
+                Warwickshire University Hospital.
               </p>
               <p>
-                <span>SEND YOUR LOVE Campaign:</span> Donated essential foodand
-                items for vulnerable families through our local foodbank. In
+                <span>SEND YOUR LOVE Campaign:</span> Donated essential food and
+                items for vulnerable families through our local food bank. In
                 partnership with Coventry City Council.
               </p>
               <p>
                 <span>BIKEATHON Project:</span> Raised £300+ for speed of
-                sightcharity, as well as worked with NHS to provide freediabetes
+                sight charity, as well as worked with NHS to provide free diabetes
                 health checks.
               </p>
               <p>
-                <span>CYCLE RECYCLER Competition:</span> Advocating greenmodes
-                of transport and sustainability, we launched acompetition for
+                <span>CYCLE RECYCLER Competition:</span> Advocating green modes
+                of transport and sustainability, we launched a competition for
                 individuals to win 2 recycled bikes.
               </p>
             </section>
@@ -72,21 +72,21 @@ export default function CommunitiesChampions() {
                   One of our most recognizable campaigns is the 315 EasterEgg
                   project, launched in spring 2022. Partnering with Zoe'sPlace
                   Baby Hospice and University Hospital Coventry &Warwickshire's
-                  children's ward, our mission was to bring joyand Easter eggs
+                  children's ward, our mission was to bring joy and Easter eggs
                   to the families, children, and staff of both establishments
                 </p>
                 <p>
-                  Our goal was to raise 315 Easter eggs, but we surpassed thisby
+                  Our goal was to raise 315 Easter eggs, but we surpassed this by
                   collecting over 500 eggs from instructors,
                   learners,individuals, and donors in the Coventry community.
                 </p>
                 <p>
                   Our success attracted local MP Taiwo's attention, and
-                  thesurplus donations allowed us to extend our reach to
-                  variouscharities and homes across the West Midlands. We
+                  the surplus donations allowed us to extend our reach to
+                  various charities and homes across the West Midlands. We
                   donatedEaster eggs to care homes in Coventry,
-                  Holbrooks'Community Centre, and care homes in Nuneaton,
-                  spreadingthe Easter spirit far and wide.
+                  Holbrook's Community Centre, and care homes in Nuneaton,
+                  spreading the Easter spirit far and wide.
                 </p>
               </div>
               <hr />
@@ -102,16 +102,16 @@ export default function CommunitiesChampions() {
                 <p>
                   For years consecutively we collaborated with Coventry
                   CityCouncil and our local food bank to raise and
-                  donatenecessary food and items to vulnerable families. Last
+                  donate necessary food and items to vulnerable families. Last
                   year in2023, we were able to raise a total of £300+ worth
-                  ofdonations for the local community, breaking our previous
+                  of donations for the local community, breaking our previous
                   year's record.
                 </p>
                 <p>
-                  Through this, we were ecstatic to know that we were morethan
+                  Through this, we were ecstatic to know that we were more than
                   capable in supporting and assisting as many families as we can
-                  during the winter seasons. We could not haveachieved this
-                  without the sincere and kind support of ouroffice staff,
+                  during the winter seasons. We could not have achieved this
+                  without the sincere and kind support of our office staff,
                   instructors and the local individuals of our community.
                 </p>
               </div>
@@ -120,22 +120,22 @@ export default function CommunitiesChampions() {
             {/* ////////////////////////// */}
             <section className={styles.cCsContentSection}>
               <div id={styles.cCsContentSection}>
-                <h2>BIKEATHON £300 FORSPEED OF SIGHT</h2>
+                <h2>BIKEATHON £300 FOR SPEED OF SIGHT</h2>
                 <p>
                   At the annual Intelligent Instructor Conference and Expo,
-                  wepartnered with the NHS to offer free health
+                  we partnered with the NHS to offer free health
                   checks,highlighting high blood pressure and diabetes
                   awareness.
                 </p>
                 <p>
-                  Smartlearner also organized a Bikeathon, raising £1 perminute
+                  Smartlearner also organized a Bikeathon, raising £1 per minute
                   for the Speed of Sight charity.
                 </p>
                 <p>
                   Instructors participated enthusiastically, and we raised£300
                   to support inclusive driving events for people of
-                  allabilities. The charity empowers disabled individuals
-                  toengage in unique activities and experiences.
+                  all abilities. The charity empowers disabled individuals
+                  to engage in unique activities and experiences.
                 </p>
               </div>
               <hr />
@@ -151,7 +151,7 @@ export default function CommunitiesChampions() {
                   old bicycles.
                 </p>
                 <p>
-                  Our goal was to raise 315 Easter eggs, but we surpassed thisby
+                  Our goal was to raise 315 Easter eggs, but we surpassed this by
                   collecting over 500 eggs from instructors,
                   learners,individuals, and donors in the Coventry community.
                 </p>

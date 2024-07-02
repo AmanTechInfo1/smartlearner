@@ -63,17 +63,17 @@ export default function GoingGreenProject() {
             </div>
             <div className={styles.gGpFrontListP}>
               <p>
-                SmartLearner Driving School championsenvironmental
+                SmartLearner Driving School champions environmental
                 sustainability.
               </p>
               <p>
-                Through our Going Green Project, we inspireeco-conscious driving
-                and advocate forenvironmental preservation through tree
-                plantingand education.
+                Through our Going Green Project, we inspire eco-conscious driving
+                and advocate for environmental preservation through tree
+                planting and education.
               </p>
               <p>
-                Committed to reducing our carbon footprint, wecontinuously
-                strive to become a sustainable andeco-friendly
+                Committed to reducing our carbon footprint, we continuously
+                strive to become a sustainable and eco-friendly
                 company."Prevention is better than cure."
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function GoingGreenProject() {
               <ul typeo="none">
                 <li>
                   <span>3</span>
-                  <p>Trees in Stretton Academy</p>
+                  <p>Trees in Stretto Academy</p>
                 </li>
                 <li>
                   <span>20</span>
@@ -195,11 +195,11 @@ export default function GoingGreenProject() {
                 </li>
                 <li>
                   <span>7</span>
-                  <p>Fruit apple trees for President Kenndedy</p>
+                  <p>Fruit apple trees for President Kennedy</p>
                 </li>
                 <li>
                   <span>20</span>
-                  <p>Fruit Bushes for President Kenndedy</p>
+                  <p>Fruit Bushes for President Kennedy</p>
                 </li>
               </ul>
             </div>

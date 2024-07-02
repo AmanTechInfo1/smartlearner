@@ -1,11 +1,11 @@
 import React from "react";
-import { FaLocationDot } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { drivenBeforeFormSchema } from "../../schemas/master";
 import { enquiryData } from "../../redux/features/enquirySlice";
+import { FaLocationDot } from "react-icons/fa6";
 
 export default function DrivenForm() {
   const dispatch = useDispatch();
@@ -20,20 +20,18 @@ export default function DrivenForm() {
 
   const handleDrivenBeforeForm = async (data) => {
     const formData = new FormData();
-    formData.append("drivenBefore", data.drivenBefore);
-    formData.append("preferredType", data.preferredType);
-    formData.append("postcode", data.postcode);
+    formData.append("drivenBefore", data.drivenBefore); 
+    formData.append("preferredType", data.preferredType); 
+    formData.append("postcode", data.postcode); 
     formData.append("formType", "drivenForm");
-    dispatch(enquiryData({ requestData: data, reset }));
+    dispatch(enquiryData({ requestData: formData, reset }));
   };
 
   return (
     <section className="driverSection">
       <div className="innerFormSection">
         <div className="search-Form">
-          <form
-            onSubmit={handleSubmit(handleDrivenBeforeForm)}
-            id="locationForm">
+          <form onSubmit={handleSubmit(handleDrivenBeforeForm)} id="locationForm">
             <div className="infoDetails">
               <div className="redio-box">
                 <h3>Have you driven before?</h3>
@@ -115,7 +113,7 @@ export default function DrivenForm() {
                 <FaLocationDot />
               </p>
               <Controller
-                name="location"
+                name="postcode"
                 control={control}
                 render={({ field }) => (
                   <input

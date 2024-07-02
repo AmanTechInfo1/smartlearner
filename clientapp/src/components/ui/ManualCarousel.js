@@ -85,9 +85,9 @@ function ManualCorousel() {
                   <h2>
                     {item._id === "Offers manual"
                       ? expandedCategory === item._id
-                        ? "One Time Spacial Offer"
-                        : "Offers"
-                      : "Manual"}
+                        ? "ONE TIME SPECIAL OFFER"
+                        : "OFFERS"
+                      : "MANUAL"}
                   </h2>
                 </div>
                 {expandedCategory === item._id ? (

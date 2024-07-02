@@ -67,39 +67,39 @@ const QuizResult = () => {
   };
 
   return (
-    <>
-      <div className="container mx-auto p-1">
+    <div style={{backgroundColor:'black', color:'white', paddingBottom:'5rem'}}>
+      <div className="container mx-auto p-1" >
         <h2 className="text-center text-2xl font-semibold mb-4">
           {/* Test Has Been Completed */}
         </h2>
         <div className="overflow-x-auto">
           <table
-            className="min-w-full bg-white dark:bg-zinc-800 border border-black"
+            className="min-w-full bg-dark dark:bg-zinc-800 border border-danger"
             id={styles.resultTableData}
           >
-            <thead>
-              <tr className="w-full bg-zinc-800 bg-dark dark:bg-zinc-700 text-white">
-                <th className="py-2 px-4 text-left border border-black">
+            <thead >
+              <tr className="w-full bg-zinc-800  dark:bg-zinc-700 text-white"style={{backgroundColor:'black'}}>
+                <th className="py-2 px-4 text-left border border-danger">
                   Quiz Name
                 </th>
-                <th className="py-2 px-4 text-left border border-black">
+                <th className="py-2 px-4 text-left border border-danger">
                   Module
                 </th>
-                <th className="py-2 px-4 text-left border border-black">
+                <th className="py-2 px-4 text-left border border-danger">
                   Question
                 </th>
-                <th className="py-2 px-4 text-left border border-black">Answer Attempt</th>
-                <th className="py-2 px-4 text-left border border-black">Answer Correct</th>
-                <th className="py-2 px-4 text-left border border-black">
+                <th className="py-2 px-4 text-left border border-danger">Answer Attempt</th>
+                <th className="py-2 px-4 text-left border border-danger">Answer Correct</th>
+                <th className="py-2 px-4 text-left border border-danger">
                   Answer Choose
                 </th>
-                <th className="py-2 px-4 text-left border border-black">Submit Time</th>
+                <th className="py-2 px-4 text-left border border-danger">Submit Time</th>
 
                 {url === "quizViewResult" && (
                   <>
-                    <th className="py-2 px-4 text-left border border-black">User Name</th>
-                    <th className="py-2 px-4 text-left border border-black">Email</th>
-                    <th className="py-2 px-4 text-left border border-black">Phone Number</th>
+                    <th className="py-2 px-4 text-left border border-danger">User Name</th>
+                    <th className="py-2 px-4 text-left border border-danger">Email</th>
+                    <th className="py-2 px-4 text-left border border-danger">Phone Number</th>
                   </>
                 )}
               </tr>
@@ -107,21 +107,21 @@ const QuizResult = () => {
             <tbody>
               {quizResult.map((itm) => (
                 <tr className="border-b dark:border-zinc-700" key={itm.result?._id}>
-                  <td className="py-2 px-4 border border-black">{itm.result?.name || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">{itm.moduleresult?.moduleName || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">{itm.question?.question || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">{itm.answerAttempt || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">{itm.question?.answer || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">{itm.answer || 'N/A'}</td>
-                  <td className="py-2 px-4 border border-black">
+                  <td className="py-2 px-4 border border-danger">{itm.result?.name || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">{itm.moduleresult?.moduleName || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">{itm.question?.question.replace(">", "><br/>") || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">{itm.answerAttempt || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">{itm.question?.answer || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">{itm.answer || 'N/A'}</td>
+                  <td className="py-2 px-4 border border-danger">
                     {new Date(itm.createdOn).toLocaleString() || 'N/A'}
                   </td>
 
                   {url === "quizViewResult" && (
                     <>
-                      <td className="py-2 px-4 border border-black">{itm.user?.username || 'N/A'}</td>
-                      <td className="py-2 px-4 border border-black">{itm.user?.email || 'N/A'}</td>
-                      <td className="py-2 px-4 border border-black">{itm.user?.phoneNumber || 'N/A'}</td>
+                      <td className="py-2 px-4 border border-danger">{itm.user?.username || 'N/A'}</td>
+                      <td className="py-2 px-4 border border-danger">{itm.user?.email || 'N/A'}</td>
+                      <td className="py-2 px-4 border border-danger">{itm.user?.phoneNumber || 'N/A'}</td>
                     </>
                   )}
                 </tr>
@@ -132,18 +132,18 @@ const QuizResult = () => {
 
         {url !== "quizViewResult" && (
           <div className={styles.restartQuizBtn}>
-            <button
+            {/* <button
               onClick={() => {
-                navigate("/quizCategoryHome");
+                navigate("/takequizCatName");
               }}
               className="mt-4 bg-black text-white py-1 px-3 rounded"
             >
               Go To Quiz
-            </button>
+            </button> */}
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

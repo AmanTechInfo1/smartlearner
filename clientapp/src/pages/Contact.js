@@ -19,9 +19,8 @@ export default function ContactUs() {
     reset,
   } = useForm({
     resolver: yupResolver(contactFormSchema),
-    
   });
- 
+
   const handleContactUsForm = async (data) => {
     const formData = new FormData();
     formData.append("firstName", data.firstName);
@@ -37,7 +36,6 @@ export default function ContactUs() {
     dispatch(enquiryData({ requestData: data, reset }));
    
   };
-
 
   return (
     <div
@@ -220,7 +218,7 @@ export default function ContactUs() {
                   <p style={{ color: "red" }}>{errors?.lastName?.message}</p>
                 )}
                 <Controller
-                  name="postalCode"
+                  name="postcode"
                   control={control}
                   render={({ field: { value, onChange } }) => (
                     <input
@@ -234,8 +232,8 @@ export default function ContactUs() {
                   )}
                   defaultValue=""
                 />
-                {errors?.postalCode && (
-                  <p style={{ color: "red" }}>{errors?.postalCode?.message}</p>
+                {errors?.postcode && (
+                  <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
                 )}
                 <Controller
                   name="email"

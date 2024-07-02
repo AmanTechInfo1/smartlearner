@@ -85,9 +85,9 @@ function AutomaticCarousel() {
                   <h2>
                     {item._id === "Offers Automatic"
                       ? expandedCategory === item._id
-                        ? "One Time Spacial Offer"
-                        : "Offers"
-                      : "Automatic"}
+                        ? "One Time Special Offer".toUpperCase()
+                        : "Offers".toUpperCase()
+                      : "Automatic".toUpperCase()}
                   </h2>
                 </div>
                 {expandedCategory === item._id ? (
@@ -136,7 +136,7 @@ function AutomaticCarousel() {
                                 <div className={styles.quantityControl}>
                                   <button
                                     onClick={(e) => {
-                                      e.stopPropagation()
+                                      e.stopPropagation();
                                       handleDecrease(
                                         `${info._id}_${index}_${info.price}`,
                                         1

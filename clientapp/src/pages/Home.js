@@ -24,6 +24,7 @@ import passwithus3 from "../assets/images/passwithus3.jpg";
 import passwithUs4 from "../assets/images/passwithus4.jpg";
 
 import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
+import OurPartners123 from "../assets/images/smartlearnerSupportImg.png";
 import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
 import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
 import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
@@ -104,6 +105,7 @@ export default function Home() {
 
   return (
     <div className={styles.homepage}>
+      <div className={styles.homepageContainerDiv} >
       <section className={styles.homeSection}>
         <div className={styles.homeContent}>
           <img src={trustPilot} alt="trustPilot" />
@@ -118,50 +120,97 @@ export default function Home() {
               <span>JOURNEY</span>
             </h2>
           </div>
-
-          <div className={styles.arrowImgSection}>
-            <img
-              src={arrowImg}
-              className={`${styles.animate__animated} ${styles.animate__bounce}`}
-              alt="arrowImg"
-            />
-          </div>
-          <div className={styles.userIdentificationImg}>
-            <div className={styles.imageContainersSectionImg}>
+          <div className={styles.flexImagesHome}>
+            <div className={styles.arrowImgSection}>
               <img
-                src={userIdentificationImg}
-                className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
-                alt="userIdentificationImg"
+                src={arrowImg}
+                className={`${styles.animate__animated} ${styles.animate__bounce}`}
+                alt="arrowImg"
               />
-              <div className={styles.overlayers}>1</div>
             </div>
-          </div>
-
-          <div className={styles.homeUserHand}>
-            <div className={styles.imageContainersSectionImg}>
-              <img
-                id={styles.userHand}
-                src={homeUserHand}
-                className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
-                alt="homeUserHand"
-              />
-              <div className={styles.overlayers}>2</div>
-            </div>
-            <div className={styles.imageContainersSectionImg}>
-              <img
-                id={styles.LplateImg}
-                src={LplateImg}
-                className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
-                alt="LplateImg"
-              />
-              <div className={styles.overlayers}>3</div>
+            <div className={styles.imagesContainerSectionImg}>
+              <div
+                className={styles.userIdentificationImg}
+                id={styles.flexDetailsDirection}
+              >
+                <div className={styles.imageContainersSectionImg}>
+                  <img
+                    src={userIdentificationImg}
+                    className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
+                    alt="userIdentificationImg"
+                  />
+                  <div className={styles.overlayers}>1</div>
+                </div>
+                <div className={styles.listContent}>
+                  <ul type="none">
+                    <li>
+                      <span>
+                        <img src={img1} alt="1" />
+                      </span>
+                      <a
+                        href="https://www.gov.uk/apply-first-provisional-driving-licence "
+                        target="_blank"
+                      >
+                        {" "}
+                        Apply for your Provisional License
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id={styles.flexDetailsDirection}>
+                <div className={styles.imageContainersSectionImg}>
+                  <img
+                    id={styles.userHand}
+                    src={homeUserHand}
+                    className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
+                    alt="homeUserHand"
+                  />
+                  <div className={styles.overlayers}>2</div>
+                </div>
+                <div className={styles.listContent}>
+                  <ul type="none">
+                    <li>
+                      <span>
+                        <img src={img2} alt="2" />
+                      </span>
+                      <Link to="/Theory-Support">
+                        Pass your Theory Test with Smartlearner
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id={styles.flexDetailsDirection}>
+                <div className={styles.imageContainersSectionImg}>
+                  <img
+                    id={styles.LplateImg}
+                    src={LplateImg}
+                    className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
+                    alt="LplateImg"
+                  />
+                  <div className={styles.overlayers}>3</div>
+                </div>
+                <div className={styles.listContent}>
+                  <ul type="none">
+                    <li>
+                      <span>
+                        <img src={img3} alt="3" />
+                      </span>
+                      <Link to="/Driving-Lessons">
+                        Book Your lessons with Smartlearner
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-      <section className={styles.homeSection}>
+      {/* <section className={styles.homeSection}>
         <div className={styles.secondSectionContent}>
           <div className={styles.listContent}>
             <ul type="none">
@@ -169,16 +218,19 @@ export default function Home() {
                 <span>
                   <img src={img1} alt="1" />
                 </span>
-                <a href="https://GOV.com" target="_blank">
+                <a
+                  href="https://www.gov.uk/apply-first-provisional-driving-licence "
+                  target="_blank"
+                >
                   {" "}
-                  Apply for your Provisonal License
+                  Apply for your Provisional License
                 </a>
               </li>
               <li>
                 <span>
                   <img src={img2} alt="2" />
                 </span>
-                <Link to="/Theory-Portal">
+                <Link to="/Theory-Support">
                   Pass your Theory Test with Smartlearner
                 </Link>
               </li>
@@ -216,8 +268,10 @@ export default function Home() {
                           Select a service
                         </option>
                         <option value="service1">Driving lessons</option>
-                        <option value="service2">Theory support</option>
-                        <option value="service3">Instructor / simulator</option>
+                        <option value="service2">
+                          Theory support / simulator
+                        </option>
+                        <option value="service3">Instructor</option>
                       </select>
                     )}
                     defaultValue=""
@@ -342,7 +396,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
       <section>
@@ -356,7 +410,7 @@ export default function Home() {
           <div className={styles.mainFeatures}>
             <div className={styles.column}>
               <h3>
-                Afordable <br />
+                Affordable <br />
                 Prices{" "}
               </h3>
               <p>
@@ -369,7 +423,7 @@ export default function Home() {
                 Automated SMS <br /> Alerts
               </h3>
               <p>
-                You will receive SMS alerts on your phoine to remind you of your
+                You will receive SMS alerts on your phone to remind you of your
                 lessons
               </p>
             </div>
@@ -379,7 +433,7 @@ export default function Home() {
                 Plans
               </h3>
               <p>
-                Our Instructor cater to your unique learning styles and create
+                Our Instructors cater to your unique learning styles and create
                 lesson plans around them
               </p>
             </div>
@@ -446,7 +500,7 @@ export default function Home() {
         <h2>Our Partners</h2>
         <div className={styles.partnerSection}>
           <img src={OurPartners1} alt="" />
-          <img src={OurPartners1} alt="" />
+          <img src={OurPartners123} alt="" />
           <img src={OurPartners2} alt="" />
           <img src={OurPartners3} alt="" />
           <img src={OurPartners4} alt="" />
@@ -461,6 +515,7 @@ export default function Home() {
           <img src={OurPartners13} alt="" />
         </div>
       </section>
+    </div>
     </div>
   );
 }

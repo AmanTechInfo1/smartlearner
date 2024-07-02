@@ -26,7 +26,7 @@ export default function CorporateResponsbilities() {
             to reducing our carbon footprint!
           </p>
           <p>
-            Throughout 2024 and the future we plan to take steps towords
+            Throughout 2024 and the future we plan to take steps towards
             becoming a sustainable and eco-friendly company
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function CorporateResponsbilities() {
             </p>
             <p>
               There us no doubt that carbon emissions have sharply fallen in the
-              recent year and this has had a instant affect on our planet.
+              recent year and this has had a instant effect on our planet.
             </p>
             <p>
               Clear water in the Venice canals, blue skies over Delhi and wild
@@ -91,7 +91,7 @@ export default function CorporateResponsbilities() {
         <div className={styles.smartlearnerPladgesSection}>
           <section id={styles.smartlearnerPladges}>
             <img src={handShake} alt="hand-Shake" />
-            <h2>SMARTLEARNER PLADGES</h2>
+            <h2>SMARTLEARNER PLEDGES</h2>
             <hr />
           </section>
           <section className={styles.smartlearnerPlListSection}>
@@ -106,7 +106,7 @@ export default function CorporateResponsbilities() {
               <img src={treeImg} alt="tree-Img" />
               <p>
                 By the end of 2024, we will have planted over 200 trees
-                Coventry's community and residental areas. Collaborating and
+                Coventry's community and residential areas. Collaborating and
                 partnering up with multiple schools & colleges to plant trees
                 within the West Midlands and Warwickshire.
               </p>
@@ -114,8 +114,8 @@ export default function CorporateResponsbilities() {
             <div className={styles.smartlearnerPlLists}>
               <img src={BuildingImg} alt="building-Img" />
               <p>
-                Our office will engage focus on becoming more enviornmentally
-                freindly and focus on being sustainable.
+                Our office will engage focus on becoming more environmentally
+                friendly and focus on being sustainable.
               </p>
             </div> 
           </section>
