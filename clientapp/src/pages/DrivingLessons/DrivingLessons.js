@@ -157,7 +157,7 @@ export default function DrivingLessons() {
           <section className={styles.dManualSections}>
             {" "}
             <div className={styles.dManualDiv}>
-              <h2>Manual</h2>
+              <h2>MANUAL</h2>
               <span>
                 {" "}
                 <img src={starImg} alt="starImg" />

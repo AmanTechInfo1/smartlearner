@@ -51,7 +51,6 @@ import { serviceFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -107,112 +106,112 @@ export default function Home() {
 
   return (
     <div className={styles.homepage}>
-      <div className={styles.homepageContainerDiv} >
-      <section className={styles.homeSection}>
-        <div className={styles.homeContent}>
-          <img src={trustPilot} alt="trustPilot" />
-        </div>
-        <div className={styles.homeContainer}>
-          <div className={styles.innerHomeHeading}>
-            <h2>
-              START YOUR
-              <br />
-              <span>DRIVING</span>
-              <br />
-              <span>JOURNEY</span>
-            </h2>
+      <div className={styles.homepageContainerDiv}>
+        <section className={styles.homeSection}>
+          <div className={styles.homeContent}>
+            <img src={trustPilot} alt="trustPilot" />
           </div>
-          <div className={styles.flexImagesHome}>
-            <div className={styles.arrowImgSection}>
-              <img
-                src={arrowImg}
-                className={`${styles.animate__animated} ${styles.animate__bounce}`}
-                alt="arrowImg"
-              />
+          <div className={styles.homeContainer}>
+            <div className={styles.innerHomeHeading}>
+              <h2>START YOUR DRIVING JOURNEY</h2>
             </div>
-            <div className={styles.imagesContainerSectionImg}>
-              <div
-                className={styles.userIdentificationImg}
-                id={styles.flexDetailsDirection}
-              >
-                <div className={styles.imageContainersSectionImg}>
-                  <img
-                    src={userIdentificationImg}
-                    className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
-                    alt="userIdentificationImg"
-                  />
-                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
-                </div>
-                <div className={styles.listContent}>
-                  <ul type="none">
-                    <li>
-                      <span>
-                        <img src={img1} alt="1" />
-                      </span>
-                      <a
-                        href="https://www.gov.uk/apply-first-provisional-driving-licence "
-                        target="_blank"
-                      >
-                        {" "}
-                        Apply for your Provisional License
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+            <div className={styles.flexImagesHome}>
+              <div className={styles.arrowImgSection}>
+                <img
+                  src={arrowImg}
+                  className={`${styles.animate__animated} ${styles.animate__bounce}`}
+                  alt="arrowImg"
+                />
               </div>
-              <div id={styles.flexDetailsDirection}>
-                <div className={styles.imageContainersSectionImg}>
-                  <img
-                    id={styles.userHand}
-                    src={homeUserHand}
-                    className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
-                    alt="homeUserHand"
-                  />
-                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
+              <div className={styles.imagesContainerSectionImg}>
+                <div
+                  className={styles.userIdentificationImg}
+                  id={styles.flexDetailsDirection}
+                >
+                  <div className={styles.imageContainersSectionImg}>
+                    <img
+                      src={userIdentificationImg}
+                      className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
+                      alt="userIdentificationImg"
+                    />
+                    <div className={styles.overlayers}>
+                      <FaLongArrowAltRight />
+                    </div>
+                  </div>
+                  <div className={styles.listContent}>
+                    <ul type="none">
+                      <li>
+                        <span>
+                          <img src={img1} alt="1" />
+                        </span>
+                        <a
+                          href="https://www.gov.uk/apply-first-provisional-driving-licence "
+                          target="_blank"
+                        >
+                          {" "}
+                          Apply for your Provisional License
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <div className={styles.listContent}>
-                  <ul type="none">
-                    <li>
-                      <span>
-                        <img src={img2} alt="2" />
-                      </span>
-                      <Link to="/Theory-Support">
-                        Pass your Theory Test with Smartlearner
-                      </Link>
-                    </li>
-                  </ul>
+                <div id={styles.flexDetailsDirection}>
+                  <div className={styles.imageContainersSectionImg}>
+                    <img
+                      id={styles.userHand}
+                      src={homeUserHand}
+                      className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
+                      alt="homeUserHand"
+                    />
+                    <div className={styles.overlayers}>
+                      <FaLongArrowAltRight />
+                    </div>
+                  </div>
+                  <div className={styles.listContent}>
+                    <ul type="none">
+                      <li>
+                        <span>
+                          <img src={img2} alt="2" />
+                        </span>
+                        <Link to="/Theory-Support">
+                          Pass your Theory Test with Smartlearner
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div id={styles.flexDetailsDirection}>
-                <div className={styles.imageContainersSectionImg}>
-                  <img
-                    id={styles.LplateImg}
-                    src={LplateImg}
-                    className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
-                    alt="LplateImg"
-                  />
-                  <div className={styles.overlayers}><FaLongArrowAltRight/></div>
-                </div>
-                <div className={styles.listContent}>
-                  <ul type="none">
-                    <li>
-                      <span>
-                        <img src={img3} alt="3" />
-                      </span>
-                      <Link to="/Driving-Lessons">
-                        Book Your lessons with Smartlearner
-                      </Link>
-                    </li>
-                  </ul>
+                <div id={styles.flexDetailsDirection}>
+                  <div className={styles.imageContainersSectionImg}>
+                    <img
+                      id={styles.LplateImg}
+                      src={LplateImg}
+                      className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
+                      alt="LplateImg"
+                    />
+                    <div className={styles.overlayers}>
+                      <FaLongArrowAltRight />
+                    </div>
+                  </div>
+                  <div className={styles.listContent}>
+                    <ul type="none">
+                      <li>
+                        <span>
+                          <img src={img3} alt="3" />
+                        </span>
+                        <Link to="/Driving-Lessons">
+                          Book Your lessons with Smartlearner
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* <section className={styles.homeSection}>
+        {/* ////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* <section className={styles.homeSection}>
         <div className={styles.secondSectionContent}>
           <div className={styles.listContent}>
             <ul type="none">
@@ -399,125 +398,125 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-      {/* ////////////////////////////////////////////////////////////////////////////////////// */}
+        {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <section>
-        <div className={styles.carContent}>
-          <div className={styles.carContainer}>
-            <h2>
-              BOOK <br /> NOW WITH <br />
-              SMARTLEARNER
-            </h2>
-          </div>
-          <div className={styles.mainFeatures}>
-            <div className={styles.column}>
-              <h3>
-                Affordable <br />
-                Prices{" "}
-              </h3>
+        <section>
+          <div className={styles.carContent}>
+            <div className={styles.carContainer}>
+              <h2>
+                BOOK <br /> NOW WITH <br />
+                SMARTLEARNER
+              </h2>
+            </div>
+            <div className={styles.mainFeatures}>
+              <div className={styles.column}>
+                <h3>
+                  Affordable <br />
+                  Prices{" "}
+                </h3>
+                <p>
+                  We are always looking at industry prices to ensure our
+                  learners get the best valued lessons
+                </p>
+              </div>
+              <div className={styles.column}>
+                <h3>
+                  Automated SMS <br /> Alerts
+                </h3>
+                <p>
+                  You will receive SMS alerts on your phone to remind you of
+                  your lessons
+                </p>
+              </div>
+              <div className={styles.column}>
+                <h3>
+                  Unique Learning <br />
+                  Plans
+                </h3>
+                <p>
+                  Our Instructors cater to your unique learning styles and
+                  create lesson plans around them
+                </p>
+              </div>
+            </div>
+            <div className={styles.spiralImgContainer}>
+              <img src={spiralImg} alt="spiralImg" />
+            </div>
+            <div className={styles.whyChooseText}>
               <p>
-                We are always looking at industry prices to ensure our learners
-                get the best valued lessons
+                See why more than 10,000 people choose Smartlearner to Pass
+                their Driving Test{" "}
               </p>
             </div>
-            <div className={styles.column}>
-              <h3>
-                Automated SMS <br /> Alerts
-              </h3>
-              <p>
-                You will receive SMS alerts on your phone to remind you of your
-                lessons
-              </p>
-            </div>
-            <div className={styles.column}>
-              <h3>
-                Unique Learning <br />
-                Plans
-              </h3>
-              <p>
-                Our Instructors cater to your unique learning styles and create
-                lesson plans around them
-              </p>
+            <div className={styles.starImgContainer}>
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
             </div>
           </div>
-          <div className={styles.spiralImgContainer}>
-            <img src={spiralImg} alt="spiralImg" />
-          </div>
-          <div className={styles.whyChooseText}>
-            <p>
-              See why more than 10,000 people choose Smartlearner to Pass their
-              Driving Test{" "}
-            </p>
-          </div>
-          <div className={styles.starImgContainer}>
-            <img src={starImg} alt="starImg" />
-            <img src={starImg} alt="starImg" />
-            <img src={starImg} alt="starImg" />
-            <img src={starImg} alt="starImg" />
-            <img src={starImg} alt="starImg" />
-          </div>
-        </div>
-      </section>
-      {/* //////////////carousel section///////////////// */}
+        </section>
+        {/* //////////////carousel section///////////////// */}
 
-      <>
-        <Carousel />
-      </>
-      {/* ////////////////////////Reviews section //////////////////////// */}
-      <Review />
-      {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
-      <section className={styles.imageSliderContainer}>
-        <h2>Pass With Us</h2>
-        <div
-          style={{
-            maxWidth: "1200px",
-            marginRight: "auto",
-            marginLeft: "auto",
-            padding: "4rem 2rem",
-            width: "100%",
-            margin: "2rem auto",
-          }}
-        >
-          <Slider {...settings}>
-            <div className={styles.imgSlider}>
-              <img src={passwithUs1} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              {" "}
-              <img src={passwithUs2} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              {" "}
-              <img src={passwithus3} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              <img src={passwithUs4} alt="" />
-            </div>
-          </Slider>
-        </div>
-      </section>
-      {/* /////////////////////////////////////Our Partners////////////////////////// */}
+        <>
+          <Carousel />
+        </>
+        {/* ////////////////////////Reviews section //////////////////////// */}
+        <Review />
+        {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
+        <section className={styles.imageSliderContainer}>
+          <h2>Pass With Us</h2>
+          <div
+            style={{
+              maxWidth: "1200px",
+              marginRight: "auto",
+              marginLeft: "auto",
+              padding: "4rem 2rem",
+              width: "100%",
+              margin: "2rem auto",
+            }}
+          >
+            <Slider {...settings}>
+              <div className={styles.imgSlider}>
+                <img src={passwithUs1} alt="" />
+              </div>
+              <div className={styles.imgSlider}>
+                {" "}
+                <img src={passwithUs2} alt="" />
+              </div>
+              <div className={styles.imgSlider}>
+                {" "}
+                <img src={passwithus3} alt="" />
+              </div>
+              <div className={styles.imgSlider}>
+                <img src={passwithUs4} alt="" />
+              </div>
+            </Slider>
+          </div>
+        </section>
+        {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
-      <section className={styles.ourPartnersSection}>
-        <h2>Our Partners</h2>
-        <div className={styles.partnerSection}>
-          <img src={OurPartners1} alt="" />
-          <img src={OurPartners123} alt="" />
-          <img src={OurPartners2} alt="" />
-          <img src={OurPartners3} alt="" />
-          <img src={OurPartners4} alt="" />
-          <img src={OurPartners5} alt="" />
+        <section className={styles.ourPartnersSection}>
+          <h2>Our Partners</h2>
+          <div className={styles.partnerSection}>
+            <img src={OurPartners1} alt="" />
+            <img src={OurPartners123} alt="" />
+            <img src={OurPartners2} alt="" />
+            <img src={OurPartners3} alt="" />
+            <img src={OurPartners4} alt="" />
+            <img src={OurPartners5} alt="" />
 
-          <img src={OurPartners7} alt="" />
-          <img src={OurPartners8} alt="" />
-          <img src={OurPartners9} alt="" />
-          <img src={OurPartners10} alt="" />
-          <img src={OurPartners11} alt="" />
-          <img src={OurPartners12} alt="" />
-          <img src={OurPartners13} alt="" />
-        </div>
-      </section>
-    </div>
+            <img src={OurPartners7} alt="" />
+            <img src={OurPartners8} alt="" />
+            <img src={OurPartners9} alt="" />
+            <img src={OurPartners10} alt="" />
+            <img src={OurPartners11} alt="" />
+            <img src={OurPartners12} alt="" />
+            <img src={OurPartners13} alt="" />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
