@@ -50,6 +50,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { serviceFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import HomeDesign from "../components/ui/homeContent/HomeDesign";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -145,7 +146,7 @@ export default function Home() {
                           <img src={img1} alt="1" />
                         </span>
                         <a
-                          href="https://www.gov.uk/apply-first-provisional-driving-licence "
+                          href="https://www.gov.uk/apply-first-provisional-driving-licence"
                           target="_blank"
                         >
                           {" "}
@@ -209,11 +210,13 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* ///////////////////////////////////////////////////////////////// */}
+        <HomeDesign/>
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-        {/* <section className={styles.homeSection}>
+        <section className={styles.homeSection}>
         <div className={styles.secondSectionContent}>
-          <div className={styles.listContent}>
+          {/* <div className={styles.listContent}>
             <ul type="none">
               <li>
                 <span>
@@ -244,7 +247,7 @@ export default function Home() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className={styles.formContent}>
             <div className={styles.formContentHeading}>
               <h2>BOOK ME IN</h2>
@@ -397,7 +400,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
         <section>

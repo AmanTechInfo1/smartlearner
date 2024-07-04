@@ -104,7 +104,7 @@ function IntensiveCorousel() {
                               backgroundColor: "white",
                               display: "flex",
                               justifyContent: "space-between",
-                              maxWidth: "220px",
+                               maxWidth: "250px",
                               width: "100%",
                               borderRadius: "6px",
                               padding: "8px",

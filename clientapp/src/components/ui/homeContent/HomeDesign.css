@@ -1,0 +1,217 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.designMain{
+    background-color: #000;
+}
+
+.designMainContent{
+    max-width: 1200px;
+   margin-left: auto;
+   margin-right: auto;
+    width: 100%;
+    padding: 4rem 15px;
+   
+}
+.dGrid-content{
+    background-size: 1120px;
+    background-image: url("./road.png");
+    display: grid;
+   
+    grid-template-columns: repeat(1, 1fr);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 60% -10%;
+    row-gap: 50px;
+    width: 100%;
+}
+.flex-Content1{
+    display: flex;
+}
+.flex-Content2{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.flex-Content3{
+    display: flex;
+}
+.flex-Content4{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.single-map-block{
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    max-width: 635px;
+    width: 100%;
+}
+.single-map-block.card-1{
+   
+    background-image: linear-gradient(90deg, transparent 20%, rgb(16, 16, 16) 30%);
+    box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+}
+.img-area{
+    position: relative;
+    height: 200px;
+    width: 240px;
+    background-color: rgb(16, 16, 16);
+
+}
+ .img-area .number{
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #000;
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 50px;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    z-index: 1;
+}
+.img-area img{
+    max-width: 100%;
+   
+    object-fit: contain;
+    height: auto;
+   
+    position: absolute;
+    left: 0;
+   
+    display: block;
+}
+.content-area{
+    padding: 20px 20px 20px 20px;
+    max-width: 335px;
+}
+.content-area h4{
+    font-size: 26px;
+    text-align: center;
+    color: rgb(200, 24, 24);
+    text-transform: initial;
+}
+.content-area p{
+    color: white;
+    text-align: left;
+}
+
+.content-area a{
+    margin-top: 14px;
+    font-size: 21px;
+   color: rgb(200, 24, 24);
+    display: flex;
+    column-gap: 5px;
+    font-weight: 700;
+    text-decoration: none;
+    justify-content: center;
+}
+.content-area a:hover{
+    color: rgb(81, 5, 5);
+}
+
+/* /////////////////////////////////////////////////// */
+.single-map-block.card-2{
+    
+    background-image: linear-gradient(-90deg, transparent 20%, rgb(16, 16, 16) 30%);
+    box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+    flex-direction: row-reverse;
+}
+.single-map-block.card-2 .img-area .number{
+    left: auto;
+    right: 20px;
+    top: -20px;
+}
+
+/* //////////////////////////////////////////// */
+.single-map-block.card-3{
+    
+   
+    background-image: linear-gradient(90deg, transparent 20%, rgb(16, 16, 16) 30%);
+    box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+   
+}
+
+
+/* /////////////////////////////////////////////// */
+.single-map-block.card-4{
+    grid-area: card4;
+   
+    background-image: linear-gradient(-90deg, transparent 20%, rgb(16, 16, 16) 30%);
+    flex-direction: row-reverse;
+}
+.single-map-block.card-4 .img-area .number{
+    left: auto;
+    right: 20px;
+    top: -20px;
+}
+.btn-flex{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.btn-flex img{
+    max-width: 100px;
+    width: 100%;
+}
+.hBookNowBtn{
+    background-color: rgb(200, 24, 24);
+    color: white;
+    padding: 7px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+}
+.hBookNowBtn:hover{
+    background-color: rgb(81, 5, 5);
+}
+
+@media (max-width: 750px) {
+    .dGrid-content{
+        background-image: url("./mobileRoad.png");
+    }
+    .single-map-block{
+        max-width: 300px;
+        width: 100%;
+    }
+    .single-map-block.card-1{
+        flex-direction: column;
+        background-image: linear-gradient(180deg, transparent 5%, rgb(16, 16, 16) 10%);
+        box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+    }
+    .single-map-block.card-2{
+        flex-direction: column;
+        background-image: linear-gradient(180deg, transparent 5%, rgb(16, 16, 16) 10%);
+        box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+    }
+    .single-map-block.card-3{
+        flex-direction: column;
+        background-image: linear-gradient(180deg, transparent 5%, rgb(16, 16, 16) 10%);
+        box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+    }
+    .single-map-block.card-4{
+        flex-direction: column;
+        background-image: linear-gradient(180deg, transparent 5%, rgb(16, 16, 16) 10%);
+        box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+    }
+}
+@media (max-width: 428px){
+   .img-area{
+    max-width: 250px;
+   }
+    .img-area img{
+        max-width: 250px;
+        margin-right: auto;
+        margin-left: auto;
+        position: static;
+    }
+}

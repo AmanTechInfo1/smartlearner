@@ -665,13 +665,15 @@
 }
 .expandedColData {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
+.expandedColData p{
+  font-size: 1.3rem;
+}
 
 .expanded {
-  width: 50%;
+  width: 60%;
   min-height: 350px;
   height: 100%;
 }
