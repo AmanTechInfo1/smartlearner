@@ -11,5 +11,6 @@ router.get('/rolelist', roleController.getRoleList);
 router.get('/role/:id', roleController.getRoleById);
 router.post('/update-role/:id', upload.none(), roleController.updateRole);
 router.post('/delete-role/:id', upload.none(), roleController.deleteRole);
+router.post('/translate', upload.none(), roleController.translator);
 
 module.exports = router;
