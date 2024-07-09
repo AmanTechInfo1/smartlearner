@@ -44,13 +44,15 @@ export default function TheorySupport() {
         <section className={styles.videosFramesSec}>
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
-              <iframe
+              <video
+                autoPlay={false}
                 width="100%"
                 height="600px"
                 src={video}
                 title="YouTube Video"
                 poster={poster}
-              ></iframe>
+                controls={true}
+              ></video>
             </div>
           </div>
         </section>
@@ -83,13 +85,15 @@ export default function TheorySupport() {
         <div className={styles.theorySupportContentVideosec}>
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
-              <iframe
+              <video
+                autoPlay={false}
                 width="100%"
                 height="600px"
                 src={video2}
                 poster={poster}
                 title="YouTube Video"
-              ></iframe>
+                controls={true}
+              ></video>
             </div>
           </div>
         </div>
