@@ -12,10 +12,10 @@ export const otherLinks = [
     path: "/Contact-Us",
     display: "Contact",
   },
-  {
-    path: "/",
-    display: "Blog",
-  },
+  // {
+  //   path: "/",
+  //   display: "Blog",
+  // },
   {
     path: "/faqs",
     display: "FAQS",
@@ -25,8 +25,8 @@ export const otherLinks = [
     path: "/",
     display: "T&C",
   },
-  {
-    path: "/login",
-    display: "Login/Register",
-  },
+  // {
+  //   path: "/login",
+  //   display: "Login/Register",
+  // },
 ];

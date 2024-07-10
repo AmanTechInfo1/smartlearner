@@ -163,6 +163,7 @@ article a h4:hover {
 
 .innerSection {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .lowerCol1 {

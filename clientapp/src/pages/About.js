@@ -4,7 +4,7 @@ import AboutPageImg from "../assets/images/image_2021_03_03T15_33_28_479Z-1024x7
 
 export default function About() {
   return (
-    <>
+    <div style={{backgroundColor:'black', color:'white'}}>
       <section className={styles.aboutPageSection} style={{backgroundColor:'black', color:'white'}}>
         <h2>About SmartLearner Driving School</h2>
         <div className={styles.smartLearnerAboutPageContent}>
@@ -57,6 +57,6 @@ export default function About() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

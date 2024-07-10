@@ -90,11 +90,11 @@ export default function ADITrainingPortal() {
           <div className={styles.adiFooterContactInfo}>
             {" "}
             <a  href="tel:+4402475092784">
-              <FaPhone id={styles.adiFaIcons} /> +1 (234) 567-890
+              <FaPhone id={styles.adiFaIcons} /> +4402475092784
             </a>
             <br />
             <a href="mailto:admin@smartlearner.com">
-              <FaEnvelope id={styles.adiFaIcons} /> example@example.com
+              <FaEnvelope id={styles.adiFaIcons} /> admin@smartlearner.com
             </a>
           </div>
           <div className={styles.adiFooterAddressInfo}>

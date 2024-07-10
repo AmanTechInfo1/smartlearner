@@ -50,7 +50,7 @@ export default function TheorySupport() {
                 height="600px"
                 src={video}
                 title="YouTube Video"
-                poster={poster}
+                
                 controls={true}
               ></video>
             </div>
@@ -75,7 +75,7 @@ export default function TheorySupport() {
             <CallBackForm />
           </div>
           <div className={styles.productTab}>
-            <ProductTab />
+            {/* <ProductTab /> */}
           </div>
         </section>
       </section>
@@ -141,10 +141,10 @@ export default function TheorySupport() {
         </div>
       </section>
       {/* //////////////////////////////// */}
-      <section className={styles.drivenBefore}>
+      {/* <section className={styles.drivenBefore}>
         <h2>Search for driving lessons in your area</h2>
         <DrivenForm />
-      </section>
+      </section> */}
       {/* /////////////////////////////////////////////// */}
 
       <section className={styles.dManualSection}>
@@ -181,7 +181,7 @@ export default function TheorySupport() {
       </section>
 
       {/* ////////////////////////////////// */}
-      <section className={styles.nextFormSection}>
+      {/* <section className={styles.nextFormSection}>
         <div className={styles.nextFormContainer}>
           <div className={styles.nextFormDetailsContainer}>
             <div className={styles.nextFormDetailsContainerHeading}>
@@ -213,16 +213,16 @@ export default function TheorySupport() {
             <CallBackForm />
           </div>
         </div>
-      </section>
+      </section> */}
       {/* ///////////////Testimonials////// */}
       <section>
         <Testemonial />
       </section>
 
       {/* ///////////////////////Reviews//////// */}
-      <section>
+      {/* <section>
         <Review />
-      </section>
+      </section> */}
       {/* //////////////faqs//////////////////////// */}
       <section>
         <ShortFaqs />

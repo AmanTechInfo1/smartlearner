@@ -107,7 +107,7 @@ function Footer() {
                 <section className={styles.lowerFooter}>
                     <div className={styles.container}>
                         <div className={styles.innerSection}>
-                            <div className={styles.lowerCol1}>
+                            {/* <div className={styles.lowerCol1}>
                                 <h3>Quick Links</h3>
                                 <div className={styles.quicklinks}>
                                     {quickLinks.map((item, index) => (
@@ -119,7 +119,7 @@ function Footer() {
                                         </Link>
                                     ))}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className={styles.lowerCol2}>
                                 <h3>Other Links</h3>
                                 <div className={styles.quicklinks}>
@@ -161,7 +161,7 @@ function Footer() {
                     </div>
                 </section>
                 <div className={styles.copyRight}>
-                    <p>CopyRight @ 2024 | Managed By Savvytechguru.com</p>
+                    <p>CopyRight @ 2024 | Managed By <a href='https://savvytechguru.com' style={{textDecoration:'none',color:'red'}}>Savvytechguru.com</a></p>
                 </div>
             </div>
         </>

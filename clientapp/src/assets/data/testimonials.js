@@ -1,20 +1,20 @@
 export const testimonialsData = [
     {
       id: 1,
-      name: "KEVIN",
-      comment: "I joined SmartLearner as a Trainee Instructor 6 years ago and never looked back. Never short of work friendly team with a real focus on customer service.",
+      name: "Kevin C ",
+      comment: "⦁	Smart Learner helped my daughter through her driver theory test via online learning classes. She responded really well, and got a pass on her first attempt following her training with Smart Learner. Would highly recommend this service!",
       image: "src/assets/images/kevin-img-150x150.jpg", 
     },
     {
       id: 2,
-      name: "TETE",
-      comment: "I had a bad experience with a national driving school, only interested in taking my payment. So wanted to move to a company that cared about its instructors. SmartLearner certainly has the instructor interest at heart.",
+      name: "Daniel H ",
+      comment: "⦁	After failing my theory I started learning with smart learner driving  school for theory. My teacher she was very calm, friendly and systematic from the beginning. Taught me very nicely, made sure I understood completely before moving on to the next topic. I passed first time and would highly recommend.",
       image: "src/assets/images/pete-img-150x150.jpg", // URL to the image
     },
     {
       id: 3,
-      name: "XAIN",
-      comment: "I passed my test years ago, but hadn’t driven since and needed some refresher lessons. The instructor at smartlearners was very patient and encouraging and explained everything in a way that was easy to understand. Thanks to SmartLearners I’m now back on the road. I couldn’t recommend smartlearners more highly!",
+      name: "Elizabeth S",
+      comment: "I PASSED MY THEORY TEST! I had taken my theory text 4 times and failed on the hazard perception. I took 4 classes with SmartLearner in their office and they showed me all the tips and tricks on how to pass the test. I took my test this morning and passed! Thank you SmartLearner!!!",
       image: "src/assets/images/xain-img-150x150.jpg", // URL to the image
     },
     {

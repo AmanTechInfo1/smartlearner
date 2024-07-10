@@ -151,6 +151,9 @@ width: 100%;
     line-height: 30px;
     padding-top: 2rem;
 }
+.adiFooterAddressInfo p {
+    margin-bottom: 0px;
+}
 .adiPortalFooterSection{
     padding: 2rem 0px;
     background-color: #252525;
