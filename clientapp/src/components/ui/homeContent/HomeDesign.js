@@ -26,7 +26,7 @@ export default function HomeDesign() {
                   A simple guide to getting your first provisional driving
                   licence.
                 </p>
-                <a href="https://www.gov.uk/apply-first-provisional-driving-licence">Learn More &gt;&gt;</a>
+                <a href="https://www.gov.uk/apply-first-provisional-driving-licence"> <button className="hBookNowBtn">Apply Now</button></a>
               </div>
             </section>
             <div className="flexdivs"></div>

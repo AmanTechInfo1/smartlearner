@@ -1,19 +1,19 @@
 import styles from "./css/home.module.css";
-import LplateImg from "..//assets/images/L-Plate.jpg";
-import arrowImg from "../assets/images/arrow-img2.png";
+// import LplateImg from "..//assets/images/L-Plate.jpg";
+// import arrowImg from "../assets/images/arrow-img2.png";
 import trustPilot from "..//assets/images/trustpilot-inline-white.png";
-import homeUserHand from "..//assets/images/userHandImg.png";
-import img1 from "..//assets/images/1 (1).png";
-import img2 from "../assets/images/1 (2).png";
-import img3 from "../assets/images/1 (3).png";
+// import homeUserHand from "..//assets/images/userHandImg.png";
+// import img1 from "..//assets/images/1 (1).png";
+// import img2 from "../assets/images/1 (2).png";
+// import img3 from "../assets/images/1 (3).png";
 import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
-import userIdentificationImg from "../assets/images/userIndentification.png";
+// import userIdentificationImg from "../assets/images/userIndentification.png";
 import hallOfFame from "../assets/images/hallOfFame.png";
 import starImg from "../assets/images/star.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "../components/ui/Carousel";
 import Review from "../components/views/Review";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
@@ -49,7 +49,7 @@ import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { serviceFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
-import { FaLongArrowAltRight } from "react-icons/fa";
+// import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 
 export default function Home() {
@@ -116,7 +116,7 @@ export default function Home() {
             <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
             </div>
-            <div className={styles.flexImagesHome}>
+            {/* <div className={styles.flexImagesHome}>
               <div className={styles.arrowImgSection}>
                 <img
                   src={arrowImg}
@@ -207,7 +207,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
@@ -504,7 +504,7 @@ export default function Home() {
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
             <img src={OurPartners1} alt="" />
-            <img src={OurPartners123} alt="" />
+            {/* <img src={OurPartners123} alt="" /> */}
             <img src={OurPartners2} alt="" />
             <img src={OurPartners3} alt="" />
             <img src={OurPartners4} alt="" />

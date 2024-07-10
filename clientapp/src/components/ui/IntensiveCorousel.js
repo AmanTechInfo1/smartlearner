@@ -112,7 +112,7 @@ function IntensiveCorousel() {
                           >
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
                             <p style={{ marginBottom: "0px" }}>
-                              £-{info.price}
+                              £ {info.price}
                             </p>
                           </span>
                           <div className={styles.btnGroup}>
