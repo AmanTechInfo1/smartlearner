@@ -16,10 +16,10 @@ const TheorySubscription = () => {
     },
     {
       title: "Standard Subscription",
-      price: "$3.99",
+      price: "$5.99",
       dec: "Current Plan",
       features: [
-        "£3.99 for 3 months",
+        "£3.99 for month",
         "Only have access to portal (hazard perception and theory portal)",
         "Can access addons £1.99 each",
       ],
@@ -28,10 +28,10 @@ const TheorySubscription = () => {
     },
     {
       title: "Supported Subscription",
-      price: "$9.9",
+      price: "$30.00",
       dec: "Addon Plan",
       features: [
-        "£9.99/month",
+        "£30.00/6 Months",
         "Access to theory portal as normal",
         "X1 AI video per week",
         "Breakdown of theory test document",

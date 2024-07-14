@@ -18,13 +18,26 @@ import Lplateimg from "../../assets/images/L-Plate.jpg";
 import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-1024x768.jpg";
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
 import { useState, useEffect } from "react";
-import { testimonialsData } from "../../assets/data/testimonials";
-import Testemonial from "../../components/testimonials/Testemonial";
+import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
+
 import Review from "../../components/views/Review";
+
+
 
 export default function DrivingInstructorFranchise() {
  
 
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonialIndex(prevIndex => (prevIndex + 1) % joinOurTeamTestimonials.length);
+    }, 2000); // Change the interval time (in milliseconds) as needed
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentTestimonial = joinOurTeamTestimonials[currentTestimonialIndex];
   return (
     <div className={styles.drivingInstructorTraining} style={{backgroundColor:'black',fontFamily:"'Antonio',sans-serif"}}>
       <section className={styles.imageSection}>
@@ -259,7 +272,23 @@ export default function DrivingInstructorFranchise() {
       </section>
 
       {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
-        <section><Testemonial/></section>
+      <section>
+        <section className={styles.testimonialsContainer}>
+    <div className={styles.tmcontainer}>
+          <h4>Testimonials</h4>
+          <div className={styles.testimonial}>
+            
+            <div className={styles.testimonialContent}><span id={styles.comma1}><p>"</p></span>
+            <p className={styles.testimonialName}>{currentTestimonial.name}</p>
+              <p className={styles.testimonialComment}>{currentTestimonial.comment}</p>
+              <img src={currentTestimonial.image} alt={currentTestimonial.name} className={styles.testimonialImage} />
+              <p className={styles.testimonialimgName}>{currentTestimonial.name}</p><span  id={styles.comma2}><p>"</p></span>
+            </div>
+           
+          </div>
+        </div>
+    </section>
+        </section>
 
       {/* /////////////////// Reviews section /////////////////*/}
       <section>
