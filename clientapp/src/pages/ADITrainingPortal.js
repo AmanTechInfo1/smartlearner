@@ -22,7 +22,7 @@ export default function ADITrainingPortal() {
       <div className={styles.adiPortalPage}>
         <div className={styles.adiPortalPageFirstdiv}></div>
         <div className={styles.adiPortalPageSeconddiv}>
-          <h2>Welcome TO ADI</h2>
+          <h2>Welcome TO PDI</h2>
           <p>
             This road map shows the journey to become a fully qualified driving
             instructor.

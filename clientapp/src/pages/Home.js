@@ -383,7 +383,11 @@ export default function Home() {
               </form>
             </div>
           </div>
-
+{/* //////////////////////////////////////////////////////////////////////////// */}
+<>
+          <Carousel />
+        </>
+{/* ///////////////////////////////////////////////////// */}
           <div className={styles.hallFameContent}>
             <div className={styles.semiCircle}>
               <img src={hallOfFame} alt="hallOfFame" />
@@ -402,7 +406,8 @@ export default function Home() {
         </div>
       </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-
+       
+{/* ////////////////////////////////////////////// */}
         <section>
           <div className={styles.carContent}>
             <div className={styles.carContainer}>
@@ -462,9 +467,7 @@ export default function Home() {
         </section>
         {/* //////////////carousel section///////////////// */}
 
-        <>
-          <Carousel />
-        </>
+      
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}

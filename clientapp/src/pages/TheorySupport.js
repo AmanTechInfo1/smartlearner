@@ -56,8 +56,39 @@ export default function TheorySupport() {
             </div>
           </div>
         </section>
-        {/* ///////////////////////////////// Products //////////////////*/}
+        {/* /////////////////////////////////  //////////////////*/}
+        <section className={styles.dManualSection}>
+        <hr />
+        <Element name="Theory-package-section">
+          <section className={styles.dManualSections} id="automatic-section1">
+            {" "}
+            <div className={styles.dManualDiv}>
+              <h2>THEORY SUPPORT</h2>
+              <span>
+                {" "}
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+                <img src={starImg} alt="starImg" />
+              </span>
+            </div>
+            <div className={styles.manualPList}>
+              <p>
+                Need support on passing your theory test? We offer 1-2-1 in
+                house, from the comfort of your house on Zoom, or if you want to
+                touch up you driving skills, get ahead or have fun, we have a
+                driving simulator in office!
+              </p>
+            </div>
+            <section>
+              <TheorySupportCorousel />
+            </section>
+          </section>
 
+          <hr />
+        </Element>
+      </section>
         {/* //////////CallBack Form section///////////// */}
         <section className={styles.callbackFormSection}>
           <div className={styles.callbackFormContent}>
@@ -80,8 +111,12 @@ export default function TheorySupport() {
         </section>
       </section>
 
+      {/* ///////////////////////////////////////////////////// */}
+     
+
+
       {/* /////////////////////////////////////////////// */}
-      <section className={styles.TSvideosContanierSection}>
+      {/* <section className={styles.TSvideosContanierSection}>
         <div className={styles.theorySupportContentVideosec}>
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
@@ -97,7 +132,7 @@ export default function TheorySupport() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* ////////////////////////// */}
       <section className={styles.whyChooseshortSection}>
         <div className={styles.whyChooseshortSectionContent}>
@@ -147,39 +182,7 @@ export default function TheorySupport() {
       </section> */}
       {/* /////////////////////////////////////////////// */}
 
-      <section className={styles.dManualSection}>
-        <hr />
-        <Element name="Theory-package-section">
-          <section className={styles.dManualSections} id="automatic-section1">
-            {" "}
-            <div className={styles.dManualDiv}>
-              <h2>THEORY SUPPORT</h2>
-              <span>
-                {" "}
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-              </span>
-            </div>
-            <div className={styles.manualPList}>
-              <p>
-                Need support on passing your theory test? We offer 1-2-1 in
-                house, from the comfort of your house on Zoom, or if you want to
-                touch up you driving skills, get ahead or have fun, we have a
-                driving simulator in office!
-              </p>
-            </div>
-            <section>
-              <TheorySupportCorousel />
-            </section>
-          </section>
-
-          <hr />
-        </Element>
-      </section>
-
+   
       {/* ////////////////////////////////// */}
       {/* <section className={styles.nextFormSection}>
         <div className={styles.nextFormContainer}>
