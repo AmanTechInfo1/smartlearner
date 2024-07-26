@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./DrivingLesson.module.css";
-import passImg from "../../assets/images/passImg.png";
+import passImg from "../../assets/images/drivingLessonbanner.jpg";
 import passwithUs1 from "../../assets/images/passwithUs1.jpg";
 import passwithUs2 from "../../assets/images/passwithus2.jpg";
 import passwithus3 from "../../assets/images/passwithus3.jpg";
@@ -68,10 +68,10 @@ export default function DrivingLessons() {
         <section className={styles.DrivingLessonsSectionFront}>
           <div id={styles.dLFrontHeading}>
             <h2>
-              <span> 86% PASS </span>
+              <span> "Learners of today, </span>
               <br />
-              <span>RATE FOR FIRST</span>
-              <br /> <span>TIME PASSES</span>
+              <span>Drivers of tomorrow"</span>
+              <br /> <span>"86% first time pass rate!".</span>
             </h2>
           </div>
           <div id={styles.dLFrontImg}>
@@ -99,7 +99,7 @@ export default function DrivingLessons() {
 
       <div className={styles.whyChooseSml}>
         <div className={styles.whyChooseSmlGHeading}>
-          <h2>Why Choose Smartlearner</h2>
+          <h2>Why Choose Smartlearner?</h2>
         </div>
         <div className={styles.whyChooseSmlListdiv}>
           <section className={styles.whyChooseSmlLists}>
@@ -205,14 +205,12 @@ export default function DrivingLessons() {
             </div>
             <div className={styles.manualPList}>
               <p>
-                Experience the ease and convenience of automatic drivingwith our
-                comprehensive lessons.
-              </p>
-              <p>
-                Our skilled instructors will help you navigate the roadsmoothly,
-                focusing on essential techniques and safe drivingpractices.
-                Whether you're a beginner or looking to refineyour skills, we'll
-                empower you to drive confidently in anysituation.
+                Experience the ease and convenience of automatic driving with
+                our comprehensive lessons. Our skilled instructors will help you
+                navigate the road smoothly, focusing on essential techniques and
+                safe driving practices. Whether you’re a beginner or looking to
+                refine your skills, we’ll empower you to drive confidently in
+                any situation
               </p>
             </div>
             <section>
@@ -241,14 +239,13 @@ export default function DrivingLessons() {
             </div>
             <div className={styles.manualPList}>
               <p>
-                Designed for those eager to learn quickly and efficiently,
-                our immersive programmes offer focused instruction and
-                hands-onexperience to help you become a confident driver in no
-                time.
+                Designed for those eager to learn quickly and efficiently, our
+                immersive programmes offer focused instruction and hands-on
+                experience to help you become a confident driver in no time.
               </p>
               <p>
-                Get behind the wheel and fast-track your path to
-                driving independence with our intensive driving courses
+                Get behind the wheel and fast-track your path to driving
+                independence with our intensive driving courses
               </p>
             </div>
             <section>
@@ -277,15 +274,13 @@ export default function DrivingLessons() {
             </div>
             <div className={styles.manualPList}>
               <p>
-                Pass Plus is a short driving course totalling to six
-                hours,designed to help newly qualified drivers improve their
-                skillsand safety.
+                Designed for those eager to learn quickly and efficiently, our
+                immersive programmes offer focused instruction and hands-on
+                experience to help you become a confident driver in no time.
               </p>
               <p>
-                You can take it any time after you've passed your
-                practicaldriving test but it's usually most beneficial in your
-                first year ofdriving as most road accidents occur within the
-                first 12months of a new driver getting their license.
+                Get behind the wheel and fast-track your path to driving
+                independence with our intensive driving courses.
               </p>
             </div>
             <section>
@@ -293,7 +288,7 @@ export default function DrivingLessons() {
             </section>
           </section>
 
-          <hr />
+          {/* <hr /> */}
         </Element>
       </section>
       {/* /////////////////////////////////////////////// */}

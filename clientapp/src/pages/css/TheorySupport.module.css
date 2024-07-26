@@ -31,7 +31,7 @@
   
 }
 .innerTheorySupportContent {
-  background-image: url(../../assets/images/bricks-bg.jpg);
+  /* background-image: url(../../assets/images/bricks-bg.jpg); */
   position: relative;
   width: 100%;
   background-size: cover;

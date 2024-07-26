@@ -11,7 +11,7 @@ export default function Testemonial() {
     useEffect(() => {
       const interval = setInterval(() => {
         setCurrentTestimonialIndex(prevIndex => (prevIndex + 1) % testimonialsData.length);
-      }, 2000); // Change the interval time (in milliseconds) as needed
+      }, 10000); // Change the interval time (in milliseconds) as needed
   
       return () => clearInterval(interval);
     }, []);

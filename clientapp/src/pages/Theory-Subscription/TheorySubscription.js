@@ -15,7 +15,7 @@ const TheorySubscription = () => {
       view: true
     },
     {
-      title: "Standard Subscription",
+      title: "Unlimited Theory Portal Access £5.99 per month",
       price: "$5.99",
       dec: "Current Plan",
       features: [
@@ -27,7 +27,7 @@ const TheorySubscription = () => {
       view: true
     },
     {
-      title: "Supported Subscription",
+      title: "6 Months Theory Portal Access £30",
       price: "$30.00",
       dec: "Addon Plan",
       features: [

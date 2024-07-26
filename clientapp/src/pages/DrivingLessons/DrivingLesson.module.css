@@ -26,11 +26,11 @@
   gap: 50px;
 }
 #dLFrontHeading h2 {
-  font-size: 8rem;
+  font-size: 4rem;
   font-family: "Antonio", sans-serif;
 }
 #dLFrontImg img {
-  max-width: 300px;
+  max-width: 400px;
   width: 100%;
 }
 #dLFrontHeading h2 span{
@@ -199,7 +199,7 @@ color: white;
 .dManualDiv img{
   max-width: 50px;
   width: 100%;  
-  animation: slideFromLeft 1s ease-out, rotate 2s linear infinite;
+  animation: slideFromLeft 1s ease-out, rotate 2s linear;
 }
 
 .dManualDiv img:nth-child(5) {
@@ -245,4 +245,5 @@ color: white;
 }
 .manualPList p{
   color: white;
+  font-size: 1.5rem;
 }

@@ -86,7 +86,7 @@ export default function DrivingInstructorTraining() {
           </div>
         </section>
         {/* ////////////////////////////Book now section ///////////////////// */}
-        <div className={styles.drivingLessonsCd}>
+        {/* <div className={styles.drivingLessonsCd}>
           <section className={styles.drivinglCall}>
             <a href="tel:+4402475092784" className={styles.drivinglCall}>
               <IoCall id={styles.IconsS} />
@@ -99,13 +99,26 @@ export default function DrivingInstructorTraining() {
               <p>Admin@Smartlearner.com</p>
             </a>
           </section>
-        </div>
+        </div> */}
+        {/* ///////////////////////////////////////////////////// */}
+        <section className={styles.infoTextContainer}>
+          <div className={styles.infoTextHeading}>
+            <h1>
+              Award-Winning <br /> Driving Instructor Training <br /> with{" "}
+              <span>SmartLearner</span>{" "}
+            </h1>
+            <img src={award} alt="award" />
+          </div>
+          <div className={styles.infoTextHeading2}>
+            <h3>Call us today. Full package prices starting from just £999!</h3>
+          </div>
+        </section>
 
         {/* ////////////////How to become a Driving Instructor//////////////// */}
         <section className={styles.instructorContainer}>
           <div className={styles.innerInstructorContainer}>
             <h4>
-              Become an Driving <br /> Instructor
+              Become a Driving <br /> Instructor
             </h4>
 
             <div className={styles.detailsContainer}>
@@ -194,20 +207,9 @@ export default function DrivingInstructorTraining() {
         </section>
         {/* /////////////////////////////////////Info Text ///////////////////////////////// */}
 
-        <section className={styles.infoTextContainer}>
-          <div className={styles.infoTextHeading}>
-            <h1>
-              Award-Winning <br /> Driving Instructor Training <br /> with{" "}
-              <span>SmartLearner</span>{" "}
-            </h1>
-            <img src={award} alt="award" />
-          </div>
-          <div className={styles.infoTextHeading2}>
-            <h3>Call us today. Full package prices starting from just £999!</h3>
-          </div>
-        </section>
+        
         {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
-        <section>
+        {/* <section>
         <section className={styles.testimonialsContainer}>
     <div className={styles.tmcontainer}>
           <h4>Testimonials</h4>
@@ -226,10 +228,10 @@ export default function DrivingInstructorTraining() {
         </section>
 
         {/* /////////////////// Reviews section /////////////////*/}
-        <section>
+        {/* <section>
           {" "}
           <Review />
-        </section>
+        </section>  */}
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ import passwithus3 from "../assets/images/passwithus3.jpg";
 import passwithUs4 from "../assets/images/passwithus4.jpg";
 
 import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
-import OurPartners123 from "../assets/images/smartlearnerSupportImg.png";
+
 import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
 import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
 import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
@@ -250,7 +250,7 @@ export default function Home() {
           </div> */}
           <div className={styles.formContent}>
             <div className={styles.formContentHeading}>
-              <h2>BOOK ME IN</h2>
+              <h2>REQUEST A CALL BACK </h2>
               <p>Contact Form</p>
             </div>
 
@@ -388,21 +388,7 @@ export default function Home() {
           <Carousel />
         </>
 {/* ///////////////////////////////////////////////////// */}
-          <div className={styles.hallFameContent}>
-            <div className={styles.semiCircle}>
-              <img src={hallOfFame} alt="hallOfFame" />
-            </div>
-            <div className={styles.trophyImg}>
-              <img src={tropfyImg} alt="tropfyImg" />
-            </div>
-
-            <div className={styles.trophyFrame}>
-              <img src={hallOfFame1} alt="hallOfFame1" />
-              <img src={hallOfFame2} alt="hallOfFame2" />
-              <img src={hallOfFame3} alt="hallOfFame3" />
-              <img src={hallOfFame4} alt="hallOfFame4" />
-            </div>
-          </div>
+         
         </div>
       </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
@@ -452,8 +438,7 @@ export default function Home() {
             </div>
             <div className={styles.whyChooseText}>
               <p>
-                See why more than 10,000 people choose Smartlearner to Pass
-                their Driving Test{" "}
+              See why people choose SmartLearner to <span style={{color:'green'}}>PASS</span> their driving test.{" "}
               </p>
             </div>
             <div className={styles.starImgContainer}>
@@ -466,12 +451,28 @@ export default function Home() {
           </div>
         </section>
         {/* //////////////carousel section///////////////// */}
+        <section className={styles.homeSection}>
+        <div className={styles.secondSectionContent}>
+        
+        <div className={styles.hallFameContent}>
+            <div className={styles.semiCircle}>
+              <img src={hallOfFame} alt="hallOfFame" />
+            </div>
+            <div className={styles.trophyImg}>
+              <img src={tropfyImg} alt="tropfyImg" />
+            </div>
 
-      
-        {/* ////////////////////////Reviews section //////////////////////// */}
-        <Review />
-        {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
-        <section className={styles.imageSliderContainer}>
+            <div className={styles.trophyFrame}>
+              <img src={hallOfFame1} alt="hallOfFame1" />
+              <img src={hallOfFame2} alt="hallOfFame2" />
+              <img src={hallOfFame3} alt="hallOfFame3" />
+              <img src={hallOfFame4} alt="hallOfFame4" />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* //////////////////////////////////////////// */}
+      <section className={styles.imageSliderContainer}>
           <h2>Pass With Us</h2>
           <div
             style={{
@@ -501,13 +502,17 @@ export default function Home() {
             </Slider>
           </div>
         </section>
+        {/* ////////////////////////Reviews section //////////////////////// */}
+        <Review />
+        {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
+       
         {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
         <section className={styles.ourPartnersSection}>
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
             <img src={OurPartners1} alt="" />
-            {/* <img src={OurPartners123} alt="" /> */}
+          
             <img src={OurPartners2} alt="" />
             <img src={OurPartners3} alt="" />
             <img src={OurPartners4} alt="" />

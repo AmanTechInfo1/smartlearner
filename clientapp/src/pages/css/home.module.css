@@ -323,7 +323,7 @@
   text-align: center;
 }
 .formContentHeading h2 {
-  font-size: 3.9rem;
+  font-size: 2.8rem;
   font-weight: 900;
   color: #ed2025;
 }
@@ -423,7 +423,7 @@
   padding: 0px 1rem;
 }
 .carContainer {
-  background-image: url("../../assets/images/smokecar.png");
+  background-image: url("../../assets/images/bgcarImg2.png");
   text-align: center;
   position: relative;
   background-size: contain;

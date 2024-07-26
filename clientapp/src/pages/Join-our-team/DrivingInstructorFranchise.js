@@ -49,8 +49,8 @@ export default function DrivingInstructorFranchise() {
 
             <div className={styles.heading2}>
               <h2>
-                Join the Regional
-                <br /> Driving School <br /> of the Year!
+              Join our driving
+                <br /> school franchise
               </h2>
             </div>
             <div className={styles.btn}>
@@ -148,7 +148,7 @@ export default function DrivingInstructorFranchise() {
               </span>
               <p>
                 Most of our customers prepay. This means less haggling over
-                prices or no-shows
+                prices or no-shows.
               </p>
             </li>
             <li id={styles.benefitsList}>
@@ -272,7 +272,7 @@ export default function DrivingInstructorFranchise() {
       </section>
 
       {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
-      <section>
+      {/* <section>
         <section className={styles.testimonialsContainer}>
     <div className={styles.tmcontainer}>
           <h4>Testimonials</h4>
@@ -288,12 +288,12 @@ export default function DrivingInstructorFranchise() {
           </div>
         </div>
     </section>
-        </section>
+        </section> */}
 
       {/* /////////////////// Reviews section /////////////////*/}
-      <section>
+      {/* <section>
         <Review/>
-      </section>
+      </section> */}
       
     </div>
   );

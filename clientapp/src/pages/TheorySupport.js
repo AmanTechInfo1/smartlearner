@@ -50,7 +50,7 @@ export default function TheorySupport() {
                 height="600px"
                 src={video}
                 title="YouTube Video"
-                
+                poster={poster}
                 controls={true}
               ></video>
             </div>
@@ -134,7 +134,7 @@ export default function TheorySupport() {
         </div>
       </section> */}
       {/* ////////////////////////// */}
-      <section className={styles.whyChooseshortSection}>
+      {/* <section className={styles.whyChooseshortSection}>
         <div className={styles.whyChooseshortSectionContent}>
           <div className={styles.whyChooseshortSectionImage}>
             <img src={chooseUsImg} alt="Image" />
@@ -174,7 +174,7 @@ export default function TheorySupport() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* //////////////////////////////// */}
       {/* <section className={styles.drivenBefore}>
         <h2>Search for driving lessons in your area</h2>
@@ -227,9 +227,9 @@ export default function TheorySupport() {
         <Review />
       </section> */}
       {/* //////////////faqs//////////////////////// */}
-      <section>
+      {/* <section>
         <ShortFaqs />
-      </section>
+      </section> */}
     </div>
   );
 }
