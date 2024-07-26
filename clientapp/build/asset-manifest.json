@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.64ea6e44.css",
-    "main.js": "/static/js/main.4e4913d0.js",
+    "main.css": "/static/css/main.c124f178.css",
+    "main.js": "/static/js/main.1d3bfaf6.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -75,7 +75,6 @@
     "static/media/car-red.png": "/static/media/car-red.ce075202d3605329ef4e.png",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
     "static/media/passwithus3.jpg": "/static/media/passwithus3.31a76daccc234a931d6c.jpg",
-    "static/media/smokecar.png": "/static/media/smokecar.d91d2e413cbbf4715be3.png",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
     "static/media/hand-plant.png": "/static/media/hand-plant.5a44f35675b1afd13386.png",
     "static/media/Intensive-Driving-Course-1024x768.jpg": "/static/media/Intensive-Driving-Course-1024x768.13b9760aee7883e2ee4e.jpg",
@@ -85,12 +84,14 @@
     "static/media/generalTips.jpg": "/static/media/generalTips.e4b84c62602a9d42ecae.jpg",
     "static/media/passwithUs1.jpg": "/static/media/passwithUs1.8cace234d6b68bd30fd6.jpg",
     "static/media/pupilImg23423.jpg": "/static/media/pupilImg23423.7bf32c9e4dd2ac3c681b.jpg",
+    "static/media/drivingLessonbanner.jpg": "/static/media/drivingLessonbanner.5cab6fa027d11d7a3005.jpg",
     "static/media/levelCrossing.jpg": "/static/media/levelCrossing.8c9a96b6056c9a128c60.jpg",
     "static/media/halloffame1.png": "/static/media/halloffame1.dcb8434af48b54d2ec05.png",
     "static/media/trophy-Icon.png": "/static/media/trophy-Icon.441dc128bf02e0522fb5.png",
     "static/media/passwithus2.jpg": "/static/media/passwithus2.b391991b9cd59f2a3085.jpg",
     "static/media/Roof-Racks-20-1024x683.jpg": "/static/media/Roof-Racks-20-1024x683.5ed7f4d4fd0a33018b8c.jpg",
     "static/media/enviromentalIssueImg.jpg": "/static/media/enviromentalIssueImg.d7adf1b987d92f686003.jpg",
+    "static/media/bgcarImg2.png": "/static/media/bgcarImg2.f023656e36812c1296ef.png",
     "static/media/certificateOfMotor.jpg": "/static/media/certificateOfMotor.3e2039ccf374e0c33e62.jpg",
     "static/media/motorbikes-cyclist.jpg": "/static/media/motorbikes-cyclist.1b4229eebebb79618375.jpg",
     "static/media/parkingImg.jpg": "/static/media/parkingImg.9f6f054f150842dc5bbd.jpg",
@@ -215,9 +216,7 @@
     "static/media/green-ruler.png": "/static/media/green-ruler.11b1cf62a80951b4c68d.png",
     "static/media/adapted teaching.png": "/static/media/adapted teaching.dea8841269d05fbb9988.png",
     "static/media/goal-skills.png": "/static/media/goal-skills.2dfc091a4b06ce1ec012.png",
-    "static/media/passImg.png": "/static/media/passImg.e5d080e0eb967b165f69.png",
     "static/media/trreeCouncil.jpg": "/static/media/trreeCouncil.f3cfb1ae52e4be39f3bb.jpg",
-    "static/media/bricks-bg.jpg": "/static/media/bricks-bg.4dee09de146becbe74b1.jpg",
     "static/media/list-Docs.png": "/static/media/list-Docs.749f10f081ee73fc852a.png",
     "static/media/ClearTimeImg.png": "/static/media/ClearTimeImg.2aea0548897a57e4644b.png",
     "static/media/apropriateTime.png": "/static/media/apropriateTime.2aea0548897a57e4644b.png",
@@ -231,15 +230,15 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.64ea6e44.css.map": "/static/css/main.64ea6e44.css.map",
-    "main.4e4913d0.js.map": "/static/js/main.4e4913d0.js.map",
+    "main.c124f178.css.map": "/static/css/main.c124f178.css.map",
+    "main.1d3bfaf6.js.map": "/static/js/main.1d3bfaf6.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.64ea6e44.css",
-    "static/js/main.4e4913d0.js"
+    "static/css/main.c124f178.css",
+    "static/js/main.1d3bfaf6.js"
   ]
 }
