@@ -530,7 +530,7 @@
 .starImgContainer img {
   max-width: 150px;
   width: 100%;
-  animation: slideFromLeft 1s ease-out, rotate 2s linear infinite;
+  animation: slideFromLeft 1s ease-out, rotate 2s linear ;
 }
 
 .starImgContainer img:nth-child(5) {

@@ -434,7 +434,8 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.spiralImgContainer}>
-              <img src={spiralImg} alt="spiralImg" />
+              {/* <img src={spiralImg} alt="spiralImg" /> */}
+              <hr style={{opacity:'1',border:'2px solid silver'}}/>
             </div>
             <div className={styles.whyChooseText}>
               <p>

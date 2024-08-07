@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './css/review.module.css';
-import { FaFacebook, FaInstagram, FaSnapchat, FaTwitter, FaYoutube, } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaSnapchat,  FaYoutube, } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function Review() {
     return (
@@ -40,7 +41,7 @@ function Review() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaTwitter id={styles.FollowIcons} />
+                                <FaXTwitter id={styles.FollowIcons} />
                             </a>
                             <a
                                 href="https://www.youtube.com/channel/UCWqlTyiFfPNqgKeffuo68rghttp"

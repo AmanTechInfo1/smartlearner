@@ -242,8 +242,7 @@ export default function DrivingLessons() {
                 Designed for those eager to learn quickly and efficiently, our
                 immersive programmes offer focused instruction and hands-on
                 experience to help you become a confident driver in no time.
-              </p>
-              <p>
+              
                 Get behind the wheel and fast-track your path to driving
                 independence with our intensive driving courses
               </p>

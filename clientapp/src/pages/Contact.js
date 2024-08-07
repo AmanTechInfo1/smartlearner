@@ -1,6 +1,7 @@
 import { FaBuilding } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import { FaPhoneAlt, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaPhoneAlt, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import React from "react";
 import styles from "./css/ContactUs.module.css"; // Import CSS module
 import { Controller, useForm } from "react-hook-form";
@@ -90,7 +91,7 @@ export default function ContactUs() {
               </li>
               <li>
                 <a href="https://twitter.com/smartlearner">
-                  <FaTwitter id={styles.socialIconContactUs} />
+                  <FaXTwitter id={styles.socialIconContactUs} />
                 </a>
               </li>
             </ul>

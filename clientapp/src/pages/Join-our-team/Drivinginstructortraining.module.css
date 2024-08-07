@@ -93,7 +93,7 @@
     opacity: 0;
     transform: translateY(100%);
     animation: slideUp 7s forwards;
-    animation-iteration-count: infinite; 
+    
   }
   
   .column:nth-child(1) {
