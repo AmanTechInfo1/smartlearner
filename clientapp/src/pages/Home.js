@@ -48,7 +48,7 @@ import { enquiryData } from "../redux/features/enquirySlice";
 // import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
-
+import frontImg from "../assets/images/frontImg.jpeg"
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -81,9 +81,10 @@ export default function Home() {
             <img src={trustPilot} alt="trustPilot" />
           </div>
           <div className={styles.homeContainer}>
-            <div className={styles.innerHomeHeading}>
+            <img src={frontImg} alt=""/>
+            {/* <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
-            </div>
+            </div> */}
             {/* <div className={styles.flexImagesHome}>
               <div className={styles.arrowImgSection}>
                 <img
@@ -179,7 +180,7 @@ export default function Home() {
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
-        <HomeDesign />
+        {/* <HomeDesign /> */}
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>

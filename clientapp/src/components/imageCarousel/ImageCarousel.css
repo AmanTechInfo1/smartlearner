@@ -2,9 +2,11 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 .slide, .slide img{
+    max-width: 400px;
     width: 100%;
-    height: 350px;
+   
     aspect-ratio: 1/1;
+    object-fit: contain;
 }
 .slide{
     transition: .5s;
