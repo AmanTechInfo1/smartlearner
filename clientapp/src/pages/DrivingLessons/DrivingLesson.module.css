@@ -116,7 +116,8 @@
 }
 .whyChooseSmlListdiv{
   padding: 1rem 0px;
-  background-color: rgb(220, 220, 220);
+  /* background-color: rgb(220, 220, 220); */
+  color: white;
 }
 .whyChooseSmlLists{
   max-width: 1000px;

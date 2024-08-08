@@ -86,7 +86,13 @@ function Header() {
             </ul>
           </li>
           <li id={styles.dropDownNav}>
-            Join Our Team
+          <NavLink
+                to="/Driving-Instructor-Training"
+                className={styles.activeLink}
+              >
+                <li>Join Our Team</li>
+              </NavLink>
+          
             <ul className={styles.dropdownContent}>
               <NavLink
                 to="/Driving-Instructor-Training"

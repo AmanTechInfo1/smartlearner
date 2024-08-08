@@ -2,25 +2,22 @@
 import styles from "./DrivingInstructorFranchise.module.css";
 import { GoPlay } from "react-icons/go";
 import {
-  FaUserTie,
-  FaRegMoneyBillAlt,
-  FaBusinessTime,
-  FaUserClock,
+ 
   FaCheckCircle,
   FaHandsHelping,
-  FaFacebook,
-  FaInstagram,
-  FaSnapchat,
-  FaTwitter,
-  FaYoutube,
+  
 } from "react-icons/fa";
+import moneyIcon from "../../assets/images/money-icon.png";
+import userTie from "../../assets/images/instructor-Icon.png";
+import workinghour from "../../assets/images/hour-Icon.png";
+import ladyUser from "../../assets/images/lady-working-icon.png";
 import Lplateimg from "../../assets/images/L-Plate.jpg";
 import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-1024x768.jpg";
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
 import { useState, useEffect } from "react";
 import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
 
-import Review from "../../components/views/Review";
+
 
 
 
@@ -77,39 +74,42 @@ export default function DrivingInstructorFranchise() {
           School of the Year’ in 2021 and 2022!
         </p>
         <div className={styles.mainFeatures}>
-          <div className={styles.column}>
-            <span>
-              <FaRegMoneyBillAlt id={styles.featuresIcon} />
-            </span>
+            <div className={styles.column}>
+              
+              <h3>Earn Over £30,000</h3>
+              <span>
+                <img src={moneyIcon} alt="money-Icon" />
+              </span>
 
-            <h3>Earn Over £30,000</h3>
-            <p>An average full-time instructor will earn over £30K per year!</p>
-          </div>
-          <div className={styles.column}>
-            <span>
-              <FaUserTie id={styles.featuresIcon} />
-            </span>
+              <p>
+                An average full-time instructor will earn over £30K per year!
+              </p>
+            </div>
+            <div className={styles.column}>
+              <h3>Be Your Own Boss</h3>
+              <span>
+                <img src={userTie} alt="user-Tie" />
+              </span>
 
-            <h3>Be Your Own Boss</h3>
-            <p>When you are an instructor you`re the boss.</p>
-          </div>
-          <div className={styles.column}>
-            <span>
-              <FaBusinessTime id={styles.featuresIcon} />
-            </span>
+              <p>When you are an instructor you`re the boss.</p>
+            </div>
+            <div className={styles.column} >
+              <h3>Flexible Working Hours</h3>
+              <span>
+                <img src={workinghour} alt="Hour-Icon" />
+              </span>
 
-            <h3>Flexible Working Hours</h3>
-            <p>Work hours that suit you and your family.</p>
-          </div>
-          <div className={styles.column}>
-            <span>
-              <FaUserClock id={styles.featuresIcon} />
-            </span>
+              <p>Work hours that suit you and your family.</p>
+            </div>
+            <div className={styles.column}>
+              <h3>Full Office Support</h3>
+              <span>
+                <img src={ladyUser} alt="Lady-User" />
+              </span>
 
-            <h3>Full Office Support</h3>
-            <p>We offer full office support to help ensure you succeed.</p>
+              <p>We offer full office support to help ensure you succeed.</p>
+            </div>
           </div>
-        </div>
       </section>
       {/* //////////////////////////////////// benefits section //////////////////////////////////////// */}
       <section className={styles.benefitsSection}>

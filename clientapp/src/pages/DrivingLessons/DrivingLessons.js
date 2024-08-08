@@ -42,7 +42,6 @@ export default function DrivingLessons() {
     autoplaySpeed: 2000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    
   };
 
   return (
@@ -87,18 +86,14 @@ export default function DrivingLessons() {
         <div className={styles.whyChooseSmlListdiv}>
           <section className={styles.whyChooseSmlLists}>
             <p>
-              We are the highest-rated and fast-growing independent driving
-              school in the West Midlands
+              We are the highest-rate and fast- growing independent driving
+              school in the West Midlands, We offer everything you could ever
+              need to get yourself on the road.
             </p>
             <p>
-              We offer everything you could ever need to get yourself on the
-              road
+              We take into consideration your availability, requirements, lesson
+              location, and anything you may require
             </p>
-            <p>
-              We take into consideration your availability, requirements lesson
-              location, and anything else you may require
-            </p>
-            <p>We then choose the perfect instructor for you</p>
           </section>
         </div>
       </div>
@@ -115,7 +110,7 @@ export default function DrivingLessons() {
             margin: "2rem auto",
           }}
         >
-          <ImagesCarousel/>
+          <ImagesCarousel />
         </div>
         <hr></hr>
       </section>
@@ -209,9 +204,8 @@ export default function DrivingLessons() {
               <p>
                 Designed for those eager to learn quickly and efficiently, our
                 immersive programmes offer focused instruction and hands-on
-                experience to help you become a confident driver in no time.
-              
-                Get behind the wheel and fast-track your path to driving
+                experience to help you become a confident driver in no time. Get
+                behind the wheel and fast-track your path to driving
                 independence with our intensive driving courses
               </p>
             </div>
