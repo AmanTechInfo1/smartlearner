@@ -851,9 +851,8 @@
 }
 
 .imgSlider img{
-  max-width: 300px;
-  aspect-ratio: 1/1;
-  object-fit: contain;
+ 
+  height: 450px;
   width: 100%;
 }
 /* .imageSliderContainer{

@@ -18,6 +18,7 @@ import AutomaticCorousel from "../../components/ui/AutomaticCarousel";
 import PassPlusCorousel from "../../components/ui/PassPlusCarousel";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
+import ImagesCarousel from "../../components/imageCarousel/ImagesCarousel";
 
 export default function DrivingLessons() {
   const { section } = useParams();
@@ -41,25 +42,7 @@ export default function DrivingLessons() {
     autoplaySpeed: 2000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+    
   };
 
   return (
@@ -132,22 +115,7 @@ export default function DrivingLessons() {
             margin: "2rem auto",
           }}
         >
-          <Slider {...settings}>
-            <div className={styles.imgSlider}>
-              <img src={passwithUs1} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              {" "}
-              <img src={passwithUs2} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              {" "}
-              <img src={passwithus3} alt="" />
-            </div>
-            <div className={styles.imgSlider}>
-              <img src={passwithUs4} alt="" />
-            </div>
-          </Slider>
+          <ImagesCarousel/>
         </div>
         <hr></hr>
       </section>

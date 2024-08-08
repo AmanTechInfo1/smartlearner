@@ -18,10 +18,7 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
-import passwithUs1 from "../assets/images/passwithUs1.jpg";
-import passwithUs2 from "../assets/images/passwithus2.jpg";
-import passwithus3 from "../assets/images/passwithus3.jpg";
-import passwithUs4 from "../assets/images/passwithus4.jpg";
+
 
 import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
 
@@ -40,8 +37,7 @@ import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Serv
 
 // //////////////////
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 ///////////////////
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -51,6 +47,7 @@ import { serviceFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
 // import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
+import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -75,35 +72,6 @@ export default function Home() {
     dispatch(enquiryData({ requestData: data, reset }));
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 2000,
-
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
 
   return (
     <div className={styles.homepage}>
@@ -211,12 +179,12 @@ export default function Home() {
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
-        <HomeDesign/>
+        <HomeDesign />
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
-        <div className={styles.secondSectionContent}>
-          {/* <div className={styles.listContent}>
+          <div className={styles.secondSectionContent}>
+            {/* <div className={styles.listContent}>
             <ul type="none">
               <li>
                 <span>
@@ -248,152 +216,151 @@ export default function Home() {
               </li>
             </ul>
           </div> */}
-          <div className={styles.formContent}>
-            <div className={styles.formContentHeading}>
-              <h2>REQUEST A CALL BACK </h2>
-              <p>Contact Form</p>
+            <div className={styles.formContent}>
+              <div className={styles.formContentHeading}>
+                <h2>REQUEST A CALL BACK </h2>
+                <p>Contact Form</p>
+              </div>
+
+              <div className={styles.formContainer}>
+                <form onSubmit={handleSubmit(handleServiceForm)}>
+                  <div className={styles.homeFormGroup}>
+                    <label htmlFor="service">SERVICES</label>
+
+                    <Controller
+                      name="service"
+                      control={control}
+                      render={({ field }) => (
+                        <select
+                          {...field}
+                          className={styles.homeForminputField}
+                          required
+                        >
+                          <option disabled value="">
+                            Select a service
+                          </option>
+                          <option value="service1">Driving lessons</option>
+                          <option value="service2">
+                            Theory support / simulator
+                          </option>
+                          <option value="service3">Instructor</option>
+                        </select>
+                      )}
+                      defaultValue=""
+                    />
+                  </div>{" "}
+                  {errors?.postcode && (
+                    <small style={{ color: "red" }}>
+                      {errors?.service?.message}
+                    </small>
+                  )}
+                  <div className={styles.homeFormGroup}>
+                    <label htmlFor="name">NAME</label>
+
+                    <Controller
+                      name="name"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="text"
+                          value={value}
+                          className={styles.homeForminputField}
+                          onChange={onChange}
+                          placeholder="Name"
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </div>
+                  {errors?.postcode && (
+                    <small style={{ color: "red" }}>
+                      {errors?.name?.message}
+                    </small>
+                  )}
+                  <div className={styles.homeFormGroup}>
+                    <label htmlFor="email">EMAIL</label>
+                    <Controller
+                      name="email"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          type="email"
+                          className={styles.homeForminputField}
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Email Address"
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </div>
+                  {errors?.postcode && (
+                    <small style={{ color: "red" }}>
+                      {errors?.email?.message}
+                    </small>
+                  )}
+                  <div className={styles.homeFormGroup}>
+                    <label htmlFor="message">MESSAGE</label>
+                    <Controller
+                      name="message"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <textarea
+                          type="message"
+                          value={value}
+                          onChange={onChange}
+                          placeholder="Message"
+                          className={styles.homeForminputField}
+                          required
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </div>
+                  {errors?.postcode && (
+                    <small style={{ color: "red" }}>
+                      {errors?.message?.message}
+                    </small>
+                  )}
+                  <div className={styles.homeFormGroup}>
+                    <label htmlFor="postcode">POSTCODE</label>
+                    <Controller
+                      name="postcode"
+                      control={control}
+                      render={({ field: { value, onChange } }) => (
+                        <input
+                          value={value}
+                          onChange={onChange}
+                          type="text"
+                          placeholder="Postcode"
+                          className={styles.homeForminputField}
+                          required
+                        />
+                      )}
+                      defaultValue={""}
+                    />
+                  </div>
+                  {errors?.postcode && (
+                    <small style={{ color: "red" }}>
+                      {errors?.postcode?.message}
+                    </small>
+                  )}
+                  <button type="submit" className={styles.homeFormSubmitButton}>
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
-
-            <div className={styles.formContainer}>
-              <form onSubmit={handleSubmit(handleServiceForm)}>
-                <div className={styles.homeFormGroup}>
-                  <label htmlFor="service">SERVICES</label>
-
-                  <Controller
-                    name="service"
-                    control={control}
-                    render={({ field }) => (
-                      <select
-                        {...field}
-                        className={styles.homeForminputField}
-                        required
-                      >
-                        <option disabled value="">
-                          Select a service
-                        </option>
-                        <option value="service1">Driving lessons</option>
-                        <option value="service2">
-                          Theory support / simulator
-                        </option>
-                        <option value="service3">Instructor</option>
-                      </select>
-                    )}
-                    defaultValue=""
-                  />
-                </div>{" "}
-                {errors?.postcode && (
-                  <small style={{ color: "red" }}>
-                    {errors?.service?.message}
-                  </small>
-                )}
-                <div className={styles.homeFormGroup}>
-                  <label htmlFor="name">NAME</label>
-
-                  <Controller
-                    name="name"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="text"
-                        value={value}
-                        className={styles.homeForminputField}
-                        onChange={onChange}
-                        placeholder="Name"
-                      />
-                    )}
-                    defaultValue={""}
-                  />
-                </div>
-                {errors?.postcode && (
-                  <small style={{ color: "red" }}>
-                    {errors?.name?.message}
-                  </small>
-                )}
-                <div className={styles.homeFormGroup}>
-                  <label htmlFor="email">EMAIL</label>
-                  <Controller
-                    name="email"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="email"
-                        className={styles.homeForminputField}
-                        value={value}
-                        onChange={onChange}
-                        placeholder="Email Address"
-                      />
-                    )}
-                    defaultValue={""}
-                  />
-                </div>
-                {errors?.postcode && (
-                  <small style={{ color: "red" }}>
-                    {errors?.email?.message}
-                  </small>
-                )}
-                <div className={styles.homeFormGroup}>
-                  <label htmlFor="message">MESSAGE</label>
-                  <Controller
-                    name="message"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <textarea
-                        type="message"
-                        value={value}
-                        onChange={onChange}
-                        placeholder="Message"
-                        className={styles.homeForminputField}
-                        required
-                      />
-                    )}
-                    defaultValue={""}
-                  />
-                </div>
-                {errors?.postcode && (
-                  <small style={{ color: "red" }}>
-                    {errors?.message?.message}
-                  </small>
-                )}
-                <div className={styles.homeFormGroup}>
-                  <label htmlFor="postcode">POSTCODE</label>
-                  <Controller
-                    name="postcode"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        value={value}
-                        onChange={onChange}
-                        type="text"
-                        placeholder="Postcode"
-                        className={styles.homeForminputField}
-                        required
-                      />
-                    )}
-                    defaultValue={""}
-                  />
-                </div>
-                {errors?.postcode && (
-                  <small style={{ color: "red" }}>
-                    {errors?.postcode?.message}
-                  </small>
-                )}
-                <button type="submit" className={styles.homeFormSubmitButton}>
-                  Submit
-                </button>
-              </form>
-            </div>
+            {/* //////////////////////////////////////////////////////////////////////////// */}
+            <>
+              <Carousel />
+            </>
+            {/* ///////////////////////////////////////////////////// */}
           </div>
-{/* //////////////////////////////////////////////////////////////////////////// */}
-<>
-          <Carousel />
-        </>
-{/* ///////////////////////////////////////////////////// */}
-         
-        </div>
-      </section>
+        </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
-       
-{/* ////////////////////////////////////////////// */}
+
+        {/* ////////////////////////////////////////////// */}
         <section>
           <div className={styles.carContent}>
             <div className={styles.carContainer}>
@@ -435,11 +402,12 @@ export default function Home() {
             </div>
             <div className={styles.spiralImgContainer}>
               {/* <img src={spiralImg} alt="spiralImg" /> */}
-              <hr style={{opacity:'1',border:'2px solid silver'}}/>
+              <hr style={{ opacity: "1", border: "2px solid silver" }} />
             </div>
             <div className={styles.whyChooseText}>
               <p>
-              See why people choose SmartLearner to <span style={{color:'green'}}>PASS</span> their driving test.{" "}
+                See why people choose SmartLearner to{" "}
+                <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
               </p>
             </div>
             <div className={styles.starImgContainer}>
@@ -453,31 +421,30 @@ export default function Home() {
         </section>
         {/* //////////////carousel section///////////////// */}
         <section className={styles.homeSection}>
-        <div className={styles.secondSectionContent}>
-        
-        <div className={styles.hallFameContent}>
-            <div className={styles.semiCircle}>
-              <img src={hallOfFame} alt="hallOfFame" />
-            </div>
-            <div className={styles.trophyImg}>
-              <img src={tropfyImg} alt="tropfyImg" />
-            </div>
+          <div className={styles.secondSectionContent}>
+            <div className={styles.hallFameContent}>
+              <div className={styles.semiCircle}>
+                <img src={hallOfFame} alt="hallOfFame" />
+              </div>
+              <div className={styles.trophyImg}>
+                <img src={tropfyImg} alt="tropfyImg" />
+              </div>
 
-            <div className={styles.trophyFrame}>
-              <img src={hallOfFame1} alt="hallOfFame1" />
-              <img src={hallOfFame2} alt="hallOfFame2" />
-              <img src={hallOfFame3} alt="hallOfFame3" />
-              <img src={hallOfFame4} alt="hallOfFame4" />
+              <div className={styles.trophyFrame}>
+                <img src={hallOfFame1} alt="hallOfFame1" />
+                <img src={hallOfFame2} alt="hallOfFame2" />
+                <img src={hallOfFame3} alt="hallOfFame3" />
+                <img src={hallOfFame4} alt="hallOfFame4" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      {/* //////////////////////////////////////////// */}
-      <section className={styles.imageSliderContainer}>
+        </section>
+        {/* //////////////////////////////////////////// */}
+        <section className={styles.imageSliderContainer}>
           <h2>Pass With Us</h2>
           <div
             style={{
-              maxWidth: "1200px",
+              maxWidth: "1100px",
               marginRight: "auto",
               marginLeft: "auto",
               padding: "4rem 2rem",
@@ -485,35 +452,21 @@ export default function Home() {
               margin: "2rem auto",
             }}
           >
-            <Slider {...settings}>
-              <div className={styles.imgSlider}>
-                <img src={passwithUs1} alt="" />
-              </div>
-              <div className={styles.imgSlider}>
-                {" "}
-                <img src={passwithUs2} alt="" />
-              </div>
-              <div className={styles.imgSlider}>
-                {" "}
-                <img src={passwithus3} alt="" />
-              </div>
-              <div className={styles.imgSlider}>
-                <img src={passwithUs4} alt="" />
-              </div>
-            </Slider>
+            <ImagesCarousel />
           </div>
+          
         </section>
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
-       
+
         {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
         <section className={styles.ourPartnersSection}>
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
             <img src={OurPartners1} alt="" />
-          
+
             <img src={OurPartners2} alt="" />
             <img src={OurPartners3} alt="" />
             <img src={OurPartners4} alt="" />
