@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c1fb555f.css",
-    "main.js": "/static/js/main.1b658c43.js",
+    "main.css": "/static/css/main.2f2ba730.css",
+    "main.js": "/static/js/main.faa3c628.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -124,6 +124,7 @@
     "static/media/routesPlanning.jpg": "/static/media/routesPlanning.ecd8790f74a81f2feecf.jpg",
     "static/media/halloffame4.png": "/static/media/halloffame4.52ebb320635258b61e29.png",
     "static/media/halloffame2.png": "/static/media/halloffame2.4f3c211372848d8304f8.png",
+    "static/media/frontImg.jpeg": "/static/media/frontImg.29ea646922103445ae34.jpeg",
     "static/media/fillerCap.jpeg": "/static/media/fillerCap.77c33e936017f5e2851b.jpeg",
     "static/media/childern-School.jpg": "/static/media/childern-School.1a9fe83b37ae3b2af276.jpg",
     "static/media/Capture.png": "/static/media/Capture.d47b1caeb3086e089bdd.png",
@@ -250,15 +251,15 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.c1fb555f.css.map": "/static/css/main.c1fb555f.css.map",
-    "main.1b658c43.js.map": "/static/js/main.1b658c43.js.map",
+    "main.2f2ba730.css.map": "/static/css/main.2f2ba730.css.map",
+    "main.faa3c628.js.map": "/static/js/main.faa3c628.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1fb555f.css",
-    "static/js/main.1b658c43.js"
+    "static/css/main.2f2ba730.css",
+    "static/js/main.faa3c628.js"
   ]
 }
