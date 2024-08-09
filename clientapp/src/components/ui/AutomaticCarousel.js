@@ -104,7 +104,7 @@ function AutomaticCarousel() {
                               backgroundColor: "white",
                               display: "flex",
                               justifyContent: "space-between",
-                               maxWidth: "250px",
+                              maxWidth: "235px",
                               width: "100%",
                               borderRadius: "6px",
                               padding: "8px",

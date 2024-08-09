@@ -101,13 +101,13 @@ function Corousel() {
                           <span
                             style={{
                               color: "black",
-                              backgroundColor: "white",
-                              display: "flex",
-                              justifyContent: "space-between",
-                               maxWidth: "250px",
-                              width: "100%",
-                              borderRadius: "6px",
-                              padding: "8px",
+                                backgroundColor: "white",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                maxWidth: "235px",
+                                width: "100%",
+                                borderRadius: "6px",
+                                padding: "8px",
                             }}
                           >
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>

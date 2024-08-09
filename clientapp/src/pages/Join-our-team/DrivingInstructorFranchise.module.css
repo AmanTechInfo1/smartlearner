@@ -282,7 +282,9 @@ padding: 150px 150px 150px 150px;
     margin-bottom: 2.5rem;
   }
   .benefitsDetails ul{
-    padding-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
   }
 .benefitsDetails{
     text-align: center;
@@ -292,8 +294,9 @@ padding: 150px 150px 150px 150px;
 display: flex;
 justify-content: center;
 line-height: 1.5;
+align-items: center;
+padding-bottom: 1.5rem;
 
-padding-bottom: 1rem;
   }
   
   #checkCircle{
@@ -309,6 +312,7 @@ padding-bottom: 1rem;
     font-weight: bold;
     color: white;
     padding-left: 5px;
+    margin-bottom: 0px;
   }
   @media (max-width: 767px){
     .benefitsHeading h4{
@@ -316,7 +320,7 @@ padding-bottom: 1rem;
     }
     #benefitsList p{
         font-size: 16px;
-        padding-bottom: 0.5rem;
+        
     }
   }
   @media (max-width: 428px){
@@ -325,7 +329,7 @@ padding-bottom: 1rem;
     }
     #benefitsList p{
         font-size: 12px;
-        padding-bottom: 0.5rem;
+      
     }
   }
   @media (max-width: 263px){
@@ -334,7 +338,7 @@ padding-bottom: 1rem;
     }
     #benefitsList p{
         font-size: 12px;
-        padding-bottom: 0;
+      
     }
   }
 

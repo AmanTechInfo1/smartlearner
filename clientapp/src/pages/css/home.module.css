@@ -665,7 +665,7 @@
 }
 .expandedColData {
   display: flex;
-  justify-content: space-between;
+ justify-content: space-between;
   align-items: center;
 }
 .expandedColData p{
@@ -673,7 +673,7 @@
 }
 
 .expanded {
-  width: 60%;
+  width: 55%;
   min-height: 350px;
   height: 100%;
 }
@@ -743,6 +743,57 @@
   }
 
  
+}
+/* //////////////////////////////////////////// */
+
+
+
+.bookNow,
+.more {
+  padding: 8px 15px;
+  background-color: #111111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookNow:hover,
+.more:hover {
+  background-color: #eb0009;
+}
+
+.quantityControl button {
+  padding: 2px 0.8rem;
+  border: none;
+}
+.quantityControl span {
+  padding: 1px 0.7rem;
+}
+@media (max-width: 840px){
+  .carouselColumn{
+    padding: 15px 8px;
+  }
+}
+
+
+@media (max-width: 767px){
+  .carouselColumn{
+    padding: 15px 8px;
+  }
+  .carousel {
+    min-width: 715px;
+   
+  }
+ 
+  .quantityControl button {
+    padding: 1px 0.5rem;
+    border: none;
+  }
+  .quantityControl span {
+    padding: 1px 0.4rem;
+  }
+  
 }
 
 /* /////////////// reviews section ///////////////// */
@@ -1053,56 +1104,3 @@
   }
 }
 
-/* //////////////////////////////////////////// */
-
-
-
-.bookNow,
-.more {
-  padding: 8px 15px;
-  background-color: #111111;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.bookNow:hover,
-.more:hover {
-  background-color: #eb0009;
-}
-
-.quantityControl button {
-  padding: 2px 0.8rem;
-  border: none;
-}
-.quantityControl span {
-  padding: 1px 0.7rem;
-}
-@media (max-width: 840px){
-  .carouselColumn{
-    padding: 15px 8px;
-  }
-}
-
-
-@media (max-width: 767px){
-  .carouselColumn{
-    padding: 15px 8px;
-  }
-  .carousel {
-    min-width: 715px;
-   
-  }
-  .bookNow{
-    padding: 5px 8px;
-  }
-  .quantityControl button {
-    padding: 1px 0.5rem;
-    border: none;
-  }
-  .quantityControl span {
-    padding: 1px 0.4rem;
-  }
-  
-}

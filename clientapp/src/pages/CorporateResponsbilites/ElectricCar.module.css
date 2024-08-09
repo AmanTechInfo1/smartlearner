@@ -137,7 +137,7 @@ animation-iteration-count: infinite;
     .ecs2ndListSection p{
       font-size: 1rem;
       color: white;
-      text-align: justify;
+     
     }
     .ecs2ndimgSection img{
       max-width: 350px;
@@ -279,14 +279,14 @@ text-align: center;
 
   }
   .escBDDiv p{
-    text-align: justify;
+  
     color: rgb(3, 154, 3);
     font-size: 1.2rem;
 
   }
   #escBDDivcd{
-    animation: 4s slide-right;
-    animation-iteration-count: infinite; 
+    animation: 5s slide-right;
+ 
     }
     @keyframes slide-right {
       from {
@@ -297,8 +297,8 @@ text-align: center;
       }
     }
     #escBDDivdc{
-      animation: 4s slide-left;
-      animation-iteration-count: infinite; 
+      animation: 5s slide-left;
+      
       }
       @keyframes slide-left {
         from {
@@ -322,7 +322,7 @@ text-align: center;
     
   }
   .escBDDiv div p{
-    text-align: justify;
+  
     color: white;
     font-size: 1.2rem;
   }

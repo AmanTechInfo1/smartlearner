@@ -173,7 +173,7 @@ export default function DrivingLessons() {
                 navigate the road smoothly, focusing on essential techniques and
                 safe driving practices. Whether you’re a beginner or looking to
                 refine your skills, we’ll empower you to drive confidently in
-                any situation
+                any situation.
               </p>
             </div>
             <section>
@@ -206,7 +206,7 @@ export default function DrivingLessons() {
                 immersive programmes offer focused instruction and hands-on
                 experience to help you become a confident driver in no time. Get
                 behind the wheel and fast-track your path to driving
-                independence with our intensive driving courses
+                independence with our intensive driving courses.
               </p>
             </div>
             <section>
