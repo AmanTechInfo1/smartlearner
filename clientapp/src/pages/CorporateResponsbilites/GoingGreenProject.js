@@ -171,20 +171,17 @@ export default function GoingGreenProject() {
               <ul typeo="none">
                 <li>
                   <span>3</span>
-                  <p>Trees in Stretto Academy</p>
+                  <p>Trees in Stretton Academy</p>
                 </li>
                 <li>
                   <span>20</span>
-                  <p>Wild cherry trees in PK school</p>
+                  <p>Wild cherry trees in President Kennedy school</p>
                 </li>
                 <li>
                   <span>40</span>
                   <p>Trees in Everdon estates</p>
                 </li>
-                <li>
-                  <span>20</span>
-                  <p>Wild cherry trees in PK school</p>
-                </li>
+                
                 <li>
                   <span>25</span>
                   <p>Brown beech trees for Park Gate Primary</p>

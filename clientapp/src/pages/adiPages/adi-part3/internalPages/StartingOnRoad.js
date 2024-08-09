@@ -282,9 +282,9 @@ export default function StartingOnRoad() {
             </div>
           </div>
         </section>
-        <section style={{textAlign:'center'}}>
+        {/* <section style={{textAlign:'center'}}>
         <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2>
-       </section>
+       </section> */}
         <div className={styles.quizStartDiv}>
             <section className={styles.startQuizSection}>
               <h2>Start Quiz</h2>

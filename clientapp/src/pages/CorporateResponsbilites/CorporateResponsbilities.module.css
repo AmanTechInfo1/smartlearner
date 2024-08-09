@@ -7,7 +7,7 @@
     background-color: black;
     padding-bottom: 10rem;
     padding-top: 1rem;
-    font-family: 'Antonio', sans-serif;
+   
   }
   .csrpages{
     max-width: 1440px;
@@ -24,7 +24,7 @@
     font-size: 7rem;
     color: white;
     text-align: left;
-    font-family: 'Antonio', sans-serif;
+    
     overflow: hidden; 
     border-right: .2px solid orange; 
     white-space: nowrap; 
@@ -33,7 +33,7 @@
     animation: 
     typing 3.5s steps(30, end),
     blink-caret .5s step-end infinite;
-    animation-iteration-count: infinite; 
+   
 }
 
 
@@ -86,7 +86,7 @@
     animation: 
     typing 3.5s steps(30, end),
     blink-caret .5s step-end infinite;
-    animation-iteration-count: infinite; 
+   
 }
 
 
@@ -216,7 +216,7 @@ text-align: center;
     opacity: 0;
     transform: translateY(100%);
     animation: slideUp 3s forwards;
-    animation-iteration-count: infinite; 
+   
   }
   
   .csr3rdDivSecLinks a:nth-child(1) {
@@ -304,7 +304,7 @@ text-align: center;
   opacity: 0;
   transform: translateY(100%);
   animation: slideUp 3s forwards;
-  animation-iteration-count: infinite; 
+ 
 }
 
 .smartlearnerPlLists:nth-child(1) {

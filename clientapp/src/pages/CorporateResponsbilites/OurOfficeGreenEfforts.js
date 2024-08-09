@@ -10,8 +10,8 @@ export default function OurOfficeGreenEfforts() {
           <h2>OUR OFFICE EFFORTS</h2>
           <hr />
           <p>
-            Here at Smart Learner driving school we are committed to reducing our
-            carbon footprint! We plan to take steps towards becoming a more
+            Here at Smart Learner driving school we are committed to reducing
+            our carbon footprint! We plan to take steps towards becoming a more
             sustainable and eco-friendly company.
           </p>
         </section>
@@ -29,14 +29,14 @@ export default function OurOfficeGreenEfforts() {
             </section>
             <section className={styles.ourSecondryPSec}>
               <p>
-                OFFICE SmartLearner Driving School is dedicated to
+                The Smartlearner Office is dedicated to
                 sustainability,implementing eco-friendly practices both on the
                 road and in our office.
               </p>
               <p>
-                We are committed to reducing our carbon footprint through various
-                initiatives aligned with our projects. Below are examples of our
-                current practices and future plans.
+                We are committed to reducing our carbon footprint through
+                various initiatives aligned with our projects. Below are
+                examples of our current practices and future plans.
               </p>
               <p>Smartlearner's instructors aren't the only ones going green</p>
               <p>
@@ -63,9 +63,7 @@ export default function OurOfficeGreenEfforts() {
                   <span>
                     <img src={greenStarImg} alt="greenStarImg" />
                   </span>
-                  <p>
-                    Newsletters online sent by email, discarding paper post
-                  </p>
+                  <p>Newsletters online sent by email, discarding paper post</p>
                 </li>
                 <li>
                   <span>

@@ -33,17 +33,6 @@ export default function DrivingLessons() {
     }
   }, [section]);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 2000,
-
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
-
   return (
     <div className={styles.drivingLessonsPage}>
       <div className={styles.DrivingLessonsPagedivFront}>
@@ -88,11 +77,9 @@ export default function DrivingLessons() {
             <p>
               We are the highest-rate and fast- growing independent driving
               school in the West Midlands, We offer everything you could ever
-              need to get yourself on the road.
-            </p>
-            <p>
-              We take into consideration your availability, requirements, lesson
-              location, and anything you may require
+              need to get yourself on the road. We take into consideration your
+              availability, requirements, lesson location, and anything you may
+              have.
             </p>
           </section>
         </div>

@@ -244,7 +244,7 @@ export default function Home() {
                           <option value="service2">
                             Theory support / simulator
                           </option>
-                          <option value="service3">Instructor</option>
+                          <option value="service3">Become a Driving Instructor/Join Us</option>
                         </select>
                       )}
                       defaultValue=""
