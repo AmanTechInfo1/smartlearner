@@ -29,8 +29,7 @@ export default function Testemonial() {
             <div className={styles.testimonialContent}><span id={styles.comma1}><p>"</p></span>
             <p className={styles.testimonialName}>{currentTestimonial.name}</p>
               <p className={styles.testimonialComment}>{currentTestimonial.comment}</p>
-              <img src={currentTestimonial.image} alt={currentTestimonial.name} className={styles.testimonialImage} />
-              <p className={styles.testimonialimgName}>{currentTestimonial.name}</p><span  id={styles.comma2}><p>"</p></span>
+             <span  id={styles.comma2}><p>"</p></span>
             </div>
            
           </div>

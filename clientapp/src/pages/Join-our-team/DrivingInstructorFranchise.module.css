@@ -322,6 +322,12 @@ padding-bottom: 1.5rem;
         font-size: 16px;
         
     }
+    #benefitsList{
+      text-align: left;
+      justify-content: flex-start;
+     
+      
+        }
   }
   @media (max-width: 428px){
     .benefitsHeading h4{
@@ -331,6 +337,12 @@ padding-bottom: 1.5rem;
         font-size: 12px;
       
     }
+    #benefitsList{
+   
+      justify-content: flex-start;
+     
+      
+        }
   }
   @media (max-width: 263px){
     .benefitsHeading h4{

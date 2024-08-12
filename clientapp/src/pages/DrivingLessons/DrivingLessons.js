@@ -75,11 +75,11 @@ export default function DrivingLessons() {
         <div className={styles.whyChooseSmlListdiv}>
           <section className={styles.whyChooseSmlLists}>
             <p>
-              We are the highest-rate and fast- growing independent driving
-              school in the West Midlands, We offer everything you could ever
-              need to get yourself on the road. We take into consideration your
-              availability, requirements, lesson location, and anything you may
-              have.
+              We are the highest-rated and fastest-growing independent driving
+              school in the West Midlands. We offer everything you could need to
+              get yourself on the road. We take into consideration your
+              availability, your work schedule, and any other requirements you
+              may have.
             </p>
           </section>
         </div>
