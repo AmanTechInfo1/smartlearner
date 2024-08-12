@@ -55,7 +55,7 @@ export default function GoingGreenProject() {
     <div className={styles.goingGreenProject}>
       <div className={styles.mainGoingGreenProject}>
         <section className={styles.gGPFrontSection}>
-          <h2>GOING GREEN PROJECT</h2>
+          <h2>GOING GREEN <br></br>PROJECT</h2>
           <hr />
           <section className={styles.gGpFrontSectionD}>
             <div className={styles.gGpFrontImgS}>
