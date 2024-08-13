@@ -630,3 +630,35 @@ color: white;
 .manualPList p{
   color: white;
 }
+
+@media (max-width: 770px) {
+  .dManualDiv h2{
+    font-size: 2.5rem;
+ 
+  }
+
+  .dManualDiv img{
+    max-width: 35px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .dManualDiv h2{
+    font-size: 2rem;
+ 
+  }
+  .dManualDiv img{
+    max-width: 20px;
+    width: 100%;
+  }
+}
+@media (max-width: 394px) {
+  .dManualDiv h2{
+    font-size: 1.7rem;
+ 
+  }
+  .dManualDiv img{
+    max-width: 20px;
+    width: 100%;
+  }
+}
