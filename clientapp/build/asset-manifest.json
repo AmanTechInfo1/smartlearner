@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f9926dac.css",
-    "main.js": "/static/js/main.edc05e14.js",
+    "main.js": "/static/js/main.ea9038e7.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -124,7 +124,7 @@
     "static/media/routesPlanning.jpg": "/static/media/routesPlanning.ecd8790f74a81f2feecf.jpg",
     "static/media/halloffame4.png": "/static/media/halloffame4.52ebb320635258b61e29.png",
     "static/media/halloffame2.png": "/static/media/halloffame2.4f3c211372848d8304f8.png",
-    "static/media/frontImg.jpeg": "/static/media/frontImg.29ea646922103445ae34.jpeg",
+    "static/media/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg": "/static/media/WhatsApp Image 2024-08-13 at 6.00.38 PM.95725ecfa5f0819bf833.jpeg",
     "static/media/fillerCap.jpeg": "/static/media/fillerCap.77c33e936017f5e2851b.jpeg",
     "static/media/childern-School.jpg": "/static/media/childern-School.1a9fe83b37ae3b2af276.jpg",
     "static/media/Capture.png": "/static/media/Capture.d47b1caeb3086e089bdd.png",
@@ -252,7 +252,7 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "main.f9926dac.css.map": "/static/css/main.f9926dac.css.map",
-    "main.edc05e14.js.map": "/static/js/main.edc05e14.js.map",
+    "main.ea9038e7.js.map": "/static/js/main.ea9038e7.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
@@ -260,6 +260,6 @@
   },
   "entrypoints": [
     "static/css/main.f9926dac.css",
-    "static/js/main.edc05e14.js"
+    "static/js/main.ea9038e7.js"
   ]
 }
