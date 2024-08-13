@@ -16,7 +16,8 @@ import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-10
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
 import { useState, useEffect } from "react";
 import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
-import ImagesCarousel from "../../components/imageCarousel/ImagesCarousel";
+
+import ImagesCarousel2nd from "../../components/imageCarousel/ImagesCarousel2nd";
 
 
 
@@ -211,7 +212,7 @@ export default function DrivingInstructorFranchise() {
               margin: "2rem auto",
             }}
           >
-            <ImagesCarousel />
+            <ImagesCarousel2nd/>
           </div>
           
         </section>

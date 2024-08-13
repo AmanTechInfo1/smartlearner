@@ -30,7 +30,7 @@ export default function OurOfficeGreenEfforts() {
             <section className={styles.ourSecondryPSec}>
               <p>
                 The Smartlearner Office is dedicated to
-                sustainability,implementing eco-friendly practices both on the
+                sustainability, implementing eco-friendly practices both on the
                 road and in our office.
               </p>
               <p>

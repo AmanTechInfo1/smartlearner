@@ -29,9 +29,12 @@
    
     margin-bottom: 0px;
   }
-
+ 
   .card-bottom__list{
     padding-left: 0px;
+  }
+  .subscription-cardBox{
+    background-color: black;
   }
   .cardBody{
     min-height: 100vh;
@@ -44,7 +47,7 @@
   font-family: "Antonio", sans-serif;
   gap: 30px;
   place-items: center;
-  background-color: black;
+ 
   }
   #SubsHeading{
     text-align: center;

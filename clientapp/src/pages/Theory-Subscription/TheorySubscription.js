@@ -9,7 +9,7 @@ const TheorySubscription = () => {
   const [plans, setPlans] = useState([
     {
       title: "Free Trial",
-      price: "$0",
+      price: "£0",
       dec: "7 Day Free Trial",
       features: ["Enroll Everything For 7 Days"],
       mostPopular: false,
@@ -17,7 +17,7 @@ const TheorySubscription = () => {
     },
     {
       title: "Unlimited Theory Portal Access £5.99 per month",
-      price: "$5.99",
+      price: "£5.99",
       dec: "Current Plan",
       features: [
         "£3.99 for month",
@@ -29,7 +29,7 @@ const TheorySubscription = () => {
     },
     {
       title: "6 Months Theory Portal Access £30",
-      price: "$30.00",
+      price: "£30.00",
       dec: "Addon Plan",
       features: [
         "£30.00/6 Months",
@@ -57,7 +57,7 @@ const TheorySubscription = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="subscription-cardBox">
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
         {
