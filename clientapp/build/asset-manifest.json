@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.52dbcece.css",
-    "main.js": "/static/js/main.ea9038e7.js",
+    "main.css": "/static/css/main.9c5f2c7b.css",
+    "main.js": "/static/js/main.44907742.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -57,6 +57,7 @@
     "static/media/temptation.png": "/static/media/temptation.064ad4d26c58bc4acc8c.png",
     "static/media/cimg19.jpg": "/static/media/cimg19.acaea50bc3ad6df291f3.jpg",
     "static/media/cimg8.jpg": "/static/media/cimg8.e758cccac50d479337fa.jpg",
+    "static/media/img4.jpg": "/static/media/img4.8e2cdcfc39532dcbd5ab.jpg",
     "static/media/cimg11.jpg": "/static/media/cimg11.1278069ba1856bb31417.jpg",
     "static/media/electric carScheme.png": "/static/media/electric carScheme.6b862fa9e5c46f0bbce5.png",
     "static/media/overtaking vehicles.png": "/static/media/overtaking vehicles.12a974fc9f5bd5fe618f.png",
@@ -65,6 +66,7 @@
     "static/media/cimg17.jpg": "/static/media/cimg17.14356711dee86621708a.jpg",
     "static/media/cimg6.jpg": "/static/media/cimg6.6ab6c2e116c0771c03e4.jpg",
     "static/media/finished-road-map-1.png": "/static/media/finished-road-map-1.f3dd111279280b3aac10.png",
+    "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
     "static/media/West_Midlands_Fire_Service_crest.svg.png": "/static/media/West_Midlands_Fire_Service_crest.svg.192f8b2bdcf41552301c.png",
     "static/media/video-bgImg.jpg": "/static/media/video-bgImg.48f6696742fd77665dda.jpg",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
@@ -92,9 +94,11 @@
     "static/media/CChampion-8.jpg": "/static/media/CChampion-8.5454ae4609f2f96bf9c0.jpg",
     "static/media/Home-banner-img-1.jpg": "/static/media/Home-banner-img-1.e8314b5a414cf254485f.jpg",
     "static/media/car-red.png": "/static/media/car-red.ce075202d3605329ef4e.png",
+    "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
     "static/media/passwithus3.jpg": "/static/media/passwithus3.31a76daccc234a931d6c.jpg",
+    "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
     "static/media/hand-plant.png": "/static/media/hand-plant.5a44f35675b1afd13386.png",
     "static/media/Intensive-Driving-Course-1024x768.jpg": "/static/media/Intensive-Driving-Course-1024x768.13b9760aee7883e2ee4e.jpg",
@@ -136,9 +140,12 @@
     "static/media/disability-scooter.jpeg": "/static/media/disability-scooter.73ad552ebf4466aa1a65.jpeg",
     "static/media/2-second-rule.jpg": "/static/media/2-second-rule.29eaa1b00e6afa89e042.jpg",
     "static/media/traf-lights.jpg": "/static/media/traf-lights.1771249db2c029b2f3d2.jpg",
+    "static/media/img7.jpg": "/static/media/img7.eb50a68772057cecc360.jpg",
+    "static/media/img1.jpg": "/static/media/img1.eb23142fa83ab583a4a7.jpg",
     "static/media/GDE-matrix.png": "/static/media/GDE-matrix.8640bd5af69e51f81c0d.png",
     "static/media/hazardlight.jpg": "/static/media/hazardlight.e7b911d61a3e3a58ba86.jpg",
     "static/media/simulated2img.jpg": "/static/media/simulated2img.19079663473bb99030f5.jpg",
+    "static/media/img3.jpg": "/static/media/img3.2d8096dd362ae4f5a718.jpg",
     "static/media/guide-dog.jpg": "/static/media/guide-dog.3e690b4624cd2a5cdaa5.jpg",
     "static/media/trailer-large-1024x492.jpg": "/static/media/trailer-large-1024x492.47ac856735734f76d2db.jpg",
     "static/media/unmarked-crossroads.jpg": "/static/media/unmarked-crossroads.3759d060295c80c41496.jpg",
@@ -251,15 +258,15 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.52dbcece.css.map": "/static/css/main.52dbcece.css.map",
-    "main.ea9038e7.js.map": "/static/js/main.ea9038e7.js.map",
+    "main.9c5f2c7b.css.map": "/static/css/main.9c5f2c7b.css.map",
+    "main.44907742.js.map": "/static/js/main.44907742.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52dbcece.css",
-    "static/js/main.ea9038e7.js"
+    "static/css/main.9c5f2c7b.css",
+    "static/js/main.44907742.js"
   ]
 }
