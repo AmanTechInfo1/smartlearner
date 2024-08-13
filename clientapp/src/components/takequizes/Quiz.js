@@ -570,7 +570,7 @@ const Quiz = () => {
                           backgroundColor:
                             oneQuizOutput.answerAttempt == "Incorrect"
                               ? "Option" + (index + 1) == answered
-                                ? "red"
+                                ? "#780000"
                                 : oneQuizOutput.correctAnswer ==
                                   "Option" + (index + 1)
                                   ? "green"

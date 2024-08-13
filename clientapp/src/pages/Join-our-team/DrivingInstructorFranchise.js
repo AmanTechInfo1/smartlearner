@@ -16,6 +16,7 @@ import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-10
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
 import { useState, useEffect } from "react";
 import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
+import ImagesCarousel from "../../components/imageCarousel/ImagesCarousel";
 
 
 
@@ -197,6 +198,24 @@ export default function DrivingInstructorFranchise() {
           </ul>
         </div>
       </section>
+      {/* //////////////////////////////////////////////////// */}
+      <section className={styles.imageSliderContainer}>
+          <h2>Recently Pass Our Instructor Trainee</h2>
+          <div
+            style={{
+              maxWidth: "1100px",
+              marginRight: "auto",
+              marginLeft: "auto",
+              padding: "4rem 2rem",
+              width: "100%",
+              margin: "2rem auto",
+            }}
+          >
+            <ImagesCarousel />
+          </div>
+          
+        </section>
+      {/* ///////////////////////////////////////////////////////// */}
 
       {/* ////////////////////////////Join our fleet instruction///////////////////////// */}
       <section className={styles.sectionContainer}>

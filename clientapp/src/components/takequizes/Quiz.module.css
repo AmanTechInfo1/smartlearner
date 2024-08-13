@@ -53,7 +53,7 @@
 }
 
 .answerSection button {
-  background-color: #ff4040; /* red button background */
+  background-color: #ff6e6e; /* red button background */
   color: #ffffff; /* white text */
   border: none;
   border-radius: 5px;
@@ -61,6 +61,14 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.answerSection button p{
+  margin-bottom: 0px;
+  
 }
 
 .answerSection button:hover {

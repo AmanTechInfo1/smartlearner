@@ -521,6 +521,10 @@
     width: 100%;
     margin-top: 1rem;
   }
+  .dManualDiv img{
+    max-width: 35px;
+    width: 100%;
+  }
 }
 @media (max-width: 394px) {
   .productDetailsPageCard ul li {
@@ -531,6 +535,10 @@
   }
   .quantityControl span {
     padding: 1px 1rem;
+  }
+  .dManualDiv img{
+    max-width: 25px;
+    width: 100%;
   }
 }
 @media (max-width: 344px) {

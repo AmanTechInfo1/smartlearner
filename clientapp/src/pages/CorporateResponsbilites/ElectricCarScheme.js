@@ -13,7 +13,7 @@ export default function ElectricCarScheme() {
       {/* /////////////////// frontc ///////////////////// */}
       <div className={styles.eCsfront}>
         <section className={styles.eCSfrontSection}>
-          <h2>ELECTRIC CAR SCHEME</h2>
+          <h2>ELECTRIC CAR <br></br>SCHEME</h2>
           <hr />
           <p>
             Here at SmartLearner Driving school we are committed to reducing our
@@ -99,7 +99,7 @@ export default function ElectricCarScheme() {
               <div>
                 {" "}
                 <h2>DISADVANTAGES</h2>
-                <p>Recharging the battery takes times</p>
+                <p>Recharging the battery takes times.</p>
                 <p>It can sometimes difficult to find a charging station.</p>
                 <p>
                   Insurance costs are on average 25% higher for electric

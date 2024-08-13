@@ -38,10 +38,10 @@ export default function OurOfficeGreenEfforts() {
                 various initiatives aligned with our projects. Below are
                 examples of our current practices and future plans.
               </p>
-              <p>Smartlearner's instructors aren't the only ones going green</p>
+              <p>Smartlearner's instructors aren't the only ones going green.</p>
               <p>
                 Our office is committed to decreasing their carbon emissions and
-                becoming more sustainable
+                becoming more sustainable.
               </p>
             </section>
           </div>
@@ -57,13 +57,13 @@ export default function OurOfficeGreenEfforts() {
                   <span>
                     <img src={greenStarImg} alt="greenStarImg" />
                   </span>
-                  <p>Discarding paper diaries for an online paper service</p>
+                  <p>Discarding paper diaries for an online paper service.</p>
                 </li>
                 <li>
                   <span>
                     <img src={greenStarImg} alt="greenStarImg" />
                   </span>
-                  <p>Newsletters online sent by email, discarding paper post</p>
+                  <p>Newsletters online sent by email, discarding paper post.</p>
                 </li>
                 <li>
                   <span>
@@ -130,7 +130,7 @@ export default function OurOfficeGreenEfforts() {
                   <p>
                     Conserve energy within the office, by turning off lights,
                     switches and electrical appliances when the office day is
-                    done
+                    done.
                   </p>
                 </li>
                 <li>
@@ -139,7 +139,7 @@ export default function OurOfficeGreenEfforts() {
                   </span>
                   <p>
                     We will further our actions to keeping our office paperless
-                    as much as we can Only printing when absolutely necessary
+                    as much as we can Only printing when absolutely necessary.
                   </p>
                 </li>
                 <li>

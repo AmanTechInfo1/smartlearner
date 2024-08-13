@@ -20,6 +20,7 @@
     border-radius: 13em/3em;
     margin-bottom: 1rem;
   }
+ 
   .csrSectionFornt h2{
     font-size: 7rem;
     color: white;
@@ -29,11 +30,11 @@
     border-right: .2px solid orange; 
     white-space: nowrap; 
     margin: 0 auto; 
-    letter-spacing: 20px;
+    letter-spacing: 12px;
     animation: 
     typing 3.5s steps(30, end),
     blink-caret .5s step-end infinite;
-   
+    padding: 2rem 0px;
 }
 
 
@@ -76,7 +77,7 @@
   }
   .csr2ndDivHeading h2{
     color: white;
-    font-size: 7rem;
+    font-size: 6rem;
     text-align: left;
     overflow: hidden; 
     border-right: .2px solid orange; 
@@ -112,15 +113,22 @@
   .csr2ndListDiv p{
     padding: 0.5rem 0px;
   }
+  @media (max-width: 900px){
+   
+    .csr2ndDivHeading h2{
+      font-size: 5rem;
+    }
+  
+  }
   @media (max-width: 767px){
     .csrSectionFornt h2{
-      font-size: 5rem;
+      font-size: 4rem;
     }
     .csrPagesLd p{
       font-size: 1.2rem;
     }
     .csr2ndDivHeading h2{
-      font-size: 5rem;
+      font-size: 3.5rem;
     }
     .csr2ndListDiv{
       font-size: 1rem;
@@ -128,13 +136,13 @@
   }
   @media (max-width: 567px){
     .csrSectionFornt h2{
-      font-size: 4rem;
+      font-size: 3rem;
     }
     .csrPagesLd p{
       font-size: 1rem;
     }
     .csr2ndDivHeading h2{
-      font-size: 4rem;
+      font-size: 2.5rem;
     }
    
   }
@@ -144,10 +152,10 @@
   
     }
     .csrSectionFornt h2{
-      font-size: 3.5rem;
+      font-size: 2rem;
     }
     .csr2ndDivHeading h2{
-      font-size: 3rem;
+      font-size: 2rem;
     }
     .csr2ndDivImg img{
       max-width: 200px;
@@ -156,7 +164,7 @@
   }
   @media (max-width: 370px){
     .csrSectionFornt h2{
-      font-size: 2.5rem;
+      font-size: 1.5rem;
     }
     .csrPagesLd p{
       font-size: 15px;
@@ -165,7 +173,7 @@
       font-size: 15px;
     }
     .csr2ndDivHeading h2{
-      font-size: 2.5rem;
+      font-size: 1.6rem;
     }
     .csr2ndDivImg img{
       max-width: 200px;

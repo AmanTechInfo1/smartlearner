@@ -27,7 +27,7 @@ export default function CorporateResponsbilities() {
           </p>
           <p>
             Throughout 2024 and the future we plan to take steps towards
-            becoming a sustainable and eco-friendly company
+            becoming a sustainable and eco-friendly company.
           </p>
         </div>
 

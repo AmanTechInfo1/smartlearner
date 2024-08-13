@@ -34,7 +34,7 @@
     animation: 
     typing 3.5s steps(30, end),
     blink-caret .5s step-end infinite;
-    animation-iteration-count: infinite; 
+    
 }
 
 
@@ -70,7 +70,7 @@
     font-size: 5rem;
 color: rgb(3, 154, 3);
 animation: 4s slide-left;
-animation-iteration-count: infinite; 
+
 }
 @keyframes slide-left {
   from {
@@ -83,7 +83,7 @@ animation-iteration-count: infinite;
   .eCs2ndSectionhead span{
     color: skyblue;
     animation: 4s slide-right;
-    animation-iteration-count: infinite; 
+    
   }
   @keyframes slide-right {
     from {
@@ -146,10 +146,10 @@ animation-iteration-count: infinite;
   }
   @media (max-width:  780px){
     .eCSfrontSection h2{
-      font-size: 6rem;
+      font-size: 5rem;
     }
     .eCs2ndSectionhead h2{
-      font-size: 4rem;
+      font-size: 4.5rem;
     }
     
     .ecs2ndimgSection{
@@ -166,17 +166,27 @@ animation-iteration-count: infinite;
       max-width: 200px;
       width: 100%;
     }
+    .eCSfrontSection h2{
+      font-size: 4.5rem;
+    }
   }
   @media (max-width:  428px){
     .ecs2ndimgSection{
       flex-direction: column;
     }
     .eCSfrontSection h2{
-      font-size: 4.5rem;
+      font-size: 3rem;
     }
     .eCs2ndSectionhead h2{
       font-size: 3rem;
     }
+  }
+  @media (max-width:  394px){
+ 
+    .eCSfrontSection h2{
+      font-size: 2.5rem;
+    }
+   
   }
   /* ////////////////////////////// */
   .textMainSection{
@@ -214,7 +224,7 @@ font-size: 1.2rem;
     opacity: 0;
   transform: translateY(100%);
   animation: slideUp 3s forwards;
-  animation-iteration-count: infinite; 
+  
 }
 
 

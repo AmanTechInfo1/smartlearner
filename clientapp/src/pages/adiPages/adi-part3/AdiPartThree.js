@@ -296,22 +296,22 @@ export default function AdiPartThree() {
               <button id={styles.hazzardBtn}>GDE Matrix</button>
             </Link>
             <Link to="/standards-check-sheet">
-              <button id={styles.hazzardBtn}>Standards check sheet</button>
+              <button id={styles.hazzardBtn}>Standards Check Sheet</button>
             </Link>
             <Link to="/learning-styles">
-              <button id={styles.hazzardBtn}>learning style/vark/client centered</button>
+              <button id={styles.hazzardBtn}>Learning Style/Vark/Client</button>
             </Link>
             <Link to="/smart-targets">
               <button id={styles.hazzardBtn}>Smart Targets</button>
             </Link>
             <Link to="/lesson-plannings">
-              <button id={styles.hazzardBtn}>Lesson Planings</button>
+              <button id={styles.hazzardBtn}>Lesson Plannings</button>
             </Link>
             <Link to="/risk-management">
-              <button id={styles.hazzardBtn}>Risk managements</button>
+              <button id={styles.hazzardBtn}>Risk Managements</button>
             </Link>
             <Link to="/question-techniques">
-              <button id={styles.hazzardBtn}>Qestioning techniques</button>
+              <button id={styles.hazzardBtn}>Questioning Techniques</button>
             </Link>
             <Link to="/instruction-and-feedback">
               <button id={styles.hazzardBtn}>Giving Instruction/Feedback</button>
@@ -320,10 +320,10 @@ export default function AdiPartThree() {
               <button id={styles.hazzardBtn}>Lesson/Pupil Learning Plans</button>
             </Link>
             <Link to="/training-videos">
-              <button id={styles.hazzardBtn}>Traning Videos</button>
+              <button id={styles.hazzardBtn}>Training Videos</button>
             </Link>
             <Link to="/starting-on-road">
-              <button id={styles.hazzardBtn}>Starting onroad</button>
+              <button id={styles.hazzardBtn}>Starting On Road</button>
             </Link>
            
           </div>

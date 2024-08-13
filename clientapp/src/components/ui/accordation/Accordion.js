@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styles from "./Accordion.module.css";
 import { BiSolidTagAlt } from "react-icons/bi";
 
-const AccordionItem = ({ title, content }) => {
-  const [isActive, setIsActive] = useState(false);
+const AccordionItem = ({ title, content, defaultActive }) => {
+  const [isActive, setIsActive] = useState(defaultActive || false);
 
   const toggleAccordion = () => {
     setIsActive(!isActive);
@@ -34,6 +34,7 @@ const Accordion = () => {
       <AccordionItem
         title="SEND YOUR LOVE DONATIONS"
         content="In December 2021, SmartLearner Driving School supported theCoventry Food Network's 'Send Your Love' campaign,sanctioned by Coventry City Council, to provide food forvulnerable families. Our Hen Lane (Holbrooks) office became afood drop-off point, enabling donations.For those unable to drop off food, our instructors collecteddonations across Coventry. Every Christmas, we participate indonating food to the food bank."
+        defaultActive={true} // Set the first accordion item to be open by default
       />
       <AccordionItem
         title="FAMILY TICKETS TO DINNER & THEATER"

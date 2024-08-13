@@ -413,7 +413,7 @@ export default function AdiPartTwo() {
         </section>
         {/* ////////////////////////////////////// */}
         <section style={{textAlign:'center'}}>
-        <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2>
+        {/* <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2> */}
        </section>
         <div className={styles.quizStartDiv}>
             <section className={styles.startQuizSection}>
@@ -435,11 +435,11 @@ export default function AdiPartTwo() {
           <div className={styles.adiFooterContactInfo}>
             {" "}
             <a  href="tel:+4402475092784">
-              <FaPhone id={styles.adiFaIcons} /> +1 (234) 567-890
+              <FaPhone id={styles.adiFaIcons} /> +44-02475092784
             </a>
             <br />
             <a href="mailto:admin@smartlearner.com">
-              <FaEnvelope id={styles.adiFaIcons} /> example@example.com
+              <FaEnvelope id={styles.adiFaIcons} /> admin@smartlearner.com
             </a>
           </div>
           <div className={styles.adiFooterAddressInfo}>

@@ -818,3 +818,16 @@ padding-bottom: 1.5rem;
       font-size: 16PX;
   }
 }
+.imageSliderContainer h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.imgSlider img{
+ 
+  height: 450px;
+  width: 100%;
+}
