@@ -48,7 +48,7 @@ import { enquiryData } from "../redux/features/enquirySlice";
 // import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
-import frontImg from "../assets/images/frontImg.jpeg"
+import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg"
 export default function Home() {
   const dispatch = useDispatch();
 
