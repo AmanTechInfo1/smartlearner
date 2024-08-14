@@ -48,7 +48,7 @@ export default function GoCv() {
             providing low-cost or free tickets to local events.
           </p>
           <p>
-            Together,Smartlearner and GO CV strive to offer the best deals for
+            Together, Smartlearner and GO CV strive to offer the best deals for
             Coventry residents, benefiting the entire community.
           </p>
         </section>

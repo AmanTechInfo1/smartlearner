@@ -81,12 +81,12 @@ export default function TheHonestTruth() {
           <div id={styles.textThtSection}>
             <p>
               Each year, over 825,000 people in the UK pass their driving test,
-              gaining independence. However, young drivers(17-24) are the
+              gaining independence. However, young drivers (17-24) are the
               highest risk group and road crashes are their leading cause of
               death.
             </p>
             <p>
-              The Honest Truth is a national road safety campaign,collaborating
+              The Honest Truth is a national road safety campaign, collaborating
               with emergency services, road safety organizations, and driving
               instructors to deliver straight forward road safety education.
             </p>
@@ -129,15 +129,15 @@ export default function TheHonestTruth() {
               Warwickshire, we are committed to setting an example in promoting
               road safety. We are excited to use driving lessons to educate
               young people about the risks they face after passing their tests.
-              For the past 15 years,SmartLearner has promoted road safety
+              For the past 15 years, SmartLearner has promoted road safety
               through presentations at schools, colleges, and universities
-              inCoventry, Warwick, Rugby, and surrounding areas.
+              in Coventry, Warwick, Rugby, and surrounding areas.
             </p>
             <p>
               In 2019, we helped establish the road safety charity'Because Your
               Life Counts' (BYLC), which delivers various road safety projects.
-              BYLC has collaborated with WestMidlands Police, West Midlands Fire
-              Service, and theWarwickshire Police and Crime Commissioner.
+              BYLC has collaborated with West Midlands Police, West Midlands Fire
+              Service, and the Warwickshire Police and Crime Commissioner.
             </p>
           </div>
         </section>
