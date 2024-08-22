@@ -11,8 +11,13 @@ function Review() {
           <h4 id={styles.heading1}>Our Reviews</h4>
           <hr />
           <div className={styles.reviewsList}>
-          <iframe src='https://02d2282858a742f1bc8b078acf8f747a.elf.site' width='100%' height='550px' frameborder='0'></iframe>
-           
+            <iframe
+              src="https://embedsocial.com/api/pro_hashtag/bf6ee0aa5f0c22593b9ba4228623e45c6dbef13c"
+              width="100%"
+              height="550px"
+              frameborder="0"
+             
+            ></iframe>
           </div>
           <div className={styles.followUsLinks}>
             <h4>Follow us!</h4>
