@@ -402,18 +402,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 35px;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
   align-items: center;
 }
 .trophyFrame img {
-  height: 160px;
-  display: grid;
-  justify-content: space-around;
-  width: 185px;
-  background-color: #fff;
-  border-radius: 8px;
-  border: nones;
+   max-width: 200px;
+   
 }
 /* ////////////////////////////////////////////// */
 .carContent {
@@ -1063,10 +1058,7 @@
 
 /* ///////////////////////partners section /////////////////// */
 .ourPartnersSection{
-  max-width: 1200px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+ 
   background-color: gray;
 }
 .ourPartnersSection h2{

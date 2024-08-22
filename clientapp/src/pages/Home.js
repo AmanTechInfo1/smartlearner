@@ -217,7 +217,8 @@ export default function Home() {
               </li>
             </ul>
           </div> */}
-            <div className={styles.formContent}>
+          {/* ///////////////////////////////////////////////////Request callback////////////////// */}
+            {/* <div className={styles.formContent}>
               <div className={styles.formContentHeading}>
                 <h2>REQUEST A CALL BACK </h2>
                 <p>Contact Form</p>
@@ -351,7 +352,8 @@ export default function Home() {
                   </button>
                 </form>
               </div>
-            </div>
+            </div> */}
+            {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
             <>
               <Carousel />
@@ -364,7 +366,7 @@ export default function Home() {
         {/* ////////////////////////////////////////////// */}
         <section>
           <div className={styles.carContent}>
-            <div className={styles.carContainer}>
+            {/* <div className={styles.carContainer}>
               <h2>
                 BOOK <br /> NOW WITH <br />
                 SMARTLEARNER
@@ -400,46 +402,15 @@ export default function Home() {
                   create lesson plans around them
                 </p>
               </div>
-            </div>
-            <div className={styles.spiralImgContainer}>
+            </div> */}
+             <div className={styles.spiralImgContainer}>
               {/* <img src={spiralImg} alt="spiralImg" /> */}
               <hr style={{ opacity: "1", border: "2px solid silver" }} />
-            </div>
-            <div className={styles.whyChooseText}>
-              <p>
-                See why people choose SmartLearner to{" "}
-                <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
-              </p>
-            </div>
-            <div className={styles.starImgContainer}>
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
             </div>
           </div>
         </section>
         {/* //////////////carousel section///////////////// */}
-        <section className={styles.homeSection}>
-          <div className={styles.secondSectionContent}>
-            <div className={styles.hallFameContent}>
-              <div className={styles.semiCircle}>
-                <img src={hallOfFame} alt="hallOfFame" />
-              </div>
-              <div className={styles.trophyImg}>
-                <img src={tropfyImg} alt="tropfyImg" />
-              </div>
-
-              <div className={styles.trophyFrame}>
-                <img src={hallOfFame1} alt="hallOfFame1" />
-                <img src={hallOfFame2} alt="hallOfFame2" />
-                <img src={hallOfFame3} alt="hallOfFame3" />
-                <img src={hallOfFame4} alt="hallOfFame4" />
-              </div>
-            </div>
-          </div>
-        </section>
+      
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>
           <h2>Pass With Us</h2>
@@ -480,6 +451,40 @@ export default function Home() {
             <img src={OurPartners11} alt="" />
             <img src={OurPartners12} alt="" />
             <img src={OurPartners13} alt="" />
+          </div>
+        </section>
+        {/* ///////////////////////////////////////// */}
+       
+            <div className={styles.whyChooseText}>
+              <p>
+                See why people choose SmartLearner to{" "}
+                <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
+              </p>
+            </div>
+            <div className={styles.starImgContainer}>
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+              <img src={starImg} alt="starImg" />
+            </div>
+            <section className={styles.homeSection}>
+          <div className={styles.secondSectionContent}>
+            <div className={styles.hallFameContent}>
+              <div className={styles.semiCircle}>
+                <img src={hallOfFame} alt="hallOfFame" />
+              </div>
+              <div className={styles.trophyImg}>
+                <img src={tropfyImg} alt="tropfyImg" />
+              </div>
+
+              <div className={styles.trophyFrame}>
+                <img src={hallOfFame1} alt="hallOfFame1" />
+                <img src={hallOfFame2} alt="hallOfFame2" />
+                <img src={hallOfFame3} alt="hallOfFame3" />
+                <img src={hallOfFame4} alt="hallOfFame4" />
+              </div>
+            </div>
           </div>
         </section>
       </div>

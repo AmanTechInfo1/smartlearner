@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Cart.module.css";
 import cartIcon from "../../../assets/images/cartIcon1.png";
-import carImg from "../../../assets/images/car-red.png";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getDecreaseCart,
-  getIncreaseCart,
-  emptyCart,
+
   getMyOrders,
 } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";

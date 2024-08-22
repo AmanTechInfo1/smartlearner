@@ -11,18 +11,16 @@ import { router } from "./routing";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { FilterContextProvider } from "./components/context/FilterContext";
-import { CartProvider } from "./components/context/CartContext";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <FilterContextProvider>
-        <CartProvider>
+     
           <RouterProvider router={router} />
-        </CartProvider>
-      </FilterContextProvider>
+      
+   
 
       <Toaster position="top-right" />
     </Provider>

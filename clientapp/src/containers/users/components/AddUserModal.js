@@ -34,7 +34,7 @@ function AddUserModal(props) {
         formData.append("password", data.password);
         formData.append("phoneNumber", data.phoneNumber);
         formData.append("roleName", data.roleName);
-        formData.append("privacyPolicy", data.privacyPolicy);
+       
         dispatch(createUser(data, reset, props.toggleAddUserModal,props.state));
     };
 
@@ -181,19 +181,13 @@ function AddUserModal(props) {
                             </div>
                             <div className="form-group">
                                 <label>Privacy Policy</label>
-                                <Controller
-                                    name="privacyPolicy"
-                                    control={control}
-                                    render={({ field: { value, onChange } }) => (
+                               
                                         <input
                                             type="checkbox"
-                                            checked={value}
-                                            onChange={onChange}
+                                            
                                         />
-                                    )}
-                                    defaultValue={false}
-                                />
-                                {errors.privacyPolicy && <p style={{ color: "red" }}>{errors.privacyPolicy.message}</p>}
+                                   
+                               
                             </div>
                             <div className="form-group text-center mt-3">
                                 <button className="btn btn-primary account-btn btn-lg" type="submit">

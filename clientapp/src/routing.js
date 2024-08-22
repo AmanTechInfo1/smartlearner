@@ -58,8 +58,7 @@ import ProductModal from "./containers/productAdmin/ProductModal";
 import AdminHome from "./components/admin/AdminHome";
 import Area from "./containers/productArea/Area";
 import QuizCategory from "./containers/quiz/quizCategory/QuizCategory";
-import QuizzesModal from "./containers/quiz/QuizzesModal";
-import EditQuizModal from "./containers/quiz/component/EditQuizModal";
+
 import QuizModal from "./containers/quiz/quiz/QuizModal";
 import Quiz from "./components/takequizes/Quiz";
 import QuizResult from "./components/takequizes/QuizResult";

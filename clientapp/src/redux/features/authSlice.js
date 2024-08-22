@@ -49,15 +49,16 @@ const authSlice = createSlice({
       });
   },
 });
-
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ requestData, reset, navigate }, { rejectWithValue }) => {
     try {
       const response = await http.post(`/api/account/register`, requestData);
       const resultData = response.data;
+      
       if (!resultData.success) {
-        toast.error(resultData.msg || "Something went wrong");
+        toast.error(resultData.msg || "Something went wrong during registration.");
+        return rejectWithValue(resultData.msg || "Registration failed");
       } else {
         toast.success(resultData.msg || "Registered Successfully");
         reset();
@@ -65,8 +66,9 @@ export const registerUser = createAsyncThunk(
         return resultData;
       }
     } catch (error) {
-      toast.error(" went wrong");
-      return rejectWithValue(error.message);
+      const errorMessage = error.response?.data?.message || "An unexpected error occurred.";
+      toast.error(errorMessage);
+      return rejectWithValue(errorMessage);
     }
   }
 );

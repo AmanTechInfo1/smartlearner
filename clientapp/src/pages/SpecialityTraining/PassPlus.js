@@ -14,14 +14,13 @@ import {
 import { FaCity, FaRoad } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Review from "../../components/views/Review"
-import { useCartContext } from "../../components/context/CartContext";
+
 
 
 
 
 export default function PassPlus() {
 
-  const { addToCart } = useCartContext(); 
   
  
 
@@ -95,7 +94,7 @@ export default function PassPlus() {
       </section>
 
       {/* ///////////////////////////Product catelog ////////////////////////////////// */}
-      <section className={styles.passPlusProductCatelog}>
+      {/* <section className={styles.passPlusProductCatelog}>
         <h2>Choose Your Course</h2>
         <div className={styles.chooseProductSection}>
           <div className={styles.productGrid}>
@@ -191,7 +190,7 @@ export default function PassPlus() {
             )}
           </div>
         </div>
-      </section>
+      </section> */}
       {/* ////////////////////////////////practice section/////////////////////////  */}
       <section className={styles.practiceSection}>
         <div className={styles.practiceContainer}>

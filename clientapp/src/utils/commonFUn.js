@@ -23,6 +23,10 @@ export function generatePassword() {
             case 2:
                 password += specialAlphabets[Math.floor(Math.random() * specialAlphabets.length)];
                 break;
+            default:
+                // This case is included for completeness, although it's unlikely to be reached
+                password += specialAlphabets[Math.floor(Math.random() * specialAlphabets.length)];
+                break;
         }
     }
 

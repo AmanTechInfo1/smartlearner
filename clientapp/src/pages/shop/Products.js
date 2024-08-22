@@ -3,7 +3,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import styles from "./Shop.module.css";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useCartContext } from "../../components/context/CartContext"; // Import the useCart hook
+// Import the useCart hook
 import { imageBaseUrl } from "../../utils/constants";
 import { getAddToCart, getDecreaseCart, getIncreaseCart } from "../../redux/features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";

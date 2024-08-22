@@ -16,13 +16,13 @@ import { AiOutlineLike } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import EnquiryForm from "../../components/forms/EnquiryForm";
 import Review from "../../components/views/Review";
-import { useCartContext } from "../../components/context/CartContext";
+
 
 
 
 export default function SimulatedDrivingLesson() {
 
-  const { addToCart } = useCartContext(); 
+
 
   
   // const handleSubmit = (event) => {
@@ -86,7 +86,7 @@ export default function SimulatedDrivingLesson() {
         </div>
       </section>
       {/* ///////////////////////////Product catelog ////////////////////////////////// */}
-      <section className={styles.SimulatedProductCatelog}>
+      {/* <section className={styles.SimulatedProductCatelog}>
         <h2>Choose Your Course</h2>
         <div className={styles.chooseProductSection}>
           <div className={styles.productGrid}>
@@ -182,7 +182,7 @@ export default function SimulatedDrivingLesson() {
             )}
           </div>
         </div>
-      </section>
+      </section> */}
       {/*/////////////////////////////////////////// Youtube video section/////////////////////////////////////// */}
       <section className={styles.videoSection}>
         <div className={styles.videoSectionleft}>

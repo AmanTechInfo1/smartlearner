@@ -17,7 +17,7 @@ function EditUserModal(props) {
         email: user ? user.email : "",
         phoneNumber: user ? user.phoneNumber : "",
         roleName: user ? user.roleName : "",
-        privacyPolicy: user ? user.roleName : false,
+       
     });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +30,7 @@ function EditUserModal(props) {
             email: user.email,
             phoneNumber: user.phoneNumber,
             roleName: user.roleName ,
-            privacyPolicy: user.privacyPolicy,
+           
         });
     }
 }, [user]);
@@ -67,7 +67,7 @@ function EditUserModal(props) {
             formDataToSend.append("email", formData.email);
             formDataToSend.append("phoneNumber", formData.phoneNumber);
             formDataToSend.append("roleName", formData.roleName);
-            formDataToSend.append("privacyPolicy", formData.privacyPolicy);
+          
             dispatch(editUser(user.uniqueId, formDataToSend, props.toggleEditUserModal));
         }
     };
@@ -135,10 +135,9 @@ function EditUserModal(props) {
                                 <input
                                     type="checkbox"
                                     name="privacyPolicy"
-                                    checked={formData.privacyPolicy}
-                                    onChange={handleInputChange}
+                                  
                                 />
-                                {errors.privacyPolicy && <p style={{ color: 'red' }}>{errors.privacyPolicy}</p>}
+                               
                             </div>
                             <div className="form-group text-center mt-3">
                                 <button className="btn btn-primary account-btn btn-lg" type="submit">

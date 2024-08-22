@@ -11,7 +11,6 @@ import { registerUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { registerformSchema } from "../../schemas/account/index";
 
-
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,13 +28,16 @@ export default function Register() {
   });
 
   const handleRegistration = async (data) => {
+    console.log("Form Submitted", data); // Debugging line
+
     const formData = new FormData();
     formData.append("username", data.username);
-    formData.append("email", data.email);
     formData.append("password", data.password);
+   
+    formData.append("email", data.email);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("roleName", data.roleName);
-    formData.append("privacyPolicy", data.privacyPolicy);
+
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 
@@ -204,7 +206,8 @@ export default function Register() {
                           {AccountTypes.map((accountType) => (
                             <option
                               key={accountType.value}
-                              value={accountType.value}>
+                              value={accountType.value}
+                            >
                               {accountType.label}
                             </option>
                           ))}
@@ -218,25 +221,11 @@ export default function Register() {
                   )}
                   <br />
                   <div className={styles.formPrivacyPolicies}>
-                    <Controller
-                      name="privacyPolicy"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type="checkbox"
-                          value={value}
-                          onChange={onChange}
-                        />
-                      )}
-                      defaultValue={false}
-                    />
+                    <input type="checkbox" />
+
                     <p>I agree to the privacy policy</p>
                   </div>
-                  {errors?.privacyPolicy && (
-                    <p style={{ color: "red" }}>
-                      {errors?.privacyPolicy?.message}
-                    </p>
-                  )}
+
                   <br />
                   <div className={styles.loginFormBtn}>
                     <button type="submit">Create Account</button>
