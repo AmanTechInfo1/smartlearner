@@ -49,21 +49,25 @@ class AccountController {
   async getAllUsers(req, res, next) {
     try {
       const { page, pagesize, search } = req.query;
-      const response = await accountService.getAllUsersAsync(page, pagesize, search);
+      const response = await accountService.getAllUsersAsync(
+        page,
+        pagesize,
+        search
+      );
       res.status(201).json(response);
     } catch (err) {
       next(err);
     }
   }
-  async getAllUsers(req, res, next) {
-    try {
-      const { page, pagesize, search } = req.query;
-      const response = await accountService.getAllUsersAsync(page, pagesize, search);
-      res.status(201).json(response);
-    } catch (err) {
-      next(err);
-    }
-  }
+  // async getAllUsers(req, res, next) {
+  //   try {
+  //     const { page, pagesize, search } = req.query;
+  //     const response = await accountService.getAllUsersAsync(page, pagesize, search);
+  //     res.status(201).json(response);
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // }
 
   async getOneUsers(req, res, next) {
     try {
@@ -77,14 +81,20 @@ class AccountController {
 
   async updateUser(req, res, next) {
     try {
-
-      console.log("password" in req.body)
-      const salt = await bcrypt.genSalt();
-      const hashedPassword = await bcrypt.hash(req.body["password"], salt);
-      req.body["password"]=hashedPassword
-      const role = await accountService.updateUserAsync(req.params.id, req.body);
-      res.json(role);
+      // console.log("Request body: ", req.body);
+      // if ("password" in req.body && req.body["password"]) {
+      //   const salt = await bcrypt.genSalt();
+      //   const hashedPassword = await bcrypt.hash(req.body["password"], salt);
+      //   req.body["password"] = hashedPassword;
+      // }
+      const updatedUser = await accountService.updateUserAsync(
+        req.params.id,
+        req.body
+      );
+      console.log("Updated user: ", updatedUser);
+      res.json(updatedUser);
     } catch (err) {
+      console.error("Error updating user: ", err);
       next(err);
     }
   }

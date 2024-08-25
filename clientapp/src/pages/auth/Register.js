@@ -32,12 +32,12 @@ export default function Register() {
 
     const formData = new FormData();
     formData.append("username", data.username);
-    formData.append("password", data.password);
-   
+
     formData.append("email", data.email);
+    formData.append("password", data.password);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("roleName", data.roleName);
-
+    console.log("Registering user with data:", data); 
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 

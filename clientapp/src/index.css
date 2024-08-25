@@ -50,6 +50,12 @@ body{
   color: black;
   background-color: #ed2025;
 }
+.es-header-btn{
+  display: none;
+}
+#es-widget-header-container-template{
+  display: none;
+}
 ul {
   margin-bottom: 0rem;
   padding-left: 0px;

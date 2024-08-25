@@ -54,19 +54,19 @@ const userSlice = createSlice({
       state.loading = false;
     },
     editUserSuccess: (state, action) => {
-      // const updatedUser = action.payload.user;
-      // state.users = state.users.map(user => user.id === updatedUser.id ? updatedUser : user);
-      state.loading = false;
-      // const updatedUsers = state.users.map((user) => {
-      //   if (user._id === updatedUser._id) {
-      //     return updatedUser;
-      //   }
-      //   return user;
-      // });
+      const updatedUser = action.payload.user;
+      const updatedUsers = state.users.map((user) => {
+        if (user._id === updatedUser._id) {
+          return updatedUser;
+        }
+        return user;
+      });
 
-      // state.users = updatedUsers;
-      
+      state.users = updatedUsers;
+
+      state.loading = false;
     },
+
     editUserFailure: (state) => {
       state.loading = false;
     },
@@ -95,7 +95,7 @@ export const getAllUsers = (search, page, pagesize) => async (dispatch) => {
 };
 
 export const createUser =
-  (data, reset, toggleAddUserModal,statedata) => async (dispatch) => {
+  (data, reset, toggleAddUserModal, statedata) => async (dispatch) => {
     try {
       dispatch(setLoading());
       const response = await httpHandler.post(`/api/account/register`, data);
@@ -104,7 +104,9 @@ export const createUser =
         reset();
         toggleAddUserModal();
         dispatch(createUserSuccess(response.data.data));
-        dispatch(getAllUsers(statedata.search, statedata.page, statedata.pageSize));
+        dispatch(
+          getAllUsers(statedata.search, statedata.page, statedata.pageSize)
+        );
       } else {
         toast.error(response.data.message);
         dispatch(createUserFailure());
@@ -166,7 +168,13 @@ export const deleteUser = (id) => async (dispatch) => {
 export const editUser = (id, data, toggleEditUserModal) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    const response = await httpHandler.post(`/api/account/update-user/${id}`, data);
+    console.log("Sending data to API: ", [...data.entries()]);
+
+    const response = await httpHandler.post(
+      `/api/account/update-user/${id}`,
+      data
+    );
+
     if (response.data.success) {
       dispatch(editUserSuccess(response.data.data));
       toast.success(response.data.message);
@@ -176,6 +184,7 @@ export const editUser = (id, data, toggleEditUserModal) => async (dispatch) => {
       dispatch(editUserFailure());
     }
   } catch (error) {
+    console.error("Caught API Error: ", error);
     toast.error(error.message);
     dispatch(editUserFailure());
   }
