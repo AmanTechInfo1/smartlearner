@@ -17,14 +17,15 @@ function Order() {
     const navigate = useNavigate();
     const { loading, orderCount } = useSelector((state) => state.order);
     const orders = useSelector((state) => {
-        return state.order.orders.map((itm)=>{
+        return state.order.orders.map((itm) => {
             return {
                 ...itm,
-                userName:itm.user.username,
-                completeAddress:`${itm.streetAddress1}, ${itm.streetAddress2!="" ? itm.streetAddress2+", " : ""} ${itm.city}, ${itm.county}, ${itm.postcode}`
+                userName: itm.user ? itm.user.username : "Unknown User",
+                completeAddress: `${itm.streetAddress1}, ${itm.streetAddress2 ? itm.streetAddress2 + ", " : ""}${itm.city}, ${itm.county}, ${itm.postcode}`
             }
-        })
+        });
     });
+    
     const [state, setState] = useState({
         search: "",
         page: 1,
