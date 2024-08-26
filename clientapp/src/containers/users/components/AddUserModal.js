@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { createUser } from "../../../redux/features/userSlice";
-import { registerformSchema } from "../../../schemas/account";
+import { userSchema } from "../../../schemas/account";
 
 function AddUserModal(props) {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ function AddUserModal(props) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { roleLoading, rolesList } = useSelector((state) => {
-    console.log(state.roles, "dashdkashdkjasdsa");
-    return state.roles;
+    const rolesState = state.roles || {};
+    return rolesState;
   });
 
   const {
@@ -23,7 +23,7 @@ function AddUserModal(props) {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(registerformSchema),
+    resolver: yupResolver(userSchema),
   });
 
   const onSubmit = async (data) => {
@@ -31,7 +31,6 @@ function AddUserModal(props) {
     formData.append("username", data.username);
     formData.append("email", data.email);
     formData.append("password", data.password);
-
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("roleName", data.roleName);
 
@@ -192,11 +191,12 @@ function AddUserModal(props) {
                       <option disabled value="">
                         Select...
                       </option>
-                      {rolesList.map((role) => (
-                        <option key={role._id} value={role.name}>
-                          {role.name}
-                        </option>
-                      ))}
+                      {rolesList &&
+                        rolesList.map((role) => (
+                          <option key={role._id} value={role.name}>
+                            {role.name}
+                          </option>
+                        ))}
                     </select>
                   )}
                   defaultValue=""

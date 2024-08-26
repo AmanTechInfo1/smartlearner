@@ -110,14 +110,14 @@ function Order() {
                     className="d-flex justify-content-center"
                     data-popper-placement="bottom-end"
                 >
-                    <Link
+                    {/* <Link
                         onClick={(event) => {
                             event.preventDefault();
                             handleEditClick(record._id);
                         }}
                     >
                         <LiaUserEditSolid />
-                    </Link>
+                    </Link> */}
                     <Link
                         onClick={(event) => {
                             event.preventDefault();
@@ -169,9 +169,9 @@ function Order() {
                     <Loader />
                 )}
             </div>
-           <OrderInvoice OrderObj={OrderObj} 
+           {/* <OrderInvoice OrderObj={OrderObj} 
           OrderInvoiceModalOpen={OrderInvoiceModalOpen}
-          toggleOrderInvoiceModal={toggleOrderInvoiceModal} />
+          toggleOrderInvoiceModal={toggleOrderInvoiceModal} /> */}
            
         </>
     )

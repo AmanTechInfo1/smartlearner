@@ -13,10 +13,17 @@ const userSlice = createSlice({
   },
   reducers: {
     createUserSuccess: (state, action) => {
-      state.users.push(action.payload.user);
-      state.usersCount = action.payload.totalCount;
+      const { user, totalCount } = action.payload || {};
+      if (user) {
+        state.users.push(user);
+      }
+      if (totalCount !== undefined) {
+        state.usersCount = totalCount;
+      }
       state.loading = false;
     },
+    
+    
     createUserFailure: (state, action) => {
       state.loading = false;
     },
@@ -54,19 +61,18 @@ const userSlice = createSlice({
       state.loading = false;
     },
     editUserSuccess: (state, action) => {
-      const updatedUser = action.payload.user;
+      const updatedUser = action.payload.user || action.payload;
       const updatedUsers = state.users.map((user) => {
         if (user._id === updatedUser._id) {
           return updatedUser;
         }
         return user;
       });
-
+    
       state.users = updatedUsers;
-
       state.loading = false;
     },
-
+    
     editUserFailure: (state) => {
       state.loading = false;
     },
