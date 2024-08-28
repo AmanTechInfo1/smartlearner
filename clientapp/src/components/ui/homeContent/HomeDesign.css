@@ -12,7 +12,7 @@
   opacity: 0.8;
   width: 100%;
   height: 100%;
-  padding: 2rem 0px;
+  padding: 5rem 0px;
 }
 .homecontent-Sec p{
     margin-bottom: 0px;
@@ -35,7 +35,7 @@
 .content-Imgs {
   background-image: url("./road-png-500-download-5342.png");
   background-size: contain;
-  background-repeat: no-repeat;
+
   background-position: center;
   margin-top: 5rem;
 
@@ -123,7 +123,7 @@ text-align: center;
     border-radius: 50%;
     padding: 8px 14px;
 }
-@media (max-width: 1139px){
+@media (max-width: 1103px){
     .homecontent-Sec{
         background-position-x: -40rem;
         background-repeat: no-repeat;
@@ -136,6 +136,9 @@ text-align: center;
         background-position: center;
         padding-top: 5rem;
     }
+    .content-box-desc{
+        width: 300px;
+    }
 }
 @media (max-width: 767px){
     .content-Imgs{
@@ -147,7 +150,9 @@ text-align: center;
     }
 }
 @media (max-width: 600px){
-
+    .homecontent-Sec{
+        padding: 2rem 0px;
+    }
    .home-content-D h2 {
     font-size: 5rem;
    }
