@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.853cadfc.css",
-    "main.js": "/static/js/main.6e6021e3.js",
+    "main.css": "/static/css/main.4c93a2dd.css",
+    "main.js": "/static/js/main.6212b693.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -153,6 +153,7 @@
     "static/media/dangers-of-tailgating-1024x683.jpg": "/static/media/dangers-of-tailgating-1024x683.05b338b74f9bb4f4461b.jpg",
     "static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.png": "/static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.9f960aa6e64f550f6706.png",
     "static/media/behindLargeVehicle.jpg": "/static/media/behindLargeVehicle.1678384d52dbb0b8c2ef.jpg",
+    "static/media/homeBannerImg.jpeg": "/static/media/homeBannerImg.e610092cf42948ac585b.jpeg",
     "static/media/truck-oncoming-trasffic.jpg": "/static/media/truck-oncoming-trasffic.a56a6993d03fa0fa63b9.jpg",
     "static/media/hallOfFame.png": "/static/media/hallOfFame.1f31c2896bd96d1156db.png",
     "static/media/peopleWalking.jpg": "/static/media/peopleWalking.5a74d69140d5bb51bd28.jpg",
@@ -185,7 +186,6 @@
     "static/media/ssl-logo.png": "/static/media/ssl-logo.8c174247fbd59801e088.png",
     "static/media/CChampion-13.jpg": "/static/media/CChampion-13.18c884883d32dd747096.jpg",
     "static/media/mobileRoad.png": "/static/media/mobileRoad.4edfb8b1afd254ab7060.png",
-    "static/media/userIndentification.png": "/static/media/userIndentification.d2b711ba1c4b7fac9688.png",
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/THT_logo_1854x.png": "/static/media/THT_logo_1854x.32b0555a2ed07965f051.png",
@@ -204,6 +204,7 @@
     "static/media/WestMidLand.png": "/static/media/WestMidLand.ead253af1c666627c86e.png",
     "static/media/Screenshot 2024-05-02 at 13.55.26.png": "/static/media/Screenshot 2024-05-02 at 13.55.26.d39dce92169dd4bea0ec.png",
     "static/media/hand shake.png": "/static/media/hand shake.f5c14190f3a5a9eea695.png",
+    "static/media/content1.png": "/static/media/content1.6716784f8cfa36c95d51.png",
     "static/media/No-motor-Vehicles@3x.png": "/static/media/No-motor-Vehicles@3x.c0fa988178a135f75c52.png",
     "static/media/tree img.png": "/static/media/tree img.5af5e1c5707c6c0a2852.png",
     "static/media/balloons-2.jpg": "/static/media/balloons-2.17e7ec9e0010de2f2ba3.jpg",
@@ -214,6 +215,7 @@
     "static/media/Dipped-Beam-Headlight-Bulb.jpg": "/static/media/Dipped-Beam-Headlight-Bulb.ec9ff3c2a3803f24ee26.jpg",
     "static/media/absImg.png": "/static/media/absImg.3ea12b52fb535c14b953.png",
     "static/media/main-beam-headlights.jpg": "/static/media/main-beam-headlights.a187611a4053ed139b4e.jpg",
+    "static/media/content2.png": "/static/media/content2.3594126e773c6f55d288.png",
     "static/media/car-sidelights.jpg": "/static/media/car-sidelights.eb6889cf6027349b3cc4.jpg",
     "static/media/crawler.png": "/static/media/crawler.845e2c13f6b664b3bec9.png",
     "static/media/lady-working-icon.png": "/static/media/lady-working-icon.a79d6db246753713931b.png",
@@ -226,6 +228,7 @@
     "static/media/tree-Icon.png": "/static/media/tree-Icon.64a993e663057adf5b36.png",
     "static/media/triangle.png": "/static/media/triangle.8b6cfcb3128a45717390.png",
     "static/media/no-speed-lim.png": "/static/media/no-speed-lim.4ecc55fe24eb9892fe21.png",
+    "static/media/content3.png": "/static/media/content3.68d96089600eeb958ea4.png",
     "static/media/turn-left-ahead-sign.jpg": "/static/media/turn-left-ahead-sign.bb536af747c762d935c5.jpg",
     "static/media/mway.jpg": "/static/media/mway.cf2e8616f8ac33106f27.jpg",
     "static/media/incidents-pinjk.png": "/static/media/incidents-pinjk.983c95f6992039cd1786.png",
@@ -234,7 +237,6 @@
     "static/media/attitude-M-img.png": "/static/media/attitude-M-img.e7e03d095ce1c27161cd.png",
     "static/media/covcollege.png": "/static/media/covcollege.67fe9810657bac404d54.png",
     "static/media/prize-imgj.png": "/static/media/prize-imgj.724b7fabe27835bad0dd.png",
-    "static/media/road.png": "/static/media/road.d06a75026e82569832f4.png",
     "static/media/handleiding-300x300.png": "/static/media/handleiding-300x300.7458d51ad5d3dc499157.png",
     "static/media/unitedToAchieve.jpg": "/static/media/unitedToAchieve.06e6e384b9303f8cfa38.jpg",
     "static/media/THT_logo.png": "/static/media/THT_logo.1429352c67d15c647192.png",
@@ -258,15 +260,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.853cadfc.css.map": "/static/css/main.853cadfc.css.map",
-    "main.6e6021e3.js.map": "/static/js/main.6e6021e3.js.map",
+    "main.4c93a2dd.css.map": "/static/css/main.4c93a2dd.css.map",
+    "main.6212b693.js.map": "/static/js/main.6212b693.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.853cadfc.css",
-    "static/js/main.6e6021e3.js"
+    "static/css/main.4c93a2dd.css",
+    "static/js/main.6212b693.js"
   ]
 }
