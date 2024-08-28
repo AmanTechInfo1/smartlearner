@@ -20,21 +20,6 @@ import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
 
 
-import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
-
-import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
-import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
-import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
-import OurPartners5 from "../assets/images/our partners/JLR-Logo-2008 (1).png";
-
-import OurPartners7 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png";
-import OurPartners8 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png";
-import OurPartners9 from "../assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png";
-import OurPartners10 from "../assets/images/our partners/The-Tree-Council-Logo-1.png";
-import OurPartners11 from "../assets/images/our partners/Sqa_logo.png";
-import OurPartners12 from "../assets/images/our partners/THT_logo_1854x.png";
-import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
-
 // //////////////////
 import Slider from "react-slick";
 
@@ -48,7 +33,7 @@ import { enquiryData } from "../redux/features/enquirySlice";
 // import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
-import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg"
+import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg";
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -72,7 +57,6 @@ export default function Home() {
     dispatch(enquiryData({ requestData: data, reset }));
   };
 
-
   return (
     <div className={styles.homepage}>
       <div className={styles.homepageContainerDiv}>
@@ -81,7 +65,7 @@ export default function Home() {
             <img src={trustPilot} alt="trustPilot" />
           </div>
           <div className={styles.homeContainer}>
-          <HomeDesign /> 
+            <HomeDesign />
             {/* <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
             </div> */}
@@ -180,7 +164,6 @@ export default function Home() {
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
-        
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
@@ -217,7 +200,7 @@ export default function Home() {
               </li>
             </ul>
           </div> */}
-          {/* ///////////////////////////////////////////////////Request callback////////////////// */}
+            {/* ///////////////////////////////////////////////////Request callback////////////////// */}
             {/* <div className={styles.formContent}>
               <div className={styles.formContentHeading}>
                 <h2>REQUEST A CALL BACK </h2>
@@ -403,14 +386,14 @@ export default function Home() {
                 </p>
               </div>
             </div> */}
-             <div className={styles.spiralImgContainer}>
+            <div className={styles.spiralImgContainer}>
               {/* <img src={spiralImg} alt="spiralImg" /> */}
               <hr style={{ opacity: "1", border: "2px solid silver" }} />
             </div>
           </div>
         </section>
         {/* //////////////carousel section///////////////// */}
-      
+
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>
           <h2>Pass With Us</h2>
@@ -426,57 +409,37 @@ export default function Home() {
           >
             <ImagesCarousel />
           </div>
-          
         </section>
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
 
-        {/* /////////////////////////////////////Our Partners////////////////////////// */}
-
-        <section className={styles.ourPartnersSection}>
-          <h2>Our Partners</h2>
-          <div className={styles.partnerSection}>
-            <img src={OurPartners1} alt="" />
-bcg
-            <img src={OurPartners2} alt="" />
-            <img src={OurPartners3} alt="" />
-            <img src={OurPartners4} alt="" />
-            <img src={OurPartners5} alt="" />
-
-            <img src={OurPartners7} alt="" />
-            <img src={OurPartners8} alt="" />
-            <img src={OurPartners9} alt="" />
-            <img src={OurPartners10} alt="" />
-            <img src={OurPartners11} alt="" />
-            <img src={OurPartners12} alt="" />
-            <img src={OurPartners13} alt="" />
-          </div>
-        </section>
+        
         {/* ///////////////////////////////////////// */}
-       
-            <div className={styles.whyChooseText}>
-              <p>
-                See why people choose SmartLearner to{" "}
-                <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
-              </p>
-            </div>
-            <div className={styles.starImgContainer}>
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-              <img src={starImg} alt="starImg" />
-            </div>
-            <section className={styles.homeSection}>
+
+        <div className={styles.whyChooseText}>
+          <p>
+            See why people choose SmartLearner to{" "}
+            <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
+          </p>
+        </div>
+        <div className={styles.starImgContainer}>
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+        </div>
+        <section className={styles.homeSection}>
           <div className={styles.secondSectionContent}>
             <div className={styles.hallFameContent}>
               <div className={styles.semiCircle}>
-                <img src={hallOfFame} alt="hallOfFame" />
+                {/* <img src={hallOfFame} alt="hallOfFame" /> */}
+                <h2>Award Winning <span>Driving School</span> </h2>
               </div>
-              <div className={styles.trophyImg}>
+              {/* <div className={styles.trophyImg}>
                 <img src={tropfyImg} alt="tropfyImg" />
-              </div>
+              </div> */}
 
               <div className={styles.trophyFrame}>
                 <img src={hallOfFame1} alt="hallOfFame1" />

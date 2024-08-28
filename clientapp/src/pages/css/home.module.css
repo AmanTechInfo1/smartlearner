@@ -393,6 +393,36 @@
   max-width: 600px;
   width: 100%;
 }
+.semiCircle h2{
+  font-size: 5rem;
+  color: white;
+  text-align: center;
+  padding-bottom: 2rem;
+  animation: 4s slide-left;
+
+}
+@keyframes slide-left {
+  from {
+    margin-right: -100%;
+  }
+  to {
+    margin-right: 0%;
+  }
+}
+.semiCircle h2 span{
+  color: #de1515;
+  
+  animation: 4s slide-right;
+    
+  }
+  @keyframes slide-right {
+    from {
+      margin-left: -100%;
+    }
+    to {
+      margin-left: 0%;
+    }
+  }
 .trophyImg img {
   max-width: 270px;
   width: 100%;

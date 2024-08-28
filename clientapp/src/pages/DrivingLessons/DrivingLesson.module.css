@@ -286,3 +286,43 @@ color: white;
     width: 100%;
   }
 }
+/* ///////////////////////partners section /////////////////// */
+.ourPartnersSection{
+ 
+  background-color: gray;
+}
+.ourPartnersSection h2{
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+}
+.partnerSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.partnerSection img {
+  width: 150px;
+ aspect-ratio: 1/1;
+ margin: 0px 1rem;
+ object-fit: contain;
+}
+
+
+@media (max-width: 768px) {
+  .partnerSection img {
+    width: 100px;
+  }
+}
+@media (max-width: 428px){
+  .ourPartnersSection h2{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+  }
+}
+

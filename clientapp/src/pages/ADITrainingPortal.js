@@ -16,6 +16,21 @@ import { FaLocationDot } from "react-icons/fa6";
 import smartlearnerLogo from "../assets/images/White-Logo-Fixed-1024x174.png";
 import { Link } from "react-router-dom";
 
+import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
+
+import OurPartners2 from "../assets/images/our partners/gocv-1024x546.png";
+import OurPartners3 from "../assets/images/our partners/Highways_England_logo.svg.png";
+import OurPartners4 from "../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
+import OurPartners5 from "../assets/images/our partners/JLR-Logo-2008 (1).png";
+
+import OurPartners7 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png";
+import OurPartners8 from "../assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png";
+import OurPartners9 from "../assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png";
+import OurPartners10 from "../assets/images/our partners/The-Tree-Council-Logo-1.png";
+import OurPartners11 from "../assets/images/our partners/Sqa_logo.png";
+import OurPartners12 from "../assets/images/our partners/THT_logo_1854x.png";
+import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
+
 export default function ADITrainingPortal() {
   return (
     <div className={styles.ADITrainingPortalPage}>
@@ -114,6 +129,26 @@ export default function ADITrainingPortal() {
           </div>
         </div>
       </section>
+       {/* /////////////////////////////////////Our Partners////////////////////////// */}
+
+       <section className={styles.ourPartnersSection}>
+          <h2>Our Partners</h2>
+          <div className={styles.partnerSection}>
+            <img src={OurPartners1} alt="" />
+          
+            <img src={OurPartners2} alt="" />
+            <img src={OurPartners3} alt="" />
+            <img src={OurPartners4} alt="" />
+            <img src={OurPartners5} alt="" />
+            <img src={OurPartners7} alt="" />
+            <img src={OurPartners8} alt="" />
+            <img src={OurPartners9} alt="" />
+            <img src={OurPartners10} alt="" />
+            <img src={OurPartners11} alt="" />
+            <img src={OurPartners12} alt="" />
+            <img src={OurPartners13} alt="" />
+          </div>
+        </section>
     </div>
   );
 }
