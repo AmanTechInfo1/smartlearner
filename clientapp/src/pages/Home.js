@@ -81,7 +81,7 @@ export default function Home() {
             <img src={trustPilot} alt="trustPilot" />
           </div>
           <div className={styles.homeContainer}>
-            <img src={frontImg} alt=""/>
+          <HomeDesign /> 
             {/* <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
             </div> */}
@@ -180,7 +180,7 @@ export default function Home() {
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
-        {/* <HomeDesign /> */}
+        
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
@@ -438,7 +438,7 @@ export default function Home() {
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
             <img src={OurPartners1} alt="" />
-
+bcg
             <img src={OurPartners2} alt="" />
             <img src={OurPartners3} alt="" />
             <img src={OurPartners4} alt="" />

@@ -26,10 +26,10 @@
   width: 100%;
 }
 .homeContainer {
-  padding: 2rem 1rem;
+  padding: 2rem 0px;
  
   text-align: center;
-  position: relative;
+ 
 }
 
 .innerHomeHeading {

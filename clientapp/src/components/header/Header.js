@@ -90,7 +90,7 @@ function Header() {
                 to="/Driving-Instructor-Training"
                 className={styles.activeLink}
               >
-                <li>Join Our Team</li>
+               Join Our Team
               </NavLink>
           
             <ul className={styles.dropdownContent}>
