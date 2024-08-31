@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b137d6e.css",
-    "main.js": "/static/js/main.9907480f.js",
+    "main.css": "/static/css/main.242a6d3d.css",
+    "main.js": "/static/js/main.9dd30c0a.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
     "static/js/667.31d446cf.chunk.js": "/static/js/667.31d446cf.chunk.js",
     "static/media/Video-1smartlearner-B.mp4": "/static/media/Video-1smartlearner-B.6dfe1cf4c9d8d0ca3fa1.mp4",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
+    "static/media/Untitled-design.png": "/static/media/Untitled-design.adbb7c46f402ec862da4.png",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
     "static/media/dribbble_1.gif": "/static/media/dribbble_1.181c5a6430bcb77324b1.gif",
@@ -114,6 +115,7 @@
     "static/media/trophy-Icon.png": "/static/media/trophy-Icon.441dc128bf02e0522fb5.png",
     "static/media/passwithus2.jpg": "/static/media/passwithus2.b391991b9cd59f2a3085.jpg",
     "static/media/Roof-Racks-20-1024x683.jpg": "/static/media/Roof-Racks-20-1024x683.5ed7f4d4fd0a33018b8c.jpg",
+    "static/media/goldstar.png": "/static/media/goldstar.1b2c4976a07e56814a3c.png",
     "static/media/enviromentalIssueImg.jpg": "/static/media/enviromentalIssueImg.d7adf1b987d92f686003.jpg",
     "static/media/bgcarImg2.png": "/static/media/bgcarImg2.f023656e36812c1296ef.png",
     "static/media/certificateOfMotor.jpg": "/static/media/certificateOfMotor.3e2039ccf374e0c33e62.jpg",
@@ -153,7 +155,6 @@
     "static/media/dangers-of-tailgating-1024x683.jpg": "/static/media/dangers-of-tailgating-1024x683.05b338b74f9bb4f4461b.jpg",
     "static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.png": "/static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.9f960aa6e64f550f6706.png",
     "static/media/behindLargeVehicle.jpg": "/static/media/behindLargeVehicle.1678384d52dbb0b8c2ef.jpg",
-    "static/media/homeBannerImg.jpeg": "/static/media/homeBannerImg.e610092cf42948ac585b.jpeg",
     "static/media/truck-oncoming-trasffic.jpg": "/static/media/truck-oncoming-trasffic.a56a6993d03fa0fa63b9.jpg",
     "static/media/hallOfFame.png": "/static/media/hallOfFame.1f31c2896bd96d1156db.png",
     "static/media/peopleWalking.jpg": "/static/media/peopleWalking.5a74d69140d5bb51bd28.jpg",
@@ -241,7 +242,6 @@
     "static/media/unitedToAchieve.jpg": "/static/media/unitedToAchieve.06e6e384b9303f8cfa38.jpg",
     "static/media/THT_logo.png": "/static/media/THT_logo.1429352c67d15c647192.png",
     "static/media/smartlearnerSupportImg.png": "/static/media/smartlearnerSupportImg.c871efa43a99d199a684.png",
-    "static/media/cartImg.png": "/static/media/cartImg.09b85665d91e0cffa2d4.png",
     "static/media/school-bus-300x300.jpg": "/static/media/school-bus-300x300.0169eba8894ec1f48bc5.jpg",
     "static/media/green-ruler.png": "/static/media/green-ruler.11b1cf62a80951b4c68d.png",
     "static/media/adapted teaching.png": "/static/media/adapted teaching.dea8841269d05fbb9988.png",
@@ -260,15 +260,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.7b137d6e.css.map": "/static/css/main.7b137d6e.css.map",
-    "main.9907480f.js.map": "/static/js/main.9907480f.js.map",
+    "main.242a6d3d.css.map": "/static/css/main.242a6d3d.css.map",
+    "main.9dd30c0a.js.map": "/static/js/main.9dd30c0a.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b137d6e.css",
-    "static/js/main.9907480f.js"
+    "static/css/main.242a6d3d.css",
+    "static/js/main.9dd30c0a.js"
   ]
 }
