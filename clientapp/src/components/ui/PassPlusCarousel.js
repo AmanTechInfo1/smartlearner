@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/L-Plate.jpg";
-import starImg from "../../assets/images/star.png";
-import cartImg from "../../assets/images/cartImg.png";
+import LplateImg from "../../assets/images/content3.png";
+import starImg from "../../assets/images/goldstar.png";
+import cartImg from "../../assets/images/silverShoppingCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -81,7 +81,8 @@ function PassPlusCarousel() {
                 onClick={() => handleExpandCategory(item._id)}
               >
                 <div className={styles.carouselColumnHeading}>
-                  <img src={LplateImg} alt="Category Image" />
+                  <img     id={styles.CorouselImgBanner} src={LplateImg} alt="Category Image" />
+                  <div className={styles.CorouselhaddingBanner}>
                   <h2>
                     {item._id === "Pass Plus"
                       ? expandedCategory === item._id
@@ -89,25 +90,37 @@ function PassPlusCarousel() {
                         : "PASS PLUS"
                       : "PASS PLUS"}
                   </h2>
+                  {expandedCategory === item._id && (
+                      <Link to="/cart">
+                        <span>
+                          <img
+                            id={styles.CorouselImgcart}
+                            src={cartImg}
+                            alt="cartImg"
+                          />
+                        </span>
+                      </Link>
+                    )}
+                  </div>
                 </div>
                 {expandedCategory === item._id ? (
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        <li className={styles.expandedColData}>
+                        {/* <li className={styles.expandedColData}>
                           <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li>
+                        </li> */}
                         <li className={styles.expandedColData}>
                           <span
                             style={{
-                              color: "black",
-                                backgroundColor: "white",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                maxWidth: "235px",
-                                width: "100%",
-                                borderRadius: "6px",
-                                padding: "8px",
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              maxWidth: "235px",
+                              width: "100%",
+                              borderRadius: "40px 0px 0px 40px",
+                              padding: "8px",
                             }}
                           >
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
@@ -172,11 +185,7 @@ function PassPlusCarousel() {
                         </li>
                       </div>
                     ))}
-                    <Link to="/cart">
-                      <button className={styles.addtoCartButtoncontent}>
-                        <img src={cartImg} alt="cartImg" />
-                      </button>
-                    </Link>
+                  
                   </ul>
                 ) : (
                   <div

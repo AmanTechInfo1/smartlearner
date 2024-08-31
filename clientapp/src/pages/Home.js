@@ -9,7 +9,7 @@ import trustPilot from "..//assets/images/trustpilot-inline-white.png";
 import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
 // import userIdentificationImg from "../assets/images/userIndentification.png";
 import hallOfFame from "../assets/images/hallOfFame.png";
-import starImg from "../assets/images/star.png";
+import starImg from "../assets/images/goldstar.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "../components/ui/Carousel";
 import Review from "../components/views/Review";
@@ -18,7 +18,6 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
-
 
 // //////////////////
 import Slider from "react-slick";
@@ -399,14 +398,13 @@ export default function Home() {
           <h2>Pass With Us</h2>
           <div
             style={{
-              maxWidth: "1100px",
+              maxWidth: "1400px",
               marginRight: "auto",
               marginLeft: "auto",
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}
-          >
+            }}>
             <ImagesCarousel />
           </div>
         </section>
@@ -414,7 +412,6 @@ export default function Home() {
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
 
-        
         {/* ///////////////////////////////////////// */}
 
         <div className={styles.whyChooseText}>
@@ -435,7 +432,9 @@ export default function Home() {
             <div className={styles.hallFameContent}>
               <div className={styles.semiCircle}>
                 {/* <img src={hallOfFame} alt="hallOfFame" /> */}
-                <h2>Award Winning <span>Driving School</span> </h2>
+                <h2>
+                  Award Winning <span>Driving School</span>{" "}
+                </h2>
               </div>
               {/* <div className={styles.trophyImg}>
                 <img src={tropfyImg} alt="tropfyImg" />

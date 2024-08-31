@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/L-Plate.jpg";
-import starImg from "../../assets/images/star.png";
-import cartImg from "../../assets/images/cartImg.png";
+import LplateImg from "../../assets/images/content3.png";
+import starImg from "../../assets/images/goldstar.png";
+import cartImg from "../../assets/images/silverShoppingCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -67,7 +67,9 @@ function Corousel() {
 
   return (
     <>
-      <section className={styles.carouselContainer}>
+      <section
+        className={styles.carouselContainer}
+        style={{ maxWidth: "1300px", margin: "0px auto" }}>
         <div className={styles.carousel}>
           {["manual", "Automatic", "Theory Support", "Intensive"].map(
             (categoryName) =>
@@ -77,40 +79,55 @@ function Corousel() {
                   className={`${styles.carouselColumn} ${
                     expandedCategory === item._id ? styles.expanded : ""
                   }`}
-                  onClick={() => handleExpandCategory(item._id)}
-                >
+                  onClick={() => handleExpandCategory(item._id)}>
                   <div className={styles.carouselColumnHeading}>
-                    <img src={LplateImg} alt="Category Image" />
-                    <h2>
-                      {item._id === "Theory Support"
-                        ? expandedCategory === item._id
-                          ? "Theory Support".toUpperCase()
-                          : "Theory".toUpperCase()
-                        : item._id.toUpperCase()}
-                    </h2>
+                    <img
+                      id={styles.CorouselImgBanner}
+                      src={LplateImg}
+                      alt="Category Image"
+                    />
+                    <div className={styles.CorouselhaddingBanner}>
+                      <h2>
+                        {item._id === "Theory Support"
+                          ? expandedCategory === item._id
+                            ? "Theory Support".toUpperCase()
+                            : "Theory".toUpperCase()
+                          : item._id.toUpperCase()}
+                      </h2>
+                      {expandedCategory === item._id && (
+                        <Link to="/cart">
+                          <span>
+                            <img
+                              id={styles.CorouselImgcart}
+                              src={cartImg}
+                              alt="cartImg"
+                            />
+                          </span>
+                        </Link>
+                      )}
+                    </div>
                   </div>
                   {expandedCategory === item._id ? (
                     <ul type="none">
                       {item.data.map((info, index) => (
                         <div key={index}>
-                          <li className={styles.expandedColData}>
+                          {/* <li className={styles.expandedColData}>
                             <h2 style={{ color: "white" }}>
                               {info.description}
                             </h2>
-                          </li>
+                          </li> */}
                           <li className={styles.expandedColData}>
                             <span
                               style={{
-                                color: "black",
-                                backgroundColor: "white",
+                                color: "white",
+                                backgroundColor: "black",
                                 display: "flex",
                                 justifyContent: "space-between",
                                 maxWidth: "235px",
                                 width: "100%",
-                                borderRadius: "6px",
+                                borderRadius: "40px 0px 0px 40px",
                                 padding: "8px",
-                              }}
-                            >
+                              }}>
                               <p style={{ marginBottom: "0px" }}>{info.name}</p>
                               <p style={{ marginBottom: "0px" }}>
                                 £ {info.price}
@@ -128,8 +145,7 @@ function Corousel() {
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(info, index);
-                                  }}
-                                >
+                                  }}>
                                   Book
                                 </button>
                               ) : (
@@ -143,8 +159,7 @@ function Corousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.decreaseButton}
-                                    >
+                                      className={styles.decreaseButton}>
                                       -
                                     </button>
                                     <span>
@@ -162,8 +177,7 @@ function Corousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.increaseButton}
-                                    >
+                                      className={styles.increaseButton}>
                                       +
                                     </button>
                                   </div>
@@ -173,18 +187,12 @@ function Corousel() {
                           </li>
                         </div>
                       ))}
-                      <Link to="/cart">
-                        <button className={styles.addtoCartButtoncontent}>
-                          <img src={cartImg} alt="cartImg" />
-                        </button>
-                      </Link>
                     </ul>
                   ) : (
                     <div
                       className={`${styles.carouselStarImgContainer} ${
                         expandedCategory === item._id ? styles.compress : ""
-                      }`}
-                    >
+                      }`}>
                       <img src={starImg} alt="starImg" />
                       <img src={starImg} alt="starImg" />
                       <img src={starImg} alt="starImg" />

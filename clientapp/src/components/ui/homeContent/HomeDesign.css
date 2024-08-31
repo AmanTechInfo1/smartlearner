@@ -5,17 +5,17 @@
 }
 
 .homecontent-Sec {
-  background-image: url("./homeBannerImg.jpeg");
+  background-image: url("./Untitled-design.png");
   background-size: cover;
-  background-position: center;
-  max-width: 1400px;
+  background-position: top;
+
   opacity: 0.8;
-  width: 100%;
-  height: 100%;
-  padding: 5rem 0px;
+
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }
-.homecontent-Sec p{
-    margin-bottom: 0px;
+.homecontent-Sec p {
+  margin-bottom: 0px;
 }
 .home-content-D h2 {
   font-size: 6rem;
@@ -23,6 +23,9 @@
   letter-spacing: 10px;
   font-weight: 900;
   color: rgb(227, 0, 0);
+  margin: 0px auto;
+  max-width: 1600px;
+  opacity: 1;
 }
 .home-content-D {
   padding: 0px 2rem;
@@ -37,7 +40,7 @@
   background-size: contain;
 
   background-position: center;
-  margin-top: 5rem;
+  margin-top: 10rem;
 
   width: 100%;
 }
@@ -52,9 +55,13 @@
   background-color: black;
   opacity: 0.9;
   border: 1px solid white;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 0px 1rem;
-  max-width: 300px;
+  width: 300px;
+}
+.content-box:hover {
+  border: 1px solid rgb(227, 0, 0);
+  transition: ease-in-out 0.5s;
 }
 .content-box-header {
   display: flex;
@@ -63,21 +70,21 @@
 }
 .content-box-header h2 {
   color: white;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
   opacity: 1;
+  margin-top: -0.9rem;
 }
 .content-box-header img {
   max-width: 100px;
- 
 }
 .content-box-desc {
-  padding: 1rem 0px;
-  height: 170px;
- 
+  padding: 2rem 0px;
+  height: 180px;
 }
 .content-box-desc h2 {
   font-size: 1.5rem;
-  color: white;
+  color: rgb(227, 0, 0);
   width: 100%;
   font-weight: 0px;
   letter-spacing: 0px;
@@ -88,89 +95,98 @@
   text-align: left;
   font-size: 1rem;
   font-weight: 400px;
+  margin: 1rem 0px;
 }
 .btn-Section {
-text-align: center;
+  text-align: center;
   position: relative;
   width: 100%;
 }
-.btn-Section a{
-    color: white;
-    text-decoration: none;
+.btn-Section a {
+  color: white;
+  text-decoration: none;
 }
-.btn-div{
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    top: -1.3rem;
-   cursor: pointer;
-    background-color: rgb(223, 7, 7);
-    color: white;
-    border: 1px solid white;
-   
-    border-radius: 35px;
-    
+.btn-div {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: -1.3rem;
+  cursor: pointer;
+  background-color: rgb(223, 7, 7);
+  color: white;
+  border: 1px solid white;
+  transition: transform 0.3s ease;
+  border-radius: 35px;
 }
-.btn-div:hover{
-    background-color: black;
+.btn-div:hover {
+  background-color: black;
+  transform: scale(1.1);
 }
-.btn-div p{
-    padding: 8px 20px;
+.btn-div p {
+  padding: 8px 20px;
 }
-.btn-div span{
-    border: 1px solid white;
-    border-radius: 50%;
-    padding: 8px 14px;
+.btn-div span {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 8px 14px;
 }
-@media (max-width: 1103px){
-    .homecontent-Sec{
-        background-position-x: -40rem;
-        background-repeat: no-repeat;
-        opacity: 0.7;
-    }
-    .content-Imgs{
-        background-image: url('./road.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        padding-top: 5rem;
-    }
-    .content-box-desc{
-        width: 300px;
-    }
+@media (max-width: 1072px) {
+  .homecontent-Sec {
+    opacity: 0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .content-Imgs {
+    background-image: url("./road.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 5rem;
+  }
+  .content-box-desc {
+    width: 300px;
+  }
 }
-@media (max-width: 767px){
-    .content-Imgs{
-        background-image: url('./mobileRoad.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-       padding-top: 2rem;
-    }
+@media (max-width: 767px) {
+  .homecontent-Sec {
+    opacity: 0.7;
+    background-size: cover;
+
+    background-position: center;
+  }
 }
-@media (max-width: 600px){
-    .homecontent-Sec{
-        padding: 2rem 0px;
-    }
-   .home-content-D h2 {
+@media (max-width: 705px) {
+  .content-Imgs {
+    background-image: url("./mobileRoad.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .homecontent-Sec {
+    padding: 2rem 0px;
+  }
+  .home-content-D h2 {
     font-size: 5rem;
-   }
+  }
 }
-@media (max-width: 530px){
-    .home-content-D h2 {
-        font-size: 4rem;
-       }
+@media (max-width: 530px) {
+  .home-content-D h2 {
+    font-size: 4rem;
+  }
 }
-@media (max-width: 470px){
-    .home-content-D h2 {
-        font-size: 3rem;
-       }
+@media (max-width: 470px) {
+  .home-content-D h2 {
+    font-size: 3rem;
+  }
 }
-@media (max-width: 400px){
-    .home-content-D h2 {
-        font-size: 2.5rem;
-       }
+@media (max-width: 400px) {
+  .home-content-D h2 {
+    font-size: 2.5rem;
+  }
 }
 /* .designMain{
     background-color: #000; 
