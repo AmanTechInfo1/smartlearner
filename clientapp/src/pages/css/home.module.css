@@ -577,7 +577,7 @@
 /* /////////////////////////////coursel ///////////////////// */
 
 .carouselContainer {
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 2rem 0px;
   width: 100%;
   margin-left: auto;
@@ -593,7 +593,7 @@
 
 .carousel {
   display: flex;
-
+  min-width: 1000px;
   flex-direction: row;
 
   align-items: center;
@@ -601,7 +601,9 @@
 }
 
 .carouselColumn {
-  width: 40%;
+  min-width: 20%;
+  min-height: 100px;
+  width: 20%;
   position: relative;
   background-color: rgb(29, 0, 0);
   border-radius: 30px;
@@ -609,12 +611,13 @@
   padding: 20px;
   cursor: pointer;
   align-items: center;
-  transition: width 0.7s ease-in-out;
+  transition: min-width 0.7s ease-in-out, min-height 0.7s ease-in-out;
 
   position: relative;
 }
 .expanded {
-  width: 50%;
+  min-width: 33%;
+
   min-height: 350px;
   height: 100%;
 }
@@ -653,9 +656,10 @@
   color: white;
   align-items: center;
   justify-content: space-between;
-
+  margin-top: 1rem;
   width: 100%;
 }
+
 .CorouselhaddingBanner a {
   border: 1px solid silver;
   border-radius: 50%;
@@ -752,17 +756,9 @@
   max-width: 40px;
   width: 100%;
 }
-@media (max-width: 800px) {
-  .carousel {
-    min-width: 750px;
-    justify-content: flex-start;
-    margin: 0px 1rem;
-  }
-}
+/*  */
 /* ///////////////// */
 /* someanimation/////////// */
-
-
 
 /* //////////////////////////////////////////// */
 
@@ -804,9 +800,6 @@
   .carouselColumn {
     padding: 15px 8px;
   }
-  .carousel {
-    min-width: 715px;
-  }
 
   .quantityControl button {
     padding: 1px 0.5rem;
@@ -814,6 +807,14 @@
   }
   .quantityControl span {
     padding: 1px 0.4rem;
+  }
+}
+@media (max-width: 467px) {
+  .expandedColData p {
+    font-size: 1.1rem;
+  }
+  .bookNow {
+    font-size: 1rem;
   }
 }
 
