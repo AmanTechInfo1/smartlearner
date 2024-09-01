@@ -408,6 +408,16 @@ export default function Home() {
             <ImagesCarousel />
           </div>
         </section>
+        {/* /////////////////////////////////// */}
+        <section>
+        <div className={styles.starImgContainer}>
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+        </div>
+        </section>
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}

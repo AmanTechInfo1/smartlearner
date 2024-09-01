@@ -289,13 +289,25 @@ color: white;
 /* ///////////////////////partners section /////////////////// */
 .ourPartnersSection{
  
-  background-color: gray;
+  background-image: url('../../assets/images/ourpartners.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.bgOverlay{
+  background-color: black;
+  opacity: 0.8;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 .ourPartnersSection h2{
   color: #fff;
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
+
+  position: sticky;
 }
 .partnerSection {
   display: flex;
@@ -309,6 +321,8 @@ color: white;
  aspect-ratio: 1/1;
  margin: 0px 1rem;
  object-fit: contain;
+
+ position: sticky;
 }
 
 

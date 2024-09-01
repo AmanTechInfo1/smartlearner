@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-.theorySupportPage{
+.theorySupportPage {
   background-color: #111;
-  font-family: 'Antonio',sans-serif;
+  font-family: "Antonio", sans-serif;
   color: white;
 }
 .TSfirstContent {
@@ -28,14 +28,13 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  
 }
 .innerTheorySupportContent {
   /* background-image: url(../../assets/images/bricks-bg.jpg); */
   position: relative;
   width: 100%;
   background-size: cover;
-  
+
   background-position: center;
 }
 
@@ -110,7 +109,7 @@
   max-width: 800px;
   width: 100%;
   margin-right: auto;
-  
+
   margin-left: auto;
 }
 .theorySupportContentVideosec video {
@@ -128,7 +127,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 4rem 0px;
-  
 }
 
 .whyChooseshortSectionContent {
@@ -153,7 +151,6 @@
 .whyChooseshortSection h2 {
   font-size: 28px;
   margin-bottom: 25px;
- 
 }
 .whyChooseshortSection h2 span {
   color: #ed2025;
@@ -163,7 +160,6 @@
   font-size: 16px;
   line-height: 28px;
   margin-bottom: 20px;
- 
 }
 .whyChooseshortSection p a {
   color: #ed2025;
@@ -248,7 +244,7 @@
   padding: 15px;
   color: #fff;
   font-size: 1.5rem;
- 
+
   margin-bottom: 0px;
 }
 .nextFormDetailsContainer span {
@@ -425,7 +421,6 @@
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 1rem;
-  
 }
 .productDetailsPageSection {
   display: flex;
@@ -521,7 +516,7 @@
     width: 100%;
     margin-top: 1rem;
   }
-  .dManualDiv img{
+  .dManualDiv img {
     max-width: 35px;
     width: 100%;
   }
@@ -536,7 +531,7 @@
   .quantityControl span {
     padding: 1px 1rem;
   }
-  .dManualDiv img{
+  .dManualDiv img {
     max-width: 25px;
     width: 100%;
   }
@@ -556,12 +551,11 @@
 }
 
 /* ////////////////////////////////////////////////////////// */
-.dManualSection hr{
+.dManualSection hr {
   opacity: 1;
   border: 2px solid #ed2025;
- 
 }
-.dManualSections{
+.dManualSections {
   padding: 2rem 1rem;
   max-width: 1200px;
   width: 100%;
@@ -569,42 +563,36 @@
   margin-left: auto;
 }
 
-.dManualDiv{
+.dManualDiv {
   display: flex;
   gap: 30px;
   align-items: center;
   margin-bottom: 2rem;
-
 }
-.dManualDiv h2{
+.dManualDiv h2 {
   font-size: 3.5rem;
-color: white;
+  color: white;
 }
-.dManualDiv img{
+.dManualDiv img {
   max-width: 50px;
-  width: 100%;  
+  width: 100%;
   animation: slideFromLeft 1s ease-out, rotate 2s linear infinite;
 }
 
 .dManualDiv img:nth-child(5) {
   animation-delay: 8s;
-  
 }
 .dManualDiv img:nth-child(4) {
   animation-delay: 6s;
- 
 }
 .dManualDiv img:nth-child(3) {
   animation-delay: 4s;
-  
 }
 .dManualDiv img:nth-child(2) {
   animation-delay: 2s;
-  
 }
 .dManualDiv img:nth-child(1) {
   animation-delay: 0s;
-  
 }
 
 @keyframes slideFromLeft {
@@ -624,55 +612,63 @@ color: white;
     transform: rotate(360deg);
   }
 }
-.manualPList{
+.manualPList {
   padding: 0px 2rem;
 }
-.manualPList p{
+.manualPList p {
   color: white;
 }
 
 @media (max-width: 770px) {
-  .dManualDiv h2{
+  .dManualDiv h2 {
     font-size: 2.5rem;
- 
   }
 
-  .dManualDiv img{
+  .dManualDiv img {
     max-width: 35px;
     width: 100%;
   }
 }
 @media (max-width: 480px) {
-  .dManualDiv h2{
+  .dManualDiv h2 {
     font-size: 2rem;
- 
   }
-  .dManualDiv img{
+  .dManualDiv img {
     max-width: 20px;
     width: 100%;
   }
 }
 @media (max-width: 394px) {
-  .dManualDiv h2{
+  .dManualDiv h2 {
     font-size: 1.7rem;
- 
   }
-  .dManualDiv img{
+  .dManualDiv img {
     max-width: 20px;
     width: 100%;
   }
 }
 
 /* ///////////////////////partners section /////////////////// */
-.ourPartnersSection{
- 
-  background-color: gray;
+.ourPartnersSection {
+  background-image: url("../../assets/images/ourpartners.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
-.ourPartnersSection h2{
+.bgOverlay {
+  background-color: black;
+  opacity: 0.8;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.ourPartnersSection h2 {
   color: #fff;
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
+
+  position: sticky;
 }
 .partnerSection {
   display: flex;
@@ -683,23 +679,23 @@ color: white;
 
 .partnerSection img {
   width: 150px;
- aspect-ratio: 1/1;
- margin: 0px 1rem;
- object-fit: contain;
-}
+  aspect-ratio: 1/1;
+  margin: 0px 1rem;
+  object-fit: contain;
 
+  position: sticky;
+}
 
 @media (max-width: 768px) {
   .partnerSection img {
     width: 100px;
   }
 }
-@media (max-width: 428px){
-  .ourPartnersSection h2{
+@media (max-width: 428px) {
+  .ourPartnersSection h2 {
     color: #fff;
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
   }
 }
-

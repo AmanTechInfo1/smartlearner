@@ -33,8 +33,7 @@ import OurPartners10 from "../../assets/images/our partners/The-Tree-Council-Log
 import OurPartners11 from "../../assets/images/our partners/Sqa_logo.png";
 import OurPartners12 from "../../assets/images/our partners/THT_logo_1854x.png";
 import OurPartners13 from "../../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
-
-
+import Corousel from "../../components/ui/Carousel";
 
 export default function DrivingLessons() {
   const { section } = useParams();
@@ -103,6 +102,7 @@ export default function DrivingLessons() {
       {/* ////////////////////////////////////////////// */}
 
       <section className={styles.imageSliderContainer}>
+      <h2>Pass With Us</h2>
         <div
           style={{
             maxWidth: "1200px",
@@ -116,6 +116,10 @@ export default function DrivingLessons() {
           <ImagesCarousel />
         </div>
         <hr></hr>
+      </section>
+      {/* ///////////////////////////////////////////// */}
+      <section>
+        <Corousel />
       </section>
       {/* ///////////////////////////////////// */}
       <section className={styles.dManualSection}>
@@ -317,23 +321,24 @@ export default function DrivingLessons() {
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
       <section className={styles.ourPartnersSection}>
-          <h2>Our Partners</h2>
-          <div className={styles.partnerSection}>
-            <img src={OurPartners1} alt="" />
-          
-            <img src={OurPartners2} alt="" />
-            <img src={OurPartners3} alt="" />
-            <img src={OurPartners4} alt="" />
-            <img src={OurPartners5} alt="" />
-            <img src={OurPartners7} alt="" />
-            <img src={OurPartners8} alt="" />
-            <img src={OurPartners9} alt="" />
-            <img src={OurPartners10} alt="" />
-            <img src={OurPartners11} alt="" />
-            <img src={OurPartners12} alt="" />
-            <img src={OurPartners13} alt="" />
-          </div>
-        </section>
+        <div className={styles.bgOverlay}></div>
+        <h2>Our Partners</h2>
+        <div className={styles.partnerSection}>
+          <img src={OurPartners1} alt="" />
+
+          <img src={OurPartners2} alt="" />
+          <img src={OurPartners3} alt="" />
+          <img src={OurPartners4} alt="" />
+          <img src={OurPartners5} alt="" />
+          <img src={OurPartners7} alt="" />
+          <img src={OurPartners8} alt="" />
+          <img src={OurPartners9} alt="" />
+          <img src={OurPartners10} alt="" />
+          <img src={OurPartners11} alt="" />
+          <img src={OurPartners12} alt="" />
+          <img src={OurPartners13} alt="" />
+        </div>
+      </section>
     </div>
   );
 }

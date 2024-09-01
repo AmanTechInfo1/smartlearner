@@ -142,7 +142,8 @@ function Corousel() {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
-                                }}>
+                                }}
+                              >
                                 Book
                               </button>
                             ) : (
@@ -156,7 +157,8 @@ function Corousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.decreaseButton}>
+                                    className={styles.decreaseButton}
+                                  >
                                     -
                                   </button>
                                   <span>
@@ -174,7 +176,8 @@ function Corousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.increaseButton}>
+                                    className={styles.increaseButton}
+                                  >
                                     +
                                   </button>
                                 </div>

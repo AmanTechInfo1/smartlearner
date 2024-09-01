@@ -132,6 +132,7 @@ export default function ADITrainingPortal() {
        {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
        <section className={styles.ourPartnersSection}>
+       <div className={styles.bgOverlay}></div>
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
             <img src={OurPartners1} alt="" />

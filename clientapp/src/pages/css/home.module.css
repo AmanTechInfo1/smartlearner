@@ -8,12 +8,12 @@
   background-color: black;
   font-family: "Antonio", sans-serif;
 }
-.homepageContainerDiv {
+/* .homepageContainerDiv {
   /* max-width: 1400px;
   width: 100%;
   margin-right: auto;
-  margin-left: auto; */
-}
+  margin-left: auto; 
+} */
 .homeSection {
   width: 100%;
 }
@@ -407,6 +407,21 @@
     margin-left: 0%;
   }
 }
+@media (max-width: 727px) {
+  .semiCircle h2{
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 527px) {
+  .semiCircle h2{
+    font-size: 4rem;
+  }
+}
+@media (max-width: 427px) {
+  .semiCircle h2{
+    font-size: 3.5rem;
+  }
+}
 .trophyImg img {
   max-width: 270px;
   width: 100%;
@@ -765,7 +780,7 @@
 .bookNow,
 .more {
   padding: 8px 20px;
-  background-color: #890306;
+  background-color: #eb0009;
   color: #fff;
   border: none;
   border-radius: 0px 40px 40px 0px;
@@ -775,7 +790,7 @@
 
 .bookNow:hover,
 .more:hover {
-  background-color: #eb0009;
+  background-color:#890306;
 }
 .quantityControl {
   margin-left: 0.5rem;
