@@ -17,7 +17,7 @@ export default function About() {
               surpassed our original goals. We are the highest-rated driving
               school in Warwickshire and the West Midlands. SmartLearner was
               even voted the ‘Regional Driving School Of The Year’ at the
-              Intelligent Instructor Awards 2021 and 2022!
+              Intelligent Instructor Awards 2021 and 2024!
             </p>
             <p>
               Our learners regularly achieve a higher-than-average pass rate
