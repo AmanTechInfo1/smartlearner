@@ -40,7 +40,7 @@ export default function HomeDesign() {
                   <img src={stepImg2} />
                 </section>
                 <section className='content-box-desc'>
-                  <h2>Apply for your provisional licence
+                  <h2>Apply For Your Provisional Licence
                   </h2>
                   <p>A simple guide to getting your first provisional driving licence</p>
                 </section>
@@ -66,7 +66,7 @@ export default function HomeDesign() {
                   <img src={stepImg1}  style={{maxWidth:'100px', marginTop:'-2rem'}}/>
                 </section>
                 <section className='content-box-desc'>
-                  <h2>Take the test 
+                  <h2>Take The Test 
                   </h2>
                   <p>Pass your Theory with SmartLearner</p>
                 </section>

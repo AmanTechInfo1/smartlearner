@@ -142,15 +142,6 @@ const overlayStyle = {
   zIndex: 1000,
 };
 
-const buttonStyle = {
-  marginTop: "10px",
-  position: "absolute",
-  padding: "10px 20px",
-  border: "none",
-  borderRadius: "4px",
-  backgroundColor: "#007bff",
-  color: "#fff",
-  cursor: "pointer",
-};
+
 
 export default Layout;

@@ -232,7 +232,7 @@ p {
   }
   .partnerSection {
     padding: 2rem 1rem;
-    margin: 3rem 0px;
+    margin-top: 3rem;
     background-color: #ffffffe7;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

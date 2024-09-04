@@ -80,10 +80,11 @@
 }
 .content-box-desc {
   padding: 2rem 0px;
-  height: 180px;
+  height: 200px;
 }
 .content-box-desc h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
   color: rgb(255, 0, 0);
   position: sticky;
   width: 100%;
@@ -126,11 +127,12 @@
 }
 .btn-div p {
   padding: 8px 20px;
+  font-size: 1.2rem;
 }
 .btn-div span {
   border: 1px solid white;
   border-radius: 50%;
-  padding: 8px 14px;
+  padding: 10px 15px;
 }
 @media (max-width: 1072px) {
   .homecontent-Sec {

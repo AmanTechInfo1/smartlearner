@@ -183,6 +183,7 @@ article a h4:hover {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  text-align: center;
 }
 
 .lowerFooter h3 {
@@ -224,11 +225,11 @@ article a h4:hover {
 
 .footerImg {
   display: flex;
+  padding-left: 0;
+  justify-content: center;
 }
 
-.footerImg {
-  padding-left: 0;
-}
+
 
 .footerImg li {
   margin: 2px;

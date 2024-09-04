@@ -395,7 +395,7 @@ export default function Home() {
 
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>
-          <h2>Pass With Us</h2>
+         
           <div
             style={{
               maxWidth: "1400px",
@@ -404,7 +404,8 @@ export default function Home() {
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}>
+            }}
+          >
             <ImagesCarousel />
           </div>
         </section>
@@ -424,12 +425,6 @@ export default function Home() {
 
         {/* ///////////////////////////////////////// */}
 
-        <div className={styles.whyChooseText}>
-          <p>
-            See why people choose SmartLearner to{" "}
-            <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
-          </p>
-        </div>
         {/* <div className={styles.starImgContainer}>
           <img src={starImg} alt="starImg" />
           <img src={starImg} alt="starImg" />

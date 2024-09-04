@@ -83,40 +83,9 @@ export default function DrivingLessons() {
       </div>
       {/* /////////////////////////////////////////// */}
 
-      <div className={styles.whyChooseSml}>
-        <div className={styles.whyChooseSmlGHeading}>
-          <h2>Why Choose Smartlearner?</h2>
-        </div>
-        <div className={styles.whyChooseSmlListdiv}>
-          <section className={styles.whyChooseSmlLists}>
-            <p>
-              We are the highest-rated and fastest-growing independent driving
-              school in the West Midlands. We offer everything you could need to
-              get yourself on the road. We take into consideration your
-              availability, your work schedule, and any other requirements you
-              may have.
-            </p>
-          </section>
-        </div>
-      </div>
       {/* ////////////////////////////////////////////// */}
 
-      <section className={styles.imageSliderContainer}>
-      <h2>Pass With Us</h2>
-        <div
-          style={{
-            maxWidth: "1200px",
-            marginRight: "auto",
-            marginLeft: "auto",
-            padding: "2rem 2rem",
-            width: "100%",
-            margin: "2rem auto",
-          }}
-        >
-          <ImagesCarousel />
-        </div>
-        <hr></hr>
-      </section>
+    
       {/* ///////////////////////////////////////////// */}
       <section>
         <Corousel />
@@ -259,6 +228,24 @@ export default function DrivingLessons() {
           {/* <hr /> */}
         </Element>
       </section>
+      {/* ////////////////////////////////////////////////////// */}
+      
+      <div className={styles.whyChooseSml}>
+        <div className={styles.whyChooseSmlGHeading}>
+          <h2>Why Choose Smartlearner?</h2>
+        </div>
+        <div className={styles.whyChooseSmlListdiv}>
+          <section className={styles.whyChooseSmlLists}>
+            <p>
+              We are the highest-rated and fastest-growing independent driving
+              school in the West Midlands. We offer everything you could need to
+              get yourself on the road. We take into consideration your
+              availability, your work schedule, and any other requirements you
+              may have.
+            </p>
+          </section>
+        </div>
+      </div>
       {/* /////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
         <div
@@ -318,6 +305,27 @@ export default function DrivingLessons() {
         <hr />
       </section>
       {/* /////////////////////////////////////////////////// */}
+      <section className={styles.imageSliderContainer}>
+      <div className={styles.whyChooseText}>
+            <p>
+              See why people choose SmartLearner to{" "}
+              <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
+            </p>
+          </div>
+        <div
+          style={{
+            maxWidth: "1200px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            padding: "2rem 2rem",
+            width: "100%",
+            margin: "2rem auto",
+          }}
+        >
+          <ImagesCarousel />
+        </div>
+        <hr></hr>
+      </section>
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
       <section className={styles.ourPartnersSection}>
