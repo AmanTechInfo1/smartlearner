@@ -208,54 +208,75 @@ p {
   }
 }
 /* ///////////////////////partners section /////////////////// */
+/* ///////////////////////partners section /////////////////// */
 .ourPartnersSection {
-  background-image: url("../../assets/images/ourpartners.jpg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-.bgOverlay {
-  background-color: black;
-  opacity: 0.2;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-.ourPartnersSection h2 {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 800;
-  text-align: center;
-
-  position: sticky;
-}
-.partnerSection {
-  padding: 2rem 1rem;
-  margin: 3rem 0px;
-  background-color: #ffffffe7;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.partnerSection img {
-  width: 150px;
-  aspect-ratio: 1/1;
-  margin: 0px 1rem;
-  object-fit: contain;
-
-  position: sticky;
-}
-
-@media (max-width: 768px) {
-  .partnerSection img {
-    width: 100px;
+    background-image: url("../../assets/images/ourpartners.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
   }
-}
-@media (max-width: 428px) {
+  .bgOverlay {
+    background-color: black;
+    opacity: 0.2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
   .ourPartnersSection h2 {
     color: #fff;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 800;
     text-align: center;
+  
+    position: sticky;
   }
-}
+  .partnerSection {
+    padding: 2rem 1rem;
+    margin: 3rem 0px;
+    background-color: #ffffffe7;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+  }
+  
+  .partnerSection img {
+    width: 150px;
+    aspect-ratio: 1/1;
+    margin: 0px 1rem;
+    object-fit: contain;
+  
+    position: sticky;
+  }
+  
+  @media (max-width: 934px) {
+    .partnerSection {
+      
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     
+    }
+  }
+  @media (max-width: 780px) {
+    .partnerSection {
+      
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     
+    }
+  }
+  
+  @media (max-width: 428px) {
+    .ourPartnersSection h2 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+    }
+    .partnerSection {
+      
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+     
+    }
+  }
+  

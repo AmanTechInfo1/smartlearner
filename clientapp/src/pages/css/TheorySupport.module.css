@@ -649,6 +649,7 @@
 }
 
 /* ///////////////////////partners section /////////////////// */
+/* ///////////////////////partners section /////////////////// */
 .ourPartnersSection {
   background-image: url("../../assets/images/ourpartners.jpg");
   background-size: cover;
@@ -676,6 +677,7 @@
   background-color: #ffffffe7;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
 }
 
 .partnerSection img {
@@ -687,16 +689,34 @@
   position: sticky;
 }
 
-@media (max-width: 768px) {
-  .partnerSection img {
-    width: 100px;
+@media (max-width: 934px) {
+  .partnerSection {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   
   }
 }
+@media (max-width: 780px) {
+  .partnerSection {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   
+  }
+}
+
 @media (max-width: 428px) {
   .ourPartnersSection h2 {
     color: #fff;
     font-size: 2rem;
     font-weight: 800;
     text-align: center;
+  }
+  .partnerSection {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+   
   }
 }
