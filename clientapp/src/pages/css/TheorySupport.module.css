@@ -657,7 +657,7 @@
 }
 .bgOverlay {
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.2;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -671,10 +671,11 @@
   position: sticky;
 }
 .partnerSection {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   padding: 2rem 1rem;
+  margin: 3rem 0px;
+  background-color: #ffffffe7;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .partnerSection img {

@@ -410,13 +410,13 @@ export default function Home() {
         </section>
         {/* /////////////////////////////////// */}
         <section>
-        <div className={styles.starImgContainer}>
-          <img src={starImg} alt="starImg" />
-          <img src={starImg} alt="starImg" />
-          <img src={starImg} alt="starImg" />
-          <img src={starImg} alt="starImg" />
-          <img src={starImg} alt="starImg" />
-        </div>
+          <div className={styles.starImgContainer}>
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+            <img src={starImg} alt="starImg" />
+          </div>
         </section>
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
@@ -430,13 +430,13 @@ export default function Home() {
             <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
           </p>
         </div>
-        <div className={styles.starImgContainer}>
+        {/* <div className={styles.starImgContainer}>
           <img src={starImg} alt="starImg" />
           <img src={starImg} alt="starImg" />
           <img src={starImg} alt="starImg" />
           <img src={starImg} alt="starImg" />
           <img src={starImg} alt="starImg" />
-        </div>
+        </div> */}
         <section className={styles.homeSection}>
           <div className={styles.secondSectionContent}>
             <div className={styles.hallFameContent}>

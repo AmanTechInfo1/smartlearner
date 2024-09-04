@@ -70,7 +70,7 @@ function Corousel() {
       <section
         className={styles.carouselContainer}
         style={{ maxWidth: "1300px", margin: "0px auto" }}>
-        <div className={styles.carousel}>
+        <div className={styles.carousel} style={{ justifyContent: "center" }}>
           {["manual", "Automatic", "Theory Support", "Intensive"].map(
             (categoryName) =>
               filteredData(categoryName).map((item) => (

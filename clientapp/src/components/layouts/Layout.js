@@ -73,11 +73,34 @@ function Layout() {
     <div className="layout">
       {isVisible && (
         <div style={overlayStyle}>
-          <div  ref={popupRef}>
-            <section style={{display:'flex',gap:'20px'}}>
-
-            <CallBackForm />
-            <IoIosCloseCircle onClick={() => setIsVisible(false)} style={{color:'white',fontSize:'1.5rem',cursor:'pointer'}}/>
+          <div ref={popupRef}>
+            <section style={{ display: "flex", gap: "20px" }}>
+              <section className="callbackFormSection">
+                <div className="callbackFormContent">
+                  <CallBackForm />
+                  <div className="callbackFormContentPG">
+                    <h2>Building knowledge</h2>
+                    <p>
+                      We launched our 1-2-1 theory sessions in 2019 and since
+                      then we have helped many people pass who thought they
+                      never could. Our theory sessions focus on building your
+                      knowledge from the ground up to ensure you don’t just know
+                      the answers but understand them. We have had people from
+                      all over the country coming to us looking for help in
+                      preparing for their exam. Currently we have a 90% pass
+                      rate which is 41.5% higher than the national average!
+                    </p>
+                  </div>
+                </div>
+              </section>
+              <IoIosCloseCircle
+                onClick={() => setIsVisible(false)}
+                style={{
+                  color: "white",
+                  fontSize: "1.5rem",
+                  cursor: "pointer",
+                }}
+              />
             </section>
           </div>
         </div>
@@ -112,17 +135,16 @@ const overlayStyle = {
   left: 0,
   width: "100%",
   height: "100%",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backgroundColor: "rgb(0 0 0 / 82%)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   zIndex: 1000,
 };
 
-
 const buttonStyle = {
   marginTop: "10px",
-  position: 'absolute',
+  position: "absolute",
   padding: "10px 20px",
   border: "none",
   borderRadius: "4px",
