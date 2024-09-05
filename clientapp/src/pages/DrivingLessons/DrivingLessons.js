@@ -85,7 +85,6 @@ export default function DrivingLessons() {
 
       {/* ////////////////////////////////////////////// */}
 
-    
       {/* ///////////////////////////////////////////// */}
       <section>
         <Corousel />
@@ -229,7 +228,7 @@ export default function DrivingLessons() {
         </Element>
       </section>
       {/* ////////////////////////////////////////////////////// */}
-      
+
       <div className={styles.whyChooseSml}>
         <div className={styles.whyChooseSmlGHeading}>
           <h2>Why Choose Smartlearner?</h2>
@@ -255,8 +254,7 @@ export default function DrivingLessons() {
             maxWidth: "1200px",
             marginLeft: "auto",
             marginRight: "auto",
-          }}
-        >
+          }}>
           <h2 className="text-center display-4 mb-4">What's included?</h2>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">TOWN DRIVING</h3>
@@ -305,13 +303,17 @@ export default function DrivingLessons() {
         <hr />
       </section>
       {/* /////////////////////////////////////////////////// */}
+      <div className={styles.spiralImgContainer}>
+        {/* <img src={spiralImg} alt="spiralImg" /> */}
+        <hr style={{ opacity: "1", border: "2px solid silver" }} />
+      </div>
       <section className={styles.imageSliderContainer}>
-      <div className={styles.whyChooseText}>
-            <p>
-              See why people choose SmartLearner to{" "}
-              <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
-            </p>
-          </div>
+        <div className={styles.whyChooseText}>
+          <p>
+            See why people choose SmartLearner to{" "}
+            <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
+          </p>
+        </div>
         <div
           style={{
             maxWidth: "1200px",
@@ -320,8 +322,7 @@ export default function DrivingLessons() {
             padding: "2rem 2rem",
             width: "100%",
             margin: "2rem auto",
-          }}
-        >
+          }}>
           <ImagesCarousel />
         </div>
         <hr></hr>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
 import starImg from "../../assets/images/goldstar.png";
-import cartImg from "../../assets/images/silverShoppingCart.png";
+import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -142,8 +142,7 @@ function Corousel() {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
-                                }}
-                              >
+                                }}>
                                 Book
                               </button>
                             ) : (
@@ -157,8 +156,7 @@ function Corousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.decreaseButton}
-                                  >
+                                    className={styles.decreaseButton}>
                                     -
                                   </button>
                                   <span>
@@ -176,8 +174,7 @@ function Corousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.increaseButton}
-                                  >
+                                    className={styles.increaseButton}>
                                     +
                                   </button>
                                 </div>
