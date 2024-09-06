@@ -1010,7 +1010,12 @@ ul {
   text-align: left;
   font-size: 1.1rem;
 }
-@media (max-width: 728px) {
+@media (max-width: 927px){
+  .callbackFormSection{
+    max-width: 1040px;
+  }
+}
+@media (max-width: 767px) {
   .callbackFormContent {
     flex-direction: column;
     padding: 15px;

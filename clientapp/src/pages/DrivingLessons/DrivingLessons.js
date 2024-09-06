@@ -247,6 +247,10 @@ export default function DrivingLessons() {
       </div>
       {/* /////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
+      <div className={styles.spiralImgContainer}>
+        {/* <img src={spiralImg} alt="spiralImg" /> */}
+        <hr style={{ opacity: "1", border: "2px solid silver" }} />
+      </div>
         <div
           className=" text-white p-4 "
           style={{
@@ -305,7 +309,8 @@ export default function DrivingLessons() {
       {/* /////////////////////////////////////////////////// */}
       <div className={styles.spiralImgContainer}>
         {/* <img src={spiralImg} alt="spiralImg" /> */}
-        <hr style={{ opacity: "1", border: "2px solid silver" }} />
+
+        <hr style={{ opacity: "1", border: "2px solid silver", maxWidth:'1000px', margin:'0px auto' }} />
       </div>
       <section className={styles.imageSliderContainer}>
         <div className={styles.whyChooseText}>

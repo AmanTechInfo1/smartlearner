@@ -74,12 +74,12 @@ function Layout() {
       {isVisible && (
         <div style={overlayStyle}>
           <div ref={popupRef}>
-            <section style={{ display: "flex", gap: "20px" }}>
+            <section style={{ position:'relative'}}>
               <section className="callbackFormSection">
                 <div className="callbackFormContent">
                   <CallBackForm />
                   <div className="callbackFormContentPG">
-                    <h2>Building knowledge</h2>
+                    <h2>Building knowledge</h2> 
                     <p>
                       We launched our 1-2-1 theory sessions in 2019 and since
                       then we have helped many people pass who thought they
@@ -99,6 +99,9 @@ function Layout() {
                   color: "white",
                   fontSize: "1.5rem",
                   cursor: "pointer",
+                  position:'absolute',
+                  top:'0px',
+                  right:'0px'
                 }}
               />
             </section>
