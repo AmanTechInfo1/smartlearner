@@ -228,7 +228,7 @@ export default function DrivingLessons() {
         </Element>
       </section>
       {/* ////////////////////////////////////////////////////// */}
-
+      {/* 
       <div className={styles.whyChooseSml}>
         <div className={styles.whyChooseSmlGHeading}>
           <h2>Why Choose Smartlearner?</h2>
@@ -244,13 +244,13 @@ export default function DrivingLessons() {
             </p>
           </section>
         </div>
-      </div>
+      </div> */}
       {/* /////////////////////////////////////////////// */}
       <section className={styles.dManualSection}>
-      <div className={styles.spiralImgContainer}>
-        {/* <img src={spiralImg} alt="spiralImg" /> */}
-        <hr style={{ opacity: "1", border: "2px solid silver" }} />
-      </div>
+        <div className={styles.spiralImgContainer}>
+          {/* <img src={spiralImg} alt="spiralImg" /> */}
+          <hr style={{ opacity: "1", border: "2px solid silver" }} />
+        </div>
         <div
           className=" text-white p-4 "
           style={{
@@ -310,7 +310,14 @@ export default function DrivingLessons() {
       <div className={styles.spiralImgContainer}>
         {/* <img src={spiralImg} alt="spiralImg" /> */}
 
-        <hr style={{ opacity: "1", border: "2px solid silver", maxWidth:'1000px', margin:'0px auto' }} />
+        <hr
+          style={{
+            opacity: "1",
+            border: "2px solid silver",
+            maxWidth: "1000px",
+            margin: "0px auto",
+          }}
+        />
       </div>
       <section className={styles.imageSliderContainer}>
         <div className={styles.whyChooseText}>

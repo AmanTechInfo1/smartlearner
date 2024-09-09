@@ -10,7 +10,7 @@ import styles from "./Drivinginstructortraining.module.css";
 import award from "../../assets/images/trophy-Icon.png";
 import Review from "../../components/views/Review";
 import EnquiryForm from "../../components/forms/EnquiryForm";
-import {InstructorTestimonials} from "../../assets/data/testimonials"
+import { InstructorTestimonials } from "../../assets/data/testimonials";
 import { useEffect, useState } from "react";
 import OurPartners1 from "../../assets/images/our partners/BYLC_Logo.png";
 
@@ -27,24 +27,20 @@ import OurPartners11 from "../../assets/images/our partners/Sqa_logo.png";
 import OurPartners12 from "../../assets/images/our partners/THT_logo_1854x.png";
 import OurPartners13 from "../../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
 
-
 export default function DrivingInstructorTraining() {
-
-
-
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonialIndex(prevIndex => (prevIndex + 1) % InstructorTestimonials.length);
+      setCurrentTestimonialIndex(
+        (prevIndex) => (prevIndex + 1) % InstructorTestimonials.length
+      );
     }, 2000); // Change the interval time (in milliseconds) as needed
 
     return () => clearInterval(interval);
   }, []);
 
   const currentTestimonial = InstructorTestimonials[currentTestimonialIndex];
-
-
 
   return (
     <div className={styles.drivingInstructorTraining}>
@@ -63,7 +59,6 @@ export default function DrivingInstructorTraining() {
           </p>
           <div className={styles.mainFeatures}>
             <div className={styles.column}>
-              
               <h3>Earn Over £30,000</h3>
               <span>
                 <img src={moneyIcon} alt="money-Icon" />
@@ -81,7 +76,7 @@ export default function DrivingInstructorTraining() {
 
               <p>When you are an instructor you`re the boss.</p>
             </div>
-            <div className={styles.column} >
+            <div className={styles.column}>
               <h3>Flexible Working Hours</h3>
               <span>
                 <img src={workinghour} alt="Hour-Icon" />
@@ -221,7 +216,6 @@ export default function DrivingInstructorTraining() {
         </section>
         {/* /////////////////////////////////////Info Text ///////////////////////////////// */}
 
-        
         {/*//////////////////////////////////////// testimonial////////////////////////////////////// */}
         {/* <section>
         <section className={styles.testimonialsContainer}>
@@ -246,9 +240,9 @@ export default function DrivingInstructorTraining() {
           {" "}
           <Review />
         </section>  */}
-         {/* /////////////////////////////////////Our Partners////////////////////////// */}
+        {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
-      <section className={styles.ourPartnersSection}>
+        {/* <section className={styles.ourPartnersSection}>
       <div className={styles.bgOverlay}></div>
           <h2>Our Partners</h2>
           <div className={styles.partnerSection}>
@@ -266,7 +260,7 @@ export default function DrivingInstructorTraining() {
             <img src={OurPartners12} alt="" />
             <img src={OurPartners13} alt="" />
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );

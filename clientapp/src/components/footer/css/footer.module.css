@@ -76,11 +76,7 @@
   padding-left: 15px;
 }
 
-article a {
-  text-decoration: none;
-}
-
-article a h4 {
+article h4 {
   color: #111111;
   font-size: 16px;
   font-weight: bold;
@@ -89,9 +85,9 @@ article a h4 {
   font-family: "Montserrat", sans-serif;
 }
 
-article a h4:hover {
+/* article a h4:hover {
   color: #ed2025;
-}
+} */
 
 .col3 {
   flex-grow: 1;
@@ -228,8 +224,6 @@ article a h4:hover {
   padding-left: 0;
   justify-content: center;
 }
-
-
 
 .footerImg li {
   margin: 2px;

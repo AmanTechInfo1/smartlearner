@@ -70,21 +70,21 @@ export default function CommunitiesChampions() {
                 <h2>315 EASTER EGG CAMPAIGN</h2>
                 <p>
                   One of our most recognizable campaigns is the 315 EasterEgg
-                  project, launched in spring 2022. Partnering with Zoe'sPlace
-                  Baby Hospice and University Hospital Coventry &Warwickshire's
+                  project, launched in spring 2022. Partnering with Zoe's Place
+                  Baby Hospice and University Hospital Coventry & Warwickshire's
                   children's ward, our mission was to bring joy and Easter eggs
                   to the families, children, and staff of both establishments
                 </p>
                 <p>
                   Our goal was to raise 315 Easter eggs, but we surpassed this by
                   collecting over 500 eggs from instructors,
-                  learners,individuals, and donors in the Coventry community.
+                  learners, individuals, and donors in the Coventry community.
                 </p>
                 <p>
                   Our success attracted local MP Taiwo's attention, and
                   the surplus donations allowed us to extend our reach to
                   various charities and homes across the West Midlands. We
-                  donatedEaster eggs to care homes in Coventry,
+                  donated Easter eggs to care homes in Coventry,
                   Holbrook's Community Centre, and care homes in Nuneaton,
                   spreading the Easter spirit far and wide.
                 </p>
@@ -101,9 +101,9 @@ export default function CommunitiesChampions() {
                 </h2>
                 <p>
                   For years consecutively we collaborated with Coventry
-                  CityCouncil and our local food bank to raise and
+                  City Council and our local food bank to raise and
                   donate necessary food and items to vulnerable families. Last
-                  year in2023, we were able to raise a total of £300+ worth
+                  year in 2023, we were able to raise a total of £300+ worth
                   of donations for the local community, breaking our previous
                   year's record.
                 </p>
@@ -124,7 +124,7 @@ export default function CommunitiesChampions() {
                 <p>
                   At the annual Intelligent Instructor Conference and Expo,
                   we partnered with the NHS to offer free health
-                  checks,highlighting high blood pressure and diabetes
+                   checks, highlighting high blood pressure and diabetes
                   awareness.
                 </p>
                 <p>
@@ -132,7 +132,7 @@ export default function CommunitiesChampions() {
                   for the Speed of Sight charity.
                 </p>
                 <p>
-                  Instructors participated enthusiastically, and we raised£300
+                  Instructors participated enthusiastically, and we raised £300
                   to support inclusive driving events for people of
                   all abilities. The charity empowers disabled individuals
                   to engage in unique activities and experiences.
@@ -153,7 +153,7 @@ export default function CommunitiesChampions() {
                 <p>
                   Our goal was to raise 315 Easter eggs, but we surpassed this by
                   collecting over 500 eggs from instructors,
-                  learners,individuals, and donors in the Coventry community.
+                  learners, individuals, and donors in the Coventry community.
                 </p>
                 <p>
                   Our campaign aimed to encourage our learners and community to

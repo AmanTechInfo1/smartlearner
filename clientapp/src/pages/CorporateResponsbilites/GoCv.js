@@ -41,7 +41,7 @@ export default function GoCv() {
           <p>
             SmartLearner Driving School regularly sponsors and partners with GO
             CV to support events and attractions for underprivileged individuals
-            and families in conventry.
+            and families in coventry.
           </p>
           <p>
             Our Collaboration helps fund local businesses and projects,

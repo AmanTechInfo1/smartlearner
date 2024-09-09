@@ -32,18 +32,16 @@ function Footer() {
             <div className={styles.col2}>
               <h3>Blogs</h3>
               <article>
-                <a href="/">
-                  <h4>Art of manual Driving</h4>
-                </a>
+                <h4>Art of manual Driving</h4>
+
                 <p>
                   In a world increasingly dominated by automatic transmissions,
                   there`s a unique charm and...
                 </p>
               </article>
               <article>
-                <a href="/">
-                  <h4>The Art of Automatic Driving lessons</h4>
-                </a>
+                <h4>The Art of Automatic Driving lessons</h4>
+
                 <p>
                   In the ever-evolving world of automotive technology, automatic
                   transmission cars have become the...
@@ -63,37 +61,13 @@ function Footer() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Monday</td>
+                      <td>Mon - Fri</td>
                       <td>9:00 AM</td>
                       <td>7:00 PM</td>
                     </tr>
+
                     <tr>
-                      <td>Tuesday</td>
-                      <td>9:00 AM</td>
-                      <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                      <td>Wednesday</td>
-                      <td>9:00 AM</td>
-                      <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                      <td>Thursday</td>
-                      <td>9:00 AM</td>
-                      <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                      <td>Friday</td>
-                      <td>9:00 AM</td>
-                      <td>7:00 PM</td>
-                    </tr>
-                    <tr>
-                      <td>Saturday</td>
-                      <td>10:00 AM</td>
-                      <td>4:00 PM</td>
-                    </tr>
-                    <tr>
-                      <td>Sunday</td>
+                      <td>Sat - Sun</td>
                       <td>10:00 AM</td>
                       <td>4:00 PM</td>
                     </tr>

@@ -69,8 +69,7 @@ export default function TheHonestTruth() {
                     width="100%"
                     height="600px"
                     src="https://www.youtube.com/embed/8PskOJsdGM8"
-                    title="YouTube Video"
-                  ></iframe>
+                    title="YouTube Video"></iframe>
                 </div>
               </div>
             </section>
@@ -87,10 +86,14 @@ export default function TheHonestTruth() {
             </p>
             <p>
               The Honest Truth is a national road safety campaign, collaborating
-              with emergency services, road safety organizations, and driving
+              with emergency services, road safety organisations, and driving
               instructors to deliver straight forward road safety education.
             </p>
-            <a style={{textDecoration:'none'}} href="https://www.thehonesttruth.co.uk/ "><button>MORE INFO</button></a>
+            <a
+              style={{ textDecoration: "none" }}
+              href="https://www.thehonesttruth.co.uk/ ">
+              <button>MORE INFO</button>
+            </a>
           </div>
         </section>
 
@@ -130,14 +133,14 @@ export default function TheHonestTruth() {
               road safety. We are excited to use driving lessons to educate
               young people about the risks they face after passing their tests.
               For the past 15 years, SmartLearner has promoted road safety
-              through presentations at schools, colleges, and universities
-              in Coventry, Warwick, Rugby, and surrounding areas.
+              through presentations at schools, colleges, and universities in
+              Coventry, Warwick, Rugby, and surrounding areas.
             </p>
             <p>
-              In 2019, we helped establish the road safety charity'Because Your
+              In 2019, we helped establish the road safety charity 'Because Your
               Life Counts' (BYLC), which delivers various road safety projects.
-              BYLC has collaborated with West Midlands Police, West Midlands Fire
-              Service, and the Warwickshire Police and Crime Commissioner.
+              BYLC has collaborated with West Midlands Police, West Midlands
+              Fire Service, and the Warwickshire Police and Crime Commissioner.
             </p>
           </div>
         </section>
@@ -169,9 +172,9 @@ export default function TheHonestTruth() {
               <h2>BOOK YOUR LESSON</h2>
               <hr />
               <p>
-                At the start of your lessons, you'll receive a Truth Card listing
-                the 10 truths about safe driving. Your instructor will sign off
-                each topic as you complete it.
+                At the start of your lessons, you'll receive a Truth Card
+                listing the 10 truths about safe driving. Your instructor will
+                sign off each topic as you complete it.
               </p>
               <p>
                 The 'Honest Truth' campaign aims to tell young drivers the
@@ -187,13 +190,13 @@ export default function TheHonestTruth() {
               <h2>FINISH THE TRAINING</h2>
               <hr />
               <p>
-                At the start of your lessons, you will receive a Truth
-                Card listing 10 truths. Your instructor will sign off each truth
-                as you complete the related topics.
+                At the start of your lessons, you will receive a Truth Card
+                listing 10 truths. Your instructor will sign off each truth as
+                you complete the related topics.
               </p>
               <p>
                 The 'Honest Truth' campaign aims to inform young drivers about
-                safe driving realistically and straight forwardly,hoping to
+                safe driving realistically and straight forwardly, hoping to
                 change their driving behavior.
               </p>
             </section>

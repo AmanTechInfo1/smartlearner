@@ -18,7 +18,7 @@ import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import video from "../assets/videos/Video-1886-041219-B.mp4";
-import video2 from "../assets/videos/Video-1smartlearner-B.mp4"
+import video2 from "../assets/videos/Video-1smartlearner-B.mp4";
 
 import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
 
@@ -34,21 +34,6 @@ import OurPartners10 from "../assets/images/our partners/The-Tree-Council-Logo-1
 import OurPartners11 from "../assets/images/our partners/Sqa_logo.png";
 import OurPartners12 from "../assets/images/our partners/THT_logo_1854x.png";
 import OurPartners13 from "../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default function TheorySupport() {
   const { section } = useParams();
@@ -82,44 +67,43 @@ export default function TheorySupport() {
                 src={video}
                 title="YouTube Video"
                 poster={poster}
-                controls={true}
-              ></video>
+                controls={true}></video>
             </div>
           </div>
         </section>
         {/* /////////////////////////////////  //////////////////*/}
         <section className={styles.dManualSection}>
-        <hr />
-        <Element name="Theory-package-section">
-          <section className={styles.dManualSections} id="automatic-section1">
-            {" "}
-            <div className={styles.dManualDiv}>
-              <h2>THEORY SUPPORT</h2>
-              <span>
-                {" "}
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-              </span>
-            </div>
-            <div className={styles.manualPList}>
-              <p>
-                Need support on passing your theory test? We offer 1-2-1 in
-                house, from the comfort of your house on Zoom, or if you want to
-                touch up you driving skills, get ahead or have fun, we have a
-                driving simulator in office!
-              </p>
-            </div>
-            <section>
-              <TheorySupportCorousel />
-            </section>
-          </section>
-
           <hr />
-        </Element>
-      </section>
+          <Element name="Theory-package-section">
+            <section className={styles.dManualSections} id="automatic-section1">
+              {" "}
+              <div className={styles.dManualDiv}>
+                <h2>THEORY SUPPORT</h2>
+                <span>
+                  {" "}
+                  <img src={starImg} alt="starImg" />
+                  <img src={starImg} alt="starImg" />
+                  <img src={starImg} alt="starImg" />
+                  <img src={starImg} alt="starImg" />
+                  <img src={starImg} alt="starImg" />
+                </span>
+              </div>
+              <div className={styles.manualPList}>
+                <p>
+                  Need support on passing your theory test? We offer 1-2-1 in
+                  house, from the comfort of your house on Zoom, or if you want
+                  to touch up you driving skills, get ahead or have fun, we have
+                  a driving simulator in office!
+                </p>
+              </div>
+              <section>
+                <TheorySupportCorousel />
+              </section>
+            </section>
+
+            <hr />
+          </Element>
+        </section>
         {/* //////////CallBack Form section///////////// */}
         <section className={styles.callbackFormSection}>
           <div className={styles.callbackFormContent}>
@@ -136,15 +120,11 @@ export default function TheorySupport() {
             </div>
             <CallBackForm />
           </div>
-          <div className={styles.productTab}>
-            {/* <ProductTab /> */}
-          </div>
+          <div className={styles.productTab}>{/* <ProductTab /> */}</div>
         </section>
       </section>
 
       {/* ///////////////////////////////////////////////////// */}
-     
-
 
       {/* /////////////////////////////////////////////// */}
       {/* <section className={styles.TSvideosContanierSection}>
@@ -213,7 +193,6 @@ export default function TheorySupport() {
       </section> */}
       {/* /////////////////////////////////////////////// */}
 
-   
       {/* ////////////////////////////////// */}
       {/* <section className={styles.nextFormSection}>
         <div className={styles.nextFormContainer}>
@@ -263,7 +242,7 @@ export default function TheorySupport() {
       </section> */}
       {/* ////////////////////////////////////// */}
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
-
+      {/* 
       <section className={styles.ourPartnersSection}>
       <div className={styles.bgOverlay}></div>
           <h2>Our Partners</h2>
@@ -282,7 +261,7 @@ export default function TheorySupport() {
             <img src={OurPartners12} alt="" />
             <img src={OurPartners13} alt="" />
           </div>
-        </section>
+        </section> */}
     </div>
   );
 }

@@ -55,7 +55,7 @@ export default function WeProudlySupport() {
             </a>
             <p>
               We have attended many events alongside the West Midlands Fire
-              Service to assist in there road safety VR experiences.
+              Service to assist in their road safety VR experiences.
             </p>
           </div>
           <div className={styles.column}>
@@ -165,7 +165,7 @@ export default function WeProudlySupport() {
             </a>
             <p>
               We supported a family of 8 in Afghanistan by sending food and
-              supplies during hardship
+              supplies during hardship.
             </p>
           </div>
           <div className={styles.column}>
