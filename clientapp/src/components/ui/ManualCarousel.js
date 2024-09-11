@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/goldstar.png";
+import redStarImg from "../../assets/images/redStar.png"; // Assuming it's the correct image for Manual
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,11 +13,8 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function ManualCorousel() {
-  const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
-
   const data = useSelector((state) => state.product.productsCategory);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,6 +64,18 @@ function ManualCorousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
+  // Function to get the heading and button color based on the category
+  const getColorForCategory = (categoryName) => {
+    switch (categoryName) {
+      case "Offers manual":
+        return "#ff0000"; // Red for Offers manual
+      case "manual":
+        return "#ff0000"; // Red for manual
+      default:
+        return "gold"; // Default color for other categories
+    }
+  };
+
   return (
     <>
       <section className={styles.carouselContainer}>
@@ -80,14 +89,21 @@ function ManualCorousel() {
                 }`}
                 onClick={() => handleExpandCategory(item._id)}>
                 <div className={styles.carouselColumnHeading}>
-                  <img     id={styles.CorouselImgBanner} src={LplateImg} alt="Category Image" />
+                  <img
+                    id={styles.CorouselImgBanner}
+                    src={LplateImg}
+                    alt="Category Image"
+                  />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2>
+                    <h2
+                      style={{
+                        color: getColorForCategory(item._id), // Dynamic color for heading
+                      }}>
                       {item._id === "Offers manual"
                         ? expandedCategory === item._id
-                          ? "ONE TIME SPECIAL OFFER"
-                          : "OFFERS"
-                        : "MANUAL"}
+                          ? "One Time Special Offer".toUpperCase()
+                          : "Offers".toUpperCase()
+                        : "Manual".toUpperCase()}
                     </h2>
                     {expandedCategory === item._id && (
                       <Link to="/cart">
@@ -106,9 +122,6 @@ function ManualCorousel() {
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        {/* <li className={styles.expandedColData}>
-                          <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li> */}
                         <li className={styles.expandedColData}>
                           <span
                             style={{
@@ -138,6 +151,11 @@ function ManualCorousel() {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
+                                }}
+                                style={{
+                                  backgroundColor: getColorForCategory(
+                                    item._id
+                                  ), // Dynamic color for button
                                 }}>
                                 Book
                               </button>
@@ -180,18 +198,17 @@ function ManualCorousel() {
                         </li>
                       </div>
                     ))}
-
                   </ul>
                 ) : (
                   <div
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
                     }`}>
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
+                    <img src={redStarImg} alt="starImg" />
+                    <img src={redStarImg} alt="starImg" />
+                    <img src={redStarImg} alt="starImg" />
+                    <img src={redStarImg} alt="starImg" />
+                    <img src={redStarImg} alt="starImg" />
                   </div>
                 )}
               </div>

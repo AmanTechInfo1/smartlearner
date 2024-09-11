@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/goldstar.png";
+import starImg from "../../assets/images/yellowStar.png"; // Assuming yellow star
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,34 +13,25 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function PassPlusCarousel() {
-  const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
 
   const data = useSelector((state) => state.product.productsCategory);
-
   const dispatch = useDispatch();
+  const myCart = useSelector((state) => state.cart.cart || []);
 
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
 
-  const myCart = useSelector((state) => state.cart.cart || []);
-
   useEffect(() => {
-    const offersManualCategory = data.find(
-      (item) => item._id === "Pass Plus"
-    );
+    const offersManualCategory = data.find((item) => item._id === "Pass Plus");
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
     }
   }, [data]);
 
   const handleExpandCategory = (id) => {
-    if (expandedCategory === id) {
-      setExpandedCategory("");
-    } else {
-      setExpandedCategory(id);
-    }
+    setExpandedCategory(expandedCategory === id ? "" : id);
   };
 
   const handleIncrease = (id, qty) => {
@@ -67,6 +58,11 @@ function PassPlusCarousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
+  // Function to determine the button color based on the star color (yellow in this case)
+  const getButtonColor = () => {
+    return "#FFD700"; // Yellow color (matching the yellow star)
+  };
+
   return (
     <>
       <section className={styles.carouselContainer}>
@@ -81,16 +77,16 @@ function PassPlusCarousel() {
                 onClick={() => handleExpandCategory(item._id)}
               >
                 <div className={styles.carouselColumnHeading}>
-                  <img     id={styles.CorouselImgBanner} src={LplateImg} alt="Category Image" />
+                  <img id={styles.CorouselImgBanner} src={LplateImg} alt="Category Image" />
                   <div className={styles.CorouselhaddingBanner}>
-                  <h2>
-                    {item._id === "Pass Plus"
-                      ? expandedCategory === item._id
-                        ? "PASS PLUS"
-                        : "PASS PLUS"
-                      : "PASS PLUS"}
-                  </h2>
-                  {expandedCategory === item._id && (
+                    <h2 style={{ color: getButtonColor() }}>
+                      {item._id === "Pass Plus"
+                        ? expandedCategory === item._id
+                          ? "PASS PLUS"
+                          : "PASS PLUS"
+                        : "PASS PLUS"}
+                    </h2>
+                    {expandedCategory === item._id && (
                       <Link to="/cart">
                         <span>
                           <img
@@ -107,9 +103,6 @@ function PassPlusCarousel() {
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        {/* <li className={styles.expandedColData}>
-                          <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li> */}
                         <li className={styles.expandedColData}>
                           <span
                             style={{
@@ -137,6 +130,10 @@ function PassPlusCarousel() {
                             ) ? (
                               <button
                                 className={styles.bookNow}
+                                style={{
+                                  backgroundColor: getButtonColor(), // Apply the yellow button color
+                                  color: "white",
+                                }}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
@@ -185,7 +182,6 @@ function PassPlusCarousel() {
                         </li>
                       </div>
                     ))}
-                  
                   </ul>
                 ) : (
                   <div

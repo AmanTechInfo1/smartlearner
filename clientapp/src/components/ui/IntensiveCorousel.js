@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/goldstar.png";
+import starImg from "../../assets/images/greenStar.png"; 
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,32 +13,24 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function IntensiveCorousel() {
-  const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
-
   const data = useSelector((state) => state.product.productsCategory);
-
+  const myCart = useSelector((state) => state.cart.cart || []);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
 
-  const myCart = useSelector((state) => state.cart.cart || []);
-
   useEffect(() => {
-    const offersManualCategory = data.find((item) => item._id === "Intensive");
-    if (offersManualCategory) {
-      setExpandedCategory(offersManualCategory._id);
+    const offersIntensiveCategory = data.find((item) => item._id === "Intensive");
+    if (offersIntensiveCategory) {
+      setExpandedCategory(offersIntensiveCategory._id);
     }
   }, [data]);
 
   const handleExpandCategory = (id) => {
-    if (expandedCategory === id) {
-      setExpandedCategory("");
-    } else {
-      setExpandedCategory(id);
-    }
+    setExpandedCategory(expandedCategory === id ? "" : id);
   };
 
   const handleIncrease = (id, qty) => {
@@ -65,6 +57,16 @@ function IntensiveCorousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
+  // Function to get the button color based on the category
+  const getButtonColorForCategory = (categoryName) => {
+    switch (categoryName) {
+      case "Intensive":
+        return "#32CD32"; // LimeGreen color matching the green star for Intensive category
+      default:
+        return "black"; // Default color if category doesn't match
+    }
+  };
+
   return (
     <>
       <section className={styles.carouselContainer}>
@@ -76,7 +78,8 @@ function IntensiveCorousel() {
                 className={`${styles.carouselColumn} ${
                   expandedCategory === item._id ? styles.expanded : ""
                 }`}
-                onClick={() => handleExpandCategory(item._id)}>
+                onClick={() => handleExpandCategory(item._id)}
+              >
                 <div className={styles.carouselColumnHeading}>
                   <img
                     id={styles.CorouselImgBanner}
@@ -84,7 +87,7 @@ function IntensiveCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2>
+                    <h2 style={{ color: "#32CD32" }}> {/* Green heading */}
                       {item._id === "Intensive"
                         ? expandedCategory === item._id
                           ? "MAN. | AUTO. | INTE."
@@ -108,9 +111,6 @@ function IntensiveCorousel() {
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        {/* <li className={styles.expandedColData}>
-                          <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li> */}
                         <li className={styles.expandedColData}>
                           <span
                             style={{
@@ -122,7 +122,8 @@ function IntensiveCorousel() {
                               width: "100%",
                               borderRadius: "40px 0px 0px 40px",
                               padding: "8px",
-                            }}>
+                            }}
+                          >
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
                             <p style={{ marginBottom: "0px" }}>
                               £ {info.price}
@@ -137,11 +138,18 @@ function IntensiveCorousel() {
                             ) ? (
                               <button
                                 className={styles.bookNow}
+                                style={{
+                                  backgroundColor: getButtonColorForCategory(
+                                    item._id
+                                  ), // Dynamic button color (green)
+                                  color: "white",
+                                }}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
-                                }}>
-                                Book
+                                }}
+                              >
+                                Book Now
                               </button>
                             ) : (
                               <div id={styles.cartTableBtn}>
@@ -154,7 +162,8 @@ function IntensiveCorousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.decreaseButton}>
+                                    className={styles.decreaseButton}
+                                  >
                                     -
                                   </button>
                                   <span>
@@ -172,7 +181,8 @@ function IntensiveCorousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.increaseButton}>
+                                    className={styles.increaseButton}
+                                  >
                                     +
                                   </button>
                                 </div>
@@ -187,7 +197,8 @@ function IntensiveCorousel() {
                   <div
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
-                    }`}>
+                    }`}
+                  >
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />

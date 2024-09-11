@@ -90,7 +90,7 @@ export default function ImagesCarousel2nd() {
               className={index === slideIndex ? "slide slide-active" : "slide"}
               key={index}
             >
-              <img src={img} alt="" />
+              <img src={img} alt="" style={{border: '1px solid white'}} />
             </div>
           ))}
         </Slider>

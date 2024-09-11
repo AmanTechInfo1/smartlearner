@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/goldstar.png";
+import yellowStarImg from "../../assets/images/yellowStar.png"; // Yellow star image
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,12 +12,11 @@ import {
 } from "../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
-function Corousel() {
+function TheoryCorousel() {
   const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
 
   const data = useSelector((state) => state.product.productsCategory);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,6 +66,15 @@ function Corousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
+  // Map category names to star colors
+  const starColorMap = {
+    "Theory Support": {
+      starImg: yellowStarImg, // Assuming this category has a yellow star
+      color: "#f1c40f", // Yellow color for text and button
+    },
+    // Add more categories if needed with respective star images and colors
+  };
+
   return (
     <>
       <section className={styles.carouselContainer}>
@@ -86,7 +94,11 @@ function Corousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2>
+                    <h2
+                      style={{
+                        color:
+                          starColorMap[item._id]?.color || "inherit", // Dynamic text color
+                      }}>
                       {item._id === "Theory Support"
                         ? expandedCategory === item._id
                           ? "THEORY SUPPORT"
@@ -110,9 +122,6 @@ function Corousel() {
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        {/* <li className={styles.expandedColData}>
-                          <h2 style={{ color: "white" }}>{info.description}</h2>
-                        </li> */}
                         <li className={styles.expandedColData}>
                           <span
                             style={{
@@ -139,6 +148,10 @@ function Corousel() {
                             ) ? (
                               <button
                                 className={styles.bookNow}
+                                style={{
+                                  backgroundColor:
+                                    starColorMap[item._id]?.color || "#ff0000", // Dynamic button color
+                                }}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
@@ -190,11 +203,11 @@ function Corousel() {
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
                     }`}>
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
-                    <img src={starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
                   </div>
                 )}
               </div>
@@ -206,4 +219,4 @@ function Corousel() {
   );
 }
 
-export default Corousel;
+export default TheoryCorousel;

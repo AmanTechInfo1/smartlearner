@@ -676,17 +676,12 @@
 }
 
 .CorouselhaddingBanner a {
-  border: 1px solid silver;
-  border-radius: 50%;
-  padding: 12px 10px;
-}
-.CorouselhaddingBanner a:hover {
-  border: 1px solid red;
-  transition: ease-in-out 0.2s;
+
+ 
 }
 
 #CorouselImgcart {
-  max-width: 30px;
+  max-width: 35px;
 }
 .carouselColumnHeading h2 {
   text-align: right;

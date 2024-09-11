@@ -12,7 +12,7 @@ import { FaArrowRight } from "react-icons/fa";
 import Review from "../components/views/Review";
 import ShortFaqs from "../components/shortFaqs/ShortFaqs";
 import Testemonial from "../components/testimonials/Testemonial";
-import TheorySupportCorousel from "../components/ui/TheorySupportCarousel";
+import TheoryCorousel from "../components/ui/TheorySupportCarousel";
 import starImg from "../assets/images/star.png";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
@@ -97,7 +97,7 @@ export default function TheorySupport() {
                 </p>
               </div>
               <section>
-                <TheorySupportCorousel />
+                <TheoryCorousel />
               </section>
             </section>
 

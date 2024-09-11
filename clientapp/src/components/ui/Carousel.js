@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/goldstar.png";
+import redStarImg from "../../assets/images/redStar.png";
+import pinkStarImg from "../../assets/images/pinkStar.png";
+import yellowStarImg from "../../assets/images/yellowStar.png";
+import greenStarImg from "../../assets/images/greenStar.png";
+import goldStarImg from "../../assets/images/goldstar.png"; 
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,148 +69,192 @@ function Corousel() {
     return data.filter((item) => item._id === categoryName);
   };
 
-  return (
-    <>
-      <section
-        className={styles.carouselContainer}
-        style={{ maxWidth: "1300px", margin: "0px auto" }}>
-        <div className={styles.carousel} style={{ justifyContent: "center" }}>
-          {["manual", "Automatic", "Theory Support", "Intensive"].map(
-            (categoryName) =>
-              filteredData(categoryName).map((item) => (
-                <div
-                  key={item.id}
-                  className={`${styles.carouselColumn} ${
-                    expandedCategory === item._id ? styles.expanded : ""
-                  }`}
-                  onClick={() => handleExpandCategory(item._id)}>
-                  <div className={styles.carouselColumnHeading}>
-                    <img
-                      id={styles.CorouselImgBanner}
-                      src={LplateImg}
-                      alt="Category Image"
-                    />
-                    <div className={styles.CorouselhaddingBanner}>
-                      <h2>
-                        {item._id === "Theory Support"
-                          ? expandedCategory === item._id
-                            ? "Theory Support".toUpperCase()
-                            : "Theory".toUpperCase()
-                          : item._id.toUpperCase()}
-                      </h2>
-                      {expandedCategory === item._id && (
-                        <Link to="/cart">
-                          <span>
-                            <img
-                              id={styles.CorouselImgcart}
-                              src={cartImg}
-                              alt="cartImg"
-                            />
-                          </span>
-                        </Link>
-                      )}
-                    </div>
+  // Function to return the correct star image array based on category
+  const getStarImagesForCategory = (categoryName) => {
+    switch (categoryName) {
+      case "manual":
+        return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
+      case "Automatic":
+        return [pinkStarImg, pinkStarImg, pinkStarImg, pinkStarImg, pinkStarImg];
+      case "Theory Support":
+        return [
+          yellowStarImg,
+          yellowStarImg,
+          yellowStarImg,
+          yellowStarImg,
+          yellowStarImg,
+        ];
+      case "Intensive":
+        return [
+          greenStarImg,
+          greenStarImg,
+          greenStarImg,
+          greenStarImg,
+          greenStarImg,
+        ];
+      default:
+        return [goldStarImg, goldStarImg, goldStarImg, goldStarImg, goldStarImg];
+    }
+  };
+
+ // Function to return the corresponding color for each category heading and buttons
+const getHeadingAndButtonColorForCategory = (categoryName) => {
+  switch (categoryName) {
+    case "manual":
+      return "red";
+    case "Automatic":
+      return "#ff00cc";
+    case "Theory Support":
+      return "#FFD700";
+    case "Intensive":
+      return "green";
+    default:
+      return "gold";
+  }
+};
+
+return (
+  <>
+    <section
+      className={styles.carouselContainer}
+      style={{ maxWidth: "1300px", margin: "0px auto" }}>
+      <div className={styles.carousel} style={{ justifyContent: "center" }}>
+        {["manual", "Automatic", "Theory Support", "Intensive"].map(
+          (categoryName) =>
+            filteredData(categoryName).map((item) => (
+              <div
+                key={item.id}
+                className={`${styles.carouselColumn} ${
+                  expandedCategory === item._id ? styles.expanded : ""
+                }`}
+                onClick={() => handleExpandCategory(item._id)}>
+                <div className={styles.carouselColumnHeading}>
+                  <img
+                    id={styles.CorouselImgBanner}
+                    src={LplateImg}
+                    alt="Category Image"
+                  />
+                  <div className={styles.CorouselhaddingBanner}>
+                    <h2
+                      style={{
+                        color: getHeadingAndButtonColorForCategory(categoryName),
+                      }}>
+                      {item._id === "Theory Support"
+                        ? expandedCategory === item._id
+                          ? "Theory Support".toUpperCase()
+                          : "Theory".toUpperCase()
+                        : item._id.toUpperCase()}
+                    </h2>
+                    {expandedCategory === item._id && (
+                      <Link to="/cart">
+                        <span>
+                          <img
+                            id={styles.CorouselImgcart}
+                            src={cartImg}
+                            alt="cartImg"
+                          />
+                        </span>
+                      </Link>
+                    )}
                   </div>
-                  {expandedCategory === item._id ? (
-                    <ul type="none">
-                      {item.data.map((info, index) => (
-                        <div key={index}>
-                          {/* <li className={styles.expandedColData}>
-                            <h2 style={{ color: "white" }}>
-                              {info.description}
-                            </h2>
-                          </li> */}
-                          <li className={styles.expandedColData}>
-                            <span
-                              style={{
-                                color: "white",
-                                backgroundColor: "black",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                maxWidth: "235px",
-                                width: "100%",
-                                borderRadius: "40px 0px 0px 40px",
-                                padding: "8px",
-                              }}>
-                              <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                              <p style={{ marginBottom: "0px" }}>
-                                £ {info.price}
-                              </p>
-                            </span>
-                            <div className={styles.btnGroup}>
-                              {myCart.length === 0 ||
-                              !myCart.find(
-                                (cartItem) =>
-                                  cartItem.id ===
-                                  `${info._id}_${index}_${info.price}`
-                              ) ? (
-                                <button
-                                  className={styles.bookNow}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    addToCart(info, index);
-                                  }}>
-                                  Book
-                                </button>
-                              ) : (
-                                <div id={styles.cartTableBtn}>
-                                  <div className={styles.quantityControl}>
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleDecrease(
-                                          `${info._id}_${index}_${info.price}`,
-                                          1
-                                        );
-                                      }}
-                                      className={styles.decreaseButton}>
-                                      -
-                                    </button>
-                                    <span>
-                                      {myCart.find(
-                                        (cartItem) =>
-                                          cartItem.id ===
-                                          `${info._id}_${index}_${info.price}`
-                                      )?.count || 0}
-                                    </span>
-                                    <button
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleIncrease(
-                                          `${info._id}_${index}_${info.price}`,
-                                          1
-                                        );
-                                      }}
-                                      className={styles.increaseButton}>
-                                      +
-                                    </button>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        </div>
-                      ))}
-                    </ul>
-                  ) : (
-                    <div
-                      className={`${styles.carouselStarImgContainer} ${
-                        expandedCategory === item._id ? styles.compress : ""
-                      }`}>
-                      <img src={starImg} alt="starImg" />
-                      <img src={starImg} alt="starImg" />
-                      <img src={starImg} alt="starImg" />
-                      <img src={starImg} alt="starImg" />
-                      <img src={starImg} alt="starImg" />
-                    </div>
-                  )}
                 </div>
-              ))
-          )}
-        </div>
-      </section>
-    </>
-  );
+                {expandedCategory === item._id ? (
+                  <ul type="none">
+                    {item.data.map((info, index) => (
+                      <div key={index}>
+                        <li className={styles.expandedColData}>
+                          <span
+                            style={{
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              maxWidth: "235px",
+                              width: "100%",
+                              borderRadius: "40px 0px 0px 40px",
+                              padding: "8px",
+                            }}>
+                            <p style={{ marginBottom: "0px" }}>{info.name}</p>
+                            <p style={{ marginBottom: "0px" }}>£ {info.price}</p>
+                          </span>
+                          <div className={styles.btnGroup}>
+                            {myCart.length === 0 ||
+                            !myCart.find(
+                              (cartItem) =>
+                                cartItem.id ===
+                                `${info._id}_${index}_${info.price}`
+                            ) ? (
+                              <button
+                                className={styles.bookNow}
+                                style={{
+                                  backgroundColor: getHeadingAndButtonColorForCategory(
+                                    categoryName
+                                  ),
+                                }}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  addToCart(info, index);
+                                }}>
+                                Book
+                              </button>
+                            ) : (
+                              <div id={styles.cartTableBtn}>
+                                <div className={styles.quantityControl}>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleDecrease(
+                                        `${info._id}_${index}_${info.price}`,
+                                        1
+                                      );
+                                    }}
+                                    className={styles.decreaseButton}>
+                                    -
+                                  </button>
+                                  <span>
+                                    {myCart.find(
+                                      (cartItem) =>
+                                        cartItem.id ===
+                                        `${info._id}_${index}_${info.price}`
+                                    )?.count || 0}
+                                  </span>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleIncrease(
+                                        `${info._id}_${index}_${info.price}`,
+                                        1
+                                      );
+                                    }}
+                                    className={styles.increaseButton}>
+                                    +
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </li>
+                      </div>
+                    ))}
+                  </ul>
+                ) : (
+                  <div
+                    className={`${styles.carouselStarImgContainer} ${
+                      expandedCategory === item._id ? styles.compress : ""
+                    }`}>
+                    {getStarImagesForCategory(categoryName).map((star, idx) => (
+                      <img key={idx} src={star} alt={`starImg${idx}`} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))
+        )}
+      </div>
+    </section>
+  </>
+);
+
 }
 
 export default Corousel;

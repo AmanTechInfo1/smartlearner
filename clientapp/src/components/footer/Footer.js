@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import styles from "./css/footer.module.css";
-import logo from "../../assets/images/smartlearnerLogo.png";
+import logo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import { otherLinks, quickLinks } from "../../assets/data/quicklinks";
 import paypal from "../../assets/images/pay-pal.png";
 import visa from "../../assets/images/visa.png";
@@ -74,6 +74,28 @@ function Footer() {
                   </tbody>
                 </table>
               </div>
+              <section>
+              <div className={styles.lowerCol3}>
+                <ul type="none" className={styles.footerImg}>
+                  <li>
+                    <img src={paypal} alt="paypalimg" />
+                  </li>
+                  <li>
+                    <img src={visa} alt="visacardimg" />
+                  </li>
+                  <li>
+                    <img src={mastercard} alt="mastercardimg" />
+                  </li>
+                  <li>
+                    <img src={discover} alt="discoverimg" />
+                  </li>
+                  <li>
+                    <img src={americanExpress} alt="AmericanExpressimg" />
+                  </li>
+                </ul>
+                <img src={ssl} alt="sslLogo" id={styles.sslLogo} />
+              </div>
+              </section>
             </div>
           </div>
         </section>
@@ -110,26 +132,7 @@ function Footer() {
                                     </ul>
                                 </div>
                             </div> */}
-              <div className={styles.lowerCol3}>
-                <ul type="none" className={styles.footerImg}>
-                  <li>
-                    <img src={paypal} alt="paypalimg" />
-                  </li>
-                  <li>
-                    <img src={visa} alt="visacardimg" />
-                  </li>
-                  <li>
-                    <img src={mastercard} alt="mastercardimg" />
-                  </li>
-                  <li>
-                    <img src={discover} alt="discoverimg" />
-                  </li>
-                  <li>
-                    <img src={americanExpress} alt="AmericanExpressimg" />
-                  </li>
-                </ul>
-                <img src={ssl} alt="sslLogo" id={styles.sslLogo} />
-              </div>
+            
             </div>
           </div>
         </section>

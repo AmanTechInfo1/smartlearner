@@ -43,10 +43,10 @@
         position: fixed;
         bottom: 110px;
         right: 20px;
-        max-width: 350px;
+        max-width: 250px;
         width: 100%;
-        background-color: rgba(228, 228, 228, 0.986);
-        color: black;
+        background-color: rgba(175, 0, 0, 0.952);
+        color: rgb(255, 255, 255);
         padding: 15px;
         border-radius: 10px;
         text-align: center;
@@ -61,12 +61,12 @@
         height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-top: 10px solid #fff; /* Same color as the popup background */
+        border-top: 10px solid #ffb2b2; /* Same color as the popup background */
         display: none; /* Hidden by default */
       }
       #imghand {
-        max-width: 35px;
-        border-radius: 50%;
+        max-width: 60px;
+        
         width: 100%;
       }
     </style>
@@ -90,9 +90,9 @@
     <!-- /////////////////////////////////////// -->
     <div id="arrow" class="arrow"></div>
     <div id="aiPopup" class="popup">
-      <img class="emojione" alt="logo" src="/shophie.jpeg" id="imghand" />
-      Hey, glad to see you visiting again! If you have any questions, just let
-      me know - we're here to help!
+      <section> <img class="emojione" alt="logo" src="/shophie.jpeg" id="imghand" />
+        <p>"LIVE NOW" - Do you need any help?</p>   </section>
+      
     </div>
 
     <!-- AI Widget Script -->

@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import styles from "./DrivingLesson.module.css";
 import passImg from "../../assets/images/drivingLessonbanner.jpg";
-import passwithUs1 from "../../assets/images/passwithUs1.jpg";
-import passwithUs2 from "../../assets/images/passwithus2.jpg";
-import passwithus3 from "../../assets/images/passwithus3.jpg";
-import passwithUs4 from "../../assets/images/passwithus4.jpg";
-import starImg from "../../assets/images/star.png";
+
+import starImg from "../../assets/images/redStar.png";
+import greenStarImg from "../../assets/images/greenStar.png";
+import PinkStarImg from "../../assets/images/pinkStar.png";
+import yellowStarImg from "../../assets/images/yellowStar.png";
+
 import { IoCall } from "react-icons/io5";
 import { HiMailOpen } from "react-icons/hi";
 // ///////////////////////
-import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import IntensiveCorousel from "../../components/ui/IntensiveCorousel";
@@ -134,11 +135,11 @@ export default function DrivingLessons() {
               <h2>AUTOMATIC</h2>
               <span>
                 {" "}
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
+                <img src={PinkStarImg} alt="starImg" />
+                <img src={PinkStarImg} alt="starImg" />
+                <img src={PinkStarImg} alt="starImg" />
+                <img src={PinkStarImg} alt="starImg" />
+                <img src={PinkStarImg} alt="starImg" />
               </span>
             </div>
             <div className={styles.manualPList}>
@@ -168,11 +169,11 @@ export default function DrivingLessons() {
               <h2>INTENSIVE</h2>
               <span>
                 {" "}
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
+                <img src={greenStarImg} alt="starImg" />
+                <img src={greenStarImg} alt="starImg" />
+                <img src={greenStarImg} alt="starImg" />
+                <img src={greenStarImg} alt="starImg" />
+                <img src={greenStarImg} alt="starImg" />
               </span>
             </div>
             <div className={styles.manualPList}>
@@ -201,11 +202,11 @@ export default function DrivingLessons() {
               <h2>PASS PLUS</h2>
               <span>
                 {" "}
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
-                <img src={starImg} alt="starImg" />
+                <img src={yellowStarImg} alt="starImg" />
+                <img src={yellowStarImg} alt="starImg" />
+                <img src={yellowStarImg} alt="starImg" />
+                <img src={yellowStarImg} alt="starImg" />
+                <img src={yellowStarImg} alt="starImg" />
               </span>
             </div>
             <div className={styles.manualPList}>
