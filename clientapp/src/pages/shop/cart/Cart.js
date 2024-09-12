@@ -42,17 +42,18 @@ const Cart = () => {
           <h1 className="display-4 font-weight-bold">CART</h1>
           <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
         </div>
-        <div className="d-flex justify-content-left mb-4" id={styles.carImg}>
-          <marquee direction="right">
+        <div className="d-flex  mb-4" id={styles.carImg}>
+        
             <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
-          </marquee>
+        
         </div>
         {myCart && myCart.length === 0 ? (
-          <div className="text-center">
+          <div className="text-center" id={styles.btnCartBox}>
             <h2>Your cart is empty</h2>
             <button
+            
               className="btn btn-primary mt-4"
-              onClick={() => navigate("/shop")}
+              onClick={() => navigate("/Driving-Lessons")}
             >
               Continue Shopping
             </button>

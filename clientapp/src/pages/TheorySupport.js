@@ -13,7 +13,7 @@ import Review from "../components/views/Review";
 import ShortFaqs from "../components/shortFaqs/ShortFaqs";
 import Testemonial from "../components/testimonials/Testemonial";
 import TheoryCorousel from "../components/ui/TheorySupportCarousel";
-import starImg from "../assets/images/star.png";
+import starImg from "../assets/images/yellowStar.png";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";

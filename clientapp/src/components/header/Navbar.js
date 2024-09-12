@@ -17,7 +17,7 @@ function Navbar() {
       <div className={styles.navbar}>
         <div className={styles.navbarContentImg}>
           <div className={styles.contactInfo}>
-            <a href="tel:+4402475092784">02475092784</a> /
+            <a href="tel:+4402475092784">02475092784</a> <span>/</span> 
             <a href="mailto:admin@smartlearner.com">Admin@Smartlearner.com</a>
           </div>
           <div className={styles.logo}>

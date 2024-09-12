@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
 import starImg from "../../assets/images/greenStar.png"; 
-import cartImg from "../../assets/images/bannerCart.png";
+import cartImg from "../../assets/images/greenCartImg.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -149,7 +149,7 @@ function IntensiveCorousel() {
                                   addToCart(info, index);
                                 }}
                               >
-                                Book Now
+                                Book
                               </button>
                             ) : (
                               <div id={styles.cartTableBtn}>

@@ -41,13 +41,12 @@
       /* Popup container styling */
       .popup {
         position: fixed;
-        bottom: 110px;
+        bottom: 115px;
         right: 20px;
-        max-width: 250px;
+        max-width: 200px;
         width: 100%;
-        background-color: rgba(175, 0, 0, 0.952);
-        color: rgb(255, 255, 255);
-        padding: 15px;
+       
+        
         border-radius: 10px;
         text-align: center;
         cursor: pointer;
@@ -56,16 +55,16 @@
       .arrow {
         position: fixed;
         bottom: 100px; /* Position the arrow to align with the popup */
-        right: 50px;
+        right: 55px;
         width: 0;
         height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid #ffb2b2; /* Same color as the popup background */
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid #ffc77d; /* Same color as the popup background */
         display: none; /* Hidden by default */
       }
       #imghand {
-        max-width: 60px;
+        max-width: 200px;
         
         width: 100%;
       }
@@ -91,7 +90,7 @@
     <div id="arrow" class="arrow"></div>
     <div id="aiPopup" class="popup">
       <section> <img class="emojione" alt="logo" src="/shophie.jpeg" id="imghand" />
-        <p>"LIVE NOW" - Do you need any help?</p>   </section>
+        </section>
       
     </div>
 
@@ -106,7 +105,7 @@
       setTimeout(() => {
         document.getElementById("aiPopup").style.display = "block";
         document.getElementById("arrow").style.display = "block";
-      }, 20000); // Delay set to 20,000 milliseconds (20 seconds)
+      }, 1000); // Delay set to 20,000 milliseconds (20 seconds)
 
       // Function to hide popup and arrow
       function hidePopupAndArrow() {

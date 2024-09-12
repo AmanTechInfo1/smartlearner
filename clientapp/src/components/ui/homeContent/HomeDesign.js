@@ -1,7 +1,7 @@
 // import React from "react";
 
 import React from 'react'
-import stepImg1 from './content1.png'
+import stepImg1 from '../../../assets/images/Asset 25@4x.png'
 import stepImg2 from './content2.png'
 import stepImg3 from './content3.png'
 import './HomeDesign.css'

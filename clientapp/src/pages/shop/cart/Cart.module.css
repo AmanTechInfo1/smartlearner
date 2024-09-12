@@ -23,6 +23,8 @@
   margin-right: auto;
   margin-left: auto;
   width: 100%;
+  text-align: center;
+  justify-content: center;
 }
 .cartIconCarImg {
   max-width: 200px;
@@ -74,7 +76,13 @@
   border-radius: 6px;
   margin-top: 1.5rem;
 }
-
+#btnCartBox button{
+  background-color: #b10004;
+  border: none;
+  }
+#btnCartBox button:hover{
+background-color: red;
+}
 .quantityControl button {
   padding: 1px 1rem;
   border: none;

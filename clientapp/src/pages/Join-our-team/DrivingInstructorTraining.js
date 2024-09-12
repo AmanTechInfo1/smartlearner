@@ -2,10 +2,10 @@
 
 import { IoCall } from "react-icons/io5";
 import { HiMailOpen } from "react-icons/hi";
-import moneyIcon from "../../assets/images/money-icon.png";
-import userTie from "../../assets/images/instructor-Icon.png";
-import workinghour from "../../assets/images/hour-Icon.png";
-import ladyUser from "../../assets/images/lady-working-icon.png";
+import moneyIcon from "../../assets/images/Asset_108.png";
+import userTie from "../../assets/images/Asset_107.png";
+import workinghour from "../../assets/images/Asset_109.png";
+import ladyUser from "../../assets/images/Asset_110.png";
 import styles from "./Drivinginstructortraining.module.css";
 import award from "../../assets/images/trophy-Icon.png";
 import Review from "../../components/views/Review";

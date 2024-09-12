@@ -7,10 +7,10 @@ import {
   FaHandsHelping,
   
 } from "react-icons/fa";
-import moneyIcon from "../../assets/images/money-icon.png";
-import userTie from "../../assets/images/instructor-Icon.png";
-import workinghour from "../../assets/images/hour-Icon.png";
-import ladyUser from "../../assets/images/lady-working-icon.png";
+import moneyIcon from "../../assets/images/Asset_108.png";
+import userTie from "../../assets/images/Asset_107.png";
+import workinghour from "../../assets/images/Asset_109.png";
+import ladyUser from "../../assets/images/Asset_110.png";
 import Lplateimg from "../../assets/images/L-Plate.jpg";
 import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-1024x768.jpg";
 import DiaryImg from '../../assets/images/Diary-1536x681.jpg';

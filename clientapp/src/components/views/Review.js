@@ -14,7 +14,7 @@ function Review() {
             <iframe
               src="https://embedsocial.com/api/pro_hashtag/bf6ee0aa5f0c22593b9ba4228623e45c6dbef13c"
               width="100%"
-              height="550px"
+              height="420px"
               frameborder="0"
              
             ></iframe>
