@@ -40,20 +40,24 @@
   width: 100%;
   color: white;
   text-align: center;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 20px;
 }
 .content hr {
   opacity: 1;
-  color: #ffffff;
+
   max-width: 500px;
   margin-right: auto;
   margin-left: auto;
-  border: 2px solid #ffffff;
+  border: 2px solid #db0000;
+}
+
+.heading1 h1 span {
+  color: rgb(255, 230, 0);
 }
 .heading1 h1 {
-  color: #ffffff;
-  font-size: 4rem;
-  font-weight: 700;
+  color: #d10101;
+  font-size: 5rem;
+  font-weight: 900;
 
   text-align: center;
   overflow: hidden;
@@ -84,7 +88,7 @@
   }
 }
 .heading2 p {
-  color: #ffffff;
+  color: #ffe600;
   font-size: 22px;
 
   padding-top: 0.8rem;
@@ -164,7 +168,9 @@
   margin-left: auto;
   text-align: center;
 }
-
+.theoryTestDivQ h2 span {
+  color: rgb(255, 217, 0);
+}
 .theoryTestDivQ h2 {
   font-size: 4rem;
   font-weight: 700;
@@ -203,7 +209,7 @@
   margin-left: auto;
 }
 .theoryTestDivQ p {
-  color: white;
+  color: rgb(255, 230, 0);
   font-size: 18px;
 }
 @media (max-width: 578px) {
@@ -220,7 +226,7 @@
 
 .choicesSectionTheoryPortal {
   padding: 2rem 1rem;
-  max-width: 1200px;
+  max-width: 1270px;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
@@ -232,7 +238,11 @@
 #choiceIdMc {
   animation: 5s slide-right infinite;
   background-color: #ff090d;
-  color: #ffffff;
+  color: #ffd000;
+}
+
+#choiceIdMc hr {
+  border: 2px solid #ffee00;
 }
 @keyframes slide-right {
   from {
@@ -244,7 +254,7 @@
 }
 #choiceIdHP {
   animation: 5s slide-left infinite;
-  background-color: #ffffff;
+  background-color: #ffd900;
   color: #ff0000;
 }
 
@@ -309,6 +319,50 @@
 }
 /* /////////////////////////////////////////////////////// */
 
+.starImgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.starImgContainer img {
+  max-width: 150px;
+  width: 100%;
+  animation: slideFromLeft 1s ease-out, rotate 2s linear;
+}
+
+.starImgContainer img:nth-child(5) {
+  animation-delay: 8s;
+}
+.starImgContainer img:nth-child(4) {
+  animation-delay: 6s;
+}
+.starImgContainer img:nth-child(3) {
+  animation-delay: 4s;
+}
+.starImgContainer img:nth-child(2) {
+  animation-delay: 2s;
+}
+.starImgContainer img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* /////////////////////////why choose us css/////////// */
 .thMultipleChioceHeader h2 {
   text-align: center;
@@ -324,6 +378,9 @@
   animation: typing 3.5s steps(30, end) infinite,
     blink-caret 0.5s step-end infinite;
   padding: 2rem 0px;
+}
+.thMultipleChioceHeader h2 SPAN {
+  color: rgb(255, 238, 0);
 }
 
 @keyframes typing {
@@ -351,6 +408,7 @@
 .thMultipleChioceHeader p {
   font-size: 18px;
   text-align: center;
+  color: rgb(255, 238, 0);
 }
 .thchoiceListSection {
   background-color: #470c0c5b;
@@ -385,9 +443,16 @@
   margin-right: auto;
   width: 100%;
 }
+#column {
+  background-color: #ffd904fa;
+}
+#column:hover {
+  box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
+  border: 1px solid #ffd000;
+}
 .column {
   padding: 25px 25px 55px 25px;
-  background-color: #2201016b;
+  background-color: #cc0000;
   border-radius: 30px;
   box-shadow: 0px 0px 55px 5px rgba(172, 172, 172, 0.171);
 
@@ -402,15 +467,14 @@
   box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
   border: 1px solid #ff0004;
 }
-.column span {
-  font-size: 50px;
-  color: #706c6c;
-  display: inline-block;
-  padding: 30px;
-  margin-right: auto;
-  margin-left: auto;
-}
 .column h3 {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffe600;
+}
+#column h3 {
   font-size: 26px;
   line-height: 1.2;
   font-weight: 700;
@@ -425,18 +489,37 @@
   color: #7a7a7a;
 }
 .column span {
+  background-color: #ffd900;
+  padding: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 50px;
+  color: #fff;
+  margin-right: auto;
+  margin-left: auto;
+}
+#column span {
   background-color: #ff0004;
   padding: 30px;
   border-radius: 50%;
   display: inline-block;
   font-size: 50px;
   color: #fff;
+  margin-right: auto;
+  margin-left: auto;
 }
+
 #featuresIcon {
   width: 1em;
   height: 1em;
   position: relative;
   display: block;
+}
+#column span:hover {
+  transform: scale(1.2);
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+  color: #ff0004;
 }
 .column span:hover {
   transform: scale(1.2);
@@ -471,6 +554,9 @@
 .thAdditionalSupportHeader {
   background-color: #c4171a3a;
   padding: 2rem 0px;
+}
+.thAdditionalSupportHeader h2 span {
+  color: rgb(255, 238, 0);
 }
 .thAdditionalSupportHeader h2 {
   font-size: 4rem;
@@ -515,6 +601,9 @@
 .thAdditionalSupport2ndHeader {
   padding: 2rem 0px;
 }
+.thAdditionalSupport2ndHeader h2 span {
+  color: #ffd000;
+}
 .thAdditionalSupport2ndHeader h2 {
   color: #ff0004;
   font-size: 2rem;
@@ -531,8 +620,8 @@
 }
 .thAdditionalSupport2ndHeader section {
   box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
-  background-color: #fdfbfb;
-  color: black;
+  background-color: #ffe600;
+  color: rgb(255, 0, 0);
   padding: 3rem;
   border-radius: 30px;
   opacity: 0;
@@ -576,6 +665,9 @@
   margin-left: auto;
   width: 100%;
   text-align: center;
+}
+.thFooterDiv h2 span{
+  color: #ffd900;
 }
 .thFooterDiv h2 {
   color: #ff0004;

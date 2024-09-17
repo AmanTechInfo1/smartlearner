@@ -28,6 +28,7 @@ import {
   getMyDashboard,
   getMySubscription,
 } from "../../redux/features/dashboardSlice";
+import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
   const dispatch = useDispatch();
@@ -48,7 +49,9 @@ export default function TheoryPortal() {
         <div className={styles.maincontent}>
           <div className={styles.content}>
             <div className={styles.heading1}>
-              <h1>Theory Portal</h1>
+              <h1>
+                Theory <span>Portal</span>
+              </h1>
               <hr />
             </div>
 
@@ -67,7 +70,9 @@ export default function TheoryPortal() {
       {/* //////////////////////////////////// */}
       <section className={styles.theoryTestSectionQ}>
         <div className={styles.theoryTestDivQ}>
-          <h2>What is a theory test?</h2>
+          <h2>
+            What is a <span>theory test?</span>
+          </h2>
           <hr />
           <p>
             The theory test is made up of two sections, multiple-choice and
@@ -152,11 +157,22 @@ export default function TheoryPortal() {
             title="YouTube video player"></iframe>
         </div>
       </section>
+      <section>
+        <div className={styles.starImgContainer}>
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+          <img src={starImg} alt="starImg" />
+        </div>
+      </section>
       {/* ////////////////////////////////////////////// */}
 
       <section className={styles.thMultipleChoiceSection}>
         <div className={styles.thMultipleChioceHeader}>
-          <h2>Practice for Multiple-choice</h2>
+          <h2>
+            Practice for <span>Multiple-choice</span>
+          </h2>
           <p>
             Click the ICONS to go through to each of the topic pages and begin
             practicing!
@@ -175,7 +191,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 1</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/attitude">
                   <span>
                     <FaAngry id={styles.featuresIcon} />
@@ -196,7 +212,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 3</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/safety-margins">
                   {" "}
                   <span>
@@ -217,7 +233,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 5</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/vulnerable-road-users">
                   {" "}
                   <span>
@@ -239,7 +255,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 7</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/vehicle-handling">
                   <span>
                     <FaTruck id={styles.featuresIcon} />
@@ -259,7 +275,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 9</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/rules-of-road">
                   {" "}
                   <span>
@@ -281,7 +297,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 11</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/essential-Documents">
                   <span>
                     <FaIdCard id={styles.featuresIcon} />
@@ -301,7 +317,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 13</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column}>
                 <Link to="/vehicle-loading">
                   <span>
                     <FaBoxOpen id={styles.featuresIcon} />
@@ -337,7 +353,7 @@ export default function TheoryPortal() {
                 <h3>Hazard perception</h3>
               </Link>
             </div>
-            <div className={styles.column}>
+            <div className={styles.column} id={styles.column}>
               <Link to="/mcq-Part1">
                 {" "}
                 <span>
@@ -354,11 +370,15 @@ export default function TheoryPortal() {
 
       <section className={styles.thAdditionalSupportSection}>
         <div className={styles.thAdditionalSupportHeader}>
-          <h2>Additional Support</h2>
+          <h2>
+            Additional <span>Support</span>
+          </h2>
         </div>
         <div className={styles.thAdditionalSupportformAndMap}>
           <div className={styles.thAdditionalSupport2ndHeader}>
-            <h2>1-2-1 Theory Support</h2>
+            <h2>
+              1-<span>2</span>-1 Theory <span>Support</span>
+            </h2>
             <hr />
             <section>
               <p>
@@ -404,14 +424,14 @@ export default function TheoryPortal() {
       {/* ///////////////////////////////////////////////////// */}
       <section>
         <div className={styles.thAdditionalSupportHeader}>
-          <h2>Book Your Theory</h2>
+          <h2>Book Your <span>Theory</span></h2>
         </div>
       </section>
 
       {/* ///////////////////////////////////////////////////////////// */}
       <section className={styles.thFooterSection}>
         <div className={styles.thFooterDiv}>
-          <h2>Are You Ready?</h2>
+          <h2>Are You <span>Ready?</span> </h2>
           <hr />
           <a href="https://www.gov.uk/book-theory-test">
             <img src={BookTestImg} alt="BookTestImg" />

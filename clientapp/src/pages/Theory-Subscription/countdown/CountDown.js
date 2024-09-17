@@ -95,8 +95,8 @@ const Countdown = () => {
       <div className={styles.theoryPortalCountDown}>
         <div className={styles.theoryPortalTimer}>
           <h4>
-            Have a theory test coming up? Add the date and watch your countdown
-            appear
+            Have a theory test coming up?{" "}
+            <span> Add the date and watch your countdown appear</span>
           </h4>
         </div>
         <div className={styles.theoryPortalTimerInputField}>
