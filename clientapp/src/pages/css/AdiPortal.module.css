@@ -6,10 +6,70 @@
 p {
   margin: 0px;
 }
+.ADITrainingPortalPage {
+  font-family: "Antonio", sans-serif;
+  background-color: black;
+}
 .adiPortalPageFirstdiv {
-  background: url("../../assets/images/Home-banner-img-1.jpg") repeat center top;
-  padding: 170px 0;
-  font-family: "Roboto", sans-serif;
+  position: relative;
+  background: url("../../assets/images/bannerPdi.png");
+  background-size: cover;
+  background-position: bottom;
+  padding: 250px 0;
+  font-family: "Antonio", sans-serif;
+}
+.opicity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: #000000d0;
+}
+.adiPortalPageFirstdiv section {
+  position: sticky;
+}
+.adiPortalPageFirstdiv section h2 {
+  font-size: 5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(30, end) infinite,
+    blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
+}
+@media (max-width: 550px) {
+  .adiPortalPageFirstdiv section h2 {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 450px) {
+  .adiPortalPageFirstdiv section h2 {
+    font-size: 3rem;
+  }
 }
 .adiPortalPageSeconddiv {
   background-color: #ebebeb;
@@ -19,16 +79,31 @@ p {
 .adiPortalPageSeconddiv img {
   width: 100%;
 }
-.adiPortalPageSeconddiv h2 {
-  font-size: 4rem;
+
+.adiPortalPageSeconddiv p {
+  font-size: 2.5rem;
   font-weight: 700;
+  text-align: center;
+  max-width: 800px;
+  margin: 0px auto;
+  color: #ce0000;
+
   animation: slideFromBottomH2 2s ease-in-out;
 }
-.adiPortalPageSeconddiv p {
-  line-height: 28px;
-  color: #6e6e6e;
-  font-family: "Roboto", sans-serif;
-  animation: slideFromBottomH2 2s ease-in-out;
+@media (max-width: 720px) {
+  .adiPortalPageSeconddiv p {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 560px) {
+  .adiPortalPageSeconddiv p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 430px) {
+  .adiPortalPageSeconddiv p {
+    font-size: 1.2rem;
+  }
 }
 .adiPortalPageSeconddiv img {
   animation: slideFromBottom 1s ease-in-out;
@@ -55,7 +130,7 @@ p {
   }
 }
 .adiPortalPageThirddiv {
-  background-color: #eb0009;
+  background-color: black;
   text-align: center;
   padding: 2rem;
 }
@@ -64,13 +139,20 @@ p {
   font-size: 3.5rem;
   font-weight: 700;
   color: #fff;
-  font-family: "Roboto", sans-serif;
 }
-.adiPortalVideo video {
-  border: 5px solid #ebebeb;
+.adiLearningSupport h2 {
+  padding: 2rem 0px;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  animation: slideFromBottom 2s ease-in-out infinite;
+}
+.adiPortalVideo iframe {
+  border-radius: 30px;
   border-radius: 15px;
   max-width: 800px;
   width: 100%;
+  box-shadow: 0px 0px 55px 5px rgba(255, 255, 255, 0.171);
 }
 #hrAdiLearningText {
   display: flex;
@@ -86,11 +168,12 @@ p {
   margin-bottom: 0px;
   color: #fff;
   font: 1.1rem;
+  animation: slideFromBottom 2s ease-in-out infinite;
 }
 #hrAdiLearningText hr {
   margin: 0;
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid rgb(255, 0, 0);
   border-top: none;
   opacity: 1;
 }
@@ -113,8 +196,8 @@ p {
   font-size: 2rem;
 }
 #adiPortalFaIcons {
-  color: #252525;
-  border-color: #252525;
+  color: #ce0000;
+  border-color: #cf0000;
   font-size: 100px;
   transition: transform 0.3s ease;
 }
@@ -124,17 +207,18 @@ p {
 }
 .adiPortalBtnLearning {
   padding: 15px 30px;
-  border: none;
+  border: 1px solid red;
   border-radius: 6px;
   background-color: black;
   color: #fff;
   font-size: 1.1rem;
-  font-family: "Roboto", sans-serif;
+
   transition: 0.3s ease-in;
 }
 .adiPortalBtnLearning:hover {
   background-color: #fff;
   color: black;
+  border: none;
 }
 .adiPortalFooterSection {
   text-align: center;
@@ -145,14 +229,14 @@ p {
   justify-content: center;
   gap: 10px;
   line-height: 30px;
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 .adiFooterAddressInfo p {
   margin-bottom: 0px;
 }
 .adiPortalFooterSection {
   padding: 2rem 0px;
-  background-color: #252525;
+  background-color: #88000083;
 }
 .adiPortalFooterInnerContainer img {
   padding: 1rem 0px;
@@ -210,73 +294,66 @@ p {
 /* ///////////////////////partners section /////////////////// */
 /* ///////////////////////partners section /////////////////// */
 .ourPartnersSection {
-    background-image: url("../../assets/images/ourpartners.jpg");
-    background-size: cover;
-    background-position: center;
-    position: relative;
+  background-image: url("../../assets/images/ourpartners.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.bgOverlay {
+  background-color: black;
+  opacity: 0.2;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.ourPartnersSection h2 {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+
+  position: sticky;
+}
+.partnerSection {
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  background-color: #ffffffe7;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
+}
+
+.partnerSection img {
+  width: 150px;
+  aspect-ratio: 1/1;
+  margin: 0px 1rem;
+  object-fit: contain;
+
+  position: sticky;
+}
+
+@media (max-width: 934px) {
+  .partnerSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-  .bgOverlay {
-    background-color: black;
-    opacity: 0.2;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+}
+@media (max-width: 780px) {
+  .partnerSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+}
+
+@media (max-width: 428px) {
   .ourPartnersSection h2 {
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 800;
     text-align: center;
-  
-    position: sticky;
   }
   .partnerSection {
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-    background-color: #ffffffe7;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
-  
-  .partnerSection img {
-    width: 150px;
-    aspect-ratio: 1/1;
-    margin: 0px 1rem;
-    object-fit: contain;
-  
-    position: sticky;
-  }
-  
-  @media (max-width: 934px) {
-    .partnerSection {
-      
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-     
-    }
-  }
-  @media (max-width: 780px) {
-    .partnerSection {
-      
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-     
-    }
-  }
-  
-  @media (max-width: 428px) {
-    .ourPartnersSection h2 {
-      color: #fff;
-      font-size: 2rem;
-      font-weight: 800;
-      text-align: center;
-    }
-    .partnerSection {
-      
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-     
-    }
-  }
-  
+}

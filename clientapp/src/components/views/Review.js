@@ -9,7 +9,10 @@ function Review() {
       <section className={styles.facebookReviewsSection}>
         <div className={styles.facebookReviewsContainer}>
           <h4 id={styles.heading1}>Our Reviews</h4>
+          <span>
           <hr />
+          </span>
+        
           <div className={styles.reviewsList}>
             <iframe
               src="https://embedsocial.com/api/pro_hashtag/bf6ee0aa5f0c22593b9ba4228623e45c6dbef13c"

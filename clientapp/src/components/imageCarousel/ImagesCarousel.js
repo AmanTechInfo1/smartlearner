@@ -112,7 +112,7 @@ function ImagesCarousel() {
             className={index === slideIndex ? "slide slide-active" : "slide"}
             key={index}
           >
-            <img src={img} alt="" style={{border: '1px solid white'}}/>
+            <img src={img} alt="" style={{border: '1px solid rgb(255, 217, 0)'}}/>
           </div>
         ))}
       </Slider>

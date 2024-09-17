@@ -381,7 +381,8 @@
 }
 .semiCircle h2 {
   font-size: 5rem;
-  color: white;
+  font-weight: 900;
+  color: rgb(223, 0, 0);
   text-align: center;
   padding-bottom: 2rem;
   animation: 4s slide-left;
@@ -677,8 +678,6 @@
 .expanded .CorouselhaddingBanner {
   justify-content: space-between;
 }
-
-
 
 #CorouselImgcart {
   max-width: 35px;
@@ -986,7 +985,13 @@
 
 /* /////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////// */
-
+.whyChooseText p {
+  color: #de1515;
+  font-weight: 900;
+}
+.whyChooseText p span {
+  color: rgb(255, 217, 0);
+}
 @media (max-width: 750px) {
   .whyChooseText p {
     font-size: 2rem;

@@ -9,7 +9,7 @@ import trustPilot from "..//assets/images/trustpilot-inline-white.png";
 import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
 // import userIdentificationImg from "../assets/images/userIndentification.png";
 import hallOfFame from "../assets/images/hallOfFame.png";
-import starImg from "../assets/images/goldstar.png";
+import starImg from "../assets/images/yellowStar.png";
 import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
 import Carousel from "../components/ui/Carousel";
 import Review from "../components/views/Review";
@@ -398,7 +398,7 @@ export default function Home() {
           <div className={styles.whyChooseText}>
             <p>
               See why people choose SmartLearner to{" "}
-              <span style={{ color: "green" }}>PASS</span> their driving test.{" "}
+              <span style={{ color: "yello" }}>PASS their driving test.</span>
             </p>
           </div>
           <div
@@ -442,7 +442,7 @@ export default function Home() {
               <div className={styles.semiCircle}>
                 {/* <img src={hallOfFame} alt="hallOfFame" /> */}
                 <h2>
-                  Award Winning <span>Driving School</span>{" "}
+                  Award Winning Driving School
                 </h2>
               </div>
               {/* <div className={styles.trophyImg}>

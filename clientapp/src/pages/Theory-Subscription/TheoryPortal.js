@@ -4,7 +4,6 @@ import BookTestImg from "../../assets/images/booktest.jpg";
 import styles from "./TheoryPortal.module.css";
 import CountDown from "./countdown/CountDown";
 import {
-  
   FaExclamation,
   FaAngry,
   FaCar,
@@ -25,26 +24,27 @@ import { Link, useNavigate } from "react-router-dom";
 import QuizMain from "../../components/takequizes/QuizMain";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getMyDashboard, getMySubscription } from "../../redux/features/dashboardSlice";
+import {
+  getMyDashboard,
+  getMySubscription,
+} from "../../redux/features/dashboardSlice";
 
 export default function TheoryPortal() {
-
-
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  useEffect(()=>{
-    dispatch(getMySubscription(()=>{
-      navigate("/Theory-Subscription")
-    }));
-  },['dsa'])
-
-
+  useEffect(() => {
+    dispatch(
+      getMySubscription(() => {
+        navigate("/Theory-Subscription");
+      })
+    );
+  }, ["dsa"]);
 
   return (
     <div className={styles.TheoryPortal}>
       <section className={styles.imageSection}>
+        <div className={styles.opicity}></div>
         <div className={styles.maincontent}>
           <div className={styles.content}>
             <div className={styles.heading1}>
@@ -81,51 +81,59 @@ export default function TheoryPortal() {
 
       <section className={styles.choicesSectionTheoryPortal}>
         <div className={styles.choicesDivTheoryPortal}>
-          <div className={styles.ChoicesContentContainer}>
-            <h2>Multiple-choice</h2>
-            <hr />
-            <p>
-              You have 57 minutes to answer 50 multiple-choice questions. Before
-              the test starts you’ll get instructions on how the test works &
-              the chance to do some practice questions to get used to the
-              screens.
-            </p>
-            <p>
-              A question and 4 possible answers appear on a screen. You have to
-              select the right answer. However, the final three questions of the
-              exam will be about a short video. It will show a normal driving
-              situation the video is silent and you can watch it as many times
-              as you like during the test.
-            </p>
-            <p>
-              You can finish the multiple-choice questions part when you’ve
-              answered all of the questions. You do not have to use the full 57
-              minutes. You can have a break of up to 3 minutes before the hazard
-              perception test starts.
-            </p>
+          <div
+            id={styles.choiceIdMc}
+            className={styles.ChoicesContentContainer}>
+            <section>
+              <h2>Multiple-choice</h2>
+              <hr />
+              <p>
+                You have 57 minutes to answer 50 multiple-choice questions.
+                Before the test starts you’ll get instructions on how the test
+                works & the chance to do some practice questions to get used to
+                the screens.
+              </p>
+              <p>
+                A question and 4 possible answers appear on a screen. You have
+                to select the right answer. However, the final three questions
+                of the exam will be about a short video. It will show a normal
+                driving situation the video is silent and you can watch it as
+                many times as you like during the test.
+              </p>
+              <p>
+                You can finish the multiple-choice questions part when you’ve
+                answered all of the questions. You do not have to use the full
+                57 minutes. You can have a break of up to 3 minutes before the
+                hazard perception test starts.
+              </p>
+            </section>
           </div>
-          <div className={styles.ChoicesContentContainer}>
-            <h2>Hazard Perception</h2>
-            <hr />
-            <p>
-              Before you start the hazard perception test, you’ll be shown a
-              video about how it works. You’ll then watch 14 video clips. The
-              clips will show everyday road scenes and contain at least one
-              ‘developing hazard’.
-            </p>
-            <p>
-              One of the clips will feature 2 developing hazards in the same
-              clip. You get points for spotting the developing hazards as soon
-              as they start to happen.
-            </p>
-            <p>
-              You can score up to 5 points for each developing hazard. To get a
-              high score, click the mouse as soon as you see the hazard starting
-              to develop. You do not lose points if you click and get it wrong.
-              However, you will not score anything if you click continuously or
-              in a pattern. Beware, you only get one attempt at each clip. You
-              cannot review or change your responses.
-            </p>
+          <div
+            id={styles.choiceIdHP}
+            className={styles.ChoicesContentContainer}>
+            <div>
+              <h2>Hazard Perception</h2>
+              <hr />
+              <p>
+                Before you start the hazard perception test, you’ll be shown a
+                video about how it works. You’ll then watch 14 video clips. The
+                clips will show everyday road scenes and contain at least one
+                ‘developing hazard’.
+              </p>
+              <p>
+                One of the clips will feature 2 developing hazards in the same
+                clip. You get points for spotting the developing hazards as soon
+                as they start to happen.
+              </p>
+              <p>
+                You can score up to 5 points for each developing hazard. To get
+                a high score, click the mouse as soon as you see the hazard
+                starting to develop. You do not lose points if you click and get
+                it wrong. However, you will not score anything if you click
+                continuously or in a pattern. Beware, you only get one attempt
+                at each clip. You cannot review or change your responses.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -134,11 +142,14 @@ export default function TheoryPortal() {
       <section className={styles.theoryPortalYoutubeVideosSection}>
         <div className={styles.theoryPortalYoutubeVideosDiv}>
           <iframe
+            style={{
+              borderRadius: "30px",
+              boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
+            }}
             width="560"
             height="315"
             src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
-            title="YouTube video player"
-          ></iframe>
+            title="YouTube video player"></iframe>
         </div>
       </section>
       {/* ////////////////////////////////////////////// */}
@@ -349,23 +360,25 @@ export default function TheoryPortal() {
           <div className={styles.thAdditionalSupport2ndHeader}>
             <h2>1-2-1 Theory Support</h2>
             <hr />
-            <p>
-              SmartLearner Driving School offers online 1-2-1 theory support
-              with experienced and dedicated tutors to help you with your
-              driving theory test practice. Our tutors will do an assessment to
-              gauge your current ability and from there they will craft a unique
-              learning plan. They will ensure you cover all of the topics and
-              questions that can come up in your theory exam. This will make
-              sure that you pass your theory test with ease.
-            </p>
-            <p>
-              We are dedicated to ensure superb customer service and understand
-              that every theory pupil has a unique learning style. When you
-              choose SmartLearner Theory Support you have full control over the
-              time and duration of your theory lessons. At SmartLearner we use
-              official DVSA materials to ensure that you are learning from
-              relevant and current sources.
-            </p>
+            <section>
+              <p>
+                SmartLearner Driving School offers online 1-2-1 theory support
+                with experienced and dedicated tutors to help you with your
+                driving theory test practice. Our tutors will do an assessment
+                to gauge your current ability and from there they will craft a
+                unique learning plan. They will ensure you cover all of the
+                topics and questions that can come up in your theory exam. This
+                will make sure that you pass your theory test with ease.
+              </p>
+              <p>
+                We are dedicated to ensure superb customer service and
+                understand that every theory pupil has a unique learning style.
+                When you choose SmartLearner Theory Support you have full
+                control over the time and duration of your theory lessons. At
+                SmartLearner we use official DVSA materials to ensure that you
+                are learning from relevant and current sources.
+              </p>
+            </section>
           </div>
           <div className={styles.callBackFormAndMap}>
             <div className={styles.formmap}>
@@ -375,16 +388,15 @@ export default function TheoryPortal() {
             <div className={styles.formmap}>
               {/* Embed your map here, such as Google Maps iframe */}
               <iframe
-              title="Google Map"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2431.76492499033!2d-1.510095!3d52.447173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c1a41cee7455%3A0x371db3a56741de7!2sSmartLearner%20Driving%20School!5e0!3m2!1sen!2sin!4v1719565626829!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              aria-hidden="false"
-              tabIndex="0"
-            ></iframe>
+                title="Google Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2431.76492499033!2d-1.510095!3d52.447173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c1a41cee7455%3A0x371db3a56741de7!2sSmartLearner%20Driving%20School!5e0!3m2!1sen!2sin!4v1719565626829!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                style={{ borderRadius: "30px" }}
+                allowFullScreen=""
+                aria-hidden="false"
+                tabIndex="0"></iframe>
             </div>
           </div>
         </div>
@@ -394,7 +406,6 @@ export default function TheoryPortal() {
         <div className={styles.thAdditionalSupportHeader}>
           <h2>Book Your Theory</h2>
         </div>
-        
       </section>
 
       {/* ///////////////////////////////////////////////////////////// */}

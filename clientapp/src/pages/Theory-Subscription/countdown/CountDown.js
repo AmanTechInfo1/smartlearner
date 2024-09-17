@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import styles from "./CountDown.module.css";
 
-function Countdown() {
+const Countdown = () => {
   const [eventName, setEventName] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [days, setDays] = useState(0);
@@ -21,7 +22,7 @@ function Countdown() {
     }
   }, []);
 
-  function startCountdown() {
+  const startCountdown = () => {
     if (eventName === "" || eventDate === "") {
       alert("Please enter a valid event name and date.");
       return;
@@ -37,17 +38,19 @@ function Countdown() {
     localStorage.setItem("countdownEndTime", countdownEndTime);
 
     startCountdownInterval(countdownEndTime);
-  }
+  };
 
-  function handleDateChange(e) {
+  const handleDateChange = (e) => {
     setEventDate(e.target.value);
     resetCountdown();
-  }
+  };
 
-  function startCountdownInterval(endTime) {
+  const startCountdownInterval = (endTime) => {
     const newCountdownInterval = setInterval(() => {
       const now = new Date().getTime();
       const timeLeft = endTime - now;
+
+      console.log(`Time left: ${timeLeft}`); // Debugging line
 
       if (timeLeft <= 0) {
         clearInterval(newCountdownInterval);
@@ -73,9 +76,9 @@ function Countdown() {
     }, 1000);
 
     setCountdownInterval(newCountdownInterval);
-  }
+  };
 
-  function resetCountdown() {
+  const resetCountdown = () => {
     clearInterval(countdownInterval);
     localStorage.removeItem("eventName");
     localStorage.removeItem("countdownEndTime");
@@ -85,7 +88,7 @@ function Countdown() {
     setMinutes(0);
     setSeconds(0);
     setCountdownActive(false);
-  }
+  };
 
   return (
     <>
@@ -118,26 +121,34 @@ function Countdown() {
             <button onClick={startCountdown}>Start</button>
           )}
         </div>
-        <div className={styles.theoryPortalCountDownTimer}>
-          <p>
-            {days} <b>D</b>{" "}
-          </p>
-          <span>:</span>
-          <p>
-            {hours} <b>H</b>{" "}
-          </p>
-          <span>:</span>
-          <p>
-            {minutes} <b>M </b>
-          </p>
-          <span>:</span>
-          <p>
-            {seconds} <b>S</b>
-          </p>
+        {/* Countdown Display in clockContainer */}
+        <div className={styles.clockContainer}>
+          <div className={styles.clockCol}>
+            <p className={`${styles.clockDay} ${styles.clockTimer}`}>{days}</p>
+            <p className={styles.clockLabel}>Days</p>
+          </div>
+          <div className={styles.clockCol}>
+            <p className={`${styles.clockHours} ${styles.clockTimer}`}>
+              {hours}
+            </p>
+            <p className={styles.clockLabel}>Hours</p>
+          </div>
+          <div className={styles.clockCol}>
+            <p className={`${styles.clockMinutes} ${styles.clockTimer}`}>
+              {minutes}
+            </p>
+            <p className={styles.clockLabel}>Minutes</p>
+          </div>
+          <div className={styles.clockCol}>
+            <p className={`${styles.clockSeconds} ${styles.clockTimer}`}>
+              {seconds}
+            </p>
+            <p className={styles.clockLabel}>Seconds</p>
+          </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Countdown;

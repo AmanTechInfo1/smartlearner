@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-.TheoryPortal{
+.TheoryPortal {
   background-color: #111;
-  font-family: 'Antonio',sans-serif;
+  font-family: "Antonio", sans-serif;
   color: white;
   padding-bottom: 4rem;
 }
@@ -13,7 +13,18 @@
   position: relative;
   width: 100%;
   padding: 8rem 0;
-  background-color: #ff090d;
+  background-image: url("../../assets//images/theory-Img-banner.png");
+  background-position: center;
+  background-size: cover;
+}
+.opicity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: #111;
 }
 .maincontent {
   display: flex;
@@ -22,6 +33,7 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  position: sticky;
 }
 
 .content {
@@ -44,12 +56,37 @@
   font-weight: 700;
 
   text-align: center;
- 
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
+  animation: typing 3.5s steps(30, end) infinite,
+    blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
 }
 .heading2 p {
   color: #ffffff;
   font-size: 22px;
- 
+
   padding-top: 0.8rem;
   margin-bottom: 20px;
 }
@@ -126,13 +163,37 @@
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  
 }
 
 .theoryTestDivQ h2 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
   color: #ff090d;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
 }
 .theoryTestDivQ hr {
   border: 2px solid #ff090d;
@@ -145,9 +206,14 @@
   color: white;
   font-size: 18px;
 }
-@media (max-width: 400px) {
+@media (max-width: 578px) {
   .theoryTestDivQ h2 {
-    font-size: 2rem;
+    font-size: 3rem;
+  }
+}
+@media (max-width: 440px) {
+  .theoryTestDivQ h2 {
+    font-size: 2.3rem;
   }
 }
 /* ////////////////////////////////////////////////////// */
@@ -163,12 +229,49 @@
   display: flex;
   gap: 20px;
 }
+#choiceIdMc {
+  animation: 5s slide-right infinite;
+  background-color: #ff090d;
+  color: #ffffff;
+}
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}
+#choiceIdHP {
+  animation: 5s slide-left infinite;
+  background-color: #ffffff;
+  color: #ff0000;
+}
+
+@keyframes slide-left {
+  from {
+    margin-right: -100%;
+  }
+  to {
+    margin-right: 0%;
+  }
+}
+#choiceIdHP hr {
+  border: 2px solid #ff0000;
+  opacity: 1;
+  max-width: 350px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
 .ChoicesContentContainer {
   margin-top: 1rem;
   padding: 1rem;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
   width: 100%;
-  background-color: #ff090d;
-  color: #ffffff;
+  border-radius: 30px;
   text-align: center;
 }
 .ChoicesContentContainer h2 {
@@ -212,14 +315,45 @@
   color: #ff0004;
   font-size: 3rem;
   font-weight: 700;
-  
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
+  color: #ff090d;
+  animation: typing 3.5s steps(30, end) infinite,
+    blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
+}
+@media (max-width: 380px) {
+  .thMultipleChioceHeader h2 {
+    font-size: 1.2rem;
+  }
 }
 .thMultipleChioceHeader p {
   font-size: 18px;
   text-align: center;
 }
 .thchoiceListSection {
-  background-color: #ff0004;
+  background-color: #470c0c5b;
 }
 .features {
   padding: 2rem 0;
@@ -230,7 +364,7 @@
   font-weight: 700;
   line-height: 1.2em;
   text-align: center;
-  
+
   margin-bottom: 20px;
 }
 .features p {
@@ -238,13 +372,12 @@
   line-height: 28px;
   text-align: center;
   font-weight: 400;
- 
 }
 .mainFeatures {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  
+
   text-align: center;
   max-width: 1500px;
   padding: 0px 1rem;
@@ -254,9 +387,9 @@
 }
 .column {
   padding: 25px 25px 55px 25px;
-  background-color: #ffffff;
-
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+  background-color: #2201016b;
+  border-radius: 30px;
+  box-shadow: 0px 0px 55px 5px rgba(172, 172, 172, 0.171);
 
   transition: box-shadow 0.3s ease;
 }
@@ -266,7 +399,7 @@
 }
 
 .column:hover {
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
+  box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
   border: 1px solid #ff0004;
 }
 .column span {
@@ -286,7 +419,7 @@
 }
 .column p {
   font-size: 16px;
- 
+
   font-weight: 300;
   line-height: 1.7em;
   color: #7a7a7a;
@@ -334,10 +467,9 @@
 /* ////////////////////////////////// */
 .thAdditionalSupportSection {
   padding: 2rem 1rem;
-  
 }
 .thAdditionalSupportHeader {
-  background-color: #ff0004;
+  background-color: #c4171a3a;
   padding: 2rem 0px;
 }
 .thAdditionalSupportHeader h2 {
@@ -345,9 +477,37 @@
   font-weight: 700;
   text-align: center;
   color: #fff;
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
+  color: #ff090d;
+  animation: typing 3.5s steps(30, end) infinite,
+    blink-caret 0.5s step-end infinite;
+
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
 }
 .thAdditionalSupportformAndMap {
-  max-width: 1140px;
+  max-width: 1240px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -368,6 +528,23 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+}
+.thAdditionalSupport2ndHeader section {
+  box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
+  background-color: #fdfbfb;
+  color: black;
+  padding: 3rem;
+  border-radius: 30px;
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: slideDown 3s forwards;
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .thAdditionalSupport2ndHeader p {
   text-align: center;

@@ -35,7 +35,6 @@
   margin: 0 auto;
   letter-spacing: 10px;
   animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
-  
 }
 @keyframes typing {
   from {
@@ -85,7 +84,7 @@
   opacity: 0;
   transform: translateY(100%);
   animation: slideUp 3s forwards;
-  animation-iteration-count: infinite; 
+  animation-iteration-count: infinite;
 }
 @keyframes slideUp {
   to {
@@ -95,7 +94,6 @@
 }
 
 @media (max-width: 720px) {
- 
   .goCvFirstSectionHeading h2 {
     font-size: 2.5rem;
   }
@@ -109,7 +107,6 @@
   }
 }
 @media (max-width: 430px) {
-
   .goCvFirstSectionHeading h2 {
     font-size: 1.5rem;
   }
@@ -143,7 +140,6 @@
   padding: 1rem;
 }
 .goCv2ndSection section p {
-  
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
