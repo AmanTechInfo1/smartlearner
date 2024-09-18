@@ -338,10 +338,8 @@ export default function Home() {
             {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
             <section className={styles.BookNowSec}>
-              <h2 >
-                Book Online Now!
-              </h2>
-              <p>Start Your Journey with us NOW!</p>
+              <h2>Book Online Now!</h2>
+              <p>Start Your Journey with us Today!</p>
             </section>
             <>
               <Carousel />
@@ -403,8 +401,8 @@ export default function Home() {
         <section className={styles.imageSliderContainer}>
           <div className={styles.whyChooseText}>
             <p>
-              See why people choose SmartLearner to{" "}
-              <span style={{ color: "yello" }}>PASS their driving test.</span>
+              See Why People Choose SmartLearner to{" "}
+              <span style={{ color: "yello" }}>PASS Their Driving Test.</span>
             </p>
           </div>
           <div
@@ -447,9 +445,7 @@ export default function Home() {
             <div className={styles.hallFameContent}>
               <div className={styles.semiCircle}>
                 {/* <img src={hallOfFame} alt="hallOfFame" /> */}
-                <h2>
-                  Award Winning Driving School
-                </h2>
+                <h2>Award Winning Driving School</h2>
               </div>
               {/* <div className={styles.trophyImg}>
                 <img src={tropfyImg} alt="tropfyImg" />
