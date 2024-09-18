@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}.TheHonestTruth {
+}
+.TheHonestTruth {
   background-color: black;
   padding-bottom: 10rem;
   padding-top: 1rem;
@@ -25,7 +26,11 @@
   font-size: 7rem;
   margin-bottom: 3rem;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 800px;
 }
 .eCSfrontSection hr {
   opacity: 1;
@@ -63,17 +68,17 @@
     font-size: 4rem;
   }
 }
-.videosContentSections h2{
+.videosContentSections h2 {
   color: white;
   text-align: center;
   font-size: 3rem;
 }
-.videosContentSections hr{
+.videosContentSections hr {
   border: 2px solid white;
   opacity: 1;
 }
 
-.innerTheorySupportContent{
+.innerTheorySupportContent {
   max-width: 800px;
   width: 100%;
   margin-right: auto;
@@ -94,29 +99,29 @@
   max-width: 800px;
   width: 100%;
   margin-right: auto;
- 
+
   margin-left: auto;
 }
 .theorySupportContentVideosec video {
   width: 100%;
 }
-.textThtSection{
+.textThtSection {
   padding: 2rem 0px;
 }
-.textThtSection h2{
+.textThtSection h2 {
   font-size: 3rem;
   color: white;
   text-align: center;
   margin-bottom: 2rem;
 }
-.textThtSection h2 span{
+.textThtSection h2 span {
   color: #c3040b;
 }
-.textThtSection hr{
+.textThtSection hr {
   opacity: 1;
   border: 2px solid white;
 }
-#textThtSection{
+#textThtSection {
   text-align: center;
   max-width: 1000px;
   width: 100%;
@@ -124,11 +129,11 @@
   margin-left: auto;
   padding: 1rem;
 }
-#textThtSection p{
-font-size: 1.2rem;
-color: white;
+#textThtSection p {
+  font-size: 1.2rem;
+  color: white;
 }
-#textThtSection button{
+#textThtSection button {
   padding: 7px 1.5rem;
   font-size: 1.5rem;
   color: white;
@@ -137,29 +142,29 @@ color: white;
   background-color: #ff0004;
   margin: 2rem 0px;
 }
-#textThtSection button:hover{
+#textThtSection button:hover {
   border: 1px solid white;
   background-color: #8a0305cd;
 }
 @media (max-width: 780px) {
-  .videosContentSections h2{
+  .videosContentSections h2 {
     font-size: 2.5rem;
   }
-  #textThtSection p{
+  #textThtSection p {
     font-size: 1rem;
   }
-  #textThtSection button{
+  #textThtSection button {
     font-size: 1.2rem;
   }
 }
 
 @media (max-width: 428px) {
-  .videosContentSections h2{
+  .videosContentSections h2 {
     font-size: 2rem;
   }
 }
 /* //////////////////////////////////////////// */
-.getInvolved{
+.getInvolved {
   max-width: 1140px;
   margin-right: auto;
   margin-left: auto;
@@ -168,40 +173,36 @@ color: white;
   padding: 2rem;
   border-radius: 8em/2em;
 }
-#getInvolvedHead h2{
+#getInvolvedHead h2 {
   font-size: 3rem;
   text-align: center;
   color: white;
-
 }
-#getInvolvedHead hr{
+#getInvolvedHead hr {
   opacity: 1;
   border: 2px solid white;
- 
 }
- 
-#downwordArrow{
-  
+
+#downwordArrow {
   color: white;
   font-size: 5rem;
 }
-.getInvolvedContentDiv{
+.getInvolvedContentDiv {
   padding: 1rem 2rem;
 }
 
 .getInContentSection {
   text-align: center;
 }
-#downwordArrow{
+#downwordArrow {
   margin: 1rem 0px;
 }
-.getInContentSection h2{
+.getInContentSection h2 {
   font-size: 2rem;
   color: white;
   text-align: center;
-
 }
-.getInContentSection hr{
+.getInContentSection hr {
   opacity: 1;
   border: 1px solid white;
   max-width: 500px;
@@ -209,7 +210,7 @@ color: white;
   margin-right: auto;
   margin-left: auto;
 }
-.getInContentSection p{
+.getInContentSection p {
   color: white;
   padding: 0px 2rem;
   text-align: center;
@@ -225,7 +226,7 @@ color: white;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
- 
+
   text-align: center;
 }
 .smartleanerStatsSection hr {
@@ -294,7 +295,6 @@ color: white;
 .ourInvolmentSection {
   padding: 3rem 0px;
   text-align: center;
- 
 }
 .ourInvolmentDiv {
   padding: 1rem;
@@ -329,7 +329,6 @@ color: white;
 .getInvolvedsection {
   padding: 2rem 0px;
   background-color: #ff121a;
- 
 }
 .getInvolvedDiv {
   max-width: 1600px;
@@ -422,7 +421,7 @@ color: white;
   font-weight: 700;
   line-height: 1.2em;
   text-align: center;
- 
+
   margin-bottom: 20px;
 }
 .features p {
@@ -430,13 +429,12 @@ color: white;
   line-height: 28px;
   text-align: center;
   font-weight: 400;
- 
 }
 .mainFeatures {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  
+
   text-align: center;
   max-width: 1500px;
   padding-left: 15px;
@@ -451,7 +449,7 @@ color: white;
   border-radius: 6em/2em;
   background-color: #ffffff;
   place-items: center;
-  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06); 
+  box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
 
   transition: box-shadow 0.3s ease;
 }
@@ -481,7 +479,7 @@ color: white;
 }
 .column p {
   font-size: 16px;
- 
+
   font-weight: 300;
   line-height: 1.7em;
   color: #7a7a7a;

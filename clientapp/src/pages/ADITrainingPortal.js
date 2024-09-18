@@ -133,7 +133,7 @@ export default function ADITrainingPortal() {
       </section>
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
-      <section className={styles.ourPartnersSection}>
+      {/* <section className={styles.ourPartnersSection}>
         <div className={styles.bgOverlay}></div>
         <h2>Our Partners</h2>
         <div className={styles.partnerSection}>
@@ -151,7 +151,7 @@ export default function ADITrainingPortal() {
           <img src={OurPartners12} alt="" />
           <img src={OurPartners13} alt="" />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

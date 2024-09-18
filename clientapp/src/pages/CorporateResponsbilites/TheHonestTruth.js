@@ -15,7 +15,9 @@ import {
   FaBicycle,
 } from "react-icons/fa";
 
+
 import { useEffect, useState } from "react";
+import Truths from "./Truths";
 
 export default function TheHonestTruth() {
   const [animatedValue1, setAnimatedValue1] = useState(0);
@@ -40,6 +42,8 @@ export default function TheHonestTruth() {
 
     return () => clearInterval(interval);
   }, []);
+
+
 
   return (
     <div className={styles.TheHonestTruth}>
@@ -222,159 +226,9 @@ export default function TheHonestTruth() {
         <section className={styles.features}>
           <h4>The 10 Truths</h4>
           <p>Click the ICON to find out more!</p>
-          <div className={styles.mainFeatures}>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/distractions">
-                <span>
-                  <FaMusic id={styles.featuresIcon} />
-                </span>
-                <h3>1. Distractions</h3>
-              </a>
-              <p>
-                Music, mobiles, laughing and joking. All signs of a good time,
-                but in a car these things all increase the risk of a collision.
-                Inattention is the most common reason for car crashes and one of
-                the biggest problems facing you as a new driver is carrying
-                friends in your car.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/drink-driving">
-                <span>
-                  <FaGlassCheers id={styles.featuresIcon} />
-                </span>
-                <h3>2. Drink Driving</h3>
-              </a>
-              <p>
-                1 in five 5 deaths involve alcohol. Young men aged 16-24 are
-                more likely to die from an alcohol related road traffic
-                collision and are the cause of over 400 deaths each year.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/drugs">
-                <span>
-                  <FaTablets id={styles.featuresIcon} />
-                </span>
-                <h3>3. Drugs</h3>
-              </a>
-              <p>
-                Research by Transport Research Laboratory (TRL) found that 17%
-                of drivers who die in road crashes (more than one in six) have
-                traces of illegal drugs in their system, which may have affected
-                their driving.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/insurance">
-                <span>
-                  <FaMoneyBill id={styles.featuresIcon} />
-                </span>
-                <h3>4. Insurance</h3>
-              </a>
-              <p>
-                Insurance can be expensive and the biggest factors that
-                influence your premium are age and where you live. Of course
-                these are things you can't really alter, but these are not the
-                only factors that influence your premium. Using popular price
-                comparison websites, you can easily save up to 35% of the cost
-                of your insurance.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/using-a-mobile-phone">
-                <span>
-                  <FaMobileAlt id={styles.featuresIcon} />
-                </span>
-                <h3>5. Mobile Phones</h3>
-              </a>
-              <p>
-                A good driver is completely focused on the road. Always. Using a
-                hand-held or hands-free mobile phone while driving is a
-                distraction and increases the risk of a driver crashing.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/seatbelts">
-                <span>
-                  <FaUserInjured id={styles.featuresIcon} />
-                </span>
-                <h3>6. Seatbelts</h3>
-              </a>
-              <p>
-                In a crash, someone not wearing a seatbelt is twice as likely to
-                die as someone who is using one. Research indicates that
-                approximately one-third of those killed in collisions weren’t
-                wearing a seatbelt. If you think you don’t need to wear a
-                seatbelt because your car has airbags, think again. The proper
-                term for an airbag is a Supplementary Restraint System (SRS) -
-                supplementary meaning ‘in addition to’. That means in addition
-                to the seatbelt!
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/showing-off">
-                <span>
-                  <FaCarCrash id={styles.featuresIcon} />
-                </span>
-                <h3>7. Showing Off</h3>
-              </a>
-              <p>
-                Fancy a £150 fine and a long walk home? The police have the
-                power to seize your vehicle if, after receiving a warning, you
-                drive of the ride carelessly or without reasonable consideration
-                for other road users, and in a manner which causes alarm,
-                distress or annoyance.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/speeding">
-                <span>
-                  <FaTachometerAlt id={styles.featuresIcon} />
-                </span>
-                <h3>8. Speeding</h3>
-              </a>
-              <p>
-                Excessive speed contributes to 12% of all injury-causing
-                crashes, 18% of crashes resulting in a serious injury and 28% of
-                all fatal crashes. That means around 500 people are killed each
-                year on Britain's roads because drivers and riders travel too
-                fast.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/tiredness">
-                <span>
-                  <FaBed id={styles.featuresIcon} />
-                </span>
-                <h3>9. Tiredness</h3>
-              </a>
-              <p>
-                Young drivers are statistically more likely to crash because
-                they are twice as likely to undertake a journey whilst feeling
-                tired. One in four young drivers admit to continuing to drive
-                while experiencing signs of fatigue, compared with one in eight
-                of the rest of the population.
-              </p>
-            </div>
-            <div className={styles.column}>
-              <a href="https://thehonesttruth.co.uk/pages/passing">
-                <span>
-                  <FaBicycle id={styles.featuresIcon} />
-                </span>
-                <h3>10. Road Users</h3>
-              </a>
-              <p>
-                Almost everyone walks and most people, at some time, ride a
-                bicycle. And yet, around 45,000 cyclists and pedestrians are
-                killed or injured on Britain’s roads every year. The driver was
-                found to be at fault in most collisions involving a cyclist and
-                a car. Cyclists are 30 times more likely to be seriously injured
-                in a collision than a car occupant.
-              </p>
-            </div>
-          </div>
+       <Truths/>
         </section>
+        {/* ///////////////////////////// */}
       </div>
     </div>
   );

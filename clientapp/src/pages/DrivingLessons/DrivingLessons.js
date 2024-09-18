@@ -4,7 +4,7 @@ import passImg from "../../assets/images/drivingLessonbanner.jpg";
 
 import starImg from "../../assets/images/redStar.png";
 import greenStarImg from "../../assets/images/greenStar.png";
-import PinkStarImg from "../../assets/images/pinkStar.png";
+import blueStarImg from "../../assets/images/blueStarImg.png";
 import yellowStarImg from "../../assets/images/yellowStar.png";
 
 import { IoCall } from "react-icons/io5";
@@ -135,11 +135,11 @@ export default function DrivingLessons() {
               <h2>AUTOMATIC</h2>
               <span>
                 {" "}
-                <img src={PinkStarImg} alt="starImg" />
-                <img src={PinkStarImg} alt="starImg" />
-                <img src={PinkStarImg} alt="starImg" />
-                <img src={PinkStarImg} alt="starImg" />
-                <img src={PinkStarImg} alt="starImg" />
+                <img src={blueStarImg} alt="starImg" />
+                <img src={blueStarImg} alt="starImg" />
+                <img src={blueStarImg} alt="starImg" />
+                <img src={blueStarImg} alt="starImg" />
+                <img src={blueStarImg} alt="starImg" />
               </span>
             </div>
             <div className={styles.manualPList}>
@@ -311,14 +311,14 @@ export default function DrivingLessons() {
       <div className={styles.spiralImgContainer}>
         {/* <img src={spiralImg} alt="spiralImg" /> */}
 
-        <hr
+        {/* <hr
           style={{
             opacity: "1",
             border: "2px solid silver",
             maxWidth: "1000px",
             margin: "0px auto",
           }}
-        />
+        /> */}
       </div>
       <section className={styles.imageSliderContainer}>
         <div className={styles.whyChooseText}>
@@ -338,11 +338,11 @@ export default function DrivingLessons() {
           }}>
           <ImagesCarousel />
         </div>
-        <hr></hr>
+       
       </section>
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
 
-      <section className={styles.ourPartnersSection}>
+      {/* <section className={styles.ourPartnersSection}>
         <div className={styles.bgOverlay}></div>
         <h2>Our Partners</h2>
         <div className={styles.partnerSection}>
@@ -360,7 +360,7 @@ export default function DrivingLessons() {
           <img src={OurPartners12} alt="" />
           <img src={OurPartners13} alt="" />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

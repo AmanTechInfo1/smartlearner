@@ -1,14 +1,14 @@
 // import React from 'react'
 import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import styles from "./WeSupport.module.css";
-import smartlearnerSupoort from "../../assets/images/smartlearnerSupportImg.png"
-import bylc from "../../assets/images/BYLC.png"
+import smartlearnerSupoort from "../../assets/images/smartlearnerSupportImg.png";
+import bylc from "../../assets/images/BYLC.png";
 import wmfs from "../../assets/images/WestMidLand.png";
 import jaguarlandrover from "../../assets/images/jaguar.jpg";
 import governmentLogo from "../../assets/images/Highways_England.jpg";
 import coventry from "../../assets/images/Coventry.jpg";
 import coventryAir from "../../assets/images/Electric-Fleet.jpg";
-import gocv from "../../assets/images/gocv.png";  
+import gocv from "../../assets/images/gocv.png";
 import greendino from "../../assets/images/Green-Dino.png";
 import coventrycollege from "../../assets/images/covcollege.png";
 import sqa from "../../assets/images/SQA.png";
@@ -18,18 +18,16 @@ import unhcr from "../../assets/images/ARC.png";
 import nuneatonlionsclub from "../../assets/images/Lion-Club.png";
 import bedwortheagles from "../../assets/images/unitedToAchieve.jpg";
 
-
 export default function WeProudlySupport() {
   return (
     <div className={styles.weProudlySupport}>
       <section className={styles.imageSection}>
-      <img src={smartlearnerLogo} alt="smartlearner-Logo"/>
+        <img src={smartlearnerLogo} alt="smartlearner-Logo" />
         <h2>IN PARTNERSHIP WITH</h2>
       </section>
       {/* /////////////////////////////////////////// */}
 
       <section className={styles.whoDoWeSupport}>
-        
         <div className={styles.mainFeatures}>
           <div className={styles.column}>
             <a href="https://www.intelligentinstructor.co.uk/intelligent-instructor-award-winners-2022/">
@@ -161,7 +159,11 @@ export default function WeProudlySupport() {
           </div>
           <div className={styles.column}>
             <a href="https://www.unhcr.org/uk/afghanistan.html">
-              <img src={unhcr} alt="unhcr" />
+              <img
+                src={unhcr}
+                alt="unhcr"
+                style={{ backgroundColor: "white", borderRadius:'50%' }}
+              />
             </a>
             <p>
               We supported a family of 8 in Afghanistan by sending food and

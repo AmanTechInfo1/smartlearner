@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import pinkStarImg from "../../assets/images/pinkStar.png"; // Assuming it's the correct image for Automatic
+import blueStarImg from "../../assets/images/blueStarImg.png";
+
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -68,9 +69,9 @@ function AutomaticCarousel() {
   const getColorForCategory = (categoryName) => {
     switch (categoryName) {
       case "Offers Automatic":
-        return "#ff00cc"; // Pink for Offers Automatic
+        return "#00a1f1"; // Pink for Offers Automatic
       case "Automatic":
-        return "#ff00cc"; // Pink for Automatic
+        return "#00a1f1"; // Pink for Automatic
       default:
         return "gold"; // Default color for other categories
     }
@@ -204,11 +205,11 @@ function AutomaticCarousel() {
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
                     }`}>
-                    <img src={pinkStarImg} alt="starImg" />
-                    <img src={pinkStarImg} alt="starImg" />
-                    <img src={pinkStarImg} alt="starImg" />
-                    <img src={pinkStarImg} alt="starImg" />
-                    <img src={pinkStarImg} alt="starImg" />
+                    <img src={blueStarImg} alt="starImg" />
+                    <img src={blueStarImg} alt="starImg" />
+                    <img src={blueStarImg} alt="starImg" />
+                    <img src={blueStarImg} alt="starImg" />
+                    <img src={blueStarImg} alt="starImg" />
                   </div>
                 )}
               </div>

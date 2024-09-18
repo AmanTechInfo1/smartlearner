@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
 import redStarImg from "../../assets/images/redStar.png";
-import pinkStarImg from "../../assets/images/pinkStar.png";
+import blueStarImg from "../../assets/images/blueStarImg.png";
 import yellowStarImg from "../../assets/images/yellowStar.png";
 import greenStarImg from "../../assets/images/greenStar.png";
 import goldStarImg from "../../assets/images/goldstar.png";
@@ -80,11 +80,11 @@ function Corousel() {
         return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
       case "Automatic":
         return [
-          pinkStarImg,
-          pinkStarImg,
-          pinkStarImg,
-          pinkStarImg,
-          pinkStarImg,
+          blueStarImg,
+          blueStarImg,
+          blueStarImg,
+          blueStarImg,
+          blueStarImg,
         ];
       case "Theory Support":
         return [
@@ -135,7 +135,7 @@ function Corousel() {
       case "manual":
         return "red";
       case "Automatic":
-        return "#ff00cc";
+        return "#00a1f1";
       case "Theory Support":
         return "#FFD700";
       case "Intensive":

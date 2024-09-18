@@ -141,7 +141,7 @@ function Footer() {
             CopyRight @ 2024 | Managed By{" "}
             <a
               href="https://savvytechguru.com"
-              style={{ textDecoration: "none", color: "black" }}>
+              style={{ textDecoration: "none", color: "black", fontWeight:'700' }}>
               Savvytechguru.com
             </a>
           </p>
