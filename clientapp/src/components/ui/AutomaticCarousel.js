@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
 import pinkStarImg from "../../assets/images/pinkStar.png"; // Assuming it's the correct image for Automatic
-import cartImg from "../../assets/images/pinkCartImg.png";
+import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";

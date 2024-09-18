@@ -15,7 +15,7 @@
   padding: 50px 0 0;
   font-family: "Montserrat", sans-serif;
   color: white;
-  border-top: 2px solid #b10004;
+  border-top: 4px solid #b10004;
 }
 
 .container {
@@ -143,8 +143,6 @@ article h4 {
   cursor: pointer;
 }
 
-
-
 .innerSection {
   display: flex;
   justify-content: space-evenly;
@@ -170,7 +168,6 @@ article h4 {
 }
 
 .lowerCol3 {
- 
   width: 100%;
   min-height: 1px;
   padding-right: 15px;
@@ -231,7 +228,7 @@ article h4 {
 }
 
 .copyRight {
-  background: #ed2025;
+  background: #b10004;
   font-family: "Montserrat", sans-serif;
   color: #fff;
   font-size: 14px;

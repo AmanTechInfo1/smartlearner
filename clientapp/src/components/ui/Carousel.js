@@ -4,11 +4,12 @@ import redStarImg from "../../assets/images/redStar.png";
 import pinkStarImg from "../../assets/images/pinkStar.png";
 import yellowStarImg from "../../assets/images/yellowStar.png";
 import greenStarImg from "../../assets/images/greenStar.png";
-import goldStarImg from "../../assets/images/goldstar.png"; 
+import goldStarImg from "../../assets/images/goldstar.png";
 import redCartImg from "../../assets/images/redCartImg.png";
 import yellowCartImg from "../../assets/images/yellowCartImg.png";
 import pinkCartImg from "../../assets/images/pinkCartImg.png";
 import greenCartImg from "../../assets/images/greenCartImg.png";
+import cartbanner from "../../assets/images/bannerCart.png";
 import defaultCartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,7 +79,13 @@ function Corousel() {
       case "manual":
         return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
       case "Automatic":
-        return [pinkStarImg, pinkStarImg, pinkStarImg, pinkStarImg, pinkStarImg];
+        return [
+          pinkStarImg,
+          pinkStarImg,
+          pinkStarImg,
+          pinkStarImg,
+          pinkStarImg,
+        ];
       case "Theory Support":
         return [
           yellowStarImg,
@@ -96,7 +103,13 @@ function Corousel() {
           greenStarImg,
         ];
       default:
-        return [goldStarImg, goldStarImg, goldStarImg, goldStarImg, goldStarImg];
+        return [
+          goldStarImg,
+          goldStarImg,
+          goldStarImg,
+          goldStarImg,
+          goldStarImg,
+        ];
     }
   };
 
@@ -156,7 +169,8 @@ function Corousel() {
                     <div className={styles.CorouselhaddingBanner}>
                       <h2
                         style={{
-                          color: getHeadingAndButtonColorForCategory(categoryName),
+                          color:
+                            getHeadingAndButtonColorForCategory(categoryName),
                         }}>
                         {item._id === "Theory Support"
                           ? expandedCategory === item._id
@@ -169,7 +183,7 @@ function Corousel() {
                           <span>
                             <img
                               id={styles.CorouselImgcart}
-                              src={getCartImageForCategory(categoryName)} // Dynamic cart image
+                              src={cartbanner} // Dynamic cart image
                               alt="cartImg"
                             />
                           </span>
@@ -194,7 +208,9 @@ function Corousel() {
                                 padding: "8px",
                               }}>
                               <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                              <p style={{ marginBottom: "0px" }}>£ {info.price}</p>
+                              <p style={{ marginBottom: "0px" }}>
+                                £ {info.price}
+                              </p>
                             </span>
                             <div className={styles.btnGroup}>
                               {myCart.length === 0 ||
@@ -206,9 +222,10 @@ function Corousel() {
                                 <button
                                   className={styles.bookNow}
                                   style={{
-                                    backgroundColor: getHeadingAndButtonColorForCategory(
-                                      categoryName
-                                    ),
+                                    backgroundColor:
+                                      getHeadingAndButtonColorForCategory(
+                                        categoryName
+                                      ),
                                   }}
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -261,9 +278,11 @@ function Corousel() {
                       className={`${styles.carouselStarImgContainer} ${
                         expandedCategory === item._id ? styles.compress : ""
                       }`}>
-                      {getStarImagesForCategory(categoryName).map((star, idx) => (
-                        <img key={idx} src={star} alt={`starImg${idx}`} />
-                      ))}
+                      {getStarImagesForCategory(categoryName).map(
+                        (star, idx) => (
+                          <img key={idx} src={star} alt={`starImg${idx}`} />
+                        )
+                      )}
                     </div>
                   )}
                 </div>

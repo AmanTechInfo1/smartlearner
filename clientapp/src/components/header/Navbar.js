@@ -58,7 +58,7 @@ function Navbar() {
           {userDetails.username && (
             <div className={styles.navShoppingCart}>
               <Link to="/cart">
-                <FaShoppingCart size={20} />
+                <FaShoppingCart  id={styles.shoppincartIcon}/>
               </Link>
             </div>
           )}

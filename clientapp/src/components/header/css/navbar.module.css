@@ -38,10 +38,10 @@
     transition: ease 0.3s;
     margin: 0px 5px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .contactInfo span{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .contactInfo a:hover {
@@ -56,7 +56,7 @@
 }
 
 .logo img {
-    max-width: 270px;
+    max-width: 330px;
     width: 100%;
 }
 
@@ -75,7 +75,7 @@ margin-bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .navLinks ul li {
@@ -103,12 +103,15 @@ margin-bottom: 0px;
 .navShoppingCart {
     display: flex;
 }
-
+#shoppincartIcon{
+    font-size: 1.3rem;
+}
 .navShoppingCart a {
     text-decoration: none;
     color: #fff;
     transition: ease 0.3s;
     padding: 8px 20px;
+   
 }
 
 .navShoppingCart a:hover {

@@ -56,7 +56,7 @@
 }
 .heading1 h1 {
   color: #d10101;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 900;
 
   text-align: center;
@@ -89,7 +89,7 @@
 }
 .heading2 p {
   color: #ffe600;
-  font-size: 22px;
+  font-size: 30px;
 
   padding-top: 0.8rem;
   margin-bottom: 20px;
@@ -104,9 +104,9 @@
   width: 100%;
   max-width: 400px;
 }
-@media (max-width: 1180px) {
+@media (max-width: 1265px) {
   .maincontent {
-    display: block;
+    flex-direction: column;
   }
   .video {
     max-width: 800px;
@@ -119,17 +119,13 @@
   .content {
     padding-top: 75px;
   }
-  .heading1 h1 {
-    font-size: 3rem;
-    line-height: 1.7em;
-  }
-  .heading2 p {
-    font-size: 18px;
-  }
 }
 @media (max-width: 767px) {
   .content {
     padding-top: 0px;
+  }
+  .heading2 p {
+    font-size: 24px;
   }
 
   .maincontent {
@@ -139,7 +135,7 @@
     padding-top: 1rem;
   }
   .heading1 h1 {
-    font-size: 2.5rem;
+    font-size: 5rem;
   }
   .content {
     max-width: 100%;
@@ -172,7 +168,7 @@
   color: rgb(255, 217, 0);
 }
 .theoryTestDivQ h2 {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   overflow: hidden;
   border-right: 0.2px solid rgb(255, 0, 0);
@@ -210,16 +206,26 @@
 }
 .theoryTestDivQ p {
   color: rgb(255, 230, 0);
-  font-size: 18px;
+  font-size: 24px;
+}
+@media (max-width: 778px) {
+  .theoryTestDivQ h2 {
+    font-size: 4rem;
+  }
 }
 @media (max-width: 578px) {
   .theoryTestDivQ h2 {
-    font-size: 3rem;
+    font-size: 3.3rem;
   }
 }
-@media (max-width: 440px) {
+@media (max-width: 480px) {
   .theoryTestDivQ h2 {
-    font-size: 2.3rem;
+    font-size: 2.6rem;
+  }
+}
+@media (max-width: 420px) {
+  .theoryTestDivQ h2 {
+    font-size: 2.2rem;
   }
 }
 /* ////////////////////////////////////////////////////// */
@@ -285,7 +291,7 @@
   text-align: center;
 }
 .ChoicesContentContainer h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -367,7 +373,7 @@
 .thMultipleChioceHeader h2 {
   text-align: center;
   color: #ff0004;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   overflow: hidden;
   border-right: 0.2px solid rgb(255, 0, 0);
@@ -400,9 +406,24 @@
     border-color: rgb(255, 0, 0);
   }
 }
+@media (max-width: 767px) {
+  .thMultipleChioceHeader h2 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 557px) {
+  .thMultipleChioceHeader h2 {
+    font-size: 2.6rem;
+  }
+}
+@media (max-width: 480px) {
+  .thMultipleChioceHeader h2 {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 380px) {
   .thMultipleChioceHeader h2 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
 }
 .thMultipleChioceHeader p {
@@ -542,9 +563,6 @@
   .mainFeatures {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-  .thMultipleChioceHeader h2 {
-    font-size: 2rem;
-  }
 }
 
 /* ////////////////////////////////// */
@@ -666,7 +684,7 @@
   width: 100%;
   text-align: center;
 }
-.thFooterDiv h2 span{
+.thFooterDiv h2 span {
   color: #ffd900;
 }
 .thFooterDiv h2 {
@@ -690,5 +708,30 @@
 @media (max-width: 428px) {
   .thFooterDiv h2 {
     font-size: 2rem;
+  }
+}
+@media (max-width: 750px) {
+  .starImgContainer img {
+    max-width: 95px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 482px) {
+  .starImgContainer img {
+    max-width: 65px;
+    width: 100%;
+  }
+}
+@media (max-width: 452px) {
+  .starImgContainer img {
+    max-width: 65px;
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .starImgContainer img {
+    max-width: 45px;
+    width: 100%;
   }
 }

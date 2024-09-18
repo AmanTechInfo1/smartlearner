@@ -337,6 +337,12 @@ export default function Home() {
             </div> */}
             {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
+            <section className={styles.BookNowSec}>
+              <h2 >
+                Book Online Now!
+              </h2>
+              <p>Start Your Journey with us NOW!</p>
+            </section>
             <>
               <Carousel />
             </>

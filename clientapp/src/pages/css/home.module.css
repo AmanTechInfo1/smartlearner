@@ -295,7 +295,61 @@
     font-size: 2.2rem;
   }
 }
-
+/* ////////////////////////////////////////////////////////// */
+.BookNowSec {
+  text-align: center;
+}
+.BookNowSec h2 {
+  color: white;
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 0px;
+}
+.BookNowSec p {
+  color: #de1515;
+  font-size: 3rem;
+  font-weight: 900;
+}
+@media (max-width: 767px) {
+  .BookNowSec h2 {
+    font-size: 4.5rem;
+  }
+  .BookNowSec p {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 667px) {
+  .BookNowSec h2 {
+    font-size: 4rem;
+  }
+  .BookNowSec p {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 527px) {
+  .BookNowSec h2 {
+    font-size: 3.5rem;
+  }
+  .BookNowSec p {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 427px) {
+  .BookNowSec h2 {
+    font-size: 3rem;
+  }
+  .BookNowSec p {
+    font-size: 1.7rem;
+  }
+}
+@media (max-width: 377px) {
+  .BookNowSec h2 {
+    font-size: 2.7rem;
+  }
+  .BookNowSec p { 
+    font-size: 1.5rem;
+  }
+}
 /* //////////////////////// */
 .formContainer {
   max-width: 550px;

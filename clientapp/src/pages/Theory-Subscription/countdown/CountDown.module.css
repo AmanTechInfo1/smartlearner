@@ -189,14 +189,23 @@ p {
   padding: 2rem 1rem;
   font-family: "Antonio", sans-serif;
 }
-.theoryPortalTimer h4 span{
+.theoryPortalTimer h4 span {
   color: rgb(255, 230, 0);
 }
 .theoryPortalTimer h4 {
   color: rgb(212, 0, 0);
   font-weight: 700;
-  font-size: 1.5rem;
-
+  font-size: 1.7rem;
+}
+@media (max-width: 760px) {
+  .theoryPortalTimer h4 {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 7460px) {
+  .theoryPortalTimer h4 {
+    font-size: 1.2rem;
+  }
 }
 
 .theoryPortalTimerInputField {

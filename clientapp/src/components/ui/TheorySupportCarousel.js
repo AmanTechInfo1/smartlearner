@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
 import yellowStarImg from "../../assets/images/yellowStar.png"; // Yellow star image
-import cartImg from "../../assets/images/yellowCartImg.png";
+import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
