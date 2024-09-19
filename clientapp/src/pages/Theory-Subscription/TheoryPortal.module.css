@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   padding: 8rem 0;
-  background-image: url("../../assets//images/theory-Img-banner.png");
+  background-image: url("../../assets//images/theoryImgBanner.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -507,7 +507,7 @@
 
   font-weight: 300;
   line-height: 1.7em;
-  color: #7a7a7a;
+  color: #ffffff;
 }
 .column span {
   background-color: #ffd900;

@@ -12,9 +12,10 @@ p {
 }
 .adiPortalPageFirstdiv {
   position: relative;
-  background: url("../../assets/images/bannerPdi.png");
+  background: url("../../assets/images/pdiBannerImages.jpg");
   background-size: cover;
-  background-position: bottom;
+  background-position: left;
+ 
   padding: 250px 0;
   font-family: "Antonio", sans-serif;
 }
@@ -30,13 +31,16 @@ p {
 .adiPortalPageFirstdiv section {
   position: sticky;
 }
+.adiPortalPageFirstdiv section h2 span {
+  color: rgb(0, 185, 0);
+}
 .adiPortalPageFirstdiv section h2 {
   font-size: 5rem;
   font-weight: 700;
   text-align: center;
-  color: #ffffff;
+  color: #006ace;
   overflow: hidden;
-  border-right: 0.2px solid rgb(255, 0, 0);
+  border-right: 0.2px solid rgb(255, 255, 255);
   white-space: nowrap;
   margin: 0 auto;
   animation: typing 3.5s steps(30, end) infinite,
@@ -58,7 +62,7 @@ p {
     border-color: transparent;
   }
   50% {
-    border-color: rgb(255, 0, 0);
+    border-color: rgb(255, 255, 255);
   }
 }
 @media (max-width: 550px) {
@@ -72,21 +76,32 @@ p {
   }
 }
 .adiPortalPageSeconddiv {
-  background-color: #ebebeb;
   text-align: center;
-  padding: 2rem 0px;
 }
 .adiPortalPageSeconddiv img {
   width: 100%;
 }
-
-.adiPortalPageSeconddiv p {
+.paraSecHandImg {
+  text-align: center;
+  padding: 2rem 0px;
+}
+.paraSecHandImg img {
+  max-width: 400px;
+  width: 100%;
+  animation: slideFromBottomH2 2s ease-in-out infinite;
+}
+.paraSecHandImg p span {
+  color: rgb(0, 185, 0);
+}
+.paraSecHandImg p {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
   max-width: 800px;
-  margin: 0px auto;
-  color: #ce0000;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0pc;
+  color: #006ace;
 
   animation: slideFromBottomH2 2s ease-in-out;
 }
@@ -134,19 +149,26 @@ p {
   text-align: center;
   padding: 2rem;
 }
+.adiPortalPageThirddiv h2 span {
+  color: rgb(0, 185, 0);
+}
 .adiPortalPageThirddiv h2 {
   padding: 2rem 0px;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #fff;
+  color: #006ace;
+}
+.adiLearningSupport h2 span {
+  color: rgb(0, 185, 0);
 }
 .adiLearningSupport h2 {
   padding: 2rem 0px;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #fff;
+  color: #006ace;
   animation: slideFromBottom 2s ease-in-out infinite;
 }
+
 .adiPortalVideo iframe {
   border-radius: 30px;
   border-radius: 15px;
@@ -162,18 +184,21 @@ p {
   margin-left: auto;
   width: 100%;
 }
+#hrAdiLearningText p span {
+  color: rgb(0, 185, 0);
+}
 #hrAdiLearningText p {
   width: 100%;
   max-width: 300px;
   margin-bottom: 0px;
-  color: #fff;
+  color: #006ace;
   font: 1.1rem;
   animation: slideFromBottom 2s ease-in-out infinite;
 }
 #hrAdiLearningText hr {
   margin: 0;
   width: 100%;
-  border: 2px solid rgb(255, 0, 0);
+
   border-top: none;
   opacity: 1;
 }
@@ -196,18 +221,18 @@ p {
   font-size: 2rem;
 }
 #adiPortalFaIcons {
-  color: #ce0000;
-  border-color: #cf0000;
+  color: rgb(0, 185, 0);
+  border-color: rgb(0, 185, 0);
   font-size: 100px;
   transition: transform 0.3s ease;
 }
 #adiPortalFaIcons:hover {
-  color: #fff;
+  color: #006ace;
   transform: scale(1.1);
 }
 .adiPortalBtnLearning {
   padding: 15px 30px;
-  border: 1px solid red;
+  border: 1px solid rgb(0, 185, 0);
   border-radius: 6px;
   background-color: black;
   color: #fff;
@@ -216,9 +241,10 @@ p {
   transition: 0.3s ease-in;
 }
 .adiPortalBtnLearning:hover {
-  background-color: #fff;
-  color: black;
-  border: none;
+  background-color: #006ace;
+ border: none;
+  color: #fff;
+  
 }
 .adiPortalFooterSection {
   text-align: center;
@@ -236,7 +262,7 @@ p {
 }
 .adiPortalFooterSection {
   padding: 2rem 0px;
-  background-color: #88000083;
+  background-color: #006ace;
 }
 .adiPortalFooterInnerContainer img {
   padding: 1rem 0px;
@@ -253,7 +279,7 @@ p {
   color: #fff;
 }
 .adiFooterContactInfo a:hover {
-  color: #eb0009;
+  color:  rgb(0, 185, 0);
 }
 .adiFooterAddressInfo p {
   color: #fff;
@@ -271,7 +297,7 @@ p {
 }
 #adiSocialFaIcons {
   font-size: 2rem;
-  color: #eb0009;
+  color:  rgb(0, 185, 0);
 }
 #adiSocialFaIcons:hover {
   color: #fff;

@@ -250,7 +250,7 @@ export default function DrivingLessons() {
       <section className={styles.dManualSection}>
         <div className={styles.spiralImgContainer}>
           {/* <img src={spiralImg} alt="spiralImg" /> */}
-          <hr style={{ opacity: "1", border: "2px solid silver" }} />
+          {/* <hr style={{ opacity: "1", border: "2px solid silver" }} /> */}
         </div>
         <div
           className=" text-white p-4 "

@@ -15,6 +15,7 @@ import {
 import { FaLocationDot } from "react-icons/fa6";
 import smartlearnerLogo from "../assets/images/White-Logo-Fixed-1024x174.png";
 import { Link } from "react-router-dom";
+import pointingHand from "../assets/images/pointing-down.png";
 
 import OurPartners1 from "../assets/images/our partners/BYLC_Logo.png";
 
@@ -38,23 +39,27 @@ export default function ADITrainingPortal() {
         <div className={styles.adiPortalPageFirstdiv}>
           <div className={styles.opicity}></div>
           <section>
-            <h2>Welcome TO PDI</h2>
+            <h2>
+              Welcome TO <span>PDI</span>{" "}
+            </h2>
           </section>
         </div>
-        <div className={styles.adiPortalPageSeconddiv}>
+        <section className={styles.paraSecHandImg}>
           <p>
-            This road map shows the journey to become a fully qualified driving
-            instructor.
+            This Road Map Shows The Journey To Become{" "}
+            <span>A Fully Qualified Driving Instructor.</span>
           </p>
+          <img src={pointingHand} alt="pointing-hand" />
+        </section>
+        <div className={styles.adiPortalPageSeconddiv}>
           <img src={adiImg} alt="adiImg" />
         </div>
         <div className={styles.adiPortalPageThirddiv}>
-          <h2>Welcome Message</h2>
+          <h2>Welcome <span>Message</span></h2>
           <div className={styles.adiPortalVideo}>
             <iframe
               width="671"
               height="378"
-              
               src="https://www.youtube.com/embed/iHRbw3qpLyM"
               title="Tommy Welcome Video"
               frameborder="0"
@@ -63,11 +68,11 @@ export default function ADITrainingPortal() {
               allowfullscreen></iframe>
           </div>
           <div className={styles.adiLearningSupport}>
-            <h2>Learning Materials</h2>
+            <h2>Learning <span>Materials</span> </h2>
             <div id={styles.hrAdiLearningText}>
-              <hr id={styles.hrAdi} />
-              <p>Please see the below content.</p>
-              <hr id={styles.hrAdi} />
+              <hr id={styles.hrAdi} style={{border:'2px solid #006ace'}}/>
+              <p>Please See <span>The Below Content.</span></p>
+              <hr id={styles.hrAdi} style={{border:'2px solid rgb(0, 185, 0)'}}/>
             </div>
           </div>
           <div className={styles.adiTrainingPortalLearning}>
@@ -81,7 +86,7 @@ export default function ADITrainingPortal() {
               </Link>
             </div>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaCarSide id={styles.adiPortalFaIcons} />
+              <FaCarSide id={styles.adiPortalFaIcons}  />
               <h2>Part 2 - Driving Ability</h2>
               <Link to="/adi-part-2">
                 <button className={styles.adiPortalBtnLearning}>
