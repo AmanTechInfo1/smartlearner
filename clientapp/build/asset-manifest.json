@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.151a8bf3.css",
-    "main.js": "/static/js/main.a886254d.js",
+    "main.css": "/static/css/main.0bad5856.css",
+    "main.js": "/static/js/main.215a2e84.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -69,6 +69,7 @@
     "static/media/homebannerImg.jpg": "/static/media/homebannerImg.e468368817735f8ea3ba.jpg",
     "static/media/finished-road-map-1.png": "/static/media/finished-road-map-1.f3dd111279280b3aac10.png",
     "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
+    "static/media/theoryImgBanner.jpg": "/static/media/theoryImgBanner.8a3bd4ec9f45405a5b77.jpg",
     "static/media/West_Midlands_Fire_Service_crest.svg.png": "/static/media/West_Midlands_Fire_Service_crest.svg.192f8b2bdcf41552301c.png",
     "static/media/video-bgImg.jpg": "/static/media/video-bgImg.48f6696742fd77665dda.jpg",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
@@ -79,6 +80,7 @@
     "static/media/CChampion-2.jpg": "/static/media/CChampion-2.c89fb0c00fdb72a9a2a6.jpg",
     "static/media/cimg13.jpg": "/static/media/cimg13.4739f426b7f13d3a3032.jpg",
     "static/media/going-green-img3.jpg": "/static/media/going-green-img3.a99719f1a5d82a55e1f7.jpg",
+    "static/media/pdiBannerImages.jpg": "/static/media/pdiBannerImages.2ef2126ef324921ca2b5.jpg",
     "static/media/going-green-img.jpg": "/static/media/going-green-img.aac79fce5d3bf2a41376.jpg",
     "static/media/texiImg.png": "/static/media/texiImg.a21ff407a2c6cd49e01c.png",
     "static/media/going-green-img6.jpg": "/static/media/going-green-img6.737cbc307e544aa78517.jpg",
@@ -97,11 +99,9 @@
     "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
-    "static/media/theory-Img-banner.png": "/static/media/theory-Img-banner.f86cf0f0b2764bfea2df.png",
     "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
     "static/media/hand-plant.png": "/static/media/hand-plant.5a44f35675b1afd13386.png",
-    "static/media/bannerPdi.png": "/static/media/bannerPdi.735596636618d180e729.png",
     "static/media/Intensive-Driving-Course-1024x768.jpg": "/static/media/Intensive-Driving-Course-1024x768.13b9760aee7883e2ee4e.jpg",
     "static/media/padestrienCrossing.jpg": "/static/media/padestrienCrossing.d6d912875b2b5e141f6b.jpg",
     "static/media/choose-img.jpg": "/static/media/choose-img.ceedd820c5868bcffab6.jpg",
@@ -241,6 +241,7 @@
     "static/media/pinkCartImg.png": "/static/media/pinkCartImg.36c8300e87c081e61b17.png",
     "static/media/attitude-M-img.png": "/static/media/attitude-M-img.e7e03d095ce1c27161cd.png",
     "static/media/yellowCartImg.png": "/static/media/yellowCartImg.a21f9dd4f9d5a6e5d7b2.png",
+    "static/media/pointing-down.png": "/static/media/pointing-down.195246106e9253aa8583.png",
     "static/media/greenCartImg.png": "/static/media/greenCartImg.0ba4ced4b7cbfbaafa8c.png",
     "static/media/covcollege.png": "/static/media/covcollege.67fe9810657bac404d54.png",
     "static/media/redCartImg.png": "/static/media/redCartImg.ba7538af4bf1e49e973a.png",
@@ -267,15 +268,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.151a8bf3.css.map": "/static/css/main.151a8bf3.css.map",
-    "main.a886254d.js.map": "/static/js/main.a886254d.js.map",
+    "main.0bad5856.css.map": "/static/css/main.0bad5856.css.map",
+    "main.215a2e84.js.map": "/static/js/main.215a2e84.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.151a8bf3.css",
-    "static/js/main.a886254d.js"
+    "static/css/main.0bad5856.css",
+    "static/js/main.215a2e84.js"
   ]
 }
