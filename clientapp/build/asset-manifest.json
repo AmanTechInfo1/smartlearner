@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0bad5856.css",
-    "main.js": "/static/js/main.215a2e84.js",
+    "main.css": "/static/css/main.b73bd2d3.css",
+    "main.js": "/static/js/main.9838f8e2.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -99,6 +99,7 @@
     "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
+    "static/media/alertness-Img.jpg": "/static/media/alertness-Img.030a73f1217b29bc8ca1.jpg",
     "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
     "static/media/hand-plant.png": "/static/media/hand-plant.5a44f35675b1afd13386.png",
@@ -268,15 +269,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.0bad5856.css.map": "/static/css/main.0bad5856.css.map",
-    "main.215a2e84.js.map": "/static/js/main.215a2e84.js.map",
+    "main.b73bd2d3.css.map": "/static/css/main.b73bd2d3.css.map",
+    "main.9838f8e2.js.map": "/static/js/main.9838f8e2.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0bad5856.css",
-    "static/js/main.215a2e84.js"
+    "static/css/main.b73bd2d3.css",
+    "static/js/main.9838f8e2.js"
   ]
 }
