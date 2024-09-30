@@ -1,7 +1,6 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import { IoMdArrowDropright } from "react-icons/io";
+import styles from "./css/Essentials.module.css";
+
 import {
   FaPlus,
   FaFileAlt,
@@ -16,51 +15,47 @@ import motCertificate from "../../../assets/images/motCertificate.gif";
 import certificate2 from "../../../assets/images/CERTIFICATE2.png";
 import { Link } from "react-router-dom";
 
-
-
-
 export default function EssentialDocuments() {
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "red" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
-                <h2>Essential Documents</h2>
+                <h2>
+                  Essential <span>Documents</span>{" "}
+                </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
+                </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
 
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            What are your <span>Essential documents?</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={essentialDocs} alt="essentialDocs" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "red", fontSize: "2rem" }}>
-                  What are your essential documents?
-                </h2>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The 12th topic is essential documents, it’s a pretty
                     self-explanatory topic. It revolves entirely around the
@@ -72,41 +67,45 @@ export default function EssentialDocuments() {
                     this topic inside and out.
                   </p>
                 </li>
-              </ul>
-              <ul type="none">
-                <h2 style={{ color: "red", fontSize: "2rem" }}>
-                  What are your essential documents?
-                </h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    Licence - knowing what type of driving licenses you need.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    Insurance - car insurance cover types and what you need to
-                    drive legally.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    MOT Certificate - know the legal requirements for vehicle
-                    testing and what the test covers.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>Vehicle Excise Duty (tax disc).</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>Vehicle Registration Document/Certificate.</p>
-                </li>
-              </ul>
+              </ul>{" "}
             </div>
+          </section>
+          <section className={styles.hazardTestH23}>
+            <ul type="none">
+              <h2>
+                What are your <span>Essential documents?</span>
+              </h2>
+            </ul>
+          </section>
+          <section className={styles.bgColorList2}>
+            <ul type="none">
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>Licence - knowing what type of driving licenses you need.</p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>
+                  Insurance - car insurance cover types and what you need to
+                  drive legally.
+                </p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>
+                  MOT Certificate - know the legal requirements for vehicle
+                  testing and what the test covers.
+                </p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>Vehicle Excise Duty (tax disc).</p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>Vehicle Registration Document/Certificate.</p>
+              </li>
+            </ul>
           </section>
         </section>
         {/* /////////////////////////////////// */}
@@ -120,11 +119,11 @@ export default function EssentialDocuments() {
 
         {/* ///////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>
-            Laws and requirments for road insurance
+          <h2>
+            Laws and requirments <span>For Road Insurance</span>
           </h2>
 
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -176,16 +175,13 @@ export default function EssentialDocuments() {
 
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
-
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={MotorCertificates} alt="MotorCertificates" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     A certificate of motor insurance is proof that you hold the
                     minimum 3rd party insurance for your vehicle, as required by
@@ -210,7 +206,7 @@ export default function EssentialDocuments() {
         <section className={styles.hazardTestWorkListSection}>
           {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
 
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -253,13 +249,12 @@ export default function EssentialDocuments() {
           {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={motCertificate} alt="motCertificate" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The MOT certificate confirms that your vehicle at the time
                     of its test met the minimum acceptable environmental and
@@ -293,7 +288,7 @@ export default function EssentialDocuments() {
             To prove to a police officer your vehicle is taxed you are required
             to present the following documents:
           </p>
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -335,7 +330,7 @@ export default function EssentialDocuments() {
           <p style={{ textAlign: "center", fontWeight: "700" }}>
             Important details about the Vehicle Registration Certificate:
           </p>
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -390,13 +385,12 @@ export default function EssentialDocuments() {
           {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={certificate2} alt="certificate2" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The V5C logbook (also known as the V5 form or document)
                     records the Registered Keeper (or Keepers) of the vehicle.
@@ -422,7 +416,7 @@ export default function EssentialDocuments() {
         {/* ///////////////////////////////////////////////// */}
 
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -477,23 +471,24 @@ export default function EssentialDocuments() {
         </section>
         {/* ///////////////////////////////////////// */}
         <section className={styles.mockTestContainerSection}>
-        <div className={styles.mockTestHeadingContainerDIv}>
-          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
-        </div>
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h2>Start Quiz</h2>
-            <h3>All Questions</h3>
-            <p>
-              Click the start quiz button to start the quiz and See your result
-            </p>
-            <Link to="/takequizCatName/Documents">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
-        </div>
-      </section>
+          <div className={styles.mockTestHeadingContainerDIv}>
+            <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
+          </div>
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+                Click the start quiz button to start the quiz and See your
+                result
+              </p>
+              <Link to="/takequizCatName/Documents">
+                {" "}
+                <button>Start Quiz</button>
+              </Link>
+            </section>
+          </div>
+        </section>
         {/* ///////////////////////////////// */}
       </div>
     </div>

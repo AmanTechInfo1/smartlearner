@@ -1,54 +1,54 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
+import styles from "./css/VehicleLoading.module.css";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import { IoMdArrowDropright } from "react-icons/io";
 
 export default function VideoClips() {
-
-const videoURLs = [
-"https://www.youtube.com/embed/R_R0tDWry7Y",
-"https://www.youtube.com/embed/Bz5vUmXG2eg",
-"https://www.youtube.com/embed/7-piGp7tw90",
-"https://www.youtube.com/embed/KPpjQw9U4Pg",
-"https://www.youtube.com/embed/87-vlN6K8lw",
-"https://www.youtube.com/embed/XbqGW2bFSgc",
-"https://www.youtube.com/embed/9FlCxeP7QPs",
-"https://www.youtube.com/embed/m7voGvNBjXY",
-"https://www.youtube.com/embed/QLFxPP9axq8",
-
-    
-];
+  const videoURLs = [
+    "https://www.youtube.com/embed/R_R0tDWry7Y",
+    "https://www.youtube.com/embed/Bz5vUmXG2eg",
+    "https://www.youtube.com/embed/7-piGp7tw90",
+    "https://www.youtube.com/embed/KPpjQw9U4Pg",
+    "https://www.youtube.com/embed/87-vlN6K8lw",
+    "https://www.youtube.com/embed/XbqGW2bFSgc",
+    "https://www.youtube.com/embed/9FlCxeP7QPs",
+    "https://www.youtube.com/embed/m7voGvNBjXY",
+    "https://www.youtube.com/embed/QLFxPP9axq8",
+  ];
 
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "purple" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
-                <h2>Vehicle handling</h2>
+                <h2>
+                  Vehicle <span>Handling</span>
+                </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
+                </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>What are the video clips?</h2>
+          <h2>
+            What are the <span>video clips?</span>{" "}
+          </h2>
 
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <IoMdArrowDropright id="listrightIcon" />{" "}
@@ -70,11 +70,11 @@ const videoURLs = [
         </section>
         {/* //////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>
-            What type of questions can I get?
+          <h2>
+            What type of <span>questions can I get?</span>
           </h2>
 
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <IoMdArrowDropright id="listrightIcon" />{" "}
@@ -101,16 +101,19 @@ const videoURLs = [
         </section>
         {/* /////////////////////////////////////////////////////// */}
         <section>
-        <h2 style={{textAlign:'center'}}>Test YourSelf</h2>
+          <h2 style={{ textAlign: "center" }}>Test Yourself</h2>
         </section>
         <div className={styles.hazardVideosGridContainer}>
-           
-      {videoURLs.map((url, index) => (
-        <div className={styles.hazardGridItem} key={index}>
-          <iframe width="200" height="120" src={url} allowFullScreen></iframe>
+          {videoURLs.map((url, index) => (
+            <div className={styles.hazardGridItem} key={index}>
+              <iframe
+                width="200"
+                height="120"
+                src={url}
+                allowFullScreen></iframe>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
       </div>
     </div>
   );

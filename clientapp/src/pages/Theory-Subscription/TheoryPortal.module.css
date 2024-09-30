@@ -65,7 +65,7 @@
   white-space: nowrap;
   margin: 0 auto;
 
-  animation: typing 3.5s steps(30, end) infinite,
+  animation: typing 3.5s steps(30, end) ,
     blink-caret 0.5s step-end infinite;
   padding: 2rem 0px;
 }
@@ -242,7 +242,7 @@
   gap: 20px;
 }
 #choiceIdMc {
-  animation: 5s slide-right infinite;
+  animation: 5s slide-right ;
   background-color: #ff090d;
   color: #ffd000;
 }
@@ -259,7 +259,7 @@
   }
 }
 #choiceIdHP {
-  animation: 5s slide-left infinite;
+  animation: 5s slide-left ;
   background-color: #ffd900;
   color: #ff0000;
 }
@@ -381,7 +381,7 @@
   margin: 0 auto;
 
   color: #ff090d;
-  animation: typing 3.5s steps(30, end) infinite,
+  animation: typing 3.5s steps(30, end) ,
     blink-caret 0.5s step-end infinite;
   padding: 2rem 0px;
 }
@@ -587,7 +587,7 @@
   margin: 0 auto;
 
   color: #ff090d;
-  animation: typing 3.5s steps(30, end) infinite,
+  animation: typing 3.5s steps(30, end) ,
     blink-caret 0.5s step-end infinite;
 
   padding: 2rem 0px;

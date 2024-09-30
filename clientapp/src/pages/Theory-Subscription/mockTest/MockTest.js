@@ -1,29 +1,44 @@
 import React from "react";
 
 import styles from "./MockTest.module.css";
-import { FaHome } from "react-icons/fa";
+
 import { IoMdArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 export default function MockTest() {
   return (
-    <div style={{backgroundColor:'black', color:"white", paddingBottom:'5rem'}}>
-      <section className={styles.hazardHomeBannerSection}>
-        <div className={styles.overlay}></div>
-        <div className={styles.hazardHomeBannerHeader}>
-          <h2>Multiple Choice</h2>
-          <hr />
-          <span>
-            <FaHome id={styles.hazardHomeIconBannar} />
-          </span>
+    <div className={styles.HazardPerceptionPagges}>
+      <section className={styles.imageSection}>
+        <div className={styles.opicity}></div>
+        <div className={styles.maincontent}>
+          <div className={styles.content}>
+            <div className={styles.heading1}>
+              <h1>
+                Forget the rest, <span>learn with the best!</span>
+              </h1>
+            </div>
+
+            <div className={styles.heading2}>
+              <h2>
+                Multiple <span>Choice</span>{" "}
+              </h2>
+            </div>
+            <div className={styles.alertBtn}>
+              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                <button>Contact Us</button>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ////////////////////////////////// */}
 
       <section className={styles.hazardTestWorkListSection}>
+        <h2>
+          How does the <span>Test work?</span>
+        </h2>
         <div className={styles.hazardTestWorkListDiv}>
-          <h2>How does the test work?</h2>
           <ul type="none">
             <li>
               <IoMdArrowDropright id="listrightIcon" />{" "}
@@ -101,7 +116,7 @@ export default function MockTest() {
       {/* ////////////////////////////////////////////////////// */}
       <section className={styles.mockTestContainerSection}>
         <div className={styles.mockTestHeadingContainerDIv}>
-          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
+          <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
         </div>
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>

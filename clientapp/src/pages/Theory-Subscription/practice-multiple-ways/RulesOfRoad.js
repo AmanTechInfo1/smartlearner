@@ -1,14 +1,7 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import { IoMdArrowDropright } from "react-icons/io";
-import {
-  FaTimesCircle,
-  FaArrowCircleLeft,
-  FaArrowCircleRight,
-  FaTrailer,
-  FaCheckCircle,
-} from "react-icons/fa";
+import styles from "./css/RulesRoads.module.css";
+
+import { FaCheckCircle } from "react-icons/fa";
 import listImg from "../../../assets/images/handleiding-300x300.png";
 import boxJunction from "../../../assets/images/boxJunction.jpg";
 import cycleLane from "../../../assets/images/cycle-lanes.jpg";
@@ -20,44 +13,43 @@ export default function RulesOfRoad() {
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "#58d3b4" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
-                <h2>Rules of the road</h2>
+                <h2>
+                  Rules of <span>The Road</span>
+                </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
+                </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
 
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            What are the <span>Rules Of The Road?</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={listImg} alt="ListImg" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  What are the rules of the road?
-                </h2>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The 10th topic from the multiple-choice section of the
                     theory test is rules of the road. As you’d probably expect
@@ -83,7 +75,7 @@ export default function RulesOfRoad() {
             public road.
           </p>
           <hr style={{ opacity: "1", border: "2px solid purple" }} />
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -116,13 +108,15 @@ export default function RulesOfRoad() {
         </section>
         {/* ////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center", fontSize: "2rem" }}>Key Terms</h2>
+          <h2 className={styles.hazardTestH2}>
+            Key <span>Terms</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={boxJunction} alt="boxJunction" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
                   Box Junction
@@ -143,10 +137,10 @@ export default function RulesOfRoad() {
           </section>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={cycleLane} alt="cycleLane" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
                   Cycle Lane
@@ -169,10 +163,10 @@ export default function RulesOfRoad() {
             </div>
           </section>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={levelCrossing} alt="motorwayLogo" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
                   Level Crossings
@@ -195,10 +189,10 @@ export default function RulesOfRoad() {
             </div>
           </section>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={Pedestrian} alt="motorwayLogo" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
                 <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
                   Pedestrian Crossings
@@ -233,105 +227,123 @@ export default function RulesOfRoad() {
 
         {/* ////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center", fontSize: "2rem" }}>
-            Important Manoeuvres
+          <h2 className={styles.hazardTestH2}>
+            Important <span>Manoeuvres</span>
           </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv} style={{width:'100%'}}>
-              <img src={cycleLane} alt="cycleLane" />
+            <div
+              className={styles.hazardTestWorkListDiv}
+              style={{ display: "block" }}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>Turning</h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    If turning left from a main road into a minor road, keep
-                    well to the left.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    If both you and the oncoming driver are turning right, keep
-                    the other vehicle on your right and turn behind it.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    If turning right on a dual carriageway with a very narrow
-                    central reservation, make sure the road is clear in both
-                    directions before turning.
-                  </p>
-                </li>
+                <img src={cycleLane} alt="cycleLane" />
+                <h2>Turning</h2>
+                <section id={styles.resLists12}>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      If turning left from a main road into a minor road, keep
+                      well to the left.
+                    </p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      If both you and the oncoming driver are turning right,
+                      keep the other vehicle on your right and turn behind it.
+                    </p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      If turning right on a dual carriageway with a very narrow
+                      central reservation, make sure the road is clear in both
+                      directions before turning.
+                    </p>
+                  </li>
+                </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv} style={{width:'100%'}}>
-              <img src={cycleLane} alt="cycleLane" />
+            <div
+              className={styles.hazardTestWorkListDiv}
+              style={{ display: "block" }}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>Parking</h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>Near a school entrance or exit.</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>At a bus stop or nearby.</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>Within 10m of a junction.</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>Near the brow of a hill.</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>On the right hand side of a road at night.</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>In disabled bays without a permit.</p>
-                </li>
+                <img src={cycleLane} alt="cycleLane" />
+                <h2>
+                  <span>Parking</span>
+                </h2>
+                <section id={styles.resLists21}>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>Near a school entrance or exit.</p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>At a bus stop or nearby.</p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>Within 10m of a junction.</p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>Near the brow of a hill.</p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>On the right hand side of a road at night.</p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>In disabled bays without a permit.</p>
+                  </li>
+                </section>
+              </ul>
+            </div>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              style={{ display: "block" }}>
+              <ul type="none">
+                <img src={cycleLane} alt="cycleLane" />
+                <h2>Reversing</h2>
+                <section id={styles.resLists12}>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      You may remove your seatbelt but don’t reverse any longer
+                      than necessary, and always check it’s safe to do so.
+                    </p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      Never reverse from a side road directly into a main road.
+                    </p>
+                  </li>
+                  <li>
+                    <FaCheckCircle id="listrightIcon" />{" "}
+                    <p>
+                      If you are reversing into a side road, be aware that the
+                      greatest danger is when the front of your vehicle swings
+                      out.
+                    </p>
+                  </li>
+                </section>
               </ul>
             </div>
           </section>
+        </section>
+        {/* ///////////////////////////////////////////////////////////// */}
 
+        {/* ///////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <h2 className={styles.hazardTestH2}>Other</h2>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv} style={{width:'100%'}}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={cycleLane} alt="cycleLane" />
-              <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  Reversing
-                </h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    You may remove your seatbelt but don’t reverse any longer
-                    than necessary, and always check it’s safe to do so.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    Never reverse from a side road directly into a main road.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    If you are reversing into a side road, be aware that the
-                    greatest danger is when the front of your vehicle swings
-                    out.
-                  </p>
-                </li>
-              </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv} style={{width:'100%'}}>
-              <img src={cycleLane} alt="cycleLane" />
+            <section className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>Other</h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -358,28 +370,29 @@ export default function RulesOfRoad() {
                   </p>
                 </li>
               </ul>
-            </div>
+            </section>
           </section>
         </section>
-         {/* ////////////////////////////////////// */}
-         <section className={styles.mockTestContainerSection}>
-        <div className={styles.mockTestHeadingContainerDIv}>
-          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
-        </div>
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h2>Start Quiz</h2>
-            <h3>All Questions</h3>
-            <p>
-              Click the start quiz button to start the quiz and See your result
-            </p>
-            <Link to="/takequizCatName/Rules-of-the-Road">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
-        </div>
-      </section>
+        {/* ////////////////////////////////////// */}
+        <section className={styles.mockTestContainerSection}>
+          <div className={styles.mockTestHeadingContainerDIv}>
+            <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
+          </div>
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+                Click the start quiz button to start the quiz and See your
+                result
+              </p>
+              <Link to="/takequizCatName/Rules-of-the-Road">
+                {" "}
+                <button>Start Quiz</button>
+              </Link>
+            </section>
+          </div>
+        </section>
       </div>
     </div>
   );

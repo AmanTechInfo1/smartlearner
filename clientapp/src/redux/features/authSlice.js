@@ -6,7 +6,9 @@ import { ROLES } from "../../constants";
 
 const initialState = {
   loading: false,
-  userDetails: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
+  userDetails: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {},
 };
 
 const authSlice = createSlice({
@@ -55,9 +57,11 @@ export const registerUser = createAsyncThunk(
     try {
       const response = await http.post(`/api/account/register`, requestData);
       const resultData = response.data;
-      
+
       if (!resultData.success) {
-        toast.error(resultData.msg || "Something went wrong during registration.");
+        toast.error(
+          resultData.msg || "Something went wrong during registration."
+        );
         return rejectWithValue(resultData.msg || "Registration failed");
       } else {
         toast.success(resultData.msg || "Registered Successfully");
@@ -66,7 +70,8 @@ export const registerUser = createAsyncThunk(
         return resultData;
       }
     } catch (error) {
-      const errorMessage = error.response?.data?.message || "An unexpected error occurred.";
+      const errorMessage =
+        error.response?.data?.message || "An unexpected error occurred.";
       toast.error(errorMessage);
       return rejectWithValue(errorMessage);
     }

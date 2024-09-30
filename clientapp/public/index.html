@@ -45,8 +45,7 @@
         right: 20px;
         max-width: 200px;
         width: 100%;
-       
-        
+
         border-radius: 10px;
         text-align: center;
         cursor: pointer;
@@ -89,13 +88,16 @@
     <!-- /////////////////////////////////////// -->
     <div id="arrow" class="arrow"></div>
     <div id="aiPopup" class="popup">
-      <section> <img class="emojione" alt="logo" src="/shophie.jpeg" id="imghand" />
-        </section>
-      
+      <section>
+        <img class="emojione" alt="logo" src="/shophie.jpeg" id="imghand" />
+      </section>
     </div>
 
     <!-- AI Widget Script -->
-    <script src="https://widget.cxgenie.ai/widget.js" data-aid="323db90e-c5c7-4805-aa12-b3160aead6d6" data-lang="en"></script>
+    <script
+      src="https://widget.cxgenie.ai/widget.js"
+      data-aid="323db90e-c5c7-4805-aa12-b3160aead6d6"
+      data-lang="en"></script>
 
     <!-- Custom Script to Control the Popup -->
     <!-- Custom Script to Control the Popup and Arrow -->
@@ -105,7 +107,7 @@
       setTimeout(() => {
         document.getElementById("aiPopup").style.display = "block";
         document.getElementById("arrow").style.display = "block";
-      }, 1000); // Delay set to 20,000 milliseconds (20 seconds)
+      }, 10000); // Delay set to 20,000 milliseconds (20 seconds)
 
       // Function to hide popup and arrow
       function hidePopupAndArrow() {

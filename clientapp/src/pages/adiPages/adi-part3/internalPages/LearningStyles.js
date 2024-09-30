@@ -8,26 +8,26 @@ export default function LearningStyles() {
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
         <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>AWARD-WINNING DRIVING LESSONS</h1>
+                <h1>
+                  Forget the rest,
+                  <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
                 <h2>
-                  Forget the rest,
-                  <br /> learn with the best!
+                  AWARD-WINNING <span>DRIVING LESSONS</span>{" "}
                 </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button id={styles.btn}>Contact Us</button>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
                 </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
@@ -35,17 +35,21 @@ export default function LearningStyles() {
         {/* ////////////////////////////////////////////////////// */}
 
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2>
-              Learning styles / VARK questionnaire / Client-centered learning
-            </h2>
-            <hr style={{ opacity: "1", border: "1px solid red" }}></hr>
-            <h2>
-              The part 3 exam and Standards Check exam are the same format
-            </h2>
+          <h2>
+            Learning styles <span>/ VARK questionnaire /</span> Client-centeblue
+            learning
+          </h2>
+          <hr style={{ opacity: "1", border: "1px solid blue" }}></hr>
+          <p id={styles.hazardTestWorkListSectionPara}>
+            The part 3 exam and Standards{" "}
+            <span>Check exam are the same format</span>
+          </p>
+          <p style={{ textAlign: "center", fontSize: "1.5rem" }}>
+            The part 3 exam and Standards Check exam are the same format
+          </p>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Learning styles are a popular concept in psychology and
                   education and are intended to identify how people learn best.
@@ -55,7 +59,6 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   The idea that students learn best when teaching methods and
                   school activities match their learning styles, strengths, and
@@ -66,7 +69,6 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   The 3rd level, goals, and context of driving, deal with
                   driver’s decisions relating to the purpose of their journey,
@@ -76,7 +78,6 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   While the existing research has found that matching teaching
                   methods to learning styles has no influence on educational
@@ -90,12 +91,12 @@ export default function LearningStyles() {
 
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2>The VARK model / Questionnaire</h2>
-
+          <h2>
+            The VARK model <span>/ Questionnaire</span>
+          </h2>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   There are many different ways of categorising learning styles,
                   but Neil Fleming’s VARK model is one of the most popular.
@@ -105,153 +106,178 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   According to the VARK model, learners are identified by
                   whether they have a preference for:
                 </p>
               </li>
             </ul>
+          </div>
+          <div className={styles.hazardTestWorkListDiv}>
             <img
               src={learningStyleImg}
               alt="learningStyleImg"
-              style={{ maxWidth: "600px", width: "100%" }}
+              style={{ maxWidth: "600px", width: "100%", textAlign: "center" }}
             />
           </div>
         </section>
         {/* /////////////////////////////////////////////////////////////// */}
-        <section
-          style={{
-            maxWidth: "1200px",
-            width: "100%",
-            marginRight: "auto",
-            marginLeft: "auto",
-          }}
-        >
-          <div className="container mx-auto p-4">
-            <div className="row">
-              <div className="col-12 col-md-6 col-lg-3 text-center mb-4">
-                <p className="mb-4">
-                  Visual learners prefer the use of images, diagrams, and
-                  graphics to access and understand new information and
-                  techniques.
-                </p>
-                <h3 className="font-weight-bold mb-2 text-danger">
-                  Visual Strategies for Teaching
-                </h3>
-                <ul className="list-unstyled text-left">
-                  <li className="mb-2">
-                    Utilize graphic organizers such as charts, graphs, and
-                    diagrams.
-                  </li>
-                  <li className="mb-2">Redraw pages from memory.</li>
-                  <li className="mb-2">
-                    Replace important words with symbols or initials.
-                  </li>
-                  <li>
-                    Highlight important key terms in corresponding colours.
-                  </li>
-                </ul>
-              </div>
-              <div className="col-12 col-md-6 col-lg-3 text-center mb-4">
-                <p className="mb-4">
-                  These learners prefer to learn through listening and speaking.
-                  They learn best through repetition of instructions and the use
-                  of mnemonic devices.
-                </p>
-                <h3 className="font-weight-bold mb-2 text-danger">
-                  Aural Strategies for Teaching
-                </h3>
-                <ul className="list-unstyled text-left">
-                  <li className="mb-2">
-                    Record summarized notes and listen to them on tape.
-                  </li>
-                  <li>
-                    Talk it out. Have a discussion with others to expand upon
-                    the understanding of a topic.
-                  </li>
-                </ul>
-              </div>
-              <div className="col-12 col-md-6 col-lg-3 text-center mb-4">
-                <p className="mb-4">
-                  These Learners prefer traditional methods, such as reading or
-                  writing. They learn best by taking notes and written learning
-                  materials.
-                </p>
-                <h3 className="font-weight-bold mb-2 text-danger">
-                  Read/Write Strategies for Teaching
-                </h3>
-                <ul className="list-unstyled text-left">
-                  <li className="mb-2">
-                    Write, write and rewrite words and notes.
-                  </li>
-                  <li className="mb-2">
-                    Reword main ideas and principles to gain a deeper
-                    understanding.
-                  </li>
-                  <li>
-                    Organize diagrams, charts, and graphic organizers into
-                    statements.
-                  </li>
-                </ul>
-              </div>
-              <div className="col-12 col-md-6 col-lg-3 text-center mb-4">
-                <p className="mb-4">
-                  Kinesthetic learners best understand information through doing
-                  and seeing. They are hands-on learners and enjoy figuring
-                  things out themselves.
-                </p>
-                <h3 className="font-weight-bold mb-2 text-danger">
-                  Kinaesthetic Strategies for Teaching
-                </h3>
-                <ul className="list-unstyled text-left">
-                  <li className="mb-2">
-                    Use real-life examples, applications, and case studies in
-                    your summary to help with abstract concepts.
-                  </li>
-                  <li className="mb-2">Redo lab experiments or projects.</li>
-                  <li>
-                    Utilize pictures and photographs that illustrate your idea.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* /////////////////////////////////////////////////////// */}
-        
-        {/* /////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2>TASK:</h2>
+          <p id={styles.hazardTestWorkListSectionPara}>
+            Visual learners prefer the use of images, diagrams, and
+            <span>
+              graphics to access and understand new information and techniques.
+            </span>
+          </p>
+          <h2>
+            {" "}
+            Visual Strategies <span>for Teaching</span>{" "}
+          </h2>
+
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <p>
+                  Utilize graphic organizers such as charts, graphs, and
+                  diagrams.
+                </p>
+              </li>
+              <li>
+                <p>blueraw pages from memory.</p>
+              </li>
+              <li>
+                <p>Replace important words with symbols or initials.</p>
+              </li>
+              <li>
+                <p>Highlight important key terms in corresponding colours.</p>
+              </li>
+            </ul>
+          </div>
+          <section className={styles.hazardTestWorkListSection}>
+            <h2>
+              Aural Strategies <span>for Teaching</span>
+            </h2>
+            <p id={styles.hazardTestWorkListSectionPara}>
+              These learners prefer to learn through listening and speaking.
+              <span>
+                They learn best through repetition of instructions and the use
+                of mnemonic devices.
+              </span>
+            </p>
+
+            <div className={styles.bgColorList33}>
+              <ul>
+                <li>
+                  <p>
+                    Talk it out. Have a discussion with others to expand upon
+                    the understanding of a topic.
+                  </p>
+                </li>
+                <li>
+                  <p>Record summarized notes and listen to them on tape.</p>
+                </li>{" "}
+              </ul>
+            </div>
+          </section>
+          {/* ///////////////////////////////////// */}
+          <section className={styles.hazardTestWorkListSection}>
+            <h2>
+              Read/Write <span>Strategies for Teaching</span>
+            </h2>
+            <p id={styles.hazardTestWorkListSectionPara}>
+              These Learners prefer traditional methods, such as reading or
+              writing.{" "}
+              <span>
+                {" "}
+                They learn best by taking notes and written learning materials.
+              </span>
+            </p>
+            <div className={styles.bgColorList33}>
+              <ul>
+                <li>
+                  <p>Write, write and rewrite words and notes.</p>
+                </li>
+                <li>
+                  <p>
+                    Reword main ideas and principles to gain a deeper
+                    understanding.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Organize diagrams, charts, and graphic organizers into
+                    statements.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.hazardTestWorkListSection}>
+            <h2>
+              Kinaesthetic Strategies <span> for Teaching</span>
+            </h2>
+            <p id={styles.hazardTestWorkListSectionPara}>
+              Kinesthetic learners best understand information through doing and
+              seeing.{" "}
+              <span>
+                {" "}
+                They are hands-on learners and enjoy figuring things out
+                themselves.
+              </span>
+            </p>
+            <div className={styles.bgColorList33}>
+              <ul>
+                <li>
+                  <p>
+                    Use real-life examples, applications, and case studies in
+                    your summary to help with abstract concepts.
+                  </p>
+                </li>
+                <li>
+                  <p>Blueo lab experiments or projects.</p>
+                </li>
+                <li>
+                  <p>
+                    Utilize pictures and photographs that illustrate your idea.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        {/* /////////////////////////////////////////////////////////////// */}
+
+        {/* /////////////////////////////////////////////////////// */}
+
+        {/* /////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <h2>TASK:</h2>
+          <div className={styles.bgColorList33}>
+            <ul type="none">
+              <li>
                 <p>
                   Complete the vark questionnaire on yourself, use your results
                   to help you through your training.
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Please bring this with you to your first lesson with your
                   trainer{" "}
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   <a
-                    style={{ color: "red", textDecoration: "none" }}
-                    href="https://drive.google.com/file/d/12pPWyL6VMW_HTvT9IfrDRzlrPrtjQ-we/view"
-                  >
+                    style={{ color: "blue", textDecoration: "none" }}
+                    href="https://drive.google.com/file/d/12pPWyL6VMW_HTvT9IfrDRzlrPrtjQ-we/view">
                     CLICK HERE TO SEE THE FULL VARK QUESTIONNAIRE
                   </a>
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   You should ask every student prior to their first lesson to
                   complete a Vark questionnaire, this helps you understand in
@@ -263,11 +289,12 @@ export default function LearningStyles() {
         </section>
         {/* /////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2>Client centered learning</h2>
+          <h2>
+            Client centeblue <span>learning</span>{" "}
+          </h2>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   People learn in different ways and at different speeds. If
                   someone who likes time to reflect on their learning is forced
@@ -278,19 +305,18 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
-                  Client centered learning is an approach to learning that takes
-                  into account how the learner prefers to learn. When people
-                  learn in this way they are more likely to retain information
-                  and skills. People are also more likely to keep learning if
-                  they are encouraged to take responsibility for their learning
-                  at an early stage – this is the second aim of client-centred
-                  learning, the first aim is to raise self–awareness.
+                  Client centeblue learning is an approach to learning that
+                  takes into account how the learner prefers to learn. When
+                  people learn in this way they are more likely to retain
+                  information and skills. People are also more likely to keep
+                  learning if they are encouraged to take responsibility for
+                  their learning at an early stage – this is the second aim of
+                  client-centblue learning, the first aim is to raise
+                  self–awareness.
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Actively listen to what your pupil is telling you is getting
                   in the way of their learning, so you’ll be well-equipped to
@@ -298,7 +324,6 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Work together with your pupil to help them to set their own
                   goals to learn and develop practical skills and knowledge via
@@ -306,7 +331,6 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Show your pupils trust and respect that they’re trying to be
                   constructive and find solutions. Your pupils will be much more
@@ -315,16 +339,14 @@ export default function LearningStyles() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Encourage your pupils to self-evaluate their progress and
                   become a more responsible and safe driver.
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
-                  The greater the use of client-centred learning, the more
+                  The greater the use of client-centblue learning, the more
                   effective your instruction is likely to be.
                 </p>
               </li>

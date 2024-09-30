@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
+import styles from "./css/VehicleHandel.module.css";
+
 import { IoMdArrowDropright } from "react-icons/io";
 import handlngIconImg from "../../../assets/images/handling-icon-300x300.png";
 import { FaCheckCircle } from "react-icons/fa";
@@ -11,46 +11,43 @@ export default function VehicleHandling() {
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "purple" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
-                <h2>Vehicle handling</h2>
+                <h2>
+                  Vehicle <span>Handling</span>
+                </h2>
               </div>
-              <div className={styles.btn}>
+              <div className={styles.alertBtn}>
                 <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button id={styles.btn}>Contact Us</button>
+                  <button>Contact Us</button>
                 </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
 
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2 className={styles.hazardTestH2}>
+            What is <span>Vehicle handling ?</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={handlngIconImg} alt="handlngIconImg" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  What is Vehicle handling ?
-                </h2>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The 8th topic from the theory test is road conditions and
                     vehicle handling. When you’re driving, there are various
@@ -62,43 +59,50 @@ export default function VehicleHandling() {
                   </p>
                 </li>
               </ul>
-              <ul type="none">
-                <h2 style={{ color: "purple" }}>
-                  In this section, you’ll learn how to maintain safe driving
-                  standards by learning:
-                </h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>How to keep control of your vehicle</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    About different weather conditions and how they affect your
-                    driving
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>About road surfaces and traffic-calming measures</p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>How to drive at night safely</p>
-                </li>
-              </ul>
             </div>
           </section>
-        </section>
-        {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2 style={{ color: "purple", fontSize: "2rem" }}>
-              Controlling your vehicle
-            </h2>
+          <section className={styles.hazardTestWorkListDiv}>
+            <ul type="none">
+              <h2 className={styles.hazardTestH23}>
+                In this section, <span>you’ll learn how to maintain</span> Safe
+                Driving Standards By Learning:
+              </h2>
+            </ul>
+          </section>
+          <section className={styles.bgColorList2}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>How to keep control of your vehicle</p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>
+                  About different weather conditions and how they affect your
+                  driving
+                </p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>About road surfaces and traffic-calming measures</p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>How to drive at night safely</p>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        {/* /////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <h2 className={styles.hazardTestH2}>
+            Controlling <span>Your Vehicle</span>
+          </h2>
+          <hr style={{ opacity: "1", border: "2px solid purple" }}></hr>
+          <section className={styles.bgColorList33}>
+            <ul type="none">
+              <li>
                 <p>
                   Learning how to have full control of your vehicle at all times
                   is a fundamental part of learning to drive safely. Your
@@ -110,7 +114,6 @@ export default function VehicleHandling() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   Your vehicle’s engine is a perfect tool to help you control
                   your speed: For example, if you select a lower gear when
@@ -120,7 +123,6 @@ export default function VehicleHandling() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
                 <p>
                   It’s important to note that, when you’re driving up a steep
                   hill, the engine has to work harder. You should change down to
@@ -136,11 +138,21 @@ export default function VehicleHandling() {
                 </p>
               </li>
             </ul>
+          </section>
+        </section>
+
+        {/* ////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <section className={styles.hazardTestWorkListDiv}>
             <ul type="none">
-              <h2 style={{ color: "purple" }}>
-                Your stopping distance will be affected by several factors,
-                including:
+              <h2>
+                Your stopping distance will be{" "}
+                <span>Affected by several factors, including:</span>
               </h2>
+            </ul>
+          </section>
+          <section className={styles.bgColorList2}>
+            <ul type="none" style={{ textAlign: "center" }}>
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
                 <p>How to keep control of your vehicle</p>
@@ -159,62 +171,70 @@ export default function VehicleHandling() {
                 <FaCheckCircle id="listrightIcon" /> <p>The weather</p>
               </li>
             </ul>
-          </div>
+          </section>
         </section>
         {/* /////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2 style={{ color: "purple", fontSize: "2rem" }}>
-              Driving in different weather conditions
-            </h2>
-
-            <div className={styles.innerTheorySupportContent}>
-              <div className={styles.theorySupportContentVideo}>
-                <iframe
-                  width="1180"
-                  height="664"
-                  src="https://www.youtube.com/embed/3GEgB-xui0M"
-                  title="8 Driving Tips to Drive in Fog, Rain, or a Storm"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>
-              </div>
+          <section className={styles.hazardTestWorkListDiv}>
+            <ul type="none">
+              <h2>
+                Driving in different <span>Weather Conditions</span>
+              </h2>
+            </ul>
+          </section>
+          <section className={styles.theoryPortalYoutubeVideosSection}>
+            <div className={styles.theoryPortalYoutubeVideosDiv}>
+              <iframe
+                style={{
+                  borderRadius: "30px",
+                  boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
+                }}
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/3GEgB-xui0M"
+                title="Tyre Safety Month 2014 Aquaplaning animation - TyreSafe"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
             </div>
-          </div>
+          </section>
+        </section>
+        {/* ////////////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <h2 className={styles.hazardTestH2}>
+            Traffic <span>Calming Measures</span>
+          </h2>
+
+          <section className={styles.AdiParttwoDisplayFlex}>
+            <div className={styles.hazardTestWorkListDivImg}>
+              <img src={speedBreaker} alt="speedBreaker" />
+            </div>
+            <div className={styles.bgColorList}>
+              <ul type="none">
+                <li>
+                  <p>
+                    Traffic calming tends to be found in residential areas and
+                    is used to make the roads safer for vulnerable users by
+                    reducing speed. One of the most common measures is road
+                    humps (sometimes called speed humps) but chicanes, speed
+                    tables, and road narrowing are also used.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    You will be warned of traffic calming measures by road
+                    signs, but other systems such as rumble devices (raised
+                    markings across the road) may be used to warn you of a
+                    hazard ahead, such as a roundabout, which requires you to
+                    reduce your speed.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
         </section>
         {/* ///////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <img src={speedBreaker} alt="speedBreaker" />
-            <h2 style={{ color: "purple", fontSize: "2rem" }}>
-              Traffic Calming Measures
-            </h2>
-
-            <ul type="none">
-              <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
-                <p>
-                  Traffic calming tends to be found in residential areas and is
-                  used to make the roads safer for vulnerable users by reducing
-                  speed. One of the most common measures is road humps
-                  (sometimes called speed humps) but chicanes, speed tables, and
-                  road narrowing are also used.
-                </p>
-              </li>
-              <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
-                <p>
-                  You will be warned of traffic calming measures by road signs,
-                  but other systems such as rumble devices (raised markings
-                  across the road) may be used to warn you of a hazard ahead,
-                  such as a roundabout, which requires you to reduce your speed.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
 
         <section className={styles.mockTestContainerSection}>
           <div className={styles.mockTestHeadingContainerDIv}>

@@ -2,27 +2,20 @@
   font-family: "Antonio", sans-serif;
   background-color: black;
   color: white;
-
   padding-bottom: 5rem;
 }
 .AdiPartOne h1 span {
-  color: rgb(0, 185, 0);
+  color: rgb(255, 230, 0);
 }
 .AdiPartOne h2 span {
-  color: rgb(0, 185, 0);
-}
-.AdiPartOne p span {
-  color: rgb(0, 185, 0);
-}
-.AdiPartOne ul {
-  margin-bottom: 0px;
+  color: rgb(255, 230, 0);
 }
 .imageSection {
   position: relative;
   width: 100%;
   padding: 5rem 0;
-  background-image: url(../../assets/images/vehicleHandling.jpg);
-  background-position: bottom;
+  background-image: url(../../../../assets/images/attitudebannerImg.jpg);
+  background-position: center;
   background-size: cover;
 }
 .opicity {
@@ -45,19 +38,19 @@
 
 .content {
   width: 100%;
-  color: #006ace;
+  color: #f00000;
   text-align: center;
 }
 
 .heading1 h1 {
-  color: #006ace;
+  color: #f00000;
   font-size: 2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 12px;
 }
 .heading2 h2 {
-  color: #006ace;
+  color: #f00000;
   font-size: 4rem;
   font-weight: 800;
   line-height: 1.2em;
@@ -67,7 +60,7 @@
   margin-bottom: 20px;
   text-align: center;
   overflow: hidden;
-  border-right: 0.2px solid #006ace;
+  border-right: 0.2px solid rgb(255, 0, 0);
   white-space: nowrap;
   margin: 0 auto;
 
@@ -89,7 +82,7 @@
     border-color: transparent;
   }
   50% {
-    border-color: #006ace;
+    border-color: rgb(255, 0, 0);
   }
 }
 .alertBtn a button {
@@ -105,7 +98,7 @@
 }
 
 .alertBtn a button:hover {
-  background-color: #006aced8;
+  background-color: #f00000d8;
   transform: scale(1.1);
   animation: bounce 0.3s alternate;
 }
@@ -125,7 +118,7 @@
     line-height: 1.7em;
   }
   .heading2 h2 {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
   }
 }
 
@@ -135,19 +128,10 @@
     line-height: 1.7em;
   }
   .heading2 h2 {
-    font-size: 2.2rem;
+    font-size: 3.5rem;
   }
 }
 
-@media (max-width: 400px) {
-  .heading1 h1 {
-    font-size: 1.2rem;
-    line-height: 1.7em;
-  }
-  .heading2 h2 {
-    font-size: 1.5rem;
-  }
-}
 /* //////////////////////////////////// */
 /* ///////////////////////////////////// */
 
@@ -160,13 +144,13 @@
 }
 .imagesHSection p {
   text-align: center;
+  color: white;
 }
 #imagesHSection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   place-items: center;
   gap: 20px;
-  align-items: start;
 }
 #imagesHSection section {
   display: grid;
@@ -188,49 +172,14 @@
   margin-left: auto;
 }
 .hazardTestWorkListSection h2 {
-  color: #006ace;
+  color: #f00000;
+  font-size: 4rem;
+  text-align: center;
+}
+.hazardTestWorkListSection1 {
   font-size: 3rem;
+  color: #f00000;
   text-align: center;
-}
-#hazardTestWorkListSectionPara {
-  text-align: center;
-  font-size: 2rem;
-  color: #006ace;
-}
-.hazardTestH23 h2 {
-  text-align: center;
-  font-size: 3rem;
-}
-
-@media (max-width: 950px) {
-  .hazardTestH23 h2 {
-    text-align: center;
-    font-size: 2rem;
-  }
-}
-@media (max-width: 750px) {
-  .hazardTestH23 h2 {
-    text-align: center;
-    font-size: 1.7rem;
-  }
-  #hazardTestWorkListSectionPara {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 550px) {
-  .hazardTestH23 h2 {
-    text-align: center;
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 450px) {
-  .hazardTestH23 h2 {
-    text-align: center;
-    font-size: 1.5rem;
-  }
-  #hazardTestWorkListSectionPara {
-    font-size: 1.2rem;
-  }
 }
 .hazardTestH2 {
   text-align: center;
@@ -262,27 +211,21 @@
 }
 @media (max-width: 650px) {
   .hazardTestWorkListSection h2 {
-    color: #006ace;
-    font-size: 2.2rem;
+    color: #f00000;
+    font-size: 3.2rem;
   }
 }
 @media (max-width: 450px) {
   .hazardTestWorkListSection h2 {
-    color: #006ace;
-    font-size: 1.8rem;
+    color: #f00000;
+    font-size: 2.8rem;
   }
   #h2heddings {
     font-size: 2rem;
   }
 }
-@media (max-width: 400px) {
-  .hazardTestWorkListSection h2 {
-    color: #006ace;
-    font-size: 1.8rem;
-  }
-  #h2heddings {
-    font-size: 2rem;
-  }
+.hazardTestWorkListDiv iframe {
+  border-radius: 30px;
 }
 .innerTheorySupportContent {
   max-width: 800px;
@@ -290,37 +233,30 @@
   margin-right: auto;
   margin-left: auto;
 }
-.theorySupportContentVideo {
+.theorySupportContentVideo iframe {
+  padding: 1rem;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  line-height: 1;
+  border: none;
 }
-.theoryPortalYoutubeVideosSection {
-  padding: 2rem 1rem;
-  max-width: 1000px;
+.theorySupportContentVideosec {
+  padding: 1rem 1rem;
+  max-width: 800px;
+  width: 100%;
   margin-right: auto;
+
   margin-left: auto;
 }
-.theoryPortalYoutubeVideosDiv iframe {
-  height: 500px;
-  width: 100%;
-  box-shadow: 0px 0px 55px 5px rgba(255, 255, 255, 0.322);
-}
+
 .hazardTestWorkListDiv h2 {
   font-size: 2.5rem;
-  color: #006ace;
+  color: #f00000;
   margin-bottom: 1rem;
   text-align: center;
-}
-.hazardTestWorkListDivImg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hazardTestWorkListDiv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .alternessLists {
@@ -338,8 +274,8 @@
   padding: 1rem;
 }
 #alertnessL1 {
-  background-color: #006ace;
-  color: rgb(0, 185, 0);
+  background-color: #ff0000;
+  color: rgb(255, 230, 0);
   animation: 5s slide-right;
 }
 @keyframes slide-right {
@@ -351,8 +287,8 @@
   }
 }
 #alertnessL2 {
-  background-color: rgb(0, 185, 0);
-  color: #006ace;
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
   animation: 5s slide-left;
 }
 @keyframes slide-left {
@@ -364,8 +300,8 @@
   }
 }
 #resLists1 {
-  background-color: #006ace;
-  color: rgb(0, 185, 0);
+  background-color: #f00000;
+  color: rgb(255, 230, 0);
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
@@ -386,8 +322,8 @@
   margin-bottom: 1rem;
 }
 #resLists2 {
-  background-color: rgb(0, 185, 0);
-  color: #006ace;
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
@@ -409,105 +345,85 @@
 }
 
 #resLists12 {
-  background-color: #006ace;
-  color: rgb(0, 185, 0);
-  border-radius: 10px;
+  background-color: #f00000;
+  color: rgb(255, 230, 0);
+  border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
-  max-width: 450px;
-  margin: 1rem 0px;
 }
 #resLists12 li p {
   margin-bottom: 1rem;
 }
 #resLists21 {
-  background-color: rgb(0, 185, 0);
-  color: #006ace;
-  border-radius: 10px;
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
+  border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
-  margin: 1rem 0px;
-  max-width: 450px;
 }
 #resLists21 li p {
   margin-bottom: 1rem;
 }
-
-.linkBtnSec a button {
-  text-decoration: none;
-  padding: 12px 25px;
-  background-color: rgb(0, 185, 0);
-  border: none;
-  border-radius: 4px;
-}
-.linkBtnSec a button:hover {
-  background-color: black;
-  color: #006ace;
-}
 /* .hazardTestWorkListDiv img {
-                          max-width: 250px;
-                          width: 100%;
-                        }
-                        .hazardTestWorkListDiv ul h3 {
-                          font-size: 16px;
-                          font-weight: 700;
-                          color: #fff;
-                          padding: 10px 20px;
-                          background-color: rgba(223, 0, 0, 0.685);
-                          margin-bottom: 10px;
-                        }
-                        .hazardTestWorkListDiv ul {
-                          max-width: 800px;
-                          margin-right: auto;
-                          margin-left: auto;
-                        }
-                        .hazardTestWorkListDiv ul li {
-                          display: flex;
-                          align-items: center;
-                          gap: 10px;
-                          padding: 8px 20px;
-                          background-color: #ffffffb2;
-                          margin-bottom: 0.5rem;
-                        }
-                        .hazardTestWorkListDiv ul li p {
-                          margin: 0px;
-                        } */
+    max-width: 250px;
+    width: 100%;
+  }
+  .hazardTestWorkListDiv ul h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(223, 0, 0, 0.685);
+    margin-bottom: 10px;
+  }
+  .hazardTestWorkListDiv ul {
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .hazardTestWorkListDiv ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    background-color: #ffffffb2;
+    margin-bottom: 0.5rem;
+  }
+  .hazardTestWorkListDiv ul li p {
+    margin: 0px;
+  } */
 /* /////////////// */
-
-#hazzardBtn {
-  background-color: #006ace;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  padding: 12px 1rem;
-}
-.hazzardBtn {
-  background-color: rgb(0, 185, 0);
-}
-#hazzardBtn:hover {
-  background-color: #700303;
-}
-#btnDiv {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#btnDiv a {
-  text-decoration: none;
-  text-align: center;
-}
-#btnDiv button {
-  width: 100%;
-}
+/* #hazzardBtn {
+      background-color: #ff0000;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      padding: 12px 1rem;
+      }
+      #hazzardBtn:hover {
+      background-color: #700303;
+      }
+      #btnDiv {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      }
+      #btnDiv a {
+      text-decoration: none;
+      }
+      #btnDiv button {
+      width: 100%;
+      } */
 /* /////////////// */
 
 /* /////////////////////////////// */
+
 .AdiPtwoYoutubeSec {
   padding: 2rem;
 }
@@ -520,11 +436,11 @@
   width: 100%;
 }
 .AdiPartTwoYtV section h2 {
-  color: #006ace;
+  color: #f00000;
   font: 2rem;
   text-align: center;
 }
-@media (max-width: 828px) {
+@media (max-width: 728px) {
   .AdiPartTwoYtV {
     flex-direction: column;
   }
@@ -537,7 +453,7 @@
   margin-left: auto;
 }
 .AdiParttwoVideo h2 {
-  color: #006ace;
+  color: #ff0000;
   font-size: 2rem;
   text-align: center;
 }
@@ -579,14 +495,19 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
   justify-content: center;
-  place-items: center;
+  align-items: center;
   width: 100%;
   gap: 10px;
-  align-items: start;
+  padding: 1rem 0px;
 }
-.hazardTestWorkListDivImg {
+.hazardTestWorkListDiv ul {
+  padding-left: 0px;
+}
+.hazardTestWorkListDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: 5s slide-right;
-  padding: 0px 1rem;
 }
 @keyframes slide-right {
   from {
@@ -596,43 +517,18 @@
     margin-left: 0%;
   }
 }
-.hazardTestWorkListDivImg img {
+.hazardTestWorkListDiv img {
   max-width: 400px;
   width: 100%;
 
   aspect-ratio: 3/2;
   object-fit: contain;
 }
-.hazardTestWorkListDiv img {
-  max-width: 500px;
-  width: 100%;
-
-  aspect-ratio: 3/2;
-  object-fit: contain;
-}
-.hazardTestWorkListDiv ul {
-  padding-left: 0px;
-}
-
-.bgColorList33 {
-  background-color: #006ace;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  color: white;
-}
-.bgColorList33 ul {
-  padding-left: 0px;
-}
-.bgColorList33 ul li p {
-  font-size: 18px;
-}
 .bgColorList {
   animation: 5s slide-left;
   max-width: 550px;
   margin-right: auto;
   margin-left: auto;
-  color: white;
 }
 @keyframes slide-left {
   from {
@@ -642,12 +538,9 @@
     margin-right: 0%;
   }
 }
-.bgColorList a {
-  text-decoration: none;
-}
 .bgColorList ul {
-  background-color: #006ace;
-  border-radius: 10px;
+  background-color: #f00000;
+  border-radius: 30px;
   padding: 1rem;
 }
 .bgColorList ul li p {
@@ -655,8 +548,8 @@
   font-size: 18px;
 }
 .bgColorList2 {
-  background-color: #006ace;
-  border-radius: 10px;
+  background-color: rgb(255, 230, 0);
+  border-radius: 30px;
   padding: 1rem;
   font-size: 22px;
   max-width: 800px;
@@ -693,7 +586,7 @@
   color: #fff;
 }
 .adiFooterContactInfo a:hover {
-  color: #006ace;
+  color: #eb0009;
 }
 .adiFooterAddressInfo p {
   color: #fff;
@@ -711,7 +604,7 @@
 }
 #adiSocialFaIcons {
   font-size: 2rem;
-  color: #006ace;
+  color: #eb0009;
 }
 #adiSocialFaIcons:hover {
   color: #fff;
@@ -749,7 +642,7 @@ p {
 .routes a {
   text-decoration: none;
   font-size: 1.3rem;
-  color: #006ace;
+  color: #eb0009;
 }
 .routes a:hover {
   color: rgb(75, 75, 243);
@@ -763,70 +656,9 @@ p {
     margin-top: 1rem;
   }
 }
-/* ///////////////////////////////////////////// */
-
-.columns1 {
-  max-width: 700px;
-  margin-right: auto;
-  margin-left: auto;
-  animation: 5s slide-right;
-}
-@keyframes slide-right {
-  from {
-    margin-left: -100%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-.columns2 {
-  animation: 5s slide-left;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@keyframes slide-left {
-  from {
-    margin-right: -100%;
-  }
-  to {
-    margin-right: 0%;
-  }
-}
-/* ///////////////////////////////////////////////////////////// */
-
-.columns11 {
-  max-width: 500px;
-  margin-right: auto;
-  margin-left: auto;
-  animation: 5s slide-right;
-}
-@keyframes slide-right {
-  from {
-    margin-left: -100%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-.columns22 {
-  animation: 5s slide-left;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@keyframes slide-left {
-  from {
-    margin-right: -100%;
-  }
-  to {
-    margin-right: 0%;
-  }
-}
-/* //////////////////////////////////////////////////////////////////////// */
 .thMultipleChioceHeader h2 {
   text-align: center;
-  color: #006ace;
+  color: #f00000;
   font-size: 4rem;
   font-weight: 700;
 }
@@ -835,13 +667,13 @@ p {
   text-align: center;
 }
 .thchoiceListSection {
-  background-color: #006ace;
+  background-color: #f00000;
 }
 .features {
   padding: 2rem 0;
 }
 .features h4 {
-  color: #006ace;
+  color: #f00000;
   font-size: 65px;
   font-weight: 700;
   line-height: 1.2em;
@@ -869,24 +701,26 @@ p {
 }
 .column {
   padding: 25px 25px 55px 25px;
-  background-color: #006ace;
+  background-color: #ff0000;
   border-radius: 30px;
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+
+  transition: box-shadow 0.3s ease;
 }
 #column {
-  background-color: rgb(0, 185, 0);
+  background-color: rgb(255, 230, 0);
 }
 #column h3 {
-  color: #006ace;
+  color: #f00000;
 }
 .column a {
   text-decoration: none;
-  color: #006ace;
+  color: #f00000;
 }
 
 .column:hover {
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-  border: 1px solid #006ace;
+  border: 1px solid #f00000;
 }
 .column span {
   font-size: 50px;
@@ -901,29 +735,29 @@ p {
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 10px;
-  color: rgb(0, 185, 0);
+  color: rgb(255, 230, 0);
 }
 #column p {
-  color: #006ace;
+  color: #f00000;
 }
 .column p {
   font-size: 18px;
 
   font-weight: 500;
   line-height: 1.7em;
-  color: rgb(0, 185, 0);
+  color: rgb(255, 230, 0);
 }
 #column span {
-  background-color: #006ace;
+  background-color: #f00000;
 }
 #column span:hover {
   transform: scale(1.2);
   background-color: #fff;
   transition: 0.3s ease-in-out;
-  color: rgb(0, 185, 0);
+  color: rgb(255, 230, 0);
 }
 .column span {
-  background-color: rgb(0, 185, 0);
+  background-color: rgb(255, 230, 0);
   padding: 30px;
   border-radius: 50%;
   display: inline-block;
@@ -940,7 +774,7 @@ p {
   transform: scale(1.2);
   background-color: #fff;
   transition: 0.3s ease-in-out;
-  color: #006ace;
+  color: #f00000;
 }
 #featuresIconSRU {
   font-size: 6rem;
@@ -1003,7 +837,7 @@ p {
   width: 100%;
 }
 .smartlearnerPlLists h2 {
-  color: #006ace;
+  color: #eb0009;
 }
 .smartlearnerPlLists p {
   color: white;
@@ -1034,7 +868,7 @@ p {
   gap: 20px;
   padding: 10px 1rem;
 
-  background-color: rgb(0, 185, 0);
+  background-color: #eb0009;
 }
 .faIconsSection h2 {
   font-size: 3rem;
@@ -1046,7 +880,7 @@ p {
 }
 #faIconsSection {
   font-size: 5rem;
-  color: #006ace;
+  color: red;
   border-radius: 50%;
 }
 
@@ -1058,7 +892,7 @@ p {
 }
 .hazardVideoContainerSection h2 {
   font-size: 2rem;
-  color: #006ace;
+  color: #f00000;
 }
 .hazardVideoContainerSection p {
   font-size: 17px;
@@ -1066,8 +900,8 @@ p {
 }
 .hazardVideosGridContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(4, 1fr); /* 5 columns */
+  grid-auto-rows: minmax(100px, auto); /* Define row height */
   gap: 10px;
   margin: 1rem;
   max-width: 1040px;
@@ -1131,247 +965,7 @@ p {
   margin: 2rem 0px;
   padding: 12px 40px;
   border: none;
-  background-color: #006ace;
-  color: #fff;
-  box-shadow: 0 0 10px #ccc;
-}
-.startQuizSection button:hover {
-  background-color: black;
-}
-
-#btnDiv {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#btnDiv a {
-  text-decoration: none;
-}
-#btnDiv button {
-  width: 100%;
-}
-/* /////////////// */
-.innerTheorySupportContent {
-  max-width: 800px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-.theorySupportContentVideo iframe {
-  padding: 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  line-height: 1;
-  border: none;
-}
-.theorySupportContentVideosec {
-  padding: 1rem 1rem;
-  max-width: 800px;
-  width: 100%;
-  margin-right: auto;
-
-  margin-left: auto;
-}
-.theorySupportContentVideosec video {
-  width: 100%;
-}
-/* /////////////////////////////// */
-
-/* //////////////////////////////// */
-.AdiParttwoVideo {
-  max-width: 800px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-.AdiParttwoVideo h2 {
-  color: #006ace;
-  font-size: 2rem;
-  text-align: center;
-}
-.hazardVideosGridContainer {
-  padding: 2rem 1rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 5 columns */
-  grid-auto-rows: minmax(100px, auto); /* Define row height */
-  gap: 10px;
-  margin: 1rem;
-}
-.hazardGridItem {
-  text-align: center;
-}
-@media screen and (max-width: 1100px) {
-  .hazardVideosGridContainer {
-    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
-  }
-}
-@media screen and (max-width: 860px) {
-  .hazardVideosGridContainer {
-    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .hazardVideosGridContainer {
-    grid-template-columns: repeat(2, 1fr); /* Change to 1 column */
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .hazardVideosGridContainer {
-    grid-template-columns: repeat(1, 1fr); /* Change to 1 column */
-  }
-}
-
-.hazardTestWorkListDiv ul {
-  padding-left: 0px;
-}
-
-.adiPortalFooterSection {
-  text-align: center;
-}
-.adiFooterAddressInfo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  line-height: 30px;
-  padding-top: 2rem;
-}
-.adiPortalFooterSection {
-  padding: 2rem 0px;
-  background-color: #006ace;
-}
-.adiPortalFooterInnerContainer img {
-  padding: 1rem 0px;
-  max-width: 400px;
-  width: 100%;
-}
-.adiFooterContactInfo {
-  line-height: 40px;
-}
-.adiFooterContactInfo a {
-  text-align: center;
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: #fff;
-}
-.adiFooterContactInfo a:hover {
-  color: rgb(0, 185, 0);
-}
-.adiFooterAddressInfo p {
-  color: #fff;
-}
-#adiFaIcons {
-  color: #fff;
-}
-.adiSocialIcons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 40px;
-  width: 100%;
-  padding-top: 2rem;
-}
-#adiSocialFaIcons {
-  font-size: 2rem;
-  color: rgb(0, 185, 0);
-}
-#adiSocialFaIcons:hover {
-  color: #fff;
-  transition: 0.3s ease-in-out;
-}
-@media (max-width: 500px) {
-  .adiPortalPageSeconddiv h2 {
-    font-size: 3rem;
-  }
-  .adiPortalPageThirddiv h2 {
-    font-size: 3rem;
-  }
-  .adiTrainingPortalLearningInnerContent h2 {
-    font-size: 1.5rem;
-  }
-  .adiTrainingPortalLearningInnerContent {
-    margin: 0px;
-  }
-}
-p {
-  margin: 0px;
-}
-.RouteSection {
-  max-width: 800px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 2rem 0;
-}
-.routes {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0px;
-}
-.routes a {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: rgb(0, 185, 0);
-}
-.routes a:hover {
-  color: rgb(75, 75, 243);
-}
-@media (max-width: 767px) {
-  .routes {
-    display: flex;
-    flex-direction: column;
-  }
-  .routes a {
-    margin-top: 1rem;
-  }
-}
-/* /////////////////////////////////// */
-.quizStartDiv {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1100px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.startQuizSection {
-  box-shadow: 0 0 10px #ccc;
-  text-align: center;
-  padding: 4rem;
-  font-family: "Roboto", sans-serif;
-}
-.startQuizSection h2 {
-  font-size: 1.9rem;
-  font-weight: 300;
-  margin: 2rem 0px;
-}
-.startQuizSection h3 {
-  font-size: 1.9rem;
-  font-weight: 300;
-  margin: 1.5rem 0px;
-}
-.startQuizSection p {
-  margin: 1rem 0px;
-  font-size: 16px;
-  font-weight: 300;
-}
-.startQuizSection button {
-  margin: 2rem 0px;
-  padding: 12px 40px;
-  border: none;
-  background-color: #006ace;
+  background-color: #eb0009;
   color: #fff;
   box-shadow: 0 0 10px #ccc;
 }

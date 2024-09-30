@@ -4,10 +4,10 @@
   color: white;
   padding-bottom: 5rem;
 }
-h1 span {
+.AdiPartOne h1 span {
   color: rgb(255, 230, 0);
 }
-h2 span {
+.AdiPartOne h2 span {
   color: rgb(255, 230, 0);
 }
 .imageSection {
@@ -58,6 +58,33 @@ h2 span {
   padding-top: 0.8rem;
   padding-bottom: 0.5rem;
   margin-bottom: 20px;
+  text-align: center;
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
+  animation: typing 3.5s steps(30, end) ,
+    blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
 }
 .alertBtn a button {
   font-size: 14px;
@@ -74,7 +101,7 @@ h2 span {
 .alertBtn a button:hover {
   background-color: #dd0000af;
   transform: scale(1.1);
-  animation: bounce 0.3s infinite alternate;
+  animation: bounce 0.3s  alternate;
 }
 
 @keyframes bounce {
@@ -108,7 +135,6 @@ h2 span {
 
 /* //////////////////////////////////// */
 /* ///////////////////////////////////// */
-
 
 .imagesHSection {
   max-width: 1140px;
@@ -151,17 +177,49 @@ h2 span {
   font-size: 4rem;
   text-align: center;
 }
+.hazardTestH2 {
+  text-align: center;
+  overflow: hidden;
+  border-right: 0.2px solid rgb(255, 0, 0);
+  white-space: nowrap;
+  margin: 0 auto;
+
+  animation: typing 3.5s steps(30, end) ,
+    blink-caret 0.5s step-end infinite;
+  padding: 2rem 0px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(255, 0, 0);
+  }
+}
 @media (max-width: 650px) {
-    .hazardTestWorkListSection h2 {
-        color: #f00000;
-        font-size: 3.2rem;
-      }
+  .hazardTestWorkListSection h2 {
+    color: #f00000;
+    font-size: 3.2rem;
+  }
 }
 @media (max-width: 450px) {
-    .hazardTestWorkListSection h2 {
-        color: #f00000;
-        font-size: 2.8rem;
-      }
+  .hazardTestWorkListSection h2 {
+    color: #f00000;
+    font-size: 2.8rem;
+  }
+  #h2heddings {
+    font-size: 2rem;
+  }
 }
 .hazardTestWorkListDiv iframe {
   border-radius: 30px;
@@ -199,12 +257,14 @@ h2 span {
 }
 
 .alternessLists {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 .alternessLists li {
   max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
   width: 100%;
   border-radius: 30px;
   font-size: 18px;
@@ -213,10 +273,28 @@ h2 span {
 #alertnessL1 {
   background-color: #ff0000;
   color: rgb(255, 230, 0);
+  animation: 5s slide-right ;
+}
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
 }
 #alertnessL2 {
   background-color: rgb(255, 230, 0);
   color: #ff0000;
+  animation: 5s slide-left ;
+}
+@keyframes slide-left {
+  from {
+    margin-right: -100%;
+  }
+  to {
+    margin-right: 0%;
+  }
 }
 #resLists1 {
   background-color: #f00000;
@@ -224,6 +302,18 @@ h2 span {
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
+  max-width: 550px;
+  margin-right: auto;
+  margin-left: auto;
+  animation: 5s slide-right ;
+}
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
 }
 #resLists1 li p {
   margin-bottom: 1rem;
@@ -234,8 +324,41 @@ h2 span {
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  animation: 5s slide-left ;
+}
+@keyframes slide-left {
+  from {
+    margin-right: -100%;
+  }
+  to {
+    margin-right: 0%;
+  }
 }
 #resLists2 li p {
+  margin-bottom: 1rem;
+}
+
+#resLists12{
+  background-color: #f00000;
+  color: rgb(255, 230, 0);
+  border-radius: 30px;
+  padding: 1rem;
+  font-size: 18px;
+}
+#resLists12 li p {
+  margin-bottom: 1rem;
+}
+#resLists21{
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
+  border-radius: 30px;
+  padding: 1rem;
+  font-size: 18px;
+}
+#resLists21 li p {
   margin-bottom: 1rem;
 }
 /* .hazardTestWorkListDiv img {
@@ -368,9 +491,8 @@ h2 span {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
-
-  text-align: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
   gap: 10px;
 }
@@ -620,11 +742,10 @@ p {
   }
 }
 @media (max-width: 467px) {
- 
-    .thMultipleChioceHeader h2 {
-      font-size: 2.8rem;
-    }
+  .thMultipleChioceHeader h2 {
+    font-size: 2.8rem;
   }
+}
 /* ///////////////////////////////// */
 
 .smartlearnerPladgesSection {

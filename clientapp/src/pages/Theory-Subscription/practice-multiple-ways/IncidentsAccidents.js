@@ -1,9 +1,7 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import { IoMdArrowDropright } from "react-icons/io";
+import styles from "./css/IncidentsAccidents.module.css";
+
 import {
- 
   FaShoppingBag,
   FaExclamationTriangle,
   FaPhone,
@@ -14,49 +12,46 @@ import tyerBursting from "../../../assets/images/tyerBursting.jpg";
 import temptation from "../../../assets/images/temptation.png";
 import { Link } from "react-router-dom";
 
-
-
 export default function IncidentsAccidents() {
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "purple" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
-                <h2>Incidents Accidents </h2>
+                <h2>
+                  Incidents <span>Accidents</span>{" "}
+                </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
+                </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            What are incidents <span>On The Road?</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={incidentsImg} alt="incidentsImg" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  What are incidents on the road?
-                </h2>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     The 13th topic from the multiple-choice section of the
                     theory test is incidents. Let’s face it, out of all of the
@@ -75,21 +70,18 @@ export default function IncidentsAccidents() {
                   might require them. This would include:
                 </p>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     To identify your location by giving them the number of the
                     marker you’re calling from.
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     Whether or not you belong to a motoring organisation such as
                     AA.
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>For details of yourself and your vehicle.</p>
                 </li>
               </ul>
@@ -97,7 +89,7 @@ export default function IncidentsAccidents() {
           </section>
         </section>{" "}
         {/* //////////////////////////////////////////// */}
-        <section style={{ backgroundColor: "purple" }}>
+        <section style={{ backgroundColor: "red" }}>
           <div className="d-flex flex-column flex-md-row  p-4">
             <div className="w-100 w-md-50">
               <iframe
@@ -108,8 +100,7 @@ export default function IncidentsAccidents() {
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+                allowfullscreen></iframe>
             </div>
             <div className="w-100 w-md-50 p-4">
               <h2 className="h4 font-weight-bold mb-2">
@@ -140,17 +131,15 @@ export default function IncidentsAccidents() {
         </section>
         {/* ////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
-
+          <h2 className={styles.hazardTestH2}>
+            Tyres <span>bursting</span>
+          </h2>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={tyerBursting} alt="bursting" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  Tyres bursting
-                </h2>
                 <li>
                   <p>
                     A tyre bursting or getting a puncture while you’re driving
@@ -169,77 +158,88 @@ export default function IncidentsAccidents() {
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     To identify your location by giving them the number of the
                     marker you’re calling from.
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     Whether or not you belong to a motoring organisation such as
                     AA.
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>For details of yourself and your vehicle.</p>
-                </li>
-                <h2 style={{ fontWeight: "700" }}>
-                  If you break down an operator will ask you;
-                </h2>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    To identify your location by giving them the number of the
-                    marker you’re calling from.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>
-                    Whether or not you belong to a motoring organisation such as
-                    AA.
-                  </p>
-                </li>
-                <li>
-                  <FaCheckCircle id="listrightIcon" />{" "}
-                  <p>For details of yourself and your vehicle</p>
                 </li>
               </ul>
             </div>
+          </section>
+          <section className={styles.hazardTestH23}>
+            <ul type="none">
+              <h2>
+                If you break down an <span>operator will ask you;</span>
+              </h2>
+            </ul>
+          </section>
+          <section className={styles.bgColorList2}>
+            <ul type="none">
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>
+                  To identify your location by giving them the number of the
+                  marker you’re calling from.
+                </p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>
+                  Whether or not you belong to a motoring organisation such as
+                  AA.
+                </p>
+              </li>
+              <li>
+                <FaCheckCircle id="listrightIcon" />{" "}
+                <p>For details of yourself and your vehicle</p>
+              </li>
+            </ul>
           </section>
         </section>{" "}
         {/* /////////////////////////////////////////////////////////////////////////// */}
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>Level Crossings</h2>
-          <p style={{ textAlign: "center" }}>
-            If you break down on a level crossing, try not to panic. Instead;
-            get everyone out of the vehicle and clear of the crossing quickly
-            and calmly before calling the signal operator from the emergency
-            phone provided. You should only move your vehicle if the operator
-            tells you to do so.
-          </p>
-          <p style={{ textAlign: "center" }}>
-            You must wait to cross a level crossing if the red signal is
-            flashing, even if it continues to flash after a train has gone. This
-            is because another train may be coming and you would be placing
-            yourself, your passengers and people on the train in danger.
-          </p>
-
+          <h2 className={styles.hazardTestH2}>
+            Level <span>Crossings</span>{" "}
+          </h2>
+          <section className={styles.bgColorList33}>
+            {" "}
+            <p style={{ textAlign: "center" }}>
+              If you break down on a level crossing, try not to panic. Instead;
+              get everyone out of the vehicle and clear of the crossing quickly
+              and calmly before calling the signal operator from the emergency
+              phone provided. You should only move your vehicle if the operator
+              tells you to do so.
+            </p>
+            <p style={{ textAlign: "center" }}>
+              You must wait to cross a level crossing if the red signal is
+              flashing, even if it continues to flash after a train has gone.
+              This is because another train may be coming and you would be
+              placing yourself, your passengers and people on the train in
+              danger.
+            </p>{" "}
+          </section>
+        </section>
+        <section className={styles.hazardTestWorkListSection}>
+          <h2>
+            Understanding and avoiding <span>potential dangers;</span>
+          </h2>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={temptation} alt="temptationImg" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ fontWeight: "700" }}>
-                  Understanding and avoiding potential dangers;
-                </h2>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     1. TEMPTATION - Don't be tempted to jump the lights or race
                     around the barriers - you’re putting lives at risk!
@@ -247,7 +247,6 @@ export default function IncidentsAccidents() {
                 </li>
 
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     2. ASSUMPTION - Don’t assume there is only one train or use
                     previous experience to guess when the train is coming.
@@ -255,7 +254,6 @@ export default function IncidentsAccidents() {
                   </p>
                 </li>
                 <li>
-                  <IoMdArrowDropright id="listrightIcon" />{" "}
                   <p>
                     3. BLOCKED EXIT - It is surprisingly easy to end up stuck on
                     the tracks – make sure your exit is clear before driving
@@ -269,7 +267,9 @@ export default function IncidentsAccidents() {
         {/* //////////////////////////////////////////////////// */}
         <section className={styles.thMultipleChoiceSection}>
           <div className={styles.thMultipleChioceHeader}>
-            <h2>Car Signals</h2>
+            <h2 className={styles.hazardTestH2}>
+              Car <span>Signals</span>{" "}
+            </h2>
           </div>
           <div className={styles.thMultipleChoiceListContainer}>
             <section className={styles.features}>
@@ -290,7 +290,7 @@ export default function IncidentsAccidents() {
                     limitations.
                   </p>
                 </div>
-                <div className={styles.column}>
+                <div className={styles.column} id={styles.column}>
                   <span>
                     <FaExclamationTriangle id={styles.featuresIcon} />
                   </span>
@@ -323,26 +323,26 @@ export default function IncidentsAccidents() {
             </section>
           </div>
         </section>
-
         {/* //////////////////////////////////// */}
         <section className={styles.mockTestContainerSection}>
-        <div className={styles.mockTestHeadingContainerDIv}>
-          <h2 style={{textAlign:'center',color:'red'}}>Test YourSelf</h2>
-        </div>
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h2>Start Quiz</h2>
-            <h3>All Questions</h3>
-            <p>
-              Click the start quiz button to start the quiz and See your result
-            </p>
-            <Link to="/takequizCatName/Incidents--Accidents-and-Emergencies">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
-        </div>
-      </section>
+          <div className={styles.mockTestHeadingContainerDIv}>
+            <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
+          </div>
+          <div className={styles.quizStartDiv}>
+            <section className={styles.startQuizSection}>
+              <h2>Start Quiz</h2>
+              <h3>All Questions</h3>
+              <p>
+                Click the start quiz button to start the quiz and See your
+                result
+              </p>
+              <Link to="/takequizCatName/Incidents--Accidents-and-Emergencies">
+                {" "}
+                <button>Start Quiz</button>
+              </Link>
+            </section>
+          </div>
+        </section>
       </div>
     </div>
   );

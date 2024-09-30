@@ -90,7 +90,7 @@ export default function Alertness() {
         {/* /////////////////////////////////////////////// */}
         <section className={styles.thMultipleChoiceSection}>
           <div className={styles.thMultipleChioceHeader}>
-            <h2>
+            <h2 className={styles.hazardTestH2}>
               Avoid <span>Distractions!</span>
             </h2>
           </div>
@@ -147,7 +147,7 @@ export default function Alertness() {
         </section>
         {/* //////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>
+          <h2 className={styles.hazardTestH2}>
             Your <span>Responsibility</span>
           </h2>
 
@@ -225,8 +225,6 @@ export default function Alertness() {
         </section>
         {/* /////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Your Responsibility</h2> */}
-
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">
@@ -257,11 +255,11 @@ export default function Alertness() {
               </ul>
             </div>
             <div className={styles.hazardTestWorkListDiv}>
+              <h2>
+                {" "}
+                Overtake with <span>caution!</span>
+              </h2>
               <ul type="none">
-                <h2>
-                  {" "}
-                  Overtake with <span>caution!</span>
-                </h2>
                 <section id={styles.resLists2}>
                   <li>
                     <p>
@@ -301,7 +299,7 @@ export default function Alertness() {
         </section>
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>
+          <h2 className={styles.hazardTestH2} id={styles.h2heddings}>
             Using the <span>appropriate lights. </span>
           </h2>
           <p style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -316,7 +314,7 @@ export default function Alertness() {
               <ul type="none">
                 <img src={sidelight} alt="sidelight" />
                 <h2>Sidelights</h2>
-                <section id={styles.resLists1}>
+                <section id={styles.resLists12}>
                   <li>
                     <p>
                       • You should use your sidelights if you park at night on a
@@ -332,7 +330,7 @@ export default function Alertness() {
                 <h2>
                   <span>Dipped Headlights</span>
                 </h2>
-                <section id={styles.resLists2}>
+                <section id={styles.resLists21}>
                   <li>
                     <p>
                       • Dipped lights are the brightest lights your car has that
@@ -359,7 +357,7 @@ export default function Alertness() {
               <ul type="none">
                 <img src={fullbeam} alt="fullbeam" />
                 <h2>Full-beam</h2>
-                <section id={styles.resLists1}>
+                <section id={styles.resLists12}>
                   <li>
                     <p>
                       • You should only use full-beam headlights on unlit
@@ -382,8 +380,7 @@ export default function Alertness() {
 
         {/* /////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2
-            style={{ color: "red", textAlign: "center", marginBottom: "2rem" }}>
+          <h2 className={styles.hazardTestH2}>
             Using the <span>appropriate lights.</span>
           </h2>
           <p style={{ textAlign: "center", marginBottom: "2rem" }}>

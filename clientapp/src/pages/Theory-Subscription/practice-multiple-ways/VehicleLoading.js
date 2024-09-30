@@ -1,56 +1,49 @@
 import React from "react";
-import styles from "./PracticeMultiple.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
+import styles from "./css/VehicleLoading.module.css";
 
-import {
-  FaCheckCircle,
-} from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import trailerLarge from "../../../assets/images/trailer-large-1024x492.jpg";
 import roofRack from "../../../assets/images/Roof-Racks-20-1024x683.jpg";
-import CarryingPassenger from "../../../assets/images/carryingPassenger.jpg"
+import CarryingPassenger from "../../../assets/images/carryingPassenger.jpg";
 import { Link } from "react-router-dom";
-
-
 
 export default function VehicleLoading() {
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
-        <section
-          className={styles.imageSection}
-          style={{ backgroundColor: "purple" }}
-        >
+        <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Forget the rest, learn with the best!</h1>
+                <h1>
+                  Forget the rest, <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
                 <h2>Vehicle Loading </h2>
               </div>
-              <div className={styles.btn}>
-              <a style={{textDecoration:"none"}} href="tel:+4402475092784"><button id={styles.btn}>Contact Us</button></a>
+              <div className={styles.alertBtn}>
+                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
+                  <button>Contact Us</button>
+                </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            What is <span>Vehicle Loading?</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={trailerLarge} alt="trailerLarge" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  What is vehicle loading?
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -82,9 +75,11 @@ export default function VehicleLoading() {
         </section>
         {/* /////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>Loading your vehicle safely.</h2>
+          <h2>
+            Loading your <span>Vehicle Safely.</span>
+          </h2>
 
-          <div className={styles.hazardTestWorkListDiv}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <FaCheckCircle id="listrightIcon" />{" "}
@@ -137,17 +132,16 @@ export default function VehicleLoading() {
         </section>
         {/* ////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            Car Handling when <span>Carrying a Heavy Load.</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={roofRack} alt="roofRack" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  Car Handling when carrying a heavy load.
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -183,17 +177,16 @@ export default function VehicleLoading() {
 
         {/* ////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          {/* <h2 style={{ textAlign: "center" }}>Examples of Trigger Scoring</h2> */}
+          <h2>
+            Carrying <span>Passengers safely.</span>
+          </h2>
 
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.hazardTestWorkListDivImg}>
               <img src={CarryingPassenger} alt="CarryingPassenger" />
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "purple", fontSize: "2rem" }}>
-                  Carrying Passengers safely.
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -209,7 +202,6 @@ export default function VehicleLoading() {
                     weight and size.
                   </p>
                 </li>
-                
               </ul>
             </div>
           </section>
@@ -217,7 +209,7 @@ export default function VehicleLoading() {
 
         <section className={styles.mockTestContainerSection}>
           <div className={styles.mockTestHeadingContainerDIv}>
-            <h2 style={{ textAlign: "center", color: "red" }}>Test YourSelf</h2>
+            <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
           </div>
           <div className={styles.quizStartDiv}>
             <section className={styles.startQuizSection}>

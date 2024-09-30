@@ -27,26 +27,26 @@ export default function TrainingVideos() {
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
         <section className={styles.imageSection}>
+          <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>AWARD-WINNING DRIVING LESSONS</h1>
+                <h1>
+                  Forget the rest,
+                  <span>learn with the best!</span>
+                </h1>
               </div>
 
               <div className={styles.heading2}>
                 <h2>
-                  Forget the rest,
-                  <br /> learn with the best!
+                  AWARD-WINNING <span>DRIVING LESSONS</span>{" "}
                 </h2>
               </div>
-              <div className={styles.btn}>
+              <div className={styles.alertBtn}>
                 <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button id={styles.btn}>Contact Us</button>
+                  <button>Contact Us</button>
                 </a>
               </div>
-            </div>
-            <div className={styles.video}>
-              <img src={Lplateimg} alt="LogoImg" />
             </div>
           </div>
         </section>
@@ -54,19 +54,24 @@ export default function TrainingVideos() {
         {/* ////////////////////////////////////////////////////// */}
 
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <h2>Giving instruction and feedback</h2>
-            <hr style={{ opacity: "1", border: "1px solid red" }}></hr>
-            <p>
-              In the videos below our instructor trainers Raj, Laila and Moh
-              will be talking through the steps of how to teach the following
-              subjects.{" "}
-            </p>
-          </div>
+          <h2>
+            Giving instruction <span>and feedback</span>{" "}
+          </h2>
+          <hr style={{ opacity: "1", border: "1px solid blue" }}></hr>
+          <p id={styles.hazardTestWorkListSectionPara}>
+            In the videos below our instructor trainers Raj, Laila and Moh will
+            be talking{" "}
+            <span>
+              {" "}
+              through the steps of how to teach the following subjects.
+            </span>
+          </p>
         </section>
         {/* //////////////////////////////////////////////////// */}
-        <div className={styles.AdiParttwoVideo}>
-          <h2>Manoeuvres Video Materials</h2>
+        <div className={styles.hazardTestWorkListSection}>
+          <h2>
+            Manoeuvres <span>Video Materials</span>{" "}
+          </h2>
           <div className={styles.hazardVideosGridContainer}>
             {videoURLs.map((url, index) => (
               <div className={styles.hazardGridItem} key={index}>
@@ -74,8 +79,7 @@ export default function TrainingVideos() {
                   width="200"
                   height="120"
                   src={url}
-                  allowFullScreen
-                ></iframe>
+                  allowFullScreen></iframe>
               </div>
             ))}
           </div>

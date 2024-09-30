@@ -424,14 +424,18 @@ export default function TheoryPortal() {
       {/* ///////////////////////////////////////////////////// */}
       <section>
         <div className={styles.thAdditionalSupportHeader}>
-          <h2>Book Your <span>Theory</span></h2>
+          <h2>
+            Book Your <span>Theory</span>
+          </h2>
         </div>
       </section>
 
       {/* ///////////////////////////////////////////////////////////// */}
       <section className={styles.thFooterSection}>
         <div className={styles.thFooterDiv}>
-          <h2>Are You <span>Ready?</span> </h2>
+          <h2>
+            Are You <span>Ready?</span>{" "}
+          </h2>
           <hr />
           <a href="https://www.gov.uk/book-theory-test">
             <img src={BookTestImg} alt="BookTestImg" />

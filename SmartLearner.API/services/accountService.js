@@ -14,8 +14,7 @@ const { ObjectId } = require("mongodb");
 class AccountService {
   async registerUserAsync(userData) {
     try {
-      const { username, email, password, phoneNumber } =
-        userData;
+      const { username, email, password, phoneNumber } = userData;
 
       // Check if user with the same email already exists
       const existingUser = await User.findOne({ email });
@@ -103,14 +102,13 @@ class AccountService {
 
       // Generate JWT token with expiry
       // Generate JWT token with expiry
-      const jwtAge = 60; // 90 days in seconds
+      const jwtAge = 60;
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",
         { expiresIn: jwtAge }
       );
 
-    
       // Return user info with JWT token and role
       return {
         user: {
