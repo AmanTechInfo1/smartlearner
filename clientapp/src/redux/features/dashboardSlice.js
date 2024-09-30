@@ -96,22 +96,34 @@ export const checkOutMySubscription = (data, cb) => async (dispatch) => {
       `/api/dashboard/CheckoutMySubsciption`,
       data
     );
+
     if (response.data.success) {
       let respData = response.data.data;
 
       if (respData.isSubscription) {
-        // Assuming this indicates the payment is successful
-        // Update your Redux state to reflect that payment was completed
+        // Free Trial specific message
+        if (respData.subscriptionType === "Free Trial") {
+          toast.success("Free Trial activated successfully!");
+        } else {
+          // For other subscription types
+          toast.success(response.data.message);
+        }
+
+        // Update current plan in Redux state
         dispatch(getCurrentPlanSuccess(respData.subscriptionType));
-        toast.success(response.data.message);
-        cb(); // Navigate or perform any other action after payment success
+
+        // Callback after subscription is handled
+        cb();
       } else {
+        // Show error if no subscription was activated
         toast.error(response.data.message);
       }
     } else {
+      // If the response itself indicates failure
       toast.error(response.data.message);
     }
   } catch (error) {
+    // On request failure (e.g., network issue)
     toast.error(error.message);
     dispatch(getDashboardFailure());
   }

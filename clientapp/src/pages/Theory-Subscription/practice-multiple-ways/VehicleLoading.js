@@ -22,7 +22,9 @@ export default function VehicleLoading() {
               </div>
 
               <div className={styles.heading2}>
-                <h2>Vehicle Loading </h2>
+                <h2>
+                  Vehicle <span>Loading</span>{" "}
+                </h2>
               </div>
               <div className={styles.alertBtn}>
                 <a style={{ textDecoration: "none" }} href="tel:+4402475092784">

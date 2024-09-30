@@ -222,7 +222,7 @@ export default function TheoryPortal() {
                   <span>
                     <FaCar id={styles.featuresIcon} />
                   </span>
-                  <h3>Safety & Your Vehicle</h3>
+                  <h3>Safety In Your Vehicle</h3>
                 </Link>
 
                 <p>Topic 3</p>

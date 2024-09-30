@@ -28,7 +28,7 @@ export default function IncidentsAccidents() {
 
               <div className={styles.heading2}>
                 <h2>
-                  Incidents <span>Accidents</span>{" "}
+                  Incidents & <span>Accidents</span>{" "}
                 </h2>
               </div>
               <div className={styles.alertBtn}>

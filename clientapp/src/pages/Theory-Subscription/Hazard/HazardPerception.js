@@ -19,7 +19,7 @@ export default function HazardPerception() {
 
             <div className={styles.heading2}>
               <h2>
-                Incidents <span>Accidents</span>{" "}
+                Hazard <span>Perception</span>{" "}
               </h2>
             </div>
             <div className={styles.alertBtn}>

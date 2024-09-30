@@ -31,7 +31,7 @@ export default function VideoClips() {
 
               <div className={styles.heading2}>
                 <h2>
-                  Vehicle <span>Handling</span>
+                  Video <span>Clips</span>
                 </h2>
               </div>
               <div className={styles.alertBtn}>
@@ -51,7 +51,7 @@ export default function VideoClips() {
           <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                
                 <p>
                   At the end of your theory test you will be shown a video clip,
                   you will then have 3 questions to answer based on these
@@ -59,7 +59,7 @@ export default function VideoClips() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                
                 <p>
                   You can play the video clip as many times as you would like
                   during the 3 questions.
@@ -77,11 +77,11 @@ export default function VideoClips() {
           <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                
                 <p>Questions may vary depending on the video clip shown.</p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                
                 <p>
                   For example, you may see a clip of a carvan swerving side to
                   side on a motorway, questions can be surrounding the hazard
@@ -90,7 +90,7 @@ export default function VideoClips() {
                 </p>
               </li>
               <li>
-                <IoMdArrowDropright id="listrightIcon" />{" "}
+                
                 <p>
                   It is important to take note of every detail in the video,
                   look out for road signs, road markings, weather condtions etc.

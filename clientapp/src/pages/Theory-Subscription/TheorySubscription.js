@@ -7,7 +7,6 @@ import {
   checkOutMySubscription,
   getMySubscriptionType,
 } from "../../redux/features/dashboardSlice";
-import { getAddSubscriptionToCart } from "../../redux/features/cartSlice"; // Import the cart action
 
 const TheorySubscription = () => {
   const [plans, setPlans] = useState([
@@ -18,7 +17,6 @@ const TheorySubscription = () => {
       features: ["Enroll Everything For 7 Days"],
       mostPopular: false,
       view: true,
-      disabled: false, // Track if the button is disabled
     },
     {
       title: "Unlimited Theory Portal Access £5.99 per month",
@@ -31,7 +29,6 @@ const TheorySubscription = () => {
       ],
       mostPopular: true,
       view: true,
-      disabled: false, // Track if the button is disabled
     },
     {
       title: "6 Months Theory Portal Access £30",
@@ -49,11 +46,10 @@ const TheorySubscription = () => {
       ],
       mostPopular: false,
       view: true,
-      disabled: false, // Track if the button is disabled
     },
   ]);
 
-  const currentPlan = useSelector((state) => state.dashboard.currentplan);
+  const currentplan = useSelector((state) => state.dashboard.currentplan);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,18 +58,9 @@ const TheorySubscription = () => {
     dispatch(getMySubscriptionType(setPlans, () => {}));
   }, [dispatch]);
 
-  const handleSubscribe = (plan) => {
-    // First, add the subscription to the cart
-    dispatch(getAddSubscriptionToCart(plan.title)); // Add the plan title to the cart
-    // Update the plan to be disabled
-    setPlans((prevPlans) =>
-      prevPlans.map((p) =>
-        p.title === plan.title ? { ...p, disabled: true } : p
-      )
-    );
-    // Then, checkout the subscription
+  const handleSubscribe = (planTitle) => {
     dispatch(
-      checkOutMySubscription({ title: plan.title }, () => {
+      checkOutMySubscription({ title: planTitle }, () => {
         // Redirect to theory portal on successful subscription
         navigate("/Theory-Portal");
       })
@@ -84,8 +71,8 @@ const TheorySubscription = () => {
     <div className="subscription-cardBox">
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
-        {currentPlan ? (
-          <p id="SubDesc">Current Plan: {currentPlan}</p>
+        {currentplan ? (
+          <p id="SubDesc">Current Plan: {currentplan}</p>
         ) : (
           <p id="SubDesc">You don't have an active subscription.</p>
         )}
@@ -118,15 +105,8 @@ const TheorySubscription = () => {
                 <div className="card-bottom">
                   <button
                     className="card-bottom__btn"
-                    onClick={() => handleSubscribe(plan)}
-                    disabled={plan.disabled} // Disable button if the plan is disabled
-                    style={{
-                      cursor: plan.disabled ? "not-allowed" : "pointer",
-                    }} // Change cursor style
-                  >
-                    <span>
-                      {plan.disabled ? "Subscribed" : "Subscribe now"}
-                    </span>
+                    onClick={() => handleSubscribe(plan.title)}>
+                    <span>Subscribe now</span>
                   </button>
                   <ul className="card-bottom__list">
                     {plan.features.map((item, featureIndex) => (
