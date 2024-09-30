@@ -549,7 +549,7 @@ export default function InstructionFeedBack() {
           <h2>
             Reflective <span>Debrief</span>{" "}
           </h2>
-          <div className={styles.bgColorList}>
+          <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
                 <p>

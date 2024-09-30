@@ -23,7 +23,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import QuizMain from "../../components/takequizes/QuizMain";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getMyDashboard,
   getMySubscription,
@@ -32,15 +32,30 @@ import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  const userDetails = useSelector((state) => state.auth.userDetails);
+  const subscriptionDetails = useSelector(
+    (state) => state.dashboard.subscriptionDetails
+  );
+
   useEffect(() => {
-    dispatch(
-      getMySubscription(() => {
-        navigate("/Theory-Subscription");
-      })
-    );
-  }, ["dsa"]);
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/login");
+    } else if (userDetails.role === "admin") {
+      // Allow admin to access the portal
+      return;
+    } else {
+      // User is not admin, check for subscription
+      dispatch(
+        getMySubscription(() => {
+          if (!subscriptionDetails || !subscriptionDetails.active) {
+            // Redirect to subscription page if no active subscription
+            navigate("/Theory-Subscription");
+          }
+        })
+      );
+    }
+  }, [userDetails, dispatch, navigate, subscriptionDetails]);
 
   return (
     <div className={styles.TheoryPortal}>

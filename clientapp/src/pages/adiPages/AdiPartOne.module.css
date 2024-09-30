@@ -365,7 +365,7 @@
 }
 #resLists1 {
   background-color: #006ace;
-  color: rgb(0, 185, 0);
+  color: rgb(255, 255, 255);
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;
@@ -387,7 +387,7 @@
 }
 #resLists2 {
   background-color: rgb(0, 185, 0);
-  color: #006ace;
+  color: #ffffff;
   border-radius: 30px;
   padding: 1rem;
   font-size: 18px;

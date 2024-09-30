@@ -8,22 +8,16 @@ const cartSlice = createSlice({
         cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")).updatedCart || [] : [],
         loading: false,
         hashcode: "",
-        myOrders:[],
-        myOrdersCount:null,
+        myOrders: [],
+        myOrdersCount: null,
         payment: localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) : {}
-      },
-      
+    },
     reducers: {
-
-
-        removeCart: (state, action) => {
-
+        removeCart: (state) => {
             state.cart = [];
         },
-
         getCompleteCheckoutSuccess: (state, action) => {
-
-            localStorage.setItem("payment", JSON.stringify(action.payload.order))
+            localStorage.setItem("payment", JSON.stringify(action.payload.order));
             state.payment = action.payload.order;
         },
         getCompleteCheckoutFailure: (state) => {
@@ -43,43 +37,19 @@ const cartSlice = createSlice({
             state.myOrders = [];
         },
         IncreaseCart: (state, action) => {
-
-            console.log(action.payload, "action.payload.id")
             const updatedCart = state.cart.map(item =>
                 item.id === action.payload.id ? { ...item, count: item.count + action.payload.count } : item
             );
 
             const itemExists = state.cart.some(item => item.id === action.payload.id);
-            let datew = [...state.cart, action.payload]
-            localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
+            let datew = [...state.cart, action.payload];
+            localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }));
 
-            console.log({ updatedCart }, "JSON.parse")
             return {
                 ...state,
                 cart: itemExists ? updatedCart : [...state.cart, action.payload]
             };
         },
-        // DecreaseCart: (state, action) => {
-
-        //     console.log(action.payload, "action.payload.id")
-
-        //     const updatedCart = state.cart.map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item);
-
-        //     const itemExists = state.cart.some(item => item.id === action.payload.id);
-
-
-        //     console.log({ updatedCart }, "JSON.parse")
-
-        //     let datew = [...state.cart, action.payload]
-        //     localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
-        //     return {
-        //         ...state,
-        //         cart: itemExists ? updatedCart : [...state.cart, action.payload]
-        //     };
-
-        // },
-
-
         DecreaseCart: (state, action) => {
             const updatedCart = state.cart
                 .map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item)
@@ -92,31 +62,9 @@ const cartSlice = createSlice({
             };
         },
         AddToCart: (state, action) => {
-            console.log(action.payload)
-            // state.cart.push(action.payload);
-            let updatedCart = []
-            if (state.cart) {
-                updatedCart = [...state.cart, action.payload]
-            } else {
-                updatedCart = [action.payload]
-            }
-
-            console.log({ updatedCart }, "JSON.parse")
-            localStorage.setItem("cart", JSON.stringify({ updatedCart }))
-            return {
-                ...state,
-                cart: updatedCart
-            };
-            // localStorage.setItem("cart",itemExists ? updatedCart : [...state.cart, action.payload])
-
-            // state.loading = false;
-        },
-        setLoading: (state) => {
-            state.loading = true;
-        },
-
-        AddToCart: (state, action) => {
-            let updatedCart = [...state.cart, action.payload];
+            let updatedCart = state.cart.some(item => item.id === action.payload.id)
+                ? state.cart.map(item => item.id === action.payload.id ? { ...item, count: item.count + action.payload.count } : item)
+                : [...state.cart, action.payload];
             localStorage.setItem("cart", JSON.stringify({ updatedCart }));
             return {
                 ...state,
@@ -133,10 +81,25 @@ const cartSlice = createSlice({
         setLoading: (state) => {
             state.loading = true;
         },
-
     },
 });
 
+// New action to add a subscription to the cart
+export const getAddSubscriptionToCart = (subscriptionPlan) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const subscription = {
+            id: subscriptionPlan, // Assuming each subscription plan has a unique ID
+            count: 1 // Assuming you want to add one subscription at a time
+        };
+        toast.success("Subscription added to cart");
+        dispatch(AddToCart(subscription));
+    } catch (error) {
+        toast.error("Failed to add subscription to cart");
+    }
+};
+
+// Thunks for other cart functionalities
 export const getIncreaseCart = (id, count) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -161,7 +124,7 @@ export const getAddToCart = (product) => async (dispatch) => {
     try {
         dispatch(setLoading());
         toast.success("Product added to cart");
-        dispatch(AddToCart(product)); 
+        dispatch(AddToCart(product));
     } catch (error) {
         toast.error("Failed to add to cart");
     }
@@ -180,11 +143,10 @@ export const removingCart = (data, cb) => async (dispatch) => {
     try {
         dispatch(setLoading());
         dispatch(removeCart());
-
     } catch (error) {
         toast.error(error.message);
     }
-}
+};
 
 export const getCompleteCheckout = (data, cb) => async (dispatch) => {
     try {
@@ -195,8 +157,7 @@ export const getCompleteCheckout = (data, cb) => async (dispatch) => {
         );
         if (response.data.success) {
             dispatch(getCompleteCheckoutSuccess(response.data.data));
-            cb()
-
+            cb();
         } else {
             toast.error(response.data.message);
             dispatch(getCompleteCheckoutFailure());
@@ -207,8 +168,6 @@ export const getCompleteCheckout = (data, cb) => async (dispatch) => {
     }
 };
 
-
-
 export const generateHashcodeCheckout = (data, cb, form, additionalData) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -217,13 +176,11 @@ export const generateHashcodeCheckout = (data, cb, form, additionalData) => asyn
             data
         );
 
-        console.log(response.data.hash_code, "responseresponseresponse")
         if (response.data.hash_code) {
             dispatch(getGenerateHashCodeSuccess(response.data.hash_code));
             additionalData.value = response.data.hash_code;
             form.appendChild(additionalData);
             form.submit();
-
         } else {
             toast.error(response.data.message);
             dispatch(getGenerateHashCodeFailure());
@@ -241,10 +198,8 @@ export const getMyOrders = () => async (dispatch) => {
             `/api/order/getMyOrder`
         );
 
-        console.log(response.data.data, "responseresponseresponse")
         if (response.data.data) {
             dispatch(getOrdersSuccess(response.data.data.order));
-
         } else {
             toast.error(response.data.message);
             dispatch(getOrdersFailure());
@@ -254,7 +209,6 @@ export const getMyOrders = () => async (dispatch) => {
         dispatch(getOrdersFailure());
     }
 };
-
 
 export const {
     IncreaseCart,
@@ -270,10 +224,5 @@ export const {
     getOrdersFailure,
     EmptyCart
 } = cartSlice.actions;
-
-
-// export const { IncreaseCart, DecreaseCart, AddToCart, EmptyCart, setLoading } = cartSlice.actions;
-
-
 
 export default cartSlice.reducer;

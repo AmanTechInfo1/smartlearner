@@ -7,6 +7,7 @@ import {
   checkOutMySubscription,
   getMySubscriptionType,
 } from "../../redux/features/dashboardSlice";
+import { getAddSubscriptionToCart } from "../../redux/features/cartSlice"; // Import the cart action
 
 const TheorySubscription = () => {
   const [plans, setPlans] = useState([
@@ -17,6 +18,7 @@ const TheorySubscription = () => {
       features: ["Enroll Everything For 7 Days"],
       mostPopular: false,
       view: true,
+      disabled: false, // Track if the button is disabled
     },
     {
       title: "Unlimited Theory Portal Access £5.99 per month",
@@ -29,6 +31,7 @@ const TheorySubscription = () => {
       ],
       mostPopular: true,
       view: true,
+      disabled: false, // Track if the button is disabled
     },
     {
       title: "6 Months Theory Portal Access £30",
@@ -46,6 +49,7 @@ const TheorySubscription = () => {
       ],
       mostPopular: false,
       view: true,
+      disabled: false, // Track if the button is disabled
     },
   ]);
 
@@ -59,6 +63,15 @@ const TheorySubscription = () => {
   }, [dispatch]);
 
   const handleSubscribe = (plan) => {
+    // First, add the subscription to the cart
+    dispatch(getAddSubscriptionToCart(plan.title)); // Add the plan title to the cart
+    // Update the plan to be disabled
+    setPlans((prevPlans) =>
+      prevPlans.map((p) =>
+        p.title === plan.title ? { ...p, disabled: true } : p
+      )
+    );
+    // Then, checkout the subscription
     dispatch(
       checkOutMySubscription({ title: plan.title }, () => {
         // Redirect to theory portal on successful subscription
@@ -105,8 +118,15 @@ const TheorySubscription = () => {
                 <div className="card-bottom">
                   <button
                     className="card-bottom__btn"
-                    onClick={() => handleSubscribe(plan)}>
-                    <span>Subscribe now</span>
+                    onClick={() => handleSubscribe(plan)}
+                    disabled={plan.disabled} // Disable button if the plan is disabled
+                    style={{
+                      cursor: plan.disabled ? "not-allowed" : "pointer",
+                    }} // Change cursor style
+                  >
+                    <span>
+                      {plan.disabled ? "Subscribed" : "Subscribe now"}
+                    </span>
                   </button>
                   <ul className="card-bottom__list">
                     {plan.features.map((item, featureIndex) => (
