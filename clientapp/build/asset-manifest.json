@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b73bd2d3.css",
-    "main.js": "/static/js/main.9838f8e2.js",
+    "main.css": "/static/css/main.65d0bcdd.css",
+    "main.js": "/static/js/main.cfd9bdd9.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -14,11 +14,13 @@
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
+    "static/media/attitudebannerImg.jpg": "/static/media/attitudebannerImg.9fa9bf685c083cce9896.jpg",
     "static/media/Cyclistssss.png": "/static/media/Cyclistssss.9be85f03098b9f468ce6.png",
     "static/media/equestrian.png": "/static/media/equestrian.217875f057a23dcc5f5e.png",
     "static/media/earthImg.png": "/static/media/earthImg.02b1b958b3e1ccd14f8a.png",
     "static/media/disabledPawer.png": "/static/media/disabledPawer.4dac0c687f81c422bdd8.png",
     "static/media/builtupTraffic.png": "/static/media/builtupTraffic.5d6e24b69e5f77775258.png",
+    "static/media/safetyMargins.jpg": "/static/media/safetyMargins.1650021b8ce6a22cb7e6.jpg",
     "static/media/faq-bg.jpg": "/static/media/faq-bg.932b147c1f519531fe66.jpg",
     "static/media/andybannerforwebsite-1-1.png": "/static/media/andybannerforwebsite-1-1.318b2388cb015a7a02c2.png",
     "static/media/CERTIFICATE2.png": "/static/media/CERTIFICATE2.087a4c4cf144ac97c642.png",
@@ -76,6 +78,7 @@
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
     "static/media/vehicalscarrying.png": "/static/media/vehicalscarrying.6c038a4bf8c129bb8de3.png",
     "static/media/cimg18.jpg": "/static/media/cimg18.94fecd5310e59dcf5262.jpg",
+    "static/media/VulnerableRoadUsers.jpg": "/static/media/VulnerableRoadUsers.b6a37f70bb396a28e041.jpg",
     "static/media/cimg16.jpg": "/static/media/cimg16.6165d455929705d28d6e.jpg",
     "static/media/CChampion-2.jpg": "/static/media/CChampion-2.c89fb0c00fdb72a9a2a6.jpg",
     "static/media/cimg13.jpg": "/static/media/cimg13.4739f426b7f13d3a3032.jpg",
@@ -98,7 +101,10 @@
     "static/media/car-red.png": "/static/media/car-red.ce075202d3605329ef4e.png",
     "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
+    "static/media/hazardAwareness.jpg": "/static/media/hazardAwareness.f213f61e479b25b21a6b.jpg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
+    "static/media/safetyVehicleImg.jpg": "/static/media/safetyVehicleImg.28116092e6ad2f369105.jpg",
+    "static/media/vehicleHandling.jpg": "/static/media/vehicleHandling.204ccdb3e4add6f8a28c.jpg",
     "static/media/alertness-Img.jpg": "/static/media/alertness-Img.030a73f1217b29bc8ca1.jpg",
     "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
@@ -108,6 +114,7 @@
     "static/media/choose-img.jpg": "/static/media/choose-img.ceedd820c5868bcffab6.jpg",
     "static/media/ageingImg.png": "/static/media/ageingImg.ba1cf15c29d23375bcab.png",
     "static/media/generalTips.jpg": "/static/media/generalTips.e4b84c62602a9d42ecae.jpg",
+    "static/media/otherTypesVehicle.jpg": "/static/media/otherTypesVehicle.dcc005df885275f52243.jpg",
     "static/media/pupilImg23423.jpg": "/static/media/pupilImg23423.7bf32c9e4dd2ac3c681b.jpg",
     "static/media/Asset_110.png": "/static/media/Asset_110.881fe443f5dacdef4781.png",
     "static/media/drivingLessonbanner.jpg": "/static/media/drivingLessonbanner.5cab6fa027d11d7a3005.jpg",
@@ -269,15 +276,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.b73bd2d3.css.map": "/static/css/main.b73bd2d3.css.map",
-    "main.9838f8e2.js.map": "/static/js/main.9838f8e2.js.map",
+    "main.65d0bcdd.css.map": "/static/css/main.65d0bcdd.css.map",
+    "main.cfd9bdd9.js.map": "/static/js/main.cfd9bdd9.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b73bd2d3.css",
-    "static/js/main.9838f8e2.js"
+    "static/css/main.65d0bcdd.css",
+    "static/js/main.cfd9bdd9.js"
   ]
 }
