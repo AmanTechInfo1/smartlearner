@@ -115,6 +115,7 @@ import VideoClips from "./pages/Theory-Subscription/practice-multiple-ways/Video
 import PartOneSubscription from "./pages/adiPages/adi-Subscription/Part-One-Subscription";
 import PartTwoSubscription from "./pages/adiPages/adi-Subscription/Part-TwoSubscription";
 import PartThreeSubscription from "./pages/adiPages/adi-Subscription/Part-ThreeSubscription";
+import BonusQuiz from "./pages/adiPages/bands/BonusQuiz";
 
 export const router = createBrowserRouter([
   {
@@ -196,6 +197,7 @@ export const router = createBrowserRouter([
         element: <PublicationTechBand />,
       },
       { path: "Adi-part-1-MockTest", element: <MockTestBand /> },
+      { path: "Adi-part-1-Bonus-Quiz", element: <BonusQuiz /> },
       { path: "adi-part-2", element: <AdiPartTwo /> },
       { path: "adi-part-3", element: <AdiPartThree /> },
       { path: "gde-matrix", element: <GdeMatrix /> },

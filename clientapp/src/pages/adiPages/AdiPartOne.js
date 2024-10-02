@@ -449,6 +449,9 @@ export default function AdiPartOne() {
             </button>
           </Link>
           <Link to="/Adi-part-1-MockTest">
+            <button id={styles.hazzardBtn}>Bonus Quiz</button>
+          </Link>
+          <Link to="/Adi-part-1-MockTest">
             <button id={styles.hazzardBtn}>Mock Test</button>
           </Link>
         </div>
