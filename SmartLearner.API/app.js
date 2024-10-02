@@ -13,9 +13,11 @@ const callBackRoutes = require("./routes/callBackRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const drivenFormRoutes = require("./routes/drivenFormRoutes");
 const orderRoutes = require("./routes/orderRoutes");
-const path = require('path');   
-const router = express.Router();
+const subscriptionRoutes = require("./routes/subscriptionRoutes");
+const { scheduleJobs } = require("./cronJobs/cronJobs");
 
+const path = require("path");
+const router = express.Router();
 
 const cors = require("cors");
 
@@ -24,11 +26,11 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/uploads', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/static/no_image_found.jpg')); // Path to your alternative image
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); // Path to your alternative image
 });
-app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use("/static", express.static(path.join(__dirname, "static")));
 app.use("/api/account", accountRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/product", productRoutes);
@@ -41,15 +43,14 @@ app.use("/api/drivenForm", drivenFormRoutes);
 app.use("/api/quiz", quizRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-
-
+app.use("/api/subscription", subscriptionRoutes);
 app.use(errorHandler);
-// Start server
+
+scheduleJobs();
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT,'127.0.0.1', () => {
+app.listen(PORT, "127.0.0.1", () => {
   console.log(`Server started on port ${PORT}`);
 });
 
 module.exports = app;
-
-  

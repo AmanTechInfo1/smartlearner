@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"; // Import useSelector
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./AdiPartOne.module.css";
-
 import prizeTrophy from "../../assets/images/prize-imgj.png";
 import docsList from "../../assets/images/list-Docs.png";
 import Qostion from "../../assets/images/qestion-img.png";
 import { Link } from "react-router-dom";
-
+import {
+  getMyDashboard,
+  fetchUserSubscriptions,
+} from "../../redux/features/subscriptionSlice";
 export default function AdiPartOne() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userDetails = useSelector((state) => state.auth.userDetails);
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
+
+  useEffect(() => {
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/login"); // Redirect to login if user is not logged in
+    } else if (userDetails.role === "admin") {
+      // Allow admin to access the portal
+      return;
+    } else {
+      // User is not admin, check for subscription
+      dispatch(fetchUserSubscriptions()).then(() => {
+        if (!userSubscription || !userSubscription.active) {
+          // Redirect to subscription page if no active subscription
+          navigate("/part-one-subscription");
+        }
+      });
+    }
+  }, [userDetails, userSubscription, dispatch, navigate]);
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -94,7 +121,11 @@ export default function AdiPartOne() {
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
-              <img style={{ backgroundColor: "white" }} src={docsList} alt="List" />
+              <img
+                style={{ backgroundColor: "white" }}
+                src={docsList}
+                alt="List"
+              />
             </div>
             <section className={styles.bgColorList}>
               <ul type="none">

@@ -112,10 +112,9 @@ import Email from "./components/Emails/Email";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import HazardPreceptions from "./pages/adiPages/adi-part3/internalPages/HazardPreceptions";
 import VideoClips from "./pages/Theory-Subscription/practice-multiple-ways/VideoClips";
-
-
-
-
+import PartOneSubscription from "./pages/adiPages/adi-Subscription/Part-One-Subscription";
+import PartTwoSubscription from "./pages/adiPages/adi-Subscription/Part-TwoSubscription";
+import PartThreeSubscription from "./pages/adiPages/adi-Subscription/Part-ThreeSubscription";
 
 export const router = createBrowserRouter([
   {
@@ -224,12 +223,14 @@ export const router = createBrowserRouter([
       { path: "essential-Documents", element: <EssentialDocuments /> },
       { path: "incidents-&-accidents", element: <IncidentsAccidents /> },
       { path: "vehicle-loading", element: <VehicleLoading /> },
-      { path: "video-clips", element: <VideoClips/> },
-      {path:"checkout", element: <Checkout/>},
-      {path:"paymentProcessing", element: <PaymentProcessing/>},
-      {path:"email", element:<Email/>},
-      {path:'hazard-preception-part-2', element:<HazardPreceptions/>},
-      
+      { path: "video-clips", element: <VideoClips /> },
+      { path: "checkout", element: <Checkout /> },
+      { path: "paymentProcessing", element: <PaymentProcessing /> },
+      { path: "email", element: <Email /> },
+      { path: "hazard-preception-part-2", element: <HazardPreceptions /> },
+      { path: "part-one-subscription", element: <PartOneSubscription /> },
+      { path: "part-two-subscription", element: <PartTwoSubscription /> },
+      { path: "part-three-subscription", element: <PartThreeSubscription /> },
       {
         path: "/quizModuleId/:id",
         element: <QuizModuleHome />,
@@ -241,7 +242,8 @@ export const router = createBrowserRouter([
       {
         path: "/quizCategoryHome",
         element: <QuizCategoryHome />,
-      },{
+      },
+      {
         path: "/quizGive",
         element: <QuizCategoryHome />,
       },
@@ -261,12 +263,11 @@ export const router = createBrowserRouter([
         path: "/quizResult",
         element: <QuizResult />,
       },
-
     ],
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
-  { path: "forgot-password", element: <ForgotPassword/> },
+  { path: "forgot-password", element: <ForgotPassword /> },
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
 
@@ -275,15 +276,14 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}
-      ></RequireAuth>
+        element={<AdminLayout />}></RequireAuth>
     ),
     children: [
       {
         path: "/admin/dashboard",
         element: <AdminHome />,
       },
-    
+
       {
         path: "/admin/roles",
         element: <Roles />,
@@ -325,7 +325,7 @@ export const router = createBrowserRouter([
       //   path:"/admin/quiz",
       //   element:<QuizzesModal/>,
       // },
-      
+
       {
         path: "/admin/quizCategory",
         element: <Quiz />,
@@ -353,13 +353,7 @@ export const router = createBrowserRouter([
       { path: "/admin/order", element: <Order /> },
 
       { path: "/admin/order-Invoice", element: <OrderInvoice /> },
-      {path:"/admin/orderInvoice/:invoiceId",
-        element: <OrderInvoice/>
-      },
-
-    
-
-      
+      { path: "/admin/orderInvoice/:invoiceId", element: <OrderInvoice /> },
     ],
   },
 ]);

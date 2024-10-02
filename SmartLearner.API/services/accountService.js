@@ -48,11 +48,6 @@ class AccountService {
       const passwordHash = new PasswordHash(8, true);
       const { email, password } = credentials;
 
-      // const salt = await bcrypt.genSalt();
-      // const hashedPassword = await bcrypt.hash(password, salt);
-
-      // console.log("hashedPassword",hashedPassword,"hashedPassword")
-      // Find user by email
       const user = await User.findOne({ email });
       if (!user) {
         throw new Error("Invalid Email");
@@ -125,83 +120,6 @@ class AccountService {
       throw new Error(err.message);
     }
   }
-
-  // async changePasswordAsync(userId, newPassword) {
-  //   try {
-  //     const passwordHash = new PasswordHash(8, true);
-  //     // Hash the new password
-  //     const hashedPassword = passwordHash.HashPassword(newPassword);
-
-  //     // Update user's password
-  //     await User.findByIdAndUpdate(userId, { password: hashedPassword });
-
-  //     return { message: "Password changed successfully." };
-  //   } catch (err) {
-  //     throw new Error(err.message);
-  //   }
-  // }
-
-  // async forgotPasswordAsync(email) {
-  //   try {
-  //     // Generate a random password
-  //     const newPassword = Math.random().toString(36).slice(-8);
-
-  //     const passwordHash = new PasswordHash(8, true);
-  //     // Hash the new password
-  //     const hashedPassword = passwordHash.HashPassword(newPassword);
-
-  //     // Update user's password in the database
-  //     await User.findOneAndUpdate({ email }, { password: hashedPassword });
-
-  //     // Send email with the new password
-  //     await emailServices.sendEmail(
-  //       email,
-  //       "Password Reset",
-  //       `Your new password is: ${newPassword}`
-  //     );
-
-  //     return { message: "New password sent to your email." };
-  //   } catch (err) {
-  //     throw new Error(err.message);
-  //   }
-  // }
-
-  // async resetPasswordAsync(email, token, newPassword) {
-  //   try {
-  //     // Verify token
-  //     const decoded = jwt.verify(
-  //       token,
-  //       process.env.JWT_SECRET || "My name is Akash"
-  //     );
-
-  //     // Hash the new password
-  //     const passwordHash = new PasswordHash(8, true);
-  //     // Hash the new password
-  //     const hashedPassword = passwordHash.HashPassword(newPassword);
-
-  //     // Update user's password in the database
-  //     await User.findOneAndUpdate({ email }, { password: hashedPassword });
-
-  //     return { message: "Password reset successfully." };
-  //   } catch (err) {
-  //     throw new Error(err.message);
-  //   }
-  // }
-
-  // async verifyEmailAsync(email) {
-  //   try {
-  //     // Send verification email
-  //     await emailServices.sendEmail(
-  //       email,
-  //       "Email Verification",
-  //       "Please click on the link to verify your email."
-  //     );
-
-  //     return { message: "Verification email sent. Please check your email." };
-  //   } catch (err) {
-  //     throw new Error(err.message);
-  //   }
-  // }
 
   async getAllUsersAsync(pageNumber, pagesize, query) {
     try {
@@ -345,6 +263,83 @@ class AccountService {
       throw new Error(err.message);
     }
   }
+
+  // ////////////////////////////////////////////////////////////
+  async createFreeTrialSubscription(userId) {
+    try {
+      const freeTrialPlan = await PlanUser.findOne({ planname: "Free Trial" });
+      if (!freeTrialPlan) throw new Error("Free trial plan not found");
+
+      const userSubscription = new UserSubscription({
+        userId: userId,
+        subscriptionId: freeTrialPlan._id,
+      });
+
+      await userSubscription.save();
+      return { message: "Free trial subscription created successfully" };
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+  // Check if the user has an active free trial
+  async checkActiveFreeTrial(userId) {
+    try {
+      const userSubscription = await UserSubscription.findOne({
+        userId: userId,
+        subscriptionId: {
+          $in: await PlanUser.find({ planCategory: "Trial" }).distinct("_id"),
+        }, // Adjust this line if necessary
+      });
+
+      if (userSubscription) {
+        const planDetails = await PlanUser.findById(
+          userSubscription.subscriptionId
+        );
+        const currentDate = new Date();
+        return currentDate <= planDetails.planEndDate;
+      }
+
+      return false; // No active free trial
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+  // Updated registerUserAsync to include free trial subscription creation
+  async registerUserAsync(userData) {
+    try {
+      const { username, email, password, phoneNumber } = userData;
+
+      // Check if user with the same email already exists
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        throw new Error("Email already exists");
+      }
+
+      // Hash the password
+      const salt = await bcrypt.genSalt();
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      // Create the user
+      const user = await User.create({
+        username,
+        email,
+        password: hashedPassword,
+        phoneNumber,
+        isBcryptHashed: true,
+      });
+
+      // Create free trial subscription
+      await this.createFreeTrialSubscription(user._id);
+
+      return user;
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+  //////////////////////////////////////////////////////////
+
   async getUserSubscription(params_id) {
     try {
       let aagr = [

@@ -3,5 +3,5 @@
 // export const imageBaseUrl="http://localhost:5000/uploads/";
 // export const imageBaseUrl="https://idyllic-starship-9d834b.netlify.app/uploads/";
 
-export const baseUrl="https://api.smartlearner.com";
-export const imageBaseUrl="https://api.smartlearner.com/uploads/";
+export const baseUrl = "https://api.smartlearner.com";
+export const imageBaseUrl = "https://api.smartlearner.com/uploads/";

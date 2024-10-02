@@ -113,41 +113,6 @@ class RoleController {
     }
   }
 
-  // async translator(req, res, next) {
-  //   try {
-  //     const lang = req.body.lang;
-  //     const translatedText = await translate(req.body.question, { from: 'en', to: lang });
-
-  //     let options = {
-  //       question: translatedText
-  //     };
-
-  //     // Translate options if they exist in the request body
-  //     const translatePromises = [];
-  //     if (req.body.option1) {
-  //       translatePromises.push(translate(req.body.option1, { from: 'en', to: lang }).then(result => options.option1 = result));
-  //     }
-  //     if (req.body.option2) {
-  //       translatePromises.push(translate(req.body.option2, { from: 'en', to: lang }).then(result => options.option2 = result));
-  //     }
-  //     if (req.body.option3) {
-  //       translatePromises.push(translate(req.body.option3, { from: 'en', to: lang }).then(result => options.option3 = result));
-  //     }
-  //     if (req.body.option4) {
-  //       translatePromises.push(translate(req.body.option4, { from: 'en', to: lang }).then(result => options.option4 = result));
-  //     }
-
-  //     console.log(translatePromises,"translatePromises")
-  //     // Wait for all translation promises to complete
-  //     await Promise.all(translatePromises);
-
-  //     // Send the translated options as JSON response
-  //     res.json(options);
-  //   } catch (err) {
-  //     console.error(err);
-  //     next(err); // Pass error to the error handling middleware
-  //   }
-  // }
 }
 
 module.exports = new RoleController();

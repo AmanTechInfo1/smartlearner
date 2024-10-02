@@ -1,30 +1,25 @@
 const jwt = require("jsonwebtoken");
 
 const requireAuth = (req, res, next) => {
-  const token = req.header("Authorization");
+  const token = req.header("Authorization")?.split(" ")[1]; // Split to get the token after 'Bearer'
+
   if (token) {
     jwt.verify(
       token,
       process.env.JWT_SECRET || "SMARTLEARNERJWT",
-      (err) => {
+      (err, decoded) => {
         if (err) {
           console.log(err.message);
-          res.status(401).json({
-            "msg":"Unauthorized Access"
-          });
+          return res.status(401).json({ msg: "Unauthorized Access" });
         } else {
-          const decoded = jwt.decode(token, { complete: true });
-          req.userId = decoded.payload.id
+          req.userId = decoded.id; // Assuming 'id' is the field you want from the payload
           next();
         }
       }
     );
   } else {
-    // res.redirect("/login");
-    res.status(401).json({
-      "msg":"Unauthorized Access"
-    });
+    return res.status(401).json({ msg: "Unauthorized Access" });
   }
 };
+
 module.exports = { requireAuth };
-  
