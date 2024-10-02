@@ -14,7 +14,6 @@ const contactRoutes = require("./routes/contactRoutes");
 const drivenFormRoutes = require("./routes/drivenFormRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
-const { scheduleJobs } = require("./cronJobs/cronJobs");
 
 const path = require("path");
 const router = express.Router();
@@ -45,8 +44,6 @@ app.use("/api/order", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use(errorHandler);
-
-scheduleJobs();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "127.0.0.1", () => {
