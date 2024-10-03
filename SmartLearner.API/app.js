@@ -24,7 +24,9 @@ const app = express();
 connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(cors());
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
   res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); // Path to your alternative image

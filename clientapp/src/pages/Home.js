@@ -402,7 +402,7 @@ export default function Home() {
           <div className={styles.whyChooseText}>
             <p>
               See Why People Choose SmartLearner to{" "}
-              <span style={{ color: "yello" }}>PASS Their Driving Test.</span>
+              <span style={{ color: "yellow" }}>PASS Their Driving Test.</span>
             </p>
           </div>
           <div
