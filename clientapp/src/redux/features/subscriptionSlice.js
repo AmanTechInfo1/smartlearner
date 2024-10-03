@@ -35,7 +35,7 @@ export const fetchFreeTrialPlans = createAsyncThunk(
 
 export const fetchUserSubscriptions = createAsyncThunk(
   "subscriptions/fetchUserSubscriptions",
-  async (userId, dispatch, navigate, userSubscription, { rejectWithValue }) => {
+  async (userId,  { rejectWithValue }) => {
     try {
       const response = await axios.get(
         `${API_URL}/subscriptions/user/${userId}`
