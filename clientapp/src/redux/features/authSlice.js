@@ -91,8 +91,7 @@ export const loginUser = createAsyncThunk(
         toast.success(data.message || "Logged IN Successfully");
 
         const decodedToken = jwtDecode(user.token);
-        const expirationTime = decodedToken.exp * 1000 - Date.now();
-
+        const expirationTime = decodedToken.exp * 1000 - Date.now(); // Calculate remaining expiration time
         dispatch(autoLogoutUser(expirationTime, navigate));
 
         if (user.role === ROLES.ADMIN) {
