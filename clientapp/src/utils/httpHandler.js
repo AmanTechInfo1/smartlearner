@@ -54,12 +54,10 @@ const post = async (url, params, opt = {}) => {
 // Centralized error handling function
 const handleError = (error) => {
   if (error.response) {
+    console.error("API Error:", error.response.data);  // Log entire response
     if (error.response.status === 401) {
-      console.error("Unauthorized: Token expired or invalid.");
       localStorage.removeItem("user");
       window.location.href = "/login";  // Redirect to login
-    } else {
-      console.error("API Error:", error.response.data.message || error.message);
     }
   } else if (error.request) {
     console.error("Network Error:", error.message);
@@ -69,6 +67,7 @@ const handleError = (error) => {
 
   throw error;  // Re-throw the error to handle it in the calling function
 };
+
 
 
 // Export the HTTP methods
