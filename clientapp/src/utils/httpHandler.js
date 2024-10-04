@@ -54,26 +54,22 @@ const post = async (url, params, opt = {}) => {
 // Centralized error handling function
 const handleError = (error) => {
   if (error.response) {
-    // Server responded with a status code out of 2xx range
     if (error.response.status === 401) {
-      // Handle unauthorized access (e.g., token expired)
       console.error("Unauthorized: Token expired or invalid.");
-      // Optionally, you could log out the user or redirect to the login page
       localStorage.removeItem("user");
       window.location.href = "/login";  // Redirect to login
     } else {
       console.error("API Error:", error.response.data.message || error.message);
     }
   } else if (error.request) {
-    // No response received from the server
     console.error("Network Error:", error.message);
   } else {
-    // Other unknown errors
     console.error("Error:", error.message);
   }
 
   throw error;  // Re-throw the error to handle it in the calling function
 };
+
 
 // Export the HTTP methods
 const http = { get, post };
