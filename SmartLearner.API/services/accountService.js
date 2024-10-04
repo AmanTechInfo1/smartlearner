@@ -96,7 +96,7 @@ class AccountService {
       }
 
       
-      const jwtAge = 10000; 
+      const jwtAge = 1000000; 
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",
