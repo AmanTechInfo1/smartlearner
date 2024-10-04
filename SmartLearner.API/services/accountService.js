@@ -96,7 +96,7 @@ class AccountService {
       }
 
       
-      const jwtAge = 60; 
+      const jwtAge = 900000000; 
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",
@@ -111,7 +111,7 @@ class AccountService {
           email: user.email,
           role: role.data.name,
           token,
-          expiresIn: jwtAge * 1000, // Send expiry time in milliseconds
+          expiresIn: jwtAge , // Send expiry time in milliseconds
         },
       };
     } catch (err) {
