@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-hot-toast"; // Import toast
 
-const API_URL = "http://localhost:5000/api/subscription"; // Adjust as needed
+const API_URL = "https://api.smartlearner.com/api/subscription"; // Adjust as needed
 
 // Async Thunks for fetching data with toast notifications
 export const fetchAllSubscriptionPlans = createAsyncThunk(

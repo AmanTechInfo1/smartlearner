@@ -17,6 +17,7 @@ const requireAuth = (req, res, next) => {
         }
       }
     );
+    
   } else {
     return res.status(401).json({ msg: "Unauthorized Access" });
   }

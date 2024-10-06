@@ -56,38 +56,38 @@ class SubscriptionService {
     }
   }
 
-  // Start a free trial for a user
-  async startFreeTrial(userId, subscriptionId, trialDuration) {
-    const user = await User.findById(userId);
-    if (!user) throw new Error("User not found");
+  // // Start a free trial for a user
+  // async startFreeTrial(userId, subscriptionId, trialDuration) {
+  //   const user = await User.findById(userId);
+  //   if (!user) throw new Error("User not found");
 
-    // Check if free trial has been used
-    if (user.isFreeTrialUsed)
-      throw new Error("Free trial has already been used");
+  //   // Check if free trial has been used
+  //   if (user.isFreeTrialUsed)
+  //     throw new Error("Free trial has already been used");
 
-    // Create a new user subscription for the trial
-    const subscription = new UserSubscription({
-      userId,
-      subscriptionId, // Store subscription ID
-      isTrialActive: true,
-      trialStart: Date.now(),
-      trialDuration,
-    });
+  //   // Create a new user subscription for the trial
+  //   const subscription = new UserSubscription({
+  //     userId,
+  //     subscriptionId, // Store subscription ID
+  //     isTrialActive: true,
+  //     trialStart: Date.now(),
+  //     trialDuration,
+  //   });
 
-    await subscription.save();
+  //   await subscription.save();
 
-    // Update user information
-    user.isFreeTrialUsed = true;
-    user.trialStart = Date.now();
-    user.trialDuration = trialDuration;
-    user.isTrialActive = true; // This could be redundant; you may choose to track it in UserSubscription instead.
-    await user.save();
+  //   // Update user information
+  //   user.isFreeTrialUsed = true;
+  //   user.trialStart = Date.now();
+  //   user.trialDuration = trialDuration;
+  //   user.isTrialActive = true; // This could be redundant; you may choose to track it in UserSubscription instead.
+  //   await user.save();
 
-    return {
-      message: "Free trial started successfully",
-      subscription, // Return the subscription details
-    };
-  }
+  //   return {
+  //     message: "Free trial started successfully",
+  //     subscription, // Return the subscription details
+  //   };
+  // }
 }
 
 module.exports = new SubscriptionService();

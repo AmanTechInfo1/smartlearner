@@ -24,10 +24,8 @@ const userSchema = new mongoose.Schema({
   ],
   deletedOn: { type: Date },
   isBcryptHashed: { type: Boolean, required: true, default: false },
-  // New fields for tracking free trial
-  trialStart: { type: Date },
-  trialDuration: { type: Number }, // Duration in days for free trial
-  isTrialActive: { type: Boolean, default: false }, // Indicates if a trial is active
+
+  
 });
 
 const User = mongoose.model("User", userSchema);
