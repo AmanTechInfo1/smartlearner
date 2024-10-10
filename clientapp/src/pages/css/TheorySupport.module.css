@@ -9,18 +9,19 @@
   color: white;
 }
 .TSfirstContent {
-  background-image: url(../../assets/images/inner-banner.jpg);
+  background-image: url(../../assets/images/homebannerImg.jpg);
   position: relative;
   width: 100%;
 
   background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 .TSfirstContent h2 {
+  position: sticky;
   font-size: 3rem;
   text-align: center;
-  padding: 12rem 0px;
+  padding: 18rem 0px;
   color: #fff;
 }
 .innerTheorySupportSection {
@@ -691,18 +692,14 @@
 
 @media (max-width: 934px) {
   .partnerSection {
-    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-   
   }
 }
 @media (max-width: 780px) {
   .partnerSection {
-    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-   
   }
 }
 
@@ -714,9 +711,7 @@
     text-align: center;
   }
   .partnerSection {
-    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-   
   }
 }

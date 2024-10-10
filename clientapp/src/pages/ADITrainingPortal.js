@@ -49,13 +49,14 @@ export default function ADITrainingPortal() {
             This Road Map Shows The Journey To Become{" "}
             <span>A Fully Qualified Driving Instructor.</span>
           </p>
-          <img src={pointingHand} alt="pointing-hand" />
         </section>
         <div className={styles.adiPortalPageSeconddiv}>
           <img src={adiImg} alt="adiImg" />
         </div>
         <div className={styles.adiPortalPageThirddiv}>
-          <h2>Welcome <span>Message</span></h2>
+          <h2>
+            Welcome <span>Message</span>
+          </h2>
           <div className={styles.adiPortalVideo}>
             <iframe
               width="671"
@@ -68,11 +69,18 @@ export default function ADITrainingPortal() {
               allowfullscreen></iframe>
           </div>
           <div className={styles.adiLearningSupport}>
-            <h2>Learning <span>Materials</span> </h2>
+            <h2>
+              Learning <span>Materials</span>{" "}
+            </h2>
             <div id={styles.hrAdiLearningText}>
-              <hr id={styles.hrAdi} style={{border:'2px solid #006ace'}}/>
-              <p>Please See <span>The Below Content.</span></p>
-              <hr id={styles.hrAdi} style={{border:'2px solid rgb(0, 185, 0)'}}/>
+              <hr id={styles.hrAdi} style={{ border: "2px solid #006ace" }} />
+              <p>
+                Please See <span>The Below Content.</span>
+              </p>
+              <hr
+                id={styles.hrAdi}
+                style={{ border: "2px solid rgb(0, 185, 0)" }}
+              />
             </div>
           </div>
           <div className={styles.adiTrainingPortalLearning}>
@@ -86,7 +94,7 @@ export default function ADITrainingPortal() {
               </Link>
             </div>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaCarSide id={styles.adiPortalFaIcons}  />
+              <FaCarSide id={styles.adiPortalFaIcons} />
               <h2>Part 2 - Driving Ability</h2>
               <Link to="/adi-part-2">
                 <button className={styles.adiPortalBtnLearning}>

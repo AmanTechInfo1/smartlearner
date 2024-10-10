@@ -20,20 +20,7 @@ import PassPlusCorousel from "../../components/ui/PassPlusCarousel";
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import ImagesCarousel from "../../components/imageCarousel/ImagesCarousel";
-import OurPartners1 from "../../assets/images/our partners/BYLC_Logo.png";
 
-import OurPartners2 from "../../assets/images/our partners/gocv-1024x546.png";
-import OurPartners3 from "../../assets/images/our partners/Highways_England_logo.svg.png";
-import OurPartners4 from "../../assets/images/our partners/ii_Awards24_LOGO_acciDONT-long-1080x441.png";
-import OurPartners5 from "../../assets/images/our partners/JLR-Logo-2008 (1).png";
-
-import OurPartners7 from "../../assets/images/our partners/Screenshot 2024-05-02 at 13.51.33.png";
-import OurPartners8 from "../../assets/images/our partners/Screenshot 2024-05-02 at 13.55.26.png";
-import OurPartners9 from "../../assets/images/our partners/Screenshot 2024-05-02 at 14.05.12.png";
-import OurPartners10 from "../../assets/images/our partners/The-Tree-Council-Logo-1.png";
-import OurPartners11 from "../../assets/images/our partners/Sqa_logo.png";
-import OurPartners12 from "../../assets/images/our partners/THT_logo_1854x.png";
-import OurPartners13 from "../../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
 import Corousel from "../../components/ui/Carousel";
 
 export default function DrivingLessons() {
@@ -55,10 +42,9 @@ export default function DrivingLessons() {
         <section className={styles.DrivingLessonsSectionFront}>
           <div id={styles.dLFrontHeading}>
             <h2>
-              <span> "Learners of today, </span>
+              <span> "The Gold standard </span>
               <br />
-              <span>Drivers of tomorrow"</span>
-              <br /> <span>"86% first time pass rate!".</span>
+              <span>of Driver Education"</span>
             </h2>
           </div>
           <div id={styles.dLFrontImg}>
@@ -69,17 +55,32 @@ export default function DrivingLessons() {
       {/* /////////////// calling details ////////////////// */}
 
       <div className={styles.drivingLessonsCd}>
-        <section className={styles.drivinglCall}>
-          <a href="tel:+4402475092784" className={styles.drivinglCall}>
-            <IoCall id={styles.IconsS} />
-            <p>02475 092 784</p>
-          </a>
+        <section style={{ background: "rgb(245 208 0)" }}>
+          <div>
+            <h2>Efficient Learning</h2>
+            <p>
+              Our carefully crafted training program requires fewer lessons than
+              the average instructors
+            </p>
+          </div>
         </section>
         <section>
-          <a href="mailto:admin@smartlearner.com">
-            <HiMailOpen id={styles.IconsS} />
-            <p>Admin@Smartlearner.com</p>
-          </a>
+          <div>
+            <h2>Up-to-Date Techniques</h2>
+            <p>
+              Constantly evaluating to deliver the latest driving techniques and
+              legal practices.
+            </p>
+          </div>
+        </section>
+        <section style={{ background: "green" }}>
+          <div>
+            <h2>First-Time Pass Confidence</h2>
+            <p>
+              Training you to a standard far beyond test conditions, helping you
+              achieve a first-time pass.
+            </p>
+          </div>
         </section>
       </div>
       {/* /////////////////////////////////////////// */}
@@ -338,7 +339,6 @@ export default function DrivingLessons() {
           }}>
           <ImagesCarousel />
         </div>
-       
       </section>
       {/* /////////////////////////////////////Our Partners////////////////////////// */}
 

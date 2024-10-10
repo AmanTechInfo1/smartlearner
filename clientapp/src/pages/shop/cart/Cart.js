@@ -3,7 +3,11 @@ import styles from "./Cart.module.css";
 import cartIcon from "../../../assets/images/cartIcon1.png";
 import carImg from "../../../assets/images/car-red.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getDecreaseCart, getIncreaseCart, emptyCart } from "../../../redux/features/cartSlice";
+import {
+  getDecreaseCart,
+  getIncreaseCart,
+  emptyCart,
+} from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -25,7 +29,11 @@ const Cart = () => {
   };
 
   const calculateSubtotal = () => {
-    return myCart ? myCart.length>0 ? myCart.reduce((acc, item) => acc + item.price * item.count, 0) : 0 : 0;
+    return myCart
+      ? myCart.length > 0
+        ? myCart.reduce((acc, item) => acc + item.price * item.count, 0)
+        : 0
+      : 0;
   };
 
   const subtotal = calculateSubtotal();
@@ -37,88 +45,93 @@ const Cart = () => {
       <div id={styles.fontAntonio}>
         <div
           className="d-flex justify-content-center align-items-center gap-4 text-center mb-4 mt-2"
-          id={styles.cartFrontHeading}
-        >
+          id={styles.cartFrontHeading}>
           <h1 className="display-4 font-weight-bold">CART</h1>
           <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
         </div>
         <div className="d-flex  mb-4" id={styles.carImg}>
-        
-            <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
-        
+          <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
         </div>
         {myCart && myCart.length === 0 ? (
           <div className="text-center" id={styles.btnCartBox}>
             <h2>Your cart is empty</h2>
             <button
-            
               className="btn btn-primary mt-4"
-              onClick={() => navigate("/Driving-Lessons")}
-            >
+              onClick={() => navigate("/Driving-Lessons")}>
               Continue Shopping
             </button>
           </div>
         ) : (
           <>
-          <div className={styles.cartoverflow}>
-            <div
-              
-              id={styles.cartTable}
-            >
-              
-              <div id={styles.cartTableDetailsDiv}>
-                <div className="font-weight-bold" id={styles.cartTableDetails}>
-                  SERVICE
+            <div className={styles.cartoverflow}>
+              <div id={styles.cartTable}>
+                <div id={styles.cartTableDetailsDiv}>
+                  <div
+                    className="font-weight-bold"
+                    id={styles.cartTableDetails}>
+                    SERVICE
+                  </div>
+                  {myCart &&
+                    myCart.map((itm) => (
+                      <div id={styles.cartTableDetailsd} key={itm.id}>
+                        {itm.service}
+                      </div>
+                    ))}
                 </div>
-                {myCart && myCart.map((itm) => (
-                  <div id={styles.cartTableDetailsd} key={itm.id}>{itm.service}</div>
-                ))}
-              </div>
 
-              <hr></hr>
-              <div className="text-center" id={styles.cartTableDetailsDiv}>
-                <div className="font-weight-bold" id={styles.cartTableDetails}>
-                  PRICE
-                </div>
-                {myCart && myCart.map((itm) => (
-                  <div id={styles.cartTableDetailsd} key={itm.id}>£ {itm.price}</div>
-                ))}
-              </div>
-              <div className="text-center" id={styles.cartTableDetailsDiv}>
-                <div className="font-weight-bold" id={styles.cartTableDetails}>
-                  QUANTITY
-                </div>
-                {myCart && myCart.map((itm) => (
-                  <div id={styles.cartTableBtn} key={itm.id}>
-                    <div className={styles.quantityControl}>
-                      <button
-                        onClick={() => handleDecrease(itm.id, 1)}
-                        className={styles.decreaseButton}
-                      >
-                        -
-                      </button>
-                      <span>{itm.count}</span>
-                      <button
-                        onClick={() => handleIncrease(itm.id, 1)}
-                        className={styles.increaseButton}
-                      >
-                        +
-                      </button>
-                    </div>
+                <hr></hr>
+                <div className="text-center" id={styles.cartTableDetailsDiv}>
+                  <div
+                    className="font-weight-bold"
+                    id={styles.cartTableDetails}>
+                    PRICE
                   </div>
-                ))}
-              </div>
-              <div className="text-center" id={styles.cartTableDetailsDiv}>
-                <div className="font-weight-bold" id={styles.cartTableDetails}>
-                  SUBTOTAL
+                  {myCart &&
+                    myCart.map((itm) => (
+                      <div id={styles.cartTableDetailsd} key={itm.id}>
+                        £ {itm.price}
+                      </div>
+                    ))}
                 </div>
-                {myCart && myCart.map((itm) => (
-                  <div id={styles.cartTableDetailsd} key={itm.id}>
-                    {itm.price * itm.count}
+                <div className="text-center" id={styles.cartTableDetailsDiv}>
+                  <div
+                    className="font-weight-bold"
+                    id={styles.cartTableDetails}>
+                    QUANTITY
                   </div>
-                ))}
+                  {myCart &&
+                    myCart.map((itm) => (
+                      <div id={styles.cartTableBtn} key={itm.id}>
+                        <div className={styles.quantityControl}>
+                          <button
+                            onClick={() => handleDecrease(itm.id, 1)}
+                            className={styles.decreaseButton}>
+                            -
+                          </button>
+                          <span>{itm.count}</span>
+                          <button
+                            onClick={() => handleIncrease(itm.id, 1)}
+                            className={styles.increaseButton}>
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+                <div className="text-center" id={styles.cartTableDetailsDiv}>
+                  <div
+                    className="font-weight-bold"
+                    id={styles.cartTableDetails}>
+                    SUBTOTAL
+                  </div>
+                  {myCart &&
+                    myCart.map((itm) => (
+                      <div id={styles.cartTableDetailsd} key={itm.id}>
+                        £ {itm.price * itm.count}
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
             </div>
             <div id={styles.couponCart}>
               <div className={styles.cartCouponInputs}>
@@ -145,17 +158,13 @@ const Cart = () => {
                 </div>
                 <button
                   className="btn btn-secondary"
-                  onClick={() => navigate("/checkout")}
-                >
+                  onClick={() => navigate("/checkout")}>
                   PROCEED TO CHECKOUT
                 </button>
               </div>
             </div>
             <div className="text-center mt-4">
-              <button
-                className="btn btn-danger"
-                onClick={handleEmptyCart}
-              >
+              <button className="btn btn-danger" onClick={handleEmptyCart}>
                 EMPTY CART
               </button>
             </div>
