@@ -7,7 +7,7 @@ import {
   BsMenuButtonWideFill,
   BsPeopleFill,
 } from "react-icons/bs";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaExternalLinkSquareAlt, FaBlog } from "react-icons/fa";
 import { FaSignsPost } from "react-icons/fa6";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { TbCategoryFilled } from "react-icons/tb";
@@ -27,8 +27,7 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
     <>
       <aside
         id={styles.adminSidebar}
-        className={openSidebarToggle ? styles.sidebarResponsive : ""}
-      >
+        className={openSidebarToggle ? styles.sidebarResponsive : ""}>
         <div className={styles.adminSidebarTitle}>
           <div className={styles.adminSidebarBrand}>
             <FaUserTie
@@ -38,8 +37,7 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
           </div>
           <span
             className={`${styles.adminIcon} ${styles.adminCloseIcon}`}
-            onClick={OpenSidebar}
-          >
+            onClick={OpenSidebar}>
             X
           </span>
         </div>
@@ -58,8 +56,7 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/users"
-                className={`${styles.link} ${styles.admainLink}`}
-              >
+                className={`${styles.link} ${styles.admainLink}`}>
                 <BsPeopleFill className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Users
@@ -81,8 +78,7 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/products"
-                className={`${styles.link} ${styles.admainLink}`}
-              >
+                className={`${styles.link} ${styles.admainLink}`}>
                 <AiOutlineProduct className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Products
@@ -112,8 +108,7 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/quiz"
-                className={`${styles.link} ${styles.admainLink}`}
-              >
+                className={`${styles.link} ${styles.admainLink}`}>
                 <MdQuiz className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Quizes
@@ -137,7 +132,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               </div>
             </div>
           </li>
-
+          {/* ////////////////////////////////////////////////////////// */}
+          <Link to="/admin/blogs">
+            <li className={styles.adminSidebarListItem}>
+              <FaBlog className={styles.adminIcon} />
+              Blogs
+            </li>
+          </Link>
           {/* ///////////////////////////////// */}
           <Link to="/admin/order">
             <li className={styles.adminSidebarListItem}>

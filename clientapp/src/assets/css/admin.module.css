@@ -13,22 +13,21 @@
 
 .adminIcon1 {
   font-size: 20px;
-  
 }
 .adminHeaderRight {
   text-align: right;
- width: 100%;
- display: inline-flex;
- gap: 20px;
- justify-content: end;
- align-items: center;
+  width: 100%;
+  display: inline-flex;
+  gap: 20px;
+  justify-content: end;
+  align-items: center;
 }
 #adminLogout {
- display: inline-flex;
- gap: 10px;
-align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
   color: #2a3447;
- 
+
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
@@ -185,7 +184,6 @@ align-items: center;
   border-radius: 10px;
 
   transition: background-color 0.3s ease;
-
 }
 
 .adminSidebarListItem:hover {

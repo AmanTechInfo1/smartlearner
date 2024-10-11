@@ -116,6 +116,9 @@ import PartOneSubscription from "./pages/adiPages/adi-Subscription/Part-One-Subs
 import PartTwoSubscription from "./pages/adiPages/adi-Subscription/Part-TwoSubscription";
 import PartThreeSubscription from "./pages/adiPages/adi-Subscription/Part-ThreeSubscription";
 import BonusQuiz from "./pages/adiPages/bands/BonusQuiz";
+import Blogs from "./pages/blogpage/Blogs";
+import SingleBlogPage from "./pages/blogpage/SingleBlogPage";
+import AdminBlogs from "./containers/blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -233,6 +236,8 @@ export const router = createBrowserRouter([
       { path: "part-one-subscription", element: <PartOneSubscription /> },
       { path: "part-two-subscription", element: <PartTwoSubscription /> },
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
+      { path: "blogs", element: <Blogs /> },
+      { path: "blogs/:id", element: <SingleBlogPage /> },
       {
         path: "/quizModuleId/:id",
         element: <QuizModuleHome />,
@@ -306,6 +311,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin/products",
         element: <ProductModal />,
+      },
+      {
+        path: "/admin/blogs",
+        element: <AdminBlogs />,
       },
       {
         path: "/admin/productsSpecial",
