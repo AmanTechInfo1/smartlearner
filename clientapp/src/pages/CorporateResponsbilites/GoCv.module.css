@@ -34,7 +34,7 @@
   white-space: nowrap;
   margin: 0 auto;
   letter-spacing: 10px;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
 }
 @keyframes typing {
   from {
@@ -84,7 +84,6 @@
   opacity: 0;
   transform: translateY(100%);
   animation: slideUp 3s forwards;
-  animation-iteration-count: infinite;
 }
 @keyframes slideUp {
   to {
