@@ -35,7 +35,7 @@ export default function TheorySupport() {
       </section>
       {/* //////////////////////////////////////////////// CONTENT SECTION //////////////////////////////// */}
       <section className={styles.innerTheorySupportSection}>
-        <section className={styles.videosFramesSec}>
+        {/* <section className={styles.videosFramesSec}>
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
               <video
@@ -48,7 +48,7 @@ export default function TheorySupport() {
                 controls={true}></video>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* /////////////////////////////////  //////////////////*/}
         <section className={styles.dManualSection}>
           <hr />

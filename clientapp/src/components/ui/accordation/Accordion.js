@@ -37,7 +37,7 @@ const Accordion = () => {
       <AccordionItem
         title="FAMILY TICKETS TO DINNER & THEATER"
         content="SmartLearner Driving School in support and in partnership with Go CV, sponsored a £50 dinner voucher  at The Mulberry Coventry, followed by a family ticket of 4 seats for the spectacular magical panto ‘Beauty & the Beast’ donated by Belgrade Theatre, Coventry.
-Go CV registered followers, audience and card users had the chance to win free dinner and tickets to the theatre, through the facebook competition set by the Go CV page"
+Go CV registered followers, audience and card users had the chance to win free dinner and tickets to the theater, through the facebook competition set by the Go CV page"
       />
       <AccordionItem
         title="FAMILY TICKETS FOR FIRE DISPLAYS"

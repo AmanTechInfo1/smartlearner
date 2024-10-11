@@ -39,16 +39,15 @@ export default function DrivingLessons() {
   return (
     <div className={styles.drivingLessonsPage}>
       <div className={styles.DrivingLessonsPagedivFront}>
+        <div className={styles.opicity}></div>
         <section className={styles.DrivingLessonsSectionFront}>
           <div id={styles.dLFrontHeading}>
             <h2>
-              <span> "The Gold standard </span>
-              <br />
-              <span>of Driver Education"</span>
+              "The Gold standard <span> of Driver Education"</span>
             </h2>
           </div>
-          <div id={styles.dLFrontImg}>
-            <img src={passImg} alt="Pass Img" />
+          <div className={styles.dLFrontHeadingPara}>
+            <p>"Start Your Journey Today"</p>
           </div>
         </section>
       </div>
