@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a24c4a24.css",
-    "main.js": "/static/js/main.f3e25665.js",
+    "main.css": "/static/css/main.052863b1.css",
+    "main.js": "/static/js/main.5341232b.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
@@ -75,6 +75,7 @@
     "static/media/theoryImgBanner.jpg": "/static/media/theoryImgBanner.8a3bd4ec9f45405a5b77.jpg",
     "static/media/West_Midlands_Fire_Service_crest.svg.png": "/static/media/West_Midlands_Fire_Service_crest.svg.192f8b2bdcf41552301c.png",
     "static/media/video-bgImg.jpg": "/static/media/video-bgImg.48f6696742fd77665dda.jpg",
+    "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
     "static/media/vehicalscarrying.png": "/static/media/vehicalscarrying.6c038a4bf8c129bb8de3.png",
@@ -84,7 +85,6 @@
     "static/media/CChampion-2.jpg": "/static/media/CChampion-2.c89fb0c00fdb72a9a2a6.jpg",
     "static/media/cimg13.jpg": "/static/media/cimg13.4739f426b7f13d3a3032.jpg",
     "static/media/going-green-img3.jpg": "/static/media/going-green-img3.a99719f1a5d82a55e1f7.jpg",
-    "static/media/pdiBannerImages.jpg": "/static/media/pdiBannerImages.2ef2126ef324921ca2b5.jpg",
     "static/media/going-green-img.jpg": "/static/media/going-green-img.aac79fce5d3bf2a41376.jpg",
     "static/media/texiImg.png": "/static/media/texiImg.a21ff407a2c6cd49e01c.png",
     "static/media/going-green-img6.jpg": "/static/media/going-green-img6.737cbc307e544aa78517.jpg",
@@ -278,15 +278,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.a24c4a24.css.map": "/static/css/main.a24c4a24.css.map",
-    "main.f3e25665.js.map": "/static/js/main.f3e25665.js.map",
+    "main.052863b1.css.map": "/static/css/main.052863b1.css.map",
+    "main.5341232b.js.map": "/static/js/main.5341232b.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a24c4a24.css",
-    "static/js/main.f3e25665.js"
+    "static/css/main.052863b1.css",
+    "static/js/main.5341232b.js"
   ]
 }
