@@ -50,7 +50,6 @@ class dashboardService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err)
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,

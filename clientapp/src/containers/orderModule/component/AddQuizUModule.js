@@ -65,10 +65,7 @@ const AddQuizUModuleModal = (props) => {
     // };
 
 
-    console.log(errors, "errorserrorserrorserrors")
     const onSubmit = async (data) => {
-
-        console.log(data, "datadatadata")
 
         let final_data = {}
         // final_data["option"] = [
@@ -93,7 +90,6 @@ const AddQuizUModuleModal = (props) => {
         //     description,
         //     question
         // }
-        // console.log(final_data,"final_datafinal_datafinal_datafinal_data")
 
         // // const isValid = await validateForm();
         // // if (isValid) {
@@ -278,7 +274,6 @@ const AddQuizUModuleModal = (props) => {
                                 <option disabled value="">
                                     Select...
                                 </option>
-                                {console.log(Object.entries(optionsData).map((category) => { return category[1] }), "Object.entries(optionsData)")}
                                 {Object.entries(optionsData).map((option, index) => (
                                     <option key={index} value={option[1]}>
                                         {option[1]}

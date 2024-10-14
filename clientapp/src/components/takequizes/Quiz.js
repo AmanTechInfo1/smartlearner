@@ -325,7 +325,6 @@ const Quiz = () => {
       formdata.append("option4", option4);
     }
 
-    console.log(queeeopt, "option1,option2,option3,option4")
     // formdata.append("options", question);
     // formdata.append("lang", "hi");
     formdata.append("lang", questionTranslate);
@@ -340,7 +339,6 @@ const Quiz = () => {
       .then((response) => response.json())
       .then((result) => {
         if (myDivRef != null && myDivRef.current != null) {
-          console.log(result.translatedText, "myDivRef")
           myDivRef.current.innerHTML = result.question
           if (option1) {
             document.getElementById("option1").innerHTML = result.option1
@@ -367,10 +365,7 @@ const Quiz = () => {
 
   useEffect(() => {
 
-    console.log(myDivRef.current, "myDivRef")
     if (myDivRef != null && myDivRef.current != null) {
-      console.log("myDivRefmyDivRefmyDivRef", myDivRef.current.innerHTML)
-
       handleTranslation(myDivRefQue.current.innerHTML)
     }
 

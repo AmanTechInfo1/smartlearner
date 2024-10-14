@@ -46,8 +46,6 @@ export default function FinalCheckout(props) {
       "myCart":myCart 
     }
 
-    console.log(finalArr,"formDataformData")
-
     dispatch(getCompleteCheckout(finalArr,()=>{
       navigate("/paymentProcessing")
     }))

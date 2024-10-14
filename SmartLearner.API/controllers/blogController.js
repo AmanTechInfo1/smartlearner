@@ -4,7 +4,6 @@ class BlogController {
   // Create a new blog
   async createBlog(req, res, next) {
     try {
-      console.log(req.body);
       const result = await blogService.createBlogAsync(req.body);
       res.status(201).json(result);
     } catch (err) {

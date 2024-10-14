@@ -18,14 +18,14 @@ const productSlice = createSlice({
         getAllProductsSuccess: (state, action) => {
             state.products = action.payload.products;
             state.sortedProducts = action.payload.products;
-            
+
             state.productCount = action.payload.totalCount;
             state.loading = false;
         },
         getAllProductsFailure: (state) => {
             state.products = [];
             state.sortedProducts = [];
-           
+
             state.productCount = null;
             state.loading = false;
         },
@@ -61,8 +61,6 @@ const productSlice = createSlice({
         },
 
         getOneProductsSuccess: (state, action) => {
-
-            console.log("getOneProductsSuccess",action.payload)
             state.oneproduct = action.payload
         },
         getOneProductsFailure: (state) => {
@@ -113,16 +111,14 @@ const productSlice = createSlice({
 
 export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
     try {
-
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
-       
+
         const response = await httpHandler.get(
             `/api/product/get-products?search=${search}&page=${page}&pagesize=${pagesize}`
         );
         if (response.data.success) {
             dispatch(getAllProductsSuccess(response.data.data));
-         
+
             dispatch(sortProducts(response.data.data))
         } else {
             toast.error(response.data.message);
@@ -135,8 +131,6 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
 };
 export const getAllProductsCategory = (search, page, pagesize) => async (dispatch) => {
     try {
-
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/product/get-productsCategory?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -159,8 +153,6 @@ export const getAllProductsById = (id) => async (dispatch) => {
         const response = await httpHandler.get(
             `/api/product/get-products/${id}`
         );
-        console.log("API Response:", response);
-        console.log(response.statusText,"response.dataresponse.data")
         if (response.data) {
             dispatch(getOneProductsSuccess(response.data));
         } else {
@@ -194,10 +186,11 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
 
 
 
-export const createProduct = (data, reset, toggleAddCategoryModal,state) => async (dispatch) => {
+export const createProduct = (data, reset, toggleAddCategoryModal, state) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/add-product`, data,{headers:{"Content-Type":"multipart/form-data"}});
+        console.log(data);
+        const response = await httpHandler.post(`/api/product/add-product`, data);
         if (response.data.success) {
             toast.success(response.data.message);
             reset();
@@ -214,10 +207,10 @@ export const createProduct = (data, reset, toggleAddCategoryModal,state) => asyn
     }
 };
 
-export const editProduct = (id,data,reset,toggleEditProductModal,state) => async (dispatch) => {
+export const editProduct = (id, data, reset, toggleEditProductModal, state) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        const response = await httpHandler.post(`/api/product/edit-product/${id}`, data,{headers:{"Content-Type":"multipart/form-data"}});
+        const response = await httpHandler.post(`/api/product/edit-product/${id}`, data, { headers: { "Content-Type": "multipart/form-data" } });
         if (response.data.success) {
             toast.success(response.data.message);
             reset();

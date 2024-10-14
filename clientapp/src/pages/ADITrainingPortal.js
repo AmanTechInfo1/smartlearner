@@ -40,7 +40,7 @@ export default function ADITrainingPortal() {
           <div className={styles.opicity}></div>
           <section>
             <h2>
-              Welcome TO <span>PDI</span>{" "}
+              Welcome TO <span>PDI Portal</span>{" "}
             </h2>
           </section>
         </div>

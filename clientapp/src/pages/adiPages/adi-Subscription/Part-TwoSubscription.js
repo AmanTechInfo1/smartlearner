@@ -27,7 +27,6 @@ const PartTwoSubscription = () => {
     }, [dispatch]);
   
     const handleFreeTrialSubscribe = (plan) => {
-      console.log("User ID:", userId); // Logs the userId before starting the free trial
   
       dispatch(
         startFreeTrial({

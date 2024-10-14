@@ -92,7 +92,6 @@ export const loginUser = createAsyncThunk(
 
         const decodedToken = jwtDecode(user.token);
         const expirationTime = decodedToken.exp * 1000 - Date.now(); 
-        console.log(`Expiration time: ${expirationTime} milliseconds`); // Calculate remaining expiration time
         if (expirationTime <= 0) {
           console.warn("Token has already expired, logging out immediately.");
           dispatch(logoutUser());
@@ -137,9 +136,7 @@ export const logoutUser = createAsyncThunk(
 
 export const autoLogoutUser = (expiresIn, navigate) => async (dispatch) => {
   try {
-    console.log(`Setting auto logout for ${expiresIn} milliseconds`);
     setTimeout(() => {
-      console.log("User is being logged out due to token expiration");
       dispatch(logoutUser());
       navigate("/login");
     }, expiresIn);

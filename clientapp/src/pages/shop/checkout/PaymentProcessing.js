@@ -90,9 +90,6 @@ export default function PaymentProcessing() {
 
   }
 
-  console.log(hashCode, "dhasjkdkasjdas")
-
-
   // useEffect(()=>{
 
   // },[hashCode])

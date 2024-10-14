@@ -4,7 +4,6 @@ class CategoryController {
   async createCategory(req, res, next) {
     try {
       const categoryData = req.body;
-      console.log(categoryData)
       const category = await categoryService.createCategoryAsync(categoryData);
       res.status(201).json(category);
     } catch (err) {

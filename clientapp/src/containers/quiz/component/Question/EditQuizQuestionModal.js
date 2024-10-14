@@ -43,8 +43,6 @@ const EditQuizQuestionModal = (props) => {
     if (data.image && data.image[0]) {
       formData.append('image', data.image[0]);
     }
-    console.log(Object.fromEntries(formData));
-    // Handle form submission logic here
   };
 
   return (

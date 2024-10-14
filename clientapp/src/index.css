@@ -70,6 +70,7 @@ ul {
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   border-radius: 30px;
+  box-shadow: 0 0 10px #ccc;
 }
 .callBackform h2 {
   font-family: "Montserrat", sans-serif;

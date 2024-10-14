@@ -27,7 +27,7 @@ export default function MockTestBand() {
         {/* ///////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <h2>
-            Part 1 -<span> Mock tests</span>
+            What pass mark is required <span>for the ADI part 1 test?</span>
           </h2>
           <hr style={{ opacity: "1", border: "1px solid black" }}></hr>
 
@@ -35,20 +35,16 @@ export default function MockTestBand() {
             <ul type="none">
               <li>
                 <p>
-                  Once you have booked your part one theory test, it goes
-                  without saying that revision is essential and it is highly
-                  unlikely that you will be able to pass this with no revision.
-                  When you’re revising for your part one theory test, there are
-                  lots of different things you can do to ensure that you’re
-                  test-ready and arguably, one of the most important things is
-                  to sit a few mock theory tests. The pass mark is 85. Thus
-                  making it much stricter than the learners theory test. In
-                  addition to scoring 90 marks. You will need score at least 20
-                  out of a possible 25 marks in each of the 4 categories. This
-                  scoring system makes the test a little bit more difficult. For
-                  example you may have a total score of 90 but if you have 3
-                  categories with 20 out of 20 and only 10 out of 20 on the
-                  other category you would not pass.
+                  Candidates must achieve a pass rate of 85% or higher in the
+                  multiple-choice section of the ADI theory test. This must be
+                  made up of at least 20 correct answers for each section.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The pass mark for the hazard perception test is 57 out of 75.
+                  So, candidates should aim to score an average of 3 to 4 points
+                  per hazard
                 </p>
               </li>
             </ul>
@@ -75,6 +71,14 @@ export default function MockTestBand() {
               <button>Start Quiz</button>
             </Link>
           </section>
+        </div>
+        <div className={styles.TMnextPage}>
+          <Link to="/adi-part-one-test">
+            {" "}
+            <button className={styles.TMnextButton}>
+              NEXT PAGE Book your part 1 test{" "}
+            </button>
+          </Link>
         </div>
       </div>
     </div>

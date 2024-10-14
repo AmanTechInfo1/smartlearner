@@ -21,8 +21,8 @@
   position: relative;
   width: 100%;
   padding: 5rem 0;
-  background-image: url(../../assets/images/vehicleHandling.jpg);
-  background-position: bottom;
+  background-image: url(../../assets/images/dlbannerimg.png);
+  background-position: center;
   background-size: cover;
 }
 .opicity {
@@ -55,6 +55,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 12px;
+  background-color: white;
 }
 .heading2 h2 {
   color: #006ace;
@@ -183,7 +184,7 @@
 
 .hazardTestWorkListSection {
   padding: 1rem 1rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -444,6 +445,528 @@
   background-color: black;
   color: #006ace;
 }
+
+/* ////////////////////////////////////////////////////////////////// */
+.pdiContainer {
+  padding: 20px;
+   /* light blue */
+  color: #ffffff;
+}
+.pdiContainer h3{
+  color: #000000;
+}
+.pdiOne {
+  font-size: 2rem;
+  text-align: center;
+  color: #006400; /* dark green */
+}
+
+.pdiTwo, .pdiThree {
+  margin: 20px 0;
+  background-color: #006ace; /* light green */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pdiThree {
+  margin: 20px 0;
+  background-color: rgb(0, 185, 0); /* light green */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdiBands {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.pdiBandItem {
+  background-color: #006ace;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid rgb(0, 255, 0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pdiBandItem strong{
+  color: rgb(0, 255, 0);
+}
+
+
+
+@media (min-width: 768px) {
+  .pdiBands {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+/* /////////////////////////////////////////////// */
+.tipsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+/* Light blue background */
+  color: #003300; /* Dark green text */
+  max-width: 1400px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hazardTips {
+  background-color: #006ace; /* Light cyan background */
+  border-radius: 10px;
+  border-left: 4px solid rgb(0, 255, 0);
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hazardTips li{
+  color: rgb(0, 255, 0);
+}
+.hazardTips strong{
+  color: #000000;
+}
+.generalTips{
+  background-color: rgb(0, 255, 0);
+  border-left: 4px solid #006ace; /* Light cyan background */
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.generalTips strong{
+  color: #000000;
+}
+.generalTips li{
+  color: #006ace;
+}
+.pdiTipsSectionTitle {
+  font-size: 30px;
+  color: #000000; /* Teal color for headings */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tipsContainer ul {
+  padding-left: 20px;
+}
+
+.tipsContainer ul li {
+  margin-bottom: 10px;
+}
+
+.pdiTipsOne, .pdiTipsTwo, .pdiTipsThree, .pdiTipsFour, .pdiTipsFive, .pdiTipsSix, .pdiTipsSeven {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .tipsContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .hazardTips, .generalTips {
+    width: 48%;
+  }
+}
+
+
+/* Container styling */
+.TMcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+ /* Light blue background */
+}
+.Tmodd {
+  background-color: #28a900; /* Light green background for odd */
+}
+
+.Tmeven {
+  background-color: #006ace; /* Light blue background for even */
+}
+/* Card styling */
+.materialCard {
+  /* Light green background */
+  border: 2px solid #008080; /* Green border */
+  border-radius: 10px;
+  width: 300px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.materialCard:hover {
+  transform: scale(1.05);
+}
+
+/* Image styling */
+.materialImage {
+  max-width: 300px;
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  
+  border-radius: 5px;
+}
+
+/* Material details */
+.materialDetails h3 {
+  color: #ffffff; /* Darker green for titles */
+  margin: 10px 0;
+}
+
+.materialDetails p {
+  color: #ffffff; /* Dark blue for captions */
+  font-size: 14px;
+}
+
+/* Next Page button styling */
+.TMnextPage {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.TMnextButton {
+  background-color: #0073e6; /* Blue button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.TMnextButton a{
+  text-decoration: none;
+  color: white;
+}
+.TMnextButton:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .materialCard {
+    width: 100%;
+  }
+
+  .TMcontainer {
+    padding: 10px;
+  }
+}
+
+/* //////////////////////////////////////////////////// */
+.bookTestPartOneSection {
+ /* Light blue background */
+  padding: 40px;
+  text-align: center;
+}
+
+.PartOnecontentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.PartOnepageTitle {
+  font-size: 2.5rem;
+  color: #00bcf5; /* Dark green for the title */
+  margin-bottom: 20px;
+}
+
+.PartOnepart {
+  background-color: hsl(156, 100%, 49%); /* White background for content parts */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.PartOnepartTitle {
+  font-size: 1.8rem;
+  color: #ffffff; /* Medium green for section titles */
+  margin-bottom: 10px;
+}
+
+.PartOnetext {
+  font-size: 1rem;
+  color: #000000; /* Dark green for text */
+  line-height: 1.6;
+}
+
+.PartOnebookTestButtonWrapper {
+  margin-top: 30px;
+  
+}
+.PartOnebookTestButtonWrapper a{
+  text-decoration: none;
+}
+.PartOnebookTestLink {
+  display: inline-block;
+  background-color: #00796b; /* Medium green button */
+  color: #ffffff;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+.PartOnebookTestLink:hover {
+  background-color: #004d40; /* Darker green on hover */
+}
+
+.PartOnenextPageButton {
+  background-color: #004d40; /* Dark green */
+  color: #ffffff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.PartOnenextPageButton:hover {
+  background-color: #00251a; /* Darker green on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .PartOnepageTitle {
+    font-size: 2rem;
+  }
+
+  .PartOnepartTitle {
+    font-size: 1.5rem;
+  }
+
+  .PartOnebookTestLink, .PartOnenextPageButton {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .PartOnepageTitle {
+    font-size: 1.8rem;
+  }
+
+  .PartOnepartTitle {
+    font-size: 1.2rem;
+  }
+
+  .PartOnetext {
+    font-size: 0.9rem;
+  }
+}
+/* ///////////////////////////////////////////////// */
+.testDayTips {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+ /* Light blue background */
+  color: #004d40;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+   /* Dark green text */
+}
+.testDayTips ul li{
+  color: white;
+}
+.testDayheader {
+  text-align: center;
+  background-color: #004d40; /* Dark green background */
+  color: #f0f8ff; /* Light blue text */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.testDayheader h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.testDayheader p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.testDaypart {
+  background-color: #00fb5491; /* Light cyan background */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid #004d40; /* Dark green border */
+}
+
+.testDaypart h2 {
+  color: #ffffff; /* Medium green heading */
+  margin-bottom: 15px;
+}
+.testDaypart p{
+  color: white;
+}
+
+.testDaypart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.testDaypart ul li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+
+.testDaypart ul li strong {
+  color: #00ffd5; /* Dark green text for bold */
+}
+
+.testDayconclusion {
+  text-align: center;
+  padding: 20px;
+  background-color: #004d40; /* Dark green background */
+  color: white;
+  border-radius: 8px;
+}
+
+.testDayconclusion h3 {
+  font-size: 2em;
+}
+
+.testDaynextPageButton {
+  background-color: #00796b; /* Medium green button */
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.testDaynextPageButton:hover {
+  background-color: #004d40; /* Darker green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .testDaytestDayTips {
+    padding: 10px;
+  }
+
+  .testDayheader h1 {
+    font-size: 2em;
+  }
+
+  .testDayheader p,
+  .testDaypart ul li,
+  .testDayconclusion h3 {
+    font-size: 1em;
+  }
+
+  .testDaynextPageButton {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+}
+/* //////////////////////////////////////////////////////////// */
+/* Container for the page */
+.goodLuckPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  text-align: center;
+  padding: 20px;
+}
+
+/* Animation for fade-in */
+.goodluckfadeIn {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Heading styles */
+.goodluckheading {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Message paragraph */
+.goodluckmessage {
+  font-size: 1.2rem;
+  color: #e3f2fd;
+  margin-bottom: 30px;
+}
+.goodluckcontainer{
+  text-decoration: none;
+  color: white;
+}
+/* Button styles */
+.goodluckbtn {
+  background-color: #00695c;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.goodluckbtn:hover {
+  background-color: #004d40;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .goodluckheading {
+    font-size: 2rem;
+  }
+  .goodluckmessage {
+    font-size: 1rem;
+  }
+  .goodluckbtn {
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .goodluckheading {
+    font-size: 1.5rem;
+  }
+  .goodluckmessage {
+    font-size: 0.9rem;
+  }
+  .goodluckbtn {
+    padding: 10px 20px;
+  }
+}
+
 /* .hazardTestWorkListDiv img {
                           max-width: 250px;
                           width: 100%;
@@ -1139,23 +1662,7 @@ p {
   background-color: black;
 }
 
-#btnDiv {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-#btnDiv a {
-  text-decoration: none;
-}
-#btnDiv button {
-  width: 100%;
-}
+
 /* /////////////// */
 .innerTheorySupportContent {
   max-width: 800px;

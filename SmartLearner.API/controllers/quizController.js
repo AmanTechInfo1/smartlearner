@@ -18,8 +18,6 @@ class QuizController {
       delete quizData.option2Image
       delete quizData.option3Image
       delete quizData.option4Image
-      console.log(quizData,"quizDataquizData")
-      // console.log("quizDataquizDataquizData",quizData,"quizDataquizDataquizData");
       const quiz = await quizService.createQuizAsync(quizData);
       
       res.status(201).json(quiz);
@@ -33,8 +31,6 @@ class QuizController {
     try {
       var quizData = req.body;
       quizData["option"]=quizData.option.split(",")
-      console.log(quizData,"quizDataquizData")
-      // console.log("quizDataquizDataquizData",quizData,"quizDataquizDataquizData");
       const quiz = await quizService.updateQuizAsync(req.params.id,quizData);
       
       res.status(201).json(quiz);
@@ -65,7 +61,6 @@ class QuizController {
 
       const { page, pagesize, search } = req.query;
 
-      console.log(req.userId,"req.params.id",req.params.id,"req.userIdreq.userId")
       const response = await quizService.getRandomQuiz(req.userId,req.params.cid,req.params.id);
       res.status(201).json(response);
     } catch (err) {
@@ -146,7 +141,6 @@ class QuizController {
       res.json(result);
     } catch (err) {
 
-      console.log(err)
       next(err);
     }
   }
@@ -198,7 +192,6 @@ class QuizController {
   async addQuizCategory(req, res, next) {
     try {
       var quizData = req.body;
-      console.log(req.body,"quizDataquizDataquizData");
       const quiz = await quizService.createQuizCategoryAsync(quizData);
       
       res.status(201).json(quiz);
@@ -212,7 +205,6 @@ class QuizController {
   async updateQuizCategory(req, res, next) {
     try {
       var quizData = req.body;
-      console.log(req.body,"quizDataquizDataquizData");
       const quiz = await quizService.updateQuizCategoryAsync(req.params.id,quizData);
       
       res.status(201).json(quiz);
@@ -236,7 +228,6 @@ class QuizController {
   async addQuizModule(req, res, next) {
     try {
       var quizData = req.body;
-      console.log(req.body,"quizDataquizDataquizData");
       const quiz = await quizService.createQuizModuleAsync(quizData);
       
       res.status(201).json(quiz);
@@ -250,7 +241,6 @@ class QuizController {
   async updateQuizModule(req, res, next) {
     try {
       var quizData = req.body;
-      console.log(req.body,"quizDataquizDataquizData");
       const quiz = await quizService.updateQuizModuleAsync(req.params.id,quizData);
       
       res.status(201).json(quiz);
@@ -283,7 +273,6 @@ class QuizController {
   // async addNewQuiz(req, res, next) {
   //   try {
   //     var quizData = req.body;
-  //     console.log(quizData);
   //     const quiz = await quizService.createQuizAsync(quizData);
       
   //     res.status(201).json(quiz);

@@ -27,19 +27,14 @@ class OrderService {
 
         let ono = +totalOrder[0]["orderNo"].replace("Order-", "") + 1
 
-        console.log(`Order-${(ono).toString().padStart(6, '0')}`, "totalOrder[0]")
 
         orderId = `Order-${(ono).toString().padStart(6, '0')}`
 
-        // console.log(loop,"looplooploop")
         // const numberString = (1).toString().padStart(loop, '0')
 
         // orderId=`Order-${(1).toString().padStart(loop, '0')}`
 
-        // console.log(`Order-${(1).toString().padStart(loop, '0')}`,"totalOrder[0]")
       }
-
-      console.log(totalOrder, "totalOrdertotalOrder")
 
       data["orderNo"] = orderId
 
@@ -67,7 +62,6 @@ class OrderService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err, "dsakdjsadhksa")
       throw new Error("Could not create Order");
     }
   }
@@ -125,14 +119,12 @@ class OrderService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
   
   async getMyOrderAsync(uid) {
     try {
-      console.log(uid,"uiduifsdakfjdduiduiduid")
       let aggr = [
         {
           '$match': {
@@ -210,9 +202,6 @@ class OrderService {
 
 
       const order = await Order.aggregate(aggr);
-
-
-      console.log(order,"orderorderorderorder")
       const totalCount = await Order.countDocuments();
       const resultObject = {
         message: "Order Fetch Successfully",
@@ -222,8 +211,6 @@ class OrderService {
       };
       return resultObject;
     } catch (err) {
-
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -318,7 +305,6 @@ class OrderService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -333,8 +319,6 @@ class OrderService {
       const order = await Order.findOneAndUpdate({orderNo:uid},{ $set: { orderPaymentStatus: 'Completed' } });
       
     } catch (err) {
-
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -423,8 +407,6 @@ class OrderService {
       const order = await Order.aggregate(aggr);
       return order[0];
     } catch (err) {
-
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -490,7 +472,6 @@ class OrderService {
   //     return resultObject;
   //   } catch (err) {
 
-  //     console.log(err, "errerrerrerrerr")
   //     throw new Error("Could not fetch role");
   //   }
   // }

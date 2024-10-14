@@ -360,7 +360,7 @@ export default function HazardPreceptions() {
             marginRight: "auto",
             marginLeft: "auto",
           }}>
-          <Link to="/hazard-perception">
+          <Link to="/hazard-clips">
             <button id={styles.hazzardBtn}>Hazard Videos</button>
           </Link>
         </div>

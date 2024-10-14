@@ -19,8 +19,6 @@ const AddBlog = (props) => {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitting data:", data);
-
     const formData = new FormData();
     formData.append("email", data.email);
     formData.append("blogName", data.blogName);
@@ -33,9 +31,6 @@ const AddBlog = (props) => {
 
     // Log formData for debugging
     for (let pair of formData.entries()) {
-      console.log(
-        `${pair[0]}: ${pair[1] instanceof File ? pair[1].name : pair[1]}`
-      );
     }
 
     dispatch(createBlog(formData, reset, props.toggleAddBlogModal));
@@ -169,7 +164,6 @@ const AddBlog = (props) => {
                   onChange={(e) => {
                     const file = e.target.files;
                     setImage(file[0]);
-                    console.log(file, "filefilefilefilefilefile");
                     onChange(file);
                   }}
                   autoComplete="off"

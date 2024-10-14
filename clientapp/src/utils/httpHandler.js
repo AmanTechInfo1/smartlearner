@@ -38,7 +38,7 @@ const post = async (url, params, opt = {}) => {
       ...opt,
       headers: {
         ...opt.headers,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: token,
       },
     };

@@ -15,7 +15,6 @@ function AdminHeader({ OpenSidebar }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const performSearch = () => {
-    console.log("Search initiated for:", searchQuery);
     // Perform actual search operation here
   };
   const dispatch = useDispatch();

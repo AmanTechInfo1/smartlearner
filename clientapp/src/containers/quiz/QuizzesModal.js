@@ -74,7 +74,6 @@ const QuizzesModal = () => {
             align: "center",
             sorter: (a, b) => a.answer.length - b.answer.length,
             render: (text) => {
-                console.log("texttexttext", text )
                 return <span title={text}>
                     {text.join(", ")}
                 </span>

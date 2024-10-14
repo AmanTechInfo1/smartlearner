@@ -61,7 +61,6 @@ class RoleController {
   async translator(req, res, next) {
     try {
 
-      console.log(req.body.lang, "req.body;req.body;req.body;")
       // const result = await roleService.deleteRoleAsync(req.params.id);
       const translatedText = translate(req.body.question, { from: 'en', to: req.body.lang });
       let options = {}

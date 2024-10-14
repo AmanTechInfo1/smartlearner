@@ -45,10 +45,6 @@ function EditProductSpecialModal(props) {
     );
   };
 
-
-  console.log(errors, "errorserrorserrors")
-
-
   useEffect(() => {
     if (oneproduct) {
       setFormData({
@@ -70,7 +66,6 @@ function EditProductSpecialModal(props) {
   const handleInputChange = (e) => {
 
     const { name, value } = e.target;
-    console.log(e.target.name, e.target, "e.targete.target")
     setFormData({
       ...formData,
       [name]: value,
@@ -78,8 +73,6 @@ function EditProductSpecialModal(props) {
 
   };
 
-
-  console.log(errors, "Dasasdasddasda")
 
 
   return (

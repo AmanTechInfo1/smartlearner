@@ -30,7 +30,10 @@ export default function TheorySupport() {
       <section className={styles.theorySupportHeadingContent}>
         <div className={styles.TSfirstContent}>
           <div className="opicity"></div>
+          <div className={styles.TSfirstContentHeading}>
           <h2>THEORY SUPPORT </h2>
+          </div>
+         
         </div>
       </section>
       {/* //////////////////////////////////////////////// CONTENT SECTION //////////////////////////////// */}

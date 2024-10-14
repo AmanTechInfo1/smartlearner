@@ -50,8 +50,6 @@ const Countdown = () => {
       const now = new Date().getTime();
       const timeLeft = endTime - now;
 
-      console.log(`Time left: ${timeLeft}`); // Debugging line
-
       if (timeLeft <= 0) {
         clearInterval(newCountdownInterval);
         setDays(0);

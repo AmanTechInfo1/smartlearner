@@ -19,7 +19,6 @@ function AddCategories(props) {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitting data:", data);
 
     const formData = new FormData();
     formData.append("name", data.name); 

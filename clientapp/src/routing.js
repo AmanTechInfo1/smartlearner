@@ -120,6 +120,12 @@ import Blogs from "./pages/blogpage/Blogs";
 import SingleBlogPage from "./pages/blogpage/SingleBlogPage";
 import AdminBlogs from "./containers/blog/Blog";
 import TermsAndConditions from "./pages/Term&Condition";
+import TrainningMaterial from "./pages/adiPages/additionalPages/TrainningMaterial";
+import PartOneTrainnigMaterial from "./pages/adiPages/additionalPages/PartOneTrainnigMaterial";
+import PartOneTest from "./pages/adiPages/additionalPages/PartOneTest";
+import TestDayTips from "./pages/adiPages/additionalPages/TestDayTips";
+import GoodLuckPage from "./pages/adiPages/additionalPages/Goodlucksign";
+import HazzardClips from "./pages/adiPages/additionalPages/HazzardClips";
 
 export const router = createBrowserRouter([
   {
@@ -241,6 +247,22 @@ export const router = createBrowserRouter([
       { path: "blogs/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
       {
+        path:"trainning-material", element: <TrainningMaterial/>
+      },
+      {
+        path:"part-1-trainning-material", element: <PartOneTrainnigMaterial/>
+      },
+      {
+        path:"adi-part-one-test", element: <PartOneTest/>
+      },
+      {
+        path:"test-day-tips", element: <TestDayTips/>
+      },
+      {
+        path:"hazard-clips", element: <HazzardClips/>
+      },
+      
+      {
         path: "/quizModuleId/:id",
         element: <QuizModuleHome />,
       },
@@ -279,7 +301,9 @@ export const router = createBrowserRouter([
   { path: "forgot-password", element: <ForgotPassword /> },
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
-
+  {
+    path:"goodluck", element: <GoodLuckPage/>
+  },
   {
     path: "admin",
     element: (

@@ -22,9 +22,6 @@ export default function QuizCategoryHome() {
 
   const { Quizcards } = useSelector((state) => state.dashboard);
 
-
-  console.log(Quizcards, "cardscardscardscards")
-
   let a = ""
   useEffect(() => {
     dispatch(getMyQuizCategory());

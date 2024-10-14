@@ -6,7 +6,6 @@ class AccountController {
   async registerUser(req, res, next) {
     try {
       var userData = req.body;
-      console.log(userData);
       const user = await accountService.registerUserAsync(userData);
 
       if (userData?.roleName) {
@@ -81,7 +80,6 @@ class AccountController {
 
   async updateUser(req, res, next) {
     try {
-      // console.log("Request body: ", req.body);
       // if ("password" in req.body && req.body["password"]) {
       //   const salt = await bcrypt.genSalt();
       //   const hashedPassword = await bcrypt.hash(req.body["password"], salt);
@@ -91,7 +89,6 @@ class AccountController {
         req.params.id,
         req.body
       );
-      console.log("Updated user: ", updatedUser);
       res.json(updatedUser);
     } catch (err) {
       console.error("Error updating user: ", err);

@@ -290,7 +290,7 @@ export default function AdiPartThree() {
         {/* ////////////////////////////////////////////////////////////////////////// */}
 
         {/* ////////////////////////////////////////////////////// */}
-        <section className={styles.RouteSection}>
+        {/* <section className={styles.RouteSection}>
           <div className={styles.allRoutes}>
             <div className={styles.routes}>
               <img src={testRoutesImg1} alt="testRoutesImg" />
@@ -323,7 +323,7 @@ export default function AdiPartThree() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>

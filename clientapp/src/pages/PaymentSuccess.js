@@ -15,7 +15,6 @@ const PaymentSuccess = () => {
       localStorage.setItem("cart",JSON.stringify({}))
       dispatch(removingCart())
     }
-    console.log(localStorage.getItem("cart"),"localStorage.getItem")
   })
   return (
     <section className={styles.page404}>

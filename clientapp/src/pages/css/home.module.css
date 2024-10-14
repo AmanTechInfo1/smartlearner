@@ -769,7 +769,9 @@
 .expandedColData p {
   font-size: 1.3rem;
 }
-
+#theoryP p{
+  font-size: 1.2rem;
+}
 /* increament decreament */
 .btnGroup {
   display: flex;

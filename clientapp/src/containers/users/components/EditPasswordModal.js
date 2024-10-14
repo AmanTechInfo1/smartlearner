@@ -74,8 +74,6 @@ function EditPasswordModal(props) {
     };
 
 
-    console.log(errors,"errorserrorserrorserrors")
-
     return (
         <>
             {!loading ? (

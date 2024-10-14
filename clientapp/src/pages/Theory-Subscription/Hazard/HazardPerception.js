@@ -3,6 +3,7 @@ import styles from "./Hazard.module.css";
 import { FaHome } from "react-icons/fa";
 import { IoMdArrowDropright } from "react-icons/io";
 import HazardVideos from "./HazardVideos";
+import { Link } from "react-router-dom";
 
 export default function HazardPerception() {
   return (
@@ -127,6 +128,7 @@ export default function HazardPerception() {
         </div>
         <HazardVideos />
       </section>
+     
     </div>
   );
 }

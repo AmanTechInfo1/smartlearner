@@ -17,7 +17,6 @@ class OrderController {
       let myCartIng = myCart.map((itm) => {
 
         mycartPrice += itm.price * itm.count
-        console.log(itm.price * itm.count, "itmitmitm")
 
         return {
           ...itm,
@@ -30,7 +29,6 @@ class OrderController {
       data["mycartPrice"] = mycartPrice
       mycartPrice = mycartPrice + (mycartPrice * 0.02)
       data["mycartPriceTotal"] = mycartPrice
-      console.log(data, "datadatadata")
       const role = await orderService.createOrderAsync(data);
 
       res.status(201).json(role);
@@ -62,8 +60,6 @@ class OrderController {
       const role = await orderService.getMyOrderAsync(req.userId);
       res.status(201).json(role);
     } catch (err) {
-
-      console.log(err)
       next(err);
     }
   }
@@ -73,7 +69,6 @@ class OrderController {
   async paymentSuccess(req, res, next) {
     try {
       const data = req.body;
-      console.log(data, "datadatadatadatadata")
       let dataa=paymentSuccess.create(data)
 
       const role = await orderService.updateOrderById(data["ekashu_reference"]);
@@ -89,7 +84,6 @@ class OrderController {
       res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/paymentSuccess`);
       
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       next(err);
     }
   }
@@ -98,9 +92,7 @@ class OrderController {
   async paymentFailed(req, res, next) {
     try {
       const data = req.body;
-      console.log(data, "datadatadatadatadata")
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       next(err);
     }
   }
@@ -116,20 +108,12 @@ class OrderController {
 
       const data = req.body;
 
-      console.log(SELLER_ID)
-      console.log(SELLER_KEY)
-      console.log(data)
-
       let orderId = data["orderId"]
 
       const order = await orderService.getOneOrderNoRespAsync(orderId);
 
       let orderNo = order["orderNo"]
       let total = order["total"]
-
-
-      console.log(order["orderNo"], "orderorderorder")
-
 
       delete data["orderId"]
 
@@ -165,18 +149,12 @@ class OrderController {
 
       const hashcode_input = check_fields.map(field => data[field] || '').join('&');
 
-      console.log(hashcode_input, "hashcode_input");
-
       const hash = crypto.createHmac('sha256', HASH_KEY).update(hashcode_input).digest('base64');
-
-      console.log(hash, "hashhash");
 
       res.json({ hash_code: hash });
 
 
     } catch (err) {
-
-      console.log(err, "errerrerrerrerr")
       next(err);
     }
   }
@@ -185,7 +163,6 @@ class OrderController {
 
   async getMyOrder(req, res, next) {
     try {
-      console.log(req.userId,"req.userId")
       const role = await orderService.getMyOrderAsync(req.userId);
       res.status(200).json(role);
     } catch (err) {

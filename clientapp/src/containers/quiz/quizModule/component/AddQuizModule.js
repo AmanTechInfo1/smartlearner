@@ -37,8 +37,6 @@ const AddQuizModule = (props) => {
         }
     };
 
-
-    console.log(errors, "errorserrorserrorserrors")
     const onSubmit = async (e) => {
         e.preventDefault();
         const isValid = await validateForm();

@@ -43,8 +43,6 @@ const cartSlice = createSlice({
             state.myOrders = [];
         },
         IncreaseCart: (state, action) => {
-
-            console.log(action.payload, "action.payload.id")
             const updatedCart = state.cart.map(item =>
                 item.id === action.payload.id ? { ...item, count: item.count + action.payload.count } : item
             );
@@ -53,7 +51,6 @@ const cartSlice = createSlice({
             let datew = [...state.cart, action.payload]
             localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
 
-            console.log({ updatedCart }, "JSON.parse")
             return {
                 ...state,
                 cart: itemExists ? updatedCart : [...state.cart, action.payload]
@@ -61,14 +58,10 @@ const cartSlice = createSlice({
         },
         // DecreaseCart: (state, action) => {
 
-        //     console.log(action.payload, "action.payload.id")
 
         //     const updatedCart = state.cart.map(item => item.id === action.payload.id ? { ...item, count: item.count - action.payload.count } : item);
 
         //     const itemExists = state.cart.some(item => item.id === action.payload.id);
-
-
-        //     console.log({ updatedCart }, "JSON.parse")
 
         //     let datew = [...state.cart, action.payload]
         //     localStorage.setItem("cart", itemExists ? JSON.stringify({ updatedCart }) : JSON.stringify({ datew }))
@@ -92,7 +85,6 @@ const cartSlice = createSlice({
             };
         },
         AddToCart: (state, action) => {
-            console.log(action.payload)
             // state.cart.push(action.payload);
             let updatedCart = []
             if (state.cart) {
@@ -101,7 +93,6 @@ const cartSlice = createSlice({
                 updatedCart = [action.payload]
             }
 
-            console.log({ updatedCart }, "JSON.parse")
             localStorage.setItem("cart", JSON.stringify({ updatedCart }))
             return {
                 ...state,
@@ -217,7 +208,6 @@ export const generateHashcodeCheckout = (data, cb, form, additionalData) => asyn
             data
         );
 
-        console.log(response.data.hash_code, "responseresponseresponse")
         if (response.data.hash_code) {
             dispatch(getGenerateHashCodeSuccess(response.data.hash_code));
             additionalData.value = response.data.hash_code;
@@ -241,7 +231,6 @@ export const getMyOrders = () => async (dispatch) => {
             `/api/order/getMyOrder`
         );
 
-        console.log(response.data.data, "responseresponseresponse")
         if (response.data.data) {
             dispatch(getOrdersSuccess(response.data.data.order));
 

@@ -8,7 +8,6 @@ class quizService {
   async createQuizAsync(quizData) {
     try {
 
-      console.log("quizDataquizData", quizData, "quizDataquizData")
       const quiz = await QuizQuestion.create(quizData);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
@@ -20,7 +19,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "dsandj,asndkjsa")
       const resultObject = {
         message: "Quiz add failed",
         statusCode: 400,
@@ -36,7 +34,6 @@ class quizService {
   async updateQuizAsync(quizId, quizData) {
     try {
 
-      console.log("quizDataquizData", quizData, "quizDataquizData")
       const quiz = await QuizQuestion.findByIdAndUpdate(quizId, quizData);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
@@ -48,7 +45,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "dsandj,asndkjsa")
       const resultObject = {
         message: "Quiz update failed",
         statusCode: 400,
@@ -94,7 +90,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -132,7 +127,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -173,7 +167,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -190,7 +183,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -201,15 +193,12 @@ class quizService {
   async getAllQuizAsync(pageNumber, pageSize, query) {
     try {
 
-      console.log(pageNumber, pageSize, query, "pageNumber, pageSize, query")
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
         filter.$or = [{ code: regex }, { area: regex }];
       }
-
-      // console.log(skip,"skipskipskip",pageSize)
 
       let aggr = [
         {
@@ -256,7 +245,6 @@ class quizService {
 
 
 
-      console.log(aggr, "aggraggraggr")
 
 
       const quizzes = await QuizQuestion.aggregate(aggr);
@@ -272,7 +260,6 @@ class quizService {
 
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerr")
       throw new Error("Could not fetch postcodes");
     }
   }
@@ -283,7 +270,6 @@ class quizService {
   async getAllQuizModuleAsync(pageNumber, pageSize, query) {
     try {
 
-      console.log(pageNumber, pageSize, query, "pageNumber, pageSize, query")
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
@@ -291,7 +277,6 @@ class quizService {
         filter.$or = [{ code: regex }, { area: regex }];
       }
 
-      // console.log(skip,"skipskipskip",pageSize)
 
       let aggr = [
         {
@@ -325,9 +310,6 @@ class quizService {
 
 
 
-      console.log(aggr, "fegwgdhqehdwgh")
-
-
       const quizzes = await QuizModuleModel.aggregate(aggr);
       const totalCount = await QuizModuleModel.countDocuments(filter);
       // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
@@ -341,7 +323,6 @@ class quizService {
 
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerr")
       throw new Error("Could not fetch postcodes");
     }
   }
@@ -395,7 +376,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -409,7 +389,6 @@ class quizService {
   async getQuizResultAsync(userId, pageNumber, pageSize, query, resType) {
     try {
 
-      console.log(pageNumber, pageSize, query, "pageNumber, pageSize, query")
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
@@ -417,7 +396,6 @@ class quizService {
         filter.$or = [{ code: regex }, { area: regex }];
       }
 
-      // console.log(skip,"skipskipskip",pageSize)
 
       let aggr = []
       if (resType == "quizResult") {
@@ -484,9 +462,6 @@ class quizService {
       })
 
 
-      console.log(aggr, "aggraggraggr")
-
-
       const quizResult = await AttemptQuizQuestion.aggregate(aggr);
       const totalCount = await AttemptQuizQuestion.countDocuments(filter);
       // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
@@ -500,7 +475,6 @@ class quizService {
 
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerr")
       throw new Error("Could not fetch postcodes");
     }
   }
@@ -624,7 +598,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -642,7 +615,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -694,7 +666,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerrerr")
       throw new Error("Could not fetch role");
     }
   }
@@ -707,7 +678,6 @@ class quizService {
   async createQuizCategoryAsync(quizData) {
     try {
 
-      console.log(quizData, "quizDataquizDataquizData")
       const quiz = await QuizCategoryModel.create(quizData);
       const totalCount = await QuizCategoryModel.countDocuments();
       const resultObject = {
@@ -718,7 +688,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       const resultObject = {
         message: "Quiz Category add failed",
         statusCode: 400,
@@ -730,8 +699,6 @@ class quizService {
   }
   async updateQuizCategoryAsync(uId, quizData) {
     try {
-
-      console.log(quizData, "quizDataquizDataquizData")
       const quiz = await QuizCategoryModel.findByIdAndUpdate(uId, quizData);
       const totalCount = await QuizCategoryModel.countDocuments();
       const resultObject = {
@@ -742,7 +709,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       const resultObject = {
         message: "Quiz Category add failed",
         statusCode: 400,
@@ -756,7 +722,6 @@ class quizService {
   async createQuizModuleAsync(quizData) {
     try {
 
-      console.log(quizData, "quizDataquizDataquizData")
       const quiz = await QuizModuleModel.create(quizData);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
@@ -767,7 +732,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       const resultObject = {
         message: "Quiz Category add failed",
         statusCode: 400,
@@ -780,7 +744,6 @@ class quizService {
   async updateQuizModuleAsync(uId, quizData) {
     try {
 
-      console.log(quizData, "quizDataquizDataquizData")
       const quiz = await QuizModuleModel.findByIdAndUpdate(uId, quizData);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
@@ -791,7 +754,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err, "errerrerrerrerr")
       const resultObject = {
         message: "Quiz Module Updated failed",
         statusCode: 400,
@@ -812,7 +774,6 @@ class quizService {
     try {
 
       // const quiz = await QuizQuestion.create(quizData);
-      console.log(quizData.questionId, "quizData")
       const getQuizQuestion = await QuizQuestion.find({ "_id": quizData.questionId });
       if (getQuizQuestion.length == 0) {
         const resultObject = {
@@ -841,7 +802,6 @@ class quizService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerr")
       const resultObject = {
         message: "Quiz Answer failed",
         statusCode: 400,
@@ -865,8 +825,6 @@ class quizService {
         )
       }
 
-
-      console.log(aggr, "aggraggraggr800")
       aggr.push({
         '$match': {
           'category': new ObjectId(cid)
@@ -938,13 +896,7 @@ class quizService {
         }
       })
 
-
-      console.log(aggr, "aggraggraggr")
-
       const products = await QuizQuestion.aggregate(aggr);
-
-
-      console.log(products, aggr, userId, moduleId, "productsproducts")
       const resultObject = {
         message: products.length > 0 ? "Question fetched successfully" : "No Question Available",
         statusCode: products.length > 0 ? 200 : 400,
@@ -953,7 +905,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err)
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,
@@ -976,8 +927,6 @@ class quizService {
       //   )
       // }
 
-
-      console.log(aggr, "aggraggraggr800")
       aggr.push({
         '$lookup': {
           'from': 'attemptquizquestions',
@@ -1048,14 +997,7 @@ class quizService {
           '_id': 0
         }
       })
-
-
-      console.log(aggr, "aggraggraggr")
-
       const products = await QuizQuestion.aggregate(aggr);
-
-
-      console.log(products, aggr, userId, moduleId, "productsproducts")
       const resultObject = {
         message: products.length > 0 ? "Question fetched successfully" : "No Question Available",
         statusCode: products.length > 0 ? 200 : 400,
@@ -1064,7 +1006,6 @@ class quizService {
       };
       return resultObject;
     } catch (err) {
-      console.log(err)
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,

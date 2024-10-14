@@ -9,13 +9,13 @@ import ReactSelect from "react-select";
 
 function AddProductModel(props) {
   const dispatch = useDispatch();
-  const [image,setImage] = useState();
+  const [image, setImage] = useState();
 
   const { areasList } = useSelector((state) => {
     return state.area
   });
   const { categoriesList } = useSelector((state) => { return state.category })
-  const { postcodesList } = useSelector((state) => { return state.postcode})
+  const { postcodesList } = useSelector((state) => { return state.postcode })
 
 
 
@@ -26,18 +26,12 @@ function AddProductModel(props) {
     formState: { errors },
     reset,
   } = useForm({
-    
+
   });
 
-console.log(errors,"ajwsdfhxsdfgrt")
-  console.log(errors,"errorserrorserrors")
 
   const onSubmit = async (data) => {
-
-
-    // console.log(data,"datadatadatadatadata")
     const formData = new FormData();
-    console.log(data,"data?.imagedata?.imagedata?.image")
     formData.append("name", data?.name);
     formData.append("category", data?.category)
     formData.append("description", data?.description);
@@ -52,9 +46,7 @@ console.log(errors,"ajwsdfhxsdfgrt")
     // dispatch(
     //   createProductSuccess(formData, reset, props.toggleAddProductModal)
     // );
-
-    
-    dispatch(createProduct(formData, reset, props.toggleAddProductModal,props.state));
+    dispatch(createProduct(formData, reset, props.toggleAddProductModal, props.state));
   };
 
 
@@ -126,8 +118,6 @@ console.log(errors,"ajwsdfhxsdfgrt")
                 ""
               )}
             </div>
-
-
             <div className="form-group">
               <label>Description</label>
               <Controller
@@ -152,7 +142,7 @@ console.log(errors,"ajwsdfhxsdfgrt")
               )}
             </div>
 
-            
+
             <div className="form-group">
               <label>Duration (in Weeks)</label>
               <Controller
@@ -189,7 +179,6 @@ console.log(errors,"ajwsdfhxsdfgrt")
                     onChange={(e) => {
                       const file = e.target.files;
                       setImage(file[0])
-                      console.log(file,"filefilefilefilefilefile")
                       onChange(file);
                     }}
                     autoComplete="off"
@@ -314,7 +303,7 @@ console.log(errors,"ajwsdfhxsdfgrt")
                 ""
               )}
             </div>
-{/* 
+            {/* 
             <div className="form-group">
               <label>Postcode</label>
               <Controller

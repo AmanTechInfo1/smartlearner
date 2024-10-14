@@ -1,20 +1,17 @@
 const multer = require("multer");
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const imageSaverMiddleware = (req, res, next) => {
 
+const imageSaverMiddleware = (req, res, next) => {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, 'uploads/'); // Destination directory where files will be saved
         },
         filename: function (req, file, cb) {
-            cb(null, file.originalname); // Use the original filename for the uploaded file
+            const ext = path.extname(file.originalname);
+            cb(null, `${uuidv4()}${ext}`);  // Use the original filename for the uploaded file
         }
     });
-
-
-    console.log('File uploaded 14:', req.file);
-
 
     const upload = multer({ storage: storage }).single('image');
     upload(req, res, function (err) {
@@ -42,7 +39,6 @@ const multipleimageSaverMiddleware = (req, res, next) => {
         },
         filename: function (req, file, cb) {
 
-            // console.log(file,"filefilefilefilefile")
             // cb(null, file.originalname); // Use the original filename for the uploaded file
             const ext = path.extname(file.originalname);
             cb(null, `${uuidv4()}${ext}`); // Use UUID to generate unique filenames with original extension
@@ -60,16 +56,11 @@ const multipleimageSaverMiddleware = (req, res, next) => {
         { name: 'questionImage', maxCount: 1 }
     ]);
     upload(req, res, function (err) {
-
-        console.log('File uploaded 58:', req.files);
-
         try {
             if (err) {
                 // Handle multer errors, e.g., file too large, invalid file type, etc.
                 return res.status(400).json({ error: 'File upload failed.', details: err.message });
             }
-
-            console.log(req.files,"req.files")
             if (req.files.questionImage) {
                 req.body.questionImage = req.files.questionImage[0].filename
             } else {
@@ -99,8 +90,6 @@ const multipleimageSaverMiddleware = (req, res, next) => {
             next();
         }
         catch (err) {
-
-            console.log(err,"errerrerrerr")
             next(err);
         }
     });

@@ -22,7 +22,6 @@ class EmailService {
         text, // plain text body
       });
 
-      console.log("Message sent: %s", info.messageId);
     } catch (err) {
       throw new Error(err.message);
     }

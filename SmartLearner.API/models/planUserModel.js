@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
-const planUserSchema = new mongoose.Schema({
-  planname: { type: String, required: true, unique: false },
+const planSchema = new mongoose.Schema({
+  planname: { type: String, required: true, },
   price: { type: Number, required: true },
   planCategory: { type: String, required: true },
-  duration: { type: String, required: true },
-  planStartDate: { type: Date, required: true, default: Date.now },
-  planEndDate: { type: Date, required: true, default: Date.now },
+  duration: { type: Number, required: true },
 });
 
-const PlanUser = mongoose.model("PlanUser", planUserSchema);
-module.exports = PlanUser;
+const Plans = mongoose.model("Plans", planSchema);
+module.exports = Plans;

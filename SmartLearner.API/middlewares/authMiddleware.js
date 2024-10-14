@@ -9,7 +9,6 @@ const requireAuth = (req, res, next) => {
       process.env.JWT_SECRET || "SMARTLEARNERJWT",
       (err, decoded) => {
         if (err) {
-          console.log(err.message);
           return res.status(401).json({ msg: "Unauthorized Access" });
         } else {
           req.userId = decoded.id; // Assuming 'id' is the field you want from the payload

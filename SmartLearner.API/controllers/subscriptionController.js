@@ -1,103 +1,54 @@
-const SubscriptionService = require("../services/subscriptionService");
+const subscriptionService = require("../services/subscriptionService");
 
 class SubscriptionController {
   // Add a new subscription plan
-  async addFreeTrialPlan(req, res) {
+  async createPlan(req, res) {
     try {
-      const newPlan = new PlanUser({
-        planname: "Free Trial",
-        price: 0,
-        planCategory: "Trial",
-        duration: req.body.duration, // Assume duration is passed in the body
-        planStartDate: new Date(), // Current date
-        planEndDate: new Date(
-          Date.now() + req.body.durationDays * 24 * 60 * 60 * 1000
-        ), // Duration in days
-      });
-      await newPlan.save();
-      res.status(201).json({
-        message: "Free Trial Plan created successfully",
-        plan: newPlan,
-      });
-    } catch (error) {
-      res.status(400).json({ message: error.message });
+      const plan = await subscriptionService.createPlan(req.body);
+      res.status(201).json(plan);
+    } catch (err) {
+      next(err);
     }
   }
-
   // Get all free trial plans
-  async getFreeTrialPlans(req, res) {
+  async getPlanById(req, res) {
     try {
-      const freeTrialPlans = await PlanUser.find({ planCategory: "Trial" });
-      res.status(200).json({
-        message: "Fetched Free Trial Plans successfully",
-        plans: freeTrialPlans,
-      });
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  }
-
-  async addSubscriptionPlan(req, res) {
-    try {
-      const planData = req.body;
-      const result = await SubscriptionService.addSubscriptionPlan(planData);
-      return res.status(201).json(result);
+      const plan = await subscriptionService.getPlanById(req.params.id);
+      res.status(200).json(plan);
     } catch (err) {
-      return res.status(400).json({ message: err.message });
+      next(err);
     }
   }
 
-  // Get all subscription plans
-  async getAllSubscriptionPlans(req, res) {
+  async updatePlan(req, res) {
     try {
-      const result = await SubscriptionService.getAllSubscriptionPlans();
-      return res.status(200).json(result);
+      const plan = await subscriptionService.updatePlan(req.params.id, req.body);
+      res.status(200).json(plan);
     } catch (err) {
-      return res.status(400).json({ message: err.message });
+      next(err);
     }
   }
 
-  // Get subscriptions for a specific user
-  async getSubscriptionsByUser(req, res) {
+
+  async deletePlan(req, res) {
     try {
-      const userId = req.params.userId;
-      const result = await SubscriptionService.getSubscriptionsByUser(userId);
-      return res.status(200).json(result);
-    } catch (err) {
-      return res.status(400).json({ message: err.message });
+      const result=  await subscriptionService.deletePlan(req.params.id);
+  res.json(result);
+    } catch (err) { 
+      next(err);
     }
   }
-
-  // Create a new user subscription
-  async createUserSubscription(req, res) {
+  
+  async getAllPlan(req, res) {
     try {
-      const { userId, subscriptionId } = req.body;
-      const result = await SubscriptionService.createUserSubscription(
-        userId,
-        subscriptionId
-      );
-      return res.status(201).json(result);
-    } catch (err) {
-      return res.status(400).json({ message: err.message });
+      const plans = await subscriptionService.getAllPlans();
+      res.status(200).json(plans);
+    } catch (err) { 
+      next(err);
     }
   }
-
-  async startFreeTrial(req, res) {
-    const { userId, subscriptionId } = req.body;
-
-    try {
-      const subscription = await SubscriptionService.startFreeTrial(
-        userId,
-        subscriptionId
-      );
-      res
-        .status(201)
-        .json({ message: "Free trial started successfully!", subscription });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: error.message });
-    }
-  }
+// //////////////////////////////////////////////////////////////////////////
+  
 }
 
 module.exports = new SubscriptionController();

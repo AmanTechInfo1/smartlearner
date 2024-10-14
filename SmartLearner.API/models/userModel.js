@@ -13,15 +13,12 @@ const userSchema = new mongoose.Schema({
   isUpdated: { type: Boolean, required: true, default: false },
   modifiedOn: { type: Date },
   isDeleted: { type: Boolean, required: true, default: false },
-  isSubscription: { type: Boolean, required: true, default: false },
-  isFreeTrialUsed: { type: Boolean, required: true, default: false },
-  subscriptionType: { type: String, default: "" },
-  subscriptions: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "UserSubscription", 
-    },
-  ],
+  subscription: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "PlanUser",
+    required: true,
+  },
+  
   deletedOn: { type: Date },
   isBcryptHashed: { type: Boolean, required: true, default: false },
 

@@ -122,14 +122,14 @@ function TheoryCorousel() {
                   <ul type="none">
                     {item.data.map((info, index) => (
                       <div key={index}>
-                        <li className={styles.expandedColData}>
+                        <li className={styles.expandedColData} id={styles.theoryP}>
                           <span
                             style={{
                               color: "white",
                               backgroundColor: "black",
                               display: "flex",
                               justifyContent: "space-between",
-                              maxWidth: "235px",
+                              maxWidth: "250px",
                               width: "100%",
                               borderRadius: "40px 0px 0px 40px",
                               padding: "8px",

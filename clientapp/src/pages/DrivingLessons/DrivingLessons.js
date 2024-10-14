@@ -263,7 +263,7 @@ export default function DrivingLessons() {
           <h2 className="text-center display-4 mb-4">What's included?</h2>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">TOWN DRIVING</h3>
-            <p>
+            <p className="fs-4">
               You'll learn how to navigate complex junctions, underpasses,
               trams, bus and cycle lanes.
             </p>
@@ -272,14 +272,14 @@ export default function DrivingLessons() {
             <h3 className="text-danger font-weight-bold">
               ALL WEATHER DRIVING
             </h3>
-            <p>
+            <p className="fs-4">
               It can be advantageous to learn how to cope with heavy rain, snow,
               ice, fog and dazzling sunshine.
             </p>
           </div>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">RURAL ROADS</h3>
-            <p>
+            <p className="fs-4">
               This section looks at safe passing places and what to do when you
               encounter sharp corners, horse riders, cyclists, farm vehicles and
               debris in the road.
@@ -289,7 +289,7 @@ export default function DrivingLessons() {
             <h3 className="text-danger font-weight-bold">
               DRIVING ON MOTORWAYS
             </h3>
-            <p>
+            <p className="fs-4">
               In this module you'll learn how to drive at a safe speed in
               different conditions, deal with motorway fatigue, handle a
               breakdown, use lanes correctly and follow signs.
@@ -297,7 +297,7 @@ export default function DrivingLessons() {
           </div>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">NIGHT DRIVING</h3>
-            <p>
+            <p className="fs-4">
               This module can help boost your confidence when taking to the
               roads after dark. It deals with the correct use of headlamps,
               adjusting to different light levels, getting used to being dazzled

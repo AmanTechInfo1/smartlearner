@@ -43,7 +43,8 @@ export default function RoadProcedureBand() {
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -51,9 +52,24 @@ export default function RoadProcedureBand() {
               <ul type="none">
                 <li>
                   <p>
-                    In this video, we will be discussing road procedure. This is
-                    one of the 4 main topics you will be tested on during your
-                    part 1 ADI theory test.{" "}
+                    The ADI Part 1 Band 1 section focuses on Road Procedure,
+                    which is all about understanding the rules and best
+                    practices for safe driving. It covers key topics such as
+                    lane discipline, right-of-way, speed limits, and the correct
+                    procedures for navigating various road types, including
+                    roundabouts, intersections, and pedestrian crossings. This
+                    section also addresses how to handle different driving
+                    conditions, such as weather or road hazards.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    As an aspiring driving instructor, mastering this band is
+                    crucial because it forms the foundation of safe driving
+                    principles that you'll need to teach your students. You'll
+                    be expected to know the Highway Code thoroughly and apply it
+                    to real-world driving situations, ensuring that you can
+                    clearly and confidently communicate the rules of the road.
                   </p>
                 </li>
               </ul>
@@ -82,6 +98,12 @@ export default function RoadProcedureBand() {
               <button>Start Quiz</button>
             </Link>
           </section>
+        </div>
+        <div className={styles.TMnextPage}>
+          <Link to="/band-2-traffic-signs-and-signals">
+            {" "}
+            <button className={styles.TMnextButton}>NEXT PAGE Band - 2 </button>
+          </Link>
         </div>
       </div>
     </div>

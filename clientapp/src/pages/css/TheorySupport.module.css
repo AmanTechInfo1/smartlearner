@@ -9,20 +9,41 @@
   color: white;
 }
 .TSfirstContent {
-  background-image: url(../../assets/images/homebannerImg.jpg);
+  background-image: url(../../assets/images/dlbannerimg.png);
   position: relative;
   width: 100%;
 
   background-size: cover;
   background-position: top;
 }
-
-.TSfirstContent h2 {
-  position: sticky;
-  font-size: 3rem;
-  text-align: center;
+.TSfirstContent{
   padding: 18rem 0px;
+}
+.TSfirstContentHeading h2 {
+  position: sticky;
+  font-size: 5rem;
+  text-align: center;
+
   color: #fff;
+ overflow: hidden; 
+    border-right: .2px solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: 12px;
+    animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+    
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
 }
 .innerTheorySupportSection {
   max-width: 1140px;
@@ -59,7 +80,7 @@
 }
 .callbackFormContentPG p {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 @media (max-width: 728px) {
   .callbackFormContent {

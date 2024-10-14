@@ -16,7 +16,6 @@ class AccountService {
     try {
       const { username, email, password, phoneNumber } = userData;
 
-      // Check if user with the same email already exists
       const existingUser = await User.findOne({ email });
       if (existingUser) {
         throw new Error("Email already exists");
@@ -52,13 +51,9 @@ class AccountService {
       if (!user) {
         throw new Error("Invalid Email");
       }
-
-      console.log(user.isBcryptHashed, "user.isBcryptHashed");
-
       if (user.isBcryptHashed) {
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
-        console.log(!isPasswordValid, "isPasswordValid");
         if (!isPasswordValid) {
           throw new Error("Invalid Password");
         }
@@ -78,16 +73,13 @@ class AccountService {
         await user.save();
       }
 
-      console.log("85", user._id);
       // Fetch userRole
       const userRole = await userRoleServices.getUserRoleAsync(user._id);
 
-      console.log("89", userRole);
       if (!userRole) {
         throw new Error("Invalid user");
       }
 
-      console.log("94");
       
       const role = await roleServices.getRoleByIdAsync(userRole.roleId);
 
@@ -115,7 +107,6 @@ class AccountService {
         },
       };
     } catch (err) {
-      console.log(err.message, "err.messageerr.message");
       throw new Error(err.message);
     }
   }
@@ -369,7 +360,6 @@ class AccountService {
       const oneUser = users[0];
 
       let msg = "";
-      console.log(oneUser.isSubscription, oneUser.planresult);
 
       if (oneUser.isSubscription && oneUser.planresult == undefined) {
         const updat = { subscriptionType: "", isSubscription: false };
@@ -497,13 +487,10 @@ class AccountService {
       ];
       const users = await User.aggregate(aagr);
 
-      console.log(users, "usersusersusersusers");
-
       const totalCount = await User.countDocuments({ _id: params_id });
 
       let resultObject = {};
       if ("Free Trial" == reqData.title) {
-        console.log(users[0], "users[0]");
         if (users[0].isFreeTrialUsed) {
           resultObject = {
             message: "Free Trial Already Used",
@@ -529,7 +516,6 @@ class AccountService {
             updat,
             { new: true }
           );
-          console.log(upre, params_id, updat, "upreupreupre");
           const millisecondsInADay = 24 * 60 * 60 * 1000;
           await PlanUser.create({
             planname: reqData.title,
@@ -561,7 +547,6 @@ class AccountService {
 
       return resultObject;
     } catch (err) {
-      console.log(err, "Dsadasdasdasdas");
       throw new Error(err.message);
     }
   }

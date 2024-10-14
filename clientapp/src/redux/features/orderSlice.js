@@ -45,8 +45,6 @@ const orderSlice = createSlice({
         },
 
         getOneProductsSuccess: (state, action) => {
-
-            console.log("getOneProductsSuccess",action.payload)
             state.oneproduct = action.payload
         },
         getOneProductsFailure: (state) => {
@@ -98,7 +96,6 @@ const orderSlice = createSlice({
 export const getAllOrders = (search, page, pagesize) => async (dispatch) => {
     try {
 
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/order/getAllOrder?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -135,7 +132,6 @@ export const getOneOrders = (orderId) => async (dispatch) => {
 export const getAllProductsCategory = (search, page, pagesize) => async (dispatch) => {
     try {
 
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/product/get-productsCategory?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -159,7 +155,6 @@ export const getAllProductsById = (id) => async (dispatch) => {
             `/api/product/get-products/${id}`
         );
 
-        console.log(response.statusText,"response.dataresponse.data")
         if (response.data) {
             dispatch(getOneProductsSuccess(response.data));
         } else {

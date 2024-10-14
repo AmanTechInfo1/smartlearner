@@ -24,9 +24,6 @@ export default function QuizModuleHome() {
 
   const { Quizcards } = useSelector((state) => state.dashboard);
 
-
-  console.log(Quizcards.map((itm)=>(+itm.count)).reduce((partialSum, a) => partialSum + a, 0), "cardscardscardscards")
-
   let a = ""
   useEffect(() => {
     dispatch(getRandomQuestionByName(id));

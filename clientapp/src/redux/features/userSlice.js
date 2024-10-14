@@ -174,7 +174,6 @@ export const deleteUser = (id) => async (dispatch) => {
 export const editUser = (id, data, toggleEditUserModal) => async (dispatch) => {
   try {
     dispatch(setLoading());
-    console.log("Sending data to API: ", [...data.entries()]);
 
     const response = await httpHandler.post(
       `/api/account/update-user/${id}`,

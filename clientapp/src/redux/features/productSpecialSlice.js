@@ -35,8 +35,6 @@ const productSlice = createSlice({
         },
 
         getOneProductsSuccess: (state, action) => {
-
-            console.log("getOneProductsSuccess",action.payload)
             state.oneproduct = action.payload
         },
         getOneProductsFailure: (state) => {
@@ -87,8 +85,6 @@ const productSlice = createSlice({
 
 export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
     try {
-
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/productSpecial/get-products?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -106,8 +102,6 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
 };
 export const getAllProductsCategory = (search, page, pagesize) => async (dispatch) => {
     try {
-
-        console.log(search, page, pagesize,"search, page, pagesize")
         dispatch(setLoading());
         const response = await httpHandler.get(
             `/api/productSpecial/get-productsCategory?search=${search}&page=${page}&pagesize=${pagesize}`
@@ -130,8 +124,6 @@ export const getAllProductsById = (id) => async (dispatch) => {
         const response = await httpHandler.get(
             `/api/productSpecial/get-products/${id}`
         );
-        console.log("API Response:", response);
-        console.log(response.statusText,"response.dataresponse.data")
         if (response.data) {
             dispatch(getOneProductsSuccess(response.data));
         } else {

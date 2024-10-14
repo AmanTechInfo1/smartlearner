@@ -3,8 +3,6 @@ const ProductCategory = require('../models/productCategoryModel');
 
 class ProductService {
   async createProductAsync(productData) {
-
-    console.log(productData, "productDataproductDataproductData")
     try {
       const product = await Product.create(productData);
       const totalCount = await Product.countDocuments();
@@ -17,7 +15,6 @@ class ProductService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "errerrerrerr")
       const resultObject = {
         message: "Product add failed",
         statusCode: 400,
@@ -98,7 +95,6 @@ class ProductService {
       return resultObject;
     } catch (err) {
 
-      console.log(err, "dsaukhdkusahdkas")
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,
@@ -178,8 +174,6 @@ class ProductService {
       const totalCount = await Product.countDocuments(filter);
       const products = await Product.aggregate(aggr);
 
-
-      console.log(products,"productsproducts")
       const resultObject = {
         message: "Products fetched successfully",
         statusCode: 200,
@@ -188,8 +182,6 @@ class ProductService {
       };
       return resultObject;
     } catch (err) {
-
-      console.log(err, "dsaukhdkusahdkas")
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,
@@ -223,8 +215,6 @@ class ProductService {
       };
       return resultObject;
     } catch (err) {
-
-      console.log(err, "errerrerrerr")
       const resultObject = {
         message: "Product Updation failed",
         statusCode: 400,

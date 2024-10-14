@@ -43,20 +43,41 @@ export default function TrafficSignalBand() {
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </div>
             <div className={styles.bgColorList}>
               <ul type="none">
-                <li>
+              <li>
                   <p>
-                    In this video, we will be discussing Traffic signs, Signals,
-                    Car control, Pedestrians and Mechanical knowledge. This
-                    topic will cover a range of topics and will be a crucial
-                    element in your understanding of the exam.
+                    The ADI Part 1 Band 2 section covers a range of topics
+                    related to Traffic Signs, Signals, Car Control, Pedestrians,
+                    and Mechanical Knowledge. This band tests your understanding
+                    of essential road signs and signals, as well as how to
+                    control a vehicle safely under various conditions. It also
+                    includes knowledge about pedestrian safety and basic
+                    mechanical concepts that affect vehicle performance and
+                    maintenance.
                   </p>
                 </li>
+                <li>
+                  <p>
+                    As an aspiring driving instructor, it’s important to know
+                    how to explain the meaning of different traffic signs and
+                    signals, and how they guide safe driving. Additionally,
+                    understanding car control—such as braking, steering, and
+                    acceleration—is key to teaching your students how to handle
+                    a vehicle effectively. The mechanical knowledge portion
+                    ensures you're familiar with the basic workings of a car,
+                    like how the brakes, tires, and engine function, which is
+                    vital for teaching students about vehicle maintenance and
+                    safety. This band equips you to provide well-rounded
+                    instruction on both driving and vehicle management.
+                  </p>
+                </li>
+                
               </ul>
             </div>
           </div>
@@ -83,6 +104,11 @@ export default function TrafficSignalBand() {
             </Link>
           </section>
         </div>
+        <div className={styles.TMnextPage}>
+          
+              <Link to="/band-3-driving-tests-disabilities-and-the-law">  <button className={styles.TMnextButton}>NEXT PAGE Band - 3      </button></Link>
+      
+          </div>
       </div>
     </div>
   );

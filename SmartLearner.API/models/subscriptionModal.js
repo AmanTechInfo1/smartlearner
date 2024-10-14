@@ -1,29 +1,15 @@
 const mongoose = require("mongoose");
 
 const userSubscriptionSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to the User model
-  subscriptionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PlanUser",
-    required: true,
-  }, // Reference to the PlanUser model
-  createdOn: { type: Date, required: true, default: Date.now }, // Optional: to track when the subscription was created
-  // New fields for tracking free trial
-  isTrialActive: { type: Boolean, default: false },
-  trialStart: { type: Date },
-  trialDuration: { type: Number }, // Duration in days for the free trial
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: "Plans", required: true, },
+  isActive: { type: Boolean, required: true, default: false },
+  planStartDate: { type: Date, required: true, default: Date.now },
+  planEndDate: { type: Date, required: true, default: Date.now },
+  isTrial: { type: Boolean, default: false },
+  trialStartDate: { type: Date, default: Date.now },
+  trialEndDate: { type: Date, required: true },
 });
-
-// Method to check if the trial is still valid
-userSubscriptionSchema.methods.isTrialValid = function () {
-  if (this.isTrialActive && this.trialStart) {
-    const currentTime = new Date();
-    const endTime = new Date(this.trialStart);
-    endTime.setDate(endTime.getDate() + this.trialDuration);
-    return currentTime < endTime;
-  }
-  return false;
-};
 
 const UserSubscription = mongoose.model(
   "UserSubscription",

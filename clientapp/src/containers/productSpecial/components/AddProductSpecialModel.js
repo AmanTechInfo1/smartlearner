@@ -29,15 +29,10 @@ function  AddProductSpecialModal(props) {
     
   });
 
-console.log(errors,"ajwsdfhxsdfgrt")
-  console.log(errors,"errorserrorserrors")
-
   const onSubmit = async (data) => {
 
 
-    // console.log(data,"datadatadatadatadata")
     const formData = new FormData();
-    console.log(data,"data?.imagedata?.imagedata?.image")
     formData.append("name", data?.name);
     formData.append("Category", data?.Category)
     formData.append("price", data?.price)

@@ -200,6 +200,126 @@ export default function AdiPartOne() {
         </section>
 
         {/* //////////////////////////////////////////////////////// */}
+
+        {/* /////////////////////////////////////////////////////////////// */}
+        <section className={styles.hazardTestWorkListSection}>
+          <section className={styles.pdiContainer}>
+            <h2>
+              Create a Strong <span>Study Plan</span>
+            </h2>
+            <div className={styles.pdiTwo}>
+              <h3>Multiple-Choice Questions</h3>
+              <p>
+                The Multiple-Choice section includes 100 questions spread across
+                four key areas (bands). To pass, you must answer at least 85
+                questions correctly, with a minimum score of 20 out of 25 in
+                each band. Even if you score 85 overall, you’ll fail if you
+                don’t meet the band-specific requirements, so it’s essential not
+                to neglect any section.
+              </p>
+            </div>
+
+            <div className={styles.pdiThree}>
+              <h3>Daily Study Routine</h3>
+              <p>
+                Focus on one band per day. This approach ensures balanced
+                coverage without overwhelming yourself. Regular, consistent
+                study sessions are far more effective than last-minute cramming.
+              </p>
+            </div>
+            <section className={styles.hazardTestWorkListSection}>
+              <h2 className={styles.hazardTestH23}>
+                Breakdown of <span> the Bands</span>
+              </h2>
+              <div className={styles.pdiBands}>
+                <div className={styles.pdiBandItem}>
+                  <h3>Band 1: Road Procedure</h3>
+                  <p>
+                    <strong>What It Covers:</strong> Rules of the road,
+                    including lane discipline, right-of-way, and how to handle
+                    various intersections and driving conditions.
+                  </p>
+                  <p>
+                    <strong>Why It Matters:</strong> Road procedure is the
+                    foundation of safe driving, and as an instructor, you need
+                    to teach these rules clearly.
+                  </p>
+                  <p>
+                    <strong>Study Tips:</strong> Familiarize yourself with the
+                    Highway Code, especially tricky scenarios like roundabouts
+                    and pedestrian crossings. Practice with mock questions based
+                    on real-world situations.
+                  </p>
+                </div>
+
+                <div className={styles.pdiBandItem}>
+                  <h3>
+                    Band 2: Traffic Signs, Signals, Car Control, Pedestrians,
+                    and Mechanical Knowledge
+                  </h3>
+                  <p>
+                    <strong>What It Covers:</strong> This band includes traffic
+                    signs, vehicle control, pedestrian safety, and basic car
+                    mechanics.
+                  </p>
+                  <p>
+                    <strong>Why It Matters:</strong> Understanding traffic signs
+                    and basic mechanics is critical for safe driving and
+                    effective teaching.
+                  </p>
+                  <p>
+                    <strong>Study Tips:</strong> Use flashcards to memorize
+                    traffic signs. For mechanical knowledge, focus on the
+                    basics—how brakes, tires, and the engine work. Practice
+                    interpreting signs in context.
+                  </p>
+                </div>
+
+                <div className={styles.pdiBandItem}>
+                  <h3>Band 3: Driving Test, Disabilities, and the Law</h3>
+                  <p>
+                    <strong>What It Covers:</strong> This section focuses on the
+                    driving test process, disabilities, and legal aspects of
+                    driving.
+                  </p>
+                  <p>
+                    <strong>Why It Matters:</strong> You’ll need to guide
+                    students through the driving test process, including
+                    accommodations for drivers with disabilities.
+                  </p>
+                  <p>
+                    <strong>Study Tips:</strong> Review DVSA guidelines on the
+                    driving test. Learn how to adjust your teaching for students
+                    with disabilities, and study the laws that apply to both
+                    drivers and instructors.
+                  </p>
+                </div>
+
+                <div className={styles.pdiBandItem}>
+                  <h3>Band 4: Publications and Instructional Techniques</h3>
+                  <p>
+                    <strong>What It Covers:</strong> This band is all about
+                    teaching—how to effectively communicate driving techniques
+                    and safety information.
+                  </p>
+                  <p>
+                    <strong>Why It Matters:</strong> Being knowledgeable isn’t
+                    enough—you need to communicate clearly and adapt to
+                    different learning styles.
+                  </p>
+                  <p>
+                    <strong>Study Tips:</strong> Study different teaching
+                    techniques. Practice explaining complex concepts in simple
+                    terms, and create sample lesson plans to refine your
+                    instructional approach.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <h2>
             The hazard perception<span> Test Explained:</span>
@@ -341,63 +461,82 @@ export default function AdiPartOne() {
         </section>
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <div className={styles.innerTheorySupportContent}>
-                <div className={styles.theorySupportContentVideo}>
-                  <iframe
-                    width="400"
-                    height="226"
-                    src="https://www.youtube.com/embed/-bsLPF0Q35Y"
-                    title="Road Safety: Joining the Motorway"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
-                </div>
+          <div className={styles.hazardTestWorkListDivImg}>
+            <div className={styles.innerTheorySupportContent}>
+              <div className={styles.theorySupportContentVideo}>
+                <iframe
+                  width="700"
+                  height="500"
+                  src="https://www.youtube.com/embed/-bsLPF0Q35Y"
+                  title="Road Safety: Joining the Motorway"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
               </div>
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>•The part 1 test is based off of: – The highway code</p>
-                </li>
-                <li>
-                  <p>
-                    • – Know your traffic signs – Driving – the essential skills
-                    – The driving instructors handbook
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The practise and mock test questions alone do not contain
-                    all of the possible questions you could be asked on the test
-                    date, these are purely just sample questions to practise
-                    with.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • Below are the online PDF versions of the highway code and
-                    know your traffic signs, we recommend you read these and
-                    learn them like the back of your hand.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • We recommend reading just one page/two pages or small
-                    sections per day to ensure you retain the most amount of
-                    knowledge. You can also purchase a physical copy of these
-                    books for your convenience.
-                  </p>
-                </li>
-              </ul>
             </div>
           </div>
         </section>
+
+        {/* ////////////////////////////////////////////////////////////////////// */}
+       
+        <div className={styles.tipsContainer}>
+          <section className={styles.hazardTips}>
+            <h2 className={styles.pdiTipsSectionTitle}>
+              Tips for the Hazard Perception Test
+            </h2>
+            <ul>
+              <li className={styles.pdiTipsOne}>
+                <strong>Practice Makes Perfect:</strong> Use online resources to
+                practice with mock clips.
+              </li>
+              <li className={styles.pdiTipsTwo}>
+                <strong>The Click-Click Technique:</strong> Click twice in quick
+                succession when you see a potential hazard.
+              </li>
+              <li className={styles.pdiTipsThree}>
+                <strong>Stay Alert: </strong>Hazards can appear at any moment,
+                so don’t lose focus.
+              </li>
+              <li className={styles.pdiTipsFour}>
+                <strong>Watch for Dual Hazards:</strong> Keep your attention
+                sharp until each video ends.
+              </li>
+            </ul>
+          </section>
+
+          <section className={styles.generalTips}>
+            <h2 className={styles.pdiTipsSectionTitle}>
+              General Tips for Success
+            </h2>
+            <ul>
+              <li className={styles.pdiTipsFive}>
+                <strong>Consistency is Key:</strong> Regular study and practice
+                are crucial.
+              </li>
+              <li className={styles.pdiTipsSix}>
+                <strong>Avoid Over-clicking:</strong> Focus on identifying
+                hazards early.
+              </li>
+              <li className={styles.pdiTipsSeven}>
+                <strong>Stay Calm and Focused:</strong> Perform better under
+                pressure by staying calm.
+              </li>
+            </ul>
+          </section>
+        </div>
+     
+        {/* ////////////////////////////////////////// */}
+        <div className={styles.TMnextPage}>
+          <Link to="/part-1-trainning-material">
+            <button className={styles.TMnextButton}>NEXT PAGE</button>
+          </Link>
+        </div>
+
         {/* /////////////////////////////////////////////////////// */}
 
-        <div id={styles.btnDiv}>
+        {/* <div id={styles.btnDiv}>
           <a href="https://www.highwaycodeuk.co.uk/" id={styles.hazzardBtn}>
             {" "}
             The Highway Code
@@ -405,25 +544,28 @@ export default function AdiPartOne() {
           <a
             href="https://assets.publishing.service.gov.uk/media/656ef4271104cf0013fa74ef/know-your-traffic-signs-dft.pdf"
             id={styles.hazzardBtn}
-            className={styles.hazzardBtn}>
+            className={styles.hazzardBtn}
+          >
             {" "}
             Traffic Signs
           </a>
           <a
             href="https://books.google.com.bz/books?id=indItQEACAAJ&printsec=copyright&hl=en#v=onepage&q&f=false"
-            id={styles.hazzardBtn}>
+            id={styles.hazzardBtn}
+          >
             {" "}
             DSA Guide
           </a>
           <a
             href="https://www.rsa.ie/docs/default-source/services/s3.2-adi/21-driving-instructor-handbook-2019-(1).pdf?sfvrsn=b4be5476_5"
             id={styles.hazzardBtn}
-            className={styles.hazzardBtn}>
+            className={styles.hazzardBtn}
+          >
             {" "}
             Instructor Handbook
           </a>
-        </div>
-        <ul type="none">
+        </div> */}
+        {/* <ul type="none">
           <li className="text-center mt-2 text-danger">
             <p>
               • Click the buttons below to visit each category of the multiple
@@ -454,7 +596,7 @@ export default function AdiPartOne() {
           <Link to="/Adi-part-1-MockTest">
             <button id={styles.hazzardBtn}>Mock Test</button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

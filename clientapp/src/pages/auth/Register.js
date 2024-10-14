@@ -28,7 +28,6 @@ export default function Register() {
   });
 
   const handleRegistration = async (data) => {
-    console.log("Form Submitted", data); // Debugging line
 
     const formData = new FormData();
     formData.append("username", data.username);
@@ -37,7 +36,6 @@ export default function Register() {
     formData.append("password", data.password);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("roleName", data.roleName);
-    console.log("Registering user with data:", data); 
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
 

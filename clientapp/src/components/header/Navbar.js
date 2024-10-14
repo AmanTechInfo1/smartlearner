@@ -33,7 +33,15 @@ function Navbar() {
             </li>
             <span>|</span>
             <li>
-              <Link to="/faqs">FAQS</Link>
+              <Link to="/blogs">Blogs</Link>
+            </li>
+            <span>|</span>
+            <li>
+              <Link to="/faqs">FAQs</Link>
+            </li>
+            <span>|</span>
+            <li>
+              <Link to="/term-and-condition">T&C</Link>
             </li>
             <span>|</span>
 
