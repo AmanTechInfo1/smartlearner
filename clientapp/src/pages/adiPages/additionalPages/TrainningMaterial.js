@@ -98,7 +98,7 @@ export default function TrainningMaterial() {
           ))}
 
           <section className={styles.hazardTestWorkListSection}>
-            <div className={styles.bgColorList33}>
+            <div className={styles.bgColorList3322}>
               <ul type="none">
                 <li>
                   <p>

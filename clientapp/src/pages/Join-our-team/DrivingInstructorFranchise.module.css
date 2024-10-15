@@ -332,7 +332,7 @@ padding-bottom: 1.5rem;
   }
   #benefitsList p{
     
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bold;
     color: white;
     padding-left: 5px;
@@ -477,7 +477,7 @@ padding-bottom: 1.5rem;
     text-align: center;
     color: white;
     
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 400;
     
    }
@@ -580,13 +580,13 @@ padding-bottom: 1.5rem;
     text-align: center;
     color: white;
     
-    font-size: 1.1em;
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 500;
     line-height: 28px;
   }
   @media (max-width: 1024px){
     .diaryDetailsSection p{
-        font-size: 16px;
+        font-size: 19px;
     }
   }
   @media (max-width: 777px){
@@ -606,6 +606,7 @@ padding-bottom: 1.5rem;
     }
     .diaryDetailsSection p{
         padding: 0px 20px 0px 20px;
+        font-size: 16px;
     }
   }
   @media (max-width: 428px){
@@ -615,6 +616,7 @@ padding-bottom: 1.5rem;
     }
     .diaryDetailsSection p{
         line-height: 25px;
+        font-size: 16px;
     }
   }
   /* /////////////////////testimonials ///////////////// */

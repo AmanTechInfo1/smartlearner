@@ -119,7 +119,7 @@ export default function DrivingInstructorTraining() {
             <img src={award} alt="award" />
           </div>
           <div className={styles.infoTextHeading2}>
-            <h3>Call us today. Full package prices starting from just £999!</h3>
+            <h3>** Call us today. Full package prices starting from just £999! **</h3>
           </div>
         </section>
 
