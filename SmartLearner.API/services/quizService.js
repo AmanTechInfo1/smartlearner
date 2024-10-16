@@ -1,172 +1,154 @@
-const { ObjectId } = require('mongodb');
-const AttemptQuizQuestion = require('../models/attemptQuizQuestionModel');
-const QuizQuestion = require('../models/quizQuestionModel');
-const QuizCategoryModel = require('../models/quizCategoryModel');
-const QuizModuleModel = require('../models/quizModuleModel');
+const { ObjectId } = require("mongodb");
+const AttemptQuizQuestion = require("../models/attemptQuizQuestionModel");
+const QuizQuestion = require("../models/quizQuestionModel");
+const QuizCategoryModel = require("../models/quizCategoryModel");
+const QuizModuleModel = require("../models/quizModuleModel");
 
 class quizService {
   async createQuizAsync(quizData) {
     try {
-
       const quiz = await QuizQuestion.create(quizData);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Added Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       const resultObject = {
         message: "Quiz add failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
   }
 
-
-
   async updateQuizAsync(quizId, quizData) {
     try {
-
       const quiz = await QuizQuestion.findByIdAndUpdate(quizId, quizData);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Updated Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       const resultObject = {
         message: "Quiz update failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
   }
-
-
-
-  
 
   async getQuizCategoryByQuestionAsync() {
     try {
-
-
       let aggr = [
         {
-          '$lookup': {
-            'from': 'quizquestions',
-            'localField': '_id',
-            'foreignField': 'category',
-            'as': 'result'
-          }
-        }, {
-          '$addFields': {
-            'count': {
-              '$size': '$result'
-            }
-          }
-        }
-      ]
+          $lookup: {
+            from: "quizquestions",
+            localField: "_id",
+            foreignField: "category",
+            as: "result",
+          },
+        },
+        {
+          $addFields: {
+            count: {
+              $size: "$result",
+            },
+          },
+        },
+      ];
       const quiz = await QuizCategoryModel.aggregate(aggr);
       const totalCount = await QuizCategoryModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
-
-
 
   async getQuizCategoryAsync() {
     try {
-
-
       let aggr = [
         {
-          '$lookup': {
-            'from': 'quizmodules',
-            'localField': '_id',
-            'foreignField': 'category',
-            'as': 'result'
-          }
-        }, {
-          '$addFields': {
-            'count': {
-              '$size': '$result'
-            }
-          }
-        }
-      ]
+          $lookup: {
+            from: "quizmodules",
+            localField: "_id",
+            foreignField: "category",
+            as: "result",
+          },
+        },
+        {
+          $addFields: {
+            count: {
+              $size: "$result",
+            },
+          },
+        },
+      ];
       const quiz = await QuizCategoryModel.aggregate(aggr);
       const totalCount = await QuizCategoryModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
 
-
   async getQuizModuleAsync(id) {
     try {
-
-
       let aggr = [
         {
-          '$match': {
-            'category': new ObjectId(id)
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizquestions',
-            'localField': '_id',
-            'foreignField': 'module',
-            'as': 'result'
-          }
-        }, {
-          '$addFields': {
-            'count': {
-              '$size': '$result'
-            }
-          }
-        }
-      ]
+          $match: {
+            category: new ObjectId(id),
+          },
+        },
+        {
+          $lookup: {
+            from: "quizquestions",
+            localField: "_id",
+            foreignField: "module",
+            as: "result",
+          },
+        },
+        {
+          $addFields: {
+            count: {
+              $size: "$result",
+            },
+          },
+        },
+      ];
       const quiz = await QuizModuleModel.aggregate(aggr);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
@@ -178,21 +160,16 @@ class quizService {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: quiz
+        data: quiz,
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
 
-
-
-
   async getAllQuizAsync(pageNumber, pageSize, query) {
     try {
-
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
@@ -202,50 +179,53 @@ class quizService {
 
       let aggr = [
         {
-          '$addFields': {
-            'uId': {
-              '$toString': '$_id'
-            }
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizcategories',
-            'localField': 'category',
-            'foreignField': '_id',
-            'as': 'result'
-          }
-        }, {
-          '$unwind': {
-            'path': '$result',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizmodules',
-            'localField': 'module',
-            'foreignField': '_id',
-            'as': 'moduleresult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$moduleresult',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'categoryName': '$result.name',
-            'moduleName': '$moduleresult.moduleName'
-          }
-        }, {
-          '$skip': skip
-        }, {
-          '$limit': +pageSize || 20
-        }
-      ]
-
-
-
-
+          $addFields: {
+            uId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizmodules",
+            localField: "module",
+            foreignField: "_id",
+            as: "moduleresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$moduleresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            categoryName: "$result.name",
+            moduleName: "$moduleresult.moduleName",
+          },
+        },
+        {
+          $skip: skip,
+        },
+        {
+          $limit: +pageSize || 20,
+        },
+      ];
 
       const quizzes = await QuizQuestion.aggregate(aggr);
       const totalCount = await QuizQuestion.countDocuments(filter);
@@ -264,12 +244,8 @@ class quizService {
     }
   }
 
-
-
-
   async getAllQuizModuleAsync(pageNumber, pageSize, query) {
     try {
-
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
@@ -277,38 +253,40 @@ class quizService {
         filter.$or = [{ code: regex }, { area: regex }];
       }
 
-
       let aggr = [
         {
-          '$addFields': {
-            'uId': {
-              '$toString': '$_id'
-            }
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizcategories',
-            'localField': 'category',
-            'foreignField': '_id',
-            'as': 'result'
-          }
-        }, {
-          '$unwind': {
-            'path': '$result',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'categoryName': '$result.name'
-          }
-        }, {
-          '$skip': skip
-        }, {
-          '$limit': +pageSize || 20
-        }
-      ]
-
-
+          $addFields: {
+            uId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            categoryName: "$result.name",
+          },
+        },
+        {
+          $skip: skip,
+        },
+        {
+          $limit: +pageSize || 20,
+        },
+      ];
 
       const quizzes = await QuizModuleModel.aggregate(aggr);
       const totalCount = await QuizModuleModel.countDocuments(filter);
@@ -327,68 +305,57 @@ class quizService {
     }
   }
 
-
-
-
-
-
   async getOneQuizModuleAsync(id) {
     try {
-
-
       let aggr = [
         {
-          '$addFields': {
-            'uId': {
-              '$toString': '$_id'
-            }
-          }
-        }, {
-          '$match': {
-            'uId': id
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizcategories',
-            'localField': 'category',
-            'foreignField': '_id',
-            'as': 'result'
-          }
-        }, {
-          '$unwind': {
-            'path': '$result',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'categoryName': '$result.name'
-          }
-        }
-      ]
+          $addFields: {
+            uId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $match: {
+            uId: id,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            categoryName: "$result.name",
+          },
+        },
+      ];
       const quiz = await QuizModuleModel.aggregate(aggr);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
         message: "Quiz Module Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: quiz[0]
+        data: quiz[0],
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
 
-
-
-
-
-
-
   async getQuizResultAsync(userId, pageNumber, pageSize, query, resType) {
     try {
-
       const skip = (pageNumber - 1) * (pageSize || 20);
       let filter = {};
       if (query) {
@@ -396,71 +363,79 @@ class quizService {
         filter.$or = [{ code: regex }, { area: regex }];
       }
 
-
-      let aggr = []
+      let aggr = [];
       if (resType == "quizResult") {
         aggr.push({
-          '$match': {
-            'userId': new ObjectId(userId)
-          }
-        })
+          $match: {
+            userId: new ObjectId(userId),
+          },
+        });
       }
 
-      aggr.push({
-        '$lookup': {
-          'from': 'quizquestions',
-          'localField': 'questionId',
-          'foreignField': '_id',
-          'as': 'question'
+      aggr.push(
+        {
+          $lookup: {
+            from: "quizquestions",
+            localField: "questionId",
+            foreignField: "_id",
+            as: "question",
+          },
+        },
+        {
+          $unwind: {
+            path: "$question",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            questioncategory: "$question.category",
+            questionmodule: "$question.module",
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "questioncategory",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizmodules",
+            localField: "questionmodule",
+            foreignField: "_id",
+            as: "moduleresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$moduleresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "users",
+            localField: "userId",
+            foreignField: "_id",
+            as: "user",
+          },
+        },
+        {
+          $unwind: {
+            path: "$user",
+            preserveNullAndEmptyArrays: true,
+          },
         }
-      }, {
-        '$unwind': {
-          'path': '$question',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$addFields': {
-          'questioncategory': '$question.category',
-          'questionmodule': '$question.module'
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizcategories',
-          'localField': 'questioncategory',
-          'foreignField': '_id',
-          'as': 'result'
-        }
-      }, {
-        '$unwind': {
-          'path': '$result',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizmodules',
-          'localField': 'questionmodule',
-          'foreignField': '_id',
-          'as': 'moduleresult'
-        }
-      }, {
-        '$unwind': {
-          'path': '$moduleresult',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$lookup': {
-          'from': 'users',
-          'localField': 'userId',
-          'foreignField': '_id',
-          'as': 'user'
-        }
-      }, {
-        '$unwind': {
-          'path': '$user',
-          'preserveNullAndEmptyArrays': true
-        }
-      })
-
+      );
 
       const quizResult = await AttemptQuizQuestion.aggregate(aggr);
       const totalCount = await AttemptQuizQuestion.countDocuments(filter);
@@ -478,9 +453,6 @@ class quizService {
       throw new Error("Could not fetch postcodes");
     }
   }
-
-
-
 
   async deleteQuizCategoryAsync(categoryId) {
     try {
@@ -503,8 +475,6 @@ class quizService {
     }
   }
 
-
-
   async deleteQuizModuleAsync(categoryId) {
     try {
       await QuizModuleModel.findByIdAndDelete(categoryId);
@@ -525,8 +495,6 @@ class quizService {
       return resultObject;
     }
   }
-
-
 
   async deleteQuizAsync(categoryId) {
     try {
@@ -549,55 +517,51 @@ class quizService {
     }
   }
 
-
-
-
-
-
   async getOneQuizAsync(id) {
     try {
-
-
       let aggr = [
         {
-          '$addFields': {
-            'uId': {
-              '$toString': '$_id'
-            }
-          }
-        }, {
-          '$match': {
-            'uId': id
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizcategories',
-            'localField': 'category',
-            'foreignField': '_id',
-            'as': 'result'
-          }
-        }, {
-          '$unwind': {
-            'path': '$result',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'categoryName': '$result.name'
-          }
-        }
-      ]
+          $addFields: {
+            uId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $match: {
+            uId: id,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            categoryName: "$result.name",
+          },
+        },
+      ];
       const quiz = await QuizQuestion.aggregate(aggr);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: quiz[0]
+        data: quiz[0],
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
@@ -610,81 +574,72 @@ class quizService {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: quiz
+        data: quiz,
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
 
-
-
   async getOneQuizCategoryModuleAsync(id) {
     try {
-
       let aggr = [
-
         {
-          '$match': {
-            'category': new ObjectId(id)
-          }
+          $match: {
+            category: new ObjectId(id),
+          },
         },
         {
-          '$addFields': {
-            'uId': {
-              '$toString': '$_id'
-            }
-          }
-        }, {
-          '$lookup': {
-            'from': 'quizcategories',
-            'localField': 'category',
-            'foreignField': '_id',
-            'as': 'result'
-          }
-        }, {
-          '$unwind': {
-            'path': '$result',
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'categoryName': '$result.name'
-          }
-        }
-      ]
+          $addFields: {
+            uId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            categoryName: "$result.name",
+          },
+        },
+      ];
       const quiz = await QuizModuleModel.aggregate(aggr);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Fetch Successfully",
         statusCode: 201,
         success: true,
-        data: quiz
+        data: quiz,
       };
       return resultObject;
     } catch (err) {
-
       throw new Error("Could not fetch role");
     }
   }
 
-
-
-
-
-
   async createQuizCategoryAsync(quizData) {
     try {
-
       const quiz = await QuizCategoryModel.create(quizData);
       const totalCount = await QuizCategoryModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Added Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
@@ -692,7 +647,7 @@ class quizService {
         message: "Quiz Category add failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
@@ -705,7 +660,7 @@ class quizService {
         message: "Quiz Category Added Successfully",
         statusCode: 201,
         success: true,
-        data: quiz
+        data: quiz,
       };
       return resultObject;
     } catch (err) {
@@ -713,7 +668,7 @@ class quizService {
         message: "Quiz Category add failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
@@ -721,14 +676,13 @@ class quizService {
 
   async createQuizModuleAsync(quizData) {
     try {
-
       const quiz = await QuizModuleModel.create(quizData);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
         message: "Quiz Category Added Successfully",
         statusCode: 201,
         success: true,
-        data: { quiz, totalCount }
+        data: { quiz, totalCount },
       };
       return resultObject;
     } catch (err) {
@@ -736,21 +690,20 @@ class quizService {
         message: "Quiz Category add failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
   }
   async updateQuizModuleAsync(uId, quizData) {
     try {
-
       const quiz = await QuizModuleModel.findByIdAndUpdate(uId, quizData);
       const totalCount = await QuizModuleModel.countDocuments();
       const resultObject = {
         message: "Quiz Module Updated Successfully",
         statusCode: 201,
         success: true,
-        data: quiz
+        data: quiz,
       };
       return resultObject;
     } catch (err) {
@@ -758,55 +711,48 @@ class quizService {
         message: "Quiz Module Updated failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
   }
 
-
-
-
-
-
-
   async answerQuizAsync(quizData) {
     try {
-
       // const quiz = await QuizQuestion.create(quizData);
-      const getQuizQuestion = await QuizQuestion.find({ "_id": quizData.questionId });
+      const getQuizQuestion = await QuizQuestion.find({
+        _id: quizData.questionId,
+      });
       if (getQuizQuestion.length == 0) {
         const resultObject = {
           message: "Question Id is not valid",
           statusCode: 400,
           success: false,
-          data: null
+          data: null,
         };
         return resultObject;
       }
       if (getQuizQuestion[0]["answer"] == quizData["answer"]) {
-        quizData["answerAttempt"] = "Correct"
+        quizData["answerAttempt"] = "Correct";
       } else {
-        quizData["answerAttempt"] = "Incorrect"
+        quizData["answerAttempt"] = "Incorrect";
       }
 
-
-      quizData["correctAnswer"] = getQuizQuestion[0]["answer"]
+      quizData["correctAnswer"] = getQuizQuestion[0]["answer"];
       const quiz = await AttemptQuizQuestion.create(quizData);
       const resultObject = {
         message: "Quiz Response Successfully",
         statusCode: 201,
         success: true,
-        data: quizData
+        data: quizData,
       };
       return resultObject;
     } catch (err) {
-
       const resultObject = {
         message: "Quiz Answer failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
@@ -814,91 +760,103 @@ class quizService {
 
   async getRandomQuiz(userId, cid, moduleId = null) {
     try {
-
-      let aggr = []
+      let aggr = [];
       if (moduleId != null) {
         aggr.push({
-          '$match': {
-            'module': new ObjectId(moduleId)
-          }
-        }
-        )
+          $match: {
+            module: new ObjectId(moduleId),
+          },
+        });
       }
 
-      aggr.push({
-        '$match': {
-          'category': new ObjectId(cid)
-        }
-      }, {
-        '$lookup': {
-          'from': 'attemptquizquestions',
-          'localField': '_id',
-          'foreignField': 'questionId',
-          'pipeline': [
-            {
-              '$match': {
-                'userId': {
-                  '$eq': new ObjectId(userId)
-                }
-              }
-            }
-          ],
-          'as': 'result'
-        }
-      }, {
-        '$addFields': {
-          'sizeRes': {
-            '$size': '$result'
+      aggr.push(
+        {
+          $match: {
+            category: new ObjectId(cid),
           },
-          'questionId': {
-            '$toString': '$_id'
-          }
+        },
+        {
+          $lookup: {
+            from: "attemptquizquestions",
+            localField: "_id",
+            foreignField: "questionId",
+            pipeline: [
+              {
+                $match: {
+                  userId: {
+                    $eq: new ObjectId(userId),
+                  },
+                },
+              },
+            ],
+            as: "result",
+          },
+        },
+        {
+          $addFields: {
+            sizeRes: {
+              $size: "$result",
+            },
+            questionId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $match: {
+            sizeRes: 0,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "quizcategoriesresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$quizcategoriesresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizmodules",
+            localField: "module",
+            foreignField: "_id",
+            as: "quizmodulesresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$quizmodulesresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            quizCategory: "$quizcategoriesresult.name",
+            quizModuleName: "$quizmodulesresult.moduleName",
+          },
+        },
+        {
+          $project: {
+            result: 0,
+            answer: 0,
+            sizeRes: 0,
+            _id: 0,
+          },
         }
-      }, {
-        '$match': {
-          'sizeRes': 0
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizcategories',
-          'localField': 'category',
-          'foreignField': '_id',
-          'as': 'quizcategoriesresult'
-        }
-      }, {
-        '$unwind': {
-          'path': '$quizcategoriesresult',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizmodules',
-          'localField': 'module',
-          'foreignField': '_id',
-          'as': 'quizmodulesresult'
-        }
-      }, {
-        '$unwind': {
-          'path': '$quizmodulesresult',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$addFields': {
-          'quizCategory': '$quizcategoriesresult.name',
-          'quizModuleName': '$quizmodulesresult.moduleName'
-        }
-      }, {
-        '$project': {
-          'result': 0,
-          'answer': 0,
-          'sizeRes': 0,
-          '_id': 0
-        }
-      })
+      );
 
       const products = await QuizQuestion.aggregate(aggr);
       const resultObject = {
-        message: products.length > 0 ? "Question fetched successfully" : "No Question Available",
+        message:
+          products.length > 0
+            ? "Question fetched successfully"
+            : "Quiz completed",
         statusCode: products.length > 0 ? 200 : 400,
         success: true,
         data: products.length > 0 ? products[0] : {},
@@ -916,8 +874,7 @@ class quizService {
   }
   async getRandomQuizCatName(userId, cid, moduleId = null) {
     try {
-
-      let aggr = []
+      let aggr = [];
       // if (moduleId != null) {
       //   aggr.push({
       //     '$match': {
@@ -927,79 +884,93 @@ class quizService {
       //   )
       // }
 
-      aggr.push({
-        '$lookup': {
-          'from': 'attemptquizquestions',
-          'localField': '_id',
-          'foreignField': 'questionId',
-          'pipeline': [
-            {
-              '$match': {
-                'userId': {
-                  '$eq': new ObjectId(userId)
-                }
-              }
-            }
-          ],
-          'as': 'result'
-        }
-      }, {
-        '$addFields': {
-          'sizeRes': {
-            '$size': '$result'
+      aggr.push(
+        {
+          $lookup: {
+            from: "attemptquizquestions",
+            localField: "_id",
+            foreignField: "questionId",
+            pipeline: [
+              {
+                $match: {
+                  userId: {
+                    $eq: new ObjectId(userId),
+                  },
+                },
+              },
+            ],
+            as: "result",
           },
-          'questionId': {
-            '$toString': '$_id'
-          }
+        },
+        {
+          $addFields: {
+            sizeRes: {
+              $size: "$result",
+            },
+            questionId: {
+              $toString: "$_id",
+            },
+          },
+        },
+        {
+          $match: {
+            sizeRes: 0,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "category",
+            foreignField: "_id",
+            as: "quizcategoriesresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$quizcategoriesresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $match: {
+            "quizcategoriesresult.catUnqName": cid,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizmodules",
+            localField: "module",
+            foreignField: "_id",
+            as: "quizmodulesresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$quizmodulesresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            quizCategory: "$quizcategoriesresult.name",
+            quizModuleName: "$quizmodulesresult.moduleName",
+          },
+        },
+        {
+          $project: {
+            result: 0,
+            answer: 0,
+            sizeRes: 0,
+            _id: 0,
+          },
         }
-      }, {
-        '$match': {
-          'sizeRes': 0
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizcategories',
-          'localField': 'category',
-          'foreignField': '_id',
-          'as': 'quizcategoriesresult'
-        }
-      }, {
-        '$unwind': {
-          'path': '$quizcategoriesresult',
-          'preserveNullAndEmptyArrays': true
-        }
-      },{
-        '$match': {
-          'quizcategoriesresult.catUnqName': cid
-        }
-      }, {
-        '$lookup': {
-          'from': 'quizmodules',
-          'localField': 'module',
-          'foreignField': '_id',
-          'as': 'quizmodulesresult'
-        }
-      }, {
-        '$unwind': {
-          'path': '$quizmodulesresult',
-          'preserveNullAndEmptyArrays': true
-        }
-      }, {
-        '$addFields': {
-          'quizCategory': '$quizcategoriesresult.name',
-          'quizModuleName': '$quizmodulesresult.moduleName'
-        }
-      }, {
-        '$project': {
-          'result': 0,
-          'answer': 0,
-          'sizeRes': 0,
-          '_id': 0
-        }
-      })
+      );
       const products = await QuizQuestion.aggregate(aggr);
       const resultObject = {
-        message: products.length > 0 ? "Question fetched successfully" : "No Question Available",
+        message:
+          products.length > 0
+            ? "Question fetched successfully"
+            : "Quiz Completed ",
         statusCode: products.length > 0 ? 200 : 400,
         success: true,
         data: products.length > 0 ? products[0] : {},

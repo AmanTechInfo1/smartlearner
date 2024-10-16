@@ -1,5 +1,5 @@
-const roleService = require('../services/roleService');
-const { translate } = require('free-translate');
+const roleService = require("../services/roleService");
+const { translate } = require("free-translate");
 
 class RoleController {
   async createRole(req, res, next) {
@@ -58,60 +58,50 @@ class RoleController {
       next(err);
     }
   }
+
+  // Translate given text and options
   async translator(req, res, next) {
     try {
+      const { question, lang, option1, option2, option3, option4 } = req.body;
 
-      // const result = await roleService.deleteRoleAsync(req.params.id);
-      const translatedText = translate(req.body.question, { from: 'en', to: req.body.lang });
-      let options = {}
-      options["question"] = translatedText
+      // Prepare translation tasks
+    
 
 
+
+      const translations = await translate(req.body.question, { from: 'en', to: req.body.lang });
+      let options = { question: translations };
+      
       if (req.body.option1) {
-        const option1 = translate(req.body.option1, { from: 'en', to: req.body.lang });
-        // options.push(option1)
-        options["option1"] = option1
+        options.option1 = await translate(req.body.option1, { from: 'en', to: req.body.lang });
       }
       if (req.body.option2) {
-        const option2 = translate(req.body.option2, { from: 'en', to: req.body.lang });
-        // options.push(option2)
-        options["option2"] = option2
+        options.option2 = await translate(req.body.option2, { from: 'en', to: req.body.lang });
       }
       if (req.body.option3) {
-        const option3 = translate(req.body.option3, { from: 'en', to: req.body.lang });
-        // options.push(option3)
-        options["option3"] = option3
+        options.option3 = await translate(req.body.option3, { from: 'en', to: req.body.lang });
       }
       if (req.body.option4) {
-        const option4 = translate(req.body.option4, { from: 'en', to: req.body.lang });
-        // options.push(option4)
-        options["option4"] = option4
+        options.option4 = await translate(req.body.option4, { from: 'en', to: req.body.lang });
+      }
+      
+
+      // Execute all translation promises concurrently
+      const promisesArray = Object.values(translations);
+      const results = await Promise.all(promisesArray);
+
+      // Construct the result object
+      const resultObject = {};
+      let index = 0;
+      for (const key in translations) {
+        resultObject[key] = results[index++];
       }
 
-      // const translatedText = await translate(['Your view could be obstructed', 'Your sun visor might get tangled', 'Your radio reception might be affected', 'Your windscreen could mist up more easily'], { from: 'en', to: req.body.lang });
-
-
-      let promisesArray = Object.values(options);
-
-      await Promise.all(promisesArray)
-        .then(results => {
-          // All promises resolved successfully
-          let resultObject = {};
-          Object.keys(options).forEach((key, index) => {
-            resultObject[key] = results[index];
-          });
-          res.json(resultObject);
-        })
-        .catch(error => {
-          // If any of the promises fail, the catch block will handle the error
-          console.error(error);
-        });
-
+      res.json(resultObject);
     } catch (err) {
-      next(err);
+      next(err); // Forward error to error handler
     }
   }
-
 }
 
 module.exports = new RoleController();

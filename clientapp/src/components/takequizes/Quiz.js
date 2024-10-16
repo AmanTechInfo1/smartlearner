@@ -38,8 +38,6 @@ const questions = [
   },
 ];
 
-
-
 // type Locale =
 //   | 'auto'
 //   | 'en'
@@ -271,10 +269,8 @@ const questions = [
 const Quiz = () => {
   const { cid, id } = useParams();
 
-
   const myDivRef = useRef(null);
   const myDivRefQue = useRef(null);
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -295,33 +291,29 @@ const Quiz = () => {
 
   const { width, height } = useWindowSize();
 
-
   const handleTranslation = async (question) => {
-
-
-    let queeeopt = []
+    let queeeopt = [];
     const formdata = new FormData();
     formdata.append("question", question);
 
-
-    let option1 = document.getElementById("laboption1").innerHTML
+    let option1 = document.getElementById("laboption1").innerHTML;
     if (option1) {
-      queeeopt.push(option1)
+      queeeopt.push(option1);
       formdata.append("option1", option1);
     }
-    let option2 = document.getElementById("laboption2").innerHTML
+    let option2 = document.getElementById("laboption2").innerHTML;
     if (option2) {
-      queeeopt.push(option2)
+      queeeopt.push(option2);
       formdata.append("option2", option2);
     }
-    let option3 = document.getElementById("laboption3").innerHTML
+    let option3 = document.getElementById("laboption3").innerHTML;
     if (option3) {
-      queeeopt.push(option3)
+      queeeopt.push(option3);
       formdata.append("option3", option3);
     }
-    let option4 = document.getElementById("laboption4").innerHTML
+    let option4 = document.getElementById("laboption4").innerHTML;
     if (option4) {
-      queeeopt.push(option4)
+      queeeopt.push(option4);
       formdata.append("option4", option4);
     }
 
@@ -332,47 +324,42 @@ const Quiz = () => {
     const requestOptions = {
       method: "POST",
       body: formdata,
-      redirect: "follow"
+      redirect: "follow",
     };
 
-    await fetch(baseUrl + "/api/roles/translate", requestOptions)
+    await fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.smartlearner.com/api/roles/translate`,
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => {
         if (myDivRef != null && myDivRef.current != null) {
-          myDivRef.current.innerHTML = result.question
+          myDivRef.current.innerHTML = result.question;
           if (option1) {
-            document.getElementById("option1").innerHTML = result.option1
+            document.getElementById("option1").innerHTML = result.option1;
           }
           if (option2) {
-            document.getElementById("option2").innerHTML = result.option2
+            document.getElementById("option2").innerHTML = result.option2;
           }
           if (option3) {
-            document.getElementById("option3").innerHTML = result.option3
+            document.getElementById("option3").innerHTML = result.option3;
           }
           if (option4) {
-            document.getElementById("option4").innerHTML = result.option4
+            document.getElementById("option4").innerHTML = result.option4;
           }
         }
-        return result
+        return result;
       })
       .catch((error) => console.error(error));
   };
 
-
-
-
-
-
   useEffect(() => {
-
     if (myDivRef != null && myDivRef.current != null) {
-      handleTranslation(myDivRefQue.current.innerHTML)
+      handleTranslation(myDivRefQue.current.innerHTML);
     }
-
-  }, [myDivRefQue.current,questionTranslate]);
+  }, [myDivRefQue.current, questionTranslate]);
 
   useEffect(() => {
-
     dispatch(getRandomQuestionByName(cid));
     const interval = setInterval(() => {
       setTotalTimer((prevTotalTimer) => {
@@ -465,7 +452,6 @@ const Quiz = () => {
 
   return (
     <>
-
       {oneQuizOutput.answerAttempt == "Correct" ? (
         <Confetti
           run={oneQuizOutput.answerAttempt == "Correct"}
@@ -480,11 +466,11 @@ const Quiz = () => {
         <div className={styles.quizDiv}>
           <div className={styles.quiz}>
             {loading ? (
-              <><LoadingWeb /></>
+              <>
+                <LoadingWeb />
+              </>
             ) : oneQuiz?.question ? (
               <>
-
-
                 <div className={styles.totalTimer}>
                   {/* <select onChange={(e)=>{
                     setQuestionTranslate(e.target.value)
@@ -507,29 +493,41 @@ const Quiz = () => {
                 </div>
                 <div className={styles.questionCount}>
                   {/* {currentQuestion + 1}/{questions.length} */}
-                  <span>Question:  </span>
-                  <div ref={myDivRef}
+                  <span>Question: </span>
+                  <div
+                    ref={myDivRef}
                     dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(">", "><br/>"),
-                    }}
-                  ></div>
-                  <div style={{display:"none"}} ref={myDivRefQue}
+                      __html: oneQuiz?.question.replace(
+                        ">",
+                        "><br/>",
+                        "</td> </tr> </tbody> </table>",
+                        `"<table class="box questionbox"><br/> <tbody> <tr> <td>"`
+                      ),
+                    }}></div>
+                  <div
+                    style={{ display: "none" }}
+                    ref={myDivRefQue}
                     dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(">", "><br/>"),
-                    }}
-                  ></div>
+                      __html: oneQuiz?.question.replace(
+                        ">",
+                        "><br/>",
+                        "</td> </tr> </tbody> </table>",
+                        `"<table class="box questionbox"><br/> <tbody> <tr> <td>"`
+                      ),
+                    }}></div>
                 </div>
 
                 <div className={styles.questionCount}>
                   {oneQuiz?.questionImage && (
                     <img
                       width={200}
-                      src={`${oneQuiz?.questionImage != ""
-                        ? oneQuiz?.questionImage.includes("https")
-                          ? oneQuiz?.questionImage
-                          : imageBaseUrl + oneQuiz?.questionImage
-                        : ""
-                        }`}
+                      src={`${
+                        oneQuiz?.questionImage != ""
+                          ? oneQuiz?.questionImage.includes("https")
+                            ? oneQuiz?.questionImage
+                            : imageBaseUrl + oneQuiz?.questionImage
+                          : ""
+                      }`}
                     />
                   )}
                 </div>
@@ -558,7 +556,6 @@ const Quiz = () => {
                   {oneQuiz?.option?.map((answerOption, index) => {
                     return (
                       <button
-
                         // key={index}
                         disabled={oneQuizOutput.answerAttempt}
                         style={{
@@ -568,12 +565,12 @@ const Quiz = () => {
                                 ? "#780000"
                                 : oneQuizOutput.correctAnswer ==
                                   "Option" + (index + 1)
-                                  ? "green"
-                                  : ""
+                                ? "green"
+                                : ""
                               : oneQuizOutput.correctAnswer ==
                                 "Option" + (index + 1)
-                                ? "green"
-                                : "",
+                              ? "green"
+                              : "",
                         }}
                         onClick={() =>
                           handleAnswerOptionClick(
@@ -581,19 +578,34 @@ const Quiz = () => {
                             "Image" + (index + 1)
                           )
                         }
-                      // disabled={selectedOption !== null}
+                        // disabled={selectedOption !== null}
                       >
-                        {answerOption != "" ? <p id={"option" + (index + 1)}>{answerOption}</p> : ""} &nbsp; &nbsp;{" "}
-                        {answerOption != "" ? <p style={{display:"none"}} id={"laboption" + (index + 1)}>{answerOption}</p> : ""} &nbsp; &nbsp;{" "}
+                        {answerOption != "" ? (
+                          <p id={"option" + (index + 1)}>{answerOption}</p>
+                        ) : (
+                          ""
+                        )}{" "}
+                        &nbsp; &nbsp;{" "}
+                        {answerOption != "" ? (
+                          <p
+                            style={{ display: "none" }}
+                            id={"laboption" + (index + 1)}>
+                            {answerOption}
+                          </p>
+                        ) : (
+                          ""
+                        )}{" "}
+                        &nbsp; &nbsp;{" "}
                         {oneQuiz?.optionImage[index] != "" && (
                           <img
                             width={200}
-                            src={`${oneQuiz?.optionImage[index] != ""
-                              ? oneQuiz?.optionImage[index].includes("https")
-                                ? oneQuiz?.optionImage[index]
-                                : imageBaseUrl + oneQuiz?.optionImage[index]
-                              : ""
-                              }`}
+                            src={`${
+                              oneQuiz?.optionImage[index] != ""
+                                ? oneQuiz?.optionImage[index].includes("https")
+                                  ? oneQuiz?.optionImage[index]
+                                  : imageBaseUrl + oneQuiz?.optionImage[index]
+                                : ""
+                            }`}
                           />
                         )}
                       </button>
