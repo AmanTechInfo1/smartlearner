@@ -369,7 +369,7 @@ export default function AdiPartTwo() {
             <p>
               Click the start quiz button to start the quiz and See your result
             </p>
-            <Link to="/takequizCatName/ADI---Part-2">
+            <Link to="/takequizCatName/adi--part-2">
               {" "}
               <button>Start Quiz</button>
             </Link>

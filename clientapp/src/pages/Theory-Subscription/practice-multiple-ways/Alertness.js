@@ -460,7 +460,7 @@ export default function Alertness() {
                 Click the start quiz button to start the quiz and See your
                 result
               </p>
-              <Link to="/takequizCatName/Alertness">
+              <Link to="/takequizCatName/Alertness-quiz">
                 {" "}
                 <button>Start Quiz</button>
               </Link>
