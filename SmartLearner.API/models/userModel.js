@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   isDeleted: { type: Boolean, required: true, default: false },
   subscription: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "PlanUser",
+    ref: "Plans",
   },
 
   deletedOn: { type: Date },
