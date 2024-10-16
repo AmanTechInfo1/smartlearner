@@ -12,7 +12,9 @@ export default function BonusQuiz() {
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>Bonus <span>Summary</span></h1>
+                <h1>
+                  Bonus <span>Summary</span>
+                </h1>
               </div>
               <div className={styles.alertBtn}>
                 <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
@@ -68,19 +70,18 @@ export default function BonusQuiz() {
             <p>
               Click the start quiz button to start the quiz and See your result
             </p>
-            <Link to="/takequizCatName/adi-part-1--Bonus-Quiz">
+            <Link to="/takequizCatName/adi-part-1--bonus-Quiz">
               {" "}
               <button>Start Quiz</button>
             </Link>
           </section>
         </div>
         <div className={styles.TMnextPage}>
-          
-            <Link to="/hazard-preception-part-2">
+          <Link to="/hazard-preception-part-2">
             <button className={styles.TMnextButton}>
-              NEXT PAGE Hazzard Preception </button>
-            </Link>
-         
+              NEXT PAGE Hazzard Preception{" "}
+            </button>
+          </Link>
         </div>
       </div>
     </div>
