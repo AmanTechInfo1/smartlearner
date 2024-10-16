@@ -240,7 +240,7 @@ class quizService {
 
       return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch postcodes");
+      throw new Error("Could not fetch Quizzes");
     }
   }
 

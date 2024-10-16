@@ -24,7 +24,7 @@ router.post(
 );
 
 router.post("/answerQuestion", requireAuth, quizController.answerQuestion);
-router.get("/all-quizzes", quizController.getAllQuiz);
+router.get("/all-quizzes",quizController.getAllQuiz);
 router.get(
   "/getQuizResult/:resType",
   requireAuth,
