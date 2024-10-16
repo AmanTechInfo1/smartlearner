@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema({
   isUpdated: { type: Boolean, required: true, default: false },
   modifiedOn: { type: Date },
   isDeleted: { type: Boolean, required: true, default: false },
-  subscription: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Plans",
-  },
 
   deletedOn: { type: Date },
   isBcryptHashed: { type: Boolean, required: true, default: false },
