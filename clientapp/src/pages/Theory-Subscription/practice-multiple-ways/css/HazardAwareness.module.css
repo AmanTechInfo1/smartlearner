@@ -153,7 +153,6 @@
 }
 .imagesHSection p {
   text-align: center;
-  color: white;
 }
 #imagesHSection {
   display: grid;
@@ -348,7 +347,7 @@
 }
 
 #resLists12 {
-  background-color: rgb(255, 230, 0);
+  background-color: rgb(255, 0, 0);
   color: rgb(255, 230, 0);
   border-radius: 10px;
   padding: 1rem;
@@ -360,7 +359,7 @@
 }
 #resLists21 {
   background-color: rgb(255, 230, 0);
-  color: rgb(255, 230, 0);
+  color: rgb(255, 0, 0);
   border-radius: 10px;
   padding: 1rem;
   font-size: 18px;
@@ -532,6 +531,9 @@
 .hazardTestWorkListDiv ul {
   padding-left: 0px;
 }
+.hazardTestWorkListDiv ul li p {
+  font-size: 20px;
+}
 .bgColorList33 {
   max-width: 1000px;
   margin-right: auto;
@@ -539,12 +541,13 @@
 }
 .bgColorList33 {
   background-color: rgb(255, 230, 0);
+  color: #f00000;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
 }
-.bgColorList33 ul li p {
-  font-size: 18px;
+.bgColorList33 p {
+  font-size: 20px;
 }
 .bgColorList {
   animation: 5s slide-left;
@@ -894,7 +897,6 @@ p {
   width: 100%;
 }
 #smartlearnerPladges h2 {
-  color: white;
   font-size: 3rem;
   margin-bottom: 4rem;
 }
@@ -921,12 +923,10 @@ p {
   color: #f00000;
 }
 .smartlearnerPlLists p {
-  color: white;
   font-size: 1rem;
 }
 @media (max-width: 767px) {
   .smartlearnerPlLists p {
-    color: white;
     font-size: 1rem;
   }
   .smartlearnerPlLists img {

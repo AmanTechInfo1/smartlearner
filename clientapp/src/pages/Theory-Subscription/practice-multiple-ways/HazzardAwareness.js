@@ -343,14 +343,14 @@ export default function HazzardAwareness() {
                 allowfullscreen></iframe>
             </div>
             <div className="w-100 w-md-50 p-4">
-              <h2 className="h4 font-weight-bold mb-2">
+              <h2 className="h2 font-weight-bold mb-2">
                 The affects of alcohol on driving
               </h2>
               <hr
                 className="border-top border-light mb-4"
                 style={{ opacity: "1" }}
               />
-              <ul className="list-unstyled">
+              <ul className="list-unstyled fs-5">
                 <li className="d-flex align-items-center mb-2 gap-2">
                   <FaArrowCircleRight />
                   Less control.

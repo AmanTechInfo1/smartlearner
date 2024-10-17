@@ -30,7 +30,9 @@ function Footer() {
               </p>
             </div>
             <div className={styles.col2}>
-              <h3>Blogs</h3>
+              <Link to="/blogs">
+                <h3>Blogs</h3>
+              </Link>
               <article>
                 <h4>Art of manual Driving</h4>
 
@@ -75,26 +77,26 @@ function Footer() {
                 </table>
               </div>
               <section>
-              <div className={styles.lowerCol3}>
-                <ul type="none" className={styles.footerImg}>
-                  <li>
-                    <img src={paypal} alt="paypalimg" />
-                  </li>
-                  <li>
-                    <img src={visa} alt="visacardimg" />
-                  </li>
-                  <li>
-                    <img src={mastercard} alt="mastercardimg" />
-                  </li>
-                  <li>
-                    <img src={discover} alt="discoverimg" />
-                  </li>
-                  <li>
-                    <img src={americanExpress} alt="AmericanExpressimg" />
-                  </li>
-                </ul>
-                <img src={ssl} alt="sslLogo" id={styles.sslLogo} />
-              </div>
+                <div className={styles.lowerCol3}>
+                  <ul type="none" className={styles.footerImg}>
+                    <li>
+                      <img src={paypal} alt="paypalimg" />
+                    </li>
+                    <li>
+                      <img src={visa} alt="visacardimg" />
+                    </li>
+                    <li>
+                      <img src={mastercard} alt="mastercardimg" />
+                    </li>
+                    <li>
+                      <img src={discover} alt="discoverimg" />
+                    </li>
+                    <li>
+                      <img src={americanExpress} alt="AmericanExpressimg" />
+                    </li>
+                  </ul>
+                  <img src={ssl} alt="sslLogo" id={styles.sslLogo} />
+                </div>
               </section>
             </div>
           </div>
@@ -132,7 +134,6 @@ function Footer() {
                                     </ul>
                                 </div>
                             </div> */}
-            
             </div>
           </div>
         </section>
@@ -141,7 +142,11 @@ function Footer() {
             CopyRight @ 2024 | Managed By{" "}
             <a
               href="https://savvytechguru.com"
-              style={{ textDecoration: "none", color: "black", fontWeight:'700' }}>
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontWeight: "700",
+              }}>
               Savvytechguru.com
             </a>
           </p>

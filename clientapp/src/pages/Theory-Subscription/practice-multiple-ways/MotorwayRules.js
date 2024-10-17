@@ -72,7 +72,8 @@ export default function MotorwayRules() {
           <section className={styles.hazardTestH23}>
             <ul type="none">
               <h2>
-                The following groups or <span>vehicles cannot travel on the motorway;</span>
+                The following groups or{" "}
+                <span>vehicles cannot travel on the motorway;</span>
               </h2>
             </ul>
           </section>
@@ -179,7 +180,7 @@ export default function MotorwayRules() {
 
         {/* /////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center", fontSize: "2rem" }}>
+          <h2 style={{ textAlign: "center", fontSize: "2.5rem" }}>
             Driving on a motorway
           </h2>
 
@@ -205,7 +206,7 @@ export default function MotorwayRules() {
               <span>
                 <FaArrowCircleLeft id={styles.featuresIcon} />
               </span>
-              <h3 style={{ color: "#58d3b4" }}>Use the left lane</h3>
+              <h3>Use the left lane</h3>
               <div className={styles.hazardTestWorkListDiv}>
                 <ul type="none">
                   <li>

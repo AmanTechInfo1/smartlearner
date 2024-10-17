@@ -57,7 +57,11 @@ export default function VulnerableRoadUser() {
 
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
-              <img src={vulnerableroad} alt="vulnerableroad" />
+              <img
+                src={vulnerableroad}
+                alt="vulnerableroad"
+                style={{ backgroundColor: "white" }}
+              />
             </div>
             <div className={styles.bgColorList}>
               <ul type="none">

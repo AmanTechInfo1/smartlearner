@@ -13,7 +13,7 @@ export default function BonusQuiz() {
             <div className={styles.content}>
               <div className={styles.heading1}>
                 <h1>
-                  Bonus <span>Summary</span>
+                  Bonus <span>Quiz</span>
                 </h1>
               </div>
               <div className={styles.alertBtn}>

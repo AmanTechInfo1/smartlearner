@@ -98,7 +98,7 @@
 }
 
 .alertBtn a button:hover {
-  background-color: rgb(255, 230, 0)d8;
+  background-color: rgb(255, 230, 0) d8;
   transform: scale(1.1);
   animation: bounce 0.3s alternate;
 }
@@ -153,7 +153,7 @@
 }
 .imagesHSection p {
   text-align: center;
-  color: white;
+ 
 }
 #imagesHSection {
   display: grid;
@@ -279,7 +279,10 @@
   align-items: center;
   justify-content: center;
 }
-
+.hazardTestWorkListDiv ul li p {
+  color: #ff0000;
+  font-size: 20px;
+}
 .alternessLists {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -291,7 +294,7 @@
   margin-left: auto;
   width: 100%;
   border-radius: 30px;
-  font-size: 18px;
+  font-size: 20px;
   padding: 1rem;
 }
 #alertnessL1 {
@@ -325,7 +328,7 @@
   color: #ff0000;
   border-radius: 30px;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 20px;
   max-width: 550px;
   margin-right: auto;
   margin-left: auto;
@@ -347,7 +350,7 @@
   color: rgb(255, 230, 0);
   border-radius: 30px;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 20px;
   max-width: 600px;
   margin-right: auto;
   margin-left: auto;
@@ -370,7 +373,7 @@
   color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 20px;
   margin: 1rem 0px;
 }
 #resLists12 li p {
@@ -381,11 +384,12 @@
   color: rgb(255, 230, 0);
   border-radius: 10px;
   padding: 1rem;
-  font-size: 18px;
+  font-size: 20px;
   margin: 1rem 0px;
 }
 #resLists21 li p {
   margin-bottom: 1rem;
+  color: rgb(255, 230, 0);
 }
 /* .hazardTestWorkListDiv img {
                 max-width: 250px;
@@ -557,12 +561,16 @@
 }
 .bgColorList33 {
   background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
 }
+.bgColorList33 p {
+  font-size: 20px;
+}
 .bgColorList33 ul li p {
-  font-size: 18px;
+  font-size: 20px;
 }
 .bgColorList {
   animation: 5s slide-left;
@@ -580,15 +588,17 @@
 }
 .bgColorList ul {
   background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
 }
 .bgColorList ul li p {
   margin-bottom: 1rem;
-  font-size: 18px;
+  font-size: 20px;
 }
 .bgColorList2 {
   background-color: #ff0000;
+  color: rgb(255, 230, 0);
   border-radius: 10px;
   padding: 1rem;
   font-size: 22px;
@@ -764,7 +774,7 @@ p {
   font-weight: 700;
 }
 .thMultipleChioceHeader p {
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
 }
 .thchoiceListSection {
@@ -840,7 +850,7 @@ p {
   color: rgb(255, 230, 0);
 }
 .column p {
-  font-size: 18px;
+  font-size: 20px;
 
   font-weight: 500;
   line-height: 1.7em;
@@ -939,12 +949,12 @@ p {
   color: rgb(255, 230, 0);
 }
 .smartlearnerPlLists p {
-  color: white;
+  
   font-size: 1rem;
 }
 @media (max-width: 767px) {
   .smartlearnerPlLists p {
-    color: white;
+   
     font-size: 1rem;
   }
   .smartlearnerPlLists img {

@@ -1,36 +1,27 @@
 // import React from 'react'
 import styles from "./DrivingInstructorFranchise.module.css";
 import { GoPlay } from "react-icons/go";
-import {
- 
-  FaCheckCircle,
-  FaHandsHelping,
-  
-} from "react-icons/fa";
+import { FaCheckCircle, FaHandsHelping } from "react-icons/fa";
 import moneyIcon from "../../assets/images/Asset_108.png";
 import userTie from "../../assets/images/Asset_107.png";
 import workinghour from "../../assets/images/Asset_109.png";
 import ladyUser from "../../assets/images/Asset_110.png";
 import Lplateimg from "../../assets/images/L-Plate.jpg";
 import intensiveCoursesImg from "../../assets/images/Intensive-Driving-Course-1024x768.jpg";
-import DiaryImg from '../../assets/images/Diary-1536x681.jpg';
+import DiaryImg from "../../assets/images/Diary-1536x681.jpg";
 import { useState, useEffect } from "react";
 import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
 
 import ImagesCarousel2nd from "../../components/imageCarousel/ImagesCarousel2nd";
 
-
-
-
-
 export default function DrivingInstructorFranchise() {
- 
-
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonialIndex(prevIndex => (prevIndex + 1) % joinOurTeamTestimonials.length);
+      setCurrentTestimonialIndex(
+        (prevIndex) => (prevIndex + 1) % joinOurTeamTestimonials.length
+      );
     }, 2000); // Change the interval time (in milliseconds) as needed
 
     return () => clearInterval(interval);
@@ -38,7 +29,9 @@ export default function DrivingInstructorFranchise() {
 
   const currentTestimonial = joinOurTeamTestimonials[currentTestimonialIndex];
   return (
-    <div className={styles.drivingInstructorTraining} style={{backgroundColor:'black',fontFamily:"'Antonio',sans-serif"}}>
+    <div
+      className={styles.drivingInstructorTraining}
+      style={{ backgroundColor: "black", fontFamily: "'Antonio',sans-serif" }}>
       <section className={styles.imageSection}>
         <div className={styles.maincontent}>
           <div className={styles.content}>
@@ -48,13 +41,15 @@ export default function DrivingInstructorFranchise() {
 
             <div className={styles.heading2}>
               <h2>
-              Join our driving
+                Join our driving
                 <br /> school franchise
               </h2>
             </div>
             <div className={styles.btn}>
-              <a href="tel:+4402475092784"> <button id={styles.btn}>Contact Us</button></a>
-             
+              <a href="tel:+4402475092784">
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </a>
             </div>
           </div>
           <div className={styles.video}>
@@ -76,42 +71,39 @@ export default function DrivingInstructorFranchise() {
           School of the Year’ in 2021 and 2022!
         </p>
         <div className={styles.mainFeatures}>
-            <div className={styles.column}>
-              
-              <h3>Earn Over £30,000</h3>
-              <span>
-                <img src={moneyIcon} alt="money-Icon" />
-              </span>
+          <div className={styles.column}>
+            <h3>Earn Over £30,000</h3>
+            <span>
+              <img src={moneyIcon} alt="money-Icon" />
+            </span>
 
-              <p>
-                An average full-time instructor will earn over £30K per year!
-              </p>
-            </div>
-            <div className={styles.column}>
-              <h3>Be Your Own Boss</h3>
-              <span>
-                <img src={userTie} alt="user-Tie" />
-              </span>
-
-              <p>When you are an instructor you`re the boss.</p>
-            </div>
-            <div className={styles.column} >
-              <h3>Flexible Working Hours</h3>
-              <span>
-                <img src={workinghour} alt="Hour-Icon" />
-              </span>
-
-              <p>Work hours that suit you and your family.</p>
-            </div>
-            <div className={styles.column}>
-              <h3>Full Office Support</h3>
-              <span>
-                <img src={ladyUser} alt="Lady-User" />
-              </span>
-
-              <p>We offer full office support to help ensure you succeed.</p>
-            </div>
+            <p>An average full-time instructor will earn over £30K per year!</p>
           </div>
+          <div className={styles.column}>
+            <h3>Be Your Own Boss</h3>
+            <span>
+              <img src={userTie} alt="user-Tie" />
+            </span>
+
+            <p>When you are an instructor you`re the boss.</p>
+          </div>
+          <div className={styles.column}>
+            <h3>Flexible Working Hours</h3>
+            <span>
+              <img src={workinghour} alt="Hour-Icon" />
+            </span>
+
+            <p>Work hours that suit you and your family.</p>
+          </div>
+          <div className={styles.column}>
+            <h3>Full Office Support</h3>
+            <span>
+              <img src={ladyUser} alt="Lady-User" />
+            </span>
+
+            <p>We offer full office support to help ensure you succeed.</p>
+          </div>
+        </div>
       </section>
       {/* //////////////////////////////////// benefits section //////////////////////////////////////// */}
       <section className={styles.benefitsSection}>
@@ -201,21 +193,19 @@ export default function DrivingInstructorFranchise() {
       </section>
       {/* //////////////////////////////////////////////////// */}
       <section className={styles.imageSliderContainer}>
-          <h2>Recently Pass Our Instructor Trainee</h2>
-          <div
-            style={{
-              maxWidth: "1100px",
-              marginRight: "auto",
-              marginLeft: "auto",
-              padding: "4rem 2rem",
-              width: "100%",
-              margin: "2rem auto",
-            }}
-          >
-            <ImagesCarousel2nd/>
-          </div>
-          
-        </section>
+        <h2>Our PDI Passes</h2>
+        <div
+          style={{
+            maxWidth: "1100px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            padding: "4rem 2rem",
+            width: "100%",
+            margin: "2rem auto",
+          }}>
+          <ImagesCarousel2nd />
+        </div>
+      </section>
       {/* ///////////////////////////////////////////////////////// */}
 
       {/* ////////////////////////////Join our fleet instruction///////////////////////// */}
@@ -314,7 +304,6 @@ export default function DrivingInstructorFranchise() {
       {/* <section>
         <Review/>
       </section> */}
-      
     </div>
   );
 }

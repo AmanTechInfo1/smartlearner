@@ -103,7 +103,7 @@ export default function IncidentsAccidents() {
                 allowfullscreen></iframe>
             </div>
             <div className="w-100 w-md-50 p-4">
-              <h2 className="h4 font-weight-bold mb-2">
+              <h2 className="h2 font-weight-bold mb-2 text-warning">
                 How to identify breakdowns before they happen
               </h2>
               <hr
@@ -112,7 +112,7 @@ export default function IncidentsAccidents() {
               />
               <ul className="list-unstyled">
                 <li className="d-flex align-items-center mb-2 gap-2">
-                  <p>
+                  <p className="text-warning fs-4">
                     A warning light on your instrument panel is often the first
                     sign that you have an issue with your vehicle. Sometimes
                     this can be something that you still have time to rectify

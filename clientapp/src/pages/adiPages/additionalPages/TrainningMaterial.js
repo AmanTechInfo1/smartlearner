@@ -81,8 +81,7 @@ export default function TrainningMaterial() {
               className={`${styles.materialCard} ${
                 index % 2 === 0 ? styles.Tmeven : styles.Tmodd
               }`}
-              key={index}
-            >
+              key={index}>
               <a href={material.link} target="_blank" rel="noopener noreferrer">
                 <img
                   src={material.image}
@@ -96,39 +95,36 @@ export default function TrainningMaterial() {
               </div>
             </div>
           ))}
-
-          <section className={styles.hazardTestWorkListSection}>
-            <div className={styles.bgColorList3322}>
-              <ul type="none">
-                <li>
-                  <p>
-                    Reading the recommended books for the ADI Part 1 exam is
-                    crucial for your success, as they provide comprehensive
-                    coverage of the key topics you'll be tested on. These
-                    resources are specifically designed to deepen your
-                    understanding of road safety, driving laws, and
-                    instructional techniques, ensuring you're fully prepared for
-                    both the multiple-choice questions and the hazard perception
-                    test. The material in these books is often aligned with the
-                    official DVSA syllabus, offering insights that go beyond
-                    basic knowledge and helping you tackle more challenging
-                    questions with confidence. By thoroughly studying these
-                    books, you'll be better equipped to master each section of
-                    the exam, avoid common pitfalls, and approach the test with
-                    the depth of knowledge needed to excel.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-          <div className={styles.TMnextPage}>
-            <Link to="/band-1-Road-Procedure">
-              {" "}
-              <button className={styles.TMnextButton}>
-                NEXT PAGE Band - 1
-              </button>
-            </Link>
+        </div>
+        <section className={styles.hazardTestWorkListSection}>
+          <div className={styles.bgColorList3322}>
+            <ul type="none">
+              <li>
+                <p>
+                  Reading the recommended books for the ADI Part 1 exam is
+                  crucial for your success, as they provide comprehensive
+                  coverage of the key topics you'll be tested on. These
+                  resources are specifically designed to deepen your
+                  understanding of road safety, driving laws, and instructional
+                  techniques, ensuring you're fully prepared for both the
+                  multiple-choice questions and the hazard perception test. The
+                  material in these books is often aligned with the official
+                  DVSA syllabus, offering insights that go beyond basic
+                  knowledge and helping you tackle more challenging questions
+                  with confidence. By thoroughly studying these books, you'll be
+                  better equipped to master each section of the exam, avoid
+                  common pitfalls, and approach the test with the depth of
+                  knowledge needed to excel.
+                </p>
+              </li>
+            </ul>
           </div>
+        </section>
+        <div className={styles.TMnextPage}>
+          <Link to="/band-1-Road-Procedure">
+            {" "}
+            <button className={styles.TMnextButton}>NEXT PAGE Band - 1</button>
+          </Link>
         </div>
       </div>
     </div>

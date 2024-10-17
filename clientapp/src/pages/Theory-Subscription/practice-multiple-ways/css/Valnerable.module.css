@@ -5,10 +5,10 @@
   padding-bottom: 5rem;
 }
 .AdiPartOne h1 span {
-  color: rgb(255, 251, 0);
+  color: rgb(255, 230, 0);
 }
 .AdiPartOne h2 span {
-  color: rgb(255, 251, 0);
+  color: rgb(255, 230, 0);
 }
 .imageSection {
   position: relative;
@@ -348,7 +348,7 @@
 }
 
 #resLists12 {
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(255, 230, 0);
   color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
@@ -360,7 +360,7 @@
 }
 #resLists21 {
   background-color: #ff0000;
-  color: rgb(255, 251, 0);
+  color: rgb(255, 230, 0);
   border-radius: 10px;
   padding: 1rem;
   font-size: 18px;
@@ -538,13 +538,17 @@
   margin-left: auto;
 }
 .bgColorList33 {
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
 }
+.bgColorList33 p {
+  font-size: 20px;
+}
 .bgColorList33 ul li p {
-  font-size: 18px;
+  font-size: 20px;
 }
 .bgColorList {
   animation: 5s slide-left;
@@ -561,16 +565,19 @@
   }
 }
 .bgColorList ul {
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
 }
 .bgColorList ul li p {
   margin-bottom: 1rem;
-  font-size: 18px;
+  font-size: 20px;
+  color: #ff0000;
 }
 .bgColorList2 {
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(255, 230, 0);
+  color: #ff0000;
   border-radius: 10px;
   padding: 1rem;
   font-size: 22px;
@@ -894,7 +901,7 @@ p {
   width: 100%;
 }
 #smartlearnerPladges h2 {
-  color: white;
+ 
   font-size: 3rem;
   margin-bottom: 4rem;
 }
@@ -921,12 +928,12 @@ p {
   color: #ff0000;
 }
 .smartlearnerPlLists p {
-  color: white;
+ 
   font-size: 1rem;
 }
 @media (max-width: 767px) {
   .smartlearnerPlLists p {
-    color: white;
+   
     font-size: 1rem;
   }
   .smartlearnerPlLists img {

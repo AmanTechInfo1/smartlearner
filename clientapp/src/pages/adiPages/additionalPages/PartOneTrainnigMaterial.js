@@ -66,7 +66,7 @@ export default function PartOneTrainnigMaterial() {
           </Link>
           
           <Link to="/Adi-part-1-Bonus-Quiz">
-            <button id={styles.hazzardBtn}>WorkSheets summary</button>
+            <button id={styles.hazzardBtn}>Bonus Quiz</button>
           </Link>
          
           <Link to="/hazard-preception-part-2">

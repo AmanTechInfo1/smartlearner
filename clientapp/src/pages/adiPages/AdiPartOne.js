@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./AdiPartOne.module.css";
-import prizeTrophy from "../../assets/images/prize-imgj.png";
-import docsList from "../../assets/images/list-Docs.png";
-import Qostion from "../../assets/images/qestion-img.png";
+import prizeTrophy from "../../assets/images/pdiTrophi.png";
+import docsList from "../../assets/images/resultPatllet.png";
+import Qostion from "../../assets/images/quetion.png";
 import { Link } from "react-router-dom";
 import {
   getMyDashboard,
@@ -117,15 +117,14 @@ export default function AdiPartOne() {
         <section className={styles.hazardTestWorkListSection}>
           <p id={styles.hazardTestWorkListSectionPara}>
             To see what the national standard for driver and rider training is
-            <span> click HERE</span>
+            <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training">
+              {" "}
+              <span> click HERE</span>
+            </a>
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
-              <img
-                style={{ backgroundColor: "white" }}
-                src={docsList}
-                alt="List"
-              />
+              <img src={docsList} alt="List" />
             </div>
             <section className={styles.bgColorList}>
               <ul type="none">
@@ -472,15 +471,14 @@ export default function AdiPartOne() {
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>
+                  allowfullscreen></iframe>
               </div>
             </div>
           </div>
         </section>
 
         {/* ////////////////////////////////////////////////////////////////////// */}
-       
+
         <div className={styles.tipsContainer}>
           <section className={styles.hazardTips}>
             <h2 className={styles.pdiTipsSectionTitle}>
@@ -526,7 +524,7 @@ export default function AdiPartOne() {
             </ul>
           </section>
         </div>
-     
+
         {/* ////////////////////////////////////////// */}
         <div className={styles.TMnextPage}>
           <Link to="/part-1-trainning-material">

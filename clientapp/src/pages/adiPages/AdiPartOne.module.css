@@ -48,7 +48,10 @@
   color: #006ace;
   text-align: center;
 }
-
+.heading1 p {
+  font-size: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.87);
+}
 .heading1 h1 {
   color: #006ace;
   font-size: 2.2rem;
@@ -57,14 +60,15 @@
   letter-spacing: 12px;
   background-color: white;
 }
+
 .heading2 h2 {
   color: #006ace;
   font-size: 4rem;
   font-weight: 800;
   line-height: 1.2em;
-
-  padding-top: 0.8rem;
-  padding-bottom: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.87);
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   margin-bottom: 20px;
   text-align: center;
   overflow: hidden;
@@ -200,6 +204,9 @@
   text-align: center;
   font-size: 2rem;
   color: #006ace;
+}
+#hazardTestWorkListSectionPara a {
+  text-decoration: none;
 }
 .hazardTestH23 h2 {
   text-align: center;
@@ -452,10 +459,10 @@
 /* ////////////////////////////////////////////////////////////////// */
 .pdiContainer {
   padding: 20px;
-   /* light blue */
+  /* light blue */
   color: #ffffff;
 }
-.pdiContainer h3{
+.pdiContainer h3 {
   color: #000000;
 }
 .pdiOne {
@@ -464,7 +471,8 @@
   color: #006400; /* dark green */
 }
 
-.pdiTwo, .pdiThree {
+.pdiTwo,
+.pdiThree {
   margin: 20px 0;
   background-color: #006ace; /* light green */
   padding: 15px;
@@ -492,11 +500,9 @@
   border-left: 4px solid rgb(0, 255, 0);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.pdiBandItem strong{
+.pdiBandItem strong {
   color: rgb(0, 255, 0);
 }
-
-
 
 @media (min-width: 768px) {
   .pdiBands {
@@ -508,7 +514,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-/* Light blue background */
+  /* Light blue background */
   color: #003300; /* Dark green text */
   max-width: 1400px;
   width: 100%;
@@ -524,13 +530,13 @@
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.hazardTips li{
+.hazardTips li {
   color: rgb(255, 255, 255);
 }
-.hazardTips strong{
+.hazardTips strong {
   color: #000000;
 }
-.generalTips{
+.generalTips {
   background-color: rgb(0, 200, 0);
   border-left: 4px solid #006ace; /* Light cyan background */
   border-radius: 10px;
@@ -538,10 +544,10 @@
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.generalTips strong{
+.generalTips strong {
   color: #000000;
 }
-.generalTips li{
+.generalTips li {
   color: white;
 }
 .pdiTipsSectionTitle {
@@ -559,11 +565,16 @@
   margin-bottom: 10px;
 }
 
-.pdiTipsOne, .pdiTipsTwo, .pdiTipsThree, .pdiTipsFour, .pdiTipsFive, .pdiTipsSix, .pdiTipsSeven {
+.pdiTipsOne,
+.pdiTipsTwo,
+.pdiTipsThree,
+.pdiTipsFour,
+.pdiTipsFive,
+.pdiTipsSix,
+.pdiTipsSeven {
   font-size: 18px;
   line-height: 1.6;
 }
-
 
 /* Responsive Design */
 @media (min-width: 768px) {
@@ -572,11 +583,11 @@
     justify-content: space-between;
   }
 
-  .hazardTips, .generalTips {
+  .hazardTips,
+  .generalTips {
     width: 48%;
   }
 }
-
 
 /* Container styling */
 .TMcontainer {
@@ -585,7 +596,11 @@
   gap: 20px;
   justify-content: center;
   padding: 20px;
- /* Light blue background */
+  /* Light blue background */
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 .Tmodd {
   background-color: #28a900; /* Light green background for odd */
@@ -616,7 +631,7 @@
   width: 100%;
   aspect-ratio: 3/2;
   object-fit: contain;
-  
+
   border-radius: 5px;
 }
 
@@ -647,7 +662,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.TMnextButton a{
+.TMnextButton a {
   text-decoration: none;
   color: white;
 }
@@ -668,7 +683,7 @@
 
 /* //////////////////////////////////////////////////// */
 .bookTestPartOneSection {
- /* Light blue background */
+  /* Light blue background */
   padding: 40px;
   text-align: center;
 }
@@ -685,7 +700,11 @@
 }
 
 .PartOnepart {
-  background-color: hsl(156, 100%, 49%); /* White background for content parts */
+  background-color: hsl(
+    156,
+    100%,
+    49%
+  ); /* White background for content parts */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
@@ -706,9 +725,8 @@
 
 .PartOnebookTestButtonWrapper {
   margin-top: 30px;
-  
 }
-.PartOnebookTestButtonWrapper a{
+.PartOnebookTestButtonWrapper a {
   text-decoration: none;
 }
 .PartOnebookTestLink {
@@ -750,7 +768,8 @@
     font-size: 1.5rem;
   }
 
-  .PartOnebookTestLink, .PartOnenextPageButton {
+  .PartOnebookTestLink,
+  .PartOnenextPageButton {
     padding: 12px 20px;
     font-size: 0.9rem;
   }
@@ -773,15 +792,15 @@
 .testDayTips {
   padding: 20px;
   font-family: Arial, sans-serif;
- /* Light blue background */
+  /* Light blue background */
   color: #004d40;
   max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
-   /* Dark green text */
+  /* Dark green text */
 }
-.testDayTips ul li{
+.testDayTips ul li {
   color: white;
 }
 .testDayheader {
@@ -815,7 +834,7 @@
   color: #ffffff; /* Medium green heading */
   margin-bottom: 15px;
 }
-.testDaypart p{
+.testDaypart p {
   color: white;
 }
 
@@ -913,7 +932,7 @@
   color: #e3f2fd;
   margin-bottom: 30px;
 }
-.goodluckcontainer{
+.goodluckcontainer {
   text-decoration: none;
   color: white;
 }
@@ -1105,7 +1124,7 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
   justify-content: center;
-  place-items: center;
+
   width: 100%;
   gap: 10px;
   align-items: center;
@@ -1123,7 +1142,7 @@
   }
 }
 .hazardTestWorkListDivImg img {
-  max-width: 400px;
+  max-width: 550px;
   width: 100%;
 
   aspect-ratio: 3/2;
@@ -1681,7 +1700,6 @@ p {
 .startQuizSection button:hover {
   background-color: black;
 }
-
 
 /* /////////////// */
 .innerTheorySupportContent {
