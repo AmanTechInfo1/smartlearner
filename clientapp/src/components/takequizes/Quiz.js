@@ -6,108 +6,184 @@ import {
   getAnswerRandomQuestion,
   getQuizRandomQuestionFailure,
   getQuizRandomQuestionOutputFailure,
-  getQuizResult,
-  getRandomQuestion,
   getRandomQuestionByName,
 } from "../../redux/features/quizSlice";
 import Confetti from "react-confetti";
-
 import useWindowSize from "react-use/lib/useWindowSize";
 import { useNavigate, useParams } from "react-router-dom";
+import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
 
-import LoadingWeb from "../loader/LoadingWeb";
+const languageCodes = {
+  Auto: "auto",
+  English: "en",
+  Portuguese: "pt",
+  "Brazilian Portuguese": "pt-BR",
+  Afrikaans: "af",
+  Albanian: "sq",
+  Amharic: "am",
+  Arabic: "ar",
+  Armenian: "hy",
+  Azerbaijani: "az",
+  Basque: "eu",
+  Belarusian: "be",
+  Bengali: "bn",
+  Bosnian: "bs",
+  Bulgarian: "bg",
+  Catalan: "ca",
+  Cebuano: "ceb",
+  Chichewa: "ny",
+  "Chinese (Simplified)": "zh-CN",
+  "Chinese (Traditional)": "zh-TW",
+  Corsican: "co",
+  Croatian: "hr",
+  Czech: "cs",
+  Danish: "da",
+  Dutch: "nl",
+  Esperanto: "eo",
+  Estonian: "et",
+  Filipino: "tl",
+  Finnish: "fi",
+  French: "fr",
+  Frisian: "fy",
+  Galician: "gl",
+  Georgian: "ka",
+  German: "de",
+  Greek: "el",
+  Gujarati: "gu",
+  "Haitian Creole": "ht",
+  Hausa: "ha",
+  Hawaiian: "haw",
+  Hebrew: "iw",
+  Hindi: "hi",
+  Hmong: "hmn",
+  Hungarian: "hu",
+  Icelandic: "is",
+  Igbo: "ig",
+  Indonesian: "id",
+  Irish: "ga",
+  Italian: "it",
+  Japanese: "ja",
+  Javanese: "jw",
+  Kannada: "kn",
+  Kazakh: "kk",
+  Khmer: "km",
+  Kinyarwanda: "rw",
+  Korean: "ko",
+  Kurdish: "ku",
+  Kyrgyz: "ky",
+  Lao: "lo",
+  Latin: "la",
+  Latvian: "lv",
+  Lithuanian: "lt",
+  Luxembourgish: "lb",
+  Macedonian: "mk",
+  Malagasy: "mg",
+  Malay: "ms",
+  Malayalam: "ml",
+  Maltese: "mt",
+  Maori: "mi",
+  Marathi: "mr",
+  Mongolian: "mn",
+  "Myanmar (Burmese)": "my",
+  Nepali: "ne",
+  Norwegian: "no",
+  "Odia (Oriya)": "or",
+  Pashto: "ps",
+  Persian: "fa",
+  Polish: "pl",
+  Punjabi: "pa",
+  Romanian: "ro",
+  Russian: "ru",
+  Samoan: "sm",
+  "Scots Gaelic": "gd",
+  Serbian: "sr",
+  Sesotho: "st",
+  Shona: "sn",
+  Sindhi: "sd",
+  Sinhala: "si",
+  Slovak: "sk",
+  Slovenian: "sl",
+  Somali: "so",
+  Spanish: "es",
+  Sundanese: "su",
+  Swahili: "sw",
+  Swedish: "sv",
+  Tajik: "tg",
+  Tamil: "ta",
+  Tatar: "tt",
+  Telugu: "te",
+  Thai: "th",
+  Turkish: "tr",
+  Turkmen: "tk",
+  Ukrainian: "uk",
+  Urdu: "ur",
+  Uyghur: "ug",
+  Uzbek: "uz",
+  Vietnamese: "vi",
+  Welsh: "cy",
+  Xhosa: "xh",
+  Yiddish: "yi",
+  Yoruba: "yo",
+  Zulu: "zu",
+};
 
 const Quiz = () => {
   const { cid, id } = useParams();
-
   const myDivRef = useRef(null);
   const myDivRefQue = useRef(null);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalTimer, setTotalTimer] = useState(3600);
-  const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [startTime, setStartTime] = useState(Date.now());
-  const [endTime, setEndTime] = useState(null);
+  const [questionTranslate, setQuestionTranslate] = useState("en");
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
-  const [questionTranslate, setQuestionTranslate] = useState("en");
-
-  const { oneQuiz, oneQuizOutput, loading, quizResult } = useSelector(
+  const { oneQuiz, oneQuizOutput, loading } = useSelector(
     (state) => state.quiz
   );
-
   const { width, height } = useWindowSize();
 
-  const handleTranslation = async (question) => {
-    let queeeopt = [];
+  const handleTranslation = async () => {
     const formdata = new FormData();
+    const question = myDivRefQue.current?.innerHTML || "No question provided";
+
     formdata.append("question", question);
-
-    let option1 = document.getElementById("laboption1").innerHTML;
-    if (option1) {
-      queeeopt.push(option1);
-      formdata.append("option1", option1);
-    }
-    let option2 = document.getElementById("laboption2").innerHTML;
-    if (option2) {
-      queeeopt.push(option2);
-      formdata.append("option2", option2);
-    }
-    let option3 = document.getElementById("laboption3").innerHTML;
-    if (option3) {
-      queeeopt.push(option3);
-      formdata.append("option3", option3);
-    }
-    let option4 = document.getElementById("laboption4").innerHTML;
-    if (option4) {
-      queeeopt.push(option4);
-      formdata.append("option4", option4);
-    }
-
-    // formdata.append("options", question);
-    // formdata.append("lang", "hi");
     formdata.append("lang", questionTranslate);
 
-    const requestOptions = {
-      method: "POST",
-      body: formdata,
-      redirect: "follow",
-    };
+    // Adding options to formdata
+    ["option1", "option2", "option3", "option4"].forEach((option) => {
+      const optionText = document.getElementById(`lab${option}`)?.innerHTML;
+      if (optionText) {
+        formdata.append(option, optionText);
+      }
+    });
 
-    await fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.smartlearner.com/api/roles/translate`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        if (myDivRef != null && myDivRef.current != null) {
-          myDivRef.current.innerHTML = result.question;
-          if (option1) {
-            document.getElementById("option1").innerHTML = result.option1;
-          }
-          if (option2) {
-            document.getElementById("option2").innerHTML = result.option2;
-          }
-          if (option3) {
-            document.getElementById("option3").innerHTML = result.option3;
-          }
-          if (option4) {
-            document.getElementById("option4").innerHTML = result.option4;
-          }
+    try {
+      const response = await fetch(
+        "https://api.smartlearner.com/api/roles/translate",
+        {
+          method: "POST",
+          body: formdata,
         }
-        return result;
-      })
-      .catch((error) => console.error(error));
+      );
+      const result = await response.json();
+      if (myDivRef.current) {
+        myDivRef.current.innerHTML = result.question;
+      }
+      ["option1", "option2", "option3", "option4"].forEach((option) => {
+        if (result[option]) {
+          document.getElementById(option).innerHTML = result[option];
+        }
+      });
+    } catch (error) {
+      console.error("Translation error:", error.message);
+    }
   };
 
   useEffect(() => {
-    if (myDivRef != null && myDivRef.current != null) {
-      handleTranslation(myDivRefQue.current.innerHTML);
+    if (myDivRef.current) {
+      handleTranslation();
     }
   }, [myDivRefQue.current, questionTranslate]);
 
@@ -119,7 +195,6 @@ const Quiz = () => {
           return prevTotalTimer - 1;
         } else {
           clearInterval(interval);
-          setEndTime(Date.now());
           setShowResult(true);
           return 0;
         }
@@ -127,11 +202,9 @@ const Quiz = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [dispatch, cid]);
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
-    // alert(answerOption)
-
     let finData = {
       questionId: oneQuiz.questionId,
       answer: answerOption,
@@ -139,7 +212,7 @@ const Quiz = () => {
     };
 
     setAnswered(answerOption);
-
+    setAnsweredQuestions((prev) => [...prev, finData]);
     dispatch(getAnswerRandomQuestion(finData));
   };
 
@@ -156,117 +229,74 @@ const Quiz = () => {
     //   setShowResult(true);
     // }
   };
-
   const endQuiz = () => {
     navigate("/quizResult");
+  };
 
-    // setEndTime(Date.now());
-    // setShowResult(true);
+  const handleTextToSpeech = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = questionTranslate;
+    window.speechSynthesis.speak(speech);
+  };
+
+  const readQuestionAndOptions = () => {
+    const questionText = myDivRef.current.innerText;
+    handleTextToSpeech(questionText);
+
+    oneQuiz?.option.forEach((option, index) => {
+      setTimeout(() => {
+        handleTextToSpeech(option);
+      }, 1000 * (index + 1)); // Delay reading options
+    });
   };
 
   return (
     <>
-      {oneQuizOutput.answerAttempt == "Correct" ? (
-        <Confetti
-          run={oneQuizOutput.answerAttempt == "Correct"}
-          width={width}
-          wind={0}
-          height={height}
-        />
-      ) : (
-        <></>
+      {oneQuizOutput.answerAttempt === "Correct" && (
+        <Confetti run={true} width={width} height={height} />
       )}
       <div className={styles.quizContainer}>
         <div className={styles.quizDiv}>
           <div className={styles.quiz}>
             {loading ? (
-              <>
-                <LoadingWeb />
-              </>
+              <LoadingWeb />
             ) : oneQuiz?.question ? (
               <>
                 <div className={styles.totalTimer}>
-                  {/* <select onChange={(e)=>{
-                    setQuestionTranslate(e.target.value)
-                  }}>
-
-                    {
-                      Object.entries(languageCodes).map((itm)=>{
-                        return <option value={itm[1]}>{itm[0]}</option>
-                      })
-                    }
-                  </select> */}
+                  <select
+                    onChange={(e) => setQuestionTranslate(e.target.value)}>
+                    {Object.entries(languageCodes).map((itm) => (
+                      <option key={itm[1]} value={itm[1]}>
+                        {itm[0]}
+                      </option>
+                    ))}
+                  </select>
+                  <button onClick={readQuestionAndOptions}>
+                    Read Question & Options
+                  </button>
                 </div>
                 <div className={styles.totalTimer}>
-                  <span> Category : </span> <p>{oneQuiz?.quizCategory}</p>
-                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
-                </div>
-                <div className={styles.totalTimer}>
-                  {/* Module Name : {oneQuiz?.quizModuleName} */}
-                  {/* Total time left: {Math.floor(totalTimer / 60)}:{totalTimer % 60 < 10 ? `0${totalTimer % 60}` : totalTimer % 60} */}
+                  <span>Category: </span>
+                  <p>{oneQuiz?.quizCategory || "Not specified"}</p>
                 </div>
                 <div className={styles.questionCount}>
-                  {/* {currentQuestion + 1}/{questions.length} */}
                   <span>Question: </span>
                   <div
                     ref={myDivRef}
                     dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(
-                        ">",
-                        "><br/>",
-                        "</td> </tr> </tbody> </table>",
-                        `"<table class="box questionbox"><br/> <tbody> <tr> <td>"`
-                      ),
-                    }}></div>
+                      __html: oneQuiz?.question.replace(">", "><br/>"),
+                    }}
+                  />
                   <div
                     style={{ display: "none" }}
                     ref={myDivRefQue}
                     dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(
-                        ">",
-                        "><br/>",
-                        "</td> </tr> </tbody> </table>",
-                        `"<table class="box questionbox"><br/> <tbody> <tr> <td>"`
-                      ),
-                    }}></div>
+                      __html: oneQuiz?.question.replace(">", "><br/>"),
+                    }}
+                  />
                 </div>
-
-                <div className={styles.questionCount}>
-                  {oneQuiz?.questionImage && (
-                    <img
-                      width={200}
-                      src={`${
-                        oneQuiz?.questionImage != ""
-                          ? oneQuiz?.questionImage.includes("https")
-                            ? oneQuiz?.questionImage
-                            : imageBaseUrl + oneQuiz?.questionImage
-                          : ""
-                      }`}
-                    />
-                  )}
-                </div>
-                <div className={styles.OptionsText}>{"Options :-"} </div>
 
                 <div className={styles.answerSection}>
-                  {/* {oneQuiz?.option?.map((answerOption, index) => {
-                  let buttonClass = "";
-                  if (selectedOption === index) {
-                    buttonClass = answerOption.isCorrect ? styles.correct : styles.incorrect;
-                  } else if (selectedOption !== null && answerOption.isCorrect) {
-                    buttonClass = styles.correct;
-                  }
-                  return (
-                    <button
-                      key={index}
-                      className={buttonClass}
-                      onClick={() => handleAnswerOptionClick(index, answerOption.isCorrect)}
-                      disabled={selectedOption !== null}
-                    >
-                      {answerOption.answerText}
-                    </button>
-                  );
-                })} */}
-
                   {oneQuiz?.option?.map((answerOption, index) => {
                     return (
                       <button
@@ -328,34 +358,14 @@ const Quiz = () => {
                 </div>
               </>
             ) : (
-              <>
-                <div className={styles.totalTimer}>No Question Available</div>
-              </>
+              <div className={styles.totalTimer}>No Question Available</div>
             )}
             <div className={styles.navigationButtons}>
-              {/* <button onClick={handlePreviousQuestion}>
-              Previous
-            </button> */}
-              {/* <button onClick={endQuiz}>End Quiz</button> */}
               <button onClick={endQuiz}>View Result</button>
-              {oneQuizOutput.answerAttempt ? (
+              {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
-              ) : (
-                <></>
               )}
             </div>
-
-            {/* <div className={styles.questionSelect}>
-              {questions.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleQuestionSelect(index)}
-                  style={{ border: answeredQuestions[index] ? "2px solid pink" : "none" }}
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div> */}
           </div>
         </div>
       </div>

@@ -58,48 +58,44 @@ class RoleController {
       next(err);
     }
   }
-
-  // Translate given text and options
   async translator(req, res, next) {
     try {
       const { question, lang, option1, option2, option3, option4 } = req.body;
 
-      // Prepare translation tasks
-    
+      // Create an array to hold the translation promises
+      const translationPromises = [];
 
+      // Push the main question translation promise
+      translationPromises.push(translate(question, { from: "en", to: lang }));
 
+      // Push option translations if they exist
+      if (option1)
+        translationPromises.push(translate(option1, { from: "en", to: lang }));
+      if (option2)
+        translationPromises.push(translate(option2, { from: "en", to: lang }));
+      if (option3)
+        translationPromises.push(translate(option3, { from: "en", to: lang }));
+      if (option4)
+        translationPromises.push(translate(option4, { from: "en", to: lang }));
 
-      const translations = await translate(req.body.question, { from: 'en', to: req.body.lang });
-      let options = { question: translations };
-      
-      if (req.body.option1) {
-        options.option1 = await translate(req.body.option1, { from: 'en', to: req.body.lang });
-      }
-      if (req.body.option2) {
-        options.option2 = await translate(req.body.option2, { from: 'en', to: req.body.lang });
-      }
-      if (req.body.option3) {
-        options.option3 = await translate(req.body.option3, { from: 'en', to: req.body.lang });
-      }
-      if (req.body.option4) {
-        options.option4 = await translate(req.body.option4, { from: 'en', to: req.body.lang });
-      }
-      
+      // Wait for all translations to complete
+      const translatedResults = await Promise.all(translationPromises);
 
-      // Execute all translation promises concurrently
-      const promisesArray = Object.values(translations);
-      const results = await Promise.all(promisesArray);
+      // Construct the response object
+      const response = {
+        question: translatedResults[0], // The first item is the translated question
+      };
 
-      // Construct the result object
-      const resultObject = {};
-      let index = 0;
-      for (const key in translations) {
-        resultObject[key] = results[index++];
-      }
+      // Map the remaining results to options
+      if (option1) response.option1 = translatedResults[1];
+      if (option2) response.option2 = translatedResults[2];
+      if (option3) response.option3 = translatedResults[3];
+      if (option4) response.option4 = translatedResults[4];
 
-      res.json(resultObject);
+      // Send the response
+      res.json(response);
     } catch (err) {
-      next(err); // Forward error to error handler
+      next(err);
     }
   }
 }

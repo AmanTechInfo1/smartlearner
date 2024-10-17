@@ -12,6 +12,7 @@
     "antd": "^5.17.0",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
+    "google-tts-api": "^2.0.2",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "jwt-decode": "^4.0.0",
