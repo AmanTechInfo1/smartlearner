@@ -1,5 +1,5 @@
 const roleService = require("../services/roleService");
-const { Translate } = require("@google-cloud/translate").v2;
+const { translate } = require("free-translate");
 
 class RoleController {
   async createRole(req, res, next) {
@@ -66,17 +66,17 @@ class RoleController {
       const translationPromises = [];
 
       // Push the main question translation promise
-      translationPromises.push(Translate(question, { from: "en", to: lang }));
+      translationPromises.push(translate(question, { from: "en", to: lang }));
 
       // Push option translations if they exist
       if (option1)
-        translationPromises.push(Translate(option1, { from: "en", to: lang }));
+        translationPromises.push(translate(option1, { from: "en", to: lang }));
       if (option2)
-        translationPromises.push(Translate(option2, { from: "en", to: lang }));
+        translationPromises.push(translate(option2, { from: "en", to: lang }));
       if (option3)
-        translationPromises.push(Translate(option3, { from: "en", to: lang }));
+        translationPromises.push(translate(option3, { from: "en", to: lang }));
       if (option4)
-        translationPromises.push(Translate(option4, { from: "en", to: lang }));
+        translationPromises.push(translate(option4, { from: "en", to: lang }));
 
       // Wait for all translations to complete
       const translatedResults = await Promise.all(translationPromises);
