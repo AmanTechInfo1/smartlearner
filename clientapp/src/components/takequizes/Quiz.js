@@ -139,12 +139,16 @@ const Quiz = () => {
   const [questionTranslate, setQuestionTranslate] = useState("en");
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [isTranslating, setIsTranslating] = useState(false);
+
   const { oneQuiz, oneQuizOutput, loading } = useSelector(
     (state) => state.quiz
   );
   const { width, height } = useWindowSize();
 
   const handleTranslation = async () => {
+    setIsTranslating(true); // Start loading
     const formdata = new FormData();
     const question = myDivRefQue.current?.innerHTML || "No question provided";
 
@@ -167,7 +171,9 @@ const Quiz = () => {
           body: formdata,
         }
       );
+
       const result = await response.json();
+
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
       }
@@ -176,8 +182,13 @@ const Quiz = () => {
           document.getElementById(option).innerHTML = result[option];
         }
       });
+      console.log("Translation response:", result);
+
+      // readQuestionAndOptions();
     } catch (error) {
       console.error("Translation error:", error.message);
+    } finally {
+      setIsTranslating(false); // End loading
     }
   };
 
@@ -233,21 +244,47 @@ const Quiz = () => {
     navigate("/quizResult");
   };
 
-  const handleTextToSpeech = (text) => {
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = questionTranslate;
-    window.speechSynthesis.speak(speech);
-  };
+  // const handleTextToSpeech = (text) => {
+  //   const speech = new SpeechSynthesisUtterance(text);
+  //   speech.lang = questionTranslate;
+  //   const voices = window.speechSynthesis.getVoices();
+  //   const selectedVoice = voices.find(voice => voice.lang === questionTranslate);
 
-  const readQuestionAndOptions = () => {
-    const questionText = myDivRef.current.innerText;
-    handleTextToSpeech(questionText);
+  //   if (selectedVoice) {
+  //     speech.voice = selectedVoice;
+  //   }
+  //   window.speechSynthesis.speak(speech);
+  // };
 
-    oneQuiz?.option.forEach((option, index) => {
-      setTimeout(() => {
-        handleTextToSpeech(option);
-      }, 1000 * (index + 1)); // Delay reading options
-    });
+  // const readQuestionAndOptions = () => {
+  //   const questionText = myDivRef.current.innerText;
+  //   handleTextToSpeech(questionText);
+
+  //   oneQuiz?.option.forEach((option, index) => {
+  //     setTimeout(() => {
+  //       handleTextToSpeech(option);
+  //     }, 1000 * (index + 1)); // Delay reading options
+  //   });
+  // };
+  // useEffect(() => {
+  //   const setVoices = () => {
+  //     const voices = window.speechSynthesis.getVoices();
+  //     setAvailableVoices(voices);
+  //   };
+
+  //   window.speechSynthesis.onvoiceschanged = setVoices;
+
+  //   return () => {
+  //     window.speechSynthesis.onvoiceschanged = null; // Clean up the event listener
+  //   };
+  // }, []);
+
+  const handleLanguageChange = (e) => {
+    const selectedLanguage = e.target.value;
+    setQuestionTranslate(selectedLanguage);
+
+    // Optionally re-trigger translation and reading immediately on change
+    handleTranslation();
   };
 
   return (
@@ -263,17 +300,17 @@ const Quiz = () => {
             ) : oneQuiz?.question ? (
               <>
                 <div className={styles.totalTimer}>
-                  <select
-                    onChange={(e) => setQuestionTranslate(e.target.value)}>
+                  <select onChange={handleLanguageChange}>
                     {Object.entries(languageCodes).map((itm) => (
                       <option key={itm[1]} value={itm[1]}>
                         {itm[0]}
                       </option>
                     ))}
                   </select>
-                  <button onClick={readQuestionAndOptions}>
+                  {isTranslating && <span>Loading...</span>}
+                  {/* <button onClick={readQuestionAndOptions}>
                     Read Question & Options
-                  </button>
+                  </button> */}
                 </div>
                 <div className={styles.totalTimer}>
                   <span>Category: </span>

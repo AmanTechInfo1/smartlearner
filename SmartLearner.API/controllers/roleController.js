@@ -59,10 +59,11 @@ class RoleController {
     }
   }
   async translator(req, res, next) {
+    console.log("Received translation request:", req.body);
+
     try {
       const { question, lang, option1, option2, option3, option4 } = req.body;
 
-      // Create an array to hold the translation promises
       const translationPromises = [];
 
       // Push the main question translation promise
