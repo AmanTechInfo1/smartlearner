@@ -24,8 +24,10 @@ export default function AdiPartThree() {
   useEffect(() => {
     if (!userDetails || Object.keys(userDetails).length === 0) {
       navigate("/login"); // Redirect to login if user is not logged in
-    } else if (userDetails.role === "admin") {
+    }else if (userDetails.role === "admin") {
       // Allow admin to access the portal
+      return;
+    } else if (userDetails.role === "theorylearner") {
       return;
     } else {
       // User is not admin, check for subscription
