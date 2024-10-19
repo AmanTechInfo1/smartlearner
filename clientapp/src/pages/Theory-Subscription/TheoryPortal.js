@@ -44,6 +44,8 @@ export default function TheoryPortal() {
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
+    } else if (userDetails.role === "theorylearner") {
+      return;
     } else {
       // User is not admin, check for subscription
       dispatch(
