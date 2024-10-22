@@ -18,13 +18,13 @@ const get = async (url) => {
       maxRedirects: 0,
       headers: {
         "Content-Type": "application/json",
-        Authorization: token,  // Add Bearer token
+        Authorization: token, // Add Bearer token
       },
     });
 
     return response;
   } catch (error) {
-    handleError(error);  // Improved error handling
+    handleError(error); // Improved error handling
   }
 };
 
@@ -38,7 +38,7 @@ const post = async (url, params, opt = {}) => {
       ...opt,
       headers: {
         ...opt.headers,
-        // "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
         Authorization: token,
       },
     };
@@ -47,17 +47,17 @@ const post = async (url, params, opt = {}) => {
 
     return response;
   } catch (error) {
-    handleError(error);  // Improved error handling
+    handleError(error); // Improved error handling
   }
 };
 
 // Centralized error handling function
 const handleError = (error) => {
   if (error.response) {
-    console.error("API Error:", error.response.data);  // Log entire response
+    console.error("API Error:", error.response.data); // Log entire response
     if (error.response.status === 401) {
       localStorage.removeItem("user");
-      window.location.href = "/login";  // Redirect to login
+      window.location.href = "/login"; // Redirect to login
     }
   } else if (error.request) {
     console.error("Network Error:", error.message);
@@ -65,10 +65,8 @@ const handleError = (error) => {
     console.error("Error:", error.message);
   }
 
-  throw error;  // Re-throw the error to handle it in the calling function
+  throw error; // Re-throw the error to handle it in the calling function
 };
-
-
 
 // Export the HTTP methods
 const http = { get, post };

@@ -18,19 +18,15 @@ const blogRoutes = require("./routes/blogRoutes");
 
 const path = require("path");
 
-
 const cors = require("cors");
 
 const app = express();
-
 
 connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors({
-  origin: 'https://web.smartlearner.com' // Allow your frontend origin
-}));
+app.use(cors());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
