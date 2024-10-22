@@ -17,7 +17,7 @@ const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 
 const path = require("path");
-const router = express.Router();
+
 
 const cors = require("cors");
 
@@ -28,7 +28,9 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://web.smartlearner.com' // Allow your frontend origin
+}));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
