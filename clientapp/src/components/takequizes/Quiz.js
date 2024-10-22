@@ -13,9 +13,9 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
+import httpHandler from "../../utils/httpHandler";
 
 const languageCodes = {
-  Auto: "auto",
   English: "en",
   Portuguese: "pt",
   "Brazilian Portuguese": "pt-BR",
@@ -164,15 +164,9 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch(
-        "https://api.smartlearner.com/api/roles/translate",
-        {
-          method: "POST",
-          body: formdata,
-        }
-      );
+      const response = await httpHandler.post("/api/roles/translate", formdata);
 
-      const result = await response.json();
+      const result = response.data;
 
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
@@ -191,12 +185,6 @@ const Quiz = () => {
       setIsTranslating(false); // End loading
     }
   };
-
-  useEffect(() => {
-    if (myDivRef.current) {
-      handleTranslation();
-    }
-  }, [myDivRefQue.current, questionTranslate]);
 
   useEffect(() => {
     dispatch(getRandomQuestionByName(cid));
@@ -231,19 +219,15 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-   
   };
   const endQuiz = () => {
     navigate("/quizResult");
   };
 
-  
-
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
 
-    
     handleTranslation();
   };
 
@@ -359,6 +343,7 @@ const Quiz = () => {
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
+              <button onClick={endQuiz}>End Quiz</button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}

@@ -22,6 +22,8 @@ const router = express.Router();
 const cors = require("cors");
 
 const app = express();
+
+
 connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
