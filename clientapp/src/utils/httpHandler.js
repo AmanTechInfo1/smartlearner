@@ -33,12 +33,15 @@ const post = async (url, params, opt = {}) => {
   try {
     const token = await getToken();
 
-    // Add Authorization header to the options
+    // Dynamically set Content-Type based on params type
+    const isFormData = params instanceof FormData;
+    const contentType = isFormData ? "multipart/form-data" : "application/json";
+
     opt = {
       ...opt,
       headers: {
         ...opt.headers,
-        "Content-Type": "multipart/form-data",
+        "Content-Type": contentType,
         Authorization: token,
       },
     };
@@ -47,9 +50,10 @@ const post = async (url, params, opt = {}) => {
 
     return response;
   } catch (error) {
-    handleError(error); // Improved error handling
+    handleError(error);
   }
 };
+
 
 // Centralized error handling function
 const handleError = (error) => {
