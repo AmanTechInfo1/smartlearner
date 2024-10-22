@@ -157,7 +157,7 @@ export const getRandomQuestionByName =
     }
   };
 
-export const getQuizResult = (type, userId) => async (dispatch) => {
+export const getQuizResult = (userId, type) => async (dispatch) => {
   try {
     dispatch(setLoading());
     const response = await httpHandler.get(
@@ -237,7 +237,7 @@ export const editQuiz =
       const response = await httpHandler.post(
         `/api/quiz/updateQuestion/${id}`,
         data
-      );    
+      );
       if (response.data.success) {
         dispatch(editQuizSuccess(response.data.data));
         toast.success(response.data.message);

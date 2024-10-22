@@ -231,59 +231,19 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-    // const nextQuestion = currentQuestion + 1;
-    // if (nextQuestion < questions.length) {
-    //   setCurrentQuestion(nextQuestion);
-    //   setSelectedOption(null);
-    // } else {
-    //   setEndTime(Date.now());
-    //   setShowResult(true);
-    // }
+   
   };
   const endQuiz = () => {
     navigate("/quizResult");
   };
 
-  // const handleTextToSpeech = (text) => {
-  //   const speech = new SpeechSynthesisUtterance(text);
-  //   speech.lang = questionTranslate;
-  //   const voices = window.speechSynthesis.getVoices();
-  //   const selectedVoice = voices.find(voice => voice.lang === questionTranslate);
-
-  //   if (selectedVoice) {
-  //     speech.voice = selectedVoice;
-  //   }
-  //   window.speechSynthesis.speak(speech);
-  // };
-
-  // const readQuestionAndOptions = () => {
-  //   const questionText = myDivRef.current.innerText;
-  //   handleTextToSpeech(questionText);
-
-  //   oneQuiz?.option.forEach((option, index) => {
-  //     setTimeout(() => {
-  //       handleTextToSpeech(option);
-  //     }, 1000 * (index + 1)); // Delay reading options
-  //   });
-  // };
-  // useEffect(() => {
-  //   const setVoices = () => {
-  //     const voices = window.speechSynthesis.getVoices();
-  //     setAvailableVoices(voices);
-  //   };
-
-  //   window.speechSynthesis.onvoiceschanged = setVoices;
-
-  //   return () => {
-  //     window.speechSynthesis.onvoiceschanged = null; // Clean up the event listener
-  //   };
-  // }, []);
+  
 
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
 
-    // Optionally re-trigger translation and reading immediately on change
+    
     handleTranslation();
   };
 

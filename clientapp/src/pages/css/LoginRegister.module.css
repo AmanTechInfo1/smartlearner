@@ -3,16 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --pink: hsl(329, 83%, 61%);
+  --purple: hsl(274, 83%, 61%);
+}
 .loginRegisterPage {
   background-image: url(../../assets/images/bg-light.png);
   background-size: cover;
   font-family: "Roboto", Sans-serif;
 }
 
-
 .loginRegisterSection {
   display: flex;
   align-items: center;
+  flex-direction: column;
   max-width: 1140px;
   min-height: 100vh;
   margin-left: auto;
@@ -20,22 +25,33 @@
   padding: 2rem 0;
 }
 .loginheading {
-  max-width: 60%;
   width: 100%;
   padding: 10px 50px 10px 10px;
+  text-align: center;
 }
 .loginheading h1 {
-  font-size: 4em;
-  color: #e90606;
+  font-size: 5em;
+  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   font-weight: 600;
+}
+.loginheading P {
+  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 1.2rem;
 }
 .loginformContainer {
   width: 100%;
-  max-width: 40%;
+  max-width: 45%;
   align-items: center;
   justify-content: center;
   margin: 10px;
-  animation: slideFromLeft 1s ease-out; /* Animation for sliding from bottom */
+  animation: slideFromLeft 1s ease-out;
+  box-shadow: 0px 8px 16px rgba(106, 106, 106, 0.3); /* Animation for sliding from bottom */
 }
 @keyframes slideFromLeft {
   from {
@@ -49,18 +65,14 @@
 .loginRegistration {
   border-style: solid;
   border-width: 7px 0px 0px 0px;
-  border-color: #e90606;
+  border-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
   margin-top: 0px;
   margin-bottom: 0px;
 
   padding: 20px 20px 20px 20px;
-
- 
 }
-
-
 
 .loginRegistration form {
   max-width: 300px;
@@ -70,11 +82,12 @@
   padding-top: 20px;
 }
 
-
-
 .loginRegistration h2 {
-  color: #e90606;
-  font-size: 2rem;
+  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 2.3rem;
   text-align: center;
   font-weight: 600;
   margin-bottom: 20px;
@@ -90,12 +103,12 @@
   text-align: left;
   padding: 0px 0px 0px 10px !important;
   color: #666;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", Sans-serif;
   width: 100%;
   display: block !important;
   align-items: flex-start;
   border-radius: 2px;
-  outline:none;
+  outline: none;
   cursor: text !important;
   font-size: 15px !important;
   height: 40px !important;
@@ -140,22 +153,24 @@
   text-align: center;
 }
 .loginFormBtn button {
-  padding: 12px 80px;
-  font-size: 15px;
-  font-weight: 400;
-  background-color: #e90606;
+  padding: 14px 80px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #000000;
+  border-radius: 10px;
   color: #ffffff;
   border: none;
 }
 .formFooter {
-  background-color: #e90606;
+  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+
   text-align: center;
   padding: 20px 10px;
 }
 .formFooter p {
   margin-bottom: 0;
-  color: #020000;
-  font-family: "Montserrat", sans-serif;
+
+  font-family: "Roboto", Sans-serif;
   font-weight: 500;
 }
 .formFooter button {
@@ -163,12 +178,15 @@
   font-family: "Roboto", Sans-serif;
   font-weight: 500;
   border: none;
-  background-color: #e90606;
+  background-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
   padding-left: 10px;
 }
-.formFooter a{
+.formFooter a {
   color: #fff;
   text-decoration: none;
+}
+.formFooter a:hover {
+  color: #dadada;
 }
 @media (max-width: 967px) {
   .loginheading {
