@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.f82525a1.css",
-    "main.js": "/static/js/main.d71e7903.js",
+    "main.css": "/static/css/main.6529a8ee.css",
+    "main.js": "/static/js/main.115dd85b.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/js/239.376689cf.chunk.js": "/static/js/239.376689cf.chunk.js",
     "static/js/213.f010dcb7.chunk.js": "/static/js/213.f010dcb7.chunk.js",
     "static/js/667.31d446cf.chunk.js": "/static/js/667.31d446cf.chunk.js",
+    "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
     "static/media/hazzardClipsBanner.png": "/static/media/hazzardClipsBanner.17e1b98de0f3f8dda1d7.png",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
@@ -72,6 +73,7 @@
     "static/media/cimg6.jpg": "/static/media/cimg6.6ab6c2e116c0771c03e4.jpg",
     "static/media/homebannerImg.jpg": "/static/media/homebannerImg.e468368817735f8ea3ba.jpg",
     "static/media/finished-road-map-1.png": "/static/media/finished-road-map-1.f3dd111279280b3aac10.png",
+    "static/media/docsList.png": "/static/media/docsList.08ebdc1b9a5abb2505fa.png",
     "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
     "static/media/bloggingImage.jpg": "/static/media/bloggingImage.c059bd9a1af6edda623f.jpg",
     "static/media/theoryImgBanner.jpg": "/static/media/theoryImgBanner.8a3bd4ec9f45405a5b77.jpg",
@@ -85,7 +87,6 @@
     "static/media/VulnerableRoadUsers.jpg": "/static/media/VulnerableRoadUsers.b6a37f70bb396a28e041.jpg",
     "static/media/cimg16.jpg": "/static/media/cimg16.6165d455929705d28d6e.jpg",
     "static/media/CChampion-2.jpg": "/static/media/CChampion-2.c89fb0c00fdb72a9a2a6.jpg",
-    "static/media/resultPatllet.png": "/static/media/resultPatllet.d7dd7a57717404cdfa7f.png",
     "static/media/cimg13.jpg": "/static/media/cimg13.4739f426b7f13d3a3032.jpg",
     "static/media/going-green-img3.jpg": "/static/media/going-green-img3.a99719f1a5d82a55e1f7.jpg",
     "static/media/going-green-img.jpg": "/static/media/going-green-img.aac79fce5d3bf2a41376.jpg",
@@ -129,6 +130,7 @@
     "static/media/trophy-Icon.png": "/static/media/trophy-Icon.441dc128bf02e0522fb5.png",
     "static/media/Roof-Racks-20-1024x683.jpg": "/static/media/Roof-Racks-20-1024x683.5ed7f4d4fd0a33018b8c.jpg",
     "static/media/goldstar.png": "/static/media/goldstar.1b2c4976a07e56814a3c.png",
+    "static/media/footerImages.png": "/static/media/footerImages.94d955ff8c526c43579b.png",
     "static/media/enviromentalIssueImg.jpg": "/static/media/enviromentalIssueImg.d7adf1b987d92f686003.jpg",
     "static/media/bgcarImg2.png": "/static/media/bgcarImg2.f023656e36812c1296ef.png",
     "static/media/certificateOfMotor.jpg": "/static/media/certificateOfMotor.3e2039ccf374e0c33e62.jpg",
@@ -279,15 +281,15 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.f82525a1.css.map": "/static/css/main.f82525a1.css.map",
-    "main.d71e7903.js.map": "/static/js/main.d71e7903.js.map",
+    "main.6529a8ee.css.map": "/static/css/main.6529a8ee.css.map",
+    "main.115dd85b.js.map": "/static/js/main.115dd85b.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
     "239.376689cf.chunk.js.map": "/static/js/239.376689cf.chunk.js.map",
     "213.f010dcb7.chunk.js.map": "/static/js/213.f010dcb7.chunk.js.map",
     "667.31d446cf.chunk.js.map": "/static/js/667.31d446cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f82525a1.css",
-    "static/js/main.d71e7903.js"
+    "static/css/main.6529a8ee.css",
+    "static/js/main.115dd85b.js"
   ]
 }
