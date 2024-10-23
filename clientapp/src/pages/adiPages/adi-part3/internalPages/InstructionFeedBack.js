@@ -8,7 +8,7 @@ import ExampleImg from "../../../../assets/images/example.png";
 import apropriateTime from "../../../../assets/images/apropriateTime.png";
 import pupilImg from "../../../../assets/images/pupilQuestion.png";
 import nodiscrimination from "../../../../assets/images/noDiscrimination.png";
-
+import { Link } from "react-router-dom";
 export default function InstructionFeedBack() {
   return (
     <div className={styles.AdiPartOne}>
@@ -30,9 +30,10 @@ export default function InstructionFeedBack() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>

@@ -13,9 +13,9 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
-import httpHandler from "../../utils/httpHandler";
 
 const languageCodes = {
+  Auto: "auto",
   English: "en",
   Portuguese: "pt",
   "Brazilian Portuguese": "pt-BR",
@@ -164,9 +164,12 @@ const Quiz = () => {
     });
 
     try {
-      const response = await httpHandler.post("/api/quiz/translate", formdata);
+      const response = await fetch("http://localhost:5000/api/quiz/translate", {
+        method: "POST",
+        body: formdata,
+      });
 
-      const result = response.data;
+      const result = await response.json();
 
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
@@ -185,6 +188,12 @@ const Quiz = () => {
       setIsTranslating(false); // End loading
     }
   };
+
+  useEffect(() => {
+    if (myDivRef.current) {
+      handleTranslation();
+    }
+  }, [myDivRefQue.current, questionTranslate]);
 
   useEffect(() => {
     dispatch(getRandomQuestionByName(cid));
@@ -219,15 +228,59 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
+    // const nextQuestion = currentQuestion + 1;
+    // if (nextQuestion < questions.length) {
+    //   setCurrentQuestion(nextQuestion);
+    //   setSelectedOption(null);
+    // } else {
+    //   setEndTime(Date.now());
+    //   setShowResult(true);
+    // }
   };
   const endQuiz = () => {
     navigate("/quizResult");
   };
 
+  // const handleTextToSpeech = (text) => {
+  //   const speech = new SpeechSynthesisUtterance(text);
+  //   speech.lang = questionTranslate;
+  //   const voices = window.speechSynthesis.getVoices();
+  //   const selectedVoice = voices.find(voice => voice.lang === questionTranslate);
+
+  //   if (selectedVoice) {
+  //     speech.voice = selectedVoice;
+  //   }
+  //   window.speechSynthesis.speak(speech);
+  // };
+
+  // const readQuestionAndOptions = () => {
+  //   const questionText = myDivRef.current.innerText;
+  //   handleTextToSpeech(questionText);
+
+  //   oneQuiz?.option.forEach((option, index) => {
+  //     setTimeout(() => {
+  //       handleTextToSpeech(option);
+  //     }, 1000 * (index + 1)); // Delay reading options
+  //   });
+  // };
+  // useEffect(() => {
+  //   const setVoices = () => {
+  //     const voices = window.speechSynthesis.getVoices();
+  //     setAvailableVoices(voices);
+  //   };
+
+  //   window.speechSynthesis.onvoiceschanged = setVoices;
+
+  //   return () => {
+  //     window.speechSynthesis.onvoiceschanged = null; // Clean up the event listener
+  //   };
+  // }, []);
+
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
 
+    // Optionally re-trigger translation and reading immediately on change
     handleTranslation();
   };
 
@@ -343,7 +396,6 @@ const Quiz = () => {
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
-              <button onClick={endQuiz}>End Quiz</button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}

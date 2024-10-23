@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./css/VehicleLoading.module.css";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import { IoMdArrowDropright } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function VideoClips() {
   const videoURLs = [
@@ -35,9 +36,10 @@ export default function VideoClips() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>

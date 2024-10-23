@@ -1,5 +1,4 @@
 // import React from "react";
-
 import React from "react";
 import stepImg1 from "../../../assets/images/Asset 25@4x.png";
 import stepImg2 from "./content2.png";
@@ -58,7 +57,7 @@ export default function HomeDesign() {
                   <h2>Step 2</h2>
                   <img
                     src={stepImg1}
-                    style={{ maxWidth: "100px", marginTop: "-2rem" }}
+                    style={{ maxWidth: "100px"}}
                   />
                 </section>
                 <section className="content-box-desc">

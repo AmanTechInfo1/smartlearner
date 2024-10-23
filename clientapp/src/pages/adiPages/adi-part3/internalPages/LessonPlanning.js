@@ -4,7 +4,7 @@ import styles from "../../AdiPartOne.module.css";
 import learningGoals from "../../../../assets/images/learningGoals.png";
 import pupilAbility from "../../../../assets/images/pupilAbility.png";
 import practiceCar from "../../../../assets/images/practiceArea.png";
-import adaptingImg from "../../../../assets/images/adaptingLesson.png";
+import adaptingImg from "../../../../assets/images/adaptingLesson.png";import { Link } from "react-router-dom";
 export default function LessonPlanning() {
   return (
     <div className={styles.AdiPartOne}>
@@ -26,9 +26,10 @@ export default function LessonPlanning() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>

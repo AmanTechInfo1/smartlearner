@@ -77,7 +77,7 @@
 .content-box-header {
   display: flex;
   justify-content: space-between;
-  margin-top: -2rem;
+  margin-top: 1rem;
 }
 .content-box-header h2 {
   color: white;

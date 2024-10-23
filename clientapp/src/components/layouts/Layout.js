@@ -74,12 +74,16 @@ function Layout() {
       {isVisible && (
         <div style={overlayStyle}>
           <div ref={popupRef}>
-            <section style={{ position:'relative'}}>
-              <section className="callbackFormSection">
-                <div className="callbackFormContent">
+            <section style={{ position: "relative" }}>
+              <section
+                className="callbackFormSection"
+                style={callbackFormSectionStyle}>
+                <div
+                  className="callbackFormContent"
+                  style={callbackFormContentStyle}>
                   <CallBackForm />
                   <div className="callbackFormContentPG">
-                    <h2>Building knowledge</h2> 
+                    <h2>Building knowledge</h2>
                     <p>
                       We launched our 1-2-1 theory sessions in 2019 and since
                       then we have helped many people pass who thought they
@@ -99,9 +103,9 @@ function Layout() {
                   color: "white",
                   fontSize: "1.5rem",
                   cursor: "pointer",
-                  position:'absolute',
-                  top:'0px',
-                  right:'0px'
+                  position: "absolute",
+                  top: "0px",
+                  right: "0px",
                 }}
               />
             </section>
@@ -145,6 +149,18 @@ const overlayStyle = {
   zIndex: 1000,
 };
 
+const callbackFormSectionStyle = {
+  maxHeight: "100vh", // Limits the height of the section
+  overflowY: "auto", // Allows internal scrolling
+  padding: "20px",
 
+  borderRadius: "10px",
+};
+
+const callbackFormContentStyle = {
+  padding: "10px",
+  maxHeight: "100%", // Limits the content height to fit inside the section
+  overflowY: "auto", // Ensures that when content is long, it scrolls
+};
 
 export default Layout;

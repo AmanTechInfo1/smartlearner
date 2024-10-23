@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./AdiPartOne.module.css";
 import prizeTrophy from "../../assets/images/pdiTrophi.png";
-import docsList from "../../assets/images/resultPatllet.png";
+import docsList from "../../assets/images/docsList.png";
 import Qostion from "../../assets/images/quetion.png";
 import { Link } from "react-router-dom";
 import {
@@ -49,9 +49,10 @@ export default function AdiPartOne() {
                 </h1>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>
@@ -126,7 +127,11 @@ export default function AdiPartOne() {
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
-              <img src={docsList} alt="List" />
+              <img
+                src={docsList}
+                alt="List"
+                style={{ maxWidth: "650px", aspectRatio: "1/1" }}
+              />
             </div>
             <section className={styles.bgColorList}>
               <ul type="none">

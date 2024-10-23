@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../AdiPartOne.module.css";
 import { IoMdArrowDropright } from "react-icons/io";
 import Lplateimg from "../../../../assets/images/L-Plate.jpg";
-import learningStyleImg from "../../../../assets/images/learningStyleImg.png";
+import learningStyleImg from "../../../../assets/images/learningStyleImg.png";import { Link } from "react-router-dom";
 export default function LearningStyles() {
   return (
     <div className={styles.AdiPartOne}>
@@ -24,9 +24,10 @@ export default function LearningStyles() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>

@@ -35,7 +35,6 @@ export default function ContactUs() {
     formData.append("message", data.message);
     formData.append("formType", "contactUsForm");
     dispatch(enquiryData({ requestData: data, reset }));
-   
   };
 
   return (
@@ -45,11 +44,15 @@ export default function ContactUs() {
         backgroundColor: "black",
         color: "white",
         paddingBottom: "5rem",
-      }}
-    >
+      }}>
       <div className={styles.contactHead}>
-        <h1>Contact</h1>
+        <div className="opicity"></div>
+        <div>
+          {" "}
+          <h1>Contact</h1>
+        </div>
       </div>
+
       <div className={styles.contactUsDetails}>
         <div className={styles.contactUsContainer}>
           <div className={styles.contactInfo}>
@@ -107,8 +110,7 @@ export default function ContactUs() {
               style={{ border: 0 }}
               allowFullScreen=""
               aria-hidden="false"
-              tabIndex="0"
-            ></iframe>
+              tabIndex="0"></iframe>
           </div>
         </div>
       </div>
@@ -183,8 +185,7 @@ export default function ContactUs() {
                       value={value}
                       onChange={onChange}
                       className={styles.homeForminputField}
-                      required
-                    >
+                      required>
                       <option disabled value="">
                         --Select Tution Type--
                       </option>
@@ -262,8 +263,7 @@ export default function ContactUs() {
                       value={value}
                       onChange={onChange}
                       className={styles.homeForminputField}
-                      required
-                    >
+                      required>
                       <option disabled value="">
                         --Select Instruction Type--
                       </option>
@@ -275,7 +275,9 @@ export default function ContactUs() {
                   defaultValue=""
                 />
                 {errors?.instructorType && (
-                  <p style={{ color: "red" }}>{errors?.instructorType?.message}</p>
+                  <p style={{ color: "red" }}>
+                    {errors?.instructorType?.message}
+                  </p>
                 )}
               </div>
             </div>

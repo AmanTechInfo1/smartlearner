@@ -6,7 +6,7 @@ import sharedRepo from "../../../../assets/images/sharedRespoImg.png";
 import clearTiming from "../../../../assets/images/ClearTimeImg.png";
 import awarenessImg from "../../../../assets/images/awarenessImg.png";
 import interventionImg from "../../../../assets/images/Intervention img.png";
-import sufficientFeedback from "../../../../assets/images/sufficientFeedbacks.png";
+import sufficientFeedback from "../../../../assets/images/sufficientFeedbacks.png";import { Link } from "react-router-dom";
 export default function RiskManagement() {
   return (
     <div className={styles.AdiPartOne}>
@@ -28,9 +28,10 @@ export default function RiskManagement() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-                <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                  <button>Contact Us</button>
-                </a>
+              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
               </div>
             </div>
           </div>

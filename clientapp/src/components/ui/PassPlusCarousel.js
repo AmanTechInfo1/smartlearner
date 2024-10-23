@@ -117,7 +117,7 @@ function PassPlusCarousel() {
                             }}
                           >
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px" }}>
+                            <p style={{ marginBottom: "0px",width:'35px' }}>
                               £ {info.price}
                             </p>
                           </span>

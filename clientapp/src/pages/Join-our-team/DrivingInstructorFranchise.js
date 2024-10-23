@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import { joinOurTeamTestimonials } from "../../assets/data/testimonials";
 
 import ImagesCarousel2nd from "../../components/imageCarousel/ImagesCarousel2nd";
+import { Link } from "react-router-dom";
 
 export default function DrivingInstructorFranchise() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -33,6 +34,7 @@ export default function DrivingInstructorFranchise() {
       className={styles.drivingInstructorTraining}
       style={{ backgroundColor: "black", fontFamily: "'Antonio',sans-serif" }}>
       <section className={styles.imageSection}>
+        <div className="opicity"></div>
         <div className={styles.maincontent}>
           <div className={styles.content}>
             <div className={styles.heading1}>
@@ -46,17 +48,11 @@ export default function DrivingInstructorFranchise() {
               </h2>
             </div>
             <div className={styles.btn}>
-              <a href="tel:+4402475092784">
+              <Link to="/Contact-Us">
                 {" "}
                 <button id={styles.btn}>Contact Us</button>
-              </a>
+              </Link>
             </div>
-          </div>
-          <div className={styles.video}>
-            <a target="_blank" href="https://youtu.be/dmCmP4Tse1E">
-              <img src={Lplateimg} alt="LogoImg" />
-              <GoPlay className={styles.playIcon} />
-            </a>
           </div>
         </div>
       </section>

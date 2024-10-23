@@ -112,11 +112,14 @@ export default function Login() {
                   <div className={styles.loginFormBtn}>
                     <button type="submit">Login</button>
                   </div>
-                  <div style={{ textAlign: "center",marginTop:'20px' }}>
+                  <div style={{ textAlign: "center", marginTop: "20px" }}>
                     <Link
                       to="/forgot-password"
-                      style={{ textDecoration: "none", textAlign: "center", }}
-                    >
+                      style={{
+                        textDecoration: "none",
+                        textAlign: "center",
+                        fontSize: "18px",
+                      }}>
                       Forgot Password?
                     </Link>
                   </div>

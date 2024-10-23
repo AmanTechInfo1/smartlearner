@@ -7,7 +7,7 @@ import redCarImg from "../../../../assets/images/redcarimg.png";
 import runningImg from "../../../../assets/images/runningManImg.png";
 import locationImg from "../../../../assets/images/Location Img.png";
 import SkillsImg from "../../../../assets/images/goal-skills.png";
-
+import { Link } from "react-router-dom";
 export default function GdeMatrix() {
   return (
     <div>
@@ -28,11 +28,10 @@ export default function GdeMatrix() {
                   <h2>AWARD-WINNING DRIVING LESSONS</h2>
                 </div>
                 <div className={styles.alertBtn}>
-                  <a
-                    style={{ textDecoration: "none" }}
-                    href="tel:+4402475092784">
-                    <button>Contact Us</button>
-                  </a>
+                <Link to="/Contact-Us" style={{textDecoration:"none"}}>
+                {" "}
+                <button id={styles.btn}>Contact Us</button>
+              </Link>
                 </div>
               </div>
             </div>

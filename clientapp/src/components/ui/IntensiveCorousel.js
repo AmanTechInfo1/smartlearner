@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/greenStar.png"; 
+import starImg from "../../assets/images/greenStar.png";
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +23,9 @@ function IntensiveCorousel() {
   }, [dispatch]);
 
   useEffect(() => {
-    const offersIntensiveCategory = data.find((item) => item._id === "Intensive");
+    const offersIntensiveCategory = data.find(
+      (item) => item._id === "Intensive"
+    );
     if (offersIntensiveCategory) {
       setExpandedCategory(offersIntensiveCategory._id);
     }
@@ -78,8 +80,7 @@ function IntensiveCorousel() {
                 className={`${styles.carouselColumn} ${
                   expandedCategory === item._id ? styles.expanded : ""
                 }`}
-                onClick={() => handleExpandCategory(item._id)}
-              >
+                onClick={() => handleExpandCategory(item._id)}>
                 <div className={styles.carouselColumnHeading}>
                   <img
                     id={styles.CorouselImgBanner}
@@ -87,7 +88,9 @@ function IntensiveCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2 style={{ color: "#32CD32" }}> {/* Green heading */}
+                    <h2 style={{ color: "#32CD32" }}>
+                      {" "}
+                      {/* Green heading */}
                       {item._id === "Intensive"
                         ? expandedCategory === item._id
                           ? "MAN. | AUTO. | INTE."
@@ -122,10 +125,9 @@ function IntensiveCorousel() {
                               width: "100%",
                               borderRadius: "40px 0px 0px 40px",
                               padding: "8px",
-                            }}
-                          >
+                            }}>
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px" }}>
+                            <p style={{ marginBottom: "0px", width: "35px" }}>
                               £ {info.price}
                             </p>
                           </span>
@@ -147,8 +149,7 @@ function IntensiveCorousel() {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   addToCart(info, index);
-                                }}
-                              >
+                                }}>
                                 Book
                               </button>
                             ) : (
@@ -162,8 +163,7 @@ function IntensiveCorousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.decreaseButton}
-                                  >
+                                    className={styles.decreaseButton}>
                                     -
                                   </button>
                                   <span>
@@ -181,8 +181,7 @@ function IntensiveCorousel() {
                                         1
                                       );
                                     }}
-                                    className={styles.increaseButton}
-                                  >
+                                    className={styles.increaseButton}>
                                     +
                                   </button>
                                 </div>
@@ -197,8 +196,7 @@ function IntensiveCorousel() {
                   <div
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
-                    }`}
-                  >
+                    }`}>
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
