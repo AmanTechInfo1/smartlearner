@@ -396,6 +396,7 @@ const Quiz = () => {
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
+              <button onClick={endQuiz}>End Test</button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
