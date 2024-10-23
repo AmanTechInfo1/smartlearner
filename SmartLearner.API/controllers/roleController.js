@@ -1,5 +1,5 @@
 const roleService = require("../services/roleService");
-const { translate } = require("free-translate");
+
 
 class RoleController {
   async createRole(req, res, next) {
@@ -58,47 +58,7 @@ class RoleController {
       next(err);
     }
   }
-  async translator(req, res, next) {
-    console.log("Received translation request:", req.body);
-
-    try {
-      const { question, lang, option1, option2, option3, option4 } = req.body;
-
-      const translationPromises = [];
-
-      // Push the main question translation promise
-      translationPromises.push(translate(question, { from: "en", to: lang }));
-
-      // Push option translations if they exist
-      if (option1)
-        translationPromises.push(translate(option1, { from: "en", to: lang }));
-      if (option2)
-        translationPromises.push(translate(option2, { from: "en", to: lang }));
-      if (option3)
-        translationPromises.push(translate(option3, { from: "en", to: lang }));
-      if (option4)
-        translationPromises.push(translate(option4, { from: "en", to: lang }));
-
-      // Wait for all translations to complete
-      const translatedResults = await Promise.all(translationPromises);
-
-      // Construct the response object
-      const response = {
-        question: translatedResults[0], // The first item is the translated question
-      };
-
-      // Map the remaining results to options
-      if (option1) response.option1 = translatedResults[1];
-      if (option2) response.option2 = translatedResults[2];
-      if (option3) response.option3 = translatedResults[3];
-      if (option4) response.option4 = translatedResults[4];
-
-      // Send the response
-      res.json(response);
-    } catch (err) {
-      next(err);
-    }
-  }
+  
 }
 
 module.exports = new RoleController();

@@ -164,7 +164,7 @@ const Quiz = () => {
     });
 
     try {
-      const response = await httpHandler.post("/api/roles/translate", formdata);
+      const response = await httpHandler.post("/api/quiz/translate", formdata);
 
       const result = response.data;
 
