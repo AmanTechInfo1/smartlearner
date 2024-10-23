@@ -26,14 +26,7 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const corsOptions = {
-  origin: "https://web.smartlearner.com", // Allow only this origin
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
-  credentials: true, // If you are using cookies or authorization headers
-  allowedHeaders: "Content-Type,Authorization", // Allowed headers
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
