@@ -136,7 +136,7 @@ function AutomaticCarousel() {
                               padding: "8px",
                             }}>
                             <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px", width: "35px" }}>
+                            <p style={{ marginBottom: "0px", width: "40px" }}>
                               £ {info.price}
                             </p>
                           </span>
