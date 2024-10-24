@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import ResultQuiz from "./ResultQuiz";
 import styles from "./Quiz.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -148,14 +147,13 @@ const Quiz = () => {
   const { width, height } = useWindowSize();
 
   const handleTranslation = async () => {
-    setIsTranslating(true); // Start loading
+    setIsTranslating(true);
     const formdata = new FormData();
     const question = myDivRefQue.current?.innerHTML || "No question provided";
 
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);
 
-    // Adding options to formdata
     ["option1", "option2", "option3", "option4"].forEach((option) => {
       const optionText = document.getElementById(`lab${option}`)?.innerHTML;
       if (optionText) {
@@ -164,10 +162,13 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch("http://localhost:5000/api/quiz/translate", {
-        method: "POST",
-        body: formdata,
-      });
+      const response = await fetch(
+        "https://api.smartlearner.com/api/quiz/translate",
+        {
+          method: "POST",
+          body: formdata,
+        }
+      );
 
       const result = await response.json();
 
@@ -180,12 +181,10 @@ const Quiz = () => {
         }
       });
       console.log("Translation response:", result);
-
-      // readQuestionAndOptions();
     } catch (error) {
       console.error("Translation error:", error.message);
     } finally {
-      setIsTranslating(false); // End loading
+      setIsTranslating(false);
     }
   };
 
@@ -228,59 +227,15 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-    // const nextQuestion = currentQuestion + 1;
-    // if (nextQuestion < questions.length) {
-    //   setCurrentQuestion(nextQuestion);
-    //   setSelectedOption(null);
-    // } else {
-    //   setEndTime(Date.now());
-    //   setShowResult(true);
-    // }
   };
   const endQuiz = () => {
     navigate("/quizResult");
   };
 
-  // const handleTextToSpeech = (text) => {
-  //   const speech = new SpeechSynthesisUtterance(text);
-  //   speech.lang = questionTranslate;
-  //   const voices = window.speechSynthesis.getVoices();
-  //   const selectedVoice = voices.find(voice => voice.lang === questionTranslate);
-
-  //   if (selectedVoice) {
-  //     speech.voice = selectedVoice;
-  //   }
-  //   window.speechSynthesis.speak(speech);
-  // };
-
-  // const readQuestionAndOptions = () => {
-  //   const questionText = myDivRef.current.innerText;
-  //   handleTextToSpeech(questionText);
-
-  //   oneQuiz?.option.forEach((option, index) => {
-  //     setTimeout(() => {
-  //       handleTextToSpeech(option);
-  //     }, 1000 * (index + 1)); // Delay reading options
-  //   });
-  // };
-  // useEffect(() => {
-  //   const setVoices = () => {
-  //     const voices = window.speechSynthesis.getVoices();
-  //     setAvailableVoices(voices);
-  //   };
-
-  //   window.speechSynthesis.onvoiceschanged = setVoices;
-
-  //   return () => {
-  //     window.speechSynthesis.onvoiceschanged = null; // Clean up the event listener
-  //   };
-  // }, []);
-
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
 
-    // Optionally re-trigger translation and reading immediately on change
     handleTranslation();
   };
 
