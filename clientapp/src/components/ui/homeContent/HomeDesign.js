@@ -55,10 +55,7 @@ export default function HomeDesign() {
               <div className="content-box">
                 <section className="content-box-header">
                   <h2>Step 2</h2>
-                  <img
-                    src={stepImg1}
-                    style={{ maxWidth: "100px"}}
-                  />
+                  <img src={stepImg1} style={{ maxWidth: "70px" }} />
                 </section>
                 <section className="content-box-desc">
                   <h2>Take The Test</h2>

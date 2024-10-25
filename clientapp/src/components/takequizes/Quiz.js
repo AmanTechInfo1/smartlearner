@@ -15,7 +15,7 @@ import { imageBaseUrl } from "../../utils/constants";
 
 const languageCodes = {
   Auto: "auto",
-  English: "en",
+  English: "en-Us",
   Portuguese: "pt",
   "Brazilian Portuguese": "pt-BR",
   Afrikaans: "af",
@@ -135,18 +135,29 @@ const Quiz = () => {
   const navigate = useNavigate();
   const [totalTimer, setTotalTimer] = useState(3600);
   const [showResult, setShowResult] = useState(false);
-  const [questionTranslate, setQuestionTranslate] = useState("en");
+  const [questionTranslate, setQuestionTranslate] = useState("en-Us");
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
   const [availableVoices, setAvailableVoices] = useState([]);
   const [isTranslating, setIsTranslating] = useState(false);
+  const [hasTranslated, setHasTranslated] = useState(false);
 
   const { oneQuiz, oneQuizOutput, loading } = useSelector(
     (state) => state.quiz
   );
   const { width, height } = useWindowSize();
 
-  const handleTranslation = async () => {
+  const speak = (text) => {
+    if (text) {
+      const Voice = "Hindi Female"; // Get the language code
+      window.responsiveVoice.speak(text, Voice); // Use ResponsiveVoice
+    } else {
+      console.error("No text provided to speak.");
+    }
+  };
+  const handleTranslationAndSpeech = async () => {
+    if (hasTranslated) return;
+    setHasTranslated(true);
     setIsTranslating(true);
     const formdata = new FormData();
     const question = myDivRefQue.current?.innerHTML || "No question provided";
@@ -162,22 +173,30 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch(
-        "https://api.smartlearner.com/api/quiz/translate",
-        {
-          method: "POST",
-          body: formdata,
-        }
-      );
+      const response = await fetch("https://api.smartlearner.com/api/quiz/translate", {
+        method: "POST",
+        body: formdata,
+      });
 
       const result = await response.json();
 
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
+
+        // Speak the translated question
+        if (result.question) {
+          speak(result.question);
+        }
       }
+
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
           document.getElementById(option).innerHTML = result[option];
+
+          // Speak translated options
+          if (result[option]) {
+            speak(result[option]);
+          }
         }
       });
       console.log("Translation response:", result);
@@ -187,12 +206,6 @@ const Quiz = () => {
       setIsTranslating(false);
     }
   };
-
-  useEffect(() => {
-    if (myDivRef.current) {
-      handleTranslation();
-    }
-  }, [myDivRefQue.current, questionTranslate]);
 
   useEffect(() => {
     dispatch(getRandomQuestionByName(cid));
@@ -227,7 +240,9 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
+    setHasTranslated(false);
   };
+
   const endQuiz = () => {
     navigate("/quizResult");
   };
@@ -235,8 +250,7 @@ const Quiz = () => {
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
-
-    handleTranslation();
+    setHasTranslated(false); // Reset translated state for new translation
   };
 
   return (
@@ -260,9 +274,18 @@ const Quiz = () => {
                     ))}
                   </select>
                   {isTranslating && <span>Loading...</span>}
-                  {/* <button onClick={readQuestionAndOptions}>
-                    Read Question & Options
-                  </button> */}
+                  <button
+                    style={{
+                      border: "none",
+                      borderRadius: "6px",
+                      padding: "4px 15px",
+                      backgroundColor: "red",
+                      color: "white",
+                      fontWeight: "700px",
+                    }}
+                    onClick={handleTranslationAndSpeech}>
+                    Speak
+                  </button>
                 </div>
                 <div className={styles.totalTimer}>
                   <span>Category: </span>
@@ -289,18 +312,17 @@ const Quiz = () => {
                   {oneQuiz?.option?.map((answerOption, index) => {
                     return (
                       <button
-                        // key={index}
                         disabled={oneQuizOutput.answerAttempt}
                         style={{
                           backgroundColor:
-                            oneQuizOutput.answerAttempt == "Incorrect"
-                              ? "Option" + (index + 1) == answered
+                            oneQuizOutput.answerAttempt === "Incorrect"
+                              ? "Option" + (index + 1) === answered
                                 ? "#780000"
-                                : oneQuizOutput.correctAnswer ==
+                                : oneQuizOutput.correctAnswer ===
                                   "Option" + (index + 1)
                                 ? "green"
                                 : ""
-                              : oneQuizOutput.correctAnswer ==
+                              : oneQuizOutput.correctAnswer ===
                                 "Option" + (index + 1)
                               ? "green"
                               : "",
@@ -310,36 +332,26 @@ const Quiz = () => {
                             "Option" + (index + 1),
                             "Image" + (index + 1)
                           )
-                        }
-                        // disabled={selectedOption !== null}
-                      >
-                        {answerOption != "" ? (
-                          <p id={"option" + (index + 1)}>{answerOption}</p>
-                        ) : (
-                          ""
-                        )}{" "}
-                        &nbsp; &nbsp;{" "}
-                        {answerOption != "" ? (
-                          <p
-                            style={{ display: "none" }}
-                            id={"laboption" + (index + 1)}>
-                            {answerOption}
-                          </p>
-                        ) : (
-                          ""
-                        )}{" "}
-                        &nbsp; &nbsp;{" "}
-                        {oneQuiz?.optionImage[index] != "" && (
-                          <img
-                            width={200}
-                            src={`${
-                              oneQuiz?.optionImage[index] != ""
-                                ? oneQuiz?.optionImage[index].includes("https")
-                                  ? oneQuiz?.optionImage[index]
-                                  : imageBaseUrl + oneQuiz?.optionImage[index]
-                                : ""
-                            }`}
-                          />
+                        }>
+                        {answerOption && (
+                          <>
+                            <p id={"option" + (index + 1)}>{answerOption}</p>
+                            <p
+                              style={{ display: "none" }}
+                              id={"laboption" + (index + 1)}>
+                              {answerOption}
+                            </p>
+                            {oneQuiz?.optionImage[index] && (
+                              <img
+                                width={200}
+                                src={`${
+                                  oneQuiz?.optionImage[index].includes("https")
+                                    ? oneQuiz?.optionImage[index]
+                                    : imageBaseUrl + oneQuiz?.optionImage[index]
+                                }`}
+                              />
+                            )}
+                          </>
                         )}
                       </button>
                     );

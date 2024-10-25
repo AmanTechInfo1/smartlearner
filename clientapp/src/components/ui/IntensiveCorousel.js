@@ -93,7 +93,7 @@ function IntensiveCorousel() {
                       {/* Green heading */}
                       {item._id === "Intensive"
                         ? expandedCategory === item._id
-                          ? "MAN. | AUTO. | INTE."
+                          ? "MAN.-AUTO.-INTENSIVE"
                           : "INTENSIVE"
                         : "INTENSIVE"}
                     </h2>

@@ -104,15 +104,20 @@ function ImagesCarousel() {
   return (
     <div
       className="slider-container"
-      style={{ color: "white", maxWidth: "1000px", margin: "0 auto" }}
-    >
+      style={{ color: "white", maxWidth: "1000px", margin: "0 auto" }}>
       <Slider {...settings}>
         {images.map((img, index) => (
           <div
             className={index === slideIndex ? "slide slide-active" : "slide"}
-            key={index}
-          >
-            <img src={img} alt="" style={{border: '1px solid rgb(255, 217, 0)'}}/>
+            key={index}>
+            <div style={{ borderTop: "1px solid rgb(255, 217, 0)" }}>
+              {" "}
+              <img
+                src={img}
+                alt=""
+                style={{ border: "1px solid rgb(255, 217, 0)" }}
+              />
+            </div>
           </div>
         ))}
       </Slider>

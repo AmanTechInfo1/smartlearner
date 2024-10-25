@@ -389,10 +389,6 @@ export default function Home() {
                 </p>
               </div>
             </div> */}
-            <div className={styles.spiralImgContainer}>
-              {/* <img src={spiralImg} alt="spiralImg" /> */}
-              <hr style={{ opacity: "1", border: "2px solid silver" }} />
-            </div>
           </div>
         </section>
         {/* //////////////carousel section///////////////// */}
@@ -416,7 +412,20 @@ export default function Home() {
             }}>
             <ImagesCarousel />
           </div>
+          <div className={styles.spiralImgContainer}>
+            {/* <img src={spiralImg} alt="spiralImg" /> */}
+            <hr
+              style={{
+                opacity: "1",
+                border: "2px solid silver",
+                maxWidth: "1400px",
+                width: "100%",
+                margin: "0px auto",
+              }}
+            />
+          </div>
         </section>
+
         {/* /////////////////////////////////// */}
         <section>
           <div className={styles.starImgContainer}>

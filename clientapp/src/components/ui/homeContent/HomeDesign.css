@@ -57,7 +57,7 @@
 }
 .content-Grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 100px;
   place-items: center;
   padding: 0px 2rem;
@@ -68,7 +68,8 @@
   border: 1px solid white;
   border-radius: 30px;
   padding: 0px 1rem;
-  width: 300px;
+  max-width: 370px;
+  width: 100%;
 }
 .content-box:hover {
   border: 1px solid rgb(227, 0, 0);
@@ -80,8 +81,8 @@
   margin-top: 1rem;
 }
 .content-box-header h2 {
-  color: white;
-  font-size: 2.5rem;
+  color: rgb(227, 0, 0);
+  font-size: 2.6rem;
   font-weight: 500;
   opacity: 1;
   margin-top: -0.9rem;
@@ -109,8 +110,8 @@
 .content-box-desc p {
   color: white;
   text-align: left;
-  font-size: 1.2rem;
-  font-weight: 400px;
+  font-size: 1.4rem;
+  font-weight: 200px;
   margin: 1rem 0px;
 }
 .btn-Section {
@@ -152,7 +153,7 @@
   display: flex;
   align-items: center;
 }
-@media (max-width: 1072px) {
+@media (max-width: 1167px) {
   .homecontent-Sec {
     background-size: contain;
     background-repeat: no-repeat;
@@ -164,8 +165,12 @@
     background-position: center;
     margin-top: 5rem;
   }
+  .content-Grid {
+    padding-top: 3rem;
+  }
   .content-box-desc {
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
   }
 }
 @media (max-width: 767px) {
@@ -175,7 +180,7 @@
     background-position: center;
   }
 }
-@media (max-width: 705px) {
+@media (max-width: 763px) {
   .content-Imgs {
     background-image: url("./mobileRoad.png");
     background-size: contain;
