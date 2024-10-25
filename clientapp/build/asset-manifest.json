@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.63904cb8.css",
-    "main.js": "/static/js/main.a2783e56.js",
+    "main.css": "/static/css/main.2daac683.css",
+    "main.js": "/static/js/main.8b10dd78.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -130,7 +130,6 @@
     "static/media/horse-road-1024x576.jpg": "/static/media/horse-road-1024x576.a95dae61018e8ed46858.jpg",
     "static/media/roadUserVulnerableuser.png": "/static/media/roadUserVulnerableuser.e1aba19d7421cfecc8f5.png",
     "static/media/JLR-Logo-2008 (1).png": "/static/media/JLR-Logo-2008 (1).660b915a968180689009.png",
-    "static/media/inner-banner.jpg": "/static/media/inner-banner.05b89db8b0117d5c5383.jpg",
     "static/media/Diary-1536x681.jpg": "/static/media/Diary-1536x681.05297a53f598f81711b7.jpg",
     "static/media/Asset_109.png": "/static/media/Asset_109.249e54851dcb8e48cc9d.png",
     "static/media/motorway-studs-1-rotated.jpg": "/static/media/motorway-studs-1-rotated.08d0fb244e69ebb208f7.jpg",
@@ -271,12 +270,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.63904cb8.css.map": "/static/css/main.63904cb8.css.map",
-    "main.a2783e56.js.map": "/static/js/main.a2783e56.js.map",
+    "main.2daac683.css.map": "/static/css/main.2daac683.css.map",
+    "main.8b10dd78.js.map": "/static/js/main.8b10dd78.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.63904cb8.css",
-    "static/js/main.a2783e56.js"
+    "static/css/main.2daac683.css",
+    "static/js/main.8b10dd78.js"
   ]
 }
