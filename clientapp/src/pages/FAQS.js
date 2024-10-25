@@ -16,10 +16,14 @@ import Testemonial from "../components/testimonials/Testemonial";
 export default function FAQS() {
   return (
     <>
-      <section style={{backgroundColor:'black', color:'white'}}>
+      <section style={{ backgroundColor: "black", color: "white" }}>
         <section className={styles.theorySupportHeadingContent}>
           <div className={styles.TSfirstContent}>
-            <h2>FAQS</h2>
+            <div className="opicity"></div>
+            <div>
+              {" "}
+              <h2>FAQS</h2>
+            </div>
           </div>
         </section>
         <section className={styles.faqsAccordion}>
@@ -62,16 +66,7 @@ export default function FAQS() {
           </section>
         </section>
         {/* /////////////////////////////////////////////// */}
-        <section className={styles.TSvideosContanierSection}>
-          <div className={styles.theorySupportContentVideosec}>
-            <video controls poster={poster} preload="none">
-              <source
-                src="src/assets/videos/Video-1smartlearner-B.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-        </section>
+
         {/* ////////////////////////// */}
         <section className={styles.whyChooseshortSection}>
           <div className={styles.whyChooseshortSectionContent}>
@@ -149,7 +144,7 @@ export default function FAQS() {
         </section>
         {/* ///////////////Testimonials////// */}
         <section>
-          <Testemonial/>
+          <Testemonial />
         </section>
 
         {/* ///////////////////////Reviews//////// */}
