@@ -156,7 +156,6 @@ const Quiz = () => {
       };
     }
   }, []);
-  
 
   const speak = (text) => {
     if (text) {
@@ -184,10 +183,13 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch("http://localhost:5000/api/quiz/translate", {
-        method: "POST",
-        body: formdata,
-      });
+      const response = await fetch(
+        "https://api.smartlearner.com/api/quiz/translate",
+        {
+          method: "POST",
+          body: formdata,
+        }
+      );
 
       const result = await response.json();
 
