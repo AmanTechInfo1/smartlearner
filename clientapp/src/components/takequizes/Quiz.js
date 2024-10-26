@@ -265,10 +265,7 @@ const Quiz = () => {
       dispatch(resetQuizRestartStatus());
     }
   }, [quizRestarted, dispatch]);
-  const isQuizCompleted =
-    oneQuizOutput.answerAttempt === "Correct" ||
-    oneQuizOutput.answerAttempt === "Incorrect";
-  console.log("quizcompleted", isQuizCompleted);
+
   return (
     <>
       {oneQuizOutput.answerAttempt === "Correct" && (
@@ -410,9 +407,8 @@ const Quiz = () => {
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
-              {isQuizCompleted && (
-                <button onClick={handleRestart}>Restart Quiz</button>
-              )}
+
+              <button onClick={handleRestart}>Restart Quiz</button>
             </div>
           </div>
         </div>
