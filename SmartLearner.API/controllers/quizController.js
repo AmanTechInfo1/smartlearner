@@ -3,6 +3,7 @@ const quizService = require("../services/quizService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
 const { translate } = require("free-translate");
+
 class QuizController {
   async addNewQuiz(req, res, next) {
     try {
@@ -303,10 +304,10 @@ class QuizController {
       // Wait for all translations to complete
       const translatedResults = await Promise.all(translationPromises);
 
-      // Construct the response object
       const response = {
-        question: translatedResults[0],
+        question: translatedResults[0], // Access the translated text
       };
+      // Construct the response object
 
       // Map the remaining results to options
       if (option1) response.option1 = translatedResults[1];
@@ -320,17 +321,6 @@ class QuizController {
       next(err);
     }
   }
-
-  // async addNewQuiz(req, res, next) {
-  //   try {
-  //     var quizData = req.body;
-  //     const quiz = await quizService.createQuizAsync(quizData);
-
-  //     res.status(201).json(quiz);
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
 }
 
 module.exports = new QuizController();

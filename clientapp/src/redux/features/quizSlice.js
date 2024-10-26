@@ -24,7 +24,7 @@ const quizSlice = createSlice({
     quizResult: [],
     quiz: null,
     oneQuizModule: {},
-    quizRestarted: false,
+    isQuizRestarted: false,
   },
   reducers: {
     getAllQuizzesSuccess: (state, action) => {
@@ -130,17 +130,25 @@ const quizSlice = createSlice({
     deleteQuizFailure: (state) => {
       state.loading = false;
     },
-    restartQuizSuccess: (state) => {
-      state.quizRestarted = true; // Update state on successful restart
-    },
-    restartQuizFailure: (state) => {
-      state.quizRestarted = false; // Reset on failure
-    },
-    resetQuizRestartStatus: (state) => {
-      state.quizRestarted = false; // Reset status when needed
-    },
+
     setLoading: (state) => {
       state.loading = true;
+    },
+    restartQuizSuccess: (state, action) => {
+      // Reset the state relevant to the quiz
+      state.oneQuiz = action.payload; // Load new quiz data
+      state.quizResult = []; // Clear previous results
+      state.isQuizRestarted = true; // Mark that the quiz has been restarted
+      state.loading = false;
+    },
+
+    restartQuizFailure: (state) => {
+      state.loading = false;
+    },
+
+    // Optionally, you can reset the restart state
+    resetQuizRestarted: (state) => {
+      state.isQuizRestarted = false;
     },
   },
 });
@@ -196,27 +204,22 @@ export const getRandomQuestionByName =
   };
 
 ///////////////////////////////////////////////////////////
-export const restartQuiz =
-  (cid, id = undefined) =>
-  async (dispatch) => {
-    try {
-      dispatch(setLoading());
-      const response = await httpHandler.get(
-        `/api/quiz/restart-quiz/${cid}${id ? "/" + id : ""}`
-      );
-
-      if (response.data.success) {
-        dispatch(restartQuizSuccess());
-        toast.success("Quiz restarted successfully!");
-      } else {
-        toast.error(response.data.message);
-        dispatch(restartQuizFailure());
-      }
-    } catch (error) {
-      toast.error(error.message);
+export const restartQuiz = (cid) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    const response = await httpHandler.get(`/api/quiz/restart-quiz/${cid}`);
+    if (response.data.success) {
+      dispatch(restartQuizSuccess(response.data.data));
+      toast.success("Quiz restarted successfully!");
+    } else {
+      toast.error(response.data.message);
       dispatch(restartQuizFailure());
     }
-  };
+  } catch (error) {
+    toast.error(error.message);
+    dispatch(restartQuizFailure());
+  }
+};
 
 ////////////////////////////////////////////////////////////////
 
@@ -502,7 +505,8 @@ export const {
   deleteQuizFailure,
   restartQuizSuccess,
   restartQuizFailure,
-  resetQuizRestartStatus,
+  resetQuizRestarted,
+
   setLoading,
 } = quizSlice.actions;
 

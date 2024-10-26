@@ -7,7 +7,7 @@ import {
   getQuizRandomQuestionOutputFailure,
   getRandomQuestionByName,
   restartQuiz,
-  resetQuizRestartStatus,
+  resetQuizRestarted,
 } from "../../redux/features/quizSlice";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
@@ -143,11 +143,20 @@ const Quiz = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [hasTranslated, setHasTranslated] = useState(false);
 
-  const { oneQuiz, oneQuizOutput, quizRestarted, loading } = useSelector(
+  const { oneQuiz, oneQuizOutput, isQuizRestarted, loading } = useSelector(
     (state) => state.quiz
   );
 
   const { width, height } = useWindowSize();
+  useEffect(() => {
+    if (window.responsiveVoice) {
+      // Ensure ResponsiveVoice is ready
+      window.responsiveVoice.onready = () => {
+        console.log("ResponsiveVoice is ready.");
+      };
+    }
+  }, []);
+  
 
   const speak = (text) => {
     if (text) {
@@ -212,11 +221,11 @@ const Quiz = () => {
     let interval;
     if (!isPaused) {
       interval = setInterval(() => {
-        setTotalTime((prevTime) => prevTime + 1); // Increment time every second
+        setTotalTime((prevTime) => prevTime + 1);
       }, 1000);
     }
 
-    return () => clearInterval(interval); // Clean up on unmount or when paused
+    return () => clearInterval(interval);
   }, [isPaused]);
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
@@ -256,15 +265,20 @@ const Quiz = () => {
     setQuestionTranslate(selectedLanguage);
     setHasTranslated(false);
   };
+
+  useEffect(() => {
+    if (isQuizRestarted) {
+      dispatch(resetQuizRestarted()); // Reset the restart status after handling
+    }
+  }, [isQuizRestarted, dispatch]);
+
   const handleRestart = () => {
-    dispatch(restartQuiz(id, cid));
+    dispatch(restartQuiz(cid));
+    setTotalTime(0); // Dispatch the restart action
   };
 
-  React.useEffect(() => {
-    if (quizRestarted) {
-      dispatch(resetQuizRestartStatus());
-    }
-  }, [quizRestarted, dispatch]);
+  const totalQuestions = oneQuiz?.question?.length || 0; // Assuming options length gives total questions
+  const allQuestionsAnswered = answeredQuestions.length >= totalQuestions;
 
   return (
     <>
@@ -403,12 +417,12 @@ const Quiz = () => {
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
-              <button onClick={endQuiz}>End Test</button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
-
-              <button onClick={handleRestart}>Restart Quiz</button>
+              {allQuestionsAnswered && (
+                <button onClick={handleRestart}>Restart Quiz</button>
+              )}
             </div>
           </div>
         </div>

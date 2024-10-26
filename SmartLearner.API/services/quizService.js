@@ -974,6 +974,7 @@ class quizService {
         statusCode: products.length > 0 ? 200 : 400,
         success: true,
         data: products.length > 0 ? products[0] : {},
+        canRestart: products.length === 0, // Indicates if the quiz can be restarted
       };
       return resultObject;
     } catch (err) {
@@ -986,32 +987,46 @@ class quizService {
       return resultObject;
     }
   }
-  async restartQuizAsync(userId, cid) {
+  async restartQuiz(userId, cid, moduleId = null) {
     try {
-      // Delete all attempts for the user's quiz in the specific category
-      await AttemptQuizQuestion.deleteMany({ userId: new ObjectId(userId), categoryId: cid });
-  
-      // Optionally, fetch the first question for the quiz after resetting
-      const firstQuestion = await this.getRandomQuizCatName(userId, cid);
-  
-      const resultObject = {
-        message: "Quiz restarted successfully",
-        statusCode: 200,
-        success: true,
-        data: firstQuestion.data, // Return the first question if needed
-      };
-      return resultObject;
+      // Clear user's previous attempts for this category
+      const category = await QuizCategoryModel.findOne({
+        catUnqName: cid,
+      }).select("_id");
+      if (!category) {
+        return {
+          message: "Category not found",
+          statusCode: 404,
+          success: false,
+          data: null,
+        };
+      }
+
+      await AttemptQuizQuestion.deleteMany({
+        userId: new ObjectId(userId),
+        questionId: {
+          $in: await QuizQuestion.find({
+            category: category._id,
+          }).distinct("_id"),
+        },
+      });
+
+      // Fetch a new question from the category
+      const newQuestion = await this.getRandomQuizCatName(
+        userId,
+        cid,
+        moduleId
+      );
+      return newQuestion; // Return the new question or a message if there are no questions
     } catch (err) {
-      const resultObject = {
+      return {
         message: "Could not restart the quiz",
         statusCode: 400,
         success: false,
         data: null,
       };
-      return resultObject;
     }
   }
-  
 }
 
 module.exports = new quizService();
