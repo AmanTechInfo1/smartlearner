@@ -986,6 +986,32 @@ class quizService {
       return resultObject;
     }
   }
+  async restartQuizAsync(userId, cid) {
+    try {
+      // Delete all attempts for the user's quiz in the specific category
+      await AttemptQuizQuestion.deleteMany({ userId: new ObjectId(userId), categoryId: cid });
+  
+      // Optionally, fetch the first question for the quiz after resetting
+      const firstQuestion = await this.getRandomQuizCatName(userId, cid);
+  
+      const resultObject = {
+        message: "Quiz restarted successfully",
+        statusCode: 200,
+        success: true,
+        data: firstQuestion.data, // Return the first question if needed
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: "Could not restart the quiz",
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+  
 }
 
 module.exports = new quizService();

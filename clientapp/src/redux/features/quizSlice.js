@@ -2,6 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import httpHandler from "../../utils/httpHandler";
 import { toast } from "react-hot-toast";
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 const quizSlice = createSlice({
   name: "quiz",
   initialState: {
@@ -16,6 +24,7 @@ const quizSlice = createSlice({
     quizResult: [],
     quiz: null,
     oneQuizModule: {},
+    quizRestarted: false,
   },
   reducers: {
     getAllQuizzesSuccess: (state, action) => {
@@ -39,7 +48,15 @@ const quizSlice = createSlice({
       state.loading = false;
     },
     getQuizRandomQuestionSuccess: (state, action) => {
-      state.oneQuiz = action.payload;
+      if (action.payload && action.payload.option) {
+        const shuffledOptions = shuffleArray(action.payload.option);
+        state.oneQuiz = {
+          ...action.payload,
+          option: shuffledOptions,
+        };
+      } else {
+        state.oneQuiz = action.payload; // Fallback in case structure is different
+      }
       state.loading = false;
     },
     getQuizRandomQuestionFailure: (state) => {
@@ -113,6 +130,15 @@ const quizSlice = createSlice({
     deleteQuizFailure: (state) => {
       state.loading = false;
     },
+    restartQuizSuccess: (state) => {
+      state.quizRestarted = true; // Update state on successful restart
+    },
+    restartQuizFailure: (state) => {
+      state.quizRestarted = false; // Reset on failure
+    },
+    resetQuizRestartStatus: (state) => {
+      state.quizRestarted = false; // Reset status when needed
+    },
     setLoading: (state) => {
       state.loading = true;
     },
@@ -146,7 +172,19 @@ export const getRandomQuestionByName =
         `/api/quiz/getRandomQuestionCatName/${cid}${id ? "/" + id : ""}`
       );
       if (response.data.success) {
-        dispatch(getQuizRandomQuestionSuccess(response.data.data));
+        const question = response.data.data;
+        // Check if question has options
+        if (question && question.option) {
+          const shuffledOptions = shuffleArray(question.option);
+          dispatch(
+            getQuizRandomQuestionSuccess({
+              ...question,
+              option: shuffledOptions,
+            })
+          );
+        } else {
+          dispatch(getQuizRandomQuestionFailure()); // Handle missing options
+        }
       } else {
         toast.error(response.data.message);
         dispatch(getQuizRandomQuestionFailure());
@@ -156,6 +194,31 @@ export const getRandomQuestionByName =
       dispatch(getQuizRandomQuestionFailure());
     }
   };
+
+///////////////////////////////////////////////////////////
+export const restartQuiz =
+  (cid, id = undefined) =>
+  async (dispatch) => {
+    try {
+      dispatch(setLoading());
+      const response = await httpHandler.get(
+        `/api/quiz/restart-quiz/${cid}${id ? "/" + id : ""}`
+      );
+
+      if (response.data.success) {
+        dispatch(restartQuizSuccess());
+        toast.success("Quiz restarted successfully!");
+      } else {
+        toast.error(response.data.message);
+        dispatch(restartQuizFailure());
+      }
+    } catch (error) {
+      toast.error(error.message);
+      dispatch(restartQuizFailure());
+    }
+  };
+
+////////////////////////////////////////////////////////////////
 
 export const getQuizResult = (userId, type) => async (dispatch) => {
   try {
@@ -437,6 +500,9 @@ export const {
   getQuizModuleByIdFailure,
   deleteQuizSuccess,
   deleteQuizFailure,
+  restartQuizSuccess,
+  restartQuizFailure,
+  resetQuizRestartStatus,
   setLoading,
 } = quizSlice.actions;
 

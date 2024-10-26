@@ -47,6 +47,13 @@ router.get(
   requireAuth,
   quizController.getQuestionCatName
 );
+router.get(
+  "/restart-quiz/:cid",
+  requireAuth,
+  quizController.restartQuiz
+);
+
+
 router.get("/getQuizCategory", requireAuth, quizController.getQuizCategory);
 router.get(
   "/quizCategorylist",

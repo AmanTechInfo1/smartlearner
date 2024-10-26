@@ -60,6 +60,18 @@ class QuizController {
       next(err);
     }
   }
+
+  async restartQuiz(req, res, next) {
+    try {
+      const response = await quizService.restartQuizAsync(
+        req.userId,
+        req.params.cid
+      );
+      res.status(201).json(response);
+    } catch (err) {
+      next(err);
+    }
+  }
   async getQuestionId(req, res, next) {
     try {
       const { page, pagesize, search } = req.query;
@@ -293,7 +305,7 @@ class QuizController {
 
       // Construct the response object
       const response = {
-        question: translatedResults[0], 
+        question: translatedResults[0],
       };
 
       // Map the remaining results to options

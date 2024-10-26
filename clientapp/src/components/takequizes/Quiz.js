@@ -6,6 +6,8 @@ import {
   getQuizRandomQuestionFailure,
   getQuizRandomQuestionOutputFailure,
   getRandomQuestionByName,
+  restartQuiz,
+  resetQuizRestartStatus,
 } from "../../redux/features/quizSlice";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
@@ -133,18 +135,18 @@ const Quiz = () => {
   const myDivRefQue = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [totalTimer, setTotalTimer] = useState(3600);
-  const [showResult, setShowResult] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [questionTranslate, setQuestionTranslate] = useState("en-Us");
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
-  const [availableVoices, setAvailableVoices] = useState([]);
   const [isTranslating, setIsTranslating] = useState(false);
   const [hasTranslated, setHasTranslated] = useState(false);
 
-  const { oneQuiz, oneQuizOutput, loading } = useSelector(
+  const { oneQuiz, oneQuizOutput, quizRestarted, loading } = useSelector(
     (state) => state.quiz
   );
+
   const { width, height } = useWindowSize();
 
   const speak = (text) => {
@@ -173,7 +175,7 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch("https://api.smartlearner.com/api/quiz/translate", {
+      const response = await fetch("http://localhost:5000/api/quiz/translate", {
         method: "POST",
         body: formdata,
       });
@@ -182,8 +184,6 @@ const Quiz = () => {
 
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
-
-        // Speak the translated question
         if (result.question) {
           speak(result.question);
         }
@@ -192,8 +192,6 @@ const Quiz = () => {
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
           document.getElementById(option).innerHTML = result[option];
-
-          // Speak translated options
           if (result[option]) {
             speak(result[option]);
           }
@@ -206,23 +204,20 @@ const Quiz = () => {
       setIsTranslating(false);
     }
   };
-
   useEffect(() => {
     dispatch(getRandomQuestionByName(cid));
-    const interval = setInterval(() => {
-      setTotalTimer((prevTotalTimer) => {
-        if (prevTotalTimer > 0) {
-          return prevTotalTimer - 1;
-        } else {
-          clearInterval(interval);
-          setShowResult(true);
-          return 0;
-        }
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
   }, [dispatch, cid]);
+
+  useEffect(() => {
+    let interval;
+    if (!isPaused) {
+      interval = setInterval(() => {
+        setTotalTime((prevTime) => prevTime + 1); // Increment time every second
+      }, 1000);
+    }
+
+    return () => clearInterval(interval); // Clean up on unmount or when paused
+  }, [isPaused]);
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
     let finData = {
@@ -247,12 +242,33 @@ const Quiz = () => {
     navigate("/quizResult");
   };
 
+  const handlePauseResume = () => {
+    setIsPaused((prev) => !prev);
+  };
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? `0${secs}` : secs}`;
+  };
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
-    setHasTranslated(false); // Reset translated state for new translation
+    setHasTranslated(false);
+  };
+  const handleRestart = () => {
+    dispatch(restartQuiz(id, cid));
   };
 
+  React.useEffect(() => {
+    if (quizRestarted) {
+      dispatch(resetQuizRestartStatus());
+    }
+  }, [quizRestarted, dispatch]);
+  const isQuizCompleted =
+    oneQuizOutput.answerAttempt === "Correct" ||
+    oneQuizOutput.answerAttempt === "Incorrect";
+  console.log("quizcompleted", isQuizCompleted);
   return (
     <>
       {oneQuizOutput.answerAttempt === "Correct" && (
@@ -281,12 +297,36 @@ const Quiz = () => {
                       padding: "4px 15px",
                       backgroundColor: "red",
                       color: "white",
-                      fontWeight: "700px",
+                      fontWeight: "400",
                     }}
                     onClick={handleTranslationAndSpeech}>
                     Speak
                   </button>
+                  <span
+                    style={{
+                      border: "none",
+                      padding: "5px 10px",
+                      backgroundColor: "white",
+                      color: "black",
+                      fontWeight: "400",
+                      fontSize: "18px",
+                    }}>
+                    Time Started: {formatTime(totalTime)}
+                  </span>
+                  <button
+                    onClick={handlePauseResume}
+                    style={{
+                      border: "none",
+                      borderRadius: "6px",
+                      padding: "4px 15px",
+                      backgroundColor: "red",
+                      color: "white",
+                      fontWeight: "700px",
+                    }}>
+                    {isPaused ? "Resume" : "Pause"}
+                  </button>
                 </div>
+
                 <div className={styles.totalTimer}>
                   <span>Category: </span>
                   <p>{oneQuiz?.quizCategory || "Not specified"}</p>
@@ -312,6 +352,7 @@ const Quiz = () => {
                   {oneQuiz?.option?.map((answerOption, index) => {
                     return (
                       <button
+                        key={index}
                         disabled={oneQuizOutput.answerAttempt}
                         style={{
                           backgroundColor:
@@ -359,13 +400,18 @@ const Quiz = () => {
                 </div>
               </>
             ) : (
-              <div className={styles.totalTimer}>No Question Available</div>
+              <div className={styles.totalTimer}>
+                Quiz Completed Veiw result
+              </div>
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
               <button onClick={endQuiz}>End Test</button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
+              )}
+              {isQuizCompleted && (
+                <button onClick={handleRestart}>Restart Quiz</button>
               )}
             </div>
           </div>
