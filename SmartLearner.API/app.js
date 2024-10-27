@@ -32,14 +32,6 @@ app.use((req, res, next) => {
   next();
 });
 // Example using Express.js
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://web.smartlearner.com"); // Replace with your frontend URL in production
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
