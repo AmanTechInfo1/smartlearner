@@ -86,6 +86,7 @@
     border-color: rgb(255, 0, 0);
   }
 }
+
 .heading2 p {
   color: #ffe600;
   font-size: 30px;
@@ -331,7 +332,7 @@
 }
 
 .starImgContainer img {
-  max-width: 150px;
+  max-width: 100px;
   width: 100%;
   animation: slideFromLeft 1s ease-out, rotate 2s linear;
 }
@@ -426,7 +427,7 @@
   }
 }
 .thMultipleChioceHeader p {
-  font-size: 18px;
+  font-size: 30px;
   text-align: center;
   color: rgb(255, 238, 0);
 }

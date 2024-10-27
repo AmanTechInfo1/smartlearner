@@ -5,7 +5,7 @@
 }
 
 .TSfirstContent {
-  background-image: url(../../assets/images/theorySupportbanner.png);
+  background-image: url(../../assets/images/faqs-banner.png);
   position: relative;
   width: 100%;
 
@@ -14,9 +14,9 @@
 }
 
 .TSfirstContent h2 {
-  font-size: 3rem;
+  font-size: 5rem;
   text-align: center;
-  padding: 12rem 0px;
+  padding: 15rem 0px;
   color: #fff;
   position: sticky;
   margin-bottom: 0px;

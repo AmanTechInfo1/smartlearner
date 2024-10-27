@@ -190,12 +190,13 @@ p {
   font-family: "Antonio", sans-serif;
 }
 .theoryPortalTimer h4 span {
-  color: rgb(255, 230, 0);
+  color: rgb(218, 178, 0);
 }
 .theoryPortalTimer h4 {
   color: rgb(212, 0, 0);
   font-weight: 700;
   font-size: 1.7rem;
+  background-color: white;
 }
 @media (max-width: 760px) {
   .theoryPortalTimer h4 {

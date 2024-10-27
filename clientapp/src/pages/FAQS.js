@@ -4,8 +4,8 @@ import Accordion from "react-bootstrap/Accordion";
 import { faqs } from "../assets/data/Faqs";
 
 import { FaStar } from "react-icons/fa";
-import poster from "../assets/images/video-poster-img.jpg";
-import ProductTab from "./shop/ProductTab";
+// import poster from "../assets/images/video-poster-img.jpg";
+// import ProductTab from "./shop/ProductTab";
 import CallBackForm from "../components/forms/CallBackForm";
 import chooseUsImg from "../assets/images/choose-img.jpg";
 import DrivenForm from "../components/forms/DrivenForm";
@@ -60,9 +60,9 @@ export default function FAQS() {
               </div>
               <CallBackForm />
             </div>
-            <div className={styles.productTab}>
+            {/* <div className={styles.productTab}>
               <ProductTab />
-            </div>
+            </div> */}
           </section>
         </section>
         {/* /////////////////////////////////////////////// */}

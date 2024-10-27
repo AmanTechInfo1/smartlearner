@@ -23,12 +23,6 @@ export default function MockTest() {
                 Multiple <span>Choice</span>{" "}
               </h2>
             </div>
-            <div className={styles.alertBtn}>
-            <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>

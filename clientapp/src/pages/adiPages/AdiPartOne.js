@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./AdiPartOne.module.css";
 import prizeTrophy from "../../assets/images/pdiTrophi.png";
 import docsList from "../../assets/images/docsList.png";
-import Qostion from "../../assets/images/quetion.png";
+import Qostion from "../../assets/images/hazzard-png.png";
 import { Link } from "react-router-dom";
 import {
   getMyDashboard,
@@ -49,10 +49,10 @@ export default function AdiPartOne() {
                 </h1>
               </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Contact Us</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -332,11 +332,7 @@ export default function AdiPartOne() {
           </h2>
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
-              <img
-                style={{ backgroundColor: "white" }}
-                src={Qostion}
-                alt="List"
-              />
+              <img src={Qostion} alt="List" />
             </div>
             <section className={styles.bgColorList}>
               <ul type="none">
