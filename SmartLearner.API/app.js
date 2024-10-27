@@ -26,7 +26,17 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // Allow all origins temporarily
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+app.use((req, res, next) => {
+  console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
+  next();
+});
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
@@ -48,9 +58,6 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use(errorHandler);
-
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "127.0.0.1", () => {
