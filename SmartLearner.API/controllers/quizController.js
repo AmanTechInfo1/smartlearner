@@ -64,7 +64,7 @@ class QuizController {
 
   async restartQuiz(req, res, next) {
     try {
-      const response = await quizService.restartQuizAsync(
+      const response = await quizService.restartQuiz(
         req.userId,
         req.params.cid
       );
