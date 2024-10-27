@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2daac683.css",
-    "main.js": "/static/js/main.1a8416ab.js",
+    "main.css": "/static/css/main.b66d68a1.css",
+    "main.js": "/static/js/main.64afee37.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -11,6 +11,7 @@
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
     "static/media/dribbble_1.gif": "/static/media/dribbble_1.181c5a6430bcb77324b1.gif",
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
+    "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
@@ -61,6 +62,7 @@
     "static/media/img4.jpg": "/static/media/img4.8e2cdcfc39532dcbd5ab.jpg",
     "static/media/tc.png": "/static/media/tc.bea2d6786dde0fa0a2bd.png",
     "static/media/cimg11.jpg": "/static/media/cimg11.1278069ba1856bb31417.jpg",
+    "static/media/faqs-banner.png": "/static/media/faqs-banner.dacf48e7581e8c00bb17.png",
     "static/media/electric carScheme.png": "/static/media/electric carScheme.6b862fa9e5c46f0bbce5.png",
     "static/media/overtaking vehicles.png": "/static/media/overtaking vehicles.12a974fc9f5bd5fe618f.png",
     "static/media/Reviews.jpg": "/static/media/Reviews.5b3038ac2017f1a5ec4d.jpg",
@@ -129,6 +131,7 @@
     "static/media/parkingImg.jpg": "/static/media/parkingImg.9f6f054f150842dc5bbd.jpg",
     "static/media/horse-road-1024x576.jpg": "/static/media/horse-road-1024x576.a95dae61018e8ed46858.jpg",
     "static/media/roadUserVulnerableuser.png": "/static/media/roadUserVulnerableuser.e1aba19d7421cfecc8f5.png",
+    "static/media/hazzard-png.png": "/static/media/hazzard-png.67856d93960ed94a8b90.png",
     "static/media/JLR-Logo-2008 (1).png": "/static/media/JLR-Logo-2008 (1).660b915a968180689009.png",
     "static/media/Diary-1536x681.jpg": "/static/media/Diary-1536x681.05297a53f598f81711b7.jpg",
     "static/media/Asset_109.png": "/static/media/Asset_109.249e54851dcb8e48cc9d.png",
@@ -270,12 +273,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.2daac683.css.map": "/static/css/main.2daac683.css.map",
-    "main.1a8416ab.js.map": "/static/js/main.1a8416ab.js.map",
+    "main.b66d68a1.css.map": "/static/css/main.b66d68a1.css.map",
+    "main.64afee37.js.map": "/static/js/main.64afee37.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2daac683.css",
-    "static/js/main.1a8416ab.js"
+    "static/css/main.b66d68a1.css",
+    "static/js/main.64afee37.js"
   ]
 }
