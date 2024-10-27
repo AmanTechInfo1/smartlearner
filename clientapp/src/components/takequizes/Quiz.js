@@ -184,7 +184,7 @@ const Quiz = () => {
 
     try {
       const response = await fetch(
-        "https://api.smartlearner.com/api/proxy/translate",
+        "https://api.smartlearner.com/api/quiz/translate",
         {
           method: "POST",
           body: formdata,

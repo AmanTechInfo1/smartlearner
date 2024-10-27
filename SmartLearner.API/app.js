@@ -15,7 +15,6 @@ const drivenFormRoutes = require("./routes/drivenFormRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const blogRoutes = require("./routes/blogRoutes");
-const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const path = require("path");
 
@@ -50,16 +49,8 @@ app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use(errorHandler);
 
-app.use(
-  "/api/proxy/translate",
-  createProxyMiddleware({
-    target: "https://api.smartlearner.com",
-    changeOrigin: true,
-    pathRewrite: {
-      "^/api/proxy/translate": "/api/quiz/translate",
-    },
-  })
-);
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "127.0.0.1", () => {
