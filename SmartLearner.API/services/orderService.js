@@ -25,7 +25,7 @@ class OrderService {
         orderId = "Order-000001"
       } else {
 
-        let ono = +totalOrder[0]["orderNo"].replace("Order-", "") + 1
+        let ono = +totalOrder[0]["orderNo"].replace("Order-", "") + 1;
 
 
         orderId = `Order-${(ono).toString().padStart(6, '0')}`
@@ -62,6 +62,7 @@ class OrderService {
       };
       return resultObject;
     } catch (err) {
+      console.error("Order Creation Error: ", err);
       throw new Error("Could not create Order");
     }
   }
