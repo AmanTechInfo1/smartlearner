@@ -251,3 +251,48 @@
   
 }
 }
+
+
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.payment-form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.payment-form:hover {
+  transform: translateY(-5px);
+}
+
+.payment-form h1, .payment-form h3 {
+  color: #333;
+}
+
+.pay-button {
+  padding: 10px 40px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.pay-button:active {
+  transform: scale(0.95);
+}
