@@ -75,7 +75,7 @@ console.log(carting.hashCode);
       >
         <h1>Amount to be paid: {carting.total}£</h1>
         <h3>Sub Total: {carting.subtotal}£</h3>
-        <h3>serviceCharge: {carting.serviceCharge}£</h3>
+        <h3>Service Charge: {carting.serviceCharge}£</h3>
 
         <input
           type="hidden"
@@ -105,7 +105,7 @@ console.log(carting.hashCode);
         <input type="hidden" name="ekashu_card_email_address_mandatory" value="false" />
 
         {hashCode && (
-          <input type="text" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} />
+          <input type="text" name="ekashu_hash_code" id="ekashu_hash_code" value="SHA256HMAC" />
         )}
         <input type="hidden" name="ekashu_hash_code_type" id="ekashu_hash_code_type" value="SHA256HMAC" />
         <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />
