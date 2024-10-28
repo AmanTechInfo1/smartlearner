@@ -83,16 +83,9 @@ function Layout() {
                   style={callbackFormContentStyle}>
                   <CallBackForm />
                   <div className="callbackFormContentPG">
-                    <h2>Building knowledge</h2>
-                    <p>
-                      We launched our 1-2-1 theory sessions in 2019 and since
-                      then we have helped many people pass who thought they
-                      never could. Our theory sessions focus on building your
-                      knowledge from the ground up to ensure you don’t just know
-                      the answers but understand them. We have had people from
-                      all over the country coming to us looking for help in
-                      preparing for their exam. Currently we have a 90% pass
-                      rate which is 41.5% higher than the national average!
+                    
+                    <p style={{fontSize:'1.7rem'}}>
+                    If you're not quite ready to book your first lesson and have a few more questions, or if you simply need some extra support, we’ve got you covered! Just fill out our quick enquiry form, and we’ll get in touch shortly.
                     </p>
                   </div>
                 </div>

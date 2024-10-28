@@ -23,12 +23,12 @@ export default function HazardPerception() {
                 Hazard <span>Perception</span>{" "}
               </h2>
             </div>
-            <div className={styles.alertBtn}>
+            {/* <div className={styles.alertBtn}>
               <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                 {" "}
                 <button id={styles.btn}>Contact Us</button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
