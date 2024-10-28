@@ -11,7 +11,7 @@ export default function PaymentProcessing() {
   const [formData, setFormData] = useState({
     ekashu_seller_id: carting.seller_id,
     ekashu_seller_key: carting.seller_key,
-    ekashu_amount: carting.total,
+    ekashu_amount: parseFloat(carting.total) || 0,
     orderId: carting._id,
     ekashu_currency: 'GBP',
     ekashu_auto_confirm: 'true',
@@ -25,6 +25,14 @@ export default function PaymentProcessing() {
 
   const callFunApi = async (e) => {
     e.preventDefault();
+
+    const amountToSubmit = parseFloat(formData.ekashu_amount);
+    if (isNaN(amountToSubmit) || amountToSubmit <= 0) {
+      console.error("Invalid ekashu_amount:", formData.ekashu_amount);
+      return; // Prevent submission if the amount is invalid
+    }
+
+
     const form = e.target;
     const additionalData = document.createElement('input');
     additionalData.type = 'hidden';
@@ -45,7 +53,7 @@ export default function PaymentProcessing() {
 
         <input type="hidden" name="ekashu_seller_id" value={carting.seller_id} />
         <input type="hidden" name="ekashu_seller_key" value={carting.seller_key} />
-        <input type="hidden" name="ekashu_amount" value={formData.ekashu_amount} />
+        <input type="hidden" name="ekashu_amount" value={formData.ekashu_amount.toString()} />
         <input type="hidden" name="ekashu_currency" value="GBP" />
         <input type="hidden" name="ekashu_auto_confirm" value="true" />
         <input type="hidden" name="ekashu_hash_code_type" value="SHA256HMAC" />
