@@ -21,7 +21,7 @@ export default function PaymentProcessing() {
   const [formData, setFormData] = useState({
     ekashu_seller_id: carting.seller_id,
     ekashu_seller_key: carting.seller_key,
-    ekashu_amount: carting.total,
+    ekashu_amount: carting.total.toFixed(2),
     orderId: carting._id,
     ekashu_currency: "GBP",
     ekashu_auto_confirm: "true",
