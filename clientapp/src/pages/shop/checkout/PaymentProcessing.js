@@ -28,7 +28,7 @@ export default function PaymentProcessing() {
     const form = e.target;
     const additionalData = document.createElement('input');
     additionalData.type = 'hidden';
-    
+    additionalData.name = 'ekashu_hash_code';
     additionalData.value = hashcoding;
     form.appendChild(additionalData);
     form.submit();
@@ -39,9 +39,9 @@ export default function PaymentProcessing() {
   return (
     <div className="payment-container">
       <form className="payment-form" action="https://test-gateway.verofy.com" method="post" onSubmit={callFunApi}>
-        <h1>Amount to be paid: {carting.total}</h1>
-        <h3>Sub Total: {carting.subtotal}</h3>
-        <h3>Total Amount: {carting.serviceCharge}</h3>
+        <h1>Amount to be paid: {carting.total} £</h1>
+        <h3>Sub Total: {carting.subtotal} £</h3>
+        <h3>Service Charge: {carting.serviceCharge} £</h3>
 
         <input type="hidden" name="ekashu_seller_id" value={carting.seller_id} />
         <input type="hidden" name="ekashu_seller_key" value={carting.seller_key} />

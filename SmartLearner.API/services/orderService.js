@@ -44,9 +44,9 @@ class OrderService {
       let valU = {
         seller_id: process.env.SELLER_ID || "99963233",
         seller_key: process.env.SELLER_KEY || "02317830",
-        ekashu_failure_url: `https://api.smartlearner.com/api/order/paymentFailed`,
-        ekashu_success_url: ` https://api.smartlearner.com/api/order/paymentSuccess`,
-        ekashu_return_url: ` https://web.smartlearner.com/checkout`,
+        ekashu_failure_url: `${process.env.BACKEND_URL || "https://api.smartlearner.com"}/api/order/paymentFailed`,
+        ekashu_success_url: `${process.env.BACKEND_URL || "https://api.smartlearner.com"}/api/order/paymentSuccess`,
+        ekashu_return_url: `${process.env.FRONTEND_URL || "https://web.smartlearner.com"}/checkout`,
         ekashu_reference: orderId
       }
 
