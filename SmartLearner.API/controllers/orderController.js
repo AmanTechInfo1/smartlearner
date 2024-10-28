@@ -18,10 +18,7 @@ class OrderController {
 
         let mycartPrice = 0;
         let myCartIng = myCart.map((itm) => {
-          if (!itm.id || typeof itm.id !== 'string' || !ObjectId.isValid(itm.id)) {
-            throw new Error();
-          }
-    
+         
             mycartPrice += itm.price * itm.count;
 
             return {
