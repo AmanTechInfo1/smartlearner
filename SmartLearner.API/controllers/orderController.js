@@ -151,7 +151,7 @@ class OrderController {
       ];
 
       const hashcode_input = check_fields.map(field => data[field] || '').join('&');
-
+      console.log("Hash Input String:", hashcode_input);
       const hash = crypto.createHmac('sha256', HASH_KEY).update(hashcode_input).digest('base64');
 
       res.json({ hash_code: hash });
