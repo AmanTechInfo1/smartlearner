@@ -1,17 +1,15 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import "./Checkout.css"; // Ensure this CSS file contains your new styles
 import { useDispatch, useSelector } from "react-redux";
 import { generateHashcodeCheckout } from "../../../redux/features/cartSlice";
 
 export default function PaymentProcessing() {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({});
+  
   const carting = useSelector((state) => state.cart.payment);
   const hashcoding = useSelector((state) => state.cart.hashcode);
 
-  useEffect(() => {
-    if (carting) {
-      setFormData({
+  const [formData, setFormData] = useState({
     ekashu_seller_id: carting.seller_id,
     ekashu_seller_key: carting.seller_key,
     ekashu_amount: carting.total.toFixed(2),
@@ -26,11 +24,6 @@ export default function PaymentProcessing() {
     ekashu_return_url: carting.ekashu_return_url,
   });
 
-  // Generate hash code
-  dispatch(generateHashcodeCheckout(carting));
-}
-}, [carting, dispatch]);
-
   const callFunApi = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -41,6 +34,9 @@ export default function PaymentProcessing() {
     form.appendChild(additionalData);
     form.submit();
 
+    dispatch(
+      generateHashcodeCheckout(formData, () => {}, form, additionalData)
+    );
   };
 
   return (
@@ -72,8 +68,8 @@ export default function PaymentProcessing() {
         />
         <input type="hidden" name="ekashu_currency" value="GBP" />
         <input type="hidden" name="ekashu_auto_confirm" value="true" />
-        <input type="hidden" name="ekashu_hash_code_type" value="SHA256HMAC" />
-        <input type="hidden" name="ekashu_hash_code_version" value="2.0.0" />
+        
+        
         <input
           type="hidden"
           name="ekashu_return_url"

@@ -115,7 +115,7 @@ class OrderController {
       data["ekashu_amount"] = total;
   
       const check_fields = [
-        'ekashu_seller_id', 'ekashu_seller_key', 'ekashu_amount', 'ekashu_currency', 'ekashu_reference'
+        'ekashu_seller_id', 'ekashu_seller_key', 'ekashu_amount', 'ekashu_currency', 'ekashu_reference',"ekashu_success_url","ekashu_return_url"
       ];
       
       const hashcode_input = check_fields.map(field => data[field] || '').join('&');
