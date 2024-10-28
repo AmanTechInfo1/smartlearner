@@ -101,32 +101,67 @@ class OrderController {
   }
   async generate_hash(req, res, next) {
     try {
-      const SELLER_ID = '99963233';
-      const SELLER_KEY = '02317830';
-      const HASH_KEY = '0MTsdaVgBDdsB5w2';
+
+
+      let SELLER_ID = '99963233'
+      let SELLER_KEY = '02317830'
+      let HASH_KEY = '0MTsdaVgBDdsB5w2'
+
+
+
       const data = req.body;
-      const orderId = data["orderId"];
+
+      let orderId = data["orderId"]
+
       const order = await orderService.getOneOrderNoRespAsync(orderId);
-      const total = order["total"];
-  
-      // Set necessary fields
-      data["ekashu_seller_id"] = SELLER_ID;
-      data["ekashu_seller_key"] = SELLER_KEY;
-      data["ekashu_amount"] = total;
-  
+
+      let orderNo = order["orderNo"]
+      let total = order["total"]
+
+      delete data["orderId"]
+
+      data["ekashu_seller_id"] = SELLER_ID
+      data["ekashu_seller_key"] = SELLER_KEY
+      data["ekashu_amount"] = total
+      // data["ekashu_amount"]=total
+
+
       const check_fields = [
-        'ekashu_seller_id', 'ekashu_seller_key', 'ekashu_amount', 'ekashu_currency', 'ekashu_reference',"ekashu_success_url","ekashu_return_url"
+        'ekashu_3d_secure_verify', 'ekashu_amount', 'ekashu_amount_format',
+        'ekashu_auto_confirm', 'ekashu_callback_failure_url',
+        'ekashu_callback_include_post', 'ekashu_callback_success_url',
+        'ekashu_card_address_editable', 'ekashu_card_address_required',
+        'ekashu_card_address_verify', 'ekashu_card_email_address_mandatory',
+        'ekashu_card_phone_number_mandatory', 'ekashu_card_title_mandatory',
+        'ekashu_card_zip_code_verify', 'ekashu_currency',
+        'ekashu_delivery_address_editable', 'ekashu_delivery_address_required',
+        'ekashu_delivery_email_address_mandatory', 'ekashu_delivery_phone_number_mandatory',
+        'ekashu_delivery_title_mandatory', 'ekashu_description', 'ekashu_device',
+        'ekashu_duplicate_check', 'ekashu_duplicate_minutes', 'ekashu_failure_return_text',
+        'ekashu_failure_url', 'ekashu_hash_code_format', 'ekashu_hash_code_type',
+        'ekashu_hash_code_version', 'ekashu_include_post', 'ekashu_invoice_address_editable',
+        'ekashu_invoice_address_required', 'ekashu_invoice_email_address_mandatory',
+        'ekashu_invoice_phone_number_mandatory', 'ekashu_invoice_title_mandatory',
+        'ekashu_locale', 'ekashu_payment_methods', 'ekashu_reference', 'ekashu_request_type',
+        'ekashu_return_text', 'ekashu_seller_address', 'ekashu_seller_email_address',
+        'ekashu_seller_id', 'ekashu_seller_key', 'ekashu_seller_name', 'ekashu_shortcut_icon',
+        'ekashu_style_sheet', 'ekashu_success_url', 'ekashu_title',
+        'ekashu_verification_value_mask', 'ekashu_verification_value_verify',
+        'ekashu_viewport'
       ];
-      
+
       const hashcode_input = check_fields.map(field => data[field] || '').join('&');
+
       const hash = crypto.createHmac('sha256', HASH_KEY).update(hashcode_input).digest('base64');
-  
+
       res.json({ hash_code: hash });
+
+
     } catch (err) {
       next(err);
     }
   }
-  
+
 
 
   async getMyOrder(req, res, next) {
