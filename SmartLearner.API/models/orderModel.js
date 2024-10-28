@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema({
   county:{ type: String, required: true, unique: false },
   email:{ type: String, required: true, unique: false },
   myCart:{ type: Array, required: true, unique: false },
-  ordernotes:{ type: String, required: true, unique: false },
+  ordernotes:{ type: String, required: false },
   phoneNumber:{ type: String, required: true, unique: false },
   postcode:{ type: String, required: true, unique: false },
   serviceCharge:{ type: Number, required: true, unique: false },
