@@ -7,35 +7,39 @@ const paymentSuccess = require("../models/paymentSuccessModel");
 class OrderController {
   async CompleteCheckout(req, res, next) {
     try {
+        const data = req.body;
+        data["userId"] = req.userId;
 
-      const data = req.body;
-      data["userId"] = req.userId
-
-      let myCart = data["myCart"]
-
-      let mycartPrice = 0
-      let myCartIng = myCart.map((itm) => {
-
-        mycartPrice += itm.price * itm.count
-
-        return {
-          ...itm,
-          id: new ObjectId(itm.id)
+        let myCart = data["myCart"];
+        if (!myCart || !Array.isArray(myCart)) {
+            return res.status(400).json({ message: "Invalid cart data" });
         }
-      })
 
-      data["myCart"] = myCartIng
+        let mycartPrice = 0;
+        let myCartIng = myCart.map((itm) => {
+            if (!itm.id || typeof itm.id !== 'string') {
+                throw new Error(`Invalid item ID: ${itm.id}`);
+            }
+            mycartPrice += itm.price * itm.count;
 
-      data["mycartPrice"] = mycartPrice
-      mycartPrice = mycartPrice + (mycartPrice * 0.02)
-      data["mycartPriceTotal"] = mycartPrice
-      const role = await orderService.createOrderAsync(data);
+            return {
+                ...itm,
+                id: new ObjectId(itm.id)
+            };
+        });
 
-      res.status(201).json(role);
+        data["myCart"] = myCartIng;
+        data["mycartPrice"] = mycartPrice;
+        mycartPrice += (mycartPrice * 0.02); // Add 2% charge
+        data["mycartPriceTotal"] = mycartPrice;
+
+        const role = await orderService.createOrderAsync(data);
+        res.status(201).json(role);
     } catch (err) {
-      next(err);
+        next(err);
     }
-  }
+}
+
   async getAllOrder(req, res, next) {
     try {
 
