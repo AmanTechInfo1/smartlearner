@@ -36,7 +36,7 @@ export default function PaymentProcessing() {
     ekashu_style_sheet:
       "https://cloudfront.posinabox.eu/creditcall_gateway_branding_ecommerce/css/style_test.css",
     ekashu_failure_url: carting.ekashu_failure_url,
-    
+    ekashu_hash_code: hashcoding,
     ekashu_reference: carting.ekashu_reference,
     
     ekashu_viewport:
@@ -61,8 +61,9 @@ export default function PaymentProcessing() {
     dispatch(
       generateHashcodeCheckout(formData, () => {}, form, additionalData)
     );
+   
   };
-console.log(carting.hashCode);
+
   return (
     <div className="payment-container">
       <form
@@ -105,7 +106,7 @@ console.log(carting.hashCode);
         <input type="hidden" name="ekashu_card_email_address_mandatory" value="false" />
 
         {hashCode && (
-          <input type="text" name="ekashu_hash_code" id="ekashu_hash_code" value="SHA256HMAC" />
+          <input type="text" name="ekashu_hash_code" id="ekashu_hash_code" value={carting.ekashu_hash_code} />
         )}
         <input type="hidden" name="ekashu_hash_code_type" id="ekashu_hash_code_type" value="SHA256HMAC" />
         <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />

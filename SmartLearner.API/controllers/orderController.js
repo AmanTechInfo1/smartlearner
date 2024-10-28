@@ -138,7 +138,7 @@ class OrderController {
         'ekashu_delivery_email_address_mandatory', 'ekashu_delivery_phone_number_mandatory',
         'ekashu_delivery_title_mandatory', 'ekashu_description', 'ekashu_device',
         'ekashu_duplicate_check', 'ekashu_duplicate_minutes', 'ekashu_failure_return_text',
-        'ekashu_failure_url', 'ekashu_hash_code_format', 'ekashu_hash_code_type',
+        'ekashu_failure_url', 'ekashu_hash_code_format', 'ekashu_hash_code_type',"ekashu_hash_code",
         'ekashu_hash_code_version', 'ekashu_include_post', 'ekashu_invoice_address_editable',
         'ekashu_invoice_address_required', 'ekashu_invoice_email_address_mandatory',
         'ekashu_invoice_phone_number_mandatory', 'ekashu_invoice_title_mandatory',
