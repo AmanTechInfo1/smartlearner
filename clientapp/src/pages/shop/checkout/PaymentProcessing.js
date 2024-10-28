@@ -36,7 +36,7 @@ export default function PaymentProcessing() {
     ekashu_style_sheet:
       "https://cloudfront.posinabox.eu/creditcall_gateway_branding_ecommerce/css/style_test.css",
     ekashu_failure_url: carting.ekashu_failure_url,
-    ekashu_hash_code: hashcoding,
+    
     ekashu_reference: carting.ekashu_reference,
     
     ekashu_viewport:
