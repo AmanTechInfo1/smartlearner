@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Checkout.css";
+import './Checkout.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getCompleteCheckout } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
@@ -9,55 +9,69 @@ export default function FinalCheckout(props) {
   const [email, setEmail] = useState("");
   const [orderNotes, setOrderNotes] = useState("");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const dispatch = useDispatch();
+  const dispatch=useDispatch()
 
   const handleEmailChange = (e) => {
-    props.handleLocalChange(e.target.id, e.target.value);
+
+    props.handleLocalChange(e.target.id,e.target.value)
     setEmail(e.target.value);
   };
 
   const handleOrderNotesChange = (e) => {
-    props.handleLocalChange(e.target.id, e.target.value);
+    props.handleLocalChange(e.target.id,e.target.value)
     setOrderNotes(e.target.value);
   };
 
   const myCart = useSelector((state) => {
-    return state.cart.cart;
-  });
+    return state.cart.cart
+  })
   const calculateSubtotal = () => {
-    return myCart.reduce((acc, item) => acc + item.price * item.count, 0);
+    return myCart.reduce(
+      (acc, item) => acc + item.price * item.count,
+      0
+    );
   };
+  const validateItemId = (id) => {
+    // Ensure ID is a 24-character hex string
+    return /^[0-9a-fA-F]{24}$/.test(id);
+  };
+  
 
+  const cleanCart = (cart) => {
+    return cart.map(item => {
+      // Keep only the valid part of the ID
+      const validId = item.id.split("_")[0];
+      if (validateItemId(validId)) {
+        return { ...item, id: validId };
+      } else {
+        throw new Error(`Invalid item ID: ${item.id}`);
+      }
+    });
+  };
   const subtotal = calculateSubtotal();
   const serviceCharge = subtotal * 0.02;
   const total = subtotal + serviceCharge;
   const callFunApi = () => {
-    const invalidIds = myCart.filter(
-      (item) => !/^[0-9a-fA-F]{24}$/.test(item.id)
-    );
-
-    if (invalidIds.length > 0) {
-      alert("Some item IDs are invalid. Please check your cart.");
-      return; // Exit the function if there are invalid IDs
-    }
-
-    let finalArr = {
-      ...props.formData,
-      subtotal: subtotal,
-      serviceCharge: serviceCharge,
-      total: total,
-      myCart: myCart,
-    };
-
-    dispatch(
-      getCompleteCheckout(finalArr, () => {
+    try {
+      const cleanCartItems = cleanCart(myCart);
+      let finalArr = {
+        ...props.formData,
+        "subtotal": subtotal,
+        "serviceCharge": serviceCharge,
+        "total": total,
+        "myCart": cleanCartItems
+      };
+      dispatch(getCompleteCheckout(finalArr, () => {
         navigate("/paymentProcessing");
-      })
-    );
-  };
-
+      }));
+    } catch (error) {
+      console.error(error.message);
+      // Show error to the user
+    }
+  }
+  
   return (
     <>
       <div className="modal-content">
@@ -76,9 +90,7 @@ export default function FinalCheckout(props) {
             />
           </div>
           <div className="form-space">
-            <h2 className="section-header text-white">
-              Additional Information
-            </h2>
+            <h2 className="section-header text-white">Additional Information</h2>
             <label htmlFor="order-notes" className="form-label text-white">
               Order Notes (Optional)
             </label>
@@ -120,13 +132,12 @@ export default function FinalCheckout(props) {
               </div>
             </div>
             <div className="text-center mt-3">
-              <button
+              <button 
                 className="btn-primary account-btn btn-lg"
-                onClick={() => {
-                  callFunApi();
+                onClick={()=>{
+                  callFunApi()
                 }}
-                type="submit"
-              >
+                type="submit" >
                 checkout
               </button>
             </div>
