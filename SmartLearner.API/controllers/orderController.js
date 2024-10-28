@@ -1,4 +1,5 @@
-const { ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 const orderService = require("../services/orderService");
 const crypto = require('crypto');
 const paymentSuccess = require("../models/paymentSuccessModel");
@@ -17,9 +18,10 @@ class OrderController {
 
         let mycartPrice = 0;
         let myCartIng = myCart.map((itm) => {
-            if (!itm.id || typeof itm.id !== 'string') {
-                throw new Error(`Invalid item ID: ${itm.id}`);
-            }
+          if (!itm.id || typeof itm.id !== 'string' || !ObjectId.isValid(itm.id)) {
+            throw new Error(`Invalid item ID: ${itm.id}`);
+          }
+    
             mycartPrice += itm.price * itm.count;
 
             return {
@@ -85,7 +87,7 @@ class OrderController {
 
         }
       };
-      res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/paymentSuccess`);
+      res.redirect(`${process.env.FRONTEND_URL || "https://web.smartlearner.com"}/paymentSuccess`);
       
     } catch (err) {
       next(err);
