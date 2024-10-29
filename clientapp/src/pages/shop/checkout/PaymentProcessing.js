@@ -69,7 +69,7 @@ export default function PaymentProcessing() {
       <form
         className="payment-form"
         role="form"
-        action="https://test-gateway.verofy.com"
+        action="https://gateway.verofy.com"
         method="post"
         id="payment-form"
         onSubmit={callFunApi}
