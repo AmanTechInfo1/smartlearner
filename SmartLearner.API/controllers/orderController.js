@@ -1,4 +1,5 @@
-const { ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 const orderService = require("../services/orderService");
 const crypto = require('crypto');
 const paymentSuccess = require("../models/paymentSuccessModel");
@@ -7,35 +8,37 @@ const paymentSuccess = require("../models/paymentSuccessModel");
 class OrderController {
   async CompleteCheckout(req, res, next) {
     try {
+        const data = req.body;
+        data["userId"] = req.userId;
 
-      const data = req.body;
-      data["userId"] = req.userId
-
-      let myCart = data["myCart"]
-
-      let mycartPrice = 0
-      let myCartIng = myCart.map((itm) => {
-
-        mycartPrice += itm.price * itm.count
-
-        return {
-          ...itm,
-          id: new ObjectId(itm.id)
+        let myCart = data["myCart"];
+        if (!myCart || !Array.isArray(myCart)) {
+            return res.status(400).json({ message: "Invalid cart data" });
         }
-      })
 
-      data["myCart"] = myCartIng
+        let mycartPrice = 0;
+        let myCartIng = myCart.map((itm) => {
+         
+            mycartPrice += itm.price * itm.count;
 
-      data["mycartPrice"] = mycartPrice
-      mycartPrice = mycartPrice + (mycartPrice * 0.02)
-      data["mycartPriceTotal"] = mycartPrice
-      const role = await orderService.createOrderAsync(data);
+            return {
+                ...itm,
+                id: new ObjectId(itm.id)
+            };
+        });
 
-      res.status(201).json(role);
+        data["myCart"] = myCartIng;
+        data["mycartPrice"] = mycartPrice;
+        mycartPrice += (mycartPrice * 0.02); // Add 2% charge
+        data["mycartPriceTotal"] = mycartPrice;
+
+        const role = await orderService.createOrderAsync(data);
+        res.status(201).json(role);
     } catch (err) {
-      next(err);
+        next(err);
     }
-  }
+}
+
   async getAllOrder(req, res, next) {
     try {
 
@@ -81,7 +84,7 @@ class OrderController {
 
         }
       };
-      res.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/paymentSuccess`);
+      res.redirect(`${process.env.FRONTEND_URL || "https://web.smartlearner.com"}/paymentSuccess`);
       
     } catch (err) {
       next(err);
@@ -148,7 +151,7 @@ class OrderController {
       ];
 
       const hashcode_input = check_fields.map(field => data[field] || '').join('&');
-
+      console.log("Hash Input String:", hashcode_input);
       const hash = crypto.createHmac('sha256', HASH_KEY).update(hashcode_input).digest('base64');
 
       res.json({ hash_code: hash });

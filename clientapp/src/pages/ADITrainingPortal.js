@@ -85,28 +85,28 @@ export default function ADITrainingPortal() {
           </div>
           <div className={styles.adiTrainingPortalLearning}>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaBook id={styles.adiPortalFaIcons} />
-              <h2>Part 1 - Theory</h2>
+              <FaBook id={styles.adiPortalFaIcons} style={{color:"red"}}/>
+              <h2 style={{color:"red"}}>Part 1 - Theory</h2>
               <Link to="/adi-part-one">
-                <button className={styles.adiPortalBtnLearning}>
+                <button className={styles.adiPortalBtnLearning} style={{borderColor:"red"}}>
                   Get Learning
                 </button>
               </Link>
             </div>
-            <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaCarSide id={styles.adiPortalFaIcons} />
-              <h2>Part 2 - Driving Ability</h2>
+            <div className={styles.adiTrainingPortalLearningInnerContent} >
+              <FaCarSide id={styles.adiPortalFaIcons} style={{color:'#fbc809'}}/>
+              <h2 style={{color:'#fbc809'}}>Part 2 - Driving Ability</h2>
               <Link to="/adi-part-2">
-                <button className={styles.adiPortalBtnLearning}>
+                <button className={styles.adiPortalBtnLearning} style={{borderColor:"#fbc809"}}>
                   Get Learning
                 </button>
               </Link>
             </div>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaChalkboardTeacher id={styles.adiPortalFaIcons} />
-              <h2>Part 3 - Teaching</h2>
+              <FaChalkboardTeacher id={styles.adiPortalFaIcons} style={{color:"#cb2c92"}}/>
+              <h2  style={{color:"#cb2c92"}}>Part 3 - Teaching</h2>
               <Link to="/adi-part-3">
-                <button className={styles.adiPortalBtnLearning}>
+                <button className={styles.adiPortalBtnLearning} style={{borderColor:"#cb2c92"}}>
                   Get Learning
                 </button>
               </Link>

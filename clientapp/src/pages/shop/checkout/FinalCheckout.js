@@ -33,23 +33,44 @@ export default function FinalCheckout(props) {
       0
     );
   };
+  const validateItemId = (id) => {
+    // Ensure ID is a 24-character hex string
+    return /^[0-9a-fA-F]{24}$/.test(id);
+  };
   
+
+  const cleanCart = (cart) => {
+    return cart.map(item => {
+      // Keep only the valid part of the ID
+      const validId = item.id.split("_")[0];
+      if (validateItemId(validId)) {
+        return { ...item, id: validId };
+      } else {
+        throw new Error(`Invalid item ID: ${item.id}`);
+      }
+    });
+  };
   const subtotal = calculateSubtotal();
   const serviceCharge = subtotal * 0.02;
   const total = subtotal + serviceCharge;
   const callFunApi = () => {
-    let finalArr={
-      ...props.formData,
-      "subtotal":subtotal,
-      "serviceCharge":serviceCharge,
-      "total":total,
-      "myCart":myCart 
+    try {
+      const cleanCartItems = cleanCart(myCart);
+      let finalArr = {
+        ...props.formData,
+        "subtotal": subtotal,
+        "serviceCharge": serviceCharge,
+        "total": total,
+        "myCart": cleanCartItems
+      };
+      dispatch(getCompleteCheckout(finalArr, () => {
+        navigate("/paymentProcessing");
+      }));
+    } catch (error) {
+      console.error(error.message);
+      // Show error to the user
     }
-
-    dispatch(getCompleteCheckout(finalArr,()=>{
-      navigate("/paymentProcessing")
-    }))
-  };
+  }
   
   return (
     <>
