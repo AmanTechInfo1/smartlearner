@@ -11,31 +11,31 @@ import {
   fetchUserSubscriptions,
 } from "../../redux/features/subscriptionSlice";
 export default function AdiPartOne() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const userDetails = useSelector((state) => state.auth.userDetails);
-  const userSubscription = useSelector(
-    (state) => state.subscription.userSubscription
-  );
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const userDetails = useSelector((state) => state.auth.userDetails);
+  // const userSubscription = useSelector(
+  //   (state) => state.subscription.userSubscription
+  // );
 
-  useEffect(() => {
-    if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login"); // Redirect to login if user is not logged in
-    } else if (userDetails.role === "admin") {
-      // Allow admin to access the portal
-      return;
-    } else if (userDetails.role === "theorylearner") {
-      return;
-    } else {
-      // User is not admin, check for subscription
-      dispatch(fetchUserSubscriptions()).then(() => {
-        if (!userSubscription || !userSubscription.active) {
-          // Redirect to subscription page if no active subscription
-          navigate("/part-one-subscription");
-        }
-      });
-    }
-  }, [userDetails, userSubscription, dispatch, navigate]);
+  // useEffect(() => {
+  //   if (!userDetails || Object.keys(userDetails).length === 0) {
+  //     navigate("/login"); // Redirect to login if user is not logged in
+  //   } else if (userDetails.role === "admin") {
+  //     // Allow admin to access the portal
+  //     return;
+  //   } else if (userDetails.role === "theorylearner") {
+  //     return;
+  //   } else {
+  //     // User is not admin, check for subscription
+  //     dispatch(fetchUserSubscriptions()).then(() => {
+  //       if (!userSubscription || !userSubscription.active) {
+  //         // Redirect to subscription page if no active subscription
+  //         navigate("/part-one-subscription");
+  //       }
+  //     });
+  //   }
+  // }, [userDetails, userSubscription, dispatch, navigate]);
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>

@@ -9,6 +9,7 @@ const userSubscriptionSchema = new mongoose.Schema({
   isTrial: { type: Boolean, default: false },
   trialStartDate: { type: Date, default: Date.now },
   trialEndDate: { type: Date, required: true },
+  paymentStatus: { type: String, default: 'PENDING' },
 });
 
 const UserSubscription = mongoose.model(

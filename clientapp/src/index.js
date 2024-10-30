@@ -8,21 +8,25 @@ import { RouterProvider } from "react-router-dom";
 
 import { Toaster } from "react-hot-toast";
 import { router } from "./routing";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"; // Add this import
+
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-     
-          <RouterProvider router={router} />
-      
-   
+      <PayPalScriptProvider
+        options={{
+          "client-id":
+            "AYc_2X98F4dytlVeRvPtLwPiWYndU8jDWgQg7u4FV4ByPe83gwVL9vLuoeBcDgmSBGmF_BxE5oNOOrtG",
+        }}>
+        <RouterProvider router={router} />
 
-      <Toaster position="top-right" />
+        <Toaster position="top-right" />
+      </PayPalScriptProvider>
     </Provider>
     {/* <App /> */}
   </React.StrictMode>

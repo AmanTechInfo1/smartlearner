@@ -13,12 +13,7 @@ import {
 import { FaLocationDot } from "react-icons/fa6";
 import smartlearnerLogo from "../../../assets/images/White-Logo-Fixed-1024x174.png";
 import { Link } from "react-router-dom";
-import {
-  getMyDashboard,
-  fetchUserSubscriptions,
-} from "../../../redux/features/subscriptionSlice";
-import { useSelector, useDispatch } from "react-redux"; // Import useSelector
-import { useNavigate } from "react-router-dom";
+
 
 export default function AdiPartTwo() {
   const videoURLs = [
@@ -31,32 +26,32 @@ export default function AdiPartTwo() {
     "https://www.youtube.com/embed/u8skr_74ip8",
   ];
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const userDetails = useSelector((state) => state.auth.userDetails);
-  const userSubscription = useSelector(
-    (state) => state.subscription.userSubscription
-  );
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const userDetails = useSelector((state) => state.auth.userDetails);
+  // const userSubscription = useSelector(
+  //   (state) => state.subscription.userSubscription
+  // );
 
-  useEffect(() => {
-    if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login"); // Redirect to login if user is not logged in
-    } else if (userDetails.role === "admin") {
-      // Allow admin to access the portal
-      return;
-    } else if (userDetails.role === "theorylearner") {
-      return;
-    }
-    else {
-      // User is not admin, check for subscription
-      dispatch(fetchUserSubscriptions()).then(() => {
-        if (!userSubscription || !userSubscription.active) {
-          // Redirect to subscription page if no active subscription
-          navigate("/part-two-subscription");
-        }
-      });
-    }
-  }, [userDetails, userSubscription, dispatch, navigate]);
+  // useEffect(() => {
+  //   if (!userDetails || Object.keys(userDetails).length === 0) {
+  //     navigate("/login"); // Redirect to login if user is not logged in
+  //   } else if (userDetails.role === "admin") {
+  //     // Allow admin to access the portal
+  //     return;
+  //   } else if (userDetails.role === "theorylearner") {
+  //     return;
+  //   }
+  //   else {
+  //     // User is not admin, check for subscription
+  //     dispatch(fetchUserSubscriptions()).then(() => {
+  //       if (!userSubscription || !userSubscription.active) {
+  //         // Redirect to subscription page if no active subscription
+  //         navigate("/part-two-subscription");
+  //       }
+  //     });
+  //   }
+  // }, [userDetails, userSubscription, dispatch, navigate]);
 
   return (
     <div className={styles.AdiPartOne}>

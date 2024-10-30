@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   auth: authSlice,
   cart: cartSlice,
   order: orderSlice,
-  user: userSlice,
+  user: userSlice,  
   roles: rolesSlice,
   category: categorySlice,
   services: servicesSlice,

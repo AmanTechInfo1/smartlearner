@@ -1,4 +1,4 @@
-const Plans = require('../models/planUserModel');
+const Plans = require("../models/planUserModel");
 
 class SubscriptionService {
   async createPlan(data) {
