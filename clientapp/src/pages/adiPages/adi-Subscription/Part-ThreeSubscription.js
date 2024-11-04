@@ -90,7 +90,7 @@ const PartThreeSubscription = () => {
   };
 
   // Separate plans into trial and paid
-  const trialPlans = plans.filter(plan => plan.planCategory === 'pdi-part-three free-trial');
+//   const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
   const paidPlans = plans.filter(plan => plan.planCategory === 'pdi-part-three packages'|| plan.planCategory === 'Complete packages');
 
   return (
@@ -100,7 +100,7 @@ const PartThreeSubscription = () => {
         {loading && <p>Loading plans...</p>}
         {error && <p className="error">{error}</p>}
 
-        {trialPlans.map((plan, index) => (
+        {/* {trialPlans.map((plan, index) => (
           <div key={index} className="card">
             <div className="card-top">
               <div className="card-top__info">
@@ -123,7 +123,7 @@ const PartThreeSubscription = () => {
               </button>
             </div>
           </div>
-        ))}
+        ))} */}
 
         {paidPlans.map((plan, index) => (
           <div key={index} className="card">

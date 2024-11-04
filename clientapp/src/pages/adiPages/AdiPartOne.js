@@ -19,11 +19,7 @@ export default function AdiPartOne() {
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
   );
-  const userId = userDetails?._id;
-  
-  // useEffect(() => {
-  //   dispatch(fetchUserSubscriptions(userId));
-  // }, [dispatch]);
+ 
 
   useEffect(() => {
     //
@@ -35,12 +31,13 @@ export default function AdiPartOne() {
       return;
     } else {
       // Check the subscription plan category
-      const hasAccess = userSubscription[0].subscriptionId.filter(
-        (subscription) =>
-          subscription.planCategory === "pdi-part-one free-trial" ||
-          subscription.planCategory === "pdi-part-one packages" ||
-          subscription.planCategory === "Complete packages"
+      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
+      const hasAccess = subscription && (
+        // subscription.planCategory === "free-trial" || 
+        subscription.planCategory === "pdi-part-one packages" ||
+        subscription.planCategory === "Complete packages"
       );
+  
       console.log("userSubscription", userSubscription);
 
       if (!hasAccess) {

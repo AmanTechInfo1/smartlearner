@@ -52,8 +52,8 @@ export default function AdiPartTwo() {
       return;
     } else {
       // Check the subscription plan category
-      const hasAccess = userSubscription[0].subscriptionId(subscription => 
-        subscription.planCategory === "pdi-part-two free-trial" || 
+      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
+      const hasAccess = subscription && (
         subscription.planCategory === "pdi-part-two packages" ||
          subscription.planCategory === "Complete packages"
       );

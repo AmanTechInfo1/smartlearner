@@ -5,6 +5,7 @@ const planSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   planCategory: { type: String, required: true },
   duration: { type: Number, required: true },
+  features: { type: Array,  },
 });
 
 const Plans = mongoose.model("Plans", planSchema);

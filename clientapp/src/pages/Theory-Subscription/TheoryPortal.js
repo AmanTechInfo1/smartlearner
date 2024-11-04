@@ -31,33 +31,47 @@ import {
 import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
+  
+
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
-  const subscriptionDetails = useSelector(
-    (state) => state.dashboard.subscriptionDetails
+
+  
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
   );
+ 
 
   useEffect(() => {
+    //
+
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login");
+      navigate("/login"); // Redirect to login if user is not logged in
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
-    } else if (userDetails.role === "theorylearner") {
-      return;
     } else {
-      // User is not admin, check for subscription
-      dispatch(
-        getMySubscription(() => {
-          if (!subscriptionDetails || !subscriptionDetails.active) {
-            // Redirect to subscription page if no active subscription
-            navigate("/Theory-Subscription");
-          }
-        })
+      // Check the subscription plan category
+      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
+      const hasAccess = subscription && (
+        // subscription.planCategory === "free-trial" || 
+        subscription.planCategory === "theory-portal package" ||
+        subscription.planCategory === "theory-portal free-trial"
       );
+  
+      console.log("userSubscription", userSubscription);
+
+      if (!hasAccess) {
+        navigate("/Theory-Subscription");
+      }
     }
-  }, [userDetails, dispatch, navigate, subscriptionDetails]);
+  }, [userDetails, userSubscription, dispatch, navigate]);
+
+
+
 
   return (
     <div className={styles.TheoryPortal}>

@@ -1,136 +1,215 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./TheorySubscription.css";
 import subsIcon from "../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
-  checkOutMySubscription,
-  getMySubscriptionType,
-} from "../../redux/features/dashboardSlice";
+  fetchPlans,
+  createPayment,
+  createUserSubscription,
+  checkTrialEligibility,
+  fetchUserSubscriptions,
+} from "../../redux/features/subscriptionSlice";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 const TheorySubscription = () => {
-  const [plans, setPlans] = useState([
-    {
-      title: "Free Trial",
-      price: "£0",
-      dec: "7 Day Free Trial",
-      features: ["Enroll Everything For 7 Days"],
-      mostPopular: false,
-      view: true,
-    },
-    {
-      title: "Unlimited Theory Portal Access £5.99 per month",
-      price: "£5.99",
-      dec: "Current Plan",
-      features: [
-        "£5.99 for month",
-        "Only have access to portal (hazard perception and theory portal)",
-        "Can access addons £1.99 each",
-      ],
-      mostPopular: true,
-      view: true,
-    },
-    {
-      title: "6 Months Theory Portal Access £30",
-      price: "£30.00",
-      dec: "Addon Plan",
-      features: [
-        "£30.00/6 Months",
-        "Access to theory portal as normal",
-        "5.99 package",
-        "Additional worksheets £1.99 each",
-        "£30.00 package one off payment for 6 months access to theory support free worksheets",
-      ],
-      mostPopular: false,
-      view: true,
-    },
-  ]);
-
-  const currentplan = useSelector((state) => state.dashboard.currentplan);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id; // Added optional chaining for safety
+  const { plans, loading, error } = useSelector((state) => state.subscription);
 
+  // Fetch subscription plans when component mounts
   useEffect(() => {
-    // Fetch subscription plans and the current plan type
-    dispatch(getMySubscriptionType(setPlans, () => {}));
+    dispatch(fetchPlans());
+    dispatch(fetchUserSubscriptions());
   }, [dispatch]);
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId));
+    }
+  }, [dispatch, userId]); // Added userId as a dependency
 
-  const handleSubscribe = (planTitle) => {
-    dispatch(
-      checkOutMySubscription({ title: planTitle }, () => {
-        // Redirect to theory portal on successful subscription
-        navigate("/Theory-Portal");
-      })
-    );
+  const handleCreateTrialSubscription = async (plan) => {
+    try {
+      const trialEligible = await dispatch(
+        checkTrialEligibility(userId)
+      ).unwrap();
+
+      if (!trialEligible) {
+        return;
+      }
+
+      const subscriptionData = {
+        userId: userId,
+        subscriptionId: plan._id,
+        isTrial: true,
+      };
+
+      const subscription = await dispatch(
+        createUserSubscription(subscriptionData)
+      ).unwrap();
+      console.log("Trial subscription created successfully:", subscription);
+    } catch (error) {
+      console.error("Error creating trial subscription:", error);
+    }
   };
+
+  const handleCreateSubscription = async (plan) => {
+    try {
+      const order = await dispatch(createPayment(plan._id)).unwrap();
+      console.log("Order received from payment creation:", order);
+      if (order && order.id) {
+        return order.id;
+      } else {
+        throw new Error("Order ID not received");
+      }
+    } catch (error) {
+      console.error("Error during subscription creation:", error);
+      throw error;
+    }
+  };
+
+  const handleApprovePayment = async (plan, actions) => {
+    try {
+      const order = await actions.order.capture();
+      console.log("Order captured:", order);
+      if (!order || !order.id) {
+        console.error("No order ID received");
+        return;
+      }
+
+      const subscriptionData = {
+        userId: userId,
+        subscriptionId: plan._id,
+        orderId: order.id,
+        isTrial: false,
+      };
+
+      await dispatch(createUserSubscription(subscriptionData)).unwrap();
+      console.log("User subscription created successfully.");
+    } catch (error) {
+      console.error("Error during order approval:", error);
+    }
+  };
+
+  // Separate plans into trial and paid
+  const trialPlans = plans.filter(
+    (plan) => plan.planCategory === "theory-portal free-trial"
+  );
+
+  const paidPlans = plans.filter(
+    (plan) => plan.planCategory === "theory-portal package"
+  );
 
   return (
     <div className="subscription-cardBox">
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
-        {currentplan ? (
-          <p id="SubDesc">Current Plan: {currentplan}</p>
-        ) : (
-          <p id="SubDesc">You don't have an active subscription.</p>
-        )}
+        {loading && <p>Loading plans...</p>}
+        
 
-        {plans.map(
-          (plan, index) =>
-            plan.view && (
-              <div key={index} className="card">
-                <div className="card-top">
-                  <div className="card-top__info">
-                    <span className="card-top__info-icon">
-                      <img src={subsIcon} alt="Subscription Icon" />
-                    </span>
-                    <div className="card-top__info-header">
-                      <h1>{plan.title}</h1>
-                      <p>{plan.dec}</p>
-                    </div>
-                    {plan.mostPopular && (
-                      <div className="card-top__info-btn">
-                        <p>Most Popular</p>
-                      </div>
-                    )}
-                  </div>
-                  <div className="card-top__price">
-                    <h2 className="card-top__price-header">{plan.price}</h2>
-                    <p className="card-top__price-desc">/monthly</p>
-                  </div>
-                </div>
-
-                <div className="card-bottom">
-                  <button
-                    className="card-bottom__btn"
-                    onClick={() => handleSubscribe(plan.title)}>
-                    <span>Subscribe now</span>
-                  </button>
-                  <ul className="card-bottom__list">
-                    {plan.features.map((item, featureIndex) => (
-                      <li key={featureIndex} className="card-bottom__list-item">
-                        <span>
-                          <svg
-                            width="14"
-                            height="10"
-                            viewBox="0 0 14 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M13.0405 0.292893C13.431 0.683417 13.431 1.31658 13.0405 1.70711L5.70719 9.04044C5.31666 9.43096 4.6835 9.43096 4.29297 9.04044L0.959641 5.70711C0.569117 5.31658 0.569117 4.68342 0.959641 4.29289C1.35017 3.90237 1.98333 3.90237 2.37385 4.29289L5.00008 6.91912L11.6263 0.292893C12.0168 -0.0976311 12.65 -0.0976311 13.0405 0.292893Z"
-                              fill="black"
-                            />
-                          </svg>
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+        {trialPlans.map((plan, index) => (
+          <div key={index} className="card">
+            <div className="card-top">
+              <div className="card-top__info">
+                <span className="card-top__info-icon">
+                  <img src={subsIcon} alt="Subscription Icon" />
+                </span>
+                <div className="card-top__info-header">
+                  <h1>{plan.planname}</h1>
+                  <p>{plan.planCategory}</p>
                 </div>
               </div>
-            )
-        )}
+              <div className="card-top__price">
+                <h2 className="card-top__price-header">{plan.price}</h2>
+                <p className="card-top__price-desc">{plan.duration}-days</p>
+              </div>
+            </div>
+            <div className="card-bottom">
+              <button
+                onClick={() => handleCreateTrialSubscription(plan)}
+                className="card-bottom__btn"
+              >
+                Start Free Trial
+              </button>
+              {/* <span>Subscribe now</span> */}
+              <ul className="card-bottom__list">
+                {plan.features.map((item, featureIndex) => (
+                  <li key={featureIndex} className="card-bottom__list-item">
+                    <span>
+                      <svg
+                        width="14"
+                        height="10"
+                        viewBox="0 0 14 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M13.0405 0.292893C13.431 0.683417 13.431 1.31658 13.0405 1.70711L5.70719 9.04044C5.31666 9.43096 4.6835 9.43096 4.29297 9.04044L0.959641 5.70711C0.569117 5.31658 0.569117 4.68342 0.959641 4.29289C1.35017 3.90237 1.98333 3.90237 2.37385 4.29289L5.00008 6.91912L11.6263 0.292893C12.0168 -0.0976311 12.65 -0.0976311 13.0405 0.292893Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+
+        {paidPlans.map((plan, index) => (
+          <div key={index} className="card">
+            <div className="card-top">
+              <div className="card-top__info">
+                <span className="card-top__info-icon">
+                  <img src={subsIcon} alt="Subscription Icon" />
+                </span>
+                <div className="card-top__info-header">
+                  <h1>{plan.planname}</h1>
+                  <p>{plan.planCategory}</p>
+                </div>
+              </div>
+              <div className="card-top__price">
+                <h2 className="card-top__price-header">{plan.price}</h2>
+                <p className="card-top__price-desc">{plan.duration}-days</p>
+              </div>
+            </div>
+            <div className="card-bottom">
+              <PayPalButtons
+                createOrder={(data, actions) => handleCreateSubscription(plan)}
+                onApprove={(data, actions) =>
+                  handleApprovePayment(plan, actions)
+                }
+              />
+              {/* <span>Subscribe now</span> */}
+              <ul className="card-bottom__list">
+                {plan.features.map((item, featureIndex) => (
+                  <li key={featureIndex} className="card-bottom__list-item">
+                    <span>
+                      <svg
+                        width="14"
+                        height="10"
+                        viewBox="0 0 14 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M13.0405 0.292893C13.431 0.683417 13.431 1.31658 13.0405 1.70711L5.70719 9.04044C5.31666 9.43096 4.6835 9.43096 4.29297 9.04044L0.959641 5.70711C0.569117 5.31658 0.569117 4.68342 0.959641 4.29289C1.35017 3.90237 1.98333 3.90237 2.37385 4.29289L5.00008 6.91912L11.6263 0.292893C12.0168 -0.0976311 12.65 -0.0976311 13.0405 0.292893Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

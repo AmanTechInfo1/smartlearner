@@ -26,7 +26,7 @@ export default function AdiPartThree() {
   //   dispatch(fetchUserSubscriptions(userId));
   // }, [dispatch]);
   useEffect(() => {
-    dispatch(fetchUserSubscriptions()); // Fetch user subscriptions
+    // Fetch user subscriptions
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
       navigate("/login"); // Redirect to login if user is not logged in
@@ -35,8 +35,8 @@ export default function AdiPartThree() {
       return;
     } else {
       // Check the subscription plan category
-      const hasAccess = userSubscription[0].subscriptionId(subscription => 
-        subscription.planCategory === "pdi-part-three free-trial" || 
+      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
+      const hasAccess = subscription && (
         subscription.planCategory === "pdi-part-three packages" ||
          subscription.planCategory === "Complete packages"
       );

@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 export default function MyAccount() {
   // Get user details from Redux state
   const { userDetails } = useSelector((state) => state.auth);
-
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
   return (
     <div
       style={{
@@ -110,7 +112,7 @@ export default function MyAccount() {
             <span
               className="font-weight-semibold"
               style={{ fontSize: "1.5rem" }}>
-              {userDetails.subscription || "No-Subscription"}
+              {userSubscription[0].subscriptionId.planname || "No-Subscription"}
             </span>
           </div>
           <Link to="/forgot-password" style={{ textDecoration: "none" }}>
