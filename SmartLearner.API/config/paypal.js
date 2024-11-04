@@ -1,11 +1,11 @@
 // config/paypal.js
 const axios = require("axios");
 
-const PAYPAL_API_BASE = "https://api.sandbox.paypal.com";
+const PAYPAL_API_BASE = "https://api.paypal.com";
 const CLIENT_ID =
-  "AYc_2X98F4dytlVeRvPtLwPiWYndU8jDWgQg7u4FV4ByPe83gwVL9vLuoeBcDgmSBGmF_BxE5oNOOrtG";
+  "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL";
 const CLIENT_SECRET =
-  "EMiRq9KV1ckeTg19qfeOjYu5bA7p44TuHuMRTZh3FVHP1RnAgKCd1l6_OfWOC2Ei0aLF3BEiKjGH8Fzq";
+  "EEaC2BCdKDLSXyqPk4Hz1-DNzQ0sxeBj4NY6b3GM2kKCNIFhkG8axNPpjI-E";
 
 const getAccessToken = async () => {
   try {

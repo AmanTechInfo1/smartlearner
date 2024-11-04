@@ -1,15 +1,36 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import profileImg from "../../../assets/images/car-red.png";
 import MyOrders from "../../shop/myOrders/MyOrders";
 import { Link } from "react-router-dom";
 
+import {
+  fetchUserSubscriptions,
+} from "../../../redux/features/subscriptionSlice";
+
+
 export default function MyAccount() {
   // Get user details from Redux state
   const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id; // Added optional chaining for safety
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId));
+    }
+  }, [dispatch, userId]);
+
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
   );
+
+  const subscriptionPlanName = userSubscription.length > 0 
+  ? userSubscription[0].subscriptionId.planname 
+  : "No Subscription";
+
   return (
     <div
       style={{
@@ -112,7 +133,7 @@ export default function MyAccount() {
             <span
               className="font-weight-semibold"
               style={{ fontSize: "1.5rem" }}>
-              {userSubscription[0].subscriptionId.planname || "No-Subscription"}
+              {subscriptionPlanName}
             </span>
           </div>
           <Link to="/forgot-password" style={{ textDecoration: "none" }}>

@@ -21,7 +21,7 @@ root.render(
       <PayPalScriptProvider
         options={{
           "client-id":
-            "AYc_2X98F4dytlVeRvPtLwPiWYndU8jDWgQg7u4FV4ByPe83gwVL9vLuoeBcDgmSBGmF_BxE5oNOOrtG",
+            "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL",
         }}>
         <RouterProvider router={router} />
 
