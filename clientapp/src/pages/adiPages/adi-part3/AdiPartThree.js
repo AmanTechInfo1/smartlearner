@@ -22,9 +22,9 @@ export default function AdiPartThree() {
   );
   const userId = userDetails?._id;
   
-  useEffect(() => {
-    dispatch(fetchUserSubscriptions(userId));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchUserSubscriptions(userId));
+  // }, [dispatch]);
   useEffect(() => {
     dispatch(fetchUserSubscriptions()); // Fetch user subscriptions
 

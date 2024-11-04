@@ -21,9 +21,9 @@ export default function AdiPartOne() {
   );
   const userId = userDetails?._id;
   
-  useEffect(() => {
-    dispatch(fetchUserSubscriptions(userId));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchUserSubscriptions(userId));
+  // }, [dispatch]);
 
   useEffect(() => {
     //
