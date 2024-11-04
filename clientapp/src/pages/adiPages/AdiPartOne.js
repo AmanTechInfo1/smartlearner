@@ -30,10 +30,10 @@ export default function AdiPartOne() {
       // Allow admin to access the portal
       return;
     } else {
-      // Check the subscription plan category
-      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
+      
+      const subscription = userSubscription[0]?.subscriptionId; 
       const hasAccess = subscription && (
-        // subscription.planCategory === "free-trial" || 
+       
         subscription.planCategory === "pdi-part-one packages" ||
         subscription.planCategory === "Complete packages"
       );

@@ -39,9 +39,7 @@ export default function AdiPartTwo() {
   );
   const userId = userDetails?._id;
   
-  // useEffect(() => {
-  //   dispatch(fetchUserSubscriptions(userId));
-  // }, [dispatch]);
+  
   useEffect(() => {
    // Fetch user subscriptions
 
