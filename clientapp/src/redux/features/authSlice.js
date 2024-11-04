@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import http from "../../utils/httpHandler";
 import toast from "react-hot-toast";
 import { ROLES } from "../../constants";
-
+import {removeSubs,fetchUserSubscriptions } from "../features/subscriptionSlice"
 const initialState = {
   loading: false,
   userDetails: localStorage.getItem("user")
@@ -90,11 +90,15 @@ export const loginUser = createAsyncThunk(
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
 
+        
+        dispatch(fetchUserSubscriptions(user._id));
+
         const decodedToken = jwtDecode(user.token);
         const expirationTime = decodedToken.exp * 1000 - Date.now(); 
         if (expirationTime <= 0) {
           console.warn("Token has already expired, logging out immediately.");
           dispatch(logoutUser());
+         
           navigate("/login");
         } else {
           dispatch(autoLogoutUser(expirationTime, navigate));
@@ -126,6 +130,9 @@ export const logoutUser = createAsyncThunk(
     try {
       localStorage.removeItem("user");
       dispatch(UserDetails({}));
+     
+      dispatch(removeSubs({}));
+      // dispatch(removeSubs());
       toast.success("Logged Out Successfully");
       return "LoggedOut Successfully";
     } catch (error) {

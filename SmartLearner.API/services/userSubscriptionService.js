@@ -8,6 +8,18 @@ class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
     const plan = await Plans.findById(subscriptionId);
     const currentDate = new Date();
+
+    if (isTrial) {
+      const existingTrial = await UserSubscription.findOne({
+        userId,
+        isTrial: true,
+      });
+
+      if (existingTrial) {
+        throw new Error("Free Trial Used");
+      }
+    }
+
     const planEndDate = new Date(
       currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
     ); // duration in days
@@ -84,7 +96,10 @@ class UserSubscriptionService {
   }
 
   async getUserSubscriptions(userId) {
-    return await UserSubscription.find({ userId }).populate("subscriptionId");
+    console.log("Querying subscriptions for userId:", userId);
+    const subscriptions = await UserSubscription.find({ userId }).populate("subscriptionId");
+    console.log("Fetched subscriptions:", subscriptions);
+    return subscriptions;
   }
 
   async deleteUserSubscription(userId, subscriptionId) {

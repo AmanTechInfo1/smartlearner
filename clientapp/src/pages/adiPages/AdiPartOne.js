@@ -11,31 +11,43 @@ import {
   fetchUserSubscriptions,
 } from "../../redux/features/subscriptionSlice";
 export default function AdiPartOne() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const userDetails = useSelector((state) => state.auth.userDetails);
-  // const userSubscription = useSelector(
-  //   (state) => state.subscription.userSubscription
-  // );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userDetails = useSelector((state) => state.auth.userDetails);
 
-  // useEffect(() => {
-  //   if (!userDetails || Object.keys(userDetails).length === 0) {
-  //     navigate("/login"); // Redirect to login if user is not logged in
-  //   } else if (userDetails.role === "admin") {
-  //     // Allow admin to access the portal
-  //     return;
-  //   } else if (userDetails.role === "theorylearner") {
-  //     return;
-  //   } else {
-  //     // User is not admin, check for subscription
-  //     dispatch(fetchUserSubscriptions()).then(() => {
-  //       if (!userSubscription || !userSubscription.active) {
-  //         // Redirect to subscription page if no active subscription
-  //         navigate("/part-one-subscription");
-  //       }
-  //     });
-  //   }
-  // }, [userDetails, userSubscription, dispatch, navigate]);
+  
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
+  const userId = userDetails?._id;
+  
+  useEffect(() => {
+    dispatch(fetchUserSubscriptions(userId));
+  }, [dispatch]);
+
+  useEffect(() => {
+    //
+
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/login"); // Redirect to login if user is not logged in
+    } else if (userDetails.role === "admin") {
+      // Allow admin to access the portal
+      return;
+    } else {
+      // Check the subscription plan category
+      const hasAccess = userSubscription[0].subscriptionId.filter(
+        (subscription) =>
+          subscription.planCategory === "pdi-part-one free-trial" ||
+          subscription.planCategory === "pdi-part-one packages" ||
+          subscription.planCategory === "Complete packages"
+      );
+      console.log("userSubscription", userSubscription);
+
+      if (!hasAccess) {
+        navigate("/part-one-subscription");
+      }
+    }
+  }, [userDetails, userSubscription, dispatch, navigate]);
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -474,7 +486,8 @@ export default function AdiPartOne() {
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen></iframe>
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>

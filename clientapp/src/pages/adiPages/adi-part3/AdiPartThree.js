@@ -5,35 +5,47 @@ import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import scoreCard from "../../../assets/images/scroreCardImg.png";
 import testRoutesImg1 from "../../../assets/images/Screenshot-2023-02-09-110346-150x150.jpg";
 import testRoutesImg2 from "../../../assets/images/Screenshot-2023-02-09-110505-150x150.jpg";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 
+import {
+  
+  fetchUserSubscriptions,
+} from "./../../../redux/features/subscriptionSlice";
 export default function AdiPartThree() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const userDetails = useSelector((state) => state.auth.userDetails);
-  // const userSubscription = useSelector(
-  //   (state) => state.subscription.userSubscription
-  // );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userDetails = useSelector((state) => state.auth.userDetails);
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
+  const userId = userDetails?._id;
+  
+  useEffect(() => {
+    dispatch(fetchUserSubscriptions(userId));
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchUserSubscriptions()); // Fetch user subscriptions
 
-  // useEffect(() => {
-  //   if (!userDetails || Object.keys(userDetails).length === 0) {
-  //     navigate("/login"); // Redirect to login if user is not logged in
-  //   }else if (userDetails.role === "admin") {
-  //     // Allow admin to access the portal
-  //     return;
-  //   } else if (userDetails.role === "theorylearner") {
-  //     return;
-  //   } else {
-  //     // User is not admin, check for subscription
-  //     dispatch(fetchUserSubscriptions()).then(() => {
-  //       if (!userSubscription || !userSubscription.active) {
-  //         // Redirect to subscription page if no active subscription
-  //         navigate("/part-three-subscription");
-  //       }
-  //     });
-  //   }
-  // }, [userDetails, userSubscription, dispatch, navigate]);
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/login"); // Redirect to login if user is not logged in
+    } else if (userDetails.role === "admin") {
+      // Allow admin to access the portal
+      return;
+    } else {
+      // Check the subscription plan category
+      const hasAccess = userSubscription[0].subscriptionId(subscription => 
+        subscription.planCategory === "pdi-part-three free-trial" || 
+        subscription.planCategory === "pdi-part-three packages" ||
+         subscription.planCategory === "Complete packages"
+      );
+
+      if (!hasAccess) {
+        navigate("/part-three-subscription"); // Redirect if the user does not have access
+      }
+    }
+  }, [userDetails, userSubscription, dispatch, navigate]);
 
   return (
     <div className={styles.AdiPartOne}>

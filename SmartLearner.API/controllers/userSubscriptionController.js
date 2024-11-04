@@ -24,7 +24,7 @@ class userSubscriptionController {
   async getUserSubscriptions(req, res, next) {
     try {
       const subscriptions = await userSubscriptionService.getUserSubscriptions(
-        req.params.id
+        req.params.userId
       );
       res.status(200).json(subscriptions);
     } catch (err) {
