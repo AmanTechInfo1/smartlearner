@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
   next();
 });
-// Example using Express.js
+
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
