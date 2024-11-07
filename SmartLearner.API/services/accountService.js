@@ -8,8 +8,9 @@ const PasswordHash = require("../utilities/PasswordHash");
 const roleService = require("../services/roleService");
 const { ROLES } = require("../utilities/constatnt");
 const Role = require("../models/roleModel");
-const PlanUser = require("../models/planUserModel");
-const { ObjectId } = require("mongodb");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -254,383 +255,8 @@ class AccountService {
     }
   }
 
-  // ////////////////////////////////////////////////////////////
- 
-  //////////////////////////////////////////////////////////
 
-  async getUserSubscription(params_id) {
-    try {
-      let aagr = [
-        {
-          $addFields: {
-            uniqueId: {
-              $toString: "$_id",
-            },
-          },
-        },
-        {
-          $match: {
-            uniqueId: params_id,
-          },
-        },
-        {
-          $lookup: {
-            from: "userroles",
-            localField: "_id",
-            foreignField: "userId",
-            pipeline: [
-              {
-                $lookup: {
-                  from: "roles",
-                  localField: "roleId",
-                  foreignField: "_id",
-                  as: "result",
-                },
-              },
-              {
-                $unwind: {
-                  path: "$result",
-                  preserveNullAndEmptyArrays: true,
-                },
-              },
-              {
-                $addFields: {
-                  result: "$result.name",
-                },
-              },
-            ],
-            as: "result",
-          },
-        },
-        {
-          $unwind: {
-            path: "$result",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $addFields: {
-            roleId: {
-              $toString: "$result.roleId",
-            },
-            roleName: {
-              $toString: "$result.result",
-            },
-          },
-        },
-        {
-          $lookup: {
-            from: "planusers",
-            localField: "_id",
-            foreignField: "userId",
-            pipeline: [
-              {
-                $sort: {
-                  _id: -1,
-                },
-              },
-              {
-                $limit: 1,
-              },
-              {
-                $match: {
-                  planEndDate: {
-                    $gte: new Date(),
-                  },
-                },
-              },
-            ],
-            as: "planresult",
-          },
-        },
-        {
-          $unwind: {
-            path: "$planresult",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $project: {
-            password: 0,
-          },
-        },
-      ];
-      const users = await User.aggregate(aagr);
 
-      const oneUser = users[0];
-
-      let msg = "";
-
-      if (oneUser.isSubscription && oneUser.planresult == undefined) {
-        const updat = { subscriptionType: "", isSubscription: false };
-        msg = "Plan Expired";
-        const upre = await User.findByIdAndUpdate(
-          new ObjectId(params_id),
-          updat,
-          { new: true }
-        );
-      }
-
-      const userss = await User.aggregate(aagr);
-
-      const oneUsers = userss[0];
-
-      const totalCount = await User.countDocuments({ _id: params_id });
-      const resultObject = {
-        message: msg,
-        statusCode: 200,
-        success: true,
-        data: oneUsers,
-      };
-
-      return resultObject;
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  }
-  async checkoutUserSubscription(params_id, reqData) {
-    try {
-      let aagr = [
-        {
-          $addFields: {
-            uniqueId: {
-              $toString: "$_id",
-            },
-          },
-        },
-        {
-          $match: {
-            uniqueId: params_id,
-          },
-        },
-        {
-          $lookup: {
-            from: "userroles",
-            localField: "_id",
-            foreignField: "userId",
-            pipeline: [
-              {
-                $lookup: {
-                  from: "roles",
-                  localField: "roleId",
-                  foreignField: "_id",
-                  as: "result",
-                },
-              },
-              {
-                $unwind: {
-                  path: "$result",
-                  preserveNullAndEmptyArrays: true,
-                },
-              },
-              {
-                $addFields: {
-                  result: "$result.name",
-                },
-              },
-            ],
-            as: "result",
-          },
-        },
-        {
-          $unwind: {
-            path: "$result",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $lookup: {
-            from: "planusers",
-            localField: "_id",
-            foreignField: "userId",
-            pipeline: [
-              {
-                $sort: {
-                  _id: -1,
-                },
-              },
-              {
-                $limit: 1,
-              },
-              {
-                $match: {
-                  planEndDate: {
-                    $gte: new Date(),
-                  },
-                },
-              },
-            ],
-            as: "planresult",
-          },
-        },
-        {
-          $unwind: {
-            path: "$planresult",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $addFields: {
-            roleId: {
-              $toString: "$result.roleId",
-            },
-            roleName: {
-              $toString: "$result.result",
-            },
-          },
-        },
-        {
-          $project: {
-            password: 0,
-          },
-        },
-      ];
-      const users = await User.aggregate(aagr);
-
-      const totalCount = await User.countDocuments({ _id: params_id });
-
-      let resultObject = {};
-      if ("Free Trial" == reqData.title) {
-        if (users[0].isFreeTrialUsed) {
-          resultObject = {
-            message: "Free Trial Already Used",
-            statusCode: 400,
-            success: false,
-            data: users[0],
-          };
-        } else {
-          const updat = {
-            subscriptionType: reqData.title,
-            isSubscription: true,
-          };
-
-          let addonDays = 90;
-          if (reqData.title == "Free Trial") {
-            updat["isFreeTrialUsed"] = true;
-
-            addonDays = 7;
-          }
-
-          const upre = await User.findByIdAndUpdate(
-            new ObjectId(params_id),
-            updat,
-            { new: true }
-          );
-          const millisecondsInADay = 24 * 60 * 60 * 1000;
-          await PlanUser.create({
-            planname: reqData.title,
-            userId: params_id,
-            planEndDate: Date.now() + addonDays * millisecondsInADay,
-          });
-          resultObject = {
-            message: "Free Trial applied successfully",
-            statusCode: 200,
-            success: true,
-            data: users[0],
-          };
-        }
-      } else if (reqData.title == "Standard Subscription") {
-        resultObject = {
-          message: reqData.title + " applied successfully",
-          statusCode: 200,
-          success: true,
-          data: users[0],
-        };
-      } else {
-        resultObject = {
-          message: reqData.title + " applied successfully",
-          statusCode: 200,
-          success: true,
-          data: users[0],
-        };
-      }
-
-      return resultObject;
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  }
-  async getUserSubscriptionType(params_id) {
-    try {
-      let aagr = [
-        {
-          $addFields: {
-            uniqueId: {
-              $toString: "$_id",
-            },
-          },
-        },
-        {
-          $match: {
-            uniqueId: params_id,
-          },
-        },
-        {
-          $lookup: {
-            from: "userroles",
-            localField: "_id",
-            foreignField: "userId",
-            pipeline: [
-              {
-                $lookup: {
-                  from: "roles",
-                  localField: "roleId",
-                  foreignField: "_id",
-                  as: "result",
-                },
-              },
-              {
-                $unwind: {
-                  path: "$result",
-                  preserveNullAndEmptyArrays: true,
-                },
-              },
-              {
-                $addFields: {
-                  result: "$result.name",
-                },
-              },
-            ],
-            as: "result",
-          },
-        },
-        {
-          $unwind: {
-            path: "$result",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $addFields: {
-            roleId: {
-              $toString: "$result.roleId",
-            },
-            roleName: {
-              $toString: "$result.result",
-            },
-          },
-        },
-        {
-          $project: {
-            password: 0,
-          },
-        },
-      ];
-      const users = await User.aggregate(aagr);
-
-      const totalCount = await User.countDocuments({ _id: params_id });
-      const resultObject = {
-        message: "Fetched successfully",
-        statusCode: 200,
-        success: true,
-        data: users[0],
-      };
-
-      return resultObject;
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  }
 
   async getAllUsersRolesAsync() {
     try {
@@ -695,6 +321,48 @@ class AccountService {
         data: null,
       };
       return resultObject;
+    }
+  }
+
+  async forgotPasswordAsync(email) {
+    try {
+      // Check if the user exists
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new Error("Email not found");
+      }
+
+      // Generate a reset password token
+      const resetToken = crypto.randomBytes(20).toString("hex");
+      const resetTokenExpiration = Date.now() + 3600000; // 1 hour expiry
+
+      // Store the reset token and its expiration time in the database
+      user.resetPasswordToken = resetToken;
+      user.resetPasswordExpires = resetTokenExpiration;
+      await user.save();
+
+      // Send reset email
+      const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+          user: "amanchandel2620@gmail.com",
+          pass: "noey ovjq zsyb waut",
+        },
+      });
+
+      const mailOptions = {
+        from: "amanchandel2620@gmail.com",
+        to: email,
+        subject: "Password Reset Request",
+        text: `To reset your password, please click on the following link:
+       https://web.smartlearner.com/forgot-password/${resetToken}`,
+      };
+
+      await transporter.sendMail(mailOptions);
+
+      return { success: true, message: "Reset link sent to your email" };
+    } catch (error) {
+      throw new Error(error.message);
     }
   }
 }

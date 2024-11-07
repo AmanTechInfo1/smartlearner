@@ -89,6 +89,16 @@ class userSubscriptionController {
       res.status(500).json({ error: error.message });
     }
   }
+  // ////////////////COUPON CODE///////////////////////
+  async couponAccess(req, res,next) {
+    const { userId, couponCode } = req.body;
+    try {
+        const couponAccess = await userSubscriptionService.applyCouponCode(userId, couponCode);
+        res.status(200).json(couponAccess);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new userSubscriptionController();

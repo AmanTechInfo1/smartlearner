@@ -48,7 +48,17 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(resetPassword.rejected, (state) => {
+        state.loading = false;
       });
+      
   },
 });
 export const registerUser = createAsyncThunk(
@@ -89,10 +99,7 @@ export const loginUser = createAsyncThunk(
         dispatch(UserDetails(user));
         localStorage.setItem("user", JSON.stringify(user));
         toast.success(data.message || "Logged IN Successfully");
-
-        
         dispatch(fetchUserSubscriptions(user._id));
-
         const decodedToken = jwtDecode(user.token);
         const expirationTime = decodedToken.exp * 1000 - Date.now(); 
         if (expirationTime <= 0) {
@@ -151,6 +158,32 @@ export const autoLogoutUser = (expiresIn, navigate) => async (dispatch) => {
     console.error("Error occurred:", error);
   }
 };
+// ///////////////////////////////////////////////////////
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async (email, { rejectWithValue, dispatch }) => {
+    try {
+
+      console.log("Sending reset request for:", email);  // Log to confirm email is passed
+
+      const response = await http.post("/api/account/forgot-password", { email });
+      console.log("Response:", response);  // Log the response
+
+      const data = response.data;
+      if (data.success) {
+        toast.success("Password reset link sent to your email.");
+      } else {
+        toast.error(data.message || "Error sending reset link.");
+      }
+
+      return data;
+    } catch (error) {
+
+      toast.error("Something went wrong, please try again.");
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 
 export const { UserDetails } = authSlice.actions;

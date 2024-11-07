@@ -197,3 +197,33 @@
       }
     }
   }
+
+  .coupon-section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .coupon-input {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+  }
+  
+  .coupon-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .coupon-message {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .coupon-button:hover {
+    background-color: #0056b3;
+  }
+  

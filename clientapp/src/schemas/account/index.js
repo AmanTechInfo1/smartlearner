@@ -27,6 +27,15 @@ export const registerformSchema = yup.object({
   roleName: yup.string().required("Account Type is required").trim(),
 });
 
+export const forgotPassword = yup.object({
+  email: yup
+    .string()
+    .required("Email is required")
+    .matches(emailrgx, "Invalid Email")
+    .trim(),
+ 
+});
+
 export const loginformSchema = yup.object({
   email: yup
     .string()

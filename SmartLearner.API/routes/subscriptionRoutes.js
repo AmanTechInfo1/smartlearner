@@ -30,4 +30,8 @@ router.post(
 ); // New route for creating a payment
 router.post("/confirm-payment", userSubscriptionController.confirmPayment); // New route for confirming payment
 router.get("/checkTrial/:userId",userSubscriptionController.checkTrialStatus );
+router.post(
+  "/apply-coupon",
+  userSubscriptionController.couponAccess
+);
 module.exports = router;

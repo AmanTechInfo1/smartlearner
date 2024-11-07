@@ -119,6 +119,59 @@ class UserSubscriptionService {
       return plan.isTrial && plan.trialEndDate > currentDate;
     });
   }
+
+  // //////////////////////////////coupon code ///////////////////////////
+  async applyCouponCode(userId, couponCode) {
+    const validCoupon = 'SMARTTHEORY'; // The valid coupon code
+
+    if (couponCode === validCoupon) {
+      // Check if the user already has a subscription with the coupon applied
+      const existingSubscription = await UserSubscription.findOne({ userId, couponApplied: true });
+
+      if (existingSubscription) {
+        throw new Error("coupon used already");
+      }
+
+      // Get all available plans
+      const plans = await Plans.find(); // Retrieve all plans
+
+      // If no plans exist, throw an error
+      if (plans.length === 0) {
+        throw new Error("No available plans.");
+      }
+
+      const currentDate = new Date();
+      
+      // Loop through all plans and create a subscription for each one
+      const subscriptions = [];
+      for (const plan of plans) {
+        const planEndDate = new Date(currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000); // duration in days
+
+        const subscription = new UserSubscription({
+          userId,
+          subscriptionId: plan._id,
+          isActive: true,
+          planStartDate: currentDate,
+          planEndDate: planEndDate,
+          isTrial: false,
+          trialStartDate: null,
+          trialEndDate: null,
+          paymentStatus: 'COMPLETED', // No payment required, because it's free
+          couponApplied: true,  // Mark the coupon as applied
+        });
+
+        subscriptions.push(subscription.save());
+      }
+
+      // Wait for all subscriptions to be saved
+      await Promise.all(subscriptions);
+      await User.findByIdAndUpdate(userId, { subscription: subscriptions[0].subscriptionId }); // Update user with first subscription
+
+      return { message: "Coupon applied successfully" };
+    } else {
+      throw new Error("Invalid coupon code");
+    }
+  }
 }
 
 module.exports = new UserSubscriptionService();

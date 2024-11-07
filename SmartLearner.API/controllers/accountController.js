@@ -58,15 +58,7 @@ class AccountController {
       next(err);
     }
   }
-  // async getAllUsers(req, res, next) {
-  //   try {
-  //     const { page, pagesize, search } = req.query;
-  //     const response = await accountService.getAllUsersAsync(page, pagesize, search);
-  //     res.status(201).json(response);
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+ 
 
   async getOneUsers(req, res, next) {
     try {
@@ -102,6 +94,17 @@ class AccountController {
       res.json(result);
     } catch (err) {
       next(err);
+    }
+  }
+
+  async forgotPassword(req, res) {
+    const { email } = req.body;
+
+    try {
+      const result = await accountService.forgotPasswordAsync(email);
+      res.json(result);
+    } catch (err) {
+      res.status(400).json({ success: false, message: err.message });
     }
   }
 }

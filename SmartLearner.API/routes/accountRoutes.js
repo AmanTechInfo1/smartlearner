@@ -12,5 +12,6 @@ router.get("/users", requireAuth, accountController.getAllUsers);
 router.get('/user/:id', upload.none(), accountController.getOneUsers);
 router.post('/update-user/:id', upload.none(), accountController.updateUser);
 router.post('/delete-user/:id', upload.none(), accountController.deleteUser);
+router.post('/forgot-password',  accountController.forgotPassword);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 import subsIcon from "../../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import {
   createUserSubscription,
   checkTrialEligibility,
   fetchUserSubscriptions,
+  applyCouponCode
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -16,6 +17,7 @@ const PartTwoSubscription = () => {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
+  const [couponCode, setCouponCode] = useState("");
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
@@ -28,6 +30,17 @@ const PartTwoSubscription = () => {
     }
   }, [dispatch, userId]); // Added userId as a dependency
   
+
+  const handleCouponSubmit = async () => {
+    try {
+      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
+     
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+     
+    }
+  };
+
 
   const handleCreateTrialSubscription = async (plan) => {
     try {
@@ -97,8 +110,19 @@ const PartTwoSubscription = () => {
     <div className="subscription-cardBox">
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
+        <div className="coupon-section">
+          <input
+            type="text"
+            value={couponCode}
+            onChange={(e) => setCouponCode(e.target.value)}
+            placeholder="Enter Coupon Code"
+            className="coupon-input"
+          />
+          <button onClick={handleCouponSubmit} className="coupon-button">
+            Apply Coupon
+          </button>
+        </div>
         {loading && <p>Loading plans...</p>}
-        {error && <p className="error">{error}</p>}
 
         {/* {trialPlans.map((plan, index) => (
           <div key={index} className="card">

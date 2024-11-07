@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 import subsIcon from "../../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import {
   createPayment,
   createUserSubscription,
   checkTrialEligibility,
+  applyCouponCode,
   fetchUserSubscriptions,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
@@ -16,6 +17,9 @@ const PartOneSubscription = () => {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
+  const [couponCode, setCouponCode] = useState("");
+
+
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
@@ -29,27 +33,39 @@ const PartOneSubscription = () => {
   }, [dispatch, userId]); // Added userId as a dependency
   
 
-  const handleCreateTrialSubscription = async (plan) => {
+  const handleCouponSubmit = async () => {
     try {
-      const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
-
-      if (!trialEligible) {
-       
-        return;
-      }
-
-      const subscriptionData = {
-        userId: userId,
-        subscriptionId: plan._id,
-        isTrial: true,
-      };
-
-      const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
-      console.log("Trial subscription created successfully:", subscription);
+      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
+     
     } catch (error) {
-      console.error("Error creating trial subscription:", error);
+      console.error("Error applying coupon:", error);
+     
     }
   };
+  
+
+
+  // const handleCreateTrialSubscription = async (plan) => {
+  //   try {
+  //     const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
+
+  //     if (!trialEligible) {
+       
+  //       return;
+  //     }
+
+  //     const subscriptionData = {
+  //       userId: userId,
+  //       subscriptionId: plan._id,
+  //       isTrial: true,
+  //     };
+
+  //     const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
+  //     console.log("Trial subscription created successfully:", subscription);
+  //   } catch (error) {
+  //     console.error("Error creating trial subscription:", error);
+  //   }
+  // };
 
   const handleCreateSubscription = async (plan) => {
     try {
@@ -99,8 +115,20 @@ const PartOneSubscription = () => {
     <div className="subscription-cardBox">
       <div className="cardBody">
         <h2 id="SubsHeading">Subscription Plans</h2>
+        <div className="coupon-section">
+          <input
+            type="text"
+            value={couponCode}
+            onChange={(e) => setCouponCode(e.target.value)}
+            placeholder="Enter Coupon Code"
+            className="coupon-input"
+          />
+          <button onClick={handleCouponSubmit} className="coupon-button">
+            Apply Coupon
+          </button>
+        </div>
         {loading && <p>Loading plans...</p>}
-        {error && <p className="error">{error}</p>}
+        
 
         {/* {trialPlans.map((plan, index) => (
           <div key={index} className="card">

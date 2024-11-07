@@ -76,12 +76,28 @@
     }
   );
 
+  export const applyCouponCode = createAsyncThunk(
+    "subscription/applyCouponCode",
+    async ({ userId, couponCode }, { rejectWithValue }) => {
+      try {
+        const response = await httpHandler.post("/api/subscription/apply-coupon", { userId, couponCode });
+        toast.success(response.data.message);
+        return response.data;
+      } catch (error) {
+        // Show error toast
+        toast.error(` ${error.response.data.message || error.message}`);
+        return rejectWithValue(error.response.data);
+      }
+    }
+  );
+
   // Slice
   const subscriptionSlice = createSlice({
     name: "subscription",
     initialState: {
       plans: [],
       userSubscription:  {},
+      couponMessage: "", 
       loading: false,
       error: null,
     },
@@ -137,6 +153,12 @@
         .addCase(fetchUserSubscriptions.rejected, (state, action) => {
           console.error("Failed to fetch user subscriptions:", action.payload);
         }) 
+        .addCase(applyCouponCode.fulfilled, (state, action) => {
+          state.couponMessage = action.payload.message; // Store the success message
+        })
+        .addCase(applyCouponCode.rejected, (state, action) => {
+          state.couponMessage = action.payload?.message || "Coupon application failed.";
+        });
                 
        
     },
