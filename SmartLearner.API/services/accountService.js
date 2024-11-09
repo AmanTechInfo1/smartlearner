@@ -355,7 +355,7 @@ class AccountService {
         to: email,
         subject: "Password Reset Request",
         text: `To reset your password, please click on the following link:
-       https://web.smartlearner.com/forgot-password/${resetToken}`,
+       https://smartlearner.com/forgot-password/${resetToken}`,
       };
 
       await transporter.sendMail(mailOptions);

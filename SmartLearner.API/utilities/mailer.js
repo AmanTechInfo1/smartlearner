@@ -33,7 +33,7 @@ const mailSender = async (type,to,data) => {
         mailOptions["subject"]="Your Ressponse Recorded"
     }
     if(type=="Admin"){
-        mailOptions["to"]="ritikrana4321@gmail.com"
+        mailOptions["to"]="admin@smartlearner.com"
         mailOptions["html"]=`<b>Name : </b>${data.name}</b> <br/><b>Email : </b>${data.email}</b> <br/><b>Phone Number : </b>${data.phoneNumber}</b> <br/><b>Message : </b>${data.message}</b>`
         mailOptions["subject"]="New Contact Request"
     }

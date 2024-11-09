@@ -40,7 +40,7 @@ class OrderService {
         seller_key: process.env.SELLER_KEY || "02317830",
         ekashu_failure_url: `https://api.smartlearner.com/api/order/paymentFailed`,
         ekashu_success_url: `https://api.smartlearner.com/api/order/paymentSuccess`,
-        ekashu_return_url: `https://web.smartlearner.com/checkout`,
+        ekashu_return_url: `https://smartlearner.com/checkout`,
         ekashu_reference: orderId,
       };
 
