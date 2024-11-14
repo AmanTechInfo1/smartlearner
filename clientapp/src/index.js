@@ -22,6 +22,8 @@ root.render(
         options={{
           "client-id":
             "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL",
+            currency: "GBP",
+            intent: "capture",
         }}>
         <RouterProvider router={router} />
 
