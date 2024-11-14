@@ -357,7 +357,7 @@ class AccountService {
       });
 
       const mailOptions = {
-        from: "amanchandel2620@gmail.com",
+        from: "admin@smartlearner.com",
         to: email,
         subject: "Password Reset Request",
         text: `To reset your password, please click on the following link:

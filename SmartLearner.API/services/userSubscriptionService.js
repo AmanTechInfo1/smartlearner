@@ -53,7 +53,7 @@ class UserSubscriptionService {
         purchase_units: [
           {
             amount: {
-              currency_code: "USD",
+              currency_code: "GBP",
               value: parseFloat(plan.price).toFixed(2), // Ensure it's formatted correctly as a string
               // Convert price to string
             },
