@@ -10,7 +10,7 @@ const { ROLES } = require("../utilities/constatnt");
 const Role = require("../models/roleModel");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
-
+const { sendWelcomeEmail, sendAdminNotification } = require('../services/emailService');
 
 class AccountService {
   async registerUserAsync(userData) {
@@ -35,6 +35,9 @@ class AccountService {
         // privacyPolicy,
         isBcryptHashed: true,
       });
+
+      await sendWelcomeEmail(user);  // Send thank-you email to the user
+      await sendAdminNotification(user); 
 
       return user;
     } catch (err) {
@@ -282,9 +285,12 @@ class AccountService {
 
   async updateUserAsync(roleId, roleData) {
     try {
+     
+
       const role = await User.findByIdAndUpdate(roleId, roleData, {
         new: true,
       });
+      
       const resultObject = {
         message: "Updated successfully",
         statusCode: 201,
@@ -355,12 +361,39 @@ class AccountService {
         to: email,
         subject: "Password Reset Request",
         text: `To reset your password, please click on the following link:
-       https://smartlearner.com/forgot-password/${resetToken}`,
+       http://localhost:3000/reset-password/${resetToken}`,
       };
 
       await transporter.sendMail(mailOptions);
 
       return { success: true, message: "Reset link sent to your email" };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+  async resetPasswordAsync(resetToken, newPassword) {
+    try {
+      // Find the user based on the reset token
+      const user = await User.findOne({
+        resetPasswordToken: resetToken,
+        resetPasswordExpires: { $gt: Date.now() }, // Token must not be expired
+      });
+
+      if (!user) {
+        throw new Error("Invalid or expired reset token");
+      }
+
+      // Hash the new password
+      const salt = await bcrypt.genSalt();
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+      // Update user's password and clear reset token fields
+      user.password = hashedPassword;
+      user.resetPasswordToken = undefined; // Clear reset token
+      user.resetPasswordExpires = undefined; // Clear expiry time
+      await user.save();
+
+      return { success: true, message: "Password has been reset successfully" };
     } catch (error) {
       throw new Error(error.message);
     }

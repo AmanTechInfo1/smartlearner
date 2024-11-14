@@ -1,9 +1,10 @@
+// EnquiryForm.jsx
 import { Controller, useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { enquiryData } from "../../redux/features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { enquiryFormSchema } from "../../schemas/master";
-import styles from "../../pages/SpecialityTraining/ExtendedTest.module.css"
+import styles from "../../pages/SpecialityTraining/ExtendedTest.module.css";
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();
@@ -16,20 +17,19 @@ export default function EnquiryForm() {
     resolver: yupResolver(enquiryFormSchema),
   });
 
+  // Handle form submission
   const handleEnquiryForm = async (data) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("phoneNumber", data.phoneNumber);
-    formData.append("message", data.message);
-    formData.append("formType", "EnquiryForm");
+    // Append formType to the data object
+    data.formType = "EnquiryForm";
+
+    // Dispatch enquiry data to Redux
     dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (
     <div>
       <section className={styles.formContainer}>
-        <hr/>
+        <hr />
         <section className={styles.innerFormSection}>
           <div className={styles.enquiryForm}>
             <h4>Enquiry Form</h4>
@@ -127,7 +127,7 @@ export default function EnquiryForm() {
                   <p style={{ color: "red" }}>{errors?.message?.message}</p>
                 )}
               </div>
-              
+
               <div className={styles.formBtn}>
                 <button type="submit" id={styles.formBtn}>
                   Submit

@@ -23,17 +23,8 @@ export default function ContactUs() {
   });
 
   const handleContactUsForm = async (data) => {
-    const formData = new FormData();
-    formData.append("firstName", data.firstName);
-    formData.append("lastName", data.lastName);
-    formData.append("address", data.address);
-    formData.append("postcode", data.postcode);
-    formData.append("phoneNumber", data.phoneNumber);
-    formData.append("email", data.email);
-    formData.append("tutionType", data.tutionType);
-    formData.append("instructorType", data.instructorType);
-    formData.append("message", data.message);
-    formData.append("formType", "contactUsForm");
+    data.formType = "contactUsForm";
+    
     dispatch(enquiryData({ requestData: data, reset }));
   };
 

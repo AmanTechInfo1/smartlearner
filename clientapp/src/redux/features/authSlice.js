@@ -57,8 +57,19 @@ const authSlice = createSlice({
       })
       .addCase(resetPassword.rejected, (state) => {
         state.loading = false;
+      })
+      //////////////////////////////////////
+      .addCase(completePasswordReset.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(completePasswordReset.fulfilled, (state, action) => {
+        state.loading = false;
+        toast.success("Password reset successfully.");
+      })
+      .addCase(completePasswordReset.rejected, (state) => {
+        state.loading = false;
+        toast.error("Failed to reset password.");
       });
-      
   },
 });
 export const registerUser = createAsyncThunk(
@@ -180,6 +191,29 @@ export const resetPassword = createAsyncThunk(
     } catch (error) {
 
       toast.error("Something went wrong, please try again.");
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const completePasswordReset = createAsyncThunk(
+  "auth/completePasswordReset",
+  async ({ resetToken, newPassword }, { rejectWithValue }) => {
+    try {
+      const response = await http.post("/api/account/reset-password", {
+        resetToken,
+        newPassword,
+      });
+
+      const data = response.data;
+      if (data.success) {
+        toast.success("Password reset successfully.");
+      } else {
+        toast.error(data.message || "Failed to reset password.");
+      }
+
+      return data;
+    } catch (error) {
+      toast.error("Something went wrong during the password reset.");
       return rejectWithValue(error.message);
     }
   }

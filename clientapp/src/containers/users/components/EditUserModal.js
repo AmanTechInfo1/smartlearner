@@ -28,7 +28,7 @@ function EditUserModal(props) {
         username: user.username,
         email: user.email,
         phoneNumber: user.phoneNumber,
-        roleName: user.roleName,
+        roleName: user.roleName || "",
       });
     }
   }, [user]);
@@ -71,7 +71,7 @@ function EditUserModal(props) {
       );
     }
   };
-
+  console.log("roled", rolesList)
   return (
     <>
       {!loading ? (
@@ -137,7 +137,7 @@ function EditUserModal(props) {
                     errors.roleName ? "error-input" : ""
                   }`}
                   name="roleName"
-                  value={formData.roleName}
+                  value={formData.roleName  || ""}
                   onChange={handleInputChange}
                 >
                   <option disabled value="">
@@ -146,6 +146,7 @@ function EditUserModal(props) {
                   {rolesList.map((role) => (
                     <option key={role._id} value={role.name}>
                       {role.name}
+                    
                     </option>
                   ))}
                 </select>

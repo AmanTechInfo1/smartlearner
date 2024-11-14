@@ -1,15 +1,22 @@
-const Enquiry = require("../models/EnquiryModel");
-const mailSender = require("../utilities/mailer");
-const enquiryForm = async (req, res) => {
+const { processForm } = require('../services/emailService');
+
+const submitForm = async (req, res) => {
+  const { formType, ...formData } = req.body;
+
   try {
-    const response = req.body;
-    await mailSender("User",response["email"],response)
-    await mailSender("Admin",response["email"],response)
-    return res.status(200).json({ success:true,message: "Message Send Successfully" });
+    const result = await processForm(formType, formData);
+
+    if (result.success) {
+      return res.status(200).json({ success: true, message: `${formType} submitted successfully!` });
+    } else {
+      return res.status(400).json({ success: false, message: result.error || 'Error processing form' });
+    }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Message Not Delivered" });
+    console.error('Error in form submission:', error);
+    return res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 };
 
-module.exports = enquiryForm;
+module.exports = {
+  submitForm
+};

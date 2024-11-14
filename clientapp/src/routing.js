@@ -126,6 +126,7 @@ import PartOneTest from "./pages/adiPages/additionalPages/PartOneTest";
 import TestDayTips from "./pages/adiPages/additionalPages/TestDayTips";
 import GoodLuckPage from "./pages/adiPages/additionalPages/Goodlucksign";
 import HazzardClips from "./pages/adiPages/additionalPages/HazzardClips";
+import ResetPasswordPage from "./pages/auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -299,6 +300,7 @@ export const router = createBrowserRouter([
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
   { path: "forgot-password", element: <ForgotPassword /> },
+  {path: "reset-password/:resetToken", element: <ResetPasswordPage/>},
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
   {

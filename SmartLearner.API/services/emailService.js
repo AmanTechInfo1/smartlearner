@@ -1,31 +1,292 @@
 const nodemailer = require("nodemailer");
 
-class EmailService {
-  async sendEmail(to, subject, text) {
-    try {
-      // Create a nodemailer transporter using SMTP
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD,
-        },
-      });
+// Send Email function
+const sendEmail = async (subject, message) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "amanchandel2620@gmail.com", // Your email
+      pass: "noey ovjq zsyb waut", // Your email password or app password
+    },
+  });
 
-      // Send mail with defined transport object
-      const info = await transporter.sendMail({
-        from: `"Your App" <${process.env.SMTP_EMAIL}>`, // sender address
-        to, // list of receivers
-        subject, // Subject line
-        text, // plain text body
-      });
+  const mailOptions = {
+    from: "amanchandel2620@gmail.com", // Sender's email
+    to: "amanchandel2620@gmail.com", // Admin's email
+    subject,
+    html: message, // Send HTML formatted message
+  };
 
-    } catch (err) {
-      throw new Error(err.message);
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    return { success: true };
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return { success: false, error: error.message };
   }
-}
+};
 
-module.exports = new EmailService();
+// Handle Contact Us Form
+const handleContactForm = (formData) => {
+  return `
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+            <h2>New Contact Us Form Submission</h2>
+            <p><strong>First Name:</strong> ${formData.firstName}</p>
+            <p><strong>Last Name:</strong> ${formData.lastName}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Address:</strong> ${formData.address}</p>
+            <p><strong>Postcode:</strong> ${formData.postcode}</p>
+            <p><strong>Phone:</strong> ${formData.phoneNumber}</p>
+            <p><strong>Instructor Type:</strong> ${formData.instructorType}</p>
+            <p><strong>Tuition Type:</strong> ${formData.tutionType}</p>
+            <p><strong>Message:</strong> ${formData.message}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+};
+
+// Handle Callback Form
+const handleCallbackForm = (formData) => {
+  return `
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+            <h2>New Callback Form Submission</h2>
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Phone:</strong> ${formData.phoneNumber}</p>
+            <p><strong>Message:</strong> ${formData.message}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+};
+
+// Handle Driven Form
+const handleDrivenForm = (formData) => {
+  return `
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+            <h2>New Driven Form Submission</h2>
+            <p><strong>Driven Before:</strong> ${formData.drivenBefore}</p>
+            <p><strong>Preferred Type:</strong> ${formData.preferredType}</p>
+            <p><strong>Postcode:</strong> ${formData.postcode}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+};
+
+// Handle Enquiry Form
+const handleEnquiryForm = (formData) => {
+  return `
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+            <h2>New Enquiry Form Submission</h2>
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Phone:</strong> ${formData.phoneNumber}</p>
+            <p><strong>Message:</strong> ${formData.message}</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+};
+
+// Process the form based on formType
+const processForm = async (formType, formData) => {
+  let message;
+
+  if (formType === "drivenForm") {
+    message = handleDrivenForm(formData);
+  } else if (formType === "EnquiryForm") {
+    message = handleEnquiryForm(formData);
+  } else if (formType === "callbackForm") {
+    message = handleCallbackForm(formData);
+  } else if (formType === "contactUsForm") {
+    message = handleContactForm(formData);
+  } else {
+    return { success: false, error: "Invalid form type" };
+  }
+
+  // Send email with the appropriate message
+  const emailResult = await sendEmail(`New ${formType} Submission`, message);
+  return emailResult;
+};
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+// Configure the transport for email sending
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "amanchandel2620@gmail.com", // Your email
+    pass: "noey ovjq zsyb waut", // Use an app password or OAuth2 for production
+  },
+});
+
+// Function to send email
+const sendRegisterEmail = async (to, subject, htmlContent) => {
+  const mailOptions = {
+    from: "amanchandel2620@gmail.com",
+    to: to,
+    subject: subject,
+    html: htmlContent, // Send HTML content for rich formatting
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
+
+// Send welcome email to the user
+const sendWelcomeEmail = async (userData) => {
+  const { email, username } = userData;
+  const subject = "Welcome to SmartLearner";
+  const htmlContent = `
+  <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+           <h1>Welcome, ${username}!</h1>
+    <p>Thank you for registering with SmartLearner. We're excited to have you on board!</p>
+    <p>If you need any assistance, feel free to reach out to our support team at admin@smartlearner.com</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  
+  `;
+
+  await sendRegisterEmail(email, subject, htmlContent);
+};
+
+// Send registration details to the admin
+const sendAdminNotification = async (userData) => {
+  const { username, email, phoneNumber,roleName } = userData;
+  const subject = "New User Registration";
+  const htmlContent = `
+   <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; color: #333; }
+          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+          .header { text-align: center; }
+          .header img { width: 150px; }
+          .body { padding: 10px 0; }
+          .body h2 { color: #444; }
+          .body p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+          </div>
+          <div class="body">
+           <h1>New User Registered</h1>
+    <p><strong>Username:</strong> ${username}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+    <p><strong>Role Selected</strong> ${roleName}</p>
+    <p>Welcome to SmartLearner!</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  // Send email to the admin
+  await sendRegisterEmail("amanchandel2620@gmail.com", subject, htmlContent); // Replace with actual admin email
+};
+
+module.exports = {
+  processForm,
+  sendWelcomeEmail,
+  sendAdminNotification,
+};

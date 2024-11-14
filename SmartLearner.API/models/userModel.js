@@ -3,7 +3,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  phoneNumber: { type: String, required: true },
+  phoneNumber: { type: String, },
   createdOn: { type: Date, required: true, default: Date.now },
   isEmailVerified: { type: Boolean, required: true, default: false },
   isActive: { type: Boolean, required: true, default: false },

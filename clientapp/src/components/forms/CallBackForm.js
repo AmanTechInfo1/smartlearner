@@ -17,13 +17,8 @@ export default function CallBackForm() {
     resolver: yupResolver(callBackFormSchema),
   });
   const handleCallBackForm = async (data) => {
-    const formData = new FormData();
-
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("phoneNumber", data.phoneNumber);
-    formData.append("message", data.message);
-    formData.append("formType", "callbackForm");
+    data.formType = "callbackForm";
+    
     dispatch(enquiryData({ requestData: data, reset }));
   };
 

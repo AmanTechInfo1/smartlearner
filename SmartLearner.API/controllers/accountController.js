@@ -72,11 +72,7 @@ class AccountController {
 
   async updateUser(req, res, next) {
     try {
-      // if ("password" in req.body && req.body["password"]) {
-      //   const salt = await bcrypt.genSalt();
-      //   const hashedPassword = await bcrypt.hash(req.body["password"], salt);
-      //   req.body["password"] = hashedPassword;
-      // }
+     
       const updatedUser = await accountService.updateUserAsync(
         req.params.id,
         req.body
@@ -105,6 +101,16 @@ class AccountController {
       res.json(result);
     } catch (err) {
       res.status(400).json({ success: false, message: err.message });
+    }
+  }
+  async resetPassword(req, res) {
+    const { resetToken, newPassword } = req.body;
+
+    try {
+      const result = await accountService.resetPasswordAsync(resetToken,newPassword);
+      res.json(result);
+    } catch (err) {
+      res.status(400).json({success: false,  message: err.message });
     }
   }
 }

@@ -19,12 +19,8 @@ export default function DrivenForm() {
   });
 
   const handleDrivenBeforeForm = async (data) => {
-    const formData = new FormData();
-    formData.append("drivenBefore", data.drivenBefore); 
-    formData.append("preferredType", data.preferredType); 
-    formData.append("postcode", data.postcode); 
-    formData.append("formType", "drivenForm");
-    dispatch(enquiryData({ requestData: formData, reset }));
+    data.formType = "drivenForm";
+    dispatch(enquiryData({ requestData: data, reset }));
   };
 
   return (
