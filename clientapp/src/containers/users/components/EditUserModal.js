@@ -64,7 +64,9 @@ function EditUserModal(props) {
       formDataToSend.append("username", formData.username);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("phoneNumber", formData.phoneNumber);
-      formDataToSend.append("roleName", formData.roleName);
+      const selectedRole = rolesList.find(role => role.name === formData.roleName);
+    formDataToSend.append("roleId", selectedRole ? selectedRole._id : "");
+
 
       dispatch(
         editUser(user.uniqueId, formDataToSend, props.toggleEditUserModal, props.state)

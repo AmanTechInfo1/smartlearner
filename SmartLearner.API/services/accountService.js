@@ -285,18 +285,39 @@ class AccountService {
 
   async updateUserAsync(roleId, roleData) {
     try {
-     
-
-      const role = await User.findByIdAndUpdate(roleId, roleData, {
-        new: true,
+      // Step 1: Update the user with new data
+      const updatedUser = await User.findByIdAndUpdate(roleId, roleData, {
+        new: true,  // Return the updated user
       });
-      
+  
+      if (!updatedUser) {
+        throw new Error("User not found.");
+      }
+  
+      // Step 2: Update or create the user role in the UserRole collection
+      let userRole = await UserRole.findOneAndUpdate(
+        { userId: roleId },  // Find UserRole by userId
+        { roleId: roleData.roleId }, // Update the roleId
+        { new: true } // Return the updated userRole
+      );
+  
+      if (!userRole) {
+        // If no existing UserRole document was found, create a new one
+        userRole = new UserRole({
+          userId: roleId,
+          roleId: roleData.roleId,
+        });
+        await userRole.save(); // Save the new UserRole document
+      }
+  
+      // Step 3: Return the updated data (user and userRole)
       const resultObject = {
         message: "Updated successfully",
         statusCode: 201,
         success: true,
-        data: { role },
+        data: { updatedUser, userRole },
       };
+  
       return resultObject;
     } catch (err) {
       const resultObject = {
@@ -308,6 +329,7 @@ class AccountService {
       return resultObject;
     }
   }
+  
 
   async deleteUserAsync(roleId) {
     try {
