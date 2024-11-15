@@ -29,7 +29,10 @@ export default function AdiPartOne() {
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
-    } else {
+    } else if (userDetails.role === "traineeinstructor") {
+      // Allow admin to access the portal
+      return;
+    }else {
       
       const subscription = userSubscription[0]?.subscriptionId; 
       const hasAccess = subscription && (

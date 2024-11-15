@@ -48,6 +48,9 @@ export default function AdiPartTwo() {
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
+    }else if (userDetails.role === "traineeinstructor") {
+      // Allow admin to access the portal
+      return;
     } else {
       // Check the subscription plan category
       const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
