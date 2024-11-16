@@ -33,6 +33,7 @@ import { enquiryData } from "../redux/features/enquirySlice";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
 import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg";
+import CallBackForm from "../components/forms/CallBackForm";
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -392,6 +393,9 @@ export default function Home() {
           </div>
         </section>
         {/* //////////////carousel section///////////////// */}
+        <div style={{maxWidth:'700px',width:'100%', margin:'2rem auto'}}>
+        <CallBackForm/>
+        </div>
 
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>

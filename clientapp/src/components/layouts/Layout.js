@@ -77,16 +77,31 @@ function Layout() {
             <section style={{ position: "relative" }}>
               <section
                 className="callbackFormSection"
-                style={callbackFormSectionStyle}>
+                style={callbackFormSectionStyle}
+              >
                 <div
                   className="callbackFormContent"
-                  style={callbackFormContentStyle}>
+                  style={callbackFormContentStyle}
+                >
                   <CallBackForm />
                   <div className="callbackFormContentPG">
-                    
-                    <p style={{fontSize:'1.7rem'}}>
-                    If you're not quite ready to book your first lesson and have a few more questions, or if you simply need some extra support, we’ve got you covered! Just fill out our quick enquiry form, and we’ll get in touch shortly.
+                    <p style={{ fontSize: "3rem", color: "red", fontWeight:"700"}}>
+                      Call Us Now !{" "}
                     </p>
+                    <a href="tel:02475092784" style={{ textDecoration: "none" }}>
+                      <button
+                        style={{
+                          padding: "10px 20px",
+                          border: "none",
+                          backgroundColor: "red",
+                          color: "white",
+                          fontWeight: "bolder",
+                          borderRadius: "6px",
+                        }}
+                      >
+                        Get In Touch
+                      </button>
+                    </a>
                   </div>
                 </div>
               </section>
@@ -146,7 +161,8 @@ const callbackFormSectionStyle = {
   maxHeight: "100vh", // Limits the height of the section
   overflowY: "auto", // Allows internal scrolling
   padding: "20px",
-
+maxWidth: "1440",
+width:'100%',
   borderRadius: "10px",
 };
 

@@ -22,6 +22,7 @@ import { useParams } from "react-router-dom";
 import ImagesCarousel from "../../components/imageCarousel/ImagesCarousel";
 
 import Corousel from "../../components/ui/Carousel";
+import CallBackForm from "../../components/forms/CallBackForm";
 
 export default function DrivingLessons() {
   const { section } = useParams();
@@ -320,6 +321,11 @@ export default function DrivingLessons() {
           }}
         /> */}
       </div>
+{/* ======================================= */}
+<div style={{maxWidth:'700px',width:'100%', margin:'2rem auto'}}>
+        <CallBackForm/>
+        </div>
+{/* //////////////////////////////// */}
       <section className={styles.imageSliderContainer}>
         <div className={styles.whyChooseText}>
           <p>
