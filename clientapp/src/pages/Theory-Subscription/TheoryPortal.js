@@ -25,9 +25,9 @@ import QuizMain from "../../components/takequizes/QuizMain";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getMyDashboard,
-  getMySubscription,
-} from "../../redux/features/dashboardSlice";
+  fetchUserSubscriptions,
+  
+} from "../../redux/features/subscriptionSlice";
 import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
@@ -50,23 +50,25 @@ export default function TheoryPortal() {
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
       navigate("/login"); // Redirect to login if user is not logged in
-    } else if (userDetails.role === "admin") {
-      // Allow admin to access the portal
+    } else if (userDetails.role === "admin" || userDetails.role === "theoryinstructor") {
+      // Allow admin or instructor to access the portal
       return;
-    } else {
-      // Check the subscription plan category
-      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
-      const hasAccess = subscription && (
-        // subscription.planCategory === "free-trial" || 
-        subscription.planCategory === "theory-portal package" ||
-        subscription.planCategory === "theory-portal free-trial"
+    } 
+   else {
+    const hasAccess = Array.isArray(userSubscription) && userSubscription.some((subscription) => {
+      const { planCategory } = subscription.subscriptionId || {};
+      const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+    
+      return (
+        (subscription.isActive && (
+          planCategory === "theory-portal package" ||
+          planCategory === "theory-portal free-trial"
+        )) || couponApplied === true
       );
-  
-      console.log("userSubscription", userSubscription);
-
-      if (!hasAccess) {
-        navigate("/Theory-Subscription");
-      }
+    });
+    if (!hasAccess) {
+      navigate("/Theory-Subscription"); // Redirect to subscription page if no valid plan found
+    }    
     }
   }, [userDetails, userSubscription, dispatch, navigate]);
 

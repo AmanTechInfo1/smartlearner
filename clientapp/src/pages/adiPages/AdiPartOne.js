@@ -29,23 +29,30 @@ export default function AdiPartOne() {
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
-    } else if (userDetails.role === "traineeinstructor") {
+    } else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
     }else {
+      const hasAccess = Array.isArray(userSubscription) &&  userSubscription.some((subscription) => {
+        const { planCategory } = subscription.subscriptionId || {};
+        const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
       
-      const subscription = userSubscription[0]?.subscriptionId; 
-      const hasAccess = subscription && (
-       
-        subscription.planCategory === "pdi-part-one packages" ||
-        subscription.planCategory === "Complete packages"
-      );
-  
-      console.log("userSubscription", userSubscription);
-
+        return (
+          (subscription.isActive && (
+            planCategory === "pdi-part-one packages" ||
+            planCategory === "Complete packages"
+          )) || couponApplied === true
+        );
+      });
       if (!hasAccess) {
-        navigate("/part-one-subscription");
-      }
+        navigate("/part-one-subscription"); // Redirect to subscription page if no valid plan found
+      }    
+
+
+
+
+
+     
     }
   }, [userDetails, userSubscription, dispatch, navigate]);
   return (

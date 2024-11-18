@@ -23,14 +23,12 @@ const PartOneSubscription = () => {
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
-    dispatch(fetchPlans());
-    dispatch(fetchUserSubscriptions())
-  }, [dispatch]);
-  useEffect(() => {
     if (userId) {
       dispatch(fetchUserSubscriptions(userId));
     }
-  }, [dispatch, userId]); // Added userId as a dependency
+    dispatch(fetchPlans());
+    
+  }, [dispatch, userId]);
   
 
   const handleCouponSubmit = async () => {

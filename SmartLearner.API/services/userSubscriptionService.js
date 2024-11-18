@@ -122,7 +122,7 @@ class UserSubscriptionService {
 
   // //////////////////////////////coupon code ///////////////////////////
   async applyCouponCode(userId, couponCode) {
-    const validCoupon = 'SMARTTHEORY'; // The valid coupon code
+    const validCoupon = 'FREETHEORY'; // The valid coupon code
 
     if (couponCode === validCoupon) {
       // Check if the user already has a subscription with the coupon applied

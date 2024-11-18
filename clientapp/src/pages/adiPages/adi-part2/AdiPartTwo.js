@@ -48,20 +48,27 @@ export default function AdiPartTwo() {
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
-    }else if (userDetails.role === "traineeinstructor") {
+    }else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
     } else {
-      // Check the subscription plan category
-      const subscription = userSubscription[0]?.subscriptionId; // Use optional chaining
-      const hasAccess = subscription && (
-        subscription.planCategory === "pdi-part-two packages" ||
-         subscription.planCategory === "Complete packages"
-      );
 
+      const hasAccess = Array.isArray(userSubscription) && userSubscription.some((subscription) => {
+        const { planCategory } = subscription.subscriptionId || {};
+        const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+      
+        return (
+          (subscription.isActive && (
+            planCategory === "pdi-part-two packages" ||
+            planCategory === "Complete packages"
+          )) || couponApplied === true
+        );
+      });
       if (!hasAccess) {
-        navigate("/part-two-subscription"); // Redirect if the user does not have access
-      }
+        navigate("/part-two-subscription"); // Redirect to subscription page if no valid plan found
+      }    
+      // Check the subscription plan category
+    
     }
   }, [userDetails, userSubscription, dispatch, navigate]);
 

@@ -998,6 +998,7 @@ ul {
   padding: 30px;
 }
 .callbackFormContentPG {
+  max-width: 800px;
   width: 100%;
   padding: 50px 30px;
   color: white;

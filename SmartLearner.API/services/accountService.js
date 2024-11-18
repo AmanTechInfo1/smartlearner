@@ -21,6 +21,10 @@ class AccountService {
       if (existingUser) {
         throw new Error("Email already exists");
       }
+      const existingusername = await User.findOne({ username });
+      if (existingusername) {
+        throw new Error("username already exists");
+      }
 
       // Hash the password
       const salt = await bcrypt.genSalt();

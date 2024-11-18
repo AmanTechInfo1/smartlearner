@@ -21,14 +21,13 @@ const TheorySubscription = () => {
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
-    dispatch(fetchPlans());
-    dispatch(fetchUserSubscriptions());
-  }, [dispatch]);
-  useEffect(() => {
     if (userId) {
       dispatch(fetchUserSubscriptions(userId));
     }
-  }, [dispatch, userId]); // Added userId as a dependency
+    dispatch(fetchPlans());
+   
+  }, [dispatch,userId]);
+ // Added userId as a dependency
 ////////////////////////////////////////////////////////
 const handleCouponSubmit = async () => {
   try {

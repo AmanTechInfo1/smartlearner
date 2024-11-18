@@ -84,7 +84,7 @@ class OrderController {
 
         }
       };
-      res.redirect(`${process.env.FRONTEND_URL || "https://web.smartlearner.com"}/paymentSuccess`);
+      res.redirect(`${process.env.FRONTEND_URL || "https://smartlearner.com"}/paymentSuccess`);
       
     } catch (err) {
       next(err);
@@ -103,9 +103,9 @@ class OrderController {
     try {
 
 
-      let SELLER_ID = '99963233'
-      let SELLER_KEY = '02317830'
-      let HASH_KEY = '0MTsdaVgBDdsB5w2'
+      let SELLER_ID = '25071147'
+      let SELLER_KEY = '4344367238746739'
+      let HASH_KEY = '4TZ5dm748Jq8hVzc'
 
 
 
