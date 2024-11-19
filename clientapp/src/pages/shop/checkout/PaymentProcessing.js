@@ -19,8 +19,8 @@ export default function PaymentProcessing() {
     return state.cart.hashcode;
   });
   const [formData, setFormData] = useState({
-    ekashu_seller_id: carting.seller_id,
-    ekashu_seller_key: carting.seller_key,
+    ekashu_seller_id: carting.ekashu_seller_id,
+    ekashu_seller_key: carting.ekashu_seller_key,
     ekashu_amount: carting.total.toFixed(2),
     orderId: carting._id,
     ekashu_currency: "GBP",
@@ -50,6 +50,8 @@ export default function PaymentProcessing() {
   const callFunApi = async (e) => {
     e.preventDefault();
 
+
+    
     const form = e.target;
     const additionalData = document.createElement("input");
     additionalData.type = "hidden";
@@ -81,12 +83,12 @@ export default function PaymentProcessing() {
         <input
           type="hidden"
           name="ekashu_seller_id"
-          value={carting.seller_id}
+          value={formData.ekashu_seller_id}
         />
         <input
           type="hidden"
           name="ekashu_seller_key"
-          value={carting.seller_key}
+          value={formData.ekashu_seller_key}
         />
         <input
           type="hidden"
@@ -105,11 +107,10 @@ export default function PaymentProcessing() {
         <input type="hidden" name="ekashu_card_title_mandatory" value="false" />
         <input type="hidden" name="ekashu_card_email_address_mandatory" value="false" />
 
-        {/* {hashCode && (
-          <input type="text" name="ekashu_hash_code" id="ekashu_hash_code" value={carting.ekashu_hash_code} />
-        )} */}
+       
+          <input type="hidden" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} />
+        
         <input type="hidden" name="ekashu_hash_code_type" id="ekashu_hash_code_type" value="SHA256HMAC" />
-        <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />
         <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />
      
         <input type="hidden" name="ekashu_reference" value={carting.ekashu_reference} />

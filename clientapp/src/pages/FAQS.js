@@ -104,10 +104,10 @@ export default function FAQS() {
           </div>
         </section>
         {/* //////////////////////////////// */}
-        <section className={styles.drivenBefore}>
+        {/* <section className={styles.drivenBefore}>
           <h2>Search for driving lessons in your area</h2>
           <DrivenForm />
-        </section>
+        </section> */}
         {/* ////////////////////////////////// */}
         <section className={styles.nextFormSection}>
           <div className={styles.nextFormContainer}>

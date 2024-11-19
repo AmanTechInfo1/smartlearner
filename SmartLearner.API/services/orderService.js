@@ -36,8 +36,8 @@ class OrderService {
       const totalCount = await Order.countDocuments();
 
       let valU = {
-        seller_id: process.env.SELLER_ID || "25071147",
-        seller_key: process.env.SELLER_KEY || "4344367238746739",
+        ekashu_seller_id: process.env.SELLER_ID || "25071147",
+        ekashu_seller_key: process.env.SELLER_KEY || "4344367238746739",
         ekashu_failure_url: `https://api.smartlearner.com/api/order/paymentFailed`,
         ekashu_success_url: `https://api.smartlearner.com/api/order/paymentSuccess`,
         ekashu_return_url: `https://smartlearner.com/checkout`,
@@ -418,64 +418,7 @@ class OrderService {
     }
   }
 
-  // async getMyOrderAsync(idd) {
-  //   try {
 
-  //     let aggr = [
-  //       {
-  //         '$match': {
-  //           'user': new ObjectId(idd)
-  //         }
-  //       },
-  //       {
-  //         '$lookup': {
-  //           'from': 'users',
-  //           'localField': 'userId',
-  //           'foreignField': '_id',
-  //           'as': 'user'
-  //         }
-  //       }, {
-  //         '$unwind': {
-  //           'path': '$user',
-  //           'preserveNullAndEmptyArrays': true
-  //         }
-  //       }, {
-  //         '$lookup': {
-  //           'from': 'products',
-  //           'localField': 'myCart.id',
-  //           'foreignField': '_id',
-  //           'as': 'myCartList'
-  //         }
-  //       }, {
-  //         '$project': {
-  //           'user.password': 0,
-  //           'user._id': 0,
-  //           'user.privacyPolicy': 0,
-  //           'user.isEmailVerified': 0,
-  //           'user.isActive': 0,
-  //           'user.isUpdated': 0,
-  //           'user.isDeleted': 0,
-  //           'user.isBcryptHashed': 0,
-  //           'user.createdOn': 0,
-  //           'user.__v': 0
-  //         }
-  //       }
-  //     ]
-
-  //     const order = await Order.aggregate(aggr);
-  //     const totalCount = await Order.countDocuments();
-  //     const resultObject = {
-  //       message: "Order Fetch Successfully",
-  //       statusCode: 201,
-  //       success: true,
-  //       data: { order, totalCount }
-  //     };
-  //     return resultObject;
-  //   } catch (err) {
-
-  //     throw new Error("Could not fetch role");
-  //   }
-  // }
 }
 
 module.exports = new OrderService();
