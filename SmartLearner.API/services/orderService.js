@@ -37,7 +37,7 @@ class OrderService {
 
       let valU = {
         ekashu_seller_id: process.env.SELLER_ID || "25071147",
-        ekashu_seller_key: process.env.SELLER_KEY || "4344367238746739",
+        ekashu_seller_key: process.env.SELLER_KEY || "43443672",
         ekashu_failure_url: `https://api.smartlearner.com/api/order/paymentFailed`,
         ekashu_success_url: `https://api.smartlearner.com/api/order/paymentSuccess`,
         ekashu_return_url: `https://smartlearner.com/checkout`,

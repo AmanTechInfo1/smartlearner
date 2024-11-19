@@ -104,7 +104,7 @@ class OrderController {
 
 
       let SELLER_ID = '25071147'
-      let SELLER_KEY = '4344367238746739'
+      let SELLER_KEY = '43443672'
       let HASH_KEY = '4TZ5dm748Jq8hVzc'
 
 

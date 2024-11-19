@@ -113,7 +113,7 @@ export default function Checkout() {
             </div>
             <div className="mb-4">
               <label className="block font-semibold mb-1" htmlFor="county">
-                County (Optional)
+                Country <span className="text-red-500">*</span>
               </label>
               <input
                 className="w-full p-2 border border-zinc-300 rounded"
@@ -121,6 +121,7 @@ export default function Checkout() {
                 id="county"
                 value={formData.county}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="mb-4">
