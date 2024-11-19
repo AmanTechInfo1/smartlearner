@@ -108,7 +108,7 @@ export default function PaymentProcessing() {
         <input type="hidden" name="ekashu_card_email_address_mandatory" value="false" />
 
        
-          <input type="hidden" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} />
+          {/* <input type="hidden" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} /> */}
         
         <input type="hidden" name="ekashu_hash_code_type" id="ekashu_hash_code_type" value="SHA256HMAC" />
         <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />
