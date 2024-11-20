@@ -123,9 +123,7 @@ class OrderController {
       data["ekashu_seller_id"] = SELLER_ID
       data["ekashu_seller_key"] = SELLER_KEY
       data["ekashu_amount"] = total
-      // data["ekashu_amount"]=total
-
-
+    
       const check_fields = [
         'ekashu_3d_secure_verify', 'ekashu_amount', 'ekashu_amount_format',
         'ekashu_auto_confirm', 'ekashu_callback_failure_url',
