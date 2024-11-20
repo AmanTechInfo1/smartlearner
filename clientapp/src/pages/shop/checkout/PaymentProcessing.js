@@ -36,9 +36,7 @@ export default function PaymentProcessing() {
     ekashu_style_sheet:
       "https://cloudfront.posinabox.eu/creditcall_gateway_branding_ecommerce/css/style_test.css",
     ekashu_failure_url: carting.ekashu_failure_url,
-    
-    ekashu_reference: carting.ekashu_reference,
-    
+    ekashu_success_url: carting.ekashu_success_url,
     ekashu_viewport:
       "device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
   });
@@ -106,16 +104,14 @@ export default function PaymentProcessing() {
         <input type="hidden" name="ekashu_card_zip_code_verify" value="check" />
         <input type="hidden" name="ekashu_card_title_mandatory" value="false" />
         <input type="hidden" name="ekashu_card_email_address_mandatory" value="false" />
-          {/* <input type="hidden" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} /> */}
+        <input type="hidden" name="ekashu_hash_code" id="ekashu_hash_code" value={hashcoding} />
         <input type="hidden" name="ekashu_hash_code_type" id="ekashu_hash_code_type" value="SHA256HMAC" />
         <input type="hidden" name="ekashu_hash_code_version" id="ekashu_hash_code_version" value="2.0.0" />
-     
-        <input type="hidden" name="ekashu_reference" value={carting.ekashu_reference} />
         <input type="hidden" name="ekashu_style_sheet" value="https://cloudfront.posinabox.eu/creditcall_gateway_branding_ecommerce/css/style_test.css" />
         <input type="hidden" name="ekashu_failure_url" value={carting.ekashu_failure_url} />
-      
+        <input type="hidden" name="ekashu_success_url" value={carting.ekashu_success_url}/>
         <input type="hidden" name="ekashu_viewport" value="device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+        
         <button className="pay-button" type="submit">
           Pay
         </button>
