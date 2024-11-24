@@ -147,12 +147,32 @@ export default function PaymentProcessing() {
 
   const sendEmail = (status, details) => {
     // Send email logic here - This will involve your backend to trigger email notifications
+    const cartItems = carting.myCart.map((item) => ({
+      service: item.service,
+      price: item.price,
+      count: item.count,
+      total: item.price * item.count,
+    }));
+
     const emailData = {
-      status,
-      details,
-      userEmail: carting.email, // user email for success/failure
-      adminEmail: "admin@smartlearner.com", // admin email
-      amount: carting.total.toFixed(2),
+      status, // success or failure
+      details, // details from PayPal response
+      userEmail: carting.email, // User email for success/failure
+      adminEmail: "admin@smartlearner.com", // Admin email
+      amount: carting.total.toFixed(2), // Dynamically pass the payment amount
+      orderDetails: {
+        orderNo: carting.orderNo,
+        firstName: carting.firstName,
+        lastName: carting.lastName,
+        streetAddress: carting.streetAddress1,
+        city: carting.city,
+        postcode: carting.postcode,
+        phoneNumber: carting.phoneNumber,
+        serviceCharge: carting.serviceCharge,
+        subtotal: carting.subtotal,
+        total: carting.total,
+        cartItems, // Include cart items (service, price, count, total)
+      },
     };
 
 
@@ -166,7 +186,7 @@ export default function PaymentProcessing() {
       .catch((error) => console.error("Error sending email:", error));
   };
 
-  
+
 
   return (
     <div className="payment-container">
@@ -274,7 +294,7 @@ export default function PaymentProcessing() {
           amount={carting.total.toFixed(2)} // Dynamically use the total from the cart
           currency="GBP" // Use the same currency as your cart
           onSuccess={(details, data) => handlePaypalSuccess(details, data)}
-          onError={(err) => handlePaymentFailure(err)}
+          onError={(err) => handlePaymentFailure(err)} 
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [
