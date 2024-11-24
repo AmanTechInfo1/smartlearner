@@ -12,7 +12,7 @@ const sendEmail = async (subject, message) => {
 
   const mailOptions = {
     from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
-    to: "Smartlearnerdrivingschool@gmail.com", // Admin's email
+    to: to, // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -284,9 +284,55 @@ const sendAdminNotification = async (userData) => {
   // Send email to the admin
   await sendRegisterEmail("Smartlearnerdrivingschool@gmail.com", subject, htmlContent); // Replace with actual admin email
 };
+const sendPaymentEmail = async (status, details, userEmail, adminEmail) => {
+  const subject = status === "success" ? "Payment Successful" : "Payment Failed";
+  
+  const message = status === "success" 
+    ? `<html>
+        <body>
+          <h1>Payment Successful</h1>
+          <p>Dear User,</p>
+          <p>Your payment of <strong>${details.purchase_units[0].amount.value} GBP</strong> was successful!</p>
+          <p>Transaction ID: ${details.id}</p>
+          <p>Thank you for your payment. If you have any questions, feel free to contact us.</p>
+        </body>
+      </html>` 
+    : `<html>
+        <body>
+          <h1>Payment Failed</h1>
+          <p>Dear User,</p>
+          <p>We regret to inform you that your payment attempt has failed.</p>
+          <p>Error details: ${details.message || 'Unknown error'}</p>
+          <p>Please try again later or contact support if the issue persists.</p>
+        </body>
+      </html>`;
+
+  // Send email to the user
+  await sendEmail(userEmail, subject, message);
+
+  // Send email to the admin with the same details for notification
+  const adminMessage = `
+    <html>
+        <body>
+          <h1>Payment Successful</h1>
+          <p><strong>User:</strong> ${details.payer.name.given_name} ${details.payer.name.surname}</p>
+          <p><strong>Amount:</strong> ${details.purchase_units[0].amount.value} GBP</p>
+          <p><strong>Transaction ID:</strong> ${details.id}</p>
+          <p><strong>User Email:</strong> ${details.payer.email_address}</p>
+          <p><strong>Status:</strong> ${status}</p>
+          <p>Thank you for processing the payment.</p>
+        </body>
+      </html>`;
+
+  // Send payment notification to the admin
+  await sendEmail(adminEmail, `Payment Successful - ${details.id}`, adminMessage);
+};
+
+
 
 module.exports = {
   processForm,
   sendWelcomeEmail,
   sendAdminNotification,
+  sendPaymentEmail,
 };

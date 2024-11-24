@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import "./Checkout.css"; // Ensure this CSS file contains your new styles
 import { useSelector } from "react-redux";
-
+import { PayPalButtons } from "@paypal/react-paypal-js"; 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
   const [isHashGenerated, setIsHashGenerated] = useState(false);
+  const [error, setError] = useState(null);
+  const [paypalError, setPaypalError] = useState(null);
+
 
   const carting = useSelector((state) => {
     return state.cart.payment;
   });
+
+
+
 
   const hashKey = "4TZ5dm748Jq8hVzc";
   const generateHashCode = async (data, hashKey) => {
@@ -43,12 +49,14 @@ export default function PaymentProcessing() {
       return base64Hash;
     } catch (error) {
       console.error("Error generating hash:", error);
+      setError("Failed to generate hash. Please try again.");
       return "";
     }
   };
 
   const handleGenerateHashCode = async () => {
     if (isHashGenerated) return;
+    
     // Prepare form data (using the carting state to populate fields dynamically)
     const formData = {
       ekashu_3d_secure_verify: null,
@@ -97,7 +105,7 @@ export default function PaymentProcessing() {
       ekashu_verification_value_verify: null,
       ekashu_viewport: null,
     };
-    const hashKey = "4TZ5dm748Jq8hVzc";
+    
     const generatedHashCode = await generateHashCode(formData, hashKey);
     if (generatedHashCode) {
       setHashCode(generatedHashCode);
@@ -121,6 +129,44 @@ export default function PaymentProcessing() {
     document.getElementById("payment-form").submit();
     console.log("Form submitted with generated hash code:", hashCode);
   };
+  // =====================================
+
+
+  const handlePaypalSuccess = (details, data) => {
+    console.log("Payment Success:", details);
+    // Trigger backend API to send success email
+    sendEmail("success", details);
+  };
+
+  const handlePaymentFailure  = (err) => {
+    console.error("Payment Failed:", err);
+    setPaypalError("Payment failed. Please try again.");
+    // Trigger backend API to send failure email
+    sendEmail("failure", err);
+  };
+
+  const sendEmail = (status, details) => {
+    // Send email logic here - This will involve your backend to trigger email notifications
+    const emailData = {
+      status,
+      details,
+      userEmail: carting.email, // user email for success/failure
+      adminEmail: "admin@smartlearner.com", // admin email
+      amount: carting.total.toFixed(2),
+    };
+
+
+    fetch("/api/account/sendPaymentEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(emailData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Email sent:", data))
+      .catch((error) => console.error("Error sending email:", error));
+  };
+
+  
 
   return (
     <div className="payment-container">
@@ -221,7 +267,29 @@ export default function PaymentProcessing() {
         >
           Submit Payment
         </button>
+        
+
+        <PayPalButtons
+          style={{ layout: "vertical" }} // Optional style for the button
+          amount={carting.total.toFixed(2)} // Dynamically use the total from the cart
+          currency="GBP" // Use the same currency as your cart
+          onSuccess={(details, data) => handlePaypalSuccess(details, data)}
+          onError={(err) => handlePaymentFailure(err)}
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: carting.total.toFixed(2), // Amount to be paid
+                    currency_code: "GBP", // Currency (GBP in your case)
+                  },
+                },
+              ],
+            });
+          }}
+        />
       </form>
+      
     </div>
   );
 }
