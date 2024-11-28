@@ -180,7 +180,7 @@ export default function PaymentProcessing() {
 
       if (response.data.success) {
         // Redirect to success page after payment is executed
-        window.location.href = "/payment/success";
+        window.location.href = "/thanks";
       } else {
         setError("Payment execution failed. Please try again.");
       }
