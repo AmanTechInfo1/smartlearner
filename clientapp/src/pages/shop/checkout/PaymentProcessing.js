@@ -12,6 +12,7 @@ export default function PaymentProcessing() {
   const [error, setError] = useState(null);
   const [paypalError, setPaypalError] = useState(null);
   const [isPaymentCreated, setIsPaymentCreated] = useState(false);
+  const [orderId, setOrderId] = useState(null); // Add orderId state
 
 
   const carting = useSelector((state) => {
@@ -155,9 +156,11 @@ export default function PaymentProcessing() {
       });
 
       if (response.data.success) {
-        setPaymentId(response.data.paymentId); // Store paymentId for later use
+        setPaymentId(response.data.paymentId);
+        setOrderId(response.data.orderId); // Store paymentId for later use
         setIsPaymentCreated(true); // Enable the PayPal button
-        console.log("Payment Created: ", response.data.paymentUrl);
+         console.log("Payment Created: ", response.data.paymentId); // Check paymentId
+      console.log("Order ID Created: ", response.data.orderId);
       } else {
         setError("Failed to create payment.");
       }
@@ -167,12 +170,12 @@ export default function PaymentProcessing() {
     }
   };
 
-  const executePayment = async (paymentId, payerId) => {
+  const executePayment = async (paymentId, payerId, orderId) => {
     try {
       const response = await httpHandler.post("/api/order/execute", {
         paymentId,
         payerId,
-        
+        orderId
       });
 
       if (response.data.success) {
@@ -189,7 +192,9 @@ export default function PaymentProcessing() {
 
   const handleApprove = (data, actions) => {
     const payerId = data.payerID;
-    executePayment(paymentId, payerId); // Execute payment after approval
+    const paymentId = data.orderID;
+    
+    executePayment(paymentId, payerId, orderId); // Execute payment after approval
   };
 
   const handleError = (error) => {
@@ -197,10 +202,8 @@ export default function PaymentProcessing() {
   };
 
   useEffect(() => {
-    if (!isPaymentCreated) {
-      createPayment(); // Automatically create payment on component mount
-    }
-  }, [isPaymentCreated]);
+    createPayment(); // Ensure this runs only once when the component mounts
+  }, []); 
 
  
 
@@ -305,6 +308,7 @@ export default function PaymentProcessing() {
         >
           Submit Payment
         </button> */}
+        {isPaymentCreated && (
         <PayPalButtons
           style={{ layout: "vertical" }}
           createOrder={(data, actions) => {
@@ -319,9 +323,10 @@ export default function PaymentProcessing() {
               ],
             });
           }}
-          onApprove={handleApprove} // Handle approval after user approves the payment
-          onError={handleError} // Handle any error during payment process
+          onApprove={handleApprove}
+          onError={handleError}
         />
+      )}
       </form>
       {paypalError && <p className="error-message">{paypalError}</p>}
     </div>

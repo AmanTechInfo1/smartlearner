@@ -200,16 +200,24 @@ async createPayment (req, res){
   const { paymentId, payerId, orderId } = req.body;
 
   try {
+
+    const order = await Paypalorder.findById(orderId);
+    if (!order) {
+      console.log(`Order not found for ID: ${orderId}`);  // Log for debugging
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
     // Capture PayPal payment
     const paypalResponse = await orderService.capturePayment(paymentId, payerId);
     
     
-    const order = await Paypalorder.findById(orderId);
+    
     order.status = 'completed';
     await order.save();
 
    
-    await sendEmail(order, 'success');
+    await orderService.sendEmail(order, 'success');
+
     
     res.status(200).json({
       success: true,
@@ -227,12 +235,12 @@ async createPayment (req, res){
     
     // Send failure email
     if (order) {
-      await sendEmail(order, 'failure');
+      await orderService.sendEmail(order, 'failure');
     }
-
+    console.error("Payment capture failed:", error);
     res.status(500).json({
       success: false,
-      message: 'Payment failed',
+      message: 'Payment failed: ' + error.message,
     });
   }
 };

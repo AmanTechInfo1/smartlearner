@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const paypalOrderSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   firstName: { type: String, required: true, unique: false },
 
   createdOn: { type: Date,  default: Date.now },
