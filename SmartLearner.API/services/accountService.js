@@ -377,8 +377,8 @@ class AccountService {
       const transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-          user: "amanchandel2620@gmail.com",
-          pass: "noey ovjq zsyb waut",
+          user: "Smartlearnerdrivingschool@gmail.com", // Your email
+          pass: "cbsb ueih dxqm zdhd",
         },
       });
 
@@ -404,6 +404,7 @@ class AccountService {
         resetPasswordToken: resetToken,
         resetPasswordExpires: { $gt: Date.now() }, // Token must not be expired
       });
+      console.log("User found:", user);
 
       if (!user) {
         throw new Error("Invalid or expired reset token");

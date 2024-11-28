@@ -284,104 +284,77 @@ const sendAdminNotification = async (userData) => {
   // Send email to the admin
   await sendRegisterEmail("Smartlearnerdrivingschool@gmail.com", subject, htmlContent); // Replace with actual admin email
 };
-const sendPaymentEmail = async (status, details, userEmail, adminEmail, orderDetails) => {
-  const subject = status === "success" ? "Payment Successful" : "Payment Failed";
-  
-  // Prepare cart details for email
-  const cartItems = orderDetails.myCart.map(item => `
-    <tr>
-      <td>${item.service}</td>
-      <td>${item.count}</td>
-      <td>${item.price} GBP</td>
-      <td>${(item.count * item.price).toFixed(2)} GBP</td>
-    </tr>
-  `).join('');
 
-  const message = status === "success" 
-    ? `<html>
-        <body>
-          <h1>Payment Successful</h1>
-          <p>Dear User,</p>
-          <p>Your payment of <strong>${details.purchase_units[0].amount.value} GBP</strong> was successful!</p>
-          <p>Transaction ID: ${details.id}</p>
-          <h2>Order Details</h2>
-          <table border="1" cellpadding="5">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${cartItems}
-            </tbody>
-          </table>
-          <p><strong>Total Amount:</strong> ${orderDetails.total} GBP</p>
-          <p>Thank you for your payment. If you have any questions, feel free to contact us.</p>
-        </body>
-      </html>` 
-    : `<html>
-        <body>
-          <h1>Payment Failed</h1>
-          <p>Dear User,</p>
-          <p>We regret to inform you that your payment attempt has failed.</p>
-          <p>Error details: ${details.message || 'Unknown error'}</p>
-          <h2>Order Details</h2>
-          <table border="1" cellpadding="5">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${cartItems}
-            </tbody>
-          </table>
-          <p><strong>Total Amount:</strong> ${orderDetails.total} GBP</p>
-          <p>Please try again later or contact support if the issue persists.</p>
-        </body>
-      </html>`;
 
-  // Send email to the userx`
-  await sendEmail(userEmail, subject, message);
-x``
-  // Send email to the admin with the same details for notification
-  const adminMessage = `
-    <html>
-        <body>
-          <h1>Payment ${status === "success" ? "Successful" : "Failed"}</h1>
-          <p><strong>User:</strong> ${details.payer.name.given_name} ${details.payer.name.surname}</p>
-          <p><strong>Amount:</strong> ${details.purchase_units[0].amount.value} GBP</p>
-          <p><strong>Transaction ID:</strong> ${details.id}</p>
-          <p><strong>User Email:</strong> ${details.payer.email_address}</p>
-          <p><strong>Status:</strong> ${status}</p>
-          <h2>Order Details</h2>
-          <table border="1" cellpadding="5">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${cartItems}
-            </tbody>
-          </table>
-          <p><strong>Total Amount:</strong> ${orderDetails.total} GBP</p>
-          <p>Thank you for processing the payment.</p>
-        </body>
-      </html>`;
+function sendPaymentEmail(orderDetails, status, emailType) {
+  const { payer, transaction_id, amount, currency, create_time } = orderDetails;
 
-  // Send payment notification to the admin
-  await sendEmail(adminEmail, `Payment ${status === "success" ? "Successful" : "Failed"} - ${details.id}`, adminMessage);
-};
+  let subject = '';
+  let body = '';
+
+  // Prepare email content based on status
+  if (status === 'Payment Successful') {
+    subject = `Order ${transaction_id} - Payment Successful`;
+    body = `
+      Your payment was successful!
+      Order ID: ${transaction_id}
+      Amount: ${amount.total} ${currency}
+      Status: ${status}
+      Payment Date: ${create_time}
+
+      Thank you for your order. If you have any questions, feel free to contact us.
+    `;
+  } else if (status === 'Payment Failed') {
+    subject = `Order ${transaction_id} - Payment Failed`;
+    body = `
+      Unfortunately, your payment could not be processed.
+      Order ID: ${transaction_id}
+      Amount: ${amount.total} ${currency}
+      Status: ${status}
+      Payment Date: ${create_time}
+
+      Please try again later or contact support.
+    `;
+  }
+
+  // Send email to the user
+  const mailOptionsUser = {
+    from: 'Smartlearnerdrivingschool@gmail.com',
+    to: payer.email_address, // User's email
+    subject: subject,
+    text: body,
+  };
+
+  transporter.sendMail(mailOptionsUser, (error, info) => {
+    if (error) {
+      console.log('Error sending email to user:', error);
+    } else {
+      console.log('Email sent to user: ' + info.response);
+    }
+  });
+
+  // Send success email to admin (if required)
+  const mailOptionsAdmin = {
+    from: 'Smartlearnerdrivingschool@gmail.com',
+    to: 'admin@yourdomain.com', // Admin's email
+    subject: `New Order: ${transaction_id}`,
+    text: `
+      New order received.
+      Order ID: ${transaction_id}
+      Amount: ${amount.total} ${currency}
+      Status: ${status}
+      Payment Date: ${create_time}
+    `,
+  };
+
+  transporter.sendMail(mailOptionsAdmin, (error, info) => {
+    if (error) {
+      console.log('Error sending email to admin:', error);
+    } else {
+      console.log('Email sent to admin: ' + info.response);
+    }
+  });
+}
 
 
 

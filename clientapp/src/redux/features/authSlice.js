@@ -88,6 +88,7 @@ export const registerUser = createAsyncThunk(
         toast.success(resultData.msg || "Registered Successfully");
         reset();
         navigate("/thanks");
+        
         return resultData;
       }
     } catch (error) {

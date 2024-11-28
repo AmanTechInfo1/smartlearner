@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
   subscription: { type: mongoose.Schema.Types.ObjectId,ref: "Plans"},
   deletedOn: { type: Date },
   isBcryptHashed: { type: Boolean, required: true, default: false },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date }, 
 });
 const User = mongoose.model("User", userSchema);
 module.exports = User;

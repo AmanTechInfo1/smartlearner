@@ -15,9 +15,7 @@ const Thanks = () => {
                         <section className={styles.loginRegistration}>
                             <h2>Thanks </h2>
                             <p>
-                                Thank you for applying for membership to our site. We will
-                                review your details and send you an email letting you know
-                                whether your application has been successful or not.
+                                Thank you for applying for membership to our site.
                             </p>
                         </section>
                         <div className={styles.formFooter}>

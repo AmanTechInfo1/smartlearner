@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import "./Checkout.css"; // Ensure this CSS file contains your new styles
 import { useSelector } from "react-redux";
-import { PayPalButtons } from "@paypal/react-paypal-js"; 
+import { PayPalButtons } from "@paypal/react-paypal-js";
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
   const [isHashGenerated, setIsHashGenerated] = useState(false);
   const [error, setError] = useState(null);
   const [paypalError, setPaypalError] = useState(null);
 
-
   const carting = useSelector((state) => {
     return state.cart.payment;
   });
-
-
-
 
   const hashKey = "4TZ5dm748Jq8hVzc";
   const generateHashCode = async (data, hashKey) => {
@@ -56,7 +52,7 @@ export default function PaymentProcessing() {
 
   const handleGenerateHashCode = async () => {
     if (isHashGenerated) return;
-    
+
     // Prepare form data (using the carting state to populate fields dynamically)
     const formData = {
       ekashu_3d_secure_verify: null,
@@ -105,7 +101,7 @@ export default function PaymentProcessing() {
       ekashu_verification_value_verify: null,
       ekashu_viewport: null,
     };
-    
+
     const generatedHashCode = await generateHashCode(formData, hashKey);
     if (generatedHashCode) {
       setHashCode(generatedHashCode);
@@ -131,62 +127,68 @@ export default function PaymentProcessing() {
   };
   // =====================================
 
-
   const handlePaypalSuccess = (details, data) => {
     console.log("Payment Success:", details);
     // Trigger backend API to send success email
-    sendEmail("success", details);
+    const orderDetails = {
+      transactionId: details.id,
+      amount: details.purchase_units[0].amount.value,
+      cartItems: carting.myCart.map((item) => ({
+        service: item.service,
+        price: item.price,
+        count: item.count,
+        total: item.price * item.count,
+      })),
+      userEmail: carting.email,
+      adminEmail: "admin@smartlearner.com", // Admin email
+      orderNo: carting.orderNo,
+      totalAmount: carting.total.toFixed(2),
+      message: "Your payment was successful! Thank you for your purchase.",
+    };
+
+    sendPaymentEmail("success", orderDetails);
   };
 
-  const handlePaymentFailure  = (err) => {
+  const handlePaymentFailure = (err) => {
     console.error("Payment Failed:", err);
     setPaypalError("Payment failed. Please try again.");
     // Trigger backend API to send failure email
-    sendEmail("failure", err);
+    // Log more details for debugging:
+    console.log("Error details:", err);
+
+    const failureDetails = {
+      message: "payment failed Please try again",
+      payerEmail: carting.email, // Use the user email from carting
+      cartItems: carting.myCart.map((item) => ({
+        service: item.service,
+        price: item.price,
+        count: item.count,
+        total: item.price * item.count,
+      })),
+    };
+    sendPaymentEmail("failure", failureDetails);
   };
 
-  const sendEmail = (status, details) => {
-    // Send email logic here - This will involve your backend to trigger email notifications
-    const cartItems = carting.myCart.map((item) => ({
-      service: item.service,
-      price: item.price,
-      count: item.count,
-      total: item.price * item.count,
-    }));
-
-    const emailData = {
-      status, // success or failure
-      details, // details from PayPal response
-      userEmail: carting.email, // User email for success/failure
-      adminEmail: "admin@smartlearner.com", // Admin email
-      amount: carting.total.toFixed(2), // Dynamically pass the payment amount
-      orderDetails: {
-        orderNo: carting.orderNo,
-        firstName: carting.firstName,
-        lastName: carting.lastName,
-        streetAddress: carting.streetAddress1,
-        city: carting.city,
-        postcode: carting.postcode,
-        phoneNumber: carting.phoneNumber,
-        serviceCharge: carting.serviceCharge,
-        subtotal: carting.subtotal,
-        total: carting.total,
-        cartItems, // Include cart items (service, price, count, total)
-      },
-    };
-
-
-    fetch("/api/account/sendPaymentEmail", {
+  const sendPaymentEmail = (status, details) => {
+    fetch("/api/account/webhook", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(emailData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event_type: status === "success" ? "PAYMENT.SALE.COMPLETED" : "PAYMENT.SALE.DENIED",
+        resource: details,
+      }),
     })
       .then((response) => response.json())
-      .then((data) => console.log("Email sent:", data))
+      .then((data) =>
+        console.log(
+          status === "success" ? "Success email sent" : "Failure email sent",
+          data
+        )
+      )
       .catch((error) => console.error("Error sending email:", error));
   };
-
-
 
   return (
     <div className="payment-container">
@@ -287,14 +289,12 @@ export default function PaymentProcessing() {
         >
           Submit Payment
         </button>
-        
-
         <PayPalButtons
           style={{ layout: "vertical" }} // Optional style for the button
           amount={carting.total.toFixed(2)} // Dynamically use the total from the cart
           currency="GBP" // Use the same currency as your cart
-          onSuccess={(details, data) => handlePaypalSuccess(details, data)}
-          onError={(err) => handlePaymentFailure(err)} 
+          onSuccess={handlePaypalSuccess}
+          onError={handlePaymentFailure}
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [
@@ -309,7 +309,7 @@ export default function PaymentProcessing() {
           }}
         />
       </form>
-      
+      {paypalError && <p className="error-message">{paypalError}</p>}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 const accountService = require("../services/accountService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
+const emailService  = require("../services/emailService")
 const bcrypt = require("bcryptjs");
 class AccountController {
   async registerUser(req, res, next) {
@@ -113,6 +114,35 @@ class AccountController {
       res.status(400).json({success: false,  message: err.message });
     }
   }
+
+  async  handlePaypalWebhook(req, res) {
+    const payload = req.body;
+    const eventType = payload.event_type;
+  
+    console.log('Received PayPal Event:', eventType);
+  
+    if (eventType === 'PAYMENT.SALE.COMPLETED') {
+      // Handle successful payment
+      const orderDetails = payload.resource; // This contains payment and order details
+      console.log('Payment completed:', orderDetails);
+  
+      // Send success email to user and admin
+      await emailService.sendPaymentEmail(orderDetails, 'Payment Successful', 'success');
+    } else if (eventType === 'PAYMENT.SALE.DENIED' || eventType === 'PAYMENT.SALE.PENDING') {
+      // Handle payment failure or pending payment
+      const orderDetails = payload.resource;
+      console.log('Payment failed or pending:', orderDetails);
+  
+      // Send failure email to user and admin
+      await emailService.sendPaymentEmail(orderDetails, 'Payment Failed', 'failure');
+    }
+  
+    // Respond to PayPal to acknowledge receipt
+    res.status(200).send('Event received');
+  }
+
 }
+
+// =========================================
 
 module.exports = new AccountController();
