@@ -3,7 +3,8 @@ const { ObjectId } = mongoose.Types;
 const orderService = require("../services/orderService");
 const crypto = require('crypto');
 const paymentSuccess = require("../models/paymentSuccessModel");
-
+const Order = require("../models/orderModel");
+const Paypalorder = require("../models/paypalOrderModel")
 
 class OrderController {
   async CompleteCheckout(req, res, next) {
@@ -170,6 +171,82 @@ class OrderController {
       next(err);
     }
   }
+
+// ====================================================================
+async createPayment (req, res){
+  const { order } = req.body;
+  
+  try {
+    // Save order in the database with status 'pending'
+    const newOrder = new Paypalorder(order);
+    await newOrder.save();
+
+    // Create PayPal payment
+    const paypalResponse = await orderService.createPaypalPayment(order);
+
+    // Send back PayPal approval URL for frontend to redirect user to PayPal
+    res.status(201).json({
+      success: true,
+      approvalUrl: paypalResponse.links.find((link) => link.rel === 'approve').href,
+      orderId: newOrder._id
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+  async executePayment (req, res)  {
+  const { paymentId, payerId, orderId } = req.body;
+
+  try {
+    // Capture PayPal payment
+    const paypalResponse = await orderService.capturePayment(paymentId, payerId);
+    
+    
+    const order = await Paypalorder.findById(orderId);
+    order.status = 'completed';
+    await order.save();
+
+   
+    await sendEmail(order, 'success');
+    
+    res.status(200).json({
+      success: true,
+      message: 'Payment successful',
+      paypalResponse,
+    });
+  } catch (error) {
+    console.error(error);
+    
+    const order = await Paypalorder.findById(orderId);
+    if (order) {
+      order.status = 'failed';
+      await order.save();
+    }
+    
+    // Send failure email
+    if (order) {
+      await sendEmail(order, 'failure');
+    }
+
+    res.status(500).json({
+      success: false,
+      message: 'Payment failed',
+    });
+  }
+};
+
+
+
+async cancelPayment (req, res)  {
+  res.status(200).json({
+    success: false,
+    message: 'Payment was canceled.',
+  });
+};
+
+  
 }
 
 module.exports = new OrderController();

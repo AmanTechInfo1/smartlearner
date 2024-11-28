@@ -1,6 +1,11 @@
 const { ObjectId } = require("mongodb");
 const Order = require("../models/orderModel");
 
+const axios = require("axios");
+const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
+
+const nodemailer = require("nodemailer");
+
 class OrderService {
   async createOrderAsync(data) {
     try {
@@ -417,8 +422,112 @@ class OrderService {
       throw new Error("Could not fetch role");
     }
   }
+  // ==================================================================
+  async createPaypalPayment(orderData) {
+    const accessToken = await getAccessToken();
+    console.log("Access Token:", accessToken);
+    const paymentData = {
+      intent: "CAPTURE",
+      payer: { payment_method: "paypal" },
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "GBP",
+            value: parseFloat(orderData.total).toFixed(2),
+          },
+          description: "Order payment",
+          item_list: {
+            items: orderData.myCart.map((item) => ({
+              name: item.service,
+              price:  parseFloat(item.price).toFixed(2),
+              quantity: item.count,
+            })),
+          },
+        },
+      ],
+      redirect_urls: {
+        return_url: "http://api.smartlearner.com/api/order/executePayment",
+        cancel_url: "http://api.smartlearner.com/api/order/cancel",
+      },
+    };
 
+    try {
+      const response = await axios.post(
+        `${PAYPAL_API_BASE}/v2/checkout/orders`,
+        paymentData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
+      return response.data; // This contains approval_url to redirect user to PayPal for approval
+    } catch (error) {
+      console.error("Error creating PayPal payment:", error.response.data);
+      throw new Error("Payment creation failed");
+    }
+  }
+
+  async capturePayment(paymentId, payerId) {
+    const accessToken = await getAccessToken();
+
+    const captureData = {
+      payer_id: payerId,
+    };
+
+    try {
+      const response = await axios.post(
+        `${PAYPAL_API_BASE}/v2/checkout/orders/${paymentId}/capture`,
+        captureData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error capturing PayPal payment:", error.response.data);
+      throw new Error("Payment capture failed");
+    }
+  }
+
+  async sendEmail(orderDetails, status) {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "Smartlearnerdrivingschool@gmail.com", // Your email
+        pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+      },
+    });
+
+    const mailOptions = {
+      from: "Smartlearnerdrivingschool@gmail.com",
+      to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
+      subject: `Payment ${status} - Order #${orderDetails._id}`,
+      text: `Hello ${orderDetails.firstName} ${orderDetails.lastName},\n\n
+    Your payment for Order #${orderDetails._id} has been ${status}.\n
+    Order Details:\n
+    First Name: ${orderDetails.firstName}\n
+    Last Name: ${orderDetails.lastName}\n
+    Email: ${orderDetails.email}\n
+    Address: ${orderDetails.streetAddress1} ${orderDetails.streetAddress2}\n
+    City: ${orderDetails.city}\n
+    Total: $${orderDetails.total}\n\n
+    Thank you for shopping with us!`,
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      throw new Error("Email sending failed");
+    }
+  }
 }
 
 module.exports = new OrderService();

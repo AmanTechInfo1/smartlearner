@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Checkout.css"; // Ensure this CSS file contains your new styles
 import { useSelector } from "react-redux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+
+import httpHandler from "../../../utils/httpHandler";
+
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
   const [isHashGenerated, setIsHashGenerated] = useState(false);
+  const [paymentId, setPaymentId] = useState(null);
   const [error, setError] = useState(null);
   const [paypalError, setPaypalError] = useState(null);
+  const [isPaymentCreated, setIsPaymentCreated] = useState(false);
+
 
   const carting = useSelector((state) => {
     return state.cart.payment;
@@ -127,68 +133,78 @@ export default function PaymentProcessing() {
   };
   // =====================================
 
-  const handlePaypalSuccess = (details, data) => {
-    console.log("Payment Success:", details);
-    // Trigger backend API to send success email
-    const orderDetails = {
-      transactionId: details.id,
-      amount: details.purchase_units[0].amount.value,
-      cartItems: carting.myCart.map((item) => ({
-        service: item.service,
-        price: item.price,
-        count: item.count,
-        total: item.price * item.count,
-      })),
-      userEmail: carting.email,
-      adminEmail: "admin@smartlearner.com", // Admin email
-      orderNo: carting.orderNo,
-      totalAmount: carting.total.toFixed(2),
-      message: "Your payment was successful! Thank you for your purchase.",
-    };
+  const createPayment = async () => {
+    try {
+      const response = await httpHandler.post("/api/order/create", {
+     order: {  firstName: carting.firstName,
+       lastName: carting.lastName,
+       city: carting.city,
+       companyName: carting.companyName,
+       county: carting.county,
+       email: carting.email,
+       myCart: carting.myCart,
+       ordernotes: carting.ordernotes,
+       phoneNumber:carting.phoneNumber,
+       postcode: carting.postcode,
+       serviceCharge: carting.serviceCharge,
+       streetAddress1: carting.streetAddress1,
+       streetAddress2: carting.streetAddress2,
+       subtotal: carting.subtotal,
+       total: carting.total.toFixed(2),}
 
-    sendPaymentEmail("success", orderDetails);
+      });
+
+      if (response.data.success) {
+        setPaymentId(response.data.paymentId); // Store paymentId for later use
+        setIsPaymentCreated(true); // Enable the PayPal button
+        console.log("Payment Created: ", response.data.paymentUrl);
+      } else {
+        setError("Failed to create payment.");
+      }
+    } catch (err) {
+      console.error("Error creating payment:", err);
+      setError("Payment creation failed. Please try again.");
+    }
   };
 
-  const handlePaymentFailure = (err) => {
-    console.error("Payment Failed:", err);
-    setPaypalError("Payment failed. Please try again.");
-    // Trigger backend API to send failure email
-    // Log more details for debugging:
-    console.log("Error details:", err);
+  const executePayment = async (paymentId, payerId) => {
+    try {
+      const response = await httpHandler.post("/api/order/execute", {
+        paymentId,
+        payerId,
+        
+      });
 
-    const failureDetails = {
-      message: "payment failed Please try again",
-      payerEmail: carting.email, // Use the user email from carting
-      cartItems: carting.myCart.map((item) => ({
-        service: item.service,
-        price: item.price,
-        count: item.count,
-        total: item.price * item.count,
-      })),
-    };
-    sendPaymentEmail("failure", failureDetails);
+      if (response.data.success) {
+        // Redirect to success page after payment is executed
+        window.location.href = "/payment/success";
+      } else {
+        setError("Payment execution failed. Please try again.");
+      }
+    } catch (err) {
+      console.error("Error executing payment:", err);
+      setError("Payment execution failed. Please try again.");
+    }
   };
 
-  const sendPaymentEmail = (status, details) => {
-    fetch("/api/account/webhook", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event_type: status === "success" ? "PAYMENT.SALE.COMPLETED" : "PAYMENT.SALE.DENIED",
-        resource: details,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) =>
-        console.log(
-          status === "success" ? "Success email sent" : "Failure email sent",
-          data
-        )
-      )
-      .catch((error) => console.error("Error sending email:", error));
+  const handleApprove = (data, actions) => {
+    const payerId = data.payerID;
+    executePayment(paymentId, payerId); // Execute payment after approval
   };
+
+  const handleError = (error) => {
+    setPaypalError("Payment failed: " + error.message);
+  };
+
+  useEffect(() => {
+    if (!isPaymentCreated) {
+      createPayment(); // Automatically create payment on component mount
+    }
+  }, [isPaymentCreated]);
+
+ 
+
+ 
 
   return (
     <div className="payment-container">
@@ -273,7 +289,7 @@ export default function PaymentProcessing() {
           name="ekashu_viewport"
           value="device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />{" "}
-        <button
+        {/* <button
           type="button"
           onClick={handleGenerateHashCode}
           disabled={isHashGenerated} // Disable the button once the hash is generated
@@ -288,25 +304,23 @@ export default function PaymentProcessing() {
           className="pay-button"
         >
           Submit Payment
-        </button>
+        </button> */}
         <PayPalButtons
-          style={{ layout: "vertical" }} // Optional style for the button
-          amount={carting.total.toFixed(2)} // Dynamically use the total from the cart
-          currency="GBP" // Use the same currency as your cart
-          onSuccess={handlePaypalSuccess}
-          onError={handlePaymentFailure}
+          style={{ layout: "vertical" }}
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [
                 {
                   amount: {
-                    value: carting.total.toFixed(2), // Amount to be paid
-                    currency_code: "GBP", // Currency (GBP in your case)
+                    value: carting.total.toFixed(2),
+                    currency_code: "GBP",
                   },
                 },
               ],
             });
           }}
+          onApprove={handleApprove} // Handle approval after user approves the payment
+          onError={handleError} // Handle any error during payment process
         />
       </form>
       {paypalError && <p className="error-message">{paypalError}</p>}
