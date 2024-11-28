@@ -182,12 +182,12 @@ export const getRandomQuestionByName =
       if (response.data.success) {
         const question = response.data.data;
         // Check if question has options
-        if (question && question.option) {
-          const shuffledOptions = shuffleArray(question.option);
+        if (question) {
+         
           dispatch(
             getQuizRandomQuestionSuccess({
               ...question,
-              option: shuffledOptions,
+              
             })
           );
         } else {

@@ -17,9 +17,9 @@ const ResetPasswordPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmShowPassword, setConfirmShowPassword] = useState(false);
   useEffect(() => {
-    // if (!resetToken) {
-    //   navigate("/login"); // Redirect if token is not present
-    // }
+    if (!resetToken) {
+      navigate("/login"); // Redirect if token is not present
+    }
   }, [resetToken, navigate]);
 
   const handleSubmit = async (e) => {
@@ -32,7 +32,7 @@ const ResetPasswordPage = () => {
 
     setLoading(true);
     try {
-      const response = await dispatch(completePasswordReset({ resetToken, newPassword: password }));
+      const response = await dispatch(completePasswordReset({ resetToken, newPassword: password, navigate }));
       if (response.success) {
         navigate("/login"); // Redirect to login after successful password reset
       }// Redirect to login after successful password reset

@@ -3,6 +3,9 @@ const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
 const emailService  = require("../services/emailService")
 const bcrypt = require("bcryptjs");
+
+const crypto = require('crypto');
+
 class AccountController {
   async registerUser(req, res, next) {
     try {
@@ -114,8 +117,25 @@ class AccountController {
       res.status(400).json({success: false,  message: err.message });
     }
   }
-
+  async verifySignature(req, transmissionSig, transmissionId) {
+    const body = JSON.stringify(req.body);
+    const secret = '0LX99488XP412803T'; // PayPal webhook secret
+    
+    const hmac = crypto.createHmac('sha256', secret);
+    hmac.update(`${transmissionId}|${body}`);
+    const calculatedSig = hmac.digest('hex');
+    return calculatedSig === transmissionSig;
+  }
   async  handlePaypalWebhook(req, res) {
+
+    const transmissionSig = req.headers['paypal-transmission-sig'];
+    const transmissionId = req.headers['paypal-transmission-id'];
+
+    if (!verifySignature(req, transmissionSig, transmissionId)) {
+      console.error("Invalid signature. Ignoring webhook.");
+      return res.status(400).send('Invalid signature');
+    }
+    
     const payload = req.body;
     const eventType = payload.event_type;
   

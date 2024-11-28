@@ -287,6 +287,7 @@ const sendAdminNotification = async (userData) => {
 
 
 function sendPaymentEmail(orderDetails, status, emailType) {
+  console.log('Sending email...');
   const { payer, transaction_id, amount, currency, create_time } = orderDetails;
 
   let subject = '';

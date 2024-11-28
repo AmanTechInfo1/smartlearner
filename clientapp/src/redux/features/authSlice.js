@@ -198,7 +198,7 @@ export const resetPassword = createAsyncThunk(
 );
 export const completePasswordReset = createAsyncThunk(
   "auth/completePasswordReset",
-  async ({ resetToken, newPassword }, { rejectWithValue }) => {
+  async ({ resetToken, newPassword, navigate }, { rejectWithValue }) => {
     try {
       const response = await http.post("/api/account/reset-password", {
         resetToken,
@@ -208,6 +208,7 @@ export const completePasswordReset = createAsyncThunk(
       const data = response.data;
       if (data.success) {
         toast.success("Password reset successfully.");
+        navigate("/login")
       } else {
         toast.error(data.message || "Failed to reset password.");
       }
