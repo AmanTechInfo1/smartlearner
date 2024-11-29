@@ -505,6 +505,11 @@ class OrderService {
       },
     });
 
+    let cartDetails = "";
+    orderDetails.myCart.forEach(item => {
+        cartDetails += `- Service: ${item.service}, Quantity: ${item.count}, Price: $${item.price.toFixed(2)}\n`;
+    });
+
     const mailOptions = {
       from: "Smartlearnerdrivingschool@gmail.com",
       to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
@@ -515,6 +520,7 @@ class OrderService {
     First Name: ${orderDetails.firstName}\n
     Last Name: ${orderDetails.lastName}\n
     Email: ${orderDetails.email}\n
+   Product Details: ${cartDetails}\n
     Address: ${orderDetails.streetAddress1} ${orderDetails.streetAddress2}\n
     City: ${orderDetails.city}\n
     Total: $${orderDetails.total}\n\n
