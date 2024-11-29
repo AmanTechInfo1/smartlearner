@@ -5,7 +5,7 @@ const { requireAuth } = require("../middlewares/authMiddleware");
 const multer = require("multer");
 const upload = multer();
 
-router.post('/CompleteCheckout', upload.none(),requireAuth, OrderController.CompleteCheckout);
+router.post('/CompleteCheckout', upload.none(), OrderController.CompleteCheckout);
 router.get('/getMyOrder', upload.none(),requireAuth, OrderController.getMyOrder);
 router.get('/getAllOrder', upload.none(),requireAuth, OrderController.getAllOrder);
 router.get('/getOrder/:id', upload.none(),requireAuth, OrderController.getOneOrder);
