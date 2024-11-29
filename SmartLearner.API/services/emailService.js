@@ -12,7 +12,7 @@ const sendEmail = async (subject, message) => {
 
   const mailOptions = {
     from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
-    to: to, // Admin's email
+    to: "Smartlearnerdrivingschool@gmail.com", // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -167,7 +167,7 @@ const processForm = async (formType, formData) => {
   let message;
 
   if (formType === "drivenForm") {
-    message = handleDrivenForm(formData);
+    message = handleDrivenForm(formData); 
   } else if (formType === "EnquiryForm") {
     message = handleEnquiryForm(formData);
   } else if (formType === "callbackForm") {
