@@ -4,11 +4,19 @@ const Plans = require("../models/planUserModel");
 const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
 const axios = require("axios");
 
+const nodemailer = require("nodemailer");
+
 class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
+   
+
     const plan = await Plans.findById(subscriptionId);
+    if (!plan) {
+      throw new Error("Plan not found");
+    }
     const currentDate = new Date();
 
+    // If the user is eligible for a trial, check for an existing trial
     if (isTrial) {
       const existingTrial = await UserSubscription.findOne({
         userId,
@@ -20,27 +28,55 @@ class UserSubscriptionService {
       }
     }
 
-    const planEndDate = new Date(
-      currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
-    ); // duration in days
-
-    const userSubscription = new UserSubscription({
+    // Find an existing active subscription
+    const existingSubscription = await UserSubscription.findOne({
       userId,
-      subscriptionId,
       isActive: true,
-      planStartDate: currentDate,
-      planEndDate: planEndDate,
-      isTrial: isTrial,
-      trialStartDate: isTrial ? currentDate : null,
-      trialEndDate: isTrial
-        ? new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
-        : null,
+      isTrial: false, // Ensure it's not a trial subscription
     });
 
-    await userSubscription.save();
-    await User.findByIdAndUpdate(userId, { subscription: subscriptionId });
-    return userSubscription;
-  }
+    let planEndDate;
+
+    if (existingSubscription) {
+      // User already has an active subscription, so extend the subscription
+      const existingEndDate = existingSubscription.planEndDate;
+      planEndDate = new Date(existingEndDate.getTime() + plan.duration * 24 * 60 * 60 * 1000);
+      
+      // Update the existing subscription's end date and other relevant fields
+      existingSubscription.planEndDate = planEndDate;
+      existingSubscription.subscriptionId = subscriptionId; // Update subscription plan
+      existingSubscription.planStartDate = currentDate; // Update start date
+
+      // Save the updated subscription
+      await existingSubscription.save();
+      return existingSubscription;
+    } else {
+      // No existing subscription, create a new one
+      planEndDate = new Date(
+        currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+      );
+
+      const userSubscription = new UserSubscription({
+        userId,
+        subscriptionId,
+        isActive: true,
+        planStartDate: currentDate,
+        planEndDate: planEndDate,
+        isTrial: isTrial,
+        trialStartDate: isTrial ? currentDate : null,
+        trialEndDate: isTrial
+          ? new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+          : null,
+        paymentStatus: "COMPLETED",
+      });
+
+      await userSubscription.save();
+      await User.findByIdAndUpdate(userId, { subscription: subscriptionId });
+      return userSubscription;
+    }
+}
+
+
 
   async createPayment(subscriptionId) {
     const plan = await Plans.findById(subscriptionId);
@@ -87,8 +123,10 @@ class UserSubscriptionService {
     if (response.data.status === "COMPLETED") {
       const userSubscription = await this.createUserSubscription(
         userId,
-        subscriptionId
+        subscriptionId,
+        (isTrial = false)
       );
+      await this.sendSubscriptionEmail(subscriptionId, userId, "success");
       return { userSubscription, paymentStatus: "COMPLETED" };
     } else {
       throw new Error("Payment was not completed");
@@ -96,9 +134,10 @@ class UserSubscriptionService {
   }
 
   async getUserSubscriptions(userId) {
-    console.log("Querying subscriptions for userId:", userId);
-    const subscriptions = await UserSubscription.find({ userId }).populate("subscriptionId");
-    console.log("Fetched subscriptions:", subscriptions);
+    const subscriptions = await UserSubscription.find({ userId }).populate(
+      "subscriptionId"
+    );
+
     return subscriptions;
   }
 
@@ -122,11 +161,14 @@ class UserSubscriptionService {
 
   // //////////////////////////////coupon code ///////////////////////////
   async applyCouponCode(userId, couponCode) {
-    const validCoupon = 'FREETHEORY'; // The valid coupon code
+    const validCoupon = "FREETHEORY"; // The valid coupon code
 
     if (couponCode === validCoupon) {
       // Check if the user already has a subscription with the coupon applied
-      const existingSubscription = await UserSubscription.findOne({ userId, couponApplied: true });
+      const existingSubscription = await UserSubscription.findOne({
+        userId,
+        couponApplied: true,
+      });
 
       if (existingSubscription) {
         throw new Error("coupon used already");
@@ -141,11 +183,13 @@ class UserSubscriptionService {
       }
 
       const currentDate = new Date();
-      
+
       // Loop through all plans and create a subscription for each one
       const subscriptions = [];
       for (const plan of plans) {
-        const planEndDate = new Date(currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000); // duration in days
+        const planEndDate = new Date(
+          currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+        ); // duration in days
 
         const subscription = new UserSubscription({
           userId,
@@ -156,8 +200,8 @@ class UserSubscriptionService {
           isTrial: false,
           trialStartDate: null,
           trialEndDate: null,
-          paymentStatus: 'COMPLETED', // No payment required, because it's free
-          couponApplied: true,  // Mark the coupon as applied
+          paymentStatus: "COMPLETED", // No payment required, because it's free
+          couponApplied: true, // Mark the coupon as applied
         });
 
         subscriptions.push(subscription.save());
@@ -165,11 +209,142 @@ class UserSubscriptionService {
 
       // Wait for all subscriptions to be saved
       await Promise.all(subscriptions);
-      await User.findByIdAndUpdate(userId, { subscription: subscriptions[0].subscriptionId }); // Update user with first subscription
+      await User.findByIdAndUpdate(userId, {
+        subscription: subscriptions[0].subscriptionId,
+      }); // Update user with first subscription
 
       return { message: "Coupon applied successfully" };
     } else {
       throw new Error("Invalid coupon code");
+    }
+  }
+
+  // ====////////////////////////////////////////////////////////
+  async sendSubscriptionEmail(userId, subscriptionId, status) {
+   
+    const user = await User.findById(userId);
+    const subscription = await Plans.findById(subscriptionId);
+
+  
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "Smartlearnerdrivingschool@gmail.com",
+        pass: "cbsb ueih dxqm zdhd",
+      },
+    });
+
+    const htmlContent = ` 
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; color: #333; margin: 0; padding: 0; background-color: #f9f9f9; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('clientapp/src/assets/images/smartlearnerLogo.png');
+              }
+            }
+
+
+
+            .container { width: 100%; max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; }
+            .header { text-align: center; margin-bottom: 20px; }
+            .header img { width: 150px;}
+            .body { padding: 20px; }
+            .body h2 { color: #444; margin-bottom: 20px; }
+            .body p { margin: 10px 0; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+            th { background-color: #f2f2f2; }
+            .footer { margin-top: 20px; text-align: center; font-size: 12px; color: #777; }
+            .footer a { color: #0073e6; text-decoration: none; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+            </div>
+            <div class="body">
+              <h2>Subscription ${status} - Plan: ${subscription.planname}</h2>
+              <p><strong>Dear ${user.username},</strong></p>
+              <p>Your payment for Order #${subscription.planname} has been ${status}.</p>
+  
+              <h3>Order Details:</h3>
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <td>${user.username}</td>
+                </tr>
+               
+                <tr>
+                  <th>Email</th>
+                  <td>${user.email}</td>
+                </tr>
+               
+               
+                </table>
+  
+              <h3>Subscription Details:</h3>
+              <table>
+                <tr>
+                  <th>Plan Name</th>
+                    <td>${subscription.planname}</td>
+                   </tr>
+
+                   <tr>
+                   <th>Plan Price</th>
+                    <td>£ ${subscription.price.toFixed(2)}</td>
+                   </tr>
+
+                    <tr>
+                   <th>Plan duration</th>
+                    <td> ${subscription.duration} days</td>
+                   </tr>
+                
+               
+              
+              </table>
+  
+              <p>Thank you for choosing Smart Learner Driving School! We look forward to serving you again soon.</p>
+            </div>
+            <div class="footer">
+              <p>If you have any questions, feel free to <a href="mailto:admin@smartlearner.com">contact us</a>.</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    const mailOptions = {
+      from: "Smartlearnerdrivingschool@gmail.com",
+      to: [user.email, "Smartlearnerdrivingschool@gmail.com"],
+      subject: `Subscription ${status} - Plan: ${subscription.planname}`,
+      html: htmlContent,
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      throw new Error("Email sending failed");
     }
   }
 }

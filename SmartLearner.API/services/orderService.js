@@ -504,29 +504,101 @@ class OrderService {
         pass: "cbsb ueih dxqm zdhd", // Your email password or app password
       },
     });
-
+  
     let cartDetails = "";
     orderDetails.myCart.forEach(item => {
-        cartDetails += `- Service: ${item.service}, Quantity: ${item.count}, Price: $${item.price.toFixed(2)}\n`;
+      cartDetails += `
+        <tr>
+          <td>${item.service}</td>
+          <td>${item.count}</td>
+          <td>$${item.price.toFixed(2)}</td>
+        </tr>
+      `;
     });
-
+  
+    const htmlContent = `
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; color: #333; margin: 0; padding: 0; background-color: #f9f9f9; }
+            .container { width: 100%; max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; }
+            .header { text-align: center; margin-bottom: 20px; }
+            .header img { width: 150px; }
+            .body { padding: 20px; }
+            .body h2 { color: #444; margin-bottom: 20px; }
+            .body p { margin: 10px 0; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+            th { background-color: #f2f2f2; }
+            .footer { margin-top: 20px; text-align: center; font-size: 12px; color: #777; }
+            .footer a { color: #0073e6; text-decoration: none; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+            </div>
+            <div class="body">
+              <h2>Payment ${status} - Order #${orderDetails._id}</h2>
+              <p><strong>Dear ${orderDetails.firstName} ${orderDetails.lastName},</strong></p>
+              <p>Your payment for Order #${orderDetails._id} has been ${status}.</p>
+  
+              <h3>Order Details:</h3>
+              <table>
+                <tr>
+                  <th>First Name</th>
+                  <td>${orderDetails.firstName}</td>
+                </tr>
+                <tr>
+                  <th>Last Name</th>
+                  <td>${orderDetails.lastName}</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>${orderDetails.email}</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>${orderDetails.streetAddress1} ${orderDetails.streetAddress2}</td>
+                </tr>
+                <tr>
+                  <th>City</th>
+                  <td>${orderDetails.city}</td>
+                </tr>
+                <tr>
+                  <th>Total</th>
+                  <td>$${orderDetails.total.toFixed(2)}</td>
+                </tr>
+              </table>
+  
+              <h3>Product Details:</h3>
+              <table>
+                <tr>
+                  <th>Service</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+                ${cartDetails}
+              </table>
+  
+              <p>Thank you for choosing Smart Learner Driving School! We look forward to serving you again soon.</p>
+            </div>
+            <div class="footer">
+              <p>If you have any questions, feel free to <a href="mailto:admin@smartlearner.com">contact us</a>.</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+  
     const mailOptions = {
       from: "Smartlearnerdrivingschool@gmail.com",
       to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
       subject: `Payment ${status} - Order #${orderDetails._id}`,
-      text: `Hello ${orderDetails.firstName} ${orderDetails.lastName},\n\n
-    Your payment for Order #${orderDetails._id} has been ${status}.\n
-    Order Details:\n
-    First Name: ${orderDetails.firstName}\n
-    Last Name: ${orderDetails.lastName}\n
-    Email: ${orderDetails.email}\n
-   Product Details: ${cartDetails}\n
-    Address: ${orderDetails.streetAddress1} ${orderDetails.streetAddress2}\n
-    City: ${orderDetails.city}\n
-    Total: $${orderDetails.total}\n\n
-    Thank you for shopping with us!`,
+      html: htmlContent,
     };
-
+  
     try {
       await transporter.sendMail(mailOptions);
     } catch (error) {
@@ -534,6 +606,8 @@ class OrderService {
       throw new Error("Email sending failed");
     }
   }
+  
+  
 }
 
 module.exports = new OrderService();

@@ -1,6 +1,6 @@
 // import React from 'react'
 import styles from "./StantardCheckTest.module.css";
-import Lplateimg from "../../assets/images/L-Plate.jpg";
+import Lplateimg from "../../assets/images/smartlearnerLogo.png";
 import { GoPlay } from "react-icons/go";
 import {
   FaUserTie,
@@ -46,7 +46,7 @@ export default function StantardCheckTest() {
           <div className={styles.video}>
             <a href="/">
               <img src={Lplateimg} alt="LogoImg" />
-              <GoPlay className={styles.playIcon} />
+              
             </a>
           </div>
         </div>

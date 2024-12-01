@@ -6,7 +6,7 @@ const sendEmail = async (subject, message) => {
     service: "gmail",
     auth: {
       user: "Smartlearnerdrivingschool@gmail.com", // Your email
-    pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
     },
   });
 
@@ -98,36 +98,36 @@ const handleCallbackForm = (formData) => {
 };
 
 // Handle Driven Form
-const handleDrivenForm = (formData) => {
-  return `
-    <html>
-      <head>
-        <style>
-          body { font-family: Arial, sans-serif; color: #333; }
-          .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
-          .header { text-align: center; }
-          .header img { width: 150px; }
-          .body { padding: 10px 0; }
-          .body h2 { color: #444; }
-          .body p { margin: 5px 0; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
-          </div>
-          <div class="body">
-            <h2>New Driven Form Submission</h2>
-            <p><strong>Driven Before:</strong> ${formData.drivenBefore}</p>
-            <p><strong>Preferred Type:</strong> ${formData.preferredType}</p>
-            <p><strong>Postcode:</strong> ${formData.postcode}</p>
-          </div>
-        </div>
-      </body>
-    </html>
-  `;
-};
+// const handleDrivenForm = (formData) => {
+//   return `
+//     <html>
+//       <head>
+//         <style>
+//           body { font-family: Arial, sans-serif; color: #333; }
+//           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+//           .header { text-align: center; }
+//           .header img { width: 150px; }
+//           .body { padding: 10px 0; }
+//           .body h2 { color: #444; }
+//           .body p { margin: 5px 0; }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <div class="header">
+//             <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+//           </div>
+//           <div class="body">
+//             <h2>New Driven Form Submission</h2>
+//             <p><strong>Driven Before:</strong> ${formData.drivenBefore}</p>
+//             <p><strong>Preferred Type:</strong> ${formData.preferredType}</p>
+//             <p><strong>Postcode:</strong> ${formData.postcode}</p>
+//           </div>
+//         </div>
+//       </body>
+//     </html>
+//   `;
+// };
 
 // Handle Enquiry Form
 const handleEnquiryForm = (formData) => {
@@ -165,11 +165,10 @@ const handleEnquiryForm = (formData) => {
 // Process the form based on formType
 const processForm = async (formType, formData) => {
   let message;
-
-  if (formType === "drivenForm") {
-    message = handleDrivenForm(formData); 
-  } else if (formType === "EnquiryForm") {
+  if (formType === "EnquiryForm") {
     message = handleEnquiryForm(formData);
+  // } else if (formType === "drivenForm") {
+  //   message = handleDrivenForm(formData);
   } else if (formType === "callbackForm") {
     message = handleCallbackForm(formData);
   } else if (formType === "contactUsForm") {
@@ -248,7 +247,7 @@ const sendWelcomeEmail = async (userData) => {
 
 // Send registration details to the admin
 const sendAdminNotification = async (userData) => {
-  const { username, email, phoneNumber,roleName } = userData;
+  const { username, email, phoneNumber, roleName } = userData;
   const subject = "New User Registration";
   const htmlContent = `
    <html>
@@ -282,81 +281,12 @@ const sendAdminNotification = async (userData) => {
   `;
 
   // Send email to the admin
-  await sendRegisterEmail("Smartlearnerdrivingschool@gmail.com", subject, htmlContent); // Replace with actual admin email
+  await sendRegisterEmail(
+    "Smartlearnerdrivingschool@gmail.com",
+    subject,
+    htmlContent
+  ); // Replace with actual admin email
 };
-
-
-function sendPaymentEmail(orderDetails, status, emailType) {
-  console.log('Sending email...');
-  const { payer, transaction_id, amount, currency, create_time } = orderDetails;
-
-  let subject = '';
-  let body = '';
-
-  // Prepare email content based on status
-  if (status === 'Payment Successful') {
-    subject = `Order ${transaction_id} - Payment Successful`;
-    body = `
-      Your payment was successful!
-      Order ID: ${transaction_id}
-      Amount: ${amount.total} ${currency}
-      Status: ${status}
-      Payment Date: ${create_time}
-
-      Thank you for your order. If you have any questions, feel free to contact us.
-    `;
-  } else if (status === 'Payment Failed') {
-    subject = `Order ${transaction_id} - Payment Failed`;
-    body = `
-      Unfortunately, your payment could not be processed.
-      Order ID: ${transaction_id}
-      Amount: ${amount.total} ${currency}
-      Status: ${status}
-      Payment Date: ${create_time}
-
-      Please try again later or contact support.
-    `;
-  }
-
-  // Send email to the user
-  const mailOptionsUser = {
-    from: 'Smartlearnerdrivingschool@gmail.com',
-    to: payer.email_address, // User's email
-    subject: subject,
-    text: body,
-  };
-
-  transporter.sendMail(mailOptionsUser, (error, info) => {
-    if (error) {
-      console.log('Error sending email to user:', error);
-    } else {
-      console.log('Email sent to user: ' + info.response);
-    }
-  });
-
-  // Send success email to admin (if required)
-  const mailOptionsAdmin = {
-    from: 'Smartlearnerdrivingschool@gmail.com',
-    to: 'admin@yourdomain.com', // Admin's email
-    subject: `New Order: ${transaction_id}`,
-    text: `
-      New order received.
-      Order ID: ${transaction_id}
-      Amount: ${amount.total} ${currency}
-      Status: ${status}
-      Payment Date: ${create_time}
-    `,
-  };
-
-  transporter.sendMail(mailOptionsAdmin, (error, info) => {
-    if (error) {
-      console.log('Error sending email to admin:', error);
-    } else {
-      console.log('Email sent to admin: ' + info.response);
-    }
-  });
-}
-
 
 
 
@@ -364,5 +294,5 @@ module.exports = {
   processForm,
   sendWelcomeEmail,
   sendAdminNotification,
-  sendPaymentEmail,
+  
 };
