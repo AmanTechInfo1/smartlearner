@@ -247,7 +247,7 @@ class UserSubscriptionService {
                 color: #333;
               }
               .header img {
-                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
               }
             }
 
@@ -258,7 +258,7 @@ class UserSubscriptionService {
                 color: #f9f9f9;
               }
               .header img {
-                content: url('clientapp/src/assets/images/smartlearnerLogo.png');
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
               }
             }
 

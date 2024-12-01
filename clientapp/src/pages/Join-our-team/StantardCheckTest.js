@@ -1,6 +1,6 @@
 // import React from 'react'
 import styles from "./StantardCheckTest.module.css";
-import Lplateimg from "../../assets/images/smartlearnerLogo.png";
+import Lplateimg from "../../assets/images/smartlearnerLogo-removebg-preview.png";
 import { GoPlay } from "react-icons/go";
 import {
   FaUserTie,
