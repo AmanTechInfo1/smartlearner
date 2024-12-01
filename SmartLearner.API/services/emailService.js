@@ -59,7 +59,7 @@ const handleContactForm = (formData) => {
 
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
-          .header img { width: 150px; }
+          .header img { width: 150px;background-color: black;}
           .body { padding: 10px 0; }
           .body h2 { color: #444; }
           .body p { margin: 5px 0; }
@@ -120,7 +120,7 @@ const handleCallbackForm = (formData) => {
 
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
-          .header img { width: 150px; }
+          .header img { width: 150px;background-color: black;}
           .body { padding: 10px 0; }
           .body h2 { color: #444; }
           .body p { margin: 5px 0; }
@@ -211,7 +211,7 @@ const handleEnquiryForm = (formData) => {
 
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
-          .header img { width: 150px; }
+          .header img { width: 150px; background-color: black;}
           .body { padding: 10px 0; }
           .body h2 { color: #444; }
           .body p { margin: 5px 0; }
@@ -318,7 +318,7 @@ const sendWelcomeEmail = async (userData) => {
 
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
-          .header img { width: 150px; }
+          .header img { width: 150px; background-color: black;}
           .body { padding: 10px 0; }
           .body h2 { color: #444; }
           .body p { margin: 5px 0; }
@@ -379,7 +379,7 @@ const sendAdminNotification = async (userData) => {
 
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
-          .header img { width: 150px; }
+          .header img { width: 150px; background-color: black;}
           .body { padding: 10px 0; }
           .body h2 { color: #444; }
           .body p { margin: 5px 0; }
