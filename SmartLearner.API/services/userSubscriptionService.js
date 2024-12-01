@@ -8,54 +8,47 @@ const nodemailer = require("nodemailer");
 
 class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
-   
-
     const plan = await Plans.findById(subscriptionId);
-    if (!plan) {
-      throw new Error("Plan not found");
-    }
     const currentDate = new Date();
-
-    // If the user is eligible for a trial, check for an existing trial
+  
+    // Check if user is trying to use a trial
     if (isTrial) {
       const existingTrial = await UserSubscription.findOne({
         userId,
         isTrial: true,
       });
-
+  
       if (existingTrial) {
         throw new Error("Free Trial Used");
       }
     }
-
-    // Find an existing active subscription
+  
+    // Try to find an active subscription
     const existingSubscription = await UserSubscription.findOne({
       userId,
       isActive: true,
-      isTrial: false, // Ensure it's not a trial subscription
+      isTrial: false, // Make sure it's not a trial subscription
     });
-
+  
     let planEndDate;
-
+  
     if (existingSubscription) {
-      // User already has an active subscription, so extend the subscription
+      // If user already has an active subscription, extend the current subscription
       const existingEndDate = existingSubscription.planEndDate;
-      planEndDate = new Date(existingEndDate.getTime() + plan.duration * 24 * 60 * 60 * 1000);
-      
-      // Update the existing subscription's end date and other relevant fields
+      planEndDate = new Date(existingEndDate.getTime() + plan.duration * 24 * 60 * 60 * 1000); // Extend the end date
+  
+      // Update the subscription with the new plan end date
       existingSubscription.planEndDate = planEndDate;
-      existingSubscription.subscriptionId = subscriptionId; // Update subscription plan
-      existingSubscription.planStartDate = currentDate; // Update start date
-
+      existingSubscription.subscriptionId = subscriptionId; // Update to new plan if needed
+      existingSubscription.planStartDate = currentDate; // Update the start date
+  
       // Save the updated subscription
       await existingSubscription.save();
       return existingSubscription;
     } else {
-      // No existing subscription, create a new one
-      planEndDate = new Date(
-        currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
-      );
-
+      // If no existing subscription, create a new one
+      planEndDate = new Date(currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000);
+  
       const userSubscription = new UserSubscription({
         userId,
         subscriptionId,
@@ -65,16 +58,16 @@ class UserSubscriptionService {
         isTrial: isTrial,
         trialStartDate: isTrial ? currentDate : null,
         trialEndDate: isTrial
-          ? new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+          ? new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000) // Assuming trial duration is 7 days
           : null,
-        paymentStatus: "COMPLETED",
       });
-
+  
       await userSubscription.save();
       await User.findByIdAndUpdate(userId, { subscription: subscriptionId });
       return userSubscription;
     }
-}
+  }
+  
 
 
 

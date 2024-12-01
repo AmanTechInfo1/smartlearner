@@ -15,8 +15,7 @@ class userSubscriptionController {
           subscriptionId,
           isTrial
         );
-        console.log("sdfdslxfjskdjfsdl",userId)
-       console.log("ooooooooooooo",subscriptionId)
+      
        let status = 'success';
         await userSubscriptionService.sendSubscriptionEmail(userId, subscriptionId, status );
       res.status(201).json({
