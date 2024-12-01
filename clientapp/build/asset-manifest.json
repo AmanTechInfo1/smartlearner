@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7950c024.css",
-    "main.js": "/static/js/main.39b568a1.js",
+    "main.js": "/static/js/main.e5df267e.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -218,6 +218,7 @@
     "static/media/Screenshot 2024-05-02 at 13.55.26.png": "/static/media/Screenshot 2024-05-02 at 13.55.26.d39dce92169dd4bea0ec.png",
     "static/media/hand shake.png": "/static/media/hand shake.f5c14190f3a5a9eea695.png",
     "static/media/No-motor-Vehicles@3x.png": "/static/media/No-motor-Vehicles@3x.c0fa988178a135f75c52.png",
+    "static/media/smartlearnerLogo-removebg-preview.png": "/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png",
     "static/media/tree img.png": "/static/media/tree img.5af5e1c5707c6c0a2852.png",
     "static/media/balloons-2.jpg": "/static/media/balloons-2.17e7ec9e0010de2f2ba3.jpg",
     "static/media/SQA.png": "/static/media/SQA.63ecc03a46e02e596be5.png",
@@ -274,11 +275,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "main.7950c024.css.map": "/static/css/main.7950c024.css.map",
-    "main.39b568a1.js.map": "/static/js/main.39b568a1.js.map",
+    "main.e5df267e.js.map": "/static/js/main.e5df267e.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7950c024.css",
-    "static/js/main.39b568a1.js"
+    "static/js/main.e5df267e.js"
   ]
 }

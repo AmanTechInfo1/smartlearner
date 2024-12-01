@@ -33,6 +33,30 @@ const handleContactForm = (formData) => {
       <head>
         <style>
           body { font-family: Arial, sans-serif; color: #333; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
+
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
           .header img { width: 150px; }
@@ -71,6 +95,29 @@ const handleCallbackForm = (formData) => {
       <head>
         <style>
           body { font-family: Arial, sans-serif; color: #333; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
           .header img { width: 150px; }
@@ -136,6 +183,32 @@ const handleEnquiryForm = (formData) => {
       <head>
         <style>
           body { font-family: Arial, sans-serif; color: #333; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
+
+
+
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
           .header img { width: 150px; }
@@ -218,6 +291,31 @@ const sendWelcomeEmail = async (userData) => {
       <head>
         <style>
           body { font-family: Arial, sans-serif; color: #333; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
+
+
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
           .header img { width: 150px; }
@@ -254,6 +352,31 @@ const sendAdminNotification = async (userData) => {
       <head>
         <style>
           body { font-family: Arial, sans-serif; color: #333; }
+
+ /* Light Mode */
+            @media (prefers-color-scheme: light) {
+              body {
+                background-color: #f9f9f9;
+                color: #333;
+              }
+              .header img {
+                content: url('https:/smartlearner.com/static/media/smartlearnerLogo-removebg-preview.447bcd88c37d91ddc949.png');
+              }
+            }
+
+            /* Dark Mode */
+            @media (prefers-color-scheme: dark) {
+              body {
+                background-color: #333;
+                color: #f9f9f9;
+              }
+              .header img {
+                content: url('https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png');
+              }
+            }
+
+
+
           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
           .header { text-align: center; }
           .header img { width: 150px; }
