@@ -523,7 +523,7 @@ class OrderService {
             body { font-family: Arial, sans-serif; color: #333; margin: 0; padding: 0; background-color: #f9f9f9; }
             .container { width: 100%; max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 5px; }
             .header { text-align: center; margin-bottom: 20px; }
-            .header img { width: 150px; }
+            .header img { width: 150px; background-color:'black';}
             .body { padding: 20px; }
             .body h2 { color: #444; margin-bottom: 20px; }
             .body p { margin: 10px 0; }
