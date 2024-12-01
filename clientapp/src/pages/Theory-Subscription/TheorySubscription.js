@@ -11,9 +11,11 @@ import {
   applyCouponCode,
 } from "../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 const TheorySubscription = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error  } = useSelector((state) => state.subscription);
@@ -21,12 +23,10 @@ const TheorySubscription = () => {
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
-    if (userId) {
-      dispatch(fetchUserSubscriptions(userId));
-    }
+   
     dispatch(fetchPlans());
    
-  }, [dispatch,userId]);
+  }, [dispatch]);
  // Added userId as a dependency
 ////////////////////////////////////////////////////////
 const handleCouponSubmit = async () => {
@@ -62,6 +62,7 @@ const handleCouponSubmit = async () => {
         createUserSubscription(subscriptionData)
       ).unwrap();
       console.log("Trial subscription created successfully:", subscription);
+      navigate("/Theory-Portal");
     } catch (error) {
       console.error("Error creating trial subscription:", error);
     }
@@ -100,6 +101,7 @@ const handleCouponSubmit = async () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
+      navigate("/Theory-Portal");
     } catch (error) {
       console.error("Error during order approval:", error);
     }

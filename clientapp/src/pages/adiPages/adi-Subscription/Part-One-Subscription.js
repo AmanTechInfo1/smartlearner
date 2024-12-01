@@ -11,6 +11,7 @@ import {
   fetchUserSubscriptions,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 const PartOneSubscription = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const PartOneSubscription = () => {
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
 
-
+  const navigate = useNavigate();
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
@@ -98,6 +99,7 @@ const PartOneSubscription = () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
+      navigate("/adi-part-one");
     } catch (error) {
       console.error("Error during order approval:", error);
     }

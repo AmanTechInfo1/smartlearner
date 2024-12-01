@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
 import httpHandler from "../../../utils/httpHandler";
+import LoadingWeb from "../../../components/loader/LoadingWeb";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -13,6 +15,10 @@ export default function PaymentProcessing() {
   const [paypalError, setPaypalError] = useState(null);
   const [isPaymentCreated, setIsPaymentCreated] = useState(false);
   const [orderId, setOrderId] = useState(null); // Add orderId state
+  const [loading, setLoading] = useState(false); // State to manage loading
+  const [webloading, setWebLoading] = useState(false);
+  const navigate = useNavigate();
+
 
 
   const carting = useSelector((state) => {
@@ -135,6 +141,7 @@ export default function PaymentProcessing() {
   // =====================================
 
   const createPayment = async () => {
+    setLoading(true);
     try {
       const response = await httpHandler.post("/api/order/create", {
      order: {  firstName: carting.firstName,
@@ -167,10 +174,13 @@ export default function PaymentProcessing() {
     } catch (err) {
       console.error("Error creating payment:", err);
       setError("Payment creation failed. Please try again.");
+    }finally {
+      setLoading(false); // Hide loader after the API call
     }
   };
 
   const executePayment = async (paymentId, payerId, orderId) => {
+    setWebLoading(true); 
     try {
       const response = await httpHandler.post("/api/order/execute", {
         paymentId,
@@ -180,13 +190,15 @@ export default function PaymentProcessing() {
 
       if (response.data.success) {
         // Redirect to success page after payment is executed
-        window.location.href = "/thanks";
+         navigate("/thanks") 
       } else {
         setError("Payment execution failed. Please try again.");
       }
     } catch (err) {
       console.error("Error executing payment:", err);
       setError("Payment execution failed. Please try again.");
+    }finally {
+      setWebLoading(false); // Hide loading after execution
     }
   };
 
@@ -211,6 +223,7 @@ export default function PaymentProcessing() {
 
   return (
     <div className="payment-container">
+       {webloading && <LoadingWeb />}
       <form
         className="payment-form"
         role="form"
@@ -308,7 +321,7 @@ export default function PaymentProcessing() {
         >
           Submit Payment
         </button> */}
-        {isPaymentCreated && (
+        {isPaymentCreated && !loading && (
         <PayPalButtons
           style={{ layout: "vertical" }}
           createOrder={(data, actions) => {
@@ -326,9 +339,13 @@ export default function PaymentProcessing() {
           onApprove={handleApprove}
           onError={handleError}
         />
-      )}
+      )}  
+      {loading && !isPaymentCreated && (
+          <div className="loading-text" style={{color:'red',fontWeight:"bold",fontSize:'1.2rem',textAlign:'center'}}>Loading... Please wait.</div>
+        )}
       </form>
-      {paypalError && <p className="error-message">{paypalError}</p>}
+      
+    
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../AdiPartOne.module.css";
 import { IoMdArrowDropright } from "react-icons/io";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
@@ -22,11 +22,22 @@ export default function AdiPartThree() {
   );
   const userId = userDetails?._id;
   
-  // useEffect(() => {
-  //   dispatch(fetchUserSubscriptions(userId));
-  // }, [dispatch]);
+  
+  const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
+
   useEffect(() => {
-    // Fetch user subscriptions
+    // If user is logged in and userId exists, fetch subscription data
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId))
+        .then(() => setSubscriptionLoaded(true)) // Set subscriptionLoaded to true once data is fetched
+        .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
+    }
+  }, [dispatch, userId]);
+ 
+  
+  
+  useEffect(() => {
+    
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
       navigate("/login"); // Redirect to login if user is not logged in
@@ -36,7 +47,7 @@ export default function AdiPartThree() {
     }else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
-    } else {
+    } else if (subscriptionLoaded) {
 
       const hasAccess = Array.isArray(userSubscription) &&  userSubscription.some((subscription) => {
         const { planCategory } = subscription.subscriptionId || {};
@@ -56,7 +67,7 @@ export default function AdiPartThree() {
     
     
     }
-  }, [userDetails, userSubscription, dispatch, navigate]);
+  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
 
   return (
     <div className={styles.AdiPartOne}>

@@ -11,6 +11,7 @@ import {
   applyCouponCode
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const PartThreeSubscription = () => {
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
+
+  const navigate = useNavigate();
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
@@ -94,6 +97,7 @@ const PartThreeSubscription = () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
+      navigate("/adi-part-3")
     } catch (error) {
       console.error("Error during order approval:", error);
     }

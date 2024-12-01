@@ -22,7 +22,7 @@ import {
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import QuizMain from "../../components/takequizes/QuizMain";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchUserSubscriptions,
@@ -32,32 +32,42 @@ import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
   
-
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
-
+  const userId = userDetails?._id; 
   
-  const userSubscription = useSelector(
-    (state) => state.subscription.userSubscription
-  );
- 
+  const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
 
   useEffect(() => {
-    //
+    // If user is logged in and userId exists, fetch subscription data
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId))
+        .then(() => setSubscriptionLoaded(true)) // Set subscriptionLoaded to true once data is fetched
+        .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
+    }
+  }, [dispatch, userId]);
+
+
+  
+
+
+  useEffect(() => {
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login"); // Redirect to login if user is not logged in
+      navigate("/login"); 
     } else if (userDetails.role === "admin" || userDetails.role === "theoryinstructor") {
-      // Allow admin or instructor to access the portal
+     
       return;
-    } 
-   else {
+    } else if (subscriptionLoaded) {
     const hasAccess = Array.isArray(userSubscription) && userSubscription.some((subscription) => {
       const { planCategory } = subscription.subscriptionId || {};
-      const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+      const { couponApplied } = subscription; 
     
       return (
         (subscription.isActive && (
@@ -67,10 +77,10 @@ export default function TheoryPortal() {
       );
     });
     if (!hasAccess) {
-      navigate("/Theory-Subscription"); // Redirect to subscription page if no valid plan found
+      navigate("/Theory-Subscription"); 
     }    
     }
-  }, [userDetails, userSubscription, dispatch, navigate]);
+  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
 
 
 

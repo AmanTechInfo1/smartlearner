@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./AdiPartOne.module.css";
@@ -14,7 +14,20 @@ export default function AdiPartOne() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
+  const userId = userDetails?._id; 
 
+
+  
+  const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
+
+  useEffect(() => {
+    // If user is logged in and userId exists, fetch subscription data
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId))
+        .then(() => setSubscriptionLoaded(true)) // Set subscriptionLoaded to true once data is fetched
+        .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
+    }
+  }, [dispatch, userId]);
   
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
@@ -32,7 +45,7 @@ export default function AdiPartOne() {
     } else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
-    }else {
+    }else if (subscriptionLoaded) {
       const hasAccess = Array.isArray(userSubscription) &&  userSubscription.some((subscription) => {
         const { planCategory } = subscription.subscriptionId || {};
         const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
@@ -54,7 +67,7 @@ export default function AdiPartOne() {
 
      
     }
-  }, [userDetails, userSubscription, dispatch, navigate]);
+  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
