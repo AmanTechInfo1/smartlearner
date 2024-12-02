@@ -8,6 +8,10 @@ const upload = multer();
 router.post('/CompleteCheckout', upload.none(), OrderController.CompleteCheckout);
 router.get('/getMyOrder', upload.none(),requireAuth, OrderController.getMyOrder);
 router.get('/getAllOrder', upload.none(),requireAuth, OrderController.getAllOrder);
+// =========================================================
+router.get('/get-all-orders', upload.none(),requireAuth, OrderController.getAllOrders);
+router.get('/get-all-orders/:id', upload.none(),requireAuth, OrderController.getAllOrdersById);
+// ///////////////////////////////////////////////
 router.get('/getOrder/:id', upload.none(),requireAuth, OrderController.getOneOrder);
 router.get('/myOrder', upload.none(),requireAuth, OrderController.getMyOrder);
 router.post('/generate_hash', upload.none(),requireAuth, OrderController.generate_hash);

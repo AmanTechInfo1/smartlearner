@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from "react";
 import "./Checkout.css"; // Ensure this CSS file contains your new styles
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
 import httpHandler from "../../../utils/httpHandler";
 import LoadingWeb from "../../../components/loader/LoadingWeb";
 import { useNavigate } from "react-router-dom";
+import { emptyCart } from "../../../redux/features/cartSlice";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -18,7 +19,7 @@ export default function PaymentProcessing() {
   const [loading, setLoading] = useState(false); // State to manage loading
   const [webloading, setWebLoading] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
 
 
   const carting = useSelector((state) => {
@@ -190,6 +191,7 @@ export default function PaymentProcessing() {
 
       if (response.data.success) {
         // Redirect to success page after payment is executed
+        dispatch(emptyCart()); 
          navigate("/thanks") 
       } else {
         setError("Payment execution failed. Please try again.");

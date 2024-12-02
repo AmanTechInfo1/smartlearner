@@ -39,7 +39,7 @@ export default function WeProudlySupport() {
             </p>
           </div>
           <div className={styles.column}>
-            <a href="http://www.bylc.co.uk/">
+            <a href="http://www.bylc.org.uk/">
               <img src={bylc} alt="bylc" />
             </a>
             <p>

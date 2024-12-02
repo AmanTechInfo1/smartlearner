@@ -1,6 +1,6 @@
 const { ObjectId } = require("mongodb");
 const Order = require("../models/orderModel");
-
+const Paypalorder = require("../models/paypalOrderModel");
 const axios = require("axios");
 const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
 
@@ -120,6 +120,63 @@ class OrderService {
       throw new Error("Could not fetch role");
     }
   }
+  // =======/////////////////////////////
+
+  async getAllOrders(pageNumber, pageSize, query, status) {
+    try {
+      const skip = (pageNumber - 1) * (pageSize || 20);
+      let filter = {};
+      if (query) {
+        const regex = new RegExp(query, "i");
+        filter.$or = [{ name: regex }, { description: regex }];
+      }
+
+      if (status) {
+        const statusArray = status.split(','); // Split the status string into an array
+        filter.status = { $in: statusArray };  // Filter by any of the statuses
+    }
+
+      const totalCount = await Paypalorder.countDocuments(filter);
+      const order = await Paypalorder.find(filter).skip(skip).limit(pageSize || 20);
+
+      const resultObject = {
+        message: "Fetched successfully",
+        statusCode: 201,
+        success: true,
+        data: { order, totalCount },
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error("Could not fetch order");
+    }
+  }
+
+
+
+
+
+
+  // /////////////////////////////
+  async getAllOrdersById(orderId) {
+    try {
+      const order = await Paypalorder.findById(orderId);
+      const resultObject = {
+        success: true,
+        message: "order fetched successfully",
+        data: order,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+  // ///////////////////////////////////////
 
   async getMyOrderAsync(uid) {
     try {
@@ -439,7 +496,7 @@ class OrderService {
           item_list: {
             items: orderData.myCart.map((item) => ({
               name: item.service,
-              price:  parseFloat(item.price).toFixed(2),
+              price: parseFloat(item.price).toFixed(2),
               quantity: item.count,
             })),
           },
@@ -504,9 +561,9 @@ class OrderService {
         pass: "cbsb ueih dxqm zdhd", // Your email password or app password
       },
     });
-  
+
     let cartDetails = "";
-    orderDetails.myCart.forEach(item => {
+    orderDetails.myCart.forEach((item) => {
       cartDetails += `
         <tr>
           <td>${item.service}</td>
@@ -515,7 +572,7 @@ class OrderService {
         </tr>
       `;
     });
-  
+
     const htmlContent = `
       <html>
         <head>
@@ -541,8 +598,12 @@ class OrderService {
             </div>
             <div class="body">
               <h2>Payment ${status} - Order #${orderDetails._id}</h2>
-              <p><strong>Dear ${orderDetails.firstName} ${orderDetails.lastName},</strong></p>
-              <p>Your payment for Order #${orderDetails._id} has been ${status}.</p>
+              <p><strong>Dear ${orderDetails.firstName} ${
+      orderDetails.lastName
+    },</strong></p>
+              <p>Your payment for Order #${
+                orderDetails._id
+              } has been ${status}.</p>
   
               <h3>Order Details:</h3>
               <table>
@@ -560,7 +621,9 @@ class OrderService {
                 </tr>
                 <tr>
                   <th>Address</th>
-                  <td>${orderDetails.streetAddress1} ${orderDetails.streetAddress2}</td>
+                  <td>${orderDetails.streetAddress1} ${
+      orderDetails.streetAddress2
+    }</td>
                 </tr>
                 <tr>
                   <th>City</th>
@@ -591,14 +654,14 @@ class OrderService {
         </body>
       </html>
     `;
-  
+
     const mailOptions = {
       from: "Smartlearnerdrivingschool@gmail.com",
       to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
       subject: `Payment ${status} - Order #${orderDetails._id}`,
       html: htmlContent,
     };
-  
+
     try {
       await transporter.sendMail(mailOptions);
     } catch (error) {
@@ -606,8 +669,6 @@ class OrderService {
       throw new Error("Email sending failed");
     }
   }
-  
-  
 }
 
 module.exports = new OrderService();

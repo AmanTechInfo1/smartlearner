@@ -60,7 +60,7 @@ export default function DrivingLessons() {
             <h2>Efficient Learning</h2>
             <p>
               Our carefully crafted training program requires fewer lessons than
-              the average instructors
+              the average instructors.
             </p>
           </div>
         </section>

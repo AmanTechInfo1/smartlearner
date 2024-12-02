@@ -107,7 +107,7 @@ export default function SafetyMargins() {
             {" "}
             If you’re driving at night or in bad weather, you’ll need to make
             sure you’re using your car lights properly. Take care when following
-            large vehicles to, you’ll need to fall back to ensure they’re able
+            large vehicles too, you’ll need to fall back to ensure they’re able
             to see you in their mirrors properly.
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>

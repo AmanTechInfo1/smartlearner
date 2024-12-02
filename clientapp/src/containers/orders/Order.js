@@ -10,20 +10,23 @@ import Loader from "../../components/loader/Loader";
 
 import { Link, useNavigate } from "react-router-dom";
 import OrderInvoice from "./component/OrderInvoice";
-import { getAllOrders } from "../../redux/features/orderSlice";
+import { getAllPaypalOrders } from "../../redux/features/orderSlice";
 
 function Order() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { loading, orderCount } = useSelector((state) => state.order);
+    const { loading, orderCount, allOrdersCount } = useSelector((state) => state.order);
     const orders = useSelector((state) => {
-        return state.order.orders.map((itm) => {
-            return {
-                ...itm,
-                userName: itm.user ? itm.user.username : "Unknown User",
-                completeAddress: `${itm.streetAddress1}, ${itm.streetAddress2 ? itm.streetAddress2 + ", " : ""}${itm.city}, ${itm.county}, ${itm.postcode}`
-            }
-        });
+        return state.order.allOrders
+            .filter((itm) => itm.status === "completed" || itm.status === "failed") // Filtering by status
+            .map((itm) => {
+                return {
+                    ...itm,
+                    orderNo: itm._id,
+                    userName: itm.firstName,
+                    completeAddress: `${itm.streetAddress1}, ${itm.streetAddress2 ? itm.streetAddress2 + ", " : ""}${itm.city}, ${itm.county}, ${itm.postcode}`
+                };
+            });
     });
     
     const [state, setState] = useState({
@@ -41,7 +44,8 @@ function Order() {
 
 
     useEffect(() => {
-        dispatch(getAllOrders(state.search, state.page, state.pageSize));
+        const statusFilter = ["completed", "failed"]; 
+        dispatch(getAllPaypalOrders(state.search, state.page, state.pageSize, statusFilter));
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {

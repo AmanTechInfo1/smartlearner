@@ -277,11 +277,12 @@ export default function VulnerableRoadUser() {
                     • These vehicles require you to take extra care when you see
                     them. They are most vulnerable at roundabouts and junctions.
                     Cyclists may be in the left lane, but this doesn’t mean they
-                    are going left they could be going in any direction. They
+                    are going left they could be going in any direction.
+                    {/* They
                     will stay in the left lane close to the side of the road for
                     their own safety as horses can be easily scared by other
                     cars and cyclists may be blown over by a strong gust of
-                    wind.
+                    wind. */}
                   </p>
                 </li>
                 <li>

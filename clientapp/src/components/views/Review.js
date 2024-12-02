@@ -55,7 +55,7 @@ function Review() {
                 <FaXTwitter id={styles.FollowIcons} />
               </a>
               <a
-                href="https://www.youtube.com/channel/UCWqlTyiFfPNqgKeffuo68rghttp"
+                href="https://www.youtube.com/@SmartLearnerDrivingSchool"
                 target="_blank"
                 rel="noopener noreferrer"
               >

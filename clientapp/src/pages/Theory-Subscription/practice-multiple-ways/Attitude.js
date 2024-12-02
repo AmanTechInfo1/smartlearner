@@ -105,8 +105,8 @@ export default function Attitude() {
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDiv}>
               <h2>
-                Remember P.C.P.C - Positioning,
-                <span>Consideration, Priority</span> and, Courtesy
+                Remember P.C.P.C - Positioning, <span>Consideration, Priority</span> and, Courtesy
+                
               </h2>
             </div>
           </section>

@@ -6,10 +6,13 @@ const orderSlice = createSlice({
     name: "order",
     initialState: {
         orders: [],
+        allOrders:[],
         productsCategory: [],
         oneproduct: {},
         oneorders:{},
+        singleOrder:{},
         orderCount: null,
+        allOrdersCount: null,
         productsCategoryCount: null,
         loading: false,
     },
@@ -24,6 +27,29 @@ const orderSlice = createSlice({
             state.orderCount = 0;
             state.loading = false;
         },
+        // ============================================
+        getAllPaypalOrdersSuccess: (state, action) => {
+            state.allOrders = action.payload.order;
+            state.allOrdersCount = action.payload.totalCount;
+            state.loading = false;
+        },
+        getAllPaypalOrdersFailure: (state) => {
+            state.allOrders = [];
+          
+            state.loading = false;
+        },
+        getOrdersIdSuccess: (state, action) => {
+            state.singleOrder = action.payload;
+            state.loading = false;
+        },
+        getOrdersIdFailure: (state) => {
+            state.singleOrder = {};
+            state.loading = false;
+        },
+
+// /////////////////////////////////////////////////
+
+        // ///////////////////////////////
         getOrdersSuccess: (state, action) => {
             state.oneorders = action.payload.order;
             state.loading = false;
@@ -111,6 +137,51 @@ export const getAllOrders = (search, page, pagesize) => async (dispatch) => {
         dispatch(getAllOrdersFailure());
     }
 };
+// ====================================================
+////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+export const getAllPaypalOrders = (search, page, pagesize,statusFilter) => async (dispatch) => {
+    try {
+
+        dispatch(setLoading());
+        const statusQuery = statusFilter ? `&status=${statusFilter.join(',')}` : ''; 
+        const response = await httpHandler.get(
+            `/api/order/get-all-orders?search=${search}&page=${page}&pagesize=${pagesize}&statusQuery=${statusQuery}`
+        );
+        console.log("response",response.data.success)
+        if (response.data.success) {
+            dispatch(getAllPaypalOrdersSuccess(response.data.data));
+        } else {
+            toast.error(response.data.message);
+            dispatch(getAllPaypalOrdersFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getAllPaypalOrdersFailure());
+    }
+};
+export const getOrdersById = (orderId) => async (dispatch) => {
+    try {
+        dispatch(setLoading());
+        const response = await httpHandler.get(
+            `/api/order/get-all-orders/${orderId}`
+        );
+        if (response.data.success) {
+            dispatch(getOrdersIdSuccess(response.data.data));
+           
+        } else {
+            toast.error(response.data.message);
+            dispatch(getOrdersFailure());
+        }
+    } catch (error) {
+        toast.error(error.message);
+        dispatch(getAllPaypalOrdersFailure());
+    }
+};
+
+
+/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 export const getOneOrders = (orderId) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -245,6 +316,12 @@ export const deleteProduct = (id) => async (dispatch) => {
 
 export const {
     getAllOrdersSuccess,
+    ///////////////////////////////////
+    getAllPaypalOrdersSuccess,
+    getAllPaypalOrdersFailure,
+    getOrdersIdSuccess,
+    getOrdersIdFailure,
+////////////////////////////////////////////
     getAllOrdersFailure,
     getOrdersSuccess,
     getOrdersFailure,

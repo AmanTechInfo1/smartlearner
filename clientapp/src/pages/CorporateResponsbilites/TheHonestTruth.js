@@ -158,8 +158,7 @@ export default function TheHonestTruth() {
 
           <div className={styles.getInvolvedContentDiv}>
             <section className={styles.getInContentSection}>
-              <h2>BOOK YOUR LESSON</h2>
-              <hr />
+             
               <p>
                 To get involved in the 'Honest Truth' project, book a lesson
                 with a Smart Learner Driving Instructor. As an award-winning
@@ -225,7 +224,7 @@ export default function TheHonestTruth() {
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.features}>
           <h4>The 10 Truths</h4>
-          <p>Click the ICON to find out more!</p>
+         
        <Truths/>
         </section>
         {/* ///////////////////////////// */}

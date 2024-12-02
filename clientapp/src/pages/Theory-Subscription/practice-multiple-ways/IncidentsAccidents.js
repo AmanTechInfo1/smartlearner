@@ -279,7 +279,7 @@ export default function IncidentsAccidents() {
                   <span>
                     <FaShoppingBag id={styles.featuresIcon} />
                   </span>
-                  <h3>The Right Equiptment</h3>
+                  <h3>The Right Equipment</h3>
 
                   <p>
                     Carrying the right equipment can help reduce the danger of a

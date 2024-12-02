@@ -29,7 +29,7 @@ const TermsAndConditions = () => {
             <ul>
               <li>
                 In these terms and conditions (the “Conditions”) “We”, “Us” or
-                “Our” means Smart Learner Ltd – smartlearner.org.uk
+                “Our” means Smart Learner Ltd – smartlearner.com
               </li>
               <li>“You” or “Your” means you the customer.</li>
               <li>
@@ -319,7 +319,7 @@ const TermsAndConditions = () => {
               </li>
               <li>
                 Terms and conditions apply to special offers published on{" "}
-                <a href="https://smartlearner.org.uk" target="_blank">
+                <a href="https://smartlearner.com" target="_blank">
                   smartlearner.org.uk
                 </a>{" "}
                 or in any advertising leaflet or publication.
@@ -576,7 +576,7 @@ const TermsAndConditions = () => {
                 If You have any concerns or complaints about any part of Your
                 driving tuition which cannot be resolved with Your Instructor,
                 please contact the Business Manager. Email at
-                help@smartlearner.org.uk or free phone 0800 118 2001 or in
+               <a href="help@smartlearner.com">help@smartlearner.org.uk</a> or free phone 0800 118 2001 or in
                 writing to:Customer Care SmartLearner Limited Kingsford House
                 Kingsford Road Coventry CV6 3LP.
               </li>

@@ -44,7 +44,7 @@ const ProductModal = () => {
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
-        setState({ ...state, page: 1, pageSize });
+        setState({ ...state, page: 1, pagesize: pageSize });
     };
 
     const itemRender = (current, type, originalElement) => {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneOrders } from '../../../redux/features/orderSlice';
+import {  getOrdersById } from '../../../redux/features/orderSlice';
 import { imageBaseUrl } from '../../../utils/constants';
 
 const OrderInvoice = (props) => {
-  const { oneorders } = useSelector((state) => state.order);
+  const { singleOrder } = useSelector((state) => state.order);
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -13,20 +13,20 @@ const OrderInvoice = (props) => {
   const [status, setStatus] = useState('Processing');
 
   useEffect(() => {
-    dispatch(getOneOrders(params.invoiceId));
+    dispatch(getOrdersById(params.invoiceId));
   }, [dispatch, params.invoiceId]);
 
   useEffect(() => {
-    if (oneorders && oneorders.status) {
-      setStatus(oneorders.status);
+    if (singleOrder && singleOrder.status) {
+      setStatus(singleOrder.status);
     }
-  }, [oneorders]);
+  }, [singleOrder]);
 
   return (
     <div className="container p-4 bg-white shadow rounded">
-      {oneorders ? (
+      {singleOrder ? (
         <>
-          <h2 className="h4 mb-3">{oneorders.orderNo} details</h2>
+          <h2 className="h4 mb-3">{singleOrder._id} details</h2>
           <p className="text-muted mb-4">
             Payment via Credit Card - Via Wildcard. Paid on June 17, 2024 @ 5:01 pm. Customer IP: 89.240.94.32
           </p>
@@ -36,42 +36,33 @@ const OrderInvoice = (props) => {
               <div className="mb-3">
                 <label className="form-label">Date created:</label>
                 <span className="mb-3">
-                  {`${new Date(oneorders.createdOn).getDate()}/${new Date(oneorders.createdOn).getMonth() + 1}/${new Date(oneorders.createdOn).getFullYear()}`}
+                  {`${new Date(singleOrder.createdOn).getDate()}/${new Date(singleOrder.createdOn).getMonth() + 1}/${new Date(singleOrder.createdOn).getFullYear()}`}
                 </span>
                 <br />
                 <br />
                 <label className="form-label">Time created:</label>
                 <span className="mb-3">
-                  {`${new Date(oneorders.createdOn).getHours()}:${new Date(oneorders.createdOn).getMinutes()}:${new Date(oneorders.createdOn).getSeconds()}`}
+                  {`${new Date(singleOrder.createdOn).getHours()}:${new Date(singleOrder.createdOn).getMinutes()}:${new Date(singleOrder.createdOn).getSeconds()}`}
                 </span>
               </div>
               <div className="mb-3">
                 <label className="form-label">Status:</label>
-                <select
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="form-select"
-                >
-                  <option value="Processing">Processing</option>
-                  <option value="Shipped">Shipped</option>
-                  <option value="Delivered">Delivered</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
+             <p>{singleOrder.status}</p>
               </div>
             </div>
             <div className="col-md-4">
               <h3 className="h5 mb-3">Billing</h3>
-              <p>{oneorders.streetAddress1}</p>
-              {oneorders.streetAddress2 && <p>{oneorders.streetAddress2}</p>}
-              <p>{oneorders.city}</p>
-              <p>{oneorders.county}</p>
-              <p>{oneorders.postcode}</p>
+              <p>{singleOrder.streetAddress1}</p>
+              {singleOrder.streetAddress2 && <p>{singleOrder.streetAddress2}</p>}
+              <p>{singleOrder.city}</p>
+              <p>{singleOrder.county}</p>
+              <p>{singleOrder.postcode}</p>
               <p>
                 Email address: 
-                <a href={`mailto:${oneorders.email}`} className="text-decoration-none"> {oneorders.email}</a>
+                <a href={`mailto:${singleOrder.email}`} className="text-decoration-none"> {singleOrder.email}</a>
               </p>
               <p>
-                Phone: <a href={`tel:${oneorders.phoneNumber}`} className="text-decoration-none">{oneorders.phoneNumber}</a>
+                Phone: <a href={`tel:${singleOrder.phoneNumber}`} className="text-decoration-none">{singleOrder.phoneNumber}</a>
               </p>
             </div>
             <div className="col-md-4">
@@ -91,7 +82,7 @@ const OrderInvoice = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {oneorders.myCartList?.map((item, index) => (
+                {singleOrder.myCartList?.map((item, index) => (
                   <tr key={index}>
                     <td className="d-flex align-items-center">
                       <img width={48} height={48} src={`${imageBaseUrl}${item.image}`} alt={item.name} />
@@ -105,9 +96,9 @@ const OrderInvoice = (props) => {
               </tbody>
             </table>
             <div className="text-end">
-              <p className="mb-2">Items Subtotal: <span className="fw-semibold">£ {oneorders.subtotal}</span></p>
-              <p className="mb-2">2% ONLINE SERVICE CHARGE: <span className="fw-semibold">£ {oneorders.serviceCharge}</span></p>
-              <p className="mb-2">Order Total: <span className="fw-semibold">£ {oneorders.total}</span></p>
+              <p className="mb-2">Items Subtotal: <span className="fw-semibold">£ {singleOrder.subtotal}</span></p>
+              <p className="mb-2">2% ONLINE SERVICE CHARGE: <span className="fw-semibold">£ {singleOrder.serviceCharge}</span></p>
+              <p className="mb-2">Order Total: <span className="fw-semibold">£ {singleOrder.total}</span></p>
             </div>
           </div>
         </>

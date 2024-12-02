@@ -343,7 +343,7 @@ export default function HazzardAwareness() {
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen></iframe>
             </div>
-            <div className="w-100 w-md-50 p-4">
+            <div className="w-100 w-md-50 p-4" style={{color:'red'}}>
               <h2 className="h2 font-weight-bold mb-2">
                 The affects of alcohol on driving
               </h2>
@@ -376,7 +376,7 @@ export default function HazzardAwareness() {
                   Poor judgment.
                 </li>
                 <li className="d-flex align-items-center mb-2 gap-2">
-                  <FaArrowCircleRight />
+                  <FaArrowCircleRight style={{fontSize:'1.7rem'}}/>
                   Get a conviction for driving whilst unfit through drink or
                   drugs and your car insurance premium will rise significantly.
                 </li>

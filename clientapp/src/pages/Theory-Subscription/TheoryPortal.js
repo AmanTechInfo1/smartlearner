@@ -100,7 +100,7 @@ export default function TheoryPortal() {
 
             <div className={styles.heading2}>
               <p>
-                Its time to begin your next steps towards passing your theory
+                It`s time to begin your next steps towards passing your theory
                 test!
               </p>
             </div>

@@ -359,7 +359,7 @@ export default function MotorwayRules() {
         </section>
 
         {/* ////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
+        {/* <section className={styles.hazardTestWorkListSection}>
           <h2 className={styles.hazardTestH2}>
             Before a <span>Motorway Journey</span>
           </h2>
@@ -382,7 +382,7 @@ export default function MotorwayRules() {
               </ul>
             </div>
           </section>
-        </section>
+        </section> */}
         {/* ////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <section className={styles.AdiParttwoDisplayFlex}>

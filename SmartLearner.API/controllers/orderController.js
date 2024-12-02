@@ -7,6 +7,26 @@ const Order = require("../models/orderModel");
 const Paypalorder = require("../models/paypalOrderModel")
 
 class OrderController {
+
+  async getAllOrders(req, res,next) {
+    try {
+      const { page, pagesize, search,status } = req.query;
+      const Orders = await orderService.getAllOrders(page, pagesize, search,status);
+      res.status(200).json(Orders);
+    } catch (err) { 
+      next(err);
+    }
+  }
+  async getAllOrdersById(req, res, next) {
+    try {
+      const blog = await orderService.getAllOrdersById(req.params.id);
+      res.json(blog);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
   async CompleteCheckout(req, res, next) {
     try {
         const data = req.body;

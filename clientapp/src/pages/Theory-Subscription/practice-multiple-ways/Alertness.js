@@ -30,10 +30,10 @@ export default function Alertness() {
                 <h2>Alertness</h2>
               </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Contact Us</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -59,7 +59,8 @@ export default function Alertness() {
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       referrerpolicy="strict-origin-when-cross-origin"
-                      allowfullscreen></iframe>
+                      allowfullscreen
+                    ></iframe>
                   </div>
                 </div>
                 <section className={styles.alternessLists}>
@@ -77,7 +78,7 @@ export default function Alertness() {
                   <li id={styles.alertnessL2}>
                     <h3>2.</h3>
                     <p>
-                      So, in this section, we have broken the content down into
+                      In this section, we have broken the content down into
                       various sections in order to make revision for the topic
                       easier. Additionally, it will also serve as a good way to
                       apply the knowledge to your own driving.
@@ -134,8 +135,8 @@ export default function Alertness() {
                   <h3>Mobile</h3>
 
                   <p>
-                    TUsing mobile phones can cause drivers to take their eyes
-                    off the road, their hands off the steering wheel, and their
+                    Using mobile phones can cause drivers to take their eyes off
+                    the road, their hands off the steering wheel, and their
                     minds off the road and the surrounding situation. Studies
                     suggest that drivers using a mobile phone are approximately
                     four times more likely to be involved in a crash than a
@@ -235,14 +236,9 @@ export default function Alertness() {
                 <section id={styles.resLists1}>
                   <li>
                     <p>
-                      • Road signs and markings are there for a reason. If
-                      you’ve spotted a give way sign, or a warning about changes
-                      to the speed limit, you should prepare by slowing down.
-                      Don’t leave things to the last second. It’s the same as
-                      when you’re approaching a set of traffic lights—if they’ve
-                      been on green for some time, you know that they’re likely
-                      to switch to red, which means you need to slow down
-                      immediately.
+                      • Your ability to act will be affected by changes in road
+                      conditions such as bad weather, heavy traffic and
+                      unfamiliar routes. Be Prepared.
                     </p>
                   </li>
                   <li>
@@ -307,7 +303,7 @@ export default function Alertness() {
             {" "}
             If you’re driving at night or in bad weather, you’ll need to make
             sure you’re using your car lights properly. Take care when following
-            large vehicles to, you’ll need to fall back to ensure they’re able
+            large vehicles too, you’ll need to fall back to ensure they’re able
             to see you in their mirrors properly.
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
