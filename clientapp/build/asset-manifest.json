@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2d8f1cfe.css",
-    "main.js": "/static/js/main.75015e73.js",
+    "main.css": "/static/css/main.62b6bc16.css",
+    "main.js": "/static/js/main.b454a175.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -118,11 +118,11 @@
     "static/media/drivingLessonbanner.jpg": "/static/media/drivingLessonbanner.5cab6fa027d11d7a3005.jpg",
     "static/media/levelCrossing.jpg": "/static/media/levelCrossing.8c9a96b6056c9a128c60.jpg",
     "static/media/halloffame1.png": "/static/media/halloffame1.dcb8434af48b54d2ec05.png",
+    "static/media/footerImgs.png": "/static/media/footerImgs.1849f534d163fbf2e425.png",
     "static/media/Asset_107.png": "/static/media/Asset_107.58df3f9c1d1de3e4e47e.png",
     "static/media/trophy-Icon.png": "/static/media/trophy-Icon.441dc128bf02e0522fb5.png",
     "static/media/Roof-Racks-20-1024x683.jpg": "/static/media/Roof-Racks-20-1024x683.5ed7f4d4fd0a33018b8c.jpg",
     "static/media/goldstar.png": "/static/media/goldstar.1b2c4976a07e56814a3c.png",
-    "static/media/footerImages.png": "/static/media/footerImages.94d955ff8c526c43579b.png",
     "static/media/enviromentalIssueImg.jpg": "/static/media/enviromentalIssueImg.d7adf1b987d92f686003.jpg",
     "static/media/bgcarImg2.png": "/static/media/bgcarImg2.f023656e36812c1296ef.png",
     "static/media/certificateOfMotor.jpg": "/static/media/certificateOfMotor.3e2039ccf374e0c33e62.jpg",
@@ -274,12 +274,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.2d8f1cfe.css.map": "/static/css/main.2d8f1cfe.css.map",
-    "main.75015e73.js.map": "/static/js/main.75015e73.js.map",
+    "main.62b6bc16.css.map": "/static/css/main.62b6bc16.css.map",
+    "main.b454a175.js.map": "/static/js/main.b454a175.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d8f1cfe.css",
-    "static/js/main.75015e73.js"
+    "static/css/main.62b6bc16.css",
+    "static/js/main.b454a175.js"
   ]
 }
