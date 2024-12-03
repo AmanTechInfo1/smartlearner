@@ -186,7 +186,7 @@ export default function TheHonestTruth() {
               </p>
             </section>
             {/* ///////////////////////////////////// */}
-            <section className={styles.getInContentSection}>
+            {/* <section className={styles.getInContentSection}>
               <span>
                 <BiSolidChevronsDown id={styles.downwordArrow} />
               </span>
@@ -202,7 +202,7 @@ export default function TheHonestTruth() {
                 safe driving realistically and straight forwardly, hoping to
                 change their driving behavior.
               </p>
-            </section>
+            </section> */}
             {/* /////////////////////////////////////////// */}
             <section className={styles.getInContentSection}>
               <span>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../assets/css/admin.module.css";
-import { Table } from "antd";
+import { Table,Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { FaFileInvoice } from "react-icons/fa";
@@ -30,6 +30,8 @@ function Order() {
     });
     
     const [state, setState] = useState({
+        idSearch:"",
+        nameSearch:'',
         search: "",
         page: 1,
         pageSize: 10,
@@ -114,14 +116,7 @@ function Order() {
                     className="d-flex justify-content-center"
                     data-popper-placement="bottom-end"
                 >
-                    {/* <Link
-                        onClick={(event) => {
-                            event.preventDefault();
-                            handleEditClick(record._id);
-                        }}
-                    >
-                        <LiaUserEditSolid />
-                    </Link> */}
+            
                     <Link
                         onClick={(event) => {
                             event.preventDefault();
@@ -130,18 +125,20 @@ function Order() {
                     >
                         <FaFileInvoice />
                     </Link>
-                    {/* <Link
-                        className="dropdown-item px-2 text-danger"
-                        to={"#"}
-                        onClick={() => {
-                            handleDeleteClick(record._id);
-                        }}>
-                        <RiDeleteBin6Fill />
-                    </Link> */}
+                   
                 </div>
             ),
         },
     ];
+    const filteredOrders = orders.filter(
+        (order) =>
+            order.firstName.toLowerCase().includes(state.nameSearch.toLowerCase()) &&
+        order._id
+            .toLowerCase()
+            .includes(state.idSearch.toLowerCase())
+      );
+
+
     return (
         <>
             <div className={styles.usersContainer}>
@@ -149,6 +146,24 @@ function Order() {
                     <h2 className={styles.userHeading}>Orders</h2>
                     
                 </div>
+                <div className="search-container mb-3">
+          <Input
+            type="text"
+            placeholder="Search by name"
+            value={state.nameSearch}
+            onChange={(e) => setState({ ...state, nameSearch: e.target.value })}
+            style={{ width: "100%", margin: "10px auto", padding: "1rem auto" }}
+          />
+          <Input
+            type="text"
+            placeholder="search by Id"
+            value={state.idSearch}
+            onChange={(e) =>
+              setState({ ...state, idSearch: e.target.value })
+            }
+            style={{ width: "100%", padding: "1rem auto" }}
+          />
+        </div>
                 {!loading ? (
                     <Table
                         className="table-striped"
@@ -166,16 +181,14 @@ function Order() {
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
-                        dataSource={orders}
+                        dataSource={filteredOrders}
                         rowKey={(record) => record._id}
                     />
                 ) : (
                     <Loader />
                 )}
             </div>
-           {/* <OrderInvoice OrderObj={OrderObj} 
-          OrderInvoiceModalOpen={OrderInvoiceModalOpen}
-          toggleOrderInvoiceModal={toggleOrderInvoiceModal} /> */}
+        
            
         </>
     )

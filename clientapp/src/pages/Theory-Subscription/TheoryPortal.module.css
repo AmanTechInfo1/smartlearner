@@ -61,11 +61,11 @@
 
   text-align: center;
   overflow: hidden;
-  border-right: 0.2px solid rgb(255, 0, 0);
+ 
   white-space: nowrap;
   margin: 0 auto;
 
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
   padding: 2rem 0px;
 }
 
@@ -171,12 +171,12 @@
   font-size: 5rem;
   font-weight: 700;
   overflow: hidden;
-  border-right: 0.2px solid rgb(255, 0, 0);
+ 
   white-space: nowrap;
   margin: 0 auto;
 
   color: #ff090d;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
   padding: 2rem 0px;
 }
 
@@ -377,12 +377,12 @@
   font-size: 4rem;
   font-weight: 700;
   overflow: hidden;
-  border-right: 0.2px solid rgb(255, 0, 0);
+ 
   white-space: nowrap;
   margin: 0 auto;
 
   color: #ff090d;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
   padding: 2rem 0px;
 }
 .thMultipleChioceHeader h2 SPAN {
@@ -582,7 +582,7 @@
   text-align: center;
   color: #fff;
   overflow: hidden;
-  border-right: 0.2px solid rgb(255, 0, 0);
+
   white-space: nowrap;
   margin: 0 auto;
 

@@ -308,9 +308,7 @@ class UserSubscriptionService {
                    </tr>
 
                     <tr>
-                   <th>Plan duration</th>
-                    <td> ${subscription.duration} days</td>
-                   </tr>
+                   
                 
                
               

@@ -170,7 +170,7 @@ class quizService {
 
   async getAllQuizAsync(pageNumber, pageSize, query) {
     try {
-      const skip = (pageNumber - 1) * (pageSize || 20);
+      const skip = (pageNumber - 1) ;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
@@ -222,9 +222,7 @@ class quizService {
         {
           $skip: skip,
         },
-        {
-          $limit: +pageSize || 20,
-        },
+        
       ];
 
       const quizzes = await QuizQuestion.aggregate(aggr);

@@ -28,7 +28,7 @@ const OrderInvoice = (props) => {
         <>
           <h2 className="h4 mb-3">{singleOrder._id} details</h2>
           <p className="text-muted mb-4">
-            Payment via Credit Card - Via Wildcard. Paid on June 17, 2024 @ 5:01 pm. Customer IP: 89.240.94.32
+            Payment via PayPal Paid on {`${new Date(singleOrder.createdOn).getDate()}/${new Date(singleOrder.createdOn).getMonth() + 1}/${new Date(singleOrder.createdOn).getFullYear()}`} @   {`${new Date(singleOrder.createdOn).getHours()}:${new Date(singleOrder.createdOn).getMinutes()}:${new Date(singleOrder.createdOn).getSeconds()}`}
           </p>
           <div className="row mb-4">
             <div className="col-md-4">

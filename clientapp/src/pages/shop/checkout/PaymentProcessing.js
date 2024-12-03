@@ -233,9 +233,9 @@ export default function PaymentProcessing() {
         method="post"
         id="payment-form"
       >
-        <h1>Amount to be paid: {carting.total}£</h1>
-        <h3>Sub Total: {carting.subtotal}£</h3>
-        <h3>Service Charge: {carting.serviceCharge}£</h3>
+        <h1>Amount to be paid: £ {carting.total}</h1>
+        <h3>Sub Total: £ {carting.subtotal}</h3>
+        <h3>Service Charge: £ {carting.serviceCharge}</h3>
         <input
           type="hidden"
           name="ekashu_seller_id"

@@ -9,13 +9,6 @@ import { postcodeSchema } from "../../../schemas/postcode/index";
 function AddPostcodeModel(props) {
   const dispatch = useDispatch();
 
-  // const [errors, setErrors] = useState({});
-
-  // const [formData, setFormData] = useState({
-  //     postcode: '',
-  //     city: '',
-  //     country: '',
-  // });
 
   const {
     handleSubmit,
@@ -37,40 +30,7 @@ function AddPostcodeModel(props) {
     );
   };
 
-  // const handleInputChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData({
-  //         ...formData,
-  //         [name]: value,
-  //     });
-  // };
-
-  // const validateForm = async () => {
-  //     try {
-  //         await postcodeSchema.validate(formData, { abortEarly: false });
-  //         setErrors({});
-  //         return true;
-  //     } catch (validationErrors) {
-  //         const newErrors = {};
-  //         validationErrors.inner.forEach((error) => {
-  //             newErrors[error.path] = error.message;
-  //         });
-  //         setErrors(newErrors);
-  //         return false;
-  //     }
-  // };
-
-  // const onSubmit = async (e) => {
-  //     e.preventDefault();
-  //     const isValid = await validateForm();
-  //     if (isValid) {
-  //         const formDataToSend = new FormData();
-  //         formDataToSend.append('postcode', formData.postcode);
-  //         formDataToSend.append('city', formData.city);
-  //         formDataToSend.append('country', formData.country);
-  //         dispatch(createPostcode(formDataToSend, reset, props.toggleAddPostcodeModal));
-  //     }
-  // };
+  
 
   return (
     <Modal

@@ -3,7 +3,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import styles from "./css/footer.module.css";
 import logo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import { otherLinks, quickLinks } from "../../assets/data/quicklinks";
-import paymentsImges from "../../assets/images/footerImages.png";
+import paymentsImges from "../../assets/images/footerImgs.png";
 import visa from "../../assets/images/visa.png";
 import mastercard from "../../assets/images/Master-card.png";
 import discover from "../../assets/images/Discover.png";

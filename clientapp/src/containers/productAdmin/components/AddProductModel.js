@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { productSchema } from "../../../schemas/product/index";
-import { createProduct, createProductSuccess } from "../../../redux/features/productSlice";
+import { createProduct } from "../../../redux/features/productSlice";
 import ReactSelect from "react-select";
 
 function AddProductModel(props) {
@@ -26,27 +26,28 @@ function AddProductModel(props) {
     formState: { errors },
     reset,
   } = useForm({
-
+   
   });
 
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    formData.append("name", data?.name);
-    formData.append("category", data?.category)
-    formData.append("description", data?.description);
-    formData.append("duration", data?.duration);
-    formData.append("image", image);
-    formData.append("price", data?.price);
-    formData.append("transmission", data?.transmission);
-    formData.append("experience", data?.experience);
-    formData.append("postcode", data?.postcode);
-    formData.append("areaIncluded", data?.areaIncluded);
-    formData.append("rating", data?.rating);
-    // dispatch(
-    //   createProductSuccess(formData, reset, props.toggleAddProductModal)
-    // );
-    dispatch(createProduct(formData, reset, props.toggleAddProductModal, props.state));
+    formData.append("name", data.name);
+    formData.append("category", data.category)
+    formData.append("description", data.description);
+    formData.append("duration", data.duration);
+    // formData.append("image", image);
+    formData.append("price", data.price);
+    formData.append("transmission", data.transmission);
+    formData.append("experience", data.experience);
+    formData.append("postcode", data.postcode);
+    formData.append("areaIncluded", data.areaIncluded);
+    formData.append("rating", data.rating);
+    
+    dispatch(createProduct(data, reset, props.toggleAddProductModal, props.state));
+    setImage(""); 
+    reset();
+   
   };
 
 
@@ -56,6 +57,7 @@ function AddProductModel(props) {
   return (
     <>
       <Modal
+       key={props.showAddProductModalOpen}
         isOpen={props.showAddProductModalOpen}
         toggle={() => props.toggleAddProductModal()}
       >
@@ -79,7 +81,7 @@ function AddProductModel(props) {
                     autoComplete="false"
                   />
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>
@@ -133,7 +135,7 @@ function AddProductModel(props) {
                     autoComplete="false"
                   />
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.description?.message ? (
                 <p style={{ color: "red" }}>{errors?.description?.message}</p>
@@ -158,7 +160,7 @@ function AddProductModel(props) {
                     autoComplete="false"
                   />
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.duration?.message ? (
                 <p style={{ color: "red" }}>{errors?.duration?.message}</p>
@@ -183,7 +185,9 @@ function AddProductModel(props) {
                     }}
                     autoComplete="off"
                   />
+                  
                 )}
+                defaultValue=""
               />
 
               {errors?.name?.message ? (
@@ -208,7 +212,7 @@ function AddProductModel(props) {
                     placeholder="$"
                   />
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>
@@ -303,31 +307,7 @@ function AddProductModel(props) {
                 ""
               )}
             </div>
-            {/* 
-            <div className="form-group">
-              <label>Postcode</label>
-              <Controller
-                name="postcode"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    value={formData.postcode}
-                    onChange={handleInputChange}
-                    name="postcode"
-                    className={`form-control  ${errors?.name ? "error-input" : ""
-                      }`}
-                    type="text"
-                    autoComplete="false"
-                  />
-                )}
-                defaultValue={""}
-              />
-              {errors?.postcode?.message ? (
-                <p style={{ color: "red" }}>{errors?.postcode?.message}</p>
-              ) : (
-                ""
-              )}
-            </div> */}
+           
             <div className="form-group">
               <label>AreaIncluded</label>
               <Controller
@@ -351,7 +331,7 @@ function AddProductModel(props) {
                     ))}
                   </select>
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>
@@ -360,58 +340,7 @@ function AddProductModel(props) {
               )}
             </div>
 
-            {/* <div className="form-group">
-              <label>Postcode</label>
-              <Controller
-                name="postcode"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`form-control  ${errors?.name ? "error-input" : ""
-                      }`}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    autoComplete="false"
-                  />
-                )}
-                defaultValue={""}
-              />
-              {errors?.name?.message ? (
-                <p style={{ color: "red" }}>{errors?.name?.message}</p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="form-group">
-              <label>AreaIncluded</label>
-              <Controller
-                name="areaIncluded"
-                control={control}
-                render={({ field }) => (
-                  <select
-                    {...field}
-                    className={`form-control ${errors.areaName ? "error-input" : ""
-                      }`}
-                  >
-                    <option disabled value="">
-                      Select...
-                    </option>
-                    {areasList.map((area) => (
-                      <option key={area._id} value={area.name}>
-                        {area.name}
-                      </option>
-                    ))}
-                  </select>
-                )}
-                defaultValue={""}
-              />
-              {errors?.name?.message ? (
-                <p style={{ color: "red" }}>{errors?.name?.message}</p>
-              ) : (
-                ""
-              )}
-            </div> */}
+           
             <div className="form-group">
               <label>Rating</label>
               <Controller
@@ -427,7 +356,7 @@ function AddProductModel(props) {
                     autoComplete="false"
                   />
                 )}
-                defaultValue={""}
+                defaultValue=""
               />
               {errors?.name?.message ? (
                 <p style={{ color: "red" }}>{errors?.name?.message}</p>

@@ -320,7 +320,7 @@ const TermsAndConditions = () => {
               <li>
                 Terms and conditions apply to special offers published on{" "}
                 <a href="https://smartlearner.com" target="_blank">
-                  smartlearner.org.uk
+                  smartlearner.com
                 </a>{" "}
                 or in any advertising leaflet or publication.
               </li>
@@ -575,8 +575,7 @@ const TermsAndConditions = () => {
               <li>
                 If You have any concerns or complaints about any part of Your
                 driving tuition which cannot be resolved with Your Instructor,
-                please contact the Business Manager. Email at
-               <a href="help@smartlearner.com">help@smartlearner.org.uk</a> or free phone 0800 118 2001 or in
+                please contact the Business Manager. Email at <a href="help@smartlearner.com">admin@smartlearner.com</a> or free phone 0800 118 2001 or in
                 writing to:Customer Care SmartLearner Limited Kingsford House
                 Kingsford Road Coventry CV6 3LP.
               </li>

@@ -163,8 +163,8 @@ const PartThreeSubscription = () => {
                 </div>
               </div>
               <div className="card-top__price">
-                <h2 className="card-top__price-header">{plan.price}</h2>
-                <p className="card-top__price-desc">{plan.duration}-days</p>
+                <h2 className="card-top__price-header"> £ {plan.price}</h2>
+               
               </div>
             </div>
             <div className="card-bottom">

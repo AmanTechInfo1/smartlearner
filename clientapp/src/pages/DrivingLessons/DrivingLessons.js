@@ -212,14 +212,14 @@ export default function DrivingLessons() {
             </div>
             <div className={styles.manualPList}>
               <p>
-                Designed for those eager to learn quickly and efficiently, our
-                immersive programmes offer focused instruction and hands-on
-                experience to help you become a confident driver in no time.
+                Designed specifically for newly qualified drivers, Pass Plus is
+                an advanced driving course that helps you maintain and improve
+                the skills you've learned while gaining valuable experience on
+                the road. Whether you're looking to build confidence in new
+                driving conditions, or simply want to become a safer, more
+                skilled driver, Pass Plus is the ideal next step.
               </p>
-              <p>
-                Get behind the wheel and fast-track your path to driving
-                independence with our intensive driving courses.
-              </p>
+              
             </div>
             <section>
               <PassPlusCorousel />
@@ -260,7 +260,8 @@ export default function DrivingLessons() {
             maxWidth: "1200px",
             marginLeft: "auto",
             marginRight: "auto",
-          }}>
+          }}
+        >
           <h2 className="text-center display-4 mb-4">What's included?</h2>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">TOWN DRIVING</h3>
@@ -321,11 +322,11 @@ export default function DrivingLessons() {
           }}
         /> */}
       </div>
-{/* ======================================= */}
-<div style={{maxWidth:'700px',width:'100%', margin:'2rem auto'}}>
-        <CallBackForm/>
-        </div>
-{/* //////////////////////////////// */}
+      {/* ======================================= */}
+      <div style={{ maxWidth: "700px", width: "100%", margin: "2rem auto" }}>
+        <CallBackForm />
+      </div>
+      {/* //////////////////////////////// */}
       <section className={styles.imageSliderContainer}>
         <div className={styles.whyChooseText}>
           <p>
@@ -341,7 +342,8 @@ export default function DrivingLessons() {
             padding: "2rem 2rem",
             width: "100%",
             margin: "2rem auto",
-          }}>
+          }}
+        >
           <ImagesCarousel />
         </div>
       </section>

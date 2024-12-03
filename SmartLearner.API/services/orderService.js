@@ -568,7 +568,7 @@ class OrderService {
         <tr>
           <td>${item.service}</td>
           <td>${item.count}</td>
-          <td>$${item.price.toFixed(2)}</td>
+          <td>£ ${item.price.toFixed(2)}</td>
         </tr>
       `;
     });
@@ -620,6 +620,10 @@ class OrderService {
                   <td>${orderDetails.email}</td>
                 </tr>
                 <tr>
+                  <th>Phone No.</th>
+                  <td>${orderDetails.phoneNumber}</td>
+                </tr>
+                <tr>
                   <th>Address</th>
                   <td>${orderDetails.streetAddress1} ${
       orderDetails.streetAddress2
@@ -631,7 +635,7 @@ class OrderService {
                 </tr>
                 <tr>
                   <th>Total</th>
-                  <td>$${orderDetails.total.toFixed(2)}</td>
+                  <td>£ ${orderDetails.total.toFixed(2)}</td>
                 </tr>
               </table>
   

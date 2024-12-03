@@ -27,7 +27,7 @@ class ProductService {
 
   async getProductsAsync(pageNumber, pageSize, query) {
     try {
-      const skip = (pageNumber - 1) * (pageSize || 20);
+      const skip = (pageNumber - 1) ;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
@@ -38,9 +38,7 @@ class ProductService {
       let aggr = [
         {
           '$skip': skip
-        }, {
-          '$limit': pageSize || 20
-        }, {
+        },  {
           '$lookup': {
             'from': 'areas', 
             'localField': 'areaIncluded', 

@@ -236,8 +236,8 @@ export default function DrivingInstructorFranchise() {
             their driving test and theory exams!
           </p>
           <p>
-            We have an Excellent rating and reviews on <a href="">TrustPilot</a>
-            , <a href="">Google</a> and <a href="">Facebook</a>. We have over
+            We have an Excellent rating and reviews on <a href="/">TrustPilot</a>
+            , <a href="https://smartlearner.com">Google</a> and <a href="https://www.facebook.com/smartlearnerdrivingschool">Facebook</a>. We have over
             10,000+ followers across our social media platforms. We always
             engage with our loyal students/followers online to help maximise
             pupil engagement and constantly generate our driving instructors new

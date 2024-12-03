@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const QuizQuestionSchema = new mongoose.Schema({
   question: { type: String, required: true },
   questionImage: { type: String },
-  description: { type: String, required: true },
+  description: { type: String },
   option: { type: Array, required: true },
   optionImage: { type: Array, required: true },
   answer: { type: String, required: true },

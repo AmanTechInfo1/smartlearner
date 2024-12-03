@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AddUserModal from './components/AddUserModal';
-import { Table } from 'antd';
+import { Table,Input } from 'antd';
 import styles from "../../assets/css/admin.module.css";
 import { getListRoles, getRoleById } from '../../redux/features/roleSlice';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
@@ -8,7 +8,7 @@ import { LiaUserEditSolid } from 'react-icons/lia';
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, getListUsers, getUserById, deleteUser } from '../../redux/features/userSlice';
+import { getAllUsers,  getUserById, deleteUser } from '../../redux/features/userSlice';
 import EditUserModal from './components/EditUserModal';
 import Loader from '../../components/loader/Loader';
 import EditPasswordModal from './components/EditPasswordModal';
@@ -52,7 +52,7 @@ function Users() {
         return originalElement;
     };
     const handleAddUserClick = () => {
-        // dispatch(getListUsers());
+       
         dispatch(getListRoles());
 
         toggleAddUserModal();
@@ -74,6 +74,11 @@ function Users() {
     const handleDeleteClick = (id) => {
         dispatch(deleteUser(id));
     };
+
+    const handleSearchChange = (e) => {
+        setState({ ...state, search: e.target.value });
+    }
+
     const columns = [
         {
             title: "UserName",
@@ -146,6 +151,15 @@ function Users() {
                         Add User
                     </button>
                 </div>
+                 <div className="search-container mb-3">
+                    <Input
+                        placeholder="Search by Username or Email"
+                        value={state.search}
+                        onChange={handleSearchChange}
+                        allowClear
+                    />
+                </div>
+
                 {!loading ? (
                     <Table
                         className="table-striped"

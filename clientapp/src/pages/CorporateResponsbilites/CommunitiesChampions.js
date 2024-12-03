@@ -2,21 +2,21 @@
 import styles from "./Communities.module.css";
 import React from "react";
 import handShaking from "../../assets/images/hand-shakes.png";
-import communityChempionImg1 from "../../assets/images/community-champions/CChampion-1.jpg"
-import communityChempionImg2 from "../../assets/images/community-champions/CChampion-2.jpg"
-import communityChempionImg3 from "../../assets/images/community-champions/CChampion-3.jpg"
-import communityChempionImg4 from "../../assets/images/community-champions/CChampion-4.jpg"
-import communityChempionImg5 from "../../assets/images/community-champions/CChampion-5.jpg"
-import communityChempionImg6 from "../../assets/images/community-champions/CChampion-6.jpg"
-import communityChempionImg7 from "../../assets/images/community-champions/CChampion-7.jpg"
-import communityChempionImg8 from "../../assets/images/community-champions/CChampion-8.jpg"
-import communityChempionImg9 from "../../assets/images/community-champions/CChampion-9.jpg"
-import communityChempionImg10 from "../../assets/images/community-champions/CChampion-10.jpg"
-import communityChempionImg11 from "../../assets/images/community-champions/CChampion-11.jpg"
-import communityChempionImg12 from "../../assets/images/community-champions/CChampion-12.jpg"
-import communityChempionImg13 from "../../assets/images/community-champions/CChampion-13.jpg"
-import communityChempionImg14 from "../../assets/images/community-champions/CChampion-14.jpg"
-import communityChempionImg15 from "../../assets/images/community-champions/CChampion-15.jpg"
+import communityChempionImg1 from "../../assets/images/community-champions/CChampion-1.jpg";
+import communityChempionImg2 from "../../assets/images/community-champions/CChampion-2.jpg";
+import communityChempionImg3 from "../../assets/images/community-champions/CChampion-3.jpg";
+import communityChempionImg4 from "../../assets/images/community-champions/CChampion-4.jpg";
+import communityChempionImg5 from "../../assets/images/community-champions/CChampion-5.jpg";
+import communityChempionImg6 from "../../assets/images/community-champions/CChampion-6.jpg";
+import communityChempionImg7 from "../../assets/images/community-champions/CChampion-7.jpg";
+import communityChempionImg8 from "../../assets/images/community-champions/CChampion-8.jpg";
+import communityChempionImg9 from "../../assets/images/community-champions/CChampion-9.jpg";
+import communityChempionImg10 from "../../assets/images/community-champions/CChampion-10.jpg";
+import communityChempionImg11 from "../../assets/images/community-champions/CChampion-11.jpg";
+import communityChempionImg12 from "../../assets/images/community-champions/CChampion-12.jpg";
+import communityChempionImg13 from "../../assets/images/community-champions/CChampion-13.jpg";
+import communityChempionImg14 from "../../assets/images/community-champions/CChampion-14.jpg";
+import communityChempionImg15 from "../../assets/images/community-champions/CChampion-15.jpg";
 
 export default function CommunitiesChampions() {
   return (
@@ -43,8 +43,8 @@ export default function CommunitiesChampions() {
             <hr></hr>
             <section className={styles.cCLists}>
               <p>
-                <span>315 EASTER EGG Campaign:</span> We raised 500+ Easter
-                Eggs support of Easter Eggs for Zoe's Place and Coventry and
+                <span>315 EASTER EGG Campaign:</span> We raised 500+ Easter Eggs
+                support of Easter Eggs for Zoe's Place and Coventry and
                 Warwickshire University Hospital.
               </p>
               <p>
@@ -53,8 +53,8 @@ export default function CommunitiesChampions() {
                 partnership with Coventry City Council.
               </p>
               <p>
-                <span>BIKEATHON Project:</span> Raised £300+ for speed of
-                sight charity, as well as worked with NHS to provide free diabetes
+                <span>BIKEATHON Project:</span> Raised £300+ for speed of sight
+                charity, as well as worked with NHS to provide free diabetes
                 health checks.
               </p>
               <p>
@@ -76,17 +76,17 @@ export default function CommunitiesChampions() {
                   to the families, children, and staff of both establishments
                 </p>
                 <p>
-                  Our goal was to raise 315 Easter eggs, but we surpassed this by
-                  collecting over 500 eggs from instructors,
-                  learners, individuals, and donors in the Coventry community.
+                  Our goal was to raise 315 Easter eggs, but we surpassed this
+                  by collecting over 500 eggs from instructors, learners,
+                  individuals, and donors in the Coventry community.
                 </p>
                 <p>
-                  Our success attracted local MP Taiwo's attention, and
-                  the surplus donations allowed us to extend our reach to
-                  various charities and homes across the West Midlands. We
-                  donated Easter eggs to care homes in Coventry,
-                  Holbrook's Community Centre, and care homes in Nuneaton,
-                  spreading the Easter spirit far and wide.
+                  Our success attracted local MP Taiwo's attention, and the
+                  surplus donations allowed us to extend our reach to various
+                  charities and homes across the West Midlands. We donated
+                  Easter eggs to care homes in Coventry, Holbrook's Community
+                  Centre, and care homes in Nuneaton, spreading the Easter
+                  spirit far and wide.
                 </p>
               </div>
               <hr />
@@ -100,12 +100,11 @@ export default function CommunitiesChampions() {
                   CHRISTMAS FOOD BANK
                 </h2>
                 <p>
-                  For years consecutively we collaborated with Coventry
-                  City Council and our local food bank to raise and
-                  donate necessary food and items to vulnerable families. Last
-                  year in 2023, we were able to raise a total of £300+ worth
-                  of donations for the local community, breaking our previous
-                  year's record.
+                  For years consecutively we collaborated with Coventry City
+                  Council and our local food bank to raise and donate necessary
+                  food and items to vulnerable families. Last year in 2023, we
+                  were able to raise a total of £300+ worth of donations for the
+                  local community, breaking our previous year's record.
                 </p>
                 <p>
                   Through this, we were ecstatic to know that we were more than
@@ -122,10 +121,9 @@ export default function CommunitiesChampions() {
               <div id={styles.cCsContentSection}>
                 <h2>BIKEATHON £300 FOR SPEED OF SIGHT</h2>
                 <p>
-                  At the annual Intelligent Instructor Conference and Expo,
-                  we partnered with the NHS to offer free health
-                   checks, highlighting high blood pressure and diabetes
-                  awareness.
+                  At the annual Intelligent Instructor Conference and Expo, we
+                  partnered with the NHS to offer free health checks,
+                  highlighting high blood pressure and diabetes awareness.
                 </p>
                 <p>
                   Smartlearner also organized a Bikeathon, raising £1 per minute
@@ -133,9 +131,9 @@ export default function CommunitiesChampions() {
                 </p>
                 <p>
                   Instructors participated enthusiastically, and we raised £300
-                  to support inclusive driving events for people of
-                  all abilities. The charity empowers disabled individuals
-                  to engage in unique activities and experiences.
+                  to support inclusive driving events for people of all
+                  abilities. The charity empowers disabled individuals to engage
+                  in unique activities and experiences.
                 </p>
               </div>
               <hr />
@@ -144,22 +142,30 @@ export default function CommunitiesChampions() {
             {/* /////////////////////////////////////////////// */}
             <section className={styles.cCsContentSection}>
               <div id={styles.cCsContentSection}>
-                <h2>CYCLE RECYCLER BIKE <br></br>COMPETITION</h2>
+                <h2>
+                  CYCLE RECYCLER BIKE <br></br>COMPETITION
+                </h2>
                 <p>
                   In summer 2022, SmartLearner Driving School teamed up with The
                   Cycle Recycle to promote reusing materials and refurbishing
                   old bicycles.
                 </p>
                 <p>
-                  Our goal was to raise 315 Easter eggs, but we surpassed this by
-                  collecting over 500 eggs from instructors,
-                  learners, individuals, and donors in the Coventry community.
+                  In summer 2022, SmartLearner Driving School teamed up with the
+                  Cycle Recycle to promote reusing materials and refurbishing
+                  old bicycles. Our campaign aimed to encourage our learners and
+                  community to adopt sustainable transport, in hand supporting
+                  Coventry City Council’s new bike lanes in parts of Coventry.
+                  We held a summer-long competition attracting over 500 entries,
+                  with support from various businesses. Two lucky winners were
+                  selected through an automated raffle. Below are photos of the
+                  winners and one of the supporting business owners!
                 </p>
                 <p>
                   Our campaign aimed to encourage our learners and community to
-                  adopt sustainable transport. We held a summer-long competition,
-                  attracting over 500 entries, with support from various
-                  businesses. Two lucky winners were selected through an
+                  adopt sustainable transport. We held a summer-long
+                  competition, attracting over 500 entries, with support from
+                  various businesses. Two lucky winners were selected through an
                   automated raffle. Below are photos of the winners and one of
                   the supporting business owners!
                 </p>
@@ -167,29 +173,73 @@ export default function CommunitiesChampions() {
               <hr />
             </section>
             {/* ////////////////////////////////////// */}
-              <section className={styles.cCImagesSec}>
-                  <div className={styles.cCImagesdiv}>
-                      <img src={communityChempionImg1} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg2} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg3} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg4} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg5} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg6} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg7} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg8} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg9} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg10} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg11} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg12} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg13} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg14} alt="communityChempion-Images"/>
-                      <img src={communityChempionImg15} alt="communityChempion-Images"/>
-
-                  </div>
-                  <div id={styles.schoolLocal}>
-                    <p>"The local School for local people"</p>
-                  </div>
-              </section>
+            <section className={styles.cCImagesSec}>
+              <div className={styles.cCImagesdiv}>
+                <img
+                  src={communityChempionImg1}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg2}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg3}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg4}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg5}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg6}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg7}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg8}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg9}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg10}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg11}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg12}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg13}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg14}
+                  alt="communityChempion-Images"
+                />
+                <img
+                  src={communityChempionImg15}
+                  alt="communityChempion-Images"
+                />
+              </div>
+              <div id={styles.schoolLocal}>
+                <p>"The local School for local people"</p>
+              </div>
+            </section>
             {/* /////////////////////////////////// */}
           </section>
         </section>

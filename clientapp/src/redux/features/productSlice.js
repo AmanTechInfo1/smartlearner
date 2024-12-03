@@ -70,8 +70,7 @@ const productSlice = createSlice({
             state.loading = false;
         },
         createProductSuccess: (state, action) => {
-            // state.products.push(action.payload.product);
-            // state.productCount = action.payload.totalCount;
+          
             state.loading = false;
         },
         createProductFailure: (state) => {
@@ -98,10 +97,10 @@ const productSlice = createSlice({
                 (product) => product._id !== action.payload.id
             );
             state.productCount = action.payload.totalCount;
-            state.loading = false;
+            // state.loading = false;
         },
         deleteProductFailure: (state) => {
-            state.loading = false;
+            // state.loading = false;
         },
         setLoading: (state) => {
             state.loading = true;
@@ -114,7 +113,7 @@ export const getAllProducts = (search, page, pagesize) => async (dispatch) => {
         dispatch(setLoading());
 
         const response = await httpHandler.get(
-            `/api/product/get-products?search=${search}&page=${page}&pagesize=${pagesize}`
+            `/api/product/get-products?search=${search}&page=${page}`
         );
         if (response.data.success) {
             dispatch(getAllProductsSuccess(response.data.data));
@@ -171,9 +170,11 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
         const response = await httpHandler.post(`/api/product/add-category`, data);
         if (response.data.success) {
             toast.success(response.data.message);
-            reset();
+         
             dispatch(createCategorySuccess(response.data.data));
+           
             toggleAddCategoryModal();
+            reset();
         } else {
             toast.error(response.data.message);
             dispatch(createCategoryFailure());
@@ -189,17 +190,18 @@ export const createCategory = (data, reset, toggleAddCategoryModal) => async (di
 export const createProduct = (data, reset, toggleAddCategoryModal, state) => async (dispatch) => {
     try {
         dispatch(setLoading());
-        console.log(data);
+        console.log("data..........",data);
         const response = await httpHandler.post(`/api/product/add-product`, data);
         if (response.data.success) {
             toast.success(response.data.message);
             reset();
             dispatch(createProductSuccess(response.data.data));
             toggleAddCategoryModal();
-            dispatch(getAllProducts(state.search, state.page, state.pageSize))
+            
         } else {
             toast.error(response.data.message);
             dispatch(createProductFailure());
+            return { success: false, message: response.data.message };
         }
     } catch (error) {
         toast.error(error.message);
@@ -227,13 +229,13 @@ export const editProduct = (id, data, reset, toggleEditProductModal, state) => a
 };
 export const deleteProduct = (id) => async (dispatch) => {
     try {
-        dispatch(setLoading());
+        // dispatch(setLoading());
         const response = await httpHandler.get(`/api/product/delete-product/${id}`);
         if (response.data.success) {
-            toast.success(response.data.message);
+            toast.success("product deleted success");
             dispatch(deleteProductSuccess({ id, totalCount: response.data.totalCount }));
         } else {
-            toast.error(response.data.message);
+            toast.error("product deleted success");
             dispatch(deleteProductFailure());
         }
     } catch (error) {

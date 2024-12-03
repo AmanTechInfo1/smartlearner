@@ -14,6 +14,7 @@ const quizSlice = createSlice({
   name: "quiz",
   initialState: {
     quizzes: [],
+   
     quizzesCount: 0,
     quizzesModule: [],
     quizzesModuleCount: 0,
@@ -30,10 +31,12 @@ const quizSlice = createSlice({
     getAllQuizzesSuccess: (state, action) => {
       state.quizzes = action.payload.quizzes;
       state.quizzesCount = action.payload.totalCount;
+      
       state.loading = false;
     },
     getAllQuizzesFailure: (state) => {
       state.quizzes = [];
+    
       state.quizzesCount = 0;
       state.loading = false;
     },
@@ -261,7 +264,7 @@ export const getAllQuizzes = (search, page, pagesize) => async (dispatch) => {
   try {
     dispatch(setLoading());
     const response = await httpHandler.get(
-      `/api/quiz/all-quizzes?search=${search}&page=${page}&pagesize=${pagesize}`
+      `/api/quiz/all-quizzes?search=${search}&page=${page}`
     );
     if (response.data.success) {
       dispatch(getAllQuizzesSuccess(response.data.data));
