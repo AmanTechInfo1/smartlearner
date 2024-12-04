@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuizResult } from "../../redux/features/quizSlice";
 import { useNavigate } from "react-router-dom";
 import LoadingWeb from "../../components/loader/LoadingWeb";
+import styles from "./QuizResult.module.css"
+
 
 const QuizResult = () => {
   const dispatch = useDispatch();
@@ -50,19 +52,26 @@ const QuizResult = () => {
     return words.length > 5 ? `${words.slice(0, 4).join(" ")}...` : name;
   };
 
+  const getAnswerText = (question, answer) => {
+    const answerIndex = parseInt(answer.replace("Option", "")) - 1;
+    return question?.option[answerIndex] || "N/A";
+  };
+
   return (
     <div
       style={{
         backgroundColor: "black",
         color: "white",
         paddingBottom: "5rem",
-      }}>
+      }}
+    >
       <div className="container mx-auto p-1">
         <h2 className="text-center text-2xl font-semibold mb-4">
           Quiz Results{" "}
           <button
             onClick={() => navigate(-2)}
-            className="btn btn-secondary bg-info ml-5 py-3 px-5 ">
+            className="btn btn-secondary bg-info ml-5 py-3 px-5 "
+          >
             Go Back
           </button>
         </h2>
@@ -77,10 +86,11 @@ const QuizResult = () => {
                   onClick={() =>
                     document
                       .getElementById(quizName)
-                      .scrollIntoView({ behavior: "smooth" })
+                      
                   }
                   className="btn btn-danger me-2 my-1"
-                  style={{ minWidth: "120px", margin: "0.5rem" }}>
+                  style={{ minWidth: "120px", margin: "0.5rem" }}
+                >
                   {truncateQuizName(quizName)}
                 </button>
               ))}
@@ -89,22 +99,23 @@ const QuizResult = () => {
             {Object.entries(groupedResults).map(([quizName, results]) => (
               <div key={quizName} id={quizName} className="mb-5">
                 <h3 className="text-xl font-semibold">{quizName}</h3>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full bg-dark dark:bg-zinc-800 border border-danger">
+                <div className={styles.tableWrapperCollapse}>
+                  <div className={styles.tableWrapperScroller}>
+                  <table className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border border-danger`} >
                     <thead>
                       <tr className="w-full bg-zinc-800 dark:bg-zinc-700 text-white">
                         {[
                           "Quiz Name",
                           "Question",
+                          "Correct Answere",
                           "Answer Attempt",
-                          "Answer Correct",
-                          "Answer Choose",
+
                           "Submit Time",
-                          "User Name",
                         ].map((header) => (
                           <th
                             key={header}
-                            className="py-2 px-4 text-left border border-danger">
+                            className="py-2 px-4 text-left border border-danger"
+                          >
                             {header}
                           </th>
                         ))}
@@ -114,7 +125,8 @@ const QuizResult = () => {
                       {results.map((itm) => (
                         <tr
                           className="border-b dark:border-zinc-700"
-                          key={itm.result?._id}>
+                          key={itm.result?._id}
+                        >
                           <td className="py-2 px-4 border border-danger">
                             {quizName || "N/A"}
                           </td>
@@ -122,25 +134,26 @@ const QuizResult = () => {
                             {itm.question?.question.replace(">", "><br/>") ||
                               "N/A"}
                           </td>
-                          <td className="py-2 px-4 border border-light bg-danger">
-                            {itm.answerAttempt || "N/A"}
-                          </td>
                           <td className="py-2 px-4 border border-light bg-success">
-                            {itm.question?.answer || "N/A"}
+                            {getAnswerText(itm.question, itm.question.answer)}
                           </td>
-                          <td className="py-2 px-4 border border-light bg-info">
-                            {itm.answer || "N/A"}
+                          <td
+                            className="py-2 px-4 border border-light"
+                            style={{
+                              backgroundColor: itm.answerAttempt === 'Incorrect' ? '#990309' : '#024902' 
+                            }}
+                          >
+                            {getAnswerText(itm.question, itm.answer)}
                           </td>
+
                           <td className="py-2 px-4 border border-danger">
                             {new Date(itm.createdOn).toLocaleString() || "N/A"}
-                          </td>
-                          <td className="py-2 px-4 border border-danger">
-                            {itm.user?.username || "N/A"}
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </div>
               </div>
             ))}

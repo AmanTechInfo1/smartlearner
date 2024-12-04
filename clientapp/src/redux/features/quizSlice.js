@@ -52,10 +52,10 @@ const quizSlice = createSlice({
     },
     getQuizRandomQuestionSuccess: (state, action) => {
       if (action.payload && action.payload.option) {
-        const shuffledOptions = shuffleArray(action.payload.option);
+        // Just retain the options as they are without shuffling
         state.oneQuiz = {
           ...action.payload,
-          option: shuffledOptions,
+          option: action.payload.option, // No shuffling here
         };
       } else {
         state.oneQuiz = action.payload; // Fallback in case structure is different

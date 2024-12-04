@@ -154,7 +154,7 @@ function EditProductModal(props) {
                       Select...
                     </option>
                     {categoriesList.map((category) => (
-                      <option key={category._id} value={category.name}>
+                      <option key={category._id} value={category._id}>
                         {category.name}
                       </option>
                     ))}
@@ -261,7 +261,7 @@ function EditProductModal(props) {
                     value={formData.price}
                     onChange={handleInputChange}
                     autoComplete="false"
-                    placeholder="$"
+                    placeholder="£"
                   />
                 )}
                 defaultValue={""}

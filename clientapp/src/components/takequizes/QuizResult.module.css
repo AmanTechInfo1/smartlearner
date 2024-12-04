@@ -1,0 +1,47 @@
+/* QuizResult.module.css */
+
+/* Styles for the quizResultTable */
+
+.tableWrapperCollapse{
+    overflow-x: auto;
+    
+   
+}
+
+
+.quizResultTable {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+  }
+  
+  .quizResultTable th,
+  .quizResultTable td {
+    padding: 16px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .quizResultTable th {
+    background-color: #333;
+    color: white;
+  }
+  
+  .quizResultTable td {
+    background-color: #222;
+    color: white;
+  }
+  
+
+  
+  /* Responsive for quizResultTablets */
+  @media (max-width: 1024px) {
+    .quizResultTable th,
+    .quizResultTable td {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+  
+ 
+  

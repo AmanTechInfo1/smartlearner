@@ -187,6 +187,7 @@ const Quiz = () => {
         "https://api.smartlearner.com/api/quiz/translate",
         {
           method: "POST",
+          
           body: formdata,
         }
       );
@@ -294,6 +295,7 @@ const Quiz = () => {
               <LoadingWeb />
             ) : oneQuiz?.question ? (
               <>
+                <div className={styles.totalTimer2}>
                 <div className={styles.totalTimer}>
                   <select onChange={handleLanguageChange}>
                     {Object.entries(languageCodes).map((itm) => (
@@ -315,6 +317,8 @@ const Quiz = () => {
                     onClick={handleTranslationAndSpeech}>
                     Speak
                   </button>
+                  </div>
+                  <div className={styles.totalTimer}>
                   <span
                     style={{
                       border: "none",
@@ -338,6 +342,7 @@ const Quiz = () => {
                     }}>
                     {isPaused ? "Resume" : "Pause"}
                   </button>
+                  </div>
                 </div>
 
                 <div className={styles.totalTimer}>
@@ -419,6 +424,12 @@ const Quiz = () => {
             )}
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
+              <button
+            onClick={() => navigate(-1)}
+            className="btn btn-secondary bg-info ml-3 py-2 px-3 "
+          >
+            Back
+          </button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
