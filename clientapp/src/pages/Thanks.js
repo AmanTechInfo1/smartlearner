@@ -21,15 +21,7 @@ const Thanks = () => {
                         <div className={styles.formFooter}>
                             <Link type='button' to={'/home'}>
                                 Proceed to Home Page
-                                {/* Don't have an account?
-                                <button
-                                    onClick={() => {
-                                        setIsLogin(!isLogin);
-                                        if (!isLogin) handleSignInClick();
-                                    }}
-                                >
-                                    Register
-                                </button> */}
+                               
                             </Link>
                         </div>
                     </div>

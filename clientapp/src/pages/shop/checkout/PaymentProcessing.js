@@ -192,7 +192,7 @@ export default function PaymentProcessing() {
       if (response.data.success) {
         // Redirect to success page after payment is executed
         dispatch(emptyCart()); 
-         navigate("/thanks") 
+         navigate("/payment-completed") 
       } else {
         setError("Payment execution failed. Please try again.");
       }
@@ -340,6 +340,7 @@ export default function PaymentProcessing() {
           }}
           onApprove={handleApprove}
           onError={handleError}
+          fundingSource="paypal"
         />
       )}  
       {loading && !isPaymentCreated && (
