@@ -14,12 +14,14 @@ import useWindowSize from "react-use/lib/useWindowSize";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
+import httpHandler from "../../utils/httpHandler";
+
+
 
 const languageCodes = {
   Auto: "auto",
   English: "en-Us",
   Portuguese: "pt",
-  "Brazilian Portuguese": "pt-BR",
   Afrikaans: "af",
   Albanian: "sq",
   Amharic: "am",
@@ -165,6 +167,7 @@ const Quiz = () => {
       console.error("No text provided to speak.");
     }
   };
+  
   const handleTranslationAndSpeech = async () => {
     if (hasTranslated) return;
     setHasTranslated(true);
@@ -183,16 +186,9 @@ const Quiz = () => {
     });
 
     try {
-      const response = await fetch(
-        "https://api.smartlearner.com/api/quiz/translate",
-        {
-          method: "POST",
-          
-          body: formdata,
-        }
-      );
+      const response = await httpHandler.post("/api/quiz/translate",formdata);
 
-      const result = await response.json();
+      const result = await response.data;
 
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;

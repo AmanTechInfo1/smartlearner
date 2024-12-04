@@ -14,6 +14,6 @@ router.post('/update-user/:id', upload.none(), accountController.updateUser);
 router.post('/delete-user/:id', upload.none(), accountController.deleteUser);
 router.post('/forgot-password',  accountController.forgotPassword);
 router.post('/reset-password',  accountController.resetPassword);
-router.post('/webhook',  accountController.handlePaypalWebhook);
+
 
 module.exports = router;

@@ -126,40 +126,7 @@ class AccountController {
     const calculatedSig = hmac.digest('hex');
     return calculatedSig === transmissionSig;
   }
-  async  handlePaypalWebhook(req, res) {
-
-    const transmissionSig = req.headers['paypal-transmission-sig'];
-    const transmissionId = req.headers['paypal-transmission-id'];
-
-    if (!verifySignature(req, transmissionSig, transmissionId)) {
-      console.error("Invalid signature. Ignoring webhook.");
-      return res.status(400).send('Invalid signature');
-    }
-    
-    const payload = req.body;
-    const eventType = payload.event_type;
   
-    console.log('Received PayPal Event:', eventType);
-  
-    if (eventType === 'PAYMENT.SALE.COMPLETED') {
-      // Handle successful payment
-      const orderDetails = payload.resource; // This contains payment and order details
-      console.log('Payment completed:', orderDetails);
-  
-      // Send success email to user and admin
-      await emailService.sendPaymentEmail(orderDetails, 'Payment Successful', 'success');
-    } else if (eventType === 'PAYMENT.SALE.DENIED' || eventType === 'PAYMENT.SALE.PENDING') {
-      // Handle payment failure or pending payment
-      const orderDetails = payload.resource;
-      console.log('Payment failed or pending:', orderDetails);
-  
-      // Send failure email to user and admin
-      await emailService.sendPaymentEmail(orderDetails, 'Payment Failed', 'failure');
-    }
-  
-    // Respond to PayPal to acknowledge receipt
-    res.status(200).send('Event received');
-  }
 
 }
 

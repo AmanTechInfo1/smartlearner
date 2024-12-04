@@ -3,6 +3,8 @@ const quizService = require("../services/quizService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
 const { translate } = require("free-translate");
+const axios = require("axios");
+const { JSDOM } = require('jsdom');
 
 class QuizController {
   async addNewQuiz(req, res, next) {
@@ -287,36 +289,58 @@ class QuizController {
     try {
       const { question, lang, option1, option2, option3, option4 } = req.body;
 
-      const translationPromises = [];
+      const options = {
+        method: 'POST',
+        url: 'https://google-translate113.p.rapidapi.com/api/v1/translator/html',
+        headers: {
+          'x-rapidapi-key': '27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b', // Replace with your actual key
+          'x-rapidapi-host': 'google-translate113.p.rapidapi.com',
+          'Content-Type': 'application/json',
+        },
+        data: {
+          from: 'en',
+          to: lang,
+          html: `<ul>
+                   <li>${question}</li>
+                   <li>${option1 || ''}</li>
+                   <li>${option2 || ''}</li>
+                   <li>${option3 || ''}</li>
+                   <li>${option4 || ''}</li>
+                 </ul>`,
 
-      translationPromises.push(translate(question, { from: "en", to: lang }));
-
-      // Push option translations if they exist
-      if (option1)
-        translationPromises.push(translate(option1, { from: "en", to: lang }));
-      if (option2)
-        translationPromises.push(translate(option2, { from: "en", to: lang }));
-      if (option3)
-        translationPromises.push(translate(option3, { from: "en", to: lang }));
-      if (option4)
-        translationPromises.push(translate(option4, { from: "en", to: lang }));
-
-      // Wait for all translations to complete
-      const translatedResults = await Promise.all(translationPromises);
-
-      const response = {
-        question: translatedResults[0], // Access the translated text
+        },
       };
-      // Construct the response object
 
-      // Map the remaining results to options
-      if (option1) response.option1 = translatedResults[1];
-      if (option2) response.option2 = translatedResults[2];
-      if (option3) response.option3 = translatedResults[3];
-      if (option4) response.option4 = translatedResults[4];
+      // Send translation request
+      try {
+        const response = await axios.request(options);
+        console.log("dsolkjsoidksjdlskadjsldk",response.data); // Check the response data
+      } catch (error) {
+        console.error("Error response:", error.response ? error.response.data : error.message);
+      }
+      const response = await axios.request(options);
+      // Extract translated content from the response
+      const translatedHTML = response.data.trans;
+      console.log("Translated HTML:", translatedHTML);
+      // Parse the translated HTML and extract question and options
+      const dom = new JSDOM(translatedHTML);
+      const doc = dom.window.document;
+      
+      const translatedQuestion = doc.querySelector('ul > li:nth-child(1)').textContent;
+      const translatedOption1 = doc.querySelector('ul > li:nth-child(2)').textContent;
+      const translatedOption2 = doc.querySelector('ul > li:nth-child(3)').textContent;
+      const translatedOption3 = doc.querySelector('ul > li:nth-child(4)').textContent;
+      const translatedOption4 = doc.querySelector('ul > li:nth-child(5)').textContent;
 
-      // Send the response
-      res.json(response);
+      // Send the translated response back
+      res.json({
+        question: translatedQuestion,
+        option1: translatedOption1,
+        option2: translatedOption2,
+        option3: translatedOption3,
+        option4: translatedOption4,
+      });
+
     } catch (err) {
       next(err);
     }
