@@ -20,7 +20,7 @@ import httpHandler from "../../utils/httpHandler";
 
 const languageCodes = {
   Auto: "auto",
-  English: "en-Us",
+  English: "en",
   Portuguese: "pt",
   Afrikaans: "af",
   Albanian: "sq",
