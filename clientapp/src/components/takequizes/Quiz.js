@@ -189,20 +189,13 @@ const Quiz = () => {
       const response = await httpHandler.post("/api/quiz/translate",formdata);
 
       const result = await response.data;
-
-      if (myDivRef.current) {
-        myDivRef.current.innerHTML = result.question;
-        if (result.question) {
-          speak(result.question);
-        }
+      if (result.question) {
+        speak(result.question);
       }
-
+  
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
-          document.getElementById(option).innerHTML = result[option];
-          if (result[option]) {
-            speak(result[option]);
-          }
+          speak(result[option]); // Speak translated options
         }
       });
       console.log("Translation response:", result);
@@ -239,15 +232,28 @@ const Quiz = () => {
     dispatch(getAnswerRandomQuestion(finData));
   };
 
+
+  const resetTranslation = () => {
+    setHasTranslated(false);
+    setIsTranslating(false);
+  };
+  const stopSpeech = () => {
+    if (window.responsiveVoice) {
+      window.responsiveVoice.cancel(); // This stops any ongoing speech
+    }
+  };
   const handleNextQuestion = () => {
+    stopSpeech(); 
+    resetTranslation();
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-    setHasTranslated(false);
+    
   };
 
   const endQuiz = () => {
     navigate("/quizResult");
+   
   };
 
   const handlePauseResume = () => {
@@ -272,6 +278,7 @@ const Quiz = () => {
   }, [isQuizRestarted, dispatch]);
 
   const handleRestart = () => {
+    stopSpeech(); 
     dispatch(restartQuiz(cid));
     setTotalTime(0); // Dispatch the restart action
   };
