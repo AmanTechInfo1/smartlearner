@@ -222,8 +222,8 @@ class UserSubscriptionService {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "Smartlearnerdrivingschool@gmail.com",
-        pass: "cbsb ueih dxqm zdhd",
+        user: "admin@smartlearner.com",
+        pass: "Ipifrdauclzxdrsq",
       },
     });
 
@@ -325,8 +325,8 @@ class UserSubscriptionService {
     `;
 
     const mailOptions = {
-      from: "Smartlearnerdrivingschool@gmail.com",
-      to: [user.email, "Smartlearnerdrivingschool@gmail.com"],
+      from: "admin@smartlearner.com",
+      to: [user.email, "admin@smartlearner.com"],
       subject: `Subscription ${status} - Plan: ${subscription.planname}`,
       html: htmlContent,
     };
