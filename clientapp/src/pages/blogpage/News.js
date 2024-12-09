@@ -117,7 +117,7 @@ export default function News() {
                         className={styles.newsBannerImage}
                       />
                       <a
-                        href={story.source.url}
+                        href={story.publisher.url}
                         style={{
                           color: "white",
                           textDecoration: "none",
@@ -125,10 +125,10 @@ export default function News() {
                         }}
                       >
                         <img
-                          src={story.source.favicon}
+                          src={story.publisher.favicon}
                           className={styles.favicon}
                         />
-                        {story.source.name}
+                        {story.publisher.name}
                       </a>
                       <a
                         href={story.url}
@@ -150,16 +150,16 @@ export default function News() {
                     </section>
                     <section className={styles.storiesDetails}>
                       <div className={styles.storiesFevicon}>
-                        <a href={story.source.url}>
+                        <a href={story.publisher.url}>
                           <img
-                            src={story.source.favicon}
+                            src={story.publisher.favicon}
                             className={styles.favicon}
                           />
-                          {story.source.name}
+                          {story.publisher.name}
                         </a>
                       </div>
 
-                      <p>{story.description}</p>
+                      <p>{story.excerpt}</p>
                       <p>keywords:</p>
                       <p>{story.keywords.join(", ")}</p>
                       <a
@@ -193,6 +193,7 @@ export default function News() {
             </h2>
             <div className={styles.newsList}>
               {news.map((news, index) => (
+                <div key={index}>
                 <a href={news.url}>
                   <div key={index} className={styles.newsCard}>
                     <img
@@ -213,6 +214,7 @@ export default function News() {
                     </div>
                   </div>
                 </a>
+                </div>
               ))}
             </div>
           </div>
