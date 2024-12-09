@@ -247,7 +247,7 @@ export const router = createBrowserRouter([
       { path: "part-two-subscription", element: <PartTwoSubscription /> },
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "blogs", element: <Blogs /> },
-      { path: "blog", element: <SingleBlogPage /> },
+      { path: "singleblog", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
       {
         path:"trainning-material", element: <TrainningMaterial/>
