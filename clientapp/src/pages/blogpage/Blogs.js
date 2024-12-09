@@ -57,7 +57,7 @@ const dispatch = useDispatch();
           </section>
         </div>
         <section>
-          <News/>
+          {/* <News/> */}
         </section>
         <div className={styles.blogsContainerRows}>
           <div className={styles.blogsrow}>
