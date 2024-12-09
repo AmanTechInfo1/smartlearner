@@ -18,15 +18,12 @@ import { FaAnglesRight } from "react-icons/fa6";
 
 export default function News() {
   const dispatch = useDispatch();
-  const { news, loading, error, lastFetched } = useSelector(
+  const { news } = useSelector(
     (state) => state.blog
   ); 
 
   useEffect(() => {
-    
       dispatch(fetchNews());
-    
-
   }, [dispatch]);
 
 
@@ -117,7 +114,7 @@ export default function News() {
                         className={styles.newsBannerImage}
                       />
                       <a
-                        href={story.publisher.url}
+                        href={story.source.url}
                         style={{
                           color: "white",
                           textDecoration: "none",
@@ -125,10 +122,10 @@ export default function News() {
                         }}
                       >
                         <img
-                          src={story.publisher.favicon}
+                          src={story.source.favicon}
                           className={styles.favicon}
                         />
-                        {story.publisher.name}
+                        {story.source.name}
                       </a>
                       <a
                         href={story.url}
@@ -150,16 +147,16 @@ export default function News() {
                     </section>
                     <section className={styles.storiesDetails}>
                       <div className={styles.storiesFevicon}>
-                        <a href={story.publisher.url}>
+                        <a href={story.source.url}>
                           <img
-                            src={story.publisher.favicon}
+                            src={story.source.favicon}
                             className={styles.favicon}
                           />
-                          {story.publisher.name}
+                          {story.source.name}
                         </a>
                       </div>
 
-                      <p>{story.excerpt}</p>
+                      <p>{story.description}</p>
                       <p>keywords:</p>
                       <p>{story.keywords.join(", ")}</p>
                       <a
@@ -193,7 +190,6 @@ export default function News() {
             </h2>
             <div className={styles.newsList}>
               {news.map((news, index) => (
-                <div key={index}>
                 <a href={news.url}>
                   <div key={index} className={styles.newsCard}>
                     <img
@@ -214,7 +210,6 @@ export default function News() {
                     </div>
                   </div>
                 </a>
-                </div>
               ))}
             </div>
           </div>

@@ -162,10 +162,10 @@ class BlogService {
     try {
       const options = {
         method: "GET",
-        url: `https://news-api14.p.rapidapi.com/v2/trendings?topic=AUTOS&language=en&country=gb`, // Default to 'general' if no category
+        url: `https://google-news22.p.rapidapi.com/v1/topic-headlines?country=gb&language=en&topic=AUTOS`, // Default to 'general' if no category
 
         headers: {
-          "x-rapidapi-host": "news-api14.p.rapidapi.com", // Replace with your actual RapidAPI key
+          "x-rapidapi-host": "google-news22.p.rapidapi.com", // Replace with your actual RapidAPI key
           "x-rapidapi-key":
             "27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b",
         },

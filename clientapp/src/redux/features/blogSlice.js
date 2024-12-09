@@ -12,9 +12,7 @@ const blogSlice = createSlice({
     loading: false,
     blogsList: [],
     blog: null,
-    news: localStorage.getItem("news")
-      ? JSON.parse(localStorage.getItem("news"))
-      : {},
+    news: [],
 
     newsCount: null,
     lastFetched: null,
