@@ -12,6 +12,14 @@ function EditBlog(props) {
   const { loading, blog } = useSelector((state) => state.blog);
   const [image, setImage] = useState();
 
+  const [formData, setFormData] = useState({
+    email: blog ? blog.email : "",
+    blogName: blog ? blog.blogName : "",
+    description: blog ? blog.description : "",
+    content: blog ? blog.content : "",
+    shortContent: blog ? blog.shortContent : "",
+  });
+
   const {
     handleSubmit,
     control,
@@ -23,21 +31,28 @@ function EditBlog(props) {
 
   const onSubmit = async (data) => {
     const formDataToSend = new FormData();
-    formDataToSend.append("email", data.email);
-    formDataToSend.append("blogName", data.blogName);
-    formDataToSend.append("description", data.description);
-    formDataToSend.append("content", data.content);
-    formDataToSend.append("shortContent", data.shortContent);
+    formDataToSend.append("email", formData?.email);
+    formDataToSend.append("blogName", formData?.blogName);
+    formDataToSend.append("description", formData?.description);
+    formDataToSend.append("content", formData?.content);
+    formDataToSend.append("shortContent", formData?.shortContent);
 
     if (image) {
       formDataToSend.append("image", image);
     }
-
+    console.log("FormData to send:", formDataToSend);
     dispatch(editBlog(blog._id, formDataToSend, props.toggleEditBlogModal));
   };
 
   useEffect(() => {
     if (blog) {
+      setFormData({
+        email: blog ? blog.email : "",
+        blogName: blog ? blog.blogName : "",
+        description: blog ? blog.description : "",
+        content: blog ? blog.content : "",
+        shortContent: blog ? blog.shortContent : "",
+      })
       reset({
         email: blog.email,
         blogName: blog.blogName,
@@ -47,6 +62,18 @@ function EditBlog(props) {
       });
     }
   }, [blog, reset]);
+
+
+
+  const handleInputChange = (e) => {
+
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+  };
 
   return (
     <>
@@ -66,6 +93,8 @@ function EditBlog(props) {
                   control={control}
                   render={({ field }) => (
                     <input
+                    onChange={handleInputChange}
+                    value={formData.email}
                       className={`form-control ${
                         errors.email ? "error-input" : ""
                       }`}
@@ -84,9 +113,12 @@ function EditBlog(props) {
                 <label>Blog Name</label>
                 <Controller
                   name="blogName"
+                 
                   control={control}
                   render={({ field }) => (
                     <input
+                    onChange={handleInputChange}
+                    value={formData.blogName}
                       className={`form-control ${
                         errors.blogName ? "error-input" : ""
                       }`}
@@ -105,9 +137,12 @@ function EditBlog(props) {
                 <label>Description</label>
                 <Controller
                   name="description"
+                
                   control={control}
                   render={({ field }) => (
                     <input
+                    onChange={handleInputChange}
+                    value={formData.description}
                       className={`form-control ${
                         errors.description ? "error-input" : ""
                       }`}
@@ -126,9 +161,12 @@ function EditBlog(props) {
                 <label>Content</label>
                 <Controller
                   name="content"
+
                   control={control}
                   render={({ field }) => (
                     <textarea
+                    onChange={handleInputChange}
+                    value={formData.content}
                       className={`form-control ${
                         errors.content ? "error-input" : ""
                       }`}
@@ -150,6 +188,8 @@ function EditBlog(props) {
                   control={control}
                   render={({ field }) => (
                     <input
+                    onChange={handleInputChange}
+                    value={formData.shortContent}
                       className={`form-control ${
                         errors.shortContent ? "error-input" : ""
                       }`}
@@ -169,15 +209,16 @@ function EditBlog(props) {
                 <Controller
                   name="blogImage"
                   control={control}
-                  render={({ field }) => (
+                  render={({ field: { onChange } }) => (
                     <input
                       className="form-control"
+                      name="image"
                       type="file"
                       accept="image/*"
                       onChange={(e) => {
-                        const file = e.target.files[0];
-                        setImage(file);
-                        field.onChange(file);
+                        const file = e.target.files;
+                        setImage(file[0])
+                        onChange(file);
                       }}
                     />
                   )}

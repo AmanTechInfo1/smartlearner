@@ -29,10 +29,8 @@ const AddBlog = (props) => {
       formData.append("image", image); // Append the image to formData
     }
 
-    // Log formData for debugging
-    for (let pair of formData.entries()) {
-    }
-
+    // Log formData for debuggin
+    reset();
     dispatch(createBlog(formData, reset, props.toggleAddBlogModal));
   };
   return (

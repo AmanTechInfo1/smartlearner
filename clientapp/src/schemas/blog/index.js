@@ -15,12 +15,12 @@ export const blogsSchema = yup.object().shape({
   shortContent: yup
     .string()
     .trim()
-    .max(150, "Short content must be at most 150 characters")
+
     .required("Short content is required"),
-  image: yup.string().trim().required("Short content is required"),
-  createdAt: yup
+  image: yup.string().trim(),
+  createdOn: yup
     .date()
-    .required()
+
     .default(() => new Date()),
-  updatedAt: yup.boolean().required("Update status is required").default(false),
+  updatedAt: yup.boolean(),
 });

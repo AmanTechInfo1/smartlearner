@@ -1,10 +1,15 @@
 const Blogs = require("../models/blogModal");
+const axios = require("axios");
+
+const apikey = "27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b"; // Your API key
+const baseUrl = "https://google-news13.p.rapidapi.com/";
 
 class BlogService {
   // Create a new blog
   async createBlogAsync(blogData) {
     try {
       const blog = await Blogs.create(blogData);
+      console.log(blog);
       const totalCount = await Blogs.countDocuments();
       const resultObject = {
         message: "Blog added successfully",
@@ -15,6 +20,23 @@ class BlogService {
       return resultObject;
     } catch (err) {
       throw new Error("Could not create blog");
+    }
+  }
+
+  async getBlogs() {
+    try {
+      const blogs = await Blogs.find();
+
+      const resultObject = {
+        message: "Blogs fetched successfully",
+        statusCode: 201,
+        success: true,
+        data: { blogs },
+      };
+
+      return resultObject;
+    } catch (err) {
+      throw new Error("Could not fetch blogs");
     }
   }
 
@@ -95,6 +117,7 @@ class BlogService {
       const blog = await Blogs.findByIdAndUpdate(blogId, blogData, {
         new: true,
       });
+      console.log(blog)
       const resultObject = {
         message: "Blog updated successfully",
         statusCode: 201,
@@ -122,6 +145,42 @@ class BlogService {
         statusCode: 201,
         success: true,
         data: null,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
+
+  async newsAsync() {
+    try {
+      const options = {
+        method: "GET",
+        url: `https://google-news22.p.rapidapi.com/v1/topic-headlines?country=gb&language=en&topic=AUTOS`, // Default to 'general' if no category
+
+        headers: {
+          "x-rapidapi-host": "google-news22.p.rapidapi.com", // Replace with your actual RapidAPI key
+          "x-rapidapi-key":
+            "27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b",
+        },
+      };
+
+      // Make the request to the Google News API
+      const response = await axios.request(options);
+
+      const articles = response.data.data;
+
+      const resultObject = {
+        message: "news fetch successfully",
+        statusCode: 200,
+        success: true,
+        data: { articles },
       };
       return resultObject;
     } catch (err) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Blogs.module.css"; // Import CSS Module
 import aboutImg from "../../assets/images/image_2021_03_03T15_33_28_479Z-1024x768.png";
@@ -6,167 +6,34 @@ import { Pagination } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import News from "./News";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllBlogs, getAllBlogs } from "../../redux/features/blogSlice";
+import { imageBaseUrl } from "../../utils/constants";
 
-const blogsData = [
-  {
-    id: 1,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 3,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 4,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 5,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 6,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 7,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 8,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 9,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 10,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 11,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 12,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 13,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 14,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 15,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 16,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 17,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 18,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 19,
-    title: "Blog 1",
-    description: "This is blog 1 description",
-    content: "This is the full content of blog 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 20,
-    title: "Blog 2",
-    description: "This is blog 2 description",
-    content: "This is the full content of blog 2",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 21,
-    title: "Blog 3",
-    description: "This is blog 3 description",
-    content: "This is the full content of blog 3",
-    image: "https://via.placeholder.com/150",
-  },
-];
+
+
 
 const Blogs = () => {
+const dispatch = useDispatch();
+  const { allblogs, loading } = useSelector(
+    (state) => state.blog
+  );
+  
+  useEffect(()=>{
+    dispatch(fetchAllBlogs())
+  },[dispatch])
+
+
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
   const blogsPerPage = 10; // Number of blogs per page
-  const totalPages = Math.ceil(blogsData.length / blogsPerPage); // Total pages calculation
+  const totalPages = Math.ceil(allblogs.length / blogsPerPage); // Total pages calculation
   const navigate = useNavigate();
 
   // Get current blogs for the selected page
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogsData.slice(indexOfFirstBlog, indexOfLastBlog);
+  const currentBlogs = allblogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
   // Handle page click
   const handlePageClick = (pageNumber) => {
@@ -189,22 +56,25 @@ const Blogs = () => {
             </div>
           </section>
         </div>
+        <section>
+          <News/>
+        </section>
         <div className={styles.blogsContainerRows}>
           <div className={styles.blogsrow}>
             {/* Left Column */}
             <div className={styles.blogsleftColumn}>
               {currentBlogs.map((blog) => (
                 <div className={styles.blogscard} key={blog.id}>
-                  <h2>{blog.title}</h2>
-                  <h5>{blog.description}</h5>
+                  <h2>{blog.blogName}</h2>
+                  <p>{blog.description}</p>
                   <div className={styles.fakeimg} style={{ height: "200px" }}>
                     <img
-                      src={blog.image}
-                      alt={blog.title}
+                      src={imageBaseUrl + blog.image}
+                      alt={blog.blogName}
                       className={styles.blogImage}
                     />
                   </div>
-                  <p>{blog.content.substring(0, 100)}...</p>{" "}
+                  <p>{blog.shortContent.slice(0, 200)}...</p>{" "}
                   <Button
                     variant="danger"
                     onClick={() => handleBlogClick(blog)}>

@@ -14,6 +14,7 @@ router.post(
 );
 
 router.get("/all-blogs", blogController.getBlogs);
+router.get("/all-blogsData", blogController.getBlogsData);
 
 router.get("/blog-list", blogController.getBlogList);
 
@@ -30,5 +31,7 @@ router.post(
 
 // Route to delete a blog by its ID
 router.post("/delete-blog/:id", blogController.deleteBlog);
+
+router.get("/fetched-news", blogController.newsfetch);
 
 module.exports = router;

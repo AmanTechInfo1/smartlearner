@@ -128,6 +128,7 @@ import GoodLuckPage from "./pages/adiPages/additionalPages/Goodlucksign";
 import HazzardClips from "./pages/adiPages/additionalPages/HazzardClips";
 import ResetPasswordPage from "./pages/auth/ResetPassword";
 import PaymentCompleted from "./pages/PaymentCompleted";
+import News from "./pages/blogpage/News";
 
 export const router = createBrowserRouter([
   {
@@ -246,7 +247,7 @@ export const router = createBrowserRouter([
       { path: "part-two-subscription", element: <PartTwoSubscription /> },
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "blogs", element: <Blogs /> },
-      { path: "blogs/:id", element: <SingleBlogPage /> },
+      { path: "blog", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
       {
         path:"trainning-material", element: <TrainningMaterial/>
@@ -305,6 +306,7 @@ export const router = createBrowserRouter([
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
   { path: "payment-completed", element: <PaymentCompleted/> },
+  { path: "news", element: <News/> },
   {
     path:"goodluck", element: <GoodLuckPage/>
   },

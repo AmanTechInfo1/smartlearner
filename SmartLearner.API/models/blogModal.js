@@ -8,12 +8,12 @@ const blogsSchema = new mongoose.Schema({
   blogName: {
     type: String,
     required: true,
-    trim: true,
+   
   },
   description: {
     type: String,
     required: true,
-    trim: true,
+   
   },
   content: {
     type: String,
@@ -22,14 +22,13 @@ const blogsSchema = new mongoose.Schema({
   shortContent: {
     type: String,
     required: true,
-    trim: true,
-    maxLength: 150,
+   
   },
   image: {
     type: String,
     required: true,
   },
-  createdAt: {
+  createdOn: {
     type: Date,
     default: Date.now,
   },
