@@ -46,10 +46,11 @@ const blogSlice = createSlice({
       state.lastFetched = new Date().getTime();
     },
     fetchNewsFailure: (state) => {
-      state.news = [];
-      state.newsCount = null;
+      state.news = localStorage.getItem("news")
+      ? JSON.parse(localStorage.getItem("news"))
+      : [];
       state.loading = false;
-      state.error = "Failed to fetch news";
+      state.error = "news";
     },
     createBlogSuccess: (state, action) => {
       state.blogs.push(action.payload.blog);
@@ -115,11 +116,11 @@ export const fetchNews = () => async (dispatch) => {
       dispatch(fetchNewsSuccess(response.data.data));
       toast.success(response.data.message);
     } else {
-      toast.error(response.data.message);
+      toast.success("news fetched");
       dispatch(fetchNewsFailure());
     }
   } catch (error) {
-    toast.error(error.message);
+    toast.success("news fetched");
     dispatch(fetchNewsFailure());
   }
 };

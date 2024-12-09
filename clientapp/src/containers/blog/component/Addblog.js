@@ -30,8 +30,10 @@ const AddBlog = (props) => {
     }
 
     // Log formData for debuggin
-    reset();
+ 
     dispatch(createBlog(formData, reset, props.toggleAddBlogModal));
+    setImage(""); 
+    reset();
   };
   return (
     <Modal isOpen={props.showAddBlogModal} toggle={props.toggleAddBlogModal}>

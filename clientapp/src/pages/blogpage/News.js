@@ -113,8 +113,8 @@ export default function News() {
                         alt={story.title}
                         className={styles.newsBannerImage}
                       />
-                      <a
-                        href={story.source.url}
+                      <a target="_blank"
+                        href={story.publisher.url}
                         style={{
                           color: "white",
                           textDecoration: "none",
@@ -122,10 +122,10 @@ export default function News() {
                         }}
                       >
                         <img
-                          src={story.source.favicon}
+                          src={story.publisher.favicon}
                           className={styles.favicon}
                         />
-                        {story.source.name}
+                        {story.publisher.name}
                       </a>
                       <a
                         href={story.url}
@@ -147,19 +147,22 @@ export default function News() {
                     </section>
                     <section className={styles.storiesDetails}>
                       <div className={styles.storiesFevicon}>
-                        <a href={story.source.url}>
+                        <a href={story.publisher.url} target="_blank">
                           <img
-                            src={story.source.favicon}
+                            src={story.publisher.favicon}
                             className={styles.favicon}
                           />
-                          {story.source.name}
+                          {story.publisher.name}
                         </a>
                       </div>
 
-                      <p>{story.description}</p>
-                      <p>keywords:</p>
+                      <p>{story.excerpt}</p>
+                     
+                     <p> <span style={{ color: "red", }}>authors</span> : {story.authors.join(", ")}</p>
+                      <p></p>
+                      <p style={{ color: "red", }}>keywords:</p>
                       <p>{story.keywords.join(", ")}</p>
-                      <a
+                      <a target="_blank"
                         href={story.url}
                         style={{ color: "red", textDecoration: "none" }}
                       >
@@ -190,7 +193,7 @@ export default function News() {
             </h2>
             <div className={styles.newsList}>
               {news.map((news, index) => (
-                <a href={news.url}>
+                <a target="_blank" href={news.url}>
                   <div key={index} className={styles.newsCard}>
                     <img
                       src={news.thumbnail}
