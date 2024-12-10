@@ -33,8 +33,18 @@ class QuizController {
     try {
       var quizData = req.body;
       quizData["option"] = quizData.option.split(",");
+      quizData["optionImage"] = [
+        quizData.option1Image,
+        quizData.option2Image,
+        quizData.option3Image,
+        quizData.option4Image,
+      ];
+      delete quizData.option1Image;
+      delete quizData.option2Image;
+      delete quizData.option3Image;
+      delete quizData.option4Image;
       const quiz = await quizService.updateQuizAsync(req.params.id, quizData);
-
+      console.log("xyz", quizData);
       res.status(201).json(quiz);
     } catch (err) {
       next(err);
@@ -223,6 +233,7 @@ class QuizController {
         req.params.id,
         quizData
       );
+      
 
       res.status(201).json(quiz);
     } catch (err) {

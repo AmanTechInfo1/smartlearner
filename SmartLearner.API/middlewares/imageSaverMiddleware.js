@@ -61,32 +61,13 @@ const multipleimageSaverMiddleware = (req, res, next) => {
                 // Handle multer errors, e.g., file too large, invalid file type, etc.
                 return res.status(400).json({ error: 'File upload failed.', details: err.message });
             }
-            if (req.files.questionImage) {
-                req.body.questionImage = req.files.questionImage[0].filename
-            } else {
-                req.body.questionImage = ""
-            }
+            req.body.questionImage = req.files.questionImage ? req.files.questionImage[0].filename : req.body.questionImage;
 
-            if(req.files.option1Image){
-                req.body.option1Image = req.files.option1Image[0].filename
-            }else{
-                req.body.option1Image = ""
-            }
-            if(req.files.option2Image){
-                req.body.option2Image = req.files.option2Image[0].filename
-            }else{
-                req.body.option2Image = ""
-            }
-            if(req.files.option3Image){
-                req.body.option3Image = req.files.option3Image[0].filename
-            }else{
-                req.body.option3Image = ""
-            }
-            if(req.files.option4Image){
-                req.body.option4Image = req.files.option4Image[0].filename
-            }else{
-                req.body.option4Image = ""
-            }
+            // If there's a new option image, save it, otherwise keep the existing one
+            req.body.option1Image = req.files.option1Image ? req.files.option1Image[0].filename : req.body.option1Image;
+            req.body.option2Image = req.files.option2Image ? req.files.option2Image[0].filename : req.body.option2Image;
+            req.body.option3Image = req.files.option3Image ? req.files.option3Image[0].filename : req.body.option3Image;
+            req.body.option4Image = req.files.option4Image ? req.files.option4Image[0].filename : req.body.option4Image;
             next();
         }
         catch (err) {

@@ -360,14 +360,10 @@ const Quiz = () => {
                       __html: oneQuiz?.question.replace(">", "><br/>"),
                     }}
                   />
-                  <div
-                    style={{ display: "none" }}
-                    ref={myDivRefQue}
-                    dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(">", "><br/>"),
-                    }}
-                  />
+                 
+                  
                 </div>
+                <div style={{display:'flex',justifyContent:'center'}}> <img style={{maxWidth:'200px',width:'100%'}} src={imageBaseUrl + oneQuiz?.questionImage} alt=""/></div>
 
                 <div className={styles.answerSection}>
                   {oneQuiz?.option?.map((answerOption, index) => {
@@ -405,7 +401,7 @@ const Quiz = () => {
                             </p>
                             {oneQuiz?.optionImage[index] && (
                               <img
-                                width={200}
+                              style={{maxWidth:'150px',width:'100%'}}
                                 src={`${
                                   oneQuiz?.optionImage[index].includes("https")
                                     ? oneQuiz?.optionImage[index]

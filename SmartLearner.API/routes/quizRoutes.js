@@ -18,7 +18,8 @@ router.post(
 );
 router.post(
   "/updateQuestion/:id",
-  imageSaverMiddleware,
+ 
+  multipleimageSaverMiddleware,
   requireAuth,
   quizController.updateQuiz
 );

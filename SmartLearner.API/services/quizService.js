@@ -30,6 +30,7 @@ class quizService {
   async updateQuizAsync(quizId, quizData) {
     try {
       const quiz = await QuizQuestion.findByIdAndUpdate(quizId, quizData);
+      console.log("dattttttt", quiz);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Updated Successfully",

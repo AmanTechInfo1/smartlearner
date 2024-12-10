@@ -301,8 +301,10 @@ export const createQuiz =
 
 export const editQuiz =
   (id, data, reset, toggleEditQuizModal, state) => async (dispatch) => {
+   
     try {
       dispatch(setLoading());
+      console.log("dayyttttt", data)
       const response = await httpHandler.post(
         `/api/quiz/updateQuestion/${id}`,
         data
