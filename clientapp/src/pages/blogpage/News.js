@@ -15,20 +15,35 @@ import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoNewspaper } from "react-icons/io5";
 import { FaAnglesRight } from "react-icons/fa6";
+import LoadingWeb from "../../components/loader/LoadingWeb";
 
 export default function News() {
+    const [webloading, setWebLoading] = useState(false);
   const dispatch = useDispatch();
   const { news } = useSelector(
     (state) => state.blog
   ); 
+  const loading = useSelector((state) => state.blog.loading); 
 
   useEffect(() => {
       dispatch(fetchNews());
   }, [dispatch]);
 
+useEffect(() => {
+    if (loading) {
+      setWebLoading(true); // Show loading indicator when fetching news
+    } else {
+      setWebLoading(false); // Hide loading indicator when fetching is done
+    }
+  }, [loading]);
+
+  if (webloading) {
+    return <LoadingWeb />; // Show loading spinner if webLoading is true
+  }
 
   return (
     <div>
+          {webloading && <LoadingWeb />}
       <div className={styles.newsContainers}>
         <div className={styles.newsSection}>
           <div className={styles.topStories}>

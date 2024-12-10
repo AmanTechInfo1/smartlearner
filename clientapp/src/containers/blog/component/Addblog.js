@@ -151,7 +151,7 @@ const AddBlog = (props) => {
             )}
           </div>
           <div className="form-group">
-            <label>Blog Image</label>
+            <label>Blog Image (size less then 10MB)</label>
             <Controller
               name="image"
               control={control}

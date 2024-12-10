@@ -8,7 +8,7 @@ import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import News from "./News";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllBlogs, getAllBlogs } from "../../redux/features/blogSlice";
+import { fetchAllBlogs, getAllBlogs, getBlogById } from "../../redux/features/blogSlice";
 import { imageBaseUrl } from "../../utils/constants";
 
 
@@ -41,9 +41,11 @@ const dispatch = useDispatch();
   };
 
   // Handle blog click to navigate to single blog
-  const handleBlogClick = (blog) => {
-    navigate(`/blogs/${blog.id}`, { state: blog });
+  const handleClick = (blog) => {
+   dispatch(getBlogById(blog._id))
+    navigate(`/singleblog/${blog._id}`);
   };
+
 
   return (
     <div className={styles.blogsPage}>
@@ -77,7 +79,7 @@ const dispatch = useDispatch();
                   <p>{blog.shortContent.slice(0, 200)}...</p>{" "}
                   <Button
                     variant="danger"
-                    onClick={() => handleBlogClick(blog)}>
+                    onClick={() => handleClick(blog)}>
                     Read More..
                   </Button>
                 </div>
@@ -102,14 +104,14 @@ const dispatch = useDispatch();
                   </Link>
                 </p>
               </div>
-              <div className={styles.blogscard}>
+              {/* <div className={styles.blogscard}>
                 <h3>Popular Posts</h3>
                 <div className={styles.fakeimg}>Image</div>
                 <br />
                 <div className={styles.fakeimg}>Image</div>
                 <br />
                 <div className={styles.fakeimg}>Image</div>
-              </div>
+              </div> */}
               <div className={styles.blogscard}>
                 <h3>Follow Me</h3>
                 <div className={styles.socialFollowIcons}>
