@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
-import subsIcon from "../../../assets/images/subsIconSvg.svg";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPlans,
@@ -160,7 +160,7 @@ const PartOneSubscription = () => {
             <div className="card-top">
               <div className="card-top__info">
                 <span className="card-top__info-icon">
-                  <img src={subsIcon} alt="Subscription Icon" />
+                  {/* <img src={subsIcon} alt="Subscription Icon" /> */}
                 </span>
                 <div className="card-top__info-header">
                   <h1>{plan.planname}</h1>
