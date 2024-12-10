@@ -163,6 +163,7 @@ export const createBlog =
   (data, reset, toggleAddBlogModal) => async (dispatch) => {
     try {
       dispatch(setLoading());
+      console.log("data...............",data)
       const response = await httpHandler.post(`/api/blogs/create-blog`, data);
       if (response.data.success) {
         toast.success(response.data.message);

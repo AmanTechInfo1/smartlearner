@@ -20,7 +20,7 @@ const imageSaverMiddleware = (req, res, next) => {
             return res.status(400).json({ error: 'File upload failed.', details: err.message });
         }
         if (req.file) {
-            req.body.image = req.file.originalname
+            req.body.image = req.file.filename;
         } else {
             req.body.image = ""
         }

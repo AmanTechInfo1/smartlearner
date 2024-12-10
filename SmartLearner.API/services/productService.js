@@ -5,6 +5,7 @@ class ProductService {
   async createProductAsync(productData) {
     try {
       const product = await Product.create(productData);
+      console.log("edsiuhkjds",product)
       const totalCount = await Product.countDocuments();
       const resultObject = {
         message: "Product Added Successfully",

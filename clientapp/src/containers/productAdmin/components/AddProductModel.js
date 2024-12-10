@@ -36,7 +36,9 @@ function AddProductModel(props) {
     formData.append("category", data.category)
     formData.append("description", data.description);
     formData.append("duration", data.duration);
-    // formData.append("image", image);
+    if (image) {
+      formData.append("image", image); // Append the image to formData
+    }
     formData.append("price", data.price);
     formData.append("transmission", data.transmission);
     formData.append("experience", data.experience);
@@ -44,8 +46,8 @@ function AddProductModel(props) {
     formData.append("areaIncluded", data.areaIncluded);
     formData.append("rating", data.rating);
     
-    dispatch(createProduct(data, reset, props.toggleAddProductModal, props.state));
-    setImage(""); 
+    dispatch(createProduct(formData, reset, props.toggleAddProductModal, props.state));
+   console.log("data....xyxxxx..........",data)
     reset();
    
   };
@@ -187,7 +189,7 @@ function AddProductModel(props) {
                   />
                   
                 )}
-                defaultValue=""
+               
               />
 
               {errors?.name?.message ? (
@@ -209,7 +211,7 @@ function AddProductModel(props) {
                     value={value}
                     onChange={onChange}
                     autoComplete="false"
-                    placeholder="$"
+                    placeholder="£"
                   />
                 )}
                 defaultValue=""
