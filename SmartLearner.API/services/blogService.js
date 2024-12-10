@@ -1,8 +1,7 @@
 const Blogs = require("../models/blogModal");
 const axios = require("axios");
 
-const apikey = "27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b"; // Your API key
-const baseUrl = "https://google-news13.p.rapidapi.com/";
+
 
 class BlogService {
   // Create a new blog
