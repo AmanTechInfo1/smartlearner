@@ -9,7 +9,7 @@ const router = express.Router();
 router.post(
   "/create-blog",
   imageSaverMiddleware,
-  requireAuth,
+ 
   blogController.createBlog
 );
 
@@ -25,7 +25,7 @@ router.get("/blog/:id", blogController.getBlogById);
 router.post(
   "/update-blog/:id",
   imageSaverMiddleware,
-  requireAuth,
+
   blogController.updateBlog
 );
 
