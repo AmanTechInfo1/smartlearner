@@ -11,8 +11,8 @@ const sendEmail = async (subject, message) => {
   });
 
   const mailOptions = {
-    from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
-    to: "Smartlearnerdrivingschool@gmail.com", // Admin's email
+    from: "admin@smartlearner.com", // Sender's email
+    to: "admin@smartlearner.com", // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -268,7 +268,7 @@ const transporter = nodemailer.createTransport({
 // Function to send email
 const sendRegisterEmail = async (to, subject, htmlContent) => {
   const mailOptions = {
-    from: "Smartlearnerdrivingschool@gmail.com",
+    from: "admin@smartlearner.com",
     to: to,
     subject: subject,
     html: htmlContent, // Send HTML content for rich formatting
@@ -395,7 +395,7 @@ const sendAdminNotification = async (userData) => {
     <p><strong>Username:</strong> ${username}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-    <p><strong>Role Selected</strong> ${roleName}</p>
+   
     <p>Welcome to SmartLearner!</p>
           </div>
         </div>

@@ -660,8 +660,8 @@ class OrderService {
     `;
 
     const mailOptions = {
-      from: "Smartlearnerdrivingschool@gmail.com",
-      to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
+      from: "admin@smartlearner.com",
+      to: [orderDetails.email, "admin@smartlearner.com"],
       subject: `Payment ${status} - Order #${orderDetails._id}`,
       html: htmlContent,
     };
