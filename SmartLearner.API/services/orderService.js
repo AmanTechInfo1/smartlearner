@@ -557,8 +557,8 @@ class OrderService {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "admin@smartlearner.com", // Your email
-        pass: "Ipifrdauclzxdrsq", // Your email password or app password
+        user: "Smartlearnerdrivingschool@gmail.com", // Your email
+      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
       },
     });
 
@@ -660,8 +660,8 @@ class OrderService {
     `;
 
     const mailOptions = {
-      from: "admin@smartlearner.com",
-      to: [orderDetails.email, "admin@smartlearner.com"],
+      from: "Smartlearnerdrivingschool@gmail.com",
+      to: [orderDetails.email, "Smartlearnerdrivingschool@gmail.com"],
       subject: `Payment ${status} - Order #${orderDetails._id}`,
       html: htmlContent,
     };

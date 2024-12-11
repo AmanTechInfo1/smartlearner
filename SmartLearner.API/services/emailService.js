@@ -5,14 +5,14 @@ const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "admin@smartlearner.com", // Your email
-      pass: "Ipifrdauclzxdrsq", // Your email password or app password
+      user: "Smartlearnerdrivingschool@gmail.com", // Your email
+      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
     },
   });
 
   const mailOptions = {
-    from: "admin@smartlearner.com", // Sender's email
-    to: "admin@smartlearner.com", // Admin's email
+    from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
+    to: "Smartlearnerdrivingschool@gmail.com", // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -260,15 +260,15 @@ const processForm = async (formType, formData) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "admin@smartlearner.com", // Your email
-    pass: "Ipifrdauclzxdrsq", // Use an app password or OAuth2 for production
+    user: "Smartlearnerdrivingschool@gmail.com", // Your email
+    pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
   },
 });
 
 // Function to send email
 const sendRegisterEmail = async (to, subject, htmlContent) => {
   const mailOptions = {
-    from: "admin@smartlearner.com",
+    from: "Smartlearnerdrivingschool@gmail.com",
     to: to,
     subject: subject,
     html: htmlContent, // Send HTML content for rich formatting
