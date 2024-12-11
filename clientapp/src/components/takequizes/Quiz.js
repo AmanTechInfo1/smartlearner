@@ -16,8 +16,6 @@ import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
 import httpHandler from "../../utils/httpHandler";
 
-
-
 const languageCodes = {
   Auto: "auto",
   English: "en",
@@ -167,7 +165,7 @@ const Quiz = () => {
       console.error("No text provided to speak.");
     }
   };
-  
+
   const handleTranslationAndSpeech = async () => {
     if (hasTranslated) return;
     setHasTranslated(true);
@@ -186,13 +184,13 @@ const Quiz = () => {
     });
 
     try {
-      const response = await httpHandler.post("/api/quiz/translate",formdata);
+      const response = await httpHandler.post("/api/quiz/translate", formdata);
 
       const result = await response.data;
       if (result.question) {
         speak(result.question);
       }
-  
+
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
           speak(result[option]); // Speak translated options
@@ -232,7 +230,6 @@ const Quiz = () => {
     dispatch(getAnswerRandomQuestion(finData));
   };
 
-
   const resetTranslation = () => {
     setHasTranslated(false);
     setIsTranslating(false);
@@ -243,17 +240,15 @@ const Quiz = () => {
     }
   };
   const handleNextQuestion = () => {
-    stopSpeech(); 
+    stopSpeech();
     resetTranslation();
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-    
   };
 
   const endQuiz = () => {
     navigate("/quizResult");
-   
   };
 
   const handlePauseResume = () => {
@@ -278,7 +273,7 @@ const Quiz = () => {
   }, [isQuizRestarted, dispatch]);
 
   const handleRestart = () => {
-    stopSpeech(); 
+    stopSpeech();
     dispatch(restartQuiz(cid));
     setTotalTime(0); // Dispatch the restart action
   };
@@ -299,52 +294,55 @@ const Quiz = () => {
             ) : oneQuiz?.question ? (
               <>
                 <div className={styles.totalTimer2}>
-                <div className={styles.totalTimer}>
-                  <select onChange={handleLanguageChange}>
-                    {Object.entries(languageCodes).map((itm) => (
-                      <option key={itm[1]} value={itm[1]}>
-                        {itm[0]}
-                      </option>
-                    ))}
-                  </select>
-                  {isTranslating && <span>Loading...</span>}
-                  <button
-                    style={{
-                      border: "none",
-                      borderRadius: "6px",
-                      padding: "4px 15px",
-                      backgroundColor: "red",
-                      color: "white",
-                      fontWeight: "400",
-                    }}
-                    onClick={handleTranslationAndSpeech}>
-                    Speak
-                  </button>
+                  <div className={styles.totalTimer}>
+                    <select onChange={handleLanguageChange}>
+                      {Object.entries(languageCodes).map((itm) => (
+                        <option key={itm[1]} value={itm[1]}>
+                          {itm[0]}
+                        </option>
+                      ))}
+                    </select>
+                    {isTranslating && <span>Loading...</span>}
+                    <button
+                      style={{
+                        border: "none",
+                        borderRadius: "6px",
+                        padding: "4px 15px",
+                        backgroundColor: "red",
+                        color: "white",
+                        fontWeight: "400",
+                      }}
+                      onClick={handleTranslationAndSpeech}
+                    >
+                      Speak
+                    </button>
                   </div>
                   <div className={styles.totalTimer}>
-                  <span
-                    style={{
-                      border: "none",
-                      padding: "5px 10px",
-                      backgroundColor: "white",
-                      color: "black",
-                      fontWeight: "400",
-                      fontSize: "18px",
-                    }}>
-                    Time Started: {formatTime(totalTime)}
-                  </span>
-                  <button
-                    onClick={handlePauseResume}
-                    style={{
-                      border: "none",
-                      borderRadius: "6px",
-                      padding: "4px 15px",
-                      backgroundColor: "red",
-                      color: "white",
-                      fontWeight: "700px",
-                    }}>
-                    {isPaused ? "Resume" : "Pause"}
-                  </button>
+                    <span
+                      style={{
+                        border: "none",
+                        padding: "5px 10px",
+                        backgroundColor: "white",
+                        color: "black",
+                        fontWeight: "400",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Time Started: {formatTime(totalTime)}
+                    </span>
+                    <button
+                      onClick={handlePauseResume}
+                      style={{
+                        border: "none",
+                        borderRadius: "6px",
+                        padding: "4px 15px",
+                        backgroundColor: "red",
+                        color: "white",
+                        fontWeight: "700px",
+                      }}
+                    >
+                      {isPaused ? "Resume" : "Pause"}
+                    </button>
                   </div>
                 </div>
 
@@ -360,11 +358,16 @@ const Quiz = () => {
                       __html: oneQuiz?.question.replace(">", "><br/>"),
                     }}
                   />
-                 
-                  
                 </div>
-                <div style={{display:'flex',justifyContent:'center'}}> <img style={{maxWidth:'200px',width:'100%'}} src={imageBaseUrl + oneQuiz?.questionImage} alt=""/></div>
-
+                {oneQuiz?.questionImage && (
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <img
+                      style={{ maxWidth: "200px", width: "100%" }}
+                      src={imageBaseUrl + oneQuiz?.questionImage}
+                      alt="Question"
+                    />
+                  </div>
+                )}
                 <div className={styles.answerSection}>
                   {oneQuiz?.option?.map((answerOption, index) => {
                     return (
@@ -390,18 +393,20 @@ const Quiz = () => {
                             "Option" + (index + 1),
                             "Image" + (index + 1)
                           )
-                        }>
+                        }
+                      >
                         {answerOption && (
                           <>
                             <p id={"option" + (index + 1)}>{answerOption}</p>
                             <p
                               style={{ display: "none" }}
-                              id={"laboption" + (index + 1)}>
+                              id={"laboption" + (index + 1)}
+                            >
                               {answerOption}
                             </p>
                             {oneQuiz?.optionImage[index] && (
                               <img
-                              style={{maxWidth:'150px',width:'100%'}}
+                                style={{ maxWidth: "150px", width: "100%" }}
                                 src={`${
                                   oneQuiz?.optionImage[index].includes("https")
                                     ? oneQuiz?.optionImage[index]
@@ -424,11 +429,11 @@ const Quiz = () => {
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
               <button
-            onClick={() => navigate(-1)}
-            className="btn btn-secondary bg-info ml-3 py-2 px-3 "
-          >
-            Back
-          </button>
+                onClick={() => navigate(-1)}
+                className="btn btn-secondary bg-info ml-3 py-2 px-3 "
+              >
+                Back
+              </button>
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
