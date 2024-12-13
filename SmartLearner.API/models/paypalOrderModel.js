@@ -9,7 +9,7 @@ const paypalOrderSchema = new mongoose.Schema({
   lastName: { type: String, required: true, unique: false },
   city: { type: String, required: true, unique: false },
   companyName: { type: String, required: false, unique: false },
-  county: { type: String, required: true, unique: false },
+  county: { type: String, required: false, unique: false },
   email: { type: String, required: true, unique: false },
   myCart: { type: Array, required: true, unique: false },
   ordernotes: { type: String, required: false },

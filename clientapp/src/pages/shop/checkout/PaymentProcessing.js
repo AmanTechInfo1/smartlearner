@@ -40,8 +40,7 @@ export default function PaymentProcessing() {
           firstName: carting.firstName,
           lastName: carting.lastName,
           city: carting.city,
-          companyName: carting.companyName,
-          county: carting.county,
+          
           email: carting.email,
           myCart: carting.myCart,
           ordernotes: carting.ordernotes,
