@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const paymentSuccess = require("../models/paymentSuccessModel");
 const Order = require("../models/orderModel");
 const Paypalorder = require("../models/paypalOrderModel")
-
+const stripe = require('../config/stripe');
 class OrderController {
 
   async getAllOrders(req, res,next) {
@@ -233,10 +233,11 @@ async createPayment (req, res){
     
     
     order.status = 'completed';
+    order.paymentMethod = "PayPal";
     await order.save();
 
    
-    await orderService.sendEmail(order, 'success');
+    await orderService.sendEmail(order, 'success', "PayPal");
 
     
     res.status(200).json({
@@ -272,6 +273,56 @@ async cancelPayment (req, res)  {
     success: false,
     message: 'Payment was canceled.',
   });
+};
+
+// ////////////////////////////////////////////////////////////
+async createStripeCharge (req, res)  {
+  const { paymentMethodData, amount, orderId } = req.body;
+
+  try {
+    const order = await Paypalorder.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100), // Amount in pence (or smallest unit of your currency)
+      currency: "gbp",
+      payment_method_data: paymentMethodData, 
+      confirm: true,
+      automatic_payment_methods: {
+        enabled: true,
+        allow_redirects: 'never' // Automatically enable payment methods
+      },
+      return_url: "https://smartlearner.com/payment-completed",
+    });
+
+    order.status = "completed";
+    await order.save();
+    order.paymentDetails = paymentIntent;
+    order.paymentMethod = "Stripe";
+    await orderService.sendEmail(order, 'success', "Stripe");
+
+    res.status(200).json({ success: true, message: "Payment successful", paymentIntent });
+  } catch (error) {
+    console.error(error);
+    
+    const order = await Paypalorder.findById(orderId);
+    if (order) {
+      order.status = 'failed';
+      await order.save();
+    }
+    
+    // Send failure email
+    if (order) {
+      await orderService.sendEmail(order, 'failure');
+    }
+    console.error("Payment capture failed:", error);
+    res.status(500).json({
+      success: false,
+      message: 'Payment failed: ' + error.message,
+    });
+  }
 };
 
   

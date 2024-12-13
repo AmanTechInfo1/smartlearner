@@ -4,7 +4,7 @@ const paypalOrderSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   firstName: { type: String, required: true, unique: false },
 
-  createdOn: { type: Date,  default: Date.now },
+  createdOn: { type: Date, default: Date.now },
 
   lastName: { type: String, required: true, unique: false },
   city: { type: String, required: true, unique: false },
@@ -25,6 +25,9 @@ const paypalOrderSchema = new mongoose.Schema({
     enum: ["pending", "completed", "failed"],
     default: "pending",
   },
+  paymentMethod: { type: String, required: false },
+  paymentDetails: { type: Object, required: false }, // To store payment details like Stripe response
+  stripePaymentId: { type: String, required: false },
 });
 
 const Paypalorder = mongoose.model("paypalOrder", paypalOrderSchema);

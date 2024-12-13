@@ -7,11 +7,11 @@ export default function Checkout() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    companyName: "",
+   
     streetAddress1: "",
     streetAddress2: "",
     city: "",
-    county: "",
+    
     postcode: "",
     phoneNumber: "",
   });
@@ -61,7 +61,7 @@ export default function Checkout() {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block font-semibold mb-1" htmlFor="companyName">
                 Company Name (Optional)
               </label>
@@ -72,7 +72,7 @@ export default function Checkout() {
                 value={formData.companyName}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             <div className="mb-4">
               <label
                 className="block font-semibold mb-1"
@@ -111,7 +111,7 @@ export default function Checkout() {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block font-semibold mb-1" htmlFor="county">
                 Country <span className="text-red-500">*</span>
               </label>
@@ -123,7 +123,7 @@ export default function Checkout() {
                 onChange={handleChange}
                 required
               />
-            </div>
+            </div> */}
             <div className="mb-4">
               <label className="block font-semibold mb-1" htmlFor="postcode">
                 Postcode <span className="text-red-500">*</span>

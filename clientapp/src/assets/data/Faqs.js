@@ -80,7 +80,7 @@ export const faqs = [
     question:
       "HOW OFTEN SHOULD I TAKE MY DRIVING LESSONS?",
     answer:
-      "Continuity of driving lessons is important! Try not to take long breaks as this can really affect your progress and make it cost much more in the long run. At Smartlearner we recommend that you have between 2 and 4 hours per week. This will help you stay motivated, pass faster and if your paying in block can save you lots of money! WHAT IS THE MO",
+      "Continuity of driving lessons is important! Try not to take long breaks as this can really affect your progress and make it cost much more in the long run. At Smartlearner we recommend that you have between 2 and 4 hours per week. This will help you stay motivated, pass faster and if your paying in block can save you lots of money!",
   },
   {
     id: "14",

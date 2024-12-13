@@ -20,5 +20,7 @@ router.post('/paymentFailed', upload.none(), OrderController.paymentFailed);
 router.post('/create', OrderController.createPayment);  // for creating payment
 router.post('/execute', OrderController.executePayment); 
 router.get('/cancel', OrderController.cancelPayment);
+// /////////////////////////////////////
+router.post('/stripe-charge', OrderController.createStripeCharge); 
 
 module.exports = router;

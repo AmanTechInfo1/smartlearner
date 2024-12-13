@@ -553,7 +553,7 @@ class OrderService {
     }
   }
 
-  async sendEmail(orderDetails, status) {
+  async sendEmail(orderDetails, status, method) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -598,6 +598,7 @@ class OrderService {
             </div>
             <div class="body">
               <h2>Payment ${status} - Order #${orderDetails._id}</h2>
+              <h2>Payment Method ${method} </h2>
               <p><strong>Dear ${orderDetails.firstName} ${
       orderDetails.lastName
     },</strong></p>
@@ -662,7 +663,7 @@ class OrderService {
     const mailOptions = {
       from: "admin@smartlearner.com",
       to: [orderDetails.email, "admin@smartlearner.com"],
-      subject: `Payment ${status} - Order #${orderDetails._id}`,
+      subject: `Payment ${status} - Order #${orderDetails._id} PaymentMethod ${method}`,
       html: htmlContent,
     };
 
