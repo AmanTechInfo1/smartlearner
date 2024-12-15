@@ -23,7 +23,7 @@ const languageCodes = {
   Afrikaans: "af",
   Albanian: "sq",
   Amharic: "am",
-  Arabic: "ar",
+  
   Armenian: "hy",
   Azerbaijani: "az",
   Basque: "eu",
@@ -101,7 +101,7 @@ const languageCodes = {
   Serbian: "sr",
   Sesotho: "st",
   Shona: "sn",
-  Sindhi: "sd",
+
   Sinhala: "si",
   Slovak: "sk",
   Slovenian: "sl",
@@ -118,7 +118,7 @@ const languageCodes = {
   Turkish: "tr",
   Turkmen: "tk",
   Ukrainian: "uk",
-  Urdu: "ur",
+  
   Uyghur: "ug",
   Uzbek: "uz",
   Vietnamese: "vi",
