@@ -256,7 +256,7 @@ async createPayment (req, res){
     
     // Send failure email
     if (order) {
-      await orderService.sendEmail(order, 'failure');
+      await orderService.sendEmail(order, 'failure',"PayPal");
     }
     console.error("Payment capture failed:", error);
     res.status(500).json({
@@ -315,7 +315,7 @@ async createStripeCharge (req, res)  {
     
     // Send failure email
     if (order) {
-      await orderService.sendEmail(order, 'failure');
+      await orderService.sendEmail(order, 'failure',"Stripe");
     }
     console.error("Payment capture failed:", error);
     res.status(500).json({
