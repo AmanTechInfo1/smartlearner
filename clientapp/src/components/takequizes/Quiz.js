@@ -171,8 +171,8 @@ const Quiz = () => {
     setHasTranslated(true);
     setIsTranslating(true);
     const formdata = new FormData();
-    const question = myDivRefQue.current?.innerHTML || "No question provided";
-
+    const question = oneQuiz?.question || "No question provided";
+    console.log("Captured Question:", question); 
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);
 
