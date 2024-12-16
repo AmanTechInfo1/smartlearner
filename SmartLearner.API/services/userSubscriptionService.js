@@ -224,7 +224,7 @@ class UserSubscriptionService {
 
   // //////////////////////////////////////////////////////////////
   async pdiCouponCode(userId, couponCode) {
-    const validCoupon = "PDITHEORY"; // The valid coupon code
+    const validCoupon = "FREEINSTRUCTOR"; // The valid coupon code
 
     if (couponCode === validCoupon) {
       // Check if the user already has a subscription with the coupon applied

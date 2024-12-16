@@ -34,7 +34,7 @@ const PartTwoSubscription = () => {
   const handleCouponSubmit = async () => {
     try {
       await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
-     
+      navigate("/adi-part-one");
     } catch (error) {
       console.error("Error applying coupon:", error);
      

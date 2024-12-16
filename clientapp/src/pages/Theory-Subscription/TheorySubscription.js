@@ -34,7 +34,7 @@ const TheorySubscription = () => {
 const handleCouponSubmit = async () => {
   try {
     await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
-   
+    navigate("/Theory-portal");
   } catch (error) {
     console.error("Error applying coupon:", error);
    
