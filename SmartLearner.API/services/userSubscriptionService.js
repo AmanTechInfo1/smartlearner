@@ -248,7 +248,7 @@ class UserSubscriptionService {
       }
 
       const currentDate = new Date();
-      const couponExpiryDate = moment(currentDate).add(1, "days").toDate();
+      const couponExpiryDate = moment(currentDate).add(7, "days").toDate();
 
       // Loop through the filtered plans and create a subscription for each one
       const subscriptions = [];
