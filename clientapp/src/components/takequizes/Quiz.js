@@ -172,7 +172,7 @@ const Quiz = () => {
     setIsTranslating(true);
     const formdata = new FormData();
     const question = oneQuiz?.question || "No question provided";
-    console.log("Captured Question:", question); 
+    
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);
 

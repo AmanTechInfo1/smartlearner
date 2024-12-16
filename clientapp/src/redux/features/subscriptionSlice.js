@@ -89,7 +89,23 @@
         return rejectWithValue(error.response.data);
       }
     }
+  
+  
   );
+    // ////////////////////////////////////////////////////////
+  export const pdiApplyCouponCode = createAsyncThunk(
+    "subscription/pdiApplyCouponCode",
+    async ({ userId, couponCode }, { rejectWithValue }) => {
+      try {
+        const response = await httpHandler.post("/api/subscription/pdiApply-coupon", { userId, couponCode });
+        toast.success(response.data.message);
+        return response.data;
+      } catch (error) {
+        // Show error toast
+        toast.error(` ${error.response.data.message || error.message}`);
+        return rejectWithValue(error.response.data);
+      }
+    });
 
   // Slice
   const subscriptionSlice = createSlice({
@@ -157,6 +173,12 @@
           state.couponMessage = action.payload.message; // Store the success message
         })
         .addCase(applyCouponCode.rejected, (state, action) => {
+          state.couponMessage = action.payload?.message || "Coupon application failed.";
+        })
+        .addCase(pdiApplyCouponCode.fulfilled, (state, action) => {
+          state.couponMessage = action.payload.message; // Store the success message
+        })
+        .addCase(pdiApplyCouponCode.rejected, (state, action) => {
           state.couponMessage = action.payload?.message || "Coupon application failed.";
         });
                 

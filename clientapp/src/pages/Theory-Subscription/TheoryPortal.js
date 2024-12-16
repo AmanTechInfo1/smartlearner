@@ -73,7 +73,7 @@ export default function TheoryPortal() {
         (subscription.isActive && (
           planCategory === "theory-portal package" ||
           planCategory === "theory-portal free-trial"
-        )) || couponApplied === true
+        ))
       );
     });
     if (!hasAccess) {

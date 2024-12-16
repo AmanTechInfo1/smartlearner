@@ -75,7 +75,7 @@ export default function AdiPartTwo() {
           (subscription.isActive && (
             planCategory === "pdi-part-two packages" ||
             planCategory === "Complete packages"
-          )) || couponApplied === true
+          ))
         );
       });
       if (!hasAccess) {

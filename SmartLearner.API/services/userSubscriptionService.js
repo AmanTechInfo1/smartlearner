@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const Plans = require("../models/planUserModel");
 const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
 const axios = require("axios");
+const moment = require("moment");
 
 const nodemailer = require("nodemailer");
 
@@ -10,45 +11,49 @@ class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
     const plan = await Plans.findById(subscriptionId);
     const currentDate = new Date();
-  
+
     // Check if user is trying to use a trial
     if (isTrial) {
       const existingTrial = await UserSubscription.findOne({
         userId,
         isTrial: true,
       });
-  
+
       if (existingTrial) {
         throw new Error("Free Trial Used");
       }
     }
-  
+
     // Try to find an active subscription
     const existingSubscription = await UserSubscription.findOne({
       userId,
       isActive: true,
       isTrial: false, // Make sure it's not a trial subscription
     });
-  
+
     let planEndDate;
-  
+
     if (existingSubscription) {
       // If user already has an active subscription, extend the current subscription
       const existingEndDate = existingSubscription.planEndDate;
-      planEndDate = new Date(existingEndDate.getTime() + plan.duration * 24 * 60 * 60 * 1000); // Extend the end date
-  
+      planEndDate = new Date(
+        existingEndDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+      ); // Extend the end date
+
       // Update the subscription with the new plan end date
       existingSubscription.planEndDate = planEndDate;
       existingSubscription.subscriptionId = subscriptionId; // Update to new plan if needed
       existingSubscription.planStartDate = currentDate; // Update the start date
-  
+
       // Save the updated subscription
       await existingSubscription.save();
       return existingSubscription;
     } else {
       // If no existing subscription, create a new one
-      planEndDate = new Date(currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000);
-  
+      planEndDate = new Date(
+        currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+      );
+
       const userSubscription = new UserSubscription({
         userId,
         subscriptionId,
@@ -61,15 +66,12 @@ class UserSubscriptionService {
           ? new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000) // Assuming trial duration is 7 days
           : null,
       });
-  
+
       await userSubscription.save();
       await User.findByIdAndUpdate(userId, { subscription: subscriptionId });
       return userSubscription;
     }
   }
-  
-
-
 
   async createPayment(subscriptionId) {
     const plan = await Plans.findById(subscriptionId);
@@ -160,24 +162,31 @@ class UserSubscriptionService {
       // Check if the user already has a subscription with the coupon applied
       const existingSubscription = await UserSubscription.findOne({
         userId,
-        couponApplied: true,
+        theoryCouponApplied: true,
       });
 
       if (existingSubscription) {
         throw new Error("coupon used already");
       }
 
-      // Get all available plans
-      const plans = await Plans.find(); // Retrieve all plans
+      // Get the two specific plans by plan name or other unique criteria
+      const plans = await Plans.find({
+        planname: {
+          $in: [
+            "Unlimited Theory Portal Access £5.99 per month",
+            "6 Months Theory Portal Access £30",
+          ],
+        },
+      });
 
-      // If no plans exist, throw an error
+      // If no matching plans are found, throw an error
       if (plans.length === 0) {
-        throw new Error("No available plans.");
+        throw new Error("No eligible plans available.");
       }
 
       const currentDate = new Date();
 
-      // Loop through all plans and create a subscription for each one
+      // Loop through the filtered plans and create a subscription for each one
       const subscriptions = [];
       for (const plan of plans) {
         const planEndDate = new Date(
@@ -194,7 +203,8 @@ class UserSubscriptionService {
           trialStartDate: null,
           trialEndDate: null,
           paymentStatus: "COMPLETED", // No payment required, because it's free
-          couponApplied: true, // Mark the coupon as applied
+          theoryCouponApplied: true,
+          pdiCouponApplied: null, // Mark the coupon as applied
         });
 
         subscriptions.push(subscription.save());
@@ -206,24 +216,117 @@ class UserSubscriptionService {
         subscription: subscriptions[0].subscriptionId,
       }); // Update user with first subscription
 
-      return { message: "Coupon applied successfully" };
+      return { message: "FreetTheory Coupon applied successfully" };
     } else {
       throw new Error("Invalid coupon code");
     }
   }
 
+  // //////////////////////////////////////////////////////////////
+  async pdiCouponCode(userId, couponCode) {
+    const validCoupon = "PDITHEORY"; // The valid coupon code
+
+    if (couponCode === validCoupon) {
+      // Check if the user already has a subscription with the coupon applied
+      const existingSubscription = await UserSubscription.findOne({
+        userId,
+        pdiCouponApplied: true,
+      });
+
+      if (existingSubscription) {
+        throw new Error("coupon used already");
+      }
+
+      // Get the two specific plans by plan name or other unique criteria
+      const plans = await Plans.find({
+        planname: { $in: ["PDI Complete Package"] },
+      });
+
+      // If no matching plans are found, throw an error
+      if (plans.length === 0) {
+        throw new Error("No eligible plans available.");
+      }
+
+      const currentDate = new Date();
+      const couponExpiryDate = moment(currentDate).add(1, "days").toDate();
+
+      // Loop through the filtered plans and create a subscription for each one
+      const subscriptions = [];
+      for (const plan of plans) {
+        const planEndDate = new Date(
+          currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+        ); // duration in days
+
+        const subscription = new UserSubscription({
+          userId,
+          subscriptionId: plan._id,
+          isActive: true,
+          planStartDate: currentDate,
+          planEndDate: planEndDate,
+          isTrial: false,
+          trialStartDate: null,
+          trialEndDate: null,
+          paymentStatus: "COMPLETED",
+          theoryCouponApplied: null, // No payment required, because it's free
+          pdiCouponApplied: true,
+          couponEndDate: couponExpiryDate, // Mark the coupon as applied
+        });
+
+        subscriptions.push(subscription.save());
+      }
+
+      // Wait for all subscriptions to be saved
+      await Promise.all(subscriptions);
+      await User.findByIdAndUpdate(userId, {
+        subscription: subscriptions[0].subscriptionId,
+      }); // Update user with first subscription
+
+      return { message: "Pdi Coupon applied successfully" };
+    } else {
+      throw new Error("Invalid coupon code");
+    }
+  }
+  async deactivateExpiredSubscriptions() {
+    const currentDate = new Date();
+    const expiredSubscriptions = await UserSubscription.find({
+      couponApplied: true,
+      couponEndDate: { $lt: currentDate }, // Expired coupon
+      isActive: true,
+    });
+
+    if (expiredSubscriptions.length === 0) {
+      console.log("No expired subscriptions found.");
+      return;
+    }
+
+    for (const subscription of expiredSubscriptions) {
+      // Deactivate subscription
+      subscription.isActive = false;
+      subscription.paymentStatus = "EXPIRED";
+      await subscription.save();
+
+      // Optionally remove from user's subscription list
+      await User.findByIdAndUpdate(subscription.userId, {
+        $pull: { subscription: subscription._id },
+      });
+
+      console.log(
+        `Subscription for user ${subscription.userId} has expired and been removed.`
+      );
+    }
+  }
+
+  // ==================================================================
   // ====////////////////////////////////////////////////////////
   async sendSubscriptionEmail(userId, subscriptionId, status) {
-   
     const user = await User.findById(userId);
     const subscription = await Plans.findById(subscriptionId);
 
-  
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: "Smartlearnerdrivingschool@gmail.com", // Your email
-        pass: "cbsb ueih dxqm zdhd", 
+        pass: "cbsb ueih dxqm zdhd",
       },
     });
 
@@ -278,7 +381,9 @@ class UserSubscriptionService {
             <div class="body">
               <h2>Subscription ${status} - Plan: ${subscription.planname}</h2>
               <p><strong>Dear ${user.username},</strong></p>
-              <p>Your payment for Order #${subscription.planname} has been ${status}.</p>
+              <p>Your payment for Order #${
+                subscription.planname
+              } has been ${status}.</p>
   
               <h3>Order Details:</h3>
               <table>

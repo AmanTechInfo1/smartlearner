@@ -34,4 +34,9 @@ router.post(
   "/apply-coupon",
   userSubscriptionController.couponAccess
 );
+
+router.post(
+  "/pdiApply-coupon",
+  userSubscriptionController.pdiCouponAccess
+);
 module.exports = router;

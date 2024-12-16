@@ -114,6 +114,16 @@ class userSubscriptionController {
       next(err);
     }
   }
+  // ///////////////////////////////////////////////////////////////////////
+  async pdiCouponAccess(req, res,next) {
+    const { userId, couponCode } = req.body;
+    try {
+        const couponAccess = await userSubscriptionService.pdiCouponCode(userId, couponCode);
+        res.status(200).json(couponAccess);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new userSubscriptionController();

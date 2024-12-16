@@ -9,8 +9,10 @@ const userSubscriptionSchema = new mongoose.Schema({
   isTrial: { type: Boolean, default: false },
   trialStartDate: { type: Date, default: Date.now },
   trialEndDate: { type: Date },
-  paymentStatus: { type: String, default: 'PENDING' },
-  couponApplied: { type: Boolean, default: false } 
+  paymentStatus: { type: String, default: "PENDING" },
+  theoryCouponApplied: { type: Boolean, default: false },
+  pdiCouponApplied: { type: Boolean, default: false },
+  couponEndDate: { type: String },
 });
 
 const UserSubscription = mongoose.model(

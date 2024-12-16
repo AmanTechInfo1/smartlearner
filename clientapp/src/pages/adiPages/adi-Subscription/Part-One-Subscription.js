@@ -7,7 +7,7 @@ import {
   createPayment,
   createUserSubscription,
   checkTrialEligibility,
-  applyCouponCode,
+  pdiApplyCouponCode,
   fetchUserSubscriptions,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
@@ -34,7 +34,7 @@ const PartOneSubscription = () => {
 
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
      
     } catch (error) {
       console.error("Error applying coupon:", error);

@@ -8,7 +8,7 @@ import {
   createUserSubscription,
   checkTrialEligibility,
   fetchUserSubscriptions,
-  applyCouponCode
+  pdiApplyCouponCode
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ const PartThreeSubscription = () => {
   
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
      
     } catch (error) {
       console.error("Error applying coupon:", error);

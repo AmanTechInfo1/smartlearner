@@ -57,7 +57,7 @@ export default function AdiPartThree() {
           (subscription.isActive && (
             planCategory === "pdi-part-three packages" ||
             planCategory === "Complete packages"
-          )) || couponApplied === true
+          )) 
         );
       });
       if (!hasAccess) {
