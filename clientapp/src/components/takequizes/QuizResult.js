@@ -4,6 +4,8 @@ import { getQuizResult } from "../../redux/features/quizSlice";
 import { useNavigate } from "react-router-dom";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import styles from "./QuizResult.module.css"
+import { TiTick } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
 
 
 const QuizResult = () => {
@@ -146,6 +148,11 @@ const QuizResult = () => {
                             }}
                           >
                             {getAnswerText(itm.question, itm.answer)}
+                            {itm.answerAttempt === "Correct" ? (
+                                <TiTick style={{ color: "white", fontSize: "22px", fontWeight:'700', marginLeft:'10px' }}/>
+                              ) : (
+                                <ImCross style={{ color: "white", fontSize: "15px", fontWeight:'400', marginLeft:'10px' }} />
+                              )}
                           </td>
 
                           <td className="py-2 px-4 border border-danger">

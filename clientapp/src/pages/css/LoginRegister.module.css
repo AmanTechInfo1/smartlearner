@@ -13,8 +13,17 @@
   background-size: cover;
   font-family: "Roboto", Sans-serif;
 }
+#whiteLogo{
+  max-width: 300px;
+  width: 100%;
+}
 
 .loginRegisterSection {
+  background-image: url(../../assets/images/bgcarImg2.png);
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -23,10 +32,21 @@
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 0;
+
+  animation: moveBackground 5s linear infinite;
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: -100%;
+  }
+  to {
+    background-position: 350%;
+  }
 }
 .loginheading {
   width: 100%;
-  padding: 10px 50px 10px 10px;
+  padding: 10px 10px 10px 10px;
   text-align: center;
 }
 .loginheading h1 {
@@ -191,6 +211,7 @@
   color: #dadada;
 }
 @media (max-width: 967px) {
+
   .loginheading {
     max-width: 50%;
     width: 100%;
@@ -204,6 +225,7 @@
 @media (max-width: 767px) {
   .loginRegisterSection {
     display: block;
+   
   }
   .loginheading {
     max-width: 100%;

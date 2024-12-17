@@ -15,6 +15,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import LoadingWeb from "../loader/LoadingWeb";
 import { imageBaseUrl } from "../../utils/constants";
 import httpHandler from "../../utils/httpHandler";
+import { TiTick } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 
 const languageCodes = {
   Auto: "auto",
@@ -23,7 +25,7 @@ const languageCodes = {
   Afrikaans: "af",
   Albanian: "sq",
   Amharic: "am",
-  
+
   Armenian: "hy",
   Azerbaijani: "az",
   Basque: "eu",
@@ -118,7 +120,7 @@ const languageCodes = {
   Turkish: "tr",
   Turkmen: "tk",
   Ukrainian: "uk",
-  
+
   Uyghur: "ug",
   Uzbek: "uz",
   Vietnamese: "vi",
@@ -172,7 +174,7 @@ const Quiz = () => {
     setIsTranslating(true);
     const formdata = new FormData();
     const question = oneQuiz?.question || "No question provided";
-    
+
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);
 
@@ -413,6 +415,30 @@ const Quiz = () => {
                                     : imageBaseUrl + oneQuiz?.optionImage[index]
                                 }`}
                               />
+                            )}
+
+                            {oneQuizOutput.answerAttempt && (
+                              <>
+                                {oneQuizOutput.correctAnswer ===
+                                `Option${index + 1}` ? (
+                                  <TiTick
+                                    style={{
+                                      color: "white",
+                                      fontSize: "20px",
+                                      fontWeight: "900",
+                                    }}
+                                  />
+                                ) : oneQuizOutput.answerAttempt ===
+                                  "Incorrect" ? (
+                                  <RxCross2
+                                    style={{
+                                      color: "white",
+                                      fontSize: "20px",
+                                      fontWeight: "900",
+                                    }}
+                                  />
+                                ) : null}
+                              </>
                             )}
                           </>
                         )}

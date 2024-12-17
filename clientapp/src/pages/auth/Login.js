@@ -8,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { loginformSchema } from "../../schemas/account/index";
+import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png"
+
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -48,6 +50,7 @@ export default function Login() {
             <div className={styles.loginheading}>
               <h1>Welcome</h1>
               <p>Please sign in to your account using the form below.</p>
+              <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" />
             </div>
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>

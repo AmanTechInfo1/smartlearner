@@ -3,7 +3,10 @@ import { jwtDecode } from "jwt-decode";
 import http from "../../utils/httpHandler";
 import toast from "react-hot-toast";
 import { ROLES } from "../../constants";
-import {removeSubs,fetchUserSubscriptions } from "../features/subscriptionSlice"
+import {
+  removeSubs,
+  fetchUserSubscriptions,
+} from "../features/subscriptionSlice";
 const initialState = {
   loading: false,
   userDetails: localStorage.getItem("user")
@@ -74,7 +77,7 @@ const authSlice = createSlice({
 });
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async ({ requestData, reset, navigate }, { rejectWithValue }) => {
+  async ({ requestData, reset, navigate }, { rejectWithValue, dispatch }) => {
     try {
       const response = await http.post(`/api/account/register`, requestData);
       const resultData = response.data;
@@ -87,8 +90,15 @@ export const registerUser = createAsyncThunk(
       } else {
         toast.success(resultData.msg || "Registered Successfully");
         reset();
+        dispatch(
+          loginUser({
+            loginData: {
+              email: requestData.email,
+              password: requestData.password,
+            },
+          })
+        );
         navigate("/thanks");
-        
         return resultData;
       }
     } catch (error) {
@@ -113,11 +123,11 @@ export const loginUser = createAsyncThunk(
         toast.success(data.message || "Logged IN Successfully");
         dispatch(fetchUserSubscriptions(user._id));
         const decodedToken = jwtDecode(user.token);
-        const expirationTime = decodedToken.exp * 1000 - Date.now(); 
+        const expirationTime = decodedToken.exp * 1000 - Date.now();
         if (expirationTime <= 0) {
           console.warn("Token has already expired, logging out immediately.");
           dispatch(logoutUser());
-         
+
           navigate("/login");
         } else {
           dispatch(autoLogoutUser(expirationTime, navigate));
@@ -149,7 +159,7 @@ export const logoutUser = createAsyncThunk(
     try {
       localStorage.removeItem("user");
       dispatch(UserDetails({}));
-     
+
       dispatch(removeSubs({}));
       // dispatch(removeSubs());
       toast.success("Logged Out Successfully");
@@ -175,11 +185,12 @@ export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async (email, { rejectWithValue, dispatch }) => {
     try {
+      console.log("Sending reset request for:", email); // Log to confirm email is passed
 
-      console.log("Sending reset request for:", email);  // Log to confirm email is passed
-
-      const response = await http.post("/api/account/forgot-password", { email });
-      console.log("Response:", response);  // Log the response
+      const response = await http.post("/api/account/forgot-password", {
+        email,
+      });
+      console.log("Response:", response); // Log the response
 
       const data = response.data;
       if (data.success) {
@@ -190,7 +201,6 @@ export const resetPassword = createAsyncThunk(
 
       return data;
     } catch (error) {
-
       toast.error("Something went wrong, please try again.");
       return rejectWithValue(error.message);
     }
@@ -208,7 +218,7 @@ export const completePasswordReset = createAsyncThunk(
       const data = response.data;
       if (data.success) {
         toast.success("Password reset successfully.");
-        navigate("/login")
+        navigate("/login");
       } else {
         toast.error(data.message || "Failed to reset password.");
       }
@@ -220,7 +230,6 @@ export const completePasswordReset = createAsyncThunk(
     }
   }
 );
-
 
 export const { UserDetails } = authSlice.actions;
 

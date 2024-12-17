@@ -5,8 +5,8 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
 
-  getMyOrders,
-} from "../../../redux/features/cartSlice";
+    getAllPaypalOrders,
+} from "../../../redux/features/orderSlice";
 import { useNavigate } from "react-router-dom";
 import { Table } from "antd";
 
@@ -17,14 +17,19 @@ const MyOrders = () => {
   const { myCart, myOrdersCount } = useSelector((state) => state.cart.myOrders);
 
   const orders = useSelector((state) => {
-      return state.cart.myOrders.map((itm) => {
-          return {
-              ...itm,
-              createdAt: new Date(itm.createdAt).toLocaleDateString(), // Format created date
-              completeAddress: `${itm.streetAddress1}, ${itm.streetAddress2 ? itm.streetAddress2 + ", " : ""}${itm.city}, ${itm.county}, ${itm.postcode}`,
-          };
-      });
-  });
+        return state.order.allOrders
+            .filter((itm) => itm.status === "completed" || itm.status === "failed") // Filtering by status
+            .map((itm) => {
+                return {
+                    ...itm,
+                    orderNo: itm._id,
+                    price: `£ ${itm.total}`,
+                    createdAt: new Date(itm.createdOn).toLocaleDateString(), 
+                    completeAddress: `${itm.streetAddress1}, ${itm.streetAddress2 ? itm.streetAddress2 + ", " : ""}${itm.city}, ${itm.county}, ${itm.postcode}`,
+                    paymentStatus: `${itm.status}`
+                };
+            });
+    });
 
   const [state, setState] = useState({
       search: "",
@@ -33,8 +38,9 @@ const MyOrders = () => {
   });
 
   useEffect(() => {
-      dispatch(getMyOrders(state.search, state.page, state.pageSize));
-  }, [dispatch, state.search, state.page, state.pageSize]);
+         const statusFilter = ["completed", "failed"]; 
+         dispatch(getAllPaypalOrders(state.search, state.page, state.pageSize, statusFilter));
+     }, [dispatch, state.search, state.page, state.pageSize]);
 
   const onShowSizeChange = (current, pageSize) => {
       setState({ ...state, page: 1, pagesize: pageSize });
@@ -75,6 +81,12 @@ const MyOrders = () => {
           align: "center",
           sorter: (a, b) => a.price - b.price,
       },
+      {
+        title: "Payment Status",
+        dataIndex: "paymentStatus",
+        align: "center",
+        sorter: (a, b) => a.name.length - b.name.length,
+    },
   ];
 
   return (

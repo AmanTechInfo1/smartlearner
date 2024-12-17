@@ -10,6 +10,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { registerformSchema } from "../../schemas/account/index";
+import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png"
+
+
+
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -60,6 +64,7 @@ export default function Register() {
                 form on the right to create an account and access all our
                 instructor training materials!
               </p>
+               <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" />
             </div>
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>
