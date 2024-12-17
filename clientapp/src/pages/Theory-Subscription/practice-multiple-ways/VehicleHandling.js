@@ -6,6 +6,8 @@ import handlngIconImg from "../../../assets/images/handling-icon-300x300.png";
 import { FaCheckCircle } from "react-icons/fa";
 import speedBreaker from "../../../assets/images/speedBreaker.jpeg";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function VehicleHandling() {
   return (
@@ -32,6 +34,21 @@ export default function VehicleHandling() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="/takequizCatName/Vehicle-Handling" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/motorway-rules" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

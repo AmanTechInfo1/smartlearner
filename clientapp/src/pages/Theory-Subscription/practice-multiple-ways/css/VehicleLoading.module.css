@@ -112,7 +112,38 @@
     transform: scale(1.05); /* Slightly bigger size */
   }
 }
+.allbtns{
+  margin: 2rem 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+}
+.allbtns a button {
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 18px 80px;
+  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+}
 
+.allbtns a button:hover {
+  background-color: #dd0000af;
+  transform: scale(1.1);
+  animation: bounce 0.3s alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1); /* Original size */
+  }
+  100% {
+    transform: scale(1.05); /* Slightly bigger size */
+  }
+}
 @media (max-width: 1020px) {
   .heading1 h1 {
     font-size: 1.5rem;

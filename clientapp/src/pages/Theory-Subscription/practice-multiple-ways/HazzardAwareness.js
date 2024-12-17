@@ -23,7 +23,8 @@ import redYellowLorry from "../../../assets/images/red-yellow-lorry-sign-300x183
 import haltedVehicle from "../../../assets/images/halted-vehicle.jpg";
 import deviation from "../../../assets/images/deviation.jpg";
 import { Link } from "react-router-dom";
-
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 export default function HazzardAwareness() {
   return (
     <div className={styles.AdiPartOne}>
@@ -49,6 +50,21 @@ export default function HazzardAwareness() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="/takequizCatName/Hazard-Awareness" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/vulnerable-road-users" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

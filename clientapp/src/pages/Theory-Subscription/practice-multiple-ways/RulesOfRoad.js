@@ -8,7 +8,8 @@ import cycleLane from "../../../assets/images/cycle-lanes.jpg";
 import levelCrossing from "../../../assets/images/levelCrossing.jpg";
 import Pedestrian from "../../../assets/images/padestrienCrossing.jpg";
 import { Link } from "react-router-dom";
-
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 export default function RulesOfRoad() {
   return (
     <div className={styles.AdiPartOne}>
@@ -34,6 +35,21 @@ export default function RulesOfRoad() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="takequizCatName/Rules-of-the-Road" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/road-and-traffic-signs" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

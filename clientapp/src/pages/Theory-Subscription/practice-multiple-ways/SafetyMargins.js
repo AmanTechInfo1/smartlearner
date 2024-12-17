@@ -7,6 +7,8 @@ import { IoMdArrowDropright } from "react-icons/io";
 import motorwayCartflow from "../../../assets/images/motorway-contraflow.png";
 import absImg from "../../../assets/images/absImg.png";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function SafetyMargins() {
   return (
@@ -33,6 +35,21 @@ export default function SafetyMargins() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="/takequizCatName/Safety-Margins" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/hazard-awareness" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

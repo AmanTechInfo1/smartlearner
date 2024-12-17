@@ -13,6 +13,8 @@ import tramsImg from "../../../assets/images/tram-sign-drivers.png";
 import flashingHeadingImg from "../../../assets/images/flaSHINGHighlights.jpg";
 import horsesRoadImg from "../../../assets/images/horse-road-1024x576.jpg";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function Attitude() {
   return (
@@ -37,6 +39,24 @@ export default function Attitude() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                  {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                            <div className={styles.allbtns}>
+                            <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                {" "}
+                                <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                              </Link>
+                            <Link to="/takequizCatName/Attitude" style={{ textDecoration: "none" }}>
+                                {" "}
+                                <button id={styles.btn}>Start Quiz</button>
+                              </Link>
+                            <Link to="/safety-your-vehicle" style={{ textDecoration: "none" }}>
+                                {" "}
+                                <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                              </Link>
+                            </div>
+                         
+                        
+                  
             </div>
           </div>
         </section>

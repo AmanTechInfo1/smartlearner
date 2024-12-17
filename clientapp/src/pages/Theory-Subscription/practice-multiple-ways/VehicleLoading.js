@@ -6,6 +6,11 @@ import trailerLarge from "../../../assets/images/trailer-large-1024x492.jpg";
 import roofRack from "../../../assets/images/Roof-Racks-20-1024x683.jpg";
 import CarryingPassenger from "../../../assets/images/carryingPassenger.jpg";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+
+
 
 export default function VehicleLoading() {
   return (
@@ -32,6 +37,21 @@ export default function VehicleLoading() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="/takequizCatName/Vehicle-Loading" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/video-clips" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

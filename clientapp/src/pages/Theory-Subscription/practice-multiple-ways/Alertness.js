@@ -10,9 +10,12 @@ import deepedBeam from "../../../assets/images/Dipped-Beam-Headlight-Bulb.jpg";
 import sidelight from "../../../assets/images/car-sidelights.jpg";
 import foglight from "../../../assets/images/foglight.jpg";
 import hazardlight from "../../../assets/images/hazardlight.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function Alertness() {
+  
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -33,6 +36,21 @@ export default function Alertness() {
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
                   <button id={styles.btn}>Contact Us</button>
+                </Link>
+              </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
+              <div className={styles.allbtns}>
+              <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                </Link>
+              <Link to="/takequizCatName/Alertness-quiz" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+              <Link to="/attitude" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
                 </Link>
               </div>
             </div>

@@ -3,6 +3,11 @@ import styles from "./css/VehicleLoading.module.css";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import { IoMdArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+
+
 
 export default function VideoClips() {
   const videoURLs = [
@@ -41,6 +46,15 @@ export default function VideoClips() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                         
+                                          
+                                          </div>
             </div>
           </div>
         </section>

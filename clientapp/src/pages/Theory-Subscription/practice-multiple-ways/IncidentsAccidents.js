@@ -11,7 +11,8 @@ import incidentsImg from "../../../assets/images/incidents-pinjk.png";
 import tyerBursting from "../../../assets/images/tyerBursting.jpg";
 import temptation from "../../../assets/images/temptation.png";
 import { Link } from "react-router-dom";
-
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 export default function IncidentsAccidents() {
   return (
     <div className={styles.AdiPartOne}>
@@ -37,6 +38,21 @@ export default function IncidentsAccidents() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
+                                          <div className={styles.allbtns}>
+                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
+                                            </Link>
+                                          <Link to="/takequizCatName/Incidents--Accidents-and-Emergencies" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Start Quiz</button>
+                                            </Link>
+                                          <Link to="/vehicle-loading" style={{ textDecoration: "none" }}>
+                                              {" "}
+                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
+                                            </Link>
+                                          </div>
             </div>
           </div>
         </section>

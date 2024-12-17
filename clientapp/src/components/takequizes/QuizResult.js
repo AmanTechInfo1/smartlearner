@@ -83,11 +83,13 @@ const QuizResult = () => {
               {Object.keys(groupedResults).map((quizName) => (
                 <button
                   key={quizName}
-                  onClick={() =>
-                    document
-                      .getElementById(quizName)
-                      
-                  }
+                  onClick={() => {
+                    // Scroll to the quiz category section when button is clicked
+                    const element = document.getElementById(quizName);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                  }}
                   className="btn btn-danger me-2 my-1"
                   style={{ minWidth: "120px", margin: "0.5rem" }}
                 >
@@ -160,6 +162,7 @@ const QuizResult = () => {
           </>
         )}
       </div>
+      
     </div>
   );
 };

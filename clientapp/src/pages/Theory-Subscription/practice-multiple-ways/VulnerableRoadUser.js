@@ -20,6 +20,8 @@ import motorbikecycle from "../../../assets/images/motorbikes-cyclist.jpg";
 import schoolChilderns from "../../../assets/images/childern-School.jpg";
 import disabilityScooters from "../../../assets/images/disability-scooter.jpeg";
 import { Link } from "react-router-dom";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 export default function VulnerableRoadUser() {
   return (
@@ -41,10 +43,35 @@ export default function VulnerableRoadUser() {
                 </h2>
               </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Contact Us</button>
+                </Link>
+              </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
+              <div className={styles.allbtns}>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="/takequizCatName/Vulnerable-Road-Users"
+                  style={{ textDecoration: "none" }}
+                >
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link
+                  to="/other-vehicles"
+                  style={{ textDecoration: "none" }}
+                >
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -188,7 +215,8 @@ export default function VulnerableRoadUser() {
         {/* ////////////////////////////////////////////// */}
         <section
           className={styles.hazardTestWorkListSection}
-          style={{ textAlign: "center" }}>
+          style={{ textAlign: "center" }}
+        >
           <h2>
             Learn the <span>Warning Signs!</span>
           </h2>
@@ -203,7 +231,8 @@ export default function VulnerableRoadUser() {
         {/* /////////////////////////////////////////////// */}
         <section
           className={styles.hazardTestWorkListSection}
-          style={{ textAlign: "center" }}>
+          style={{ textAlign: "center" }}
+        >
           <h2>
             How to deal with <span>Vulnerable Road Users</span>
           </h2>
