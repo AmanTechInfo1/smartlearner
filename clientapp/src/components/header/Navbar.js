@@ -63,13 +63,13 @@ function Navbar() {
               </li>
             )}
           </ul>
-          {userDetails.username && (
+         
             <div className={styles.navShoppingCart}>
               <Link to="/cart">
                 <FaShoppingCart  id={styles.shoppincartIcon}/>
               </Link>
             </div>
-          )}
+          
         </div>
       </div>
     </div>

@@ -9,9 +9,10 @@
   --purple: hsl(274, 83%, 61%);
 }
 .loginRegisterPage {
-  background-image: url(../../assets/images/bg-light.png);
+  background-image: url(../../assets/images/login-bgImg.png);
   background-size: cover;
   font-family: "Roboto", Sans-serif;
+ 
 }
 #whiteLogo{
   max-width: 300px;
@@ -19,10 +20,6 @@
 }
 
 .loginRegisterSection {
-  background-image: url(../../assets/images/bgcarImg2.png);
-  background-size: 70%;
-  background-position: center;
-  background-repeat: no-repeat;
 
   display: flex;
   align-items: center;
@@ -31,26 +28,20 @@
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem 0;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  position: sticky;
 
-  animation: moveBackground 5s linear infinite;
 }
 
-@keyframes moveBackground {
-  from {
-    background-position: -100%;
-  }
-  to {
-    background-position: 350%;
-  }
-}
+
 .loginheading {
   width: 100%;
   padding: 10px 10px 10px 10px;
   text-align: center;
 }
 .loginheading h1 {
-  font-size: 5em;
+  font-size: 4em;
   background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -107,7 +98,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
   font-weight: 600;
   margin-bottom: 20px;

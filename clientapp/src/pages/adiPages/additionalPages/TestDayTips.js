@@ -21,6 +21,12 @@ export default function TestDayTips() {
                 <button id={styles.btn}>Contact Us</button>
               </Link>
               </div>
+                <div className={styles.alertBtn}>
+                                          <Link to="/part-1-trainning-material" style={{textDecoration:"none"}}>
+                                            {" "}
+                                            <button id={styles.btn}>Back To Portal</button>
+                                          </Link>
+                                          </div>
             </div>
           </div>
         </section>

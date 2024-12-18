@@ -15,7 +15,7 @@ const Thanks = () => {
                         <section className={styles.loginRegistration}>
                             <h2>Thanks </h2>
                             <p>
-                                Thank you for applying for membership to our site.
+                            Congratulations! You have successfully registered and are now a member of the SmartLearner Driving School. Thank you for your time.
                             </p>
                         </section>
                         <div className={styles.formFooter}>

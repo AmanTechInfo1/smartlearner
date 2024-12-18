@@ -86,6 +86,11 @@ export default function AdiPartOne() {
                   <button id={styles.btn}>Contact Us</button>
                 </Link>
               </div>
+              <div className={styles.alertBtn}>
+          <Link to="/part-1-trainning-material">
+            <button className={styles.TMnextButton}>NEXT PAGE</button>
+          </Link>
+        </div>
             </div>
           </div>
         </section>

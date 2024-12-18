@@ -18,15 +18,11 @@ export default function SafetyMargins() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1>
-                  Forget the rest, <span>learn with the best!</span>
-                </h1>
-              </div>
+             
 
               <div className={styles.heading2}>
                 <h2>
-                  Safety <span>Margins</span>{" "}
+                Topic: Safety <span>Margins</span>{" "}
                 </h2>
               </div>
               <div className={styles.alertBtn}>

@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { registerformSchema } from "../../schemas/account/index";
-import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png"
+import smartlearnerLogo from "../../assets/images/smartlearnerLogo-removebg-preview.png"
 
 
 
@@ -56,18 +56,19 @@ export default function Register() {
     <>
       {!webLoading ? (
         <div className={styles.loginRegisterPage}>
+            <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
-            <div className={styles.loginheading}>
-              <h1>Hi There,</h1>
-              <p>
-                Thanks for choosing SmartLearner Driving School. Fill out the
-                form on the right to create an account and access all our
-                instructor training materials!
-              </p>
-               <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" />
-            </div>
+           
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>
+              <div className={styles.loginheading}>
+              <h1>Hi There,</h1>
+              <p>
+              You must sign in or register below to access this service
+              </p>
+              <Link to='/' > <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" /></Link>
+              <p style={{fontSize:'15px',color:'#767676e0'}}>Click here to go back home</p>
+            </div>
                 <h2>Create Account</h2>
                 <form onSubmit={handleSubmit(handleRegistration)}>
                   <label>
