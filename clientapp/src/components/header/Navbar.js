@@ -33,7 +33,7 @@ function Navbar() {
             </li>
             <span>|</span>
             <li>
-              <Link to="/blogs">Blogs</Link>
+              <Link to="/blogs">BLOGS</Link>
             </li>
             <span>|</span>
             <li>

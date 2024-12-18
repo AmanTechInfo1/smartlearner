@@ -113,7 +113,7 @@ function Users() {
                     >
                         <LiaUserEditSolid />
                     </Link>
-                    <Link
+                    {/* <Link
 
                         className="dropdown-item px-2 text-success"
                         onClick={(event) => {
@@ -122,7 +122,7 @@ function Users() {
                         }}
                     >
                         <RiLockPasswordFill />
-                    </Link>
+                    </Link> */}
                     <Link
                         className="dropdown-item px-2 text-danger"
                         to="#"

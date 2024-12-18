@@ -54,7 +54,7 @@ const dispatch = useDispatch();
           <div className={styles.opicity}></div>
           <section>
             <div className={styles.blogsheader}>
-              <h2>Blog Name</h2>
+              <h2>Our Blogs And News</h2>
             </div>
           </section>
         </div>
