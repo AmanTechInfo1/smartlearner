@@ -2,7 +2,7 @@
 
 .page404 {
     padding: 40px 0;
-    background: #fff;
+    background: #ffffff53;
     font-family: "Roboto", sans-serif;
     display: flex;
     align-items: center;
@@ -94,3 +94,33 @@
     }
   }
   
+  .formFooter {
+    background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+    max-width: 300px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px 10px;
+  }
+  .formFooter p {
+    margin-bottom: 0;
+  
+    font-family: "Roboto", Sans-serif;
+    font-weight: 500;
+  }
+  .formFooter button {
+    color: #fff;
+    font-family: "Roboto", Sans-serif;
+    font-weight: 500;
+    border: none;
+    background-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
+    padding-left: 10px;
+  }
+  .formFooter a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .formFooter a:hover {
+    color: #dadada;
+  }

@@ -12,6 +12,9 @@ import {
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
+
 
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
@@ -35,6 +38,7 @@ const PartThreeSubscription = () => {
     try {
       await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
       navigate("/adi-part-one");
+      toast.success("subscription added");
     } catch (error) {
       console.error("Error applying coupon:", error);
      

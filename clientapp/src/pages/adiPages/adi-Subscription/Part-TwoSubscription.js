@@ -12,6 +12,9 @@ import {
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
+
 
 const PartTwoSubscription = () => {
   const dispatch = useDispatch();
@@ -98,6 +101,7 @@ const PartTwoSubscription = () => {
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
       navigate("/adi-part-2");
+      toast.success("subscription added");
     } catch (error) {
       console.error("Error during order approval:", error);
     }

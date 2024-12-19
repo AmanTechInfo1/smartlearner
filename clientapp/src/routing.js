@@ -187,7 +187,7 @@ export const router = createBrowserRouter([
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
-      { path: "paymentSuccess", element: <PaymentSuccess /> },
+      
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "my-orders", element: <MyOrders /> },
@@ -306,6 +306,7 @@ export const router = createBrowserRouter([
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
   { path: "payment-completed", element: <PaymentCompleted/> },
+  { path: "paymentSuccess", element: <PaymentSuccess /> },
   { path: "news", element: <News/> },
   {
     path:"goodluck", element: <GoodLuckPage/>

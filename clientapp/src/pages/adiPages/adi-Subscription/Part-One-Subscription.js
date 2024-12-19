@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
+import { toast } from "react-hot-toast";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -100,6 +101,7 @@ const PartOneSubscription = () => {
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
       navigate("/adi-part-one");
+      toast.success("subscription added");
     } catch (error) {
       console.error("Error during order approval:", error);
     }
