@@ -12,6 +12,7 @@
   background-image: url(../../assets/images/login-bgImg.png);
   background-size: cover;
   font-family: "Roboto", Sans-serif;
+  position: relative;
  
 }
 #whiteLogo{
