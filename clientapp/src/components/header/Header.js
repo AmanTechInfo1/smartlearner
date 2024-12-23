@@ -119,6 +119,11 @@ function Header() {
               
             </ul>
           </li>
+          <li>
+            <NavLink to="/privledge-cards" className={styles.activeLink}>
+              Privledge Cards
+            </NavLink>
+          </li>
           <li id={styles.dropDownNav}>
             <NavLink
               to="/Corporate-Responsbilities"

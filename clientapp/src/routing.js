@@ -129,6 +129,7 @@ import HazzardClips from "./pages/adiPages/additionalPages/HazzardClips";
 import ResetPasswordPage from "./pages/auth/ResetPassword";
 import PaymentCompleted from "./pages/PaymentCompleted";
 import News from "./pages/blogpage/News";
+import PrivledgeCards from "./pages/AddOns/PrivledgeCards";
 
 export const router = createBrowserRouter([
   {
@@ -187,7 +188,7 @@ export const router = createBrowserRouter([
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
       { path: "shop", element: <Shop /> },
-      
+
       { path: "product/:id", element: <ProductDetails /> },
       { path: "cart", element: <Cart /> },
       { path: "my-orders", element: <MyOrders /> },
@@ -247,24 +248,30 @@ export const router = createBrowserRouter([
       { path: "part-two-subscription", element: <PartTwoSubscription /> },
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "blogs", element: <Blogs /> },
+      { path: "privledge-cards", element: <PrivledgeCards /> },
       { path: "singleblog/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
       {
-        path:"trainning-material", element: <TrainningMaterial/>
+        path: "trainning-material",
+        element: <TrainningMaterial />,
       },
       {
-        path:"part-1-trainning-material", element: <PartOneTrainnigMaterial/>
+        path: "part-1-trainning-material",
+        element: <PartOneTrainnigMaterial />,
       },
       {
-        path:"adi-part-one-test", element: <PartOneTest/>
+        path: "adi-part-one-test",
+        element: <PartOneTest />,
       },
       {
-        path:"test-day-tips", element: <TestDayTips/>
+        path: "test-day-tips",
+        element: <TestDayTips />,
       },
       {
-        path:"hazard-clips", element: <HazzardClips/>
+        path: "hazard-clips",
+        element: <HazzardClips />,
       },
-      
+
       {
         path: "/quizModuleId/:id",
         element: <QuizModuleHome />,
@@ -302,21 +309,23 @@ export const router = createBrowserRouter([
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
   { path: "forgot-password", element: <ForgotPassword /> },
-  {path: "reset-password/:resetToken", element: <ResetPasswordPage/>},
+  { path: "reset-password/:resetToken", element: <ResetPasswordPage /> },
   { path: "MyCart", element: <MyCart /> },
   { path: "thanks", element: <Thanks /> },
-  { path: "payment-completed", element: <PaymentCompleted/> },
+  { path: "payment-completed", element: <PaymentCompleted /> },
   { path: "paymentSuccess", element: <PaymentSuccess /> },
-  { path: "news", element: <News/> },
+  { path: "news", element: <News /> },
   {
-    path:"goodluck", element: <GoodLuckPage/>
+    path: "goodluck",
+    element: <GoodLuckPage />,
   },
   {
     path: "admin",
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}></RequireAuth>
+        element={<AdminLayout />}
+      ></RequireAuth>
     ),
     children: [
       {

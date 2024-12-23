@@ -121,7 +121,7 @@ nav .menu {
   display: block;
 }
 
-@media (max-width: 728px) {
+@media (max-width: 768px) {
   nav .menu {
     display: flex;
     justify-content: center;
