@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7c7848be.css",
-    "main.js": "/static/js/main.8b9b0260.js",
+    "main.css": "/static/css/main.06662fc5.css",
+    "main.js": "/static/js/main.5ad19861.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -26,6 +26,7 @@
     "static/media/CERTIFICATE2.png": "/static/media/CERTIFICATE2.087a4c4cf144ac97c642.png",
     "static/media/MotorCyclistsImg.png": "/static/media/MotorCyclistsImg.930a9eb7cbebb137e986.png",
     "static/media/carDrivers.png": "/static/media/carDrivers.be8ff4073f91719ab3e4.png",
+    "static/media/privcard.png": "/static/media/privcard.0cef7b9cc7b694a421b1.png",
     "static/media/bends.png": "/static/media/bends.02da93c19426d4eec12e.png",
     "static/media/cimg10.jpg": "/static/media/cimg10.936f2182fc473a907e3b.jpg",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
@@ -188,6 +189,7 @@
     "static/media/smartImgLogo.png": "/static/media/smartImgLogo.368890b77c8addf650c6.png",
     "static/media/foglight.jpg": "/static/media/foglight.6a42170a26cf0c285c1e.jpg",
     "static/media/CChampion-4.jpg": "/static/media/CChampion-4.733626981ce837a576db.jpg",
+    "static/media/backprivcard.png": "/static/media/backprivcard.19e2009ffd8a58b5e706.png",
     "static/media/576px-Give-Way-sign.svg.png": "/static/media/576px-Give-Way-sign.svg.aab5d26ebbee6bfd2259.png",
     "static/media/CChampion-7.jpg": "/static/media/CChampion-7.8dc3b27cfa4ef526a6ad.jpg",
     "static/media/flaSHINGHighlights.jpg": "/static/media/flaSHINGHighlights.c0bc8cd9ee9dd1a00e56.jpg",
@@ -273,12 +275,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.7c7848be.css.map": "/static/css/main.7c7848be.css.map",
-    "main.8b9b0260.js.map": "/static/js/main.8b9b0260.js.map",
+    "main.06662fc5.css.map": "/static/css/main.06662fc5.css.map",
+    "main.5ad19861.js.map": "/static/js/main.5ad19861.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c7848be.css",
-    "static/js/main.8b9b0260.js"
+    "static/css/main.06662fc5.css",
+    "static/js/main.5ad19861.js"
   ]
 }
