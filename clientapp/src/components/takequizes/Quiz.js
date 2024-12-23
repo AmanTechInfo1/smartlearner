@@ -283,6 +283,7 @@ const Quiz = () => {
   const totalQuestions = oneQuiz?.question?.length || 0; // Assuming options length gives total questions
   const allQuestionsAnswered = answeredQuestions.length >= totalQuestions;
 
+
   return (
     <>
       {oneQuizOutput.answerAttempt === "Correct" && (
@@ -450,6 +451,7 @@ const Quiz = () => {
             ) : (
               <div className={styles.totalTimer}>
                 Quiz Completed Veiw result
+                <button className="btn btn-secondary bg-danger" onClick={handleRestart}>Restart Quiz</button>
               </div>
             )}
             <div className={styles.navigationButtons}>
@@ -463,9 +465,7 @@ const Quiz = () => {
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
-              {allQuestionsAnswered && (
-                <button onClick={handleRestart}>Restart Quiz</button>
-              )}
+             
             </div>
           </div>
         </div>
