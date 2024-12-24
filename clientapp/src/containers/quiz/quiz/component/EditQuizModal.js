@@ -156,7 +156,7 @@ const EditQuizUpdatedModal = (props) => {
                     }`}
                     type="text"
                     value={value}
-                    onChange={handleInputChange}
+                    onChange={onChange}
                     autoComplete="false"
                   />
                 )}
