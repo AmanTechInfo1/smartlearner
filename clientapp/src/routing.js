@@ -130,6 +130,7 @@ import ResetPasswordPage from "./pages/auth/ResetPassword";
 import PaymentCompleted from "./pages/PaymentCompleted";
 import News from "./pages/blogpage/News";
 import PrivledgeCards from "./pages/AddOns/PrivledgeCards";
+import Glossary from "./pages/adiPages/additionalPages/Glossary";
 
 export const router = createBrowserRouter([
   {
@@ -249,6 +250,7 @@ export const router = createBrowserRouter([
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "blogs", element: <Blogs /> },
       { path: "privledge-cards", element: <PrivledgeCards /> },
+      {path: 'glossary-terms', element: <Glossary/>},
       { path: "singleblog/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
       {

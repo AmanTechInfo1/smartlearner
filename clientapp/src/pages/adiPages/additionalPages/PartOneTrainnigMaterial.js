@@ -30,6 +30,9 @@ export default function PartOneTrainnigMaterial() {
             <Link to="/trainning-material">
               <button id={styles.hazzardBtn}>Training Material</button>
             </Link>
+            <Link to="/glossary-terms">
+              <button id={styles.hazzardBtn}>Glossary of Terms</button>
+            </Link>
 
             <Link to="/takequizCatName/Band-1---Road-Procedure">
               <button id={styles.hazzardBtn}>Band 1 Practice Questions </button>
