@@ -9,31 +9,25 @@
   --purple: hsl(274, 83%, 61%);
 }
 .loginRegisterPage {
-  background-image: url(../../assets/images/login-bgImg.png);
+  background-image: url(../../assets/images/bgDark.jpg);
   background-size: cover;
   font-family: "Roboto", Sans-serif;
   position: relative;
- 
 }
-#whiteLogo{
+#whiteLogo {
   max-width: 300px;
   width: 100%;
 }
-.loginRegisterSection2{
+.loginRegisterSection2 {
   display: flex;
   align-items: center;
   flex-direction: column;
   max-width: 1140px;
- 
+
   margin-left: auto;
   margin-right: auto;
-
 }
 .loginRegisterSection {
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   max-width: 1140px;
   min-height: 100vh;
   margin-left: auto;
@@ -41,9 +35,7 @@
   padding-top: 4rem;
   padding-bottom: 2rem;
   position: sticky;
-
 }
-
 
 .loginheading {
   width: 100%;
@@ -65,14 +57,13 @@
   color: transparent;
   font-size: 1.2rem;
 }
-.loginformContainer {
-  width: 100%;
-  max-width: 45%;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
+.ImageDisplayFlex {
+  padding: 2rem 1rem;
+  display: flex;
+  border-radius: 30px;
+  gap: 20px;
   animation: slideFromLeft 1s ease-out;
-  box-shadow: 0px 8px 16px rgba(106, 106, 106, 0.3); /* Animation for sliding from bottom */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 }
 @keyframes slideFromLeft {
   from {
@@ -83,88 +74,101 @@
   }
 }
 
+.loginDisplayflexImage {
+  width: 100%;
+  max-width: 53%;
+
+}
+
+.loginDisplayflexImage img {
+  max-width: 640px;
+  width: 100%;
+  height: 100%;
+
+  
+}
+.loginLogo {
+  text-align: center;
+}
+#loginLogo {
+  max-width: 100px;
+  border-radius: 50%;
+  box-shadow: 0px 8px 16px rgba(204, 204, 204, 0.3);
+}
+.loginformContainer {
+  width: 100%;
+  max-width: 47%;
+  border: 1px solid rgba(47, 85, 103, 0.853);
+  background-color: #0002094f;
+  border-radius: 15px;
+}
+
 .loginRegistration {
-  border-style: solid;
-  border-width: 7px 0px 0px 0px;
-  border-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.3);
-  background-color: #ffffff;
-  margin-top: 0px;
-  margin-bottom: 0px;
+
+  
 
   padding: 20px 20px 20px 20px;
 }
 
 .loginRegistration form {
-  max-width: 300px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
-  padding-top: 20px;
+  padding: 20px 0px;
 }
 
 .loginRegistration h2 {
-  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
   font-size: 2rem;
   text-align: center;
   font-weight: 600;
   margin-bottom: 20px;
 }
-.loginRegistration label {
+.loginRegistration #level {
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #ccc !important;
-  padding: 0px 0px 0px 10px !important;
 }
-.loginRegistration label input {
-  border: none !important;
-  text-align: left;
-  padding: 0px 0px 0px 10px !important;
-  color: #666;
-  font-family: "Roboto", Sans-serif;
+.formControlWithIcon {
+  max-width: 400px; /* Adjust space for the icon */
   width: 100%;
-  display: block !important;
-  align-items: flex-start;
-  border-radius: 2px;
-  outline: none;
-  cursor: text !important;
-  font-size: 18px !important;
-  height: 40px !important;
-  box-sizing: border-box !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  position: static;
 }
 
-#loginFormsIcons {
-  color: #aaa;
-  font-size: 22px;
-  cursor: pointer;
+.loginFormsIcons {
+  position: absolute;
+  top: 50%;
+  left: 370px; /* Position the icon */
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #0009b3;
+  font-size: 18px;
+  cursor: pointer; /* Ensure the icon is on top */
 }
-.loginRegistration label input::placeholder {
-  color: #aaa;
-}
-#registerAccount {
-  border: 1px solid #ccc !important;
-  display: flex;
 
-  padding: 10px 10px 10px 10px;
-}
+
+
+
 #registerAccount select {
   border: none;
   width: 100%;
   text-decoration: none;
   outline: none;
-  padding-left: 10px;
-  color: #aaa;
+  padding: 10px;
+  color: #000000;
+}
+#registerAccount select option{
+  background-color: #02001c;
+  color: white;
+  
 }
 .formPrivacyPolicies {
   display: flex;
-  padding-left: 10px;
+ 
   margin-bottom: 1rem;
+}
+.formPrivacyPolicies input {
+  cursor: pointer;
+  color: #000000;
 }
 .formPrivacyPolicies p {
   margin-bottom: 0;
@@ -179,20 +183,27 @@
   padding: 14px 80px;
   font-size: 16px;
   font-weight: 500;
-  background-color: #000000;
-  border-radius: 10px;
-  color: #ffffff;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: #000000;
   border: none;
+  width: 100%;
+}
+.loginFormBtn button:hover{
+  background-color: #090909;
+  color: white;
+  transition: ease-in-out 0.2s;
 }
 .formFooter {
-  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-
+  
+  margin-bottom: 2rem;
   text-align: center;
-  padding: 20px 10px;
+  padding: 10px;
 }
+
 .formFooter p {
   margin-bottom: 0;
-
+  color: #757575;
   font-family: "Roboto", Sans-serif;
   font-weight: 500;
 }
@@ -212,9 +223,7 @@
   color: #dadada;
 }
 @media (max-width: 967px) {
-
   .loginheading {
- 
     width: 100%;
     padding: 15px;
   }
@@ -224,13 +233,10 @@
   }
 }
 @media (max-width: 767px) {
-  .loginRegisterSection2{
+  .loginRegisterSection2 {
     display: block;
   }
-  .loginRegisterSection {
-    display: block;
-   
-  }
+
   .loginheading {
     max-width: 100%;
     text-align: center;
@@ -244,23 +250,24 @@
     margin-right: auto;
     width: 100%;
   }
-  .loginRegistration {
-    margin-left: 20px;
-    margin-right: 20px;
+  
+ 
+}
+@media (max-width: 768px) {
+  .ImageDisplayFlex{
+    flex-direction: column-reverse;
   }
-  .formFooter {
-    margin-left: 20px;
-    margin-right: 20px;
+  .loginDisplayflexImage{
+    display: none;
   }
 }
 
-
-.allbtns{
+.allbtns {
   margin: 2rem 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 10px;
- place-items: center;
+  place-items: center;
 }
 
 .allbtns a button {

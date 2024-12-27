@@ -10,10 +10,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { registerformSchema } from "../../schemas/account/index";
-import smartlearnerLogo from "../../assets/images/smartlearnerLogo-removebg-preview.png"
-
-
-
+import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -32,7 +31,6 @@ export default function Register() {
   });
 
   const handleRegistration = async (data) => {
-
     const formData = new FormData();
     formData.append("username", data.username);
 
@@ -56,196 +54,238 @@ export default function Register() {
     <>
       {!webLoading ? (
         <div className={styles.loginRegisterPage}>
-            <div className="opicity"></div>
+          <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
-           
-            <div className={styles.loginformContainer}>
-              <section className={styles.loginRegistration}>
-              <div className={styles.loginheading}>
-              <h1>Hi There,</h1>
-              <p>
-              You must sign in or register below to access this service
-              </p>
-              <Link to='/' > <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" /></Link>
-              <p style={{fontSize:'15px',color:'#767676e0'}}>Click here to go back home</p>
+            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+              <Link to='/' >  <img
+                src={smartlearnerLogo}
+                alt="logo"
+                style={{ maxWidth: "400px" }}
+              /></Link>
+            
             </div>
-                <h2>Create Account</h2>
-                <form onSubmit={handleSubmit(handleRegistration)}>
-                  <label>
-                    <FaUser id={styles.loginFormsIcons} />
+            <div className={styles.ImageDisplayFlex}>
+              <div className={styles.loginformContainer}>
+                <section className={styles.loginRegistration}>
+                  <div className={styles.loginLogo}>
+                    <iframe
+                      style={{ height: "150px" }}
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
+                    ></iframe>
+                  </div>
+
+                  <h2>Create Account</h2>
+                  <form onSubmit={handleSubmit(handleRegistration)}>
                     <Controller
                       name="username"
                       control={control}
                       render={({ field: { value, onChange } }) => (
-                        <input
-                          type="text"
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Username"
-                        />
+                        <FloatingLabel
+                          controlId="floatingInput"
+                          label="username"
+                        >
+                          <Form.Control
+                            type="text"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="username"
+                          />
+                        </FloatingLabel>
                       )}
                       defaultValue={""}
                     />
-                  </label>
-                  {errors?.username && (
-                    <p style={{ color: "red" }}>{errors?.username?.message}</p>
-                  )}
-                  <br />
-                  <label>
-                    <FaLock id={styles.loginFormsIcons} />
-                    <Controller
-                      name="password"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Password"
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                    {showPassword ? (
-                      <FaEyeSlash
-                        id={styles.loginFormsIcons}
-                        onClick={() => setShowPassword(false)}
-                      />
-                    ) : (
-                      <FaEye
-                        id={styles.loginFormsIcons}
-                        onClick={() => setShowPassword(true)}
-                      />
+
+                    {errors?.username && (
+                      <p style={{ color: "red" }}>
+                        {errors?.username?.message}
+                      </p>
                     )}
-                  </label>
-                  {errors?.password && (
-                    <p style={{ color: "red" }}>{errors?.password?.message}</p>
-                  )}
-                  <br />
-                  <label>
-                    <FaLock id={styles.loginFormsIcons} />
-                    <Controller
-                      name="confirmPassword"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type={confirmShowPassword ? "text" : "password"}
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Confirm Password"
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                    {confirmShowPassword ? (
-                      <FaEyeSlash
-                        onClick={() => setConfirmShowPassword(false)}
-                        id={styles.loginFormsIcons}
+                    <br />
+                    <div id={styles.level}>
+                      <Controller
+                        name="password"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Password"
+                            className={styles.formControlWithIcon}
+                          >
+                            <Form.Control
+                              type={showPassword ? "text" : "password"}
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Password"
+                            />
+                            {showPassword ? (
+                              <FaEyeSlash
+                                className={styles.loginFormsIcons}
+                                onClick={() => setShowPassword(false)}
+                              />
+                            ) : (
+                              <FaEye
+                                className={styles.loginFormsIcons}
+                                onClick={() => setShowPassword(true)}
+                              />
+                            )}
+                          </FloatingLabel>
+                        )}
+                        defaultValue={""}
                       />
-                    ) : (
-                      <FaEye
-                        onClick={() => setConfirmShowPassword(true)}
-                        id={styles.loginFormsIcons}
-                      />
+                    </div>
+                    {errors?.password && (
+                      <p style={{ color: "red" }}>
+                        {errors?.password?.message}
+                      </p>
                     )}
-                  </label>
-                  {errors?.confirmPassword && (
-                    <p style={{ color: "red" }}>
-                      {errors?.confirmPassword?.message}
-                    </p>
-                  )}
-                  <br />
-                  <label>
-                    <MdEmail id={styles.loginFormsIcons} />
+                    <br />
+                    <div id={styles.level}>
+                      <Controller
+                        name="confirmPassword"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="confirm password"
+                            className={styles.formControlWithIcon}
+                          >
+                            <Form.Control
+                              type={confirmShowPassword ? "text" : "password"}
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Confirm Password"
+                            />
+                            {confirmShowPassword ? (
+                              <FaEyeSlash
+                                className={styles.loginFormsIcons}
+                                onClick={() => setConfirmShowPassword(false)}
+                              />
+                            ) : (
+                              <FaEye
+                                className={styles.loginFormsIcons}
+                                onClick={() => setConfirmShowPassword(true)}
+                              />
+                            )}
+                          </FloatingLabel>
+                        )}
+                        defaultValue={""}
+                      />
+                    </div>
+                    {errors?.confirmPassword && (
+                      <p style={{ color: "red" }}>
+                        {errors?.confirmPassword?.message}
+                      </p>
+                    )}
+                    <br />
+
                     <Controller
                       name="email"
                       control={control}
                       render={({ field: { value, onChange } }) => (
-                        <input
-                          type="email"
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Email Address"
-                        />
+                        <FloatingLabel
+                          controlId="floatingInput"
+                          label="Email Address"
+                          className={styles.formControlWithIcon}
+                        >
+                          <Form.Control
+                            type="email"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Email Address"
+                          />
+                        </FloatingLabel>
                       )}
                       defaultValue={""}
                     />
-                  </label>
-                  {errors?.email && (
-                    <p style={{ color: "red" }}>{errors?.email?.message}</p>
-                  )}
-                  <br />
-                  <label>
-                    <FaMobile id={styles.loginFormsIcons} />
+
+                    {errors?.email && (
+                      <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                    )}
+                    <br />
+
                     <Controller
                       name="phoneNumber"
                       control={control}
                       render={({ field: { value, onChange } }) => (
-                        <input
-                          type="tel"
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Mobile Number"
-                        />
+                        <FloatingLabel
+                          controlId="floatingInput"
+                          label="Mobile Number"
+                          className={styles.formControlWithIcon}
+                        >
+                          <Form.Control
+                            type="tel"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Mobile Number"
+                          />
+                        </FloatingLabel>
                       )}
                       defaultValue={""}
                     />
-                  </label>
-                  {errors?.phoneNumber && (
-                    <p style={{ color: "red" }}>
-                      {errors?.phoneNumber?.message}
-                    </p>
-                  )}
-                  <br />
-                  <div id={styles.registerAccount}>
-                    <FaUser id={styles.loginFormsIcons} />
-                    <Controller
-                      name="roleName"
-                      control={control}
-                      render={({ field }) => (
-                        <select {...field}>
-                          <option disabled value="">
-                            Account Type
-                          </option>
-                          {AccountTypes.map((accountType) => (
-                            <option
-                              key={accountType.value}
-                              value={accountType.value}
-                            >
-                              {accountType.label}
+
+                    {errors?.phoneNumber && (
+                      <p style={{ color: "red" }}>
+                        {errors?.phoneNumber?.message}
+                      </p>
+                    )}
+                    <br />
+                    <div id={styles.registerAccount}>
+                      <Controller
+                        name="roleName"
+                        control={control}
+                        render={({ field }) => (
+                          <Form.Select  style={{cursor:'pointer'}} {...field}>
+                            <option disabled value="">
+                              Account Type
                             </option>
-                          ))}
-                        </select>
-                      )}
-                      defaultValue=""
-                    />
-                  </div>
-                  {errors?.roleName && (
-                    <p style={{ color: "red" }}>{errors?.roleName?.message}</p>
-                  )}
-                  <br />
-                  <div className={styles.formPrivacyPolicies}>
-                    <input type="checkbox" />
+                            {AccountTypes.map((accountType) => (
+                              <option
+                                key={accountType.value}
+                                value={accountType.value}
+                              >
+                                {accountType.label}
+                              </option>
+                            ))}
+                          </Form.Select>
+                        )}
+                        defaultValue=""
+                      />
+                    </div>
+                    {errors?.roleName && (
+                      <p style={{ color: "red" }}>
+                        {errors?.roleName?.message}
+                      </p>
+                    )}
+  <br />
+                    <div className={styles.formPrivacyPolicies}>
+                      <Form.Check type="switch" id="custom-switch" />
 
-                    <p>I agree to the privacy policy</p>
-                  </div>
+                      <p>I agree to the privacy policy</p>
+                    </div>
 
-                  <br />
-                  <div className={styles.loginFormBtn}>
-                    <button type="submit">Create Account</button>
+                  
+                    <div className={styles.loginFormBtn}>
+                      <button type="submit">Create Account</button>
+                    </div>
+                    
+                  </form>
+                  <div className={styles.formFooter}>
+                    <p>
+                      Already have an account?{" "}
+                      <button>
+                        {" "}
+                        <Link to="/login">Sign In</Link>
+                      </button>
+                    </p>
                   </div>
-                  <br />
-                </form>
-              </section>
-              <div className={styles.formFooter}>
-                <p>
-                  Already have an account?{" "}
-                  <button>
-                    {" "}
-                    <Link to="/login">Sign In</Link>
-                  </button>
-                </p>
+                </section>
               </div>
+              <section className={styles.loginDisplayflexImage}>
+                <iframe
+                  style={{ maxWidth: "650px", width: "100%", height: "100%" }}
+                  src="https://lottie.host/embed/dde9a026-a5f8-4b23-b124-9cd2c4493f84/ROc5lClLUP.lottie"
+                ></iframe>
+              </section>
             </div>
           </section>
         </div>

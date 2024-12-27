@@ -8,7 +8,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { loginformSchema } from "../../schemas/account/index";
-import smartlearnerLogo from "../../assets/images/smartlearnerLogo-removebg-preview.png"
+import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
+import supportimage from "../../assets/images/loginsupport.gif";
+import llogo from "../../assets/images/L-Plate.jpg";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -45,101 +49,141 @@ export default function Login() {
     <>
       {!webLoading ? (
         <div className={styles.loginRegisterPage}>
-           <div className="opicity"></div>
+          <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
-           
-            <div className={styles.loginformContainer}>
-              <section className={styles.loginRegistration}>
-              <div className={styles.loginheading}>
-              <h1>Welcome</h1>
-              <p>Please sign in to your account using the form below.</p>
-             <Link to='/' > <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" /></Link>
-             <p style={{fontSize:'15px',color:'#767676e0'}}>Click here to go back home</p>
+            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+               <Link to='/' >  <img
+                             src={smartlearnerLogo}
+                             alt="logo"
+                             style={{ maxWidth: "400px" }}
+                           /></Link>
             </div>
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit(handleLogin)}>
-                  <label>
-                    <FaUser id={styles.loginFormsIcons} />
+
+            <div className={styles.ImageDisplayFlex}>
+              <div className={styles.loginformContainer}>
+                <section className={styles.loginRegistration}>
+                  <div className={styles.loginLogo}>
+                    <iframe
+                      style={{ height: "150px" }}
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
+                    ></iframe>
+                  </div>
+
+                  <h2>Sign in</h2>
+                  <form onSubmit={handleSubmit(handleLogin)}>
                     <Controller
                       name="email"
                       control={control}
                       render={({ field: { value, onChange } }) => (
-                        <input
-                          type="email"
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Email Address"
-                        />
+                        <FloatingLabel
+                          controlId="floatingInput"
+                          label="Email address"
+                        >
+                          <Form.Control
+                            type="email"
+                            value={value}
+                            onChange={onChange}
+                            placeholder="Email Address"
+                            className={styles.formControlWithIcon}
+                          />
+                        </FloatingLabel>
                       )}
                       defaultValue={""}
                     />
-                  </label>
-                  {errors?.email && (
-                    <p style={{ color: "red" }}>{errors?.email?.message}</p>
-                  )}
-                  <br />
-                  <label>
-                    <FaLock id={styles.loginFormsIcons} />
-                    <Controller
-                      name="password"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Password"
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                    {showPassword ? (
-                      <FaEyeSlash
-                        id={styles.loginFormsIcons}
-                        onClick={() => setShowPassword(false)}
-                      />
-                    ) : (
-                      <FaEye
-                        id={styles.loginFormsIcons}
-                        onClick={() => setShowPassword(true)}
-                      />
-                    )}
-                  </label>
-                  {errors?.password && (
-                    <p style={{ color: "red" }}>{errors?.password?.message}</p>
-                  )}
-                  <br />
-                  <div className={styles.formPrivacyPolicies}>
-                    <input type="checkbox" name="signInChecked" />
-                    <p>Keep me signed in</p>
-                  </div>
 
-                  <div className={styles.loginFormBtn}>
-                    <button type="submit">Login</button>
+                    {errors?.email && (
+                      <p style={{ color: "red" }}>{errors?.email?.message}</p>
+                    )}
+                  
+                    <div
+                        style={{ textAlign: "right", margin:'1rem 0px 6px 0px'}}
+                      >
+                        <Link
+                          to="/forgot-password"
+                          style={{
+                            textDecoration: "none",
+                           fontWeight:'500',
+                            fontSize: "18px",
+                          }}
+                        >
+                          Forgot Password?
+                        </Link>
+                      </div>
+                    <div id={styles.level}>
+                      <Controller
+                        name="password"
+                        control={control}
+                        render={({ field: { value, onChange } }) => (
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Password"
+                            className={styles.formControlWithIcon}
+                          >
+                            <Form.Control
+                              type={showPassword ? "text" : "password"}
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Password"
+                            />
+                            {showPassword ? (
+                              <FaEyeSlash
+                                className={styles.loginFormsIcons}
+                                onClick={() => setShowPassword(false)}
+                              />
+                            ) : (
+                              <FaEye
+                                className={styles.loginFormsIcons}
+                                onClick={() => setShowPassword(true)}
+                              />
+                            )}
+                          </FloatingLabel>
+                        )}
+                        defaultValue={""}
+                      />
+                    </div>
+                    {errors?.password && (
+                      <p style={{ color: "red" }}>
+                        {errors?.password?.message}
+                      </p>
+                    )}
+                    <br />
+                   
+                      {" "}
+                      <div className={styles.formPrivacyPolicies}>
+                      
+                        <Form.Check
+                          type="switch"
+                          id="custom-switch"
+                          name="signInChecked"
+                        
+                        />
+                        <p>Remember Me</p>
+                      
+                      </div>{" "}
+                     
+                  
+
+                    <div className={styles.loginFormBtn}>
+                      <button type="submit">Login</button>
+                    </div>
+                  </form>
+                  <div className={styles.formFooter}>
+                    <p>
+                      Don't have an account?{" "}
+                      <button>
+                        {" "}
+                        <Link to="/register">Register</Link>
+                      </button>
+                    </p>
                   </div>
-                  <div style={{ textAlign: "center", marginTop: "20px" }}>
-                    <Link
-                      to="/forgot-password"
-                      style={{
-                        textDecoration: "none",
-                        textAlign: "center",
-                        fontSize: "18px",
-                      }}>
-                      Forgot Password?
-                    </Link>
-                  </div>
-                  <br />
-                </form>
-              </section>
-              <div className={styles.formFooter}>
-                <p>
-                  Don't have an account?{" "}
-                  <button>
-                    {" "}
-                    <Link to="/register">Register</Link>
-                  </button>
-                </p>
+                </section>
               </div>
+              <section className={styles.loginDisplayflexImage}>
+                <iframe
+                  style={{ maxWidth: "650px", width: "100%", height: "100%" }}
+                  src="https://lottie.host/embed/dde9a026-a5f8-4b23-b124-9cd2c4493f84/ROc5lClLUP.lottie"
+                ></iframe>
+              </section>
             </div>
           </section>
         </div>
