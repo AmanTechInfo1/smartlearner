@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.d76bf5f8.css",
-    "main.js": "/static/js/main.93867f2c.js",
+    "main.css": "/static/css/main.c07e9bbc.css",
+    "main.js": "/static/js/main.013126d3.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/theorySupportbanner.png": "/static/media/theorySupportbanner.6203566debea5dfee2c9.png",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
     "static/media/hazzardClipsBanner.png": "/static/media/hazzardClipsBanner.17e1b98de0f3f8dda1d7.png",
     "static/media/Mcqbanner.png": "/static/media/Mcqbanner.f8b9bd92355b53f95fc0.png",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
+    "static/media/bgDark.jpg": "/static/media/bgDark.92c9fb7372440b5bec53.jpg",
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
     "static/media/dribbble_1.gif": "/static/media/dribbble_1.181c5a6430bcb77324b1.gif",
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
+    "static/media/loginsupport.gif": "/static/media/loginsupport.392cc63c8321c65e58b6.gif",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
-    "static/media/login-bgImg.png": "/static/media/login-bgImg.aba1be3704e5564e4284.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
     "static/media/Cyclistssss.png": "/static/media/Cyclistssss.9be85f03098b9f468ce6.png",
     "static/media/equestrian.png": "/static/media/equestrian.217875f057a23dcc5f5e.png",
@@ -275,12 +276,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.d76bf5f8.css.map": "/static/css/main.d76bf5f8.css.map",
-    "main.93867f2c.js.map": "/static/js/main.93867f2c.js.map",
+    "main.c07e9bbc.css.map": "/static/css/main.c07e9bbc.css.map",
+    "main.013126d3.js.map": "/static/js/main.013126d3.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d76bf5f8.css",
-    "static/js/main.93867f2c.js"
+    "static/css/main.c07e9bbc.css",
+    "static/js/main.013126d3.js"
   ]
 }
