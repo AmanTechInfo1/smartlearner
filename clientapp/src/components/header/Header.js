@@ -12,7 +12,6 @@ function Header() {
       <nav>
         <div className={styles.imgFlexHeader}>
           <section className={styles.imgLogoSection}>
-            
             <div className={styles.imgLogoSection2}>
               {" "}
               <img src={logo2} alt="logo" />
@@ -73,6 +72,7 @@ function Header() {
               </NavLink>
             </ul>
           </li>
+
           <li id={styles.dropDownNav}>
             <NavLink to="/Theory-Support" className={styles.activeLink}>
               Theory Support
@@ -85,12 +85,14 @@ function Header() {
                 {" "}
                 <li>Theory Package</li>
               </NavLink>
-
-              <NavLink to="/Theory-Portal" className={styles.activeLink}>
-                {" "}
-                <li>Theory Portal </li>
-              </NavLink>
-
+            </ul>
+          </li>
+          <li id={styles.dropDownNav}>
+            <NavLink to="/Theory-Portal" className={styles.activeLink}>
+              {" "}
+            Theory Portal 
+            </NavLink>
+            <ul className={styles.dropdownContent}>
               <NavLink to="/Theory-Subscription" className={styles.activeLink}>
                 {" "}
                 <li>Theory Subscription</li>

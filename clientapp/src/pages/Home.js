@@ -65,7 +65,7 @@ export default function Home() {
             <img src={trustPilot} alt="trustPilot" />
           </div>
           <div className={styles.homeContainer}>
-            <HomeDesign />
+            {/* <HomeDesign /> */}
             {/* <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
             </div> */}

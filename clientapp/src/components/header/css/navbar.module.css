@@ -26,12 +26,12 @@
   text-align: center;
 }
 .imgLogoSection .imgLogoSection1 img {
-  max-width: 100px;
+  max-width: 70px;
   width: 100%;
   border-radius: 50%;
 }
 .imgLogoSection .imgLogoSection2 img {
-  max-width: 200px;
+  max-width: 150px;
   width: 100%;
 }
 #navLinksUl {
@@ -40,14 +40,14 @@
   align-items: center;
 }
 .contactInfo span {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
   padding: 0px 1rem;
 }
 .contactInfo a {
   position: relative;
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(235, 243, 253);
   font-weight: 500;
   text-decoration: none;
@@ -77,12 +77,12 @@
  
 }
 .navLinks ul li {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(235, 243, 253);
   font-weight: 500;
 }
 .navShoppingCart {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(235, 243, 253);
   font-weight: 500;
 }
@@ -92,7 +92,7 @@
   border: 1px solid rgba(1, 43, 69, 0.642);
   border-radius: 6px;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 .navLinks ul button:hover {
@@ -134,10 +134,10 @@
 }
 @media (max-width: 1068px) {
   .contactInfo a {
-    font-size: 18px;
+    font-size: 17px;
   }
   .navLinks ul button {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 @media (max-width: 950px) {
@@ -167,7 +167,7 @@
         display: none;
       }
       .navShoppingCart {
-        font-size: 18px;
+        font-size: 17px;
       }
 }
 @media (max-width: 400px){
