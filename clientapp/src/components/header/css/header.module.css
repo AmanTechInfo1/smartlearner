@@ -1,18 +1,11 @@
 .headerContainer {
-  padding-bottom: 16px;
-  padding-top: 8px;
-  background-color: black;
 }
 
-
 nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #b10004;
+  
+
   color: white;
   padding: 15px 0px;
-  font-family: "Antonio", sans-serif;
 }
 
 nav .title {
@@ -24,34 +17,58 @@ nav .title {
 }
 
 nav ul {
+  position: relative;
   display: flex;
   gap: 50px;
+  justify-content: center;
+
   margin-bottom: 0px;
   padding-left: 0px;
 }
 
 nav ul li {
   list-style: none;
-  font-size: 18px;
-
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .activeDropdownLink {
-  background-color: red; 
+  background-color: red;
+}
+/* /////////////////////////////////////////////////// */
+.imgFlexHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
+.imgLogoSection{
+  text-align: center;
+  display: none;
+}
+
+.imgLogoSection .imgLogoSection2 img{
+  max-width: 150px;
+  width: 100%;
+  
+}
+
+/* //////////////////////////////////////////////// */
 nav ul li a {
-  display: block;
+  padding: 5px 12px;
+  border: 1px solid rgba(1, 43, 69, 0.642);
   text-decoration: none;
   color: white;
 }
 
 nav ul li:hover {
-  color: black;
+  color: rgb(148, 191, 255);
 }
 
 nav ul li a:hover {
-  color: black;
+  color: rgb(148, 191, 255);
+  border: 1px solid rgb(2, 69, 110);
 }
 
 nav .menu {
@@ -64,42 +81,37 @@ nav .menu {
   height: 2rem;
 }
 
-#dropDownNav {
-  position: relative;
-}
-
 .dropdownContent {
   position: absolute;
   top: 100%;
   left: 0px;
-  font-family: "Antonio", sans-serif;
+
   display: none;
-  background-color: rgba(0, 0, 0, 0.904);
-  min-width: 200px;
+  background-color: rgba(1, 17, 41, 0.898);
+  max-width: 1300px;
   width: 100%;
   z-index: 1;
   padding-left: 0px;
 }
 
 #dropDownNav:hover .dropdownContent {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border: 1px solid rgba(1, 43, 69, 0.642);
 }
 
-.dropdownContent li {
-  padding: 10px 12px;
-  border-bottom: 1px solid #fff;
-}
+.dropdownContent a li {
+  padding: 5px 12px;
 
-.dropdownContent li:hover {
-  background-color: #ed2025;
+  min-width: 300px;
+  width: 100%;
 }
 
 .dropdownContent li a:hover {
   color: #fff;
-}
-
-.dropdownContent li:active {
-  background-color: #ed2025;
 }
 
 .barIcon {
@@ -120,8 +132,20 @@ nav .menu {
   position: relative;
   display: block;
 }
-
+@media (max-width: 1168px) {
+  nav ul li {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1068px){
+  nav ul li {
+    font-size: 16px;
+  }
+}
 @media (max-width: 768px) {
+  .imgLogoSection{
+    display: block;
+  }
   nav .menu {
     display: flex;
     justify-content: center;

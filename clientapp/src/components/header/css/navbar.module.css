@@ -1,204 +1,177 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 #navContainer {
-    background-color: black;
-    padding-top: 16px;
-    padding-bottom: 8px;
+  background-color: black;
+  position: relative;
 }
 
-.navbar {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: #b10004;
-    color: #fff;
-
-    font-family: "Antonio", sans-serif;
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  align-items: center;
+  gap: 50px;
+  background-color: rgba(0, 20, 32, 0.877);
+  padding: 15px 20px;
+  width: 100%;
 }
-
-.contactInfo {
-    display: flex;
-    padding: 2px 20px;
-    flex-direction: row;
-    align-items: center;
+.headerLinksSection {
+  width: 100%;
 }
-
-.logo {
-    position: relative;
-    left: 132px;
-}
-
-.contactInfo a {
-    color: #fff;
-    transition: ease 0.3s;
-    margin: 0px 5px;
-    text-decoration: none;
-    font-size: 1.3rem;
-}
-.contactInfo span{
-    font-size: 1.3rem;
-}
-
-.contactInfo a:hover {
-    color: rgb(160, 139, 139);
-}
-
-.navbarContentImg {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-}
-
-.logo img {
-    max-width: 330px;
-    width: 100%;
-}
-
 .navLinks {
-    display: flex;
-    align-items: center;
-    width: 50%;
-    text-align: right;
-    justify-content: right;
+  display: flex;
+  justify-content: flex-end;
 }
+.imgLogoSection {
+  text-align: center;
+}
+.imgLogoSection .imgLogoSection1 img {
+  max-width: 100px;
+  width: 100%;
+  border-radius: 50%;
+}
+.imgLogoSection .imgLogoSection2 img {
+  max-width: 200px;
+  width: 100%;
+}
+#navLinksUl {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.contactInfo span {
+  font-size: 1.5rem;
+  color: white;
+  padding: 0px 1rem;
+}
+.contactInfo a {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: rgb(235, 243, 253);
+  font-weight: 500;
+  text-decoration: none;
+}
+.contactInfo a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  margin-top: 5px;
+  left: 0;
+  width: 0;
+  height: 2px; /* Line thickness */
+  background-color: rgb(2, 54, 86);
+  /* Line color */
+  transition: width 0.3s ease; /* Controls the speed of the animation */
+}
+.contactInfo a:hover {
+  color: rgb(148, 191, 255);
+}
+.contactInfo a:hover::after {
+  width: 100%;
 
+  /* Full width on hover */
+}
 .navLinks ul {
-    list-style-type: none;
-    padding: 8px 20px;
-margin-bottom: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
+  padding-left: 0;
+ 
 }
-
 .navLinks ul li {
-    margin: 0px 7px;
-    display: flex;
-   
+  font-size: 1.5rem;
+  color: rgb(235, 243, 253);
+  font-weight: 500;
 }
-
-.navLinks ul span {
-    display: flex;
-    align-items: center;
-}
-
-.navLinks ul li a {
-    text-decoration: none;
-    color: #fff;
-    transition: ease 0.3s;
-    
-}
-
-.navLinks ul li a:hover {
-    color: rgb(160, 139, 139);
-}
-
 .navShoppingCart {
-    display: flex;
+  font-size: 1.5rem;
+  color: rgb(235, 243, 253);
+  font-weight: 500;
 }
-#shoppincartIcon{
-    font-size: 1.3rem;
+.navLinks ul button {
+  padding: 2px 12px;
+  background-color: rgba(1, 19, 30, 0.944);
+  border: 1px solid rgba(1, 43, 69, 0.642);
+  border-radius: 6px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
+.navLinks ul button:hover {
+  border: 1px solid rgb(2, 69, 110);
+}
+.navShoppingCart {
+  display: inline-block;
+  position: relative;
+}
+
 .navShoppingCart a {
-    text-decoration: none;
-    color: #fff;
-    transition: ease 0.3s;
-    padding: 8px 20px;
+  display: inline-block;
+  position: relative;
+  color: white;
+  padding: 3px 9px;
+}
+
+.shoppincartIcon {
+  font-size: 28px; /* Adjust the size of the icon */
+  color: inherit; /* Icon color, inherited from parent */
+}
+
+.navShoppingCart a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid rgb(2, 54, 86); /* Circle color */
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease; /* Smoothly animate the size */
+  transform: translate(-50%, -50%); /* Center the circle */
+}
+
+.navShoppingCart a:hover::before {
+  width: 120%; /* Circle size increases on hover */
+  height: 120%;
+}
+@media (max-width: 1068px) {
+  .contactInfo a {
+    font-size: 18px;
+  }
+  .navLinks ul button {
+    font-size: 18px;
+  }
+}
+@media (max-width: 950px) {
+  .imgLogoSection {
+    display: none;
+  }
+}
+@media (max-width: 668px) {
+  .contactInfo a {
+    font-size: 16px;
+  }
+  .navLinks ul button {
+    font-size: 16px;
+  }
+  .contactInfo span {
+    font-size: 1rem;
+    color: white;
+    padding: 0px 8px;
+  }
+  .navLinks ul {
    
+    margin-bottom: 0px;
+  }
 }
-
-.navShoppingCart a:hover {
-    color: rgb(160, 139, 139);
-}
-
-@media screen and (max-width: 1270px) {
-    .logo {
-        left: 100px;
-    }
-}
-@media screen and (max-width: 1160px) {
-    .logo {
-        left: 80px;
-    }
-}
-@media screen and (max-width: 1070px) {
-    .logo {
-        left: 50px;
-    }
-}
-
-@media screen and (max-width: 990px) {
-    .logo {
-        left: 0;
-    }
-
-    .navbar {
-        display: block;
-    }
-
-    .navbarContentImg {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 20px;
-        width: 100%;
-    }
-
-    .navLinks {
-        justify-content: space-between;
-    }
-
-    .contactInfo {
-        padding-right: 15px;
-        padding-left: 15px;
-        padding-top: 10px;
-        padding-bottom: 5px;
-    }
-
-    .navLinks {
-        padding-right: 20px;
-        width: 100%;
-    }
-
-    .navLinks ul {
-        padding-right: 10px;
-        padding-left: 10px;
-        padding-top: 5px;
-        padding-bottom: 10px;
-    }
-
-    .navShoppingCart a {
-        padding-right: 10px;
-        padding-left: 10px;
-        padding-top: 5px;
-        padding-bottom: 10px;
-    }
-
-    .logo img {
-        max-width: 250px;
-        width: 100%;
-    }
-}
-
-@media (max-width: 490px) {
-    .logo img {
+@media (max-width: 520px){
+    .contactInfo span{
         display: none;
-    }
-    .navLinks ul{
-        font-size: 1rem;
-    }
+      }
+      .navShoppingCart {
+        font-size: 18px;
+      }
 }
-
-@media (max-width: 320px) {
-    .contactInfo {
-        display: flex;
-        flex-direction: column;
-    }
+@media (max-width: 400px){
+    .contactInfo a {
+        font-size: 14px;
+      }
 }

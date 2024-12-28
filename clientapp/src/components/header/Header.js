@@ -2,20 +2,32 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./css/header.module.css";
 import { FaBars } from "react-icons/fa";
+import logo from "../../assets/images/1200px-Lplate.svg.png";
+import logo2 from "../../assets/images/White-Logo-Fixed-1024x174.png";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className={styles.headerContainer}>
       <nav>
-        <div
-          className={`${styles.menu} ${menuOpen ? styles.open : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className={styles.barIcon}>
-            <FaBars id={styles.barIcon} />
-          </span>
+        <div className={styles.imgFlexHeader}>
+          <section className={styles.imgLogoSection}>
+            
+            <div className={styles.imgLogoSection2}>
+              {" "}
+              <img src={logo2} alt="logo" />
+            </div>
+          </section>
+          <div
+            className={`${styles.menu} ${menuOpen ? styles.open : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className={styles.barIcon}>
+              <FaBars id={styles.barIcon} />
+            </span>
+          </div>
         </div>
+
         <ul
           className={
             menuOpen ? `${styles.menuList} ${styles.open}` : styles.menuList
@@ -86,13 +98,13 @@ function Header() {
             </ul>
           </li>
           <li id={styles.dropDownNav}>
-          <NavLink
-                to="/Driving-Instructor-Training"
-                className={styles.activeLink}
-              >
-               Join Our Team
-              </NavLink>
-          
+            <NavLink
+              to="/Driving-Instructor-Training"
+              className={styles.activeLink}
+            >
+              Join Our Team
+            </NavLink>
+
             <ul className={styles.dropdownContent}>
               <NavLink
                 to="/Driving-Instructor-Training"
@@ -109,14 +121,10 @@ function Header() {
                 <li>Franchise </li>
               </NavLink>
 
-              
-
               <NavLink to="/ADI-Training-Portal" className={styles.activeLink}>
                 {" "}
                 <li>PDI Training Portal </li>
               </NavLink>
-
-              
             </ul>
           </li>
           <li>

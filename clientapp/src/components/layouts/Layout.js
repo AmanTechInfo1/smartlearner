@@ -85,10 +85,19 @@ function Layout() {
                 >
                   <CallBackForm />
                   <div className="callbackFormContentPG">
-                    <p style={{ fontSize: "3rem", color: "red", fontWeight:"700"}}>
+                    <p
+                      style={{
+                        fontSize: "3rem",
+                        color: "red",
+                        fontWeight: "700",
+                      }}
+                    >
                       Call Us Now !{" "}
                     </p>
-                    <a href="tel:02475092784" style={{ textDecoration: "none" }}>
+                    <a
+                      href="tel:02475092784"
+                      style={{ textDecoration: "none" }}
+                    >
                       <button
                         style={{
                           padding: "10px 20px",
@@ -131,8 +140,8 @@ function Layout() {
           ) : (
             <>
               <Scroll />
-              <Header />
-              <main>
+
+              <main style={{ padding: "160px 0px", backgroundColor: "#000" }} >
                 <Outlet />
               </main>
               <Footer />
@@ -161,8 +170,8 @@ const callbackFormSectionStyle = {
   maxHeight: "100vh", // Limits the height of the section
   overflowY: "auto", // Allows internal scrolling
   padding: "20px",
-maxWidth: "1440",
-width:'100%',
+  maxWidth: "1440",
+  width: "100%",
   borderRadius: "10px",
 };
 

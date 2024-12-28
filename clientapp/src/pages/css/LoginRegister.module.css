@@ -231,12 +231,17 @@
     max-width: 50%;
     width: 100%;
   }
+  .loginFormsIcons{
+    left: 330px;
+  }
 }
 @media (max-width: 767px) {
   .loginRegisterSection2 {
     display: block;
   }
-
+  .loginFormsIcons{
+    left: 370px;
+  }
   .loginheading {
     max-width: 100%;
     text-align: center;
@@ -260,8 +265,33 @@
   .loginDisplayflexImage{
     display: none;
   }
-}
 
+}
+@media (max-width: 458px) {
+  .loginFormsIcons{
+    left: 340px;
+  }
+}
+@media (max-width: 438px) {
+  .loginFormsIcons{
+    left: 320px;
+  }
+}
+@media (max-width: 410px) {
+  .loginFormsIcons{
+    left: 300px;
+  }
+}
+@media (max-width: 390px) {
+  .loginFormsIcons{
+    left: 270px;
+  }
+}
+@media (max-width: 370px) {
+  .loginFormsIcons{
+    left: 250px;
+  }
+}
 .allbtns {
   margin: 2rem 0px;
   display: grid;
