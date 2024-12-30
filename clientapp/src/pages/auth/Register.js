@@ -281,10 +281,7 @@ export default function Register() {
                 </section>
               </div>
               <section className={styles.loginDisplayflexImage}>
-                <iframe
-                  style={{ maxWidth: "650px", width: "100%", height: "100%" }}
-                  src="https://lottie.host/embed/dde9a026-a5f8-4b23-b124-9cd2c4493f84/ROc5lClLUP.lottie"
-                ></iframe>
+              <h2>Benifits to Join SmartLearner</h2>
               </section>
             </div>
           </section>

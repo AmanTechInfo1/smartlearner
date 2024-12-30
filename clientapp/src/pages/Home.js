@@ -61,11 +61,9 @@ export default function Home() {
     <div className={styles.homepage}>
       <div className={styles.homepageContainerDiv}>
         <section className={styles.homeSection}>
-          <div className={styles.homeContent}>
-            <img src={trustPilot} alt="trustPilot" />
-          </div>
+         
           <div className={styles.homeContainer}>
-            {/* <HomeDesign /> */}
+            <HomeDesign />
             {/* <div className={styles.innerHomeHeading}>
               <h2>START YOUR DRIVING JOURNEY</h2>
             </div> */}

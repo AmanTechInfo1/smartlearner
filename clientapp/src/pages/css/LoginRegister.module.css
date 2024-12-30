@@ -77,15 +77,21 @@
 .loginDisplayflexImage {
   width: 100%;
   max-width: 53%;
-
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.loginDisplayflexImage h2 {
+  font-size: 3.5rem;
+  color: white;
+  font-weight: 600;
+  text-align: center;
 }
 
 .loginDisplayflexImage img {
   max-width: 640px;
   width: 100%;
   height: 100%;
-
-  
 }
 .loginLogo {
   text-align: center;
@@ -104,9 +110,6 @@
 }
 
 .loginRegistration {
-
-  
-
   padding: 20px 20px 20px 20px;
 }
 
@@ -125,6 +128,7 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+
 .loginRegistration #level {
   display: flex;
   align-items: center;
@@ -145,9 +149,6 @@
   cursor: pointer; /* Ensure the icon is on top */
 }
 
-
-
-
 #registerAccount select {
   border: none;
   width: 100%;
@@ -156,14 +157,13 @@
   padding: 10px;
   color: #000000;
 }
-#registerAccount select option{
+#registerAccount select option {
   background-color: #02001c;
   color: white;
-  
 }
 .formPrivacyPolicies {
   display: flex;
- 
+
   margin-bottom: 1rem;
 }
 .formPrivacyPolicies input {
@@ -189,14 +189,13 @@
   border: none;
   width: 100%;
 }
-.loginFormBtn button:hover{
+.loginFormBtn button:hover {
   background-color: #090909;
   color: white;
   transition: ease-in-out 0.2s;
 }
 .formFooter {
-  
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   padding: 10px;
 }
@@ -231,7 +230,7 @@
     max-width: 50%;
     width: 100%;
   }
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 330px;
   }
 }
@@ -239,7 +238,7 @@
   .loginRegisterSection2 {
     display: block;
   }
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 370px;
   }
   .loginheading {
@@ -255,40 +254,37 @@
     margin-right: auto;
     width: 100%;
   }
-  
- 
 }
 @media (max-width: 768px) {
-  .ImageDisplayFlex{
+  .ImageDisplayFlex {
     flex-direction: column-reverse;
   }
-  .loginDisplayflexImage{
+  .loginDisplayflexImage {
     display: none;
   }
-
 }
 @media (max-width: 458px) {
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 340px;
   }
 }
 @media (max-width: 438px) {
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 320px;
   }
 }
 @media (max-width: 410px) {
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 300px;
   }
 }
 @media (max-width: 390px) {
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 270px;
   }
 }
 @media (max-width: 370px) {
-  .loginFormsIcons{
+  .loginFormsIcons {
     left: 250px;
   }
 }
@@ -326,5 +322,63 @@
   }
   100% {
     transform: scale(1.05); /* Slightly bigger size */
+  }
+}
+
+.buttonsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  place-items: center;
+  gap: 20px;
+}
+.buttonsGrid a {
+  text-decoration: none;
+}
+.buttonsGrid a button {
+  display: flex;
+  align-items: center;
+justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  min-width: 220px;
+  cursor: pointer;
+  letter-spacing: 0px;
+
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #ff6347,
+    #ff1493
+  ); /* Apply the gradient */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text; /* For non-webkit browsers */
+  color: transparent;
+  padding: 12px 50px;
+  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+}
+.buttonsGrid a button .gradientIcon {
+  color: #ff7300;
+  font-size: 30px; /* Apply the gradient */
+}
+.buttonsGrid a button .gradientIcon:hover{
+  color: white;
+}
+.buttonsGrid a button:hover{
+
+  transition: ease-in-out 0.2s;
+  transform: scale(1.1);
+  color: white;
+}
+@media (max-width: 767px) {
+  .buttonsGrid a button  {
+   font-size: 16px;
+   font-weight: 500;
+   padding: 10px 30px;
+   min-width: 170px;
+  }
+  .buttonsGrid a button .gradientIcon {
+   
+    font-size: 20px; /* Apply the gradient */
   }
 }

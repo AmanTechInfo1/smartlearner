@@ -90,10 +90,10 @@ function Navbar() {
           <div className={styles.navLinks}>
             <ul type="none" id={styles.navLinksUl}>
               <div className={styles.contactInfo}>
-                <a href="tel:+4402475092784">+44 02475092784</a>
+                <a href="tel:+4402475092784">02475092784</a>
                 <span>|</span>
                 <a href="mailto:admin@smartlearner.com">
-                  Admin@Smartlearner.com
+                  admin@smartlearner.com
                 </a>
               </div>
 

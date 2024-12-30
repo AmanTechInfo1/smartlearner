@@ -31,7 +31,7 @@ const Thanks = () => {
                   <p>Thanks for choosing SmartLearner Driving School.</p>
                 </div>
                 <h2>Thanks </h2>
-                <p>
+                <p style={{color:'white'}}>
                   Congratulations! You have successfully registered and are now
                   a member of the SmartLearner Driving School. Thank you for
                   your time.
