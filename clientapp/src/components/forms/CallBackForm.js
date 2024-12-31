@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { callBackFormSchema } from "../../schemas/master";
 import { enquiryData } from "../../redux/features/enquirySlice";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 export default function CallBackForm() {
   const dispatch = useDispatch();
@@ -24,7 +26,8 @@ export default function CallBackForm() {
 
   return (
     <div className="callBackform">
-      <h2>REQUEST A CALLBACK</h2>
+      <div className="callBackform-Header"><h2>REQUEST A CALLBACK </h2><iframe src="https://lottie.host/embed/2eb66eb3-7d7a-4d53-9875-0dca3cc365a8/xGl8NXpytQ.lottie" width='100' height="100"></iframe></div>
+      
       <form onSubmit={handleSubmit(handleCallBackForm)}>
         <div>
           <label htmlFor="name">Full Name:</label>
@@ -32,13 +35,18 @@ export default function CallBackForm() {
             name="name"
             control={control}
             render={({ field: { value, onChange } }) => (
-              <input
-                id="name"
+              <FloatingLabel
+              controlId="floatingInput"
+              label="Enter Full Name"
+            >
+              <Form.Control
+               
                 type="text"
                 value={value}
                 onChange={onChange}
                 placeholder="Enter Full Name"
               />
+               </FloatingLabel>
             )}
             defaultValue={""}
           />
@@ -53,13 +61,18 @@ export default function CallBackForm() {
             name="email"
             control={control}
             render={({ field: { value, onChange } }) => (
-              <input
+              <FloatingLabel
+              controlId="floatingInput"
+              label="Email Address"
+            >
+               <Form.Control
                 id="email"
                 type="email"
                 value={value}
                 onChange={onChange}
                 placeholder="Email Address"
               />
+                </FloatingLabel>
             )}
             defaultValue={""}
           />
@@ -74,13 +87,18 @@ export default function CallBackForm() {
             name="phoneNumber"
             control={control}
             render={({ field: { value, onChange } }) => (
-              <input
+              <FloatingLabel
+              controlId="floatingInput"
+              label="Mobile Number"
+            >
+               <Form.Control
                 id="contactNumber"
                 type="tel"
                 value={value}
                 onChange={onChange}
                 placeholder="Mobile Number"
               />
+              </FloatingLabel>
             )}
             defaultValue={""}
           />
@@ -95,14 +113,20 @@ export default function CallBackForm() {
             name="message"
             control={control}
             render={({ field: { value, onChange } }) => (
-              <textarea
-                id="message"
-                type="message"
+              <FloatingLabel
+              controlId="floatingInput"
+              label="Message"
+            >
+               <Form.Control
+                 as="textarea"
                 value={value}
                 onChange={onChange}
                 placeholder="Message"
+                style={{ height: '100px' }}
                 required
               />
+              
+              </FloatingLabel>
             )}
             defaultValue={""}
           />

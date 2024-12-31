@@ -18,7 +18,7 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
-
+import callbackimg from "../assets/images/callback image.jpg"
 // //////////////////
 import Slider from "react-slick";
 
@@ -34,6 +34,8 @@ import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
 import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg";
 import CallBackForm from "../components/forms/CallBackForm";
+import BookingSection from "../components/ui/homeContent/BookingSection";
+import StaticTestimonial from "../components/testimonials/StaticTestimonial";
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -64,281 +66,22 @@ export default function Home() {
          
           <div className={styles.homeContainer}>
             <HomeDesign />
-            {/* <div className={styles.innerHomeHeading}>
-              <h2>START YOUR DRIVING JOURNEY</h2>
-            </div> */}
-            {/* <div className={styles.flexImagesHome}>
-              <div className={styles.arrowImgSection}>
-                <img
-                  src={arrowImg}
-                  className={`${styles.animate__animated} ${styles.animate__bounce}`}
-                  alt="arrowImg"
-                />
-              </div>
-              <div className={styles.imagesContainerSectionImg}>
-                <div
-                  className={styles.userIdentificationImg}
-                  id={styles.flexDetailsDirection}
-                >
-                  <div className={styles.imageContainersSectionImg}>
-                    <img
-                      src={userIdentificationImg}
-                      className={`${styles.animate__animated} ${styles.animate__fadeInUp}`}
-                      alt="userIdentificationImg"
-                    />
-                    <div className={styles.overlayers}>
-                      <FaLongArrowAltRight />
-                    </div>
-                  </div>
-                  <div className={styles.listContent}>
-                    <ul type="none">
-                      <li>
-                        <span>
-                          <img src={img1} alt="1" />
-                        </span>
-                        <a
-                          href="https://www.gov.uk/apply-first-provisional-driving-licence"
-                          target="_blank"
-                        >
-                          {" "}
-                          Apply for your Provisional License
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div id={styles.flexDetailsDirection}>
-                  <div className={styles.imageContainersSectionImg}>
-                    <img
-                      id={styles.userHand}
-                      src={homeUserHand}
-                      className={`${styles.animate__animated} ${styles.animate__fadeInLeft}`}
-                      alt="homeUserHand"
-                    />
-                    <div className={styles.overlayers}>
-                      <FaLongArrowAltRight />
-                    </div>
-                  </div>
-                  <div className={styles.listContent}>
-                    <ul type="none">
-                      <li>
-                        <span>
-                          <img src={img2} alt="2" />
-                        </span>
-                        <Link to="/Theory-Support">
-                          Pass your Theory Test with Smartlearner
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div id={styles.flexDetailsDirection}>
-                  <div className={styles.imageContainersSectionImg}>
-                    <img
-                      id={styles.LplateImg}
-                      src={LplateImg}
-                      className={`${styles.animate__animated} ${styles.animate__fadeInRight}`}
-                      alt="LplateImg"
-                    />
-                    <div className={styles.overlayers}>
-                      <FaLongArrowAltRight />
-                    </div>
-                  </div>
-                  <div className={styles.listContent}>
-                    <ul type="none">
-                      <li>
-                        <span>
-                          <img src={img3} alt="3" />
-                        </span>
-                        <Link to="/Driving-Lessons">
-                          Book Your lessons with Smartlearner
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div> */}
+        
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
-
+        <section>
+          <BookingSection/>
+        </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
           <div className={styles.secondSectionContent}>
-            {/* <div className={styles.listContent}>
-            <ul type="none">
-              <li>
-                <span>
-                  <img src={img1} alt="1" />
-                </span>
-                <a
-                  href="https://www.gov.uk/apply-first-provisional-driving-licence "
-                  target="_blank"
-                >
-                  {" "}
-                  Apply for your Provisional License
-                </a>
-              </li>
-              <li>
-                <span>
-                  <img src={img2} alt="2" />
-                </span>
-                <Link to="/Theory-Support">
-                  Pass your Theory Test with Smartlearner
-                </Link>
-              </li>
-              <li>
-                <span>
-                  <img src={img3} alt="3" />
-                </span>
-                <Link to="/Driving-Lessons">
-                  Book Your lessons with Smartlearner
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-            {/* ///////////////////////////////////////////////////Request callback////////////////// */}
-            {/* <div className={styles.formContent}>
-              <div className={styles.formContentHeading}>
-                <h2>REQUEST A CALL BACK </h2>
-                <p>Contact Form</p>
-              </div>
-
-              <div className={styles.formContainer}>
-                <form onSubmit={handleSubmit(handleServiceForm)}>
-                  <div className={styles.homeFormGroup}>
-                    <label htmlFor="service">SERVICES</label>
-
-                    <Controller
-                      name="service"
-                      control={control}
-                      render={({ field }) => (
-                        <select
-                          {...field}
-                          className={styles.homeForminputField}
-                          required
-                        >
-                          <option disabled value="">
-                            Select a service
-                          </option>
-                          <option value="service1">Driving lessons</option>
-                          <option value="service2">
-                            Theory support / simulator
-                          </option>
-                          <option value="service3">Become a Driving Instructor/Join Us</option>
-                        </select>
-                      )}
-                      defaultValue=""
-                    />
-                  </div>{" "}
-                  {errors?.postcode && (
-                    <small style={{ color: "red" }}>
-                      {errors?.service?.message}
-                    </small>
-                  )}
-                  <div className={styles.homeFormGroup}>
-                    <label htmlFor="name">NAME</label>
-
-                    <Controller
-                      name="name"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type="text"
-                          value={value}
-                          className={styles.homeForminputField}
-                          onChange={onChange}
-                          placeholder="Name"
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                  </div>
-                  {errors?.postcode && (
-                    <small style={{ color: "red" }}>
-                      {errors?.name?.message}
-                    </small>
-                  )}
-                  <div className={styles.homeFormGroup}>
-                    <label htmlFor="email">EMAIL</label>
-                    <Controller
-                      name="email"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          type="email"
-                          className={styles.homeForminputField}
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Email Address"
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                  </div>
-                  {errors?.postcode && (
-                    <small style={{ color: "red" }}>
-                      {errors?.email?.message}
-                    </small>
-                  )}
-                  <div className={styles.homeFormGroup}>
-                    <label htmlFor="message">MESSAGE</label>
-                    <Controller
-                      name="message"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <textarea
-                          type="message"
-                          value={value}
-                          onChange={onChange}
-                          placeholder="Message"
-                          className={styles.homeForminputField}
-                          required
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                  </div>
-                  {errors?.postcode && (
-                    <small style={{ color: "red" }}>
-                      {errors?.message?.message}
-                    </small>
-                  )}
-                  <div className={styles.homeFormGroup}>
-                    <label htmlFor="postcode">POSTCODE</label>
-                    <Controller
-                      name="postcode"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <input
-                          value={value}
-                          onChange={onChange}
-                          type="text"
-                          placeholder="Postcode"
-                          className={styles.homeForminputField}
-                          required
-                        />
-                      )}
-                      defaultValue={""}
-                    />
-                  </div>
-                  {errors?.postcode && (
-                    <small style={{ color: "red" }}>
-                      {errors?.postcode?.message}
-                    </small>
-                  )}
-                  <button type="submit" className={styles.homeFormSubmitButton}>
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div> */}
+          
             {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
+            
             <section className={styles.BookNowSec}>
               <h2>Book Online Now!</h2>
-              <p>Start Your Journey with us Today!</p>
             </section>
             <>
               <Carousel />
@@ -349,58 +92,26 @@ export default function Home() {
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
         {/* ////////////////////////////////////////////// */}
-        <section>
-          <div className={styles.carContent}>
-            {/* <div className={styles.carContainer}>
-              <h2>
-                BOOK <br /> NOW WITH <br />
-                SMARTLEARNER
-              </h2>
-            </div>
-            <div className={styles.mainFeatures}>
-              <div className={styles.column}>
-                <h3>
-                  Affordable <br />
-                  Prices{" "}
-                </h3>
-                <p>
-                  We are always looking at industry prices to ensure our
-                  learners get the best valued lessons
-                </p>
-              </div>
-              <div className={styles.column}>
-                <h3>
-                  Automated SMS <br /> Alerts
-                </h3>
-                <p>
-                  You will receive SMS alerts on your phone to remind you of
-                  your lessons
-                </p>
-              </div>
-              <div className={styles.column}>
-                <h3>
-                  Unique Learning <br />
-                  Plans
-                </h3>
-                <p>
-                  Our Instructors cater to your unique learning styles and
-                  create lesson plans around them
-                </p>
-              </div>
-            </div> */}
-          </div>
-        </section>
         {/* //////////////carousel section///////////////// */}
-        <div style={{maxWidth:'700px',width:'100%', margin:'2rem auto'}}>
-        <CallBackForm/>
+        <div className={styles.callbackformflex}>
+          <section>
+          <CallBackForm/>
+          </section>
+       
+        <section>
+        <img src={callbackimg} alt="callbackimg"/>
+        </section>
+          
         </div>
+        {/* //////////////////////////////////////////////////// */}
+        
 
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>
           <div className={styles.whyChooseText}>
             <p>
               See Why People Choose SmartLearner to{" "}
-              <span style={{ color: "yellow" }}>PASS Their Driving Test.</span>
+              <span style={{ color: "#66ffbd" }}>PASS Their Driving Test.</span>
             </p>
           </div>
           <div
@@ -416,20 +127,12 @@ export default function Home() {
           </div>
           <div className={styles.spiralImgContainer}>
             {/* <img src={spiralImg} alt="spiralImg" /> */}
-            <hr
-              style={{
-                opacity: "1",
-                border: "2px solid silver",
-                maxWidth: "1400px",
-                width: "100%",
-                margin: "0px auto",
-              }}
-            />
+        
           </div>
         </section>
 
         {/* /////////////////////////////////// */}
-        <section>
+        {/* <section>
           <div className={styles.starImgContainer}>
             <img src={starImg} alt="starImg" />
             <img src={starImg} alt="starImg" />
@@ -437,7 +140,7 @@ export default function Home() {
             <img src={starImg} alt="starImg" />
             <img src={starImg} alt="starImg" />
           </div>
-        </section>
+        </section> */}
         {/* ////////////////////////Reviews section //////////////////////// */}
         <Review />
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}

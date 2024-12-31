@@ -8,7 +8,7 @@
 .facebookReviewsSection {
   text-align: center;
 
-  background: url("../../../assets/images/Reviews.jpg") repeat center bottom;
+  background: linear-gradient(45deg, #33036a, #592ee5);
 }
 
 .facebookReviewsContainer {

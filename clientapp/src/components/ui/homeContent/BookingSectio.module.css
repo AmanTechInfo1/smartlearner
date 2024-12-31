@@ -1,0 +1,232 @@
+.BookingSectionPage {
+  max-width: 1640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(0, 0, 77, 0.486);
+}
+.bookingheading h2 {
+  text-align: center;
+  color: rgb(161, 207, 255);
+  font-size: 4rem;
+  font-weight: 700;
+}
+.bookingheading p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(240, 248, 255, 0.679);
+  text-align: center;
+}
+.BookingSectionContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 4rem 0px;
+}
+.BookingSectionImgs {
+  max-width: 50%;
+  width: 100%;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  text-align: center;
+}
+.BookingSectionImgs #imges1 {
+  position: absolute;
+  top: 40px;
+  left: 100px;
+
+  max-width: 200px;
+  height: 200px;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.BookingSectionImgs #imges2 {
+  position: absolute;
+  top: -20px;
+
+  right: 50px;
+
+  max-width: 200px;
+  height: 200px;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.BookingSectionImgs #imges3 {
+  position: absolute;
+  bottom: -40px;
+  left: 70px;
+
+  max-width: 200px;
+  height: 200px;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.BookingSectionImgs #imges4 {
+  position: absolute;
+  bottom: -10px;
+  right: 70px;
+
+  max-width: 200px;
+  height: 200px;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+.bookingSectionAccordaion {
+  max-width: 50%;
+  width: 100%;
+}
+
+@keyframes smoothUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Move the images up */
+  }
+  100% {
+    transform: translateY(0); /* Move the images back to original position */
+  }
+}
+
+#imges1,
+#imges2,
+#imges3,
+#imges4 {
+  animation: smoothUpDown 4s ease-in-out infinite; /* Animation applied to both images */
+  /* Optional, to add some space between the images */
+}
+#imges1,
+#imges4 {
+  animation-delay: 1s;
+}
+
+@media (max-width: 1100px) {
+  .BookingSectionImgs #imges1 {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges2 {
+    position: absolute;
+    top: -20px;
+
+    right: 20px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges3 {
+    position: absolute;
+    bottom: -40px;
+    left: 30px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges4 {
+    bottom: 10px;
+    right: 30px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+}
+@media (max-width: 967px) {
+  .BookingSectionImgs #imges1 {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges2 {
+    position: absolute;
+    top: -20px;
+
+    right: 5px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges3 {
+    position: absolute;
+    bottom: -40px;
+    left: 5px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges4 {
+    bottom: 10px;
+    right: 5px;
+
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+}
+@media (max-width: 867px) {
+  .BookingSectionImgs #imges1 {
+    max-width: 160px;
+    height: 160px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges2 {
+    max-width: 160px;
+    height: 160px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges3 {
+    max-width: 160px;
+    height: 160px;
+    width: 100%;
+  }
+  .BookingSectionImgs #imges4 {
+    max-width: 160px;
+    height: 160px;
+    width: 100%;
+  }
+}
+@media (max-width: 727px) {
+    .BookingSectionContainer{
+        flex-direction: column;
+    }
+    .BookingSectionImgs{
+        max-width: 100%;
+        width: 100%;
+    }
+    .bookingSectionAccordaion{
+        max-width: 100%;
+        width: 100%;
+    }
+  .BookingSectionImgs{
+    display: none;
+  }
+}
+
+@media (max-width: 467px) {
+    .bookingheading h2{
+        font-size: 3rem;
+    }
+}

@@ -221,9 +221,10 @@
 
 .secondSectionContent {
   padding: 2rem 1rem;
-  max-width: 1200px;
+  max-width: 1640px;
   margin-left: auto;
   margin-right: auto;
+ 
 }
 .listContent {
   display: flex;
@@ -295,15 +296,63 @@
     font-size: 2.2rem;
   }
 }
+
+/* ////////////////////////////////////////////////////////////// */
+.callbackformflex{
+  display: flex;
+  align-items: center;
+  max-width: 1140px;
+  width: 100%;
+  gap: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+
+}
+.callbackformflex section:nth-child(1){
+  max-width: 50%;
+  width: 100%;
+}
+.callbackformflex section:nth-child(2){
+  max-width: 50%;
+  width: 100%;
+}
+.callbackformflex img{
+ width: 100%;
+  border-radius: 50%;
+ 
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+@media (max-width: 767px) {
+  .callbackformflex section:nth-child(1){
+    max-width: 70%;
+    width: 100%;
+  }
+  .callbackformflex section:nth-child(2){
+    max-width: 30%;
+    width: 100%;
+  }
+}
+@media (max-width: 567px) {
+  .callbackformflex section:nth-child(1){
+    max-width: 100%;
+    width: 100%;
+  }
+  .callbackformflex section:nth-child(2){
+   display: none;
+  }
+}
 /* ////////////////////////////////////////////////////////// */
 .BookNowSec {
   text-align: center;
+ 
 }
 .BookNowSec h2 {
-  color: white;
-  font-size: 5rem;
+  color: rgb(179, 222, 255);
+  font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifSS;
 }
 .BookNowSec p {
   color: #de1515;
@@ -312,7 +361,7 @@
 }
 @media (max-width: 767px) {
   .BookNowSec h2 {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
   .BookNowSec p {
     font-size: 2.5rem;
@@ -320,7 +369,7 @@
 }
 @media (max-width: 667px) {
   .BookNowSec h2 {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   .BookNowSec p {
     font-size: 2.5rem;
@@ -328,7 +377,7 @@
 }
 @media (max-width: 527px) {
   .BookNowSec h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   .BookNowSec p {
     font-size: 2rem;
@@ -336,7 +385,7 @@
 }
 @media (max-width: 427px) {
   .BookNowSec h2 {
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
   .BookNowSec p {
     font-size: 1.7rem;
@@ -344,7 +393,7 @@
 }
 @media (max-width: 377px) {
   .BookNowSec h2 {
-    font-size: 2.7rem;
+    font-size: 2.4rem;
   }
   .BookNowSec p { 
     font-size: 1.5rem;
@@ -434,9 +483,10 @@
   width: 100%;
 }
 .semiCircle h2 {
-  font-size: 5rem;
+  font-size: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 900;
-  color: rgb(223, 0, 0);
+  color: rgb(218, 234, 255);
   text-align: center;
   padding-bottom: 2rem;
   animation: 4s slide-left;
@@ -450,7 +500,7 @@
   }
 }
 .semiCircle h2 span {
-  color: #de1515;
+
 
   animation: 4s slide-right;
 }
@@ -464,17 +514,17 @@
 }
 @media (max-width: 727px) {
   .semiCircle h2 {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
   }
 }
 @media (max-width: 527px) {
   .semiCircle h2 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 @media (max-width: 427px) {
   .semiCircle h2 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
 .trophyImg img {
@@ -484,14 +534,39 @@
 }
 .trophyFrame {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
   justify-content: center;
-  text-align: center;
+  place-items: center;
   align-items: center;
+  position: relative;
 }
 .trophyFrame img {
   max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+@keyframes smoothUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Move the images up */
+  }
+  100% {
+    transform: translateY(0); /* Move the images back to original position */
+  }
+}
+.trophyFrame img:nth-child(1),
+.trophyFrame img:nth-child(2),
+.trophyFrame img:nth-child(3),
+.trophyFrame img:nth-child(4) {
+  animation: smoothUpDown 4s ease-in-out infinite; /* Animation applied to both images */
+  /* Optional, to add some space between the images */
+}
+.trophyFrame img:nth-child(1),
+.trophyFrame img:nth-child(4) {
+  animation-delay: 1s;
 }
 /* ////////////////////////////////////////////// */
 .carContent {
@@ -1042,7 +1117,7 @@
 /* /////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////// */
 .whyChooseText p {
-  color: #de1515;
+  color: #afe0ff;
   font-weight: 900;
 }
 .whyChooseText p span {

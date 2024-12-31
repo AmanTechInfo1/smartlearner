@@ -8,10 +8,7 @@ function Review() {
     <>
       <section className={styles.facebookReviewsSection}>
         <div className={styles.facebookReviewsContainer}>
-          <h4 id={styles.heading1}>Our Reviews</h4>
-          <span>
-          <hr />
-          </span>
+          
         
           <div className={styles.reviewsList}>
             <iframe
