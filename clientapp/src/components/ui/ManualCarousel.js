@@ -25,7 +25,7 @@ function ManualCorousel() {
 
   useEffect(() => {
     const offersManualCategory = data.find(
-      (item) => item._id === "Offers manual"
+      (item) => item._id === "Offers manual" 
     );
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);

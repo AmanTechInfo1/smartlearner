@@ -10,10 +10,15 @@ import discover from "../../assets/images/Discover.png";
 import americanExpress from "../../assets/images/American-express.png";
 import ssl from "../../assets/images/ssl-logo.png";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   return (
     <>
+    <div style={{backgroundColor:'black'}}>
+
+    
       <div className={styles.Footer}>
         <section className={styles.container}>
           <div className={styles.footerContent}>
@@ -28,6 +33,47 @@ function Footer() {
                 use the latest technology In Car (Ipads) including text alerts
                 and emailing lessons summary directly to you.
               </p>
+               <div className={styles.followUsLinks}>
+                        
+                         
+                          <div className={styles.socialFollowIcons}>
+                            <a
+                              href="https://www.facebook.com/smartlearnerdrivingschool"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaFacebook id={styles.FollowIcons} />
+                            </a>
+                            <a
+                              href="https://www.instagram.com/smartlearnerdrivingschool"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaInstagram id={styles.FollowIcons} />
+                            </a>
+                            <a
+                              href="https://www.snapchat.com/add/smartlearner"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaSnapchat id={styles.FollowIcons} />
+                            </a>
+                            <a
+                              href="https://twitter.com/smartlearner"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaXTwitter id={styles.FollowIcons} />
+                            </a>
+                            <a
+                              href="https://www.youtube.com/@SmartLearnerDrivingSchool"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaYoutube id={styles.FollowIcons} />
+                            </a>
+                          </div>
+                        </div>
             </div>
             <div className={styles.col2}>
               {/* <Link to="/blogs">
@@ -130,15 +176,12 @@ function Footer() {
             CopyRight @ 2024 | Managed By{" "}
             <a
               href="https://savvytechguru.com"
-              style={{
-                textDecoration: "none",
-                color: "black",
-                fontWeight: "700",
-              }}>
+              >
               Savvytechguru.com
             </a>
           </p>
         </div>
+      </div>
       </div>
     </>
   );

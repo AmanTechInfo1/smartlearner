@@ -8,9 +8,15 @@ import Testemonial from "../components/testimonials/Testemonial";
 import TheoryCorousel from "../components/ui/TheorySupportCarousel";
 import starImg from "../assets/images/yellowStar.png";
 import { Element, scroller } from "react-scroll";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import video from "../assets/videos/Video-1886-041219-B.mp4";
+
+import { IoCallSharp } from "react-icons/io5";
+import manualround1 from "../assets/images/theorySupportbanner.png";
+import manualround2 from "../assets/images/theorySupportRound1.jpg";
+import { gsap } from "gsap";
+import StaticTestimonial from "../components/testimonials/StaticTestimonial";
 
 export default function TheorySupport() {
   const { section } = useParams();
@@ -25,33 +31,129 @@ export default function TheorySupport() {
     }
   }, [section]);
 
+  const textRef = useRef(null);
+
+  const splitText = () => {
+    const firstPart = "Theory Support";
+
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out",
+      stagger: 0.1,
+      rotationX: 90,
+      transformOrigin: "bottom center",
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1,
+        opacity: 1,
+        rotationX: 0,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.8,
+      })
+      .to(letters, {
+        color: "#FF5733",
+        rotationY: 360,
+        stagger: 0.1,
+        duration: 1,
+      })
+      .to(letters, {
+        scale: 1.2,
+        opacity: 0.8,
+        rotationX: -10,
+        stagger: 0.1,
+        duration: 1,
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#FF1493", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.theorySupportPage}>
-      <section className={styles.theorySupportHeadingContent}>
-        <div className={styles.TSfirstContent}>
-          <div className="opicity"></div>
-          <div className={styles.TSfirstContentHeading}>
-          <h2>THEORY SUPPORT </h2>
+      <section className={styles.manualBanner}>
+        <div className="opicity"></div>
+        <div className="home-banner-flex">
+          <div className="home-content-D">
+            <h1 ref={textRef}>{splitText()}</h1>
+
+            <div className="home-bannerbnt-sec">
+              {" "}
+              <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                {" "}
+                <button className="button-style">CONTACT US</button>
+              </Link>
+              <span>
+                {" "}
+                <IoCallSharp className="gradient-icon" /> 02475092784
+              </span>
+            </div>
           </div>
-         
+
+          <div className={styles.bannerImg}>
+            <img
+                    src={manualround1}
+                    alt="driving-car"
+                    id={styles.homeDrivingImg1}
+                  />
+                  <img
+                    src={manualround2}
+                    alt="driving-car"
+                    id={styles.homeDrivingImg2}
+                  />
+          </div>
         </div>
       </section>
       {/* //////////////////////////////////////////////// CONTENT SECTION //////////////////////////////// */}
       <section className={styles.innerTheorySupportSection}>
-        {/* <section className={styles.videosFramesSec}>
-          <div className={styles.innerTheorySupportContent}>
-            <div className={styles.theorySupportContentVideo}>
-              <video
-                autoPlay={false}
-                width="100%"
-                height="600px"
-                src={video}
-                title="YouTube Video"
-                poster={poster}
-                controls={true}></video>
-            </div>
-          </div>
-        </section> */}
         {/* /////////////////////////////////  //////////////////*/}
         <section className={styles.dManualSection}>
           <hr />
@@ -59,7 +161,7 @@ export default function TheorySupport() {
             <section className={styles.dManualSections} id="automatic-section1">
               {" "}
               <div className={styles.dManualDiv}>
-                <h2>THEORY SUPPORT</h2>
+                <h2>Theory Support</h2>
                 <span>
                   {" "}
                   <img src={starImg} alt="starImg" />
@@ -107,142 +209,14 @@ export default function TheorySupport() {
 
       {/* ///////////////////////////////////////////////////// */}
 
-      {/* /////////////////////////////////////////////// */}
-      {/* <section className={styles.TSvideosContanierSection}>
-        <div className={styles.theorySupportContentVideosec}>
-          <div className={styles.innerTheorySupportContent}>
-            <div className={styles.theorySupportContentVideo}>
-              <video
-                autoPlay={false}
-                width="100%"
-                height="600px"
-                src={video2}
-                poster={poster}
-                title="YouTube Video"
-                controls={true}
-              ></video>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* ////////////////////////// */}
-      {/* <section className={styles.whyChooseshortSection}>
-        <div className={styles.whyChooseshortSectionContent}>
-          <div className={styles.whyChooseshortSectionImage}>
-            <img src={chooseUsImg} alt="Image" />
-          </div>
-          <div className={styles.whyChooseshortSectionText}>
-            <h2>
-              WHY CHOOSE <span>SMARTLEARNER ?</span>
-            </h2>
-            <p>
-              We are the highest-rated and fastest-growing independent driving
-              school in the West Midlands. We offer everything you could ever
-              need to get yourself on the road. We take into consideration your
-              times requirements, lesson location and anything else you require
-              then choose the perfect instructor for you. We even offer 1-2-1
-              theory and simulator training with a tutor for those who feel need
-              additional support to pass their exams. So, forget the rest and
-              learn with the best! Call us today on{" "}
-              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                {" "}
-                <span>0800 118 2001</span>{" "}
-              </a>
-              to get yourself booked in.
-            </p>
-            <div className={styles.whyChooseshortSectionButtons}>
-              <Link to="/about">
-                {" "}
-                <button className={styles.whyChooseshortSectionReadmore}>
-                  Read More
-                </button>
-              </Link>
-
-              <a style={{ textDecoration: "none" }} href="tel:+4402475092784">
-                <button className={styles.whyChooseshortSectionCallus}>
-                  Call Us
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* //////////////////////////////// */}
-      {/* <section className={styles.drivenBefore}>
-        <h2>Search for driving lessons in your area</h2>
-        <DrivenForm />
-      </section> */}
-      {/* /////////////////////////////////////////////// */}
-
-      {/* ////////////////////////////////// */}
-      {/* <section className={styles.nextFormSection}>
-        <div className={styles.nextFormContainer}>
-          <div className={styles.nextFormDetailsContainer}>
-            <div className={styles.nextFormDetailsContainerHeading}>
-              {" "}
-              <h3>REQUEST FOR A CALLBACK</h3>
-              <span>
-                <FaArrowRight id={styles.rightArow} />
-              </span>
-            </div>
-
-            <ul type="none">
-              <li>
-                {" "}
-                <FaStar id={styles.redStar} /> Highest-rated Independent driving
-                school in the West Midlands
-              </li>
-              <li>
-                {" "}
-                <FaStar id={styles.redStar} /> Manual and Automatic tuition
-              </li>
-              <li>
-                {" "}
-                <FaStar id={styles.redStar} /> Over 40 instructors both male and
-                female
-              </li>
-            </ul>
-          </div>
-          <div className={styles.nextFormContainer}>
-            <CallBackForm />
-          </div>
-        </div>
-      </section> */}
+    
       {/* ///////////////Testimonials////// */}
       <section>
-        <Testemonial />
+        <StaticTestimonial/>
       </section>
 
       {/* ///////////////////////Reviews//////// */}
-      {/* <section>
-        <Review />
-      </section> */}
-      {/* //////////////faqs//////////////////////// */}
-      {/* <section>
-        <ShortFaqs />
-      </section> */}
-      {/* ////////////////////////////////////// */}
-      {/* /////////////////////////////////////Our Partners////////////////////////// */}
-      {/* 
-      <section className={styles.ourPartnersSection}>
-      <div className={styles.bgOverlay}></div>
-          <h2>Our Partners</h2>
-          <div className={styles.partnerSection}>
-            <img src={OurPartners1} alt="" />
-          
-            <img src={OurPartners2} alt="" />
-            <img src={OurPartners3} alt="" />
-            <img src={OurPartners4} alt="" />
-            <img src={OurPartners5} alt="" />
-            <img src={OurPartners7} alt="" />
-            <img src={OurPartners8} alt="" />
-            <img src={OurPartners9} alt="" />
-            <img src={OurPartners10} alt="" />
-            <img src={OurPartners11} alt="" />
-            <img src={OurPartners12} alt="" />
-            <img src={OurPartners13} alt="" />
-          </div>
-        </section> */}
+    
     </div>
   );
 }

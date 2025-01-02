@@ -319,9 +319,9 @@
 }
 .callbackformflex img{
  width: 100%;
-  border-radius: 50%;
- 
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+ height: 500px;
+ filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
+
 }
 @media (max-width: 767px) {
   .callbackformflex section:nth-child(1){
@@ -734,6 +734,7 @@
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s ease;
+  font-family: 'Antonio',sans-serif;
 }
 
 .carousel {

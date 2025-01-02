@@ -9,6 +9,13 @@ import manual3 from "./manual3.jpg";
 import automatic3 from "./automatic3.jpg";
 import manual4 from "./manual4.jpg";
 import automatic4 from "./automatic4.jpg";
+import theoryImg1 from "../../../assets/images/theory1.jpg"
+import theoryImg2 from "../../../assets/images/theorySupportRound1.jpg"
+import theoryImg3 from "../../../assets/images/theory-Img-banner.png"
+import passplus1 from "../../../pages/Transmission/passplusbanner.png"
+import passplus2 from "../../../pages/Transmission/passplusbanner2.jpg"
+import passplus3 from "../../../pages/Transmission/passplusround.jpg"
+import passplus4 from "../../../pages/Transmission/passplusround2.jpg"
 
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Button from "react-bootstrap/Button";
@@ -32,6 +39,9 @@ export default function BookingSection() {
       case "3":
         setTransmissionType("passplus");
         break;
+        case "4":
+          setTransmissionType("intensive");
+          break;
       default:
         setTransmissionType("manual"); // Handle other cases if needed
     }
@@ -85,11 +95,11 @@ export default function BookingSection() {
       return (
         <>
           <div className={styles.imgesdiv1}>
-            <img src={manual} alt="Theory 1" id={styles.imges1} />
-            <img src={automatic2} alt="Theory 2" id={styles.imges2} />
+            <img src={theoryImg1} alt="Theory 1" id={styles.imges1} />
+            <img src={theoryImg2} alt="Theory 2" id={styles.imges2} />
           </div>
           <div className={styles.imgesdiv2}>
-            <img src={manual4} alt="Theory 3" id={styles.imges3} />
+            <img src={theoryImg3} alt="Theory 3" id={styles.imges3} />
             <img src={automatic} alt="Theory 4" id={styles.imges4} />
           </div>
         </>
@@ -98,12 +108,26 @@ export default function BookingSection() {
       return (
         <>
           <div className={styles.imgesdiv1}>
-            <img src={manual2} alt="Pass Plus 1" id={styles.imges1} />
-            <img src={manual4} alt="Pass Plus 2" id={styles.imges2} />
+            <img src={passplus1} alt="Pass Plus 1" id={styles.imges1} />
+            <img src={passplus2} alt="Pass Plus 2" id={styles.imges2} />
           </div>
           <div className={styles.imgesdiv2}>
-            <img src={automatic2} alt="Pass Plus 3" id={styles.imges3} />
-            <img src={automatic4} alt="Pass Plus 4" id={styles.imges4} />
+            <img src={passplus3} alt="Pass Plus 3" id={styles.imges3} />
+            <img src={manual4} alt="Pass Plus 4" id={styles.imges4} />
+          </div>
+        </>
+      );
+    }
+    else if (transmissionType === "intensive") {
+      return (
+        <>
+          <div className={styles.imgesdiv1}>
+            <img src={automatic3} alt="Intensive" id={styles.imges1} />
+            <img src={theoryImg2} alt="Intensive" id={styles.imges2} />
+          </div>
+          <div className={styles.imgesdiv2}>
+            <img src={passplus2} alt="Intensive" id={styles.imges3} />
+            <img src={passplus4} alt="Intensive" id={styles.imges4} />
           </div>
         </>
       );
@@ -155,7 +179,7 @@ export default function BookingSection() {
                   driving, empowering you with the skills and confidence to
                   navigate any road with finesse and precision.
                   <br />
-                  <Link to="/Driving-Lessons/manual">
+                  <Link to="/manual">
                     <Button variant="outline-primary">
                       Explore more{" "}
                       <MdKeyboardDoubleArrowRight
@@ -197,7 +221,7 @@ export default function BookingSection() {
                   skills, we’ll empower you to drive confidently in any
                   situation.
                   <br />
-                  <Link to="/Driving-Lessons/automatic">
+                  <Link to="/automatic-transmisson">
                     <Button variant="outline-primary">
                       Explore more{" "}
                       <MdKeyboardDoubleArrowRight
@@ -279,7 +303,48 @@ export default function BookingSection() {
                   become a safer, more skilled driver, Pass Plus is the ideal
                   next step.
                   <br />
-                  <Link to="/Driving-Lessons/Pass-Plus">
+                  <Link to="/pass-plus">
+                    <Button variant="outline-primary">
+                      Explore more{" "}
+                      <MdKeyboardDoubleArrowRight
+                        className={styles.gradientIcon}
+                      />
+                    </Button>
+                  </Link>
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="4">
+                <Accordion.Header>
+                  <div>
+                    <h3
+                      style={{
+                        color: "rgb(0, 5, 162)",
+                        fontFamily:
+                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
+                      }}
+                    >
+                      Intensive
+                    </h3>
+                    <div
+                      style={{
+                        fontSize: "14px",
+                        color: "#6c757d",
+                        fontFamily:
+                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
+                      }}
+                    >
+                     Designed for those eager to learn quickly and efficiently
+                    </div>
+                  </div>
+                </Accordion.Header>
+                <Accordion.Body>
+                  our immersive programmes offer focused instruction and
+                  hands-on experience to help you become a confident driver in
+                  no time. Get behind the wheel and fast-track your path to
+                  driving independence with our intensive driving courses.
+                  <br />
+                  <Link to="/intensive">
                     <Button variant="outline-primary">
                       Explore more{" "}
                       <MdKeyboardDoubleArrowRight

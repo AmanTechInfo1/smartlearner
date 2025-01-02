@@ -8,8 +8,10 @@ import LplateImg from "../../../assets/images/L-Plate.jpg";
 import { IoCallSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import drivingbannerImages1 from "../../../assets/images/drivingbannerImages1.jpg";
-import drivingbannerImages2 from "../../../assets/images/drivingbannerImages2.jpg";
+import drivingbannerImages1 from "./Screenshot 2025-01-01 005502.png";
+import drivingbannerImages2 from "./Screenshot 2025-01-01 005602.png";
+
+import drivingbannerImages3 from "./Screenshot 2025-01-01 005620.png";
 import gsap from "gsap";
 
 export default function HomeDesign() {
@@ -53,7 +55,6 @@ export default function HomeDesign() {
       rotationX: 90, // Initial rotation effect
       transformOrigin: "bottom center", // Center for rotation
       scale: 0.5,
-     
     })
       .to(letters, {
         scale: 1, // Scale to normal size
@@ -143,7 +144,7 @@ export default function HomeDesign() {
 
             <div className="banner-img">
               <img
-                src={drivingbannerImages1}
+                src={drivingbannerImages3}
                 alt="driving-car"
                 id="home-drivingImg-1"
               />
@@ -152,6 +153,11 @@ export default function HomeDesign() {
                 alt="driving-car"
                 id="home-drivingImg-2"
               />
+              <img
+                src={drivingbannerImages1}
+                alt="driving-car"
+                id="home-drivingImg-3"
+              />
             </div>
           </div>
 
@@ -159,7 +165,7 @@ export default function HomeDesign() {
         </section>
 
         {/* ////////////////////////////////////////////////// */}
-        <div className="designMain">
+        {/* <div className="designMain">
           <div className="designMainContent">
             <div className="dGrid-content">
               <div className="flex-Content1">
@@ -189,7 +195,7 @@ export default function HomeDesign() {
               </div>
 
               <div className="flex-Content2">
-              <section className="single-map-block card-4">
+                <section className="single-map-block card-4">
                   <div className="img-area">
                     <div className="number">2</div>
                     <img src={homeUserHand} alt="" width="230" height="298" />
@@ -200,14 +206,7 @@ export default function HomeDesign() {
                     <Link to="/Theory-Support">
                       <button className="hBookNowBtn">Visit Now</button>
                     </Link>
-                    {/* <div className="btn-flex">
-                  <a href="">
-                    <img src="./app-store-google.svg" alt="" />
-                  </a>
-                  <a href="">
-                    <img src="./app-store-apple-1.svg" alt="" />
-                  </a>
-                </div> */}
+                 
                   </div>
                 </section>
                 <div className="flexdivs"></div>
@@ -236,7 +235,7 @@ export default function HomeDesign() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

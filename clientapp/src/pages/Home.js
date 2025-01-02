@@ -18,7 +18,7 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
-import callbackimg from "../assets/images/callback image.jpg"
+import callbackimg from "../assets/images/callbacksupportimage.jpg"
 // //////////////////
 import Slider from "react-slick";
 
@@ -80,12 +80,12 @@ export default function Home() {
             {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
             
-            <section className={styles.BookNowSec}>
+            {/* <section className={styles.BookNowSec}>
               <h2>Book Online Now!</h2>
             </section>
             <>
               <Carousel />
-            </>
+            </> */}
             {/* ///////////////////////////////////////////////////// */}
           </div>
         </section>
@@ -142,7 +142,10 @@ export default function Home() {
           </div>
         </section> */}
         {/* ////////////////////////Reviews section //////////////////////// */}
-        <Review />
+        <section>
+        <StaticTestimonial />
+        </section>
+       
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
 
         {/* ///////////////////////////////////////// */}

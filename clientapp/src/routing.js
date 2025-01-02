@@ -18,7 +18,7 @@ import TheorySupport from "./pages/TheorySupport";
 import ADITrainingPortal from "./pages/ADITrainingPortal";
 import SimulatedDrivingLesson from "./pages/SpecialityTraining/SimulatedDrivingLesson";
 import ExtendedTest from "./pages/SpecialityTraining/ExtendedTest";
-import PassPlus from "./pages/SpecialityTraining/PassPlus";
+// import PassPlus from "./pages/SpecialityTraining/PassPlus";
 import AgeingDriverSupport from "./pages/SpecialityTraining/AgeingDriverSupport";
 import SafeRoadUserAward from "./pages/SpecialityTraining/SafeRoadUserAward";
 import TrailerTraining from "./pages/SpecialityTraining/TrailerTraining";
@@ -131,6 +131,10 @@ import PaymentCompleted from "./pages/PaymentCompleted";
 import News from "./pages/blogpage/News";
 import PrivledgeCards from "./pages/AddOns/PrivledgeCards";
 import Glossary from "./pages/adiPages/additionalPages/Glossary";
+import Manual from "./pages/Transmission/Manual";
+import AutomaticTransmission from "./pages/Transmission/AutomaticTransmission";
+import PassPlusTransmission from "./pages/Transmission/PassPlusTransmission";
+import IntensiveTransmission from "./pages/Transmission/IntensiveTransmission";
 
 export const router = createBrowserRouter([
   {
@@ -165,7 +169,7 @@ export const router = createBrowserRouter([
       { path: "ADI-Training-Portal", element: <ADITrainingPortal /> },
       { path: "Simulated-Driving-Lesson", element: <SimulatedDrivingLesson /> },
       { path: "Extended-Test", element: <ExtendedTest /> },
-      { path: "Pass-Plus", element: <PassPlus /> },
+      // { path: "Pass-Plus", element: <PassPlus /> },
       { path: "Ageing-Driver-Support", element: <AgeingDriverSupport /> },
       { path: "Safe-Road-User-Award", element: <SafeRoadUserAward /> },
       { path: "Trailer-Training", element: <TrailerTraining /> },
@@ -188,6 +192,7 @@ export const router = createBrowserRouter([
       { path: "AIVideos", element: <AIVideos /> },
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
+      {path: "intensive", element: <IntensiveTransmission/>},
       { path: "shop", element: <Shop /> },
 
       { path: "product/:id", element: <ProductDetails /> },
@@ -253,6 +258,9 @@ export const router = createBrowserRouter([
       {path: 'glossary-terms', element: <Glossary/>},
       { path: "singleblog/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
+      {path: "manual", element: <Manual />},
+      {path: "automatic-transmisson", element: <AutomaticTransmission/>},
+      {path: "pass-plus", element: <PassPlusTransmission/>},
       {
         path: "trainning-material",
         element: <TrainningMaterial />,

@@ -106,11 +106,11 @@
   position: relative;
 }
 .banner-img img {
-  max-width: 150px;
-  height: 150px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  max-width: 250px;
+ 
+  box-shadow: 0 0 20px rgba(206, 235, 255, 0.852);
   width: 100%;
-  border-radius: 50%;
+  border-radius: 10px;
 }
 #home-drivingImg-1 {
   position: absolute;
@@ -121,6 +121,11 @@
   position: absolute;
   top: -150px;
   right: 200px;
+}
+#home-drivingImg-3{
+  position: absolute;
+  top: -50px;
+  right: 400px;
 }
 
 @keyframes smoothUpDown {
@@ -134,9 +139,24 @@
     transform: translateY(0); /* Move the images back to original position */
   }
 }
+#home-drivingImg-1:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
+#home-drivingImg-2:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
+#home-drivingImg-3:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
 
 #home-drivingImg-1,
-#home-drivingImg-2 {
+#home-drivingImg-2,#home-drivingImg-3 {
   animation: smoothUpDown 2s ease-in-out infinite; /* Animation applied to both images */
   /* Optional, to add some space between the images */
 }
@@ -145,7 +165,9 @@
 #home-drivingImg-2 {
   animation-delay: 1s; /* Delay the second image's animation for staggered effect */
 }
-
+#home-drivingImg-3{
+  animation-delay: 2s
+}
 @media (max-width: 2100px) {
   .home-content-D h1 {
     font-size: 5.5rem;
@@ -219,28 +241,28 @@
   .homecontent-Sec {
     padding: 2rem 0px;
   }
-}
-@media (max-width: 467px) {
-  .home-content-D h1 {
-    font-size: 3.5rem;
   }
-  .home-content-D p {
-    font-size: 1.2rem;
-    font-weight: 400;
+  @media (max-width: 467px) {
+    .home-content-D h1 {
+      font-size: 3.5rem;
+    }
+    .home-content-D p {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    .button-style {
+      padding: 8px 25px;
+      font-size: 1.2rem;
+    }
+    .home-bannerbnt-sec span {
+      font-size: 1.5rem;
+    }
   }
-  .button-style {
-    padding: 8px 25px;
-    font-size: 1.2rem;
+  @media (max-width: 410px) {
+    .home-content-D h1 {
+      font-size: 3.2rem;
+    }
   }
-  .home-bannerbnt-sec span {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 410px) {
-  .home-content-D h1 {
-    font-size: 3.2rem;
-  }
-}
 
 
 .designMainContent{

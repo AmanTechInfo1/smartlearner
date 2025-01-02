@@ -4,68 +4,192 @@
   box-sizing: border-box;
 }
 .theorySupportPage {
-  background-color: #111;
+  background-color: #000000;
   font-family: "Antonio", sans-serif;
   color: white;
 }
-.TSfirstContent {
-  background-image: url(../../assets/images/theorySupportbanner.png);
-  position: relative;
-  width: 100%;
-  padding: 14rem 0px;
+
+.manualBanner {
+  background: url("../../assets/images/theorySupportbanner2.jpg");
+  background-position: top;
   background-size: cover;
-  background-position: center;
+  position: relative;
+  padding: 6rem 0px;
+  border-radius: 20px;
 }
 
-.TSfirstContentHeading h2 {
-  position: sticky;
-  font-size: 5rem;
-  text-align: center;
-
-  color: #fff;
-  overflow: hidden;
-  border-right: 0.2px solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: 12px;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+.bannerImg {
+  max-width: 48%;
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+.bannerImg img {
+  max-width: 150px;
+  height: 150px;
+  box-shadow: 0 0 20px rgba(206, 235, 255, 0.852);
+  width: 100%;
+  border-radius: 50%;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
+#homeDrivingImg1 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#homeDrivingImg2 {
+  position: absolute;
+  top: -50px;
+  right: 200px;
+}
+
+@keyframes smoothUpDown {
+  0% {
+    transform: translateY(0);
   }
-  to {
+  50% {
+    transform: translateY(-20px); /* Move the images up */
+  }
+  100% {
+    transform: translateY(0); /* Move the images back to original position */
+  }
+}
+#homeDrivingImg1:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
+#homeDrivingImg2:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
+#homeDrivingImg3:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#homeDrivingImg1,
+#homeDrivingImg2 {
+  animation: smoothUpDown 2s ease-in-out infinite; /* Animation applied to both images */
+  /* Optional, to add some space between the images */
+}
+
+/* If you want to delay the second image */
+#homeDrivingImg2 {
+  animation-delay: 1s; /* Delay the second image's animation for staggered effect */
+}
+
+@media (max-width: 2100px) {
+  .home-content-D h1 {
+    font-size: 5.5rem;
+  }
+}
+@media (max-width: 1900px) {
+  .home-content-D h1 {
+    font-size: 4.7rem;
+  }
+}
+@media (max-width: 1600px) {
+  .home-content-D h1 {
+    font-size: 4.3rem;
+  }
+}
+@media (max-width: 1400px) {
+  .home-content-D h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-content-D h1 {
+    font-size: 4rem;
+  }
+  .home-content-D {
+    max-width: 70%;
+    width: 100%;
+  }
+  .banner-img {
+    max-width: 30%;
     width: 100%;
   }
 }
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
+@media (max-width: 840px) {
+  .home-content-D {
+    max-width: 80%;
+    width: 100%;
   }
-  50% {
-    border-color: orange;
+  .bannerImg {
+    max-width: 20%;
+    width: 100%;
   }
 }
-.innerTheorySupportSection {
-  max-width: 1140px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.innerTheorySupportContent {
-  /* background-image: url(../../assets/images/bricks-bg.jpg); */
-  position: relative;
-  width: 100%;
-  background-size: cover;
+@media (max-width: 777px) {
+  .home-banner-flex {
+    flex-direction: column-reverse;
+  }
+  .home-content-D {
+    max-width: 100%;
+  }
+  .bannerImg {
+    max-width: 100%;
+    height: 50px;
+  }
+  .bannerImg img {
+    max-width: 100px;
+    height: 100px;
+  }
 
-  background-position: center;
+  #home-drivingImg-1 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #home-drivingImg-2 {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+  }
 }
+
+@media (max-width: 467px) {
+  .home-content-D h1 {
+    font-size: 3.5rem;
+  }
+  .home-content-D p {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  .button-style {
+    padding: 8px 25px;
+    font-size: 1.2rem;
+  }
+  .home-bannerbnt-sec span {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 410px) {
+  .home-content-D h1 {
+    font-size: 3.2rem;
+  }
+}
+
+
+
+
+
+
+
 
 /* ////////////////////////////////////////// */
 .callbackFormSection {
-  padding: 2rem 0px;
+  padding: 2rem;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background: linear-gradient(  135deg, #00ffe1, #2600fd);
+  border-radius: 20px;
 }
 .callbackFormContent {
   display: flex;
@@ -576,18 +700,32 @@
 }
 
 /* ////////////////////////////////////////////////////////// */
-.dManualSection hr {
-  opacity: 1;
-  border: 2px solid #ed2025;
-}
+
 .dManualSections {
   padding: 2rem 1rem;
-  max-width: 1200px;
+  max-width: 1600px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  background: linear-gradient(135deg, #FF7F50, #FF6347, #FFD700, #00FF7F, #1E90FF, #8A2BE2);
+  background-size: 600% 600%;
+  animation: gradientAnimation 12s ease infinite;
+  min-height: 70vh;
+  border-radius: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+  
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .dManualDiv {
   display: flex;
   gap: 30px;
@@ -597,6 +735,8 @@
 .dManualDiv h2 {
   font-size: 3.5rem;
   color: white;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 .dManualDiv img {
   max-width: 50px;
@@ -638,10 +778,16 @@
   }
 }
 .manualPList {
-  padding: 0px 2rem;
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0px auto;
+  background-color: #6ab5ff7b;
 }
 .manualPList p {
   color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+
 }
 
 @media (max-width: 770px) {
