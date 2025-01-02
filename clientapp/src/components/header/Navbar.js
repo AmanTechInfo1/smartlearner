@@ -78,9 +78,7 @@ function Navbar() {
     <div id={styles.navContainer}>
       <div className={styles.headerContainer}>
         <section className={styles.imgLogoSection}>
-          <div className={styles.imgLogoSection1}>
-            <img src={logo} alt="logo" />
-          </div>
+         
           <div className={styles.imgLogoSection2}>
             {" "}
             <img src={logo2} alt="logo" />

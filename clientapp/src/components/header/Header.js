@@ -38,7 +38,7 @@ function Header() {
               Home
             </NavLink>
           </li>
-          <li id={styles.dropDownNav}>
+          {/* <li id={styles.dropDownNav}>
             <NavLink to="/Driving-Lessons">
               <span>Driving Lesson</span>
             </NavLink>
@@ -72,7 +72,7 @@ function Header() {
                 <li>Pass Plus</li>
               </NavLink>
             </ul>
-          </li>
+          </li> */}
           
           <li id={styles.dropDownNav}>
             <NavLink to="/Theory-Support" className={styles.activeLink}>
@@ -122,12 +122,42 @@ function Header() {
                 <li>Franchise </li>
               </NavLink>
 
-              <NavLink to="/ADI-Training-Portal" className={styles.activeLink}>
-                {" "}
-                <li>PDI Training Portal </li>
-              </NavLink>
+              
             </ul>
           </li>
+          {/* //////////////////////////////////////////// */}
+  <li id={styles.dropDownNav}>
+            <NavLink to="/ADI-Training-Portal">
+              <span>PDI Portal</span>
+            </NavLink>
+            <ul className={styles.dropdownContent}>
+              <NavLink
+                to="/adi-part-one"
+                className={styles.activeLink}
+              >
+                <li>PDI Part 1</li>
+              </NavLink>
+
+              <NavLink
+                to="/adi-part-2"
+                className={styles.activeLink}
+              >
+                {" "}
+                <li>PDI Part 2</li>
+              </NavLink>
+
+              <NavLink
+                to="/adi-part-3"
+                className={styles.activeLink}
+              >
+                <li>PDI Part 3</li>
+              </NavLink>
+
+             
+            </ul>
+          </li>
+
+          {/* //////////////////////////////////////////////////// */}
           <li>
             <NavLink to="/privledge-cards" className={styles.activeLink}>
               Privledge Cards
