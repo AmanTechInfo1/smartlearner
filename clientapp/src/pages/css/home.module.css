@@ -541,10 +541,17 @@
   align-items: center;
   position: relative;
 }
-.trophyFrame img {
+.cardFronttrophyFrame img {
   max-width: 200px;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+.cardBacktrophyFrame img {
+  max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 @keyframes smoothUpDown {
   0% {
@@ -557,10 +564,7 @@
     transform: translateY(0); /* Move the images back to original position */
   }
 }
-.trophyFrame img:nth-child(1),
-.trophyFrame img:nth-child(2),
-.trophyFrame img:nth-child(3),
-.trophyFrame img:nth-child(4) {
+.cardFronttrophyFrame img {
   animation: smoothUpDown 4s ease-in-out infinite; /* Animation applied to both images */
   /* Optional, to add some space between the images */
 }
@@ -568,6 +572,50 @@
 .trophyFrame img:nth-child(4) {
   animation-delay: 1s;
 }
+
+.cardtrophyFrame {
+  width: 200px; /* Adjust size */
+  height: 300px; /* Adjust size */
+  perspective: 1000px; /* Creates the 3D effect */
+}
+
+.cardInnertrophyFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* Ensures 3D effect */
+  transition: transform 0.6s;
+}
+
+.cardtrophyFrame:hover .cardInnertrophyFrame {
+  transform: rotateY(180deg); /* Flip on hover */
+}
+
+.cardFronttrophyFrame,
+.cardBacktrophyFrame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back when flipped */
+}
+
+
+
+.cardBacktrophyFrame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* You can change the background as needed */
+  transform: rotateY(180deg);
+  max-width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+   /* Make the back appear when flipped */
+}
+
+
+
 /* ////////////////////////////////////////////// */
 .carContent {
   max-width: 1000px;

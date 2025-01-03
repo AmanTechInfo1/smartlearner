@@ -12,77 +12,15 @@ import gsap from "gsap";
 import ManualCorousel from "../../components/ui/ManualCarousel";
 import { Link } from "react-router-dom";
 
-const gears = ["1", "2", "3", "4", "5", "R"];
 
-const gearColors = [
-  "#FF5733", // Gear 1 (Red)
-  "#FFC300", // Gear 2 (Yellow)
-  "#DAF7A6", // Gear 3 (Light Green)
-  "#33FF57", // Gear 4 (Green)
-  "#3380FF", // Gear 5 (Blue)
-  "#8E44AD", // Gear R (Purple)
-];
 
 const Manual = () => {
-  const [currentGear, setCurrentGear] = useState(null);
-  const knobRef = useRef(null); // For animating the shifter knob
-  const gearRefs = useRef([]);
+  
 
-  const handleGearChange = (gear) => {
-    setCurrentGear(gear);
 
-    // Animate the knob when the gear changes
-    gsap.to(knobRef.current, {
-      y: -10,
-      duration: 0.3,
-      ease: "power2.out",
-      onComplete: () => {
-        gsap.to(knobRef.current, {
-          y: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      },
-    });
 
-    // Animate the active gear with GSAP
-    gearRefs.current.forEach((gearRef, index) => {
-      if (gear === gears[index]) {
-        gsap.to(gearRef, {
-          scale: 1.2,
-          backgroundColor: "#4285f4",
-          color: "white",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(gearRef, {
-          scale: 1,
-          backgroundColor: gearColors[index],
-          color: "white",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      }
-    });
-  };
+ 
 
-  // Adding a "slide-in" effect for the gear list when the component mounts
-  useEffect(() => {
-    gsap.fromTo(
-      ".gearList",
-      {
-        x: -100,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      }
-    );
-  }, []);
 
   const textRef = useRef(null);
 
@@ -208,39 +146,8 @@ const Manual = () => {
           </div>
         </section>
         {/* ///////////////////////////// */}
-        <section>
-          <div className={styles.transmissionContainer}>
-            <h2 className={styles.gearBoxTitle}>Manual Gear Shifter</h2>
-            <div className={styles.shifterContainer}>
-              <div className={styles.shifter}>
-                <div className={styles.knob} ref={knobRef} />
-              </div>
-              <div className={styles.gearList}>
-                {gears.map((gear, index) => (
-                  <div
-                    key={index}
-                    ref={(el) => (gearRefs.current[index] = el)}
-                    className={`${styles.gear} ${
-                      currentGear === gear ? styles.active : ""
-                    }`}
-                    onClick={() => handleGearChange(gear)}
-                  >
-                    {gear}
-                  </div>
-                ))}
-              </div>
-            </div>
-            {currentGear && (
-              <div className={styles.selectedGear}>
-                Current Gear: {currentGear}
-              </div>
-            )}
-          </div>
-        </section>
-        <section className={styles.ManualCorousel}>
-        <ManualCorousel />
-      </section>
-        {/* ////////////////////////////////////////////////////// */}
+      
+
         <div className={styles.manualContent}>
           <section className={styles.manualPara}>
             <p>
@@ -256,6 +163,12 @@ const Manual = () => {
             </p>
           </section>
         </div>
+
+        <section className={styles.ManualCorousel}>
+        <ManualCorousel />
+      </section>
+        {/* ////////////////////////////////////////////////////// */}
+      
         {/* /////////////////////////////////////////// */}
       </div>
      

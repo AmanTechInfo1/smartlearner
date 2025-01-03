@@ -18,7 +18,7 @@ import hallOfFame1 from "../assets/images/halloffame1.png";
 import hallOfFame2 from "../assets/images/halloffame2.png";
 import hallOfFame3 from "../assets/images/halloffame3.png";
 import hallOfFame4 from "../assets/images/halloffame4.png";
-import callbackimg from "../assets/images/callbacksupportimage.jpg"
+import callbackimg from "../assets/images/callbacksupportimage.jpg";
 // //////////////////
 import Slider from "react-slick";
 
@@ -36,6 +36,7 @@ import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.j
 import CallBackForm from "../components/forms/CallBackForm";
 import BookingSection from "../components/ui/homeContent/BookingSection";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
+import logoImage from "../assets/images/1200px-Lplate.svg.png"
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -63,23 +64,20 @@ export default function Home() {
     <div className={styles.homepage}>
       <div className={styles.homepageContainerDiv}>
         <section className={styles.homeSection}>
-         
           <div className={styles.homeContainer}>
             <HomeDesign />
-        
           </div>
         </section>
         {/* ///////////////////////////////////////////////////////////////// */}
         <section>
-          <BookingSection/>
+          <BookingSection />
         </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
           <div className={styles.secondSectionContent}>
-          
             {/* /////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////////////////////// */}
-            
+
             {/* <section className={styles.BookNowSec}>
               <h2>Book Online Now!</h2>
             </section>
@@ -95,16 +93,14 @@ export default function Home() {
         {/* //////////////carousel section///////////////// */}
         <div className={styles.callbackformflex}>
           <section>
-          <CallBackForm/>
+            <CallBackForm />
           </section>
-       
-        <section>
-        <img src={callbackimg} alt="callbackimg"/>
-        </section>
-          
+
+          <section>
+            <img src={callbackimg} alt="callbackimg" />
+          </section>
         </div>
         {/* //////////////////////////////////////////////////// */}
-        
 
         {/* //////////////////////////////////////////// */}
         <section className={styles.imageSliderContainer}>
@@ -122,12 +118,12 @@ export default function Home() {
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}>
+            }}
+          >
             <ImagesCarousel />
           </div>
           <div className={styles.spiralImgContainer}>
             {/* <img src={spiralImg} alt="spiralImg" /> */}
-        
           </div>
         </section>
 
@@ -143,9 +139,9 @@ export default function Home() {
         </section> */}
         {/* ////////////////////////Reviews section //////////////////////// */}
         <section>
-        <StaticTestimonial />
+          <StaticTestimonial />
         </section>
-       
+
         {/* ///////////////////////////////////////////pass with us ////////////////////////// */}
 
         {/* ///////////////////////////////////////// */}
@@ -161,18 +157,53 @@ export default function Home() {
           <div className={styles.secondSectionContent}>
             <div className={styles.hallFameContent}>
               <div className={styles.semiCircle}>
-                {/* <img src={hallOfFame} alt="hallOfFame" /> */}
                 <h2>Award Winning Driving School</h2>
               </div>
-              {/* <div className={styles.trophyImg}>
-                <img src={tropfyImg} alt="tropfyImg" />
-              </div> */}
 
               <div className={styles.trophyFrame}>
-                <img src={hallOfFame1} alt="hallOfFame1" />
-                <img src={hallOfFame2} alt="hallOfFame2" />
-                <img src={hallOfFame3} alt="hallOfFame3" />
-                <img src={hallOfFame4} alt="hallOfFame4" />
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame1} alt="hallOfFame1" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame2} alt="hallOfFame2" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame3} alt="hallOfFame3" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame4} alt="hallOfFame4" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -148,29 +148,22 @@ export default function IntensiveTransmission() {
             <p>Simulate a real driving test to boost your confidence.</p>
           </div>
         </div>
-
-       
-
-       
+      </div>
+      <div className={styles.manualContent}>
+        <section className={styles.manualPara}>
+          <p>Designed for those eager to learn quickly and efficiently,</p>
+          <p>
+            {" "}
+            our immersive programmes offer focused instruction and hands-on
+            experience to help you become a confident driver in no time. Get
+            behind the wheel and fast-track your path to driving independence
+            with our intensive driving courses.
+          </p>
+        </section>
       </div>
       <section>
-        <IntensiveCorousel/>
+        <IntensiveCorousel />
       </section>
-      <div className={styles.manualContent}>
-          <section className={styles.manualPara}>
-            <p>
-            Designed for those eager to learn quickly and efficiently,
-            </p>
-            <p>
-              {" "}
-              our
-              immersive programmes offer focused instruction and hands-on
-              experience to help you become a confident driver in no time. Get
-              behind the wheel and fast-track your path to driving independence
-              with our intensive driving courses.
-            </p>
-          </section>
-        </div>
     </div>
   );
 }

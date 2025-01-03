@@ -198,7 +198,7 @@ const PassPlusTransmission = () => {
       {/* /////////////////////////////////// */}
       <section ref={coursesRef} className={styles.coursesSection}>
         <h2 className={styles.coursesTitle}>Our Courses</h2>
-        <PassPlusCarousel />
+
         <div className={styles.manualContent}>
           <section className={styles.manualPara}>
             <p>
@@ -214,6 +214,9 @@ const PassPlusTransmission = () => {
             </p>
           </section>
         </div>
+        
+        <PassPlusCarousel />
+       
       </section>
     </div>
   );

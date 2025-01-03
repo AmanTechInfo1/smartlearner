@@ -8,10 +8,10 @@ import LplateImg from "../../../assets/images/L-Plate.jpg";
 import { IoCallSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import drivingbannerImages1 from "./Screenshot 2025-01-01 005502.png";
-import drivingbannerImages2 from "./Screenshot 2025-01-01 005602.png";
+import drivingbannerImages1 from "../../../assets/images/hover1.png";
+import drivingbannerImages2 from "../../../assets/images/hover2.png";
 
-import drivingbannerImages3 from "./Screenshot 2025-01-01 005620.png";
+import drivingbannerImages3 from "../../../assets/images/hover3.png";
 import gsap from "gsap";
 
 export default function HomeDesign() {
@@ -143,21 +143,27 @@ export default function HomeDesign() {
             </div>
 
             <div className="banner-img">
-              <img
-                src={drivingbannerImages3}
-                alt="driving-car"
-                id="home-drivingImg-1"
-              />
-              <img
-                src={drivingbannerImages2}
-                alt="driving-car"
-                id="home-drivingImg-2"
-              />
-              <img
-                src={drivingbannerImages1}
-                alt="driving-car"
-                id="home-drivingImg-3"
-              />
+              <a href="https://www.gov.uk/apply-first-provisional-driving-licence" style={{textDecoration:'none'}}>
+                <img
+                  src={drivingbannerImages3}
+                  alt="driving-car"
+                  id="home-drivingImg-1"
+                />
+              </a>
+              <Link to="/Theory-Support" style={{textDecoration:'none'}}>
+                <img
+                  src={drivingbannerImages2}
+                  alt="driving-car"
+                  id="home-drivingImg-2"
+                />
+              </Link>
+              <Link to="/Driving-Lessons" style={{textDecoration:'none'}}>
+                <img
+                  src={drivingbannerImages1}
+                  alt="driving-car"
+                  id="home-drivingImg-3"
+                />
+              </Link>
             </div>
           </div>
 
@@ -206,7 +212,6 @@ export default function HomeDesign() {
                     <Link to="/Theory-Support">
                       <button className="hBookNowBtn">Visit Now</button>
                     </Link>
-                 
                   </div>
                 </section>
                 <div className="flexdivs"></div>
@@ -236,6 +241,8 @@ export default function HomeDesign() {
             </div>
           </div>
         </div> */}
+
+        
       </div>
     </div>
   );

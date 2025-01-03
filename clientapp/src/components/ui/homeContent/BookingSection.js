@@ -9,21 +9,31 @@ import manual3 from "./manual3.jpg";
 import automatic3 from "./automatic3.jpg";
 import manual4 from "./manual4.jpg";
 import automatic4 from "./automatic4.jpg";
-import theoryImg1 from "../../../assets/images/theory1.jpg"
-import theoryImg2 from "../../../assets/images/theorySupportRound1.jpg"
-import theoryImg3 from "../../../assets/images/theory-Img-banner.png"
-import passplus1 from "../../../pages/Transmission/passplusbanner.png"
-import passplus2 from "../../../pages/Transmission/passplusbanner2.jpg"
-import passplus3 from "../../../pages/Transmission/passplusround.jpg"
-import passplus4 from "../../../pages/Transmission/passplusround2.jpg"
+import theoryImg1 from "../../../assets/images/theory1.jpg";
+import theoryImg2 from "../../../assets/images/theorySupportRound1.jpg";
+import theoryImg3 from "../../../assets/images/theory-Img-banner.png";
+import passplus1 from "../../../pages/Transmission/passplusbanner.png";
+import passplus2 from "../../../pages/Transmission/passplusbanner2.jpg";
+import passplus3 from "../../../pages/Transmission/passplusround.jpg";
+import passplus4 from "../../../pages/Transmission/passplusround2.jpg";
 
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function BookingSection() {
   const [transmissionType, setTransmissionType] = useState("manual");
 
+  const [activeSlide, setActiveSlide] = useState(0);
   // Function to update the transmission type based on the active Accordion item
   const handleAccordionChange = (eventKey) => {
     switch (eventKey) {
@@ -39,9 +49,9 @@ export default function BookingSection() {
       case "3":
         setTransmissionType("passplus");
         break;
-        case "4":
-          setTransmissionType("intensive");
-          break;
+      case "4":
+        setTransmissionType("intensive");
+        break;
       default:
         setTransmissionType("manual"); // Handle other cases if needed
     }
@@ -117,8 +127,7 @@ export default function BookingSection() {
           </div>
         </>
       );
-    }
-    else if (transmissionType === "intensive") {
+    } else if (transmissionType === "intensive") {
       return (
         <>
           <div className={styles.imgesdiv1}>
@@ -141,221 +150,110 @@ export default function BookingSection() {
         <div className={styles.bookingheading}>
           <h2>Our Courses</h2> <p>Start Your Journey with us Today!</p>
         </div>
-        <div className={styles.BookingSectionContainer}>
-          <section className={styles.BookingSectionImgs}>
-            {renderImages()}
-          </section>
-          <section className={styles.bookingSectionAccordaion}>
-            <Accordion defaultActiveKey="0" onSelect={handleAccordionChange}>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>
-                  <div>
-                    <h3
-                      style={{
-                        color: "rgb(0, 5, 162)",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Manual
-                    </h3>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        color: "#6c757d",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Discover the thrill of hands-on control with our manual
-                      driving lessons.
-                    </div>
-                  </div>
-                </Accordion.Header>
+        <div className={styles.swiperContent}>
+          <Swiper
+            slidesPerView={4} // Display 3 slides at a time
+            spaceBetween={30} // Space between slides
+            loop={true} // Make it loop infinitely
+            autoplay={{
+              delay: 100, // Time between slide transitions
+              disableOnInteraction: false, // Don't stop autoplay when interacting
+            }}
+            centeredSlides={true} // Keep the active slide centered
+            pagination={{
+              type: "fraction",
+            }}
+            navigation={true}
+            speed={6000} // Add navigation buttons (next/prev)
+            modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
+            className="mySwiper"
+            onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+            style={{ padding: "2rem 1rem" }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1, // 1 slide at a time for small screens
+                spaceBetween: 10, // Less space on small screens
+              },
+              768: {
+                slidesPerView: 2, // 2 slides at a time for medium screens
+                spaceBetween: 20, // Slightly more space
+              },
+              1024: {
+                slidesPerView: 3, // 3 slides for large screens
+                spaceBetween: 30,
+              },
+              1440: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+              },
+            }}
+          >
+            <SwiperSlide>
+            <Link to="/manual" >
+              <div className={styles.slide1}>
+                <div className={styles.opicity}></div>
+                <div id={styles.crousalContent}>
+                  <h2>MANUAL</h2>
+                  <p>
+                    Discover the thrill of hands-on control with our lessons.
+                  </p>
+                </div>
+              </div>
+              </Link>
+            </SwiperSlide>
 
-                <Accordion.Body>
-                  From mastering the clutch to shifting gears seamlessly, our
-                  expert instructors will guide you through the art of manual
-                  driving, empowering you with the skills and confidence to
-                  navigate any road with finesse and precision.
-                  <br />
-                  <Link to="/manual">
-                    <Button variant="outline-primary">
-                      Explore more{" "}
-                      <MdKeyboardDoubleArrowRight
-                        className={styles.gradientIcon}
-                      />
-                    </Button>
-                  </Link>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>
-                  <div>
-                    <h3
-                      style={{
-                        color: "rgb(0, 5, 162)",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Automatic
-                    </h3>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        color: "#6c757d",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Experience the ease and convenience of automatic driving
-                      with our comprehensive lessons.
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                  Our skilled instructors will help you navigate the road
-                  smoothly, focusing on essential techniques and safe driving
-                  practices. Whether you’re a beginner or looking to refine your
-                  skills, we’ll empower you to drive confidently in any
-                  situation.
-                  <br />
-                  <Link to="/automatic-transmisson">
-                    <Button variant="outline-primary">
-                      Explore more{" "}
-                      <MdKeyboardDoubleArrowRight
-                        className={styles.gradientIcon}
-                      />
-                    </Button>
-                  </Link>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="2">
-                <Accordion.Header>
-                  <div>
-                    <h3
-                      style={{
-                        color: "rgb(0, 5, 162)",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      {" "}
-                      Theory
-                    </h3>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        color: "#6c757d",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Need support on passing your theory test?
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                  We offer 1-2-1 in house, from the comfort of your house on
-                  Zoom, or if you want to touch up you driving skills, get ahead
-                  or have fun, we have a driving simulator in office!
-                  <br />
-                  <Link to="/Theory-Support/Theory-package">
-                    <Button variant="outline-primary">
-                      Explore more{" "}
-                      <MdKeyboardDoubleArrowRight
-                        className={styles.gradientIcon}
-                      />
-                    </Button>
-                  </Link>
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="3">
-                <Accordion.Header>
-                  <div>
-                    <h3
-                      style={{
-                        color: "rgb(0, 5, 162)",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Pass Plus
-                    </h3>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        color: "#6c757d",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Designed specifically for newly qualified drivers.
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                  Pass Plus is an advanced driving course that helps you
-                  maintain and improve the skills you've learned while gaining
-                  valuable experience on the road. Whether you're looking to
-                  build confidence in new driving conditions, or simply want to
-                  become a safer, more skilled driver, Pass Plus is the ideal
-                  next step.
-                  <br />
-                  <Link to="/pass-plus">
-                    <Button variant="outline-primary">
-                      Explore more{" "}
-                      <MdKeyboardDoubleArrowRight
-                        className={styles.gradientIcon}
-                      />
-                    </Button>
-                  </Link>
-                </Accordion.Body>
-              </Accordion.Item>
+            <SwiperSlide>
+            <Link to="/automatic-transmisson">
+              <div className={styles.slide2}>
+                <div className={styles.opicity}></div>{" "}
+                <div id={styles.crousalContent}>
+                  <h2>AUTOMATIC</h2>
+                  <p>
+                    Experience the ease and convenience of automatic driving
+                    lessons.
+                  </p>
+                </div>
+              </div>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+            <Link to="/intensive">
+              <div className={styles.slide3}>
+                <div className={styles.opicity}></div>{" "}
+                <div id={styles.crousalContent}>
+                  <h2>INTENSIVE</h2>
+                  <p>
+                    Designed for those eager to learn quickly and efficiently
+                  </p>
+                </div>
+              </div>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide> 
+              <Link to="/pass-plus">
 
-              <Accordion.Item eventKey="4">
-                <Accordion.Header>
-                  <div>
-                    <h3
-                      style={{
-                        color: "rgb(0, 5, 162)",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                      Intensive
-                    </h3>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        color: "#6c757d",
-                        fontFamily:
-                          "'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif",
-                      }}
-                    >
-                     Designed for those eager to learn quickly and efficiently
-                    </div>
-                  </div>
-                </Accordion.Header>
-                <Accordion.Body>
-                  our immersive programmes offer focused instruction and
-                  hands-on experience to help you become a confident driver in
-                  no time. Get behind the wheel and fast-track your path to
-                  driving independence with our intensive driving courses.
-                  <br />
-                  <Link to="/intensive">
-                    <Button variant="outline-primary">
-                      Explore more{" "}
-                      <MdKeyboardDoubleArrowRight
-                        className={styles.gradientIcon}
-                      />
-                    </Button>
-                  </Link>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </section>
+              <div className={styles.slide4}>
+                <div className={styles.opicity}></div>{" "}
+                <div id={styles.crousalContent}>
+                  <h2>PASS PLUS</h2>
+                  <p>Designed specifically for newly qualified drivers</p>
+                </div>
+              </div>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link to="/Theory-Support">
+              <div className={styles.slide5}>
+                <div className={styles.opicity}></div>{" "}
+                <div id={styles.crousalContent}>
+                  <h2>THEORY SUPPORT</h2>
+                  <p>Need support on passing your theory test</p>
+                </div>
+              </div>
+              </Link>
+            </SwiperSlide>
+            {/* Add more slides as needed */}
+          </Swiper>
         </div>
       </div>
     </div>

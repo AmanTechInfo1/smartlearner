@@ -1,6 +1,7 @@
 #navContainer {
   background-color: black;
   position: relative;
+  z-index: 100000000;
 }
 
 .headerContainer {
