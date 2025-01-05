@@ -196,6 +196,7 @@ function TheoryCorousel() {
                             )}
                           </div>
                         </li>
+                        <section  style={{backgroundColor: "#e5dd6abc"}} className={styles.corouselDescription} >{info.description}</section> 
                       </div>
                     ))}
                   </ul>

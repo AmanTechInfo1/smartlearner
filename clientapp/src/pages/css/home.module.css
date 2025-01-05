@@ -25,8 +25,6 @@
   width: 100%;
 }
 .homeContainer {
- 
-
   text-align: center;
 }
 
@@ -224,7 +222,6 @@
   max-width: 1640px;
   margin-left: auto;
   margin-right: auto;
- 
 }
 .listContent {
   display: flex;
@@ -298,7 +295,7 @@
 }
 
 /* ////////////////////////////////////////////////////////////// */
-.callbackformflex{
+.callbackformflex {
   display: flex;
   align-items: center;
   max-width: 1140px;
@@ -307,52 +304,49 @@
   margin-right: auto;
   margin-left: auto;
   padding: 1rem;
-
 }
-.callbackformflex section:nth-child(1){
+.callbackformflex section:nth-child(1) {
   max-width: 50%;
   width: 100%;
 }
-.callbackformflex section:nth-child(2){
+.callbackformflex section:nth-child(2) {
   max-width: 50%;
   width: 100%;
 }
-.callbackformflex img{
- width: 100%;
- height: 500px;
- filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
-
+.callbackformflex img {
+  width: 100%;
+  height: 500px;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
 }
 @media (max-width: 767px) {
-  .callbackformflex section:nth-child(1){
+  .callbackformflex section:nth-child(1) {
     max-width: 70%;
     width: 100%;
   }
-  .callbackformflex section:nth-child(2){
+  .callbackformflex section:nth-child(2) {
     max-width: 30%;
     width: 100%;
   }
 }
 @media (max-width: 567px) {
-  .callbackformflex section:nth-child(1){
+  .callbackformflex section:nth-child(1) {
     max-width: 100%;
     width: 100%;
   }
-  .callbackformflex section:nth-child(2){
-   display: none;
+  .callbackformflex section:nth-child(2) {
+    display: none;
   }
 }
 /* ////////////////////////////////////////////////////////// */
 .BookNowSec {
   text-align: center;
- 
 }
 .BookNowSec h2 {
   color: rgb(179, 222, 255);
   font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 0px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifSS;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serifSS;
 }
 .BookNowSec p {
   color: #de1515;
@@ -395,7 +389,7 @@
   .BookNowSec h2 {
     font-size: 2.4rem;
   }
-  .BookNowSec p { 
+  .BookNowSec p {
     font-size: 1.5rem;
   }
 }
@@ -484,7 +478,7 @@
 }
 .semiCircle h2 {
   font-size: 4rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 900;
   color: rgb(218, 234, 255);
   text-align: center;
@@ -500,8 +494,6 @@
   }
 }
 .semiCircle h2 span {
-
-
   animation: 4s slide-right;
 }
 @keyframes slide-right {
@@ -599,8 +591,6 @@
   backface-visibility: hidden; /* Hides the back when flipped */
 }
 
-
-
 .cardBacktrophyFrame {
   display: flex;
   justify-content: center;
@@ -611,10 +601,8 @@
   height: 200px;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-   /* Make the back appear when flipped */
+  /* Make the back appear when flipped */
 }
-
-
 
 /* ////////////////////////////////////////////// */
 .carContent {
@@ -780,9 +768,9 @@
   position: relative;
   scroll-snap-type: x mandatory;
   cursor: pointer;
-  white-space: nowrap;
+
   transition: all 0.3s ease;
-  font-family: 'Antonio',sans-serif;
+  font-family: "Antonio", sans-serif;
 }
 
 .carousel {
@@ -799,7 +787,7 @@
   min-height: 100px;
   width: 20%;
   position: relative;
-  background-color: rgb(29, 0, 0);
+  background: linear-gradient(135deg, #11ff70, #d3fd00);
   border-radius: 30px;
   border: 1px solid silver;
   padding: 20px;
@@ -882,9 +870,6 @@
 
 /* /////////////////////// */
 
-.carouselColumn li {
-  margin-bottom: 0.5rem;
-}
 .expandedColData {
   display: flex;
 
@@ -893,7 +878,7 @@
 .expandedColData p {
   font-size: 1.3rem;
 }
-#theoryP p{
+#theoryP p {
   font-size: 1.2rem;
 }
 /* increament decreament */
@@ -950,6 +935,20 @@
 .addtoCartButtoncontent img {
   max-width: 40px;
   width: 100%;
+}
+
+.corouselDescription {
+  max-width: 350px;
+  width: 100%;
+  background-color: #e5dd6abc;
+  color: white;
+  border-radius: 10px;
+  padding: 8px;
+  margin: 8px 0px;
+  font-size: 14px;
+}
+.corouselDescription p {
+  margin-bottom: 0px;
 }
 /*  */
 /* ///////////////// */

@@ -167,7 +167,7 @@ const PassPlusTransmission = () => {
           </div>
 
           <div className={styles.bannerImg}>
-            <img
+            {/* <img
               src={manualround1}
               alt="driving-car"
               id={styles.homeDrivingImg1}
@@ -176,7 +176,7 @@ const PassPlusTransmission = () => {
               src={manualround2}
               alt="driving-car"
               id={styles.homeDrivingImg2}
-            />
+            /> */}
           </div>
         </div>
       </section>
@@ -214,7 +214,7 @@ const PassPlusTransmission = () => {
             </p>
           </section>
         </div>
-        
+
         <PassPlusCarousel />
        
       </section>

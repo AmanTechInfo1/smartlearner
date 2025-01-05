@@ -70,6 +70,7 @@ function PassPlusCarousel() {
           {["Pass Plus"].map((categoryName) =>
             filteredData(categoryName).map((item) => (
               <div
+              style={{ background: "linear-gradient(  135deg, #11ff70, #d3fd00)"}}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
                   expandedCategory === item._id ? styles.expanded : ""
@@ -180,6 +181,7 @@ function PassPlusCarousel() {
                             )}
                           </div>
                         </li>
+                         <section  style={{backgroundColor: "#bcb006bc"}} className={styles.corouselDescription} >{info.description}</section> 
                       </div>
                     ))}
                   </ul>

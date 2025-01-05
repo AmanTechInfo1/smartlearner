@@ -114,7 +114,7 @@ export default function IntensiveTransmission() {
           </div>
 
           <div className={styles.bannerImg}>
-            <img
+            {/* <img
               src={manualround1}
               alt="driving-car"
               id={styles.homeDrivingImg1}
@@ -123,7 +123,7 @@ export default function IntensiveTransmission() {
               src={manualround2}
               alt="driving-car"
               id={styles.homeDrivingImg2}
-            />
+            /> */}
           </div>
         </div>
       </section>

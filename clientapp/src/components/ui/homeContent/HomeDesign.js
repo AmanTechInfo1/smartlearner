@@ -143,26 +143,17 @@ export default function HomeDesign() {
             </div>
 
             <div className="banner-img">
-              <a href="https://www.gov.uk/apply-first-provisional-driving-licence" style={{textDecoration:'none'}}>
-                <img
-                  src={drivingbannerImages3}
-                  alt="driving-car"
-                  id="home-drivingImg-1"
-                />
+              <a
+                href="https://www.gov.uk/apply-first-provisional-driving-licence"
+                style={{ textDecoration: "none",padding:'8px' }}
+              >
+                <p id="home-drivingImg-1">Pass Your Theory Test With Us</p>
               </a>
-              <Link to="/Theory-Support" style={{textDecoration:'none'}}>
-                <img
-                  src={drivingbannerImages2}
-                  alt="driving-car"
-                  id="home-drivingImg-2"
-                />
+              <Link to="/Theory-Support" style={{ textDecoration: "none",padding:'8px' }}>
+                <p id="home-drivingImg-2">Apply For Provisional Licence </p> 
               </Link>
-              <Link to="/Driving-Lessons" style={{textDecoration:'none'}}>
-                <img
-                  src={drivingbannerImages1}
-                  alt="driving-car"
-                  id="home-drivingImg-3"
-                />
+              <Link to="/Driving-Lessons" style={{ textDecoration: "none",padding:'8px' }}>
+                <p id="home-drivingImg-3">Book Lessons With Us</p>
               </Link>
             </div>
           </div>
@@ -241,8 +232,6 @@ export default function HomeDesign() {
             </div>
           </div>
         </div> */}
-
-        
       </div>
     </div>
   );

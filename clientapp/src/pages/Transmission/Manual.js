@@ -132,7 +132,7 @@ const Manual = () => {
             </div>
 
             <div className={styles.bannerImg}>
-              <img
+              {/* <img
                 src={manualround1}
                 alt="driving-car"
                 id={styles.homeDrivingImg1}
@@ -141,7 +141,7 @@ const Manual = () => {
                 src={manualround2}
                 alt="driving-car"
                 id={styles.homeDrivingImg2}
-              />
+              /> */}
             </div>
           </div>
         </section>
