@@ -25,13 +25,16 @@ function PassPlusCarousel() {
 
   useEffect(() => {
     const offersManualCategory = data.find((item) => item._id === "Pass Plus");
+    console.log("aaadhaisudhsaius", offersManualCategory);
+    console.log("aaadhaisudhsaius", offersManualCategory.data[0]);
+
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
     }
   }, [data]);
 
-  const handleExpandCategory = (id) => {
-    setExpandedCategory(expandedCategory === id ? "" : id);
+  const handleExpandCategory = (name) => {
+    setExpandedCategory(expandedCategory === name ? "" : name);
   };
 
   const handleIncrease = (id, qty) => {
@@ -77,9 +80,9 @@ function PassPlusCarousel() {
                     }}
                     key={item.id}
                     className={`${styles.carouselColumn} ${
-                      expandedCategory === item._id ? styles.expanded : ""
+                      expandedCategory === info.name ? styles.expanded : ""
                     }`}
-                    onClick={() => handleExpandCategory(item._id)}
+                    onClick={() => handleExpandCategory(info.name)}
                   >
                     <div className={styles.carouselColumnHeading}>
                       <img
@@ -95,7 +98,7 @@ function PassPlusCarousel() {
                               : "PASS PLUS"
                             : "PASS PLUS"}
                         </h2>
-                        {expandedCategory === item._id && (
+                        {expandedCategory === info.name && (
                           <Link to="/cart">
                             <span>
                               <img
@@ -108,7 +111,7 @@ function PassPlusCarousel() {
                         )}
                       </div>
                     </div>
-                    {expandedCategory === item._id ? (
+                    {expandedCategory === info.name ? (
                       <ul type="none">
                         <div key={index}>
                           <li className={styles.expandedColData}>
@@ -199,7 +202,7 @@ function PassPlusCarousel() {
                     ) : (
                       <div
                         className={`${styles.carouselStarImgContainer} ${
-                          expandedCategory === item._id ? styles.compress : ""
+                          expandedCategory === info.name ? styles.compress : ""
                         }`}
                       >
                         <img src={starImg} alt="starImg" />
