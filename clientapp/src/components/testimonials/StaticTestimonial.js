@@ -47,34 +47,34 @@ const StaticTestimonial = () => {
   const testimonials = [
     {
       id: 1,
-      name: "John Doe",
-      position: "Student",
+      name: "Ben Duccket",
+      position: "Coventry",
       text: "As a first-time driver, I was really nervous about getting behind the wheel, but my instructor made me feel so comfortable from the first lesson. ",
     },
     {
       id: 2,
       name: "Jane Smith",
-      position: "Product Manager",
+      position: "London",
       text: "After failing my driving test a couple of times, I was really starting to lose confidence. But then I found Smartlearner, and everything changed. Definitely recommended!",
     },
     {
       id: 3,
       name: "Michael Brown",
-      position: "Designer, Company Z",
+      position: "Menchester",
       text: "As someone who had driven before but had been away from the roads for a few years, I needed a refresher course to get my confidence back.",
     },
     {
-        id: 4,
-        name: "Sarah M",
-        position: "London",
-        text: "Choosing smartlearner was the best decision I made in my journey to becoming a confident driver. Highly recommend this driving school to anyone looking to learn safely and efficiently!",
-      },
-      {
-        id: 5,
-        name: "James T.",
-        position: "Manchester",
-        text: "I can't thank Smartlearner enough for the amazing experience! From my first lesson to passing my driving test. Definitely recommend to those who's looking learn to drive!",
-      },
+      id: 4,
+      name: "Sarah M",
+      position: "London",
+      text: "Choosing smartlearner was the best decision I made in my journey to becoming a confident driver. Highly recommend this driving school to anyone looking to learn safely and efficiently!",
+    },
+    {
+      id: 5,
+      name: "James T.",
+      position: "Coventry",
+      text: "I can't thank Smartlearner enough for the amazing experience! From my first lesson to passing my driving test. Definitely recommend to those who's looking learn to drive!",
+    },
   ];
 
   return (
@@ -117,17 +117,18 @@ const StaticTestimonial = () => {
                 slidesPerView: 3, // 3 slides for large screens
                 spaceBetween: 30,
               },
-            }}
-          >
+            }}>
             {testimonials.map((testimonial, index) => (
               <SwiperSlide
                 key={testimonial.id}
                 className={styles.testimonialCard}
-                ref={(el) => (testimonialRef.current[index] = el)}
-              >
+                ref={(el) => (testimonialRef.current[index] = el)}>
                 <div className={styles.quote}>“</div>
                 <p className={styles.text}>{testimonial.text}</p>
-                
+                <div className={styles.author}>
+                  <p className={styles.name}>{testimonial.name}</p>
+                  <p className={styles.position}>{testimonial.position}</p>
+                </div>
               </SwiperSlide>
             ))}
 

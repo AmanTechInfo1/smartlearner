@@ -154,7 +154,7 @@ function EditUserModal(props) {
                 </select>
                 {errors.roleName && (
                   <p style={{ color: "red" }}>{errors.roleName}</p>
-                )}
+                )}  
               </div>
               {/* <div className="form-group">
                 <label>Privacy Policy</label>

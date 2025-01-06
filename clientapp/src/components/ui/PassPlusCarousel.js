@@ -26,7 +26,7 @@ function PassPlusCarousel() {
   useEffect(() => {
     const offersManualCategory = data.find((item) => item._id === "Pass Plus");
     console.log("aaadhaisudhsaius", offersManualCategory);
-    console.log("aaadhaisudhsaius", offersManualCategory.data[0]);
+   
 
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
@@ -80,9 +80,9 @@ function PassPlusCarousel() {
                     }}
                     key={item.id}
                     className={`${styles.carouselColumn} ${
-                      expandedCategory === info.name ? styles.expanded : ""
+                      expandedCategory === item.id ? styles.expanded : ""
                     }`}
-                    onClick={() => handleExpandCategory(info.name)}
+                    onClick={() => handleExpandCategory(item.id)}
                   >
                     <div className={styles.carouselColumnHeading}>
                       <img
@@ -98,7 +98,7 @@ function PassPlusCarousel() {
                               : "PASS PLUS"
                             : "PASS PLUS"}
                         </h2>
-                        {expandedCategory === info.name && (
+                        {expandedCategory === item.id && (
                           <Link to="/cart">
                             <span>
                               <img
@@ -111,7 +111,7 @@ function PassPlusCarousel() {
                         )}
                       </div>
                     </div>
-                    {expandedCategory === info.name ? (
+                    {expandedCategory === item.id ? (
                       <ul type="none">
                         <div key={index}>
                           <li className={styles.expandedColData}>

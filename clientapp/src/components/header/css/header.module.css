@@ -1,9 +1,4 @@
-.headerContainer {
-}
-
 nav {
-  
-
   color: white;
   padding: 15px 0px;
   z-index: 100000;
@@ -20,10 +15,10 @@ nav .title {
 nav ul {
   position: relative;
   display: flex;
- 
+
   gap: 30px;
   justify-content: center;
-text-align: center;
+  text-align: center;
   margin-bottom: 0px;
   padding-left: 0px;
 }
@@ -32,29 +27,27 @@ nav ul li {
   list-style: none;
   font-size: 17px;
   font-weight: 500;
- 
 }
 
 .activeDropdownLink {
   background-color: red;
 }
 /* /////////////////////////////////////////////////// */
-.imgFlexHeader{
+.imgFlexHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.imgLogoSection{
+.imgLogoSection {
   text-align: center;
   display: none;
 }
 
-.imgLogoSection .imgLogoSection2 img{
+.imgLogoSection .imgLogoSection2 img {
   max-width: 150px;
   width: 100%;
-  
 }
 
 /* //////////////////////////////////////////////// */
@@ -90,8 +83,9 @@ nav .menu {
   left: 400px;
 
   display: none;
-  background-color: rgba(1, 17, 41, 0.898);
-  max-width: 1300px;
+  background-color: #00172ee8;
+
+  max-width: 1200px;
   width: 100%;
   z-index: 1;
   padding-left: 0px;
@@ -157,14 +151,17 @@ nav .menu {
     font-size: 18px;
   }
 }
-@media (max-width: 1068px){
+@media (max-width: 1068px) {
   nav ul li {
     font-size: 16px;
   }
 }
 @media (max-width: 768px) {
-  .imgLogoSection{
+  .imgLogoSection {
     display: block;
+  }
+  .dropdownContent {
+    background-color: #00468c;
   }
   nav .menu {
     display: flex;
@@ -180,6 +177,7 @@ nav .menu {
     flex-direction: column;
     width: 100%;
     gap: 20px;
+    background-color: rgb(3, 0, 32);
   }
 
   nav ul.open {
@@ -188,10 +186,15 @@ nav .menu {
 
   nav ul li {
     width: 100%;
+    position: relative;
   }
 
   nav ul li {
     padding: 0.2rem 0.5rem;
     border-bottom: 1px solid #fff;
+  }
+  nav ul li a {
+    width: 100%;
+    display: inline-block;
   }
 }

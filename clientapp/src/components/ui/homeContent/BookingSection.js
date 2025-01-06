@@ -188,11 +188,10 @@ export default function BookingSection() {
                 spaceBetween: 30,
               },
               1440: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 30,
               },
-            }}
-          >
+            }}>
             <SwiperSlide>
               <Link to="/manual">
                 <div className={styles.slide1}>
@@ -200,7 +199,12 @@ export default function BookingSection() {
                   <div id={styles.crousalContent}>
                     <h2>MANUAL</h2>
                     <p>
-                      Discover the thrill of hands-on control with our lessons.
+                      DiscDiscover the thrill of hands-on control with our
+                      manual driving lessons. From mastering the clutch to
+                      shifting gears seamlessly, our expert instructors will
+                      guide you through the art of manual driving, empowering
+                      you with the skills and confidence to navigate any road
+                      with finesse and precision.
                     </p>
                   </div>
                 </div>
@@ -214,8 +218,12 @@ export default function BookingSection() {
                   <div id={styles.crousalContent}>
                     <h2>AUTOMATIC</h2>
                     <p>
-                      Experience the ease and convenience of automatic driving
-                      lessons.
+                      Discover the thrill of hands-on control with our manual
+                      driving lessons. From mastering the clutch to shifting
+                      gears seamlessly, our expert instructors will guide you
+                      through the art of manual driving, empowering you with the
+                      skills and confidence to navigate any road with finesse
+                      and precision.
                     </p>
                   </div>
                 </div>
@@ -228,7 +236,12 @@ export default function BookingSection() {
                   <div id={styles.crousalContent}>
                     <h2>INTENSIVE</h2>
                     <p>
-                      Designed for those eager to learn quickly and efficiently
+                      Designed for those eager to learn quickly and efficiently,
+                      our immersive programmes offer focused instruction and
+                      hands-on experience to help you become a confident driver
+                      in no time. Get behind the wheel and fast-track your path
+                      to driving independence with our intensive driving
+                      courses.
                     </p>
                   </div>
                 </div>
@@ -240,7 +253,15 @@ export default function BookingSection() {
                   <div className={styles.opicity}></div>{" "}
                   <div id={styles.crousalContent}>
                     <h2>PASS PLUS</h2>
-                    <p>Designed specifically for newly qualified drivers</p>
+                    <p>
+                      Designed specifically for newly qualified drivers, Pass
+                      Plus is an advanced driving course that helps you maintain
+                      and improve the skills you've learned while gaining
+                      valuable experience on the road. Whether you're looking to
+                      build confidence in new driving conditions, or simply want
+                      to become a safer, more skilled driver, Pass Plus is the
+                      ideal next step.
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -251,7 +272,23 @@ export default function BookingSection() {
                   <div className={styles.opicity}></div>{" "}
                   <div id={styles.crousalContent}>
                     <h2>THEORY SUPPORT</h2>
-                    <p>Need support on passing your theory test</p>
+                    <p>
+                      Need support on passing your theory test? We offer 1-2-1
+                      in house, from the comfort of your house on Zoom, or if
+                      you want to touch up you driving skills, get ahead or have
+                      fun, we have a driving simulator in office!
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link to="/Driving-Instructor-Training">
+                <div className={styles.slide5}>
+                  <div className={styles.opicity}></div>{" "}
+                  <div id={styles.crousalContent}>
+                    <h2>Instructor Training </h2>
+                    <p>Need support on passing your Instructor Test </p>
                   </div>
                 </div>
               </Link>

@@ -201,22 +201,19 @@ const PassPlusTransmission = () => {
 
         <div className={styles.manualContent}>
           <section className={styles.manualPara}>
-            <p>
-              Discover the thrill of hands-on control with our manual driving
-              lessons.
-            </p>
+            <p>Designed specifically for newly qualified drivers</p>
             <p>
               {" "}
-              From mastering the clutch to shifting gears seamlessly, our expert
-              instructors will guide you through the art of manual driving,
-              empowering you with the skills and confidence to navigate any road
-              with finesse and precision.
+              Pass Plus is an advanced driving course that helps you maintain
+              and improve the skills you've learned while gaining valuable
+              experience on the road. Whether you're looking to build confidence
+              in new driving conditions, or simply want to become a safer, more
+              skilled driver, Pass Plus is the ideal next step.
             </p>
           </section>
         </div>
 
         <PassPlusCarousel />
-       
       </section>
     </div>
   );

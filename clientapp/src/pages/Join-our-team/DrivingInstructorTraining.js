@@ -26,6 +26,7 @@ import OurPartners10 from "../../assets/images/our partners/The-Tree-Council-Log
 import OurPartners11 from "../../assets/images/our partners/Sqa_logo.png";
 import OurPartners12 from "../../assets/images/our partners/THT_logo_1854x.png";
 import OurPartners13 from "../../assets/images/our partners/West_Midlands_Fire_Service_crest.svg.png";
+import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
 
 export default function DrivingInstructorTraining() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -119,7 +120,9 @@ export default function DrivingInstructorTraining() {
             <img src={award} alt="award" />
           </div>
           <div className={styles.infoTextHeading2}>
-            <h3>** Call us today. Full package prices starting from just £999! **</h3>
+            <h3>
+              ** Call us today. Full package prices starting from just £999! **
+            </h3>
           </div>
         </section>
 
@@ -131,7 +134,8 @@ export default function DrivingInstructorTraining() {
             </h4>
 
             <div className={styles.detailsContainer}>
-              <div className={styles.trainingDetails}>
+              <DrivingInstructorUI />
+              {/* <div className={styles.trainingDetails}>
                 <h3>Step 1 - Preparation</h3>
                 <hr />
                 <p>
@@ -206,7 +210,7 @@ export default function DrivingInstructorTraining() {
                   off! You can now proudly say you are a fully qualified driving
                   instructor (ADI).
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

@@ -19,18 +19,17 @@ function AddCategories(props) {
   });
 
   const onSubmit = async (data) => {
-
     const formData = new FormData();
-    formData.append("name", data.name); 
+    formData.append("name", data.name);
     formData.append("description", data.description);
     dispatch(createCategory(data, reset, props.toggleAddCategoryModal));
+    reset();
   };
 
   return (
     <Modal
       isOpen={props.showAddCategoryModal}
-      toggle={props.toggleAddCategoryModal}
-    >
+      toggle={props.toggleAddCategoryModal}>
       <ModalHeader toggle={props.toggleAddCategoryModal}>
         Create Category
       </ModalHeader>
@@ -81,8 +80,7 @@ function AddCategories(props) {
           <div className="form-group text-center mt-3">
             <button
               className="btn btn-primary account-btn btn-lg"
-              type="submit"
-            >
+              type="submit">
               Submit
             </button>
           </div>

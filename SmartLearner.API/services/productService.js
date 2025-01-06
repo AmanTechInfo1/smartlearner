@@ -1,26 +1,25 @@
-const Product = require('../models/productModel');
-const ProductCategory = require('../models/productCategoryModel');
+const Product = require("../models/productModel");
+const ProductCategory = require("../models/productCategoryModel");
 
 class ProductService {
   async createProductAsync(productData) {
     try {
       const product = await Product.create(productData);
-      console.log("edsiuhkjds",product)
+      console.log("edsiuhkjds", product);
       const totalCount = await Product.countDocuments();
       const resultObject = {
         message: "Product Added Successfully",
         statusCode: 201,
         success: true,
-        data: { product, totalCount }
+        data: { product, totalCount },
       };
       return resultObject;
     } catch (err) {
-
       const resultObject = {
         message: "Product add failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }
@@ -28,61 +27,67 @@ class ProductService {
 
   async getProductsAsync(pageNumber, pageSize, query) {
     try {
-      const skip = (pageNumber - 1) ;
+      const skip = pageNumber - 1;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
         filter.$or = [{ name: regex }, { price: regex }];
       }
 
-
       let aggr = [
         {
-          '$skip': skip
-        },  {
-          '$lookup': {
-            'from': 'areas', 
-            'localField': 'areaIncluded', 
-            'foreignField': '_id', 
-            'as': 'areaIncludedresult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$areaIncludedresult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'postcodes', 
-            'localField': 'postcode', 
-            'foreignField': '_id', 
-            'as': 'postcoderesult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$postcoderesult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'categories', 
-            'localField': 'category', 
-            'foreignField': '_id', 
-            'as': 'categoryresult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$categoryresult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'category': '$categoryresult.name', 
-            'postcode': '$postcoderesult.postcode', 
-            'areaIncluded': '$areaIncludedresult.name'
-          }
-        }
-      ]
+          $skip: skip,
+        },
+        {
+          $lookup: {
+            from: "areas",
+            localField: "areaIncluded",
+            foreignField: "_id",
+            as: "areaIncludedresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$areaIncludedresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "postcodes",
+            localField: "postcode",
+            foreignField: "_id",
+            as: "postcoderesult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$postcoderesult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "categories",
+            localField: "category",
+            foreignField: "_id",
+            as: "categoryresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$categoryresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            category: "$categoryresult.name",
+            postcode: "$postcoderesult.postcode",
+            areaIncluded: "$areaIncludedresult.name",
+          },
+        },
+      ];
       const totalCount = await Product.countDocuments(filter);
       const products = await Product.aggregate(aggr);
       const resultObject = {
@@ -93,7 +98,6 @@ class ProductService {
       };
       return resultObject;
     } catch (err) {
-
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,
@@ -112,64 +116,70 @@ class ProductService {
         filter.$or = [{ name: regex }, { price: regex }];
       }
 
-
       let aggr = [
         // {
         //   '$skip': skip
         // }, {
         //   '$limit': pageSize || 20
-        // }, 
+        // },
         {
-          '$lookup': {
-            'from': 'areas', 
-            'localField': 'areaIncluded', 
-            'foreignField': '_id', 
-            'as': 'areaIncludedresult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$areaIncludedresult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'postcodes', 
-            'localField': 'postcode', 
-            'foreignField': '_id', 
-            'as': 'postcoderesult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$postcoderesult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$lookup': {
-            'from': 'categories', 
-            'localField': 'category', 
-            'foreignField': '_id', 
-            'as': 'categoryresult'
-          }
-        }, {
-          '$unwind': {
-            'path': '$categoryresult', 
-            'preserveNullAndEmptyArrays': true
-          }
-        }, {
-          '$addFields': {
-            'category': '$categoryresult.name', 
-            'postcode': '$postcoderesult.postcode', 
-            'areaIncluded': '$areaIncludedresult.name'
-          }
-        }, {
-            '$group': {
-                '_id': '$category', 
-                'data': {
-                    '$push': '$$ROOT'
-                }
-            }
-        }
-      ]
+          $lookup: {
+            from: "areas",
+            localField: "areaIncluded",
+            foreignField: "_id",
+            as: "areaIncludedresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$areaIncludedresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "postcodes",
+            localField: "postcode",
+            foreignField: "_id",
+            as: "postcoderesult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$postcoderesult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "categories",
+            localField: "category",
+            foreignField: "_id",
+            as: "categoryresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$categoryresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            category: "$categoryresult.name",
+            postcode: "$postcoderesult.postcode",
+            areaIncluded: "$areaIncludedresult.name",
+          },
+        },
+        {
+          $group: {
+            _id: "$category",
+            data: {
+              $push: "$$ROOT",
+            },
+          },
+        },
+      ];
       const totalCount = await Product.countDocuments(filter);
       const products = await Product.aggregate(aggr);
 
@@ -201,16 +211,17 @@ class ProductService {
   }
 
   async updateProductAsync(productId, productData) {
-
-
     try {
-      const product = await Product.findByIdAndUpdate(productId, productData, { new: true });
+      console.log("hsdjkdhg222", productData);
+      const product = await Product.findByIdAndUpdate(productId, productData, {
+        new: true,
+      });
       const totalCount = await Product.countDocuments();
       const resultObject = {
         message: "Product Updated Successfully",
         statusCode: 201,
         success: true,
-        data: { product, totalCount }
+        data: { product, totalCount },
       };
       return resultObject;
     } catch (err) {
@@ -218,7 +229,7 @@ class ProductService {
         message: "Product Updation failed",
         statusCode: 400,
         success: false,
-        data: null
+        data: null,
       };
       return resultObject;
     }

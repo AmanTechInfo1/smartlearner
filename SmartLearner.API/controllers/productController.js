@@ -1,4 +1,4 @@
-const productService = require('../services/productService');
+const productService = require("../services/productService");
 
 class ProductController {
   async createProduct(req, res, next) {
@@ -13,7 +13,11 @@ class ProductController {
   async getProducts(req, res, next) {
     try {
       const { page, pageSize, search } = req.query;
-      const result = await productService.getProductsAsync(page, pageSize, search);
+      const result = await productService.getProductsAsync(
+        page,
+        pageSize,
+        search
+      );
       res.json(result);
     } catch (err) {
       next(err);
@@ -22,15 +26,17 @@ class ProductController {
   async getProductsCategory(req, res, next) {
     try {
       const { page, pageSize, search } = req.query;
-      const result = await productService.getProductsCategoryAsync(page, pageSize, search);
+      const result = await productService.getProductsCategoryAsync(
+        page,
+        pageSize,
+        search
+      );
       res.json(result);
     } catch (err) {
       next(err);
     }
   }
 
-
-  
   async getProductById(req, res, next) {
     try {
       const product = await productService.getProductByIdAsync(req.params.id);
@@ -42,7 +48,11 @@ class ProductController {
 
   async updateProduct(req, res, next) {
     try {
-      const product = await productService.updateProductAsync(req.params.id, req.body);
+      const product = await productService.updateProductAsync(
+        req.params.id,
+        req.body
+      );
+      console.log("279821ksjd", req.body);
       res.json(product);
     } catch (err) {
       next(err);

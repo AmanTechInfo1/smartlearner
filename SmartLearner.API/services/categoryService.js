@@ -4,6 +4,7 @@ class CategoryService {
   async createCategoryAsync(categoryData) {
     try {
       const category = await Category.create(categoryData);
+      console.log("shdjshdjkdhkjsa",categoryData)
       const totalCount = await Category.countDocuments();
       const resultObject = {
         message: "Added successfully",
