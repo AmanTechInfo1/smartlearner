@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0ff624fb.css",
-    "main.js": "/static/js/main.1e1c1cb9.js",
+    "main.css": "/static/css/main.5e595ffd.css",
+    "main.js": "/static/js/main.20a3ec46.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/manual2.jpg": "/static/media/manual2.6c12a29a05c41028cfa2.jpg",
@@ -32,6 +32,7 @@
     "static/media/automatic4.jpg": "/static/media/automatic4.5905db00d55f2568f589.jpg",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
+    "static/media/homebgbannerremover.png": "/static/media/homebgbannerremover.5f896c813b3fb2ec2142.png",
     "static/media/Cyclistssss.png": "/static/media/Cyclistssss.9be85f03098b9f468ce6.png",
     "static/media/equestrian.png": "/static/media/equestrian.217875f057a23dcc5f5e.png",
     "static/media/earthImg.png": "/static/media/earthImg.02b1b958b3e1ccd14f8a.png",
@@ -44,7 +45,6 @@
     "static/media/carDrivers.png": "/static/media/carDrivers.be8ff4073f91719ab3e4.png",
     "static/media/privcard.png": "/static/media/privcard.0cef7b9cc7b694a421b1.png",
     "static/media/bends.png": "/static/media/bends.02da93c19426d4eec12e.png",
-    "static/media/homebgbannerremover.png": "/static/media/homebgbannerremover.3b1cb8f409d065ed25fe.png",
     "static/media/cimg10.jpg": "/static/media/cimg10.936f2182fc473a907e3b.jpg",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
     "static/media/roadWorks.png": "/static/media/roadWorks.712794cddf2e856be4c3.png",
@@ -305,12 +305,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.0ff624fb.css.map": "/static/css/main.0ff624fb.css.map",
-    "main.1e1c1cb9.js.map": "/static/js/main.1e1c1cb9.js.map",
+    "main.5e595ffd.css.map": "/static/css/main.5e595ffd.css.map",
+    "main.20a3ec46.js.map": "/static/js/main.20a3ec46.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ff624fb.css",
-    "static/js/main.1e1c1cb9.js"
+    "static/css/main.5e595ffd.css",
+    "static/js/main.20a3ec46.js"
   ]
 }
