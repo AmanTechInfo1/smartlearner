@@ -127,10 +127,7 @@ const StaticTestimonial = () => {
               >
                 <div className={styles.quote}>“</div>
                 <p className={styles.text}>{testimonial.text}</p>
-                <div className={styles.author}>
-                  <h3 className={styles.name}>{testimonial.name}</h3>
-                  <p className={styles.position}>{testimonial.position}</p>
-                </div>
+                
               </SwiperSlide>
             ))}
 

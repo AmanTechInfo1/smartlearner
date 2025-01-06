@@ -75,6 +75,8 @@ function IntensiveCorousel() {
         <div className={styles.carousel}>
           {["Intensive"].map((categoryName) =>
             filteredData(categoryName).map((item) => (
+            <>
+              {item.data.map((info, index) => (
               <div
               style={{background: "linear-gradient(  135deg,rgb(12, 141, 0),rgb(0, 185, 123))"}}
                 key={item.id}
@@ -85,7 +87,7 @@ function IntensiveCorousel() {
                 <div className={styles.carouselColumnHeading}>
                   <img
                     id={styles.CorouselImgBanner}
-                    src={LplateImg}
+                    src={LplateImg} 
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
@@ -113,7 +115,7 @@ function IntensiveCorousel() {
                 </div>
                 {expandedCategory === item._id ? (
                   <ul type="none">
-                    {item.data.map((info, index) => (
+                    
                       <div key={index}>
                         <li className={styles.expandedColData}>
                           <span
@@ -192,7 +194,7 @@ function IntensiveCorousel() {
                         </li>
                         <section  style={{backgroundColor: "#b7ffafbc"}} className={styles.corouselDescription} >{info.description}</section> 
                       </div>
-                    ))}
+                    
                   </ul>
                 ) : (
                   <div
@@ -207,6 +209,8 @@ function IntensiveCorousel() {
                   </div>
                 )}
               </div>
+            ))}
+            </>
             ))
           )}
         </div>

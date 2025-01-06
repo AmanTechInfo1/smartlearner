@@ -168,7 +168,12 @@ export default function BookingSection() {
             modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
             className="mySwiper"
             onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
-            style={{ padding: "2rem 1rem" }}
+            style={{
+              padding: "2rem 1rem",
+              maxWidth: "1640px",
+              margin: "0px auto",
+              width: "100%",
+            }}
             breakpoints={{
               320: {
                 slidesPerView: 1, // 1 slide at a time for small screens
@@ -183,73 +188,72 @@ export default function BookingSection() {
                 spaceBetween: 30,
               },
               1440: {
-                slidesPerView: 4,
+                slidesPerView: 3,
                 spaceBetween: 30,
               },
             }}
           >
             <SwiperSlide>
-            <Link to="/manual" >
-              <div className={styles.slide1}>
-                <div className={styles.opicity}></div>
-                <div id={styles.crousalContent}>
-                  <h2>MANUAL</h2>
-                  <p>
-                    Discover the thrill of hands-on control with our lessons.
-                  </p>
+              <Link to="/manual">
+                <div className={styles.slide1}>
+                  <div className={styles.opicity}></div>
+                  <div id={styles.crousalContent}>
+                    <h2>MANUAL</h2>
+                    <p>
+                      Discover the thrill of hands-on control with our lessons.
+                    </p>
+                  </div>
                 </div>
-              </div>
               </Link>
             </SwiperSlide>
 
             <SwiperSlide>
-            <Link to="/automatic-transmisson">
-              <div className={styles.slide2}>
-                <div className={styles.opicity}></div>{" "}
-                <div id={styles.crousalContent}>
-                  <h2>AUTOMATIC</h2>
-                  <p>
-                    Experience the ease and convenience of automatic driving
-                    lessons.
-                  </p>
+              <Link to="/automatic-transmisson">
+                <div className={styles.slide2}>
+                  <div className={styles.opicity}></div>{" "}
+                  <div id={styles.crousalContent}>
+                    <h2>AUTOMATIC</h2>
+                    <p>
+                      Experience the ease and convenience of automatic driving
+                      lessons.
+                    </p>
+                  </div>
                 </div>
-              </div>
               </Link>
             </SwiperSlide>
             <SwiperSlide>
-            <Link to="/intensive">
-              <div className={styles.slide3}>
-                <div className={styles.opicity}></div>{" "}
-                <div id={styles.crousalContent}>
-                  <h2>INTENSIVE</h2>
-                  <p>
-                    Designed for those eager to learn quickly and efficiently
-                  </p>
+              <Link to="/intensive">
+                <div className={styles.slide3}>
+                  <div className={styles.opicity}></div>{" "}
+                  <div id={styles.crousalContent}>
+                    <h2>INTENSIVE</h2>
+                    <p>
+                      Designed for those eager to learn quickly and efficiently
+                    </p>
+                  </div>
                 </div>
-              </div>
               </Link>
             </SwiperSlide>
-            <SwiperSlide> 
+            <SwiperSlide>
               <Link to="/pass-plus">
-
-              <div className={styles.slide4}>
-                <div className={styles.opicity}></div>{" "}
-                <div id={styles.crousalContent}>
-                  <h2>PASS PLUS</h2>
-                  <p>Designed specifically for newly qualified drivers</p>
+                <div className={styles.slide4}>
+                  <div className={styles.opicity}></div>{" "}
+                  <div id={styles.crousalContent}>
+                    <h2>PASS PLUS</h2>
+                    <p>Designed specifically for newly qualified drivers</p>
+                  </div>
                 </div>
-              </div>
               </Link>
             </SwiperSlide>
             <SwiperSlide>
               <Link to="/Theory-Support">
-              <div className={styles.slide5}>
-                <div className={styles.opicity}></div>{" "}
-                <div id={styles.crousalContent}>
-                  <h2>THEORY SUPPORT</h2>
-                  <p>Need support on passing your theory test</p>
+                <div className={styles.slide5}>
+                  <div className={styles.opicity}></div>{" "}
+                  <div id={styles.crousalContent}>
+                    <h2>THEORY SUPPORT</h2>
+                    <p>Need support on passing your theory test</p>
+                  </div>
                 </div>
-              </div>
               </Link>
             </SwiperSlide>
             {/* Add more slides as needed */}
