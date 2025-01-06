@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0e7d2634.css",
-    "main.js": "/static/js/main.032c3f62.js",
+    "main.css": "/static/css/main.0ff624fb.css",
+    "main.js": "/static/js/main.1e1c1cb9.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/manual2.jpg": "/static/media/manual2.6c12a29a05c41028cfa2.jpg",
@@ -13,7 +13,6 @@
     "static/media/manual4.jpg": "/static/media/manual4.40cc55c392c7749d2437.jpg",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
     "static/media/passplusbanner.png": "/static/media/passplusbanner.10c2812af0a5f4ebc148.png",
-    "static/media/homebgbannerremover.png": "/static/media/homebgbannerremover.bfdf1dae78f29914b572.png",
     "static/media/hazzardClipsBanner.png": "/static/media/hazzardClipsBanner.17e1b98de0f3f8dda1d7.png",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
@@ -45,6 +44,7 @@
     "static/media/carDrivers.png": "/static/media/carDrivers.be8ff4073f91719ab3e4.png",
     "static/media/privcard.png": "/static/media/privcard.0cef7b9cc7b694a421b1.png",
     "static/media/bends.png": "/static/media/bends.02da93c19426d4eec12e.png",
+    "static/media/homebgbannerremover.png": "/static/media/homebgbannerremover.3b1cb8f409d065ed25fe.png",
     "static/media/cimg10.jpg": "/static/media/cimg10.936f2182fc473a907e3b.jpg",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
     "static/media/roadWorks.png": "/static/media/roadWorks.712794cddf2e856be4c3.png",
@@ -305,12 +305,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.0e7d2634.css.map": "/static/css/main.0e7d2634.css.map",
-    "main.032c3f62.js.map": "/static/js/main.032c3f62.js.map",
+    "main.0ff624fb.css.map": "/static/css/main.0ff624fb.css.map",
+    "main.1e1c1cb9.js.map": "/static/js/main.1e1c1cb9.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e7d2634.css",
-    "static/js/main.032c3f62.js"
+    "static/css/main.0ff624fb.css",
+    "static/js/main.1e1c1cb9.js"
   ]
 }
