@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
 import redStarImg from "../../assets/images/redStar.png";
 import blueStarImg from "../../assets/images/blueStarImg.png";
 import yellowStarImg from "../../assets/images/yellowStar.png";
@@ -137,13 +137,41 @@ function DrivingInstructorUI() {
         return "gold";
     }
   };
+  const getBgColor = (categoryName) => {
+    switch (categoryName) {
+      case "instructor training part one":
+        return "linear-gradient(  135deg, #6f00ab, #e3aaff)";
+      case "instructor training part two":
+        return "linear-gradient(  135deg, #010269, #008efa)";
+      case "instructor training part three":
+        return "linear-gradient(135deg, rgb(155 73 0), #ffae88)";
+
+      default:
+        return "gold";
+    }
+  };
+  const getdescBgColor = (categoryName) => {
+    switch (categoryName) {
+      case "instructor training part one":
+        return "#a05dc1";
+      case "instructor training part two":
+        return "#4b99f5";
+      case "instructor training part three":
+        return "#d1945fbc";
+
+      default:
+        return "gold";
+    }
+  };
 
   return (
     <>
       <section
         className={styles.carouselContainer}
         style={{ maxWidth: "1300px", margin: "0px auto" }}>
-        <div className={styles.carousel} style={{ justifyContent: "center" }}>
+        <div
+          className={styles.carousel}
+          style={{ justifyContent: "flex-start" }}>
           {[
             "instructor training part one",
             "instructor training part two",
@@ -151,6 +179,9 @@ function DrivingInstructorUI() {
           ].map((categoryName) =>
             filteredData(categoryName).map((item) => (
               <div
+                style={{
+                  background: getBgColor(categoryName),
+                }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
                   expandedCategory === item._id ? styles.expanded : ""
@@ -263,8 +294,12 @@ function DrivingInstructorUI() {
                           </div>
                         </li>
                         <section
-                          style={{ backgroundColor: "#ffafafbc" }}
-                          className={styles.corouselDescription}sadxazdc>
+                          style={{
+                            backgroundColor: getdescBgColor(categoryName),
+                            border: "1px solid #a9a9a9",
+                          }}
+                          className={styles.corouselDescription}
+                          sadxazdc>
                           {info.description}
                         </section>
                       </div>

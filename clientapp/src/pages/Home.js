@@ -36,7 +36,7 @@ import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.j
 import CallBackForm from "../components/forms/CallBackForm";
 import BookingSection from "../components/ui/homeContent/BookingSection";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
-import logoImage from "../assets/images/1200px-Lplate.svg.png"
+import logoImage from "../assets/images/1200px-Lplate.svg.png";
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -118,8 +118,7 @@ export default function Home() {
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}
-          >
+            }}>
             <ImagesCarousel />
           </div>
           <div className={styles.spiralImgContainer}>
@@ -167,9 +166,14 @@ export default function Home() {
                       <img src={hallOfFame1} alt="hallOfFame1" />
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
-                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                      <img
+                        src={logoImage}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
                     </div>
                   </div>
+                  <p>REGIONAL, DRIVING SCHOOL OF THE YEAR</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -178,9 +182,14 @@ export default function Home() {
                       <img src={hallOfFame2} alt="hallOfFame2" />
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
-                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                      <img
+                        src={logoImage}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
                     </div>
                   </div>
+                  <p>COMMUNITY CHAMPION OF THE YEAR</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -189,9 +198,14 @@ export default function Home() {
                       <img src={hallOfFame3} alt="hallOfFame3" />
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
-                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                      <img
+                        src={logoImage}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
                     </div>
                   </div>
+                  <p>NATIONAL INSTRUCTOR AWARDS</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -200,9 +214,14 @@ export default function Home() {
                       <img src={hallOfFame4} alt="hallOfFame4" />
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
-                      <img src={logoImage} alt="Logo" className={styles.logotrophyFrame} />
+                      <img
+                        src={logoImage}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
                     </div>
                   </div>
+                  <p>GREEN DRIVING SCHOOL OF THE YEAR</p>
                 </div>
               </div>
             </div>

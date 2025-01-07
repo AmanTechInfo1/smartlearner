@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
 import redStarImg from "../../assets/images/redStar.png";
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
@@ -11,6 +11,7 @@ import {
   getIncreaseCart,
 } from "../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
+import { Toaster } from "react-hot-toast";
 
 function ManualCarousel() {
   const [expandedCategory, setExpandedCategory] = useState("");
@@ -67,9 +68,9 @@ function ManualCarousel() {
   const getColorForCategory = (categoryName) => {
     switch (categoryName) {
       case "Offers manual":
-        return "#ff0000";
+        return "#810000";
       case "manual":
-        return "#ff0000";
+        return "#810000";
       default:
         return "gold";
     }
@@ -81,17 +82,19 @@ function ManualCarousel() {
 
   return (
     <section className={styles.carouselContainer}>
+      <div><Toaster/></div>
       <div className={styles.carousel}>
         {/* Rendering Offers Manual */}
         {offerCategories.map((item) => (
           <div
-          style={{ background: "linear-gradient(  135deg, #a600ff, #fd00ca)"}}
+            style={{
+              background: "linear-gradient(  135deg, #6f00ab, #e3aaff)",
+            }}
             key={item.id}
             className={`${styles.carouselColumn} ${
               expandedCategory === item._id ? styles.expanded : ""
             }`}
-            onClick={() => handleExpandCategory(item._id)}
-          >
+            onClick={() => handleExpandCategory(item._id)}>
             {/* Header Section */}
             <div className={styles.carouselColumnHeading}>
               <img
@@ -135,8 +138,7 @@ function ManualCarousel() {
                           width: "100%",
                           borderRadius: "40px 0px 0px 40px",
                           padding: "8px",
-                        }}
-                      >
+                        }}>
                         <p style={{ marginBottom: "0px" }}>{info.name}</p>
                         <p style={{ marginBottom: "0px", width: "43px" }}>
                           £ {info.price}
@@ -158,8 +160,7 @@ function ManualCarousel() {
                             }}
                             style={{
                               backgroundColor: getColorForCategory(item._id),
-                            }}
-                          >
+                            }}>
                             Book
                           </button>
                         ) : (
@@ -173,8 +174,7 @@ function ManualCarousel() {
                                     1
                                   );
                                 }}
-                                className={styles.decreaseButton}
-                              >
+                                className={styles.decreaseButton}>
                                 -
                               </button>
                               <span>
@@ -192,8 +192,7 @@ function ManualCarousel() {
                                     1
                                   );
                                 }}
-                                className={styles.increaseButton}
-                              >
+                                className={styles.increaseButton}>
                                 +
                               </button>
                             </div>
@@ -201,7 +200,14 @@ function ManualCarousel() {
                         )}
                       </div>
                     </li>
-                      <section style={{backgroundColor: "#ffafafbc"}} className={styles.corouselDescription}>{info.description}</section> 
+                    <section
+                      style={{
+                        backgroundColor: "#a05dc1",
+                        border: "1px solid #a9a9a9",
+                      }}
+                      className={styles.corouselDescription}>
+                      {info.description}
+                    </section>
                   </div>
                 ))}
               </ul>
@@ -210,8 +216,7 @@ function ManualCarousel() {
               <div
                 className={`${styles.carouselStarImgContainer} ${
                   expandedCategory === item._id ? styles.compress : ""
-                }`}
-              >
+                }`}>
                 {[...Array(5)].map((_, idx) => (
                   <img key={idx} src={redStarImg} alt="starImg" />
                 ))}
@@ -229,12 +234,13 @@ function ManualCarousel() {
           return (
             <div
               key={item.id}
-              style={{ background: "linear-gradient(  135deg, #a600ff, #fd00ca)"}}
+              style={{
+                background: "linear-gradient(  135deg, #6f00ab, #e3aaff)",
+              }}
               className={`${styles.carouselColumn} ${
                 expandedCategory === item._id ? styles.expanded : ""
               }`}
-              onClick={() => handleExpandCategory(item._id)}
-            >
+              onClick={() => handleExpandCategory(item._id)}>
               {/* Header Section for Above £100 */}
               <div className={styles.carouselColumnHeading}>
                 <img
@@ -278,8 +284,7 @@ function ManualCarousel() {
                             width: "100%",
                             borderRadius: "40px 0px 0px 40px",
                             padding: "8px",
-                          }}
-                        >
+                          }}>
                           <p style={{ marginBottom: "0px" }}>{info.name}</p>
                           <p style={{ marginBottom: "0px", width: "43px" }}>
                             £ {info.price}
@@ -302,8 +307,7 @@ function ManualCarousel() {
                               }}
                               style={{
                                 backgroundColor: getColorForCategory(item._id),
-                              }}
-                            >
+                              }}>
                               Book
                             </button>
                           ) : (
@@ -317,8 +321,7 @@ function ManualCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.decreaseButton}
-                                >
+                                  className={styles.decreaseButton}>
                                   -
                                 </button>
                                 <span>
@@ -336,8 +339,7 @@ function ManualCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.increaseButton}
-                                >
+                                  className={styles.increaseButton}>
                                   +
                                 </button>
                               </div>
@@ -345,7 +347,14 @@ function ManualCarousel() {
                           )}
                         </div>
                       </li>
-                        <section  style={{backgroundColor: "#ffafafbc"}} className={styles.corouselDescription}>{info.description}</section> 
+                      <section
+                        style={{
+                          backgroundColor: "#a05dc1",
+                          border: "1px white #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        {info.description}
+                      </section>
                     </div>
                   ))}
                 </ul>
@@ -354,8 +363,7 @@ function ManualCarousel() {
                 <div
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
-                  }`}
-                >
+                  }`}>
                   <img src={redStarImg} alt="starImg" />
                   <img src={redStarImg} alt="starImg" />
                   <img src={redStarImg} alt="starImg" />
@@ -376,12 +384,13 @@ function ManualCarousel() {
           return (
             <div
               key={item.id}
-              style={{ background: "linear-gradient(  135deg, #a600ff, #fd00ca)"}}
+              style={{
+                background: "linear-gradient(  135deg, #6f00ab, #e3aaff)",
+              }}
               className={`${styles.carouselColumn} ${
                 expandedCategory === item._id ? styles.expanded : ""
               }`}
-              onClick={() => handleExpandCategory(item._id)}
-            >
+              onClick={() => handleExpandCategory(item._id)}>
               {/* Header Section for Below £100 */}
               <div className={styles.carouselColumnHeading}>
                 <img
@@ -425,8 +434,7 @@ function ManualCarousel() {
                             width: "100%",
                             borderRadius: "40px 0px 0px 40px",
                             padding: "8px",
-                          }}
-                        >
+                          }}>
                           <p style={{ marginBottom: "0px" }}>{info.name}</p>
                           <p style={{ marginBottom: "0px", width: "43px" }}>
                             £ {info.price}
@@ -449,8 +457,7 @@ function ManualCarousel() {
                               }}
                               style={{
                                 backgroundColor: getColorForCategory(item._id),
-                              }}
-                            >
+                              }}>
                               Book
                             </button>
                           ) : (
@@ -464,8 +471,7 @@ function ManualCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.decreaseButton}
-                                >
+                                  className={styles.decreaseButton}>
                                   -
                                 </button>
                                 <span>
@@ -483,8 +489,7 @@ function ManualCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.increaseButton}
-                                >
+                                  className={styles.increaseButton}>
                                   +
                                 </button>
                               </div>
@@ -492,7 +497,11 @@ function ManualCarousel() {
                           )}
                         </div>
                       </li>
-                        <section  style={{backgroundColor: "#ffafafbc"}} className={styles.corouselDescription} >{info.description}</section> 
+                      <section
+                        style={{ backgroundColor: "#a05dc1" }}
+                        className={styles.corouselDescription}>
+                        {info.description}
+                      </section>
                     </div>
                   ))}
                 </ul>
@@ -501,8 +510,7 @@ function ManualCarousel() {
                 <div
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
-                  }`}
-                >
+                  }`}>
                   <img src={redStarImg} alt="starImg" />
                   <img src={redStarImg} alt="starImg" />
                   <img src={redStarImg} alt="starImg" />

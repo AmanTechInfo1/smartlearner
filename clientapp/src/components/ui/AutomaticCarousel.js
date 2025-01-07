@@ -81,13 +81,14 @@ function AutomaticCarousel() {
         {/* Offers Automatic Carousel */}
         {filteredData("Offers Automatic").map((item) => (
           <div
-          style={{background:'linear-gradient(  135deg, #010269, #008efa)'}}
+            style={{
+              background: "linear-gradient(  135deg, #010269, #008efa)",
+            }}
             key={item.id}
             className={`${styles.carouselColumn} ${
               expandedCategory === item._id ? styles.expanded : ""
             }`}
-            onClick={() => handleExpandCategory(item._id)}
-          >
+            onClick={() => handleExpandCategory(item._id)}>
             {/* Header Section */}
             <div className={styles.carouselColumnHeading}>
               <img
@@ -99,8 +100,7 @@ function AutomaticCarousel() {
                 <h2
                   style={{
                     color: getColorForCategory(item._id), // Dynamic color for heading
-                  }}
-                >
+                  }}>
                   {expandedCategory === item._id
                     ? "Specail Offers".toUpperCase()
                     : "Offers".toUpperCase()}
@@ -135,8 +135,7 @@ function AutomaticCarousel() {
                           width: "100%",
                           borderRadius: "40px 0px 0px 40px",
                           padding: "8px",
-                        }}
-                      >
+                        }}>
                         <p style={{ marginBottom: "0px" }}>{info.name}</p>
                         <p style={{ marginBottom: "0px", width: "40px" }}>
                           £ {info.price}
@@ -156,8 +155,7 @@ function AutomaticCarousel() {
                             }}
                             style={{
                               backgroundColor: getColorForCategory(item._id), // Dynamic color for button
-                            }}
-                          >
+                            }}>
                             Book
                           </button>
                         ) : (
@@ -171,8 +169,7 @@ function AutomaticCarousel() {
                                     1
                                   );
                                 }}
-                                className={styles.decreaseButton}
-                              >
+                                className={styles.decreaseButton}>
                                 -
                               </button>
                               <span>
@@ -190,8 +187,7 @@ function AutomaticCarousel() {
                                     1
                                   );
                                 }}
-                                className={styles.increaseButton}
-                              >
+                                className={styles.increaseButton}>
                                 +
                               </button>
                             </div>
@@ -200,7 +196,9 @@ function AutomaticCarousel() {
                       </div>
                     </li>
 
-                    <section className={styles.corouselDescription}>
+                    <section
+                      style={{ backgroundColor: "#4b99f5" }}
+                      className={styles.corouselDescription}>
                       <p>{info.description}</p>
                     </section>
                   </div>
@@ -211,8 +209,7 @@ function AutomaticCarousel() {
               <div
                 className={`${styles.carouselStarImgContainer} ${
                   expandedCategory === item._id ? styles.compress : ""
-                }`}
-              >
+                }`}>
                 {[...Array(5)].map((_, idx) => (
                   <img key={idx} src={blueStarImg} alt="starImg" />
                 ))}
@@ -229,13 +226,14 @@ function AutomaticCarousel() {
 
           return (
             <div
-            style={{background:'linear-gradient(  135deg, #010269, #008efa)'}}
+              style={{
+                background: "linear-gradient(  135deg, #010269, #008efa)",
+              }}
               key={item.id}
               className={`${styles.carouselColumn} ${
                 expandedCategory === item._id ? styles.expanded : ""
               }`}
-              onClick={() => handleExpandCategory(item._id)}
-            >
+              onClick={() => handleExpandCategory(item._id)}>
               {/* Header Section for Above £100 */}
               <div className={styles.carouselColumnHeading}>
                 <img
@@ -247,8 +245,7 @@ function AutomaticCarousel() {
                   <h2
                     style={{
                       color: getColorForCategory(item._id), // Dynamic color for heading
-                    }}
-                  >
+                    }}>
                     {expandedCategory === item._id
                       ? "package deals".toUpperCase()
                       : "package deals".toUpperCase()}
@@ -283,8 +280,7 @@ function AutomaticCarousel() {
                             width: "100%",
                             borderRadius: "40px 0px 0px 40px",
                             padding: "8px",
-                          }}
-                        >
+                          }}>
                           <p style={{ marginBottom: "0px" }}>{info.name}</p>
                           <p style={{ marginBottom: "0px", width: "43px" }}>
                             £ {info.price}
@@ -307,8 +303,7 @@ function AutomaticCarousel() {
                               }}
                               style={{
                                 backgroundColor: getColorForCategory(item._id),
-                              }}
-                            >
+                              }}>
                               Book
                             </button>
                           ) : (
@@ -322,8 +317,7 @@ function AutomaticCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.decreaseButton}
-                                >
+                                  className={styles.decreaseButton}>
                                   -
                                 </button>
                                 <span>
@@ -341,8 +335,7 @@ function AutomaticCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.increaseButton}
-                                >
+                                  className={styles.increaseButton}>
                                   +
                                 </button>
                               </div>
@@ -350,7 +343,9 @@ function AutomaticCarousel() {
                           )}
                         </div>
                       </li>
-                      <section className={styles.corouselDescription}>
+                      <section
+                        style={{ backgroundColor: "#4b99f5" }}
+                        className={styles.corouselDescription}>
                         {info.description}
                       </section>
                     </div>
@@ -362,8 +357,7 @@ function AutomaticCarousel() {
                 <div
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
-                  }`}
-                >
+                  }`}>
                   <img src={blueStarImg} alt="starImg" />
                   <img src={blueStarImg} alt="starImg" />
                   <img src={blueStarImg} alt="starImg" />
@@ -383,13 +377,14 @@ function AutomaticCarousel() {
 
           return (
             <div
-            style={{background:'linear-gradient(  135deg, #010269, #008efa)'}}
+              style={{
+                background: "linear-gradient(  135deg, #010269, #008efa)",
+              }}
               key={item.id}
               className={`${styles.carouselColumn} ${
                 expandedCategory === item._id ? styles.expanded : ""
               }`}
-              onClick={() => handleExpandCategory(item._id)}
-            >
+              onClick={() => handleExpandCategory(item._id)}>
               {/* Header Section for Below £100 */}
               <div className={styles.carouselColumnHeading}>
                 <img
@@ -401,8 +396,7 @@ function AutomaticCarousel() {
                   <h2
                     style={{
                       color: getColorForCategory(item._id), // Dynamic color for heading
-                    }}
-                  >
+                    }}>
                     {expandedCategory === item._id
                       ? "single lessons".toUpperCase()
                       : "single lessons".toUpperCase()}
@@ -437,8 +431,7 @@ function AutomaticCarousel() {
                             width: "100%",
                             borderRadius: "40px 0px 0px 40px",
                             padding: "8px",
-                          }}
-                        >
+                          }}>
                           <p style={{ marginBottom: "0px" }}>{info.name}</p>
                           <p style={{ marginBottom: "0px", width: "43px" }}>
                             £ {info.price}
@@ -461,8 +454,7 @@ function AutomaticCarousel() {
                               }}
                               style={{
                                 backgroundColor: getColorForCategory(item._id),
-                              }}
-                            >
+                              }}>
                               Book
                             </button>
                           ) : (
@@ -476,8 +468,7 @@ function AutomaticCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.decreaseButton}
-                                >
+                                  className={styles.decreaseButton}>
                                   -
                                 </button>
                                 <span>
@@ -495,8 +486,7 @@ function AutomaticCarousel() {
                                       1
                                     );
                                   }}
-                                  className={styles.increaseButton}
-                                >
+                                  className={styles.increaseButton}>
                                   +
                                 </button>
                               </div>
@@ -504,7 +494,9 @@ function AutomaticCarousel() {
                           )}
                         </div>
                       </li>
-                      <section className={styles.corouselDescription}>
+                      <section
+                        style={{ backgroundColor: "#4b99f5" }}
+                        className={styles.corouselDescription}>
                         {info.description}
                       </section>
                     </div>
@@ -515,8 +507,7 @@ function AutomaticCarousel() {
                 <div
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
-                  }`}
-                >
+                  }`}>
                   <img src={blueStarImg} alt="starImg" />
                   <img src={blueStarImg} alt="starImg" />
                   <img src={blueStarImg} alt="starImg" />

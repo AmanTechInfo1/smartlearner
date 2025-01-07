@@ -5,6 +5,8 @@ import { enquiryData } from "../../redux/features/enquirySlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { enquiryFormSchema } from "../../schemas/master";
 import styles from "../../pages/SpecialityTraining/ExtendedTest.module.css";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 export default function EnquiryForm() {
   const dispatch = useDispatch();
@@ -32,24 +34,31 @@ export default function EnquiryForm() {
         <hr />
         <section className={styles.innerFormSection}>
           <div className={styles.enquiryForm}>
-            <h4>Enquiry Form</h4>
+            <div className="callBackform-Header">
+              {" "}
+              <h4>Enquiry Form</h4>
+              <iframe
+                src="https://lottie.host/embed/2372fd6d-cd24-49b1-8410-2dfa64f543b9/Io6mg1rHz4.lottie"
+                width="100"
+                height="100"></iframe>
+            </div>
+
             <form onSubmit={handleSubmit(handleEnquiryForm)}>
               <div className={styles.formGroup}>
-                <label htmlFor="fullName">
-                  Full Name<span>*</span>
-                </label>
-
                 <Controller
                   name="name"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <input
-                      id="fullName"
-                      type="text"
-                      value={value}
-                      onChange={onChange}
-                      placeholder="Enter Full Name"
-                    />
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Enter Full Name">
+                      <Form.Control
+                        type="text"
+                        value={value}
+                        onChange={onChange}
+                        placeholder="Enter Full Name"
+                      />
+                    </FloatingLabel>
                   )}
                   defaultValue={""}
                 />
@@ -58,21 +67,21 @@ export default function EnquiryForm() {
                 )}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="email">
-                  Email Address<span>*</span>
-                </label>
-
                 <Controller
                   name="email"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <input
-                      id="email"
-                      type="email"
-                      value={value}
-                      onChange={onChange}
-                      placeholder="Email Address"
-                    />
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Email Address">
+                      <Form.Control
+                        id="email"
+                        type="email"
+                        value={value}
+                        onChange={onChange}
+                        placeholder="Email Address"
+                      />
+                    </FloatingLabel>
                   )}
                   defaultValue={""}
                 />
@@ -81,21 +90,23 @@ export default function EnquiryForm() {
                 )}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="contactNumber">
-                  Contact Number<span>*</span>
-                </label>
+               
 
                 <Controller
                   name="phoneNumber"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <input
-                      id="contactNumber"
-                      type="tel"
-                      value={value}
-                      onChange={onChange}
-                      placeholder="Mobile Number"
-                    />
+                    <FloatingLabel
+                      controlId="floatingInput"
+                      label="Mobile Number">
+                      <Form.Control
+                        id="contactNumber"
+                        type="tel"
+                        value={value}
+                        onChange={onChange}
+                        placeholder="Mobile Number"
+                      />
+                    </FloatingLabel>
                   )}
                   defaultValue={""}
                 />
@@ -104,22 +115,20 @@ export default function EnquiryForm() {
                 )}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="additionalInfo">
-                  Additional Information<span>*</span>
-                </label>
-
                 <Controller
                   name="message"
                   control={control}
                   render={({ field: { value, onChange } }) => (
-                    <textarea
-                      id={styles.additionalInfo}
-                      type="message"
-                      value={value}
-                      onChange={onChange}
-                      placeholder="Message"
-                      required
-                    />
+                    <FloatingLabel controlId="floatingInput" label="Message">
+                      <Form.Control
+                        as="textarea"
+                        value={value}
+                        onChange={onChange}
+                        placeholder="Message"
+                        style={{ height: "100px" }}
+                        required
+                      />
+                    </FloatingLabel>
                   )}
                   defaultValue={""}
                 />

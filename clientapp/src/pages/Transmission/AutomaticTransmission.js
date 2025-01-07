@@ -135,15 +135,15 @@ const AutomaticTransmission = () => {
         <div className={styles.manualContent}>
           <section className={styles.manualPara}>
             <p>
-              Discover the thrill of hands-on control with our manual driving
-              lessons.
+              Experience the ease and convenience of automatic driving with our
+              comprehensive lessons.
             </p>
             <p>
               {" "}
-              From mastering the clutch to shifting gears seamlessly, our expert
-              instructors will guide you through the art of manual driving,
-              empowering you with the skills and confidence to navigate any road
-              with finesse and precision.
+              Our skilled instructors will help you navigate the road smoothly,
+              focusing on essential techniques and safe driving practices.
+              Whether you’re a beginner or looking to refine your skills, we’ll
+              empower you to drive confidently in any situation.
             </p>
           </section>
         </div>

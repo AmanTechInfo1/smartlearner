@@ -91,7 +91,9 @@ ul {
 
   border-radius: 15px;
 }
-
+.formGroup {
+  margin: 1rem 0px;
+}
 .callBackform #btn {
   font-family: "Montserrat", sans-serif;
   background: red;
@@ -1039,4 +1041,16 @@ ul {
   background-color: rgba(255, 255, 255, 0.674);
   padding: 2rem;
   border-radius: 50%;
+}
+
+.go3958317564 {
+  font-size: 21px;
+  font-weight: 500;
+  max-width: 500px;
+  width: 100%;
+  padding: 0.5rem;
+  z-index: 300000000000;
+}
+.go2344853693 {
+  font-size: 2rem;
 }

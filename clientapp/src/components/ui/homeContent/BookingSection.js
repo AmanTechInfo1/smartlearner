@@ -218,12 +218,12 @@ export default function BookingSection() {
                   <div id={styles.crousalContent}>
                     <h2>AUTOMATIC</h2>
                     <p>
-                      Discover the thrill of hands-on control with our manual
-                      driving lessons. From mastering the clutch to shifting
-                      gears seamlessly, our expert instructors will guide you
-                      through the art of manual driving, empowering you with the
-                      skills and confidence to navigate any road with finesse
-                      and precision.
+                      Experience the ease and convenience of automatic driving
+                      with our comprehensive lessons. Our skilled instructors
+                      will help you navigate the road smoothly, focusing on
+                      essential techniques and safe driving practices. Whether
+                      you’re a beginner or looking to refine your skills, we’ll
+                      empower you to drive confidently in any situation.
                     </p>
                   </div>
                 </div>

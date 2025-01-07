@@ -54,25 +54,25 @@ const StaticTestimonial = () => {
     {
       id: 2,
       name: "Jane Smith",
-      position: "London",
+      position: "Warwick",
       text: "After failing my driving test a couple of times, I was really starting to lose confidence. But then I found Smartlearner, and everything changed. Definitely recommended!",
     },
     {
       id: 3,
       name: "Michael Brown",
-      position: "Menchester",
+      position: "Leamington",
       text: "As someone who had driven before but had been away from the roads for a few years, I needed a refresher course to get my confidence back.",
     },
     {
       id: 4,
       name: "Sarah M",
-      position: "London",
+      position: "Nuneaton",
       text: "Choosing smartlearner was the best decision I made in my journey to becoming a confident driver. Highly recommend this driving school to anyone looking to learn safely and efficiently!",
     },
     {
       id: 5,
       name: "James T.",
-      position: "Coventry",
+      position: "Rugby",
       text: "I can't thank Smartlearner enough for the amazing experience! From my first lesson to passing my driving test. Definitely recommend to those who's looking learn to drive!",
     },
   ];

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/yellowStar.png"; // Assuming yellow star
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
+import starImg from "../../assets/images/redStar.png"; // Assuming yellow star
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,6 @@ function PassPlusCarousel() {
   useEffect(() => {
     const offersManualCategory = data.find((item) => item._id === "Pass Plus");
     console.log("aaadhaisudhsaius", offersManualCategory);
-   
 
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
@@ -63,7 +62,7 @@ function PassPlusCarousel() {
 
   // Function to determine the button color based on the star color (yellow in this case)
   const getButtonColor = () => {
-    return "#FFD700"; // Yellow color (matching the yellow star)
+    return "#7e0058"; // Yellow color (matching the yellow star)
   };
 
   return (
@@ -76,14 +75,14 @@ function PassPlusCarousel() {
                 {item.data.map((info, index) => (
                   <div
                     style={{
-                      background: "linear-gradient(  135deg, #11ff70, #d3fd00)",
+                      background:
+                        "linear-gradient(135deg, rgb(251 0 137), rgb(255 188 225))",
                     }}
                     key={item.id}
                     className={`${styles.carouselColumn} ${
                       expandedCategory === item.id ? styles.expanded : ""
                     }`}
-                    onClick={() => handleExpandCategory(item.id)}
-                  >
+                    onClick={() => handleExpandCategory(item.id)}>
                     <div className={styles.carouselColumnHeading}>
                       <img
                         id={styles.CorouselImgBanner}
@@ -125,8 +124,7 @@ function PassPlusCarousel() {
                                 width: "100%",
                                 borderRadius: "40px 0px 0px 40px",
                                 padding: "8px",
-                              }}
-                            >
+                              }}>
                               <p style={{ marginBottom: "0px" }}>{info.name}</p>
                               <p style={{ marginBottom: "0px", width: "43px" }}>
                                 £ {info.price}
@@ -148,8 +146,7 @@ function PassPlusCarousel() {
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(info, index);
-                                  }}
-                                >
+                                  }}>
                                   Book
                                 </button>
                               ) : (
@@ -163,8 +160,7 @@ function PassPlusCarousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.decreaseButton}
-                                    >
+                                      className={styles.decreaseButton}>
                                       -
                                     </button>
                                     <span>
@@ -182,8 +178,7 @@ function PassPlusCarousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.increaseButton}
-                                    >
+                                      className={styles.increaseButton}>
                                       +
                                     </button>
                                   </div>
@@ -192,9 +187,8 @@ function PassPlusCarousel() {
                             </div>
                           </li>
                           <section
-                            style={{ backgroundColor: "#bcb006bc" }}
-                            className={styles.corouselDescription}
-                          >
+                            style={{ backgroundColor: "#970059bc" }}
+                            className={styles.corouselDescription}>
                             {info.description}
                           </section>
                         </div>
@@ -203,8 +197,7 @@ function PassPlusCarousel() {
                       <div
                         className={`${styles.carouselStarImgContainer} ${
                           expandedCategory === info.name ? styles.compress : ""
-                        }`}
-                      >
+                        }`}>
                         <img src={starImg} alt="starImg" />
                         <img src={starImg} alt="starImg" />
                         <img src={starImg} alt="starImg" />

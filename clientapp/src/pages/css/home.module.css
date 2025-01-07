@@ -567,10 +567,13 @@
 
 .cardtrophyFrame {
   width: 200px; /* Adjust size */
-  height: 300px; /* Adjust size */
+  height: 200px; /* Adjust size */
   perspective: 1000px; /* Creates the 3D effect */
 }
-
+.cardtrophyFrame p {
+  color: white;
+  text-align: center;
+}
 .cardInnertrophyFrame {
   position: relative;
   width: 100%;
@@ -940,12 +943,12 @@
 .corouselDescription {
   max-width: 350px;
   width: 100%;
-  background-color: #e5dd6abc;
+  background-color: #cfe5ff;
   color: white;
   border-radius: 10px;
   padding: 8px;
   margin: 8px 0px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .corouselDescription p {
   margin-bottom: 0px;

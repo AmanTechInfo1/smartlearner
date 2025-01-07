@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
 import redStarImg from "../../assets/images/redStar.png";
 import blueStarImg from "../../assets/images/blueStarImg.png";
 import yellowStarImg from "../../assets/images/yellowStar.png";

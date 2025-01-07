@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
-import starImg from "../../assets/images/greenStar.png";
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
+import starImg from "../../assets/images/redStar.png";
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,7 +67,7 @@ function IntensiveCorousel() {
   const getButtonColorForCategory = (categoryName) => {
     switch (categoryName) {
       case "Intensive":
-        return "#32CD32"; // LimeGreen color matching the green star for Intensive category
+        return "#ff9c08"; // LimeGreen color matching the green star for Intensive category
       default:
         return "black"; // Default color if category doesn't match
     }
@@ -85,8 +85,7 @@ function IntensiveCorousel() {
             return (
               <div
                 style={{
-                  background:
-                    "linear-gradient(135deg,rgb(12, 141, 0),rgb(0, 185, 123))",
+                  background: "linear-gradient(135deg, rgb(155 73 0), #ffae88)",
                 }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
@@ -103,7 +102,7 @@ function IntensiveCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2 style={{ color: "#32CD32" }}>
+                    <h2 style={{ color: "#ff9c08" }}>
                       {expandedCategory === `${item._id}_below100`
                         ? "MAN.-AUTO.-INTENSIVE"
                         : "INTENSIVE"}
@@ -137,8 +136,7 @@ function IntensiveCorousel() {
                                 width: "100%",
                                 borderRadius: "40px 0px 0px 40px",
                                 padding: "8px",
-                              }}
-                            >
+                              }}>
                               <p style={{ marginBottom: "0px" }}>{info.name}</p>
                               <p style={{ marginBottom: "0px", width: "49px" }}>
                                 £ {info.price}
@@ -162,8 +160,7 @@ function IntensiveCorousel() {
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(info, index);
-                                  }}
-                                >
+                                  }}>
                                   Book
                                 </button>
                               ) : (
@@ -177,8 +174,7 @@ function IntensiveCorousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.decreaseButton}
-                                    >
+                                      className={styles.decreaseButton}>
                                       -
                                     </button>
                                     <span>
@@ -196,8 +192,7 @@ function IntensiveCorousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.increaseButton}
-                                    >
+                                      className={styles.increaseButton}>
                                       +
                                     </button>
                                   </div>
@@ -206,9 +201,11 @@ function IntensiveCorousel() {
                             </div>
                           </li>
                           <section
-                            style={{ backgroundColor: "#b7ffafbc" }}
-                            className={styles.corouselDescription}
-                          >
+                            style={{
+                              backgroundColor: "#d1945fbc",
+                              border: "1px solid #a9a9a9",
+                            }}
+                            className={styles.corouselDescription}>
                             {info.description}
                           </section>
                         </div>
@@ -221,8 +218,7 @@ function IntensiveCorousel() {
                       expandedCategory === `${item._id}_below100`
                         ? styles.compress
                         : ""
-                    }`}
-                  >
+                    }`}>
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
@@ -241,8 +237,7 @@ function IntensiveCorousel() {
             return (
               <div
                 style={{
-                  background:
-                    "linear-gradient(135deg,rgb(12, 141, 0),rgb(0, 185, 123))",
+                  background: "linear-gradient(135deg, rgb(155 73 0), #ffae88)",
                 }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
@@ -259,7 +254,7 @@ function IntensiveCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2 style={{ color: "#32CD32" }}>
+                    <h2 style={{ color: "#ff9c08" }}>
                       {expandedCategory === `${item._id}_above100`
                         ? "MAN.-AUTO.-INTENSIVE"
                         : "INTENSIVE"}
@@ -293,8 +288,7 @@ function IntensiveCorousel() {
                                 width: "100%",
                                 borderRadius: "40px 0px 0px 40px",
                                 padding: "8px",
-                              }}
-                            >
+                              }}>
                               <p style={{ marginBottom: "0px" }}>{info.name}</p>
                               <p style={{ marginBottom: "0px", width: "49px" }}>
                                 £ {info.price}
@@ -318,8 +312,7 @@ function IntensiveCorousel() {
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(info, index);
-                                  }}
-                                >
+                                  }}>
                                   Book
                                 </button>
                               ) : (
@@ -333,8 +326,7 @@ function IntensiveCorousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.decreaseButton}
-                                    >
+                                      className={styles.decreaseButton}>
                                       -
                                     </button>
                                     <span>
@@ -352,8 +344,7 @@ function IntensiveCorousel() {
                                           1
                                         );
                                       }}
-                                      className={styles.increaseButton}
-                                    >
+                                      className={styles.increaseButton}>
                                       +
                                     </button>
                                   </div>
@@ -362,9 +353,11 @@ function IntensiveCorousel() {
                             </div>
                           </li>
                           <section
-                            style={{ backgroundColor: "#b7ffafbc" }}
-                            className={styles.corouselDescription}
-                          >
+                            style={{
+                              backgroundColor: "#d1945fbc",
+                              border: "1px solid #a9a9a9",
+                            }}
+                            className={styles.corouselDescription}>
                             {info.description}
                           </section>
                         </div>
@@ -377,8 +370,7 @@ function IntensiveCorousel() {
                       expandedCategory === `${item._id}_above100`
                         ? styles.compress
                         : ""
-                    }`}
-                  >
+                    }`}>
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />
                     <img src={starImg} alt="starImg" />

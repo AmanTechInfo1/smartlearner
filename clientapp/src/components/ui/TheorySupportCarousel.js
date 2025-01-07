@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
-import yellowStarImg from "../../assets/images/yellowStar.png"; // Yellow star image
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
+import yellowStarImg from "../../assets/images/blueStarImg.png"; // Yellow star image
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -69,7 +69,7 @@ function TheoryCorousel() {
   const starColorMap = {
     "Theory Support": {
       starImg: yellowStarImg, // Assuming this category has a yellow star
-      color: "#f1c40f", // Yellow color for text and button
+      color: "#0046c3", // Yellow color for text and button
     },
     // Add more categories if needed with respective star images and colors
   };
@@ -85,8 +85,7 @@ function TheoryCorousel() {
             return (
               <div
                 style={{
-                  background:
-                    "linear-gradient(135deg,rgb(246, 250, 4),rgb(0, 185, 123))",
+                  background: "linear-gradient(135deg, #0c0fbd, #e4f0ff)",
                 }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
@@ -103,7 +102,7 @@ function TheoryCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2 style={{ color: "rgb(0, 71, 48)" }}>
+                    <h2 style={{ color: "rgb(191 214 255)" }}>
                       {expandedCategory === `${item._id}_below100`
                         ? "THEORY SUPPORT"
                         : "THEORY"}
@@ -203,7 +202,7 @@ function TheoryCorousel() {
                             </div>
                           </li>
                           <section
-                            style={{ backgroundColor: "#e5dd6abc" }}
+                            style={{ backgroundColor: "#052c76bc" }}
                             className={styles.corouselDescription}>
                             {info.description}
                           </section>
@@ -235,8 +234,7 @@ function TheoryCorousel() {
             return (
               <div
                 style={{
-                  background:
-                    "linear-gradient(135deg,rgb(246, 250, 4),rgb(0, 185, 123))",
+                  background: "linear-gradient(135deg, #0c0fbd, #e4f0ff)",
                 }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
@@ -253,7 +251,7 @@ function TheoryCorousel() {
                     alt="Category Image"
                   />
                   <div className={styles.CorouselhaddingBanner}>
-                    <h2 style={{ color: "rgb(0, 71, 48)" }}>
+                    <h2 style={{ color: "rgb(191 214 255)" }}>
                       {expandedCategory === `${item._id}_above100`
                         ? "THEORY SUPPORT"
                         : "THEORY"}
@@ -353,7 +351,7 @@ function TheoryCorousel() {
                             </div>
                           </li>
                           <section
-                            style={{ backgroundColor: "#e5dd6abc" }}
+                            style={{ backgroundColor: "#052c76bc" }}
                             className={styles.corouselDescription}>
                             {info.description}
                           </section>
