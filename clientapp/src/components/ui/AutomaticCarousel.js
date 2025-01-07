@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/content3.png";
+import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
 import blueStarImg from "../../assets/images/blueStarImg.png";
-import cartImg from "../../assets/images/bannerCart.png";
+import cartImg from "../../assets/images/bannerCart.png"; 
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,16 +13,22 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function AutomaticCarousel() {
+  const wordLimit = 15;
+  const [isReadMore, setIsReadMore] = useState(false);
+  const handleReadMoreToggle = (index) => {
+    setIsReadMore((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle the specific section's read more state
+    }));
+  };
+
   const [expandedCategory, setExpandedCategory] = useState("");
   const data = useSelector((state) => state.product.productsCategory);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
-
   const myCart = useSelector((state) => state.cart.cart || []);
-
   useEffect(() => {
     const offersAutomaticCategory = data.find(
       (item) => item._id === "Offers Automatic"
@@ -31,7 +37,6 @@ function AutomaticCarousel() {
       setExpandedCategory(offersAutomaticCategory._id);
     }
   }, [data]);
-
   const handleExpandCategory = (id) => {
     if (expandedCategory === id) {
       setExpandedCategory("");
@@ -39,15 +44,12 @@ function AutomaticCarousel() {
       setExpandedCategory(id);
     }
   };
-
   const handleIncrease = (id, qty) => {
     dispatch(getIncreaseCart(id, qty));
   };
-
   const handleDecrease = (id, qty) => {
     dispatch(getDecreaseCart(id, qty));
   };
-
   const addToCart = (info, index) => {
     const productId = `${info._id}_${index}_${info.price}`;
     dispatch(
@@ -59,11 +61,9 @@ function AutomaticCarousel() {
       })
     );
   };
-
   const filteredData = (categoryName) => {
     return data.filter((item) => item._id === categoryName);
   };
-
   const getColorForCategory = (categoryName) => {
     switch (categoryName) {
       case "Offers Automatic":
@@ -74,11 +74,10 @@ function AutomaticCarousel() {
         return "gold"; // Default color for other categories
     }
   };
-
   return (
     <section className={styles.carouselContainer}>
       <div className={styles.carousel}>
-        {/* Offers Automatic Carousel */}
+        \{" "}
         {filteredData("Offers Automatic").map((item) => (
           <div
             style={{
@@ -89,7 +88,6 @@ function AutomaticCarousel() {
               expandedCategory === item._id ? styles.expanded : ""
             }`}
             onClick={() => handleExpandCategory(item._id)}>
-            {/* Header Section */}
             <div className={styles.carouselColumnHeading}>
               <img
                 id={styles.CorouselImgBanner}
@@ -118,8 +116,6 @@ function AutomaticCarousel() {
                 )}
               </div>
             </div>
-
-            {/* Render items for the selected category */}
             {expandedCategory === item._id ? (
               <ul type="none">
                 {item.data.map((info, index) => (
@@ -199,13 +195,28 @@ function AutomaticCarousel() {
                     <section
                       style={{ backgroundColor: "#4b99f5" }}
                       className={styles.corouselDescription}>
-                      <p>{info.description}</p>
+                      <p>
+                        {isReadMore[index]
+                          ? info.description // Show full content
+                          : info.description
+                              .split(" ")
+                              .slice(0, wordLimit)
+                              .join(" ") + "..."}
+                      </p>
+                      {info.description.split(" ").length > wordLimit && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleReadMoreToggle(index);
+                          }}>
+                          {isReadMore[index] ? "Read Less" : "Read More"}
+                        </button>
+                      )}
                     </section>
                   </div>
                 ))}
               </ul>
             ) : (
-              // Conditionally render the star images only when the category is collapsed
               <div
                 className={`${styles.carouselStarImgContainer} ${
                   expandedCategory === item._id ? styles.compress : ""
@@ -217,8 +228,6 @@ function AutomaticCarousel() {
             )}
           </div>
         ))}
-
-        {/* Automatic Carousel - Products above £100 */}
         {filteredData("Automatic").map((item) => {
           const above100Products = item.data.filter(
             (product) => product.price > 100
@@ -346,7 +355,23 @@ function AutomaticCarousel() {
                       <section
                         style={{ backgroundColor: "#4b99f5" }}
                         className={styles.corouselDescription}>
-                        {info.description}
+                        <p>
+                          {isReadMore[index]
+                            ? info.description // Show full content
+                            : info.description
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {info.description.split(" ").length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle(index);
+                            }}>
+                            {isReadMore[index] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
                       </section>
                     </div>
                   ))}
@@ -358,23 +383,18 @@ function AutomaticCarousel() {
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
                   }`}>
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
+                  {[...Array(5)].map((_, idx) => (
+                    <img key={idx} src={blueStarImg} alt="starImg" />
+                  ))}
                 </div>
               )}
             </div>
           );
         })}
-
-        {/* Automatic Carousel - Products below £100 */}
         {filteredData("Automatic").map((item) => {
           const below100Products = item.data.filter(
             (product) => product.price <= 100
           );
-
           return (
             <div
               style={{
@@ -385,7 +405,6 @@ function AutomaticCarousel() {
                 expandedCategory === item._id ? styles.expanded : ""
               }`}
               onClick={() => handleExpandCategory(item._id)}>
-              {/* Header Section for Below £100 */}
               <div className={styles.carouselColumnHeading}>
                 <img
                   id={styles.CorouselImgBanner}
@@ -414,8 +433,6 @@ function AutomaticCarousel() {
                   )}
                 </div>
               </div>
-
-              {/* Render items below £100 */}
               {expandedCategory === item._id && below100Products.length > 0 && (
                 <ul type="none">
                   {below100Products.map((info, index) => (
@@ -497,7 +514,23 @@ function AutomaticCarousel() {
                       <section
                         style={{ backgroundColor: "#4b99f5" }}
                         className={styles.corouselDescription}>
-                        {info.description}
+                        <p>
+                          {isReadMore[index]
+                            ? info.description // Show full content
+                            : info.description
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {info.description.split(" ").length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle(index);
+                            }}>
+                            {isReadMore[index] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
                       </section>
                     </div>
                   ))}
@@ -508,11 +541,9 @@ function AutomaticCarousel() {
                   className={`${styles.carouselStarImgContainer} ${
                     expandedCategory === item._id ? styles.compress : ""
                   }`}>
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
-                  <img src={blueStarImg} alt="starImg" />
+                  {[...Array(5)].map((_, idx) => (
+                    <img key={idx} src={blueStarImg} alt="starImg" />
+                  ))}
                 </div>
               )}
             </div>

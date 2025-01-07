@@ -14,6 +14,15 @@ import { getAllProductsCategory } from "../../redux/features/productSlice";
 import { Toaster } from "react-hot-toast";
 
 function ManualCarousel() {
+  const wordLimit = 15;
+  const [isReadMore, setIsReadMore] = useState(false);
+  const handleReadMoreToggle = (index) => {
+    setIsReadMore((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle the specific section's read more state
+    }));
+  };
+
   const [expandedCategory, setExpandedCategory] = useState("");
   const data = useSelector((state) => state.product.productsCategory);
   const dispatch = useDispatch();
@@ -82,7 +91,9 @@ function ManualCarousel() {
 
   return (
     <section className={styles.carouselContainer}>
-      <div><Toaster/></div>
+      <div>
+        <Toaster />
+      </div>
       <div className={styles.carousel}>
         {/* Rendering Offers Manual */}
         {offerCategories.map((item) => (
@@ -206,7 +217,23 @@ function ManualCarousel() {
                         border: "1px solid #a9a9a9",
                       }}
                       className={styles.corouselDescription}>
-                      {info.description}
+                      <p>
+                        {isReadMore[index]
+                          ? info.description // Show full content
+                          : info.description
+                              .split(" ")
+                              .slice(0, wordLimit)
+                              .join(" ") + "..."}
+                      </p>
+                      {info.description.split(" ").length > wordLimit && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleReadMoreToggle(index);
+                          }}>
+                          {isReadMore[index] ? "Read Less" : "Read More"}
+                        </button>
+                      )}
                     </section>
                   </div>
                 ))}
@@ -353,7 +380,23 @@ function ManualCarousel() {
                           border: "1px white #a9a9a9",
                         }}
                         className={styles.corouselDescription}>
-                        {info.description}
+                        <p>
+                          {isReadMore[index]
+                            ? info.description // Show full content
+                            : info.description
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {info.description.split(" ").length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle(index);
+                            }}>
+                            {isReadMore[index] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
                       </section>
                     </div>
                   ))}
@@ -498,9 +541,28 @@ function ManualCarousel() {
                         </div>
                       </li>
                       <section
-                        style={{ backgroundColor: "#a05dc1" }}
+                        style={{
+                          backgroundColor: "#a05dc1",
+                          border: "1px white #a9a9a9",
+                        }}
                         className={styles.corouselDescription}>
-                        {info.description}
+                        <p>
+                          {isReadMore[index]
+                            ? info.description // Show full content
+                            : info.description
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {info.description.split(" ").length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle(index);
+                            }}>
+                            {isReadMore[index] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
                       </section>
                     </div>
                   ))}

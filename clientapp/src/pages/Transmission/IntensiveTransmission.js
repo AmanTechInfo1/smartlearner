@@ -128,7 +128,7 @@ export default function IntensiveTransmission() {
         </div>
       </section>
 
-      <div className={styles.IntensivecourseContainer}>
+      {/* <div className={styles.IntensivecourseContainer}>
         <h1 className={styles.Intensivetitle}>Intensive Driving Course</h1>
         <p className={styles.IntensiveintroText}>
           Get ready to drive with confidence in just a few days!
@@ -148,7 +148,7 @@ export default function IntensiveTransmission() {
             <p>Simulate a real driving test to boost your confidence.</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.manualContent}>
         <section className={styles.manualPara}>
           <p>Designed for those eager to learn quickly and efficiently,</p>

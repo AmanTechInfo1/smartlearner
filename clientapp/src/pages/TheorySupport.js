@@ -139,7 +139,7 @@ export default function TheorySupport() {
           </div>
 
           <div className={styles.bannerImg}>
-            <img
+            {/* <img
                     src={manualround1}
                     alt="driving-car"
                     id={styles.homeDrivingImg1}
@@ -148,7 +148,7 @@ export default function TheorySupport() {
                     src={manualround2}
                     alt="driving-car"
                     id={styles.homeDrivingImg2}
-                  />
+                  /> */}
           </div>
         </div>
       </section>
@@ -184,11 +184,10 @@ export default function TheorySupport() {
               </section>
             </section>
 
-            <hr />
           </Element>
         </section>
         {/* //////////CallBack Form section///////////// */}
-        <section className={styles.callbackFormSection}>
+        {/* <section className={styles.callbackFormSection}>
           <div className={styles.callbackFormContent}>
             <div className={styles.callbackFormContentPG}>
               <p>
@@ -203,17 +202,17 @@ export default function TheorySupport() {
             </div>
             <CallBackForm />
           </div>
-          <div className={styles.productTab}>{/* <ProductTab /> */}</div>
-        </section>
+          <div className={styles.productTab}></div>
+        </section> */}
       </section>
 
       {/* ///////////////////////////////////////////////////// */}
 
     
       {/* ///////////////Testimonials////// */}
-      <section>
+      {/* <section>
         <StaticTestimonial/>
-      </section>
+      </section> */}
 
       {/* ///////////////////////Reviews//////// */}
     

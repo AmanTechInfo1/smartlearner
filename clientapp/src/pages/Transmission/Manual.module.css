@@ -3,7 +3,8 @@
     background: url("./manualBanner.webp");
     background-size: cover;
     position: relative;
-    padding: 6rem 0px;
+    background-position: center;
+    padding: 4rem 0px;
     border-radius: 20px;
   }
 

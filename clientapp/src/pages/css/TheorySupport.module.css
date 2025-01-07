@@ -175,20 +175,13 @@
   }
 }
 
-
-
-
-
-
-
-
 /* ////////////////////////////////////////// */
 .callbackFormSection {
   padding: 2rem;
   max-width: 1440px;
   margin-right: auto;
   margin-left: auto;
-  background: linear-gradient(  135deg, #00ffe1, #2600fd);
+  background: linear-gradient(135deg, #00ffe1, #2600fd);
   border-radius: 20px;
 }
 .callbackFormContent {
@@ -707,14 +700,13 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  background: linear-gradient(135deg, #FF7F50, #FF6347, #FFD700, #00FF7F, #1E90FF, #8A2BE2);
   background-size: 600% 600%;
   animation: gradientAnimation 12s ease infinite;
   min-height: 70vh;
   border-radius: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-  
+
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
@@ -778,16 +770,16 @@
   }
 }
 .manualPList {
-  padding: 1rem;
+  padding: 1.4rem;
   max-width: 1100px;
   margin: 0px auto;
-  background-color: #6ab5ff7b;
+  background: linear-gradient(135deg, #4737d3, #7bbffe);
+  border-radius: 10px;
 }
 .manualPList p {
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
-
 }
 
 @media (max-width: 770px) {

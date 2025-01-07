@@ -14,10 +14,10 @@ import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-ima
 import Carousel from "../components/ui/Carousel";
 import Review from "../components/views/Review";
 // import { Link } from "react-router-dom";
-import hallOfFame1 from "../assets/images/halloffame1.png";
-import hallOfFame2 from "../assets/images/halloffame2.png";
-import hallOfFame3 from "../assets/images/halloffame3.png";
-import hallOfFame4 from "../assets/images/halloffame4.png";
+import hallOfFame1 from "../assets/images/halloffame33.png";
+import hallOfFame2 from "../assets/images/halloffame44.png";
+import hallOfFame3 from "../assets/images/halloffame11.png";
+import hallOfFame4 from "../assets/images/halloffame22.png";
 import callbackimg from "../assets/images/callbacksupportimage.jpg";
 // //////////////////
 import Slider from "react-slick";

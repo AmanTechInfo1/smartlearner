@@ -22,6 +22,15 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function DrivingInstructorUI() {
+  const wordLimit = 15;
+  const [isReadMore, setIsReadMore] = useState(false);
+  const handleReadMoreToggle = (index) => {
+    setIsReadMore((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle the specific section's read more state
+    }));
+  };
+
   const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
 
@@ -298,9 +307,24 @@ function DrivingInstructorUI() {
                             backgroundColor: getdescBgColor(categoryName),
                             border: "1px solid #a9a9a9",
                           }}
-                          className={styles.corouselDescription}
-                          sadxazdc>
-                          {info.description}
+                          className={styles.corouselDescription}>
+                          <p>
+                            {isReadMore[index]
+                              ? info.description // Show full content
+                              : info.description
+                                  .split(" ")
+                                  .slice(0, wordLimit)
+                                  .join(" ") + "..."}
+                          </p>
+                          {info.description.split(" ").length > wordLimit && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle(index);
+                              }}>
+                              {isReadMore[index] ? "Read Less" : "Read More"}
+                            </button>
+                          )}
                         </section>
                       </div>
                     ))}

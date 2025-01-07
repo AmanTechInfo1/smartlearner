@@ -2,7 +2,8 @@
   background: url("./passplusbanner2.jpg");
   background-size: cover;
   position: relative;
-  padding: 6rem 0px;
+  background-position: center;
+  padding: 4rem 0px;
   border-radius: 20px;
 }
 
@@ -261,7 +262,7 @@
     margin-left: auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, #0017c8, #c100bb);
+    background: linear-gradient(135deg, #c80064, #ff9bd5);
     border-radius: 20px;
   }
   .manualPara{

@@ -180,7 +180,7 @@ const PassPlusTransmission = () => {
           </div>
         </div>
       </section>
-
+      {/* 
       <div className={styles.passPlusContentcontainer}>
         <div className={styles.passpluscard}>
           <h1 className={styles.passplustitle}>Pass Plus Driving Course</h1>
@@ -193,7 +193,7 @@ const PassPlusTransmission = () => {
             Start Course
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* /////////////////////////////////// */}
       <section ref={coursesRef} className={styles.coursesSection}>

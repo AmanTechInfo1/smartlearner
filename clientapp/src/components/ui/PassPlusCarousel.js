@@ -13,6 +13,15 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function PassPlusCarousel() {
+  const wordLimit = 15;
+  const [isReadMore, setIsReadMore] = useState(false);
+  const handleReadMoreToggle = (index) => {
+    setIsReadMore((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index], // Toggle the specific section's read more state
+    }));
+  };
+
   const [expandedCategory, setExpandedCategory] = useState("");
 
   const data = useSelector((state) => state.product.productsCategory);
@@ -189,7 +198,23 @@ function PassPlusCarousel() {
                           <section
                             style={{ backgroundColor: "#970059bc" }}
                             className={styles.corouselDescription}>
-                            {info.description}
+                            <p>
+                              {isReadMore[index]
+                                ? info.description // Show full content
+                                : info.description
+                                    .split(" ")
+                                    .slice(0, wordLimit)
+                                    .join(" ") + "..."}
+                            </p>
+                            {info.description.split(" ").length > wordLimit && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleReadMoreToggle(index);
+                                }}>
+                                {isReadMore[index] ? "Read Less" : "Read More"}
+                              </button>
+                            )}
                           </section>
                         </div>
                       </ul>

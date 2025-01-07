@@ -892,10 +892,6 @@
   transition: border 0.3s ease;
 }
 
-.btnGroup:hover {
-  border: 1px solid black;
-  border-radius: 0px 40px 40px 0px;
-}
 .btnGroup p {
   margin-bottom: 0px;
 }
@@ -949,9 +945,23 @@
   padding: 8px;
   margin: 8px 0px;
   font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .corouselDescription p {
   margin-bottom: 0px;
+  min-height: 50px;
+}
+.corouselDescription button {
+  border: none;
+  padding: 0px 5px;
+  border-radius: 4px;
+  text-align: right;
+  transition: min-height 0.5s ease-in-out;
+}
+.corouselDescription button:hover {
+  background-color: #d3d3d3c5;
 }
 /*  */
 /* ///////////////// */

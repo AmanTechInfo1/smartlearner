@@ -128,6 +128,9 @@ export default function DrivingInstructorTraining() {
       });
   }, []);
 
+  // ///////////////////////////////
+  const text2Ref = useRef(null);
+
   const splitTextPartTwo = () => {
     const firstPart = "Become a Driving"; // First part before "Driving"
     const secondPart = " Instructor"; // Second part after "Driving"
@@ -152,7 +155,7 @@ export default function DrivingInstructorTraining() {
   };
 
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
+    const letters = text2Ref.current.querySelectorAll("span");
 
     // GSAP Timeline for the text animation
     const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
@@ -313,7 +316,7 @@ export default function DrivingInstructorTraining() {
         {/* ////////////////How to become a Driving Instructor//////////////// */}
         <section className={styles.instructorContainer}>
           <div className={styles.innerInstructorContainer}>
-            <h4 ref={textRef}>{splitTextPartTwo()}</h4>
+            <h4 ref={text2Ref}>{splitTextPartTwo()}</h4>
 
             <div className={styles.detailsContainer}>
               <DrivingInstructorUI />
