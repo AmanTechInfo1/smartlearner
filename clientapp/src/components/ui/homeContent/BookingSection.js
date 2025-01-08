@@ -283,7 +283,7 @@ export default function BookingSection() {
               </Link>
             </SwiperSlide>
             <SwiperSlide>
-              <Link to="/Driving-Instructor-Training">
+              <Link to="/driving-instructor-packages">
                 <div className={styles.slide5}>
                   <div className={styles.opicity}></div>{" "}
                   <div id={styles.crousalContent}>

@@ -13,7 +13,7 @@ import cartbanner from "../../assets/images/bannerCart.png";
 import defaultCartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
@@ -22,6 +22,10 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function DrivingInstructorUI() {
+
+  const navigate = useNavigate();
+
+
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
   const handleReadMoreToggle = (index) => {
@@ -76,7 +80,7 @@ function DrivingInstructorUI() {
         count: 1,
         service: info.name,
         price: info.price,
-      })
+      },navigate)
     );
   };
 
@@ -208,8 +212,20 @@ function DrivingInstructorUI() {
                         color:
                           getHeadingAndButtonColorForCategory(categoryName),
                       }}>
-                      Instructor Trainnig
+                      {(() => {
+                        switch (categoryName) {
+                          case "instructor training part one":
+                            return "Instructor Training";
+                          case "instructor training part two":
+                            return "Bolt on Training";
+                          case "instructor training part three":
+                            return "Online Courses";
+                          default:
+                            return "Instructor Training"; // Default case
+                        }
+                      })()}
                     </h2>
+
                     {expandedCategory === item._id && (
                       <Link to="/cart">
                         <span>

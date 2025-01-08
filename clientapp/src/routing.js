@@ -135,6 +135,7 @@ import Manual from "./pages/Transmission/Manual";
 import AutomaticTransmission from "./pages/Transmission/AutomaticTransmission";
 import PassPlusTransmission from "./pages/Transmission/PassPlusTransmission";
 import IntensiveTransmission from "./pages/Transmission/IntensiveTransmission";
+import DrivingTransmission from "./pages/Transmission/DrivingTransmission";
 
 export const router = createBrowserRouter([
   {
@@ -261,6 +262,7 @@ export const router = createBrowserRouter([
       {path: "manual", element: <Manual />},
       {path: "automatic-transmisson", element: <AutomaticTransmission/>},
       {path: "pass-plus", element: <PassPlusTransmission/>},
+      {path: "driving-instructor-packages", element: <DrivingTransmission/>},
       {
         path: "trainning-material",
         element: <TrainningMaterial />,

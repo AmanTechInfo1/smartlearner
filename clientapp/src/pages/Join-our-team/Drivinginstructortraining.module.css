@@ -285,9 +285,10 @@
 }
 
 .innerInstructorContainer {
-  max-width: 1140px;
+  max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
+  padding: 1rem;
 }
 .innerInstructorContainer h4 {
   color: white;
@@ -316,49 +317,69 @@
 
 .trainingDetails {
   padding: 20px;
-
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 0 0 20px #545353;
 }
 .trainingDetails h3 {
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 20px;
 }
+
+.trainingDetails:nth-child(1) {
+  background: linear-gradient(135deg, #00ffe1, #2600fd);
+}
+.trainingDetails:nth-child(2) {
+  background: linear-gradient(135deg, #a90303, #ff8585);
+}
+.trainingDetails:nth-child(3) {
+  background: linear-gradient(135deg, #380042, #da14fd);
+}
+.trainingDetails:nth-child(4) {
+  background: linear-gradient(135deg, #00ffc4, #004037);
+}
+.trainingDetails:nth-child(5) {
+  background: linear-gradient(135deg, #ffac47, #fa4700);
+}
+.trainingDetails:nth-child(6) {
+  background: linear-gradient(135deg, #ff33a4, #62002e);
+}
 .trainingDetails:nth-child(1) h3 {
-  color: #b3040a;
+  color: #08016d;
 }
 .trainingDetails:nth-child(2) h3 {
-  color: #fbc809;
+  color: #720000;
 }
 .trainingDetails:nth-child(3) h3 {
   color: #cb2c92;
 }
 .trainingDetails:nth-child(4) h3 {
-  color: #008081;
+  color: #003535;
 }
 .trainingDetails:nth-child(5) h3 {
   color: #b3040a;
 }
 .trainingDetails:nth-child(6) h3 {
-  color: #fbc809;
+  color: #740030;
 }
 .trainingDetails:nth-child(1) hr {
-  border: 1.6px solid #b3040a;
+  border: 1.6px solid #08016d;
 }
 .trainingDetails:nth-child(2) hr {
-  border: 1.6px solid #fbc809;
+  border: 1.6px solid #720000;
 }
 .trainingDetails:nth-child(3) hr {
   border: 1.6px solid #cb2c92;
 }
 .trainingDetails:nth-child(4) hr {
-  border: 1.6px solid #008081;
+  border: 1.6px solid #003535;
 }
 .trainingDetails:nth-child(5) hr {
   border: 1.6px solid #b3040a;
 }
 .trainingDetails:nth-child(6) hr {
-  border: 1.6px solid #fbc809;
+  border: 1.6px solid #740030;
 }
 .trainingDetails hr {
   width: 12%; /* Set width to 12% */
@@ -368,7 +389,7 @@
 }
 .trainingDetails p {
   padding: 15px;
-  text-align: center;
+  text-align: justify;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -408,7 +429,7 @@
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 .infoTextHeading {
   display: flex;
@@ -446,6 +467,11 @@
 @media (max-width: 587px) {
   .infoTextHeading h1 {
     font-size: 30px;
+  }
+}
+@media (max-width: 467px) {
+  .infoTextHeading h1 {
+    font-size: 22px;
   }
 }
 

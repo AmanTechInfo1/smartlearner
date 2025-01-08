@@ -151,7 +151,14 @@ export const getIncreaseCart = (id, count) => async (dispatch) => {
     });
     dispatch(IncreaseCart({ id, count }));
   } catch (error) {
-    toast.error("Failed to add to cart");
+    toast.error("Failed to add to cart", {
+      position: "center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      newestOnTop: false,
+      theme: "dark",
+      transition: "Bounce",
+    });
   }
 };
 
@@ -168,11 +175,18 @@ export const getDecreaseCart = (id, count) => async (dispatch) => {
     });
     dispatch(DecreaseCart({ id, count }));
   } catch (error) {
-    toast.error("Failed to decrease in cart");
+    toast.error("Failed to decrease in cart", {
+      position: "center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      newestOnTop: false,
+      theme: "dark",
+      transition: "Bounce",
+    });
   }
 };
 
-export const getAddToCart = (product) => async (dispatch) => {
+export const getAddToCart = (product, navigate) => async (dispatch) => {
   try {
     dispatch(setLoading());
     toast.success("Product added to cart", {
@@ -183,9 +197,17 @@ export const getAddToCart = (product) => async (dispatch) => {
       theme: "dark",
       transition: "Bounce",
     });
+    navigate("/cart");
     dispatch(AddToCart(product));
   } catch (error) {
-    toast.error("Failed to add to cart");
+    toast.error("Failed to add to cart", {
+      position: "center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      newestOnTop: false,
+      theme: "dark",
+      transition: "Bounce",
+    });
   }
 };
 

@@ -9,6 +9,8 @@ import {
   emptyCart,
 } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import paypalLogo from "../../../assets/images/paypalLogos.png";
+import stripLogo from "../../../assets/images/Stripe-logo.png";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -42,137 +44,215 @@ const Cart = () => {
 
   return (
     <div className={styles.cartPage}>
-      <div id={styles.fontAntonio}>
-        <div
-          className="d-flex justify-content-center align-items-center gap-4 text-center mb-4 mt-2"
-          id={styles.cartFrontHeading}>
-          <h1 className="display-4 font-weight-bold">CART</h1>
+      <div className={styles.cartContainer}>
+        <div className={styles.cartheading}>
+          <h2>My Cart</h2>
           <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
         </div>
         <div className="d-flex  mb-4" id={styles.carImg}>
           <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
         </div>
-        {myCart && myCart.length === 0 ? (
-          <div className="text-center" id={styles.btnCartBox}>
-            <h2>Your cart is empty</h2>
+        <button
+          className={styles.basketbtnProceed2}
+          onClick={() => navigate(-1)}>
+          Continue Shopping
+        </button>
+        <div className={styles.cartContentContainer}>
+          <div className={styles.cartItemsContainer}>
+            <table className={styles.cartTable}>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myCart.map((item) => (
+                  <tr key={item.id} className={styles.cartRow}>
+                    <td>{item.service}</td>
+                    <td>£{item.price}</td>
+                    <td>
+                      <button
+                        className={styles.quantityButton}
+                        onClick={() => handleDecrease(item.id, 1)}>
+                        -
+                      </button>
+                      <span id={styles.countssss}>{item.count}</span>
+                      <button
+                        className={styles.quantityButton}
+                        onClick={() => handleIncrease(item.id, 1)}>
+                        +
+                      </button>
+                    </td>
+                    <td>${(item.price * item.count).toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.cartBtnsContainer}>
+            <div>
+              <div className={styles.basketHeadingTitles}>
+                <h2>BASKET TOTAL</h2>
+                <div className={styles.basketHeadingTitle}>
+                  <p>
+                    <span>Subtotal:</span>
+                    <span>£{subtotal.toFixed(2)}</span>
+                  </p>
+                  <p>
+                    <span>2% ONLINE SERVICE CHARGE:</span>{" "}
+                    <span>£{serviceCharge.toFixed(2)}</span>
+                  </p>
+                  <p>
+                    <span>Total:</span> <span>£{total.toFixed(2)}</span>
+                  </p>
+                  <div>
+                    <img src={paypalLogo} alt="paypal" />
+                    <img src={stripLogo} alt="stripe" />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.basketHeadingTitle}></div>
+            </div>
             <button
-              className="btn btn-primary mt-4"
-              onClick={() => navigate("/Driving-Lessons")}>
-              Continue Shopping
+              className={styles.basketbtnProceed}
+              onClick={() => navigate("/checkout")}>
+              PROCEED TO CHECKOUT
             </button>
           </div>
-        ) : (
-          <>
-            <div className={styles.cartoverflow}>
-              <div id={styles.cartTable}>
-                <div id={styles.cartTableDetailsDiv}>
-                  <div
-                    className="font-weight-bold"
-                    id={styles.cartTableDetails}>
-                    SERVICE
-                  </div>
-                  {myCart &&
-                    myCart.map((itm) => (
-                      <div id={styles.cartTableDetailsd} key={itm.id}>
-                        {itm.service}
-                      </div>
-                    ))}
-                </div>
-
-                <hr></hr>
-                <div className="text-center" id={styles.cartTableDetailsDiv}>
-                  <div
-                    className="font-weight-bold"
-                    id={styles.cartTableDetails}>
-                    PRICE
-                  </div>
-                  {myCart &&
-                    myCart.map((itm) => (
-                      <div id={styles.cartTableDetailsd} key={itm.id}>
-                        £ {itm.price}
-                      </div>
-                    ))}
-                </div>
-                <div className="text-center" id={styles.cartTableDetailsDiv}>
-                  <div
-                    className="font-weight-bold"
-                    id={styles.cartTableDetails}>
-                    QUANTITY
-                  </div>
-                  {myCart &&
-                    myCart.map((itm) => (
-                      <div id={styles.cartTableBtn} key={itm.id}>
-                        <div className={styles.quantityControl}>
-                          <button
-                            onClick={() => handleDecrease(itm.id, 1)}
-                            className={styles.decreaseButton}>
-                            -
-                          </button>
-                          <span>{itm.count}</span>
-                          <button
-                            onClick={() => handleIncrease(itm.id, 1)}
-                            className={styles.increaseButton}>
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-                <div className="text-center" id={styles.cartTableDetailsDiv}>
-                  <div
-                    className="font-weight-bold"
-                    id={styles.cartTableDetails}>
-                    SUBTOTAL
-                  </div>
-                  {myCart &&
-                    myCart.map((itm) => (
-                      <div id={styles.cartTableDetailsd} key={itm.id}>
-                        £ {itm.price * itm.count}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-            <div id={styles.couponCart}>
-              <div className={styles.cartCouponInputs}>
-                {/* <input type="text" placeholder="Enter Coupon" />
-                <button className="btn btn-secondary">Apply Coupon</button> */}
-              </div>
-              <hr></hr>
-              <div className={styles.basketDiv}>
-                <div className={styles.basketDetailsCart}>
-                  <div className={styles.basketHeadingTitles}>
-                    <h2>BASKET TOTAL</h2>
-                    <div className={styles.basketHeadingTitle}>
-                      <span>Subtotal:</span>
-                      <span>2% ONLINE SERVICE CHARGE:</span>
-                      <span>Total:</span>
-                    </div>
-                  </div>
-                  <hr></hr>
-                  <div className={styles.basketHeadingTitle}>
-                    <span>£{subtotal.toFixed(2)}</span>
-                    <span>£{serviceCharge.toFixed(2)}</span>
-                    <span>£{total.toFixed(2)}</span>
-                  </div>
-                </div>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => navigate("/checkout")}>
-                  PROCEED TO CHECKOUT
-                </button>
-              </div>
-            </div>
-            <div className="text-center mt-4">
-              <button className="btn btn-danger" onClick={handleEmptyCart}>
-                EMPTY CART
-              </button>
-            </div>
-          </>
-        )}
+        </div>
       </div>
     </div>
   );
 };
 
 export default Cart;
+{
+  /* <div id={styles.fontAntonio}>
+<div
+  className="d-flex justify-content-center align-items-center gap-4 text-center mb-4 mt-2"
+  id={styles.cartFrontHeading}>
+  <h1 className="display-4 font-weight-bold">CART</h1>
+  <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
+</div>
+<div className="d-flex  mb-4" id={styles.carImg}>
+  <img src={carImg} alt="car image" className={styles.cartIconCarImg} />
+</div>
+{myCart && myCart.length === 0 ? (
+  <div className="text-center" id={styles.btnCartBox}>
+    <h2>Your cart is empty</h2>
+    <button
+      className="btn btn-primary mt-4"
+      onClick={() => navigate("/Driving-Lessons")}>
+      Continue Shopping
+    </button>
+  </div>
+) : (
+  <>
+    <div className={styles.cartoverflow}>
+      <div id={styles.cartTable}>
+        <div id={styles.cartTableDetailsDiv}>
+          <div
+            className="font-weight-bold"
+            id={styles.cartTableDetails}>
+            SERVICE
+          </div>
+          {myCart &&
+            myCart.map((itm) => (
+              <div id={styles.cartTableDetailsd} key={itm.id}>
+                {itm.service}
+              </div>
+            ))}
+        </div>
+
+        <hr></hr>
+        <div className="text-center" id={styles.cartTableDetailsDiv}>
+          <div
+            className="font-weight-bold"
+            id={styles.cartTableDetails}>
+            PRICE
+          </div>
+          {myCart &&
+            myCart.map((itm) => (
+              <div id={styles.cartTableDetailsd} key={itm.id}>
+                £ {itm.price}
+              </div>
+            ))}
+        </div>
+        <div className="text-center" id={styles.cartTableDetailsDiv}>
+          <div
+            className="font-weight-bold"
+            id={styles.cartTableDetails}>
+            QUANTITY
+          </div>
+          {myCart &&
+            myCart.map((itm) => (
+              <div id={styles.cartTableBtn} key={itm.id}>
+                <div className={styles.quantityControl}>
+                  <button
+                    onClick={() => handleDecrease(itm.id, 1)}
+                    className={styles.decreaseButton}>
+                    -
+                  </button>
+                  <span>{itm.count}</span>
+                  <button
+                    onClick={() => handleIncrease(itm.id, 1)}
+                    className={styles.increaseButton}>
+                    +
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="text-center" id={styles.cartTableDetailsDiv}>
+          <div
+            className="font-weight-bold"
+            id={styles.cartTableDetails}>
+            SUBTOTAL
+          </div>
+          {myCart &&
+            myCart.map((itm) => (
+              <div id={styles.cartTableDetailsd} key={itm.id}>
+                £ {itm.price * itm.count}
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+    <div id={styles.couponCart}>
+     
+      <div className={styles.basketDiv}>
+        <div className={styles.basketDetailsCart}>
+          <div className={styles.basketHeadingTitles}>
+            <h2>BASKET TOTAL</h2>
+            <div className={styles.basketHeadingTitle}>
+              <span>Subtotal:</span>
+              <span>2% ONLINE SERVICE CHARGE:</span>
+              <span>Total:</span>
+            </div>
+          </div>
+          <hr></hr>
+          <div className={styles.basketHeadingTitle}>
+            <span>£{subtotal.toFixed(2)}</span>
+            <span>£{serviceCharge.toFixed(2)}</span>
+            <span>£{total.toFixed(2)}</span>
+          </div>
+        </div>
+        <button
+          className="btn btn-secondary"
+          onClick={() => navigate("/checkout")}>
+          PROCEED TO CHECKOUT
+        </button>
+      </div>
+    </div>
+    <div className="text-center mt-4">
+      <button className="btn btn-danger" onClick={handleEmptyCart}>
+        EMPTY CART
+      </button>
+    </div>
+  </>
+)}
+</div> */
+}

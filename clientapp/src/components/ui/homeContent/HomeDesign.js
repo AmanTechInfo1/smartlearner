@@ -137,7 +137,11 @@ export default function HomeDesign() {
                 <button className="button-style">EXPLORE NOW</button>
                 <span>
                   {" "}
-                  <IoCallSharp className="gradient-icon" /> 02475092784
+                  <a
+                    href="tel:+4402475092784"
+                    style={{ textDecoration: "none" }}>
+                    <IoCallSharp className="gradient-icon" /> 02475092784
+                  </a>
                 </span>
               </div>
             </div>
@@ -145,14 +149,17 @@ export default function HomeDesign() {
             <div className="banner-img">
               <a
                 href="https://www.gov.uk/apply-first-provisional-driving-licence"
-                style={{ textDecoration: "none",padding:'8px' }}
-              >
+                style={{ textDecoration: "none", padding: "8px" }}>
                 <p id="home-drivingImg-1">Pass Your Theory Test With Us</p>
               </a>
-              <Link to="/Theory-Support" style={{ textDecoration: "none",padding:'8px' }}>
-                <p id="home-drivingImg-2">Apply For Provisional Licence </p> 
+              <Link
+                to="/Theory-Support"
+                style={{ textDecoration: "none", padding: "8px" }}>
+                <p id="home-drivingImg-2">Apply For Provisional Licence </p>
               </Link>
-              <Link to="/Driving-Lessons" style={{ textDecoration: "none",padding:'8px' }}>
+              <Link
+                to="/Driving-Lessons"
+                style={{ textDecoration: "none", padding: "8px" }}>
                 <p id="home-drivingImg-3">Book Lessons With Us</p>
               </Link>
             </div>

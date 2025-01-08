@@ -161,7 +161,9 @@ const PassPlusTransmission = () => {
               </Link>
               <span>
                 {" "}
-                <IoCallSharp className="gradient-icon" /> 02475092784
+                <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
+                  <IoCallSharp className="gradient-icon" /> 02475092784
+                </a>
               </span>
             </div>
           </div>

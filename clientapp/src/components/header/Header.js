@@ -12,7 +12,6 @@ function Header() {
       <nav>
         <div className={styles.imgFlexHeader}>
           <section className={styles.imgLogoSection}>
-            
             <div className={styles.imgLogoSection2}>
               {" "}
               <img src={logo2} alt="logo" />
@@ -20,8 +19,7 @@ function Header() {
           </section>
           <div
             className={`${styles.menu} ${menuOpen ? styles.open : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
+            onClick={() => setMenuOpen(!menuOpen)}>
             <span className={styles.barIcon}>
               <FaBars id={styles.barIcon} />
             </span>
@@ -31,8 +29,7 @@ function Header() {
         <ul
           className={
             menuOpen ? `${styles.menuList} ${styles.open}` : styles.menuList
-          }
-        >
+          }>
           <li>
             <NavLink exact to="/">
               Home
@@ -73,7 +70,7 @@ function Header() {
               </NavLink>
             </ul>
           </li> */}
-          
+
           <li id={styles.dropDownNav}>
             <NavLink to="/Theory-Support" className={styles.activeLink}>
               Theory Support
@@ -81,8 +78,7 @@ function Header() {
             <ul className={styles.dropdownContent}>
               <NavLink
                 to="/Theory-Support/Theory-package"
-                className={styles.activeLink}
-              >
+                className={styles.activeLink}>
                 {" "}
                 <li>Theory Package</li>
               </NavLink>
@@ -101,59 +97,43 @@ function Header() {
           <li id={styles.dropDownNav}>
             <NavLink
               to="/Driving-Instructor-Training"
-              className={styles.activeLink}
-            >
+              className={styles.activeLink}>
               Join Our Team
             </NavLink>
 
             <ul className={styles.dropdownContent}>
               <NavLink
-                to="/Driving-Instructor-Training"
-                className={styles.activeLink}
-              >
-                <li>Driving Instructor Training</li>
+                to="/driving-instructor-packages"
+                className={styles.activeLink}>
+                <li>Driving Instructor Packages</li>
               </NavLink>
 
               <NavLink
                 to="/Driving-Instructor-Franchise"
-                className={styles.activeLink}
-              >
+                className={styles.activeLink}>
                 {" "}
                 <li>Franchise </li>
               </NavLink>
-
-              
             </ul>
           </li>
           {/* //////////////////////////////////////////// */}
-  <li id={styles.dropDownNav}>
+          <li id={styles.dropDownNav}>
             <NavLink to="/ADI-Training-Portal">
               <span>PDI Portal</span>
             </NavLink>
             <ul className={styles.dropdownContent}>
-              <NavLink
-                to="/adi-part-one"
-                className={styles.activeLink}
-              >
+              <NavLink to="/adi-part-one" className={styles.activeLink}>
                 <li>PDI Part 1</li>
               </NavLink>
 
-              <NavLink
-                to="/adi-part-2"
-                className={styles.activeLink}
-              >
+              <NavLink to="/adi-part-2" className={styles.activeLink}>
                 {" "}
                 <li>PDI Part 2</li>
               </NavLink>
 
-              <NavLink
-                to="/adi-part-3"
-                className={styles.activeLink}
-              >
+              <NavLink to="/adi-part-3" className={styles.activeLink}>
                 <li>PDI Part 3</li>
               </NavLink>
-
-             
             </ul>
           </li>
 
@@ -166,8 +146,7 @@ function Header() {
           <li id={styles.dropDownNav}>
             <NavLink
               to="/Corporate-Responsbilities"
-              className={styles.activeLink}
-            >
+              className={styles.activeLink}>
               CSR
             </NavLink>
             <ul className={styles.dropdownContent}>
@@ -182,8 +161,7 @@ function Header() {
 
               <NavLink
                 to="/Communities-Champions"
-                className={styles.activeLink}
-              >
+                className={styles.activeLink}>
                 {" "}
                 <li>Community Champions</li>
               </NavLink>
@@ -199,8 +177,7 @@ function Header() {
 
               <NavLink
                 to="/Our-Office-Green-Efforts"
-                className={styles.activeLink}
-              >
+                className={styles.activeLink}>
                 {" "}
                 <li>Our Office Green Efforts</li>
               </NavLink>

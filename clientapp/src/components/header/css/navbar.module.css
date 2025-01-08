@@ -75,7 +75,6 @@
 }
 .navLinks ul {
   padding-left: 0;
- 
 }
 .navLinks ul li {
   font-size: 1.2rem;
@@ -83,7 +82,7 @@
   font-weight: 500;
 }
 .navShoppingCart {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   color: rgb(235, 243, 253);
   font-weight: 500;
 }
@@ -109,6 +108,8 @@
   position: relative;
   color: white;
   padding: 3px 9px;
+  border: 1px solid rgb(56, 83, 117);
+  border-radius: 50%;
 }
 
 .shoppincartIcon {
@@ -159,20 +160,19 @@
     padding: 0px 8px;
   }
   .navLinks ul {
-   
     margin-bottom: 0px;
   }
 }
-@media (max-width: 520px){
-    .contactInfo span{
-        display: none;
-      }
-      .navShoppingCart {
-        font-size: 17px;
-      }
+@media (max-width: 520px) {
+  .contactInfo span {
+    display: none;
+  }
+  .navShoppingCart {
+    font-size: 17px;
+  }
 }
-@media (max-width: 400px){
-    .contactInfo a {
-        font-size: 14px;
-      }
+@media (max-width: 400px) {
+  .contactInfo a {
+    font-size: 14px;
+  }
 }

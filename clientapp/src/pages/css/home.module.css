@@ -532,6 +532,7 @@
   place-items: center;
   align-items: center;
   position: relative;
+  padding: 4rem 1rem;
 }
 .cardFronttrophyFrame img {
   max-width: 200px;
@@ -792,7 +793,8 @@
   position: relative;
   background: linear-gradient(135deg, #11ff70, #d3fd00);
   border-radius: 30px;
-  border: 1px solid silver;
+  box-shadow: 0 0 20px #83878bdb;
+
   padding: 20px;
   cursor: pointer;
   align-items: center;

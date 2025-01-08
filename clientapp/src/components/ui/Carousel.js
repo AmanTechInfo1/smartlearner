@@ -13,7 +13,7 @@ import cartbanner from "../../assets/images/bannerCart.png";
 import defaultCartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
@@ -22,6 +22,9 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function Corousel() {
+
+      const navigate = useNavigate();
+  
   const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
 
@@ -65,7 +68,7 @@ function Corousel() {
         count: 1,
         service: info.name,
         price: info.price,
-      })
+      },navigate)
     );
   };
 

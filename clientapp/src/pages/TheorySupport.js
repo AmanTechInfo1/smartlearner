@@ -133,7 +133,9 @@ export default function TheorySupport() {
               </Link>
               <span>
                 {" "}
-                <IoCallSharp className="gradient-icon" /> 02475092784
+                <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
+                  <IoCallSharp className="gradient-icon" /> 02475092784
+                </a>
               </span>
             </div>
           </div>
@@ -183,7 +185,6 @@ export default function TheorySupport() {
                 <TheoryCorousel />
               </section>
             </section>
-
           </Element>
         </section>
         {/* //////////CallBack Form section///////////// */}
@@ -208,14 +209,12 @@ export default function TheorySupport() {
 
       {/* ///////////////////////////////////////////////////// */}
 
-    
       {/* ///////////////Testimonials////// */}
       {/* <section>
         <StaticTestimonial/>
       </section> */}
 
       {/* ///////////////////////Reviews//////// */}
-    
     </div>
   );
 }

@@ -4,7 +4,7 @@ import redStarImg from "../../assets/images/redStar.png";
 import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
@@ -14,6 +14,9 @@ import { getAllProductsCategory } from "../../redux/features/productSlice";
 import { Toaster } from "react-hot-toast";
 
 function ManualCarousel() {
+  const navigate = useNavigate();
+
+
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
   const handleReadMoreToggle = (index) => {
@@ -66,7 +69,7 @@ function ManualCarousel() {
         count: 1,
         service: info.name,
         price: info.price,
-      })
+      },navigate)
     );
   };
 

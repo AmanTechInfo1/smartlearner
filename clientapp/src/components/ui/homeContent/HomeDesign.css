@@ -64,7 +64,7 @@
   display: flex;
   gap: 50px;
 }
-.home-bannerbnt-sec span {
+.home-bannerbnt-sec span a {
   background: linear-gradient(
     135deg,
     #ff6347,
@@ -74,6 +74,12 @@
   background-clip: text; /* For non-webkit browsers */
   color: transparent;
   font-size: 2rem;
+}
+
+.home-bannerbnt-sec span a:hover {
+  transform: scale(1.1);
+  transition: ease-in-out 0.2s;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
 }
 .gradient-icon {
   color: #ff6347; /* Apply the gradient */

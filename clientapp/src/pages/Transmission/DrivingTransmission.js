@@ -1,23 +1,21 @@
-// src/Transmission.js
-
 import React, { useState } from "react";
 
-import styles from "./Manual.module.css";
+import styles from "./DrivingTransmission.module.css";
 import { IoCallSharp } from "react-icons/io5";
 import { useEffect, useRef } from "react";
 import manualround1 from "./manualround1.png";
 import manualround2 from "./manualround2.jpg";
 
 import gsap from "gsap";
-import ManualCorousel from "../../components/ui/ManualCarousel";
 import { Link } from "react-router-dom";
+import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
 
-const Manual = () => {
+export default function DrivingTransmission() {
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = "Manual Transmission"; // First part before "Driving"
+    const firstPart = "Driving Instructor Packages"; // First part before "Driving"
     // Second part after "Driving"
     const firstLine = firstPart
       .split("")
@@ -144,7 +142,7 @@ const Manual = () => {
         </section>
         {/* ///////////////////////////// */}
 
-        <div className={styles.manualContent}>
+        {/* <div className={styles.manualContent}>
           <section className={styles.manualPara}>
             <p>
               Discover the thrill of hands-on control with our manual driving
@@ -158,10 +156,10 @@ const Manual = () => {
               with finesse and precision.
             </p>
           </section>
-        </div>
+        </div> */}
 
         <section className={styles.ManualCorousel}>
-          <ManualCorousel />
+          <DrivingInstructorUI />
         </section>
         {/* ////////////////////////////////////////////////////// */}
 
@@ -169,6 +167,4 @@ const Manual = () => {
       </div>
     </div>
   );
-};
-
-export default Manual;
+}

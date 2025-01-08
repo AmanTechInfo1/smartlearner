@@ -4,7 +4,7 @@ import blueStarImg from "../../assets/images/blueStarImg.png";
 import cartImg from "../../assets/images/bannerCart.png"; 
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
@@ -13,6 +13,9 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function AutomaticCarousel() {
+
+    const navigate = useNavigate();
+  
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
   const handleReadMoreToggle = (index) => {
@@ -58,7 +61,7 @@ function AutomaticCarousel() {
         count: 1,
         service: info.name,
         price: info.price,
-      })
+      },navigate)
     );
   };
   const filteredData = (categoryName) => {

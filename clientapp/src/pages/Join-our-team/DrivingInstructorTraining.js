@@ -319,8 +319,8 @@ export default function DrivingInstructorTraining() {
             <h4 ref={text2Ref}>{splitTextPartTwo()}</h4>
 
             <div className={styles.detailsContainer}>
-              <DrivingInstructorUI />
-              {/* <div className={styles.trainingDetails}>
+              {/* <DrivingInstructorUI /> */}
+              <div className={styles.trainingDetails}>
                 <h3>Step 1 - Preparation</h3>
                 <hr />
                 <p>
@@ -395,7 +395,7 @@ export default function DrivingInstructorTraining() {
                   off! You can now proudly say you are a fully qualified driving
                   instructor (ADI).
                 </p>
-              </div> */}
+              </div>
             </div>
           </div>
         </section>

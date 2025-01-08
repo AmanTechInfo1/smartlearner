@@ -88,9 +88,9 @@ export default function DrivingLessons() {
       {/* ////////////////////////////////////////////// */}
 
       {/* ///////////////////////////////////////////// */}
-      <section>
+      {/* <section>
         <Corousel />
-      </section>
+      </section> */}
       {/* ///////////////////////////////////// */}
       <section className={styles.dManualSection}>
         <Element name="manual-section">
@@ -219,7 +219,6 @@ export default function DrivingLessons() {
                 driving conditions, or simply want to become a safer, more
                 skilled driver, Pass Plus is the ideal next step.
               </p>
-              
             </div>
             <section>
               <PassPlusCorousel />
@@ -260,8 +259,7 @@ export default function DrivingLessons() {
             maxWidth: "1200px",
             marginLeft: "auto",
             marginRight: "auto",
-          }}
-        >
+          }}>
           <h2 className="text-center display-4 mb-4">What's included?</h2>
           <div className="mb-4">
             <h3 className="text-danger font-weight-bold">TOWN DRIVING</h3>
@@ -342,8 +340,7 @@ export default function DrivingLessons() {
             padding: "2rem 2rem",
             width: "100%",
             margin: "2rem auto",
-          }}
-        >
+          }}>
           <ImagesCarousel />
         </div>
       </section>
