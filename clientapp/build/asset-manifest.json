@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3868894d.css",
-    "main.js": "/static/js/main.1fb3abe8.js",
+    "main.css": "/static/css/main.7de3e3c2.css",
+    "main.js": "/static/js/main.5075f659.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -13,6 +13,7 @@
     "static/media/manualcrouselImg.jpg": "/static/media/manualcrouselImg.cb4a310fe5a01cd2f7bd.jpg",
     "static/media/automatic2.jpg": "/static/media/automatic2.f17951d705cead5e1680.jpg",
     "static/media/automaticround.jpg": "/static/media/automaticround.bf477bac8170d3177a82.jpg",
+    "static/media/contact-banner2.png": "/static/media/contact-banner2.684e276d92e370cec21e.png",
     "static/media/automatic3.jpg": "/static/media/automatic3.2a3828b79354f2745575.jpg",
     "static/media/manual4.jpg": "/static/media/manual4.40cc55c392c7749d2437.jpg",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -73,6 +74,7 @@
     "static/media/cimg14.jpg": "/static/media/cimg14.b183209c115fc6bca30f.jpg",
     "static/media/automatic1.jpg": "/static/media/automatic1.d1f9d4f90d164f69d022.jpg",
     "static/media/cimg9.jpg": "/static/media/cimg9.917bb49c00eb380d608d.jpg",
+    "static/media/halloffame7.png": "/static/media/halloffame7.0d5a438292265809cc93.png",
     "static/media/cimg12.jpg": "/static/media/cimg12.ca02c5bf148af365b31c.jpg",
     "static/media/puffin.png": "/static/media/puffin.d84e0c9cd53f2f9e3454.png",
     "static/media/pelican.png": "/static/media/pelican.7dd6c93cf8b185f61acc.png",
@@ -80,6 +82,7 @@
     "static/media/manualBanner.webp": "/static/media/manualBanner.89134f082b6e81c69789.webp",
     "static/media/temptation.png": "/static/media/temptation.064ad4d26c58bc4acc8c.png",
     "static/media/cimg19.jpg": "/static/media/cimg19.acaea50bc3ad6df291f3.jpg",
+    "static/media/halloffame6.png": "/static/media/halloffame6.81ee48aff45aee43c639.png",
     "static/media/cimg8.jpg": "/static/media/cimg8.e758cccac50d479337fa.jpg",
     "static/media/ourpartners.jpg": "/static/media/ourpartners.9b045272760670a9fafc.jpg",
     "static/media/img4.jpg": "/static/media/img4.8e2cdcfc39532dcbd5ab.jpg",
@@ -99,6 +102,7 @@
     "static/media/video-bgImg.jpg": "/static/media/video-bgImg.48f6696742fd77665dda.jpg",
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
+    "static/media/halloffame5.png": "/static/media/halloffame5.f01a68a25f42200d5b90.png",
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
     "static/media/vehicalscarrying.png": "/static/media/vehicalscarrying.6c038a4bf8c129bb8de3.png",
     "static/media/cimg18.jpg": "/static/media/cimg18.94fecd5310e59dcf5262.jpg",
@@ -213,6 +217,7 @@
     "static/media/CChampion-3.jpg": "/static/media/CChampion-3.b0a0da4d671fa060d85f.jpg",
     "static/media/clock.png": "/static/media/clock.49b6e19467568a442570.png",
     "static/media/carryingPassenger.jpg": "/static/media/carryingPassenger.22bd40f3b3edf77399fb.jpg",
+    "static/media/goldTrophyImg.jpg": "/static/media/goldTrophyImg.4c27a8d06d598d1c0c95.jpg",
     "static/media/smartImgLogo.png": "/static/media/smartImgLogo.368890b77c8addf650c6.png",
     "static/media/foglight.jpg": "/static/media/foglight.6a42170a26cf0c285c1e.jpg",
     "static/media/CChampion-4.jpg": "/static/media/CChampion-4.733626981ce837a576db.jpg",
@@ -243,6 +248,7 @@
     "static/media/cartIcon1.png": "/static/media/cartIcon1.132bea975b266bc3806d.png",
     "static/media/Vulnerable-road-users.png": "/static/media/Vulnerable-road-users.2581646282835a1f300d.png",
     "static/media/White-Logo-Fixed-1024x174.png": "/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png",
+    "static/media/silverTrophyImg.jpg": "/static/media/silverTrophyImg.b8e1282280ce0344bf4f.jpg",
     "static/media/Screenshot 2024-05-02 at 14.05.12.png": "/static/media/Screenshot 2024-05-02 at 14.05.12.95197021832984462cea.png",
     "static/media/deviation.jpg": "/static/media/deviation.726515eea46a59e57952.jpg",
     "static/media/Lion-Club.png": "/static/media/Lion-Club.331731bf4a5079e8a0a2.png",
@@ -308,12 +314,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.3868894d.css.map": "/static/css/main.3868894d.css.map",
-    "main.1fb3abe8.js.map": "/static/js/main.1fb3abe8.js.map",
+    "main.7de3e3c2.css.map": "/static/css/main.7de3e3c2.css.map",
+    "main.5075f659.js.map": "/static/js/main.5075f659.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3868894d.css",
-    "static/js/main.1fb3abe8.js"
+    "static/css/main.7de3e3c2.css",
+    "static/js/main.5075f659.js"
   ]
 }
