@@ -7,10 +7,10 @@
 }
 /* ContactUs.module.css */
 .contactHead {
-  background-image: url("../../assets/images/contact-banner.png");
+  background-image: url("../../assets/images/contact-banner2.png");
   position: relative;
   width: 100%;
-  padding: 8rem 0px;
+  padding: 4rem 0px;
   background-size: cover;
   background-position: center;
   font-family: "Montserrat", sans-serif;
@@ -19,18 +19,24 @@ ul {
   padding-left: 0px;
   margin-bottom: 0px;
 }
+.contactheadinghead {
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
 .contactHead h1 {
   position: sticky;
   padding: 10% 0;
   color: #fff;
-  font-size: 50px;
+  font-size: 4rem;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 800;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: left;
 }
 .contactUsDetails {
-  max-width: 1140px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 0px;
@@ -48,10 +54,10 @@ ul {
   padding: 20px;
   padding: 30px;
   box-shadow: 0 0 10px #999;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 0px 10px; /* Add some space between divs */
   max-width: 42%;
+  background: linear-gradient(135deg, #5d60eb, #070161);
 }
 .contactInfo h4 {
   font-size: 1.5rem;
@@ -63,7 +69,7 @@ ul {
   color: #ed2025;
 }
 .contactInfo p {
-  background: #e2e2e2;
+  background: linear-gradient(135deg, #46c3e9, #0080a7);
   padding: 10px;
   margin: 10px 0;
   line-height: 28px;
@@ -116,9 +122,10 @@ ul {
 }
 .contactUsFormContainer h2 {
   text-align: center;
-  font-size: 28px;
-  font-weight: normal;
-  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
 }
 .contactUsFormContainer p {
   line-height: 28px;
@@ -130,10 +137,9 @@ ul {
 
 .formContainer {
   margin: 15px 20px;
-  background: #121212;
+  background: linear-gradient(135deg, #5d60eb, #070161);
   padding: 40px;
-  border: 5px double #999;
-
+  border-radius: 10px;
   font-family: "Montserrat", sans-serif;
 }
 .formContainer label {
@@ -157,7 +163,7 @@ ul {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   outline: none;
 
   overflow: visible;
@@ -205,10 +211,15 @@ ul {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  max-width: 500px;
+  width: 100%;
 }
 
 .submit button:hover {
-  background-color: #7b0608;
+  background-color: #ffefef;
+  color: red;
+  border: 1px solid red;
+  box-shadow: 0 0 10px #d3d3d3;
 }
 
 @media (max-width: 767px) {

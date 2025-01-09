@@ -7,6 +7,7 @@ import {
   removeSubs,
   fetchUserSubscriptions,
 } from "../features/subscriptionSlice";
+import { removeCartItems } from "./cartSlice";
 const initialState = {
   loading: false,
   userDetails: localStorage.getItem("user")
@@ -159,7 +160,7 @@ export const logoutUser = createAsyncThunk(
     try {
       localStorage.removeItem("user");
       dispatch(UserDetails({}));
-
+      dispatch(removeCartItems({}));
       dispatch(removeSubs({}));
       // dispatch(removeSubs());
       toast.success("Logged Out Successfully");

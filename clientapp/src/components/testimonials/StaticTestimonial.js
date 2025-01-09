@@ -47,25 +47,25 @@ const StaticTestimonial = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Ben Duccket",
+      name: "Ben D.",
       position: "Coventry",
       text: "As a first-time driver, I was really nervous about getting behind the wheel, but my instructor made me feel so comfortable from the first lesson. ",
     },
     {
       id: 2,
-      name: "Jane Smith",
+      name: "Jane S.",
       position: "Warwick",
       text: "After failing my driving test a couple of times, I was really starting to lose confidence. But then I found Smartlearner, and everything changed. Definitely recommended!",
     },
     {
       id: 3,
-      name: "Michael Brown",
+      name: "Michael B.",
       position: "Leamington",
       text: "As someone who had driven before but had been away from the roads for a few years, I needed a refresher course to get my confidence back.",
     },
     {
       id: 4,
-      name: "Sarah M",
+      name: "Sarah M.",
       position: "Nuneaton",
       text: "Choosing smartlearner was the best decision I made in my journey to becoming a confident driver. Highly recommend this driving school to anyone looking to learn safely and efficiently!",
     },
@@ -80,10 +80,10 @@ const StaticTestimonial = () => {
   return (
     <>
       <div className={styles.staticTestimonialPage}>
-        <div className={styles.staticTestimonialheading}>
+        {/* <div className={styles.staticTestimonialheading}>
           {" "}
           <h2>See What Our Client Says About Us</h2>
-        </div>
+        </div> */}
 
         <div className={styles.swiperContent}>
           <Swiper

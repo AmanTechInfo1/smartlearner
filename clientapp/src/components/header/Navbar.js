@@ -9,7 +9,6 @@ import { logoutUser } from "../../redux/features/authSlice";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
-
 import { Button, Dropdown, Space } from "antd";
 import Header from "./Header";
 
@@ -30,8 +29,7 @@ function Navbar() {
                 alignItems: "center",
                 gap: "10px",
               }}
-              onClick={() => navigate("/my-account")}
-            >
+              onClick={() => navigate("/my-account")}>
               <CgProfile style={{ fontSize: "1.5rem" }} /> My Account
             </span>
           ),
@@ -46,8 +44,10 @@ function Navbar() {
                 alignItems: "center",
                 gap: "10px",
               }}
-              onClick={() => dispatch(logoutUser())}
-            >
+              onClick={() => {
+                dispatch(logoutUser());
+                navigate("/");
+              }}>
               Logout
             </span>
           ),
@@ -65,8 +65,7 @@ function Navbar() {
                 gap: "10px",
                 textDecoration: "none",
               }}
-              to="/login"
-            >
+              to="/login">
               LOGIN / REGISTER
             </Link>
           ),
@@ -78,7 +77,6 @@ function Navbar() {
     <div id={styles.navContainer}>
       <div className={styles.headerContainer}>
         <section className={styles.imgLogoSection}>
-         
           <div className={styles.imgLogoSection2}>
             {" "}
             <img src={logo2} alt="logo" />
@@ -101,8 +99,7 @@ function Navbar() {
                     menu={{ items }}
                     placement="bottomRight"
                     arrow={{ pointAtCenter: true }}
-                    className="custom-dropdown"
-                  >
+                    className="custom-dropdown">
                     <button>
                       Account <MdOutlineKeyboardArrowDown />
                     </button>

@@ -7,11 +7,11 @@ export default function Checkout() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-   
+
     streetAddress1: "",
     streetAddress2: "",
     city: "",
-    
+
     postcode: "",
     phoneNumber: "",
   });
@@ -21,15 +21,16 @@ export default function Checkout() {
     setFormData({ ...formData, [id]: value });
   };
 
-
-  const handleLocalChange = (id,value) => {
+  const handleLocalChange = (id, value) => {
     setFormData({ ...formData, [id]: value });
   };
 
   return (
     <div className="chackoutPageD">
       <div className="checkoutPage">
-        <div className="max-w-lg  p-4 bg-dark dark:bg-zinc-800 text-white dark:text-white">
+        <div
+          className="max-w-lg  p-4 bg-dark dark:bg-zinc-800 text-white dark:text-white"
+          id="chackoutpageComponent">
           <h1 className="text-3xl font-bold text-center mb-4">Checkout</h1>
 
           <hr className="border-red-500 mb-4" />
@@ -76,8 +77,7 @@ export default function Checkout() {
             <div className="mb-4">
               <label
                 className="block font-semibold mb-1"
-                htmlFor="streetAddress1"
-              >
+                htmlFor="streetAddress1">
                 Street Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -153,7 +153,11 @@ export default function Checkout() {
           </form>
         </div>
         {/* /////////////////////////////////////////////////////// */}
-        <FinalCheckout formData={formData} setFormData={setFormData} handleLocalChange={handleLocalChange}/>
+        <FinalCheckout
+          formData={formData}
+          setFormData={setFormData}
+          handleLocalChange={handleLocalChange}
+        />
       </div>
     </div>
   );

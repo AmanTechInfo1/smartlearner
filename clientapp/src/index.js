@@ -9,13 +9,15 @@ import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { router } from "./routing";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"; // Add this import
-import { Elements } from "@stripe/react-stripe-js"; 
+import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-const stripePromise = loadStripe("pk_live_51QUtoPKf87lUPZhYsu1dWGqIA02ddYQaj5REvOdXdH629LBfj8tg4Fea50YjkY44uUzuJe8bcvO3RfDiF2a5jezf00i69P0fXa");
+const stripePromise = loadStripe(
+  "pk_live_51QUtoPKf87lUPZhYsu1dWGqIA02ddYQaj5REvOdXdH629LBfj8tg4Fea50YjkY44uUzuJe8bcvO3RfDiF2a5jezf00i69P0fXa"
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -24,13 +26,13 @@ root.render(
         options={{
           "client-id":
             "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL",
-            currency: "GBP",
-            intent: "capture",
+          currency: "GBP",
+          intent: "capture",
         }}>
-          <Elements stripe={stripePromise}>
-        <RouterProvider router={router} />
+        <Elements stripe={stripePromise}>
+          <RouterProvider router={router} />
 
-        <Toaster position="top-right" />
+          <Toaster position="center" />
         </Elements>
       </PayPalScriptProvider>
     </Provider>

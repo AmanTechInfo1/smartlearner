@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
 import blueStarImg from "../../assets/images/blueStarImg.png";
-import cartImg from "../../assets/images/bannerCart.png"; 
+import cartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,9 +13,8 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function AutomaticCarousel() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-  
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
   const handleReadMoreToggle = (index) => {
@@ -56,12 +55,15 @@ function AutomaticCarousel() {
   const addToCart = (info, index) => {
     const productId = `${info._id}_${index}_${info.price}`;
     dispatch(
-      getAddToCart({
-        id: productId,
-        count: 1,
-        service: info.name,
-        price: info.price,
-      },navigate)
+      getAddToCart(
+        {
+          id: productId,
+          count: 1,
+          service: info.name,
+          price: info.price,
+        },
+        navigate
+      )
     );
   };
   const filteredData = (categoryName) => {
@@ -103,7 +105,7 @@ function AutomaticCarousel() {
                     color: getColorForCategory(item._id), // Dynamic color for heading
                   }}>
                   {expandedCategory === item._id
-                    ? "Specail Offers".toUpperCase()
+                    ? "Special Offers".toUpperCase()
                     : "Offers".toUpperCase()}
                 </h2>
                 {expandedCategory === item._id && (

@@ -18,7 +18,13 @@ import hallOfFame1 from "../assets/images/halloffame11.png";
 import hallOfFame2 from "../assets/images/halloffame22.png";
 import hallOfFame3 from "../assets/images/halloffame33.png";
 import hallOfFame4 from "../assets/images/halloffame44.png";
+import hallOfFame5 from "../assets/images/halloffame5.png";
+import hallOfFame6 from "../assets/images/halloffame6.png";
+import hallOfFame7 from "../assets/images/halloffame7.png";
 import callbackimg from "../assets/images/callbacksupportimage.jpg";
+
+import GoldTrophyImg from "../assets/images/goldTrophyImg.jpg";
+import silverTrophyImg from "../assets/images/silverTrophyImg.jpg";
 // //////////////////
 import Slider from "react-slick";
 
@@ -167,13 +173,13 @@ export default function Home() {
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
                       <img
-                        src={logoImage}
+                        src={GoldTrophyImg}
                         alt="Logo"
                         className={styles.logotrophyFrame}
                       />
                     </div>
                   </div>
-                  <p>REGIONAL, DRIVING SCHOOL OF THE YEAR</p>
+                  <p>REGIONAL, DRIVING SCHOOL OF THE YEAR 2022</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -183,13 +189,13 @@ export default function Home() {
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
                       <img
-                        src={logoImage}
+                        src={GoldTrophyImg}
                         alt="Logo"
                         className={styles.logotrophyFrame}
                       />
                     </div>
                   </div>
-                  <p>COMMUNITY CHAMPION OF THE YEAR</p>
+                  <p>COMMUNITY CHAMPION OF THE YEAR 2023</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -199,13 +205,13 @@ export default function Home() {
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
                       <img
-                        src={logoImage}
+                        src={GoldTrophyImg}
                         alt="Logo"
                         className={styles.logotrophyFrame}
                       />
                     </div>
                   </div>
-                  <p>NATIONAL INSTRUCTOR AWARDS</p>
+                  <p>NATIONAL INSTRUCTOR AWARDS 2024</p>
                 </div>
 
                 <div className={styles.cardtrophyFrame}>
@@ -215,13 +221,61 @@ export default function Home() {
                     </div>
                     <div className={styles.cardBacktrophyFrame}>
                       <img
-                        src={logoImage}
+                        src={silverTrophyImg}
                         alt="Logo"
                         className={styles.logotrophyFrame}
                       />
                     </div>
                   </div>
-                  <p>GREEN DRIVING SCHOOL OF THE YEAR</p>
+                  <p>GREEN DRIVING SCHOOL OF THE YEAR 2023</p>
+                </div>
+                {/* //////////////////////////////////////////// */}
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame5} alt="hallOfFame5" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img
+                        src={silverTrophyImg}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
+                    </div>
+                  </div>
+                  <p>Prestige Awards Year 2024</p>
+                </div>
+                {/* /////////////////////////////////////////////////////// */}
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame6} alt="hallOfFame6" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img
+                        src={silverTrophyImg}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
+                    </div>
+                  </div>
+                  <p>COMMUNITY CHAMPION OF THE YEAR 2024</p>
+                </div>
+                {/* ////////////////////////////////////////////////////////////// */}
+                <div className={styles.cardtrophyFrame}>
+                  <div className={styles.cardInnertrophyFrame}>
+                    <div className={styles.cardFronttrophyFrame}>
+                      <img src={hallOfFame7} alt="hallOfFame7" />
+                    </div>
+                    <div className={styles.cardBacktrophyFrame}>
+                      <img
+                        src={silverTrophyImg}
+                        alt="Logo"
+                        className={styles.logotrophyFrame}
+                      />
+                    </div>
+                  </div>
+                  <p>Global Award 2024 / 2025</p>
                 </div>
               </div>
             </div>

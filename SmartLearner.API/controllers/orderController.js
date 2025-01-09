@@ -296,6 +296,13 @@ async createStripeCharge (req, res)  {
       },
       return_url: "https://smartlearner.com/payment-completed",
     });
+    if (paymentIntent.status === 'requires_action' || paymentIntent.status === 'requires_source_action') {
+      return res.status(200).json({
+        success: true,
+        requiresAction: true,
+        paymentIntentClientSecret: paymentIntent.client_secret,
+      });
+    }
 
     order.status = "completed";
     await order.save();
@@ -322,7 +329,7 @@ async createStripeCharge (req, res)  {
       success: false,
       message: 'Payment failed: ' + error.message,
     });
-  }
+  } 
 };
 
   

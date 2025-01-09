@@ -133,8 +133,9 @@ export default function HomeDesign() {
                 the road ahead!
               </p>
               <div className="home-bannerbnt-sec">
-                {" "}
-                <button className="button-style">EXPLORE NOW</button>
+                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                  <button className="button-style">Contact Us</button>
+                </Link>
                 <span>
                   {" "}
                   <a
@@ -147,16 +148,16 @@ export default function HomeDesign() {
             </div>
 
             <div className="banner-img">
-              <a
-                href="https://www.gov.uk/apply-first-provisional-driving-licence"
-                style={{ textDecoration: "none", padding: "8px" }}>
-                <p id="home-drivingImg-1">Pass Your Theory Test With Us</p>
-              </a>
               <Link
                 to="/Theory-Support"
                 style={{ textDecoration: "none", padding: "8px" }}>
-                <p id="home-drivingImg-2">Apply For Provisional Licence </p>
+                <p id="home-drivingImg-1">Pass Your Theory Test With Us</p>
               </Link>
+              <a
+                href="https://www.gov.uk/apply-first-provisional-driving-licence"
+                style={{ textDecoration: "none", padding: "8px" }}>
+                <p id="home-drivingImg-2">Apply For Provisional Licence </p>
+              </a>
               <Link
                 to="/Driving-Lessons"
                 style={{ textDecoration: "none", padding: "8px" }}>

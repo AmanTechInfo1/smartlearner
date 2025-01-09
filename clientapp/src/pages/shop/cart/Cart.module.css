@@ -288,7 +288,19 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   font-weight: 600;
-  
+}
+.btnBasketbtnws {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnBasketbtnws p {
+  color: white;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.btnBasketbtnws p:hover {
+  color: #8d39ee;
 }
 #couponCart {
   display: flex;
@@ -349,7 +361,7 @@
   color: black;
   border: none;
   padding: 0.8rem 1rem;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .basketbtnProceed:hover {
   background-color: #282385;
@@ -385,9 +397,33 @@
   margin-top: 2rem;
   padding: 1rem 0px;
 }
+@media (max-width: 1228px) {
+  .basketbtnProceed {
+    padding: 0.5rem 0.8rem;
+  }
+}
+@media (max-width: 1200px) {
+  .btnBasketbtnws {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .btnBasketbtnws p {
+    padding: 0.5rem 0.2rem;
+  }
+}
+
 @media (max-width: 928px) {
   .cartContentContainer {
     flex-direction: column;
+  }
+  .btnBasketbtnws {
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+  }
+  .btnBasketbtnws p {
+    padding: 0px;
   }
   .cartItemsContainer {
     max-width: 100%;
@@ -430,4 +466,28 @@
     justify-content: space-evenly;
     gap: 0px;
   }
+}
+@media (max-width: 408px) {
+  .btnBasketbtnws {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .btnBasketbtnws p {
+    padding: 0.5rem 0.2rem;
+  }
+}
+.emptyCartMessage {
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  min-height: 300px;
+  text-align: center;
+  font-size: 22px;
+  color: #969accce;
+  padding: 20px;
 }

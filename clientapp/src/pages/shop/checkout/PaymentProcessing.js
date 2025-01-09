@@ -2,19 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Checkout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
-import {
-
-  CardElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import httpHandler from "../../../utils/httpHandler";
 import LoadingWeb from "../../../components/loader/LoadingWeb";
 import { useNavigate } from "react-router-dom";
 import { emptyCart } from "../../../redux/features/cartSlice";
-
-
+import toast from "react-hot-toast";
+import paypalLogo from "../../../assets/images/paypalLogos.png";
+import stripLogo from "../../../assets/images/Stripe-logo.png";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -40,7 +36,7 @@ export default function PaymentProcessing() {
           firstName: carting.firstName,
           lastName: carting.lastName,
           city: carting.city,
-          
+
           email: carting.email,
           myCart: carting.myCart,
           ordernotes: carting.ordernotes,
@@ -99,9 +95,28 @@ export default function PaymentProcessing() {
         orderId,
         amount: carting.total.toFixed(2),
       });
-    
 
-      if (response.data.success) {
+      if (response.data.requiresAction) {
+        // Confirm the payment with the client secret from backend
+        const { error: confirmationError, paymentIntent } =
+          await stripe.confirmCardPayment(
+            response.data.paymentIntentClientSecret
+          );
+
+        if (confirmationError) {
+          setError(
+            "Payment authentication failed: " + confirmationError.message
+          );
+        } else if (paymentIntent.status === "succeeded") {
+          dispatch(emptyCart());
+          navigate("/payment-completed");
+          toast.success(response.data.message);
+        } else {
+          setError("Payment failed. Please try again.");
+          toast.error(response.data.message);
+        }
+      } else if (response.data.success) {
+        // Payment was successful
         dispatch(emptyCart());
         navigate("/payment-completed");
       } else {
@@ -152,48 +167,64 @@ export default function PaymentProcessing() {
   }, []);
 
   return (
-    <div className="payment-container">
-      {webloading && <LoadingWeb />}
+    <div className="paymentComponent">
+      <div>
+        <div className="payment-container">
+          {webloading && <LoadingWeb />}
 
-      <h1>Amount to be paid: £{carting.total}</h1>
-      <h3>Sub Total: £{carting.subtotal}</h3>
-      <h3>Service Charge: £{carting.serviceCharge}</h3>
+          <h1>
+            Amount to be paid: <span>£{carting.total}</span>
+          </h1>
+          <h3>
+            Sub Total: <span>£{carting.subtotal}</span>
+          </h3>
+          <h3>
+            Service Charge: <span>£{carting.serviceCharge}</span>
+          </h3>
 
-      {isPaymentCreated && !loading && (
-        <div>
-          <PayPalButtons
-            style={{ layout: "vertical" }}
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: carting.total.toFixed(2),
-                      currency_code: "GBP",
-                    },
-                  },
-                ],
-              });
-            }}
-            onApprove={handleApprove}
-            onError={handleError}
-            fundingSource="paypal"
-          />
+          {isPaymentCreated && !loading && (
+            <div>
+              <img src={paypalLogo} alt="paypal" />
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: carting.total.toFixed(2),
+                          currency_code: "GBP",
+                        },
+                      },
+                    ],
+                  });
+                }}
+                onApprove={handleApprove}
+                onError={handleError}
+                fundingSource="paypal"
+              />
 
-          {/* Stripe Payment */}
+              {/* Stripe Payment */}
+              <img src={stripLogo} alt="stripe" />
+              <form onSubmit={handleStripePayment}>
+                <CardElement className="stripe-card-input" />
+                <button
+                  className="payment-button"
+                  type="submit"
+                  disabled={!stripe}>
+                  Pay with Stripe
+                </button>
+              </form>
 
-          <form onSubmit={handleStripePayment}>
-            <CardElement  className="stripe-card-input"  />
-            <button  className="payment-button" type="submit" disabled={!stripe}>
-              Pay with Stripe
-            </button>
-          </form>
+              {stripeError && (
+                <div className="error-message">{stripeError}</div>
+              )}
+            </div>
+          )}
 
-          {stripeError && <div className="error-message">{stripeError}</div>}
+          {loading && !isPaymentCreated && <div>Loading... Please wait.</div>}
         </div>
-      )}
-
-      {loading && !isPaymentCreated && <div>Loading... Please wait.</div>}
+      </div>
     </div>
   );
 }

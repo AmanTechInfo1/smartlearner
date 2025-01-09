@@ -21,6 +21,10 @@ const cartSlice = createSlice({
     removeCart: (state, action) => {
       state.cart = [];
     },
+    removeCartItems: (state) => {
+      localStorage.removeItem("cart");
+      state.cart = [];
+    },
 
     getCompleteCheckoutSuccess: (state, action) => {
       localStorage.setItem("payment", JSON.stringify(action.payload.order));
@@ -300,6 +304,7 @@ export const {
   getOrdersSuccess,
   getOrdersFailure,
   EmptyCart,
+  removeCartItems,
 } = cartSlice.actions;
 
 // export const { IncreaseCart, DecreaseCart, AddToCart, EmptyCart, setLoading } = cartSlice.actions;
