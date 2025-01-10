@@ -28,9 +28,17 @@
   max-width: 600px;
   width: 100%;
 }
-.cbdContentBoxflex a:hover {
+.cbdContent a button {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 6px;
+}
+.cbdContent a button:hover {
   transform: scale(1.01);
   transition: ease-in-out 0.3s;
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(229, 239, 255);
   box-shadow: 0 0 20px #a9b5c2db;
 }
 .cbdContent {

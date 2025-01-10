@@ -102,11 +102,8 @@ export default function CbdEvents() {
         <div className={styles.cbdContentBox}>
           <h1>Day 1</h1>
           <div className={styles.cbdContentBoxflex}>
-            <a href="https://buy.stripe.com/aEUg1icEtcivgxicMM">
-              {" "}
-              <img src={cdbcard1} alt="" />
-            </a>
-
+            {" "}
+            <img src={cdbcard1} alt="" />
             <div className={styles.cbdContent}>
               <h2>
                 Benefits of a Session with Graham Hooper (ADI Industry Expert):
@@ -135,14 +132,15 @@ export default function CbdEvents() {
                 A session with Graham ensures practical insights and
                 professional growth in the driving instruction field.
               </p>
+              <a href="https://buy.stripe.com/aEUg1icEtcivgxicMM">
+                <button>Pay Now</button>
+              </a>
             </div>
           </div>
           <h1>Day 2</h1>
           <div className={styles.cbdContentBoxflex}>
-            <a href="https://buy.stripe.com/dR63ewfQF96j5SEeUV">
-              {" "}
-              <img src={cdbcard2} alt="" />
-            </a>
+            {" "}
+            <img src={cdbcard2} alt="" />
             <div className={styles.cbdContent}>
               <h2>
                 Engaging in a session with Chris Howes, a seasoned professional
@@ -176,6 +174,9 @@ export default function CbdEvents() {
                 boost confidence, and enhance your effectiveness as a driving
                 instructor.
               </p>
+              <a href="https://buy.stripe.com/dR63ewfQF96j5SEeUV">
+                <button>Pay Now</button>
+              </a>
             </div>
           </div>
         </div>
