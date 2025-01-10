@@ -57,12 +57,14 @@ export default function Register() {
           <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <Link to='/' >  <img
-                src={smartlearnerLogo}
-                alt="logo"
-                style={{ maxWidth: "400px" }}
-              /></Link>
-            
+              <Link to="/">
+                {" "}
+                <img
+                  src={smartlearnerLogo}
+                  alt="logo"
+                  style={{ maxWidth: "400px" }}
+                />
+              </Link>
             </div>
             <div className={styles.ImageDisplayFlex}>
               <div className={styles.loginformContainer}>
@@ -70,8 +72,7 @@ export default function Register() {
                   <div className={styles.loginLogo}>
                     <iframe
                       style={{ height: "150px" }}
-                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
-                    ></iframe>
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"></iframe>
                   </div>
 
                   <h2>Create Account</h2>
@@ -82,8 +83,7 @@ export default function Register() {
                       render={({ field: { value, onChange } }) => (
                         <FloatingLabel
                           controlId="floatingInput"
-                          label="username"
-                        >
+                          label="username">
                           <Form.Control
                             type="text"
                             value={value}
@@ -109,8 +109,7 @@ export default function Register() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="Password"
-                            className={styles.formControlWithIcon}
-                          >
+                            className={styles.formControlWithIcon}>
                             <Form.Control
                               type={showPassword ? "text" : "password"}
                               value={value}
@@ -147,8 +146,7 @@ export default function Register() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="confirm password"
-                            className={styles.formControlWithIcon}
-                          >
+                            className={styles.formControlWithIcon}>
                             <Form.Control
                               type={confirmShowPassword ? "text" : "password"}
                               value={value}
@@ -185,8 +183,7 @@ export default function Register() {
                         <FloatingLabel
                           controlId="floatingInput"
                           label="Email Address"
-                          className={styles.formControlWithIcon}
-                        >
+                          className={styles.formControlWithIcon}>
                           <Form.Control
                             type="email"
                             value={value}
@@ -210,8 +207,7 @@ export default function Register() {
                         <FloatingLabel
                           controlId="floatingInput"
                           label="Mobile Number"
-                          className={styles.formControlWithIcon}
-                        >
+                          className={styles.formControlWithIcon}>
                           <Form.Control
                             type="tel"
                             value={value}
@@ -234,15 +230,14 @@ export default function Register() {
                         name="roleName"
                         control={control}
                         render={({ field }) => (
-                          <Form.Select  style={{cursor:'pointer'}} {...field}>
+                          <Form.Select style={{ cursor: "pointer" }} {...field}>
                             <option disabled value="">
                               Account Type
                             </option>
                             {AccountTypes.map((accountType) => (
                               <option
                                 key={accountType.value}
-                                value={accountType.value}
-                              >
+                                value={accountType.value}>
                                 {accountType.label}
                               </option>
                             ))}
@@ -256,18 +251,16 @@ export default function Register() {
                         {errors?.roleName?.message}
                       </p>
                     )}
-  <br />
+                    <br />
                     <div className={styles.formPrivacyPolicies}>
                       <Form.Check type="switch" id="custom-switch" />
 
                       <p>I agree to the privacy policy</p>
                     </div>
 
-                  
                     <div className={styles.loginFormBtn}>
                       <button type="submit">Create Account</button>
                     </div>
-                    
                   </form>
                   <div className={styles.formFooter}>
                     <p>
@@ -281,7 +274,70 @@ export default function Register() {
                 </section>
               </div>
               <section className={styles.loginDisplayflexImage}>
-              <h2>Benifits to Join SmartLearner</h2>
+                <h2>Benifits to Join SmartLearner</h2>
+
+                <div className={styles.registerBenefitsfeature}>
+                  <div className={styles.registerBenefitsfeatureicon}>🎓</div>
+                  <div className={styles.registerBenefitsfeaturecontent}>
+                    <h3 className={styles.registerBenefitsfeaturetitle}>
+                      Practice multiple choice and hazard perception tests
+                    </h3>
+                    <p className={styles.registerBenefitsfeaturedescription}>
+                      Theory Test Pro has everything you need to pass first
+                      time. You can practice multiple choice questions by topic,
+                      hazard perception tests with feedback, or alternatively
+                      revise the highway code. When you're ready, you can put
+                      all of this together and see how you fare with our mock
+                      test.
+                    </p>
+                  </div>
+                </div>
+
+                <div className={styles.registerBenefitsfeature}>
+                  <div className={styles.registerBenefitsfeatureicon}>⭐</div>
+                  <div className={styles.registerBenefitsfeaturecontent}>
+                    <h3 className={styles.registerBenefitsfeaturetitle}>
+                      82% of our students pass first time (UK average is 41%)
+                    </h3>
+                    <p className={styles.registerBenefitsfeaturedescription}>
+                      We've gotten some great feedback about Theory Test Pro
+                      over the years. Last year we decided to find out exactly
+                      how good our students performed vs. the UK average pass
+                      rate - see the results here.
+                    </p>
+                  </div>
+                </div>
+
+                <div className={styles.registerBenefitsfeature}>
+                  <div className={styles.registerBenefitsfeatureicon}>📄</div>
+                  <div className={styles.registerBenefitsfeaturecontent}>
+                    <h3 className={styles.registerBenefitsfeaturetitle}>
+                      Official, up-to-date question bank directly from the DVSA
+                    </h3>
+                    <p className={styles.registerBenefitsfeaturedescription}>
+                      Don't settle for cheap books or CDs from unofficial
+                      vendors - Theory Test Pro uses official content directly
+                      from the DVSA. We update our question bank automatically
+                      whenever the DVSA issues a new set of questions, too.
+                    </p>
+                  </div>
+                </div>
+
+                <div className={styles.registerBenefitsfeature}>
+                  <div className={styles.registerBenefitsfeatureicon}>💻</div>
+                  <div className={styles.registerBenefitsfeaturecontent}>
+                    <h3 className={styles.registerBenefitsfeaturetitle}>
+                      Easy to use online interface, no software required
+                    </h3>
+                    <p className={styles.registerBenefitsfeaturedescription}>
+                      Access Theory Test Pro from anywhere with an internet
+                      connection, PC or phone, no software required. Forget
+                      about unusable software, too - we're constantly talking to
+                      our users to make sure that our product is as easy to use
+                      as possible.
+                    </p>
+                  </div>
+                </div>
               </section>
             </div>
           </section>

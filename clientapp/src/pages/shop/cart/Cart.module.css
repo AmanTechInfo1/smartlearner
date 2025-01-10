@@ -280,7 +280,7 @@
   background: linear-gradient(135deg, #807eff, #000c52);
   padding: 2rem;
   border-radius: 10px;
-  max-height: 500px;
+  max-height: 700px;
   height: 100%;
 }
 .basketHeadingTitles h2 {
@@ -293,6 +293,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .btnBasketbtnws p {
   color: white;
@@ -490,4 +491,29 @@
   font-size: 22px;
   color: #969accce;
   padding: 20px;
+}
+.emptyCartTooltip {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  width: 200px;
+}
+
+.btnBasketbtnws:hover .emptyCartTooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.checkBoxContainer {
+  padding: 2rem 0px;
+  color: white;
 }

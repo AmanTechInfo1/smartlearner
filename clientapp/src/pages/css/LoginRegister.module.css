@@ -79,13 +79,15 @@
   max-width: 53%;
   display: flex;
   align-items: center;
-  position: relative;
+  flex-direction: column;
+  justify-content: center;
 }
 .loginDisplayflexImage h2 {
-  font-size: 3.5rem;
+  font-size: 2.7rem;
   color: white;
   font-weight: 600;
   text-align: center;
+  padding: 1rem;
 }
 
 .loginDisplayflexImage img {
@@ -257,10 +259,11 @@
 }
 @media (max-width: 768px) {
   .ImageDisplayFlex {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .loginDisplayflexImage {
-    display: none;
+    max-width: 100%;
+    width: 100%;
   }
 }
 @media (max-width: 458px) {
@@ -337,7 +340,7 @@
 .buttonsGrid a button {
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   font-size: 20px;
   font-weight: 800;
   min-width: 220px;
@@ -361,24 +364,50 @@ justify-content: center;
   color: #ff7300;
   font-size: 30px; /* Apply the gradient */
 }
-.buttonsGrid a button .gradientIcon:hover{
+.buttonsGrid a button .gradientIcon:hover {
   color: white;
 }
-.buttonsGrid a button:hover{
-
+.buttonsGrid a button:hover {
   transition: ease-in-out 0.2s;
   transform: scale(1.1);
   color: white;
 }
 @media (max-width: 767px) {
-  .buttonsGrid a button  {
-   font-size: 16px;
-   font-weight: 500;
-   padding: 10px 30px;
-   min-width: 170px;
+  .buttonsGrid a button {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 30px;
+    min-width: 170px;
   }
   .buttonsGrid a button .gradientIcon {
-   
     font-size: 20px; /* Apply the gradient */
   }
+}
+
+.registerBenefitsfeature {
+  display: flex;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+}
+
+.registerBenefitsfeatureicon {
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.registerBenefitsfeaturecontent {
+  max-width: 600px;
+}
+
+.registerBenefitsfeaturetitle {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 0 5px;
+  color: white;
+}
+
+.registerBenefitsfeaturedescription {
+  margin: 0;
+  color: #d7f2ff;
 }

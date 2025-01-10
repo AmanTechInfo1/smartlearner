@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
 import stripLogo from "../../../assets/images/Stripe-logo.png";
+import Form from "react-bootstrap/Form";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -122,10 +123,17 @@ const Cart = () => {
             <div className={styles.btnBasketbtnws}>
               <button
                 className={styles.basketbtnProceed}
+                disabled={myCart.length === 0}
                 onClick={() => navigate("/checkout")}>
                 {userDetails.username
                   ? "PROCEED TO CHECKOUT"
                   : "GUEST CHECKOUT"}
+
+                {myCart.length === 0 && (
+                  <span className={styles.emptyCartTooltip}>
+                    Add items to proceed to checkout.
+                  </span>
+                )}
               </button>
               {!userDetails.username && (
                 <p
@@ -134,6 +142,22 @@ const Cart = () => {
                   LOGIN / REGISTER
                 </p>
               )}
+            </div>
+            <div className={styles.checkBoxContainer}>
+              <div>
+                <Form>
+                  <Form.Check // prettier-ignore
+                    type="switch"
+                    id="custom-switch"
+                    label="I agree to the SmartLearner terms & conditions"
+                  />
+                  <Form.Check // prettier-ignore
+                    type="switch"
+                    label="I agree for Smartlearner to email my lessons plans, newsletters and special offers"
+                    id="custom-switch"
+                  />
+                </Form>
+              </div>
             </div>
           </div>
         </div>

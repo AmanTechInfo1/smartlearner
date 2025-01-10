@@ -136,6 +136,7 @@ import AutomaticTransmission from "./pages/Transmission/AutomaticTransmission";
 import PassPlusTransmission from "./pages/Transmission/PassPlusTransmission";
 import IntensiveTransmission from "./pages/Transmission/IntensiveTransmission";
 import DrivingTransmission from "./pages/Transmission/DrivingTransmission";
+import CbdEvents from "./pages/AddOns/CbdEvents";
 
 export const router = createBrowserRouter([
   {
@@ -193,7 +194,7 @@ export const router = createBrowserRouter([
       { path: "AIVideos", element: <AIVideos /> },
       { path: "PracticeMCQS", element: <PracticeMCQS /> },
       { path: "Contact-Us", element: <Contact /> },
-      {path: "intensive", element: <IntensiveTransmission/>},
+      { path: "intensive", element: <IntensiveTransmission /> },
       { path: "shop", element: <Shop /> },
 
       { path: "product/:id", element: <ProductDetails /> },
@@ -256,13 +257,14 @@ export const router = createBrowserRouter([
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "blogs", element: <Blogs /> },
       { path: "privledge-cards", element: <PrivledgeCards /> },
-      {path: 'glossary-terms', element: <Glossary/>},
+      { path: "glossary-terms", element: <Glossary /> },
       { path: "singleblog/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },
-      {path: "manual", element: <Manual />},
-      {path: "automatic-transmisson", element: <AutomaticTransmission/>},
-      {path: "pass-plus", element: <PassPlusTransmission/>},
-      {path: "driving-instructor-packages", element: <DrivingTransmission/>},
+      { path: "manual", element: <Manual /> },
+      { path: "automatic-transmisson", element: <AutomaticTransmission /> },
+      { path: "pass-plus", element: <PassPlusTransmission /> },
+      { path: "driving-instructor-packages", element: <DrivingTransmission /> },
+      { path: "cbd-events", element: <CbdEvents /> },
       {
         path: "trainning-material",
         element: <TrainningMaterial />,
@@ -336,8 +338,7 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}
-      ></RequireAuth>
+        element={<AdminLayout />}></RequireAuth>
     ),
     children: [
       {
