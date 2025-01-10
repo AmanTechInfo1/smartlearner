@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4ff762ec.css",
-    "main.js": "/static/js/main.fbc0a6c4.js",
+    "main.css": "/static/css/main.207f35c2.css",
+    "main.js": "/static/js/main.75307cc1.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -113,6 +113,7 @@
     "static/media/going-green-img3.jpg": "/static/media/going-green-img3.a99719f1a5d82a55e1f7.jpg",
     "static/media/going-green-img.jpg": "/static/media/going-green-img.aac79fce5d3bf2a41376.jpg",
     "static/media/texiImg.png": "/static/media/texiImg.a21ff407a2c6cd49e01c.png",
+    "static/media/cbdEvents1.jpeg": "/static/media/cbdEvents1.32511f83d9cf986bc361.jpeg",
     "static/media/going-green-img6.jpg": "/static/media/going-green-img6.737cbc307e544aa78517.jpg",
     "static/media/going-green-img4.jpg": "/static/media/going-green-img4.d3ef7bf8007c7d87224c.jpg",
     "static/media/going-green-img2.jpg": "/static/media/going-green-img2.3e07e5d327f80056be65.jpg",
@@ -128,6 +129,7 @@
     "static/media/car-red.png": "/static/media/car-red.ce075202d3605329ef4e.png",
     "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
+    "static/media/cbdEvents2.jpeg": "/static/media/cbdEvents2.27b5c93a557d498abb8c.jpeg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
     "static/media/theory-Img-banner.png": "/static/media/theory-Img-banner.f86cf0f0b2764bfea2df.png",
     "static/media/pdiTrophi.png": "/static/media/pdiTrophi.48b7c2173bf0dd28c2f0.png",
@@ -314,12 +316,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.4ff762ec.css.map": "/static/css/main.4ff762ec.css.map",
-    "main.fbc0a6c4.js.map": "/static/js/main.fbc0a6c4.js.map",
+    "main.207f35c2.css.map": "/static/css/main.207f35c2.css.map",
+    "main.75307cc1.js.map": "/static/js/main.75307cc1.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ff762ec.css",
-    "static/js/main.fbc0a6c4.js"
+    "static/css/main.207f35c2.css",
+    "static/js/main.75307cc1.js"
   ]
 }
