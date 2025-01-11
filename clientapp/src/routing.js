@@ -149,7 +149,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "home",
+        path: "home/:section?",
         element: <Home />,
       },
       { path: "about", element: <About /> },

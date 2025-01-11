@@ -534,6 +534,16 @@
   position: relative;
   padding: 4rem 1rem;
 }
+.trophyFrame2{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  place-items: center;
+  align-items: center;
+  position: relative;
+  padding: 4rem 1rem;
+}
 .cardFronttrophyFrame img {
   max-width: 200px;
   border-radius: 50%;

@@ -326,7 +326,10 @@ export default function Home() {
                   </p>
                 </div>
                 {/* //////////////////////////////////////////// */}
-                <div className={styles.cardtrophyFrame}>
+               
+              </div>
+              <div className={styles.trophyFrame2}>
+              <div className={styles.cardtrophyFrame}>
                   <div className={styles.cardInnertrophyFrame}>
                     <div className={styles.cardFronttrophyFrame}>
                       <img src={hallOfFame5} alt="hallOfFame5" />

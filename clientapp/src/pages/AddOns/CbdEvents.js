@@ -9,7 +9,7 @@ export default function CbdEvents() {
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
-    const firstPart = "Cbd Events";
+    const firstPart = "Ready to unlock your potential with our CPD event";
     const firstLine = firstPart
       .split("")
       .map((char, index) => <span key={`first-${index}`}>{char}</span>);
@@ -99,8 +99,27 @@ export default function CbdEvents() {
         <div className={styles.cbdbanner}>
           <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
         </div>
+        <div className={styles.cbdheadercontent}>
+          <p>
+            Your personal development is the key to your success, and we’re here
+            to kick off the new year with a bang!
+          </p>
+          <p>
+            Join us for a dynamic keynote speaker event in the heart of
+            Coventry—come for one day or both!
+          </p>
+          <p>
+            Connect with amazing, like-minded individuals and spark your journey
+            towards greatness.
+          </p>
+          <p>
+            We’ve got you covered with lunch, tea, and coffee, plus a
+            certificate of attendance that counts towards your CPD or trainee
+            hours.
+          </p>
+        </div>
         <div className={styles.cbdContentBox}>
-          <h1>Day 1</h1>
+          <h1>Day 1 Thursday 23rd Jan </h1>
           <div className={styles.cbdContentBoxflex}>
             {" "}
             <img src={cdbcard1} alt="" />
@@ -132,20 +151,21 @@ export default function CbdEvents() {
                 A session with Graham ensures practical insights and
                 professional growth in the driving instruction field.
               </p>
-              <a href="https://buy.stripe.com/aEUg1icEtcivgxicMM">
+              <a href="https://book.stripe.com/bIYeXe1ZP5U7epa004">
                 <button>Pay Now</button>
               </a>
             </div>
           </div>
-          <h1>Day 2</h1>
+          <h1>Day 2 Friday 24th Jan </h1>
           <div className={styles.cbdContentBoxflex}>
             {" "}
             <img src={cdbcard2} alt="" />
             <div className={styles.cbdContent}>
-              <h2>
-                Engaging in a session with Chris Howes, a seasoned professional
-                in the driving instruction industry, offers several advantages:
-              </h2>
+              <h2>Benefits of Your Session with Chris Howes:</h2>
+              <p>
+                Former Assistant Chief Driving Examiner and head of DVSA's
+                Cardington Examiner Training Centre,
+              </p>
               <p>
                 In-Depth Industry Knowledge: Chris has extensive experience in
                 driving examiner training and ADI examiner training, providing
@@ -174,10 +194,27 @@ export default function CbdEvents() {
                 boost confidence, and enhance your effectiveness as a driving
                 instructor.
               </p>
-              <a href="https://buy.stripe.com/dR63ewfQF96j5SEeUV">
+              <a href="https://book.stripe.com/9AQeXebApgyL2Gs9AF">
                 <button>Pay Now</button>
               </a>
             </div>
+          </div>
+          <div className={styles.cbdSpacialOffers}>
+            <h1>Day 1 & 2 23/24th Jan </h1>
+            <h2>Speacail 2 Day Offer </h2>
+            <p>
+              Our exclusive 2-day special is the perfect opportunity to gain
+              fresh insights and build lasting friendships.
+            </p>
+            <p>
+              Imagine engaging with like-minded individuals, sharing ideas, and
+              discovering new perspectives. This is your chance to connect,
+              learn, and grow in a supportive environment. But don’t wait too
+              long—spots are limited and filling up fast!
+            </p>
+            <a href="https://book.stripe.com/aEUdTa0VL6Yb80M3cj">
+              <button>Pay Now</button>
+            </a>
           </div>
         </div>
       </div>

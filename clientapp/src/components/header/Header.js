@@ -30,10 +30,18 @@ function Header() {
           className={
             menuOpen ? `${styles.menuList} ${styles.open}` : styles.menuList
           }>
-          <li>
+          <li id={styles.dropDownNav}>
             <NavLink exact to="/">
               Home
             </NavLink>
+            <ul className={styles.dropdownContent}>
+              <NavLink
+                to="/home/our-courses"
+                className={styles.activeLink}>
+                {" "}
+                <li>Our Courses</li>
+              </NavLink>
+              </ul>
           </li>
           {/* <li id={styles.dropDownNav}>
             <NavLink to="/Driving-Lessons">

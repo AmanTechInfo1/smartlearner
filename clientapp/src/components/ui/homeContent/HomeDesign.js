@@ -159,7 +159,7 @@ export default function HomeDesign() {
                 <p id="home-drivingImg-2">Apply For Provisional Licence </p>
               </a>
               <Link
-                to="/Driving-Lessons"
+                to="/home/our-courses"
                 style={{ textDecoration: "none", padding: "8px" }}>
                 <p id="home-drivingImg-3">Book Lessons With Us</p>
               </Link>

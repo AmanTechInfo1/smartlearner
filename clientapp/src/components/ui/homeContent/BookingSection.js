@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BookingSectio.module.css";
 import Accordion from "react-bootstrap/Accordion";
 import manual from "./manual1.jpg";
@@ -16,10 +16,11 @@ import passplus1 from "../../../pages/Transmission/passplusbanner.png";
 import passplus2 from "../../../pages/Transmission/passplusbanner2.jpg";
 import passplus3 from "../../../pages/Transmission/passplusround.jpg";
 import passplus4 from "../../../pages/Transmission/passplusround2.jpg";
+import { Element, scroller } from "react-scroll";
 
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -31,6 +32,21 @@ import "swiper/css/autoplay";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function BookingSection() {
+
+ const { section } = useParams();
+  useEffect(() => {
+    if (section) {
+      scroller.scrollTo(`${section}-section`, {
+        duration: 400,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70,
+      });
+    }
+  }, [section]);
+
+
+
   const [transmissionType, setTransmissionType] = useState("manual");
 
   const [activeSlide, setActiveSlide] = useState(0);
@@ -150,6 +166,7 @@ export default function BookingSection() {
         <div className={styles.bookingheading}>
           <h2>Our Courses</h2> <p>Start Your Journey with us Today!</p>
         </div>
+         <Element name="our-courses-section">
         <div className={styles.swiperContent}>
           <Swiper
             slidesPerView={4} // Display 3 slides at a time
@@ -206,6 +223,7 @@ export default function BookingSection() {
                       you with the skills and confidence to navigate any road
                       with finesse and precision.
                     </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
@@ -225,6 +243,7 @@ export default function BookingSection() {
                       you’re a beginner or looking to refine your skills, we’ll
                       empower you to drive confidently in any situation.
                     </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
@@ -243,6 +262,7 @@ export default function BookingSection() {
                       to driving independence with our intensive driving
                       courses.
                     </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
@@ -262,6 +282,7 @@ export default function BookingSection() {
                       to become a safer, more skilled driver, Pass Plus is the
                       ideal next step.
                     </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
@@ -278,6 +299,7 @@ export default function BookingSection() {
                       you want to touch up you driving skills, get ahead or have
                       fun, we have a driving simulator in office!
                     </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
@@ -289,13 +311,16 @@ export default function BookingSection() {
                   <div id={styles.crousalContent}>
                     <h2>Instructor Training </h2>
                     <p>Need support on passing your Instructor Test </p>
+                    <button>Explore Now</button>
                   </div>
                 </div>
               </Link>
             </SwiperSlide>
             {/* Add more slides as needed */}
           </Swiper>
+
         </div>
+        </Element>
       </div>
     </div>
   );

@@ -10,10 +10,29 @@
 }
 .cbdbanner h2 {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.cbdheadercontent{
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem 0px;
+}
+.cbdheadercontent p{
+  background: linear-gradient(135deg, #ca45ff5d, #13177c38);
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem;
+
+margin-bottom: 1rem;
 }
 .cbdContentBoxflex {
   display: flex;
@@ -56,7 +75,54 @@
   margin-bottom: 0px;
   color: rgb(216, 243, 255);
 }
+.cbdSpacialOffers{
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem 0px;
+}
+.cbdSpacialOffers h2{
+  font-size: 3rem;
+  color: white;
+  padding: 2rem 0px;
+  text-align: center;
+}
+.cbdSpacialOffers p{
+  background: linear-gradient(135deg, #ca45ff5d, #13177c38);
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem;
+
+margin-bottom: 1rem;
+}
+.cbdSpacialOffers a{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+}
+.cbdSpacialOffers a button {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 6px;
+}
+.cbdSpacialOffers a button:hover {
+  transform: scale(1.01);
+  transition: ease-in-out 0.3s;
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(229, 239, 255);
+  box-shadow: 0 0 20px #a9b5c2db;
+}
 @media (max-width: 767px) {
+  .cbdbanner h2 {
+    font-size: 2.7rem;
+  }
   .cbdContentBoxflex {
     flex-direction: column;
   }
