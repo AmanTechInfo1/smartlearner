@@ -1,18 +1,18 @@
 import styles from "./css/home.module.css";
 // import LplateImg from "..//assets/images/L-Plate.jpg";
 // import arrowImg from "../assets/images/arrow-img2.png";
-import trustPilot from "..//assets/images/trustpilot-inline-white.png";
+// import trustPilot from "..//assets/images/trustpilot-inline-white.png";
 // import homeUserHand from "..//assets/images/userHandImg.png";
 // import img1 from "..//assets/images/1 (1).png";
 // import img2 from "../assets/images/1 (2).png";
 // import img3 from "../assets/images/1 (3).png";
-import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
+// import tropfyImg from "../assets/images/grand-prize-transparent-trophy-free-png.png";
 // import userIdentificationImg from "../assets/images/userIndentification.png";
-import hallOfFame from "../assets/images/hallOfFame.png";
-import starImg from "../assets/images/yellowStar.png";
-import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
-import Carousel from "../components/ui/Carousel";
-import Review from "../components/views/Review";
+// import hallOfFame from "../assets/images/hallOfFame.png";
+// import starImg from "../assets/images/yellowStar.png";
+// import spiralImg from "../assets/images/pngtree-undulate-gray-wave-swirl-png-image_5082452.png";
+// import Carousel from "../components/ui/Carousel";
+// import Review from "../components/views/Review";
 // import { Link } from "react-router-dom";
 import hallOfFame1 from "../assets/images/halloffame11.png";
 import hallOfFame2 from "../assets/images/halloffame22.png";
@@ -25,10 +25,7 @@ import callbackimg from "../assets/images/callbacksupportimage.jpg";
 
 import GoldTrophyImg from "../assets/images/goldTrophyImg.jpg";
 import silverTrophyImg from "../assets/images/silverTrophyImg.jpg";
-// //////////////////
-import Slider from "react-slick";
-
-///////////////////
+// import Slider from "react-slick";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
@@ -38,11 +35,11 @@ import { enquiryData } from "../redux/features/enquirySlice";
 // import { FaLongArrowAltRight } from "react-icons/fa";
 import HomeDesign from "../components/ui/homeContent/HomeDesign";
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
-import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg";
+// import frontImg from "../assets/images/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg";
 import CallBackForm from "../components/forms/CallBackForm";
 import BookingSection from "../components/ui/homeContent/BookingSection";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
-import logoImage from "../assets/images/1200px-Lplate.svg.png";
+// import logoImage from "../assets/images/1200px-Lplate.svg.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 

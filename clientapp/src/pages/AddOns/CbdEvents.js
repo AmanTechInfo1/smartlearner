@@ -89,7 +89,7 @@ export default function CbdEvents() {
         duration: 2, // Duration of color change
         repeat: -1, // Repeat infinitely
         yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
+        stagger: 0.1,
       });
   }, []);
 
@@ -119,11 +119,16 @@ export default function CbdEvents() {
           </p>
         </div>
         <div className={styles.cbdContentBox}>
-          <h1>Day 1 Thursday 23rd Jan </h1>
+          <div className={styles.headingFlex}>
+            {" "}
+            <h1>Day 1 Thursday 23rd Jan </h1> <h2>9.30am - 4.00pm £99</h2>
+          </div>
+
           <div className={styles.cbdContentBoxflex}>
             {" "}
             <img src={cdbcard1} alt="" />
             <div className={styles.cbdContent}>
+              
               <h2>
                 Benefits of a Session with Graham Hooper (ADI Industry Expert):
               </h2>
@@ -156,16 +161,21 @@ export default function CbdEvents() {
               </a>
             </div>
           </div>
-          <h1>Day 2 Friday 24th Jan </h1>
+          <div className={styles.headingFlex}>
+            {" "}
+            <h1>Day 2 Friday 24th Jan </h1> <h2>9.30am - 4.00pm £99</h2>
+          </div>
+
           <div className={styles.cbdContentBoxflex}>
             {" "}
             <img src={cdbcard2} alt="" />
             <div className={styles.cbdContent}>
-              <h2>Benefits of Your Session with Chris Howes:</h2>
-              <p>
-                Former Assistant Chief Driving Examiner and head of DVSA's
-                Cardington Examiner Training Centre,
-              </p>
+              <h2>
+                Benefits of Your Session with Chris Howes: ( Former Assistant
+                Chief Driving Examiner and head of DVSA's Cardington Examiner
+                Training Centre)
+              </h2>
+
               <p>
                 In-Depth Industry Knowledge: Chris has extensive experience in
                 driving examiner training and ADI examiner training, providing
@@ -199,9 +209,14 @@ export default function CbdEvents() {
               </a>
             </div>
           </div>
+          <div className={styles.headingFlex}>
+              {" "}
+              <h1>Day 1 & 2 23rd & 24th Jan </h1>
+              <h2>9.30am - 4.00pm £99</h2>
+            </div>
           <div className={styles.cbdSpacialOffers}>
-            <h1>Day 1 & 2 23/24th Jan </h1>
-            <h2>Speacail 2 Day Offer </h2>
+            
+            <h2>Special 2 Day Offer </h2>
             <p>
               Our exclusive 2-day special is the perfect opportunity to gain
               fresh insights and build lasting friendships.

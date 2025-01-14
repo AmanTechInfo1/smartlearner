@@ -264,7 +264,7 @@ export const router = createBrowserRouter([
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
       { path: "driving-instructor-packages", element: <DrivingTransmission /> },
-      { path: "cbd-events", element: <CbdEvents /> },
+      { path: "cpd-events", element: <CbdEvents /> },
       {
         path: "trainning-material",
         element: <TrainningMaterial />,
