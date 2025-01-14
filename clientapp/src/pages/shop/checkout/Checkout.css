@@ -399,3 +399,7 @@ button.pay-button:hover {
   margin-top: 1rem;
 }
 
+.checkBoxContainer {
+  padding: 2rem 0px;
+  color: white;
+}

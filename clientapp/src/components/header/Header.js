@@ -32,7 +32,7 @@ function Header() {
           }>
           <li id={styles.dropDownNav}>
             <NavLink exact to="/">
-              Home
+            Our Courses
             </NavLink>
             <ul className={styles.dropdownContent}>
               <NavLink
@@ -110,6 +110,11 @@ function Header() {
             </NavLink>
 
             <ul className={styles.dropdownContent}>
+            <NavLink
+                to="/Driving-Instructor-Training"
+                className={styles.activeLink}>
+                <li>Driving Instructor Trainning</li>
+              </NavLink>
               <NavLink
                 to="/driving-instructor-packages"
                 className={styles.activeLink}>

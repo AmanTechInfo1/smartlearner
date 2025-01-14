@@ -6,12 +6,12 @@
 
 .headerContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: fixed;
   top: 0;
   z-index: 1;
   align-items: center;
-  gap: 50px;
+  gap: 10px;
   background-color: rgba(0, 20, 32, 0.877);
   padding: 15px 20px;
   width: 100%;

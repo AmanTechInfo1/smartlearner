@@ -89,7 +89,7 @@ const Cart = () => {
                           +
                         </button>
                       </td>
-                      <td>${(item.price * item.count).toFixed(2)}</td>
+                      <td>£{(item.price * item.count).toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -143,7 +143,7 @@ const Cart = () => {
                 </p>
               )}
             </div>
-            <div className={styles.checkBoxContainer}>
+            {/* <div className={styles.checkBoxContainer}>
               <div>
                 <Form>
                   <Form.Check // prettier-ignore
@@ -158,7 +158,7 @@ const Cart = () => {
                   />
                 </Form>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
