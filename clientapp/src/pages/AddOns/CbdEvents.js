@@ -121,7 +121,7 @@ export default function CbdEvents() {
         <div className={styles.cbdContentBox}>
           <div className={styles.headingFlex}>
             {" "}
-            <h1>Day 1 Thursday 23rd Jan </h1> <h2>9.30am - 4.00pm £99</h2>
+            <h1>Day 1 Thursday 23rd Jan </h1> <h2>9.30am - 4.00pm <span>£99</span></h2>
           </div>
 
           <div className={styles.cbdContentBoxflex}>
@@ -163,7 +163,7 @@ export default function CbdEvents() {
           </div>
           <div className={styles.headingFlex}>
             {" "}
-            <h1>Day 2 Friday 24th Jan </h1> <h2>9.30am - 4.00pm £99</h2>
+            <h1>Day 2 Friday 24th Jan </h1> <h2>9.30am - 4.00pm <span>£99</span></h2>
           </div>
 
           <div className={styles.cbdContentBoxflex}>
@@ -212,7 +212,7 @@ export default function CbdEvents() {
           <div className={styles.headingFlex}>
               {" "}
               <h1>Day 1 & 2 23rd & 24th Jan </h1>
-              <h2>9.30am - 4.00pm £99</h2>
+              <h2>9.30am - 4.00pm <span>£149</span></h2>
             </div>
           <div className={styles.cbdSpacialOffers}>
             
