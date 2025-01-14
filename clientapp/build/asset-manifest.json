@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.76b260a3.css",
-    "main.js": "/static/js/main.75b5a79d.js",
+    "main.css": "/static/css/main.e906c454.css",
+    "main.js": "/static/js/main.1189e202.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -68,7 +68,6 @@
     "static/media/Cim1.jpg": "/static/media/Cim1.1e2e7f74dd37be5d8344.jpg",
     "static/media/fogImg.png": "/static/media/fogImg.8df4279f89d3fa87a51b.png",
     "static/media/pedestrian.png": "/static/media/pedestrian.fcc2dbfe5ff5808c88c4.png",
-    "static/media/grand-prize-transparent-trophy-free-png.png": "/static/media/grand-prize-transparent-trophy-free-png.a54cc5ba8b7bffb18d4d.png",
     "static/media/passplusCarousalImg.jpg": "/static/media/passplusCarousalImg.bb8135c960cb1d974a75.jpg",
     "static/media/electric-Car.png": "/static/media/electric-Car.2555e0d8ed634bfe9893.png",
     "static/media/cimg14.jpg": "/static/media/cimg14.b183209c115fc6bca30f.jpg",
@@ -100,6 +99,7 @@
     "static/media/bloggingImage.jpg": "/static/media/bloggingImage.c059bd9a1af6edda623f.jpg",
     "static/media/West_Midlands_Fire_Service_crest.svg.png": "/static/media/West_Midlands_Fire_Service_crest.svg.192f8b2bdcf41552301c.png",
     "static/media/video-bgImg.jpg": "/static/media/video-bgImg.48f6696742fd77665dda.jpg",
+    "static/media/csrbannerssss.jpg": "/static/media/csrbannerssss.577eee979f982e0c6886.jpg",
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
     "static/media/halloffame5.png": "/static/media/halloffame5.f01a68a25f42200d5b90.png",
@@ -166,7 +166,6 @@
     "static/media/Asset_109.png": "/static/media/Asset_109.249e54851dcb8e48cc9d.png",
     "static/media/motorway-studs-1-rotated.jpg": "/static/media/motorway-studs-1-rotated.08d0fb244e69ebb208f7.jpg",
     "static/media/routesPlanning.jpg": "/static/media/routesPlanning.ecd8790f74a81f2feecf.jpg",
-    "static/media/WhatsApp Image 2024-08-13 at 6.00.38 PM.jpeg": "/static/media/WhatsApp Image 2024-08-13 at 6.00.38 PM.95725ecfa5f0819bf833.jpeg",
     "static/media/halloffame44.png": "/static/media/halloffame44.1bc38ffacd601aec0ee1.png",
     "static/media/halloffame22.png": "/static/media/halloffame22.739e47ad1f5359b293d1.png",
     "static/media/passplusround2.jpg": "/static/media/passplusround2.54669e6091d15d01c848.jpg",
@@ -193,11 +192,9 @@
     "static/media/passplusbanner2.jpg": "/static/media/passplusbanner2.1f4bc54411580fafca18.jpg",
     "static/media/Mauritius_Road_Signs.png": "/static/media/Mauritius_Road_Signs.58a57db1b7df7e4308f8.png",
     "static/media/dangers-of-tailgating-1024x683.jpg": "/static/media/dangers-of-tailgating-1024x683.05b338b74f9bb4f4461b.jpg",
-    "static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.png": "/static/media/pngtree-undulate-gray-wave-swirl-png-image_5082452.9f960aa6e64f550f6706.png",
     "static/media/theory1.jpg": "/static/media/theory1.11f459d1ade123c13d98.jpg",
     "static/media/behindLargeVehicle.jpg": "/static/media/behindLargeVehicle.1678384d52dbb0b8c2ef.jpg",
     "static/media/truck-oncoming-trasffic.jpg": "/static/media/truck-oncoming-trasffic.a56a6993d03fa0fa63b9.jpg",
-    "static/media/hallOfFame.png": "/static/media/hallOfFame.1f31c2896bd96d1156db.png",
     "static/media/peopleWalking.jpg": "/static/media/peopleWalking.5a74d69140d5bb51bd28.jpg",
     "static/media/boxJunction.jpg": "/static/media/boxJunction.f468ba3ac39f1d7b743b.jpg",
     "static/media/video-poster-img.jpg": "/static/media/video-poster-img.d2157401da635ab3cf32.jpg",
@@ -316,12 +313,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.76b260a3.css.map": "/static/css/main.76b260a3.css.map",
-    "main.75b5a79d.js.map": "/static/js/main.75b5a79d.js.map",
+    "main.e906c454.css.map": "/static/css/main.e906c454.css.map",
+    "main.1189e202.js.map": "/static/js/main.1189e202.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.76b260a3.css",
-    "static/js/main.75b5a79d.js"
+    "static/css/main.e906c454.css",
+    "static/js/main.1189e202.js"
   ]
 }
