@@ -143,22 +143,7 @@ const Cart = () => {
                 </p>
               )}
             </div>
-            {/* <div className={styles.checkBoxContainer}>
-              <div>
-                <Form>
-                  <Form.Check // prettier-ignore
-                    type="switch"
-                    id="custom-switch"
-                    label="I agree to the SmartLearner terms & conditions"
-                  />
-                  <Form.Check // prettier-ignore
-                    type="switch"
-                    label="I agree for Smartlearner to email my lessons plans, newsletters and special offers"
-                    id="custom-switch"
-                  />
-                </Form>
-              </div>
-            </div> */}
+          
           </div>
         </div>
       </div>
