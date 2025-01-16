@@ -15,13 +15,11 @@ const drivenFormRoutes = require("./routes/drivenFormRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const blogRoutes = require("./routes/blogRoutes");
-
 const path = require("path");
 
 const cors = require("cors");
 
 const app = express();
-
 connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -31,8 +29,6 @@ app.use((req, res, next) => {
   console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
   next();
 });
-
-
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
   res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); // Path to your alternative image
