@@ -79,7 +79,7 @@ function Navbar() {
         <section className={styles.imgLogoSection}>
           <div className={styles.imgLogoSection2}>
             {" "}
-            <img src={logo2} alt="logo" />
+           <Link to="/"> <img src={logo2} alt="logo" /></Link>
           </div>
         </section>
         <section className={styles.headerLinksSection}>

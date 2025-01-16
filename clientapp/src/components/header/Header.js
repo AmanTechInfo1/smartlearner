@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./css/header.module.css";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/images/1200px-Lplate.svg.png";
@@ -14,7 +14,8 @@ function Header() {
           <section className={styles.imgLogoSection}>
             <div className={styles.imgLogoSection2}>
               {" "}
-              <img src={logo2} alt="logo" />
+              <Link to="/"> <img src={logo2} alt="logo" /></Link>
+             
             </div>
           </section>
           <div
