@@ -137,7 +137,7 @@ export default function ElectricCarScheme() {
             <h2>
               {" "}
               <span>SKY BLUE CITY</span>{" "}
-              <span style={{ color: "rgb(169, 6, 79)"}}>TURNS GREEN</span>
+              <span style={{ color: "rgb(6, 169, 88)"}}>TURNS GREEN</span>
             </h2>
             <section className={styles.csrPagesLd2}>
               {" "}
@@ -195,7 +195,7 @@ export default function ElectricCarScheme() {
         {/* ////////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>ELECTRIC <span  style={{ color: "rgb(50, 226, 239)" }}>ENGINES</span></h2>
+            <h2>ELECTRIC <span   style={{ color: "rgb(6, 169, 88)"}}>ENGINES</span></h2>
           </div>
           <section className={styles.escBenifits}>
             <div className={styles.escBDDiv} id={styles.escBDDivcd}>
@@ -230,7 +230,7 @@ export default function ElectricCarScheme() {
         {/* /////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>COMBUSTION <span  style={{ color: "rgb(50, 226, 239)" }}>ENGINES</span></h2>
+            <h2>COMBUSTION <span   style={{ color: "rgb(6, 169, 88)"}}>ENGINES</span></h2>
           
           </div>
           <section className={styles.escBenifits}>
@@ -263,7 +263,7 @@ export default function ElectricCarScheme() {
         {/* ///////////////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>OUR OTHER <span style={{ color: "rgb(50, 226, 239)" }}>PROJECTS</span> </h2>
+            <h2>OUR OTHER <span  style={{ color: "rgb(6, 169, 88)"}}>PROJECTS</span> </h2>
            
           </div>
           <section className={styles.csr3rdDivSecLinks}>

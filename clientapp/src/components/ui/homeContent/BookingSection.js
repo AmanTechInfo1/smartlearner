@@ -32,8 +32,7 @@ import "swiper/css/autoplay";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function BookingSection() {
-
- const { section } = useParams();
+  const { section } = useParams();
   useEffect(() => {
     if (section) {
       scroller.scrollTo(`${section}-section`, {
@@ -44,8 +43,6 @@ export default function BookingSection() {
       });
     }
   }, [section]);
-
-
 
   const [transmissionType, setTransmissionType] = useState("manual");
 
@@ -166,161 +163,165 @@ export default function BookingSection() {
         <div className={styles.bookingheading}>
           <h2>Our Courses</h2> <p>Start Your Journey with us Today!</p>
         </div>
-         <Element name="our-courses-section">
-        <div className={styles.swiperContent}>
-          <Swiper
-            slidesPerView={4} // Display 3 slides at a time
-            spaceBetween={30} // Space between slides
-            loop={true} // Make it loop infinitely
-            autoplay={{
-              delay: 1000, // Time between slide transitions
-              disableOnInteraction: false, // Don't stop autoplay when interacting
-            }}
-            centeredSlides={true} // Keep the active slide centered
-            pagination={{
-              type: "fraction",
-              clickable: true,
-            }}
-            navigation={true}
-            speed={3000} // Add navigation buttons (next/prev)
-            modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
-            className="mySwiper"
-            onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
-            style={{
-              padding: "2rem 1rem",
-              maxWidth: "1640px",
-              margin: "0px auto",
-              width: "100%",
-            }}
-            breakpoints={{
-              320: {
-                slidesPerView: 1, // 1 slide at a time for small screens
-                spaceBetween: 10, // Less space on small screens
-              },
-              768: {
-                slidesPerView: 2, // 2 slides at a time for medium screens
-                spaceBetween: 20, // Slightly more space
-              },
-              1024: {
-                slidesPerView: 3, // 3 slides for large screens
-                spaceBetween: 30,
-              },
-              1440: {
-                slidesPerView: 4,
-                spaceBetween: 30,
-              },
-            }}>
-            <SwiperSlide>
-              <Link to="/manual">
-                <div className={styles.slide1}>
-                  <div className={styles.opicity}></div>
-                  <div id={styles.crousalContent}>
-                    <h2>MANUAL</h2>
-                    <p>
-                      DiscDiscover the thrill of hands-on control with our
-                      manual driving lessons. From mastering the clutch to
-                      shifting gears seamlessly, our expert instructors will
-                      guide you through the art of manual driving, empowering
-                      you with the skills and confidence to navigate any road
-                      with finesse and precision.
-                    </p>
-                    <button>Explore Now</button>
+        <Element name="our-courses-section">
+          <div className={styles.swiperContent}>
+            <Swiper
+              slidesPerView={4} // Display 3 slides at a time
+              spaceBetween={30} // Space between slides
+              loop={true} // Make it loop infinitely
+              autoplay={{
+                delay: 1000, // Time between slide transitions
+                disableOnInteraction: false, // Don't stop autoplay when interacting
+              }}
+              centeredSlides={true} // Keep the active slide centered
+              pagination={{
+                type: "fraction",
+                clickable: true,
+              }}
+              navigation={true}
+              speed={3000} // Add navigation buttons (next/prev)
+              modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
+              className="mySwiper"
+              onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+              style={{
+                padding: "2rem 1rem",
+                maxWidth: "1640px",
+                margin: "0px auto",
+                width: "100%",
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1, // 1 slide at a time for small screens
+                  spaceBetween: 10, // Less space on small screens
+                },
+                768: {
+                  slidesPerView: 2, // 2 slides at a time for medium screens
+                  spaceBetween: 20, // Slightly more space
+                },
+                1024: {
+                  slidesPerView: 3, // 3 slides for large screens
+                  spaceBetween: 30,
+                },
+                1440: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+              }}
+            >
+              <SwiperSlide>
+                <Link to="/manual">
+                  <div className={styles.slide1}>
+                    <div className={styles.opicity}></div>
+                    <div id={styles.crousalContent}>
+                      <h2>MANUAL</h2>
+                      <p>
+                        DiscDiscover the thrill of hands-on control with our
+                        manual driving lessons. From mastering the clutch to
+                        shifting gears seamlessly, our expert instructors will
+                        guide you through the art of manual driving, empowering
+                        you with the skills and confidence to navigate any road
+                        with finesse and precision.
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
+                </Link>
+              </SwiperSlide>
 
-            <SwiperSlide>
-              <Link to="/automatic-transmisson">
-                <div className={styles.slide2}>
-                  <div className={styles.opicity}></div>{" "}
-                  <div id={styles.crousalContent}>
-                    <h2>AUTOMATIC</h2>
-                    <p>
-                      Experience the ease and convenience of automatic driving
-                      with our comprehensive lessons. Our skilled instructors
-                      will help you navigate the road smoothly, focusing on
-                      essential techniques and safe driving practices. Whether
-                      you’re a beginner or looking to refine your skills, we’ll
-                      empower you to drive confidently in any situation.
-                    </p>
-                    <button>Explore Now</button>
+              <SwiperSlide>
+                <Link to="/automatic-transmisson">
+                  <div className={styles.slide2}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>AUTOMATIC</h2>
+                      <p>
+                        Experience the ease and convenience of automatic driving
+                        with our comprehensive lessons. Our skilled instructors
+                        will help you navigate the road smoothly, focusing on
+                        essential techniques and safe driving practices. Whether
+                        you’re a beginner or looking to refine your skills,
+                        we’ll empower you to drive confidently in any situation.
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link to="/intensive">
-                <div className={styles.slide3}>
-                  <div className={styles.opicity}></div>{" "}
-                  <div id={styles.crousalContent}>
-                    <h2>INTENSIVE</h2>
-                    <p>
-                      Designed for those eager to learn quickly and efficiently,
-                      our immersive programmes offer focused instruction and
-                      hands-on experience to help you become a confident driver
-                      in no time. Get behind the wheel and fast-track your path
-                      to driving independence with our intensive driving
-                      courses.
-                    </p>
-                    <button>Explore Now</button>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link to="/intensive">
+                  <div className={styles.slide3}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>INTENSIVE</h2>
+                      <p>
+                        Designed for those eager to learn quickly and
+                        efficiently, our immersive programmes offer focused
+                        instruction and hands-on experience to help you become a
+                        confident driver in no time. Get behind the wheel and
+                        fast-track your path to driving independence with our
+                        intensive driving courses.
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link to="/pass-plus">
-                <div className={styles.slide4}>
-                  <div className={styles.opicity}></div>{" "}
-                  <div id={styles.crousalContent}>
-                    <h2>PASS PLUS</h2>
-                    <p>
-                      Designed specifically for newly qualified drivers, Pass
-                      Plus is an advanced driving course that helps you maintain
-                      and improve the skills you've learned while gaining
-                      valuable experience on the road. Whether you're looking to
-                      build confidence in new driving conditions, or simply want
-                      to become a safer, more skilled driver, Pass Plus is the
-                      ideal next step.
-                    </p>
-                    <button>Explore Now</button>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link to="/pass-plus">
+                  <div className={styles.slide4}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>PASS PLUS</h2>
+                      <p>
+                        Designed specifically for newly qualified drivers, Pass
+                        Plus is an advanced driving course that helps you
+                        maintain and improve the skills you've learned while
+                        gaining valuable experience on the road. Whether you're
+                        looking to build confidence in new driving conditions,
+                        or simply want to become a safer, more skilled driver,
+                        Pass Plus is the ideal next step.
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link to="/Theory-Support">
-                <div className={styles.slide5}>
-                  <div className={styles.opicity}></div>{" "}
-                  <div id={styles.crousalContent}>
-                    <h2>THEORY SUPPORT</h2>
-                    <p>
-                      Need support on passing your theory test? We offer 1-2-1
-                      in house, from the comfort of your house on Zoom, or if
-                      you want to touch up you driving skills, get ahead or have
-                      fun, we have a driving simulator in office!
-                    </p>
-                    <button>Explore Now</button>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link to="/Theory-Support">
+                  <div className={styles.slide5}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>THEORY SUPPORT</h2>
+                      <p>
+                        Need support on passing your theory test? We offer 1-2-1
+                        in house, from the comfort of your house on Zoom, or if
+                        you want to touch up you driving skills, get ahead or
+                        have fun, we have a driving simulator in office!
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link to="/driving-instructor-packages">
-                <div className={styles.slide5}>
-                  <div className={styles.opicity}></div>{" "}
-                  <div id={styles.crousalContent}>
-                    <h2>Instructor Training </h2>
-                    <p>Need support on passing your Instructor Test </p>
-                    <button>Explore Now</button>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Link to="/driving-instructor-packages">
+                  <div className={styles.slide5}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>Instructor Training </h2>
+                      <p>
+                        Starting a career as a driving instructor can be
+                        daunting due to jargon and abbreviations, but we’re here
+                        to simplify the process with our step-by-step guide.
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </SwiperSlide>
-            {/* Add more slides as needed */}
-          </Swiper>
-
-        </div>
+                </Link>
+              </SwiperSlide>
+              {/* Add more slides as needed */}
+            </Swiper>
+          </div>
         </Element>
       </div>
     </div>

@@ -80,7 +80,7 @@ nav .menu {
 .dropdownContent {
   position: absolute;
   top: 100%;
-  left: 400px;
+  left: 550px;
 
   display: none;
   background-color: #00172ee8;
@@ -91,26 +91,39 @@ nav .menu {
   padding-left: 0px;
 }
 
+@media (max-width: 2600px) {
+  .dropdownContent {
+    left: 400px;
+  }
+}
+@media (max-width: 2200px) {
+  .dropdownContent {
+    left: 300px;
+  }
+}
+@media (max-width: 2000px) {
+  .dropdownContent {
+    left: 200px;
+  }
+}
+
 @media (max-width: 1900px) {
   .dropdownContent {
     left: 100px;
   }
 }
+
 @media (max-width: 1850px) {
-  .dropdownContent {
-    left: 70px;
-  }
-}
-@media (max-width: 1700px) {
   .dropdownContent {
     left: 50px;
   }
 }
-@media (max-width: 1550px) {
+@media (max-width: 1700px) {
   .dropdownContent {
     left: 0px;
   }
 }
+
 
 #dropDownNav:hover .dropdownContent {
   display: grid;

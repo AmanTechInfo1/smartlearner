@@ -182,7 +182,7 @@ margin-left: auto;
 .chartBarImgSec h2 {
   font-size: 5rem;
   text-align: center;
-  color: rgb(114, 3, 154);
+  color: rgb(0, 130, 149);
 }
 
 .chartContainer {
@@ -397,7 +397,7 @@ margin-left: auto;
 }
 .getInvolved h2 {
   font-size: 4rem;
-  color: rgb(91, 3, 154);
+  color: rgb(3, 154, 43);
   margin-bottom: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

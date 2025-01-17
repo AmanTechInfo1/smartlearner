@@ -12,21 +12,21 @@ export const otherLinks = [
     path: "/Contact-Us",
     display: "Contact",
   },
-  // {
-  //   path: "/",
-  //   display: "Blog",
-  // },
+  {
+    path: "/blogs",
+    display: "Blog",
+  },
   {
     path: "/faqs",
     display: "FAQS",
   },
   { path: "/about", display: "About" },
   {
-    path: "/",
+    path: "/term-and-condition",
     display: "T&C",
   },
-  // {
-  //   path: "/login",
-  //   display: "Login/Register",
-  // },
+  {
+    path: "/login",
+    display: "Login/Register",
+  },
 ];

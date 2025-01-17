@@ -110,7 +110,7 @@ export default function GoingGreenProject() {
         duration: 0.8, // Smooth transition duration
       })
       .to(letters, {
-        color: "#FF5733", // Change text color to red
+        color: "rgb(2, 111, 51)", // Change text color to red
         rotationY: 360, // Apply rotation on the Y-axis
         stagger: 0.1,
         duration: 1, // Rotate each letter over 1 second
@@ -126,7 +126,7 @@ export default function GoingGreenProject() {
         scale: 1, // Return to original scale
         opacity: 1, // Full opacity
         rotationX: 0, // Reset rotation
-        color: "rgb(0, 125, 235)", // Reset color to black
+        color: "rgb(0, 167, 139)", // Reset color to black
         stagger: 0.1, // Maintain stagger effect
         duration: 1, // Final duration
       })
@@ -153,7 +153,7 @@ export default function GoingGreenProject() {
       })
       // Infinite color change with loop
       .to(letters, {
-        color: "rgb(199, 0, 53)", // Change color to a pinkish hue
+        color: "rgb(150, 142, 0)", // Change color to a pinkish hue
         duration: 2, // Duration of color change
         repeat: -1, // Repeat infinitely
         yoyo: true, // Reverse color change for alternating effect
@@ -391,7 +391,7 @@ export default function GoingGreenProject() {
             <div className={styles.chartBarImgSec}>
               <h2>
                 GREEN PROJECT{" "}
-                <span style={{ color: "rgb(6, 240, 228)" }}>PROGRESS</span>
+                <span style={{ color: "rgb(6, 240, 154)" }}>PROGRESS</span>
               </h2>
               <div className={styles.chartContainer}>
                 {data.map((value, index) => (
@@ -471,7 +471,7 @@ export default function GoingGreenProject() {
           <section className={styles.callUsSectiongg}>
             <div className={styles.getInvolved}>
               <h2>
-                GET <span style={{ color: "rgb(6, 240, 228)" }}>INVOLVED</span>
+                GET <span style={{ color: "rgb(6, 240, 150)" }}>INVOLVED</span>
               </h2>
               <p>
                 Do you have land, a business or want to support us in our Green

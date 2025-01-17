@@ -16,67 +16,64 @@ import { FaXTwitter } from "react-icons/fa6";
 function Footer() {
   return (
     <>
-    <div style={{backgroundColor:'black'}}>
-
-    
-      <div className={styles.Footer}>
-        <section className={styles.container}>
-          <div className={styles.footerContent}>
-            <div className={styles.col1}>
-              <Link href="Link">
-                <img src={logo} alt="" />
-              </Link>
-              <p>
-                SmartLearner was founded in 2004. SmartLearner is the leading
-                independent driving school in the West Midlands. At SmartLearner
-                Driving School we use our carefully crafted training program, we
-                use the latest technology In Car (Ipads) including text alerts
-                and emailing lessons summary directly to you.
-              </p>
-               <div className={styles.followUsLinks}>
-                        
-                         
-                          <div className={styles.socialFollowIcons}>
-                            <a
-                              href="https://www.facebook.com/smartlearnerdrivingschool"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FaFacebook id={styles.FollowIcons} />
-                            </a>
-                            <a
-                              href="https://www.instagram.com/smartlearnerdrivingschool"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FaInstagram id={styles.FollowIcons} />
-                            </a>
-                            <a
-                              href="https://www.snapchat.com/add/smartlearner"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FaSnapchat id={styles.FollowIcons} />
-                            </a>
-                            <a
-                              href="https://twitter.com/smartlearner"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FaXTwitter id={styles.FollowIcons} />
-                            </a>
-                            <a
-                              href="https://www.youtube.com/@SmartLearnerDrivingSchool"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FaYoutube id={styles.FollowIcons} />
-                            </a>
-                          </div>
-                        </div>
-            </div>
-            <div className={styles.col2}>
-              {/* <Link to="/blogs">
+      <div style={{ backgroundColor: "black" }}>
+        <div className={styles.Footer}>
+          <section className={styles.container}>
+            <div className={styles.footerContent}>
+              <div className={styles.col1}>
+                <Link href="Link">
+                  <img src={logo} alt="" />
+                </Link>
+                <p>
+                  SmartLearner was founded in 2004. SmartLearner is the leading
+                  independent driving school in the West Midlands. At
+                  SmartLearner Driving School we use our carefully crafted
+                  training program, we use the latest technology In Car (Ipads)
+                  including text alerts and emailing lessons summary directly to
+                  you.
+                </p>
+                <div className={styles.followUsLinks}>
+                  <div className={styles.socialFollowIcons}>
+                    <a
+                      href="https://www.facebook.com/smartlearnerdrivingschool"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaFacebook id={styles.FollowIcons} />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/smartlearnerdrivingschool"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaInstagram id={styles.FollowIcons} />
+                    </a>
+                    <a
+                      href="https://www.snapchat.com/add/smartlearner"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaSnapchat id={styles.FollowIcons} />
+                    </a>
+                    <a
+                      href="https://twitter.com/smartlearner"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaXTwitter id={styles.FollowIcons} />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@SmartLearnerDrivingSchool"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaYoutube id={styles.FollowIcons} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.col2}>
+                {/* <Link to="/blogs">
                 <h3>Blogs</h3>
               </Link>
               <article>
@@ -95,50 +92,68 @@ function Footer() {
                   transmission cars have become the...
                 </p>
               </article> */}
-              <div className={styles.lowerCol3}>
-                <ul type="none" className={styles.footerImg}>
-                  <img
-                    src={paymentsImges}
-                    alt="paymentsImges"
-                    id={styles.sslLogo}
-                  />
-                </ul>
+                <div className={styles.lowerCol3}>
+                  <ul type="none" className={styles.footerImg}>
+                    <img
+                      src={paymentsImges}
+                      alt="paymentsImges"
+                      id={styles.sslLogo}
+                    />
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className={styles.col3}>
-              <h3>OPENING HOURS</h3>
-              <div className={styles.hoursLists}>
-                <table className={styles.tabel}>
-                  <thead>
-                    <tr>
-                      <th>Day</th>
-                      <th>Open</th>
-                      <th>Close</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Mon - Fri</td>
-                      <td>9:00 AM</td>
-                      <td>7:00 PM</td>
-                    </tr>
+              <div className={styles.col3}>
+                <h3>OPENING HOURS</h3>
+                <div className={styles.hoursLists}>
+                  <table className={styles.tabel}>
+                    <thead>
+                      <tr>
+                        <th>Day</th>
+                        <th>Open</th>
+                        <th>Close</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mon - Fri</td>
+                        <td>9:00 AM</td>
+                        <td>7:00 PM</td>
+                      </tr>
 
-                    <tr>
-                      <td>Sat - Sun</td>
-                      <td>10:00 AM</td>
-                      <td>4:00 PM</td>
-                    </tr>
-                  </tbody>
-                </table>
+                      <tr>
+                        <td>Sat - Sun</td>
+                        <td>10:00 AM</td>
+                        <td>4:00 PM</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <section>
+                  <div className={styles.lowerCol2}>
+                    <h3>Quick Links</h3>
+                    <div className={styles.quicklinks}>
+                      <ul type="none" id={styles.quicklinks}>
+                        {otherLinks.map((item, index) => (
+                          <li key={index}>
+                            <Link to={item.path}>
+                              {item.display}
+                              <span id={styles.arrowIcon}>
+                                <MdOutlineKeyboardDoubleArrowRight />
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </section>
               </div>
-              <section></section>
             </div>
-          </div>
-        </section>
-        <section className={styles.lowerFooter}>
-          <div className={styles.container}>
-            <div className={styles.innerSection}>
-              {/* <div className={styles.lowerCol1}>
+          </section>
+          <section className={styles.lowerFooter}>
+            <div className={styles.container}>
+              <div className={styles.innerSection}>
+                {/* <div className={styles.lowerCol1}>
                                 <h3>Quick Links</h3>
                                 <div className={styles.quicklinks}>
                                     {quickLinks.map((item, index) => (
@@ -151,37 +166,16 @@ function Footer() {
                                     ))}
                                 </div>
                             </div> */}
-              {/* <div className={styles.lowerCol2}>
-                                <h3>Other Links</h3>
-                                <div className={styles.quicklinks}>
-                                    <ul type="none" id={styles.quicklinks}>
-                                        {otherLinks.map((item, index) => (
-                                            <li key={index}>
-                                                <Link to={item.path}>
-                                                    {item.display}
-                                                    <span id={styles.arrowIcon}>
-                                                        <MdOutlineKeyboardDoubleArrowRight />
-                                                    </span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div> */}
+              </div>
             </div>
+          </section>
+          <div className={styles.copyRight}>
+            <p>
+              CopyRight @ 2024 | Managed By{" "}
+              <a href="https://savvytechguru.com">Savvytechguru.com</a>
+            </p>
           </div>
-        </section>
-        <div className={styles.copyRight}>
-          <p>
-            CopyRight @ 2024 | Managed By{" "}
-            <a
-              href="https://savvytechguru.com"
-              >
-              Savvytechguru.com
-            </a>
-          </p>
         </div>
-      </div>
       </div>
     </>
   );

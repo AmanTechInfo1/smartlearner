@@ -263,7 +263,7 @@
   margin-top: 2rem;
 }
 .escBdHeading h2 {
-  color: #b30381;
+   color: rgb(172, 204, 255);;
   font-weight: 700;
   font-size: 3rem;
   text-align: center;
@@ -330,7 +330,7 @@
 }
 .escBDDiv div {
   padding: 1rem;
-  background: linear-gradient(135deg, #40022e, #d02cd0);
+  background: linear-gradient(135deg, #024029, #2cd06e);
   border-radius: 40px;
 }
 .escBDDiv div h2 {
@@ -339,7 +339,7 @@
   color: white;
 }
 #escBDDivdc h2{
-  background: linear-gradient(135deg, #d02cd0, #40022e);
+  background: linear-gradient(135deg, #2cd06e, #024029);
 
 }
 .escBDDiv div p {
@@ -422,13 +422,13 @@
 }
 .csr3rdDivSecLinks a:nth-child(2) {
  
-  background: linear-gradient(135deg, #40022e, #d02cd0);
+  background: linear-gradient(135deg, #024029, #2cd06e);
 }
 .csr3rdDivSecLinks a:nth-child(1):hover {
-  border: 1px solid #d02cd0;
+  border: 1px solid #66a5fe;
 }
 .csr3rdDivSecLinks a:nth-child(2):hover {
-  border: 1px solid #1400c9;
+  border: 1px solid #2cd06e;
 }
 .csr3rdDivSecLinks p {
   color: white;

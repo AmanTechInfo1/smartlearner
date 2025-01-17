@@ -188,7 +188,9 @@ article h4 {
   line-height: 1.2;
   color: white;
 }
-
+.lowerCol2{
+  padding: 2rem 0px;
+}
 .quicklinks ul {
   padding-left: 0;
 }
@@ -202,6 +204,7 @@ article h4 {
 #quicklinks li a {
   font-family: "Montserrat", sans-serif;
   color: #fff;
+  text-decoration: none;
 }
 
 #quicklinks li a:hover {

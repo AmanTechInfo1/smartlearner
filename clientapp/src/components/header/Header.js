@@ -42,6 +42,24 @@ function Header() {
                 {" "}
                 <li>Our Courses</li>
               </NavLink>
+              <NavLink
+                to="/manual"
+                className={styles.activeLink}>
+                {" "}
+                <li>Manual</li>
+              </NavLink>
+              <NavLink
+                to="/automatic-transmisson"
+                className={styles.activeLink}>
+                {" "}
+                <li>Automatic</li>
+              </NavLink>
+              <NavLink
+                to="/intensive"
+                className={styles.activeLink}>
+                {" "}
+                <li>Intensive</li>
+              </NavLink>
               </ul>
           </li>
           {/* <li id={styles.dropDownNav}>
