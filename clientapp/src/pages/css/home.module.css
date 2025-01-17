@@ -1134,6 +1134,9 @@
 }
 
 /* ///////////////////////images caursel //////////////////// */
+.imageSliderContainer{
+  padding-top: 4rem;
+}
 .imageSliderContainer h2 {
   font-size: 3rem;
   font-weight: 800;
@@ -1193,9 +1196,7 @@
   color: #afe0ff;
   font-weight: 900;
 }
-.whyChooseText p span {
-  color: rgb(255, 217, 0);
-}
+
 @media (max-width: 750px) {
   .whyChooseText p {
     font-size: 2rem;

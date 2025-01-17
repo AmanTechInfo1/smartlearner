@@ -1,9 +1,10 @@
 .accordion {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 20px auto;
-
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 4px;
   overflow: hidden;
+  padding: 0px 1rem;
 }
 
 .accordionItem {
@@ -17,7 +18,8 @@
 .accordionHeader {
   width: 100%;
   padding: 0.5rem 1rem;
-  background: #9f0202;
+  background: linear-gradient(135deg, #46018399, #76014776);
+
   color: white;
   border: none;
   border-radius: 3em/1em;
@@ -37,7 +39,8 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-  background: black;
+  background: linear-gradient(135deg, #01836d99, #14017676);
+border-radius: 10px;
  
   padding: 0 15px;
 }
@@ -49,7 +52,8 @@
 .accordionContent.active {
   padding: 15px;
   max-height: 500px; 
-  border: 1px solid white;/* Adjust this value based on your content */
+  border: 1px solid rgb(98, 98, 98);
+ /* Adjust this value based on your content */
 }
 
 .active {

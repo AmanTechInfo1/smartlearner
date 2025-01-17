@@ -20,7 +20,7 @@
   }
  
   .csrSectionFornt h2{
-    font-size: 7rem;
+    font-size: 5rem;
     color: white;
     text-align: left;
     position: sticky;
@@ -49,6 +49,8 @@
   width: 100%;
   background: linear-gradient(135deg, #45ff4e99, #0a4a03af);
   border-radius: 6px;
+  box-shadow: 0 0 20px rgb(47, 47, 47);
+
  }
   .csrPagesLd p{
   color: white;
@@ -127,7 +129,7 @@
   }
   @media (max-width: 767px){
     .csrSectionFornt h2{
-      font-size: 4.2rem;
+      font-size: 3.7rem;
     }
     .csrPagesLd p{
       font-size: 1.2rem;
@@ -141,7 +143,7 @@
   }
   @media (max-width: 567px){
     .csrSectionFornt h2{
-      font-size: 3.2rem;
+      font-size: 3rem;
     }
     .csrPagesLd p{
       font-size: 1rem;

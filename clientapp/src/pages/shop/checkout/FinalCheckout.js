@@ -10,6 +10,9 @@ import Form from "react-bootstrap/Form";
 export default function FinalCheckout(props) {
   const [email, setEmail] = useState("");
   const [orderNotes, setOrderNotes] = useState("");
+  const [isTermsChecked, setIsTermsChecked] = useState(false); // state for terms checkbox
+  const [isEmailChecked, setIsEmailChecked] = useState(false); // state for email checkbox
+  const [isError, setIsError] = useState(false); // state for error handling
 
   const navigate = useNavigate();
 
@@ -23,6 +26,16 @@ export default function FinalCheckout(props) {
   const handleOrderNotesChange = (e) => {
     props.handleLocalChange(e.target.id, e.target.value);
     setOrderNotes(e.target.value);
+  };
+
+  const handleTermsCheckboxChange = (e) => {
+    setIsTermsChecked(e.target.checked);
+    setIsError(false); // Reset error if checkboxes are checked
+  };
+
+  const handleEmailCheckboxChange = (e) => {
+    setIsEmailChecked(e.target.checked);
+    setIsError(false); // Reset error if checkboxes are checked
   };
 
   const myCart = useSelector((state) => {
@@ -51,6 +64,10 @@ export default function FinalCheckout(props) {
   const serviceCharge = subtotal * 0.02;
   const total = subtotal + serviceCharge;
   const callFunApi = () => {
+    if (!isTermsChecked || !isEmailChecked) {
+      setIsError(true); // Show error if any checkbox is not checked
+      return;
+    }
     try {
       const cleanCartItems = cleanCart(myCart);
       let finalArr = {
@@ -104,7 +121,8 @@ export default function FinalCheckout(props) {
               className="form-textarea"
               value={orderNotes}
               onChange={handleOrderNotesChange}
-              placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+              placeholder="Notes about your order, e.g. special notes for delivery"
+            ></textarea>
           </div>
         </form>
         <div>
@@ -134,34 +152,47 @@ export default function FinalCheckout(props) {
                 <span>£{total}</span>
               </div>
             </div>
+            {isError && (
+              <div className="text-danger text-center mt-2">
+                
+                You must agree to both terms and conditions before proceeding.
+              </div>
+            )}
+
             <div className="text-center mt-3">
               <button
                 className="btn-primary account-btn btn-lg"
                 onClick={() => {
                   callFunApi();
                 }}
-                type="submit">
+                type="submit" // Change to type="button" to prevent form submission
+                
+              >
                 checkout
               </button>
             </div>
           </div>
         </div>
         <div className="checkBoxContainer">
-              <div>
-                <Form>
-                  <Form.Check // prettier-ignore
-                    type="switch"
-                    id="custom-switch"
-                    label="I agree to the SmartLearner terms & conditions"
-                  />
-                  <Form.Check // prettier-ignore
-                    type="switch"
-                    label="I agree for Smartlearner to email my lessons plans, newsletters and special offers"
-                    id="custom-switch"
-                  />
-                </Form>
-              </div>
-            </div>
+          <div>
+            <Form>
+              <Form.Check
+                type="switch"
+                id="terms-checkbox"
+                label="I agree to the SmartLearner terms & conditions"
+                checked={isTermsChecked}
+                onChange={handleTermsCheckboxChange}
+              />
+              <Form.Check
+                type="switch"
+                label="I agree for Smartlearner to email my lessons plans, newsletters, and special offers"
+                id="email-checkbox"
+                checked={isEmailChecked}
+                onChange={handleEmailCheckboxChange}
+              />
+            </Form>
+          </div>
+        </div>
       </div>
     </>
   );

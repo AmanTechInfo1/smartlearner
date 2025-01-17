@@ -8,18 +8,21 @@
   font-family: "Antonio", sans-serif;
   color: white;
   padding-bottom: 5rem;
+  padding-top: 1rem;
 }
-.goCvFirstdiv {
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
+.csrPageFront {
+  background: url("../../assets/images/partnerbanner2.jpg");
+  color: rgb(255, 255, 255);
+  background-size: cover;
+  border-radius: 10px;  
+  padding: 8rem 1rem;
+  position: relative;
 }
-.goCvFirstSection {
-  background-color: #24295e;
-  border-radius: 6em/2em;
-  padding: 3rem 1rem;
 
-  border-bottom: 10px dashed rgb(24, 216, 24);
+.goCvFirstSection {
+ 
+ position: sticky;
+
 }
 
 .goCvFirstSectionHeading h2 {
@@ -27,32 +30,13 @@
   font-weight: 700;
   text-align: center;
   color: #fff;
-
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 3rem 0px;
-  overflow: hidden;
-  border-right: 0.2px solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: 10px;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
+  
 }
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
+
+
+
 .goCvFirstSectionHeading hr {
   border: 2px solid rgb(34, 243, 34);
   opacity: 1;
@@ -69,28 +53,38 @@
   padding: 3rem 0px;
   max-width: 1000px;
   width: 100%;
+
   margin-right: auto;
   margin-left: auto;
   position: relative;
 }
 #smartlearnerLogo {
-  max-width: 300px;
+  max-width: 350px;
   width: 100%;
 }
+
+
 .goCvFirstSectionHeadingImg img {
   max-width: 130px;
   width: 100%;
   padding: 1rem 1rem;
-  opacity: 0;
-  transform: translateY(100%);
-  animation: slideUp 3s forwards;
+  animation: smoothUpDown 2s ease-in-out infinite; /* Animation applied to both images */
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(208, 208, 208, 0.757));
+
 }
-@keyframes slideUp {
-  to {
-    opacity: 1;
+
+@keyframes smoothUpDown {
+  0% {
     transform: translateY(0);
   }
+  50% {
+    transform: translateY(-20px); /* Move the images up */
+  }
+  100% {
+    transform: translateY(0); /* Move the images back to original position */
+  }
 }
+
 
 @media (max-width: 720px) {
   .goCvFirstSectionHeading h2 {
@@ -110,6 +104,11 @@
     font-size: 1.5rem;
   }
 }
+.GoCvWsection {
+  max-width: 1640px;
+  margin-right: auto;
+  margin-left: auto;
+}
 #goCv2ndSection {
   display: flex;
   align-items: center;
@@ -124,7 +123,8 @@
   margin-left: auto;
 }
 .goCv2ndSection h2 {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
 }
 .goCv2ndSection img {
@@ -132,7 +132,7 @@
   width: 100%;
 }
 .goCv2ndSection section {
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -140,19 +140,35 @@
 }
 .goCv2ndSection section p {
   font-size: 1.2rem;
+  background: linear-gradient(135deg, #46018399, #76014776);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1rem;
+  border-radius: 10px;
   margin-bottom: 2rem;
+
 }
-@media (max-width: 627px) {
-  .goCv2ndSection section p {
-    font-size: 1rem;
-  }
-}
-@media (max-width: 450px) {
+@media (max-width: 767px) {
   #goCv2ndSection {
     flex-direction: column;
     gap: 10px;
   }
+  .goCv2ndSection h2 {
+    font-size: 2.5rem;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .goCv2ndSection section p {
+    font-size: 1rem;
+  }
+  .goCv2ndSection h2 {
+    font-size: 2rem;
+  }
 }
 .sponsorHeadin h2 {
   text-align: center;
+  font-size: 3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
 }

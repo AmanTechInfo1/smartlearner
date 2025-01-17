@@ -75,6 +75,7 @@ function Navbar() {
 
   return (
     <div id={styles.navContainer}>
+      <div className={styles.navContainer1}>
       <div className={styles.headerContainer}>
         <section className={styles.imgLogoSection}>
           <div className={styles.imgLogoSection2}>
@@ -119,6 +120,8 @@ function Navbar() {
           </div>
         </section>
       </div>
+      </div>
+     
     </div>
   );
 }

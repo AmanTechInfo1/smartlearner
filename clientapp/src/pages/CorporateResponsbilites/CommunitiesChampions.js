@@ -1,6 +1,6 @@
 // import React from 'react'
 import styles from "./Communities.module.css";
-import React from "react";
+import React, { useState } from "react";
 import handShaking from "../../assets/images/hand-shakes.png";
 import communityChempionImg1 from "../../assets/images/community-champions/CChampion-1.jpg";
 import communityChempionImg2 from "../../assets/images/community-champions/CChampion-2.jpg";
@@ -17,30 +17,234 @@ import communityChempionImg12 from "../../assets/images/community-champions/CCha
 import communityChempionImg13 from "../../assets/images/community-champions/CChampion-13.jpg";
 import communityChempionImg14 from "../../assets/images/community-champions/CChampion-14.jpg";
 import communityChempionImg15 from "../../assets/images/community-champions/CChampion-15.jpg";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function CommunitiesChampions() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const text2Ref = useRef(null);
+
+  const splitTextPartTwo = () => {
+    const firstPart = "COMMUNITY CHAMPIONS";
+    // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = text2Ref.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "rgb(255, 24, 121)", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "rgb(0, 235, 168)", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "rgb(196, 199, 0)", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+  ///////////////////////////////////////////////////////
+  const textRef = useRef(null);
+
+  const splitText = () => {
+    const firstPart = " SUPPORTING OUR CITY";
+    const secondPart = "AND COMMUNITY"; // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "rgb(1, 231, 204)", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "rgb(119, 3, 154)", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "rgb(154, 3, 101)", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.OurOfficeGreenEfforts}>
       <div className={styles.eCsfront}>
-        <section className={styles.eCSfrontSection}>
-          <h2>COMMUNITY CHAMPIONS</h2>
-          <hr />
-          <h3>"The local school for local people"</h3>
-          <p>
-            Winners of Intelligent Instructors Awards 2023 & 2024 'Community
-            Champion Of The Year'
-          </p>
-        </section>
+        <div className={styles.csrPageFront}>
+          <div className="opicity"></div>
+          <section className={styles.eCSfrontSection}>
+            <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
+
+            <div className={styles.gGpFrontListP}>
+              <p>"The local school for local people"</p>
+              <p>
+                Winners of Intelligent Instructors Awards 2023 & 2024 'Community
+                Champion Of The Year'
+              </p>
+            </div>
+          </section>
+        </div>
         <section className={styles.cCSecondrySection}>
           <section id={styles.cCSecondrySection}>
             <div className={styles.cCSecondryHeadin}>
               <img src={handShaking} alt="handShake-Icon" />
-              <h2>
-                SUPPORTING OUR CITY <br />
-                AND COMMUNITY
-              </h2>
+              <h2 ref={textRef}>{splitText()}</h2>
             </div>
-            <hr></hr>
+
             <section className={styles.cCLists}>
               <p>
                 <span>315 EASTER EGG Campaign:</span> We raised 500+ Easter Eggs
@@ -170,71 +374,144 @@ export default function CommunitiesChampions() {
                   the supporting business owners!
                 </p>
               </div>
-              <hr />
             </section>
             {/* ////////////////////////////////////// */}
             <section className={styles.cCImagesSec}>
               <div className={styles.cCImagesdiv}>
-                <img
-                  src={communityChempionImg1}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg2}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg3}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg4}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg5}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg6}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg7}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg8}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg9}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg10}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg11}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg12}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg13}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg14}
-                  alt="communityChempion-Images"
-                />
-                <img
-                  src={communityChempionImg15}
-                  alt="communityChempion-Images"
-                />
+                <Swiper
+                  slidesPerView={4} // Display 4 slides at a time
+                  spaceBetween={30} // Space between slides
+                  loop={true} // Make it loop infinitely
+                  autoplay={{
+                    delay: 1000, // Time between slide transitions (set to 3 seconds for smoother experience)
+                    disableOnInteraction: false, // Don't stop autoplay when interacting
+                  }}
+                  centeredSlides={true} // Keep the active slide centered
+                  pagination={{
+                    type: "fraction", // Display slide number like '1/5'
+                  }}
+                  navigation={true} // Add navigation buttons (next/prev)
+                  speed={3000} // Transition speed in ms
+                  modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
+                  className="mySwiper"
+                  onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+                  style={{
+                    padding: "2rem 1rem",
+                    maxWidth: "1640px",
+                    margin: "0px auto",
+                    width: "100%",
+                  }}
+                  breakpoints={{
+                    320: {
+                      slidesPerView: 1, // 1 slide at a time for small screens
+                      spaceBetween: 10, // Less space on small screens
+                    },
+                    768: {
+                      slidesPerView: 2, // 2 slides at a time for medium screens
+                      spaceBetween: 20, // Slightly more space
+                    },
+                    1024: {
+                      slidesPerView: 3, // 3 slides for large screens
+                      spaceBetween: 30,
+                    },
+                    1440: {
+                      slidesPerView: 4, // 4 slides for extra large screens
+                      spaceBetween: 30,
+                    },
+                  }}
+                >
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg1}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg2}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg3}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg4}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg5}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg6}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg7}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg8}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg9}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg10}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg11}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg12}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg13}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg14}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src={communityChempionImg15}
+                      alt="communityChempion-Images"
+                    />
+                  </SwiperSlide>
+                  {/* Add more slides as needed */}
+                </Swiper>
               </div>
               <div id={styles.schoolLocal}>
                 <p>"The local School for local people"</p>

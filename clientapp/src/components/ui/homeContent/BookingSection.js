@@ -173,15 +173,16 @@ export default function BookingSection() {
             spaceBetween={30} // Space between slides
             loop={true} // Make it loop infinitely
             autoplay={{
-              delay: 100, // Time between slide transitions
+              delay: 1000, // Time between slide transitions
               disableOnInteraction: false, // Don't stop autoplay when interacting
             }}
             centeredSlides={true} // Keep the active slide centered
             pagination={{
               type: "fraction",
+              clickable: true,
             }}
             navigation={true}
-            speed={6000} // Add navigation buttons (next/prev)
+            speed={3000} // Add navigation buttons (next/prev)
             modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
             className="mySwiper"
             onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
