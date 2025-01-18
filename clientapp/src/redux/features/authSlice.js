@@ -137,13 +137,13 @@ export const loginUser = createAsyncThunk(
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
-          navigate("/");
+          navigate(-1);
         }
       } else {
         toast.error(data.message || "Something went wrong");
       }
       return data;
-    } catch (error) {
+    } catch (error) { 
       if (error.response && error.response.status === 500) {
         toast.error("Username or password is incorrect");
       } else {
@@ -219,7 +219,7 @@ export const completePasswordReset = createAsyncThunk(
       const data = response.data;
       if (data.success) {
         toast.success("Password reset successfully.");
-        navigate("/login");
+        navigate("/");
       } else {
         toast.error(data.message || "Failed to reset password.");
       }

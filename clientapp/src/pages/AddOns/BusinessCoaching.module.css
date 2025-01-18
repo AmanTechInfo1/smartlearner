@@ -1,0 +1,112 @@
+/* Global Styles */
+.BusinessCoachingComponent {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 3rem 1px;
+  max-width: 1340px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.cbdbanner {
+  padding: 2rem 0px;
+}
+.cbdbanner h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  max-width: 1000px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* Header Section */
+.Bsheader {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient Header */
+  border-radius: 8px;
+  color: white;
+}
+
+.Bsheader h2 {
+  font-size: 3rem;
+}
+
+.Bsheader p {
+  text-align: justify;
+  font-size: 1.1rem;
+}
+
+/* General Section Style */
+.BsCsection {
+  background: rgb(248, 255, 255);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.BsCsection h2 {
+  font-size: 3rem;
+  color: #29383a;
+}
+
+.BsCsection h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.BsCsection p,
+ul {
+  color: #555;
+}
+
+.BsCsection ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.BsCsection ul li {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin: 5px 0;
+  background: linear-gradient(to right, #7200cf, #ff7e5f); /* Gradient Header */
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+/* Book Now Section */
+.BsCbookNow {
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    #7200cf,
+    #ff7e5f
+  ); /* Gradient for Button */
+  padding: 30px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.BsCbookNow h2 {
+  font-size: 2rem;
+  color: white;
+}
+
+.BsCbutton {
+  padding: 15px 30px;
+  background: linear-gradient(to right, #feb47b, #ff7e5f); /* Gradient Button */
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.BsCbutton:hover {
+  transition: 0.7s ease-in-out;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Hover Effect */
+}

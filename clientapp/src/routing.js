@@ -137,6 +137,7 @@ import PassPlusTransmission from "./pages/Transmission/PassPlusTransmission";
 import IntensiveTransmission from "./pages/Transmission/IntensiveTransmission";
 import DrivingTransmission from "./pages/Transmission/DrivingTransmission";
 import CbdEvents from "./pages/AddOns/CbdEvents";
+import BusinessCoaching from "./pages/AddOns/BusinessCoaching";
 
 export const router = createBrowserRouter([
   {
@@ -265,6 +266,7 @@ export const router = createBrowserRouter([
       { path: "pass-plus", element: <PassPlusTransmission /> },
       { path: "driving-instructor-packages", element: <DrivingTransmission /> },
       { path: "cpd-events", element: <CbdEvents /> },
+      { path: "businesscoaching", element: <BusinessCoaching /> },
       {
         path: "trainning-material",
         element: <TrainningMaterial />,

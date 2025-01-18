@@ -36,12 +36,7 @@ function Header() {
             Our Courses
             </NavLink>
             <ul className={styles.dropdownContent}>
-              <NavLink
-                to="/home/our-courses"
-                className={styles.activeLink}>
-                {" "}
-                <li>Our Courses</li>
-              </NavLink>
+             
               <NavLink
                 to="/manual"
                 className={styles.activeLink}>
