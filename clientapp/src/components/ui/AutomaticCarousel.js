@@ -82,7 +82,7 @@ function AutomaticCarousel() {
   return (
     <section className={styles.carouselContainer}>
       <div className={styles.carousel}>
-        \{" "}
+        {" "}
         {filteredData("Offers Automatic").map((item) => (
           <div
             style={{

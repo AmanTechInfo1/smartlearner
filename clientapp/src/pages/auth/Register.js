@@ -52,7 +52,7 @@ export default function Register() {
 
   return (
     <>
-      {!webLoading ? (
+      {!loading  ? (
         <div className={styles.loginRegisterPage}>
           <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>

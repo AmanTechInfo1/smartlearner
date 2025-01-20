@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TheorySubscription.css";
 // import subsIcon from "../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,29 +18,26 @@ const TheorySubscription = () => {
   const navigate = useNavigate();
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
-  const { plans, loading, error  } = useSelector((state) => state.subscription);
+  const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
     if (userId) {
-         dispatch(fetchUserSubscriptions(userId));
-       }
+      dispatch(fetchUserSubscriptions(userId));
+    }
     dispatch(fetchPlans());
-   
-  }, [dispatch,userId]);
- // Added userId as a dependency
-////////////////////////////////////////////////////////
-const handleCouponSubmit = async () => {
-  try {
-    await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
-    navigate("/Theory-portal");
-  } catch (error) {
-    console.error("Error applying coupon:", error);
-   
-  }
-};
-
+  }, [dispatch, userId]);
+  // Added userId as a dependency
+  ////////////////////////////////////////////////////////
+  const handleCouponSubmit = async () => {
+    try {
+      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
+      navigate("/Theory-portal");
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+    }
+  };
 
   // /////////////////////////////////////////////////
 
@@ -121,7 +118,6 @@ const handleCouponSubmit = async () => {
   return (
     <div className="subscription-cardBox">
       <div className="cardBody">
-
         <h2 id="SubsHeading">Subscription Plans</h2>
         <div className="coupon-section">
           <input
@@ -135,17 +131,14 @@ const handleCouponSubmit = async () => {
             Apply Coupon
           </button>
         </div>
-        {loading && <p>Loading plans...</p>}
-        
+        {loading && <p style={{ color: "white" }}>Loading plans...</p>}
 
-        
-
-        {trialPlans.map((plan, index) => (
+        {/* {trialPlans.map((plan, index) => (
           <div key={index} className="card">
             <div className="card-top">
               <div className="card-top__info">
                 <span className="card-top__info-icon">
-                  {/* <img src={subsIcon} alt="Subscription Icon" /> */}
+                 
                 </span>
                 <div className="card-top__info-header">
                   <h1>{plan.planname}</h1>
@@ -164,7 +157,7 @@ const handleCouponSubmit = async () => {
               >
                 Start Free Trial
               </button>
-              {/* <span>Subscribe now</span> */}
+              
               <ul className="card-bottom__list">
                 {plan.features.map((item, featureIndex) => (
                   <li key={featureIndex} className="card-bottom__list-item">
@@ -190,7 +183,7 @@ const handleCouponSubmit = async () => {
               </ul>
             </div>
           </div>
-        ))}
+        ))} */}
 
         {paidPlans.map((plan, index) => (
           <div key={index} className="card">
@@ -215,6 +208,7 @@ const handleCouponSubmit = async () => {
                 onApprove={(data, actions) =>
                   handleApprovePayment(plan, actions)
                 }
+                fundingSource="paypal"
               />
               {/* <span>Subscribe now</span> */}
               <ul className="card-bottom__list">
@@ -226,8 +220,7 @@ const handleCouponSubmit = async () => {
                         height="10"
                         viewBox="0 0 14 10"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"

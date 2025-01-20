@@ -178,6 +178,7 @@ const PartOneSubscription = () => {
               <PayPalButtons
                 createOrder={(data, actions) => handleCreateSubscription(plan)}
                 onApprove={(data, actions) => handleApprovePayment(plan, actions)}
+                 fundingSource="paypal"
               />
               {/* <span>Subscribe now</span> */}
               <ul className="card-bottom__list">

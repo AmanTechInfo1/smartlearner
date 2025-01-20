@@ -3,6 +3,7 @@ const router = express.Router();
 const SubscriptionController = require("../controllers/subscriptionController");
 const userSubscriptionController = require("../controllers/userSubscriptionController");
 const UserSubscriptionService = require("../services/userSubscriptionService");
+const { requireAuth } = require("../middlewares/authMiddleware");
 // Define routes for subscription management
 router.post("/add-plan", SubscriptionController.createPlan);
 router.get("/plan/:id", SubscriptionController.getPlanById);
@@ -25,7 +26,7 @@ router.post(
   (req, res, next) => {
     console.log("Request received at /create-payment", req.body);
     next();
-  },
+  }, requireAuth,
   userSubscriptionController.createPayment
 ); // New route for creating a payment
 router.post("/confirm-payment", userSubscriptionController.confirmPayment); // New route for confirming payment

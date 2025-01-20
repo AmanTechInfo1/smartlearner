@@ -17,7 +17,6 @@ import gsap from "gsap";
 import { FaHome } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -139,7 +138,7 @@ export default function Login() {
 
   return (
     <>
-      {!webLoading ? (
+      {!loading ? (
         <div className={styles.loginRegisterPage}>
           <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
@@ -154,16 +153,24 @@ export default function Login() {
               </Link>
             </div>
             <div className={styles.buttonsGrid}>
-              <Link to='/ADI-Training-Portal'>
-                <button>PDI Portal <MdKeyboardDoubleArrowRight className={styles.gradientIcon}/></button>
+              <Link to="/ADI-Training-Portal">
+                <button>
+                  PDI Portal{" "}
+                  <MdKeyboardDoubleArrowRight className={styles.gradientIcon} />
+                </button>
               </Link>
               <Link to="/">
                 {" "}
-                <button><FaHome className={styles.gradientIcon}/></button>
+                <button>
+                  <FaHome className={styles.gradientIcon} />
+                </button>
               </Link>
               <Link to="/Theory-Portal">
                 {" "}
-                <button>Theory Portal <MdKeyboardDoubleArrowRight className={styles.gradientIcon}/></button>
+                <button>
+                  Theory Portal{" "}
+                  <MdKeyboardDoubleArrowRight className={styles.gradientIcon} />
+                </button>
               </Link>
             </div>
 
@@ -173,8 +180,7 @@ export default function Login() {
                   <div className={styles.loginLogo}>
                     <iframe
                       style={{ height: "150px" }}
-                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
-                    ></iframe>
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"></iframe>
                   </div>
 
                   <h2>Sign in</h2>
@@ -185,8 +191,7 @@ export default function Login() {
                       render={({ field: { value, onChange } }) => (
                         <FloatingLabel
                           controlId="floatingInput"
-                          label="Email address"
-                        >
+                          label="Email address">
                           <Form.Control
                             type="email"
                             value={value}
@@ -202,16 +207,17 @@ export default function Login() {
                       <p style={{ color: "red" }}>{errors?.email?.message}</p>
                     )}
                     <div
-                      style={{ textAlign: "right", margin: "1rem 0px 6px 0px" }}
-                    >
+                      style={{
+                        textAlign: "right",
+                        margin: "1rem 0px 6px 0px",
+                      }}>
                       <Link
                         to="/forgot-password"
                         style={{
                           textDecoration: "none",
                           fontWeight: "500",
                           fontSize: "18px",
-                        }}
-                      >
+                        }}>
                         Forgot Password?
                       </Link>
                     </div>
@@ -223,8 +229,7 @@ export default function Login() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="Password"
-                            className={styles.formControlWithIcon}
-                          >
+                            className={styles.formControlWithIcon}>
                             <Form.Control
                               type={showPassword ? "text" : "password"}
                               value={value}
@@ -281,7 +286,6 @@ export default function Login() {
               </section>
             </div>
           </section>
-          
         </div>
       ) : (
         <LoadingWeb />

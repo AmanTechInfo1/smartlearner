@@ -22,9 +22,7 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function DrivingInstructorUI() {
-
   const navigate = useNavigate();
-
 
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
@@ -75,12 +73,15 @@ function DrivingInstructorUI() {
   const addToCart = (info, index) => {
     const productId = `${info._id}_${index}_${info.price}`;
     dispatch(
-      getAddToCart({
-        id: productId,
-        count: 1,
-        service: info.name,
-        price: info.price,
-      },navigate)
+      getAddToCart(
+        {
+          id: productId,
+          count: 1,
+          service: info.name,
+          price: info.price,
+        },
+        navigate
+      )
     );
   };
 
@@ -185,15 +186,182 @@ function DrivingInstructorUI() {
         <div
           className={styles.carousel}
           style={{ justifyContent: "flex-start" }}>
-          {[
-            "instructor training part one",
-            "instructor training part two",
-            "instructor training part three",
-          ].map((categoryName) =>
-            filteredData(categoryName).map((item) => (
+          {["instructor training part one", "instructor training part two"].map(
+            (categoryName) =>
+              filteredData(categoryName).map((item) => (
+                <div
+                  style={{
+                    background: getBgColor(categoryName),
+                  }}
+                  key={item.id}
+                  className={`${styles.carouselColumn} ${
+                    expandedCategory === item._id ? styles.expanded : ""
+                  }`}
+                  onClick={() => handleExpandCategory(item._id)}>
+                  <div className={styles.carouselColumnHeading}>
+                    <img
+                      id={styles.CorouselImgBanner}
+                      src={LplateImg}
+                      alt="Category Image"
+                    />
+                    <div className={styles.CorouselhaddingBanner}>
+                      <h2
+                        style={{
+                          color:
+                            getHeadingAndButtonColorForCategory(categoryName),
+                        }}>
+                        {(() => {
+                          switch (categoryName) {
+                            case "instructor training part one":
+                              return "Instructor Training";
+                            case "instructor training part two":
+                              return "Bolt on Training";
+
+                            default:
+                              return "Instructor Training"; // Default case
+                          }
+                        })()}
+                      </h2>
+
+                      {expandedCategory === item._id && (
+                        <Link to="/cart">
+                          <span>
+                            <img
+                              id={styles.CorouselImgcart}
+                              src={cartbanner} // Dynamic cart image
+                              alt="cartImg"
+                            />
+                          </span>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                  {expandedCategory === item._id ? (
+                    <ul type="none">
+                      {item.data.map((info, index) => (
+                        <div key={index}>
+                          <li className={styles.expandedColData}>
+                            <span
+                              style={{
+                                color: "white",
+                                backgroundColor: "black",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                maxWidth: "235px",
+                                width: "100%",
+                                borderRadius: "40px 0px 0px 40px",
+                                padding: "8px",
+                              }}>
+                              <p style={{ marginBottom: "0px" }}>{info.name}</p>
+                              <p style={{ marginBottom: "0px", width: "49x" }}>
+                                £ {info.price}
+                              </p>
+                            </span>
+                            <div className={styles.btnGroup}>
+                              {myCart.length === 0 ||
+                              !myCart.find(
+                                (cartItem) =>
+                                  cartItem.id ===
+                                  `${info._id}_${index}_${info.price}`
+                              ) ? (
+                                <button
+                                  className={styles.bookNow}
+                                  style={{
+                                    backgroundColor:
+                                      getHeadingAndButtonColorForCategory(
+                                        categoryName
+                                      ),
+                                  }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    addToCart(info, index);
+                                  }}>
+                                  Book
+                                </button>
+                              ) : (
+                                <div id={styles.cartTableBtn}>
+                                  <div className={styles.quantityControl}>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDecrease(
+                                          `${info._id}_${index}_${info.price}`,
+                                          1
+                                        );
+                                      }}
+                                      className={styles.decreaseButton}>
+                                      -
+                                    </button>
+                                    <span>
+                                      {myCart.find(
+                                        (cartItem) =>
+                                          cartItem.id ===
+                                          `${info._id}_${index}_${info.price}`
+                                      )?.count || 0}
+                                    </span>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleIncrease(
+                                          `${info._id}_${index}_${info.price}`,
+                                          1
+                                        );
+                                      }}
+                                      className={styles.increaseButton}>
+                                      +
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                          <section
+                            style={{
+                              backgroundColor: getdescBgColor(categoryName),
+                              border: "1px solid #a9a9a9",
+                            }}
+                            className={styles.corouselDescription}>
+                            <p>
+                              {isReadMore[index]
+                                ? info.description // Show full content
+                                : info.description
+                                    .split(" ")
+                                    .slice(0, wordLimit)
+                                    .join(" ") + "..."}
+                            </p>
+                            {info.description.split(" ").length > wordLimit && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleReadMoreToggle(index);
+                                }}>
+                                {isReadMore[index] ? "Read Less" : "Read More"}
+                              </button>
+                            )}
+                          </section>
+                        </div>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div
+                      className={`${styles.carouselStarImgContainer} ${
+                        expandedCategory === item._id ? styles.compress : ""
+                      }`}>
+                      {getStarImagesForCategory(categoryName).map(
+                        (star, idx) => (
+                          <img key={idx} src={star} alt={`starImg${idx}`} />
+                        )
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))
+          )}
+          {filteredData("instructor training part three").map((item) => {
+            return (
               <div
                 style={{
-                  background: getBgColor(categoryName),
+                  background: getBgColor("instructor training part three"),
                 }}
                 key={item.id}
                 className={`${styles.carouselColumn} ${
@@ -209,23 +377,12 @@ function DrivingInstructorUI() {
                   <div className={styles.CorouselhaddingBanner}>
                     <h2
                       style={{
-                        color:
-                          getHeadingAndButtonColorForCategory(categoryName),
+                        color: getHeadingAndButtonColorForCategory(
+                          "instructor training part three"
+                        ),
                       }}>
-                      {(() => {
-                        switch (categoryName) {
-                          case "instructor training part one":
-                            return "Instructor Training";
-                          case "instructor training part two":
-                            return "Bolt on Training";
-                          case "instructor training part three":
-                            return "Online Courses";
-                          default:
-                            return "Instructor Training"; // Default case
-                        }
-                      })()}
+                      Online Courses
                     </h2>
-
                     {expandedCategory === item._id && (
                       <Link to="/cart">
                         <span>
@@ -241,123 +398,282 @@ function DrivingInstructorUI() {
                 </div>
                 {expandedCategory === item._id ? (
                   <ul type="none">
-                    {item.data.map((info, index) => (
-                      <div key={index}>
-                        <li className={styles.expandedColData}>
-                          <span
-                            style={{
-                              color: "white",
-                              backgroundColor: "black",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              maxWidth: "235px",
-                              width: "100%",
-                              borderRadius: "40px 0px 0px 40px",
-                              padding: "8px",
-                            }}>
-                            <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px", width: "49x" }}>
-                              £ {info.price}
-                            </p>
-                          </span>
-                          <div className={styles.btnGroup}>
-                            {myCart.length === 0 ||
-                            !myCart.find(
-                              (cartItem) =>
-                                cartItem.id ===
-                                `${info._id}_${index}_${info.price}`
-                            ) ? (
-                              <button
-                                className={styles.bookNow}
-                                style={{
-                                  backgroundColor:
-                                    getHeadingAndButtonColorForCategory(
-                                      categoryName
-                                    ),
-                                }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  addToCart(info, index);
-                                }}>
-                                Book
-                              </button>
-                            ) : (
-                              <div id={styles.cartTableBtn}>
-                                <div className={styles.quantityControl}>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleDecrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.decreaseButton}>
-                                    -
-                                  </button>
-                                  <span>
-                                    {myCart.find(
-                                      (cartItem) =>
-                                        cartItem.id ===
-                                        `${info._id}_${index}_${info.price}`
-                                    )?.count || 0}
-                                  </span>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleIncrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.increaseButton}>
-                                    +
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </li>
-                        <section
+                    <div>
+                      <li className={styles.expandedColData}>
+                        <span
                           style={{
-                            backgroundColor: getdescBgColor(categoryName),
-                            border: "1px solid #a9a9a9",
-                          }}
-                          className={styles.corouselDescription}>
-                          <p>
-                            {isReadMore[index]
-                              ? info.description // Show full content
-                              : info.description
-                                  .split(" ")
-                                  .slice(0, wordLimit)
-                                  .join(" ") + "..."}
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "235px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>Complete Course</p>
+                          <p style={{ marginBottom: "0px", width: "49x" }}>
+                            £ 450
                           </p>
-                          {info.description.split(" ").length > wordLimit && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleReadMoreToggle(index);
-                              }}>
-                              {isReadMore[index] ? "Read Less" : "Read More"}
-                            </button>
-                          )}
-                        </section>
-                      </div>
-                    ))}
+                        </span>
+                        <div className={styles.btnGroup}>
+                          <button
+                            className={styles.bookNow}
+                            style={{
+                              backgroundColor:
+                                getHeadingAndButtonColorForCategory(
+                                  "instructor training part three"
+                                ),
+                            }}
+                            onClick={(e) => {
+                              navigate("/part-one-subscription");
+                            }}>
+                            Book
+                          </button>
+                        </div>
+                      </li>
+                      <section
+                        style={{
+                          backgroundColor: getdescBgColor(
+                            "instructor training part three"
+                          ),
+                          border: "1px solid #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore["id111111"]
+                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                          " "
+                        ).length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle("id111111");
+                            }}>
+                            {isReadMore["id111111"] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
+
+                    <div>
+                      <li className={styles.expandedColData}>
+                        <span
+                          style={{
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "235px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>Online Part 1</p>
+                          <p style={{ marginBottom: "0px", width: "49x" }}>
+                            £ 50
+                          </p>
+                        </span>
+                        <div className={styles.btnGroup}>
+                          <button
+                            className={styles.bookNow}
+                            style={{
+                              backgroundColor:
+                                getHeadingAndButtonColorForCategory(
+                                  "instructor training part three"
+                                ),
+                            }}
+                            onClick={(e) => {
+                              navigate("/part-one-subscription");
+                            }}>
+                            Book
+                          </button>
+                        </div>
+                      </li>
+                      <section
+                        style={{
+                          backgroundColor: getdescBgColor(
+                            "instructor training part three"
+                          ),
+                          border: "1px solid #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore["id2222222"]
+                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                          " "
+                        ).length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle("id2222222");
+                            }}>
+                            {isReadMore["id2222222"]
+                              ? "Read Less"
+                              : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
+
+                    <div>
+                      <li className={styles.expandedColData}>
+                        <span
+                          style={{
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "235px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>Online Part 2</p>
+                          <p style={{ marginBottom: "0px", width: "49x" }}>
+                            £ 200
+                          </p>
+                        </span>
+                        <div className={styles.btnGroup}>
+                          <button
+                            className={styles.bookNow}
+                            style={{
+                              backgroundColor:
+                                getHeadingAndButtonColorForCategory(
+                                  "instructor training part three"
+                                ),
+                            }}
+                            onClick={(e) => {
+                              navigate("/part-two-subscription");
+                            }}>
+                            Book
+                          </button>
+                        </div>
+                      </li>
+                      <section
+                        style={{
+                          backgroundColor: getdescBgColor(
+                            "instructor training part three"
+                          ),
+                          border: "1px solid #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore["id33333333"]
+                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                          " "
+                        ).length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle("id33333333");
+                            }}>
+                            {isReadMore["id33333333"]
+                              ? "Read Less"
+                              : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
+                    <div>
+                      <li className={styles.expandedColData}>
+                        <span
+                          style={{
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "235px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>Online Part 3</p>
+                          <p style={{ marginBottom: "0px", width: "49x" }}>
+                            £ 300
+                          </p>
+                        </span>
+                        <div className={styles.btnGroup}>
+                          <button
+                            className={styles.bookNow}
+                            style={{
+                              backgroundColor:
+                                getHeadingAndButtonColorForCategory(
+                                  "instructor training part three"
+                                ),
+                            }}
+                            onClick={(e) => {
+                              navigate("/part-three-subscription");
+                            }}>
+                            Book
+                          </button>
+                        </div>
+                      </li>
+                      <section
+                        style={{
+                          backgroundColor: getdescBgColor(
+                            "instructor training part three"
+                          ),
+                          border: "1px solid #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore["id44444444"]
+                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                          " "
+                        ).length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle("id44444444");
+                            }}>
+                            {isReadMore["id44444444"]
+                              ? "Read Less"
+                              : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
                   </ul>
                 ) : (
                   <div
                     className={`${styles.carouselStarImgContainer} ${
                       expandedCategory === item._id ? styles.compress : ""
                     }`}>
-                    {getStarImagesForCategory(categoryName).map((star, idx) => (
+                    {getStarImagesForCategory(
+                      "instructor training part three"
+                    ).map((star, idx) => (
                       <img key={idx} src={star} alt={`starImg${idx}`} />
                     ))}
                   </div>
                 )}
               </div>
-            ))
-          )}
+            );
+          })}
         </div>
       </section>
     </>

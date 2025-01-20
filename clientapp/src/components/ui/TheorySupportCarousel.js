@@ -422,6 +422,111 @@ function TheoryCorousel() {
               </div>
             );
           })}
+
+          {filteredData("Theory Support").map((item) => {
+            return (
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #0c0fbd, #e4f0ff)",
+                }}
+                key={item.id}
+                className={`${styles.carouselColumn} ${
+                  expandedCategory === `${item._id}_above1000`
+                    ? styles.expanded
+                    : ""
+                }`}
+                onClick={() => handleExpand(item._id, "above1000")} // Pass category ID and product type
+              >
+                <div className={styles.carouselColumnHeading}>
+                  <img
+                    id={styles.CorouselImgBanner}
+                    src={LplateImg}
+                    alt="Category Image"
+                  />
+                  <div className={styles.CorouselhaddingBanner}>
+                    <h2 style={{ color: "rgb(191 214 255)" }}>Theory</h2>
+                  </div>
+                </div>
+                {expandedCategory === `${item._id}_above1000` ? (
+                  <ul type="none">
+                    <div>
+                      <li
+                        className={styles.expandedColData}
+                        id={styles.theoryP}>
+                        <span
+                          style={{
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "250px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>Theory Portal</p>
+                          <p style={{ marginBottom: "0px", width: "43px" }}>
+                            £ 30
+                          </p>
+                        </span>
+                        <div className={styles.btnGroup}>
+                          <button
+                            className={styles.bookNow}
+                            style={{
+                              backgroundColor:
+                                starColorMap[item._id]?.color || "#ff0000", // Dynamic button color
+                            }}
+                            onClick={(e) => {
+                              navigate("/Theory-Subscription")
+                            }}>
+                            Book
+                          </button>
+                        </div>
+                      </li>
+                      <section
+                        style={{ backgroundColor: "#052c76bc" }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore["theoryportaldes1"]
+                            ? "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!" // Show full content
+                            : "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!"
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {"Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!".split(
+                          " "
+                        ).length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle("theoryportaldes1");
+                            }}>
+                            {isReadMore["theoryportaldes1"]
+                              ? "Read Less"
+                              : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
+                  </ul>
+                ) : (
+                  <div
+                    className={`${styles.carouselStarImgContainer} ${
+                      expandedCategory === `${item._id}_above1000`
+                        ? styles.compress
+                        : ""
+                    }`}>
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                    <img src={starColorMap[item._id]?.starImg} alt="starImg" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

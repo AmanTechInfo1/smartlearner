@@ -99,7 +99,9 @@ export const registerUser = createAsyncThunk(
             },
           })
         );
-        navigate("/thanks");
+        if (navigate) {
+          navigate("/thanks"); // Navigate to the 'thanks' page after registration
+        }
         return resultData;
       }
     } catch (error) {
@@ -143,7 +145,7 @@ export const loginUser = createAsyncThunk(
         toast.error(data.message || "Something went wrong");
       }
       return data;
-    } catch (error) { 
+    } catch (error) {
       if (error.response && error.response.status === 500) {
         toast.error("Username or password is incorrect");
       } else {
