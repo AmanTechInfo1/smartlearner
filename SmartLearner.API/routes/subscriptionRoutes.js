@@ -26,18 +26,13 @@ router.post(
   (req, res, next) => {
     console.log("Request received at /create-payment", req.body);
     next();
-  }, requireAuth,
+  },
+  requireAuth,
   userSubscriptionController.createPayment
 ); // New route for creating a payment
 router.post("/confirm-payment", userSubscriptionController.confirmPayment); // New route for confirming payment
-router.get("/checkTrial/:userId",userSubscriptionController.checkTrialStatus );
-router.post(
-  "/apply-coupon",
-  userSubscriptionController.couponAccess
-);
+router.get("/checkTrial/:userId", userSubscriptionController.checkTrialStatus);
+router.post("/apply-coupon", userSubscriptionController.couponAccess);
 
-router.post(
-  "/pdiApply-coupon",
-  userSubscriptionController.pdiCouponAccess
-);
+router.post("/pdiApply-coupon", userSubscriptionController.pdiCouponAccess);
 module.exports = router;
