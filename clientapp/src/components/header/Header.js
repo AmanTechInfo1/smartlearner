@@ -14,8 +14,10 @@ function Header() {
           <section className={styles.imgLogoSection}>
             <div className={styles.imgLogoSection2}>
               {" "}
-              <Link to="/"> <img src={logo2} alt="logo" /></Link>
-             
+              <Link to="/">
+                {" "}
+                <img src={logo2} alt="logo" />
+              </Link>
             </div>
           </section>
           <div
@@ -33,13 +35,10 @@ function Header() {
           }>
           <li id={styles.dropDownNav}>
             <NavLink exact to="/">
-            Our Courses
+              Our Courses
             </NavLink>
             <ul className={styles.dropdownContent}>
-             
-              <NavLink
-                to="/manual"
-                className={styles.activeLink}>
+              <NavLink to="/manual" className={styles.activeLink}>
                 {" "}
                 <li>Manual</li>
               </NavLink>
@@ -49,13 +48,11 @@ function Header() {
                 {" "}
                 <li>Automatic</li>
               </NavLink>
-              <NavLink
-                to="/intensive"
-                className={styles.activeLink}>
+              <NavLink to="/intensive" className={styles.activeLink}>
                 {" "}
                 <li>Intensive</li>
               </NavLink>
-              </ul>
+            </ul>
           </li>
           {/* <li id={styles.dropDownNav}>
             <NavLink to="/Driving-Lessons">
@@ -124,13 +121,13 @@ function Header() {
             </NavLink>
 
             <ul className={styles.dropdownContent}>
-            <NavLink
+              <NavLink
                 to="/Driving-Instructor-Training"
                 className={styles.activeLink}>
                 <li>Driving Instructor Trainning</li>
               </NavLink>
               <NavLink
-                to="/driving-instructor-packages"
+                to="/driving-instructor-packages/instructor-packages"
                 className={styles.activeLink}>
                 <li>Driving Instructor Packages</li>
               </NavLink>

@@ -109,7 +109,7 @@ export default function PaymentProcessing() {
           );
         } else if (paymentIntent.status === "succeeded") {
           dispatch(emptyCart());
-          navigate("/payment-completed");
+          navigate("/paymentSuccess");
           toast.success(response.data.message);
         } else {
           setError("Payment failed. Please try again.");
@@ -118,7 +118,7 @@ export default function PaymentProcessing() {
       } else if (response.data.success) {
         // Payment was successful
         dispatch(emptyCart());
-        navigate("/payment-completed");
+        navigate("/paymentSuccess");
       } else {
         setError("Stripe payment failed. Please try again.");
       }
@@ -141,7 +141,7 @@ export default function PaymentProcessing() {
 
       if (response.data.success) {
         dispatch(emptyCart());
-        navigate("/payment-completed");
+        navigate("/paymentSuccess");
       } else {
         setError("Payment execution failed. Please try again.");
       }

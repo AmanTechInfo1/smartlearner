@@ -65,7 +65,7 @@ function Navbar() {
                 gap: "10px",
                 textDecoration: "none",
               }}
-              to="/login">
+              to="/register">
               LOGIN / REGISTER
             </Link>
           ),

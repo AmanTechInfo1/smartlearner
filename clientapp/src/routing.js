@@ -264,7 +264,10 @@ export const router = createBrowserRouter([
       { path: "manual", element: <Manual /> },
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
-      { path: "driving-instructor-packages", element: <DrivingTransmission /> },
+      {
+        path: "driving-instructor-packages/:section?",
+        element: <DrivingTransmission />,
+      },
       { path: "cpd-events", element: <CbdEvents /> },
       { path: "businesscoaching", element: <BusinessCoaching /> },
       {

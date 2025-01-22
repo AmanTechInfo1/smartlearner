@@ -100,7 +100,7 @@ export const registerUser = createAsyncThunk(
           })
         );
         if (navigate) {
-          navigate("/thanks"); // Navigate to the 'thanks' page after registration
+          navigate(-1); // Navigate to the 'thanks' page after registration
         }
         return resultData;
       }
@@ -139,7 +139,7 @@ export const loginUser = createAsyncThunk(
         if (user.role === ROLES.ADMIN) {
           navigate("/admin/dashboard");
         } else {
-          navigate(-1);
+          navigate(-2);
         }
       } else {
         toast.error(data.message || "Something went wrong");

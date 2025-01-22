@@ -24,24 +24,19 @@ import { Link, useNavigate } from "react-router-dom";
 import QuizMain from "../../components/takequizes/QuizMain";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchUserSubscriptions,
-  
-} from "../../redux/features/subscriptionSlice";
+import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 import starImg from "../../assets/images/yellowStar.png";
 
 export default function TheoryPortal() {
-  
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
   );
 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
-  const userId = userDetails?._id; 
-  
+  const userId = userDetails?._id;
+
   const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
 
   useEffect(() => {
@@ -53,37 +48,32 @@ export default function TheoryPortal() {
     }
   }, [dispatch, userId]);
 
-
-  
-
-
   useEffect(() => {
-
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login"); 
-    } else if (userDetails.role === "admin" || userDetails.role === "theoryinstructor") {
-     
+      navigate("/register");
+    } else if (
+      userDetails.role === "admin" ||
+      userDetails.role === "theoryinstructor"
+    ) {
       return;
     } else if (subscriptionLoaded) {
-    const hasAccess = Array.isArray(userSubscription) && userSubscription.some((subscription) => {
-      const { planCategory } = subscription.subscriptionId || {};
-      const { couponApplied } = subscription; 
-    
-      return (
-        (subscription.isActive && (
-          planCategory === "theory-portal package" ||
-          planCategory === "theory-portal free-trial"
-        ))
-      );
-    });
-    if (!hasAccess) {
-      navigate("/Theory-Subscription"); 
-    }    
+      const hasAccess =
+        Array.isArray(userSubscription) &&
+        userSubscription.some((subscription) => {
+          const { planCategory } = subscription.subscriptionId || {};
+          const { couponApplied } = subscription;
+
+          return (
+            subscription.isActive &&
+            (planCategory === "theory-portal package" ||
+              planCategory === "theory-portal free-trial")
+          );
+        });
+      if (!hasAccess) {
+        navigate("/Theory-Support/Theory-package");
+      }
     }
-  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
-
-
-
+  }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
 
   return (
     <div className={styles.TheoryPortal}>

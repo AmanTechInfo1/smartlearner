@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
   });
   return (
     <section className={styles.page405}>
-      <div style={{ textAlign: "center", padding: "3rem" }}>
+      <div style={{ textAlign: "center", padding: "1rem" }}>
         <img id={styles.whiteLogo} src={smartlearnerLogo} alt="logo" />
       </div>
 
@@ -24,22 +24,43 @@ const PaymentSuccess = () => {
         <div className={styles.row}>
           <div className={`${styles.colSm} ${styles.colSm12}`}>
             <div
-              className={`${styles.colSm} ${styles.colSm10} ${styles.colSmOffset1} ${styles.textCenter}`}
-            >
+              className={`${styles.colSm} ${styles.colSm10} ${styles.colSmOffset1} ${styles.textCenter}`}>
               <div className={styles.paymetSucces}>
-                <h1 style={{fontSize:'3.2rem', textAlign:'center'}}>Payment Success</h1>
+                <h1>Payment Success</h1>
               </div>
               <div className={styles.contentBox404}>
-                <h2 style={{fontSize:'3rem'}}>Congratulations</h2>
-                <p style={{fontSize:'1.3rem'}}>
+                <h2>Congratulations</h2>
+                <p style={{ fontSize: "1rem" }}>
                   {" "}
                   Congratulations your payment has been successful. Please
                   contact us on +4402475092784 to get started
                 </p>
               </div>
-              <div className={styles.formFooter}>
+              <div className={styles.formFooter2222}>
                 <Link type="button" to={"/home"}>
                   Proceed to Home Page
+                </Link>
+              </div>
+              <div className={styles.formFooter3333}>
+                <div className={styles.formFooter2222}>
+                  <Link type="button" to="/adi-part-one">
+                    PDI Part 1
+                  </Link>
+                </div>
+                <div className={styles.formFooter2222}>
+                  <Link type="button" to="/adi-part-2">
+                    PDI Part 2
+                  </Link>
+                </div>
+                <div className={styles.formFooter2222}>
+                  <Link type="button" to="/adi-part-3">
+                    PDI Part 3
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.formFooter2222}>
+                <Link type="button" to="/Theory-Portal">
+                  Theory Portal
                 </Link>
               </div>
             </div>

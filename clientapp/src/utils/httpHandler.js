@@ -54,14 +54,13 @@ const post = async (url, params, opt = {}) => {
   }
 };
 
-
 // Centralized error handling function
 const handleError = (error) => {
   if (error.response) {
     console.error("API Error:", error.response.data); // Log entire response
     if (error.response.status === 401) {
       localStorage.removeItem("user");
-      window.location.href = "/login"; // Redirect to login
+      window.location.href = "/register"; // Redirect to login
     }
   } else if (error.request) {
     console.error("Network Error:", error.message);

@@ -14,10 +14,8 @@ export default function AdiPartOne() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
-  const userId = userDetails?._id; 
+  const userId = userDetails?._id;
 
-
-  
   const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
 
   useEffect(() => {
@@ -28,46 +26,40 @@ export default function AdiPartOne() {
         .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
     }
   }, [dispatch, userId]);
-  
+
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
   );
- 
 
   useEffect(() => {
     //
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/login"); // Redirect to login if user is not logged in
+      navigate("/register"); // Redirect to login if user is not logged in
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
     } else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
-    }else if (subscriptionLoaded) {
-      const hasAccess = Array.isArray(userSubscription) &&  userSubscription.some((subscription) => {
-        const { planCategory } = subscription.subscriptionId || {};
-        const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
-      
-        return (
-          (subscription.isActive && (
-            planCategory === "pdi-part-one packages" ||
-            planCategory === "Complete packages"
-          ))
-        );
-      });
+    } else if (subscriptionLoaded) {
+      const hasAccess =
+        Array.isArray(userSubscription) &&
+        userSubscription.some((subscription) => {
+          const { planCategory } = subscription.subscriptionId || {};
+          const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+
+          return (
+            subscription.isActive &&
+            (planCategory === "pdi-part-one packages" ||
+              planCategory === "Complete packages")
+          );
+        });
       if (!hasAccess) {
-        navigate("/part-one-subscription"); // Redirect to subscription page if no valid plan found
-      }    
-
-
-
-
-
-     
+        navigate("/driving-instructor-packages/instructor-packages"); // Redirect to subscription page if no valid plan found
+      }
     }
-  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
+  }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -87,10 +79,10 @@ export default function AdiPartOne() {
                 </Link>
               </div>
               <div className={styles.alertBtn}>
-          <Link to="/part-1-trainning-material">
-            <button className={styles.TMnextButton}>NEXT PAGE</button>
-          </Link>
-        </div>
+                <Link to="/part-1-trainning-material">
+                  <button className={styles.TMnextButton}>NEXT PAGE</button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -511,8 +503,7 @@ export default function AdiPartOne() {
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>
+                  allowfullscreen></iframe>
               </div>
             </div>
           </div>

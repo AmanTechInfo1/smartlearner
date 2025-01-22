@@ -13,16 +13,39 @@ import cartbanner from "../../assets/images/bannerCart.png";
 import defaultCartImg from "../../assets/images/bannerCart.png";
 import styles from "../../pages/css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
   getIncreaseCart,
 } from "../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
+import {
+  fetchPlans,
+  createPayment,
+  createUserSubscription,
+  checkTrialEligibility,
+  pdiApplyCouponCode,
+  fetchUserSubscriptions,
+} from "../../redux/features/subscriptionSlice";
+import { toast } from "react-hot-toast";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 function DrivingInstructorUI() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id; // Added optional chaining for safety
+  const { plans, loading, error } = useSelector((state) => state.subscription);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId));
+    }
+    dispatch(fetchPlans());
+  }, [dispatch, userId]);
+
+ 
 
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
@@ -37,7 +60,6 @@ function DrivingInstructorUI() {
   const [expandedCategory, setExpandedCategory] = useState("");
 
   const data = useSelector((state) => state.product.productsCategory);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
@@ -178,8 +200,59 @@ function DrivingInstructorUI() {
     }
   };
 
+  const handleCreateSubscription = async (plan) => {
+    try {
+      const order = await dispatch(createPayment(plan._id)).unwrap();
+      console.log("Order received from payment creation:", order);
+      if (order && order.id) {
+        return order.id;
+      } else {
+        throw new Error("Order ID not received");
+      }
+    } catch (error) {
+      console.error("Error during subscription creation:", error);
+      throw error;
+    }
+  };
+
+  const handleApprovePayment = async (plan, actions) => {
+    try {
+      const order = await actions.order.capture();
+      console.log("Order captured:", order);
+      if (!order || !order.id) {
+        console.error("No order ID received");
+        return;
+      }
+
+      const subscriptionData = {
+        userId: userId,
+        subscriptionId: plan._id,
+        orderId: order.id,
+        isTrial: false,
+      };
+
+      await dispatch(createUserSubscription(subscriptionData)).unwrap();
+      console.log("User subscription created successfully.");
+      navigate("/paymentSuccess");
+      toast.success("subscription added");
+    } catch (error) {
+      console.error("Error during order approval:", error);
+    }
+  };
+  const paidPlansComplete = plans.filter(
+    (plan) => plan.planCategory === "Complete packages"
+  );
+  const paidPlansPartOne = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-one packages"
+  );
+  const paidPlansPartTwo = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-two packages"
+  );
+  const paidPlansPartThree = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-three packages"
+  );
   return (
-    <>
+    
       <section
         className={styles.carouselContainer}
         style={{ maxWidth: "1300px", margin: "0px auto" }}>
@@ -357,6 +430,7 @@ function DrivingInstructorUI() {
                 </div>
               ))
           )}
+
           {filteredData("instructor training part three").map((item) => {
             return (
               <div
@@ -383,7 +457,7 @@ function DrivingInstructorUI() {
                       }}>
                       Online Courses
                     </h2>
-                    {expandedCategory === item._id && (
+                    {/* {expandedCategory === item._id && (
                       <Link to="/cart">
                         <span>
                           <img
@@ -393,271 +467,284 @@ function DrivingInstructorUI() {
                           />
                         </span>
                       </Link>
-                    )}
+                    )} */}
                   </div>
                 </div>
                 {expandedCategory === item._id ? (
                   <ul type="none">
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "235px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Complete Course</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ 450
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
+                    {paidPlansComplete.map((plan, index) => (
+                      <div>
+                        <li className={styles.expandedColData}>
+                          <span
                             style={{
-                              backgroundColor:
-                                getHeadingAndButtonColorForCategory(
-                                  "instructor training part three"
-                                ),
-                            }}
-                            onClick={(e) => {
-                              navigate("/part-one-subscription");
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id111111"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
-                          " "
-                        ).length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id111111");
-                            }}>
-                            {isReadMore["id111111"] ? "Read Less" : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
 
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
+                              width: "100%",
+                              borderRadius: "40px",
+                              padding: "8px",
+                            }}>
+                            <p style={{ marginBottom: "0px" }}>
+                              Complete Course
+                            </p>
+                            <p style={{ marginBottom: "0px", width: "49x" }}>
+                              £ {plan.price}
+                            </p>
+                          </span>
+                        </li>
+
+                        <PayPalButtons
                           style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "235px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 1</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ 50
+                            layout: "horizontal",
+
+                            shape: "pill",
+                            size: "small",
+                          }}
+                          createOrder={(data, actions) =>
+                            handleCreateSubscription(plan)
+                          }
+                          onApprove={(data, actions) =>
+                            handleApprovePayment(plan, actions)
+                          }
+                          fundingSource="paypal"
+                        />
+
+                        <section
+                          style={{
+                            backgroundColor: getdescBgColor(
+                              "instructor training part three"
+                            ),
+                            border: "1px solid #a9a9a9",
+                          }}
+                          className={styles.corouselDescription}>
+                          <p>
+                            {isReadMore["id111111"]
+                              ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                              : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                  .split(" ")
+                                  .slice(0, 10)
+                                  .join(" ") + "..."}
                           </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
+                          {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                            " "
+                          ).length > 10 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle("id111111");
+                              }}>
+                              {isReadMore["id111111"]
+                                ? "Read Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </section>
+                      </div>
+                    ))}
+                    {paidPlansPartOne.map((plan, index) => (
+                      <div>
+                        <li className={styles.expandedColData}>
+                          <span
                             style={{
-                              backgroundColor:
-                                getHeadingAndButtonColorForCategory(
-                                  "instructor training part three"
-                                ),
-                            }}
-                            onClick={(e) => {
-                              navigate("/part-one-subscription");
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+
+                              width: "100%",
+                              borderRadius: "40px",
+                              padding: "8px",
                             }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id2222222"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
-                          " "
-                        ).length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id2222222");
-                            }}>
+                            <p style={{ marginBottom: "0px" }}>Online Part 1</p>
+                            <p style={{ marginBottom: "0px", width: "49x" }}>
+                              £ {plan.price}
+                            </p>
+                          </span>
+                        </li>
+                        <PayPalButtons
+                          style={{
+                            layout: "horizontal",
+
+                            shape: "pill",
+                            size: "small",
+                          }}
+                          createOrder={(data, actions) =>
+                            handleCreateSubscription(plan)
+                          }
+                          onApprove={(data, actions) =>
+                            handleApprovePayment(plan, actions)
+                          }
+                          fundingSource="paypal"
+                        />
+
+                        <section
+                          style={{
+                            backgroundColor: getdescBgColor(
+                              "instructor training part three"
+                            ),
+                            border: "1px solid #a9a9a9",
+                          }}
+                          className={styles.corouselDescription}>
+                          <p>
                             {isReadMore["id2222222"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
+                              ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                              : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                  .split(" ")
+                                  .slice(0, 10)
+                                  .join(" ") + "..."}
+                          </p>
+                          {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                            " "
+                          ).length > 10 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle("id2222222");
+                              }}>
+                              {isReadMore["id2222222"]
+                                ? "Read Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </section>
+                      </div>
+                    ))}
+                    {paidPlansPartTwo.map((plan, index) => (
+                      <div>
+                        <li className={styles.expandedColData}>
+                          <span
+                            style={{
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
 
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
+                              width: "100%",
+                              borderRadius: "40px",
+                              padding: "8px",
+                            }}>
+                            <p style={{ marginBottom: "0px" }}>Online Part 2</p>
+                            <p style={{ marginBottom: "0px", width: "49x" }}>
+                              £ {plan.price}
+                            </p>
+                          </span>
+                        </li>
+                        <PayPalButtons
                           style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "235px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 2</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ 200
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
-                            style={{
-                              backgroundColor:
-                                getHeadingAndButtonColorForCategory(
-                                  "instructor training part three"
-                                ),
-                            }}
-                            onClick={(e) => {
-                              navigate("/part-two-subscription");
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id33333333"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
-                          " "
-                        ).length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id33333333");
-                            }}>
+                            layout: "horizontal",
+
+                            shape: "pill",
+                            size: "small",
+                          }}
+                          createOrder={(data, actions) =>
+                            handleCreateSubscription(plan)
+                          }
+                          onApprove={(data, actions) =>
+                            handleApprovePayment(plan, actions)
+                          }
+                          fundingSource="paypal"
+                        />
+                        <section
+                          style={{
+                            backgroundColor: getdescBgColor(
+                              "instructor training part three"
+                            ),
+                            border: "1px solid #a9a9a9",
+                          }}
+                          className={styles.corouselDescription}>
+                          <p>
                             {isReadMore["id33333333"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "235px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 3</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ 300
+                              ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                              : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                  .split(" ")
+                                  .slice(0, 10)
+                                  .join(" ") + "..."}
                           </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
+                          {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                            " "
+                          ).length > 10 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle("id33333333");
+                              }}>
+                              {isReadMore["id33333333"]
+                                ? "Read Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </section>
+                      </div>
+                    ))}
+                    {paidPlansPartThree.map((plan, index) => (
+                      <div>
+                        <li className={styles.expandedColData}>
+                          <span
                             style={{
-                              backgroundColor:
-                                getHeadingAndButtonColorForCategory(
-                                  "instructor training part three"
-                                ),
-                            }}
-                            onClick={(e) => {
-                              navigate("/part-three-subscription");
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+
+                              width: "100%",
+                              borderRadius: "40px",
+                              padding: "8px",
                             }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id44444444"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
-                          " "
-                        ).length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id44444444");
-                            }}>
+                            <p style={{ marginBottom: "0px" }}>Online Part 3</p>
+                            <p style={{ marginBottom: "0px", width: "49x" }}>
+                              £ {plan.price}
+                            </p>
+                          </span>
+                        </li>
+                        <PayPalButtons
+                          style={{
+                            layout: "horizontal",
+
+                            shape: "pill",
+                            size: "small",
+                          }}
+                          createOrder={(data, actions) =>
+                            handleCreateSubscription(plan)
+                          }
+                          onApprove={(data, actions) =>
+                            handleApprovePayment(plan, actions)
+                          }
+                          fundingSource="paypal"
+                        />
+                        <section
+                          style={{
+                            backgroundColor: getdescBgColor(
+                              "instructor training part three"
+                            ),
+                            border: "1px solid #a9a9a9",
+                          }}
+                          className={styles.corouselDescription}>
+                          <p>
                             {isReadMore["id44444444"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
+                              ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
+                              : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                                  .split(" ")
+                                  .slice(0, 10)
+                                  .join(" ") + "..."}
+                          </p>
+                          {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                            " "
+                          ).length > 10 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle("id44444444");
+                              }}>
+                              {isReadMore["id44444444"]
+                                ? "Read Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </section>
+                      </div>
+                    ))}
                   </ul>
                 ) : (
                   <div
@@ -676,7 +763,7 @@ function DrivingInstructorUI() {
           })}
         </div>
       </section>
-    </>
+   
   );
 }
 

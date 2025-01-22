@@ -11,9 +11,30 @@ import {
   getIncreaseCart,
 } from "../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
+import {
+  fetchPlans,
+  createPayment,
+  createUserSubscription,
+  checkTrialEligibility,
+  pdiApplyCouponCode,
+  fetchUserSubscriptions,
+} from "../../redux/features/subscriptionSlice";
+import { toast } from "react-hot-toast";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 function TheoryCorousel() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id; // Added optional chaining for safety
+  const { plans, loading, error } = useSelector((state) => state.subscription);
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId));
+    }
+    dispatch(fetchPlans());
+  }, [dispatch, userId]);
 
   const wordLimit = 15;
   const [isReadMore, setIsReadMore] = useState(false);
@@ -28,7 +49,6 @@ function TheoryCorousel() {
   const [expandedCategory, setExpandedCategory] = useState("");
 
   const data = useSelector((state) => state.product.productsCategory);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
@@ -88,6 +108,48 @@ function TheoryCorousel() {
     // Add more categories if needed with respective star images and colors
   };
 
+  const handleCreateSubscription = async (plan) => {
+    try {
+      const order = await dispatch(createPayment(plan._id)).unwrap();
+      console.log("Order received from payment creation:", order);
+      if (order && order.id) {
+        return order.id;
+      } else {
+        throw new Error("Order ID not received");
+      }
+    } catch (error) {
+      console.error("Error during subscription creation:", error);
+      throw error;
+    }
+  };
+
+  const handleApprovePayment = async (plan, actions) => {
+    try {
+      const order = await actions.order.capture();
+      console.log("Order captured:", order);
+      if (!order || !order.id) {
+        console.error("No order ID received");
+        return;
+      }
+
+      const subscriptionData = {
+        userId: userId,
+        subscriptionId: plan._id,
+        orderId: order.id,
+        isTrial: false,
+      };
+
+      await dispatch(createUserSubscription(subscriptionData)).unwrap();
+      console.log("User subscription created successfully.");
+      navigate("/Theory-Portal");
+      toast.success("subscription added");
+    } catch (error) {
+      console.error("Error during order approval:", error);
+    }
+  };
+  const paidPlans = plans.filter(
+    (plan) => plan.planCategory === "theory-portal package"
+  );
   return (
     <>
       <section className={styles.carouselContainer}>
@@ -449,66 +511,70 @@ function TheoryCorousel() {
                 </div>
                 {expandedCategory === `${item._id}_above1000` ? (
                   <ul type="none">
-                    <div>
-                      <li
-                        className={styles.expandedColData}
-                        id={styles.theoryP}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "250px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Theory Portal</p>
-                          <p style={{ marginBottom: "0px", width: "43px" }}>
-                            £ 30
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
+                    {paidPlans.map((plan, index) => (
+                      <div>
+                        <li
+                          className={styles.expandedColData}
+                          id={styles.theoryP}>
+                          <span
                             style={{
-                              backgroundColor:
-                                starColorMap[item._id]?.color || "#ff0000", // Dynamic button color
-                            }}
-                            onClick={(e) => {
-                              navigate("/Theory-Subscription")
+                              color: "white",
+                              backgroundColor: "black",
+                              display: "flex",
+                              justifyContent: "space-between",
+
+                              width: "100%",
+                              borderRadius: "40px ",
+                              padding: "8px",
                             }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-                      <section
-                        style={{ backgroundColor: "#052c76bc" }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["theoryportaldes1"]
-                            ? "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!" // Show full content
-                            : "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!"
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!".split(
-                          " "
-                        ).length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("theoryportaldes1");
-                            }}>
+                            <p style={{ marginBottom: "0px" }}>Theory Portal</p>
+                            <p style={{ marginBottom: "0px", width: "43px" }}>
+                              £ {plan.price}
+                            </p>
+                          </span>
+                        </li>
+                        <PayPalButtons
+                          style={{
+                            layout: "horizontal",
+
+                            shape: "pill",
+                            size: "small",
+                          }}
+                          createOrder={(data, actions) =>
+                            handleCreateSubscription(plan)
+                          }
+                          onApprove={(data, actions) =>
+                            handleApprovePayment(plan, actions)
+                          }
+                          fundingSource="paypal"
+                        />
+                        <section
+                          style={{ backgroundColor: "#052c76bc" }}
+                          className={styles.corouselDescription}>
+                          <p>
                             {isReadMore["theoryportaldes1"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
+                              ? "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!" // Show full content
+                              : "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!"
+                                  .split(" ")
+                                  .slice(0, wordLimit)
+                                  .join(" ") + "..."}
+                          </p>
+                          {"Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!".split(
+                            " "
+                          ).length > wordLimit && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleReadMoreToggle("theoryportaldes1");
+                              }}>
+                              {isReadMore["theoryportaldes1"]
+                                ? "Read Less"
+                                : "Read More"}
+                            </button>
+                          )}
+                        </section>
+                      </div>
+                    ))}
                   </ul>
                 ) : (
                   <div

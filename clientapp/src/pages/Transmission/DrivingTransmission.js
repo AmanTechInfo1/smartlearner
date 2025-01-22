@@ -7,10 +7,24 @@ import manualround1 from "./manualround1.png";
 import manualround2 from "./manualround2.jpg";
 
 import gsap from "gsap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
+import { Element, scroller } from "react-scroll";
 
 export default function DrivingTransmission() {
+  const { section } = useParams();
+  console.log(section);
+  useEffect(() => {
+    if (section) {
+      scroller.scrollTo(`${section}-section`, {
+        duration: 400,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70,
+      });
+    }
+  }, [section]);
+
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -126,44 +140,17 @@ export default function DrivingTransmission() {
               </div>
             </div>
 
-            <div className={styles.bannerImg}>
-              {/* <img
-                src={manualround1}
-                alt="driving-car"
-                id={styles.homeDrivingImg1}
-              />
-              <img
-                src={manualround2}
-                alt="driving-car"
-                id={styles.homeDrivingImg2}
-              /> */}
-            </div>
+            <div className={styles.bannerImg}></div>
           </div>
         </section>
         {/* ///////////////////////////// */}
-
-        {/* <div className={styles.manualContent}>
-          <section className={styles.manualPara}>
-            <p>
-              Discover the thrill of hands-on control with our manual driving
-              lessons.
-            </p>
-            <p>
-              {" "}
-              From mastering the clutch to shifting gears seamlessly, our expert
-              instructors will guide you through the art of manual driving,
-              empowering you with the skills and confidence to navigate any road
-              with finesse and precision.
-            </p>
-          </section>
-        </div> */}
-
-        <section className={styles.ManualCorousel}>
-          <DrivingInstructorUI />
+        <section>
+          <Element name="instructor-packages-section">
+            <section className={styles.ManualCorousel}>
+              <DrivingInstructorUI />
+            </section>
+          </Element>
         </section>
-        {/* ////////////////////////////////////////////////////// */}
-
-        {/* /////////////////////////////////////////// */}
       </div>
     </div>
   );

@@ -124,7 +124,7 @@ class OrderService {
 
   async getAllOrders(pageNumber, pageSize, query, status) {
     try {
-      const skip = (pageNumber - 1) * (pageSize || 20);
+      const skip = pageNumber - 1;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
@@ -132,12 +132,12 @@ class OrderService {
       }
 
       if (status) {
-        const statusArray = status.split(','); // Split the status string into an array
-        filter.status = { $in: statusArray };  // Filter by any of the statuses
-    }
+        const statusArray = status.split(","); // Split the status string into an array
+        filter.status = { $in: statusArray }; // Filter by any of the statuses
+      }
 
       const totalCount = await Paypalorder.countDocuments(filter);
-      const order = await Paypalorder.find(filter).skip(skip).limit(pageSize || 20);
+      const order = await Paypalorder.find(filter).skip(skip);
 
       const resultObject = {
         message: "Fetched successfully",
@@ -151,11 +151,6 @@ class OrderService {
       throw new Error("Could not fetch order");
     }
   }
-
-
-
-
-
 
   // /////////////////////////////
   async getAllOrdersById(orderId) {
@@ -558,7 +553,7 @@ class OrderService {
       service: "gmail",
       auth: {
         user: "Smartlearnerdrivingschool@gmail.com", // Your email
-      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+        pass: "cbsb ueih dxqm zdhd", // Your email password or app password
       },
     });
 
