@@ -7,7 +7,7 @@ export default function BusinessCoaching() {
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
-    const firstPart = "Business Coaching";
+    const firstPart = "Business Mentoring Program";
     const firstLine = firstPart
       .split("")
       .map((char, index) => <span key={`first-${index}`}>{char}</span>);
@@ -316,7 +316,10 @@ export default function BusinessCoaching() {
         {/* Book Now Section */}
         <section className={styles.BsCbookNow}>
           <h2>Book Your Spot Now!</h2>
-          <button className={styles.BsCbutton}>Book Now</button>
+          <a href="https://buy.stripe.com/4gw6qIcEt96jch228h">
+            {" "}
+            <button className={styles.BsCbutton}>Book Now</button>
+          </a>
         </section>
       </div>
     </div>
