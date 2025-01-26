@@ -50,7 +50,7 @@ export default function TheoryPortal() {
 
   useEffect(() => {
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/register");
+      navigate("/theory-login");
     } else if (
       userDetails.role === "admin" ||
       userDetails.role === "theoryinstructor"

@@ -7,13 +7,13 @@
   background-image: url(../../assets/images/theorySupportbanner.png);
   position: relative;
   width: 100%;
-  padding: 14rem 0px;
+  padding: 10rem 0px;
   background-size: cover;
   background-position: center;
 }
 .maincontent {
   display: flex;
-  max-width: 1140px;
+  max-width: 1640px;
   width: 100%;
 
   margin-left: auto;
@@ -23,27 +23,27 @@
 
 .content {
   position: relative;
-
   width: 100%;
   color: white;
-  text-align: center;
+  text-align: left;
+  padding: 1rem;
 }
 
 .heading1 h1 {
   color: #ffffff;
-  font-size: 1.4em;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 12px;
-
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-bottom: 0.8rem;
 }
 .heading2 h2 {
   color: #ffffff;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.2em;
+  font-size: 5rem;
+  font-weight: 700;
 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 0.8rem;
   padding-bottom: 0.5rem;
   margin-bottom: 20px;
@@ -52,19 +52,38 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0px;
-  border: 1px solid #ffffff;
+  border: 1px solid #7c7c7c;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0);
+  background: linear-gradient(135deg, #150071e8, #6574ffee);
   padding: 15px 60px 15px 60px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s; /* Added transform to transition */
+  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+  border-radius: 6px; /* Added transform to transition */
 }
 
 #btn:hover {
-  background-color: #500202;
+  background: linear-gradient(135deg, #6574ffee, #150071e8);
   transform: scale(1.1); /* Grow size by 10% on hover */
   animation: bounce 0.3s infinite alternate; /* Applying bouncing animation */
 }
-
+.csrPagesLd {
+  padding: 1rem;
+  position: sticky;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background: linear-gradient(135deg, #00157199, #01764b76);
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+}
+.csrPagesLd p {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 0px;
+  text-align: left;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 @keyframes bounce {
   0% {
     transform: scale(1); /* Original size */
@@ -99,24 +118,27 @@
 }
 @media (max-width: 1020px) {
   .heading1 h1 {
-    font-size: 0.9em;
-    line-height: 1.7em;
+    font-size: 1.2rem;
   }
   .heading2 h2 {
-    font-size: 27px;
+    font-size: 4.2rem;
   }
-  .video {
-    padding: 75px;
+  .imageSection {
+    padding: 8rem 0px;
   }
 }
 @media (max-width: 767px) {
   .imageSection {
-    height: 750px;
+    padding: 6rem 0px;
   }
-  .maincontent {
-    display: block;
-    height: 750px;
+  .heading1 h1 {
+    font-size: 1rem;
+    letter-spacing: 10px;
   }
+  .heading2 h2 {
+    font-size: 3.5rem;
+  }
+
   .heading1 {
     padding-top: 1rem;
   }
@@ -125,6 +147,31 @@
   }
   .video {
     max-width: 100%;
+  }
+}
+@media (max-width: 627px) {
+  .imageSection {
+    padding: 5rem 0px;
+  }
+  .heading2 h2 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 487px) {
+  .imageSection {
+    padding: 3rem 0px;
+  }
+  .heading1 h1 {
+    font-size: 1rem;
+    letter-spacing: 8px;
+  }
+  .heading2 h2 {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 427px) {
+  .heading2 h2 {
+    font-size: 2rem;
   }
 }
 @media (max-width: 350px) {
@@ -224,6 +271,18 @@
 .column:nth-child(4) {
   animation-delay: 3s;
 }
+.column:nth-child(1):hover {
+  border: 1px solid #d60f20;
+}
+.column:nth-child(2):hover {
+  border: 1px solid #d6d30f;
+}
+.column:nth-child(3):hover {
+  border: 1px solid #d60fab;
+}
+.column:nth-child(4):hover {
+  border: 1px solid #00c4a3;
+}
 
 @keyframes slideUp {
   to {
@@ -234,7 +293,6 @@
 
 .column:hover {
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-  border: 1px solid #eb0009;
 }
 .column span {
   font-size: 50px;
@@ -290,28 +348,30 @@
 }
 .benefitsHeading h4 {
   color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 65px;
   font-weight: 900;
   line-height: 1.2em;
   margin-bottom: 2.5rem;
 }
 .benefitsDetails ul {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 3rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00157199, #01764b76);
 }
 .benefitsDetails {
-  text-align: center;
+  text-align: justify;
 }
 #benefitsList {
   display: flex;
-  justify-content: center;
-  line-height: 1.5;
+  text-align: justify;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   align-items: center;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
 }
 
 #checkCircle {
-  color: #eb0009;
+  color: #eb0062;
   width: 1.25em;
   padding-right: 10px;
   font-size: 30px;
@@ -365,7 +425,7 @@
   text-align: center;
 
   padding: 50px 0px 50px 0px;
-  background-color: #eb0009;
+  background: linear-gradient(135deg, #00157199, #01764b76);
 }
 
 .helpingHand {
@@ -387,9 +447,10 @@
   text-transform: uppercase;
 
   color: #fff;
-  border: 3px solid #fff;
+  border: 1px solid #616161;
 
-  background-color: #eb0009;
+  background-color: #00013d;
+  border-radius: 6px;
   padding: 15px 45px 15px 45px;
   transition: all 0.3s ease;
   margin-top: 20px;
@@ -404,6 +465,7 @@
   margin-top: 30px; /* Adjust margin as needed */
   color: #fff;
   font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Keyframes for sliding animation */
@@ -424,9 +486,14 @@
 /* /////////////////////////////Our beloved pupils ////////////////// */
 .belovedCustomerSection {
   display: flex;
+  max-width: 1640px;
+  border-radius: 20px;
+  align-items: center;
   width: 100%;
-  padding: 2rem 0;
+  padding: 4rem 0;
   text-align: center;
+  margin: 2rem auto;
+  background: linear-gradient(135deg, #001885, #da61ff);
 }
 .belovedCustomerdetails {
   width: 66%;
@@ -440,14 +507,14 @@
   margin-bottom: 20px;
 }
 .belovedCustomerdetails h1 span {
-  color: #eb0009;
+  color: #00e3eb;
 }
 .belovedCustomerdetails p {
   line-height: 28px;
-  text-align: center;
+  text-align: justify;
   color: white;
 
-  font-size: 1.4em;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 .belovedCustomerdetails p a {
@@ -461,6 +528,8 @@
 .pupilsImg img {
   width: 100%;
   height: auto;
+  border-radius: 20px;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
 }
 @media (max-width: 1020px) {
   .belovedCustomerdetails h1 {
@@ -512,9 +581,18 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 3rem 0;
+
   align-items: center;
   justify-content: center;
+  max-width: 1640px;
+  border-radius: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 4rem 2rem;
+  text-align: center;
+
+  margin: 0rem auto;
+  background: linear-gradient(135deg, #da61ff, #001885);
 }
 
 .diaryImgSection {

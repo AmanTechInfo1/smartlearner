@@ -27,14 +27,13 @@
   text-align: left;
   position: sticky;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0 auto;
+
   font-weight: 700;
   max-width: 1640px;
   width: 100%;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto;  
   padding-bottom: 4rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ecsheder {

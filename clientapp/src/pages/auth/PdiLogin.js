@@ -12,11 +12,11 @@ import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png"
 
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import gsap from "gsap";  
+import gsap from "gsap";
 import { FaHome } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-export default function Login() {
+export default function PdiLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading } = useSelector((state) => state.auth);
@@ -51,7 +51,7 @@ export default function Login() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const text = "WelCome Back To Smartlearner";
+    const text = "WelCome Back To PDI PORTAL";
     return text.split("").map((char, index) => <span key={index}>{char}</span>);
   };
 
@@ -151,7 +151,7 @@ export default function Login() {
                 />
               </Link>
             </div>
-            <div className={styles.buttonsGrid}>
+            {/* <div className={styles.buttonsGrid}>
               <Link to="/ADI-Training-Portal">
                 <button>
                   PDI Portal{" "}
@@ -171,7 +171,7 @@ export default function Login() {
                   <MdKeyboardDoubleArrowRight className={styles.gradientIcon} />
                 </button>
               </Link>
-            </div>
+            </div> */}
 
             <div className={styles.ImageDisplayFlex}>
               <div className={styles.loginformContainer}>
@@ -269,7 +269,7 @@ export default function Login() {
                       <button type="submit">Login</button>
                     </div>
                   </form>
-                  <div className={styles.formFooter}>
+                  {/* <div className={styles.formFooter}>
                     <p>
                       Don't have an account?{" "}
                       <button>
@@ -277,11 +277,17 @@ export default function Login() {
                         <Link to="/register">Register</Link>
                       </button>
                     </p>
-                  </div>
+                  </div> */}
                 </section>
               </div>
               <section className={styles.loginDisplayflexImage}>
                 <h2 ref={textRef}>{splitText()}</h2>
+                <section className={styles.loginDisplayflextext}>
+                  <p>You have to buy packages to visit these pages</p>
+                  <Link to="/driving-instructor-packages/instructor-packages">
+                    Visit Now
+                  </Link>
+                </section>
               </section>
             </div>
           </section>

@@ -9,7 +9,7 @@
   background-size: cover;
   background-position: center;
 
-  padding: 250px 0;
+  padding: 200px 0;
 }
 
 .opicity {
@@ -38,6 +38,7 @@
   margin: 0px auto;
   padding-bottom: 4rem;
 }
+
 .PrivledgeCardsHeader h2 {
   margin: 2rem 1rem;
   text-align: center;
@@ -46,10 +47,14 @@
   font-weight: 700;
 }
 .PrivledgeCards {
-  padding: 1rem;
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  margin: 0px 1rem;
+  box-shadow: 0 0 20px rgba(158, 158, 158, 0.656);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 50px;
+  background: linear-gradient(135deg, #020071e8, #960039ee);
   place-items: center;
 }
 .PrivledgeCardsDiv {
@@ -61,12 +66,19 @@
   border: 2px solid white;
   border-radius: 10px;
 }
+
 @media (max-width: 700px) {
+  .CardHomeBanner {
+    padding: 160px 0px;
+  }
   .Cardheader h2 {
     font-size: 4rem;
   }
 }
 @media (max-width: 500px) {
+  .CardHomeBanner {
+    padding: 120px 0px;
+  }
   .Cardheader h2 {
     font-size: 3.5rem;
   }

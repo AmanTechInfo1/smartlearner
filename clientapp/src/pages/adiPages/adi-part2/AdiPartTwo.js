@@ -51,7 +51,7 @@ export default function AdiPartTwo() {
     // Fetch user subscriptions
 
     if (!userDetails || Object.keys(userDetails).length === 0) {
-      navigate("/register"); // Redirect to login if user is not logged in
+      navigate("/pdi-login"); // Redirect to login if user is not logged in
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;

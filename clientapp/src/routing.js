@@ -138,6 +138,8 @@ import IntensiveTransmission from "./pages/Transmission/IntensiveTransmission";
 import DrivingTransmission from "./pages/Transmission/DrivingTransmission";
 import CbdEvents from "./pages/AddOns/CbdEvents";
 import BusinessCoaching from "./pages/AddOns/BusinessCoaching";
+import PdiLogin from "./pages/auth/PdiLogin";
+import TheoryLogin from "./pages/auth/TheoryLogin";
 
 export const router = createBrowserRouter([
   {
@@ -327,6 +329,8 @@ export const router = createBrowserRouter([
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
+  {path: "pdi-login", element: <PdiLogin/>},
+  {path: "theory-login", element: <TheoryLogin/>},
   { path: "forgot-password", element: <ForgotPassword /> },
   { path: "reset-password/:resetToken", element: <ResetPasswordPage /> },
   { path: "MyCart", element: <MyCart /> },

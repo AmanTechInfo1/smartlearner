@@ -1055,3 +1055,6 @@ ul {
   font-size: 2rem;
 }
 
+.accordion-header h5 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

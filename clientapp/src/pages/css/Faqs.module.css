@@ -8,23 +8,55 @@
   background-image: url(../../assets/images/faqs-banner.png);
   position: relative;
   width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   background-size: cover;
   background-position: center;
 }
-
+.ecsheder {
+  padding: 8rem 1rem;
+}
 .TSfirstContent h2 {
-  font-size: 5rem;
-  text-align: center;
-  padding: 15rem 0px;
+  font-size: 8rem;
+  text-align: left;
+  padding: 4rem 0px;
   color: #fff;
   position: sticky;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  max-width: 1640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.csrPagesLd {
+  padding: 1rem;
+  position: sticky;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: 44%;
+  width: 100%;
+  background: linear-gradient(135deg, #00157199, #01764b76);
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+}
+.csrPagesLd p {
+  color: white;
+  font-size: 1.5rem;
   margin-bottom: 0px;
+  text-align: left;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .faqsAccordion {
   padding: 70px 0;
-  background: url(../../assets/images/faq-bg.jpg) no-repeat center top / cover;
-  background-attachment: fixed;
+  background: linear-gradient(135deg, #000f4ef5, #01764b);
+  max-width: 1440px;
+
+  margin: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(70, 70, 70, 0.656);
 }
 .faqsAccordionIndex {
   max-width: 1000px;
@@ -33,9 +65,32 @@
   margin-left: auto;
 }
 .faqsAccordionIndex h2 {
-  color: #ff0008;
+  color: #def6ff;
   text-align: center;
+  font-weight: 700;
+  font-size: 4rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.accordion-header h5 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@media (max-width: 780px) {
+  .ecsheder {
+    padding: 5rem 1rem;
+  }
+  .TSfirstContent h2 {
+    font-size: 6rem;
+  }
+  .csrPagesLd p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 650px) {
+  .TSfirstContent h2 {
+    font-size: 5rem;
+  }
+}
+
 /* ////////////////////////////////////////// */
 .callbackFormSection {
   padding: 2rem 0px;
@@ -177,7 +232,7 @@
 }
 
 .whyChooseshortSection button {
-  background: #111;
+  background: #140066;
   color: #fff;
   padding: 15px;
 
