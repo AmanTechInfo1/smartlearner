@@ -5,14 +5,14 @@ export const passwordRegex =
   /^(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:'"\\|,.<>/?]).{7,}$/;
 
 export const AccountTypes = [
-  // {
-  //   label: "Trainee Instructor",
-  //   value: "traineeinstructor",
-  // },
-  // {
-  //   label: "Theory Learner",
-  //   value: "theorylearner",
-  // },
+  {
+    label: "Trainee Instructor",
+    value: "traineeinstructor",
+  },
+  {
+    label: "Theory Learner",
+    value: "theorylearner",
+  },
   {
     label: "Customer",
     value: "customer",

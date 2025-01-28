@@ -138,12 +138,11 @@ const Cart = () => {
               {!userDetails.username && (
                 <p
                   className={styles.basketbtnProceed23}
-                  onClick={() => navigate("/login")}>
+                  onClick={() => navigate("/register")}>
                   LOGIN / REGISTER
                 </p>
               )}
             </div>
-          
           </div>
         </div>
       </div>

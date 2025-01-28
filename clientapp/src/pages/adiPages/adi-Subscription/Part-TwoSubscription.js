@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 // import subsIcon from "../../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,15 @@ import {
   createUserSubscription,
   checkTrialEligibility,
   fetchUserSubscriptions,
-  pdiApplyCouponCode
+  pdiApplyCouponCode,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import paypalLogo from "../../../assets/images/paypalLogos.png";
+import cartIcon from "../../../assets/images/cartIcon1.png";
+
 import { toast } from "react-hot-toast";
-
-
+import styles from "../../../pages/shop/cart/Cart.module.css";
 
 const PartTwoSubscription = () => {
   const dispatch = useDispatch();
@@ -30,9 +32,7 @@ const PartTwoSubscription = () => {
       dispatch(fetchUserSubscriptions(userId));
     }
     dispatch(fetchPlans());
-    
-  }, [dispatch, userId]);// Added userId as a dependency
-  
+  }, [dispatch, userId]); // Added userId as a dependency
 
   const handleCouponSubmit = async () => {
     try {
@@ -40,17 +40,16 @@ const PartTwoSubscription = () => {
       navigate("/adi-part-one");
     } catch (error) {
       console.error("Error applying coupon:", error);
-     
     }
   };
 
-
   const handleCreateTrialSubscription = async (plan) => {
     try {
-      const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
+      const trialEligible = await dispatch(
+        checkTrialEligibility(userId)
+      ).unwrap();
 
       if (!trialEligible) {
-       
         return;
       }
 
@@ -60,7 +59,9 @@ const PartTwoSubscription = () => {
         isTrial: true,
       };
 
-      const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
+      const subscription = await dispatch(
+        createUserSubscription(subscriptionData)
+      ).unwrap();
       console.log("Trial subscription created successfully:", subscription);
     } catch (error) {
       console.error("Error creating trial subscription:", error);
@@ -108,82 +109,94 @@ const PartTwoSubscription = () => {
   };
 
   // Separate plans into trial and paid
-//   const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
-  const paidPlans = plans.filter(plan => plan.planCategory === 'pdi-part-two packages'|| plan.planCategory === 'Complete packages');
+  //   const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
+  const paidPlans = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-two packages"
+  );
 
   return (
     <div className="subscription-cardBox">
-      <div className="cardBody">
-        <h2 id="SubsHeading">Subscription Plans</h2>
-        <div className="coupon-section">
-          <input
-            type="text"
-            value={couponCode}
-            onChange={(e) => setCouponCode(e.target.value)}
-            placeholder="Enter Coupon Code"
-            className="coupon-input"
-          />
-          <button onClick={handleCouponSubmit} className="coupon-button">
-            Apply Coupon
-          </button>
+      <div className={styles.cartPage}>
+        <div className={styles.cartContainer}>
+          <div className={styles.cartheading}>
+            <h2>CHECKOUT</h2>
+            <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
+          </div>
+
+          <div className={styles.cartContentContainer}>
+            <div className={styles.cartItemsContainer}>
+              <table className={styles.cartTable}>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading && (
+                    <p
+                      style={{
+                        color: "white",
+                        fontSize: "1.2rem",
+                        textAlign: "center",
+                        width: "100%",
+                      }}>
+                      Loading plans...
+                    </p>
+                  )}
+
+                  {paidPlans.map((plan, index) => (
+                    <tr className={styles.cartRow}>
+                      <td>{plan.planname}</td>
+                      <td>£ {plan.price}</td>
+                      <td> 1 </td>
+                      <td>£ {plan.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {paidPlans.map((plan, index) => (
+              <div className={styles.cartBtnsContainer}>
+                <div>
+                  <div className={styles.basketHeadingTitles}>
+                    <h2>BASKET TOTAL</h2>
+                    <div className={styles.basketHeadingTitle}>
+                      <p>
+                        <span>Subtotal:</span>
+                        <span>£ {plan.price}</span>
+                      </p>
+                      <p>
+                        <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                      </p>
+                      <p>
+                        <span>Total:</span> <span>{plan.price}</span>
+                      </p>
+                      <div>
+                        <img src={paypalLogo} alt="paypal" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.basketHeadingTitle}></div>
+                </div>
+
+                <div>
+                  <PayPalButtons
+                    createOrder={(data, actions) =>
+                      handleCreateSubscription(plan)
+                    }
+                    onApprove={(data, actions) =>
+                      handleApprovePayment(plan, actions)
+                    }
+                    fundingSource="paypal"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        {loading && <p>Loading plans...</p>}
-
-        {/* {trialPlans.map((plan, index) => (
-          <div key={index} className="card">
-            <div className="card-top">
-              <div className="card-top__info">
-                <span className="card-top__info-icon">
-                  // <img src={subsIcon} alt="Subscription Icon" />
-                </span>
-                <div className="card-top__info-header">
-                  <h1>{plan.planname}</h1>
-                  <p>{plan.planCategory}</p>
-                </div>
-              </div>
-              <div className="card-top__price">
-                <h2 className="card-top__price-header">{plan.price}</h2>
-                <p className="card-top__price-desc">{plan.duration}-days</p>
-              </div>
-            </div>
-            <div className="card-bottom">
-              <button onClick={() => handleCreateTrialSubscription(plan)} className="card-bottom__btn">
-                Start Free Trial
-              </button>
-            </div>
-          </div>
-        ))} */}
-
-        {paidPlans.map((plan, index) => (
-          <div key={index} className="card">
-            <div className="card-top">
-              <div className="card-top__info">
-                <span className="card-top__info-icon">
-                  {/* <img src={subsIcon} alt="Subscription Icon" /> */}
-                </span>
-                <div className="card-top__info-header">
-                  <h1>{plan.planname}</h1>
-                  <p>{plan.planCategory}</p>
-                </div>
-              </div>
-              <div className="card-top__price">
-                <h2 className="card-top__price-header">£ {plan.price}</h2>
-                
-              </div>
-            </div>
-            <div className="card-bottom">
-              <PayPalButtons
-                createOrder={(data, actions) => handleCreateSubscription(plan)}
-                onApprove={(data, actions) => handleApprovePayment(plan, actions)}
-                   fundingSource="paypal"
-              />
-              {/* <span>Subscribe now</span> */}
-              <ul className="card-bottom__list">
-                {/* Your features list can go here */}
-              </ul>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

@@ -97,11 +97,10 @@ export const registerUser = createAsyncThunk(
               email: requestData.email,
               password: requestData.password,
             },
+            navigate,
           })
         );
-        if (navigate) {
-          navigate(-1); // Navigate to the 'thanks' page after registration
-        }
+        navigate("/thanks");
         return resultData;
       }
     } catch (error) {

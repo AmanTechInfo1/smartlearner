@@ -524,7 +524,7 @@ function TheoryCorousel() {
                               justifyContent: "space-between",
 
                               width: "100%",
-                              borderRadius: "40px ",
+                              borderRadius: "40px 0px 0px 40px",
                               padding: "8px",
                             }}>
                             <p style={{ marginBottom: "0px" }}>Theory Portal</p>
@@ -532,22 +532,17 @@ function TheoryCorousel() {
                               £ {plan.price}
                             </p>
                           </span>
+                          <button
+                            className={styles.bookNow}
+                            style={{ backgroundColor: "#0066ff" }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate("/Theory-subscription");
+                            }}>
+                            Book
+                          </button>
                         </li>
-                        <PayPalButtons
-                          style={{
-                            layout: "horizontal",
 
-                            shape: "pill",
-                            size: "small",
-                          }}
-                          createOrder={(data, actions) =>
-                            handleCreateSubscription(plan)
-                          }
-                          onApprove={(data, actions) =>
-                            handleApprovePayment(plan, actions)
-                          }
-                          fundingSource="paypal"
-                        />
                         <section
                           style={{ backgroundColor: "#052c76bc" }}
                           className={styles.corouselDescription}>

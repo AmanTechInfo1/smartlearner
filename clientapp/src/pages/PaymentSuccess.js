@@ -59,9 +59,9 @@ const PaymentSuccess = () => {
                 </div>
               </div>
               <div className={styles.formFooter2222}>
-                <Link type="button" to="/Theory-Portal">
+                {/* <Link type="button" to="/Theory-Portal">
                   Theory Portal
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

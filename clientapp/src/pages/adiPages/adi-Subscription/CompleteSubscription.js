@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
-import "./TheorySubscription.css";
-// import subsIcon from "../../assets/images/subsIconSvg.svg";
+import "../../../pages/Theory-Subscription/TheorySubscription.css";
+import paypalLogo from "../../../assets/images/paypalLogos.png";
+import cartIcon from "../../../assets/images/cartIcon1.png";
+
+import { toast } from "react-hot-toast";
+import styles from "../../../pages/shop/cart/Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPlans,
   createPayment,
   createUserSubscription,
   checkTrialEligibility,
+  pdiApplyCouponCode,
   fetchUserSubscriptions,
-  applyCouponCode,
-} from "../../redux/features/subscriptionSlice";
+} from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
-import paypalLogo from "../../assets/images/paypalLogos.png";
-import cartIcon from "../../assets/images/cartIcon1.png";
 
-import styles from "../../pages/shop/cart/Cart.module.css";
-
-const TheorySubscription = () => {
+const CompleteSubscription = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
+
+  const navigate = useNavigate();
 
   // Fetch subscription plans when component mounts
   useEffect(() => {
@@ -32,44 +33,37 @@ const TheorySubscription = () => {
     }
     dispatch(fetchPlans());
   }, [dispatch, userId]);
-  // Added userId as a dependency
-  ////////////////////////////////////////////////////////
+
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
-      navigate("/Theory-portal");
+      await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
+      navigate("/adi-part-one");
     } catch (error) {
       console.error("Error applying coupon:", error);
     }
   };
 
-  // /////////////////////////////////////////////////
+  // const handleCreateTrialSubscription = async (plan) => {
+  //   try {
+  //     const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
 
-  const handleCreateTrialSubscription = async (plan) => {
-    try {
-      const trialEligible = await dispatch(
-        checkTrialEligibility(userId)
-      ).unwrap();
+  //     if (!trialEligible) {
 
-      if (!trialEligible) {
-        return;
-      }
+  //       return;
+  //     }
 
-      const subscriptionData = {
-        userId: userId,
-        subscriptionId: plan._id,
-        isTrial: true,
-      };
+  //     const subscriptionData = {
+  //       userId: userId,
+  //       subscriptionId: plan._id,
+  //       isTrial: true,
+  //     };
 
-      const subscription = await dispatch(
-        createUserSubscription(subscriptionData)
-      ).unwrap();
-      console.log("Trial subscription created successfully:", subscription);
-      navigate("/Theory-Portal");
-    } catch (error) {
-      console.error("Error creating trial subscription:", error);
-    }
-  };
+  //     const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
+  //     console.log("Trial subscription created successfully:", subscription);
+  //   } catch (error) {
+  //     console.error("Error creating trial subscription:", error);
+  //   }
+  // };
 
   const handleCreateSubscription = async (plan) => {
     try {
@@ -104,36 +98,22 @@ const TheorySubscription = () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
-      navigate("/Theory-Portal");
+      navigate("/adi-part-one");
+      toast.success("subscription added");
     } catch (error) {
       console.error("Error during order approval:", error);
     }
   };
 
   // Separate plans into trial and paid
-  const trialPlans = plans.filter(
-    (plan) => plan.planCategory === "theory-portal free-trial"
-  );
+  // const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
 
   const paidPlans = plans.filter(
-    (plan) => plan.planCategory === "theory-portal package"
+    (plan) => plan.planCategory === "Complete packages"
   );
 
   return (
     <div className="subscription-cardBox">
-      {/* <div className="coupon-section">
-          <input
-            type="text"
-            value={couponCode}
-            onChange={(e) => setCouponCode(e.target.value)}
-            placeholder="Enter Coupon Code"
-            className="coupon-input"
-          />
-          <button onClick={handleCouponSubmit} className="coupon-button">
-            Apply Coupon
-          </button>
-        </div> */}
-
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>
@@ -219,4 +199,4 @@ const TheorySubscription = () => {
   );
 };
 
-export default TheorySubscription;
+export default CompleteSubscription;

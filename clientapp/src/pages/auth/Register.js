@@ -20,6 +20,8 @@ export default function Register() {
   const { loading } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [confirmShowPassword, setConfirmShowPassword] = useState(false);
+  const [isTermsChecked, setIsTermsChecked] = useState(false); // state for terms checkbox
+  const [isError, setIsError] = useState(false); // state for error handling
 
   const {
     handleSubmit,
@@ -31,16 +33,22 @@ export default function Register() {
   });
 
   const handleRegistration = async (data) => {
+    if (!isTermsChecked) {
+      setIsError(true); // Show error if any checkbox is not checked
+      return;
+    }
     const formData = new FormData();
     formData.append("username", data.username);
-
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("phoneNumber", data.phoneNumber);
     formData.append("roleName", data.roleName);
     dispatch(registerUser({ requestData: data, reset, navigate }));
   };
-
+  const handleTermsCheckboxChange = (e) => {
+    setIsTermsChecked(e.target.checked);
+    setIsError(false); // Reset error if checkboxes are checked
+  };
   const [webLoading, setwebLoading] = useState(true);
   useEffect(() => {
     const timeout2 = setTimeout(() => {
@@ -52,7 +60,7 @@ export default function Register() {
 
   return (
     <>
-      {!loading  ? (
+      {!loading ? (
         <div className={styles.loginRegisterPage}>
           <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
@@ -253,10 +261,20 @@ export default function Register() {
                     )}
                     <br />
                     <div className={styles.formPrivacyPolicies}>
-                      <Form.Check type="switch" id="custom-switch" />
+                      <Form.Check
+                        type="switch"
+                        id="custom-switch"
+                        checked={isTermsChecked}
+                        onChange={handleTermsCheckboxChange}
+                      />
 
                       <p>I agree to the privacy policy</p>
                     </div>
+                    {!isTermsChecked && isError && (
+                      <div className="text-danger text-center mb-2">
+                        You must agree to privacy policy
+                      </div>
+                    )}
 
                     <div className={styles.loginFormBtn}>
                       <button type="submit">Create Account</button>

@@ -140,6 +140,7 @@ import CbdEvents from "./pages/AddOns/CbdEvents";
 import BusinessCoaching from "./pages/AddOns/BusinessCoaching";
 import PdiLogin from "./pages/auth/PdiLogin";
 import TheoryLogin from "./pages/auth/TheoryLogin";
+import CompleteSubscription from "./pages/adiPages/adi-Subscription/CompleteSubscription";
 
 export const router = createBrowserRouter([
   {
@@ -258,6 +259,7 @@ export const router = createBrowserRouter([
       { path: "part-one-subscription", element: <PartOneSubscription /> },
       { path: "part-two-subscription", element: <PartTwoSubscription /> },
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
+      { path: "complete-subscription", element: <CompleteSubscription /> },
       { path: "blogs", element: <Blogs /> },
       { path: "privledge-cards", element: <PrivledgeCards /> },
       { path: "glossary-terms", element: <Glossary /> },
@@ -329,8 +331,8 @@ export const router = createBrowserRouter([
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },
-  {path: "pdi-login", element: <PdiLogin/>},
-  {path: "theory-login", element: <TheoryLogin/>},
+  { path: "pdi-login", element: <PdiLogin /> },
+  { path: "theory-login", element: <TheoryLogin /> },
   { path: "forgot-password", element: <ForgotPassword /> },
   { path: "reset-password/:resetToken", element: <ResetPasswordPage /> },
   { path: "MyCart", element: <MyCart /> },
