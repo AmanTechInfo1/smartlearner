@@ -316,7 +316,7 @@ export default function BusinessCoaching() {
         {/* Book Now Section */}
         <section className={styles.BsCbookNow}>
           <h2>Book Your Spot Now!</h2>
-          <a href="https://buy.stripe.com/4gw6qIcEt96jch228h">
+          <a href="https://buy.stripe.com/8wMeXeeMB5U71Co9AK">
             {" "}
             <button className={styles.BsCbutton}>Book Now</button>
           </a>
