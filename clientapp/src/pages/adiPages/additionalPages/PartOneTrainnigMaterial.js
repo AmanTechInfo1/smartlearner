@@ -78,11 +78,13 @@ export default function PartOneTrainnigMaterial() {
             <Link to="/takequizCatName/band-four-test">
               <button id={styles.hazzardBtn}>Band 4 Test Questions 25</button>
             </Link>
-
+            <Link to="/takequizCatName/Mock--Tests">
+              <button id={styles.hazzardBtn}>Mock Test 100 Questions</button>
+            </Link>
             <Link to="/Adi-part-1-Bonus-Quiz">
               <button id={styles.hazzardBtn}>Bonus Quiz</button>
             </Link>
-
+           
             <Link to="/hazard-preception-part-2">
               <button id={styles.hazzardBtn}>Hazard Preception</button>
             </Link>
