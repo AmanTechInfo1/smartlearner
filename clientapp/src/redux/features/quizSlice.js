@@ -125,9 +125,9 @@ const quizSlice = createSlice({
       state.loading = false;
     },
     deleteQuizSuccess: (state, action) => {
-      // const quizId = action.payload;
-      // state.quizzes = state.quizzes.filter(quiz => quiz._id !== quizId);
-      // state.quizzesCount = state.quizzesCount - 1;
+      const quizId = action.payload;
+      state.quizzes = state.quizzes.filter(quiz => quiz._id !== quizId);
+      state.quizzesCount = state.quizzesCount - 1;
       state.loading = false;
     },
     deleteQuizFailure: (state) => {
@@ -331,13 +331,14 @@ export const deleteQuiz = (id) => async (dispatch) => {
     const response = await httpHandler.post(`/api/quiz/delete-quiz/${id}`);
     if (response.data.success) {
       dispatch(deleteQuizSuccess(id));
+      dispatch(getQuizRandomQuestionSuccess(response.data.data));
     } else {
       toast.error(response.data.message);
       dispatch(deleteQuizFailure());
     }
   } catch (error) {
     toast.error(error.message);
-    dispatch(deleteQuizFailure());
+    dispatch(deleteQuizFailure()); 
   }
 };
 

@@ -17,6 +17,7 @@ import { imageBaseUrl } from "../../utils/constants";
 import httpHandler from "../../utils/httpHandler";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
+import { getQuizCategoryById } from "../../redux/features/quizCategorySlice";
 
 const languageCodes = {
   Auto: "auto",
@@ -137,18 +138,21 @@ const Quiz = () => {
   const myDivRefQue = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [totalTime, setTotalTime] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+
+  const [timer, setTimer] = useState(null);
+
   const [questionTranslate, setQuestionTranslate] = useState("en-Us");
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [answered, setAnswered] = useState("");
   const [isTranslating, setIsTranslating] = useState(false);
   const [hasTranslated, setHasTranslated] = useState(false);
+  const [quizEnded, setQuizEnded] = useState(false);
+  const [categoryFetched, setCategoryFetched] = useState(false);
 
   const { oneQuiz, oneQuizOutput, isQuizRestarted, loading } = useSelector(
     (state) => state.quiz
   );
-
+  const { quizCategory } = useSelector((state) => state.quizCategory);
   const { width, height } = useWindowSize();
   useEffect(() => {
     if (window.responsiveVoice) {
@@ -209,17 +213,6 @@ const Quiz = () => {
     dispatch(getRandomQuestionByName(cid));
   }, [dispatch, cid]);
 
-  useEffect(() => {
-    let interval;
-    if (!isPaused) {
-      interval = setInterval(() => {
-        setTotalTime((prevTime) => prevTime + 1);
-      }, 1000);
-    }
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
   const handleAnswerOptionClick = (answerOption, answerImage) => {
     let finData = {
       questionId: oneQuiz.questionId,
@@ -253,15 +246,51 @@ const Quiz = () => {
     navigate("/quizResult");
   };
 
-  const handlePauseResume = () => {
-    setIsPaused((prev) => !prev);
-  };
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? `0${secs}` : secs}`;
+  useEffect(() => {
+    // Only dispatch getQuizCategoryById if the category is not fetched yet
+    if (oneQuiz?.category && !categoryFetched) {
+      dispatch(getQuizCategoryById(oneQuiz.category));
+      setCategoryFetched(true); // Mark category as fetched
+    }
+  }, [dispatch, oneQuiz?.category, categoryFetched]);
+
+  const prevTimerRef = useRef();
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
+  useEffect(() => {
+    if (quizCategory?.timer) {
+      setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
+    }
+    console.log("timmmerrr", quizCategory?.timer * 60);
+  }, [quizCategory]);
+
+  useEffect(() => {
+    prevTimerRef.current = timer;
+
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTime) => prevTime - 1); // Decrease the timer by 1 every second
+      }, 1000);
+
+      // Clean up interval on component unmount or when the timer hits 0
+      return () => clearInterval(interval);
+    }
+  }, [timer]);
+
+  useEffect(() => {
+    if (timer === 0) {
+      setQuizEnded(true); // End the quiz when the timer hits 0
+    }
+  }, [timer]);
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setQuestionTranslate(selectedLanguage);
@@ -277,12 +306,17 @@ const Quiz = () => {
   const handleRestart = () => {
     stopSpeech();
     dispatch(restartQuiz(cid));
-    setTotalTime(0); // Dispatch the restart action
+    setQuizEnded(false);
+    setCategoryFetched(false);
+    // Reset the category fetched flag for restart
+    if (quizCategory?.timer) {
+      setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
+    }
+    // Dispatch the restart action
   };
 
   const totalQuestions = oneQuiz?.question?.length || 0; // Assuming options length gives total questions
   const allQuestionsAnswered = answeredQuestions.length >= totalQuestions;
-
 
   return (
     <>
@@ -294,6 +328,16 @@ const Quiz = () => {
           <div className={styles.quiz}>
             {loading ? (
               <LoadingWeb />
+            ) : quizEnded ? (
+              <div className={styles.totalTimer333}>
+                <span>Time's Up!</span>
+                <button
+                  onClick={handleRestart}
+                  className="btn btn-secondary bg-danger"
+                >
+                  Restart Quiz
+                </button>
+              </div>
             ) : oneQuiz?.question ? (
               <>
                 <div className={styles.totalTimer2}>
@@ -320,32 +364,23 @@ const Quiz = () => {
                       Speak
                     </button>
                   </div>
-                  <div className={styles.totalTimer}>
-                    <span
-                      style={{
-                        border: "none",
-                        padding: "5px 10px",
-                        backgroundColor: "white",
-                        color: "black",
-                        fontWeight: "400",
-                        fontSize: "18px",
-                      }}
-                    >
-                      Time Started: {formatTime(totalTime)}
-                    </span>
-                    <button
-                      onClick={handlePauseResume}
-                      style={{
-                        border: "none",
-                        borderRadius: "6px",
-                        padding: "4px 15px",
-                        backgroundColor: "red",
-                        color: "white",
-                        fontWeight: "700px",
-                      }}
-                    >
-                      {isPaused ? "Resume" : "Pause"}
-                    </button>
+                  <div className={styles.totalTimer2}>
+                    {quizCategory?.timer && (
+                      <div className={styles.totalTimer}>
+                        <span
+                          style={{
+                            border: "none",
+                            padding: "5px 10px",
+                            backgroundColor: "white",
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "18px",
+                          }}
+                        >
+                          Time left: {formatTime(timer)}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -365,7 +400,12 @@ const Quiz = () => {
                 {oneQuiz?.questionImage && (
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <img
-                      style={{ maxWidth: "200px", width: "100%" }}
+                      style={{
+                        maxWidth: "200px",
+                        width: "100%",
+                        borderRadius: "6px",
+                        boxShadow: "0px 4px 10px rgba(31, 31, 31, 0.74)",
+                      }}
                       src={imageBaseUrl + oneQuiz?.questionImage}
                       alt="Question"
                     />
@@ -381,14 +421,14 @@ const Quiz = () => {
                           backgroundColor:
                             oneQuizOutput.answerAttempt === "Incorrect"
                               ? "Option" + (index + 1) === answered
-                                ? "#780000"
+                                ? "#e40000"
                                 : oneQuizOutput.correctAnswer ===
                                   "Option" + (index + 1)
-                                ? "green"
+                                ? "#00a600"
                                 : ""
                               : oneQuizOutput.correctAnswer ===
                                 "Option" + (index + 1)
-                              ? "green"
+                              ? "#00a600"
                               : "",
                         }}
                         onClick={() =>
@@ -409,7 +449,7 @@ const Quiz = () => {
                             </p>
                             {oneQuiz?.optionImage[index] && (
                               <img
-                                style={{ maxWidth: "150px", width: "100%" }}
+                                style={{ maxWidth: "120px", width: "100%" }}
                                 src={`${
                                   oneQuiz?.optionImage[index].includes("https")
                                     ? oneQuiz?.optionImage[index]
@@ -451,9 +491,15 @@ const Quiz = () => {
             ) : (
               <div className={styles.totalTimer}>
                 Quiz Completed Veiw result
-                <button className="btn btn-secondary bg-danger" onClick={handleRestart}>Restart Quiz</button>
+                <button
+                  className="btn btn-secondary bg-danger"
+                  onClick={handleRestart}
+                >
+                  Restart Quiz
+                </button>
               </div>
             )}
+
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
               <button
@@ -465,7 +511,6 @@ const Quiz = () => {
               {oneQuizOutput.answerAttempt && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
-             
             </div>
           </div>
         </div>

@@ -8,7 +8,12 @@
    
 }
 
-
+#tableRowBg{
+  background: linear-gradient(  180deg, #e4203d, #3e0000);
+}
+#tablebodyRowBg{
+  background: linear-gradient(  180deg, #0003bf, #04003e);
+}
 .quizResultTable {
     width: 100%;
     min-width: 1200px;
@@ -23,16 +28,27 @@
   }
   
   .quizResultTable th {
-    background-color: #333;
+    border: 1px solid white;
     color: white;
   }
   
   .quizResultTable td {
-    background-color: #222;
+   border: 1px solid white;
     color: white;
   }
-  
-
+  .catebtn{
+    min-Width: 120px; 
+    margin: 0.5rem; 
+    background-color:#000047;
+    border:1px solid white;
+    color:white; 
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+  }
+.catebtn:hover{
+  background-color:#0d00c6;
+  border: 1px solid black;
+}
   
   /* Responsive for quizResultTablets */
   @media (max-width: 1024px) {

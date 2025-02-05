@@ -40,7 +40,9 @@ export default function PartOneTrainnigMaterial() {
             <Link to="/band-1-Road-Procedure">
               <button id={styles.hazzardBtn}>Part 1 Band 1 summary</button>
             </Link>
-
+            <Link to="/takequizCatName/band-one-test">
+              <button id={styles.hazzardBtn}>Band 1 Test Questions 25</button>
+            </Link>
             <Link to="/takequizCatName/Band-2---Traffic-Signs-and-Signals--Car-Control--Pedestrians-and-Mechanical-Knowledge">
               <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
                 Band 2 Practice Questions
@@ -51,14 +53,18 @@ export default function PartOneTrainnigMaterial() {
                 Band 2 summary
               </button>
             </Link>
-
+            <Link to="/takequizCatName/band-two-test">
+              <button id={styles.hazzardBtn}>Band 2 Test Questions 25</button>
+            </Link>
             <Link to="/takequizCatName/Band-3---Driving-Test--Disabilities--and-The-Law">
               <button id={styles.hazzardBtn}> Band 3 Practice Questions</button>
             </Link>
             <Link to="/band-3-driving-tests-disabilities-and-the-law">
               <button id={styles.hazzardBtn}> Band 3 summary</button>
             </Link>
-
+            <Link to="/takequizCatName/band-three-test">
+              <button id={styles.hazzardBtn}>Band 3 Test Questions 25</button>
+            </Link>
             <Link to="/takequizCatName/Band-4---Publications-and-Instructional-Techniques">
               <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
                 Band 4 Practice Questions
@@ -68,6 +74,9 @@ export default function PartOneTrainnigMaterial() {
               <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
                 Band 4 summary
               </button>
+            </Link>
+            <Link to="/takequizCatName/band-four-test">
+              <button id={styles.hazzardBtn}>Band 4 Test Questions 25</button>
             </Link>
 
             <Link to="/Adi-part-1-Bonus-Quiz">

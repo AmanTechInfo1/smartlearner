@@ -311,10 +311,7 @@ export const router = createBrowserRouter([
         path: "/quizGive",
         element: <QuizCategoryHome />,
       },
-      {
-        path: "/takequizCatName/:cid",
-        element: <Quiz />,
-      },
+     
       {
         path: "/takequiz/:cid/:id",
         element: <Quiz />,
@@ -328,6 +325,10 @@ export const router = createBrowserRouter([
         element: <QuizResult />,
       },
     ],
+  },
+  {
+    path: "/takequizCatName/:cid",
+    element: <Quiz />,
   },
   { path: "register", element: <Register /> },
   { path: "login", element: <Login /> },

@@ -871,17 +871,10 @@ class quizService {
       return resultObject;
     }
   }
-  async getRandomQuizCatName(userId, cid, moduleId = null) {
+  async getRandomQuizCatName(userId, cid) {
     try {
       let aggr = [];
-      // if (moduleId != null) {
-      //   aggr.push({
-      //     '$match': {
-      //       'module': new ObjectId(moduleId)
-      //     }
-      //   }
-      //   )
-      // }
+     
 
       aggr.push(
         {
@@ -962,6 +955,9 @@ class quizService {
             sizeRes: 0,
             _id: 0,
           },
+        },
+        {
+          $sample: { size: 1 } // Add this line to randomly pick one question
         }
       );
       const products = await QuizQuestion.aggregate(aggr);
