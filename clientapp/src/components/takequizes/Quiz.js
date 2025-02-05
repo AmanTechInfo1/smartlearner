@@ -17,7 +17,7 @@ import { imageBaseUrl } from "../../utils/constants";
 import httpHandler from "../../utils/httpHandler";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
-import { getQuizCategoryById, getQuizCategoryByIdFailure } from "../../redux/features/quizCategorySlice";
+import { getQuizCategoryById } from "../../redux/features/quizCategorySlice";
 
 const languageCodes = {
   Auto: "auto",
@@ -147,12 +147,19 @@ const Quiz = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [hasTranslated, setHasTranslated] = useState(false);
   const [quizEnded, setQuizEnded] = useState(false);
+  const [categoryFetched, setCategoryFetched] = useState(false);
 
   const { oneQuiz, oneQuizOutput, isQuizRestarted, loading } = useSelector(
     (state) => state.quiz
   );
   const { quizCategory } = useSelector((state) => state.quizCategory);
   const { width, height } = useWindowSize();
+
+
+
+
+
+
   useEffect(() => {
     if (window.responsiveVoice) {
       // Ensure ResponsiveVoice is ready
@@ -208,16 +215,9 @@ const Quiz = () => {
       setIsTranslating(false);
     }
   };
-  useEffect(() => { 
-
+  useEffect(() => {
     dispatch(getRandomQuestionByName(cid));
-
-     if (oneQuiz?.category && oneQuiz.category !== quizCategory?._id) {
-    dispatch(getQuizCategoryById(oneQuiz.category));
-     
-  }
-
-  }, [dispatch, cid,oneQuiz?.category, quizCategory?._id]);
+  }, [dispatch, cid]);
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
     let finData = {
@@ -246,7 +246,6 @@ const Quiz = () => {
     dispatch(getQuizRandomQuestionOutputFailure());
     dispatch(getQuizRandomQuestionFailure());
     dispatch(getRandomQuestionByName(cid, id));
-    dispatch(getQuizCategoryByIdFailure());
   };
 
   const endQuiz = () => {
@@ -255,6 +254,13 @@ const Quiz = () => {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  useEffect(() => {
+    // Only dispatch getQuizCategoryById if the category is not fetched yet
+    if (oneQuiz?.category != quizCategory?._id && !categoryFetched) {
+      dispatch(getQuizCategoryById(oneQuiz.category));
+      setCategoryFetched(true); // Mark category as fetched
+    }
+  }, [dispatch, oneQuiz?.category, categoryFetched]);
 
   const prevTimerRef = useRef();
 
@@ -267,7 +273,7 @@ const Quiz = () => {
     if (quizCategory?.timer) {
       setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
     }
-    
+    console.log("timmmerrr", quizCategory?.timer * 60);
   }, [quizCategory]);
 
   useEffect(() => {
@@ -307,7 +313,7 @@ const Quiz = () => {
     stopSpeech();
     dispatch(restartQuiz(cid));
     setQuizEnded(false);
-   
+    setCategoryFetched(false);
     // Reset the category fetched flag for restart
     if (quizCategory?.timer) {
       setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
@@ -315,10 +321,12 @@ const Quiz = () => {
     // Dispatch the restart action
   };
 
-  const backbtn = ()=>{
-   
-    navigate(-1)
+  const backbtn = () => {
+    navigate(-1);
+    
+     
   }
+  
 
   const totalQuestions = oneQuiz?.question?.length || 0; // Assuming options length gives total questions
   const allQuestionsAnswered = answeredQuestions.length >= totalQuestions;

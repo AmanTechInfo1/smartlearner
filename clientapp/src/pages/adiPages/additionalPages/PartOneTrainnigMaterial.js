@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import styles from "../AdiPartOne.module.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export default function PartOneTrainnigMaterial() {
+  
+ 
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
