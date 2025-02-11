@@ -2,28 +2,21 @@
   font-family: "Antonio", sans-serif;
   background-color: black;
   color: white;
-
+  padding-top: 1rem;
   padding-bottom: 5rem;
 }
-.AdiPartOne h1 span {
-  color: rgb(0, 185, 0);
-}
-.AdiPartOne h2 span {
-  color: rgb(0, 185, 0);
-}
-.AdiPartOne p span {
-  color: rgb(0, 185, 0);
-}
+
 .AdiPartOne ul {
   margin-bottom: 0px;
 }
 .imageSection {
   position: relative;
   width: 100%;
-  padding: 5rem 0;
-  background-image: url(../../assets/images/dlbannerimg.png);
+
+  background-image: url(../../assets/images/pdi-partonebanner.jpg);
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
 }
 .opicity {
   position: absolute;
@@ -35,87 +28,63 @@
   background-color: #000000;
 }
 .maincontent {
-  max-width: 1140px;
+  max-width: 1640px;
   width: 100%;
-  padding: 120px 0px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 100px 1rem;
+
   position: sticky;
 }
 
-.content {
-  width: 100%;
-  color: #006ace;
-  text-align: center;
-}
-.heading1 p {
-  font-size: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.87);
-}
-.heading1 h1 {
-  color: #006ace;
-  font-size: 2.2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 12px;
-  background-color: white;
-}
-
-.heading2 h2 {
-  color: #006ace;
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.2em;
-  background-color: rgba(255, 255, 255, 0.87);
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  margin-bottom: 20px;
-  text-align: center;
-  overflow: hidden;
-  border-right: 0.2px solid #006ace;
-  white-space: nowrap;
-  margin: 0 auto;
-
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+.heading1 {
   padding: 2rem 0px;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.heading1 h1 {
+  color: white;
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #006ace;
-  }
+
+.gGpFrontListP p {
+  color: white;
+  background: linear-gradient(135deg, #944907, #760136b5);
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: sticky;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: 44%;
+  width: 100%;
+
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+
+  margin-bottom: 1rem;
 }
+
 .alertBtn {
   padding-top: 2rem;
+  display: flex;
+  gap: 20px;
 }
 .alertBtn a button {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  letter-spacing: 0px;
-  border: 1px solid #ffffff;
+  background: linear-gradient(135deg, #c65d01, #b90054);
+  border-radius: 10px;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0);
+  border: none;
   padding: 18px 80px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
 
 .alertBtn a button:hover {
-  background-color: #006aced8;
-  transform: scale(1.1);
-  animation: bounce 0.3s alternate;
+  transform: scale(1.09);
+  animation: 0.3s;
 }
 
 @keyframes bounce {
@@ -129,31 +98,47 @@
 
 @media (max-width: 1020px) {
   .heading1 h1 {
-    font-size: 1.5rem;
-    line-height: 1.7em;
+    font-size: 3.7rem;
   }
   .heading2 h2 {
     font-size: 2.8rem;
   }
 }
-
-@media (max-width: 450px) {
-  .heading1 h1 {
-    font-size: 1.2rem;
-    line-height: 1.7em;
+@media (max-width: 720px) {
+  .maincontent {
+    padding: 70px 1rem;
   }
-  .heading2 h2 {
-    font-size: 2.2rem;
+  .heading1 h1 {
+    font-size: 3.2rem;
+  }
+  .gGpFrontListP p {
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 520px) {
+  .maincontent {
+    padding: 50px 1rem;
+  }
   .heading1 h1 {
-    font-size: 1.2rem;
-    line-height: 1.7em;
+    font-size: 3rem;
+  }
+  .alertBtn {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 450px) {
+  .heading1 h1 {
+    font-size: 2.5rem;
   }
   .heading2 h2 {
     font-size: 1.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .heading1 h1 {
+    font-size: 2.2rem;
   }
 }
 /* //////////////////////////////////// */
@@ -190,37 +175,66 @@
 /* ////////////////////////////////////////// */
 
 .hazardTestWorkListSection {
-  padding: 1rem 1rem;
-  max-width: 1400px;
+  padding: 1rem;
+  max-width: 1600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.hazardTestWorkListSection2 {
+  max-width: 1600px;
   margin-right: auto;
   margin-left: auto;
 }
 .hazardTestWorkListSection h2 {
-  color: #006ace;
+  color: #c9e5ff;
   font-size: 3rem;
   text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
 }
 #hazardTestWorkListSectionPara {
   text-align: center;
-  font-size: 2rem;
-  color: #006ace;
+  padding: 1rem;
+  font-size: 1.4rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  background: linear-gradient(135deg, #cb6205, #d2015fb5);
+  border-radius: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 #hazardTestWorkListSectionPara a {
   text-decoration: none;
 }
-.hazardTestH23 h2 {
+.hazardTestH23 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
+}
+.hazardTestH234 {
+  text-align: center;
+  font-size: 2rem;
+
+  padding: 0.5rem;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+}
+.bgColorList33 p {
+  margin-bottom: 0px;
 }
 
 @media (max-width: 950px) {
-  .hazardTestH23 h2 {
+  .hazardTestH24 {
     text-align: center;
     font-size: 2rem;
   }
 }
 @media (max-width: 750px) {
-  .hazardTestH23 h2 {
+  .hazardTestH234 {
     text-align: center;
     font-size: 1.7rem;
   }
@@ -235,9 +249,9 @@
   }
 }
 @media (max-width: 450px) {
-  .hazardTestH23 h2 {
+  .hazardTestH234 {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   #hazardTestWorkListSectionPara {
     font-size: 1.2rem;
@@ -273,13 +287,11 @@
 }
 @media (max-width: 650px) {
   .hazardTestWorkListSection h2 {
-    color: #006ace;
     font-size: 2.2rem;
   }
 }
 @media (max-width: 450px) {
   .hazardTestWorkListSection h2 {
-    color: #006ace;
     font-size: 1.8rem;
   }
   #h2heddings {
@@ -288,7 +300,6 @@
 }
 @media (max-width: 400px) {
   .hazardTestWorkListSection h2 {
-    color: #006ace;
     font-size: 1.8rem;
   }
   #h2heddings {
@@ -296,7 +307,7 @@
   }
 }
 .innerTheorySupportContent {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -458,8 +469,6 @@
 
 /* ////////////////////////////////////////////////////////////////// */
 .pdiContainer {
-  padding: 20px;
-  /* light blue */
   color: #ffffff;
 }
 .pdiContainer h3 {
@@ -474,17 +483,33 @@
 .pdiTwo,
 .pdiThree {
   margin: 20px 0;
-  background-color: #006ace; /* light green */
+  background: linear-gradient(135deg, #c65d01, #b90054);
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.pdiTwo p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem;
+}
+.pdiTwo h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
 .pdiThree {
   margin: 20px 0;
-  background-color: rgb(0, 185, 0); /* light green */
+  background: linear-gradient(135deg, #13dab6, #0006b9); /* light green */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pdiThree p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem;
+}
+.pdiThree h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
 }
 
 .pdiBands {
@@ -492,9 +517,23 @@
   grid-template-columns: 1fr;
   gap: 20px;
 }
-
+.pdiBandItem:nth-child(1) {
+  background: linear-gradient(135deg, #05bce1, #2509ae);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.pdiBandItem:nth-child(2) {
+  background: linear-gradient(135deg, #ac43dd, #620180);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.pdiBandItem:nth-child(3) {
+  background: linear-gradient(135deg, #dd43aa, #800136);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.pdiBandItem:nth-child(4) {
+  background: linear-gradient(135deg, #df8601, #c23b02);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 .pdiBandItem {
-  background-color: #006ace;
   padding: 15px;
   border-radius: 8px;
   border-left: 4px solid rgb(0, 255, 0);
@@ -523,12 +562,20 @@
 }
 
 .hazardTips {
-  background-color: #006ace; /* Light cyan background */
+  background: linear-gradient(
+    135deg,
+    #f1c123,
+    #c05000
+  ); /* Light cyan background */
   border-radius: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-left: 4px solid rgb(0, 255, 0);
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hazardTips h2 {
+  font-weight: 700;
 }
 .hazardTips li {
   color: rgb(255, 255, 255);
@@ -537,12 +584,16 @@
   color: #000000;
 }
 .generalTips {
-  background-color: rgb(0, 200, 0);
+  background: linear-gradient(135deg, #f1237c, #c05000);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-left: 4px solid #006ace; /* Light cyan background */
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.generalTips h2 {
+  font-weight: 700;
 }
 .generalTips strong {
   color: #000000;
@@ -654,7 +705,7 @@
 }
 
 .TMnextButton {
-  background-color: #0073e6; /* Blue button */
+  background: linear-gradient(135deg, #f1237c, #c05000); /* Blue button */
   color: white;
   border: none;
   padding: 12px 60px;
@@ -667,7 +718,8 @@
   color: white;
 }
 .TMnextButton:hover {
-  background-color: #005bb5;
+  background: linear-gradient(135deg, #c05000, #f1237c);
+  border: 1px solid #ff9fc9;
 }
 
 /* Responsive Design */
@@ -1120,18 +1172,21 @@
   }
 }
 .AdiParttwoDisplayFlex {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
+
   gap: 20px;
   justify-content: center;
-
+  padding: 1rem 0px;
   width: 100%;
   gap: 10px;
   align-items: center;
 }
+
 .hazardTestWorkListDivImg {
   animation: 5s slide-right;
   padding: 0px 1rem;
+  max-width: 40%;
+  width: 100%;
 }
 @keyframes slide-right {
   from {
@@ -1144,6 +1199,7 @@
 .hazardTestWorkListDivImg img {
   max-width: 550px;
   width: 100%;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
 
   aspect-ratio: 3/2;
   object-fit: contain;
@@ -1177,7 +1233,6 @@
   font-size: 22px;
 }
 .bgColorList33 {
-  background-color: #006ace;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -1186,34 +1241,39 @@
 .bgColorList33 ul {
   padding-left: 0px;
 }
+.bgColorList33 ul li {
+  background: linear-gradient(135deg, #cb6205, #d2015fb5);
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
 .bgColorList33 ul li p {
   font-size: 18px;
 }
 .bgColorList {
   animation: 5s slide-left;
-  max-width: 550px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 60%;
+  width: 100%;
+  border-radius: 10px;
   color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-@keyframes slide-left {
-  from {
-    margin-right: -100%;
-  }
-  to {
-    margin-right: 0%;
-  }
-}
+
 .bgColorList a {
   text-decoration: none;
 }
 .bgColorList ul {
-  background-color: #006ace;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1rem 0px;
+}
+.bgColorList ul li {
+  background: linear-gradient(135deg, #cb6205, #d2015fb5);
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 .bgColorList ul li p {
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
   font-size: 18px;
 }
 .bgColorList2 {
@@ -1278,6 +1338,22 @@
 #adiSocialFaIcons:hover {
   color: #fff;
   transition: 0.3s ease-in-out;
+}
+@media screen and (max-width: 850px) {
+  .AdiParttwoDisplayFlex {
+    flex-direction: column;
+  }
+  .hazardTestWorkListDivImg {
+    max-width: 100%;
+    width: 100%;
+  }
+  .bgColorList {
+    max-width: 100%;
+    width: 100%;
+  }
+  .bgColorList33 {
+    text-align: left;
+  }
 }
 @media (max-width: 500px) {
   .adiPortalPageSeconddiv h2 {
@@ -1703,7 +1779,7 @@ p {
 
 /* /////////////// */
 .innerTheorySupportContent {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;

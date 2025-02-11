@@ -1,14 +1,14 @@
 .cartPage {
-  background: linear-gradient(
-    135deg,
-    hwb(187 40% 0%),
-    #57005a,
-    #2e0063,
-    #020025
-  );
-  background-size: 600% 600%;
-  animation: gradientAnimation 12s ease infinite;
-  min-height: 70vh;
+    background: linear-gradient(
+      135deg,
+      hwb(187 40% 0%),
+      #57005a,
+      #2e0063,
+      #020025
+    );
+    background-size: 600% 600%;
+    animation: gradientAnimation 12s ease infinite;
+    min-height: 70vh;
   padding-bottom: 4rem;
 }
 .cartContainer {

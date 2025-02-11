@@ -10,6 +10,11 @@ import {
   getMyDashboard,
   fetchUserSubscriptions,
 } from "../../redux/features/subscriptionSlice";
+
+import { useRef } from "react";
+
+import gsap from "gsap";
+
 export default function AdiPartOne() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,6 +65,110 @@ export default function AdiPartOne() {
       }
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+
+  // //////////////////////////////////////////////////////////////////////////////////////
+
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = " Forget the rest,"; // First part before "Driving"
+    const secondPart = "learn with the best!"; // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -68,19 +177,25 @@ export default function AdiPartOne() {
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>
-                  Forget the rest, <span>learn with the best!</span>
-                </h1>
+                <h1 ref={textRef}>{splitText()}</h1>
+              </div>
+              <div className={styles.gGpFrontListP}>
+                <p>
+                  Unlock your driving potential with Smartlearner Learn from
+                  certified instructors in a safe, supportive environment. Start
+                  your journey to becoming a confident, skilled driver today!
+                </p>
               </div>
               <div className={styles.alertBtn}>
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
-                  <button id={styles.btn}>Contact Us</button>
+                  <button>Contact Us</button>
                 </Link>
-              </div>
-              <div className={styles.alertBtn}>
-                <Link to="/part-1-trainning-material">
-                  <button className={styles.TMnextButton}>NEXT PAGE</button>
+                <Link
+                  to="/part-1-trainning-material"
+                  style={{ textDecoration: "none" }}
+                >
+                  <button>NEXT PAGE</button>
                 </Link>
               </div>
             </div>
@@ -91,13 +206,11 @@ export default function AdiPartOne() {
         <section className={styles.hazardTestWorkListSection}>
           <p id={styles.hazardTestWorkListSectionPara}>
             The job of an ADI is very demanding but can also be extremely
-            rewarding.{" "}
-            <span>
-              It’s a very important role, which extends beyond teaching the
-              mechanical skills of driving a car. As well as these skills, an
-              ADI is responsible for developing:
-            </span>
+            rewarding. It’s a very important role, which extends beyond teaching
+            the mechanical skills of driving a car. As well as these skills, an
+            ADI is responsible for developing:
           </p>
+          
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={prizeTrophy} alt="prizeTrophy" />
@@ -240,7 +353,7 @@ export default function AdiPartOne() {
         <section className={styles.hazardTestWorkListSection}>
           <section className={styles.pdiContainer}>
             <h2>
-              Create a Strong <span>Study Plan</span>
+              Create a Strong <span style={{color:'#cb6205'}}>Study Plan</span>
             </h2>
             <div className={styles.pdiTwo}>
               <h3>Multiple-Choice Questions</h3>
@@ -356,7 +469,7 @@ export default function AdiPartOne() {
 
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2>
+          <h2 >
             The hazard perception<span> Test Explained:</span>
           </h2>
           <section className={styles.AdiParttwoDisplayFlex}>
@@ -390,10 +503,10 @@ export default function AdiPartOne() {
           </section>
         </section>
         {/* /////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH23}>
+        <section className={styles.hazardTestWorkListSection2}>
+          <h2 className={styles.hazardTestH234}>
             Why is the hazard perception{" "}
-            <span>Test included in the ADI theory test?</span>
+           Test included in the ADI theory test?
           </h2>
           <div className={styles.bgColorList33}>
             <ul type="none">
@@ -409,8 +522,8 @@ export default function AdiPartOne() {
           </div>
         </section>
         {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH23}>
+        <section className={styles.hazardTestWorkListSection2}>
+          <h2 className={styles.hazardTestH234}>
             How does it differ from the hazard perception{" "}
             <span>Test that learner drivers and riders take?</span>
           </h2>
@@ -492,18 +605,20 @@ export default function AdiPartOne() {
         </section>
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDivImg}>
+          <div className={styles.hazardTestWorkListDiv}>
             <div className={styles.innerTheorySupportContent}>
               <div className={styles.theorySupportContentVideo}>
                 <iframe
-                  width="700"
+                
+                  width="900"
                   height="500"
                   src="https://www.youtube.com/embed/-bsLPF0Q35Y"
                   title="Road Safety: Joining the Motorway"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen></iframe>
+                  allowfullscreen
+                ></iframe>
               </div>
             </div>
           </div>

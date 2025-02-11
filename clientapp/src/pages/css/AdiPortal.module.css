@@ -9,15 +9,15 @@ p {
 .ADITrainingPortalPage {
   font-family: "Antonio", sans-serif;
   background-color: black;
+  padding: 1rem 0px 2rem;
 }
 .adiPortalPageFirstdiv {
   position: relative;
-  background: url("../../assets/images/dlbannerimg.png");
+  background: url("../../assets/images/pdi-bannerss.jpg");
   background-size: cover;
   background-position: left;
-
-  padding: 210px 0;
-  font-family: "Antonio", sans-serif;
+  border-radius: 10px;
+  padding: 170px 0;
 }
 .opicity {
   position: absolute;
@@ -26,52 +26,72 @@ p {
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  background-color: #000000;
+  background-color: #000000ba;
 }
 .adiPortalPageFirstdiv section {
   position: sticky;
-}
-.adiPortalPageFirstdiv section h2 span {
-  color: rgb(0, 185, 0);
-}
-.adiPortalPageFirstdiv section h2 {
-  font-size: 5rem;
-  font-weight: 700;
-  text-align: center;
-  color: #006ace;
-  overflow: hidden;
-  border-right: 0.2px solid rgb(255, 255, 255);
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
-  padding: 2rem 0px;
+  padding: 1rem;
+  max-width: 1640px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.adiPortalPageFirstdiv section h2 {
+  font-size: 5rem;
+  padding-bottom: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 900;
+
+  margin: 0px auto;
+
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
 }
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 255, 255);
-  }
+.gGpFrontListP p {
+  color: white;
+  background: linear-gradient(135deg, #944907, #760136b5);
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: sticky;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: 44%;
+  width: 100%;
+
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+
+  margin-bottom: 1rem;
 }
-@media (max-width: 550px) {
+@media (max-width: 950px) {
   .adiPortalPageFirstdiv section h2 {
     font-size: 4rem;
   }
 }
-@media (max-width: 450px) {
+
+@media (max-width: 750px) {
+  .adiPortalPageFirstdiv section h2 {
+    font-size: 3.5rem;
+  }
+  .gGpFrontListP p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 550px) {
   .adiPortalPageFirstdiv section h2 {
     font-size: 3rem;
+  }
+}
+@media (max-width: 450px) {
+  .adiPortalPageFirstdiv section h2 {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .adiPortalPageFirstdiv section h2 {
+    font-size: 2rem;
   }
 }
 .adiPortalPageSeconddiv {
@@ -89,20 +109,31 @@ p {
   width: 100%;
   animation: slideFromBottomH2 2s ease-in-out;
 }
-.paraSecHandImg p span {
-  color: rgb(0, 185, 0);
-}
+
 .paraSecHandImg p {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  max-width: 800px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 0pc;
-  color: #006ace;
+  padding: 0px 1rem;
 
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   animation: slideFromBottomH2 2s ease-in-out;
+}
+@media (max-width: 860px) {
+  .paraSecHandImg p {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 720px) {
+  .paraSecHandImg p {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 520px) {
+  .paraSecHandImg p {
+    font-size: 1.2rem;
+  }
 }
 @media (max-width: 720px) {
   .adiPortalPageSeconddiv p {
@@ -147,24 +178,28 @@ p {
   background-color: black;
   text-align: center;
   padding: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.adiPortalPageThirddiv h2 span {
-  color: rgb(0, 185, 0);
-}
+
 .adiPortalPageThirddiv h2 {
   padding: 2rem 0px;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #006ace;
+  color: #ffffff;
 }
-.adiLearningSupport h2 span {
-  color: rgb(0, 185, 0);
+.adiPortalPageThirddivh2 {
+  background: linear-gradient(135deg, #f67504, #ce033c);
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 10px;
+  width: 100%;
 }
+
 .adiLearningSupport h2 {
   padding: 2rem 0px;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #006ace;
+  color: #ffffff;
   animation: slideFromBottom 2s ease-in-out;
 }
 
@@ -184,14 +219,15 @@ p {
   width: 100%;
 }
 #hrAdiLearningText p span {
-  color: rgb(0, 185, 0);
+  color: #f50f6b;
 }
 #hrAdiLearningText p {
   width: 100%;
   max-width: 300px;
   margin-bottom: 0px;
-  color: #006ace;
-  font: 1.1rem;
+  color: hsl(209, 100%, 86%);
+  font-size: 1.1rem;
+
   animation: slideFromBottom 2s ease-in-out;
 }
 #hrAdiLearningText hr {
@@ -216,7 +252,7 @@ p {
   margin: 1rem;
   width: 100%;
   padding: 1rem;
-  border: 1px solid white;
+  border-radius: 10px;
   transition: box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(100%);
@@ -224,14 +260,17 @@ p {
 }
 .adiTrainingPortalLearningInnerContent:nth-child(1) {
   animation-delay: 0s;
+  background: linear-gradient(135deg, #6fff00, #0e4d15);
 }
 
 .adiTrainingPortalLearningInnerContent:nth-child(2) {
   animation-delay: 1s;
+  background: linear-gradient(135deg, #f67504, #ce033c);
 }
 
 .adiTrainingPortalLearningInnerContent:nth-child(3) {
   animation-delay: 2s;
+  background: linear-gradient(135deg, #3baff7, #08009a);
 }
 @keyframes slideUp {
   to {
@@ -263,9 +302,10 @@ p {
   transition: 0.3s ease-in;
 }
 .adiPortalBtnLearning:hover {
-  background-color: #006ace;
+  background: linear-gradient(135deg, #f6f204, #ff7da2);
+  color: rgb(41, 0, 13);
   border: none;
-  color: #fff;
+  
 }
 .adiPortalFooterSection {
   text-align: center;
@@ -283,7 +323,8 @@ p {
 }
 .adiPortalFooterSection {
   padding: 2rem 0px;
-  background-color: #006ace;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #3baff7, #08009a);
 }
 .adiPortalFooterInnerContainer img {
   padding: 1rem 0px;
@@ -298,12 +339,16 @@ p {
   font-size: 1.3rem;
   text-decoration: none;
   color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .adiFooterContactInfo a:hover {
   color: rgb(0, 185, 0);
 }
 .adiFooterAddressInfo p {
   color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }
 #adiFaIcons {
   color: #fff;
@@ -358,6 +403,7 @@ p {
   font-size: 3rem;
   font-weight: 800;
   text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   position: sticky;
 }

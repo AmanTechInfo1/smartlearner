@@ -215,9 +215,17 @@ const Quiz = () => {
       setIsTranslating(false);
     }
   };
+  const hasFetchedRef = useRef(false);
   useEffect(() => {
-    dispatch(getRandomQuestionByName(cid));
-  }, [dispatch, cid]);
+    // Create a ref to track if the API has already been called
+    
+  
+    if (!hasFetchedRef.current) {
+      dispatch(getRandomQuestionByName(cid));
+      hasFetchedRef.current = true;  // Set it to true to avoid re-triggering
+    }
+  }, [cid, dispatch]); // Keep dependencies for `cid` and `dispatch`
+  
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
     let finData = {
