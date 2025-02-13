@@ -1,23 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.19d25167.css",
-    "main.js": "/static/js/main.6432d9b0.js",
+    "main.css": "/static/css/main.fc06e866.css",
+    "main.js": "/static/js/main.87cc5894.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
+    "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
     "static/media/theorySupportbanner2.jpg": "/static/media/theorySupportbanner2.ef0a428ae207a62c4712.jpg",
     "static/media/Automatictransmissionbanner.jpg": "/static/media/Automatictransmissionbanner.6c12a29a05c41028cfa2.jpg",
     "static/media/manual2.jpg": "/static/media/manual2.6c12a29a05c41028cfa2.jpg",
     "static/media/automaticround2.jpg": "/static/media/automaticround2.d0fe9c670a6c2d49c6ad.jpg",
     "static/media/manualcrouselImg.jpg": "/static/media/manualcrouselImg.cb4a310fe5a01cd2f7bd.jpg",
+    "static/media/pdi-training-banner.jpg": "/static/media/pdi-training-banner.aa4382174c2c2ea170d0.jpg",
     "static/media/automatic2.jpg": "/static/media/automatic2.f17951d705cead5e1680.jpg",
     "static/media/automaticround.jpg": "/static/media/automaticround.bf477bac8170d3177a82.jpg",
     "static/media/contact-banner2.png": "/static/media/contact-banner2.684e276d92e370cec21e.png",
     "static/media/automatic3.jpg": "/static/media/automatic3.2a3828b79354f2745575.jpg",
     "static/media/manual4.jpg": "/static/media/manual4.40cc55c392c7749d2437.jpg",
     "static/media/aboutusBanner.jpg": "/static/media/aboutusBanner.5c7703f9373297d1bf34.jpg",
+    "static/media/pdi-bannerss.jpg": "/static/media/pdi-bannerss.8a0bc261567004946eb8.jpg",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
+    "static/media/pdi-partonebanner.jpg": "/static/media/pdi-partonebanner.02f94a785ba885b73b0e.jpg",
     "static/media/passplusbanner.png": "/static/media/passplusbanner.10c2812af0a5f4ebc148.png",
     "static/media/hazzardClipsBanner.png": "/static/media/hazzardClipsBanner.17e1b98de0f3f8dda1d7.png",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
@@ -31,6 +35,7 @@
     "static/media/dribbble_1.gif": "/static/media/dribbble_1.181c5a6430bcb77324b1.gif",
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
+    "static/media/glossaryImgbanner.jpg": "/static/media/glossaryImgbanner.8e2fd827a19c7b606c9a.jpg",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
     "static/media/automatic4.jpg": "/static/media/automatic4.5905db00d55f2568f589.jpg",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
@@ -308,12 +313,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.19d25167.css.map": "/static/css/main.19d25167.css.map",
-    "main.6432d9b0.js.map": "/static/js/main.6432d9b0.js.map",
+    "main.fc06e866.css.map": "/static/css/main.fc06e866.css.map",
+    "main.87cc5894.js.map": "/static/js/main.87cc5894.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.19d25167.css",
-    "static/js/main.6432d9b0.js"
+    "static/css/main.fc06e866.css",
+    "static/js/main.87cc5894.js"
   ]
 }
