@@ -14,13 +14,16 @@ const quizSlice = createSlice({
   name: "quiz",
   initialState: {
     quizzes: [],
-   
+
     quizzesCount: 0,
     quizzesModule: [],
     quizzesModuleCount: 0,
     loading: false,
     quizzesList: [],
-    oneQuizOutput: {},
+    outputData: localStorage.getItem("questionData")
+      ? JSON.parse(localStorage.getItem("questionData"))
+      : [],
+    oneQuizOutput: [],
     oneQuiz: {},
     quizResult: [],
     quiz: null,
@@ -31,12 +34,12 @@ const quizSlice = createSlice({
     getAllQuizzesSuccess: (state, action) => {
       state.quizzes = action.payload.quizzes;
       state.quizzesCount = action.payload.totalCount;
-      
+
       state.loading = false;
     },
     getAllQuizzesFailure: (state) => {
       state.quizzes = [];
-    
+
       state.quizzesCount = 0;
       state.loading = false;
     },
@@ -77,8 +80,22 @@ const quizSlice = createSlice({
 
     getQuizRandomQuestionOutputSuccess: (state, action) => {
       state.oneQuizOutput = action.payload;
-      // state.loading = false;
+
+      // Get the existing data from localStorage
+      const existingData = localStorage.getItem("questionData")
+        ? JSON.parse(localStorage.getItem("questionData"))
+        : [];
+
+      // Add the new data (action.payload) to the existing data
+      existingData.push(action.payload);
+
+      // Save the updated array back to localStorage
+      localStorage.setItem("questionData", JSON.stringify(existingData));
+
+      // Update the outputData in state to reflect the new data
+      state.outputData = existingData;
     },
+
     getQuizRandomQuestionOutputFailure: (state) => {
       state.oneQuizOutput = {};
       // state.loading = false;
@@ -126,7 +143,7 @@ const quizSlice = createSlice({
     },
     deleteQuizSuccess: (state, action) => {
       const quizId = action.payload;
-      state.quizzes = state.quizzes.filter(quiz => quiz._id !== quizId);
+      state.quizzes = state.quizzes.filter((quiz) => quiz._id !== quizId);
       state.quizzesCount = state.quizzesCount - 1;
       state.loading = false;
     },
@@ -152,6 +169,11 @@ const quizSlice = createSlice({
     // Optionally, you can reset the restart state
     resetQuizRestarted: (state) => {
       state.isQuizRestarted = false;
+    },
+
+    resetOneQuizOutput: (state) => {
+      localStorage.removeItem("questionData");
+      state.outputData = []; // Reset the oneQuizOutput state
     },
   },
 });
@@ -183,14 +205,14 @@ export const getRandomQuestionByName =
         `/api/quiz/getRandomQuestionCatName/${cid}${id ? "/" + id : ""}`
       );
       if (response.data.success) {
+        dispatch(resetOneQuizOutput());
+
         const question = response.data.data;
         // Check if question has options
         if (question) {
-         
           dispatch(
             getQuizRandomQuestionSuccess({
               ...question,
-              
             })
           );
         } else {
@@ -301,10 +323,9 @@ export const createQuiz =
 
 export const editQuiz =
   (id, data, reset, toggleEditQuizModal, state) => async (dispatch) => {
-   
     try {
       dispatch(setLoading());
-      console.log("dayyttttt", data)
+      console.log("dayyttttt", data);
       const response = await httpHandler.post(
         `/api/quiz/updateQuestion/${id}`,
         data
@@ -338,7 +359,7 @@ export const deleteQuiz = (id) => async (dispatch) => {
     }
   } catch (error) {
     toast.error(error.message);
-    dispatch(deleteQuizFailure()); 
+    dispatch(deleteQuizFailure());
   }
 };
 
@@ -512,6 +533,8 @@ export const {
   restartQuizSuccess,
   restartQuizFailure,
   resetQuizRestarted,
+  resetOneQuizOutput,
+  outputData,
 
   setLoading,
 } = quizSlice.actions;

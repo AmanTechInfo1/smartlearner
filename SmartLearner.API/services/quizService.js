@@ -171,7 +171,7 @@ class quizService {
 
   async getAllQuizAsync(pageNumber, pageSize, query) {
     try {
-      const skip = (pageNumber - 1) ;
+      const skip = pageNumber - 1;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
@@ -223,7 +223,6 @@ class quizService {
         {
           $skip: skip,
         },
-        
       ];
 
       const quizzes = await QuizQuestion.aggregate(aggr);
@@ -719,6 +718,7 @@ class quizService {
   async answerQuizAsync(quizData) {
     try {
       // const quiz = await QuizQuestion.create(quizData);
+      console.log("qsseseee",quizData)
       const getQuizQuestion = await QuizQuestion.find({
         _id: quizData.questionId,
       });
@@ -871,108 +871,230 @@ class quizService {
       return resultObject;
     }
   }
+
   async getRandomQuizCatName(userId, cid) {
     try {
-      let aggr = [];
-     
+      
+      if (cid === "Mock--Tests") {
+        
 
-      aggr.push(
-        {
-          $lookup: {
-            from: "attemptquizquestions",
-            localField: "_id",
-            foreignField: "questionId",
-            pipeline: [
-              {
-                $match: {
-                  userId: {
-                    $eq: new ObjectId(userId),
+        const bands = ["band 1", "band 2", "band 3", "band 4"];
+        let mockTestQuestions = [];
+
+        
+        for (let band of bands) {
+         
+          const bandQuestions = await QuizQuestion.aggregate([
+           
+            {
+              $lookup: {
+                from: "attemptquizquestions",
+                localField: "_id",
+                foreignField: "questionId",
+                pipeline: [
+                  {
+                    $match: {
+                      userId: { $eq: new ObjectId(userId) },
+                    },
+                  },
+                ],
+                as: "result",
+              },
+            },
+            {
+              $addFields: {
+                sizeRes: { $size: "$result" },
+                questionId: { $toString: "$_id" },
+              },
+            },
+            {
+              $match: { sizeRes: 0 },
+            },
+            {
+              $match: { band: band },
+            },
+            {
+              $lookup: {
+                from: "quizcategories",
+                localField: "category",
+                foreignField: "_id",
+                as: "quizcategoriesresult",
+              },
+            },
+            {
+              $unwind: {
+                path: "$quizcategoriesresult",
+                preserveNullAndEmptyArrays: true,
+              },
+            },
+            {
+              $match: {
+                "quizcategoriesresult.catUnqName": "Mock--Tests", 
+              },
+            },
+            {
+              $lookup: {
+                from: "quizmodules",
+                localField: "module",
+                foreignField: "_id",
+                as: "quizmodulesresult",
+              },
+            },
+            {
+              $unwind: {
+                path: "$quizmodulesresult",
+                preserveNullAndEmptyArrays: true,
+              },
+            },
+            {
+              $addFields: {
+                quizCategory: "$quizcategoriesresult.name",
+                quizModuleName: "$quizmodulesresult.moduleName",
+              },
+            },
+            {
+              $project: {
+                result: 0,
+                answer: 0,
+                sizeRes: 0,
+                _id: 0,
+              },
+            },
+            {
+              $sample: { size: 25 }, 
+            },
+          ]);
+         
+          if (bandQuestions.length > 0) {
+            mockTestQuestions = [...mockTestQuestions, ...bandQuestions];
+          } 
+        }
+
+       
+        if (mockTestQuestions.length === 100) {
+          return {
+            message: "Mock-Test questions fetched successfully",
+            statusCode: 200,
+            success: true,
+            data: mockTestQuestions,
+            canRestart: false,
+          };
+        } else {
+         
+          return {
+            message: "Could not fetch enough questions",
+            statusCode: 400,
+            success: false,
+            data: [],
+            canRestart: true, 
+          };
+        }
+      } else {
+        
+        let aggr = [];
+
+       
+        aggr.push(
+          {
+            $lookup: {
+              from: "attemptquizquestions",
+              localField: "_id",
+              foreignField: "questionId",
+              pipeline: [
+                {
+                  $match: {
+                    userId: { $eq: new ObjectId(userId) },
                   },
                 },
-              },
-            ],
-            as: "result",
-          },
-        },
-        {
-          $addFields: {
-            sizeRes: {
-              $size: "$result",
-            },
-            questionId: {
-              $toString: "$_id",
+              ],
+              as: "result",
             },
           },
-        },
-        {
-          $match: {
-            sizeRes: 0,
+          {
+            $addFields: {
+              sizeRes: { $size: "$result" },
+              questionId: { $toString: "$_id" },
+            },
           },
-        },
-        {
-          $lookup: {
-            from: "quizcategories",
-            localField: "category",
-            foreignField: "_id",
-            as: "quizcategoriesresult",
+          {
+            $match: { sizeRes: 0 },
           },
-        },
-        {
-          $unwind: {
-            path: "$quizcategoriesresult",
-            preserveNullAndEmptyArrays: true,
+          {
+            $lookup: {
+              from: "quizcategories",
+              localField: "category",
+              foreignField: "_id",
+              as: "quizcategoriesresult",
+            },
           },
-        },
-        {
-          $match: {
-            "quizcategoriesresult.catUnqName": cid,
+          {
+            $unwind: {
+              path: "$quizcategoriesresult",
+              preserveNullAndEmptyArrays: true,
+            },
           },
-        },
-        {
-          $lookup: {
-            from: "quizmodules",
-            localField: "module",
-            foreignField: "_id",
-            as: "quizmodulesresult",
+          {
+            $match: {
+              "quizcategoriesresult.catUnqName": cid, 
+            },
           },
-        },
-        {
-          $unwind: {
-            path: "$quizmodulesresult",
-            preserveNullAndEmptyArrays: true,
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
           },
-        },
-        {
-          $addFields: {
-            quizCategory: "$quizcategoriesresult.name",
-            quizModuleName: "$quizmodulesresult.moduleName",
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
           },
-        },
-        {
-          $project: {
-            result: 0,
-            answer: 0,
-            sizeRes: 0,
-            _id: 0,
+          {
+            $addFields: {
+              quizCategory: "$quizcategoriesresult.name",
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
           },
-        },
-        {
-          $sample: { size: 1 } // Add this line to randomly pick one question
-        }
-      );
-      const products = await QuizQuestion.aggregate(aggr);
-      const resultObject = {
-        message:
-          products.length > 0
-            ? "Question fetched successfully"
-            : "Quiz Completed ",
-        statusCode: products.length > 0 ? 200 : 400,
-        success: true,
-        data: products.length > 0 ? products[0] : {},
-        canRestart: products.length === 0, // Indicates if the quiz can be restarted
-      };
-      return resultObject;
+          {
+            $project: {
+              result: 0,
+              answer: 0,
+              sizeRes: 0,
+              _id: 0,
+            },
+          },
+          {
+            $addFields: {
+              randomSort: { $rand: {} }
+            },
+          },
+          {
+            $sort: {
+              randomSort: 1
+            },
+          },
+        );
+
+        const products = await QuizQuestion.aggregate(aggr);
+
+        const resultObject = {
+          message:
+            products.length > 0
+              ? "Question fetched successfully"
+              : "No questions available",
+          statusCode: products.length > 0 ? 200 : 400,
+          success: true,
+          data: products,
+          canRestart: products.length === 0, 
+        };
+
+        return resultObject;
+      }
     } catch (err) {
+      console.error("Error during fetching questions:", err);
       const resultObject = {
         message: "Could not fetch products",
         statusCode: 400,
@@ -982,6 +1104,7 @@ class quizService {
       return resultObject;
     }
   }
+
   async restartQuiz(userId, cid, moduleId = null) {
     try {
       // Clear user's previous attempts for this category

@@ -8,6 +8,7 @@ import {
   getRandomQuestionByName,
   restartQuiz,
   resetQuizRestarted,
+  resetOneQuizOutput,
 } from "../../redux/features/quizSlice";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
@@ -121,7 +122,7 @@ const languageCodes = {
   Turkish: "tr",
   Turkmen: "tk",
   Ukrainian: "uk",
-
+  
   Uyghur: "ug",
   Uzbek: "uz",
   Vietnamese: "vi",
@@ -148,17 +149,17 @@ const Quiz = () => {
   const [hasTranslated, setHasTranslated] = useState(false);
   const [quizEnded, setQuizEnded] = useState(false);
   const [categoryFetched, setCategoryFetched] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const { oneQuiz, oneQuizOutput, isQuizRestarted, loading } = useSelector(
-    (state) => state.quiz
-  );
+  const [confettiActive, setConfettiActive] = useState(false);
+
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [timeUp, setTimeUp] = useState(false);
+
+  const { oneQuiz, oneQuizOutput, outputData, isQuizRestarted, loading } =
+    useSelector((state) => state.quiz);
   const { quizCategory } = useSelector((state) => state.quizCategory);
   const { width, height } = useWindowSize();
-
-
-
-
-
 
   useEffect(() => {
     if (window.responsiveVoice) {
@@ -218,18 +219,16 @@ const Quiz = () => {
   const hasFetchedRef = useRef(false);
   useEffect(() => {
     // Create a ref to track if the API has already been called
-    
-  
+
     if (!hasFetchedRef.current) {
       dispatch(getRandomQuestionByName(cid));
-      hasFetchedRef.current = true;  // Set it to true to avoid re-triggering
+      hasFetchedRef.current = true; // Set it to true to avoid re-triggering
     }
   }, [cid, dispatch]); // Keep dependencies for `cid` and `dispatch`
-  
 
   const handleAnswerOptionClick = (answerOption, answerImage) => {
     let finData = {
-      questionId: oneQuiz.questionId,
+      questionId: oneQuiz[currentQuestionIndex].questionId,
       answer: answerOption,
       answerImage: answerImage,
     };
@@ -248,27 +247,61 @@ const Quiz = () => {
       window.responsiveVoice.cancel(); // This stops any ongoing speech
     }
   };
+
+  const totalQuestions = Object.keys(oneQuiz).length;
+
+  const handleQuestionClick = (index) => {
+    stopSpeech();
+    resetTranslation();
+
+    setCurrentQuestionIndex(index);
+    // Optionally reset quiz output when changing question
+
+    // If the question is not already answered, mark it as answered
+    if (!answeredQuestions.includes(index)) {
+      setAnsweredQuestions((prev) => [...prev, index]);
+    }
+    setConfettiActive(false);
+  };
+
   const handleNextQuestion = () => {
     stopSpeech();
     resetTranslation();
-    dispatch(getQuizRandomQuestionOutputFailure());
-    dispatch(getQuizRandomQuestionFailure());
-    dispatch(getRandomQuestionByName(cid, id));
+
+    if (currentQuestionIndex < totalQuestions - 1) {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }
+
+    if (currentQuestionIndex === totalQuestions - 1) {
+      setQuizCompleted(true); // Mark the quiz as completed when the last question is answered
+    }
+
+    setConfettiActive(false);
   };
+
+  useEffect(() => {
+    if (oneQuizOutput.answerAttempt === "Correct") {
+      setConfettiActive(true); // Enable confetti when the answer is correct
+    }
+  }, [oneQuizOutput]);
 
   const endQuiz = () => {
     navigate("/quizResult");
+    dispatch(resetOneQuizOutput());
   };
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     // Only dispatch getQuizCategoryById if the category is not fetched yet
-    if (oneQuiz?.category != quizCategory?._id && !categoryFetched) {
-      dispatch(getQuizCategoryById(oneQuiz.category));
+    if (
+      oneQuiz[currentQuestionIndex]?.category != quizCategory?._id &&
+      !categoryFetched
+    ) {
+      dispatch(getQuizCategoryById(oneQuiz[currentQuestionIndex].category));
       setCategoryFetched(true); // Mark category as fetched
     }
-  }, [dispatch, oneQuiz?.category, categoryFetched]);
+  }, [dispatch, oneQuiz[currentQuestionIndex]?.category, categoryFetched]);
 
   const prevTimerRef = useRef();
 
@@ -299,6 +332,8 @@ const Quiz = () => {
 
   useEffect(() => {
     if (timer === 0) {
+      setTimeUp(true); // Set the "Time's Up!" state when the timer ends
+
       setQuizEnded(true); // End the quiz when the timer hits 0
     }
   }, [timer]);
@@ -320,36 +355,31 @@ const Quiz = () => {
   const handleRestart = () => {
     stopSpeech();
     dispatch(restartQuiz(cid));
-    setQuizEnded(false);
+    setQuizCompleted(false);
     setCategoryFetched(false);
     // Reset the category fetched flag for restart
     if (quizCategory?.timer) {
       setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
     }
+   
     // Dispatch the restart action
   };
 
   const backbtn = () => {
     navigate(-1);
-    
-     
-  }
-  
-
-  const totalQuestions = oneQuiz?.question?.length || 0; // Assuming options length gives total questions
-  const allQuestionsAnswered = answeredQuestions.length >= totalQuestions;
+  };
 
   return (
     <>
-      {oneQuizOutput.answerAttempt === "Correct" && (
-        <Confetti run={true} width={width} height={height} />
+      {confettiActive && (
+        <Confetti run={confettiActive} width={width} height={height} />
       )}
       <div className={styles.quizContainer}>
         <div className={styles.quizDiv}>
           <div className={styles.quiz}>
             {loading ? (
               <LoadingWeb />
-            ) : quizEnded ? (
+            ) : timeUp ? (
               <div className={styles.totalTimer333}>
                 <span>Time's Up!</span>
                 <button
@@ -359,7 +389,17 @@ const Quiz = () => {
                   Restart Quiz
                 </button>
               </div>
-            ) : oneQuiz?.question ? (
+            ) : quizCompleted ? (
+              <div className={styles.totalTimer333}>
+                <span>Quiz Completed!</span>
+                <button
+                   onClick={handleRestart}
+                  className="btn btn-secondary bg-danger"
+                >
+                  Restart Quiz
+                </button>
+              </div>
+            ) : oneQuiz[currentQuestionIndex]?.question ? (
               <>
                 <div className={styles.totalTimer2}>
                   <div className={styles.totalTimer}>
@@ -404,21 +444,43 @@ const Quiz = () => {
                     )}
                   </div>
                 </div>
-
+                <div
+                  className="question-numbers"
+                  style={{ marginBottom: "1rem" }}
+                >
+                  {Array.from({ length: totalQuestions }, (_, index) => (
+                    <button
+                      key={index}
+                      id={styles.questionNumbering}
+                      className={`question-number ${
+                        currentQuestionIndex === index ? "active" : ""
+                      } ${answeredQuestions.includes(index) ? "answered" : ""}`}
+                      onClick={() => handleQuestionClick(index)}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
+                </div>
                 <div className={styles.totalTimer}>
                   <span>Category: </span>
-                  <p>{oneQuiz?.quizCategory || "Not specified"}</p>
+                  <p>
+                    {oneQuiz[currentQuestionIndex]?.quizCategory ||
+                      "Not specified"}
+                  </p>
                 </div>
                 <div className={styles.questionCount}>
                   <span>Question: </span>
                   <div
                     ref={myDivRef}
                     dangerouslySetInnerHTML={{
-                      __html: oneQuiz?.question.replace(">", "><br/>"),
+                      __html: oneQuiz[currentQuestionIndex]?.question.replace(
+                        ">",
+                        "><br/>"
+                      ),
                     }}
                   />
                 </div>
-                {oneQuiz?.questionImage && (
+                {oneQuiz[currentQuestionIndex]?.questionImage && (
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <img
                       style={{
@@ -427,86 +489,133 @@ const Quiz = () => {
                         borderRadius: "6px",
                         boxShadow: "0px 4px 10px rgba(31, 31, 31, 0.74)",
                       }}
-                      src={imageBaseUrl + oneQuiz?.questionImage}
+                      src={
+                        imageBaseUrl +
+                        oneQuiz[currentQuestionIndex]?.questionImage
+                      }
                       alt="Question"
                     />
                   </div>
                 )}
                 <div className={styles.answerSection}>
-                  {oneQuiz?.option?.map((answerOption, index) => {
-                    return (
-                      <button
-                        key={index}
-                        disabled={oneQuizOutput.answerAttempt}
-                        style={{
-                          backgroundColor:
-                            oneQuizOutput.answerAttempt === "Incorrect"
-                              ? "Option" + (index + 1) === answered
-                                ? "#e40000"
-                                : oneQuizOutput.correctAnswer ===
-                                  "Option" + (index + 1)
-                                ? "#00a600"
-                                : ""
-                              : oneQuizOutput.correctAnswer ===
-                                "Option" + (index + 1)
-                              ? "#00a600"
-                              : "",
-                        }}
-                        onClick={() =>
-                          handleAnswerOptionClick(
-                            "Option" + (index + 1),
-                            "Image" + (index + 1)
-                          )
-                        }
-                      >
-                        {answerOption && (
-                          <>
-                            <p id={"option" + (index + 1)}>{answerOption}</p>
-                            <p
-                              style={{ display: "none" }}
-                              id={"laboption" + (index + 1)}
-                            >
-                              {answerOption}
-                            </p>
-                            {oneQuiz?.optionImage[index] && (
-                              <img
-                                style={{ maxWidth: "120px", width: "100%" }}
-                                src={`${
-                                  oneQuiz?.optionImage[index].includes("https")
-                                    ? oneQuiz?.optionImage[index]
-                                    : imageBaseUrl + oneQuiz?.optionImage[index]
-                                }`}
-                              />
-                            )}
+                  {oneQuiz[currentQuestionIndex]?.option?.map(
+                    (answerOption, index) => {
+                      // Check if there are matching output items based on questionId
+                      const outputItem = outputData.find(
+                        (item) =>
+                          item.questionId ===
+                          oneQuiz[currentQuestionIndex]?.questionId
+                      );
+                      // Check if the user has selected an answer and if it's correct or incorrect
+                      // Check if the user has selected an answer and if it's correct or incorrect
+                      const isAnswerSelected =
+                        outputItem?.answerAttempt !== undefined;
+                      const isCorrect = outputItem?.answerAttempt === "Correct";
 
-                            {oneQuizOutput.answerAttempt && (
-                              <>
-                                {oneQuizOutput.correctAnswer ===
-                                `Option${index + 1}` ? (
-                                  <TiTick
-                                    style={{
-                                      color: "white",
-                                      fontSize: "20px",
-                                      fontWeight: "900",
-                                    }}
-                                  />
-                                ) : oneQuizOutput.answerAttempt ===
-                                  "Incorrect" ? (
-                                  <RxCross2
-                                    style={{
-                                      color: "white",
-                                      fontSize: "20px",
-                                      fontWeight: "900",
-                                    }}
-                                  />
-                                ) : null}
-                              </>
-                            )}
-                          </>
-                        )}
-                      </button>
-                    );
-                  })}
+                      const isSelectedAnswer =
+                        `Option${index + 1}` === outputItem?.answer;
+                      const isButtonDisabled =
+                        outputItem?.questionId ===
+                        oneQuiz[currentQuestionIndex]?.questionId;
+
+                      // Determine the background color and icon display logic
+                      let buttonBackgroundColor = "";
+                      let showTick = false;
+                      let showCross = false;
+
+                      if (isAnswerSelected) {
+                        // If the selected answer is the user's choice and it's incorrect
+                        if (isSelectedAnswer && !isCorrect) {
+                          buttonBackgroundColor = "#e40000"; // Red for incorrect selected answer
+                          showCross = true; // Show cross icon
+                        } else if (isSelectedAnswer && isCorrect) {
+                          buttonBackgroundColor = "#00a600"; // Green for correct answer
+                          showTick = true;
+                        } else if (
+                          !isSelectedAnswer &&
+                          outputItem?.correctAnswer === `Option${index + 1}`
+                        ) {
+                          // If the user did not select the correct option, show it in green
+                          buttonBackgroundColor = "#00a600"; // Green for correct answer
+                          showTick = true; // Show tick icon
+                        }
+                      } else if (
+                        isCorrect &&
+                        outputItem?.correctAnswer === `Option${index + 1}`
+                      ) {
+                        // If no answer selected yet, highlight the correct option in green
+                        buttonBackgroundColor = "#00a600"; // Green for correct option
+                      }
+
+                      return (
+                        <button
+                          key={index}
+                          disabled={isButtonDisabled} // Disable button if the questionId matches
+                          style={{
+                            backgroundColor: buttonBackgroundColor,
+                            cursor: isButtonDisabled
+                              ? "not-allowed"
+                              : "pointer",
+                          }}
+                          onClick={() =>
+                            handleAnswerOptionClick(
+                              "Option" + (index + 1),
+                              "Image" + (index + 1)
+                            )
+                          }
+                        >
+                          {answerOption && (
+                            <>
+                              <p id={"option" + (index + 1)}>{answerOption}</p>
+                              <p
+                                style={{ display: "none" }}
+                                id={"laboption" + (index + 1)}
+                              >
+                                {answerOption}
+                              </p>
+                              {oneQuiz[currentQuestionIndex]?.optionImage[
+                                index
+                              ] && (
+                                <img
+                                  style={{ maxWidth: "120px", width: "100%" }}
+                                  src={
+                                    oneQuiz[currentQuestionIndex]?.optionImage[
+                                      index
+                                    ].includes("https")
+                                      ? oneQuiz[currentQuestionIndex]
+                                          ?.optionImage[index]
+                                      : imageBaseUrl +
+                                        oneQuiz[currentQuestionIndex]
+                                          ?.optionImage[index]
+                                  }
+                                />
+                              )}
+                              {/* Show the Tick icon if the selected answer is correct */}
+                              {showTick && (
+                                <TiTick
+                                  style={{
+                                    color: "white",
+                                    fontSize: "20px",
+                                    fontWeight: "900",
+                                  }}
+                                />
+                              )}
+                              {/* Show the Cross icon if the selected answer is incorrect */}
+                              {showCross && (
+                                <RxCross2
+                                  style={{
+                                    color: "white",
+                                    fontSize: "20px",
+                                    fontWeight: "900",
+                                  }}
+                                />
+                              )}
+                            </>
+                          )}
+                        </button>
+                      );
+                    }
+                  )}
                 </div>
               </>
             ) : (
@@ -529,7 +638,7 @@ const Quiz = () => {
               >
                 Back
               </button>
-              {oneQuizOutput.answerAttempt && (
+              {oneQuizOutput.answerAttempt && !quizCompleted && !timeUp && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
             </div>

@@ -166,7 +166,7 @@ export default function PartOneTrainnigMaterial() {
                   Band 2 summary
                 </button>
               </Link>
-              <Link to="/takequizCatName/band-two-test">
+              <Link to="/takequizCatName/band-Two-test">
                 <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
               </Link>
               <Link to="/takequizCatName/Band-3---Driving-Test--Disabilities--and-The-Law">

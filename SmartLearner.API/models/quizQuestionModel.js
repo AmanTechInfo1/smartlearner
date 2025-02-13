@@ -6,6 +6,7 @@ const QuizQuestionSchema = new mongoose.Schema({
   description: { type: String },
   option: { type: Array, required: true },
   optionImage: { type: Array, required: true },
+  band: { type: String}, 
   answer: { type: String, required: true },
   // answerImage: { type: String, required: true },
   category: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizCategory' },

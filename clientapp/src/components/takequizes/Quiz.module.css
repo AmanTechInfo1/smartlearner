@@ -140,3 +140,11 @@
     align-items: flex-start;
   }
 }
+#questionNumbering{
+ margin: 0.2rem;
+  border-radius: 50%;
+  width: 38px;
+  padding: 0.3rem 0px;
+  border: none;
+  
+}
