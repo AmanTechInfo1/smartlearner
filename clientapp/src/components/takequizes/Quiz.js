@@ -122,7 +122,7 @@ const languageCodes = {
   Turkish: "tr",
   Turkmen: "tk",
   Ukrainian: "uk",
-  
+
   Uyghur: "ug",
   Uzbek: "uz",
   Vietnamese: "vi",
@@ -184,7 +184,7 @@ const Quiz = () => {
     setHasTranslated(true);
     setIsTranslating(true);
     const formdata = new FormData();
-    const question = oneQuiz?.question || "No question provided";
+    const question = oneQuiz[currentQuestionIndex]?.question || "No question provided";
 
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);

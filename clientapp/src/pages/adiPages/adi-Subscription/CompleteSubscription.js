@@ -120,6 +120,18 @@ const CompleteSubscription = () => {
             <h2>CHECKOUT</h2>
             <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
           </div>
+          <div className="coupon-section">
+            <input
+              type="text"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              placeholder="Enter Coupon Code"
+              className="coupon-input"
+            />
+            <button onClick={handleCouponSubmit} className="coupon-button">
+              Apply Coupon
+            </button>
+          </div>
 
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>
@@ -140,7 +152,8 @@ const CompleteSubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}>
+                      }}
+                    >
                       Loading plans...
                     </p>
                   )}

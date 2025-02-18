@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 // import subsIcon from "../../../assets/images/subsIconSvg.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import {
   createUserSubscription,
   checkTrialEligibility,
   fetchUserSubscriptions,
-  pdiApplyCouponCode
+  pdiApplyCouponCode,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +17,6 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
-
-
 
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
@@ -35,9 +33,8 @@ const PartThreeSubscription = () => {
       dispatch(fetchUserSubscriptions(userId));
     }
     dispatch(fetchPlans());
-    
-  }, [dispatch, userId]);// Added userId as a dependency
-  
+  }, [dispatch, userId]); // Added userId as a dependency
+
   const handleCouponSubmit = async () => {
     try {
       await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
@@ -45,17 +42,15 @@ const PartThreeSubscription = () => {
       toast.success("subscription added");
     } catch (error) {
       console.error("Error applying coupon:", error);
-     
     }
   };
-
 
   // const handleCreateTrialSubscription = async (plan) => {
   //   try {
   //     const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
 
   //     if (!trialEligible) {
-       
+
   //       return;
   //     }
 
@@ -105,100 +100,114 @@ const PartThreeSubscription = () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
-      navigate("/adi-part-3")
+      navigate("/adi-part-3");
     } catch (error) {
       console.error("Error during order approval:", error);
     }
   };
 
   // Separate plans into trial and paid
-//   const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
-  const paidPlans = plans.filter(plan => plan.planCategory === 'pdi-part-three packages');
+  //   const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
+  const paidPlans = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-three packages"
+  );
 
   return (
-       <div className="subscription-cardBox">
-         <div className={styles.cartPage}>
-           <div className={styles.cartContainer}>
-             <div className={styles.cartheading}>
-               <h2>CHECKOUT</h2>
-               <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
-             </div>
-   
-             <div className={styles.cartContentContainer}>
-               <div className={styles.cartItemsContainer}>
-                 <table className={styles.cartTable}>
-                   <thead>
-                     <tr>
-                       <th>Item</th>
-                       <th>Price</th>
-                       <th>Quantity</th>
-                       <th>Total</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                   {loading && (
+    <div className="subscription-cardBox">
+      <div className={styles.cartPage}>
+        <div className={styles.cartContainer}>
+          <div className={styles.cartheading}>
+            <h2>CHECKOUT</h2>
+            <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
+          </div>
+          <div className="coupon-section">
+            <input
+              type="text"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              placeholder="Enter Coupon Code"
+              className="coupon-input"
+            />
+            <button onClick={handleCouponSubmit} className="coupon-button">
+              Apply Coupon
+            </button>
+          </div>
+          <div className={styles.cartContentContainer}>
+            <div className={styles.cartItemsContainer}>
+              <table className={styles.cartTable}>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loading && (
                     <p
                       style={{
                         color: "white",
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}>
+                      }}
+                    >
                       Loading plans...
                     </p>
                   )}
-                     {paidPlans.map((plan, index) => (
-                       <tr className={styles.cartRow}>
-                         <td>{plan.planname}</td>
-                         <td>£ {plan.price}</td>
-                         <td> 1 </td>
-                         <td>£ {plan.price}</td>
-                       </tr>
-                     ))}
-                   </tbody>
-                 </table>
-               </div>
-               {paidPlans.map((plan, index) => (
-                 <div className={styles.cartBtnsContainer}>
-                   <div>
-                     <div className={styles.basketHeadingTitles}>
-                       <h2>BASKET TOTAL</h2>
-                       <div className={styles.basketHeadingTitle}>
-                         <p>
-                           <span>Subtotal:</span>
-                           <span>£ {plan.price}</span>
-                         </p>
-                         <p>
-                           <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
-                         </p>
-                         <p>
-                           <span>Total:</span> <span>{plan.price}</span>
-                         </p>
-                         <div>
-                           <img src={paypalLogo} alt="paypal" />
-                         </div>
-                       </div>
-                     </div>
-                     <div className={styles.basketHeadingTitle}></div>
-                   </div>
-   
-                   <div>
-                     <PayPalButtons
-                       createOrder={(data, actions) =>
-                         handleCreateSubscription(plan)
-                       }
-                       onApprove={(data, actions) =>
-                         handleApprovePayment(plan, actions)
-                       }
-                       fundingSource="paypal"
-                     />
-                   </div>
-                 </div>
-               ))}
-             </div>
-           </div>
-         </div>
-       </div>
+                  {paidPlans.map((plan, index) => (
+                    <tr className={styles.cartRow}>
+                      <td>{plan.planname}</td>
+                      <td>£ {plan.price}</td>
+                      <td> 1 </td>
+                      <td>£ {plan.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {paidPlans.map((plan, index) => (
+              <div className={styles.cartBtnsContainer}>
+                <div>
+                  <div className={styles.basketHeadingTitles}>
+                    <h2>BASKET TOTAL</h2>
+                    <div className={styles.basketHeadingTitle}>
+                      <p>
+                        <span>Subtotal:</span>
+                        <span>£ {plan.price}</span>
+                      </p>
+                      <p>
+                        <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                      </p>
+                      <p>
+                        <span>Total:</span> <span>{plan.price}</span>
+                      </p>
+                      <div>
+                        <img src={paypalLogo} alt="paypal" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.basketHeadingTitle}></div>
+                </div>
+
+                <div>
+                  <PayPalButtons
+                    createOrder={(data, actions) =>
+                      handleCreateSubscription(plan)
+                    }
+                    onApprove={(data, actions) =>
+                      handleApprovePayment(plan, actions)
+                    }
+                    fundingSource="paypal"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
