@@ -501,6 +501,11 @@ export default function AdiPartOne() {
               </ul>
             </section>
           </section>
+          <div className={styles.linkBtnSec}>
+              <Link to="/hazard-preception-part-2">
+                <button>Hazard Perception</button>
+              </Link>
+            </div>
         </section>
         {/* /////////////////////////////////////////////////////////////////// */}
         {/* <section className={styles.hazardTestWorkListSection2}>
@@ -596,13 +601,10 @@ export default function AdiPartOne() {
                 </p>
               </li>
             </ul>
-            <div className={styles.linkBtnSec}>
-              <Link to="/hazard-preception-part-2">
-                <button>Hazard Perception</button>
-              </Link>
-            </div>
+            
           </div>
         </section> */}
+        
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>
@@ -621,7 +623,9 @@ export default function AdiPartOne() {
                 ></iframe>
               </div>
             </div>
+            
           </div>
+         
         </section>
 
         {/* ////////////////////////////////////////////////////////////////////// */}

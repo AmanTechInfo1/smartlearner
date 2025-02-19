@@ -212,6 +212,7 @@ function AddProductModel(props) {
                     onChange={onChange}
                     autoComplete="false"
                     placeholder="£"
+                    step="0.01"
                   />
                 )}
                 defaultValue=""

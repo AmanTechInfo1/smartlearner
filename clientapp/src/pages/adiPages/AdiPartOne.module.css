@@ -145,18 +145,21 @@
 /* ///////////////////////////////////// */
 
 .imagesHSection {
-  max-width: 1140px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 2rem 1rem;
+  border-radius: 10px;
+  padding: 2rem 0px;
+  background: linear-gradient(135deg, #cb6205, #d2015fb5);
 }
 .imagesHSection p {
   text-align: center;
 }
 #imagesHSection {
+  max-width: 1440px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   place-items: center;
   gap: 20px;
   align-items: start;
@@ -166,11 +169,24 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   place-items: center;
   gap: 20px;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #cb6205, #d2015f);
+  min-height: 500px;
+  height: 100%;
+ 
+}
+#imagesHSection section p{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  text-align: center;
 }
 #imagesHSection img {
-  max-width: 250px;
-  aspect-ratio: 1/1;
+  max-width: 400px;
+  aspect-ratio: 3/2;
   width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 55px 5px rgba(54, 54, 54, 0.322);
 }
 /* ////////////////////////////////////////// */
 
@@ -202,6 +218,19 @@
   margin-left: auto;
   color: white;
   background: linear-gradient(135deg, #cb6205, #d2015fb5);
+  border-radius: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#hazardTestWorkListSectionPara2{
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: rgb(0, 0, 0);
+  background: linear-gradient(135deg, #ffffff7c, #ffffff82);
   border-radius: 10px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -454,7 +483,9 @@
 #resLists21 li p {
   margin-bottom: 1rem;
 }
-
+.linkBtnSec{
+  text-align: center;
+}
 .linkBtnSec a button {
   text-decoration: none;
   padding: 12px 25px;
@@ -463,8 +494,9 @@
   border-radius: 4px;
 }
 .linkBtnSec a button:hover {
-  background-color: black;
-  color: #006ace;
+  background-color: rgb(12, 0, 54);
+  color: #dcdcdc;
+  border: 1px solid rgba(225, 225, 225, 0.769);
 }
 
 /* ////////////////////////////////////////////////////////////////// */

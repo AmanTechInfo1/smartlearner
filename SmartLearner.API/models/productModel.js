@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema({
     image: { type: String },
     price: { type: Number, required: true },
     // stock: { type: Number, required: true },
-    duration: { type: Number, required: true },
+    duration: { type: Number },
     experience: { type: String },
     transmission: { type: String},
     postcode: { type: mongoose.Schema.Types.ObjectId, ref: 'postcodes' },

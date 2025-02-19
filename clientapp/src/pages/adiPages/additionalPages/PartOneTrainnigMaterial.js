@@ -140,7 +140,7 @@ export default function PartOneTrainnigMaterial() {
             <div id={styles.btnDiv}>
              
 
-              <Link to="/takequizCatName/Band-1---Road-Procedure">
+              <Link to="/band-one-Road-Procedure">
                 <button id={styles.hazzardBtn2}>
                   Band 1 Practice Questions{" "}
                 </button>
@@ -151,7 +151,7 @@ export default function PartOneTrainnigMaterial() {
               {/* <Link to="/takequizCatName/band-one-test">
                 <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
               </Link> */}
-              <Link to="/takequizCatName/Band-2---Traffic-Signs-and-Signals--Car-Control--Pedestrians-and-Mechanical-Knowledge">
+              <Link to="/band-two-traffic-signs-and-signals">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                   Band 2 Practice Questions
                 </button>
@@ -164,7 +164,7 @@ export default function PartOneTrainnigMaterial() {
               {/* <Link to="/takequizCatName/band-Two-test">
                 <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
               </Link> */}
-              <Link to="/takequizCatName/Band-3---Driving-Test--Disabilities--and-The-Law">
+              <Link to="/band-three-driving-tests-disabilities-and-the-law">
                 <button id={styles.hazzardBtn2}>
                   {" "}
                   Band 3 Practice Questions
@@ -176,7 +176,7 @@ export default function PartOneTrainnigMaterial() {
               {/* <Link to="/takequizCatName/band-three-test">
                 <button id={styles.hazzardBtn2}>Band 3 Test Questions 25</button>
               </Link> */}
-              <Link to="/takequizCatName/Band-4---Publications-and-Instructional-Techniques">
+              <Link to="/band-four-publications-techniques">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                   Band 4 Practice Questions
                 </button>

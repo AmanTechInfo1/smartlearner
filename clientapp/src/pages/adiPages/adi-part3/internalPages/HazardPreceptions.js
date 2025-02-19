@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../AdiPartOne.module.css";
 import { IoMdArrowDropright } from "react-icons/io";
 import Lplateimg from "../../../../assets/images/L-Plate.jpg";
@@ -32,7 +32,112 @@ import Fog from "../../../../assets/images/fogImg.png";
 import BrightSun from "../../../../assets/images/sunSet.png";
 import { Link } from "react-router-dom";
 
+import { useRef } from "react";
+import gsap from "gsap";
+
 export default function HazardPreceptions() {
+
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = " Forget the rest,"; // First part before "Driving"
+    const secondPart = "learn with the best!"; // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -41,20 +146,20 @@ export default function HazardPreceptions() {
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <h1>
-                  Forget the rest,
-                  <span>learn with the best!</span>
-                </h1>
+                <h1 ref={textRef}>{splitText()}</h1>
               </div>
-
-              <div className={styles.heading2}>
-                <h2>AWARD-WINNING DRIVING LESSONS</h2>
+              <div className={styles.gGpFrontListP}>
+                <p>
+                  Unlock your driving potential with Smartlearner Learn from
+                  certified instructors in a safe, supportive environment. Start
+                  your journey to becoming a confident, skilled driver today!
+                </p>
               </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Contact Us</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -70,12 +175,13 @@ export default function HazardPreceptions() {
               To ensure you fully understand this portion of the exam.
             </span>
           </p>
-          <hr style={{ opacity: "1", border: "1px solid blue" }}></hr>
+          
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
               <iframe
-                width="1120"
-                height="631"
+                width="1020"
+                height="531"
+                style={{borderRadius:'30px'}}
                 src="https://www.youtube.com/embed/SdQRkmdhwJs"
                 title="Hazard perception test 2024: official DVSA guide"
                 frameborder="0"
@@ -86,7 +192,7 @@ export default function HazardPreceptions() {
           </div>
         </section>
 
-        <section className={styles.hazardTestWorkListSection}>
+        {/* <section className={styles.hazardTestWorkListSection}>
           <h2>
             What is <span>a hazard?</span>
           </h2>
@@ -103,7 +209,7 @@ export default function HazardPreceptions() {
             </ul>
           </div>
         </section>
-        {/* //////////////////////////////////////// */}
+       
 
         <section className={styles.hazardTestWorkListSection}>
           <h2>
@@ -119,12 +225,12 @@ export default function HazardPreceptions() {
               </li>
             </ul>
           </div>
-        </section>
+        </section> */}
 
         {/* ///////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <h2>
-            There are many types of <span>static hazard, including:</span>
+           Static Hazard
           </h2>
           <section className={styles.imagesHSection}>
             <div id={styles.imagesHSection}>
@@ -143,12 +249,13 @@ export default function HazardPreceptions() {
             Different types <span>Of crossings</span>
           </h2>
 
-          <p id={styles.hazardTestWorkListSectionPara}>
+         
+
+          <section className={styles.imagesHSection}>
+          <p id={styles.hazardTestWorkListSectionPara2}>
             There will often be a road sign warning{" "}
             <span>that you are approaching a static hazard. </span>
           </p>
-
-          <section className={styles.imagesHSection}>
             <div id={styles.imagesHSection}>
               <img src={zebra} alt="zebra" />
               <img src={toucan} alt="toucan" />
@@ -162,7 +269,7 @@ export default function HazardPreceptions() {
         <section className={styles.hazardTestWorkListSection}>
           <h2>Moving hazards</h2>
           <section className={styles.imagesHSection}>
-            <p id={styles.hazardTestWorkListSectionPara}>
+            <p id={styles.hazardTestWorkListSectionPara2}>
               Moving hazards tend to be{" "}
               <span> hazards caused by other road users.</span>{" "}
             </p>
@@ -178,11 +285,11 @@ export default function HazardPreceptions() {
           <h2>
             Road user and<span> what to do</span>
           </h2>
-          <section className={styles.imagesHSection}>
+          <section className={styles.imagesHSection2}>
             <div id={styles.imagesHSection}>
               <section>
                 <img src={pedestrian} alt="pedestrian" />
-                <section id={styles.resLists12}>
+                
                   {" "}
                   <p>
                     If you see pedestrians in the road, be patient and wait for
@@ -190,11 +297,11 @@ export default function HazardPreceptions() {
                     pavement, so look out for pedestrians in the road. They may
                     be walking towards you on your side of the road.{" "}
                   </p>
-                </section>
+                
               </section>
               <section>
                 <img src={carDrivers} alt="carDrivers" />
-                <section id={styles.resLists21}>
+               
                   {" "}
                   <p>
                     Hazards caused by other drivers are all too common and can
@@ -204,21 +311,21 @@ export default function HazardPreceptions() {
                     allowances for other drivers. Remember, even experienced
                     drivers can make mistakes.{" "}
                   </p>
-                </section>
+               
               </section>
               <section>
                 <img src={MotorCyclists} alt="MotorCyclists" />
-                <section id={styles.resLists12}>
+               
                   <p>
                     Look out for motorcyclists, especially when you’re emerging
                     from a junction, turning into a road on your right or
                     changing lanes or moving out to overtake.{" "}
                   </p>
-                </section>
+               
               </section>
               <section>
                 <img src={cyclists} alt="cyclists" />
-                <section id={styles.resLists21}>
+               
                   <p>
                     Be aware of cyclists and give them plenty of room. They may
                     wobble or swerve to avoid drains or potholes. At junctions
@@ -226,20 +333,19 @@ export default function HazardPreceptions() {
                     When travelling in slow traffic, before you turn left, check
                     for cyclists filtering through the traffic on your left.
                   </p>{" "}
-                </section>
               </section>
               <section>
                 <img src={HorseRiders} alt="HorseRiders" />
-                <section id={styles.resLists12}>
+             
                   <p>
                     Horses can be unpredictable and easily spooked. Reduce your
                     speed and give them plenty of room when overtaking.{" "}
                   </p>{" "}
-                </section>
+               
               </section>
               <section>
                 <img src={DriversOfLargeVehicle} alt="DriversOfLargeVehicle" />
-                <section id={styles.resLists21}>
+               
                   <p>
                     If you see a bus at a bus stop, remember that people may get
                     off and then cross the road, or that the bus may be about to
@@ -249,21 +355,21 @@ export default function HazardPreceptions() {
                     goods vehicles over 13 metres long have red and yellow
                     markings at the back of the vehicle.{" "}
                   </p>{" "}
-                </section>
+               
               </section>
               <section>
                 <img src={VehicleCarrying} alt="VehicleCarrying" />
-                <section id={styles.resLists12}>
+               
                   <p>
                     Some vehicles have information signs on the back, to show
                     that they contain a hazardous load. Learn what the signs
                     mean.{" "}
                   </p>{" "}
-                </section>
+                
               </section>
               <section>
                 <img src={overtakingVehicle} alt="overtakingVehicle" />
-                <section id={styles.resLists21}>
+             
                   <p>
                     Watch out for vehicles, especially motorcyclists, overtaking
                     and cutting in front of you. If you need to, drop back to
@@ -271,38 +377,38 @@ export default function HazardPreceptions() {
                     right, don’t forget to check to your right for overtaking
                     vehicles before making the turn.{" "}
                   </p>
-                </section>
+              
               </section>
               <section>
                 <img
                   src={disabledPoweredVehicle}
                   alt="disabledPoweredVehicle"
                 />
-                <section id={styles.resLists12}>
+               
                   <p>
                     Reduce your speed and be careful. These small vehicles are
                     extremely vulnerable on the road because they’re difficult
                     to see and they travel slow.
                   </p>
-                </section>
+             
               </section>
               <section>
                 <img src={OlderDrivers} alt="OlderDrivers" />
-                <section id={styles.resLists21}>
+               
                   <p>
                     Older drivers may not react very quickly, so be patient with
                     them. You can practise spotting hazards in everyday
                     situations such as when you’re on a bus, as a passenger in a
                     car, or riding a bicycle.{" "}
                   </p>
-                </section>
+              
               </section>
             </div>
           </section>{" "}
         </section>
         {/* ///////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <p style={{ textAlign: "center", color: "#006ace" }}>
+          <p id={styles.hazardTestWorkListSectionPara2}>
             Different types of weather such as rain, ice fog and even bright
             sunlight can create extra hazards. They can make it harder to see
             the road or affecting your control of the vehicle. Change the way
@@ -320,29 +426,29 @@ export default function HazardPreceptions() {
           <div id={styles.imagesHSection}>
             <section>
               <img src={Rain} alt="pedestrian" />
-              <p id={styles.resLists12}>
+              <p >
                 Double your distance from the vehicle in front to four seconds.
               </p>
             </section>
             <section>
               <img src={Ice} alt="Ice" />
-              <p id={styles.resLists21}>
+              <p >
                 Slow down and increase your separation distance: allow up to 10
                 times the gap you’d leave in the dry.
               </p>
             </section>
             <section>
               <img src={Fog} alt="Fog" />
-              <p id={styles.resLists12}>Slow down and use dipped headlights.</p>
+              <p>Slow down and use dipped headlights.</p>
             </section>
             <section>
               <img src={BrightSun} alt="BrightSun" />
-              <p id={styles.resLists21}>
+              <p >
                 Be aware that sunlight can dazzle you or other drivers.
               </p>
             </section>
           </div>
-          <p style={{ textAlign: "center", color: "#006ace" }}>
+          <p id={styles.hazardTestWorkListSectionPara2}>
             The road conditions can be another hazard and some road users will
             be affected more than others.{" "}
             <span>
@@ -354,15 +460,9 @@ export default function HazardPreceptions() {
         </section>
 
         <div
-          id={styles.btnDiv}
-          style={{
-            maxWidth: "300px",
-            width: "100%",
-            marginRight: "auto",
-            marginLeft: "auto",
-          }}>
+          className={styles.TMnextPage}>
           <Link to="/hazard-clips">
-            <button id={styles.hazzardBtn}>Hazard Videos</button>
+            <button className={styles.TMnextButton}>Hazard Videos</button>
           </Link>
         </div>
       </div>

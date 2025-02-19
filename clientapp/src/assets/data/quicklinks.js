@@ -26,7 +26,7 @@ export const otherLinks = [
     display: "T&C",
   },
   {
-    path: "/login",
+    path: "/register",
     display: "Login/Register",
   },
 ];

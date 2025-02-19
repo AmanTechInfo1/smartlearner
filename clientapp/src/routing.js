@@ -141,6 +141,10 @@ import BusinessCoaching from "./pages/AddOns/BusinessCoaching";
 import PdiLogin from "./pages/auth/PdiLogin";
 import TheoryLogin from "./pages/auth/TheoryLogin";
 import CompleteSubscription from "./pages/adiPages/adi-Subscription/CompleteSubscription";
+import Band1 from "./pages/adiPages/additionalPages/Band1";
+import Band2 from "./pages/adiPages/additionalPages/Band2";
+import Band3 from "./pages/adiPages/additionalPages/Band3";
+import Band4 from "./pages/adiPages/additionalPages/Band4";
 
 export const router = createBrowserRouter([
   {
@@ -209,6 +213,11 @@ export const router = createBrowserRouter([
       { path: "my-account", element: <MyAccount /> },
       { path: "checkout", element: <Checkout /> },
       { path: "adi-part-one", element: <AdiPartOne /> },
+      {path: "band-one-Road-Procedure", element: <Band1 />},
+      {path:"band-two-traffic-signs-and-signals", element: <Band2 />},
+      {path:"band-three-driving-tests-disabilities-and-the-law", element: <Band3 />},
+      {path:"band-four-publications-techniques", element: <Band4 />},
+
       { path: "band-1-Road-Procedure", element: <RoadProcedureBand /> },
       {
         path: "band-2-traffic-signs-and-signals",
