@@ -211,7 +211,7 @@ export default function AdiPartOne() {
             ADI is responsible for developing:
           </p>
           
-          <section className={styles.AdiParttwoDisplayFlex}>
+          {/* <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={prizeTrophy} alt="prizeTrophy" />
             </div>
@@ -255,11 +255,11 @@ export default function AdiPartOne() {
                 </li>
               </ul>
             </section>
-          </section>
+          </section> */}
         </section>
         {/* ///////////////////////////////////////// */}
 
-        <section className={styles.hazardTestWorkListSection}>
+        {/* <section className={styles.hazardTestWorkListSection}>
           <p id={styles.hazardTestWorkListSectionPara}>
             To see what the national standard for driver and rider training is
             <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training">
@@ -345,7 +345,7 @@ export default function AdiPartOne() {
               </ul>
             </section>
           </section>
-        </section>
+        </section> */}
 
         {/* //////////////////////////////////////////////////////// */}
 
@@ -503,7 +503,7 @@ export default function AdiPartOne() {
           </section>
         </section>
         {/* /////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection2}>
+        {/* <section className={styles.hazardTestWorkListSection2}>
           <h2 className={styles.hazardTestH234}>
             Why is the hazard perception{" "}
            Test included in the ADI theory test?
@@ -520,9 +520,9 @@ export default function AdiPartOne() {
               </li>
             </ul>
           </div>
-        </section>
+        </section> */}
         {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection2}>
+        {/* <section className={styles.hazardTestWorkListSection2}>
           <h2 className={styles.hazardTestH234}>
             How does it differ from the hazard perception{" "}
             <span>Test that learner drivers and riders take?</span>
@@ -602,14 +602,14 @@ export default function AdiPartOne() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>
             <div className={styles.innerTheorySupportContent}>
               <div className={styles.theorySupportContentVideo}>
                 <iframe
-                
+
                   width="900"
                   height="500"
                   src="https://www.youtube.com/embed/-bsLPF0Q35Y"

@@ -239,12 +239,12 @@ export default function TrainningMaterial() {
             </ul>
           </div>
         </section>
-        <div className={styles.TMnextPage}>
+        {/* <div className={styles.TMnextPage}>
           <Link to="/band-1-Road-Procedure">
             {" "}
             <button className={styles.TMnextButton}>NEXT PAGE Band - 1</button>
           </Link>
-        </div>
+        </div> */}
         </section>
       </div>
     </div>

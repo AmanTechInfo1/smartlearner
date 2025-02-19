@@ -989,7 +989,101 @@ class quizService {
             canRestart: true, 
           };
         }
-      } else {
+      } 
+      else if (cid === "Mock-Test") {
+        // If the category is "road-procedure", fetch only 50 random questions
+        const MockQuestions = await QuizQuestion.aggregate([
+          {
+            $lookup: {
+              from: "attemptquizquestions",
+              localField: "_id",
+              foreignField: "questionId",
+              pipeline: [
+                {
+                  $match: {
+                    userId: { $eq: new ObjectId(userId) },
+                  },
+                },
+              ],
+              as: "result",
+            },
+          },
+          {
+            $addFields: {
+              sizeRes: { $size: "$result" },
+              questionId: { $toString: "$_id" },
+            },
+          },
+          {
+            $match: { sizeRes: 0 }, // Only return questions that haven't been attempted
+          },
+          {
+            $lookup: {
+              from: "quizcategories",
+              localField: "category",
+              foreignField: "_id",
+              as: "quizcategoriesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizcategoriesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $match: {
+              "quizcategoriesresult.catUnqName": "Mock-Test", // Filter by category
+            },
+          },
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              quizCategory: "$quizcategoriesresult.name",
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
+          },
+          {
+            $project: {
+              result: 0,
+              answer: 0,
+              sizeRes: 0,
+              _id: 0,
+            },
+          },
+          {
+            $sample: { size: 50 }, // Limit to 50 random questions
+          },
+        ]);
+  
+        const resultObject = {
+          message: 
+          MockQuestions.length > 0
+              ? "MockQuestions questions fetched successfully"
+              : "No MockQuestions questions available",
+          statusCode: MockQuestions.length > 0 ? 200 : 400,
+          success: MockQuestions.length > 0,
+          data: MockQuestions,
+          canRestart: MockQuestions.length === 0,
+        };
+  
+        return resultObject;
+      }
+      
+      else {
         
         let aggr = [];
 

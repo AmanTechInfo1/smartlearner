@@ -120,7 +120,7 @@ export default function MockTest() {
             <p>
               Click the start quiz button to start the quiz and See your result
             </p>
-            <Link to="/takequizCatName/Band-1--Road-Procedures">
+            <Link to="/takequizCatName/Mock-Test">
               {" "}
               <button>Start Quiz</button>
             </Link>

@@ -138,64 +138,68 @@ export default function PartOneTrainnigMaterial() {
         <section className={styles.hazarddivsectionmanner}>
           <section className={styles.hazardTestWorkListSection}>
             <div id={styles.btnDiv}>
-              <Link to="/trainning-material">
-                <button id={styles.hazzardBtn}>Training Material</button>
-              </Link>
-              <Link to="/glossary-terms">
-                <button id={styles.hazzardBtn}>Glossary of Terms</button>
-              </Link>
+             
 
               <Link to="/takequizCatName/Band-1---Road-Procedure">
                 <button id={styles.hazzardBtn2}>
                   Band 1 Practice Questions{" "}
                 </button>
               </Link>
-              {/* <Link to="/band-1-Road-Procedure">
-                <button id={styles.hazzardBtn}>Part 1 Band 1 summary</button>
-              </Link> */}
-              <Link to="/takequizCatName/band-one-test">
+              <Link to="/band-1-Road-Procedure">
                 <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
               </Link>
+              {/* <Link to="/takequizCatName/band-one-test">
+                <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
+              </Link> */}
               <Link to="/takequizCatName/Band-2---Traffic-Signs-and-Signals--Car-Control--Pedestrians-and-Mechanical-Knowledge">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                   Band 2 Practice Questions
                 </button>
               </Link>
-              {/* <Link to="/band-2-traffic-signs-and-signals">
-                <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
-                  Band 2 summary
+              <Link to="/band-2-traffic-signs-and-signals">
+                <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
+                Band 2 Test Questions 25
                 </button>
-              </Link> */}
-              <Link to="/takequizCatName/band-Two-test">
-                <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
               </Link>
+              {/* <Link to="/takequizCatName/band-Two-test">
+                <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
+              </Link> */}
               <Link to="/takequizCatName/Band-3---Driving-Test--Disabilities--and-The-Law">
                 <button id={styles.hazzardBtn2}>
                   {" "}
                   Band 3 Practice Questions
                 </button>
               </Link>
-              {/* <Link to="/band-3-driving-tests-disabilities-and-the-law">
-                <button id={styles.hazzardBtn}> Band 3 summary</button>
-              </Link> */}
-              <Link to="/takequizCatName/band-three-test">
-                <button id={styles.hazzardBtn2}>Band 3 Test Questions 25</button>
+              <Link to="/band-3-driving-tests-disabilities-and-the-law">
+                <button id={styles.hazzardBtn2}> Band 3 Test Questions 25</button>
               </Link>
+              {/* <Link to="/takequizCatName/band-three-test">
+                <button id={styles.hazzardBtn2}>Band 3 Test Questions 25</button>
+              </Link> */}
               <Link to="/takequizCatName/Band-4---Publications-and-Instructional-Techniques">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                   Band 4 Practice Questions
                 </button>
               </Link>
-              {/* <Link to="/band-4-publications-techniques">
-                <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
-                  Band 4 summary
+              <Link to="/band-4-publications-techniques">
+                <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
+                Band 4 Test Questions 25
                 </button>
-              </Link> */}
-              <Link to="/takequizCatName/band-four-test">
-                <button id={styles.hazzardBtn2}>Band 4 Test Questions 25</button>
               </Link>
-              <Link to="/takequizCatName/Mock--Tests">
+              {/* <Link to="/takequizCatName/band-four-test">
+                <button id={styles.hazzardBtn2}>Band 4 Test Questions 25</button>
+              </Link> */}
+               <Link to="/Adi-part-1-MockTest">
                 <button id={styles.hazzardBtn2}>Mock Test 100 Questions</button>
+              </Link>
+              {/* <Link to="/takequizCatName/Mock--Tests">
+                <button id={styles.hazzardBtn2}>Mock Test 100 Questions</button>
+              </Link> */}
+              <Link to="/trainning-material">
+                <button id={styles.hazzardBtn}>Training Material</button>
+              </Link>
+              <Link to="/glossary-terms">
+                <button id={styles.hazzardBtn}>Glossary of Terms</button>
               </Link>
               <Link to="/Adi-part-1-Bonus-Quiz">
                 <button id={styles.hazzardBtn}>Bonus Quiz</button>
@@ -204,9 +208,7 @@ export default function PartOneTrainnigMaterial() {
               <Link to="/hazard-preception-part-2">
                 <button id={styles.hazzardBtn}>Hazard Preception</button>
               </Link>
-              {/* <Link to="/Adi-part-1-MockTest">
-                <button id={styles.hazzardBtn}>Mock Test summary</button>
-              </Link> */}
+             
               <Link to="/adi-part-one-test">
                 <button id={styles.hazzardBtn}>Book your part 1 test</button>
               </Link>
