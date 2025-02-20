@@ -184,7 +184,8 @@ const Quiz = () => {
     setHasTranslated(true);
     setIsTranslating(true);
     const formdata = new FormData();
-    const question = oneQuiz[currentQuestionIndex]?.question || "No question provided";
+    const question =
+      oneQuiz[currentQuestionIndex]?.question || "No question provided";
 
     formdata.append("question", question);
     formdata.append("lang", questionTranslate);
@@ -294,14 +295,10 @@ const Quiz = () => {
 
   useEffect(() => {
     // Only dispatch getQuizCategoryById if the category is not fetched yet
-    if (
-      oneQuiz[currentQuestionIndex]?.category != quizCategory?._id &&
-      !categoryFetched
-    ) {
+    if (oneQuiz[currentQuestionIndex]?.category) {
       dispatch(getQuizCategoryById(oneQuiz[currentQuestionIndex].category));
-      setCategoryFetched(true); // Mark category as fetched
     }
-  }, [dispatch, oneQuiz[currentQuestionIndex]?.category, categoryFetched]);
+  }, [dispatch, oneQuiz[currentQuestionIndex]?.category]);
 
   const prevTimerRef = useRef();
 
@@ -361,7 +358,7 @@ const Quiz = () => {
     if (quizCategory?.timer) {
       setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
     }
-   
+
     // Dispatch the restart action
   };
 
@@ -393,7 +390,7 @@ const Quiz = () => {
               <div className={styles.totalTimer333}>
                 <span>Quiz Completed!</span>
                 <button
-                   onClick={handleRestart}
+                  onClick={handleRestart}
                   className="btn btn-secondary bg-danger"
                 >
                   Restart Quiz
@@ -484,7 +481,7 @@ const Quiz = () => {
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <img
                       style={{
-                        maxWidth: "200px",
+                        maxWidth: "300px",
                         width: "100%",
                         borderRadius: "6px",
                         boxShadow: "0px 4px 10px rgba(31, 31, 31, 0.74)",

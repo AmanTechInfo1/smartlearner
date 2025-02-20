@@ -242,79 +242,9 @@ export default function AdiPartTwo() {
         </section>
 
         {/* ///////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
-            Manoeuvres <span>Visual Materials</span>
-          </h2>
-          <p style={{ textAlign: "center" }}>
-            Includes Emergency Stop, Forward/Reverse Bay Park, Parallel Park,
-            and Park on the right. To download Click Here.
-          </p>
-        </section>
+        
         {/* ////////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
-            Car <span>Requirements</span>
-          </h2>
-          <p style={{ textAlign: "center" }}>
-            When you take a test, your car must:
-          </p>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>• Be taxed.</p>
-              </li>
-              <li>
-                <p>
-                  • Be insured for a driving test (check with your insurance
-                  company).
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Be roadworthy and have a current MOT (if it’s over 3 years
-                  old).
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Be a saloon, hatchback or estate car in good working
-                  condition - you cannot use a convertible.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Have no warning lights showing, for example, the airbag
-                  warning light.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Have no tyre damage and the legal tread depth on each tyre -
-                  you cannot have a space-saver spare tyre fitted.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Be smoke-free - this means you cannot smoke in it just
-                  before or during the test.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Be able to reach at least 62 mph and have an mph
-                  speedometer.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • Have 4 wheels and a maximum authorised mass (MAM) of no more
-                  than 3,500 kg.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
+       
         {/* ////////////////////////////////////////////////////////// */}
 
         <section className={styles.hazardTestWorkListSection}>
