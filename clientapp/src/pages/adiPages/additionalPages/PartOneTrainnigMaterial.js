@@ -12,8 +12,8 @@ export default function PartOneTrainnigMaterial() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = " Forget the rest,"; // First part before "Driving"
-    const secondPart = "learn with the best!"; // Second part after "Driving"
+    const firstPart = "Instructor Part One"; // First part before "Driving"
+    const secondPart = "(Theory / Hazard Perception)"; // Second part after "Driving"
 
     // Split both parts into individual characters and map them to <span>
     const firstLine = firstPart
@@ -119,13 +119,13 @@ export default function PartOneTrainnigMaterial() {
               <div className={styles.heading1}>
                 <h1 ref={textRef}>{splitText()}</h1>
               </div>
-              <div className={styles.gGpFrontListP}>
+              {/* <div className={styles.gGpFrontListP}>
                 <p>
                   Unlock your driving potential with Smartlearner Learn from
                   certified instructors in a safe, supportive environment. Start
                   your journey to becoming a confident, skilled driver today!
                 </p>
-              </div>
+              </div> */}
               <div className={styles.alertBtn}>
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
@@ -145,9 +145,7 @@ export default function PartOneTrainnigMaterial() {
                   Band 1 Practice Questions{" "}
                 </button>
               </Link>
-              <Link to="/band-1-Road-Procedure">
-                <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
-              </Link>
+             
               {/* <Link to="/takequizCatName/band-one-test">
                 <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
               </Link> */}
@@ -156,42 +154,52 @@ export default function PartOneTrainnigMaterial() {
                   Band 2 Practice Questions
                 </button>
               </Link>
-              <Link to="/band-2-traffic-signs-and-signals">
-                <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
-                Band 2 Test Questions 25
-                </button>
-              </Link>
-              {/* <Link to="/takequizCatName/band-Two-test">
-                <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
-              </Link> */}
               <Link to="/band-three-driving-tests-disabilities-and-the-law">
                 <button id={styles.hazzardBtn2}>
                   {" "}
                   Band 3 Practice Questions
                 </button>
               </Link>
-              <Link to="/band-3-driving-tests-disabilities-and-the-law">
-                <button id={styles.hazzardBtn2}> Band 3 Test Questions 25</button>
-              </Link>
-              {/* <Link to="/takequizCatName/band-three-test">
-                <button id={styles.hazzardBtn2}>Band 3 Test Questions 25</button>
+              
+             
+              {/* <Link to="/takequizCatName/band-Two-test">
+                <button id={styles.hazzardBtn2}>Band 2 Test Questions 25</button>
               </Link> */}
-              <Link to="/band-four-publications-techniques">
+             <Link to="/band-four-publications-techniques">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                   Band 4 Practice Questions
                 </button>
+              </Link>
+              <Link to="/Adi-part-1-MockTest">
+                <button id={styles.hazzardBtn2}>Mock Test 100 Questions</button>
+              </Link>
+              <Link to="/band-1-Road-Procedure">
+                <button id={styles.hazzardBtn2}>Band 1 Test Questions 25</button>
+              </Link>
+             
+              {/* <Link to="/takequizCatName/band-three-test">
+                <button id={styles.hazzardBtn2}>Band 3 Test Questions 25</button>
+              </Link> */}
+               <Link to="/band-2-traffic-signs-and-signals">
+                <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
+                Band 2 Test Questions 25
+                </button>
+              </Link>
+              <Link to="/band-3-driving-tests-disabilities-and-the-law">
+                <button id={styles.hazzardBtn2}> Band 3 Test Questions 25</button>
               </Link>
               <Link to="/band-4-publications-techniques">
                 <button id={styles.hazzardBtn2} className={styles.hazzardBtn}>
                 Band 4 Test Questions 25
                 </button>
               </Link>
+              <Link to="/Adi-part-1-Bonus-Quiz">
+                <button id={styles.hazzardBtn2}>Bonus Quiz</button>
+              </Link>
               {/* <Link to="/takequizCatName/band-four-test">
                 <button id={styles.hazzardBtn2}>Band 4 Test Questions 25</button>
               </Link> */}
-               <Link to="/Adi-part-1-MockTest">
-                <button id={styles.hazzardBtn2}>Mock Test 100 Questions</button>
-              </Link>
+              
               {/* <Link to="/takequizCatName/Mock--Tests">
                 <button id={styles.hazzardBtn2}>Mock Test 100 Questions</button>
               </Link> */}
@@ -201,9 +209,7 @@ export default function PartOneTrainnigMaterial() {
               <Link to="/glossary-terms">
                 <button id={styles.hazzardBtn}>Glossary of Terms</button>
               </Link>
-              <Link to="/Adi-part-1-Bonus-Quiz">
-                <button id={styles.hazzardBtn}>Bonus Quiz</button>
-              </Link>
+             
 
               <Link to="/hazard-preception-part-2">
                 <button id={styles.hazzardBtn}>Hazard Preception</button>

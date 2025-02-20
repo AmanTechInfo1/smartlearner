@@ -132,6 +132,7 @@ const PartOneSubscription = () => {
               Apply Coupon
             </button>
           </div>
+          <p style={{textAlign:'center', color:"white"}}>Apply Coupon Code To Get Free Access Of PDI Portal</p>
 
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>

@@ -72,8 +72,8 @@ export default function AdiPartOne() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = " Forget the rest,"; // First part before "Driving"
-    const secondPart = "learn with the best!"; // Second part after "Driving"
+    const firstPart = "Welcome to PDI "; // First part before "Driving"
+    const secondPart = "Part One"; // Second part after "Driving"
 
     // Split both parts into individual characters and map them to <span>
     const firstLine = firstPart
@@ -179,24 +179,24 @@ export default function AdiPartOne() {
               <div className={styles.heading1}>
                 <h1 ref={textRef}>{splitText()}</h1>
               </div>
-              <div className={styles.gGpFrontListP}>
+              {/* <div className={styles.gGpFrontListP}>
                 <p>
                   Unlock your driving potential with Smartlearner Learn from
                   certified instructors in a safe, supportive environment. Start
                   your journey to becoming a confident, skilled driver today!
                 </p>
-              </div>
+              </div> */}
               <div className={styles.alertBtn}>
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
                   <button>Contact Us</button>
                 </Link>
-                <Link
+                {/* <Link
                   to="/part-1-trainning-material"
                   style={{ textDecoration: "none" }}
                 >
                   <button>NEXT PAGE</button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
