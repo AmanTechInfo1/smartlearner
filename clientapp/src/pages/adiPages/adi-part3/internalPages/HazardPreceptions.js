@@ -36,7 +36,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 
 export default function HazardPreceptions() {
-
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -175,13 +174,13 @@ export default function HazardPreceptions() {
               To ensure you fully understand this portion of the exam.
             </span>
           </p>
-          
+
           <div className={styles.innerTheorySupportContent}>
             <div className={styles.theorySupportContentVideo}>
               <iframe
                 width="1020"
                 height="531"
-                style={{borderRadius:'30px'}}
+                style={{ borderRadius: "30px" }}
                 src="https://www.youtube.com/embed/SdQRkmdhwJs"
                 title="Hazard perception test 2024: official DVSA guide"
                 frameborder="0"
@@ -229,9 +228,7 @@ export default function HazardPreceptions() {
 
         {/* ///////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2>
-           Static Hazard
-          </h2>
+          <h2>Static Hazard</h2>
           <section className={styles.imagesHSection}>
             <div id={styles.imagesHSection}>
               <img src={roundAbouts} alt="roundAbouts" />
@@ -249,13 +246,11 @@ export default function HazardPreceptions() {
             Different types <span>Of crossings</span>
           </h2>
 
-         
-
           <section className={styles.imagesHSection}>
-          <p id={styles.hazardTestWorkListSectionPara2}>
-            There will often be a road sign warning{" "}
-            <span>that you are approaching a static hazard. </span>
-          </p>
+            <p id={styles.hazardTestWorkListSectionPara2}>
+              There will often be a road sign warning{" "}
+              <span>that you are approaching a static hazard. </span>
+            </p>
             <div id={styles.imagesHSection}>
               <img src={zebra} alt="zebra" />
               <img src={toucan} alt="toucan" />
@@ -288,120 +283,102 @@ export default function HazardPreceptions() {
           <section className={styles.imagesHSection2}>
             <div id={styles.imagesHSection}>
               <section>
-                <img src={pedestrian} alt="pedestrian" />
-                
-                  {" "}
-                  <p>
-                    If you see pedestrians in the road, be patient and wait for
-                    them to finish crossing. On country roads there may be no
-                    pavement, so look out for pedestrians in the road. They may
-                    be walking towards you on your side of the road.{" "}
-                  </p>
-                
+                <img src={pedestrian} alt="pedestrian" />{" "}
+                <p>
+                  If you see pedestrians in the road, be patient and wait for
+                  them to finish crossing. On country roads there may be no
+                  pavement, so look out for pedestrians in the road. They may be
+                  walking towards you on your side of the road.{" "}
+                </p>
               </section>
               <section>
-                <img src={carDrivers} alt="carDrivers" />
-               
-                  {" "}
-                  <p>
-                    Hazards caused by other drivers are all too common and can
-                    lead to emotional reactions. An emotional reaction may
-                    affect your ability to drive safely and could increase your
-                    likelihood of causing an incident. Stay calm and make
-                    allowances for other drivers. Remember, even experienced
-                    drivers can make mistakes.{" "}
-                  </p>
-               
+                <img src={carDrivers} alt="carDrivers" />{" "}
+                <p>
+                  Hazards caused by other drivers are all too common and can
+                  lead to emotional reactions. An emotional reaction may affect
+                  your ability to drive safely and could increase your
+                  likelihood of causing an incident. Stay calm and make
+                  allowances for other drivers. Remember, even experienced
+                  drivers can make mistakes.{" "}
+                </p>
               </section>
               <section>
                 <img src={MotorCyclists} alt="MotorCyclists" />
-               
-                  <p>
-                    Look out for motorcyclists, especially when you’re emerging
-                    from a junction, turning into a road on your right or
-                    changing lanes or moving out to overtake.{" "}
-                  </p>
-               
+
+                <p>
+                  Look out for motorcyclists, especially when you’re emerging
+                  from a junction, turning into a road on your right or changing
+                  lanes or moving out to overtake.{" "}
+                </p>
               </section>
               <section>
                 <img src={cyclists} alt="cyclists" />
-               
-                  <p>
-                    Be aware of cyclists and give them plenty of room. They may
-                    wobble or swerve to avoid drains or potholes. At junctions
-                    or traffic lights, give cyclists time to turn or pull away.
-                    When travelling in slow traffic, before you turn left, check
-                    for cyclists filtering through the traffic on your left.
-                  </p>{" "}
+                <p>
+                  Be aware of cyclists and give them plenty of room. They may
+                  wobble or swerve to avoid drains or potholes. At junctions or
+                  traffic lights, give cyclists time to turn or pull away. When
+                  travelling in slow traffic, before you turn left, check for
+                  cyclists filtering through the traffic on your left.
+                </p>{" "}
               </section>
               <section>
                 <img src={HorseRiders} alt="HorseRiders" />
-             
-                  <p>
-                    Horses can be unpredictable and easily spooked. Reduce your
-                    speed and give them plenty of room when overtaking.{" "}
-                  </p>{" "}
-               
+                <p>
+                  Horses can be unpredictable and easily spooked. Reduce your
+                  speed and give them plenty of room when overtaking.{" "}
+                </p>{" "}
               </section>
               <section>
                 <img src={DriversOfLargeVehicle} alt="DriversOfLargeVehicle" />
-               
-                  <p>
-                    If you see a bus at a bus stop, remember that people may get
-                    off and then cross the road, or that the bus may be about to
-                    move off. School buses might stop at places other than bus
-                    stops. At some bridges, high vehicles may need to use the
-                    centre of the road to be able to pass underneath. Large
-                    goods vehicles over 13 metres long have red and yellow
-                    markings at the back of the vehicle.{" "}
-                  </p>{" "}
-               
+                <p>
+                  If you see a bus at a bus stop, remember that people may get
+                  off and then cross the road, or that the bus may be about to
+                  move off. School buses might stop at places other than bus
+                  stops. At some bridges, high vehicles may need to use the
+                  centre of the road to be able to pass underneath. Large goods
+                  vehicles over 13 metres long have red and yellow markings at
+                  the back of the vehicle.{" "}
+                </p>{" "}
               </section>
               <section>
                 <img src={VehicleCarrying} alt="VehicleCarrying" />
-               
-                  <p>
-                    Some vehicles have information signs on the back, to show
-                    that they contain a hazardous load. Learn what the signs
-                    mean.{" "}
-                  </p>{" "}
-                
+                <p>
+                  Some vehicles have information signs on the back, to show that
+                  they contain a hazardous load. Learn what the signs mean.{" "}
+                </p>{" "}
               </section>
               <section>
                 <img src={overtakingVehicle} alt="overtakingVehicle" />
-             
-                  <p>
-                    Watch out for vehicles, especially motorcyclists, overtaking
-                    and cutting in front of you. If you need to, drop back to
-                    keep a safe distance from the vehicle in front. When turning
-                    right, don’t forget to check to your right for overtaking
-                    vehicles before making the turn.{" "}
-                  </p>
-              
+
+                <p>
+                  Watch out for vehicles, especially motorcyclists, overtaking
+                  and cutting in front of you. If you need to, drop back to keep
+                  a safe distance from the vehicle in front. When turning right,
+                  don’t forget to check to your right for overtaking vehicles
+                  before making the turn.{" "}
+                </p>
               </section>
               <section>
                 <img
                   src={disabledPoweredVehicle}
                   alt="disabledPoweredVehicle"
                 />
-               
-                  <p>
-                    Reduce your speed and be careful. These small vehicles are
-                    extremely vulnerable on the road because they’re difficult
-                    to see and they travel slow.
-                  </p>
-             
+
+                <p>
+                  Reduce your speed and be careful. These small vehicles are
+                  extremely vulnerable on the road because they’re difficult to
+                  see and they travel slow.
+                </p>
               </section>
               <section>
                 <img src={OlderDrivers} alt="OlderDrivers" />
-               
-                  <p>
-                    Older drivers may not react very quickly, so be patient with
-                    them. You can practise spotting hazards in everyday
-                    situations such as when you’re on a bus, as a passenger in a
-                    car, or riding a bicycle.{" "}
-                  </p>
-              
+
+                <p>
+                  Older drivers may not react very quickly, so be patient with
+                  them. You can practise spotting hazards in everyday situations
+                  such as when you’re on a bus, as a passenger in a car, or
+                  riding a bicycle.{" "}
+                </p>
               </section>
             </div>
           </section>{" "}
@@ -426,13 +403,13 @@ export default function HazardPreceptions() {
           <div id={styles.imagesHSection}>
             <section>
               <img src={Rain} alt="pedestrian" />
-              <p >
+              <p>
                 Double your distance from the vehicle in front to four seconds.
               </p>
             </section>
             <section>
               <img src={Ice} alt="Ice" />
-              <p >
+              <p>
                 Slow down and increase your separation distance: allow up to 10
                 times the gap you’d leave in the dry.
               </p>
@@ -443,24 +420,12 @@ export default function HazardPreceptions() {
             </section>
             <section>
               <img src={BrightSun} alt="BrightSun" />
-              <p >
-                Be aware that sunlight can dazzle you or other drivers.
-              </p>
+              <p>Be aware that sunlight can dazzle you or other drivers.</p>
             </section>
           </div>
-          <p id={styles.hazardTestWorkListSectionPara2}>
-            The road conditions can be another hazard and some road users will
-            be affected more than others.{" "}
-            <span>
-              For example, a loose road surface will be a greater hazard for a
-              motorcyclist than for a car driver, but the car driver needs to be
-              aware of this and make allowances as necessary.
-            </span>
-          </p>
         </section>
 
-        <div
-          className={styles.TMnextPage}>
+        <div className={styles.TMnextPage}>
           <Link to="/hazard-clips">
             <button className={styles.TMnextButton}>Hazard Videos</button>
           </Link>

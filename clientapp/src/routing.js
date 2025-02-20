@@ -270,7 +270,7 @@ export const router = createBrowserRouter([
       { path: "part-three-subscription", element: <PartThreeSubscription /> },
       { path: "complete-subscription", element: <CompleteSubscription /> },
       { path: "blogs", element: <Blogs /> },
-      { path: "privledge-cards", element: <PrivledgeCards /> },
+      { path: "privilege-cards", element: <PrivledgeCards /> },
       { path: "glossary-terms", element: <Glossary /> },
       { path: "singleblog/:id", element: <SingleBlogPage /> },
       { path: "term-and-condition", element: <TermsAndConditions /> },

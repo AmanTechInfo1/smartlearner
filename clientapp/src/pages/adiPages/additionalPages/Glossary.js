@@ -142,7 +142,7 @@ const Glossary = () => {
           It is common for all types of trades / industries to have a set of
           phrases that make no sense to anyone who is not in that trade /
           industry. This is commonly known as “Jargon”. To that effect, we have
-          included many of the phases and abbreviations that get used on within
+          included many of the phrases  and abbreviations that get used on within
           driving instruction. You should take your time to familiarise yourself
           with as many as possible, they will help you when giving instruction
           and have a better knowledge, understanding of the industry.

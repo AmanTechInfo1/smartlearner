@@ -130,8 +130,7 @@ export default function PartOneTest() {
                 </Link>
                 <Link
                   to="/part-1-trainning-material"
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   {" "}
                   <button id={styles.btn}>Back To Portal</button>
                 </Link>
@@ -141,7 +140,9 @@ export default function PartOneTest() {
         </section>{" "}
         <section className={styles.bookTestPartOneSection}>
           <div className={styles.PartOnecontentWrapper}>
-            <h1 className={styles.PartOnepageTitle}>Book Your Part 1 Test</h1>
+            <section className={styles.hazardTestWorkListSection}>
+              <h2>Book Your Part 1 Test</h2>
+            </section>
 
             <div className={styles.PartOnepart}>
               <h2 className={styles.PartOnepartTitle}>
@@ -206,8 +207,7 @@ export default function PartOneTest() {
             <div className={styles.PartOnebookTestButtonWrapper}>
               <a
                 href="https://www.gov.uk/adi-part-1-test"
-                className={styles.PartOnebookTestLink}
-              >
+                className={styles.PartOnebookTestLink}>
                 BOOK YOUR TEST HERE
               </a>
 

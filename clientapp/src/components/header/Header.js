@@ -163,8 +163,8 @@ function Header() {
 
           {/* //////////////////////////////////////////////////// */}
           <li>
-            <NavLink to="/privledge-cards" className={styles.activeLink}>
-              Privledge Cards
+            <NavLink to="/privilege-cards" className={styles.activeLink}>
+              Privilege Cards
             </NavLink>
           </li>
           <li id={styles.dropDownNav}>

@@ -91,7 +91,7 @@ export default function AdiPartTwo() {
                   <span>
                     It’s now time for part 2 – Professional Driving Test.
                   </span>
-                </p>
+                </p>  
               </div>
 
               <div className={styles.heading2}>

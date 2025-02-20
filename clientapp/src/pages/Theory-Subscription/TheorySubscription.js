@@ -139,7 +139,9 @@ const TheorySubscription = () => {
               Apply Coupon
             </button>
           </div>
-
+          <p style={{ textAlign: "center", color: "white" }}>
+            Apply Coupon Code To Get Free Access Of Theory Portal
+          </p>
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>
               <table className={styles.cartTable}>
@@ -159,8 +161,7 @@ const TheorySubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
