@@ -130,14 +130,13 @@ nav .menu {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   align-items: center;
   justify-content: center;
-  padding: 10px 15px;
+  padding: 1rem 15px;
   border: 1px solid rgba(1, 43, 69, 0.642);
   transition: ease-in-out 0.5s;
 }
 
 .dropdownContent a li {
   padding: 5px 12px;
-
   min-width: 270px;
   width: 100%;
 }
