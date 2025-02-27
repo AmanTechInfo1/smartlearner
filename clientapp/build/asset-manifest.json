@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4660e934.css",
-    "main.js": "/static/js/main.74ca06d4.js",
+    "main.css": "/static/css/main.5bdebd94.css",
+    "main.js": "/static/js/main.28f4c10f.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -23,7 +23,6 @@
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
     "static/media/pdi-partonebanner.jpg": "/static/media/pdi-partonebanner.02f94a785ba885b73b0e.jpg",
     "static/media/passplusbanner.png": "/static/media/passplusbanner.10c2812af0a5f4ebc148.png",
-    "static/media/hazzardClipsBanner.png": "/static/media/hazzardClipsBanner.17e1b98de0f3f8dda1d7.png",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
     "static/media/manualround1.png": "/static/media/manualround1.51cea707a66fddf1a9a5.png",
@@ -313,12 +312,12 @@
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.4660e934.css.map": "/static/css/main.4660e934.css.map",
-    "main.74ca06d4.js.map": "/static/js/main.74ca06d4.js.map",
+    "main.5bdebd94.css.map": "/static/css/main.5bdebd94.css.map",
+    "main.28f4c10f.js.map": "/static/js/main.28f4c10f.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4660e934.css",
-    "static/js/main.74ca06d4.js"
+    "static/css/main.5bdebd94.css",
+    "static/js/main.28f4c10f.js"
   ]
 }
