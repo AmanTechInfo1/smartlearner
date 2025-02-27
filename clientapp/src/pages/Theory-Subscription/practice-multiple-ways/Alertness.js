@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./css/Alertness.module.css";
 
 import { IoMdArrowDropright } from "react-icons/io";
@@ -13,9 +13,100 @@ import hazardlight from "../../../assets/images/hazardlight.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { useRef } from "react";
 
+import gsap from "gsap";
 export default function Alertness() {
-  
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Topic: Alertness "; // First part before "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -23,32 +114,37 @@ export default function Alertness() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-             
-
-              <div className={styles.heading2}>
-                <h2>Topic: Alertness</h2>
+              <div className={styles.heading1}>
+                <h1 ref={textRef}>{splitText()}</h1>
               </div>
+
               <div className={styles.alertBtn}>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="/takequizCatName/Alertness-quiz"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link to="/attitude" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
+              </div>
+              {/* <div className={styles.alertBtn}>
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
                   <button id={styles.btn}>Contact Us</button>
                 </Link>
-              </div>
+              </div> */}
               {/* ////////////////////////////////////////////////////////////////////////////////// */}
-              <div className={styles.allbtns}>
-              <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
-                </Link>
-              <Link to="/takequizCatName/Alertness-quiz" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Start Quiz</button>
-                </Link>
-              <Link to="/attitude" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
-                </Link>
-              </div>
             </div>
           </div>
         </section>
@@ -60,21 +156,20 @@ export default function Alertness() {
             {" "}
             What is <span>alertness?</span>{" "}
           </h2>
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section className={styles.AdiParttwoDisplayFlex2}>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">
                 <div className={styles.hazardTestWorkListDiv}>
                   <div className={styles.theorySupportContentVideo}>
                     <iframe
                       width="610"
-                      height="400"
+                      height="500"
                       src="https://www.youtube.com/embed/QoeSNbQJkTQ"
                       title="End Distracted Driving - Share this video and help make our roads safer"
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       referrerpolicy="strict-origin-when-cross-origin"
-                      allowfullscreen
-                    ></iframe>
+                      allowfullscreen></iframe>
                   </div>
                 </div>
                 <section className={styles.alternessLists}>
@@ -142,7 +237,7 @@ export default function Alertness() {
                   </p>
                 </div>
 
-                <div className={styles.column}>
+                <div className={styles.column} id={styles.column1}>
                   <span>
                     <FaMobile id={styles.featuresIcon} />
                   </span>
@@ -169,10 +264,10 @@ export default function Alertness() {
 
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDiv}>
-              <ul type="none">
-                <h2>
-                  Focus is <span>key.</span>
-                </h2>
+              <ul type="none" id={styles.hazardTestWorkListDiv1}>
+                <h1>
+                  Focus is <span>key</span>
+                </h1>
                 <section id={styles.resLists1}>
                   {" "}
                   <li>
@@ -204,11 +299,11 @@ export default function Alertness() {
               </ul>
             </div>
             <div className={styles.hazardTestWorkListDiv}>
-              <ul type="none">
-                <h2>
+              <ul type="none" id={styles.hazardTestWorkListDiv2}>
+                <h1>
                   {" "}
                   Be <span>aware.</span>
-                </h2>
+                </h1>
                 <section id={styles.resLists2}>
                   <li>
                     <h3>1.</h3>
@@ -243,10 +338,10 @@ export default function Alertness() {
         <section className={styles.hazardTestWorkListSection}>
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDiv}>
-              <ul type="none">
-                <h2>
+              <ul type="none" id={styles.hazardTestWorkListDiv1}>
+                <h1>
                   Be <span>prepared.</span>
-                </h2>
+                </h1>
                 <section id={styles.resLists1}>
                   <li>
                     <p>
@@ -266,11 +361,11 @@ export default function Alertness() {
               </ul>
             </div>
             <div className={styles.hazardTestWorkListDiv}>
-              <h2>
-                {" "}
-                Overtake with <span>caution!</span>
-              </h2>
-              <ul type="none">
+              <ul type="none" id={styles.hazardTestWorkListDiv2}>
+                <h1>
+                  {" "}
+                  Overtake with <span>caution!</span>
+                </h1>
                 <section id={styles.resLists2}>
                   <li>
                     <p>
@@ -310,10 +405,10 @@ export default function Alertness() {
         </section>
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2} id={styles.h2heddings}>
+          <h1 className={styles.hazardTestH2} id={styles.h2heddings}>
             Using the <span>appropriate lights. </span>
-          </h2>
-          <p style={{ textAlign: "center", marginBottom: "2rem" }}>
+          </h1>
+          <p id={styles.hazardTestH2para}>
             {" "}
             If you’re driving at night or in bad weather, you’ll need to make
             sure you’re using your car lights properly. Take care when following
@@ -321,11 +416,13 @@ export default function Alertness() {
             to see you in their mirrors properly.
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={sidelight} alt="sidelight" />
-                <h2>Sidelights</h2>
-                <section id={styles.resLists12}>
+                <h4>Sidelights</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       • You should use your sidelights if you park at night on a
@@ -335,13 +432,15 @@ export default function Alertness() {
                 </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv123}>
               <ul type="none">
                 <img src={deepedBeam} alt="deepedBeam" />
-                <h2>
+                <h4>
                   <span>Dipped Headlights</span>
-                </h2>
-                <section id={styles.resLists21}>
+                </h4>
+                <section id={styles.resLists2}>
                   <li>
                     <p>
                       • Dipped lights are the brightest lights your car has that
@@ -364,11 +463,13 @@ export default function Alertness() {
                 </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={fullbeam} alt="fullbeam" />
-                <h2>Full-beam</h2>
-                <section id={styles.resLists12}>
+                <h4>Full-beam</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       • You should only use full-beam headlights on unlit
@@ -391,10 +492,10 @@ export default function Alertness() {
 
         {/* /////////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
-            Using the <span>appropriate lights.</span>
-          </h2>
-          <p style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <h1 className={styles.hazardTestH2} id={styles.h2heddings}>
+            Using the <span>appropriate lights. </span>
+          </h1>
+          <p id={styles.hazardTestH2para}>
             {" "}
             If you’re driving at night or in bad weather, you’ll need to make
             sure you’re using your car lights properly. Take care when following
@@ -402,12 +503,14 @@ export default function Alertness() {
             to see you in their mirrors properly.
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={foglight} alt="foglight" />
-                <h2>
+                <h4>
                   Fog <span>Lights</span>
-                </h2>
+                </h4>
                 <section id={styles.resLists1}>
                   <li>
                     <p>
@@ -431,12 +534,14 @@ export default function Alertness() {
                 </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv123}>
               <ul type="none">
                 <img src={hazardlight} alt="hazardlight" />
-                <h2>
+                <h4>
                   Hazard <span>Lights</span>
-                </h2>
+                </h4>
                 <section id={styles.resLists2}>
                   <li>
                     <p>

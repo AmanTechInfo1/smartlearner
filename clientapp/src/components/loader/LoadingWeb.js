@@ -8,11 +8,11 @@ export default function LoadingWeb() {
       <div className="loader">
         <svg
           className="car"
-          width="150"
-          height="40"
+          width="250"
+          height="80"
           xmlns="http://www.w3.org/2000/svg">
           <g
-            transform="translate(2 1)"
+            transform="translate(10 5)"
             stroke="#002742"
             fill="none"
             fillRule="evenodd"
@@ -20,41 +20,43 @@ export default function LoadingWeb() {
             strokeLinejoin="round">
             <path
               className="car__body"
-              d="M47.293 2.375C52.927.792 54.017.805 54.017.805c2.613-.445 6.838-.337 9.42.237l8.381 1.863c2.59.576 6.164 2.606 7.98 4.531l6.348 6.732 6.245 1.877c3.098.508 5.609 3.431 5.609 6.507v4.206c0 .29-2.536 4.189-5.687 4.189H36.808c-2.655 0-4.34-2.1-3.688-4.67 0 0 3.71-19.944 14.173-23.902zM36.5 15.5h54.01"
+              d="M82.586 4.75C94.927 1.584 96.034 1.615 96.034 1.615c4.91-.745 11.318-.506 15.229.357l14.51 3.74c4.886 1.08 11.118 5.276 13.656 8.683l10.82 11.933 10.515 3.754c5.462 1.017 9.412 7.169 9.412 12.885v6.309c0 .44-4.372 6.283-9.288 6.283H55.612c-4.406 0-7.255-3.348-6.706-7.524 0 0 5.565-30.587 21.59-37.809zM55 24.h92"
               strokeWidth="4"
             />
             <ellipse
               className="car__wheel--left"
-              strokeWidth="4.2"
-              cx="83.493"
-              cy="30.25"
-              rx="6.922"
-              ry="6.808"
+              strokeWidth="5"
+              cx="137"
+              cy="53"
+              rx="12"
+              ry="12"
+              fill="rgb(0, 6, 34)"
             />
             <ellipse
               className="car__wheel--right"
-              strokeWidth="4.2"
-              cx="46.511"
-              cy="30.25"
-              rx="6.922"
-              ry="6.808"
+              strokeWidth="5"
+              cx="75"
+              cy="53"
+              rx="12"
+              ry="12"
+              fill="rgb(0, 6, 34)"
             />
             <path
               className="car__line car__line--top"
-              d="M22.5 16.5H2.475"
-              strokeWidth="3"
+              d="M30 23.5H10"
+              strokeWidth="6"
               fill="#FFF"
             />
             <path
               className="car__line car__line--middle"
-              d="M20.5 23.5H.4755"
-              strokeWidth="3"
+              d="M28 33.5H8"
+              strokeWidth="6"
               fill="#FFF"
             />
             <path
               className="car__line car__line--bottom"
-              d="M25.5 9.5h-19"
-              strokeWidth="3"
+              d="M33 14h-28"
+              strokeWidth="6"
               fill="#FFF"
             />
           </g>

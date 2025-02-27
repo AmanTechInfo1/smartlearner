@@ -17,7 +17,110 @@ import crawler from "../../../assets/images/crawler.png";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 export default function MotorwayRules() {
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Topic: Motorway"; // First part before "Driving"
+    const secondPart = "Rules";
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -25,34 +128,31 @@ export default function MotorwayRules() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-             
+              <div className={styles.heading1}>
+                <h1 ref={textRef}>{splitText()}</h1>
+              </div>
 
-              <div className={styles.heading2}>
-                <h2>
-                Topic: Motorway <span>Rules</span>
-                </h2>
-              </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="/takequizCatName/Motorway-Rules"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link to="/rules-of-road" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
               </div>
-                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
-                                          <div className={styles.allbtns}>
-                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
-                                            </Link>
-                                          <Link to="/takequizCatName/Motorway-Rules" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Start Quiz</button>
-                                            </Link>
-                                          <Link to="/rules-of-road" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
-                                            </Link>
-                                          </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
             </div>
           </div>
         </section>
@@ -63,7 +163,9 @@ export default function MotorwayRules() {
             What are <span>Motorway Rules?</span>
           </h2>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={motorwayLogo} alt="motorwayLogo" />
             </div>
@@ -82,12 +184,12 @@ export default function MotorwayRules() {
               </ul>
             </div>
           </section>
-          <section className={styles.hazardTestH23}>
+          <section className={styles.hazardTestWorkListSection}>
             <ul type="none">
-              <h2>
+              <h1>
                 The following groups or{" "}
                 <span>vehicles cannot travel on the motorway;</span>
-              </h2>
+              </h1>
             </ul>
           </section>
           <section
@@ -126,12 +228,16 @@ export default function MotorwayRules() {
         {/* ///////////////////////////////////////////////////// */}
 
         {/* //////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Before a <span> Motorway Journey</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={mway} alt="motorwayLogo" />
             </div>
@@ -152,18 +258,26 @@ export default function MotorwayRules() {
         </section>
 
         {/* /////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Joining the <span>Motorway</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <div className={styles.innerTheorySupportContent}>
                 <div className={styles.theorySupportContentVideo}>
                   <iframe
                     width="400"
                     height="226"
+                    style={{
+                      filter:
+                        "drop-shadow(0.35rem 0.35rem 0.4rem rgba(44, 44, 44, 0.8))",
+                    }}
                     src="https://www.youtube.com/embed/-LzwsHSZI6o"
                     title="Road Safety: Joining the Motorway"
                     frameborder="0"
@@ -199,150 +313,169 @@ export default function MotorwayRules() {
 
           <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDiv}>
-              <ul type="none">
-                <li style={{ textAlign: "center" }}>
-                  <p>
-                    For most vehicles travelling on the motorway the national
-                    speed limit applies. For cars and motorcycles this is 70
-                    mph. This limit applies to all lanes except those with signs
-                    showing a lower speed limit, you must obey these.
-                  </p>
-                </li>
-              </ul>
+              <p id={styles.hazardTestH2para}>
+                For most vehicles travelling on the motorway the national speed
+                limit applies. For cars and motorcycles this is 70 mph. This
+                limit applies to all lanes except those with signs showing a
+                lower speed limit, you must obey these.
+              </p>
             </div>
           </section>
         </section>
         {/* /////////////////////////////////////////////////////////// */}
-        <section className={styles.features}>
-          <div className={styles.mainFeatures}>
-            <div className={styles.column}>
-              <span>
-                <FaArrowCircleLeft id={styles.featuresIcon} />
-              </span>
-              <h3>Use the left lane</h3>
-              <div className={styles.hazardTestWorkListDiv}>
-                <ul type="none">
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>When joining the motorway.</p>
-                  </li>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>Before you leave the motorway.</p>
-                  </li>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>Always unless overtaking.</p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>
-                      You shouldn’t overtake on the left unless traffic is
-                      moving slowly in queues and the queue on your right is
-                      moving more slowly than the one you’re in. In this
-                      instance you may overtake on the left.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className={styles.column} id={styles.column}>
-              <span>
-                <FaArrowCircleRight id={styles.featuresIcon} />
-              </span>
-              <h3>Using center/right lane</h3>
-              <div className={styles.hazardTestWorkListDiv}>
-                <ul type="none">
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      The middle and right-hand lanes are to be used only for
-                      overtaking other vehicles, and you must return to the left
-                      lane when you’ve finished overtaking.
-                    </p>
-                  </li>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      You should only use the center/right lane as normal
-                      running lanes if signs tell you to.
-                    </p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>
-                      Do not assume the center/right lane are for faster speeds.
-                      Even when overtaking you should be careful to not break
-                      the speed limit.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <section className={styles.thMultipleChoiceSection}>
+          <div className={styles.thMultipleChoiceListContainer}>
+            <section className={styles.features}>
+              <div className={styles.mainFeatures}>
+                <div className={styles.column}>
+                  <span>
+                    <FaArrowCircleLeft id={styles.featuresIcon} />
+                  </span>
+                  <h3>Use the left lane</h3>
+                  <div className={styles.hazardTestWorkListDiv}>
+                    <ul type="none">
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>When joining the motorway.</p>
+                      </li>
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>Before you leave the motorway.</p>
+                      </li>
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>Always unless overtaking.</p>
+                      </li>
+                      <li>
+                        <FaTimesCircle id="listrightIcon" />{" "}
+                        <p>
+                          You shouldn’t overtake on the left unless traffic is
+                          moving slowly in queues and the queue on your right is
+                          moving more slowly than the one you’re in. In this
+                          instance you may overtake on the left.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className={styles.column} id={styles.column}>
+                  <span>
+                    <FaArrowCircleRight id={styles.featuresIcon} />
+                  </span>
+                  <h3>Using center/right lane</h3>
+                  <div className={styles.hazardTestWorkListDiv}>
+                    <ul type="none">
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>
+                          The middle and right-hand lanes are to be used only
+                          for overtaking other vehicles, and you must return to
+                          the left lane when you’ve finished overtaking.
+                        </p>
+                      </li>
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>
+                          You should only use the center/right lane as normal
+                          running lanes if signs tell you to.
+                        </p>
+                      </li>
+                      <li>
+                        <FaTimesCircle id="listrightIcon" />{" "}
+                        <p>
+                          Do not assume the center/right lane are for faster
+                          speeds. Even when overtaking you should be careful to
+                          not break the speed limit.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-            <div className={styles.column}>
-              <span>
-                <FaTrailer id={styles.featuresIcon} />
-              </span>
-              <h3>Towing a trailer</h3>
-              <div className={styles.hazardTestWorkListDiv}>
-                <ul type="none">
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      In normal circumstances. you should only travel in the
-                      left lane and use the center lane to overtake.
-                    </p>
-                  </li>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      If your towing the speed limit is lower for you. The speed
-                      limit when towing a trailer on a motorway is 60 MPH.
-                    </p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>
-                      You should not travel in the right-hand lane of a
-                      motorway, unless there are lane closures.
-                    </p>
-                  </li>
-                </ul>
+                <div className={styles.column}>
+                  <span>
+                    <FaTrailer id={styles.featuresIcon} />
+                  </span>
+                  <h3>Towing a trailer</h3>
+                  <div className={styles.hazardTestWorkListDiv}>
+                    <ul type="none">
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>
+                          In normal circumstances. you should only travel in the
+                          left lane and use the center lane to overtake.
+                        </p>
+                      </li>
+                      <li>
+                        <FaCheckCircle id="listrightIcon" />{" "}
+                        <p>
+                          If your towing the speed limit is lower for you. The
+                          speed limit when towing a trailer on a motorway is 60
+                          MPH.
+                        </p>
+                      </li>
+                      <li>
+                        <FaTimesCircle id="listrightIcon" />{" "}
+                        <p>
+                          You should not travel in the right-hand lane of a
+                          motorway, unless there are lane closures.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </section>
+          </div>{" "}
         </section>
-
         {/* //////////////////////////////////////////////////////////// */}
         <section
           className={styles.hazardTestWorkListSection}
           style={{ textAlign: "center" }}>
-          <h2 className={styles.hazardTestH2} style={{ textAlign: "center" }}>
+          <h2>
             Key <span>terms</span>{" "}
           </h2>
-          <hr style={{ opacity: "1", border: "2px solid #dd0067" }}></hr>
-
-          <img
-            src={motorwayStuds}
-            alt="motorway"
-            style={{ maxWidth: "650px", width: "100%", margin: "10px" }}
-          />
-          <div className={styles.hazardTestWorkListDiv23}>
+          <hr
+            style={{
+              opacity: "1",
+              border: "2px solid #eb0417",
+              margin: "1rem auto",
+              maxWidth: "700px",
+            }}></hr>
+          <div className={styles.features}>
             <img
-              src={motorwayBreakdowns}
+              src={motorwayStuds}
               alt="motorway"
-              style={{ maxWidth: "850px", width: "100%", margin: "10px" }}
+              style={{
+                maxWidth: "650px",
+                width: "100%",
+                margin: "10px",
+                borderRadius: "10px",
+                filter:
+                  "drop-shadow(0.35rem 0.35rem 0.4rem rgba(44, 44, 44, 0.8))",
+              }}
             />
+            <div className={styles.hazardTestWorkListDiv23}>
+              <img
+                src={motorwayBreakdowns}
+                alt="motorway"
+                style={{ maxWidth: "850px", width: "100%", margin: "10px" }}
+              />
+            </div>
           </div>
         </section>
 
         {/* ////////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center" }}>
+          <h1>
             What to do if you <span>breakdown or have an accident</span>
-          </h2>
-          <h2 style={{ textAlign: "center", fontSize: "1.5rem" }}>
+          </h1>
+          <h2
+            style={{
+              textAlign: "center",
+              fontSize: "1.5rem",
+              marginTop: "1rem",
+            }}>
             Only stop on the motorway if;
           </h2>
           <div className={styles.bgColorList33} style={{ textAlign: "center" }}>
@@ -396,15 +529,19 @@ export default function MotorwayRules() {
           </section>
         </section> */}
         {/* ////////////////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <section className={styles.AdiParttwoDisplayFlex}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">
-                <h2 style={{ fontSize: "1.5rem" }}>
+                <h3 style={{ fontSize: "1.5rem" }}>
                   If you are stopped in an emergency on the hard shoulder you
                   should:
-                </h2>
-                <section id={styles.resLists12}>
+                </h3>
+                <section id={styles.resLists1}>
                   <li>
                     <FaCheckCircle id="listrightIcon" />{" "}
                     <p>
@@ -445,13 +582,13 @@ export default function MotorwayRules() {
             </div>
             <div className={styles.hazardTestWorkListDiv}>
               <ul type="none">
-                <h2 style={{ fontSize: "1.5rem" }}>
+                <h3 style={{ fontSize: "1.5rem" }}>
                   <span>
                     You should use one of the emergency telephones if you’re
                     able to.
                   </span>
-                </h2>
-                <section id={styles.resLists21}>
+                </h3>
+                <section id={styles.resLists2}>
                   <li>
                     <FaCheckCircle id="listrightIcon" />{" "}
                     <p>
@@ -505,12 +642,16 @@ export default function MotorwayRules() {
         </section>
         {/* /////////////////////////////////////////////////// */}
 
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Joining <span>The Motorway</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={towingTruck} alt="towingTruck" />
             </div>
@@ -535,9 +676,9 @@ export default function MotorwayRules() {
         {/* /////////////////////////////////////////////////////////////////////// */}
 
         <section className={styles.hazardTestWorkListSection}>
-          <h2>
+          <h1>
             Smart Motorway and <span>Motorway Signs</span>
-          </h2>
+          </h1>
 
           <div className={styles.bgColorList33}>
             <ul type="none">
@@ -565,8 +706,12 @@ export default function MotorwayRules() {
         </section>
         {/* ///////////////////////////////////////////////////////////////////// */}
 
-        <section className={styles.hazardTestWorkListSection}>
-          <section className={styles.AdiParttwoDisplayFlex}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={crawler} alt="crawler" />
             </div>

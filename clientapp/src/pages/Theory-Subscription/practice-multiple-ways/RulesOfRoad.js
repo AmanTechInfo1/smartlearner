@@ -10,7 +10,110 @@ import Pedestrian from "../../../assets/images/padestrienCrossing.jpg";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 export default function RulesOfRoad() {
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = " Topic: Rules of "; // First part before "Driving"
+    const secondPart = "The Road";
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -18,34 +121,33 @@ export default function RulesOfRoad() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-             
+              <div className={styles.heading1}>
+                <h1 ref={textRef}>{splitText()}</h1>
+              </div>
 
-              <div className={styles.heading2}>
-                <h2>
-                Topic: Rules of <span>The Road</span>
-                </h2>
-              </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="takequizCatName/Rules-of-the-Road"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link
+                  to="/road-and-traffic-signs"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
               </div>
-                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
-                                          <div className={styles.allbtns}>
-                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
-                                            </Link>
-                                          <Link to="takequizCatName/Rules-of-the-Road" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Start Quiz</button>
-                                            </Link>
-                                          <Link to="/road-and-traffic-signs" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
-                                            </Link>
-                                          </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
             </div>
           </div>
         </section>
@@ -56,7 +158,9 @@ export default function RulesOfRoad() {
             What are the <span>Rules Of The Road?</span>
           </h2>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={listImg} alt="ListImg" />
             </div>
@@ -80,14 +184,18 @@ export default function RulesOfRoad() {
 
         {/* ///////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 style={{ textAlign: "center", fontSize: "2rem" }}>
-            General Rules Of The Road
-          </h2>
-          <p style={{ textAlign: "center" }}>
+          <h2>General Rules Of The Road</h2>
+          <p id={styles.hazardTestH2para}>
             Here are some basic rules you should be following when driving on a
             public road.
           </p>
-          <hr style={{ opacity: "1", border: "2px solid purple" }} />
+          <hr
+            style={{
+              opacity: "1",
+              border: "2px solid rgb(235, 4, 93)",
+              margin: "1rem auto",
+              maxWidth: "700px",
+            }}></hr>
           <div className={styles.bgColorList33}>
             <ul type="none">
               <li>
@@ -124,16 +232,21 @@ export default function RulesOfRoad() {
           <h2 className={styles.hazardTestH2}>
             Key <span>Terms</span>
           </h2>
+        </section>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3> Box Junction</h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={boxJunction} alt="boxJunction" />
             </div>
+
             <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  Box Junction
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>Only enter when your exit road is clear.</p>
@@ -148,16 +261,19 @@ export default function RulesOfRoad() {
               </ul>
             </div>
           </section>
-
-          <section className={styles.AdiParttwoDisplayFlex}>
+        </section>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>Cycle Lane</h3>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={cycleLane} alt="cycleLane" />
             </div>
             <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  Cycle Lane
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -175,15 +291,19 @@ export default function RulesOfRoad() {
               </ul>
             </div>
           </section>
-          <section className={styles.AdiParttwoDisplayFlex}>
+        </section>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>Level Crossings</h3>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={levelCrossing} alt="motorwayLogo" />
             </div>
             <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  Level Crossings
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -201,15 +321,20 @@ export default function RulesOfRoad() {
               </ul>
             </div>
           </section>
-          <section className={styles.AdiParttwoDisplayFlex}>
+        </section>
+
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>Pedestrian Crossings</h3>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={Pedestrian} alt="motorwayLogo" />
             </div>
             <div className={styles.bgColorList}>
               <ul type="none">
-                <h2 style={{ color: "#58d3b4", fontSize: "2rem" }}>
-                  Pedestrian Crossings
-                </h2>
                 <li>
                   <FaCheckCircle id="listrightIcon" />{" "}
                   <p>
@@ -247,11 +372,11 @@ export default function RulesOfRoad() {
           <section className={styles.AdiParttwoDisplayFlex}>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={cycleLane} alt="cycleLane" />
-                <h2>Turning</h2>
-                <section id={styles.resLists12}>
+                <h4>Turning</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <FaCheckCircle id="listrightIcon" />{" "}
                     <p>
@@ -279,13 +404,13 @@ export default function RulesOfRoad() {
             </div>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv123}>
               <ul type="none">
                 <img src={cycleLane} alt="cycleLane" />
-                <h2>
+                <h4>
                   <span>Parking</span>
-                </h2>
-                <section id={styles.resLists21}>
+                </h4>
+                <section id={styles.resLists2}>
                   <li>
                     <FaCheckCircle id="listrightIcon" />{" "}
                     <p>Near a school entrance or exit.</p>
@@ -315,11 +440,11 @@ export default function RulesOfRoad() {
             </div>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={cycleLane} alt="cycleLane" />
-                <h2>Reversing</h2>
-                <section id={styles.resLists12}>
+                <h4>Reversing</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <FaCheckCircle id="listrightIcon" />{" "}
                     <p>
@@ -349,9 +474,13 @@ export default function RulesOfRoad() {
         {/* ///////////////////////////////////////////////////////////// */}
 
         {/* ///////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>Other</h2>
-          <section className={styles.AdiParttwoDisplayFlex}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>Other</h3>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={cycleLane} alt="cycleLane" />
             </div>

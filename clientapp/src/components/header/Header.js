@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./css/header.module.css";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/images/1200px-Lplate.svg.png";
@@ -7,6 +7,13 @@ import logo2 from "../../assets/images/White-Logo-Fixed-1024x174.png";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
   return (
     <div className={styles.headerContainer}>
       <nav>
@@ -54,41 +61,6 @@ function Header() {
               </NavLink>
             </ul>
           </li>
-          {/* <li id={styles.dropDownNav}>
-            <NavLink to="/Driving-Lessons">
-              <span>Driving Lesson</span>
-            </NavLink>
-            <ul className={styles.dropdownContent}>
-              <NavLink
-                to="/Driving-Lessons/manual"
-                className={styles.activeLink}
-              >
-                <li>Manual</li>
-              </NavLink>
-
-              <NavLink
-                to="/Driving-Lessons/automatic"
-                className={styles.activeLink}
-              >
-                {" "}
-                <li>Automatic</li>
-              </NavLink>
-
-              <NavLink
-                to="/Driving-Lessons/Intensive"
-                className={styles.activeLink}
-              >
-                <li>Intensive</li>
-              </NavLink>
-
-              <NavLink
-                to="/Driving-Lessons/Pass-Plus"
-                className={styles.activeLink}
-              >
-                <li>Pass Plus</li>
-              </NavLink>
-            </ul>
-          </li> */}
 
           <li id={styles.dropDownNav}>
             <NavLink to="/Theory-Support" className={styles.activeLink}>

@@ -5,17 +5,19 @@
 }
 .TheoryPortal {
   background-color: #111;
-  font-family: "Antonio", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   padding-bottom: 4rem;
 }
 .imageSection {
   position: relative;
   width: 100%;
-  padding: 8rem 0;
-  background-image: url("../../assets//images/theorySupportbanner.png");
+  padding: 5rem 0;
+  background-image: url("../../assets//images/theory-banner.jpg");
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
+  margin-top: 1rem;
 }
 .opicity {
   position: absolute;
@@ -28,7 +30,7 @@
 }
 .maincontent {
   display: flex;
-  max-width: 1440px;
+  max-width: 1640px;
   width: 100%;
   align-items: center;
   margin-left: auto;
@@ -39,52 +41,36 @@
 .content {
   width: 100%;
   color: white;
-  text-align: center;
+  text-align: left;
   padding: 0px 20px;
 }
-.content hr {
-  opacity: 1;
 
-  max-width: 500px;
-  margin-right: auto;
-  margin-left: auto;
-  border: 2px solid #db0000;
-}
-
-.heading1 h1 span {
-  color: rgb(255, 230, 0);
-}
 .heading1 h1 {
-  color: #d10101;
-  font-size: 6rem;
-  font-weight: 900;
+  color: white;
+  font-size: 5rem;
+  font-weight: 800;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
 
-  text-align: center;
-  overflow: hidden;
- 
-  white-space: nowrap;
-  margin: 0 auto;
-
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
   padding: 2rem 0px;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 0, 0);
-  }
+.gGpFrontListP p {
+  color: white;
+  background: linear-gradient(135deg, #944907, #760136b5);
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: sticky;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: 44%;
+  width: 100%;
+
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+
+  margin-bottom: 1rem;
 }
 
 .heading2 p {
@@ -119,6 +105,12 @@
   .content {
     padding-top: 75px;
   }
+  .heading1 h1 {
+    font-size: 4.5rem;
+  }
+  .imageSection {
+    padding: 2rem 0px;
+  }
 }
 @media (max-width: 767px) {
   .content {
@@ -135,7 +127,7 @@
     padding-top: 1rem;
   }
   .heading1 h1 {
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .content {
     max-width: 100%;
@@ -143,11 +135,30 @@
   .video {
     max-width: 100%;
   }
+  .gGpFrontListP p {
+    font-size: 1rem;
+  }
+  .imageSection {
+    padding: 2rem 0px;
+  }
+}
+@media (max-width: 500px) {
+  .heading1 h1 {
+    font-size: 3.7rem;
+  }
+  .imageSection {
+    padding: 3rem 0px;
+  }
+}
+@media (max-width: 427px) {
+  .heading1 h1 {
+    font-size: 3rem;
+  }
+  .imageSection {
+    padding: 2rem 0px;
+  }
 }
 @media (max-width: 350px) {
-  .video {
-    padding: 40px;
-  }
   .heading1 h1 {
     font-size: 2rem;
     line-height: 28px;
@@ -158,55 +169,36 @@
 }
 /* //////////////////////////////////////////// */
 .theoryTestSectionQ {
-  padding: 2rem 1rem;
+  padding: 1rem;
   max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
-.theoryTestDivQ h2 span {
-  color: rgb(255, 217, 0);
-}
+
 .theoryTestDivQ h2 {
   font-size: 5rem;
   font-weight: 700;
-  overflow: hidden;
- 
-  white-space: nowrap;
-  margin: 0 auto;
-
-  color: #ff090d;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
-  padding: 2rem 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ff871e, #c00258);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 0, 0);
-  }
-}
 .theoryTestDivQ hr {
-  border: 2px solid #ff090d;
+  border: 2px solid #ff0055;
   opacity: 1;
   max-width: 700px;
   margin-right: auto;
   margin-left: auto;
 }
 .theoryTestDivQ p {
-  color: rgb(255, 230, 0);
-  font-size: 24px;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  background: linear-gradient(135deg, #00d4b8, #004214);
+  padding: 1rem;
+  border-radius: 10px;
 }
 @media (max-width: 778px) {
   .theoryTestDivQ h2 {
@@ -229,10 +221,14 @@
   }
 }
 /* ////////////////////////////////////////////////////// */
-
+.choicesSectionTheoryPortal123 {
+  border-radius: 20px;
+  background-color: #00318b75;
+  margin-bottom: 2rem;
+}
 .choicesSectionTheoryPortal {
-  padding: 2rem 1rem;
-  max-width: 1270px;
+  padding: 3rem 1rem;
+  max-width: 1340px;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
@@ -243,12 +239,13 @@
 }
 #choiceIdMc {
   animation: 5s slide-right;
-  background-color: #ff090d;
-  color: #ffd000;
+  background: linear-gradient(135deg, #d40023, #8b003f);
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #choiceIdMc hr {
-  border: 2px solid #ffee00;
+  border: 2px solid #00d9ff;
 }
 @keyframes slide-right {
   from {
@@ -260,8 +257,10 @@
 }
 #choiceIdHP {
   animation: 5s slide-left;
-  background-color: #ffd900;
-  color: #ff0000;
+  background: linear-gradient(135deg, #00d4b8, #00318b);
+  color: #ffffff;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes slide-left {
@@ -273,7 +272,7 @@
   }
 }
 #choiceIdHP hr {
-  border: 2px solid #ff0000;
+  border: 2px solid #ff0062;
   opacity: 1;
   max-width: 350px;
   margin-right: auto;
@@ -281,7 +280,6 @@
   margin-bottom: 1rem;
 }
 .ChoicesContentContainer {
-  margin-top: 1rem;
   padding: 1rem;
   max-width: 600px;
   margin-right: auto;
@@ -306,16 +304,20 @@
 .ChoicesContentContainer p {
   font-size: 18px;
   margin-bottom: 10px;
-  margin: 0px 1rem 10px;
 }
 @media (max-width: 750px) {
   .choicesDivTheoryPortal {
-    display: block;
+    flex-direction: column;
   }
 }
 /* ////////////////////////////////////////////// */
+.theoryPortalYoutubeVideosSection123 {
+  background: linear-gradient(135deg, #ff7402, #ff0040);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
 .theoryPortalYoutubeVideosSection {
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
   max-width: 1000px;
   margin-right: auto;
   margin-left: auto;
@@ -373,39 +375,17 @@
 /* /////////////////////////why choose us css/////////// */
 .thMultipleChioceHeader h2 {
   text-align: center;
-  color: #ff0004;
+  color: #ffffff;
   font-size: 4rem;
   font-weight: 700;
-  overflow: hidden;
- 
-  white-space: nowrap;
-  margin: 0 auto;
-
-  color: #ff090d;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end;
-  padding: 2rem 0px;
-}
-.thMultipleChioceHeader h2 SPAN {
-  color: rgb(255, 238, 0);
+  background: linear-gradient(135deg, #17dddd, #0400d3);
+  margin: 1rem auto;
+  border-radius: 20px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 1.5rem;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 0, 0);
-  }
-}
 @media (max-width: 767px) {
   .thMultipleChioceHeader h2 {
     font-size: 3rem;
@@ -427,15 +407,24 @@
   }
 }
 .thMultipleChioceHeader p {
-  font-size: 30px;
+  font-size: 18px;
   text-align: center;
-  color: rgb(255, 238, 0);
+  background: linear-gradient(135deg, #8d02ff, #0400d3);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1000px;
+  width: 100%;
 }
 .thchoiceListSection {
-  background-color: #470c0c5b;
+  margin: 1rem 0px;
+  background-color: #4d04465b;
 }
 .features {
   padding: 2rem 0;
+  background-color: #2b016e9a;
+  border-radius: 20px;
 }
 .features h4 {
   color: #ff0004;
@@ -465,15 +454,21 @@
   width: 100%;
 }
 #column {
-  background-color: #ffd904fa;
+  background: linear-gradient(135deg, #17dddd, #0400d3);
+}
+#column1 {
+  background: linear-gradient(135deg, #c617dd, #360557);
+}
+#column2 {
+  background: linear-gradient(135deg, #ec9c06, #b44200);
 }
 #column:hover {
-  box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
-  border: 1px solid #ffd000;
+  box-shadow: 0px 0px 55px 5px rgba(136, 136, 136, 0.555);
+  border: 1px solid #cacaca;
 }
 .column {
   padding: 25px 25px 55px 25px;
-  background-color: #cc0000;
+  background: linear-gradient(135deg, #ff0281, #850122);
   border-radius: 30px;
   box-shadow: 0px 0px 55px 5px rgba(172, 172, 172, 0.171);
 
@@ -485,8 +480,8 @@
 }
 
 .column:hover {
-  box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
-  border: 1px solid #ff0004;
+  box-shadow: 0px 0px 55px 5px rgba(117, 117, 117, 0.555);
+  border: 1px solid #cccccc;
 }
 .column h3 {
   font-size: 26px;
@@ -568,47 +563,28 @@
 /* ////////////////////////////////// */
 .thAdditionalSupportSection {
   padding: 2rem 1rem;
+  margin: 1rem 0px;
 }
 .thAdditionalSupportHeader {
-  background-color: #c4171a3a;
+  background-color: #ff006262;
   padding: 2rem 0px;
+  border-radius: 20px;
 }
-.thAdditionalSupportHeader h2 span {
-  color: rgb(255, 238, 0);
-}
+
 .thAdditionalSupportHeader h2 {
   font-size: 4rem;
   font-weight: 700;
   text-align: center;
-  color: #fff;
-  overflow: hidden;
+  color: #00f1d1;
 
-  white-space: nowrap;
   margin: 0 auto;
-
-  color: #ff090d;
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
 
   padding: 2rem 0px;
 }
+.thAdditionalSupportHeader h2 span {
+  color: #ff0077;
+}
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 0, 0);
-  }
-}
 .thAdditionalSupportformAndMap {
   max-width: 1240px;
   width: 100%;
@@ -619,16 +595,16 @@
   padding: 2rem 0px;
 }
 .thAdditionalSupport2ndHeader h2 span {
-  color: #ffd000;
+  color: #ff0055;
 }
 .thAdditionalSupport2ndHeader h2 {
-  color: #ff0004;
-  font-size: 2rem;
+  color: #00ffff;
+  font-size: 3rem;
   font-weight: 600;
   text-align: center;
 }
 .thAdditionalSupport2ndHeader hr {
-  border: 2px solid #ff0004;
+  border: 2px solid #ff006a;
   opacity: 1;
   max-width: 500px;
   width: 100%;
@@ -637,9 +613,9 @@
 }
 .thAdditionalSupport2ndHeader section {
   box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
-  background-color: #ffe600;
-  color: rgb(255, 0, 0);
-  padding: 3rem;
+  background: linear-gradient(135deg, #ff0281, #850122);
+  color: rgb(255, 255, 255);
+  padding: 2rem;
   border-radius: 30px;
   opacity: 0;
   transform: translateY(-100%);
@@ -674,6 +650,12 @@
   .thAdditionalSupportHeader h2 {
     font-size: 2rem;
   }
+  .thAdditionalSupport2ndHeader section {
+    padding: 1rem;
+  }
+  .thAdditionalSupport2ndHeader h2 {
+    font-size: 2rem;
+  }
 }
 .thFooterSection {
   margin: 2rem 0px;
@@ -684,16 +666,16 @@
   text-align: center;
 }
 .thFooterDiv h2 span {
-  color: #ffd900;
+  color: #ff004c;
 }
 .thFooterDiv h2 {
-  color: #ff0004;
-  font-size: 2.5rem;
+  color: #00ffea;
+  font-size: 3rem;
   font-weight: 600;
   text-align: center;
 }
 .thFooterDiv hr {
-  border: 2px solid #ff0004;
+  border: 2px solid #ff0080;
   margin-right: auto;
   margin-left: auto;
   max-width: 500px;
@@ -702,6 +684,7 @@
 }
 .thFooterDiv img {
   max-width: 700px;
+  border-radius: 20px;
   width: 100%;
 }
 @media (max-width: 428px) {

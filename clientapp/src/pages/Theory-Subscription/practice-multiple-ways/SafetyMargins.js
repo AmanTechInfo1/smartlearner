@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./css/SafetyMargins.module.css";
 import greenRuler from "../../../assets/images/green-ruler.png";
 
@@ -9,8 +9,110 @@ import absImg from "../../../assets/images/absImg.png";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { useRef } from "react";
+
+import gsap from "gsap";
 
 export default function SafetyMargins() {
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Topic: Safety"; // First part before "Driving"
+    const secondPart = "Margins";
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -18,34 +120,30 @@ export default function SafetyMargins() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-             
-
-              <div className={styles.heading2}>
-                <h2>
-                Topic: Safety <span>Margins</span>{" "}
-                </h2>
+              <div className={styles.heading1}>
+                <h1 ref={textRef}>{splitText()}</h1>
               </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="/takequizCatName/Safety-Margins"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link to="/hazard-awareness" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
               </div>
-                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
-                                          <div className={styles.allbtns}>
-                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
-                                            </Link>
-                                          <Link to="/takequizCatName/Safety-Margins" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Start Quiz</button>
-                                            </Link>
-                                          <Link to="/hazard-awareness" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
-                                            </Link>
-                                          </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
             </div>
           </div>
         </section>
@@ -56,7 +154,9 @@ export default function SafetyMargins() {
             What are <span>Safety margins?</span>
           </h2>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={greenRuler} alt="greenRuler" />
             </div>
@@ -82,19 +182,11 @@ export default function SafetyMargins() {
           <h2 className={styles.hazardTestH2}>
             Stopping <span>Distances</span>
           </h2>
-          <section className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  The following provided stopping times have been calculated
-                  correctly and are imperative to understand whilst driving
-                  especially in harsh weather conditions. (hover your cursor
-                  over each box for the answer)
-                </p>
-                <hr style={{ opacity: "1", border: "1px solid green" }}></hr>
-              </li>
-            </ul>
-          </section>
+          <p id={styles.hazardTestH2para}>
+            The following provided stopping times have been calculated correctly
+            and are imperative to understand whilst driving especially in harsh
+            weather conditions. (hover your cursor over each box for the answer)
+          </p>
           <section className={styles.theoryPortalYoutubeVideosSection}>
             <div className={styles.theoryPortalYoutubeVideosDiv}>
               <iframe
@@ -102,8 +194,8 @@ export default function SafetyMargins() {
                   borderRadius: "30px",
                   boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
                 }}
-                width="560"
-                height="315"
+                width="100%"
+                height="500"
                 src="https://www.youtube.com/embed/1afkGSJN9LA"
                 title="YouTube video player"></iframe>
             </div>
@@ -116,7 +208,7 @@ export default function SafetyMargins() {
           <h2 className={styles.hazardTestH2} id={styles.h2heddings}>
             Important <span>Terms </span>
           </h2>
-          <p style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <p id={styles.hazardTestH2para}>
             {" "}
             If you’re driving at night or in bad weather, you’ll need to make
             sure you’re using your car lights properly. Take care when following
@@ -124,12 +216,14 @@ export default function SafetyMargins() {
             to see you in their mirrors properly.
           </p>
           <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <div className={styles.innerTheorySupportContent}>
                   <div className={styles.theorySupportContentVideo}>
                     <iframe
-                      width="345"
+                      style={{ maxWidth: "350px", width: "100%" }}
                       height="260"
                       src="https://www.youtube.com/embed/iRY8Xsohoh8"
                       title="Tyre Safety Month 2014 Aquaplaning animation - TyreSafe"
@@ -139,8 +233,8 @@ export default function SafetyMargins() {
                       allowfullscreen></iframe>
                   </div>
                 </div>
-                <h2>Aqua Planing</h2>
-                <section id={styles.resLists12}>
+                <h4>Aqua Planing</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       • When roads are wet, your car can aquaplane. This means
@@ -155,13 +249,15 @@ export default function SafetyMargins() {
                 </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv123}>
               <ul type="none">
                 <img src={motorwayCartflow} alt="motorwayCartflow" />
-                <h2>
+                <h4>
                   <span>Contraflow Systems</span>
-                </h2>
-                <section id={styles.resLists21}>
+                </h4>
+                <section id={styles.resLists2}>
                   <li>
                     <p>
                       • A contraflow system is to prevent traffic in peak travel
@@ -175,11 +271,13 @@ export default function SafetyMargins() {
                 </section>
               </ul>
             </div>
-            <div className={styles.hazardTestWorkListDiv}>
+            <div
+              className={styles.hazardTestWorkListDiv}
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={absImg} alt="absImg" />
-                <h2>Anti-lock Brakes (ABS)</h2>
-                <section id={styles.resLists12}>
+                <h4>Anti-lock Brakes (ABS)</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       • Anti-lock brakes prevent wheels from locking which means
@@ -201,7 +299,13 @@ export default function SafetyMargins() {
           <h2>
             Driving in <span>Different conditions</span>
           </h2>
-          <hr style={{ opacity: "1", border: "1px solid green" }}></hr>
+          <hr
+            style={{
+              opacity: "1",
+              border: "2px solid #01cfbe",
+              maxWidth: "700px",
+              margin: "1rem auto",
+            }}></hr>
           <div className={styles.hazardTestWorkListDiv}>
             <section className={styles.bgColorList33}>
               <ul type="none">

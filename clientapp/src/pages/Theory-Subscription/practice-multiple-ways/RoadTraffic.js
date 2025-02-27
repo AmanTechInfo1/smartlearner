@@ -27,7 +27,110 @@ import traffLights from "../../../assets/images/traf-lights.jpg";
 import { Link } from "react-router-dom";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 export default function RoadTraffic() {
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = " Topic: Road and"; // First part before "Driving"
+    const secondPart = "Traffic Signs";
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -35,34 +138,33 @@ export default function RoadTraffic() {
           <div className={styles.opicity}></div>
           <div className={styles.maincontent}>
             <div className={styles.content}>
-              
+              <div className={styles.heading1}>
+                <h1 ref={textRef}>{splitText()}</h1>
+              </div>
 
-              <div className={styles.heading2}>
-                <h2>
-                Topic: Road and <span>Traffic Signs</span>{" "}
-                </h2>
-              </div>
               <div className={styles.alertBtn}>
-              <Link to="/Contact-Us" style={{textDecoration:"none"}}>
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
+                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    <MdKeyboardDoubleArrowLeft /> Back
+                  </button>
+                </Link>
+                <Link
+                  to="/takequizCatName/Road-and-Traffic-Signs"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>Start Quiz</button>
+                </Link>
+                <Link
+                  to="/essential-Documents"
+                  style={{ textDecoration: "none" }}>
+                  {" "}
+                  <button id={styles.btn}>
+                    Next <MdKeyboardDoubleArrowRight />
+                  </button>
+                </Link>
               </div>
-                 {/* ////////////////////////////////////////////////////////////////////////////////// */}
-                                          <div className={styles.allbtns}>
-                                          <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button   id={styles.btn}><MdKeyboardDoubleArrowLeft /> Back</button>
-                                            </Link>
-                                          <Link to="/takequizCatName/Road-and-Traffic-Signs" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Start Quiz</button>
-                                            </Link>
-                                          <Link to="/essential-Documents" style={{ textDecoration: "none" }}>
-                                              {" "}
-                                              <button id={styles.btn}>Next <MdKeyboardDoubleArrowRight/></button>
-                                            </Link>
-                                          </div>
+              {/* ////////////////////////////////////////////////////////////////////////////////// */}
             </div>
           </div>
         </section>
@@ -73,7 +175,9 @@ export default function RoadTraffic() {
             What are road and <span>Traffic Signs?</span>
           </h2>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={turnLeftSign} alt="turnLeftSign" />
             </div>
@@ -96,10 +200,10 @@ export default function RoadTraffic() {
           </section>
           <section className={styles.hazardTestH23}>
             <ul type="none">
-              <h2>
+              <h1>
                 In this section of multiple choice,{" "}
                 <span>you’ll find out about what you can learn from:</span>
-              </h2>
+              </h1>
             </ul>
           </section>
           <section className={styles.bgColorList2}>
@@ -136,11 +240,11 @@ export default function RoadTraffic() {
           <section className={styles.AdiParttwoDisplayFlex}>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={circleOrders} alt="circleOrders" />
-                <h2> Circle = Orders</h2>
-                <section id={styles.resLists12}>
+                <h4> Circle = Orders</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       Circular signs give orders – they must be followed to stay
@@ -154,13 +258,13 @@ export default function RoadTraffic() {
             </div>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv123}>
               <ul type="none">
                 <img src={triangleAhead} alt="triangleAhead" />
-                <h2>
+                <h4>
                   <span>Triangle = Warning</span>
-                </h2>
-                <section id={styles.resLists21}>
+                </h4>
+                <section id={styles.resLists2}>
                   <li>
                     <p>
                       Triangular signs warn. Road signs in the shape of an
@@ -174,11 +278,11 @@ export default function RoadTraffic() {
             </div>
             <div
               className={styles.hazardTestWorkListDiv}
-              style={{ display: "block" }}>
+              id={styles.hazardTestWorkListDiv12}>
               <ul type="none">
                 <img src={oneWyroad} alt="one-way" />
-                <h2> Rectangle = Information</h2>
-                <section id={styles.resLists12}>
+                <h4> Rectangle = Information</h4>
+                <section id={styles.resLists1}>
                   <li>
                     <p>
                       Rectangular signs inform. Blue rectangular signs give
@@ -200,32 +304,43 @@ export default function RoadTraffic() {
           <div id={styles.imagesHSection}>
             <section>
               <img src={stopSign} alt="stopSign" />
-              <h2>
+              <h4>
                 Octagon = <span>Stop Sign</span>
-              </h2>
+              </h4>
             </section>
             <section>
               <img src={giveWay} alt="giveWay" />
-              <h2>
+              <h4>
                 Inverted Triangle = <span>Give Way.</span>
-              </h2>
+              </h4>
             </section>
           </div>
         </section>
         {/* ////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 >
+          <h1>
             Commonly Confused <span>Road Signs</span>
-          </h2>
-          <hr />
+          </h1>
+          <hr
+            style={{
+              opacity: "1",
+              border: "2px solid #01cfbe",
+              maxWidth: "700px",
+              margin: "1rem auto",
+            }}
+          />
         </section>
         {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             National <span>Speed Limit</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={NoSpeed} alt="NoSpeed" />
             </div>
@@ -257,12 +372,16 @@ export default function RoadTraffic() {
           </section>
         </section>
         {/* ////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3 className={styles.hazardTestH2}>
             No Waiting/ <span>Urban Clearway</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={capture} alt="capture-Img" />
             </div>
@@ -289,12 +408,16 @@ export default function RoadTraffic() {
           </section>
         </section>
         {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             No <span>Motor Vehicles</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={NoMotorVehicle} alt="NoMotorVehicle-Img" />
             </div>
@@ -317,12 +440,16 @@ export default function RoadTraffic() {
           </section>
         </section>
         {/* ////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             No <span>Overtaking</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={MauritiusRoad} alt="MauritiusRoad-Img" />
             </div>
@@ -345,12 +472,16 @@ export default function RoadTraffic() {
           </section>
         </section>
         {/* ///////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Two-Way Traffic <span> Straight Ahead</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={TwoWayRoad} alt="TwoWayRoad-Img" />
             </div>
@@ -380,12 +511,16 @@ export default function RoadTraffic() {
         </section>
 
         {/* ////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             People Walking <span>Along The Road</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={peopleWalking} alt="peopleWalking-Img" />
             </div>
@@ -409,12 +544,16 @@ export default function RoadTraffic() {
           </section>
         </section>
         {/* ////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Road <span>Narrows</span>
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={capture1} alt="capture-Img" />
             </div>
@@ -438,12 +577,12 @@ export default function RoadTraffic() {
         </section>
 
         {/* ///////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <section className={styles.hazardTestWorkListSection} id={styles.hazardTestWorkListSection}>
+          <h3 >
             End Of <span>Dual Carriageway</span>{" "}
-          </h2>
+          </h3>
 
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section className={styles.AdiParttwoDisplayFlex} id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={endDual} alt="endDual-Img" />
             </div>
@@ -467,21 +606,30 @@ export default function RoadTraffic() {
         </section>
 
         {/* /////////////////////////////////////// */}
-        <div className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
+        <div
+          className={styles.hazardTestWorkListSection}
+          id={styles.hazardTestWorkListSection}>
+          <h3>
             Traffic <span>Lights</span>
-          </h2>
-          <section id={styles.smartlearnerPladges}>
-            <p>
+          </h3>
+          <section>
+            <p id={styles.hazardTestH2para}>
               Traffic lights are signalling devices positioned at road
               intersections, pedestrian crossings, and other locations to
               control the flows of traffic. They work in a sequence and
               different colours instruct you to do a different thing. The
               traffic light sequence is as follows;
             </p>
-            <hr />
+            <hr style={{
+              opacity: "1",
+              border: "2px solid rgb(255, 0, 76)",
+              maxWidth: "700px",
+              margin: "1rem auto",
+            }}/>
           </section>
-          <section className={styles.AdiParttwoDisplayFlex}>
+          <section
+            className={styles.AdiParttwoDisplayFlex}
+            id={styles.AdiParttwoDisplayFlex1}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={traffLights} alt="traffLights" />
             </div>
@@ -515,7 +663,7 @@ export default function RoadTraffic() {
 
         <section className={styles.thMultipleChoiceSection}>
           <div className={styles.thMultipleChioceHeader}>
-            <h2 className={styles.hazardTestH2}>Car Signals</h2>
+            <h2>Car Signals</h2>
           </div>
           <div className={styles.thMultipleChoiceListContainer}>
             <section className={styles.features}>

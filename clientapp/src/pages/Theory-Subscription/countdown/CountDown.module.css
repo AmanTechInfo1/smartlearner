@@ -1,10 +1,10 @@
 .clockContainer {
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color: #be0000;
+  background: linear-gradient(135deg, #ff0080a1, #ff670186);
   border-radius: 5px;
   padding: 60px 20px;
-  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15),
+  box-shadow: 1px 1px 5px rgba(26, 26, 26, 0.26),
     0 15px 90px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
@@ -39,13 +39,13 @@
 }
 
 .clockTimer {
-  color: #ffd900;
+  color: #ffffff;
   font-size: 4.2rem;
   text-transform: uppercase;
 }
 
 .clockLabel {
-  color: rgba(255, 166, 0, 0.781);
+  color: rgba(255, 255, 255, 0.781);
   text-transform: uppercase;
   font-size: 0.7rem;
   margin-top: 10px;
@@ -187,16 +187,14 @@ p {
 
 .theoryPortalCountDown {
   padding: 2rem 1rem;
-  font-family: "Antonio", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.theoryPortalTimer h4 span {
-  color: rgb(218, 178, 0);
-}
+
 .theoryPortalTimer h4 {
-  color: rgb(212, 0, 0);
-  font-weight: 700;
-  font-size: 1.7rem;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.432);
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
 }
 @media (max-width: 760px) {
   .theoryPortalTimer h4 {
@@ -210,8 +208,8 @@ p {
 }
 
 .theoryPortalTimerInputField {
-  background-color: rgb(255, 187, 0);
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.644);
+  background: linear-gradient(135deg, #ff780269, #ff007359);
+  box-shadow: 0 3px 10px rgba(37, 37, 37, 0.39);
   display: flex;
   justify-content: center;
   border-radius: 6px;
@@ -248,7 +246,7 @@ p {
   font-weight: 500;
   color: rgb(255, 255, 255);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  background-color: rgb(216, 0, 0);
+  background-color: rgb(36, 0, 0);
 }
 
 .theoryPortalTimerInputField button:hover {

@@ -27,6 +27,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 import starImg from "../../assets/images/yellowStar.png";
 
+import { useRef } from "react";
+
+import gsap from "gsap";
+
 export default function TheoryPortal() {
   const userSubscription = useSelector(
     (state) => state.subscription.userSubscription
@@ -75,6 +79,98 @@ export default function TheoryPortal() {
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
 
+  ///////////////////////////////////////////////////////////////////
+
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Theory Portal"; // First part before "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.TheoryPortal}>
       <section className={styles.imageSection}>
@@ -82,13 +178,9 @@ export default function TheoryPortal() {
         <div className={styles.maincontent}>
           <div className={styles.content}>
             <div className={styles.heading1}>
-              <h1>
-                Theory <span>Portal</span>
-              </h1>
-              <hr />
+              <h1 ref={textRef}>{splitText()}</h1>
             </div>
-
-            <div className={styles.heading2}>
+            <div className={styles.gGpFrontListP}>
               <p>
                 It`s time to begin your next steps towards passing your theory
                 test!
@@ -116,80 +208,85 @@ export default function TheoryPortal() {
         </div>
       </section>
       {/* //////////////////////////////////// */}
-
-      <section className={styles.choicesSectionTheoryPortal}>
-        <div className={styles.choicesDivTheoryPortal}>
-          <div
-            id={styles.choiceIdMc}
-            className={styles.ChoicesContentContainer}>
-            <section>
-              <h2>Multiple-choice</h2>
-              <hr />
-              <p>
-                You have 57 minutes to answer 50 multiple-choice questions.
-                Before the test starts you’ll get instructions on how the test
-                works & the chance to do some practice questions to get used to
-                the screens.
-              </p>
-              <p>
-                A question and 4 possible answers appear on a screen. You have
-                to select the right answer. However, the final three questions
-                of the exam will be about a short video. It will show a normal
-                driving situation the video is silent and you can watch it as
-                many times as you like during the test.
-              </p>
-              <p>
-                You can finish the multiple-choice questions part when you’ve
-                answered all of the questions. You do not have to use the full
-                57 minutes. You can have a break of up to 3 minutes before the
-                hazard perception test starts.
-              </p>
-            </section>
-          </div>
-          <div
-            id={styles.choiceIdHP}
-            className={styles.ChoicesContentContainer}>
-            <div>
-              <h2>Hazard Perception</h2>
-              <hr />
-              <p>
-                Before you start the hazard perception test, you’ll be shown a
-                video about how it works. You’ll then watch 14 video clips. The
-                clips will show everyday road scenes and contain at least one
-                ‘developing hazard’.
-              </p>
-              <p>
-                One of the clips will feature 2 developing hazards in the same
-                clip. You get points for spotting the developing hazards as soon
-                as they start to happen.
-              </p>
-              <p>
-                You can score up to 5 points for each developing hazard. To get
-                a high score, click the mouse as soon as you see the hazard
-                starting to develop. You do not lose points if you click and get
-                it wrong. However, you will not score anything if you click
-                continuously or in a pattern. Beware, you only get one attempt
-                at each clip. You cannot review or change your responses.
-              </p>
+      <div className={styles.choicesSectionTheoryPortal123}>
+        <section className={styles.choicesSectionTheoryPortal}>
+          <div className={styles.choicesDivTheoryPortal}>
+            <div
+              id={styles.choiceIdMc}
+              className={styles.ChoicesContentContainer}>
+              <section>
+                <h2>Multiple-choice</h2>
+                <hr />
+                <p>
+                  You have 57 minutes to answer 50 multiple-choice questions.
+                  Before the test starts you’ll get instructions on how the test
+                  works & the chance to do some practice questions to get used
+                  to the screens.
+                </p>
+                <p>
+                  A question and 4 possible answers appear on a screen. You have
+                  to select the right answer. However, the final three questions
+                  of the exam will be about a short video. It will show a normal
+                  driving situation the video is silent and you can watch it as
+                  many times as you like during the test.
+                </p>
+                <p>
+                  You can finish the multiple-choice questions part when you’ve
+                  answered all of the questions. You do not have to use the full
+                  57 minutes. You can have a break of up to 3 minutes before the
+                  hazard perception test starts.
+                </p>
+              </section>
+            </div>
+            <div
+              id={styles.choiceIdHP}
+              className={styles.ChoicesContentContainer}>
+              <div>
+                <h2>Hazard Perception</h2>
+                <hr />
+                <p>
+                  Before you start the hazard perception test, you’ll be shown a
+                  video about how it works. You’ll then watch 14 video clips.
+                  The clips will show everyday road scenes and contain at least
+                  one ‘developing hazard’.
+                </p>
+                <p>
+                  One of the clips will feature 2 developing hazards in the same
+                  clip. You get points for spotting the developing hazards as
+                  soon as they start to happen.
+                </p>
+                <p>
+                  You can score up to 5 points for each developing hazard. To
+                  get a high score, click the mouse as soon as you see the
+                  hazard starting to develop. You do not lose points if you
+                  click and get it wrong. However, you will not score anything
+                  if you click continuously or in a pattern. Beware, you only
+                  get one attempt at each clip. You cannot review or change your
+                  responses.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
+
       {/* //////////////////////////////////////////////////////// */}
 
-      <section className={styles.theoryPortalYoutubeVideosSection}>
-        <div className={styles.theoryPortalYoutubeVideosDiv}>
-          <iframe
-            style={{
-              borderRadius: "30px",
-              boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
-            }}
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
-            title="YouTube video player"></iframe>
-        </div>
-      </section>
+      <div className={styles.theoryPortalYoutubeVideosSection123}>
+        <section className={styles.theoryPortalYoutubeVideosSection}>
+          <div className={styles.theoryPortalYoutubeVideosDiv}>
+            <iframe
+              style={{
+                borderRadius: "30px",
+                boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
+              }}
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
+              title="YouTube video player"></iframe>
+          </div>
+        </section>
+      </div>
       <section>
         <div className={styles.starImgContainer}>
           <img src={starImg} alt="starImg" />
@@ -203,9 +300,7 @@ export default function TheoryPortal() {
 
       <section className={styles.thMultipleChoiceSection}>
         <div className={styles.thMultipleChioceHeader}>
-          <h2>
-            Practice for <span>Multiple-choice</span>
-          </h2>
+          <h2>Practice for Multiple-choice</h2>
           <p>
             Click the ICONS to go through to each of the topic pages and begin
             practicing!
@@ -234,7 +329,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 2</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column1}>
                 <Link to="/safety-your-vehicle">
                   {" "}
                   <span>
@@ -245,7 +340,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 3</p>
               </div>
-              <div className={styles.column} id={styles.column}>
+              <div className={styles.column} id={styles.column2}>
                 <Link to="/safety-margins">
                   {" "}
                   <span>
@@ -256,7 +351,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 4</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column1}>
                 <Link to="/hazard-awareness">
                   <span>
                     <FaExclamationTriangle id={styles.featuresIcon} />
@@ -266,7 +361,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 5</p>
               </div>
-              <div className={styles.column} id={styles.column}>
+              <div className={styles.column} id={styles.column2}>
                 <Link to="/vulnerable-road-users">
                   {" "}
                   <span>
@@ -277,7 +372,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 6</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column3}>
                 <Link to="/other-vehicles">
                   {" "}
                   <span>
@@ -298,7 +393,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 8</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column2}>
                 <Link to="/motorway-rules">
                   <span>
                     <FaCarSide id={styles.featuresIcon} />
@@ -319,7 +414,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 10</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column1}>
                 <Link to="/road-and-traffic-signs">
                   {" "}
                   <span>
@@ -330,7 +425,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 11</p>
               </div>
-              <div className={styles.column} id={styles.column}>
+              <div className={styles.column}>
                 <Link to="/essential-Documents">
                   <span>
                     <FaIdCard id={styles.featuresIcon} />
@@ -340,7 +435,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 12</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column1}>
                 <Link to="/incidents-&-accidents">
                   <span>
                     <FaUserInjured id={styles.featuresIcon} />
@@ -360,7 +455,7 @@ export default function TheoryPortal() {
 
                 <p>Topic 14</p>
               </div>
-              <div className={styles.column}>
+              <div className={styles.column} id={styles.column2}>
                 <Link to="/video-clips">
                   <span>
                     <FaVideo id={styles.featuresIcon} />

@@ -1,20 +1,19 @@
 .AdiPartOne {
-  font-family: "Antonio", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
   color: white;
   padding-bottom: 5rem;
 }
-.AdiPartOne h1 span {
-  color: rgb(255, 251, 0);
+h1 {
+  margin-bottom: 0px;
 }
-.AdiPartOne h2 span {
-  color: rgb(255, 251, 0);
-}
+
 .imageSection {
   position: relative;
   width: 100%;
-  padding: 5rem 0;
-  background-image: url(../../../../assets/images/theorySupportbanner.png);
+  border-radius: 10px;
+
+  background-image: url(../../../../assets/images/saffetyVehicle.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -26,81 +25,68 @@
   height: 100%;
   opacity: 0.5;
   background-color: #000000;
+  border-radius: 10px;
 }
 .maincontent {
-  max-width: 1140px;
+  max-width: 1640px;
   width: 100%;
-  padding: 120px 0px;
-  margin-left: auto;
+  padding: 200px 1rem;
   margin-right: auto;
+  margin-left: auto;
   position: sticky;
+  margin-top: 1rem;
 }
 
-.content {
-  width: 100%;
-  color: #ff0000;
-  text-align: center;
-}
-
-.heading1 h1 {
-  color: #ff0000;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 12px;
-}
-.heading2 h2 {
-  color: #ff0000;
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.2em;
-
-  padding-top: 0.8rem;
-  padding-bottom: 0.5rem;
-  margin-bottom: 20px;
-  text-align: center;
-  overflow: hidden;
-  border-right: 0.2px solid #ff0000;
-  white-space: nowrap;
-  margin: 0 auto;
-
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+.heading1 {
   padding: 2rem 0px;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.heading1 h1 {
+  color: white;
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #ff0000;
-  }
+
+.gGpFrontListP p {
+  color: white;
+  background: linear-gradient(135deg, #944907, #760136b5);
+  font-size: 1.2rem;
+  padding: 1rem;
+  position: sticky;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: 44%;
+  width: 100%;
+
+  border-radius: 6px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(54, 54, 54, 0.656);
+
+  margin-bottom: 1rem;
+}
+
+.alertBtn {
+  padding-top: 2rem;
+  display: flex;
+  gap: 20px;
 }
 .alertBtn a button {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  letter-spacing: 0px;
-  border: 1px solid #ffffff;
+  background: linear-gradient(135deg, #6be719, #02700b);
+  border-radius: 10px;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0);
+  border: none;
   padding: 18px 80px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
 
 .alertBtn a button:hover {
-  background-color: #ff0000d8;
-  transform: scale(1.1);
-  animation: bounce 0.3s alternate;
+  transform: scale(1.09);
+  animation: 0.3s;
 }
 
 @keyframes bounce {
@@ -112,55 +98,55 @@
   }
 }
 
-.allbtns{
-  margin: 2rem 0px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 10px;
-}
-.allbtns a button {
-  font-size: 20px;
-  font-weight: 800;
-  cursor: pointer;
-  letter-spacing: 0px;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0);
-  padding: 18px 80px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
-}
-
-.allbtns a button:hover {
-  background-color: #dd0000af;
-  transform: scale(1.1);
-  animation: bounce 0.3s alternate;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(1); /* Original size */
-  }
-  100% {
-    transform: scale(1.05); /* Slightly bigger size */
-  }
-}
 @media (max-width: 1020px) {
+  .maincontent {
+    padding: 120px 1rem;
+  }
   .heading1 h1 {
-    font-size: 1.5rem;
-    line-height: 1.7em;
+    font-size: 3.7rem;
   }
   .heading2 h2 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 720px) {
+  .maincontent {
+    padding: 70px 1rem;
+  }
+  .heading1 h1 {
+    font-size: 3.2rem;
+  }
+  .gGpFrontListP p {
+    font-size: 1rem;
+  }
+  .alertBtn a button {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .maincontent {
+    padding: 50px 1rem;
+  }
+  .heading1 h1 {
+    font-size: 3rem;
   }
 }
 
 @media (max-width: 450px) {
   .heading1 h1 {
-    font-size: 1.2rem;
-    line-height: 1.7em;
+    font-size: 2.5rem;
   }
   .heading2 h2 {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .heading1 h1 {
+    font-size: 2.2rem;
+  }
+  .alertBtn {
+    flex-direction: column;
   }
 }
 
@@ -198,57 +184,104 @@
 /* ////////////////////////////////////////// */
 
 .hazardTestWorkListSection {
-  padding: 1rem 1rem;
-  max-width: 1200px;
+  padding: 1rem;
+  max-width: 1640px;
   margin-right: auto;
   margin-left: auto;
+  width: 100%;
 }
 .hazardTestWorkListSection h2 {
-  color: #ff0000;
-  font-size: 4rem;
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1effa9, #006834);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+#hazardTestWorkListSection {
+  background: linear-gradient(135deg, #09e9b1, #00787cd8);
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  margin: 1.5rem auto;
+}
+#hazardTestWorkListSection h3 {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #6ed6ff8a;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+.hazardTestWorkListSection1 {
+  font-size: 3rem;
+  color: #f00000;
   text-align: center;
 }
 .hazardTestH2 {
   text-align: center;
-  overflow: hidden;
 
-  white-space: nowrap;
-  margin: 0 auto;
-
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
   padding: 2rem 0px;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: rgb(255, 0, 0);
-  }
-}
 @media (max-width: 650px) {
   .hazardTestWorkListSection h2 {
-    color: #ff0000;
-    font-size: 3.2rem;
+    font-size: 3rem;
+  }
+  #hazardTestWorkListSection h3 {
+    font-size: 2.2rem;
   }
 }
 @media (max-width: 450px) {
   .hazardTestWorkListSection h2 {
-    color: #ff0000;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
   #h2heddings {
     font-size: 2rem;
+  }
+  #hazardTestWorkListSection h3 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 418px) {
+  .hazardTestWorkListSection h2 {
+    font-size: 2rem;
+  }
+  #hazardTestWorkListSection h3 {
+    font-size: 1.7rem;
+  }
+}
+.hazardTestWorkListSection h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(135deg, #01cfbe, #016179);
+  padding: 1rem;
+}
+@media screen and (max-width: 650px) {
+  .hazardTestWorkListSection h1 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .hazardTestWorkListSection h1 {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 418px) {
+  .hazardTestWorkListSection h1 {
+    font-size: 1.5rem;
   }
 }
 .hazardTestWorkListDiv iframe {
@@ -285,10 +318,10 @@
   margin-bottom: 1rem;
   text-align: center;
 }
-.hazardTestWorkListDiv{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hazardTestWorkListDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .alternessLists {
@@ -531,6 +564,20 @@
   width: 100%;
   gap: 10px;
 }
+@media screen and (max-width: 450px) {
+  .AdiParttwoDisplayFlex {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+#AdiParttwoDisplayFlex {
+  background: linear-gradient(135deg, #00ffd5, #00787cd8);
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  margin: 1rem 0px;
+}
+#AdiParttwoDisplayFlex1 {
+  margin: 2rem 0px 1rem 0px;
+}
 .hazardTestWorkListDiv {
   animation: 5s slide-right;
 }
@@ -545,7 +592,8 @@
 .hazardTestWorkListDiv img {
   max-width: 400px;
   width: 100%;
-
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(44, 44, 44, 0.8));
+  border-radius: 30px;
   aspect-ratio: 3/2;
   object-fit: contain;
 }
@@ -565,7 +613,7 @@
   }
 }
 .bgColorList ul {
-  background-color: #ff0000;
+  background: linear-gradient(135deg, #00c8cf, #015361);
   border-radius: 15px;
   padding: 1rem;
 }
@@ -574,7 +622,7 @@
   font-size: 18px;
 }
 .bgColorList2 {
-  background-color: #ff0000;
+  background: linear-gradient(135deg, #00c7ce, #015361);
   border-radius: 15px;
   padding: 1rem;
   font-size: 22px;
@@ -699,7 +747,7 @@ p {
   }
 }
 .columns2 {
-  animation: 5s slide-left ;
+  animation: 5s slide-left;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -718,7 +766,7 @@ p {
   max-width: 500px;
   margin-right: auto;
   margin-left: auto;
-  animation: 5s slide-right ;
+  animation: 5s slide-right;
 }
 @keyframes slide-right {
   from {
@@ -729,7 +777,7 @@ p {
   }
 }
 .columns22 {
-  animation: 5s slide-left ;
+  animation: 5s slide-left;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -743,24 +791,38 @@ p {
   }
 }
 /* //////////////////////////////////////////////////////////////////////// */
+
+.thMultipleChoiceSection {
+  padding: 1rem;
+}
 .thMultipleChioceHeader h2 {
   text-align: center;
-  color: #ff0000;
+  color: #ffffff;
   font-size: 4rem;
   font-weight: 700;
+  background: linear-gradient(135deg, #fd0481d7, #850063dc);
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
 }
 .thMultipleChioceHeader p {
   font-size: 18px;
   text-align: center;
 }
 .thchoiceListSection {
-  background-color: #ff0000;
+  background-color: #ff0004;
 }
 .features {
   padding: 2rem 0;
+  background: linear-gradient(135deg, #f82ce76e, #52015391);
+  border-radius: 20px;
 }
 .features h4 {
-  color: #ff0000;
+  color: #ff0004;
   font-size: 65px;
   font-weight: 700;
   line-height: 1.2em;
@@ -788,24 +850,29 @@ p {
 }
 .column {
   padding: 25px 25px 55px 25px;
-  background-color: #ff0000;
+  background: linear-gradient(135deg, #ff026be8, #770233);
   border-radius: 30px;
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.06);
+
+  transition: box-shadow 0.3s ease;
 }
 #column {
-  background-color: rgb(255, 230, 0);
+  background: linear-gradient(135deg, #02e1ffe8, #0332b1);
+}
+#column1 {
+  background: linear-gradient(135deg, #ff9102e8, #b14303);
 }
 #column h3 {
-  color: #ff0000;
+  color: #ffffff;
 }
 .column a {
   text-decoration: none;
-  color: #ff0000;
+  color: #ff0004;
 }
 
 .column:hover {
   box-shadow: 0px 0px 55px 5px rgba(0, 0, 0, 0.203);
-  border: 1px solid #ff0000;
+  border: 1px solid #c2c2c2;
 }
 .column span {
   font-size: 50px;
@@ -820,20 +887,20 @@ p {
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 10px;
-  color: rgb(255, 230, 0);
+  color: #ffffff;
 }
 #column p {
-  color: #ff0000;
+  color: #ffffff;
 }
 .column p {
   font-size: 18px;
 
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.7em;
-  color: rgb(255, 230, 0);
+  color: #ffffff;
 }
 #column span {
-  background-color: #ff0000;
+  background-color: #ff0004;
 }
 #column span:hover {
   transform: scale(1.2);
@@ -859,7 +926,7 @@ p {
   transform: scale(1.2);
   background-color: #fff;
   transition: 0.3s ease-in-out;
-  color: #ff0000;
+  color: #ff0004;
 }
 #featuresIconSRU {
   font-size: 6rem;
@@ -877,12 +944,17 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   .thMultipleChioceHeader h2 {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
 }
 @media (max-width: 467px) {
   .thMultipleChioceHeader h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 427px) {
+  .thMultipleChioceHeader h2 {
+    font-size: 2rem;
   }
 }
 /* ///////////////////////////////// */
