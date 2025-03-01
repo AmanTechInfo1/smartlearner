@@ -9,6 +9,7 @@ import {
   checkTrialEligibility,
   fetchUserSubscriptions,
   pdiApplyCouponCode,
+  pdiPartTwoApplyCouponCode,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -36,37 +37,37 @@ const PartTwoSubscription = () => {
 
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(pdiPartTwoApplyCouponCode({ userId, couponCode })).unwrap();
       navigate("/adi-part-one");
     } catch (error) {
       console.error("Error applying coupon:", error);
     }
   };
 
-  const handleCreateTrialSubscription = async (plan) => {
-    try {
-      const trialEligible = await dispatch(
-        checkTrialEligibility(userId)
-      ).unwrap();
+  // const handleCreateTrialSubscription = async (plan) => {
+  //   try {
+  //     const trialEligible = await dispatch(
+  //       checkTrialEligibility(userId)
+  //     ).unwrap();
 
-      if (!trialEligible) {
-        return;
-      }
+  //     if (!trialEligible) {
+  //       return;
+  //     }
 
-      const subscriptionData = {
-        userId: userId,
-        subscriptionId: plan._id,
-        isTrial: true,
-      };
+  //     const subscriptionData = {
+  //       userId: userId,
+  //       subscriptionId: plan._id,
+  //       isTrial: true,
+  //     };
 
-      const subscription = await dispatch(
-        createUserSubscription(subscriptionData)
-      ).unwrap();
-      console.log("Trial subscription created successfully:", subscription);
-    } catch (error) {
-      console.error("Error creating trial subscription:", error);
-    }
-  };
+  //     const subscription = await dispatch(
+  //       createUserSubscription(subscriptionData)
+  //     ).unwrap();
+  //     console.log("Trial subscription created successfully:", subscription);
+  //   } catch (error) {
+  //     console.error("Error creating trial subscription:", error);
+  //   }
+  // };
 
   const handleCreateSubscription = async (plan) => {
     try {

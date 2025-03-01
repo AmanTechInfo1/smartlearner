@@ -248,7 +248,6 @@ class UserSubscriptionService {
       }
 
       const currentDate = new Date();
-      const couponExpiryDate = moment(currentDate).add(7, "days").toDate();
 
       // Loop through the filtered plans and create a subscription for each one
       const subscriptions = [];
@@ -269,7 +268,6 @@ class UserSubscriptionService {
           paymentStatus: "COMPLETED",
           theoryCouponApplied: null, // No payment required, because it's free
           pdiCouponApplied: true,
-          couponEndDate: couponExpiryDate, // Mark the coupon as applied
         });
 
         subscriptions.push(subscription.save());
@@ -286,6 +284,202 @@ class UserSubscriptionService {
       throw new Error("Invalid coupon code");
     }
   }
+
+  async pdiPartOneCouponCode(userId, couponCode) {
+    const validCoupon = "FREEINSTRUCTORPARTONE"; // The valid coupon code
+
+    if (couponCode === validCoupon) {
+      // Check if the user already has a subscription with the coupon applied
+      const existingSubscription = await UserSubscription.findOne({
+        userId,
+        pdiCouponApplied: true,
+      });
+
+      if (existingSubscription) {
+        throw new Error("coupon used already");
+      }
+
+      // Get the two specific plans by plan name or other unique criteria
+      const plans = await Plans.find({
+        planname: { $in: ["PDI Part One"] },
+      });
+
+      // If no matching plans are found, throw an error
+      if (plans.length === 0) {
+        throw new Error("No eligible plans available.");
+      }
+
+      const currentDate = new Date();
+
+      // Loop through the filtered plans and create a subscription for each one
+      const subscriptions = [];
+      for (const plan of plans) {
+        const planEndDate = new Date(
+          currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+        ); // duration in days
+
+        const subscription = new UserSubscription({
+          userId,
+          subscriptionId: plan._id,
+          isActive: true,
+          planStartDate: currentDate,
+          planEndDate: planEndDate,
+          isTrial: false,
+          trialStartDate: null,
+          trialEndDate: null,
+          paymentStatus: "COMPLETED",
+          theoryCouponApplied: null, // No payment required, because it's free
+          pdiCouponApplied: null,
+          pdiPartOneCouponApplied: true,
+          pdiPartTwoCouponApplied: null,
+          pdiPartThreeCouponApplied: null,
+        });
+
+        subscriptions.push(subscription.save());
+      }
+
+      // Wait for all subscriptions to be saved
+      await Promise.all(subscriptions);
+      await User.findByIdAndUpdate(userId, {
+        subscription: subscriptions[0].subscriptionId,
+      }); // Update user with first subscription
+
+      return { message: "Pdi PartOne Coupon applied" };
+    } else {
+      throw new Error("Invalid coupon code");
+    }
+  }
+
+  async pdiPartTwoCouponCode(userId, couponCode) {
+    const validCoupon = "FREEINSTRUCTORPARTTWO"; // The valid coupon code
+
+    if (couponCode === validCoupon) {
+      // Check if the user already has a subscription with the coupon applied
+      const existingSubscription = await UserSubscription.findOne({
+        userId,
+        pdiCouponApplied: true,
+      });
+
+      if (existingSubscription) {
+        throw new Error("coupon used already");
+      }
+
+      // Get the two specific plans by plan name or other unique criteria
+      const plans = await Plans.find({
+        planname: { $in: ["PDI Part Two"] },
+      });
+
+      // If no matching plans are found, throw an error
+      if (plans.length === 0) {
+        throw new Error("No eligible plans available.");
+      }
+
+      const currentDate = new Date();
+
+      // Loop through the filtered plans and create a subscription for each one
+      const subscriptions = [];
+      for (const plan of plans) {
+        const planEndDate = new Date(
+          currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+        ); // duration in days
+
+        const subscription = new UserSubscription({
+          userId,
+          subscriptionId: plan._id,
+          isActive: true,
+          planStartDate: currentDate,
+          planEndDate: planEndDate,
+          isTrial: false,
+          trialStartDate: null,
+          trialEndDate: null,
+          paymentStatus: "COMPLETED",
+          theoryCouponApplied: null, // No payment required, because it's free
+          pdiCouponApplied: null,
+          pdiPartOneCouponApplied: null,
+          pdiPartTwoCouponApplied: true,
+          pdiPartThreeCouponApplied: null,
+        });
+
+        subscriptions.push(subscription.save());
+      }
+
+      // Wait for all subscriptions to be saved
+      await Promise.all(subscriptions);
+      await User.findByIdAndUpdate(userId, {
+        subscription: subscriptions[0].subscriptionId,
+      }); // Update user with first subscription
+
+      return { message: "Pdi PartTwo Coupon applied" };
+    } else {
+      throw new Error("Invalid coupon code");
+    }
+  }
+  async pdiPartThreeCouponCode(userId, couponCode) {
+    const validCoupon = "FREEINSTRUCTORPARTTHREE"; // The valid coupon code
+
+    if (couponCode === validCoupon) {
+      // Check if the user already has a subscription with the coupon applied
+      const existingSubscription = await UserSubscription.findOne({
+        userId,
+        pdiCouponApplied: true,
+      });
+
+      if (existingSubscription) {
+        throw new Error("coupon used already");
+      }
+
+      // Get the two specific plans by plan name or other unique criteria
+      const plans = await Plans.find({
+        planname: { $in: ["PDI Part Three"] },
+      });
+
+      // If no matching plans are found, throw an error
+      if (plans.length === 0) {
+        throw new Error("No eligible plans available.");
+      }
+
+      const currentDate = new Date();
+
+      // Loop through the filtered plans and create a subscription for each one
+      const subscriptions = [];
+      for (const plan of plans) {
+        const planEndDate = new Date(
+          currentDate.getTime() + plan.duration * 24 * 60 * 60 * 1000
+        ); // duration in days
+
+        const subscription = new UserSubscription({
+          userId,
+          subscriptionId: plan._id,
+          isActive: true,
+          planStartDate: currentDate,
+          planEndDate: planEndDate,
+          isTrial: false,
+          trialStartDate: null,
+          trialEndDate: null,
+          paymentStatus: "COMPLETED",
+          theoryCouponApplied: null, // No payment required, because it's free
+          pdiCouponApplied: null,
+          pdiPartOneCouponApplied: null,
+          pdiPartTwoCouponApplied: null,
+          pdiPartThreeCouponApplied: true,
+        });
+
+        subscriptions.push(subscription.save());
+      }
+
+      // Wait for all subscriptions to be saved
+      await Promise.all(subscriptions);
+      await User.findByIdAndUpdate(userId, {
+        subscription: subscriptions[0].subscriptionId,
+      }); // Update user with first subscription
+
+      return { message: "Pdi PartThree Coupon applied" };
+    } else {
+      throw new Error("Invalid coupon code");
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////
   async deactivateExpiredSubscriptions() {
     const currentDate = new Date();
     const expiredSubscriptions = await UserSubscription.find({

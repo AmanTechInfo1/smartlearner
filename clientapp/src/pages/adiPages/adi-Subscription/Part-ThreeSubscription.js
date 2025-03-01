@@ -9,6 +9,8 @@ import {
   checkTrialEligibility,
   fetchUserSubscriptions,
   pdiApplyCouponCode,
+  pdiPartTwoApplyCouponCode,
+  pdiPartThreeApplyCouponCode,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +39,7 @@ const PartThreeSubscription = () => {
 
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(pdiPartThreeApplyCouponCode({ userId, couponCode })).unwrap();
       navigate("/adi-part-3");
       toast.success("subscription added");
     } catch (error) {

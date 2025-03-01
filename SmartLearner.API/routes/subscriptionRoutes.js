@@ -35,4 +35,7 @@ router.get("/checkTrial/:userId", userSubscriptionController.checkTrialStatus);
 router.post("/apply-coupon", userSubscriptionController.couponAccess);
 
 router.post("/pdiApply-coupon", userSubscriptionController.pdiCouponAccess);
+router.post("/pdiPartOneApply-coupon", userSubscriptionController.pdiPartOneCouponAccess);
+router.post("/pdiPartTwoApply-coupon", userSubscriptionController.pdiPartTwoCouponAccess);
+router.post("/pdiPartThreeApply-coupon", userSubscriptionController.pdiPartThreeCouponAccess);
 module.exports = router;

@@ -12,6 +12,9 @@ const userSubscriptionSchema = new mongoose.Schema({
   paymentStatus: { type: String, default: "PENDING" },
   theoryCouponApplied: { type: Boolean, default: false },
   pdiCouponApplied: { type: Boolean, default: false },
+  pdiPartOneCouponApplied: { type: Boolean, default: false },
+  pdiPartTwoCouponApplied: { type: Boolean, default: false },
+  pdiPartThreeCouponApplied: { type: Boolean, default: false },
   couponEndDate: { type: String },
 });
 

@@ -124,6 +124,33 @@ class userSubscriptionController {
       next(err);
     }
   }
+  async pdiPartOneCouponAccess(req, res,next) {
+    const { userId, couponCode } = req.body;
+    try {
+        const couponAccess = await userSubscriptionService.pdiPartOneCouponCode(userId, couponCode);
+        res.status(200).json(couponAccess);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async pdiPartTwoCouponAccess(req, res,next) {
+    const { userId, couponCode } = req.body;
+    try {
+        const couponAccess = await userSubscriptionService.pdiPartTwoCouponCode(userId, couponCode);
+        res.status(200).json(couponAccess);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async pdiPartThreeCouponAccess(req, res,next) {
+    const { userId, couponCode } = req.body;
+    try {
+        const couponAccess = await userSubscriptionService.pdiPartThreeCouponCode(userId, couponCode);
+        res.status(200).json(couponAccess);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new userSubscriptionController();
