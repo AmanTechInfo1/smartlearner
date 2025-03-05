@@ -140,6 +140,7 @@ const Quiz = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [isPaused, setIsPaused] = useState(false);
   const [timer, setTimer] = useState(null);
 
   const [questionTranslate, setQuestionTranslate] = useState("en-Us");
@@ -301,6 +302,7 @@ const Quiz = () => {
   }, [dispatch, oneQuiz[currentQuestionIndex]?.category]);
 
   const prevTimerRef = useRef();
+  const intervalRef = useRef();
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -311,21 +313,23 @@ const Quiz = () => {
     if (quizCategory?.timer) {
       setTimer(quizCategory?.timer * 60); // Convert minutes to seconds
     }
-    console.log("timmmerrr", quizCategory?.timer * 60);
   }, [quizCategory]);
 
   useEffect(() => {
     prevTimerRef.current = timer;
 
-    if (timer > 0) {
-      const interval = setInterval(() => {
+    if (timer > 0 && !isPaused) {
+      // Start or continue the timer if it's not paused
+      intervalRef.current = setInterval(() => {
         setTimer((prevTime) => prevTime - 1); // Decrease the timer by 1 every second
       }, 1000);
-
-      // Clean up interval on component unmount or when the timer hits 0
-      return () => clearInterval(interval);
+    } else {
+      // Clear the interval when the timer is paused
+      clearInterval(intervalRef.current);
     }
-  }, [timer]);
+    // Clean up interval on component unmount or when the timer hits 0
+    return () => clearInterval(intervalRef.current);
+  }, [timer, isPaused]);
 
   useEffect(() => {
     if (timer === 0) {
@@ -334,6 +338,10 @@ const Quiz = () => {
       setQuizEnded(true); // End the quiz when the timer hits 0
     }
   }, [timer]);
+
+  const handlePauseResume = () => {
+    setIsPaused((prevState) => !prevState); // Toggle the pause/resume state
+  };
 
   ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -437,6 +445,9 @@ const Quiz = () => {
                         >
                           Time left: {formatTime(timer)}
                         </span>
+                        <button onClick={handlePauseResume} id={styles.linkButton}>
+                          {isPaused ? "Resume" : "Pause"}
+                        </button>
                       </div>
                     )}
                   </div>

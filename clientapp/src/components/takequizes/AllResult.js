@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizResult } from "../../redux/features/quizSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import styles from "./QuizResult.module.css";
 import { TiTick } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
 
-const QuizResult = () => {
+const AllResult = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ const QuizResult = () => {
     (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
   );
 
-  const groupedResults = sortedQuizResults.reduce((acc, itm) => {
+  const groupedResults = quizResult.reduce((acc, itm) => {
     const quizName = itm.result?.name;
     const band = itm.question?.band || " ";
 
@@ -81,9 +81,9 @@ const QuizResult = () => {
   };
 
   const getAnswer2Text = (question, answer) => {
-    if (!question || !answer || !question.option) return "N/A"; // Safe check for undefined question or answer
+    if (!question || !answer || !question.option) return "N/A";  // Safe check for undefined question or answer
     const answerIndex = parseInt(answer.replace("Option", "")) - 1;
-    return question.option[answerIndex] || "N/A"; // Safe access to the option array
+    return question.option[answerIndex] || "N/A";  // Safe access to the option array
   };
 
   const calculatePercentage = (correct, incorrect) => {
@@ -92,11 +92,7 @@ const QuizResult = () => {
   };
 
   const getPassOrFail = (percentage) => {
-    return percentage >= 80 ? (
-      <span style={{ color: "green", margin: "0px 0.5rem" }}>Pass</span>
-    ) : (
-      <span style={{ color: "red", margin: "0px 0.5rem" }}>Fail</span>
-    );
+    return percentage >= 80 ? <span style={{color:"green",margin:"0px 0.5rem"}}>Pass</span> : <span style={{color:'red',margin:"0px 0.5rem"}}>Fail</span>;
   };
 
   return (
@@ -104,7 +100,7 @@ const QuizResult = () => {
       style={{
         backgroundColor: "black",
         color: "white",
-        paddingTop: "4rem",
+        paddingTop:'4rem',
         paddingBottom: "5rem",
       }}
     >
@@ -112,7 +108,7 @@ const QuizResult = () => {
         <h2 className="text-center text-2xl font-semibold mb-4">
           Quiz Results{" "}
           <button
-            onClick={() => navigate(-2)}
+            onClick={() => navigate(-1)}
             className="btn btn-secondary bg-info ml-5 py-3 px-5 "
           >
             Go Back
@@ -137,6 +133,7 @@ const QuizResult = () => {
                     }
                   }}
                   className={styles.catebtn}
+              
                 >
                   {truncateQuizName(quizName)}
                 </button>
@@ -145,15 +142,7 @@ const QuizResult = () => {
 
             {Object.entries(groupedResults).map(([quizName, bands]) => (
               <div key={quizName} id={quizName} className="mb-5">
-                <h3 className="text-xl font-semibold">
-                  {quizName}{" "}
-                  <Link
-                    to="/all-results"
-                    id={styles.linkButton}
-                  >
-                    Veiw All
-                  </Link>
-                </h3>
+                <h3 className="text-xl font-semibold">{quizName}</h3>
 
                 {Object.entries(bands).map(([band, data]) => {
                   const { results, correct, incorrect } = data;
@@ -163,14 +152,10 @@ const QuizResult = () => {
                   return (
                     <div key={band}>
                       <h4>{band}</h4>
-                      <p style={{ fontSize: "1.5rem", fontWeight: "500" }}>
-                        Total Score: {percentage}% ({passOrFail})
-                        <span style={{ color: "green", marginLeft: "1rem" }}>
-                          Correct:{" "}
-                        </span>{" "}
-                        {correct}{" "}
-                        <span style={{ color: "red" }}>Incorrect: </span>
-                        {incorrect}
+                      <p style={{fontSize:"1.5rem", fontWeight:"500"}}>
+                        Total Score: {percentage}% ({passOrFail}) 
+                        
+                        <span style={{color:"green", marginLeft:"1rem"}}>Correct: </span> {correct} <span style={{color:"red",}}>Incorrect: </span>{incorrect}
                       </p>
 
                       <div className={styles.tableWrapperCollapse}>
@@ -179,10 +164,7 @@ const QuizResult = () => {
                             className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}
                           >
                             <thead>
-                              <tr
-                                className="w-full bg-zinc-800 dark:bg-zinc-700 text-white"
-                                id={styles.tableRowBg}
-                              >
+                              <tr className="w-full bg-zinc-800 dark:bg-zinc-700 text-white" id={styles.tableRowBg}>
                                 {[
                                   "Quiz Name",
                                   "Question",
@@ -274,4 +256,4 @@ const QuizResult = () => {
   );
 };
 
-export default QuizResult;
+export default AllResult;

@@ -145,6 +145,7 @@ import Band1 from "./pages/adiPages/additionalPages/Band1";
 import Band2 from "./pages/adiPages/additionalPages/Band2";
 import Band3 from "./pages/adiPages/additionalPages/Band3";
 import Band4 from "./pages/adiPages/additionalPages/Band4";
+import AllResult from "./components/takequizes/AllResult";
 
 export const router = createBrowserRouter([
   {
@@ -283,6 +284,9 @@ export const router = createBrowserRouter([
       },
       { path: "cpd-events", element: <CbdEvents /> },
       { path: "businesscoaching", element: <BusinessCoaching /> },
+      {
+        path:"all-results", element: <AllResult/>
+      },
       {
         path: "trainning-material",
         element: <TrainningMaterial />,

@@ -199,13 +199,15 @@
   max-width: 35rem;
   width: 100%;
 
-  padding: 2rem;
-  background: linear-gradient(135deg, #3f0064, #a33edd);
+  padding: 1rem;
+ 
   color: #fff;
-  font-family: "Antonio", sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #modelContent {
   border-radius: 10px;
+  background: linear-gradient(135deg, #3f0064, #a33edd);
+  padding: 2rem;
 }
 .form-spaced {
   margin-bottom: 1rem;

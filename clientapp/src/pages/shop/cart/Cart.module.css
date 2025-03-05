@@ -31,6 +31,16 @@
   font-weight: 500;
   text-align: center;
 }
+@media (max-width: 577px) {
+  .cartheading h2 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 477px) {
+  .cartheading h2 {
+    font-size: 2.5rem;
+  }
+}
 .cartContentContainer {
   display: flex;
   gap: 30px;
@@ -166,6 +176,7 @@
   height: 100px;
   width: 100px;
 }
+
 #carImg {
   /* max-width: 800px; */
   margin-right: auto;
@@ -176,6 +187,18 @@
 }
 .cartIconCarImg {
   max-width: 200px;
+}
+@media (max-width: 577px) {
+  .carIconImg{
+    height: 80px;
+    width: 80px;
+  }
+}
+@media (max-width: 477px) {
+  .carIconImg{
+    height: 60px;
+    width: 60px;
+  }
 }
 .cartoverflow {
   overflow: auto;
