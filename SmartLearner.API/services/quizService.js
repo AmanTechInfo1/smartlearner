@@ -3,6 +3,7 @@ const AttemptQuizQuestion = require("../models/attemptQuizQuestionModel");
 const QuizQuestion = require("../models/quizQuestionModel");
 const QuizCategoryModel = require("../models/quizCategoryModel");
 const QuizModuleModel = require("../models/quizModuleModel");
+const ResultQuizQuestion = require("../models/ResultQuizModal");
 
 class quizService {
   async createQuizAsync(quizData) {
@@ -435,9 +436,12 @@ class quizService {
         }
       );
 
-      const quizResult = await AttemptQuizQuestion.aggregate(aggr);
-      const totalCount = await AttemptQuizQuestion.countDocuments(filter);
+      // const quizResult = await AttemptQuizQuestion.aggregate(aggr);
+      // const totalCount = await AttemptQuizQuestion.countDocuments(filter);
+      
       // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
+      const quizResult = await ResultQuizQuestion.aggregate(aggr);
+      const totalCount = await ResultQuizQuestion.countDocuments(filter);
 
       const resultObject = {
         message: "Fetched successfully",
@@ -739,6 +743,7 @@ class quizService {
 
       quizData["correctAnswer"] = getQuizQuestion[0]["answer"];
       const quiz = await AttemptQuizQuestion.create(quizData);
+      const quiz2 = await ResultQuizQuestion.create(quizData);
       const resultObject = {
         message: "Quiz Response Successfully",
         statusCode: 201,
@@ -901,7 +906,11 @@ class quizService {
                 questionId: { $toString: "$_id" },
               },
             },
-
+            {
+              $match: {
+                sizeRes: 0,
+              },
+            },
             {
               $match: { band: band },
             },
@@ -1003,7 +1012,11 @@ class quizService {
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1092,7 +1105,11 @@ class quizService {
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1181,7 +1198,11 @@ class quizService {
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1270,7 +1291,11 @@ class quizService {
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1359,7 +1384,11 @@ class quizService {
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1443,13 +1472,18 @@ class quizService {
               as: "result",
             },
           },
+         
           {
             $addFields: {
               sizeRes: { $size: "$result" },
               questionId: { $toString: "$_id" },
             },
           },
-
+          {
+            $match: {
+              sizeRes: 0,
+            },
+          },
           {
             $lookup: {
               from: "quizcategories",
@@ -1551,17 +1585,14 @@ class quizService {
         };
       }
 
-      await AttemptQuizQuestion.updateMany(
-        {
-          userId: new ObjectId(userId),
-          questionId: {
-            $in: await QuizQuestion.find({
-              category: category._id,
-            }).distinct("_id"),
-          },
+      await AttemptQuizQuestion.deleteMany({
+        userId: new ObjectId(userId),
+        questionId: {
+          $in: await QuizQuestion.find({
+            category: category._id,
+          }).distinct("_id"),
         },
-        { $set: { isActive: false } }
-      );
+      });
 
       // Fetch a new question from the category
       const newQuestion = await this.getRandomQuizCatName(
