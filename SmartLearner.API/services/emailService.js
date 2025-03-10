@@ -7,8 +7,8 @@ const sendEmail = async (subject, message) => {
     port: 587,
     secure: false,
     auth: {
-      user: "Smartlearnerdrivingschool@gmail.com", // Your email
-      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+      user: "amanchandel2620@gmail.com", // Your email
+    pass: "pigu neqn qmph albj", // Your email password or app password
     },
     tls: {
       rejectUnauthorized: false,
@@ -267,8 +267,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "Smartlearnerdrivingschool@gmail.com", // Your email
-    pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+    user: "amanchandel2620@gmail.com", // Your email
+    pass: "pigu neqn qmph albj",  // Your email password or app password
   },
   tls: {
     rejectUnauthorized: false,
