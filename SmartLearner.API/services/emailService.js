@@ -5,7 +5,7 @@ const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "smartlearner123@gmail.com", // Your email
+      user: "sranchandel123@gmail.com", // Your email
       pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
     },
     debug: true,
@@ -261,7 +261,7 @@ const processForm = async (formType, formData) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "smartlearner123@gmail.com", // Your email
+    user: "sranchandel123@gmail.com", // Your email
     pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
   },
   debug: true,
