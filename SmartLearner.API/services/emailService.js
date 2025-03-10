@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 // Send Email function
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
+    service:"gmail",
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
@@ -263,6 +264,7 @@ const processForm = async (formType, formData) => {
 ////////////////////////////////////////////////////////////////////
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
+  service:"gmail",
   host: "smtp.gmail.com",
   port: 587,
   secure: false,
