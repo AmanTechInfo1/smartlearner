@@ -8,6 +8,7 @@ const sendEmail = async (subject, message) => {
       user: "Smartlearnerdrivingschool@gmail.com", // Your email
       pass: "cbsb ueih dxqm zdhd", // Your email password or app password
     },
+    debug: true,
   });
 
   const mailOptions = {
@@ -263,6 +264,7 @@ const transporter = nodemailer.createTransport({
     user: "Smartlearnerdrivingschool@gmail.com", // Your email
     pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
   },
+  debug: true,
 });
 
 // Function to send email
