@@ -24,7 +24,7 @@ const get = async (url) => {
 
     return response;
   } catch (error) {
-    handleError(error); // Improved error handling
+    handleError(error); 
   }
 };
 
@@ -33,7 +33,7 @@ const post = async (url, params, opt = {}) => {
   try {
     const token = await getToken();
 
-    // Dynamically set Content-Type based on params type
+   
     const isFormData = params instanceof FormData;
     const contentType = isFormData ? "multipart/form-data" : "application/json";
 
@@ -57,10 +57,10 @@ const post = async (url, params, opt = {}) => {
 // Centralized error handling function
 const handleError = (error) => {
   if (error.response) {
-    console.error("API Error:", error.response.data); // Log entire response
+    console.error("API Error:", error.response.data); 
     if (error.response.status === 401) {
       localStorage.removeItem("user");
-      window.location.href = "/register"; // Redirect to login
+      window.location.href = "/register"; 
     }
   } else if (error.request) {
     console.error("Network Error:", error.message);
