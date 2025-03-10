@@ -11,10 +11,10 @@ const sendEmail = async (subject, message) => {
   });
 
   const mailOptions = {
-    from: "admin@smartlearner.com", // Sender's email
+    from: "admin@smartlearner.com", 
     to: "admin@smartlearner.com", // Admin's email
     subject,
-    html: message, // Send HTML formatted message
+    html: message,
   };
 
   try {

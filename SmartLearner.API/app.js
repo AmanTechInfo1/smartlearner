@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); // Path to your alternative image
+  res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); 
 });
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use("/api/account", accountRoutes);
