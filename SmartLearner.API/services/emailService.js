@@ -3,15 +3,20 @@ const nodemailer = require("nodemailer");
 // Send Email function
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
       user: "Smartlearnerdrivingschool@gmail.com", // Your email
       pass: "cbsb ueih dxqm zdhd", // Your email password or app password
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const mailOptions = {
-    from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
+    from: "admin@smartlearner.com", // Sender's email
     to: "admin@smartlearner.com", // Admin's email
     subject,
     html: message, // Send HTML formatted message
@@ -240,8 +245,8 @@ const processForm = async (formType, formData) => {
   let message;
   if (formType === "EnquiryForm") {
     message = handleEnquiryForm(formData);
-  // } else if (formType === "drivenForm") {
-  //   message = handleDrivenForm(formData);
+    // } else if (formType === "drivenForm") {
+    //   message = handleDrivenForm(formData);
   } else if (formType === "callbackForm") {
     message = handleCallbackForm(formData);
   } else if (formType === "contactUsForm") {
@@ -258,10 +263,15 @@ const processForm = async (formType, formData) => {
 ////////////////////////////////////////////////////////////////////
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: "Smartlearnerdrivingschool@gmail.com", // Your email
-    pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
+    pass: "cbsb ueih dxqm zdhd", // Your email password or app password
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -404,18 +414,11 @@ const sendAdminNotification = async (userData) => {
   `;
 
   // Send email to the admin
-  await sendRegisterEmail(
-    "admin@smartlearner.com",
-    subject,
-    htmlContent
-  ); // Replace with actual admin email
+  await sendRegisterEmail("admin@smartlearner.com", subject, htmlContent); // Replace with actual admin email
 };
-
-
 
 module.exports = {
   processForm,
   sendWelcomeEmail,
   sendAdminNotification,
-  
 };
