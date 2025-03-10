@@ -3,20 +3,18 @@ const nodemailer = require("nodemailer");
 // Send Email function
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: "gmail",
     auth: {
-      user: "amanchandel2620@gmail.com", // Your email
-      pass: "pigu neqn qmph albj", // Your email password or app password
+      user: "Smartlearnerdrivingschool@gmail.com", // Your email
+      pass: "cbsb ueih dxqm zdhd", // Your email password or app password
     },
   });
 
   const mailOptions = {
-    from: "admin@smartlearner.com", 
+    from: "Smartlearnerdrivingschool@gmail.com", // Sender's email
     to: "admin@smartlearner.com", // Admin's email
     subject,
-    html: message,
+    html: message, // Send HTML formatted message
   };
 
   try {
@@ -28,7 +26,7 @@ const sendEmail = async (subject, message) => {
   }
 };
 
-
+// Handle Contact Us Form
 const handleContactForm = (formData) => {
   return `
     <html>
@@ -146,7 +144,39 @@ const handleCallbackForm = (formData) => {
   `;
 };
 
+// Handle Driven Form
+// const handleDrivenForm = (formData) => {
+//   return `
+//     <html>
+//       <head>
+//         <style>
+//           body { font-family: Arial, sans-serif; color: #333; }
+//           .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; }
+//           .header { text-align: center; }
+//           .header img { width: 150px; }
+//           .body { padding: 10px 0; }
+//           .body h2 { color: #444; }
+//           .body p { margin: 5px 0; }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <div class="header">
+//             <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
+//           </div>
+//           <div class="body">
+//             <h2>New Driven Form Submission</h2>
+//             <p><strong>Driven Before:</strong> ${formData.drivenBefore}</p>
+//             <p><strong>Preferred Type:</strong> ${formData.preferredType}</p>
+//             <p><strong>Postcode:</strong> ${formData.postcode}</p>
+//           </div>
+//         </div>
+//       </body>
+//     </html>
+//   `;
+// };
 
+// Handle Enquiry Form
 const handleEnquiryForm = (formData) => {
   return `
     <html>
@@ -228,12 +258,10 @@ const processForm = async (formType, formData) => {
 ////////////////////////////////////////////////////////////////////
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
+  service: "gmail",
   auth: {
-    user: "amanchandel2620@gmail.com", // Your email
-    pass: "pigu neqn qmph albj", // Use an app password or OAuth2 for production
+    user: "Smartlearnerdrivingschool@gmail.com", // Your email
+    pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
   },
 });
 
