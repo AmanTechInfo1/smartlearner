@@ -26,7 +26,7 @@ const sendEmail = async (subject, message) => {
   }
 };
 
-// Handle Contact Us Form
+
 const handleContactForm = (formData) => {
   return `
     <html>
