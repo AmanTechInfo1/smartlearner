@@ -3,8 +3,7 @@ const nodemailer = require("nodemailer");
 // Send Email function
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
+   service:"gmail",
     auth: {
       user: "sranchandel123@gmail.com", // Your email
       pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
@@ -229,9 +228,7 @@ const processForm = async (formType, formData) => {
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
   
-  host: 'smtp.gmail.com',
-    port: 465,
-   secure:"SSL",
+  service:'gmail',
   auth: {
     user: "sranchandel123@gmail.com", // Your email
     pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
