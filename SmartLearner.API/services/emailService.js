@@ -5,13 +5,15 @@ const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
       user: "sranchandel123@gmail.com", // Your email
       pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
     },
-    debug: true,
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const mailOptions = {
@@ -264,13 +266,15 @@ const processForm = async (formType, formData) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
   auth: {
     user: "sranchandel123@gmail.com", // Your email
     pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
   },
-  debug: true,
+  tls: {
+    rejectUnauthorized: false,
+  },
 });
 
 // Function to send email
