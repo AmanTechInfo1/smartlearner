@@ -3,11 +3,11 @@ const nodemailer = require("nodemailer");
 // Send Email function
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
+    host: 'smtp.gmail.com',
+    port: 465,
     auth: {
-      user: 'lea.dach@ethereal.email',
-      pass: 'epkPr69SeHy2CcwQTj' // Use an app password or OAuth2 for production
+      user: "sranchandel123@gmail.com", // Your email
+      pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
     },
    
   });
@@ -229,17 +229,14 @@ const processForm = async (formType, formData) => {
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  host: "smtp.gmail.com",
- 
-    port: 587,
-    secure: false,
+  host: 'smtp.gmail.com',
+    port: 465,
+   secure:"SSL",
   auth: {
     user: "sranchandel123@gmail.com", // Your email
     pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
   },
-  tls: {
-    rejectUnauthorized: false,
-  },
+ 
 });
 
 // Function to send email
