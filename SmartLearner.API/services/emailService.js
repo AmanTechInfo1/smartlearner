@@ -7,7 +7,7 @@ const sendEmail = async (subject, message) => {
     port: 465,
     auth: {
       user: "sranchandel123@gmail.com", // Your email
-      pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
+      pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
     },
    
   });
@@ -234,7 +234,7 @@ const transporter = nodemailer.createTransport({
    secure:"SSL",
   auth: {
     user: "sranchandel123@gmail.com", // Your email
-    pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
+    pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
   },
  
 });
