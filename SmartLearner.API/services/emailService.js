@@ -4,21 +4,17 @@ const nodemailer = require("nodemailer");
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    
     auth: {
       user: "sranchandel123@gmail.com", // Your email
       pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
     },
-    tls: {
-      rejectUnauthorized: false,
-    },
+   
   });
 
   const mailOptions = {
     from: "admin@smartlearner.com", // Sender's email
-    to: "admin@smartlearner.com", // Admin's email
+    to: to, // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -265,17 +261,12 @@ const processForm = async (formType, formData) => {
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  host: "smtp.gmail.com",
-
-  port: 587,
-  secure: false,
+ 
   auth: {
     user: "sranchandel123@gmail.com", // Your email
     pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
   },
-  tls: {
-    rejectUnauthorized: false,
-  },
+ 
 });
 
 // Function to send email
