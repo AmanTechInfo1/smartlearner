@@ -4,17 +4,21 @@ const nodemailer = require("nodemailer");
 const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
-    
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: "sranchandel123@gmail.com", // Your email
       pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
     },
-   
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const mailOptions = {
     from: "admin@smartlearner.com", // Sender's email
-    to: to, // Admin's email
+    to: "admin@smartlearner.com", // Admin's email
     subject,
     html: message, // Send HTML formatted message
   };
@@ -242,8 +246,8 @@ const processForm = async (formType, formData) => {
   let message;
   if (formType === "EnquiryForm") {
     message = handleEnquiryForm(formData);
-    // } else if (formType === "drivenForm") {
-    //   message = handleDrivenForm(formData);
+  // } else if (formType === "drivenForm") {
+  //   message = handleDrivenForm(formData);
   } else if (formType === "callbackForm") {
     message = handleCallbackForm(formData);
   } else if (formType === "contactUsForm") {
@@ -261,12 +265,17 @@ const processForm = async (formType, formData) => {
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
   service: "gmail",
+  host: "smtp.gmail.com",
  
+    port: 587,
+    secure: false,
   auth: {
     user: "sranchandel123@gmail.com", // Your email
     pass: "ddhp wrph ifhl mmft", // Use an app password or OAuth2 for production
   },
- 
+  tls: {
+    rejectUnauthorized: false,
+  },
 });
 
 // Function to send email
@@ -408,11 +417,18 @@ const sendAdminNotification = async (userData) => {
   `;
 
   // Send email to the admin
-  await sendRegisterEmail("admin@smartlearner.com", subject, htmlContent); // Replace with actual admin email
+  await sendRegisterEmail(
+    "admin@smartlearner.com",
+    subject,
+    htmlContent
+  ); // Replace with actual admin email
 };
+
+
 
 module.exports = {
   processForm,
   sendWelcomeEmail,
   sendAdminNotification,
+  
 };
