@@ -228,7 +228,7 @@ const processForm = async (formType, formData) => {
 ////////////////////////////////////////////////////////////////////
 // Configure the transport for email sending
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  
   host: 'smtp.gmail.com',
     port: 465,
    secure:"SSL",
