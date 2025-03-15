@@ -16,6 +16,8 @@ const quizSlice = createSlice({
     quizzes: [],
 
     quizzesCount: 0,
+    TotalQuestions: null,
+    AttemptedQuestions: null,
     quizzesModule: [],
     quizzesModuleCount: 0,
     loading: false,
@@ -54,15 +56,22 @@ const quizSlice = createSlice({
       state.loading = false;
     },
     getQuizRandomQuestionSuccess: (state, action) => {
-      if (action.payload && action.payload.option) {
+      if (action.payload.data && action.payload.data.option) {
         // Just retain the options as they are without shuffling
         state.oneQuiz = {
-          ...action.payload,
-          option: action.payload.option, // No shuffling here
+          ...action.payload.data,
+          option: action.payload.data.option, // No shuffling here
         };
       } else {
-        state.oneQuiz = action.payload; // Fallback in case structure is different
+        state.oneQuiz = action.payload.data; // Fallback in case structure is different
       }
+      console.log(
+        "fegihkdsjxcnbjdfsnvbhfxcnzjdszhmxbcnjdxhcnbd",
+        action.payload
+      );
+
+      state.TotalQuestions = action.payload.totalQuestionsData;
+      state.AttemptedQuestions = action.payload.attemptedQuestionData;
       state.loading = false;
     },
     getQuizRandomQuestionFailure: (state) => {
@@ -156,7 +165,7 @@ const quizSlice = createSlice({
     },
     restartQuizSuccess: (state, action) => {
       // Reset the state relevant to the quiz
-      state.oneQuiz = action.payload; // Load new quiz data
+      state.oneQuiz = action.payload.data; // Load new quiz data
       state.quizResult = []; // Clear previous results
       state.isQuizRestarted = true; // Mark that the quiz has been restarted
       state.loading = false;

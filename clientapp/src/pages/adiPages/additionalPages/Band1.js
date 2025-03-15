@@ -13,7 +13,7 @@ export default function Band1() {
                <h1>Start Quiz</h1>
                <h3>All  Questions</h3>
                <p>
-               The part 1 practice questions are a quick sample of what you’ve revised, there is 25 questions, you will need at least 20/25 to pass, you get 15 minutes to complete these questions.
+               The Band One Practice Questions focus on road procedures. With over 300 multiple-choice questions available, you can choose to practice 50, 100, or work through all of them at once.
                </p>
                <Link to="/takequizCatName/Band-1---Road-Procedure">
                  {" "}

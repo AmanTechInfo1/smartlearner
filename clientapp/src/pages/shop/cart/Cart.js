@@ -146,6 +146,11 @@ const Cart = () => {
           </div>
         </div>
       </div>
+      <div className={styles.cartContainerFooter}>
+        <p>
+       "Click on proceed to checkout. You’ll be prompted to sign in or create an account if you don’t already have one. (If you’ve used a coupon code, you’ll be redirected to our training portal to begin practicing.)"
+        </p>
+      </div>
     </div>
   );
 };

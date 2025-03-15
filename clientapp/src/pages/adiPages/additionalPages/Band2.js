@@ -13,8 +13,7 @@ export default function Band2() {
                <h1>Start Quiz</h1>
                <h3>All  Questions</h3>
                <p>
-               The part 1 practice questions are a quick sample of what you’ve revised, there is 25 questions, you will need at least 20/25 to pass, you get 15 minutes to complete these questions.
-               </p>
+               The Band Two Practice Questions focus on Traffic Signs and Signals, Car Control, Pedestrians, and Mechanical Knowledge. With over 300 multiple-choice questions available, you can choose to practice 50, 100, or work through all of them at once.               </p>
                <Link to="/takequizCatName/Band-2---Traffic-Signs-and-Signals--Car-Control--Pedestrians-and-Mechanical-Knowledge">
                  {" "}
                  <button>Start Quiz</button>

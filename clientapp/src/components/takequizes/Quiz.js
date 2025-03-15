@@ -152,13 +152,23 @@ const Quiz = () => {
   const [categoryFetched, setCategoryFetched] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  const [visibleQuestions, setVisibleQuestions] = useState(10); // Initially show 10 questions
+  const [showAll, setShowAll] = useState(false);
+
   const [confettiActive, setConfettiActive] = useState(false);
 
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [timeUp, setTimeUp] = useState(false);
 
-  const { oneQuiz, oneQuizOutput, outputData, isQuizRestarted, loading } =
-    useSelector((state) => state.quiz);
+  const {
+    oneQuiz,
+    oneQuizOutput,
+    outputData,
+    isQuizRestarted,
+    TotalQuestions,
+    AttemptedQuestions,
+    loading,
+  } = useSelector((state) => state.quiz);
   const { quizCategory } = useSelector((state) => state.quizCategory);
   const { width, height } = useWindowSize();
 
@@ -293,6 +303,16 @@ const Quiz = () => {
   };
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const handleToggle = () => {
+    if (showAll) {
+      setVisibleQuestions(10); // Reset to show only 10 questions
+    } else {
+      setVisibleQuestions(totalQuestions); // Show all questions
+    }
+    setShowAll(!showAll); // Toggle the state to switch between "See More" and "See Less"
+  };
+
+  // /////////////////////////
 
   useEffect(() => {
     // Only dispatch getQuizCategoryById if the category is not fetched yet
@@ -445,29 +465,52 @@ const Quiz = () => {
                         >
                           Time left: {formatTime(timer)}
                         </span>
-                        <button onClick={handlePauseResume} id={styles.linkButton}>
+                        <button
+                          onClick={handlePauseResume}
+                          id={styles.linkButton}
+                        >
                           {isPaused ? "Resume" : "Pause"}
                         </button>
                       </div>
                     )}
                   </div>
                 </div>
-                <div
-                  className="question-numbers"
-                  style={{ marginBottom: "1rem" }}
-                >
-                  {Array.from({ length: totalQuestions }, (_, index) => (
-                    <button
-                      key={index}
-                      id={styles.questionNumbering}
-                      className={`question-number ${
-                        currentQuestionIndex === index ? "active" : ""
-                      } ${answeredQuestions.includes(index) ? "answered" : ""}`}
-                      onClick={() => handleQuestionClick(index)}
-                    >
-                      {index + 1}
+                {TotalQuestions && AttemptedQuestions !== undefined && (
+                  <div className={styles.questionDataNumbers}>
+                    <p>Attempted : {AttemptedQuestions}</p>
+                    <p>TotalQuestions : {TotalQuestions}</p>
+                  </div>
+                )}
+                <div>
+                  <div className={styles.questionNumbers} style={{ marginBottom: "1rem" }}>
+                    {Array.from({ length: totalQuestions }, (_, index) => {
+                      if (index < visibleQuestions) {
+                        return (
+                          <button
+                            key={index}
+                            id={styles.questionNumbering}
+                            className={`question-number ${
+                              currentQuestionIndex === index ? "active" : ""
+                            } ${
+                              answeredQuestions.includes(index)
+                                ? "answered"
+                                : ""
+                            }`}
+                            onClick={() => handleQuestionClick(index)}
+                          >
+                            {index + 1}
+                          </button>
+                        );
+                      }
+                      return null;
+                    })}
+                      {totalQuestions > 10 && (
+                    <button className={styles.seeMoreButton} onClick={handleToggle}>
+                      {showAll ? "See Less" : "See More"}
                     </button>
-                  ))}
+                  )}
+                  </div>
+                
                 </div>
                 <div className={styles.totalTimer}>
                   <span>Category: </span>

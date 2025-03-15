@@ -438,7 +438,7 @@ class quizService {
 
       // const quizResult = await AttemptQuizQuestion.aggregate(aggr);
       // const totalCount = await AttemptQuizQuestion.countDocuments(filter);
-      
+
       // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
       const quizResult = await ResultQuizQuestion.aggregate(aggr);
       const totalCount = await ResultQuizQuestion.countDocuments(filter);
@@ -881,7 +881,7 @@ class quizService {
     try {
       if (cid === "Mock--Tests") {
         const bands = ["band 1", "band 2", "band 3", "band 4"];
-        let mockTestQuestions = [];
+        let data = [];
 
         for (let band of bands) {
           const bandQuestions = await QuizQuestion.aggregate([
@@ -967,16 +967,16 @@ class quizService {
           ]);
 
           if (bandQuestions.length > 0) {
-            mockTestQuestions = [...mockTestQuestions, ...bandQuestions];
+            data = [...data, ...bandQuestions];
           }
         }
 
-        if (mockTestQuestions.length === 100) {
+        if (data.length === 100) {
           return {
             message: "Mock-Test questions fetched successfully",
             statusCode: 200,
             success: true,
-            data: mockTestQuestions,
+            data: {data},
             canRestart: false,
           };
         } else {
@@ -990,7 +990,7 @@ class quizService {
         }
       } else if (cid === "Mock-Test") {
         // If the category is "road-procedure", fetch only 50 random questions
-        const MockQuestions = await QuizQuestion.aggregate([
+        const data = await QuizQuestion.aggregate([
           {
             $lookup: {
               from: "attemptquizquestions",
@@ -1068,22 +1068,23 @@ class quizService {
             $sample: { size: 50 }, // Limit to 50 random questions
           },
         ]);
+        
 
         const resultObject = {
           message:
-            MockQuestions.length > 0
-              ? "MockQuestions questions fetched successfully"
-              : "No MockQuestions questions available",
-          statusCode: MockQuestions.length > 0 ? 200 : 400,
-          success: MockQuestions.length > 0,
-          data: MockQuestions,
-          canRestart: MockQuestions.length === 0,
+          data.length > 0
+              ? "data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {data},
+          canRestart: data.length === 0,
         };
 
         return resultObject;
       } else if (cid === "band-one-test") {
         // If the category is "road-procedure", fetch only 50 random questions
-        const MockQuestions = await QuizQuestion.aggregate([
+        const data = await QuizQuestion.aggregate([
           {
             $lookup: {
               from: "attemptquizquestions",
@@ -1161,22 +1162,53 @@ class quizService {
             $sample: { size: 25 }, // Limit to 50 random questions
           },
         ]);
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-one-test",
+        }).select("_id");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+          };
+        }
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: {
+            $in: await QuizQuestion.find({
+              category: category._id,
+            }).distinct("_id"),
+          },
+        });
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
 
         const resultObject = {
           message:
-            MockQuestions.length > 0
-              ? "MockQuestions questions fetched successfully"
-              : "No MockQuestions questions available",
-          statusCode: MockQuestions.length > 0 ? 200 : 400,
-          success: MockQuestions.length > 0,
-          data: MockQuestions,
-          canRestart: MockQuestions.length === 0,
+          data.length > 0
+              ? "data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: 25,
+          },
+          canRestart: data.length === 0,
         };
 
         return resultObject;
       } else if (cid === "band-Two-test") {
         // If the category is "road-procedure", fetch only 50 random questions
-        const MockQuestions = await QuizQuestion.aggregate([
+        const data = await QuizQuestion.aggregate([
           {
             $lookup: {
               from: "attemptquizquestions",
@@ -1254,22 +1286,55 @@ class quizService {
             $sample: { size: 25 }, // Limit to 50 random questions
           },
         ]);
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-Two-test",
+        }).select("_id");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+          };
+        }
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: {
+            $in: await QuizQuestion.find({
+              category: category._id,
+            }).distinct("_id"),
+          },
+        });
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
 
         const resultObject = {
           message:
-            MockQuestions.length > 0
-              ? "MockQuestions questions fetched successfully"
-              : "No MockQuestions questions available",
-          statusCode: MockQuestions.length > 0 ? 200 : 400,
-          success: MockQuestions.length > 0,
-          data: MockQuestions,
-          canRestart: MockQuestions.length === 0,
+          data.length > 0
+              ? "data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: 25,
+          },
+          canRestart: data.length === 0,
+          attemptedQuestionData: attemptedData,
+          totalQuestionsData: totalQuestiondata,
         };
 
         return resultObject;
       } else if (cid === "band-three-test") {
         // If the category is "road-procedure", fetch only 50 random questions
-        const MockQuestions = await QuizQuestion.aggregate([
+        const data = await QuizQuestion.aggregate([
           {
             $lookup: {
               from: "attemptquizquestions",
@@ -1347,22 +1412,55 @@ class quizService {
             $sample: { size: 25 }, // Limit to 50 random questions
           },
         ]);
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-three-test",
+        }).select("_id");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+          };
+        }
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: {
+            $in: await QuizQuestion.find({
+              category: category._id,
+            }).distinct("_id"),
+          },
+        });
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
 
         const resultObject = {
           message:
-            MockQuestions.length > 0
-              ? "MockQuestions questions fetched successfully"
-              : "No MockQuestions questions available",
-          statusCode: MockQuestions.length > 0 ? 200 : 400,
-          success: MockQuestions.length > 0,
-          data: MockQuestions,
-          canRestart: MockQuestions.length === 0,
+            data.length > 0
+              ? "data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: 25,
+          },
+          canRestart: data.length === 0,
+          attemptedQuestionData: attemptedData,
+          totalQuestionsData: totalQuestiondata,
         };
 
         return resultObject;
       } else if (cid === "band-four-test") {
         // If the category is "road-procedure", fetch only 50 random questions
-        const MockQuestions = await QuizQuestion.aggregate([
+        const data = await QuizQuestion.aggregate([
           {
             $lookup: {
               from: "attemptquizquestions",
@@ -1441,15 +1539,49 @@ class quizService {
           },
         ]);
 
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-four-test",
+        }).select("_id");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+          };
+        }
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: {
+            $in: await QuizQuestion.find({
+              category: category._id,
+            }).distinct("_id"),
+          },
+        });
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
+
         const resultObject = {
           message:
-            MockQuestions.length > 0
-              ? "MockQuestions questions fetched successfully"
-              : "No MockQuestions questions available",
-          statusCode: MockQuestions.length > 0 ? 200 : 400,
-          success: MockQuestions.length > 0,
-          data: MockQuestions,
-          canRestart: MockQuestions.length === 0,
+            data.length > 0
+              ? "data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: 25,
+          },
+          canRestart: data.length === 0,
+          attemptedQuestionData: attemptedData,
+          totalQuestionsData: totalQuestiondata,
         };
 
         return resultObject;
@@ -1472,7 +1604,7 @@ class quizService {
               as: "result",
             },
           },
-         
+
           {
             $addFields: {
               sizeRes: { $size: "$result" },
@@ -1543,17 +1675,51 @@ class quizService {
           }
         );
 
-        const products = await QuizQuestion.aggregate(aggr);
+        const data = await QuizQuestion.aggregate(aggr);
+
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: cid,
+        }).select("_id");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+          };
+        }
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: {
+            $in: await QuizQuestion.find({
+              category: category._id,
+            }).distinct("_id"),
+          },
+        });
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
 
         const resultObject = {
           message:
-            products.length > 0
+            data.length > 0
               ? "Question fetched successfully"
               : "No questions available",
-          statusCode: products.length > 0 ? 200 : 400,
+          statusCode: data.length > 0 ? 200 : 400,
           success: true,
-          data: products,
-          canRestart: products.length === 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: totalQuestiondata,
+          },
+          canRestart: data.length === 0,
+          attemptedQuestionData: attemptedData,
+          totalQuestionsData: totalQuestiondata,
         };
 
         return resultObject;

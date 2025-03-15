@@ -32,10 +32,11 @@ router.post(
 ); // New route for creating a payment
 router.post("/confirm-payment", userSubscriptionController.confirmPayment); // New route for confirming payment
 router.get("/checkTrial/:userId", userSubscriptionController.checkTrialStatus);
-router.post("/apply-coupon", userSubscriptionController.couponAccess);
+router.post("/apply-coupon",requireAuth, userSubscriptionController.couponAccess);
 
-router.post("/pdiApply-coupon", userSubscriptionController.pdiCouponAccess);
-router.post("/pdiPartOneApply-coupon", userSubscriptionController.pdiPartOneCouponAccess);
-router.post("/pdiPartTwoApply-coupon", userSubscriptionController.pdiPartTwoCouponAccess);
-router.post("/pdiPartThreeApply-coupon", userSubscriptionController.pdiPartThreeCouponAccess);
+router.post("/pdiApply-coupon",requireAuth, userSubscriptionController.pdiCouponAccess);
+router.post("/pdiPartOneApply-coupon",requireAuth, userSubscriptionController.pdiPartOneCouponAccess);
+router.post("/pdiPartTwoApply-coupon",requireAuth, userSubscriptionController.pdiPartTwoCouponAccess);
+router.post("/pdiPartThreeApply-coupon",requireAuth, userSubscriptionController.pdiPartThreeCouponAccess);
 module.exports = router;
+ 

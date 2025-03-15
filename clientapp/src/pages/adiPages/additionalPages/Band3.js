@@ -13,8 +13,7 @@ export default function Band3() {
                <h1>Start Quiz</h1>
                <h3>All  Questions</h3>
                <p>
-               The part 1 practice questions are a quick sample of what you’ve revised, there is 25 questions, you will need at least 20/25 to pass, you get 15 minutes to complete these questions.
-               </p>
+               The Band Three Practice Questions cover the Driving Test, Disabilities, and The Law. With over 200 multiple-choice questions to choose from, you can practice 50, 100, or complete all of them at once.               </p>
                <Link to="/takequizCatName/Band-3---Driving-Test--Disabilities--and-The-Law">
                  {" "}
                  <button>Start Quiz</button>

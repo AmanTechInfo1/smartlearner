@@ -540,3 +540,11 @@
   padding: 2rem 0px;
   color: white;
 }
+.cartContainerFooter{
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.cartContainerFooter p{
+  color: rgba(255, 255, 255, 0.734);
+  text-align: center;
+}

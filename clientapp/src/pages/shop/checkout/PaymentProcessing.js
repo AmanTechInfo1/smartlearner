@@ -168,6 +168,7 @@ export default function PaymentProcessing() {
 
   return (
     <div className="paymentComponent">
+      <p style={{fontSize:'1.3rem',color:"white",textAlign:'center'}}>Complete your payment using PayPal or a debit card.</p>
       <div>
         <div className="payment-container">
           {webloading && <LoadingWeb />}
