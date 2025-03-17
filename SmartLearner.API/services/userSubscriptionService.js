@@ -173,8 +173,7 @@ class UserSubscriptionService {
       const plans = await Plans.find({
         planname: {
           $in: [
-            "Unlimited Theory Portal Access £5.99 per month",
-            "6 Months Theory Portal Access £30",
+            "Lifetime Theory Portal Access £30.00",
           ],
         },
       });

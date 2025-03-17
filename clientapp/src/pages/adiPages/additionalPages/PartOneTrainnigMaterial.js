@@ -212,7 +212,7 @@ export default function PartOneTrainnigMaterial() {
              
 
               <Link to="/hazard-preception-part-2">
-                <button id={styles.hazzardBtn}>Hazard Preception</button>
+                <button id={styles.hazzardBtn}>Hazard Perception</button>
               </Link>
              
               <Link to="/adi-part-one-test">
@@ -227,7 +227,7 @@ export default function PartOneTrainnigMaterial() {
             <Link to="/trainning-material">
               {" "}
               <button className={styles.TMnextButton}>
-                NEXT PAGE Trainning Material
+                NEXT PAGE Training Material
               </button>
             </Link>
           </div>
