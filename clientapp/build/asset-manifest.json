@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.e09d2e5d.css",
-    "main.js": "/static/js/main.f7d644f8.js",
+    "main.css": "/static/css/main.26577f93.css",
+    "main.js": "/static/js/main.ed3bef67.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
+    "static/media/futuristic-sports-car.jpg": "/static/media/futuristic-sports-car.cc797e77ee6925357c0b.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
     "static/media/theorySupportbanner2.jpg": "/static/media/theorySupportbanner2.ef0a428ae207a62c4712.jpg",
@@ -321,17 +322,17 @@
     "static/media/L-Plate.jpg": "/static/media/L-Plate.6692acc77fe12aed18ad.jpg",
     "static/media/ORANGE-SAFETY.png": "/static/media/ORANGE-SAFETY.b231b194309175de5833.png",
     "static/media/awarenessImg.png": "/static/media/awarenessImg.50a8361438da6409791e.png",
-    "index.html": "/index.html",
     "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.e09d2e5d.css.map": "/static/css/main.e09d2e5d.css.map",
-    "main.f7d644f8.js.map": "/static/js/main.f7d644f8.js.map",
+    "main.26577f93.css.map": "/static/css/main.26577f93.css.map",
+    "main.ed3bef67.js.map": "/static/js/main.ed3bef67.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e09d2e5d.css",
-    "static/js/main.f7d644f8.js"
+    "static/css/main.26577f93.css",
+    "static/js/main.ed3bef67.js"
   ]
 }
