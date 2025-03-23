@@ -5,8 +5,8 @@ const sendEmail = async (subject, message) => {
   const transporter = nodemailer.createTransport({
    service:"gmail",
     auth: {
-      user: "sranchandel123@gmail.com", // Your email
-      pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
+      user: "Smartlearnerdrivingschool@gmail.com", // Your email
+        pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
     },
    
   });
@@ -230,8 +230,8 @@ const transporter = nodemailer.createTransport({
   
   service:'gmail',
   auth: {
-    user: "sranchandel123@gmail.com", // Your email
-    pass: "ddhpwrphifhlmmft", // Use an app password or OAuth2 for production
+    user: "Smartlearnerdrivingschool@gmail.com", // Your email
+    pass: "cbsb ueih dxqm zdhd", // Use an app password or OAuth2 for production
   },
  
 });
@@ -315,8 +315,9 @@ const sendWelcomeEmail = async (userData) => {
 };
 
 // Send registration details to the admin
-const sendAdminNotification = async (userData) => {
-  const { username, email, phoneNumber, roleName } = userData;
+const sendAdminNotification = async (username, email, phoneNumber, roleName ) => {
+  
+  
   const subject = "New User Registration";
   const htmlContent = `
    <html>
@@ -366,7 +367,7 @@ const sendAdminNotification = async (userData) => {
     <p><strong>Username:</strong> ${username}</p>
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-   
+   <p><strong>Role Selected:</strong> ${roleName}</p>
     <p>Welcome to SmartLearner!</p>
           </div>
         </div>

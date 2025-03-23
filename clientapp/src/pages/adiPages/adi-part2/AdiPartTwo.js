@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../AdiPartOne.module.css";
+import styles from "./AdiPartTwo.module.css";
 import Lplateimg from "../../../assets/images/L-Plate.jpg";
 import adiImg from "../../../assets/images/finished-road-map-1.png";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -16,6 +16,11 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 import { useNavigate } from "react-router-dom";
 import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSlice";
+
+import { useRef } from "react";
+
+import gsap from "gsap";
+import LessonAccordation from "./additionalPagess/LessonAccordation";
 
 export default function AdiPartTwo() {
   const videoURLs = [
@@ -78,6 +83,108 @@ export default function AdiPartTwo() {
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
 
+  // ///////////////////////////////////////////////////
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Welcome to PDI "; // First part before "Driving"
+    const secondPart = "Part Two"; // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -86,36 +193,188 @@ export default function AdiPartTwo() {
           <div className={styles.maincontent}>
             <div className={styles.content}>
               <div className={styles.heading1}>
-                <p>
-                  Congratulations on passing your part 1 ADI test.{" "}
-                  <span>
-                    It’s now time for part 2 – Professional Driving Test.
-                  </span>
-                </p>  
+                <h1 ref={textRef}>{splitText()}</h1>
               </div>
 
-              <div className={styles.heading2}>
-                <h2>
-                  ADI - <span>Part 2 Training</span>
-                </h2>
+              <div className={styles.gGpFrontListP}>
+                <p>
+                  {" "}
+                  Well done on successfully passing your Part 1 ADI Exam! This
+                  achievement is a testament to your dedication, hard work, and
+                  determination to progress in your journey to becoming an
+                  Approved Driving Instructor (ADI).
+                </p>
               </div>
               <div className={styles.alertBtn}>
                 <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
                   {" "}
-                  <button id={styles.btn}>Contact Us</button>
+                  <button>Contact Us</button>
                 </Link>
+                {/* <Link
+                                to="/part-1-trainning-material"
+                                style={{ textDecoration: "none" }}
+                              >
+                                <button>NEXT PAGE</button>
+                              </Link> */}
               </div>
             </div>
           </div>
         </section>
 
-        {/* //////////////////////////////////////////////////////// */}
-        <section>
-          <img src={adiImg} alt="adiImg" />
+        {/* ///////////////////////////////////// */}
+
+        <section className={styles.hazardTestWorkListSection}>
+          <p id={styles.hazardTestWorkListSectionPara}>
+            Now, as you step into Module 2, you'll dive deeper into the
+            practical elements of your training. The Part 2 ADI Exam is a
+            crucial milestone, designed to test your driving ability to an
+            exceptional standard. To help you prepare, this guide is structured
+            into 11 comprehensive modules, each focusing on the key skills and
+            knowledge you'll need to succeed.
+          </p>
         </section>
 
-        {/* ///////////////////////////////////////////////////////////// */}
+        <section className={styles.theoryTestSectionQ}>
+          <div className={styles.theoryTestDivQ}>
+            <h2>What to Expect ?</h2>
+          </div>
+        </section>
+        <div className={styles.glossarycontainer}>
+          <h2 className={styles.glossarysubTitle}>
+            In this module, you'll explore a blend of theory and practical
+            advice to help you master:
+          </h2>
+          <ul className={styles.glossarylist}>
+            <li>• Advanced driving techniques.</li>
+            <li>• Hazard perception and anticipation.</li>
+            <li>• Vehicle control, safety, and awareness.</li>
+          </ul>
+        </div>
         <section className={styles.hazardTestWorkListSection}>
+          <p id={styles.hazardTestWorkListSectionPara}>
+            While this guide offers a strong foundation, we strongly encourage
+            you to seek practical training from a qualified ADI trainer.
+            Hands-on experience is essential to solidify your skills and build
+            confidence in real-world scenarios.
+          </p>
+        </section>
+        <section className={styles.theoryTestSectionQ}>
+          <div className={styles.theoryTestDivQ}>
+            <h2>What is the part 2 test? </h2>
+          </div>
+        </section>
+        <div className={styles.glossarycontainer}>
+          <ul className={styles.glossarylist}>
+            <li>
+              <strong>Duration:</strong> Around one hour.{" "}
+            </li>
+            <li>
+              <strong>Sections:</strong> There are two main sections:{" "}
+            </li>
+          </ul>
+          <ol className={styles.glossarylist}>
+            <li>
+              <strong>1.</strong> Eyesight Test: 27.5 meters if the plate is
+              old-style, or 26.5 meters if the plate is new-style{" "}
+            </li>
+            <li>
+              <strong>2.</strong> Driving Ability Assessment: Includes five key
+              aspects of driving.
+            </li>
+          </ol>
+        </div>
+
+        <div className={styles.glossarycontainer}>
+          <h2 className={styles.glossarysubTitle}>
+            Five Aspects of Driving Being Assessed:
+          </h2>
+          <ol className={styles.glossarylist}>
+            <li>
+              <strong>1. Control:</strong> Smooth and safe use of the controls
+              (e.g., clutch, gears, and brakes).{" "}
+            </li>
+            <li>
+              <strong>2. Observation:</strong> Effective observation and
+              awareness of hazards.{" "}
+            </li>
+            <li>
+              <strong>3. Anticipation:</strong> Predicting and reacting
+              appropriately to other road users' actions.
+            </li>
+            <li>
+              <strong>4. Planning:</strong> Making decisions in advance to drive
+              smoothly and efficiently.{" "}
+            </li>
+            <li>
+              <strong>5. Eco-Safe Driving:</strong> Demonstrating fuel-efficient
+              techniques where possible.{" "}
+            </li>
+          </ol>
+        </div>
+        {/* ////////////////////////////////////////////////////// */}
+        <section className={styles.theoryTestSectionQ}>
+          <div className={styles.theoryTestDivQ}>
+            <h2>2. What Does the Test Involve?</h2>
+          </div>
+        </section>
+        <div className={styles.glossarycontainer}>
+          <h2 className={styles.glossarysubTitle}>
+            The driving ability test includes a mix of:
+          </h2>
+          <ul className={styles.glossarylist}>
+            <li>
+              <strong>General Driving:</strong> Driving in various environments
+              (e.g., urban, rural, and motorways).{" "}
+            </li>
+            <li>
+              <strong>Manoeuvres:</strong> You'll be asked to complete one or
+              more of the following:{" "}
+            </li>
+            <li> Parallel park .</li>
+            <li>Reverse into a parking bay </li>
+            <li> Drive forward into a parking bay and reverse out </li>
+            <li>
+              Pull up on the right-hand side of the road, reverse for two car
+              lengths, and rejoin traffic{" "}
+            </li>
+            <li>
+              <strong>Independent Driving:</strong> Following directions from
+              road signs or a sat-nav for around 20 minutes.{" "}
+            </li>
+          </ul>
+        </div>
+
+        {/* ////////////////////////////////////////////////////// */}
+        <div className={styles.glossarycontainer}>
+          <h2 className={styles.glossarysubTitle}>Assessment Criteria:</h2>
+          <ul className={styles.glossarylist}>
+            <li>
+              - You are allowed up to six driving faults (similar to minors in a
+              learner test).
+            </li>
+            <li>
+              - Serious or dangerous faults (similar to majors) will result in a
+              fail.
+            </li>
+            <li>
+              - The examiner is looking for a level of driving that would set a
+              good example to your learners.
+            </li>
+          </ul>
+        </div>
+
+        {/* //////////////////////////////////////////////////////////// */}
+        <section className={styles.lessonAccordionContainer}>
+          <LessonAccordation />
+        </section>
+
+        {/* //////////////////////////////////////////////////////// */}
+        {/* <section>
+          <img src={adiImg} alt="adiImg" />
+        </section> */}
+
+        {/* ///////////////////////////////////////////////////////////// */}
+        {/* <section className={styles.hazardTestWorkListSection}>
           <h2 className={styles.hazardTestH2}>
             ADI Part 2 <span>- Driving Ability</span>
           </h2>
@@ -132,7 +391,8 @@ export default function AdiPartTwo() {
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -176,12 +436,12 @@ export default function AdiPartTwo() {
               </ul>
             </div>
           </section>
-        </section>
+        </section> */}
         {/* //////////////////////////////////////////// */}
 
         {/* ////////////////////////////////////// */}
 
-        <section className={styles.AdiPtwoYoutubeSec}>
+        {/* <section className={styles.AdiPtwoYoutubeSec}>
           <div className={styles.AdiPartTwoYtV}>
             <section>
               <h2>
@@ -197,7 +457,8 @@ export default function AdiPartTwo() {
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </section>
@@ -215,14 +476,15 @@ export default function AdiPartTwo() {
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </div>
             </section>
           </div>
-        </section>
+        </section> */}
         {/* ////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
+        {/* <section className={styles.hazardTestWorkListSection}>
           <h2 className={styles.hazardTestH2}>
             Manoeuvres <span>Video Materials</span>{" "}
           </h2>
@@ -234,20 +496,21 @@ export default function AdiPartTwo() {
                     width="200"
                     height="120"
                     src={url}
-                    allowFullScreen></iframe>
+                    allowFullScreen
+                  ></iframe>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ///////////////////////////////////////////////////////// */}
-        
+
         {/* ////////////////////////////////////////////////////////////////////////// */}
-       
+
         {/* ////////////////////////////////////////////////////////// */}
 
-        <section className={styles.hazardTestWorkListSection}>
+        {/* <section className={styles.hazardTestWorkListSection}>
           <h2 className={styles.hazardTestH2}>
             Car <span>Requirements</span>
           </h2>
@@ -311,10 +574,9 @@ export default function AdiPartTwo() {
               </ul>
             </div>
           </section>
-        </section>
+        </section> */}
         {/* ////////////////////////////////////// */}
-        <section style={{ textAlign: "center" }}>
-          {/* <h2 style={{color:"red",fontSize:'3rem'}}>Test - Part 2 - Summary</h2> */}
+        {/* <section style={{ textAlign: "center" }}>
         </section>
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>
@@ -328,7 +590,7 @@ export default function AdiPartTwo() {
               <button>Start Quiz</button>
             </Link>
           </section>
-        </div>
+        </div> */}
         {/* ////////////////////////////////////////////////// */}
       </div>
       <section className={styles.adiPortalFooterSection}>

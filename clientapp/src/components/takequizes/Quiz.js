@@ -391,7 +391,7 @@ const Quiz = () => {
   };
 
   const backbtn = () => {
-    navigate(-1);
+    navigate(-2);
   };
 
   return (

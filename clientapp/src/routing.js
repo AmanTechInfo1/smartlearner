@@ -146,6 +146,7 @@ import Band2 from "./pages/adiPages/additionalPages/Band2";
 import Band3 from "./pages/adiPages/additionalPages/Band3";
 import Band4 from "./pages/adiPages/additionalPages/Band4";
 import AllResult from "./components/takequizes/AllResult";
+import AdiModuleOne from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleOne";
 
 export const router = createBrowserRouter([
   {
@@ -278,6 +279,9 @@ export const router = createBrowserRouter([
       { path: "manual", element: <Manual /> },
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
+      {
+        path:"quizModuleOne", element: <AdiModuleOne/>
+      },
       {
         path: "driving-instructor-packages/:section?",
         element: <DrivingTransmission />,

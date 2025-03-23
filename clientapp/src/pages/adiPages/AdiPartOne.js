@@ -171,6 +171,7 @@ export default function AdiPartOne() {
 
   return (
     <div className={styles.AdiPartOne}>
+      
       <div className={styles.AdiPortalPartOne}>
         <section className={styles.imageSection}>
           <div className={styles.opicity}></div>

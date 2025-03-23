@@ -112,7 +112,7 @@ const QuizResult = () => {
         <h2 className="text-center text-2xl font-semibold mb-4">
           Quiz Results{" "}
           <button
-            onClick={() => navigate(-2)}
+            onClick={() => navigate(-3)}
             className="btn btn-secondary bg-info ml-5 py-3 px-5 "
           >
             Go Back

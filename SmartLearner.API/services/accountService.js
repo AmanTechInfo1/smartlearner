@@ -10,12 +10,15 @@ const { ROLES } = require("../utilities/constatnt");
 const Role = require("../models/roleModel");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
-const { sendWelcomeEmail, sendAdminNotification } = require('../services/emailService');
+const {
+  sendWelcomeEmail,
+  sendAdminNotification,
+} = require("../services/emailService");
 
 class AccountService {
   async registerUserAsync(userData) {
     try {
-      const { username, email, password, phoneNumber } = userData;
+      const { username, email, password, phoneNumber, roleName } = userData;
 
       const existingUser = await User.findOne({ email });
       if (existingUser) {
@@ -40,8 +43,14 @@ class AccountService {
         isBcryptHashed: true,
       });
 
-      await sendWelcomeEmail(user);  // Send thank-you email to the user
-      await sendAdminNotification(user); 
+      await sendWelcomeEmail(user); // Send thank-you email to the user
+      await sendAdminNotification(
+        username,
+        email,
+        phoneNumber,
+        roleName
+      );
+
 
       return user;
     } catch (err) {
@@ -88,22 +97,19 @@ class AccountService {
         throw new Error("Invalid user");
       }
 
-      
       const role = await roleServices.getRoleByIdAsync(userRole.roleId);
 
       if (!role.success) {
         throw new Error("Invalid user");
       }
 
-      
-      const jwtAge = 1000000; 
+      const jwtAge = 1000000;
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",
         { expiresIn: jwtAge }
       );
 
-    
       return {
         user: {
           _id: user._id,
@@ -111,7 +117,7 @@ class AccountService {
           email: user.email,
           role: role.data.name,
           token,
-          expiresIn: jwtAge * 1000 , // Send expiry time in milliseconds
+          expiresIn: jwtAge * 1000, // Send expiry time in milliseconds
         },
       };
     } catch (err) {
@@ -262,9 +268,6 @@ class AccountService {
     }
   }
 
-
-
-
   async getAllUsersRolesAsync() {
     try {
       const role = await Role.aggregate([
@@ -291,20 +294,20 @@ class AccountService {
     try {
       // Step 1: Update the user with new data
       const updatedUser = await User.findByIdAndUpdate(roleId, roleData, {
-        new: true,  // Return the updated user
+        new: true, // Return the updated user
       });
-  
+
       if (!updatedUser) {
         throw new Error("User not found.");
       }
-  
+
       // Step 2: Update or create the user role in the UserRole collection
       let userRole = await UserRole.findOneAndUpdate(
-        { userId: roleId },  // Find UserRole by userId
+        { userId: roleId }, // Find UserRole by userId
         { roleId: roleData.roleId }, // Update the roleId
         { new: true } // Return the updated userRole
       );
-  
+
       if (!userRole) {
         // If no existing UserRole document was found, create a new one
         userRole = new UserRole({
@@ -313,7 +316,7 @@ class AccountService {
         });
         await userRole.save(); // Save the new UserRole document
       }
-  
+
       // Step 3: Return the updated data (user and userRole)
       const resultObject = {
         message: "Updated successfully",
@@ -321,7 +324,7 @@ class AccountService {
         success: true,
         data: { updatedUser, userRole },
       };
-  
+
       return resultObject;
     } catch (err) {
       const resultObject = {
@@ -333,7 +336,6 @@ class AccountService {
       return resultObject;
     }
   }
-  
 
   async deleteUserAsync(roleId) {
     try {
@@ -424,7 +426,7 @@ class AccountService {
     } catch (error) {
       throw new Error(error.message);
     }
-  }  
+  }
 }
 
 module.exports = new AccountService();

@@ -436,10 +436,10 @@ class quizService {
         }
       );
 
-      // const quizResult = await AttemptQuizQuestion.aggregate(aggr);
-      // const totalCount = await AttemptQuizQuestion.countDocuments(filter);
+      // const quizResult2 = await AttemptQuizQuestion.aggregate(aggr);
+      // const totalCount2 = await AttemptQuizQuestion.countDocuments(filter);
 
-      // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
+      // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20); 
       const quizResult = await ResultQuizQuestion.aggregate(aggr);
       const totalCount = await ResultQuizQuestion.countDocuments(filter);
 
