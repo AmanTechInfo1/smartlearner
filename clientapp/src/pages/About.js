@@ -3,7 +3,7 @@ import styles from "./css/About.module.css";
 import AboutPageImg from "../assets/images/image_2021_03_03T15_33_28_479Z-1024x768.png";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export default function About() {
   const textRef = useRef(null);

@@ -2,7 +2,7 @@
 import styles from "./css/AdiPortal.module.css";
 import adiImg from "../assets/images/finished-road-map-1.png";
 import poster from "../assets/images/video-poster-img.jpg";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import {
   FaBook,
   FaCarSide,

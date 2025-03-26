@@ -10,7 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { contactFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
 import gsap from "gsap";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 export default function ContactUs() {
   const dispatch = useDispatch();

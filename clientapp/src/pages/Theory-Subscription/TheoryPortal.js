@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 import starImg from "../../assets/images/yellowStar.png";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useRef } from "react";
 
 import gsap from "gsap";
