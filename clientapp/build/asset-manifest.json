@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.26577f93.css",
-    "main.js": "/static/js/main.726c75eb.js",
+    "main.css": "/static/css/main.7f3b1245.css",
+    "main.js": "/static/js/main.e8addec0.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
-    "static/media/futuristic-sports-car.jpg": "/static/media/futuristic-sports-car.cc797e77ee6925357c0b.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
     "static/media/theorySupportbanner2.jpg": "/static/media/theorySupportbanner2.ef0a428ae207a62c4712.jpg",
@@ -72,6 +71,7 @@
     "static/media/zebraCrossing.png": "/static/media/zebraCrossing.69520c96d664c38da7db.png",
     "static/media/cimg7.jpg": "/static/media/cimg7.7429a73b8951a6df4826.jpg",
     "static/media/cyclistsImg.png": "/static/media/cyclistsImg.56735108317b38ad6ff7.png",
+    "static/media/pdi-banner2.jpg": "/static/media/pdi-banner2.60d21c2bb0c23de3f871.jpg",
     "static/media/cimg20.jpg": "/static/media/cimg20.713195b4b4645b8833f4.jpg",
     "static/media/diversLargeVehicle.png": "/static/media/diversLargeVehicle.750f4504d5ffd7d750aa.png",
     "static/media/roadSurface.png": "/static/media/roadSurface.3e60f6554d234feeb9dc.png",
@@ -327,12 +327,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.26577f93.css.map": "/static/css/main.26577f93.css.map",
-    "main.726c75eb.js.map": "/static/js/main.726c75eb.js.map",
+    "main.7f3b1245.css.map": "/static/css/main.7f3b1245.css.map",
+    "main.e8addec0.js.map": "/static/js/main.e8addec0.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.26577f93.css",
-    "static/js/main.726c75eb.js"
+    "static/css/main.7f3b1245.css",
+    "static/js/main.e8addec0.js"
   ]
 }
