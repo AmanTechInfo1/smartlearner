@@ -20,97 +20,295 @@ const LessonAccordation = () => {
     <div className={styles.accordionContainer}>
       <div className={styles.LessonAccordionheader}>
         <span>SKILLS</span>
-        <span className={styles.LessonAccordionProgress}>14 Steps | 14 Quizzes</span>
+        <span className={styles.LessonAccordionProgress}>
+          14 Steps | 14 Quizzes
+        </span>
       </div>
       <ul className={styles.listLessonData}>
-     
-
         {/* QUIZ – Agree Goals */}
-        <Link to="/quizModuleOne"> <li
-          className={`${styles.itemLesson} ${openIndex === 1 ? styles.lessonOpen : ""}`}
-          onMouseEnter={() => handleMouseEnter(1)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}><FaFileAlt /></span> Lesson Content
-          </div>
-          {openIndex === 1 && <p className={styles.description}>Test your knowledge about goal setting in driving lessons.</p>}
-        </li></Link>
-       
+        <Link to="/quizModuleOne">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 1 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(1)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <FaFileAlt />
+              </span>
+              Human checks before setting off to drive
+            </div>
+            {openIndex === 1 && (
+              <p className={styles.description}>
+                Test your knowledge about Human checks.
+              </p>
+            )}
+          </li>
+        </Link>
 
         {/* Giving Route Directions */}
         <li
-          className={`${styles.itemLesson} ${openIndex === 2 ? styles.lessonOpen : ""}`}
+          className={`${styles.itemLesson} ${
+            openIndex === 2 ? styles.lessonOpen : ""
+          }`}
           onMouseEnter={() => handleMouseEnter(2)}
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.lessonRow}>
-            <span className={styles.checkIcon}><TiTick /></span>Agree Goals
+            <span className={styles.checkIcon}>
+              <TiTick />
+            </span>
+            Quiz Human checks
           </div>
-          {openIndex === 2 && <p className={styles.description}>Understand how to give clear and accurate route directions.</p>}
+          {openIndex === 2 && (
+            <p className={styles.description}>Quiz Human checks</p>
+          )}
         </li>
 
         {/* QUIZ – Giving Route Directions */}
-        <li
-          className={`${styles.itemLesson} ${openIndex === 3 ? styles.lessonOpen : ""}`}
-          onMouseEnter={() => handleMouseEnter(3)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}><MdContactPage /></span> QUIZ – Giving Route Directions
-          </div>
-          {openIndex === 3 && <p className={styles.description}>Check your understanding of route directions.</p>}
-        </li>
+        <Link to="/quizModuletwo">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 3 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(3)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <MdContactPage />
+              </span>{" "}
+              ⁠vehicle checks to perform before the test
+            </div>
+            {openIndex === 3 && (
+              <p className={styles.description}>
+                Check your understanding of ⁠vehicle checks
+              </p>
+            )}
+          </li>
+        </Link>
 
         {/* Route planning & Practice areas */}
-     
 
         {/* QUIZ – Route Planning */}
         <li
-          className={`${styles.itemLesson} ${openIndex === 5 ? styles.lessonOpen : ""}`}
+          className={`${styles.itemLesson} ${
+            openIndex === 5 ? styles.lessonOpen : ""
+          }`}
           onMouseEnter={() => handleMouseEnter(5)}
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}><MdContactPage /></span>  Route planning & Practice areas
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>{" "}
+            Quiz vehicle checks
           </div>
-          {openIndex === 5 && <p className={styles.description}>Assess your skills in route planning through a quiz.</p>}
+          {openIndex === 5 && (
+            <p className={styles.description}> Quiz vehicle checks</p>
+          )}
         </li>
 
         {/* The Levels of Instruction */}
-        <li
-          className={`${styles.itemLesson} ${openIndex === 6 ? styles.lessonOpen : ""}`}
-          onMouseEnter={() => handleMouseEnter(6)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.checkIcon}><TiTick /></span> QUIZ – Route Planning
-          </div>
-          {openIndex === 6 && <p className={styles.description}>Learn about the different levels of driving instruction.</p>}
-        </li>
+        <Link to="/quizModulethree">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 6 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(6)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Familiarising yourself with vehicle technology
+            </div>
+            {openIndex === 6 && (
+              <p className={styles.description}>
+                Learn about the familiarising yourself with vehicle technology
+              </p>
+            )}
+          </li>
+        </Link>
 
         {/* QUIZ – Levels of Instruction */}
         <li
-          className={`${styles.itemLesson} ${openIndex === 7 ? styles.lessonOpen : ""}`}
+          className={`${styles.itemLesson} ${
+            openIndex === 7 ? styles.lessonOpen : ""
+          }`}
           onMouseEnter={() => handleMouseEnter(7)}
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}><MdContactPage /></span> The Levels of Instruction
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>{" "}
+            Quiz vehicle technology
           </div>
-          {openIndex === 7 && <p className={styles.description}>Evaluate your understanding of instruction levels.</p>}
+          {openIndex === 7 && (
+            <p className={styles.description}>Quiz vehicle technology</p>
+          )}
         </li>
 
         {/* Agree Roles & Responsibilities */}
+        <Link to="/quizModulefour">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 8 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(8)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              What is advanced driving
+            </div>
+            {openIndex === 8 && (
+              <p className={styles.description}>
+                Understand What is advanced driving
+              </p>
+            )}
+          </li>
+        </Link>
         <li
-          className={`${styles.itemLesson} ${openIndex === 8 ? styles.lessonOpen : ""}`}
-          onMouseEnter={() => handleMouseEnter(8)}
+          className={`${styles.itemLesson} ${
+            openIndex === 9 ? styles.lessonOpen : ""
+          }`}
+          onMouseEnter={() => handleMouseEnter(9)}
           onMouseLeave={handleMouseLeave}
         >
           <div className={styles.lessonRow}>
-            <span className={styles.checkIcon}><TiTick /></span> QUIZ – Levels of Instruction
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>
+            Quiz advanced driving
           </div>
-          {openIndex === 8 && <p className={styles.description}>Understand the roles and responsibilities in driving training.</p>}
+          {openIndex === 9 && (
+            <p className={styles.description}>Quiz advanced driving</p>
+          )}
+        </li>
+        {/* ///////////////////////////////////////// */}
+        <Link to="/quizModulefive">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 10 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(10)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              The coast method
+            </div>
+            {openIndex === 10 && (
+              <p className={styles.description}>Understand The coast method</p>
+            )}
+          </li>
+        </Link>
+        <li
+          className={`${styles.itemLesson} ${
+            openIndex === 11 ? styles.lessonOpen : ""
+          }`}
+          onMouseEnter={() => handleMouseEnter(11)}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className={styles.lessonRow}>
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>
+            Quiz the cost method
+          </div>
+          {openIndex === 11 && (
+            <p className={styles.description}>Quiz the cost method</p>
+          )}
+        </li>
+        {/* ////////////////////////////////////////////////////// */}
+        <Link to="/quizModulesix">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 12 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(12)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              ⁠Concentration in the Coast method
+            </div>
+            {openIndex === 12 && (
+              <p className={styles.description}>Understand The ⁠Concentration in the Coast method</p>
+            )}
+          </li>
+        </Link>
+        <li
+          className={`${styles.itemLesson} ${
+            openIndex === 13 ? styles.lessonOpen : ""
+          }`}
+          onMouseEnter={() => handleMouseEnter(13)}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className={styles.lessonRow}>
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>
+            Quiz concentration
+          </div>
+          {openIndex === 13 && (
+            <p className={styles.description}>Quiz concentration</p>
+          )}
+        </li>
+        {/* /////////////////////////////////////////////// */}
+        <Link to="/quizModuleseven">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 14 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(14)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Observation in the coast method
+            </div>
+            {openIndex === 14 && (
+              <p className={styles.description}>Understand Observation in the coast method</p>
+            )}
+          </li>
+        </Link>
+        <li
+          className={`${styles.itemLesson} ${
+            openIndex === 15 ? styles.lessonOpen : ""
+          }`}
+          onMouseEnter={() => handleMouseEnter(15)}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className={styles.lessonRow}>
+            <span className={styles.quizIcon}>
+              <TiTick />
+            </span>
+            Quiz observation
+          </div>
+          {openIndex === 15 && (
+            <p className={styles.description}>Quiz observation</p>
+          )}
         </li>
       </ul>
     </div>

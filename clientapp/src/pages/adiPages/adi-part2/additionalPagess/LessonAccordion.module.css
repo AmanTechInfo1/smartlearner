@@ -2,7 +2,7 @@
     max-width: 800px;
     width: 100%;
     margin: 0pc auto;
-    background: white;
+    background: linear-gradient(135deg, #65ccff, #01b69b);
     border-radius: 5px;
     font-family: Arial, sans-serif;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -12,7 +12,7 @@
   .LessonAccordionheader {
     display: flex;
     justify-content: space-between;
-    background: #768802;
+    background: linear-gradient(135deg, #ed006b, #9e00ce);
     color: white;
     font-weight: bold;
     font-size: 1.5rem;
@@ -48,9 +48,9 @@
   }
   
   .itemLesson:hover {
-    background: #e2ffa5f0;
+    background: #cafff9f0;
     padding-left: 20px;
-    box-shadow: inset 0 0 10px #aac16d;
+    box-shadow: inset 0 0 10px #6dc0c1;
     
   }
   
@@ -68,14 +68,14 @@
   
   .checkIcon {
      font-size: 1.5rem;
-     color: #73c600;
+     color: #540037;
      margin-right: 12px;
   }
   
   .quizIcon {
    font-size: 1.5rem;
    margin-right: 12px;
-   color: #73c600;
+   color: #540037;
   }
   
   .description {

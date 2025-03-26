@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { contactFormSchema } from "../schemas/master";
 import { enquiryData } from "../redux/features/enquirySlice";
 import gsap from "gsap";
+import { Helmet } from "react-helmet";
 
 export default function ContactUs() {
   const dispatch = useDispatch();
@@ -213,6 +214,12 @@ export default function ContactUs() {
         color: "white",
         paddingBottom: "5rem",
       }}>
+         <Helmet>
+                <meta charSet="utf-8" />
+                <title>Get in Touch with Us</title>
+                <link rel="canonical" href="https://smartlearner.com/Contact-Us" />
+                <meta name="description" content="Have questions or need more information? Contact us today! " />
+            </Helmet>
       <div className={styles.contactHead}>
         <div className="opicity"></div>
         <div className={styles.contactheadinghead}>

@@ -2,6 +2,7 @@
 import styles from "./css/AdiPortal.module.css";
 import adiImg from "../assets/images/finished-road-map-1.png";
 import poster from "../assets/images/video-poster-img.jpg";
+import {Helmet} from "react-helmet";
 import {
   FaBook,
   FaCarSide,
@@ -225,6 +226,12 @@ export default function ADITrainingPortal() {
 
   return (
     <div className={styles.ADITrainingPortalPage}>
+       <Helmet>
+                <meta charSet="utf-8" />
+                <title>Post-Driving Instruction (PDI) Services</title>
+                <meta name="description" content="Explore our Post-Driving Instruction (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. " />
+                <link rel="canonical" href="https://smartlearner.com//ADI-Training-Portal" />
+            </Helmet>
       <div className={styles.adiPortalPage}>
         <div className={styles.adiPortalPageFirstdiv}>
           <div className={styles.opicity}></div>

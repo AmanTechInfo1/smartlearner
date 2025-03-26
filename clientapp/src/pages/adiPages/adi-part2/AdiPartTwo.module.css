@@ -1,5 +1,5 @@
 .AdiPartOne {
-    font-family: "Antonio", sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: black;
     color: white;
     padding-top: 1rem;
@@ -13,7 +13,7 @@
     position: relative;
     width: 100%;
   
-    background-image: url(../../../assets/images/futuristic-sports-car.jpg);
+    background-image: url(../../../assets/images/pdi-banner2.jpg);
     background-position: center;
     background-size: cover;
     border-radius: 10px;
@@ -157,10 +157,10 @@
     font-size: 3.5rem;
     font-weight: 700;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #9000298d, #06007d);
+    text-transform: uppercase;
     color: #ffffff;
     border-radius: 10px;
-    padding: 1rem;
+   
   }
   
   .theoryTestDivQ hr {
@@ -269,15 +269,30 @@
   #hazardTestWorkListSectionPara {
     text-align: center;
     padding: 1rem;
-    font-size: 1.4rem;
-    max-width: 1200px;
+    font-size: 1.2rem;
+    max-width: 1400px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 0px;
     color: white;
-    background: linear-gradient(135deg, #01bcc6, #00367d);
-    border-radius: 10px;
+    background: linear-gradient(135deg, #015ac6ad, #01abb798);
+    border-radius: 5px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #hazardTestWorkListSectionPara3 {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+  margin-top: 1rem;
+  
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0px;
+    color: white;
+    background: linear-gradient(135deg, #015ac6ad, #01abb798);
+    border-radius: 5px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
   #hazardTestWorkListSectionPara2 {
@@ -327,23 +342,25 @@
       font-size: 1.7rem;
     }
     #hazardTestWorkListSectionPara {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
+    #hazardTestWorkListSectionPara3 {
+        font-size: 1rem;
+      }
   }
   @media (max-width: 550px) {
     .hazardTestH23 h2 {
       text-align: center;
       font-size: 1.5rem;
     }
+    
   }
   @media (max-width: 450px) {
     .hazardTestH234 {
       text-align: center;
       font-size: 1.2rem;
     }
-    #hazardTestWorkListSectionPara {
-      font-size: 1.2rem;
-    }
+    
   }
   .hazardTestH2 {
     text-align: center;
@@ -1966,7 +1983,7 @@
     padding: 2rem 0px;
     background: linear-gradient(135deg, #01c69b, #06007d);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 20px;
+    border-radius:0px 0px 20px 20px;
   }
   .adiPortalFooterInnerContainer img {
     padding: 1rem 0px;
@@ -2101,10 +2118,64 @@
     padding: 20px;
     max-width: 1440px;
     margin: 0 auto;
-  
+    opacity: 0;/* Initially hidden */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+   
     color: #ffffff;
   }
+  .glossarycontainer.glossarycontainerOneshow {
+   /* Display when the state is true */
+    opacity: 1; /* Fade in */
+    
+    max-height: 1200px;/* Slide down to its position */
+  }
+  .downArrowiconDiv{
+    text-align: center;
+    animation: smoothUpDown 2s ease-in-out infinite;
+    height: 100px;
+    width: 100%;
+    max-width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+    
+
+  }
+  .downArrowiconDiv p{
+    font-size: 1.1rem;
+    color: #ffffffaf;
+
+  }
+  .downArrowicon {
+    cursor: pointer;
+    font-size: 5rem; /* Adjust as needed */
+    color: #7affdc;
+    transition: transform 0.3s ease-in-out;
+   
+   
+     /* Smooth rotation */
+  }
+ 
+  .downArrowicon:hover{
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.977));
+  }
+  @keyframes smoothUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* Move the images up */
+    }
+    100% {
+      transform: translateY(0); /* Move the images back to original position */
+    }
+  }
+  .downArrowicon.rotate {
+    transform: rotate(180deg); /* Rotate the arrow when the container is visible */
+  }
   
+
   .glossaryintroduction {
     font-size: 1.3rem;
   
@@ -2115,17 +2186,17 @@
   }
   
   .glossarysubTitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #b8e4ff;
     
-    margin-bottom: 10px;
+   margin-bottom: 0px;
     background: linear-gradient(
       135deg,
       #cb0558,
       #51021a
     ); /* Light green background for subheadings */
     padding: 20px 10px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
   }
   
   .glossarytext {
@@ -2146,10 +2217,10 @@
   .glossarylist li {
     font-size: 1.4rem;
     line-height: 1.8;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #00695c;
     background: linear-gradient(135deg, #1fbcaa, #015074);
     padding: 15px 10px;
-    border-radius: 5px;
+    
     
   }
   
@@ -2172,7 +2243,7 @@
     }
   
     .glossarysubTitle {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
   
     .glossarytext,
@@ -2195,7 +2266,7 @@
     }
   
     .glossarysubTitle {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
   
     .glossarytext,
@@ -2208,6 +2279,6 @@
     }
   }
   .lessonAccordionContainer{
-    background-color: #000128;
+    background: linear-gradient(135deg, #004568, #36004c);
     padding: 1.5rem 0px;
   }

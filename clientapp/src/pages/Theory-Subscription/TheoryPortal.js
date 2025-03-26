@@ -26,7 +26,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 import starImg from "../../assets/images/yellowStar.png";
-
+import {Helmet} from "react-helmet";
 import { useRef } from "react";
 
 import gsap from "gsap";
@@ -173,6 +173,12 @@ export default function TheoryPortal() {
 
   return (
     <div className={styles.TheoryPortal}>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Driving Theory Lessons & Resources</title>
+                <link rel="canonical" href="https://smartlearner.com/Theory-Portal" />
+                <meta name="description" content="Prepare for your driving test with our comprehensive theory lessons." />
+            </Helmet>
       <section className={styles.imageSection}>
         <div className={styles.opicity}></div>
         <div className={styles.maincontent}>

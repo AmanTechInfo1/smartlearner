@@ -538,7 +538,8 @@ const Quiz = () => {
                         maxWidth: "300px",
                         width: "100%",
                         borderRadius: "6px",
-                        boxShadow: "0px 4px 10px rgba(31, 31, 31, 0.74)",
+                        filter: "drop-shadow(0.35rem 0.35rem 0.4rem rgba(19, 19, 19, 0.8))",
+                        
                       }}
                       src={
                         imageBaseUrl +

@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 import { useNavigate } from "react-router-dom";
 import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSlice";
+import { FaRegArrowAltCircleDown } from "react-icons/fa";
 
 import { useRef } from "react";
 
@@ -23,6 +24,20 @@ import gsap from "gsap";
 import LessonAccordation from "./additionalPagess/LessonAccordation";
 
 export default function AdiPartTwo() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible2, setIsVisible2] = useState(false);
+  const [isVisible3, setIsVisible3] = useState(false);
+
+  const toggleGlossary = () => {
+    setIsVisible((prevState) => !prevState); // Toggle visibility
+  };
+  const toggleGlossary2 = () => {
+    setIsVisible2((prevState) => !prevState); // Toggle visibility
+  };
+  const toggleGlossary3 = () => {
+    setIsVisible3((prevState) => !prevState); // Toggle visibility
+  };
+
   const videoURLs = [
     "https://www.youtube.com/embed/YVYQNgPfPwI",
     "https://www.youtube.com/embed/jy-UXGIVBXg",
@@ -185,6 +200,281 @@ export default function AdiPartTwo() {
       });
   }, []);
 
+  ///////////////////////////////////////////////////////////////////
+  const text2Ref = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const split2Text = () => {
+    const firstPart = "What to Expect ?"; // First part before "Driving"
+    // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = text2Ref.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
+  const text3Ref = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const split3Text = () => {
+    const firstPart = "What is the part 2 test?"; // First part before "Driving"
+    // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = text3Ref.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
+  // //////////////////////////////////
+  const text4Ref = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const split4Text = () => {
+    const firstPart = "What Does the Test Involve?"; // First part before "Driving"
+    // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = text4Ref.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <div className={styles.AdiPartOne}>
       <div className={styles.AdiPortalPartOne}>
@@ -223,23 +513,32 @@ export default function AdiPartTwo() {
 
         {/* ///////////////////////////////////// */}
 
-        <section className={styles.hazardTestWorkListSection}>
-          <p id={styles.hazardTestWorkListSectionPara}>
-            Now, as you step into Module 2, you'll dive deeper into the
-            practical elements of your training. The Part 2 ADI Exam is a
-            crucial milestone, designed to test your driving ability to an
-            exceptional standard. To help you prepare, this guide is structured
-            into 11 comprehensive modules, each focusing on the key skills and
-            knowledge you'll need to succeed.
-          </p>
-        </section>
+        <p id={styles.hazardTestWorkListSectionPara3}>
+          Now, as you step into Module 2, you'll dive deeper into the practical
+          elements of your training. The Part 2 ADI Exam is a crucial milestone,
+          designed to test your driving ability to an exceptional standard. To
+          help you prepare, this guide is structured into 11 comprehensive
+          modules, each focusing on the key skills and knowledge you'll need to
+          succeed.
+        </p>
 
         <section className={styles.theoryTestSectionQ}>
           <div className={styles.theoryTestDivQ}>
-            <h2>What to Expect ?</h2>
+            <h2 ref={text2Ref}>{split2Text()}</h2>
           </div>
         </section>
-        <div className={styles.glossarycontainer}>
+        <div className={styles.downArrowiconDiv}>
+          <FaRegArrowAltCircleDown
+            onClick={toggleGlossary}
+            className={`${styles.downArrowicon} ${isVisible ? styles.rotate : ""}`}
+          />
+         <p>CLICK ME</p>
+        </div>
+        <div
+          className={`${styles.glossarycontainer} ${
+            isVisible ? styles.glossarycontainerOneshow : ""
+          }`}
+        >
           <h2 className={styles.glossarysubTitle}>
             In this module, you'll explore a blend of theory and practical
             advice to help you master:
@@ -260,32 +559,35 @@ export default function AdiPartTwo() {
         </section>
         <section className={styles.theoryTestSectionQ}>
           <div className={styles.theoryTestDivQ}>
-            <h2>What is the part 2 test? </h2>
+            <h2 ref={text3Ref}>{split3Text()}</h2>
           </div>
         </section>
-        <div className={styles.glossarycontainer}>
+        <div className={styles.downArrowiconDiv}>
+          <FaRegArrowAltCircleDown
+            onClick={toggleGlossary2}
+            className={`${styles.downArrowicon} ${isVisible2 ? styles.rotate : ""}`}
+          />
+         <p>CLICK ME</p>
+        </div>
+        <div
+          className={`${styles.glossarycontainer} ${
+            isVisible2 ? styles.glossarycontainerOneshow : ""
+          }`}
+        >
           <ul className={styles.glossarylist}>
             <li>
               <strong>Duration:</strong> Around one hour.{" "}
             </li>
             <li>
-              <strong>Sections:</strong> There are two main sections:{" "}
-            </li>
-          </ul>
-          <ol className={styles.glossarylist}>
-            <li>
+              <strong>Sections:</strong> There are two main sections:
+              <br />
               <strong>1.</strong> Eyesight Test: 27.5 meters if the plate is
-              old-style, or 26.5 meters if the plate is new-style{" "}
-            </li>
-            <li>
+              old-style, or 26.5 meters if the plate is new-style <br />
               <strong>2.</strong> Driving Ability Assessment: Includes five key
               aspects of driving.
             </li>
-          </ol>
-        </div>
-
-        <div className={styles.glossarycontainer}>
-          <h2 className={styles.glossarysubTitle}>
+          </ul>
+          <h2 className={styles.glossarysubTitle} style={{marginTop:'1rem'}}>
             Five Aspects of Driving Being Assessed:
           </h2>
           <ol className={styles.glossarylist}>
@@ -311,13 +613,26 @@ export default function AdiPartTwo() {
             </li>
           </ol>
         </div>
+
+          
         {/* ////////////////////////////////////////////////////// */}
         <section className={styles.theoryTestSectionQ}>
           <div className={styles.theoryTestDivQ}>
-            <h2>2. What Does the Test Involve?</h2>
+            <h2 ref={text4Ref}>{split4Text()}</h2>
           </div>
         </section>
-        <div className={styles.glossarycontainer}>
+        <div className={styles.downArrowiconDiv}>
+          <FaRegArrowAltCircleDown
+            onClick={toggleGlossary3}
+            className={`${styles.downArrowicon} ${isVisible3 ? styles.rotate : ""}`}
+          />
+         <p>CLICK ME</p>
+        </div>
+        <div
+          className={`${styles.glossarycontainer} ${
+            isVisible3 ? styles.glossarycontainerOneshow : ""
+          }`}
+        >
           <h2 className={styles.glossarysubTitle}>
             The driving ability test includes a mix of:
           </h2>
@@ -328,25 +643,21 @@ export default function AdiPartTwo() {
             </li>
             <li>
               <strong>Manoeuvres:</strong> You'll be asked to complete one or
-              more of the following:{" "}
-            </li>
-            <li> Parallel park .</li>
-            <li>Reverse into a parking bay </li>
-            <li> Drive forward into a parking bay and reverse out </li>
-            <li>
+              more of the following: <br></br>
+              Parallel park.<br></br>
+              Reverse into a parking bay
+              <br />
+              Drive forward into a parking bay and reverse out <br />
               Pull up on the right-hand side of the road, reverse for two car
-              lengths, and rejoin traffic{" "}
+              lengths, and rejoin traffic
             </li>
+
             <li>
               <strong>Independent Driving:</strong> Following directions from
               road signs or a sat-nav for around 20 minutes.{" "}
             </li>
           </ul>
-        </div>
-
-        {/* ////////////////////////////////////////////////////// */}
-        <div className={styles.glossarycontainer}>
-          <h2 className={styles.glossarysubTitle}>Assessment Criteria:</h2>
+          <h2 className={styles.glossarysubTitle} style={{marginTop:'1rem'}}>Assessment Criteria:</h2>
           <ul className={styles.glossarylist}>
             <li>
               - You are allowed up to six driving faults (similar to minors in a
@@ -362,6 +673,9 @@ export default function AdiPartTwo() {
             </li>
           </ul>
         </div>
+
+        {/* ////////////////////////////////////////////////////// */}
+        
 
         {/* //////////////////////////////////////////////////////////// */}
         <section className={styles.lessonAccordionContainer}>

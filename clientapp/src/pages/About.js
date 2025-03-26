@@ -3,6 +3,7 @@ import styles from "./css/About.module.css";
 import AboutPageImg from "../assets/images/image_2021_03_03T15_33_28_479Z-1024x768.png";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
 
 export default function About() {
   const textRef = useRef(null);
@@ -190,6 +191,12 @@ export default function About() {
         color: "white",
         paddingBottom: "4rem",
       }}>
+          <Helmet>
+                        <meta charSet="utf-8" />
+                        <title>About Our Driving School</title>
+                        <link rel="canonical" href="https://smartlearner.com/about" />
+                        <meta name="description" content="Learn more about our driving school’s mission, values, and experienced instructors." />
+                    </Helmet>
       <div className={styles.TcHomeBanner}>
         <div className={styles.opicity}></div>
         <section>

@@ -133,7 +133,7 @@ export default function RulesOfRoad() {
                   </button>
                 </Link>
                 <Link
-                  to="takequizCatName/Rules-of-the-Road"
+                  to="/takequizCatName/Rules-of-the-Road"
                   style={{ textDecoration: "none" }}>
                   {" "}
                   <button id={styles.btn}>Start Quiz</button>

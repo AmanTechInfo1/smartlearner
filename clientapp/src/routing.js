@@ -147,6 +147,12 @@ import Band3 from "./pages/adiPages/additionalPages/Band3";
 import Band4 from "./pages/adiPages/additionalPages/Band4";
 import AllResult from "./components/takequizes/AllResult";
 import AdiModuleOne from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleOne";
+import AdiModuleTwo from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleTwo";
+import AdiModuleThree from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleThree";
+import AdiModuleFour from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleFour";
+import AdiModuleFive from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleFive";
+import AdiModuleSix from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleSix";
+import AdiModuleSeven from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleSeven";
 
 export const router = createBrowserRouter([
   {
@@ -281,6 +287,24 @@ export const router = createBrowserRouter([
       { path: "pass-plus", element: <PassPlusTransmission /> },
       {
         path:"quizModuleOne", element: <AdiModuleOne/>
+      },
+      {
+        path:"quizModuletwo", element: <AdiModuleTwo/>
+      },
+      {
+        path:"quizModulethree", element: <AdiModuleThree/>
+      },
+      {
+        path:"quizModulefour", element: <AdiModuleFour/>
+      },
+      {
+        path:"quizModulefive", element: <AdiModuleFive/>
+      },
+      {
+        path:"quizModulesix", element: <AdiModuleSix/>
+      },
+      {
+        path:"quizModuleseven", element: <AdiModuleSeven/>
       },
       {
         path: "driving-instructor-packages/:section?",
