@@ -489,7 +489,7 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/complete-subscription");
+                              navigate("/driving-instructor-training-full-course");
                             }}>
                             Book
                           </button>
@@ -550,7 +550,7 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/part-one-subscription");
+                              navigate("/driving-instructor-training-part-one");
                             }}>
                             Book
                           </button>
@@ -614,7 +614,7 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/part-two-subscription");
+                              navigate("/driving-instructor-training-part-two");
                             }}>
                             Book
                           </button>
@@ -678,7 +678,7 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/part-three-subscription");
+                              navigate("/driving-instructor-training-part-three");
                             }}>
                             Book
                           </button>

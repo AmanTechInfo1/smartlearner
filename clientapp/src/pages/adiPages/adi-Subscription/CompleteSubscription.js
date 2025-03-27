@@ -37,7 +37,7 @@ const CompleteSubscription = () => {
   const handleCouponSubmit = async () => {
     try {
       await dispatch(pdiApplyCouponCode({ userId, couponCode })).unwrap();
-      navigate("/adi-part-one");
+      navigate("/part-one-theory-questions");
     } catch (error) {
       console.error("Error applying coupon:", error);
     }
@@ -98,7 +98,7 @@ const CompleteSubscription = () => {
 
       await dispatch(createUserSubscription(subscriptionData)).unwrap();
       console.log("User subscription created successfully.");
-      navigate("/adi-part-one");
+      navigate("/part-one-theory-questions");
       toast.success("subscription added");
     } catch (error) {
       console.error("Error during order approval:", error);

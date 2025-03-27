@@ -36,7 +36,7 @@
     padding:  20px;
     border-bottom: 1px solid #ddd;
     cursor: pointer;
-    transition: background 0.3s, padding-left 0.3s;
+   
     font-size: 1.1rem;
     font-weight: 600;
     position: relative;

@@ -153,6 +153,11 @@ import AdiModuleFour from "./pages/adiPages/adi-part2/additionalPagess/modules/A
 import AdiModuleFive from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleFive";
 import AdiModuleSix from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleSix";
 import AdiModuleSeven from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleSeven";
+import AdiModuleEight from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleEight";
+import AdiModuleNine from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleNine";
+import AdiModuleTen from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleTen";
+import AdiModule11 from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModule11";
+import AdiModule12 from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModule12";
 
 export const router = createBrowserRouter([
   {
@@ -220,7 +225,7 @@ export const router = createBrowserRouter([
       { path: "mcq-Part1", element: <MockTest /> },
       { path: "my-account", element: <MyAccount /> },
       { path: "checkout", element: <Checkout /> },
-      { path: "adi-part-one", element: <AdiPartOne /> },
+      { path: "part-one-theory-questions", element: <AdiPartOne /> },
       {path: "band-one-Road-Procedure", element: <Band1 />},
       {path:"band-two-traffic-signs-and-signals", element: <Band2 />},
       {path:"band-three-driving-tests-disabilities-and-the-law", element: <Band3 />},
@@ -241,8 +246,8 @@ export const router = createBrowserRouter([
       },
       { path: "Adi-part-1-MockTest", element: <MockTestBand /> },
       { path: "Adi-part-1-Bonus-Quiz", element: <BonusQuiz /> },
-      { path: "adi-part-2", element: <AdiPartTwo /> },
-      { path: "adi-part-3", element: <AdiPartThree /> },
+      { path: "part-two-theory-questions", element: <AdiPartTwo /> },
+      { path: "part-three-theory-questions", element: <AdiPartThree /> },
       { path: "gde-matrix", element: <GdeMatrix /> },
       { path: "standards-check-sheet", element: <StandardCheckSheet /> },
       { path: "learning-styles", element: <LearningStyles /> },
@@ -273,10 +278,10 @@ export const router = createBrowserRouter([
       { path: "paymentProcessing", element: <PaymentProcessing /> },
       { path: "email", element: <Email /> },
       { path: "hazard-preception-part-2", element: <HazardPreceptions /> },
-      { path: "part-one-subscription", element: <PartOneSubscription /> },
-      { path: "part-two-subscription", element: <PartTwoSubscription /> },
-      { path: "part-three-subscription", element: <PartThreeSubscription /> },
-      { path: "complete-subscription", element: <CompleteSubscription /> },
+      { path: "driving-instructor-training-part-one", element: <PartOneSubscription /> },
+      { path: "driving-instructor-training-part-two", element: <PartTwoSubscription /> },
+      { path: "driving-instructor-training-part-three", element: <PartThreeSubscription /> },
+      { path: "driving-instructor-training-full-course", element: <CompleteSubscription /> },
       { path: "blogs", element: <Blogs /> },
       { path: "privilege-cards", element: <PrivledgeCards /> },
       { path: "glossary-terms", element: <Glossary /> },
@@ -305,6 +310,21 @@ export const router = createBrowserRouter([
       },
       {
         path:"quizModuleseven", element: <AdiModuleSeven/>
+      },
+      {
+        path:"quizModule-eight", element: <AdiModuleEight/>
+      },
+      {
+        path:"quizModulenine", element: <AdiModuleNine/>
+      },
+      {
+        path:"quizModule-Ten", element: <AdiModuleTen/>
+      },
+      {
+        path:"quizModuleEleven", element: <AdiModule11/>
+      },
+      {
+        path:"quizModuleTwelve", element: <AdiModule12/>
       },
       {
         path: "driving-instructor-packages/:section?",

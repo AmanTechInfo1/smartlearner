@@ -118,16 +118,16 @@ function Header() {
               <span>PDI Portal</span>
             </NavLink>
             <ul className={styles.dropdownContent}>
-              <NavLink to="/adi-part-one" className={styles.activeLink}>
+              <NavLink to="/part-one-theory-questions" className={styles.activeLink}>
                 <li>PDI Part 1</li>
               </NavLink>
 
-              <NavLink to="/adi-part-2" className={styles.activeLink}>
+              <NavLink to="/part-two-theory-questions" className={styles.activeLink}>
                 {" "}
                 <li>PDI Part 2</li>
               </NavLink>
 
-              <NavLink to="/adi-part-3" className={styles.activeLink}>
+              <NavLink to="/part-three-theory-questions" className={styles.activeLink}>
                 <li>PDI Part 3</li>
               </NavLink>
             </ul>

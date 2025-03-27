@@ -287,7 +287,7 @@ export default function ADITrainingPortal() {
             <div className={styles.adiTrainingPortalLearningInnerContent}>
               <FaBook id={styles.adiPortalFaIcons} style={{ color: "#f67504" }} />
               <h2 style={{ color: "#f67504" }}>Part 1 - Theory</h2>
-              <Link to="/adi-part-one">
+              <Link to="/part-one-theory-questions">
                 <button
                   className={styles.adiPortalBtnLearning}
                   style={{ borderColor: "#f67504" }}
@@ -302,7 +302,7 @@ export default function ADITrainingPortal() {
                 style={{ color: "#fbc809" }}
               />
               <h2 style={{ color: "#fbc809" }}>Part 2 - Driving Ability</h2>
-              <Link to="/adi-part-2">
+              <Link to="/part-two-theory-questions">
                 <button
                   className={styles.adiPortalBtnLearning}
                   style={{ borderColor: "#fbc809" }}
@@ -317,7 +317,7 @@ export default function ADITrainingPortal() {
                 style={{ color: "#ce033c" }}
               />
               <h2 style={{ color: "#ce033c" }}>Part 3 - Teaching</h2>
-              <Link to="/adi-part-3">
+              <Link to="/part-three-theory-questions">
                 <button
                   className={styles.adiPortalBtnLearning}
                   style={{ borderColor: "#ce033c" }}
