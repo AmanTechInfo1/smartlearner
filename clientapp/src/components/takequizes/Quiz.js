@@ -212,13 +212,19 @@ const Quiz = () => {
       const response = await httpHandler.post("/api/quiz/translate", formdata);
 
       const result = await response.data;
-      if (result.question) {
-        speak(result.question);
+      if (myDivRef.current) {
+        myDivRef.current.innerHTML = result.question;
+        if (result.question) {
+          speak(result.question);
+        }
       }
 
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
-          speak(result[option]); // Speak translated options
+          document.getElementById(option).innerHTML = result[option];
+          if (result[option]) {
+            speak(result[option]);
+          }
         }
       });
       console.log("Translation response:", result);
