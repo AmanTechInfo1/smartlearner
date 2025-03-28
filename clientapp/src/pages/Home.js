@@ -42,6 +42,7 @@ import StaticTestimonial from "../components/testimonials/StaticTestimonial";
 // import logoImage from "../assets/images/1200px-Lplate.svg.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -156,6 +157,14 @@ export default function Home() {
 
   return (
     <div className={styles.homepage}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>SmartLearner Driving School West Midlands - Your premier driving school Warwichshire</title>
+        <meta
+          name="description"
+          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
+        />
+      </Helmet>
       <div className={styles.homepageContainerDiv}>
         <section className={styles.homeSection}>
           <div className={styles.homeContainer}>
@@ -209,7 +218,8 @@ export default function Home() {
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}>
+            }}
+          >
             <ImagesCarousel />
           </div>
           <div className={styles.spiralImgContainer}>
@@ -323,10 +333,9 @@ export default function Home() {
                   </p>
                 </div>
                 {/* //////////////////////////////////////////// */}
-               
               </div>
               <div className={styles.trophyFrame2}>
-              <div className={styles.cardtrophyFrame}>
+                <div className={styles.cardtrophyFrame}>
                   <div className={styles.cardInnertrophyFrame}>
                     <div className={styles.cardFronttrophyFrame}>
                       <img src={hallOfFame5} alt="hallOfFame5" />

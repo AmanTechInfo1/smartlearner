@@ -230,7 +230,7 @@ export default function ADITrainingPortal() {
                 <meta charSet="utf-8" />
                 <title>Post-Driving Instruction (PDI) Services</title>
                 <meta name="description" content="Explore our Post-Driving Instruction (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. " />
-                <link rel="canonical" href="https://smartlearner.com//ADI-Training-Portal" />
+                <link rel="canonical" href="https://smartlearner.com/ADI-Training-Portal" />
             </Helmet>
       <div className={styles.adiPortalPage}>
         <div className={styles.adiPortalPageFirstdiv}>
