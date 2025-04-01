@@ -3,9 +3,10 @@
   padding-bottom: 4rem;
 }
 .AdiModuleOneheader {
+  margin-top: 1rem;
   position: relative;
   width: 100%;
-  background-image: url(../../../../../assets/images/pdi-partonebanner.jpg);
+  background-image: url(../../../../../assets/images/moduleonebanner.jpg);
   background-position: center;
   background-size: cover;
   border-radius: 10px;
@@ -221,10 +222,11 @@
 
   font-family: Arial, sans-serif;
   text-align: center;
+  cursor: pointer;
 }
 
 .flipboxfront {
-  background-color: #032624d7;
+  background: linear-gradient(135deg, #008f6d, #014c57);
   align-items: center;
 }
 
@@ -237,7 +239,8 @@
 }
 
 .flipboxfront #fafapointing {
-  font-size: 60px;
+  font-size: 32px;
+  font-weight: 700;
   color: #ffffff;
 }
 
@@ -318,60 +321,6 @@
   margin-bottom: 20px;
 }
 
-.trainingDetails:nth-child(1) {
-  background: linear-gradient(135deg, #00ffe1, #2600fd);
-}
-.trainingDetails:nth-child(2) {
-  background: linear-gradient(135deg, #a90303, #ff8585);
-}
-.trainingDetails:nth-child(3) {
-  background: linear-gradient(135deg, #380042, #da14fd);
-}
-.trainingDetails:nth-child(4) {
-  background: linear-gradient(135deg, #00ffc4, #004037);
-}
-.trainingDetails:nth-child(5) {
-  background: linear-gradient(135deg, #ffac47, #fa4700);
-}
-.trainingDetails:nth-child(6) {
-  background: linear-gradient(135deg, #ff33a4, #62002e);
-}
-.trainingDetails:nth-child(1) h3 {
-  color: #08016d;
-}
-.trainingDetails:nth-child(2) h3 {
-  color: #720000;
-}
-.trainingDetails:nth-child(3) h3 {
-  color: #cb2c92;
-}
-.trainingDetails:nth-child(4) h3 {
-  color: #003535;
-}
-.trainingDetails:nth-child(5) h3 {
-  color: #b3040a;
-}
-.trainingDetails:nth-child(6) h3 {
-  color: #740030;
-}
-.trainingDetails:nth-child(1) hr {
-  border: 1.6px solid #08016d;
-}
-.trainingDetails:nth-child(2) hr {
-  border: 1.6px solid #720000;
-}
-.trainingDetails:nth-child(3) hr {
-  border: 1.6px solid #cb2c92;
-}
-.trainingDetails:nth-child(4) hr {
-  border: 1.6px solid #003535;
-}
-.trainingDetails:nth-child(5) hr {
-  border: 1.6px solid #b3040a;
-}
-.trainingDetails:nth-child(6) hr {
-  border: 1.6px solid #740030;
-}
 .trainingDetails hr {
   width: 12%; /* Set width to 12% */
   opacity: 1;
@@ -417,4 +366,208 @@
   .innerInstructorContainer h4 {
     font-size: 23px;
   }
+}
+
+/* ///////////////////////////////////////////// */
+.flipContainer2 {
+  perspective: 1000px; /* Adds depth to the 3D effect */
+  max-width: 1000px;
+  width: 100%;
+  height: 400px;
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+}
+
+.flipbox2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* Ensures the child elements are positioned in 3D */
+  transition: transform 0.6s ease-in-out;
+}
+
+.flipContainer2:hover .flipbox2 {
+  transform: rotateY(180deg); /* Flip the box when hovered */
+}
+
+/* Front of the box */
+.flipboxfront2,
+.trainingDetails {
+  position: absolute;
+ 
+  backface-visibility: hidden; /* Hides the back side when flipped */
+  
+
+  
+  text-align: center;
+  cursor: pointer;
+}
+
+.flipboxfront2 {
+  background-color: #032624d7;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+ 
+  border-radius: 6px;
+  height: 100%;
+}
+.flipboxfront2 h2{
+  position: sticky;
+  font-weight: 600;
+  color: white;
+  margin-top: 2rem;
+}
+#flipboxfront23{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-1.jpg);
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+  
+}
+#flipboxfront24{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-2.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+}
+#flipboxfront25{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-3.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+}
+#flipboxfront26{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-4.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+}
+#flipboxfront27{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-5.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+}
+#flipboxfront28{
+  background-image: url(../../../../../assets/images/moduleCrausalImg-6.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  
+  
+}
+
+.trainingDetails {
+  background-color: #0e0b18d7;
+  transform: rotateY(180deg); /* Rotate the back side initially */
+  padding: 20px;
+  overflow-y: auto;
+  border: 1px solid rgb(56, 51, 112);
+  width: 100%;
+  height: 100%;
+}
+
+.flipboxfront2 #fafapointing2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.trainingDetails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#trainingDetails1 {
+  background: linear-gradient(135deg, #00ffe1, #2600fd);
+}
+#trainingDetails2 {
+  background: linear-gradient(135deg, #a90303, #ff8585);
+}
+#trainingDetails3 {
+  background: linear-gradient(135deg, #380042, #da14fd);
+}
+#trainingDetails4 {
+  background: linear-gradient(135deg, #00ffc4, #004037);
+}
+#trainingDetails5 {
+  background: linear-gradient(135deg, #ffac47, #fa4700);
+}
+#trainingDetails6 {
+  background: linear-gradient(135deg, #ff33a4, #62002e);
+}
+#trainingDetails1 h3 {
+  color: #08016d;
+}
+#trainingDetails2 h3 {
+  color: #720000;
+}
+#trainingDetails3 h3 {
+  color: #cb2c92;
+}
+#trainingDetails4 h3 {
+  color: #003535;
+}
+#trainingDetails5 h3 {
+  color: #b3040a;
+}
+#trainingDetails6 h3 {
+  color: #740030;
+}
+#trainingDetails1 hr {
+  border: 1.6px solid #08016d;
+}
+#trainingDetails2 hr {
+  border: 1.6px solid #720000;
+}
+#trainingDetails3 hr {
+  border: 1.6px solid #cb2c92;
+}
+#trainingDetails4 hr {
+  border: 1.6px solid #003535;
+}
+#trainingDetails5 hr {
+  border: 1.6px solid #b3040a;
+}
+#trainingDetails6 hr {
+  border: 1.6px solid #740030;
+}
+
+.trainingDetails li {
+  margin-bottom: 20px;
+  text-align: left;
+  color: white;
+}
+
+.trainingDetails strong {
+  color: #00b3b3;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .flipContainer2 {
+    perspective: 120px;
+    height: 400px;
+  }
+  
 }

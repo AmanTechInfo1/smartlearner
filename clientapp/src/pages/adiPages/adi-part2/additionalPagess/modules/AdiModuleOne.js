@@ -3,6 +3,12 @@ import gsap from "gsap";
 import styles from "./AdiModuleOne.module.css";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import module1img from "../../../../../assets/images/moduleCrausalImg-1.jpg";
+import module2img from "../../../../../assets/images/moduleCrausalImg-2.jpg";
+import module3img from "../../../../../assets/images/moduleCrausalImg-3.jpg";
+import module4img from "../../../../../assets/images/moduleCrausalImg-4.jpg";
+import module5img from "../../../../../assets/images/moduleCrausalImg-5.jpg";
+import module6img from "../../../../../assets/images/moduleCrausalImg-6.jpg";
 
 import { FaHandPointRight } from "react-icons/fa";
 
@@ -13,14 +19,12 @@ export default function AdiModuleOne() {
   const [editIndex, setEditIndex] = useState(null);
   const textareaRef = useRef(null);
 
-// ///////////////////////////////////////////////
-const [text2, setText2] = useState("");
+  // ///////////////////////////////////////////////
+  const [text2, setText2] = useState("");
   const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
   const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
   const [editIndex2, setEditIndex2] = useState(null);
   const textareaRef2 = useRef(null);
-
-
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -285,7 +289,8 @@ const [text2, setText2] = useState("");
           <div className={styles.flipContainer}>
             <div className={styles.flipbox}>
               <div className={styles.flipboxfront}>
-                <FaHandPointRight id={styles.fafapointing} />
+                {/* <FaHandPointRight  /> */}
+                <h3 id={styles.fafapointing}>Click To Flip</h3>
               </div>
 
               <div className={styles.flipboxback}>
@@ -324,62 +329,127 @@ const [text2, setText2] = useState("");
 
             <div className={styles.detailsContainer}>
               {/* <DrivingInstructorUI /> */}
-              <div className={styles.trainingDetails}>
-                <h3>Physical Well-Being</h3>
-                <hr />
-                <p>
-                  Have you had enough sleep? Fatigue can slow reaction times and
-                  increase the risk of accidents.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront23}>
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails1}
+                  >
+                    <h3>Physical Well-Being</h3>
+                    <hr />
+                    <p>
+                      Have you had enough sleep? Fatigue can slow reaction times
+                      and increase the risk of accidents.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails}>
-                <h3>Mental Well-Being</h3>
-                <hr />
-                <p>
-                  Do you know your route and expected traffic conditions?
-                  Planning ahead reduces stress and distractions.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront24}>
+                  <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails2}
+                  >
+                    <h3>Mental Well-Being</h3>
+                    <hr />
+                    <p>
+                      Do you know your route and expected traffic conditions?
+                      Planning ahead reduces stress and distractions.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails}>
-                <h3>Emotional Well-Being</h3>
-                <hr />
-                <p>
-                  Are you feeling overwhelmed, anxious, or angry? Strong
-                  emotions can impair decision- making and focus.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront25}>
+                  <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails3}
+                  >
+                    <h3>Emotional Well-Being</h3>
+                    <hr />
+                    <p>
+                      Are you feeling overwhelmed, anxious, or angry? Strong
+                      emotions can impair decision- making and focus.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails}>
-                <h3>Physical Well-Being</h3>
-                <hr />
-                <p>
-                  Are you feeling unwell or taking medication that may affect
-                  your driving? Some medications cause dizziness or drowsiness.
-                  <br />
-                  Have you eaten and stayed hydrated? Low energy and dehydration
-                  can make you feel weak or sluggish.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront26}>
+                  <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>{" "}
+                  </div>
+                  <div className={styles.trainingDetails}>
+                    <hr />
+                    <p>
+                      Are you feeling unwell or taking medication that may
+                      affect your driving? Some medications cause dizziness or
+                      drowsiness.
+                      <br />
+                      Have you eaten and stayed hydrated? Low energy and
+                      dehydration can make you feel weak or sluggish.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails}>
-                <h3>Mental Well-Being</h3>
-                <hr />
-                <p>
-                  Are you able to stay focused and alert? Avoid driving if you
-                  feel mentally exhausted or easily distracted.
-                  <br />
-                  Are you in the right mindset to drive safely? If you feel
-                  rushed or stressed, take a moment to regain composure.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront27}>
+                  <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails5}
+                  >
+                    <h3>Mental Well-Being</h3>
+                    <hr />
+                    <p>
+                      Are you able to stay focused and alert? Avoid driving if
+                      you feel mentally exhausted or easily distracted.
+                      <br />
+                      Are you in the right mindset to drive safely? If you feel
+                      rushed or stressed, take a moment to regain composure.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails}>
-                <h3>Emotional Well-Being</h3>
-                <hr />
-                <p>
-                  Have you recently experienced something upsetting? Emotional
-                  distress can take your attention away from the road.
-                  <br />
-                  Are you calm and patient? Impulsive reactions can lead to
-                  risky driving behaviour.
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div className={styles.flipboxfront2} id={styles.flipboxfront28}>
+                  <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails6}
+                  >
+                    <h3>Emotional Well-Being</h3>
+                    <hr />
+                    <p>
+                      Have you recently experienced something upsetting?
+                      Emotional distress can take your attention away from the
+                      road.
+                      <br />
+                      Are you calm and patient? Impulsive reactions can lead to
+                      risky driving behaviour.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -392,7 +462,7 @@ const [text2, setText2] = useState("");
             yourself and others on the road.
           </label>
           <textarea
-           ref={textareaRef2}
+            ref={textareaRef2}
             value={text2}
             onChange={handleChange2}
             rows="5"
