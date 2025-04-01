@@ -394,6 +394,7 @@ export default function AdiModuleOne() {
                     <h2>CLICK TO FLIP</h2>{" "}
                   </div>
                   <div className={styles.trainingDetails}>
+                    <h3>Physical Well-Being</h3>
                     <hr />
                     <p>
                       Are you feeling unwell or taking medication that may
