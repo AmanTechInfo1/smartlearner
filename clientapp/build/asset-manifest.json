@@ -1,12 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.356435f6.css",
-    "main.js": "/static/js/main.73137333.js",
+    "main.css": "/static/css/main.f5ae12fc.css",
+    "main.js": "/static/js/main.10cc04fc.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
+    "static/media/moduleCrausalImg-1.jpg": "/static/media/moduleCrausalImg-1.b6fe72691d8f1bc29a15.jpg",
     "static/media/theorySupportbanner2.jpg": "/static/media/theorySupportbanner2.ef0a428ae207a62c4712.jpg",
     "static/media/Automatictransmissionbanner.jpg": "/static/media/Automatictransmissionbanner.6c12a29a05c41028cfa2.jpg",
     "static/media/manual2.jpg": "/static/media/manual2.6c12a29a05c41028cfa2.jpg",
@@ -16,6 +17,7 @@
     "static/media/automatic2.jpg": "/static/media/automatic2.f17951d705cead5e1680.jpg",
     "static/media/automaticround.jpg": "/static/media/automaticround.bf477bac8170d3177a82.jpg",
     "static/media/vehicleLoadingBanner.jpg": "/static/media/vehicleLoadingBanner.004ad9615dc8f1e23cf0.jpg",
+    "static/media/pdi-banner2.jpg": "/static/media/pdi-banner2.e7fed7efa6294e482572.jpg",
     "static/media/motorwayBanner.jpg": "/static/media/motorwayBanner.e45737d1d9584fea2636.jpg",
     "static/media/incidentBanner.jpg": "/static/media/incidentBanner.67adb8e92f2e4da705ae.jpg",
     "static/media/theory-banner.jpg": "/static/media/theory-banner.47a267a480740b34a34a.jpg",
@@ -25,6 +27,7 @@
     "static/media/aboutusBanner.jpg": "/static/media/aboutusBanner.5c7703f9373297d1bf34.jpg",
     "static/media/essential-documentsBanner.jpg": "/static/media/essential-documentsBanner.cd9f5773283e9ff46457.jpg",
     "static/media/safetyMarginsbanner.jpg": "/static/media/safetyMarginsbanner.cd9f5773283e9ff46457.jpg",
+    "static/media/moduleonebanner.jpg": "/static/media/moduleonebanner.46c1c7f8fc978909c93d.jpg",
     "static/media/pdi-bannerss.jpg": "/static/media/pdi-bannerss.8a0bc261567004946eb8.jpg",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
     "static/media/pdi-partonebanner.jpg": "/static/media/pdi-partonebanner.02f94a785ba885b73b0e.jpg",
@@ -71,8 +74,10 @@
     "static/media/zebraCrossing.png": "/static/media/zebraCrossing.69520c96d664c38da7db.png",
     "static/media/cimg7.jpg": "/static/media/cimg7.7429a73b8951a6df4826.jpg",
     "static/media/cyclistsImg.png": "/static/media/cyclistsImg.56735108317b38ad6ff7.png",
-    "static/media/pdi-banner2.jpg": "/static/media/pdi-banner2.60d21c2bb0c23de3f871.jpg",
+    "static/media/moduleCrausalImg-5.jpg": "/static/media/moduleCrausalImg-5.05ebd54189abc2dbe2e1.jpg",
     "static/media/cimg20.jpg": "/static/media/cimg20.713195b4b4645b8833f4.jpg",
+    "static/media/moduleCrausalImg-6.jpg": "/static/media/moduleCrausalImg-6.5892648c4cb1bc0033c8.jpg",
+    "static/media/moduleCrausalImg-2.jpg": "/static/media/moduleCrausalImg-2.64d6526d08816d96af7c.jpg",
     "static/media/diversLargeVehicle.png": "/static/media/diversLargeVehicle.750f4504d5ffd7d750aa.png",
     "static/media/roadSurface.png": "/static/media/roadSurface.3e60f6554d234feeb9dc.png",
     "static/media/image_2021_03_03T15_33_28_479Z-1024x768.png": "/static/media/image_2021_03_03T15_33_28_479Z-1024x768.7603d63437e201495224.png",
@@ -86,6 +91,8 @@
     "static/media/fogImg.png": "/static/media/fogImg.8df4279f89d3fa87a51b.png",
     "static/media/Vulnerable-road-usersbanner.jpg": "/static/media/Vulnerable-road-usersbanner.6a35d8ee3315a145fed7.jpg",
     "static/media/pedestrian.png": "/static/media/pedestrian.fcc2dbfe5ff5808c88c4.png",
+    "static/media/moduleCrausalImg-3.jpg": "/static/media/moduleCrausalImg-3.c58ded250ece1c305c90.jpg",
+    "static/media/moduleCrausalImg-4.jpg": "/static/media/moduleCrausalImg-4.bb8135c960cb1d974a75.jpg",
     "static/media/passplusCarousalImg.jpg": "/static/media/passplusCarousalImg.bb8135c960cb1d974a75.jpg",
     "static/media/electric-Car.png": "/static/media/electric-Car.2555e0d8ed634bfe9893.png",
     "static/media/cimg14.jpg": "/static/media/cimg14.b183209c115fc6bca30f.jpg",
@@ -327,12 +334,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.356435f6.css.map": "/static/css/main.356435f6.css.map",
-    "main.73137333.js.map": "/static/js/main.73137333.js.map",
+    "main.f5ae12fc.css.map": "/static/css/main.f5ae12fc.css.map",
+    "main.10cc04fc.js.map": "/static/js/main.10cc04fc.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.356435f6.css",
-    "static/js/main.73137333.js"
+    "static/css/main.f5ae12fc.css",
+    "static/js/main.10cc04fc.js"
   ]
 }
