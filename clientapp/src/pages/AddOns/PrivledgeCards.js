@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./PrivledgeCards.module.css";
 import frontPrivledge from "../../assets/images/privcard.png";
 import backPrivledge from "../../assets/images/backprivcard.png";
+import marrysGarage from "../../assets/images/marrysGarrage.jpg"
+import munyBeautyLogo from "../../assets/images/munybeauty.jpg"
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -246,33 +248,39 @@ export default function PrivledgeCards() {
       discount: "10% off the final bill for any work in the garage",
       contact:
         "Pritt – 02476225172  https://www.facebook.com/profile.php?id=100057298884921",
+      logo: marrysGarage,
     },
     {
       name: "Muny Beauty",
       discount: "£50 off any training courses, 10% off any services",
       contact: "https://www.instagram.com/munyluxe?igsh=MWo0ZHVpMmU2bXU0",
+      logo: munyBeautyLogo,
     },
     {
       name: "VV Phones",
       discount: "10% discount on any final bill over £50",
       contact: "Manager – 07507182962 https://www.facebook.com/vvphonerepairs",
+      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXfGA8zg8ulaPFgcuWIpaBcdIkGbqZpwrQP-R2ZDKqwB0zY4qBwPLHpG0T0WK2WQwZhcYgt7ba1UzenNlWg7IdBF5zYTyOfKfkBXrm7ysjD-AfRjzyteemcwofi7NyIGkQ9w_FqhWQ=s320?key=kMULrrsinROClPMsm8cFCUxl",
     },
     {
       name: "Dean’s Dessert",
       discount: "Free ‘simple me’ when you spend over £15",
       contact:
         "Dean – 07944554680 https://www.facebook.com/profile.php?id=100063886427482",
+      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdMZmiMzCxllNxzdEzTvs7_s8Co8V9sFnxwVSAC5WuXr4pQnmsSOw_EaGwZV5X6xt1Qf30DGvTy4IoxuKkkwKABXSdZ5mPDRKusGIEpnONqJoq4bITixqmADwSi97qPYO9vibVz6Q=s320?key=kMULrrsinROClPMsm8cFCUxl",
     },
     {
       name: "Tropic Vegan Products",
       discount: "Free hand cream for all orders over £40",
       contact: "Alison – 07547944157 https://www.facebook.com/tropicbyalison",
+      logo: "",
     },
     {
       name: "SAY Stylists",
       discount: "50% off first services, inc – nails, hair & beauty",
       contact:
         "General Phone – 07823758690 https://www.instagram.com/saystylists",
+      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXc_ijpDB6tViMJn6JBVfdEOw6Dg7c6oI5KForEBCQCqjx_4qSZlNzBvEwMTj6rkgbxcGtMNBE_cxhh9gEX5Z3CEQwZOx8bW_jy7X0cRX8BfVTdpjh4ziDUlIvOkFGnaRZMyBWQEtw=s320?key=kMULrrsinROClPMsm8cFCUxl",
     },
     {
       name: "Tays Bespoke Treats",
@@ -297,6 +305,7 @@ export default function PrivledgeCards() {
       name: "Cafe 101",
       discount: "10% off orders over £30",
       contact: "Cafe 101 - 07956793727",
+      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXfVBdCcBO96EIrk70nqhFHucpfctmT40Hth2neJAsa_Ktxa2tuR0F13zizpUQiNlxGL1557w-ve9ZwCJjvYRJsJY57P9O0_elHkWSb1M751Kua7JW-Z-3eGIOJAWK--L-3wxTMP=s320?key=kMULrrsinROClPMsm8cFCUxl",
     },
   ];
 
@@ -366,9 +375,9 @@ export default function PrivledgeCards() {
                   className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}
                 >
                   It’s completely <strong>FREE</strong>—just our way of saying
-                  thank you for choosing SmartLearner! — grab your Privilege Card today!
+                  thank you for choosing SmartLearner! — grab your Privilege
+                  Card today!
                 </p>
-              
               </div>
             </div>
           </div>
@@ -385,7 +394,16 @@ export default function PrivledgeCards() {
               <tbody>
                 {data.map((item, index) => (
                   <TableRow key={index}>
-                    <TableCell>{item.name}</TableCell>
+                    <TableCell>
+                      {item.name}
+                      {item.logo && (
+                        <img
+                          src={item.logo}
+                          alt={`${item.name} logo`}
+                          id={styles.companyLogoImgs}
+                        />
+                      )}
+                    </TableCell>
                     <TableCell>{item.discount}</TableCell>
                     <TableCell>
                       {item.contact.split(" ").map((text, idx) => {

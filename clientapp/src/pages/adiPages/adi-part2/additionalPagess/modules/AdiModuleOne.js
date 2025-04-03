@@ -3,14 +3,7 @@ import gsap from "gsap";
 import styles from "./AdiModuleOne.module.css";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-import module1img from "../../../../../assets/images/moduleCrausalImg-1.jpg";
-import module2img from "../../../../../assets/images/moduleCrausalImg-2.jpg";
-import module3img from "../../../../../assets/images/moduleCrausalImg-3.jpg";
-import module4img from "../../../../../assets/images/moduleCrausalImg-4.jpg";
-import module5img from "../../../../../assets/images/moduleCrausalImg-5.jpg";
-import module6img from "../../../../../assets/images/moduleCrausalImg-6.jpg";
 
-import { FaHandPointRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function AdiModuleOne() {
