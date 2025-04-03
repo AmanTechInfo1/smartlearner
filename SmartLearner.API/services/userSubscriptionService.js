@@ -73,32 +73,46 @@ class UserSubscriptionService {
     }
   }
 
-  async createPayment(subscriptionId) {
+  async createPayment(subscriptionId, price) {
+    console.log("testtttttttt", price);
     const plan = await Plans.findById(subscriptionId);
+    if (!plan) {
+      throw new Error("Plan not found");
+    }
+
     const accessToken = await getAccessToken();
 
-    const response = await axios.post(
-      `${PAYPAL_API_BASE}/v2/checkout/orders`,
-      {
-        intent: "CAPTURE",
-        purchase_units: [
-          {
-            amount: {
-              currency_code: "GBP",
-              value: parseFloat(plan.price).toFixed(2), // Ensure it's formatted correctly as a string
-              // Convert price to string
+    try {
+      const response = await axios.post(
+        `${PAYPAL_API_BASE}/v2/checkout/orders`,
+        {
+          intent: "CAPTURE",
+          purchase_units: [
+            {
+              amount: {
+                currency_code: "GBP",
+                value: parseFloat(price).toFixed(2), // Ensure it's a string with two decimal places
+              },
             },
-          },
-        ],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
+          ],
         },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.data.id) {
+        throw new Error("Failed to create PayPal order");
       }
-    );
-    return response.data;
+
+      return response.data;
+    } catch (error) {
+      console.error("PayPal payment error:", error.response?.data);
+      throw new Error("Error while creating payment with PayPal");
+    }
   }
 
   async confirmPayment(orderId, userId, subscriptionId) {
@@ -172,9 +186,7 @@ class UserSubscriptionService {
       // Get the two specific plans by plan name or other unique criteria
       const plans = await Plans.find({
         planname: {
-          $in: [
-            "Lifetime Theory Portal Access £30.00",
-          ],
+          $in: ["Lifetime Theory Portal Access £30.00"],
         },
       });
 

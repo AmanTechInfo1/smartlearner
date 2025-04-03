@@ -6,7 +6,9 @@ const UserSubscriptionService = require("../services/userSubscriptionService");
 const { requireAuth } = require("../middlewares/authMiddleware");
 // Define routes for subscription management
 router.post("/add-plan", SubscriptionController.createPlan);
-router.get("/plan/:id", SubscriptionController.getPlanById);
+router.get("/plan/:id/apply-coupon/:couponCode?", SubscriptionController.getPlanById); 
+// Optional couponCode in the URL
+
 router.get("/plans", SubscriptionController.getAllPlan);
 router.post("/delete-plan/:id", SubscriptionController.deletePlan);
 

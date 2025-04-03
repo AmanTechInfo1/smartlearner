@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
 import cartIcon from "../../../assets/images/cartIcon1.png";
-
+import httpHandler from "../../../utils/httpHandler";
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import {
   pdiApplyCouponCode,
   fetchUserSubscriptions,
   pdiPartOneApplyCouponCode,
+  discountCoupon,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +24,12 @@ const PartOneSubscription = () => {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
+  const subsdiscountedPrice = useSelector(
+    (state) => state.subscription.subsdiscountedPrice
+  );
   const [couponCode, setCouponCode] = useState("");
+
+  const [discountCouponCode, setdiscountCouponCode] = useState("");
 
   const navigate = useNavigate();
 
@@ -37,7 +43,9 @@ const PartOneSubscription = () => {
 
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(pdiPartOneApplyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(
+        pdiPartOneApplyCouponCode({ userId, couponCode })
+      ).unwrap();
       navigate("/part-one-theory-questions");
     } catch (error) {
       console.error("Error applying coupon:", error);
@@ -66,9 +74,38 @@ const PartOneSubscription = () => {
   //   }
   // };
 
-  const handleCreateSubscription = async (plan) => {
+  // ////////////////////////////////////////////
+
+  const paidPlans = plans.filter(
+    (plan) => plan.planCategory === "pdi-part-one packages"
+  );
+  const ogPlan = paidPlans[0];
+
+  const handleDiscountCouponChange = (e) => {
+    setdiscountCouponCode(e.target.value);
+  };
+
+  const applyDiscountCoupon = async (planId) => {
     try {
-      const order = await dispatch(createPayment(plan._id)).unwrap();
+      await dispatch(discountCoupon({ planId, discountCouponCode })).unwrap();
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+    }
+  };
+
+  // /////////////////////////////////
+
+  const handleCreateSubscription = async (ogPlan, subsdiscountedPrice) => {
+    const priceToUse = subsdiscountedPrice || ogPlan.price; // Use the updated price directly
+    console.log("Price to use for payment:", subsdiscountedPrice);
+
+    const subscriptionData = {
+      subscriptionId: ogPlan._id,
+      price: priceToUse,
+    };
+
+    try {
+      const order = await dispatch(createPayment(subscriptionData)).unwrap();
       console.log("Order received from payment creation:", order);
       if (order && order.id) {
         return order.id;
@@ -81,7 +118,7 @@ const PartOneSubscription = () => {
     }
   };
 
-  const handleApprovePayment = async (plan, actions) => {
+  const handleApprovePayment = async (ogPlan, actions) => {
     try {
       const order = await actions.order.capture();
       console.log("Order captured:", order);
@@ -92,7 +129,7 @@ const PartOneSubscription = () => {
 
       const subscriptionData = {
         userId: userId,
-        subscriptionId: plan._id,
+        subscriptionId: ogPlan._id,
         orderId: order.id,
         isTrial: false,
       };
@@ -108,10 +145,6 @@ const PartOneSubscription = () => {
 
   // Separate plans into trial and paid
   // const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
-
-  const paidPlans = plans.filter(
-    (plan) => plan.planCategory === "pdi-part-one packages"
-  );
 
   return (
     <div className="subscription-cardBox">
@@ -133,7 +166,9 @@ const PartOneSubscription = () => {
               Apply Coupon
             </button>
           </div>
-          <p style={{textAlign:'center', color:"white"}}>Apply Coupon Code To Get Free Access Of PDI Portal</p>
+          <p style={{ textAlign: "center", color: "white" }}>
+            Apply Coupon Code To Get Free Access Of PDI Portal
+          </p>
 
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>
@@ -170,43 +205,97 @@ const PartOneSubscription = () => {
                 </tbody>
               </table>
             </div>
-            {paidPlans.map((plan, index) => (
-              <div className={styles.cartBtnsContainer}>
+            <div className={styles.cartBtnsContainer}>
+              {paidPlans.map((plan, index) => (
                 <div>
-                  <div className={styles.basketHeadingTitles}>
-                    <h2>BASKET TOTAL</h2>
-                    <div className={styles.basketHeadingTitle}>
-                      <p>
-                        <span>Subtotal:</span>
-                        <span>£ {plan.price}</span>
-                      </p>
-                      <p>
-                        <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
-                      </p>
-                      <p>
-                        <span>Total:</span> <span>{plan.price}</span>
-                      </p>
+                  <div>
+                    <div className={styles.basketHeadingTitles}>
+                      <h2>BASKET TOTAL</h2>
                       <div>
-                        <img src={paypalLogo} alt="paypal" />
+                        <input
+                          type="text"
+                          value={discountCouponCode}
+                          onChange={handleDiscountCouponChange}
+                          placeholder="Enter coupon code"
+                          className={styles.couponInputdiscount}
+                        />
+                        <button
+                          onClick={() => applyDiscountCoupon(paidPlans[0]?._id)}
+                          className={styles.couponInputdiscountBtn}
+                        >
+                          Apply Coupon
+                        </button>
+                      </div>
+                      <p
+                        style={{
+                          margin: "0.2rem",
+                          color: "rgba(239, 239, 239, 0.82)",
+                        }}
+                      >
+                        Apply For 50% oFF
+                      </p>
+                      <div className={styles.basketHeadingTitle}>
+                        <p>
+                          <span>Subtotal:</span>
+                          <span>
+                            £{" "}
+                            {subsdiscountedPrice
+                              ? subsdiscountedPrice
+                              : plan.price.toFixed(2)}
+                          </span>
+                        </p>
+                        <p>
+                          <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                        </p>
+                        <p>
+                          <span>Total:</span>{" "}
+                          <span>
+                            {subsdiscountedPrice
+                              ? subsdiscountedPrice
+                              : plan.price.toFixed(2)}
+                          </span>
+                        </p>
+                        <div>
+                          <img src={paypalLogo} alt="paypal" />
+                        </div>
                       </div>
                     </div>
+                    <div className={styles.basketHeadingTitle}></div>
                   </div>
-                  <div className={styles.basketHeadingTitle}></div>
                 </div>
-
-                <div>
+              ))}
+              <div>
+                {" "}
+                {ogPlan && !subsdiscountedPrice ? (
                   <PayPalButtons
                     createOrder={(data, actions) =>
-                      handleCreateSubscription(plan)
+                      handleCreateSubscription(ogPlan, subsdiscountedPrice)
                     }
                     onApprove={(data, actions) =>
-                      handleApprovePayment(plan, actions)
+                      handleApprovePayment(ogPlan, actions)
                     }
                     fundingSource="paypal"
+                    disabled={subsdiscountedPrice}
                   />
-                </div>
+                ) : (
+                  <></>
+                )}
               </div>
-            ))}
+
+              {ogPlan && subsdiscountedPrice ? (
+                <PayPalButtons
+                  createOrder={(data, actions) =>
+                    handleCreateSubscription(ogPlan, subsdiscountedPrice)
+                  }
+                  onApprove={(data, actions) =>
+                    handleApprovePayment(ogPlan, actions)
+                  }
+                  fundingSource="paypal"
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
       </div>

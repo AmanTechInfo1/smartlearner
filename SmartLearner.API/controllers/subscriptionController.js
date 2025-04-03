@@ -1,3 +1,4 @@
+const Plans = require("../models/planUserModel");
 const subscriptionService = require("../services/subscriptionService");
 
 class SubscriptionController {
@@ -13,10 +14,24 @@ class SubscriptionController {
   // Get all free trial plans
   async getPlanById(req, res) {
     try {
-      const plan = await subscriptionService.getPlanById(req.params.id);
-      res.status(200).json(plan);
-    } catch (err) {
-      next(err);
+      const { id, couponCode } = req.params;
+
+      const plan = await Plans.findById(id);
+      if (!plan) {
+        return res.status(404).json({ error: 'Plan not found' });
+      }
+
+      // If a coupon code is provided, apply the coupon
+      let price = plan.price;
+      if (couponCode) {
+        const discountedPrice = await subscriptionService.applyCoupon(id, couponCode);
+        price = discountedPrice; // Apply the discount
+      }
+
+      return res.status(200).json({ plan, price });
+    } catch (error) {
+      console.error(error);
+      return res.status(400).json({ error: error.message });
     }
   }
 

@@ -7,8 +7,11 @@ export const fetchPlans = createAsyncThunk(
   "subscription/fetchPlans",
   async () => {
     const response = await httpHandler.get("/api/subscription/plans");
+    localStorage.removeItem("subsdiscountedPrice");
     return response.data;
+   
   }
+
 );
 export const fetchUserSubscriptions = createAsyncThunk(
   "subscription/fetchUserSubscriptions",
@@ -48,11 +51,13 @@ export const createUserSubscription = createAsyncThunk(
 
 export const createPayment = createAsyncThunk(
   "subscription/createPayment",
-  async (subscriptionId) => {
+  async ({ subscriptionId, price }) => {
     const response = await httpHandler.post(
       "/api/subscription/create-payment",
-      { subscriptionId }
+      { subscriptionId, price }
     );
+   
+    console.log("jdsklzhdnskadhznaskj", price);
     return response.data;
   }
 );
@@ -167,13 +172,52 @@ export const pdiPartThreeApplyCouponCode = createAsyncThunk(
     }
   }
 );
+// /////////////////////////////////////////////////////
+export const discountCoupon = createAsyncThunk(
+  "subscription/applyDiscountCoupon",
+  async ({ planId, discountCouponCode }, { rejectWithValue }) => {
+    if (!discountCouponCode) {
+      toast.error("Please enter a coupon code.");
+      return rejectWithValue("No coupon code provided");
+    }
 
+    try {
+      const response = await httpHandler.get(
+        `/api/subscription/plan/${planId}/apply-coupon/${discountCouponCode}`
+      );
+      const { plan, price } = response.data;
+      localStorage.setItem(
+        "subsdiscountedPrice",
+        JSON.stringify(price)
+      );
+
+      if (price) {
+        toast.success(
+          `Coupon applied successfully! New Price: £${price.toFixed(2)}`
+        );
+        return { price, isCouponValid: true };
+      } else {
+        toast.error("Invalid or expired coupon.");
+        return rejectWithValue("Invalid or expired coupon");
+      }
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+      toast.error(error.response?.data?.error || "Error applying coupon.");
+      return rejectWithValue(
+        error.response?.data?.error || "Error applying coupon"
+      );
+    }
+  }
+);
 // Slice
 const subscriptionSlice = createSlice({
   name: "subscription",
   initialState: {
     plans: [],
     userSubscription: {},
+    subsdiscountedPrice: localStorage.getItem("subsdiscountedPrice")
+      ? JSON.parse(localStorage.getItem("subsdiscountedPrice"))
+      : null,
     couponMessage: "",
     loading: false,
     error: null,
@@ -240,6 +284,22 @@ const subscriptionSlice = createSlice({
       .addCase(pdiApplyCouponCode.rejected, (state, action) => {
         state.couponMessage =
           action.payload?.message || "Coupon application failed.";
+      })
+      .addCase(discountCoupon.pending, (state) => {
+        state.loading = true;
+        state.couponMessage = "";
+      })
+      .addCase(discountCoupon.fulfilled, (state, action) => {
+        state.loading = false;
+        state.subsdiscountedPrice = action.payload.price;
+        state.isCouponValid = action.payload.isCouponValid;
+        state.couponMessage = "Coupon applied successfully!";
+      })
+      .addCase(discountCoupon.rejected, (state, action) => {
+        state.loading = false;
+        state.isCouponValid = false;
+        state.subsdiscountedPrice = null;
+        state.couponMessage = action.payload || "Coupon application failed.";
       });
   },
 });

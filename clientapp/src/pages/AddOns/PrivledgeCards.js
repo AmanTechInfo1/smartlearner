@@ -5,6 +5,7 @@ import backPrivledge from "../../assets/images/backprivcard.png";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { CreditCard, Building2 } from "lucide-react";
 
 const TableWrapper = styled.div`
   padding: 20px;
@@ -247,7 +248,7 @@ export default function PrivledgeCards() {
         "Pritt – 02476225172  https://www.facebook.com/profile.php?id=100057298884921",
     },
     {
-      name: "Muny Luxe",
+      name: "Muny Beauty",
       discount: "£50 off any training courses, 10% off any services",
       contact: "https://www.instagram.com/munyluxe?igsh=MWo0ZHVpMmU2bXU0",
     },
@@ -316,11 +317,59 @@ export default function PrivledgeCards() {
             <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
           </div>
           <div className={styles.PrivledgeCards}>
-            <div className={styles.PrivledgeCardsDiv}>
-              <img src={frontPrivledge} alt="Privledge-card" />
+            <div className={styles.flipContainer}>
+              <div className={styles.flipbox}>
+                <div className={styles.flipboxfront}>
+                  <img src={frontPrivledge} alt="Privledge-card" />
+                </div>
+                <div className={styles.flipboxback}>
+                  <img src={backPrivledge} alt="Privledge-card" />
+                </div>
+              </div>
             </div>
-            <div className={styles.PrivledgeCardsDiv}>
-              <img src={backPrivledge} alt="Privledge-card" />
+
+            <div className={styles.privilegeCardContainer}>
+              <div className={styles.privilegeCard}>
+                <h2 className={styles.privilegeCardTitle}>
+                  SmartLearner Privilege Card
+                </h2>
+                <p className={styles.privilegeCardSubtitle}>
+                  Exclusive Discounts for Our Students!
+                </p>
+                <p className={styles.privilegeCardText}>
+                  At SmartLearner Driving School, we believe learning to drive
+                  should come with extra perks! That’s why we’re excited to
+                  introduce the SmartLearner Privilege Card – an exclusive
+                  reward for our valued students.
+                </p>
+                <p className={styles.privilegeCardText}>
+                  With this special card, you’ll unlock{" "}
+                  <strong>£200-£300</strong> worth of discounts from our amazing
+                  business partners! Whether you need car accessories, meals
+                  out, beauty services, or other essentials, just show your
+                  Privilege Card when paying and enjoy incredible savings.
+                </p>
+                <h3 className={styles.privilegeCardHeading}>
+                  How to Get Yours?
+                </h3>
+                <ul className={styles.privilegeCardList}>
+                  <li className={styles.privilegeCardListItem}>
+                    <CreditCard className={styles.privilegeIcon} /> Ask your
+                    instructor during your lesson
+                  </li>
+                  <li className={styles.privilegeCardListItem}>
+                    <Building2 className={styles.privilegeIcon} /> Visit our
+                    office and request one
+                  </li>
+                </ul>
+                <p
+                  className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}
+                >
+                  It’s completely <strong>FREE</strong>—just our way of saying
+                  thank you for choosing SmartLearner! — grab your Privilege Card today!
+                </p>
+              
+              </div>
             </div>
           </div>
 

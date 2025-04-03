@@ -11,6 +11,7 @@ import module5img from "../../../../../assets/images/moduleCrausalImg-5.jpg";
 import module6img from "../../../../../assets/images/moduleCrausalImg-6.jpg";
 
 import { FaHandPointRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function AdiModuleOne() {
   const [text, setText] = useState("");
@@ -290,7 +291,7 @@ export default function AdiModuleOne() {
             <div className={styles.flipbox}>
               <div className={styles.flipboxfront}>
                 {/* <FaHandPointRight  /> */}
-                <h3 id={styles.fafapointing}>Click To Flip</h3>
+                <h3 id={styles.fafapointing}>Click To Reveal The Answere</h3>
               </div>
 
               <div className={styles.flipboxback}>
@@ -498,6 +499,22 @@ export default function AdiModuleOne() {
             )}
           </div>
         </div>
+
+        {/* ////////////////////////////////////////////////// */}
+         {/* ////////////////////////////////////////// */}
+                   <div className={styles.quizStartDiv}>
+                     <section className={styles.startQuizSection}>
+                       <h1>Start Quiz</h1>
+                       <h3>All  Questions</h3>
+                       <p>
+                       The Band One Practice Questions focus on road procedures. With over 300 multiple-choice questions available, you can choose to practice 50, 100, or work through all of them at once.
+                       </p>
+                       <Link to="">
+                         {" "}
+                         <button>Start Quiz</button>
+                       </Link>
+                     </section>
+                   </div>
       </div>
     </>
   );

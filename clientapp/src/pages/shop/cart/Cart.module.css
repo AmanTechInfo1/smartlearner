@@ -1,14 +1,14 @@
 .cartPage {
-    background: linear-gradient(
-      135deg,
-      hwb(187 40% 0%),
-      #57005a,
-      #2e0063,
-      #020025
-    );
-    background-size: 600% 600%;
-    animation: gradientAnimation 12s ease infinite;
-    min-height: 70vh;
+  background: linear-gradient(
+    135deg,
+    hwb(187 40% 0%),
+    #57005a,
+    #2e0063,
+    #020025
+  );
+  background-size: 600% 600%;
+  animation: gradientAnimation 12s ease infinite;
+  min-height: 70vh;
   padding-bottom: 4rem;
 }
 .cartContainer {
@@ -189,13 +189,13 @@
   max-width: 200px;
 }
 @media (max-width: 577px) {
-  .carIconImg{
+  .carIconImg {
     height: 80px;
     width: 80px;
   }
 }
 @media (max-width: 477px) {
-  .carIconImg{
+  .carIconImg {
     height: 60px;
     width: 60px;
   }
@@ -540,11 +540,60 @@
   padding: 2rem 0px;
   color: white;
 }
-.cartContainerFooter{
+.cartContainerFooter {
   max-width: 1240px;
   margin: 0 auto;
 }
-.cartContainerFooter p{
+.cartContainerFooter p {
   color: rgba(255, 255, 255, 0.734);
   text-align: center;
+}
+.couponInputdiscount {
+  padding: 0.5rem;
+  border: 1px solid rgba(111, 111, 111, 0.82);
+}
+.couponInputdiscountBtn {
+  padding: 0.5rem;
+  border: none;
+  background-color: #000c52;
+  color: white;
+  margin-left: 0.5rem;
+}
+.couponInputdiscountBtn:hover {
+  background-color: #6867c2;
+  border: 1px solid white;
+}
+@media (max-width: 1340px) {
+  .couponInputdiscount {
+    width: 100%;
+  }
+  .couponInputdiscountBtn {
+    margin-left: 0px;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+@media (max-width: 927px) {
+  .couponInputdiscount {
+    max-width: 250px;
+    width: 100%;
+  }
+  .couponInputdiscountBtn {
+    margin-left: 0.5rem;
+    margin-top: 0px;
+    max-width: 150px;
+    width: 100%;
+  }
+}
+@media (max-width: 560px) {
+  .couponInputdiscount {
+    max-width: 100%;
+    width: 100%;
+  }
+  .couponInputdiscountBtn {
+    margin-left: 0px;
+    margin-top: 0.5rem;
+    max-width: 100%;
+    width: 100%;
+  }
 }

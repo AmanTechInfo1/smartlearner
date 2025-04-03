@@ -8,24 +8,30 @@ class userSubscriptionController {
   async createUserSubscription(req, res, next) {
     const { userId, subscriptionId, isTrial } = req.body;
     try {
-     
       const userSubscription =
         await userSubscriptionService.createUserSubscription(
           userId,
           subscriptionId,
           isTrial
         );
-      
-       let status = 'success';
-        await userSubscriptionService.sendSubscriptionEmail(userId, subscriptionId, status );
+
+      let status = "success";
+      await userSubscriptionService.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        status
+      );
       res.status(201).json({
         message: "Subscription created successfully",
         userSubscription,
       });
     } catch (err) {
-     
-      let status = 'failure';
-        await userSubscriptionService.sendSubscriptionEmail(userId, subscriptionId, status );
+      let status = "failure";
+      await userSubscriptionService.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        status
+      );
       next(err);
     }
   }
@@ -61,19 +67,26 @@ class userSubscriptionController {
       next(err);
     }
   }
-  async checkTrialStatus(req, res,next) {
+  async checkTrialStatus(req, res, next) {
     try {
-        const trials = await userSubscriptionService.checkTrialStatus(req.params.userId);
-        res.status(200).json(trials);
+      const trials = await userSubscriptionService.checkTrialStatus(
+        req.params.userId
+      );
+      res.status(200).json(trials);
     } catch (err) {
       next(err);
     }
   }
 
   async createPayment(req, res) {
-    const { subscriptionId } = req.body;
+    const { subscriptionId, price } = req.body;
+    
+    console.log("workkkkkk", price);
     try {
-      const order = await userSubscriptionService.createPayment(subscriptionId);
+      const order = await userSubscriptionService.createPayment(
+        subscriptionId,
+        price
+      );
       res.status(200).json({
         id: order.id,
         approvalUrl: order.links.find((link) => link.rel === "approve").href,
@@ -81,72 +94,91 @@ class userSubscriptionController {
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
-  }  
+  }
 
   // Confirm payment method
   async confirmPayment(req, res) {
-    const { orderId, userId, subscriptionId,isTrial } = req.body;
+    const { orderId, userId, subscriptionId, isTrial } = req.body;
     try {
-
-     
-      const  userSubscription  = await userSubscriptionService.confirmPayment(
+      const userSubscription = await userSubscriptionService.confirmPayment(
         orderId,
         userId,
         subscriptionId,
         isTrial
       );
-     
-      await userSubscriptionService.sendSubscriptionEmail(userSubscription, 'success');
-      
+
+      await userSubscriptionService.sendSubscriptionEmail(
+        userSubscription,
+        "success"
+      );
+
       res.status(200).json(userSubscription);
     } catch (error) {
       res.status(500).json({ error: error.message });
-      await userSubscriptionService.sendSubscriptionEmail({ userId, subscriptionId }, 'failure');
+      await userSubscriptionService.sendSubscriptionEmail(
+        { userId, subscriptionId },
+        "failure"
+      );
     }
   }
   // ////////////////COUPON CODE///////////////////////
-  async couponAccess(req, res,next) {
+  async couponAccess(req, res, next) {
     const { userId, couponCode } = req.body;
     try {
-        const couponAccess = await userSubscriptionService.applyCouponCode(userId, couponCode);
-        res.status(200).json(couponAccess);
+      const couponAccess = await userSubscriptionService.applyCouponCode(
+        userId,
+        couponCode
+      );
+      res.status(200).json(couponAccess);
     } catch (err) {
       next(err);
     }
   }
   // ///////////////////////////////////////////////////////////////////////
-  async pdiCouponAccess(req, res,next) {
+  async pdiCouponAccess(req, res, next) {
     const { userId, couponCode } = req.body;
     try {
-        const couponAccess = await userSubscriptionService.pdiCouponCode(userId, couponCode);
-        res.status(200).json(couponAccess);
+      const couponAccess = await userSubscriptionService.pdiCouponCode(
+        userId,
+        couponCode
+      );
+      res.status(200).json(couponAccess);
     } catch (err) {
       next(err);
     }
   }
-  async pdiPartOneCouponAccess(req, res,next) {
+  async pdiPartOneCouponAccess(req, res, next) {
     const { userId, couponCode } = req.body;
     try {
-        const couponAccess = await userSubscriptionService.pdiPartOneCouponCode(userId, couponCode);
-        res.status(200).json(couponAccess);
+      const couponAccess = await userSubscriptionService.pdiPartOneCouponCode(
+        userId,
+        couponCode
+      );
+      res.status(200).json(couponAccess);
     } catch (err) {
       next(err);
     }
   }
-  async pdiPartTwoCouponAccess(req, res,next) {
+  async pdiPartTwoCouponAccess(req, res, next) {
     const { userId, couponCode } = req.body;
     try {
-        const couponAccess = await userSubscriptionService.pdiPartTwoCouponCode(userId, couponCode);
-        res.status(200).json(couponAccess);
+      const couponAccess = await userSubscriptionService.pdiPartTwoCouponCode(
+        userId,
+        couponCode
+      );
+      res.status(200).json(couponAccess);
     } catch (err) {
       next(err);
     }
   }
-  async pdiPartThreeCouponAccess(req, res,next) {
+  async pdiPartThreeCouponAccess(req, res, next) {
     const { userId, couponCode } = req.body;
     try {
-        const couponAccess = await userSubscriptionService.pdiPartThreeCouponCode(userId, couponCode);
-        res.status(200).json(couponAccess);
+      const couponAccess = await userSubscriptionService.pdiPartThreeCouponCode(
+        userId,
+        couponCode
+      );
+      res.status(200).json(couponAccess);
     } catch (err) {
       next(err);
     }
