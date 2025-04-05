@@ -6,6 +6,7 @@ const axios = require("axios");
 const moment = require("moment");
 
 const nodemailer = require("nodemailer");
+const DiscountCoupon = require("../models/discountCoupon");
 
 class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
@@ -296,7 +297,7 @@ class UserSubscriptionService {
     }
   }
 
-  async pdiPartOneCouponCode(userId, couponCode) {
+  async pdiPartOneCouponCode(userId, planId, couponCode) {
     const validCoupon = "FREEINSTRUCTORPARTONE"; // The valid coupon code
 
     if (couponCode === validCoupon) {
@@ -356,10 +357,24 @@ class UserSubscriptionService {
       }); // Update user with first subscription
 
       return { message: "Pdi PartOne Coupon applied" };
+    } else if (couponCode === "GET50OFF") {
+      const plan = await Plans.findById(planId);
+
+      const discountedPrice = plan.price * 0.5; // Apply 50% off
+
+      const resultObject = {
+        message: "50% discount applied",
+        statusCode: 200,
+        success: true,
+        data: discountedPrice ,
+      };
+      return resultObject;
     } else {
       throw new Error("Invalid coupon code");
     }
   }
+
+  // //////////////////////////////////////////////////////
 
   async pdiPartTwoCouponCode(userId, couponCode) {
     const validCoupon = "FREEINSTRUCTORPARTTWO"; // The valid coupon code

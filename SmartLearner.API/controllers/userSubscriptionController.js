@@ -148,10 +148,11 @@ class userSubscriptionController {
     }
   }
   async pdiPartOneCouponAccess(req, res, next) {
-    const { userId, couponCode } = req.body;
+    const { userId, planId, couponCode } = req.body;
     try {
       const couponAccess = await userSubscriptionService.pdiPartOneCouponCode(
         userId,
+        planId,
         couponCode
       );
       res.status(200).json(couponAccess);

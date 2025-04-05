@@ -14,7 +14,7 @@ import {
   pdiApplyCouponCode,
   fetchUserSubscriptions,
   pdiPartOneApplyCouponCode,
-  discountCoupon,
+
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ const PartOneSubscription = () => {
   );
   const [couponCode, setCouponCode] = useState("");
 
-  const [discountCouponCode, setdiscountCouponCode] = useState("");
+  
 
   const navigate = useNavigate();
 
@@ -41,16 +41,7 @@ const PartOneSubscription = () => {
     dispatch(fetchPlans());
   }, [dispatch, userId]);
 
-  const handleCouponSubmit = async () => {
-    try {
-      await dispatch(
-        pdiPartOneApplyCouponCode({ userId, couponCode })
-      ).unwrap();
-      navigate("/part-one-theory-questions");
-    } catch (error) {
-      console.error("Error applying coupon:", error);
-    }
-  };
+ 
 
   // const handleCreateTrialSubscription = async (plan) => {
   //   try {
@@ -81,17 +72,21 @@ const PartOneSubscription = () => {
   );
   const ogPlan = paidPlans[0];
 
-  const handleDiscountCouponChange = (e) => {
-    setdiscountCouponCode(e.target.value);
-  };
+  const planId = paidPlans[0]?._id;
 
-  const applyDiscountCoupon = async (planId) => {
+
+  const handleCouponSubmit = async () => {
     try {
-      await dispatch(discountCoupon({ planId, discountCouponCode })).unwrap();
+      await dispatch(
+        pdiPartOneApplyCouponCode({ userId, planId, couponCode })
+      ).unwrap();
+     
     } catch (error) {
       console.error("Error applying coupon:", error);
     }
   };
+
+
 
   // /////////////////////////////////
 
@@ -211,29 +206,8 @@ const PartOneSubscription = () => {
                   <div>
                     <div className={styles.basketHeadingTitles}>
                       <h2>BASKET TOTAL</h2>
-                      <div>
-                        <input
-                          type="text"
-                          value={discountCouponCode}
-                          onChange={handleDiscountCouponChange}
-                          placeholder="Enter coupon code"
-                          className={styles.couponInputdiscount}
-                        />
-                        <button
-                          onClick={() => applyDiscountCoupon(paidPlans[0]?._id)}
-                          className={styles.couponInputdiscountBtn}
-                        >
-                          Apply Coupon
-                        </button>
-                      </div>
-                      <p
-                        style={{
-                          margin: "0.2rem",
-                          color: "rgba(239, 239, 239, 0.82)",
-                        }}
-                      >
-                        Apply For 50% oFF
-                      </p>
+                     
+                    
                       <div className={styles.basketHeadingTitle}>
                         <p>
                           <span>Subtotal:</span>

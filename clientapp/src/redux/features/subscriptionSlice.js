@@ -121,12 +121,13 @@ export const pdiApplyCouponCode = createAsyncThunk(
 // ///////////////////////////////////////////////////////////////////////
 export const pdiPartOneApplyCouponCode = createAsyncThunk(
   "subscription/pdiPartOneApplyCouponCode",
-  async ({ userId, couponCode }, { rejectWithValue }) => {
+  async ({ userId, planId, couponCode }, { rejectWithValue }) => {
     try {
       const response = await httpHandler.post(
         "/api/subscription/pdiPartOneApply-coupon",
-        { userId, couponCode }
+        { userId,planId, couponCode }
       );
+      
       toast.success(response.data.message);
       return response.data;
     } catch (error) {
@@ -173,42 +174,7 @@ export const pdiPartThreeApplyCouponCode = createAsyncThunk(
   }
 );
 // /////////////////////////////////////////////////////
-export const discountCoupon = createAsyncThunk(
-  "subscription/applyDiscountCoupon",
-  async ({ planId, discountCouponCode }, { rejectWithValue }) => {
-    if (!discountCouponCode) {
-      toast.error("Please enter a coupon code.");
-      return rejectWithValue("No coupon code provided");
-    }
 
-    try {
-      const response = await httpHandler.get(
-        `/api/subscription/plan/${planId}/apply-coupon/${discountCouponCode}`
-      );
-      const { plan, price } = response.data;
-      localStorage.setItem(
-        "subsdiscountedPrice",
-        JSON.stringify(price)
-      );
-
-      if (price) {
-        toast.success(
-          `Coupon applied successfully! New Price: £${price.toFixed(2)}`
-        );
-        return { price, isCouponValid: true };
-      } else {
-        toast.error("Invalid or expired coupon.");
-        return rejectWithValue("Invalid or expired coupon");
-      }
-    } catch (error) {
-      console.error("Error applying coupon:", error);
-      toast.error(error.response?.data?.error || "Error applying coupon.");
-      return rejectWithValue(
-        error.response?.data?.error || "Error applying coupon"
-      );
-    }
-  }
-);
 // Slice
 const subscriptionSlice = createSlice({
   name: "subscription",
@@ -285,21 +251,20 @@ const subscriptionSlice = createSlice({
         state.couponMessage =
           action.payload?.message || "Coupon application failed.";
       })
-      .addCase(discountCoupon.pending, (state) => {
+      .addCase(pdiPartOneApplyCouponCode.pending, (state) => {
         state.loading = true;
         state.couponMessage = "";
       })
-      .addCase(discountCoupon.fulfilled, (state, action) => {
+      .addCase(pdiPartOneApplyCouponCode.fulfilled, (state, action) => {
         state.loading = false;
-        state.subsdiscountedPrice = action.payload.price;
-        state.isCouponValid = action.payload.isCouponValid;
-        state.couponMessage = "Coupon applied successfully!";
+        state.subsdiscountedPrice = action.payload.data;
+       
       })
-      .addCase(discountCoupon.rejected, (state, action) => {
+      .addCase(pdiPartOneApplyCouponCode.rejected, (state, action) => {
         state.loading = false;
         state.isCouponValid = false;
         state.subsdiscountedPrice = null;
-        state.couponMessage = action.payload || "Coupon application failed.";
+       
       });
   },
 });
