@@ -15,6 +15,8 @@ const drivenFormRoutes = require("./routes/drivenFormRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const notepadRoutes = require("./routes/notepadRoutes");
+
 const path = require("path");
 
 const cors = require("cors");
@@ -48,6 +50,7 @@ app.use("/api/order", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/blogs", notepadRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

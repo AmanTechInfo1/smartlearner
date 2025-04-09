@@ -25,6 +25,10 @@ const TheorySubscription = () => {
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
 
+  const subsdiscountedPrice = useSelector(
+    (state) => state.subscription.subsdiscountedPrice
+  );
+
   // Fetch subscription plans when component mounts
   useEffect(() => {
     if (userId) {
@@ -71,9 +75,17 @@ const TheorySubscription = () => {
     }
   };
 
-  const handleCreateSubscription = async (plan) => {
+  const handleCreateSubscription = async (ogPlan) => {
+    const priceToUse = subsdiscountedPrice || ogPlan.price; // Use the updated price directly
+    console.log("Price to use for payment:", subsdiscountedPrice);
+
+    const subscriptionData = {
+      subscriptionId: ogPlan._id,
+      price: priceToUse,
+    };
+
     try {
-      const order = await dispatch(createPayment(plan._id)).unwrap();
+      const order = await dispatch(createPayment(subscriptionData)).unwrap();
       console.log("Order received from payment creation:", order);
       if (order && order.id) {
         return order.id;
@@ -86,7 +98,7 @@ const TheorySubscription = () => {
     }
   };
 
-  const handleApprovePayment = async (plan, actions) => {
+  const handleApprovePayment = async (ogPlan, actions) => {
     try {
       const order = await actions.order.capture();
       console.log("Order captured:", order);
@@ -97,7 +109,7 @@ const TheorySubscription = () => {
 
       const subscriptionData = {
         userId: userId,
-        subscriptionId: plan._id,
+        subscriptionId: ogPlan._id,
         orderId: order.id,
         isTrial: false,
       };
@@ -118,6 +130,10 @@ const TheorySubscription = () => {
   const paidPlans = plans.filter(
     (plan) => plan.planCategory === "theory-portal package"
   );
+
+  const ogPlan = paidPlans[0];
+
+  const planId = paidPlans[0]?._id;
 
   return (
     <div className="subscription-cardBox">
@@ -161,7 +177,8 @@ const TheorySubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}>
+                      }}
+                    >
                       Loading plans...
                     </p>
                   )}
@@ -176,43 +193,64 @@ const TheorySubscription = () => {
                 </tbody>
               </table>
             </div>
-            {paidPlans.map((plan, index) => (
-              <div className={styles.cartBtnsContainer}>
+            <div className={styles.cartBtnsContainer}>
+              {paidPlans.map((plan, index) => (
                 <div>
-                  <div className={styles.basketHeadingTitles}>
-                    <h2>BASKET TOTAL</h2>
-                    <div className={styles.basketHeadingTitle}>
-                      <p>
-                        <span>Subtotal:</span>
-                        <span>£ {plan.price}</span>
-                      </p>
-                      <p>
-                        <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
-                      </p>
-                      <p>
-                        <span>Total:</span> <span>{plan.price}</span>
-                      </p>
-                      <div>
-                        <img src={paypalLogo} alt="paypal" />
+                  <div>
+                    <div className={styles.basketHeadingTitles}>
+                      <h2>BASKET TOTAL</h2>
+                      <div className={styles.basketHeadingTitle}>
+                        <p>
+                          <span>Subtotal:</span>
+                          <span>£ {plan.price}</span>
+                        </p>
+                        <p>
+                          <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                        </p>
+                        <p>
+                          <span>Total:</span> <span>{plan.price}</span>
+                        </p>
+                        <div>
+                          <img src={paypalLogo} alt="paypal" />
+                        </div>
                       </div>
                     </div>
+                    <div className={styles.basketHeadingTitle}></div>
                   </div>
-                  <div className={styles.basketHeadingTitle}></div>
                 </div>
-
-                <div>
+              ))}
+              <div>
+                {" "}
+                {ogPlan && !subsdiscountedPrice ? (
                   <PayPalButtons
                     createOrder={(data, actions) =>
-                      handleCreateSubscription(plan)
+                      handleCreateSubscription(ogPlan, subsdiscountedPrice)
                     }
                     onApprove={(data, actions) =>
-                      handleApprovePayment(plan, actions)
+                      handleApprovePayment(ogPlan, actions)
                     }
                     fundingSource="paypal"
+                    disabled={subsdiscountedPrice}
                   />
-                </div>
+                ) : (
+                  <></>
+                )}
               </div>
-            ))}
+
+              {ogPlan && subsdiscountedPrice ? (
+                <PayPalButtons
+                  createOrder={(data, actions) =>
+                    handleCreateSubscription(ogPlan, subsdiscountedPrice)
+                  }
+                  onApprove={(data, actions) =>
+                    handleApprovePayment(ogPlan, actions)
+                  }
+                  fundingSource="paypal"
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
       </div>

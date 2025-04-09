@@ -498,9 +498,9 @@ export default function AdiModuleOne() {
                    <div className={styles.quizStartDiv}>
                      <section className={styles.startQuizSection}>
                        <h1>Start Quiz</h1>
-                       <h3>All  Questions</h3>
+                       <h3>15  Questions</h3>
                        <p>
-                       The Band One Practice Questions focus on road procedures. With over 300 multiple-choice questions available, you can choose to practice 50, 100, or work through all of them at once.
+                       Here’s a quick summary quiz to test your understanding of of Part 2: Human checks before setting off 
                        </p>
                        <Link to="">
                          {" "}

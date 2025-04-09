@@ -27,6 +27,9 @@ const PartTwoSubscription = () => {
   const [couponCode, setCouponCode] = useState("");
   const navigate = useNavigate();
 
+  const subsdiscountedPrice = useSelector(
+    (state) => state.subscription.subsdiscountedPrice
+  );
   // Fetch subscription plans when component mounts
   useEffect(() => {
     if (userId) {
@@ -37,7 +40,9 @@ const PartTwoSubscription = () => {
 
   const handleCouponSubmit = async () => {
     try {
-      await dispatch(pdiPartTwoApplyCouponCode({ userId, couponCode })).unwrap();
+      await dispatch(
+        pdiPartTwoApplyCouponCode({ userId, couponCode })
+      ).unwrap();
       navigate("/part-two-theory-questions");
     } catch (error) {
       console.error("Error applying coupon:", error);
@@ -69,9 +74,17 @@ const PartTwoSubscription = () => {
   //   }
   // };
 
-  const handleCreateSubscription = async (plan) => {
+  const handleCreateSubscription = async (ogPlan) => {
+    const priceToUse = subsdiscountedPrice || ogPlan.price; // Use the updated price directly
+    console.log("Price to use for payment:", subsdiscountedPrice);
+
+    const subscriptionData = {
+      subscriptionId: ogPlan._id,
+      price: priceToUse,
+    };
+
     try {
-      const order = await dispatch(createPayment(plan._id)).unwrap();
+      const order = await dispatch(createPayment(subscriptionData)).unwrap();
       console.log("Order received from payment creation:", order);
       if (order && order.id) {
         return order.id;
@@ -84,7 +97,7 @@ const PartTwoSubscription = () => {
     }
   };
 
-  const handleApprovePayment = async (plan, actions) => {
+  const handleApprovePayment = async (ogPlan, actions) => {
     try {
       const order = await actions.order.capture();
       console.log("Order captured:", order);
@@ -95,7 +108,7 @@ const PartTwoSubscription = () => {
 
       const subscriptionData = {
         userId: userId,
-        subscriptionId: plan._id,
+        subscriptionId: ogPlan._id,
         orderId: order.id,
         isTrial: false,
       };
@@ -114,6 +127,9 @@ const PartTwoSubscription = () => {
   const paidPlans = plans.filter(
     (plan) => plan.planCategory === "pdi-part-two packages"
   );
+  const ogPlan = paidPlans[0];
+
+  const planId = paidPlans[0]?._id;
 
   return (
     <div className="subscription-cardBox">
@@ -135,7 +151,9 @@ const PartTwoSubscription = () => {
               Apply Coupon
             </button>
           </div>
-          <p style={{textAlign:'center', color:"white"}}>Apply Coupon Code To Get Free Access Of PDI Portal</p>
+          <p style={{ textAlign: "center", color: "white" }}>
+            Apply Coupon Code To Get Free Access Of PDI Portal
+          </p>
 
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>
@@ -173,43 +191,64 @@ const PartTwoSubscription = () => {
                 </tbody>
               </table>
             </div>
-            {paidPlans.map((plan, index) => (
-              <div className={styles.cartBtnsContainer}>
+            <div className={styles.cartBtnsContainer}>
+              {paidPlans.map((plan, index) => (
                 <div>
-                  <div className={styles.basketHeadingTitles}>
-                    <h2>BASKET TOTAL</h2>
-                    <div className={styles.basketHeadingTitle}>
-                      <p>
-                        <span>Subtotal:</span>
-                        <span>£ {plan.price}</span>
-                      </p>
-                      <p>
-                        <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
-                      </p>
-                      <p>
-                        <span>Total:</span> <span>{plan.price}</span>
-                      </p>
-                      <div>
-                        <img src={paypalLogo} alt="paypal" />
+                  <div>
+                    <div className={styles.basketHeadingTitles}>
+                      <h2>BASKET TOTAL</h2>
+                      <div className={styles.basketHeadingTitle}>
+                        <p>
+                          <span>Subtotal:</span>
+                          <span>£ {plan.price}</span>
+                        </p>
+                        <p>
+                          <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                        </p>
+                        <p>
+                          <span>Total:</span> <span>{plan.price}</span>
+                        </p>
+                        <div>
+                          <img src={paypalLogo} alt="paypal" />
+                        </div>
                       </div>
                     </div>
+                    <div className={styles.basketHeadingTitle}></div>
                   </div>
-                  <div className={styles.basketHeadingTitle}></div>
                 </div>
-
-                <div>
+              ))}
+              <div>
+                {" "}
+                {ogPlan && !subsdiscountedPrice ? (
                   <PayPalButtons
                     createOrder={(data, actions) =>
-                      handleCreateSubscription(plan)
+                      handleCreateSubscription(ogPlan, subsdiscountedPrice)
                     }
                     onApprove={(data, actions) =>
-                      handleApprovePayment(plan, actions)
+                      handleApprovePayment(ogPlan, actions)
                     }
                     fundingSource="paypal"
+                    disabled={subsdiscountedPrice}
                   />
-                </div>
+                ) : (
+                  <></>
+                )}
               </div>
-            ))}
+
+              {ogPlan && subsdiscountedPrice ? (
+                <PayPalButtons
+                  createOrder={(data, actions) =>
+                    handleCreateSubscription(ogPlan, subsdiscountedPrice)
+                  }
+                  onApprove={(data, actions) =>
+                    handleApprovePayment(ogPlan, actions)
+                  }
+                  fundingSource="paypal"
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
       </div>
