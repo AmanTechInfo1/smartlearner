@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.74216da5.css",
-    "main.js": "/static/js/main.c61e3622.js",
+    "main.css": "/static/css/main.30b7a236.css",
+    "main.js": "/static/js/main.f65e5192.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -90,7 +90,9 @@
     "static/media/Cim1.jpg": "/static/media/Cim1.1e2e7f74dd37be5d8344.jpg",
     "static/media/fogImg.png": "/static/media/fogImg.8df4279f89d3fa87a51b.png",
     "static/media/Vulnerable-road-usersbanner.jpg": "/static/media/Vulnerable-road-usersbanner.6a35d8ee3315a145fed7.jpg",
+    "static/media/funnelVision.png": "/static/media/funnelVision.1d9c4a3f228848ca961c.png",
     "static/media/pedestrian.png": "/static/media/pedestrian.fcc2dbfe5ff5808c88c4.png",
+    "static/media/tunnelVissonImg.png": "/static/media/tunnelVissonImg.73329a28762e4b9c13b3.png",
     "static/media/moduleCrausalImg-3.jpg": "/static/media/moduleCrausalImg-3.c58ded250ece1c305c90.jpg",
     "static/media/moduleCrausalImg-4.jpg": "/static/media/moduleCrausalImg-4.bb8135c960cb1d974a75.jpg",
     "static/media/passplusCarousalImg.jpg": "/static/media/passplusCarousalImg.bb8135c960cb1d974a75.jpg",
@@ -130,6 +132,7 @@
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
     "static/media/halloffame5.png": "/static/media/halloffame5.f01a68a25f42200d5b90.png",
+    "static/media/far-near-rear-VissionImg.png": "/static/media/far-near-rear-VissionImg.bb56a5793a7693f4d608.png",
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
     "static/media/vehicalscarrying.png": "/static/media/vehicalscarrying.6c038a4bf8c129bb8de3.png",
     "static/media/cimg18.jpg": "/static/media/cimg18.94fecd5310e59dcf5262.jpg",
@@ -142,6 +145,7 @@
     "static/media/texiImg.png": "/static/media/texiImg.a21ff407a2c6cd49e01c.png",
     "static/media/cbdEvents1.jpeg": "/static/media/cbdEvents1.32511f83d9cf986bc361.jpeg",
     "static/media/going-green-img6.jpg": "/static/media/going-green-img6.737cbc307e544aa78517.jpg",
+    "static/media/limitPoints.png": "/static/media/limitPoints.2b0700b105298555b0cf.png",
     "static/media/going-green-img4.jpg": "/static/media/going-green-img4.d3ef7bf8007c7d87224c.jpg",
     "static/media/going-green-img2.jpg": "/static/media/going-green-img2.3e07e5d327f80056be65.jpg",
     "static/media/CChampion-11.jpg": "/static/media/CChampion-11.9666cdc835edad6ba3e8.jpg",
@@ -207,6 +211,7 @@
     "static/media/disability-scooter.jpeg": "/static/media/disability-scooter.73ad552ebf4466aa1a65.jpeg",
     "static/media/halloffame33.png": "/static/media/halloffame33.518efc7475f56f891034.png",
     "static/media/2-second-rule.jpg": "/static/media/2-second-rule.29eaa1b00e6afa89e042.jpg",
+    "static/media/2ndRuleImg.png": "/static/media/2ndRuleImg.4dfa4e395280f7ee782c.png",
     "static/media/traf-lights.jpg": "/static/media/traf-lights.1771249db2c029b2f3d2.jpg",
     "static/media/img7.jpg": "/static/media/img7.eb50a68772057cecc360.jpg",
     "static/media/img1.jpg": "/static/media/img1.eb23142fa83ab583a4a7.jpg",
@@ -266,6 +271,7 @@
     "static/media/userIndentification.png": "/static/media/userIndentification.d2b711ba1c4b7fac9688.png",
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
+    "static/media/rainFogImg.png": "/static/media/rainFogImg.e62562cde6081ac45506.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
     "static/media/theoryTestCrausalImg.jpg": "/static/media/theoryTestCrausalImg.6f7b6bb065bc765a1cba.jpg",
@@ -336,12 +342,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.74216da5.css.map": "/static/css/main.74216da5.css.map",
-    "main.c61e3622.js.map": "/static/js/main.c61e3622.js.map",
+    "main.30b7a236.css.map": "/static/css/main.30b7a236.css.map",
+    "main.f65e5192.js.map": "/static/js/main.f65e5192.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.74216da5.css",
-    "static/js/main.c61e3622.js"
+    "static/css/main.30b7a236.css",
+    "static/js/main.f65e5192.js"
   ]
 }
