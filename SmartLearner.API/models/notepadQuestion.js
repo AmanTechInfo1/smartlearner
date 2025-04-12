@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const notepadQuestionSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
+  module: { type: String },
   notepadQuestion: { type: String },
 });
 

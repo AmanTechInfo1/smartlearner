@@ -2,11 +2,15 @@ import styles from "./AdiModuleOne.module.css";
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+  import { FaEdit } from "react-icons/fa";
+  import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AdiModuleTwo() {
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id;
+
   const [hoveredLetter, setHoveredLetter] = useState(null);
 
   const [text, setText] = useState("");
@@ -57,7 +61,7 @@ export default function AdiModuleTwo() {
         setSavedTexts([...savedTexts, text]);
       }
       localStorage.setItem(
-        "notepadTextspage2",
+        `notepadTextspage2_${userId}`,
         JSON.stringify([...savedTexts, text])
       );
 
@@ -78,11 +82,14 @@ export default function AdiModuleTwo() {
   const deleteText = (index) => {
     const updatedTexts = savedTexts.filter((_, i) => i !== index);
     setSavedTexts(updatedTexts);
-    localStorage.setItem("notepadTextspage2", JSON.stringify(updatedTexts));
+    localStorage.setItem(
+      `notepadTextspage2_${userId}`,
+      JSON.stringify(updatedTexts)
+    );
   };
 
   useEffect(() => {
-    const savedData = localStorage.getItem("notepadTextspage2");
+    const savedData = localStorage.getItem(`notepadTextspage2_${userId}`);
     if (savedData) {
       setSavedTexts(JSON.parse(savedData));
     }
@@ -106,7 +113,7 @@ export default function AdiModuleTwo() {
         setSavedTexts2([...savedTexts2, text2]);
       }
       localStorage.setItem(
-        "notepadText2spage2",
+        `notepadText2spage2_${userId}`,
         JSON.stringify([...savedTexts2, text2])
       );
 
@@ -127,11 +134,14 @@ export default function AdiModuleTwo() {
   const deleteText2 = (index) => {
     const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
     setSavedTexts2(updatedTexts2);
-    localStorage.setItem("notepadText2spage2", JSON.stringify(updatedTexts2));
+    localStorage.setItem(
+      `notepadText2spage2_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
   };
 
   useEffect(() => {
-    const savedData2 = localStorage.getItem("notepadText2spage2");
+    const savedData2 = localStorage.getItem(`notepadText2spage2_${userId}`);
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
     }
@@ -155,7 +165,7 @@ export default function AdiModuleTwo() {
         setSavedTexts3([...savedTexts3, text3]);
       }
       localStorage.setItem(
-        "notepadText3spage2",
+        `notepadText3spage2_${userId}`,
         JSON.stringify([...savedTexts3, text3])
       );
 
@@ -176,11 +186,14 @@ export default function AdiModuleTwo() {
   const deleteText3 = (index) => {
     const updatedTexts3 = savedTexts3.filter((_, i) => i !== index);
     setSavedTexts3(updatedTexts3);
-    localStorage.setItem("notepadText3spage2", JSON.stringify(updatedTexts3));
+    localStorage.setItem(
+      `notepadText3spage2_${userId}`,
+      JSON.stringify(updatedTexts3)
+    );
   };
 
   useEffect(() => {
-    const savedData3 = localStorage.getItem("notepadText3spage2");
+    const savedData3 = localStorage.getItem(`notepadText3spage2_${userId}`);
     if (savedData3) {
       setSavedTexts3(JSON.parse(savedData3));
     }
@@ -204,7 +217,7 @@ export default function AdiModuleTwo() {
         setSavedTexts4([...savedTexts4, text4]);
       }
       localStorage.setItem(
-        "notepadText4spage2",
+        `notepadText4spage2_${userId}`,
         JSON.stringify([...savedTexts4, text4])
       );
 
@@ -225,11 +238,14 @@ export default function AdiModuleTwo() {
   const deleteText4 = (index) => {
     const updatedTexts4 = savedTexts4.filter((_, i) => i !== index);
     setSavedTexts4(updatedTexts4);
-    localStorage.setItem("notepadText4spage2", JSON.stringify(updatedTexts4));
+    localStorage.setItem(
+      `notepadText4spage2_${userId}`,
+      JSON.stringify(updatedTexts4)
+    );
   };
 
   useEffect(() => {
-    const savedData4 = localStorage.getItem("notepadText4spage2");
+    const savedData4 = localStorage.getItem(`notepadText4spage2_${userId}`);
     if (savedData4) {
       setSavedTexts4(JSON.parse(savedData4));
     }
@@ -253,7 +269,7 @@ export default function AdiModuleTwo() {
         setSavedTexts5([...savedTexts5, text5]);
       }
       localStorage.setItem(
-        "notepadText5spage2",
+        `notepadText5spage2_${userId}`,
         JSON.stringify([...savedTexts5, text5])
       );
 
@@ -274,11 +290,14 @@ export default function AdiModuleTwo() {
   const deleteText5 = (index) => {
     const updatedTexts5 = savedTexts5.filter((_, i) => i !== index);
     setSavedTexts5(updatedTexts5);
-    localStorage.setItem("notepadText5spage2", JSON.stringify(updatedTexts5));
+    localStorage.setItem(
+      `notepadText5spage2_${userId}`,
+      JSON.stringify(updatedTexts5)
+    );
   };
 
   useEffect(() => {
-    const savedData5 = localStorage.getItem("notepadText5spage2");
+    const savedData5 = localStorage.getItem(`notepadText5spage2_${userId}`);
     if (savedData5) {
       setSavedTexts5(JSON.parse(savedData5));
     }

@@ -50,7 +50,7 @@ app.use("/api/order", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
-app.use("/api/blogs", notepadRoutes);
+app.use("/api/notepad", notepadRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

@@ -3,12 +3,15 @@ const router = express.Router();
 const NotepadController = require("../controllers/NotepadController");
 
 // Route to create a Notepad Question
-router.post("/question", NotepadController.createNotepadQuestion);
+router.get("/question", NotepadController.createNotepadQuestion);
 
-router.get("/questions/:userId", NotepadController.getNotepadQuestions);
+router.get("/questions/:module", NotepadController.getNotepadQuestions);
 
-router.post("/answer", NotepadController.createNotepadAnswere);
+router.post("/answere", NotepadController.createNotepadAnswere);
 
-router.get("/answers/:notepadQuestionId", NotepadController.getNotepadAnswers);
+router.get("/all-answers", NotepadController.getNotepadAnswers);
+
+router.post("/update-answere/:id", NotepadController.updateAnswers);
+router.post("/delete-answere/:id", NotepadController.deleteAnswers);
 
 module.exports = router;

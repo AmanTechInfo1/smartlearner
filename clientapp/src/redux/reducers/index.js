@@ -19,12 +19,13 @@ import orderSlice from "../features/orderSlice";
 import productSpecialSlice from "../features/productSpecialSlice";
 import subscriptionSlice from "../features/subscriptionSlice";
 import blogSlice from "../features/blogSlice";
+import notepadSlice from "../features/notepadSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
   cart: cartSlice,
   order: orderSlice,
-  user: userSlice,  
+  user: userSlice,
   roles: rolesSlice,
   category: categorySlice,
   services: servicesSlice,
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   quizCategory: quizCategorySlice,
   subscription: subscriptionSlice,
   blog: blogSlice,
+  notepad: notepadSlice,
 });
 
 export default rootReducer;

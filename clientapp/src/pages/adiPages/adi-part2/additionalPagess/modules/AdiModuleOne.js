@@ -5,8 +5,12 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AdiModuleOne() {
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id;
+
   const [text, setText] = useState("");
   const [savedTexts, setSavedTexts] = useState([]); // Store multiple saved texts
   const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
@@ -37,7 +41,7 @@ export default function AdiModuleOne() {
         setSavedTexts([...savedTexts, text]);
       }
       localStorage.setItem(
-        "notepadTexts",
+        `notepadTexts_${userId}`,
         JSON.stringify([...savedTexts, text])
       );
 
@@ -58,11 +62,14 @@ export default function AdiModuleOne() {
   const deleteText = (index) => {
     const updatedTexts = savedTexts.filter((_, i) => i !== index);
     setSavedTexts(updatedTexts);
-    localStorage.setItem("notepadTexts", JSON.stringify(updatedTexts));
+    localStorage.setItem(
+      `notepadTexts_${userId}`,
+      JSON.stringify(updatedTexts)
+    );
   };
 
   useEffect(() => {
-    const savedData = localStorage.getItem("notepadTexts");
+    const savedData = localStorage.getItem(`notepadTexts_${userId}`);
     if (savedData) {
       setSavedTexts(JSON.parse(savedData));
     }
@@ -86,7 +93,7 @@ export default function AdiModuleOne() {
         setSavedTexts2([...savedTexts2, text2]);
       }
       localStorage.setItem(
-        "notepadTexts2",
+        `notepadTexts2_${userId}`,
         JSON.stringify([...savedTexts2, text2])
       );
 
@@ -107,11 +114,14 @@ export default function AdiModuleOne() {
   const deleteText2 = (index) => {
     const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
     setSavedTexts2(updatedTexts2);
-    localStorage.setItem("notepadTexts2", JSON.stringify(updatedTexts2));
+    localStorage.setItem(
+      `notepadTexts2_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
   };
 
   useEffect(() => {
-    const savedData2 = localStorage.getItem("notepadTexts2");
+    const savedData2 = localStorage.getItem(`notepadTexts2_${userId}`);
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
     }
@@ -325,7 +335,10 @@ export default function AdiModuleOne() {
               {/* <DrivingInstructorUI /> */}
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront23}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront23}
+                  >
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
@@ -344,8 +357,11 @@ export default function AdiModuleOne() {
               </div>
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront24}>
-                  <div className="opicity"></div>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront24}
+                  >
+                    <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
@@ -363,8 +379,11 @@ export default function AdiModuleOne() {
               </div>
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront25}>
-                  <div className="opicity"></div>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront25}
+                  >
+                    <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
 
@@ -383,8 +402,11 @@ export default function AdiModuleOne() {
               </div>
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront26}>
-                  <div className="opicity"></div>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront26}
+                  >
+                    <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>{" "}
                   </div>
                   <div className={styles.trainingDetails}>
@@ -403,8 +425,11 @@ export default function AdiModuleOne() {
               </div>
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront27}>
-                  <div className="opicity"></div>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront27}
+                  >
+                    <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
@@ -425,8 +450,11 @@ export default function AdiModuleOne() {
               </div>
               <div className={styles.flipContainer2}>
                 <div className={styles.flipbox2}>
-                  <div className={styles.flipboxfront2} id={styles.flipboxfront28}>
-                  <div className="opicity"></div>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront28}
+                  >
+                    <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
@@ -494,20 +522,21 @@ export default function AdiModuleOne() {
         </div>
 
         {/* ////////////////////////////////////////////////// */}
-         {/* ////////////////////////////////////////// */}
-                   <div className={styles.quizStartDiv}>
-                     <section className={styles.startQuizSection}>
-                       <h1>Start Quiz</h1>
-                       <h3>15  Questions</h3>
-                       <p>
-                       Here’s a quick summary quiz to test your understanding of of Part 2: Human checks before setting off 
-                       </p>
-                       <Link to="">
-                         {" "}
-                         <button>Start Quiz</button>
-                       </Link>
-                     </section>
-                   </div>
+        {/* ////////////////////////////////////////// */}
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p>
+              Here’s a quick summary quiz to test your understanding of of Part
+              2: Human checks before setting off
+            </p>
+            <Link to="">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
       </div>
     </>
   );
