@@ -1,7 +1,10 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModule12.module.css";
+import styles from "./AdiModuleOne.module.css";
+import { FaEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AdiModule12() {
   const textRef = useRef(null);
@@ -100,150 +103,205 @@ export default function AdiModule12() {
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
         <section className={styles.AdiModuleOneheader}>
-          <h1 ref={textRef}>{splitText()}</h1>
-          <div className={styles.AdiModuleOnevideo}>
-            <p> INSERT VIDEO – WHAT HAPPENS ON THE TEST</p>
-          </div>
+          <div className="opicity"></div>
+          <section className={styles.AdiModuleOneheading}>
+            {" "}
+            <h1 ref={textRef}>{splitText()}</h1>
+          </section>
         </section>
 
-        <section className={styles.AdiModuleOneobjectives}>
+        <div className={styles.AdiModuleContentBox}>
+          <div className={styles.AdiModuleContentParaBoxm2}>
+            <p>
+              Becoming an Approved Driving Instructor (ADI) is an exciting
+              journey that allows you to help others achieve a vital life skill.
+              One crucial step in this process is passing the ADI Part 2 test,
+              which assesses your driving ability to ensure you can drive at a
+              professional standard. In this blog post, we’ll cover everything
+              you need to know about booking the ADI Part 2 test and what to
+              bring on the day.
+            </p>
+          </div>
+        </div>
+
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem" }}
+        >
+          <div className={styles.adisevenheading}>
+            How to Book the ADI Part 2 Test
+          </div>
           <p>
-            Becoming an Approved Driving Instructor (ADI) is an exciting journey
-            that allows you to help others achieve a vital life skill. One
-            crucial step in this process is passing the ADI Part 2 test, which
-            assesses your driving ability to ensure you can drive at a
-            professional standard. In this blog post, we’ll cover everything you
-            need to know about booking the ADI Part 2 test and what to bring on
-            the day.
-          </p>
-        </section>
-        <section className={styles.AdiModuleOneobjectives}>
-          <h2>How to Book the ADI Part 2 Test</h2>
-          <p>
+            {" "}
             Booking your ADI Part 2 test is straightforward, provided you’ve
             completed the earlier steps in your instructor training journey.
             Here’s a step-by-step guide:
           </p>
-          <ul>
+          <div className={styles.adiseventipBox}>
             <h3>1. Check Your Eligibility</h3>
-            <li>
-              Before booking, ensure you’ve passed the ADI Part 1 test (theory
-              test) and have received your Personal Reference Number (PRN) from
-              the DVSA. This number is crucial as it identifies you throughout
-              the ADI qualification process.
-            </li>
+            <p>
+              Before booking, ensure you’ve passed the
+              <strong>ADI Part 1 test </strong> (theory test) and have received
+              your
+              <strong> Personal Reference Number (PRN) </strong> from the DVSA.
+              This number is crucial as it identifies you throughout the ADI
+              qualification process.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
             <h3>2. Visit the GOV.UK Website</h3>
-            <li>
+            <p>
               The easiest way to book your ADI Part 2 test is online via the
               official GOV.UK website. This platform ensures secure payment and
               access to all available test centre locations.
-            </li>
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
             <h3>3. Choose a Test Centre</h3>
-            <li>
+            <p>
               Not every driving test centre offers ADI Part 2 tests, so you’ll
               need to find one that does. Use the DVSA’s list of test centres to
               find the most convenient option.
-            </li>
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
             <h3>4. Provide Your Details</h3>
-            <li>
-              <strong>You’ll need :</strong>
-              <br />
-              1. Your driving licence details.
-              <br />
-              2. Your PRN.
-              <br />
-              3. Payment information for the £111 test fee (correct as of 2024).
-            </li>
-            <h3>5. Select a Test Date and Time</h3>
-            <li>
-              ADI Part 2 tests are usually in high demand, so book well in
-              advance to secure a slot that works for you. Consider your
-              readiness and schedule plenty of practice before the test day.
-            </li>
-            <h3>6. Confirmation</h3>
-            <li>
-              After booking, you’ll receive a confirmation email with your test
-              details. Save this email—it may be requested on the day.
-            </li>
-          </ul>
-        </section>
-
-        <section className={styles.AdiModuleOnechecks}>
-          <h2>What to Bring to Your ADI Part 2 Test?</h2>
-          <p>
-            Preparation is key to a smooth test day. Make sure you bring the
-            following:
-          </p>
-          <div className={styles.AdiModuleOnecheckList}>
+            <p>You’ll need:</p>
             <ul>
-              <h3>1. Your Driving Licence</h3>
-              <p>Bring both parts of your licence:</p>
+              <li>Your driving licence details.</li>
+              <li>Your PRN.</li>
               <li>
-                <strong>Photocard licence </strong>
-                (or a valid passport if you still have the older-style paper
-                licence).
-              </li>
-
-              <li>
-                <strong>Paper counterpart </strong>
-                (if applicable).
-              </li>
-              <p>Ensure your licence is up to date and not expired.</p>
-              <h3>2. Your Appointment Confirmation</h3>
-              <li>
-                Bring a printed or digital copy of your booking confirmation
-                email. This serves as proof of your appointment.
-              </li>
-              <h3>3. A Suitable Car</h3>
-              <p>Your car must meet the DVSA’s requirements:</p>
-              <li>
-                <strong>Roadworthy and safe :</strong> The car should be taxed,
-                insured, and have a valid MOT (if applicable).
-              </li>
-              <li>
-                <strong>Manual or automatic :</strong> You can use either
-              </li>
-              <li>
-                <strong>Clear windows and mirrors :</strong> Ensure nothing
-                obstructs visibility.
-              </li>
-              <li>No Warning lights, appropriate tyres etc. </li>
-              <p>
-                You can check on the government website which cars are accepted
-                and which aren’t.{" "}
-              </p>
-              <h3>4. Glasses or Contact Lenses</h3>
-              <li>
-                If you need corrective lenses to drive, don’t forget them.
-                You’ll need them for the eyesight test and the driving portion
-                of the test.
-              </li>
-              <h3>A Final Checklist</h3>
-              <p>
-                Before heading to your ADI Part 2 test, double-check the
-                following:
-              </p>
-              <li>
-                1. Have you practiced all the required manoeuvres?
-                <br />
-                2. Is your car clean, roadworthy, and stocked with necessary
-                documents (e.g., insurance and MOT)? <br />
-                3. Do you have all required items (licence, confirmation,
-                glasses)?
+                Payment information for the £111 test fee (correct as of 2024).
               </li>
             </ul>
           </div>
 
-          <h2>Why Preparation Matters</h2>
-          <p>
-            The ADI Part 2 test is more than a driving assessment—it’s a
-            reflection of your readiness to teach driving professionally.
-            Booking the test is simple, but showing up fully prepared requires
-            careful planning. You have three attempts at this test.{" "}
-          </p>
-
-          <h3>Good luck!</h3>
+          <div className={styles.adiseventipBox}>
+            <h3>5. Select a Test Date and Time</h3>
+            <p>
+              ADI Part 2 tests are usually in high demand, so book well in
+              advance to secure a slot that works for you. Consider your
+              readiness and schedule plenty of practice before the test day.
+            </p>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>6. Confirmation</h3>
+            <p>
+              After booking, you’ll receive a confirmation email with your test
+              details. Save this email—it may be requested on the day.
+            </p>
+          </div>
         </section>
+
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "2rem" }}
+        >
+          <div className={styles.adisevenheading}>
+            What to Bring to Your ADI Part 2 Test
+          </div>
+          <p>
+            {" "}
+            Preparation is key to a smooth test day. Make sure you bring the
+            following:
+          </p>
+          <div className={styles.adiseventipBox}>
+            <h3>1. Your Driving Licence</h3>
+            <p>Bring both parts of your licence:</p>
+            <ul>
+              <li>
+                <strong>Photocard licence</strong> (or a valid passport if you
+                still have the older-style paper licence).
+              </li>
+
+              <li>Paper counterpart (if applicable).</li>
+            </ul>
+            <p>Ensure your licence is up to date and not expired.</p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>2. Your Appointment Confirmation</h3>
+            <p>
+              Bring a printed or digital copy of your booking confirmation
+              email. This serves as proof of your appointment.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>3. A Suitable Car</h3>
+            <p>Your car must meet the DVSA’s requirements:</p>
+            <ul>
+              <li>
+                <strong>Roadworthy and safe: </strong> The car should be taxed,
+                insured, and have a valid MOT (if applicable).
+              </li>
+
+              <li>
+                {" "}
+                <strong>Manual or automatic: </strong> You can use either
+              </li>
+              <li>
+                <strong>Clear windows and mirrors: </strong> Ensure nothing
+                obstructs visibility.
+              </li>
+              <li>No Warning lights, appropriate tyres etc.</li>
+            </ul>
+            <p>
+              You can check on the government website which cars are accepted
+              and which aren’t.
+            </p>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>4. Glasses or Contact Lenses</h3>
+            <p>
+              If you need corrective lenses to drive, don’t forget them. You’ll
+              need them for the eyesight test and the driving portion of the
+              test.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>A Final Checklist</h3>
+            <p>
+              Before heading to your ADI Part 2 test, double-check the
+              following:
+            </p>
+            <ul>
+              <li>Have you practiced all the required manoeuvres?</li>
+
+              <li>
+                {" "}
+                Is your car clean, roadworthy, and stocked with necessary
+                documents (e.g., insurance and MOT)?
+              </li>
+              <li>
+                Do you have all required items (licence, confirmation, glasses)?
+              </li>
+            </ul>
+            <h3>Why Preparation Matters</h3>
+            <p>
+              The ADI Part 2 test is more than a driving assessment—it’s a
+              reflection of your readiness to teach driving professionally.
+              Booking the test is simple, but showing up fully prepared requires
+              careful planning. You have three attempts at this test.
+            </p>
+          </div>
+          <h1
+            style={{
+              textAlign: "center",
+              color: "red",
+              fontSize: "1.5rem",
+              margin: "1.5rem 1rem",
+            }}
+          >
+            Good luck!
+          </h1>
+        </section>
+
+        {/* //////////////////////////////////////////////////////////// */}
       </div>
     </>
   );

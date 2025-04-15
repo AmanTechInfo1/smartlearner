@@ -96,7 +96,7 @@ function Header() {
               <NavLink
                 to="/Driving-Instructor-Training"
                 className={styles.activeLink}>
-                <li>Driving Instructor Trainning</li>
+                <li>Driving Instructor Training</li>
               </NavLink>
               <NavLink
                 to="/driving-instructor-packages/instructor-packages"

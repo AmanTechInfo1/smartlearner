@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function AdiModuleFour() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -501,6 +502,18 @@ export default function AdiModuleFour() {
               </ul>
             )}
           </div>
+        </div>
+
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/The-COAST-Method-in-Advanced-Driving">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
         </div>
       </div>
     </>

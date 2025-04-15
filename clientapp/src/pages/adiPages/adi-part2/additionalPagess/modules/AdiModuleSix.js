@@ -14,6 +14,7 @@ import limitPoints from "../../../../../assets/images/limitPoints.png";
 import roadImage from "../../../../../assets/images/2ndRuleImg.png";
 import cloudImage from "../../../../../assets/images/rainFogImg.png";
 import { FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function AdiModuleSix() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -776,6 +777,18 @@ export default function AdiModuleSix() {
             </p>
           </div>
         </div>
+        {/* ////////////////////////////////////////////////////////////////////// */}
+         <div className={styles.quizStartDiv}>
+                  <section className={styles.startQuizSection}>
+                    <h1>Start Quiz</h1>
+                    <h3>15 Questions</h3>
+                    <p></p>
+                    <Link to="/takequizCatName/Observation-in-the-COAST-Method-for-Advanced-Driving">
+                      {" "}
+                      <button>Start Quiz</button>
+                    </Link>
+                  </section>
+                </div>
 
         {/* ///////////////////////////////////////////////////////////////////// */}
       </div>

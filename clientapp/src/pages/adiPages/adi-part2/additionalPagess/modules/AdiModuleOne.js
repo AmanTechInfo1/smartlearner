@@ -531,7 +531,7 @@ export default function AdiModuleOne() {
               Here’s a quick summary quiz to test your understanding of of Part
               2: Human checks before setting off
             </p>
-            <Link to="">
+            <Link to="/takequizCatName/Human-Checks">
               {" "}
               <button>Start Quiz</button>
             </Link>

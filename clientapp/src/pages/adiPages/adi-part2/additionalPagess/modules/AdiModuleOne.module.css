@@ -431,21 +431,21 @@
   margin-top: 2rem;
 }
 #flipboxfront23 {
-  background-image: url(../../../../../assets/images/moduleCrausalImg-1.jpg);
+  background-image: url(../../../../../assets/images/physicalwellbeing.png);
   background-position: bottom;
   background-size: cover;
   width: 100%;
   height: 400px;
 }
 #flipboxfront24 {
-  background-image: url(../../../../../assets/images/moduleCrausalImg-2.jpg);
+  background-image: url(../../../../../assets/images/mentalwellBeing.png);
   background-position: center;
   background-size: cover;
   width: 100%;
   height: 400px;
 }
 #flipboxfront25 {
-  background-image: url(../../../../../assets/images/moduleCrausalImg-3.jpg);
+  background-image: url(../../../../../assets/images/emotionalWellBeing.png);
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -472,6 +472,51 @@
   width: 100%;
   height: 400px;
 }
+/* ////////////////////////////////////////////////////////// */
+#flipboxfront233 {
+  background-image: url(../../../../../assets/images/dashboardImg.png);
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+#flipboxfront244 {
+  background-image: url(../../../../../assets/images/ElectronicParkingImg.png);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+#flipboxfront255 {
+  background-image: url(../../../../../assets/images/satNav.png);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+#flipboxfront266 {
+  background-image: url(../../../../../assets/images/ecodriving.png);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+#flipboxfront277 {
+  background-image: url(../../../../../assets/images/airconditioning.png);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+#flipboxfront288 {
+  background-image: url(../../../../../assets/images/reversingAidsImg.png);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+}
+/* ////////////////////////////////////////////////////////////// */
+
 
 .trainingDetails {
   background-color: #0e0b18d7;
@@ -1035,7 +1080,7 @@
   place-items: center;
   gap: 20px;
 }
-.AdiModuleContentBoxImgbox img{
+.AdiModuleContentBoxImgbox img {
   max-width: 600px;
   width: 100%;
 }
@@ -1046,7 +1091,7 @@
   color: #e0e0e0;
   padding: 2rem;
   border-radius: 12px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   max-width: 1200px;
   margin: 2rem auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
@@ -1096,7 +1141,6 @@
   text-align: center;
 }
 
-
 /* ////////////////////////////////////// */
 
 .adi2ndImgcontainer {
@@ -1113,18 +1157,17 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
 }
 
 @media (max-width: 727px) {
   .adi2ndImgclickText {
-   font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 448px) {
   .adi2ndImgclickText {
-   font-size: 1rem;
+    font-size: 1rem;
   }
 }
 .adi2ndImgarrow {
@@ -1144,7 +1187,8 @@
   overflow: hidden;
   opacity: 0;
   transform: scale(0.95);
-  transition: all 0.5s ease; display: flex;
+  transition: all 0.5s ease;
+  display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
@@ -1193,4 +1237,144 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+/* /////////////////////////////////////////// */
+.adisevenhintsSection {
+  background: #150126;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 1240px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.adisevenheading {
+  font-size: 2rem;
+  color: #00ffe1;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  animation: pulseText 2s infinite;
+}
+
+.adiseventipBox {
+  background: rgba(4, 1, 26, 0.786);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid #00ffe1;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.adiseventipBox:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 255, 225, 0.2);
+}
+
+.adiseventipBox h3 {
+  color: #ff75c3;
+  margin-bottom: 0.75rem;
+}
+
+.adiseventipBox p,
+.adiseventipBox ul {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.adiseventipBox ul {
+  padding-left: 1.2rem;
+  list-style-type: "✨ ";
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseText {
+  0% {
+    color: #00ffe1;
+  }
+  50% {
+    color: #ff4d4d;
+  }
+  100% {
+    color: #00ffe1;
+  }
+}
+
+/* ADIQuestions.module.css */
+
+.module11container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #021127;
+  border-radius: 10px;
+  border: 1px solid rgb(82, 113, 138);
+  margin-top: 1.5rem;
+}
+
+.module11title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #b0d8ff;
+}
+
+.module11section {
+  margin-bottom: 3rem;
+}
+
+.module11heading {
+  font-size: 1.5rem;
+  color: #ff0062;
+  border-bottom: 2px solid #1e90ff;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.module11list {
+  list-style: none;
+  padding: 0;
+}
+
+.module11card {
+  background: linear-gradient(135deg, #070134, #270019);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.module11card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.module11card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff96d1;
+  font-size: 1.1rem;
+}
+
+.module11card p {
+  margin: 0;
+  color: #c8feff;
+  line-height: 1.5;
+  font-size: 1rem;
 }

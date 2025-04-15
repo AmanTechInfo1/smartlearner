@@ -7,6 +7,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function AdiModuleFive() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -328,6 +329,22 @@ export default function AdiModuleFive() {
             </div>
           </div>
         </div>
+
+
+        {/* ///////////////////////////////////// */}
+         <div className={styles.quizStartDiv}>
+                          <section className={styles.startQuizSection}>
+                            <h1>Start Quiz</h1>
+                            <h3>15 Questions</h3>
+                            <p>
+                             
+                            </p>
+                            <Link to="/takequizCatName/Concentration-in-the-Coast-Method">
+                              {" "}
+                              <button>Start Quiz</button>
+                            </Link>
+                          </section>
+                        </div>
       </div>
     </>
   );

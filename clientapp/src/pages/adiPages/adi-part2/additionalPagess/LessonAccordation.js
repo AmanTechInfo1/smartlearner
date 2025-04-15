@@ -21,7 +21,7 @@ const LessonAccordation = () => {
       <div className={styles.LessonAccordionheader}>
         <span>SKILLS</span>
         <span className={styles.LessonAccordionProgress}>
-          14 Steps | 14 Quizzes
+          12 Steps | 10 Quizzes
         </span>
       </div>
       <ul className={styles.listLessonData}>
@@ -50,23 +50,25 @@ const LessonAccordation = () => {
         </Link>
 
         {/* Giving Route Directions */}
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 2 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(2)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.checkIcon}>
-              <TiTick />
-            </span>
-            Quiz Human checks
-          </div>
-          {openIndex === 2 && (
-            <p className={styles.description}>Quiz Human checks</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Human-Checks">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 2 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(2)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <TiTick />
+              </span>
+              Quiz Human checks
+            </div>
+            {openIndex === 2 && (
+              <p className={styles.description}>Quiz Human checks</p>
+            )}
+          </li>
+        </Link>
 
         {/* QUIZ – Giving Route Directions */}
         <Link to="/quizModuletwo">
@@ -92,26 +94,25 @@ const LessonAccordation = () => {
           </li>
         </Link>
 
-        {/* Route planning & Practice areas */}
-
-        {/* QUIZ – Route Planning */}
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 5 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(5)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>{" "}
-            Quiz vehicle checks
-          </div>
-          {openIndex === 5 && (
-            <p className={styles.description}> Quiz vehicle checks</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Vehicle-Checks">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 5 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(5)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>{" "}
+              Quiz vehicle checks
+            </div>
+            {openIndex === 5 && (
+              <p className={styles.description}> Quiz vehicle checks</p>
+            )}
+          </li>
+        </Link>
 
         {/* The Levels of Instruction */}
         <Link to="/quizModulethree">
@@ -127,7 +128,7 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Familiarising yourself with vehicle technology
+              What is Advanced Driving in Relation to the ADI Part 2 Exam?
             </div>
             {openIndex === 6 && (
               <p className={styles.description}>
@@ -137,25 +138,26 @@ const LessonAccordation = () => {
           </li>
         </Link>
 
-        {/* QUIZ – Levels of Instruction */}
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 7 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(7)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>{" "}
-            Quiz vehicle technology
-          </div>
-          {openIndex === 7 && (
-            <p className={styles.description}>Quiz vehicle technology</p>
-          )}
-        </li>
-
+        <Link to="/takequizCatName/Advanced-Driving-in-Relation-to-the-ADI">
+          {/* QUIZ – Levels of Instruction */}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 7 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(7)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>{" "}
+              Quiz vehicle technology
+            </div>
+            {openIndex === 7 && (
+              <p className={styles.description}>Quiz vehicle technology</p>
+            )}
+          </li>
+        </Link>
         {/* Agree Roles & Responsibilities */}
         <Link to="/quizModulefour">
           {" "}
@@ -170,7 +172,7 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              What is advanced driving
+              The COAST Method in Advanced Driving
             </div>
             {openIndex === 8 && (
               <p className={styles.description}>
@@ -179,23 +181,25 @@ const LessonAccordation = () => {
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 9 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(9)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz advanced driving
-          </div>
-          {openIndex === 9 && (
-            <p className={styles.description}>Quiz advanced driving</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/The-COAST-Method-in-Advanced-Driving">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 9 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(9)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz advanced driving
+            </div>
+            {openIndex === 9 && (
+              <p className={styles.description}>Quiz advanced driving</p>
+            )}
+          </li>
+        </Link>
         {/* ///////////////////////////////////////// */}
         <Link to="/quizModulefive">
           {" "}
@@ -210,30 +214,32 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              The coast method
+              Concentration in the Coast Method
             </div>
             {openIndex === 10 && (
               <p className={styles.description}>Understand The coast method</p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 11 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(11)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz the cost method
-          </div>
-          {openIndex === 11 && (
-            <p className={styles.description}>Quiz the cost method</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Concentration-in-the-Coast-Method">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 11 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(11)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz the cost method
+            </div>
+            {openIndex === 11 && (
+              <p className={styles.description}>Quiz the cost method</p>
+            )}
+          </li>
+        </Link>
         {/* ////////////////////////////////////////////////////// */}
         <Link to="/quizModulesix">
           {" "}
@@ -248,32 +254,35 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              ⁠Concentration in the Coast method
+              Observation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 12 && (
               <p className={styles.description}>
-                Understand The ⁠Concentration in the Coast method
+                Understand The Observation in the COAST Method for Advanced
+                Driving
               </p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 13 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(13)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz concentration
-          </div>
-          {openIndex === 13 && (
-            <p className={styles.description}>Quiz concentration</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Observation-in-the-COAST-Method-for-Advanced-Driving">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 13 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(13)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Observation
+            </div>
+            {openIndex === 13 && (
+              <p className={styles.description}>Quiz Observation</p>
+            )}
+          </li>
+        </Link>
         {/* /////////////////////////////////////////////// */}
         <Link to="/quizModuleseven">
           {" "}
@@ -288,32 +297,34 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Observation in the coast method
+              Anticipation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 14 && (
               <p className={styles.description}>
-                Understand Observation in the coast method
+                Understand Anticipation-in-the-COAST-Method-for-Advanced-Driving
               </p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 15 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(15)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz observation
-          </div>
-          {openIndex === 15 && (
-            <p className={styles.description}>Quiz observation</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Anticipation-in-the-COAST-Method-for-Advanced-Driving">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 15 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(15)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Anticipation
+            </div>
+            {openIndex === 15 && (
+              <p className={styles.description}>Quiz Anticipation</p>
+            )}
+          </li>
+        </Link>
         {/* /////////////////////////////////////////////// */}
         <Link to="/quizModule-eight">
           {" "}
@@ -328,32 +339,34 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Antipcation in the coast method
+              Space in the COAST Method for Advanced Driving
             </div>
             {openIndex === 16 && (
               <p className={styles.description}>
-                Understand Antipcation in the coast method
+                Understand Space in the COAST Method for Advanced Driving
               </p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 17 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(17)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz anticipation
-          </div>
-          {openIndex === 17 && (
-            <p className={styles.description}>Quiz anticipation</p>
-          )}
-        </li>
+        <Link to="/takequizCatName/Space-in-the-COAST-Method">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 17 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(17)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz anticipation
+            </div>
+            {openIndex === 17 && (
+              <p className={styles.description}>Quiz anticipation</p>
+            )}
+          </li>
+        </Link>
         {/* /////////////////////////////////////////////// */}
         <Link to="/quizModulenine">
           {" "}
@@ -368,30 +381,36 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              ⁠Space in the coast method
+              Time in the COAST Method for Advanced Driving
             </div>
             {openIndex === 18 && (
               <p className={styles.description}>
-                Understand ⁠Space in the coast method
+                Understand Time in the COAST Method for Advanced Driving
               </p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 19 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(19)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Quiz Space quiz
-          </div>
-          {openIndex === 19 && <p className={styles.description}>Space quiz</p>}
-        </li>
+        <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 19 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(19)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Time in the COAST Method for Advanced Driving
+            </div>
+            {openIndex === 19 && (
+              <p className={styles.description}>
+                Space Time in the COAST Method for Advanced Driving
+              </p>
+            )}
+          </li>
+        </Link>
         {/* /////////////////////////////////////////////// */}
         <Link to="/quizModule-Ten">
           {" "}
@@ -406,28 +425,36 @@ const LessonAccordation = () => {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Time in the coast method
+              Mastering the TUG Method for Safer and Smoother Driving
             </div>
             {openIndex === 20 && (
-              <p className={styles.description}>Time in the coast method</p>
+              <p className={styles.description}>
+                Mastering the TUG Method for Safer and Smoother Driving
+              </p>
             )}
           </li>
         </Link>
-        <li
-          className={`${styles.itemLesson} ${
-            openIndex === 21 ? styles.lessonOpen : ""
-          }`}
-          onMouseEnter={() => handleMouseEnter(21)}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.lessonRow}>
-            <span className={styles.quizIcon}>
-              <TiTick />
-            </span>
-            Time quiz
-          </div>
-          {openIndex === 21 && <p className={styles.description}>Time quiz</p>}
-        </li>
+        <Link to="/takequizCatName/Mastering-the-TUG-Method">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 21 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(21)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Mastering the TUG Method for Safer and Smoother Driving
+            </div>
+            {openIndex === 21 && (
+              <p className={styles.description}>
+                Quiz Mastering the TUG Method for Safer and Smoother Driving
+              </p>
+            )}
+          </li>
+        </Link>
         {/* /////////////////////////////////////////////// */}
         <Link to="/quizModuleEleven">
           {" "}

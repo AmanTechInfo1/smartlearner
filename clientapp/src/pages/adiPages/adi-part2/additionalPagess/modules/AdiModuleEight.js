@@ -1,9 +1,189 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleEight.module.css";
+import styles from "./AdiModuleOne.module.css";
+import { FaEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AdiModuleEight() {
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id;
+
+  const [text, setText] = useState("");
+  const [savedTexts, setSavedTexts] = useState([]); // Store multiple saved texts
+  const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
+  const [editIndex, setEditIndex] = useState(null);
+  const textareaRef = useRef(null);
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const saveText = () => {
+    if (text.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing) {
+        const updatedTexts = [...savedTexts];
+        updatedTexts[editIndex] = text;
+        setSavedTexts(updatedTexts);
+        setIsEditing(false); // Reset editing flag
+        setEditIndex(null);
+      } else {
+        setSavedTexts([...savedTexts, text]);
+      }
+      localStorage.setItem(
+        `notepadTextspage8_${userId}`,
+        JSON.stringify([...savedTexts, text])
+      );
+
+      setText("");
+    }
+  };
+
+  const editText = (index) => {
+    setIsEditing(true);
+    setEditIndex(index);
+    setText(savedTexts[index]); // Set the text to be edited
+    if (textareaRef.current) {
+      textareaRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText = (index) => {
+    const updatedTexts = savedTexts.filter((_, i) => i !== index);
+    setSavedTexts(updatedTexts);
+    localStorage.setItem(
+      `notepadTextspage8_${userId}`,
+      JSON.stringify(updatedTexts)
+    );
+  };
+
+  useEffect(() => {
+    const savedData = localStorage.getItem(`notepadTextspage8_${userId}`);
+    if (savedData) {
+      setSavedTexts(JSON.parse(savedData));
+    }
+  }, []);
+  // ////////////////////////////////////////////////////
+
+  const [text2, setText2] = useState("");
+  const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
+  const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
+  const [editIndex2, setEditIndex2] = useState(null);
+  const textareaRef2 = useRef(null);
+
+  const handleChange2 = (e) => {
+    setText2(e.target.value);
+  };
+
+  const saveText2 = () => {
+    if (text2.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing2) {
+        const updatedTexts2 = [...savedTexts2];
+        updatedTexts2[editIndex2] = text2;
+        setSavedTexts2(updatedTexts2);
+        setIsEditing2(false); // Reset editing flag
+        setEditIndex2(null);
+      } else {
+        setSavedTexts2([...savedTexts2, text2]);
+      }
+      localStorage.setItem(
+        `notepadText2spage8_${userId}`,
+        JSON.stringify([...savedTexts2, text2])
+      );
+
+      setText2("");
+    }
+  };
+
+  const editText2 = (index) => {
+    setIsEditing2(true);
+    setEditIndex2(index);
+    setText2(savedTexts2[index]); // Set the text to be edited
+    if (textareaRef2.current) {
+      textareaRef2.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText2 = (index) => {
+    const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
+    setSavedTexts2(updatedTexts2);
+    localStorage.setItem(
+      `notepadText2spage8_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
+  };
+
+  useEffect(() => {
+    const savedData2 = localStorage.getItem(`notepadText2spage8_${userId}`);
+    if (savedData2) {
+      setSavedTexts2(JSON.parse(savedData2));
+    }
+  }, []);
+
+  // /////////////////////////////////////////////////////////////
+  const [text3, setText3] = useState("");
+  const [savedTexts3, setSavedTexts3] = useState([]); // Store multiple saved texts
+  const [isEditing3, setIsEditing3] = useState(false); // Track if the user is editing
+  const [editIndex3, setEditIndex3] = useState(null);
+  const textareaRef3 = useRef(null);
+
+  const handleChange3 = (e) => {
+    setText3(e.target.value);
+  };
+
+  const saveText3 = () => {
+    if (text3.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing3) {
+        const updatedTexts3 = [...savedTexts3];
+        updatedTexts3[editIndex3] = text3;
+        setSavedTexts3(updatedTexts3);
+        setIsEditing3(false); // Reset editing flag
+        setEditIndex3(null);
+      } else {
+        setSavedTexts3([...savedTexts3, text3]);
+      }
+      localStorage.setItem(
+        `notepadText3spage8_${userId}`,
+        JSON.stringify([...savedTexts3, text3])
+      );
+
+      setText3("");
+    }
+  };
+
+  const editText3 = (index) => {
+    setIsEditing3(true);
+    setEditIndex3(index);
+    setText3(savedTexts3[index]); // Set the text to be edited
+    if (textareaRef3.current) {
+      textareaRef3.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText3 = (index) => {
+    const updatedTexts3 = savedTexts3.filter((_, i) => i !== index);
+    setSavedTexts3(updatedTexts3);
+    localStorage.setItem(
+      `notepadText3spage8_${userId}`,
+      JSON.stringify(updatedTexts3)
+    );
+  };
+
+  useEffect(() => {
+    const savedData3 = localStorage.getItem(`notepadText3spage8_${userId}`);
+    if (savedData3) {
+      setSavedTexts3(JSON.parse(savedData3));
+    }
+  }, []);
+
+  // ////////////////////////////////////////////////////
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -99,205 +279,393 @@ export default function AdiModuleEight() {
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
         <section className={styles.AdiModuleOneheader}>
-          <h1 ref={textRef}>{splitText()}</h1>
-          <div className={styles.AdiModuleOnevideo}>
-            <p> VIDEO – SELF CHECKS</p>
+          <div className="opicity"></div>
+          <section className={styles.AdiModuleOneheading}>
+            {" "}
+            <h1 ref={textRef}>{splitText()}</h1>
+          </section>
+        </section>
+
+        {/* /////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextArea}>
+          <h2>Mastering Space: The Secret to Smooth and Safe Driving 🚗💨</h2>
+        </div>
+
+        {/* ///////////////////////////////////////////////////// */}
+        <section className={styles.AdiModuleOneTextArea}>
+          <h2>Why Does Space Matter?</h2>
+          {/* ////////////////////////////////////////////////////////////// */}
+          <div className={styles.AdiModuleOneTextBox}>
+            <label>Write your thoughts below</label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows="5"
+              cols="30"
+              placeholder="Write your thoughts here..."
+            />
+            <br />
+            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+
+            <div className={styles.thoughtsListArea}>
+              {savedTexts.length === 0 ? (
+                <p>No saved thoughts.</p>
+              ) : (
+                <ul>
+                  {savedTexts.map((savedText, index) => (
+                    <li key={index}>
+                      <p>{savedText}</p>
+                      <span>
+                        <FaEdit
+                          onClick={() => editText(index)}
+                          id={styles.editListIcon}
+                        />
+
+                        <IoTrashBin
+                          onClick={() => deleteText(index)}
+                          id={styles.binListIcon}
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </section>
 
-        <section className={styles.AdiModuleOneobjectives}>
-          <h2>Objective:</h2>
-          <p>By the end of this lesson, you will:</p>
-          <ul>
-            <li>
-              1. Understand the importance of maintaining space as part of
-              advanced driving.
-            </li>
-            <li>
-              2. Learn strategies for managing space around your vehicle to
-              ensure safety and smooth driving.
-            </li>
-            <li>
-              3. Complete an activity to practice maintaining appropriate space
-              in real driving situations.
-            </li>
-          </ul>
-        </section>
-
-        <section className={styles.AdiModuleOneintroduction}>
-          <h2>1. Introduction to Space in the COAST Method</h2>
-          <p>
-            Space refers to the physical distance you maintain between your
-            vehicle and other road users, objects, or potential hazards. It’s a
-            critical element of the COAST method, as it provides you with the
-            necessary time and room to respond to changes on the road.
-          </p>
-          <p>
-            Maintaining proper space ensures that you can avoid collisions,
-            manage risks, and drive more smoothly. Advanced drivers use space
-            management to predict and adapt to the actions of others,
-            demonstrating control and professionalism.
-          </p>
-        </section>
-
-        <section className={styles.AdiModuleOnechecks}>
-          <h2>2. Why is Space Important?</h2>
-
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>1. Time to React:</h3>
-            <ul>
-              <li>
-                More space gives you more time to process and react to
-                unexpected changes.
-              </li>
-              <h3>2. Minimizes Risk:</h3>
-              <li>
-                A safe distance reduces the chance of collisions, especially in
-                emergencies.
-              </li>
-              <h3>3. Enhances Comfort:</h3>
-              <li>
-                Proper spacing ensures a smoother, less stressful drive for you
-                and your passengers.
-              </li>
-              <h3>4. Supports Anticipation:</h3>
-              <li>
-                Space allows you to predict and respond to potential hazards
-                effectively.
-              </li>
-            </ul>
+        {/* /////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleContentBox}>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              Imagine you're playing a high-stakes game of chess, but instead of
+              pieces on a board, you're surrounded by cars, cyclists,
+              pedestrians, and unpredictable road conditions. In this game,
+              space is your best friend —it gives you the time to think, the
+              room to move, and the control to keep everything running smoothly.
+            </p>
+          </div>
+          <div
+            className={styles.AdiModuleContentParaBoxm3}
+            style={{ marginTop: "1rem" }}
+          >
+            <p>
+              In advanced driving, space isn’t just about avoiding
+              accidents—it’s about staying ahead of the game. The more space you
+              manage, the more calm, professional, and in control you’ll look
+              behind the wheel. And guess what? Your examiner will definitely
+              notice.
+            </p>
+          </div>
+        </div>
+        {/* ///////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleContentBox}>
+          <h2>Think Fast, React Faster: The Power of Space</h2>
+          <div className={styles.AdiModuleContentParaBoxm2}>
+            <p>
+              Ever been stuck behind someone who slams their brakes at the last
+              second? Annoying, right? That’s what happens when drivers don’t
+              leave enough space. Keeping a safe distance isn’t just about
+              comfort —it’s your buffer zone for reacting to the unexpected.
+            </p>
+          </div>
+          <div
+            className={styles.AdiModuleContentParaBoxm3}
+            style={{ marginTop: "1rem" }}
+          >
+            <p>
+              More space means more time to react. It cuts down the risk of
+              collisions, makes driving less stressful, and keeps everything
+              flowing smoothly. Plus, when you're managing space well, you’re
+              always ready for what’s next—whether it’s a sudden stop, a merging
+              vehicle, or a cyclist swerving into the road.
+            </p>
+          </div>
+        </div>
+        {/* //////////////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            Types of Space You Need to Master
+          </div>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              Not all space is created equal! Here’s where you need to keep your
+              distance:
+            </p>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>🚘 Following Distance</h3>
+            <p>
+              If you’re too close to the car in front, you’re asking for
+              trouble. Use the 2-second rule in good weather— double it when the
+              roads are wet. That means picking a fixed point ahead, watching
+              when the car in front passes it, and counting, "One thousand and
+              one, one thousand and two." If you reach the point too soon, back
+              off!
+            </p>
           </div>
 
-          <h2>3. Types of Space to Manage</h2>
-
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>A. Following Distance</h3>
-            <ul>
-              <li>Maintain a safe gap from the vehicle in front.</li>
-              <li>
-                Use the 2-second rule in good conditions and increase it to 4
-                seconds or more in adverse weather or on wet roads.
-              </li>
-              <h3>B. Stopping Distance</h3>
-              <li>
-                Factor in your reaction time, braking capability, and road
-                conditions.
-              </li>
-              <li>
-                Be ready to stop safely within the visible distance ahead.
-              </li>
-              <h3>C. Side Space</h3>
-              <li>
-                Keep safe lateral space to the sides of your vehicle, especially
-                near cyclists, motorcyclists, or parked cars.
-              </li>
-              <li>
-                When overtaking, give at least 1.5 meters of clearance to
-                vulnerable road users.
-              </li>
-              <h3>D. Space Behind</h3>
-              <li>
-                Monitor your mirrors regularly to ensure vehicles behind are not
-                too close.
-              </li>
-              <li>
-                If being tailgated, slow down gradually to encourage the driver
-                to increase their distance.
-              </li>
-              <h3>E. Space at Junctions and Roundabouts</h3>
-              <li>
-                Avoid blocking crossings, junctions, or roundabouts. Always
-                leave enough room for unexpected movements by other road users.
-              </li>
-            </ul>
+          <div className={styles.adiseventipBox}>
+            <h3>🛑 Stopping Distance</h3>
+            <p>
+              Braking takes longer than you think—especially in bad weather.
+              Always leave enough space to stop within the visible distance
+              ahead. If you can’t see past a bend or a hill, slow down and
+              expect the unexpected.
+            </p>
           </div>
-          <h2>4. Strategies for Maintaining Space</h2>
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>A. Anticipate Changes</h3>
-            <ul>
-              <li>
-                Watch for brake lights, turn signals, or changes in traffic
-                flow. Adjust your space accordingly.
-              </li>
-              <h3>B. Use Road Positioning</h3>
-              <li>
-                Adjust your position to maximize space, such as moving slightly
-                left when passing parked cars to avoid doors opening
-                unexpectedly.
-              </li>
-              <h3>C. Adapt to Speed and Conditions</h3>
-              <li>
-                The faster you’re driving or the worse the road conditions, the
-                more space you need.
-              </li>
-              <h3>D. Manage Close-Followers</h3>
-              <li>
-                If a vehicle is too close behind, gradually slow down to
-                encourage them to back off, or pull over if necessary to let
-                them pass.
-              </li>
-            </ul>
+
+          <div className={styles.adiseventipBox}>
+            <h3>🏍 Side Space</h3>
+            <p>
+              Cyclists, motorcyclists, and parked cars all need their personal
+              space. When overtaking, leave at least 1.5 meters—or more if you
+              can. And when driving near parked cars, be ready for the dreaded
+              door swing from an unsuspecting passenger.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>🚛 Space Behind</h3>
+            <p>
+              Got a tailgater breathing down your neck? Don’t hit the brakes to
+              “teach them a lesson”—that’s a recipe for disaster. Instead,
+              gradually slow down to encourage them to back off. If they’re
+              still too close, find a safe place to let them pass.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>🚦 Space at Junctions and Roundabouts</h3>
+            <p>
+              Ever seen someone creep forward at a red light, only to get stuck
+              in the middle of the road? Don’t be that driver. Always leave
+              enough room for other vehicles to move freely—especially large
+              ones that need extra turning space.
+            </p>
           </div>
         </section>
 
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>5. Activity: Practicing Space Management</h2>
+        {/* ////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            How to Keep Your Space Like a Pro
+          </div>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              Space management isn’t just about keeping your distance—it’s about
+              reading the road and staying ahead of the game. Here’s how to
+              master it:
+            </p>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>👀 Anticipate What’s Coming</h3>
+            <p>
+              Watch for brake lights, turn signals, and changes in traffic flow.
+              The sooner you spot a potential issue, the easier it is to adjust
+              your space before it becomes a problem.
+            </p>
+          </div>
 
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>Part A: Pre-Drive Reflection</h3>
-            <p>Before your drive, ask yourself:</p>
-            <ul>
-              <li>
-                1. Are the road and weather conditions likely to affect spacing
-                requirements? <br />
-                2. Do I know the 2-second rule and how to apply it? <br />
-                3. Am I ready to adapt my space management to different road
-                users?
-              </li>
-            </ul>
+          <div className={styles.adiseventipBox}>
+            <h3>📍 Position Yourself Smartly</h3>
+            <p>
+              Your lane position can make a big difference. When passing parked
+              cars, move slightly to the left to avoid unexpected door swings.
+              When stopped in traffic, leave enough space to maneuver around the
+              car in front if needed.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>🏎 Adapt to Speed and Conditions</h3>
+            <p>
+              The faster you're going, the more space you need. On a dry road,
+              you might be fine with the 2-second rule, but in rain or fog? Give
+              yourself extra room.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>😡 Handle Close-Followers with Confidence</h3>
+            <p>
+              If someone’s tailgating you, don’t panic. Stay cool, slow down
+              gradually, and let them pass if necessary. It’s better to lose a
+              few seconds than risk an accident.
+            </p>
           </div>
         </section>
 
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>Part B: On-the-Road Spacing Challenge</h2>
+        {/* /////////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            🛞 On-the-Road Spacing Challenge
+          </div>
 
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>1. Following Distance Check:</h3>
+          <div className={styles.adiseventipBox}>
+            <h3>1️⃣ Following Distance Check:</h3>
+            <p>
+              Pick a fixed point (like a road sign) and test your 2-second rule.
+              If you reach the point too soon, back off and adjust your
+              distance.
+            </p>
+          </div>
 
-            <ul>
-              <li>
-                During your drive, use the 2-second rule to check your distance
-                from the vehicle in front:
-              </li>
-              <li>
-                Pick a fixed point (e.g., a road sign).
-                <br />
-                When the car in front passes the point, count "One thousand and
-                one, one thousand and two."
-                <br />
-                If you pass the point before finishing, increase your distance.
-              </li>
-              <h3>2. Side Space Monitoring</h3>
-              <li>
-                When overtaking cyclists or parked cars, ensure a minimum
-                clearance of 1.5 meters.
-              </li>
-              <li>
-                If conditions make this challenging, slow down and wait for a
-                safer opportunity to pass.
-              </li>
-              <h3>3. Reaction Space Test</h3>
-              <li>
-                As you approach junctions or roundabouts, maintain enough room
-                to stop safely if the vehicle ahead stops suddenly.
-              </li>
-              <li>
-                Be prepared to adjust spacing if traffic patterns change
-                unexpectedly.
-              </li>
-            </ul>
+          <div className={styles.adiseventipBox}>
+            <h3>2️⃣ Side Space Awareness:</h3>
+            <p>
+              When passing cyclists or parked cars, keep that 1.5-meter gap. If
+              space is tight, slow down and wait for a safer moment to overtake.
+            </p>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>3️⃣ Reaction Space Test:</h3>
+            <p>
+              As you approach junctions or roundabouts, leave enough room to
+              stop safely if needed. Stay alert and be ready to adjust if
+              traffic flow changes suddenly.
+            </p>
           </div>
         </section>
+
+        {/* ///////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleContentBox}>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              Practice the Following Distance Check during your next three
+              driving sessions, especially in varying traffic and weather
+              conditions.
+            </p>
+          </div>
+        </div>
+        {/* //////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextBox}>
+          <label>
+            Observe other drivers’ spacing habits and identify where
+            improvements could be made.
+          </label>
+          <textarea
+            ref={textareaRef2}
+            value={text2}
+            onChange={handleChange2}
+            rows="5"
+            cols="30"
+            placeholder="Write your thoughts here..."
+          />
+          <br />
+          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+
+          <div className={styles.thoughtsListArea}>
+            {savedTexts2.length === 0 ? (
+              <p>No saved thoughts.</p>
+            ) : (
+              <ul>
+                {savedTexts2.map((savedText2, index) => (
+                  <li key={index}>
+                    <p>{savedText2}</p>
+                    <span>
+                      <FaEdit
+                        onClick={() => editText2(index)}
+                        id={styles.editListIcon}
+                      />
+
+                      <IoTrashBin
+                        onClick={() => deleteText2(index)}
+                        id={styles.binListIcon}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+
+        {/* //////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextBox}>
+          <label>
+            Have you ever experienced a situation where maintaining proper space
+            saved you from a collision?
+          </label>
+          <textarea
+            ref={textareaRef3}
+            value={text3}
+            onChange={handleChange3}
+            rows="5"
+            cols="30"
+            placeholder="Write your thoughts here..."
+          />
+          <br />
+          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
+
+          <div className={styles.thoughtsListArea}>
+            {savedTexts3.length === 0 ? (
+              <p>No saved thoughts.</p>
+            ) : (
+              <ul>
+                {savedTexts3.map((savedText3, index) => (
+                  <li key={index}>
+                    <p>{savedText3}</p>
+                    <span>
+                      <FaEdit
+                        onClick={() => editText3(index)}
+                        id={styles.editListIcon}
+                      />
+
+                      <IoTrashBin
+                        onClick={() => deleteText3(index)}
+                        id={styles.binListIcon}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        {/* ///////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleContentBox}>
+          <h2>
+            Final Thought: Are You Giving Yourself Enough Room to Breathe?
+          </h2>
+          <div className={styles.AdiModuleContentParaBoxm2}>
+            <p>
+              Space isn’t just empty air between vehicles—it’s your safety net,
+              your escape route, and your best tool for stress-free driving.
+              Master it, and you’ll be on your way to becoming a smooth,
+              confident, and professional driver.
+            </p>
+          </div>
+          <div
+            className={styles.AdiModuleContentParaBoxm3}
+            style={{ marginTop: "1rem" }}
+          >
+            <p>
+              Next time you're behind the wheel, ask yourself: Do I have enough
+              space to handle anything that happens next? Keep practicing, and
+              soon, space management will feel like second nature! 🚗✨
+            </p>
+          </div>
+        </div>
+
+        {/* /////////////////// */}
+        <div className={styles.quizStartDiv}>
+                  <section className={styles.startQuizSection}>
+                    <h1>Start Quiz</h1>
+                    <h3>15 Questions</h3>
+                    <p>
+                      Here’s a quick summary quiz to test your understanding of of Part
+                      2: Human checks before setting off
+                    </p>
+                    <Link to="/takequizCatName/Space-in-the-COAST-Method">
+                      {" "}
+                      <button>Start Quiz</button>
+                    </Link>
+                  </section>
+                </div>
+        {/* ///////////////////////////////////////////// */}
       </div>
     </>
   );

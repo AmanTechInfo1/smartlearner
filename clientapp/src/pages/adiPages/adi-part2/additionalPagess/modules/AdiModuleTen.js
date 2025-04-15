@@ -1,9 +1,250 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleTen.module.css";
+import styles from "./AdiModuleOne.module.css";
+import { FaEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import roadImg from "../../../../../assets/images/moduleNine1Img.png";
+import road2Img from "../../../../../assets/images/moduleNine2Img.png";
 
 export default function AdiModuleTen() {
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id;
+
+  const [text, setText] = useState("");
+  const [savedTexts, setSavedTexts] = useState([]); // Store multiple saved texts
+  const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
+  const [editIndex, setEditIndex] = useState(null);
+  const textareaRef = useRef(null);
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const saveText = () => {
+    if (text.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing) {
+        const updatedTexts = [...savedTexts];
+        updatedTexts[editIndex] = text;
+        setSavedTexts(updatedTexts);
+        setIsEditing(false); // Reset editing flag
+        setEditIndex(null);
+      } else {
+        setSavedTexts([...savedTexts, text]);
+      }
+      localStorage.setItem(
+        `notepadTextspage10_${userId}`,
+        JSON.stringify([...savedTexts, text])
+      );
+
+      setText("");
+    }
+  };
+
+  const editText = (index) => {
+    setIsEditing(true);
+    setEditIndex(index);
+    setText(savedTexts[index]); // Set the text to be edited
+    if (textareaRef.current) {
+      textareaRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText = (index) => {
+    const updatedTexts = savedTexts.filter((_, i) => i !== index);
+    setSavedTexts(updatedTexts);
+    localStorage.setItem(
+      `notepadTextspage10_${userId}`,
+      JSON.stringify(updatedTexts)
+    );
+  };
+
+  useEffect(() => {
+    const savedData = localStorage.getItem(`notepadTextspage10_${userId}`);
+    if (savedData) {
+      setSavedTexts(JSON.parse(savedData));
+    }
+  }, []);
+
+  // /////////////////////////////////////////////////////////////////////////////////////
+  const [text2, setText2] = useState("");
+  const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
+  const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
+  const [editIndex2, setEditIndex2] = useState(null);
+  const textareaRef2 = useRef(null);
+
+  const handleChange2 = (e) => {
+    setText2(e.target.value);
+  };
+
+  const saveText2 = () => {
+    if (text2.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing2) {
+        const updatedTexts2 = [...savedTexts2];
+        updatedTexts2[editIndex2] = text2;
+        setSavedTexts2(updatedTexts2);
+        setIsEditing2(false); // Reset editing flag
+        setEditIndex2(null);
+      } else {
+        setSavedTexts2([...savedTexts2, text2]);
+      }
+      localStorage.setItem(
+        `notepadText2spage10_${userId}`,
+        JSON.stringify([...savedTexts2, text2])
+      );
+
+      setText2("");
+    }
+  };
+
+  const editText2 = (index) => {
+    setIsEditing2(true);
+    setEditIndex2(index);
+    setText2(savedTexts2[index]); // Set the text to be edited
+    if (textareaRef2.current) {
+      textareaRef2.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText2 = (index) => {
+    const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
+    setSavedTexts2(updatedTexts2);
+    localStorage.setItem(
+      `notepadText2spage10_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
+  };
+
+  useEffect(() => {
+    const savedData2 = localStorage.getItem(`notepadText2spage10_${userId}`);
+    if (savedData2) {
+      setSavedTexts2(JSON.parse(savedData2));
+    }
+  }, []);
+
+  // /////////////////////////////////////////////////////////////
+  const [text3, setText3] = useState("");
+  const [savedTexts3, setSavedTexts3] = useState([]); // Store multiple saved texts
+  const [isEditing3, setIsEditing3] = useState(false); // Track if the user is editing
+  const [editIndex3, setEditIndex3] = useState(null);
+  const textareaRef3 = useRef(null);
+
+  const handleChange3 = (e) => {
+    setText3(e.target.value);
+  };
+
+  const saveText3 = () => {
+    if (text3.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing3) {
+        const updatedTexts3 = [...savedTexts3];
+        updatedTexts3[editIndex3] = text3;
+        setSavedTexts3(updatedTexts3);
+        setIsEditing3(false); // Reset editing flag
+        setEditIndex3(null);
+      } else {
+        setSavedTexts3([...savedTexts3, text3]);
+      }
+      localStorage.setItem(
+        `notepadText3spage10_${userId}`,
+        JSON.stringify([...savedTexts3, text3])
+      );
+
+      setText3("");
+    }
+  };
+
+  const editText3 = (index) => {
+    setIsEditing3(true);
+    setEditIndex3(index);
+    setText3(savedTexts3[index]); // Set the text to be edited
+    if (textareaRef3.current) {
+      textareaRef3.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText3 = (index) => {
+    const updatedTexts3 = savedTexts3.filter((_, i) => i !== index);
+    setSavedTexts3(updatedTexts3);
+    localStorage.setItem(
+      `notepadText3spage10_${userId}`,
+      JSON.stringify(updatedTexts3)
+    );
+  };
+
+  useEffect(() => {
+    const savedData3 = localStorage.getItem(`notepadText3spage10_${userId}`);
+    if (savedData3) {
+      setSavedTexts3(JSON.parse(savedData3));
+    }
+  }, []);
+
+  // //////////////////////////////////////////////////////////////////////////
+  const [text4, setText4] = useState("");
+  const [savedTexts4, setSavedTexts4] = useState([]); // Store multiple saved texts
+  const [isEditing4, setIsEditing4] = useState(false); // Track if the user is editing
+  const [editIndex4, setEditIndex4] = useState(null);
+  const textareaRef4 = useRef(null);
+
+  const handleChange4 = (e) => {
+    setText4(e.target.value);
+  };
+
+  const saveText4 = () => {
+    if (text4.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing4) {
+        const updatedTexts4 = [...savedTexts4];
+        updatedTexts4[editIndex4] = text4;
+        setSavedTexts4(updatedTexts4);
+        setIsEditing4(false); // Reset editing flag
+        setEditIndex4(null);
+      } else {
+        setSavedTexts4([...savedTexts4, text4]);
+      }
+      localStorage.setItem(
+        `notepadText4spage10_${userId}`,
+        JSON.stringify([...savedTexts4, text4])
+      );
+
+      setText4("");
+    }
+  };
+
+  const editText4 = (index) => {
+    setIsEditing4(true);
+    setEditIndex4(index);
+    setText4(savedTexts4[index]); // Set the text to be edited
+    if (textareaRef4.current) {
+      textareaRef4.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText4 = (index) => {
+    const updatedTexts4 = savedTexts4.filter((_, i) => i !== index);
+    setSavedTexts4(updatedTexts4);
+    localStorage.setItem(
+      `notepadText4spage10_${userId}`,
+      JSON.stringify(updatedTexts4)
+    );
+  };
+
+  useEffect(() => {
+    const savedData4 = localStorage.getItem(`notepadText4spage10_${userId}`);
+    if (savedData4) {
+      setSavedTexts4(JSON.parse(savedData4));
+    }
+  }, []);
+
+  // ///////////////////////////////////////////////////////
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -99,249 +340,424 @@ export default function AdiModuleTen() {
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
         <section className={styles.AdiModuleOneheader}>
-          <h1 ref={textRef}>{splitText()}</h1>
-          <div className={styles.AdiModuleOnevideo}>
-            <p> INSERT VIDEO TIME</p>
-          </div>
+          <div className="opicity"></div>
+          <section className={styles.AdiModuleOneheading}>
+            {" "}
+            <h1 ref={textRef}>{splitText()}</h1>
+          </section>
         </section>
 
-        <section className={styles.AdiModuleOneobjectives}>
-          <h2>Lesson Objectives</h2>
-          <p>By the end of this lesson, you will:</p>
-          <ul>
-            <li>
-              1. Understand the TUG Method (Take, Use, Give) and its relevance
-              in advanced driving.
-            </li>
-            <li>
-              2. Learn how to apply the TUG Method in different driving
-              scenarios to improve safety and communication.
-            </li>
-            <li>
-              3. Be able to use concepts like limit points and funnel vision to
-              enhance your driving technique.
-            </li>
-          </ul>
-        </section>
-
-        <section className={styles.AdiModuleOnechecks}>
-          <h2>1. What is the TUG Method?</h2>
-          <p>
-            The TUG Method is an advanced driving approach designed to improve
-            control, awareness, and collaboration with other road users.
-          </p>
-          <div className={styles.AdiModuleOnecheckList}>
-            <ul>
-              <li>
-                <strong>Take :</strong>
-                Taking space on the road to maximise visibility and safety.
-              </li>
-
-              <li>
-                <strong>Use :</strong>
-                Using available information to make informed decisions.
-              </li>
-              <li>
-                <strong>Give :</strong>
-                Giving clear information to other road users about your
-                intentions.
-              </li>
-            </ul>
+        {/* /////////////////////////////////////////////////// */}
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem" }}
+        >
+          <div className={styles.adisevenheading}>
+            What’s the TUG Method? 🤔
           </div>
 
-          <h2>Understanding Driving Awareness</h2>
-
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>Tunnel Vision vs. Funnel Vision</h3>
+          <div className={styles.adiseventipBox}>
+            <p>
+              Think of the TUG Method as your personal driving toolkit. It’s a
+              simple yet powerful way to make sure you stay in control, aware of
+              your surroundings, and connected with other road users. Here’s the
+              breakdown:
+            </p>
             <ul>
               <li>
-                <strong>Tunnel Vision :</strong>A narrow focus on one area,
-                ignoring surrounding hazards or details.
+                <strong>Take:</strong> Take information. Grab that space to make
+                sure you have maximum visibility and safety to take in the most
+                information from your observations.
               </li>
               <li>
-                <strong>Funnel Vision :</strong>A wide initial focus, gradually
-                narrowing to prioritise key information while maintaining
-                awareness of the broader environment.
-              </li>
-              <h3>Limit Point</h3>
-              <p>
-                The limit point is the furthest point ahead on the road that you
-                can see clearly. It helps you:
-              </p>
-              <li>Judge the curvature of the road.</li>
-              <li>Adjust your speed and positioning as needed.</li>
-
-              <h3>Key Tip:</h3>
-              <li>
-                <strong>
-                  If the limit point moves away (road straightens):
-                </strong>
-                Gradually increase speed.
-                <br />
-                <strong>
-                  If the limit point gets closer (bend tightens) :
-                </strong>
-                Slow down to prepare for sharper steering adjustments.
-              </li>
-            </ul>
-          </div>
-          <h2>
-            Section 2: Take – Taking Space to Maximize Safety and Visibility
-          </h2>
-          <p>
-            Taking space means positioning your vehicle for the best possible
-            visibility and reaction time.
-          </p>
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>Examples of Taking Space :</h3>
-            <ul>
-              <li>
-                <strong>Country Roads :</strong> On narrow roads, position
-                slightly closer to the center of your lane to improve visibility
-                and anticipate oncoming traffic.
-              </li>
-
-              <li>
-                <strong>Bends :</strong>
-                Move towards the center line (if safe) to see further around the
-                curve.
-              </li>
-              <h3>Key Benefits :</h3>
-              <li>Improved hazard detection.</li>
-              <li>Increased reaction time.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>Section 3: Use – Using Information Effectively</h2>
-          <p>
-            Using information is about actively observing and processing your
-            surroundings.
-          </p>
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>Examples of Using Information :</h3>
-
-            <ul>
-              <li>
-                <strong>A. Approaching a Roundabout :</strong>
-                <br />
-                1. Spot road signs to identify exits early.
-                <br />
-                2. Observe other vehicles’ indicators and positioning to predict
-                their movements.
+                <strong>Use:</strong> Take full advantage of the information
+                around you to make smarter decisions.
               </li>
               <li>
-                <strong>B. Urban Driving :</strong>
-                <br />
-                1. Look for parked vehicles, pedestrians, and cyclists who may
-                move into your path.
-              </li>
-              <h3>Key Actions :</h3>
-              <li>
-                Always scan the road ahead, to the sides, and behind using
-                mirrors.
-              </li>
-              <li>
-                Use information to anticipate and prepare for changes in traffic
-                flow.
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>Section 4: Give – Giving Clear Information</h2>
-          <p>
-            Giving information ensures other road users know your intentions,
-            making the road safer for everyone.
-          </p>
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>How to Give Clear Information :</h3>
-
-            <ul>
-              <li>
-                <strong>Use Indicators :</strong>
-                Signal well in advance when turning or changing lanes.
-              </li>
-              <li>
-                <strong>Use Brake Lights :</strong>
-                Gradually press the brake pedal to warn drivers behind you of
-                your intention to slow down.
-              </li>
-              <li>
-                <strong>Positioning :</strong> Adjust your road position to
-                signal your intent (e.g., moving slightly to the right before
-                turning right).
-              </li>
-              <h3>Key Example :</h3>
-              <li>
-                <strong>Changing Lanes on a Motorway : </strong> <br></br>
-                1. Signal early.
-                <br />
-                2. Check mirrors and blind spots.
-                <br />
-                3. Change lanes smoothly to communicate your intention clearly.
-              </li>
-
-              <h3>Summary: Mastering the TUG Method</h3>
-              <li>
-                <strong>Take :</strong> Position your vehicle for maximum
-                visibility and safety.
-              </li>
-
-              <li>
-                <strong>Use :</strong> Gather and process information from your
-                surroundings to anticipate hazards.
-              </li>
-              <li>
-                <strong>Give :</strong> Communicate your intentions clearly and
-                consistently to other drivers.
+                <strong>Give:</strong> Let other road users know exactly what
+                you’re doing with clear signals and positioning.
               </li>
             </ul>
             <p>
-              By applying the TUG Method, you’ll improve not only your safety
-              but also your collaboration with other road users, making you a
-              more confident and competent driver.
+              "Take" is all about positioning your car for the best view and the
+              quickest reaction time. It's like being the road superhero, always
+              ready for whatever comes your way! 💪
             </p>
+            <p>
+              <strong>Examples of Taking Space:</strong>
+            </p>
+            <ul>
+              <li>
+                <strong>Country Roads:</strong>
+                If the road’s narrow, shift a little closer to the center to get
+                a better view of oncoming traffic.
+              </li>
+              <li>
+                <strong>Bends:</strong>
+                Steer towards the center line to see more around the curve (but
+                always check if it’s safe!).
+              </li>
+            </ul>
           </div>
 
-          <h2>Final Activity: TUG in Action</h2>
-
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>
-              <strong>Task :</strong> Apply the TUG Method to the following
-              scenario :
-            </h3>
+          <div className={styles.adiseventipBox}>
+            <h3>Why Does Taking Space Help?</h3>
 
             <ul>
-              <li>You are driving on a rural road approaching a sharp bend.</li>
               <li>
-                <strong>B. Urban Driving :</strong>
-                <br />
-                1. Look for parked vehicles, pedestrians, and cyclists who may
-                move into your path.
+                <strong>Better hazard detection</strong> (so you can react
+                early).
               </li>
+              <li>
+                <strong>More time to think and act.</strong>
+              </li>
+            </ul>
+          </div>
 
+          <div className={styles.adiseventipBox}>
+            <h3>Activity: Positioning Practice!</h3>
+            <p>
+              Look at this diagram of a curved country road. Where would you
+              position your vehicle for optimal visibility? Remember what we
+              have previously studied regarding limit points and funnel vision.
+              Write down why that position works best for safety. 🤔
+            </p>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <img
+              src={roadImg}
+              alt=""
+              style={{
+                marginTop: "1rem",
+                maxWidth: "500px",
+                width: "100%",
+              }}
+            />
+          </div>
+        </section>
+        {/* ///////////////////////////////////////////////////////// */}
+        <section className={styles.AdiModuleOneTextArea}>
+          {/* ////////////////////////////////////////////////////////////// */}
+          <div className={styles.AdiModuleOneTextBox}>
+            <label>Write down your reasoning :</label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows="5"
+              cols="30"
+              placeholder="Write your thoughts here..."
+            />
+            <br />
+            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+
+            <div className={styles.thoughtsListArea}>
+              {savedTexts.length === 0 ? (
+                <p>No saved thoughts.</p>
+              ) : (
+                <ul>
+                  {savedTexts.map((savedText, index) => (
+                    <li key={index}>
+                      <p>{savedText}</p>
+                      <span>
+                        <FaEdit
+                          onClick={() => editText(index)}
+                          id={styles.editListIcon}
+                        />
+
+                        <IoTrashBin
+                          onClick={() => deleteText(index)}
+                          id={styles.binListIcon}
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+        {/* ///////////////////////////////////////////////////// */}
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem" }}
+        >
+          <div className={styles.adisevenheading}>
+            Use – Making the Most of the Road's Info 🔍
+          </div>
+          <p>
+            "Use" means you’re actively soaking in everything around you—the
+            road signs, the weather, the vehicles ahead, and those cyclists
+            weaving in and out. Being a road detective helps you make the best
+            choices on the fly! 🕵♂️
+          </p>
+
+          <div className={styles.adiseventipBox}>
+            <h3>How to Use Information:</h3>
+
+            <ul>
+              <h4>
+                {" "}
+                <strong>1. Approaching a Roundabout:</strong>
+              </h4>
+              <li>Spot those road signs early to know which exit is yours.</li>
               <li>
-                An oncoming vehicle is visible but distant, and the road narrows
-                just past the bend.
+                Observe the other drivers—are they indicating? What’s their
+                position?
               </li>
-              <h3>Your response should include :</h3>
+            </ul>
+
+            <ul>
+              <h4>
+                <strong>2. Urban Driving:</strong>
+              </h4>
               <li>
-                1. How you would Take space to enhance visibility and safety.
+                Look out for parked cars, pedestrians, and cyclists. They’re
+                ready to pop up in your path, and you need to be ready!
               </li>
+            </ul>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>Give – Let Others Know Your Moves 💬</h3>
+
+            <ul>
               <li>
-                2. How you would Use information from the road, the vehicle
-                ahead, and the environment.
-              </li>
-              <li>
-                3. How you would Give information to other road users about your
-                intentions.
+                "Give" is all about communication! When you’re clear about your
+                intentions, other drivers can adjust accordingly, making the
+                road safer for everyone. 🚦
               </li>
             </ul>
           </div>
         </section>
+        {/* //////////////////////////////////////////////////////////////// */}
+        <section className={styles.AdiModuleOneTextArea}>
+          {/* ////////////////////////////////////////////////////////////// */}
+          <div className={styles.AdiModuleOneTextBox}>
+            <label>
+              What are some ways you can give information to other road users?
+            </label>
+            <textarea
+              ref={textareaRef2}
+              value={text2}
+              onChange={handleChange2}
+              rows="5"
+              cols="30"
+              placeholder="Write your thoughts here..."
+            />
+            <br />
+            <button onClick={saveText2}>
+              {isEditing2 ? "Update" : "Save"}
+            </button>
+
+            <div className={styles.thoughtsListArea}>
+              {savedTexts2.length === 0 ? (
+                <p>No saved thoughts.</p>
+              ) : (
+                <ul>
+                  {savedTexts2.map((savedText2, index) => (
+                    <li key={index}>
+                      <p>{savedText2}</p>
+                      <span>
+                        <FaEdit
+                          onClick={() => editText2(index)}
+                          id={styles.editListIcon}
+                        />
+
+                        <IoTrashBin
+                          onClick={() => deleteText2(index)}
+                          id={styles.binListIcon}
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* ///////////////////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adiseventipBox}>
+            <h3>How to Give Information:</h3>
+
+            <ul>
+              <li>
+                <strong> 1. Indicators:</strong> Signal early when changing
+                lanes or turning.
+              </li>
+              <li>
+                <strong>2. Brake Lights:</strong> Gradually press the brake to
+                warn the car behind that you’re slowing down.
+              </li>
+              <li>
+                <strong>3. Positioning:</strong> Move your car a little to the
+                side before turning to give others the heads-up.
+              </li>
+            </ul>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>Example: Changing Lanes on the Motorway:</h3>
+
+            <ul>
+              <li>
+                <strong> Signal early.</strong>
+              </li>
+              <li>
+                <strong>Check your mirrors and blind spots.</strong>
+              </li>
+              <li>
+                <strong>Change lanes smoothly</strong> so everyone’s on the same
+                page.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <div className={styles.AdiModuleOneTextBox}  style={{marginTop:'1rem'}}>
+          <label>
+            Imagine you’re about to merge onto a busy motorway. Write out the
+            steps you’d take to signal, position, and change lanes safely and
+            clearly. Think about the other road users—how would you make sure
+            everyone knows your next move?
+          </label>
+          <textarea
+            ref={textareaRef3}
+            value={text3}
+            onChange={handleChange3}
+            rows="5"
+            cols="30"
+            placeholder="Write your thoughts here..."
+          />
+          <br />
+          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
+
+          <div className={styles.thoughtsListArea}>
+            {savedTexts3.length === 0 ? (
+              <p>No saved thoughts.</p>
+            ) : (
+              <ul>
+                {savedTexts3.map((savedText3, index) => (
+                  <li key={index}>
+                    <p>{savedText3}</p>
+                    <span>
+                      <FaEdit
+                        onClick={() => editText3(index)}
+                        id={styles.editListIcon}
+                      />
+
+                      <IoTrashBin
+                        onClick={() => deleteText3(index)}
+                        id={styles.binListIcon}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        {/* ///////////////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection} style={{marginTop:'1rem'}}>
+          <div className={styles.adisevenheading}>
+            Final Activity: TUG in Action!
+          </div>
+          <p>
+            Put your TUG skills to the test! Imagine you’re driving on a rural
+            road, and there's a sharp bend ahead. An oncoming car is visible but
+            distant, and the road narrows right after the bend.
+          </p>
+
+          <div className={styles.adiseventipBox}>
+            <h3>Write down your response in a step-by-step format:</h3>
+            <p>
+              <strong>1. How would you take space </strong> to maximise visibility and safety?
+            </p>
+            <p>
+              <strong>2. How would you use the information</strong> from the
+              road and other vehicles to make the best decision?
+            </p>
+            <p>
+              <strong>How would you give information</strong> to the oncoming
+              driver and other road users?
+            </p>
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <img
+              src={road2Img}
+              alt=""
+              style={{
+                marginTop: "1rem",
+                maxWidth: "350px",
+                width: "100%",
+              }}
+            />
+          </div>
+        </section>
+
+        <div className={styles.AdiModuleContentBox}>
+          <div className={styles.AdiModuleContentParaBoxm2}>
+            <p>
+              Once you’ve written it, review your plan with an instructor or a
+              fellow learner. Keep practicing, and soon you'll be driving like a
+              true TUG pro! 🚗👑
+            </p>
+          </div>
+        </div>
+        {/* /////////////////////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextBox}>
+        
+          <textarea
+            ref={textareaRef4}
+            value={text4}
+            onChange={handleChange4}
+            rows="5"
+            cols="30"
+            placeholder="Write your thoughts here..."
+          />
+          <br />
+          <button onClick={saveText4}>{isEditing4 ? "Update" : "Save"}</button>
+
+          <div className={styles.thoughtsListArea}>
+            {savedTexts4.length === 0 ? (
+              <p>No saved thoughts.</p>
+            ) : (
+              <ul>
+                {savedTexts4.map((savedText4, index) => (
+                  <li key={index}>
+                    <p>{savedText4}</p>
+                    <span>
+                      <FaEdit
+                        onClick={() => editText4(index)}
+                        id={styles.editListIcon}
+                      />
+
+                      <IoTrashBin
+                        onClick={() => deleteText4(index)}
+                        id={styles.binListIcon}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+
+         <div className={styles.quizStartDiv}>
+                  <section className={styles.startQuizSection}>
+                    <h1>Start Quiz</h1>
+                    <h3>15 Questions</h3>
+                    <p></p>
+                    <Link to="/takequizCatName/Mastering-the-TUG-Method">
+                      {" "}
+                      <button>Start Quiz</button>
+                    </Link>
+                  </section>
+                </div>
+        {/* /////////////////////////////////////////////////////////// */}
       </div>
     </>
   );

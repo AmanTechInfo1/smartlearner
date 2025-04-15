@@ -17,6 +17,7 @@
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.1",
     "crypto-js": "^4.2.0",
+    "framer-motion": "^12.7.3",
     "google-tts-api": "^2.0.2",
     "gsap": "^3.12.5",
     "js-base64": "^3.7.7",

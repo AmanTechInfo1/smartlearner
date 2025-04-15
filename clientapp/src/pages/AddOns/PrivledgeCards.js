@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./PrivledgeCards.module.css";
 import frontPrivledge from "../../assets/images/privcard.png";
 import backPrivledge from "../../assets/images/backprivcard.png";
-import marrysGarage from "../../assets/images/marrysGarrage.jpg"
-import munyBeautyLogo from "../../assets/images/munybeauty.jpg"
+import marrysGarage from "../../assets/images/marrysGarrage.jpg";
+import munyBeautyLogo from "../../assets/images/munybeauty.jpg";
+import styliesJerk from "../../assets/images/stylisJerk.png";
+import cafeloco from "../../assets/images/cafeloco.png";
+import phiaBeauty from "../../assets/images/phialoungeBeauty.png";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -306,6 +309,18 @@ export default function PrivledgeCards() {
       discount: "10% off orders over £30",
       contact: "Cafe 101 - 07956793727",
       logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXfVBdCcBO96EIrk70nqhFHucpfctmT40Hth2neJAsa_Ktxa2tuR0F13zizpUQiNlxGL1557w-ve9ZwCJjvYRJsJY57P9O0_elHkWSb1M751Kua7JW-Z-3eGIOJAWK--L-3wxTMP=s320?key=kMULrrsinROClPMsm8cFCUxl",
+    },
+    {
+      name: "Cafe Locco",
+      logo: cafeloco,
+    },
+    {
+      name: "Phia’s Beauty Lounge ",
+      logo: phiaBeauty,
+    },
+    {
+      name: "Stylie’s Jerk Station",
+      logo: styliesJerk,
     },
   ];
 

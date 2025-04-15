@@ -1,9 +1,131 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleNine.module.css";
+import styles from "./AdiModuleOne.module.css";
+import { FaEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AdiModuleNine() {
+  const { userDetails } = useSelector((state) => state.auth);
+  const userId = userDetails?._id;
+
+  const [text, setText] = useState("");
+  const [savedTexts, setSavedTexts] = useState([]); // Store multiple saved texts
+  const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
+  const [editIndex, setEditIndex] = useState(null);
+  const textareaRef = useRef(null);
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const saveText = () => {
+    if (text.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing) {
+        const updatedTexts = [...savedTexts];
+        updatedTexts[editIndex] = text;
+        setSavedTexts(updatedTexts);
+        setIsEditing(false); // Reset editing flag
+        setEditIndex(null);
+      } else {
+        setSavedTexts([...savedTexts, text]);
+      }
+      localStorage.setItem(
+        `notepadTextspage9_${userId}`,
+        JSON.stringify([...savedTexts, text])
+      );
+
+      setText("");
+    }
+  };
+
+  const editText = (index) => {
+    setIsEditing(true);
+    setEditIndex(index);
+    setText(savedTexts[index]); // Set the text to be edited
+    if (textareaRef.current) {
+      textareaRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText = (index) => {
+    const updatedTexts = savedTexts.filter((_, i) => i !== index);
+    setSavedTexts(updatedTexts);
+    localStorage.setItem(
+      `notepadTextspage9_${userId}`,
+      JSON.stringify(updatedTexts)
+    );
+  };
+
+  useEffect(() => {
+    const savedData = localStorage.getItem(`notepadTextspage9_${userId}`);
+    if (savedData) {
+      setSavedTexts(JSON.parse(savedData));
+    }
+  }, []);
+  // ////////////////////////////////////////////////////
+
+  const [text2, setText2] = useState("");
+  const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
+  const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
+  const [editIndex2, setEditIndex2] = useState(null);
+  const textareaRef2 = useRef(null);
+
+  const handleChange2 = (e) => {
+    setText2(e.target.value);
+  };
+
+  const saveText2 = () => {
+    if (text2.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing2) {
+        const updatedTexts2 = [...savedTexts2];
+        updatedTexts2[editIndex2] = text2;
+        setSavedTexts2(updatedTexts2);
+        setIsEditing2(false); // Reset editing flag
+        setEditIndex2(null);
+      } else {
+        setSavedTexts2([...savedTexts2, text2]);
+      }
+      localStorage.setItem(
+        `notepadText2spage9_${userId}`,
+        JSON.stringify([...savedTexts2, text2])
+      );
+
+      setText2("");
+    }
+  };
+
+  const editText2 = (index) => {
+    setIsEditing2(true);
+    setEditIndex2(index);
+    setText2(savedTexts2[index]); // Set the text to be edited
+    if (textareaRef2.current) {
+      textareaRef2.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText2 = (index) => {
+    const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
+    setSavedTexts2(updatedTexts2);
+    localStorage.setItem(
+      `notepadText2spage9_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
+  };
+
+  useEffect(() => {
+    const savedData2 = localStorage.getItem(`notepadText2spage9_${userId}`);
+    if (savedData2) {
+      setSavedTexts2(JSON.parse(savedData2));
+    }
+  }, []);
+
+  // /////////////////////////////////////////////////////////////////
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -99,198 +221,299 @@ export default function AdiModuleNine() {
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
         <section className={styles.AdiModuleOneheader}>
-          <h1 ref={textRef}>{splitText()}</h1>
-          <div className={styles.AdiModuleOnevideo}>
-            <p> INSERT VIDEO TIME</p>
-          </div>
+          <div className="opicity"></div>
+          <section className={styles.AdiModuleOneheading}>
+            {" "}
+            <h1 ref={textRef}>{splitText()}</h1>
+          </section>
         </section>
 
-        <section className={styles.AdiModuleOneobjectives}>
-          <h2>Objective:</h2>
-          <p>By the end of this lesson, you will:</p>
-          <ul>
-            <li>
-              1. Understand the role of Time in the COAST method for advanced
+        {/* //////////////////////////////////////////////////// */}
+        <section className={styles.AdiModuleOneTextArea}>
+          <h2>How could giving yourself more time help with your driving?</h2>
+          {/* ////////////////////////////////////////////////////////////// */}
+          <div className={styles.AdiModuleOneTextBox}>
+            <label>Write your thoughts below</label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows="5"
+              cols="30"
+              placeholder="Write your thoughts here..."
+            />
+            <br />
+            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+
+            <div className={styles.thoughtsListArea}>
+              {savedTexts.length === 0 ? (
+                <p>No saved thoughts.</p>
+              ) : (
+                <ul>
+                  {savedTexts.map((savedText, index) => (
+                    <li key={index}>
+                      <p>{savedText}</p>
+                      <span>
+                        <FaEdit
+                          onClick={() => editText(index)}
+                          id={styles.editListIcon}
+                        />
+
+                        <IoTrashBin
+                          onClick={() => deleteText(index)}
+                          id={styles.binListIcon}
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+        {/* //////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            🚘 Why Does Time Matter in Driving?
+          </div>
+          <div className={styles.AdiModuleContentBox}>
+            <div className={styles.AdiModuleContentParaBox}>
+              <p>
+                Imagine driving is like playing chess—if you only focus on the
+                piece right in front of you, you’ll always be caught off guard.
+                But if you plan three moves ahead, you can anticipate, adapt,
+                and stay in control. That’s exactly what time management in
+                driving is all about!
+              </p>
+            </div>
+            <div
+              className={styles.AdiModuleContentParaBox}
+              style={{ marginTop: "1rem" }}
+            >
+              <p>
+                Time isn’t just about how fast you go—it’s about how much room
+                you give yourself to think, react, and make the right decisions.
+                The more time you allow, the smoother, safer, and less stressful
+                your journey will be. Plus, mastering time is a major part of
+                the COAST method, helping you drive with confidence and
+                professionalism.
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.adiseventipBox}>
+            <h3>More Time = Fewer Surprises</h3>
+            <p>
+              Ever slammed on the brakes at the last second? Or misjudged a gap
+              at a roundabout? That’s what happens when you don’t give yourself
+              enough time. When you manage time well, you:
+            </p>
+            <ul>
+              <li>
+                <strong>Spot hazards early</strong> and react before they become
+                a problem.
+              </li>
+              <li>
+                <strong>Stay calm</strong> under pressure, avoiding last-minute
+                panic moves.
+              </li>
+              <li>
+                <strong>Glide through traffic</strong> smoothly, instead of
+                jerky stops and rushed maneuvers.{" "}
+              </li>
+              <li>
+                <strong>Create a safety buffer,</strong> reducing the chances of
+                accidents or close calls.
+              </li>
+            </ul>
+            <p>
+              In short—time is your best tool for stress-free, professional
               driving.
-            </li>
-            <li>
-              2. Learn how to use time effectively to enhance safety and
-              decision-making.
-            </li>
-            <li>
-              3. Complete an activity to develop better time management and
-              hazard anticipation while driving.
-            </li>
-          </ul>
+            </p>
+          </div>
         </section>
+        {/* //////////////////////////////////////////////////////// */}
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            How to Be a Time-Management Pro on the Road
+          </div>
 
-        <section className={styles.AdiModuleOneintroduction}>
-          <h2>1. Introduction to Time in Driving</h2>
-          <p>
-            In the COAST method, Time refers to the ability to assess and manage
-            the timing of your actions while driving. Giving yourself more time
-            allows you to anticipate hazards, make better decisions, and react
-            calmly to changes on the road.
-          </p>
-          <p>
-            Time is not just about speed—it's about creating opportunities to
-            stay in control and maintain safety, especially in complex or
-            unpredictable driving environments.
-          </p>
-        </section>
+          <div className={styles.adiseventipBox}>
+            <h3>🔭 Look Ahead to Your Limit Points</h3>
+            <p>
+              Think of your eyes like a radar scanning for threats far ahead. By
+              spotting bends, traffic lights, or merging vehicles early, you can
+              predict what’s coming and adjust your approach smoothly—no more
+              last-minute surprises!
+            </p>
+          </div>
 
-        <section className={styles.AdiModuleOnechecks}>
-          <h2>2. Why is Time Important in Driving?</h2>
+          <div className={styles.adiseventipBox}>
+            <h3>🏎 Adjust Speed to Conditions</h3>
+            <p>
+              Driving in heavy rain? Thick fog? Rush hour chaos? These
+              situations demand more reaction time. Slowing down slightly gives
+              you extra moments to process what’s happening, so you’re never
+              caught off guard.
+            </p>
+          </div>
 
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>1. Hazard Anticipation:</h3>
+          <div className={styles.adiseventipBox}>
+            <h3>🚦 Master the Art of a Smooth Approach</h3>
+            <p>
+              Rushing toward a red light just to slam the brakes? Not a great
+              move. Instead, ease off the accelerator early when approaching:
+            </p>
             <ul>
               <li>
-                More time allows you to spot and assess potential hazards early.
+                <strong>Junctions </strong> – Slow down in advance so you don’t
+                have to stop suddenly.
               </li>
-              <h3>2. Reduced Stress</h3>
               <li>
-                Managing time effectively helps you remain calm and composed,
-                avoiding rushed or abrupt actions.
+                <strong>Roundabouts</strong> - Use time to assess gaps and enter
+                confidently.
               </li>
-              <h3>3. Smooth Driving:</h3>
               <li>
-                Proper use of time ensures smoother acceleration, braking, and
-                cornering, making the journey more comfortable for passengers.
-              </li>
-              <h3>4. Safety Margin:</h3>
-              <li>
-                Extra time creates a buffer, reducing the likelihood of
-                collisions or near misses.
+                <strong>Traffic lights </strong> - If you see an amber light,
+                use the extra seconds to decide whether to stop or go safely.
               </li>
             </ul>
           </div>
 
-          <h2>3. Key Time Management Techniques</h2>
-
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>A. Limit points</h3>
-            <ul>
-              <li>
-                Always look to your limit points identify potential hazards.
-              </li>
-              <li>
-                This means scanning far ahead of your vehicle to anticipate
-                what’s coming up, such as traffic lights, bends, or vehicles
-                entering the road.
-              </li>
-              <h3>B. Adjusting Speed to Conditions</h3>
-              <li>
-                Slow down in adverse weather, heavy traffic, or areas with poor
-                visibility to give yourself more time to react.
-              </li>
-
-              <h3>C. Timing Your Approach</h3>
-              <li>
-                <strong>1. To Junctions :</strong>
-                Ease off the accelerator early to approach junctions smoothly
-                rather than rushing and braking sharply.
-                <br />
-                <strong>2. To Roundabouts :</strong> Use time to assess gaps in
-                traffic and decide when to enter without hesitation.
-                <br />
-                <strong>3. To Traffic Lights :</strong> When approaching amber
-                lights, use the extra time to judge whether to stop or proceed
-                safely.
-              </li>
-              <h3>D. Responding to Hazards </h3>
-              <li>
-                Anticipate the actions of other road users, such as pedestrians
-                crossing or vehicles merging, by allowing time to evaluate their
-                behaviour.
-              </li>
-              <h3>E. Create Time Using Space</h3>
-              <li>
-                Maintain safe distances from other road users (e.g., 2-second
-                rule), as extra space translates directly into more time to
-                react.
-              </li>
-            </ul>
+          <div className={styles.adiseventipBox}>
+            <h3>🛑 Give Hazards the Time They Deserve</h3>
+            <p>
+              People and cars can be unpredictable. A pedestrian might step onto
+              the road. A parked car could pull out. Instead of reacting too
+              late, give yourself extra time to observe and anticipate.
+            </p>
           </div>
-          <h2>4. Common Situations Where Time Management is Crucial</h2>
-          <div className={styles.AdiModuleOnecheckList}>
-            <h3>1. Merging Lanes :</h3>
+
+          <div className={styles.adiseventipBox}>
+            <h3>⏳ More Space = More Time</h3>
+            <p>
+              Keeping a safe distance (like the 2-second rule) isn’t just about
+              avoiding crashes—it’s about buying yourself time to react. The
+              more space you create, the longer you have to make smart
+              decisions.
+            </p>
+          </div>
+          <div className={styles.adiseventipBox}>
+            <h3>When Time Management is a Game-Changer</h3>
+
             <ul>
-              <li>Use time to assess gaps and merge smoothly.</li>
-              <h3>2. Overtaking :</h3>
               <li>
-                Take time to assess the road ahead, ensuring you have enough
-                space and visibility to overtake safely.
+                <strong>1️⃣ Merging Lanes </strong> – Don’t just squeeze in at
+                the last second! Use time to assess gaps and merge smoothly.
               </li>
-              <h3>3. Negotiating Bends :</h3>
               <li>
-                Approach bends with enough time to adjust speed and position
-                based on visibility and road conditions.
+                <strong> 2️⃣ Overtaking –</strong> Rushed overtakes are risky.
+                Take time to scan the road ahead and make sure there’s enough
+                space.
+              </li>
+              <li>
+                <strong>3️⃣ Bends & Corners – </strong> - Approaching too fast?
+                Bad move. Give yourself time to adjust speed and position before
+                the bend.
               </li>
             </ul>
           </div>
         </section>
 
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>5. Activity: Time Awareness in Driving</h2>
-
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>Part A: Pre-Drive Planning</h3>
-            <p>Before setting off, answer these questions:</p>
-            <ul>
-              <li>
-                1. Do I know the route, including potential hazards like busy
-                junctions or narrow roads?
-                <br />
-                2. Are there external factors, such as weather or traffic, that
-                may require me to adjust my timing?
-                <br />
-                3. Am I mentally prepared to anticipate and react calmly?
-              </li>
-            </ul>
+        <section className={styles.adisevenhintsSection}>
+          <div className={styles.adisevenheading}>
+            🚗 Ready for a Challenge? Test Your Time Awareness!
           </div>
-        </section>
 
-        <section className={styles.AdiModuleOneactivity}>
-          <h2>Part B: Time Management Drill</h2>
-
-          <div className={styles.AdiModuleOnechecklist}>
-            <h3>1. 12-Second Rule Practice :</h3>
+          <div className={styles.adiseventipBox}>
+            <h3>📝 Pre-Drive Planning</h3>
+            <p>Before you hit the road, ask yourself:</p>
 
             <ul>
+              <li>Do I know my route and any tricky areas I might face?</li>
+              <li>Will weather or traffic affect my timing today?</li>
               <li>
-                While driving, pick a fixed point ahead (e.g., a signpost or a
-                junction).
-              </li>
-              <li>
-                Begin counting as you observe the point. If you pass it before
-                12 seconds, reduce your speed slightly to give yourself more
-                time.
-              </li>
-              <li>Repeat this at various points on your journey.</li>
-              <h3>2. Smooth Approaches Exercise :</h3>
-              <li>
-                <strong>For the next 10 minutes of driving: </strong> <br></br>
-                As you approach junctions, roundabouts, or traffic lights, ease
-                off the accelerator early.
-                <br />
-                Observe how much smoother and less stressful your stops or
-                entries become.
-              </li>
-
-              <h3>3. Reacting to Hazards</h3>
-              <li>
-                During your drive, focus on identifying hazards (e.g., a car
-                turning into your lane or a pedestrian stepping onto the road).
-              </li>
-              <li>
-                Note how much time you had to react. Ask yourself: Did I have
-                enough time? What adjustments could I make to improve my timing
-                next time?
+                Am I mentally prepared to stay calm and anticipate hazards?
               </li>
             </ul>
+            <p>
+              2️⃣ <strong>Smooth Approaches Challenge:</strong> For 10 minutes,
+              ease off the accelerator early when approaching junctions,
+              roundabouts, or traffic lights. Notice how much smoother and
+              stress-free your driving feels.
+            </p>
           </div>
         </section>
+        {/* //////////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextBox}>
+          <label>
+            Have you ever experienced a situation where better timing could have
+            improved your reaction or decision?
+          </label>
+          <textarea
+            ref={textareaRef2}
+            value={text2}
+            onChange={handleChange2}
+            rows="5"
+            cols="30"
+            placeholder="Write your thoughts here..."
+          />
+          <br />
+          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+
+          <div className={styles.thoughtsListArea}>
+            {savedTexts2.length === 0 ? (
+              <p>No saved thoughts.</p>
+            ) : (
+              <ul>
+                {savedTexts2.map((savedText2, index) => (
+                  <li key={index}>
+                    <p>{savedText2}</p>
+                    <span>
+                      <FaEdit
+                        onClick={() => editText2(index)}
+                        id={styles.editListIcon}
+                      />
+
+                      <IoTrashBin
+                        onClick={() => deleteText2(index)}
+                        id={styles.binListIcon}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+        {/* //////////////////////////////////////////////////////////////// */}
+        <div className={styles.AdiModuleOneTextArea}>
+          <h2>
+            Final Thought: Are You Controlling Time or Is It Controlling You?
+          </h2>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              Great drivers don’t just react —they stay ahead of the game.
+              Managing time well gives you the power to drive smoother, smarter,
+              and safer. So, next time you're behind the wheel, remember: more
+              time means more control! 🚗✨
+            </p>
+          </div>
+        </div>
+
+          <div className={styles.quizStartDiv}>
+                  <section className={styles.startQuizSection}>
+                    <h1>Start Quiz</h1>
+                    <h3>15 Questions</h3>
+                    <p></p>
+                    <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
+                      {" "}
+                      <button>Start Quiz</button>
+                    </Link>
+                  </section>
+                </div>
+
+        {/* ////////////////////////////////////////////////////////// */}
       </div>
     </>
   );

@@ -2,8 +2,8 @@ import styles from "./AdiModuleOne.module.css";
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-  import { FaEdit } from "react-icons/fa";
-  import { IoTrashBin } from "react-icons/io5";
+import { FaEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -613,56 +613,138 @@ export default function AdiModuleTwo() {
                 examples of vehicle technology that you must be confident with.
               </p>
             </div>
-            <div className={styles.detailsContainer1}>
+            <div className={styles.detailsContainer}>
               {/* <DrivingInstructorUI /> */}
-              <div className={styles.trainingDetails1}>
-                <h3>Dashboard controls:</h3>
-                <hr />
-                <p>
-                  Know the location and function of key controls such as lights,
-                  wipers, hazard lights
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront233}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails1}
+                  >
+                    <h3>Dashboard controls:</h3>
+                    <hr />
+                    <p>
+                      Know the location and function of key controls such as
+                      lights, wipers, hazard lights
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails1}>
-                <h3>Electronic parking brake:</h3>
-                <hr />
-                <p>
-                  If applicable, ensure you can operation the electronic parking
-                  brake confidently, including hill starts
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront244}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails2}
+                  >
+                    <h3>Electronic parking brake:</h3>
+                    <hr />
+                    <p>
+                      If applicable, ensure you can operation the electronic
+                      parking brake confidently, including hill starts
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails1}>
-                <h3>Sat Nav:</h3>
-                <hr />
-                <p>
-                  Be comfortable following directions from a sat nav – this may
-                  be required during the test
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront255}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails3}
+                  >
+                    <h3>Sat Nav:</h3>
+                    <hr />
+                    <p>
+                      Be comfortable following directions from a sat nav – this
+                      may be required during the test
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails1}>
-                <h3>Eco Driving Features:</h3>
-                <hr />
-                <p>
-                  Understand how to use stop -start features if applicable
-                  Understand and confidently use cruise control or speed
-                  limiters if applicable
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront266}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>{" "}
+                  </div>
+                  <div className={styles.trainingDetails}>
+                    <h3>Eco Driving Features:</h3>
+                    <hr />
+                    <p>
+                      Understand how to use stop -start features if applicable
+                      Understand and confidently use cruise control or speed
+                      limiters if applicable
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails1}>
-                <h3>Air conditioning/Demisters:</h3>
-                <hr />
-                <p>
-                  Know how to adjust temperature setting and clear windscreen
-                  fog quickly and efficiently
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront277}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails5}
+                  >
+                    <h3>Air conditioning/Demisters:</h3>
+                    <hr />
+                    <p>
+                      Know how to adjust temperature setting and clear
+                      windscreen fog quickly and efficiently
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className={styles.trainingDetails1}>
-                <h3>Reversing aids:</h3>
-                <hr />
-                <p>
-                  Familiarise yourself with reversing cameras or sessions and
-                  understand their use and limitations
-                </p>
+              <div className={styles.flipContainer2}>
+                <div className={styles.flipbox2}>
+                  <div
+                    className={styles.flipboxfront2}
+                    id={styles.flipboxfront288}
+                  >
+                    <div className="opicity"></div>
+                    <h2>CLICK TO FLIP</h2>
+                  </div>
+                  <div
+                    className={styles.trainingDetails}
+                    id={styles.trainingDetails6}
+                  >
+                    <h3>Reversing aids:</h3>
+                    <hr />
+                    <p>
+                      Familiarise yourself with reversing cameras or sessions
+                      and understand their use and limitations
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -888,6 +970,17 @@ export default function AdiModuleTwo() {
             </div>
           </div>
         </section>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/Vehicle-Checks">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
       </div>
     </>
   );
