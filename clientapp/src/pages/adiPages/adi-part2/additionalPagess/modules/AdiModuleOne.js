@@ -294,7 +294,7 @@ export default function AdiModuleOne() {
             <div className={styles.flipbox}>
               <div className={styles.flipboxfront}>
                 {/* <FaHandPointRight  /> */}
-                <h3 id={styles.fafapointing}>Click To Reveal The Answere</h3>
+                <h3 id={styles.fafapointing}>Click To Reveal The Answer</h3>
               </div>
 
               <div className={styles.flipboxback}>

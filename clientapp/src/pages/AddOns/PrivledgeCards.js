@@ -7,6 +7,9 @@ import munyBeautyLogo from "../../assets/images/munybeauty.jpg";
 import styliesJerk from "../../assets/images/stylisJerk.png";
 import cafeloco from "../../assets/images/cafeloco.png";
 import phiaBeauty from "../../assets/images/phialoungeBeauty.png";
+import vvphones from "../../assets/images/vvphones.png";
+import deansDessert from "../../assets/images/deansDessert.png";
+import sayStylist from "../../assets/images/saystylists.png";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -263,15 +266,15 @@ export default function PrivledgeCards() {
       name: "VV Phones",
       discount: "10% discount on any final bill over £50",
       contact: "Manager – 07507182962 https://www.facebook.com/vvphonerepairs",
-      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXfGA8zg8ulaPFgcuWIpaBcdIkGbqZpwrQP-R2ZDKqwB0zY4qBwPLHpG0T0WK2WQwZhcYgt7ba1UzenNlWg7IdBF5zYTyOfKfkBXrm7ysjD-AfRjzyteemcwofi7NyIGkQ9w_FqhWQ=s320?key=kMULrrsinROClPMsm8cFCUxl",
+      logo: vvphones,
     },
     {
       name: "Dean’s Dessert",
       discount: "Free ‘simple me’ when you spend over £15",
       contact:
         "Dean – 07944554680 https://www.facebook.com/profile.php?id=100063886427482",
-      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdMZmiMzCxllNxzdEzTvs7_s8Co8V9sFnxwVSAC5WuXr4pQnmsSOw_EaGwZV5X6xt1Qf30DGvTy4IoxuKkkwKABXSdZ5mPDRKusGIEpnONqJoq4bITixqmADwSi97qPYO9vibVz6Q=s320?key=kMULrrsinROClPMsm8cFCUxl",
-    },
+     logo: deansDessert
+     },
     {
       name: "Tropic Vegan Products",
       discount: "Free hand cream for all orders over £40",
@@ -283,8 +286,8 @@ export default function PrivledgeCards() {
       discount: "50% off first services, inc – nails, hair & beauty",
       contact:
         "General Phone – 07823758690 https://www.instagram.com/saystylists",
-      logo: "https://lh7-rt.googleusercontent.com/docsz/AD_4nXc_ijpDB6tViMJn6JBVfdEOw6Dg7c6oI5KForEBCQCqjx_4qSZlNzBvEwMTj6rkgbxcGtMNBE_cxhh9gEX5Z3CEQwZOx8bW_jy7X0cRX8BfVTdpjh4ziDUlIvOkFGnaRZMyBWQEtw=s320?key=kMULrrsinROClPMsm8cFCUxl",
-    },
+     logo: sayStylist,
+     },
     {
       name: "Tays Bespoke Treats",
       discount: "10% off any order over £30",
@@ -312,14 +315,20 @@ export default function PrivledgeCards() {
     },
     {
       name: "Cafe Locco",
+      discount: "",
+      contact: "",
       logo: cafeloco,
     },
     {
       name: "Phia’s Beauty Lounge ",
+      discount: "",
+      contact: "",
       logo: phiaBeauty,
     },
     {
       name: "Stylie’s Jerk Station",
+      discount: "",
+      contact: "",
       logo: styliesJerk,
     },
   ];
@@ -414,7 +423,7 @@ export default function PrivledgeCards() {
                       {item.logo && (
                         <img
                           src={item.logo}
-                          alt={`${item.name} logo`}
+                          alt='img'
                           id={styles.companyLogoImgs}
                         />
                       )}
