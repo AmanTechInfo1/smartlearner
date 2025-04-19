@@ -350,11 +350,13 @@ export default function AdiModuleTen() {
         {/* /////////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}
+          style={{
+            marginTop: "1rem",
+            background:
+              "linear-gradient(135deg,rgb(85, 1, 107),rgb(155, 29, 218))",
+          }}
         >
-          <div className={styles.adisevenheading}>
-            What’s the TUG Method? 🤔
-          </div>
+          <div className={styles.adisevenheading}>What’s the TUG Method?</div>
 
           <div className={styles.adiseventipBox}>
             <p>
@@ -480,7 +482,11 @@ export default function AdiModuleTen() {
         {/* ///////////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}
+          style={{
+            background:
+              "linear-gradient(135deg,rgb(32, 106, 138),rgb(4, 37, 146))",
+            marginTop: "1rem",
+          }}
         >
           <div className={styles.adisevenheading}>
             Use – Making the Most of the Road's Info 🔍
@@ -493,7 +499,9 @@ export default function AdiModuleTen() {
           </p>
 
           <div className={styles.adiseventipBox}>
-            <h3>How to Use Information:</h3>
+            <h3 style={{ color: "rgb(129, 242, 255)" }}>
+              How to Use Information:
+            </h3>
 
             <ul>
               <h4>
@@ -514,18 +522,6 @@ export default function AdiModuleTen() {
               <li>
                 Look out for parked cars, pedestrians, and cyclists. They’re
                 ready to pop up in your path, and you need to be ready!
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>Give – Let Others Know Your Moves 💬</h3>
-
-            <ul>
-              <li>
-                "Give" is all about communication! When you’re clear about your
-                intentions, other drivers can adjust accordingly, making the
-                road safer for everyone. 🚦
               </li>
             </ul>
           </div>
@@ -578,9 +574,26 @@ export default function AdiModuleTen() {
         </section>
 
         {/* ///////////////////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{
+            background:
+              "linear-gradient(135deg,rgb(162, 0, 65),rgb(141, 4, 146))",
+            marginTop: "1rem",
+          }}
+        >
+          <div className={styles.adisevenheading}>
+            Give – Let Others Know Your Moves 💬
+          </div>
+          <div className={styles.AdiModuleContentParaBox}>
+            <p>
+              "Give" is all about communication! When you’re clear about your
+              intentions, other drivers can adjust accordingly, making the road
+              safer for everyone. 🚦
+            </p>
+          </div>
           <div className={styles.adiseventipBox}>
-            <h3>How to Give Information:</h3>
+            <h3 style={{ color: "rgb(255, 129, 165)" }}>How to Give Information:</h3>
 
             <ul>
               <li>
@@ -598,7 +611,7 @@ export default function AdiModuleTen() {
             </ul>
           </div>
           <div className={styles.adiseventipBox}>
-            <h3>Example: Changing Lanes on the Motorway:</h3>
+            <h3 style={{ color: "rgb(255, 129, 165)" }}>Example: Changing Lanes on the Motorway:</h3>
 
             <ul>
               <li>
@@ -615,7 +628,10 @@ export default function AdiModuleTen() {
           </div>
         </section>
 
-        <div className={styles.AdiModuleOneTextBox}  style={{marginTop:'1rem'}}>
+        <div
+          className={styles.AdiModuleOneTextBox}
+          style={{ marginTop: "1rem" }}
+        >
           <label>
             Imagine you’re about to merge onto a busy motorway. Write out the
             steps you’d take to signal, position, and change lanes safely and
@@ -659,7 +675,10 @@ export default function AdiModuleTen() {
           </div>
         </div>
         {/* ///////////////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection} style={{marginTop:'1rem'}}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem" }}
+        >
           <div className={styles.adisevenheading}>
             Final Activity: TUG in Action!
           </div>
@@ -672,7 +691,8 @@ export default function AdiModuleTen() {
           <div className={styles.adiseventipBox}>
             <h3>Write down your response in a step-by-step format:</h3>
             <p>
-              <strong>1. How would you take space </strong> to maximise visibility and safety?
+              <strong>1. How would you take space </strong> to maximise
+              visibility and safety?
             </p>
             <p>
               <strong>2. How would you use the information</strong> from the
@@ -699,16 +719,14 @@ export default function AdiModuleTen() {
 
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.AdiModuleContentParaBoxm2}>
-            <p>
+            <p style={{textAlign:'center', marginBottom:"0px"}}>
               Once you’ve written it, review your plan with an instructor or a
-              fellow learner. Keep practicing, and soon you'll be driving like a
-              true TUG pro! 🚗👑
+              fellow learner.
             </p>
           </div>
         </div>
         {/* /////////////////////////////////////////////////////////////////////////// */}
         <div className={styles.AdiModuleOneTextBox}>
-        
           <textarea
             ref={textareaRef4}
             value={text4}
@@ -746,17 +764,17 @@ export default function AdiModuleTen() {
           </div>
         </div>
 
-         <div className={styles.quizStartDiv}>
-                  <section className={styles.startQuizSection}>
-                    <h1>Start Quiz</h1>
-                    <h3>15 Questions</h3>
-                    <p></p>
-                    <Link to="/takequizCatName/Mastering-the-TUG-Method">
-                      {" "}
-                      <button>Start Quiz</button>
-                    </Link>
-                  </section>
-                </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/Mastering-the-TUG-Method">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
         {/* /////////////////////////////////////////////////////////// */}
       </div>
     </>

@@ -126,7 +126,10 @@ export default function AdiModule12() {
 
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}
+          style={{
+            background: "linear-gradient(135deg, #037cd2 , #000240)",
+            marginTop: "1rem",
+          }}
         >
           <div className={styles.adisevenheading}>
             How to Book the ADI Part 2 Test
@@ -138,7 +141,9 @@ export default function AdiModule12() {
             Here’s a step-by-step guide:
           </p>
           <div className={styles.adiseventipBox}>
-            <h3>1. Check Your Eligibility</h3>
+            <h3 style={{ color: "rgb(93, 225, 255)" }}>
+              1. Check Your Eligibility
+            </h3>
             <p>
               Before booking, ensure you’ve passed the
               <strong>ADI Part 1 test </strong> (theory test) and have received
@@ -150,7 +155,9 @@ export default function AdiModule12() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>2. Visit the GOV.UK Website</h3>
+            <h3 style={{ color: "rgb(93, 225, 255)" }}>
+              2. Visit the GOV.UK Website
+            </h3>
             <p>
               The easiest way to book your ADI Part 2 test is online via the
               official GOV.UK website. This platform ensures secure payment and
@@ -159,7 +166,9 @@ export default function AdiModule12() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>3. Choose a Test Centre</h3>
+            <h3 style={{ color: "rgb(93, 225, 255)" }}>
+              3. Choose a Test Centre
+            </h3>
             <p>
               Not every driving test centre offers ADI Part 2 tests, so you’ll
               need to find one that does. Use the DVSA’s list of test centres to
@@ -168,7 +177,9 @@ export default function AdiModule12() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>4. Provide Your Details</h3>
+            <h3 style={{ color: "rgb(93, 225, 255)" }}>
+              4. Provide Your Details
+            </h3>
             <p>You’ll need:</p>
             <ul>
               <li>Your driving licence details.</li>
@@ -180,7 +191,9 @@ export default function AdiModule12() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>5. Select a Test Date and Time</h3>
+            <h3 style={{ color: "rgb(93, 225, 255)" }}>
+              5. Select a Test Date and Time
+            </h3>
             <p>
               ADI Part 2 tests are usually in high demand, so book well in
               advance to secure a slot that works for you. Consider your
@@ -198,7 +211,11 @@ export default function AdiModule12() {
 
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "2rem" }}
+          style={{
+            marginTop: "2rem",
+            background:
+              "linear-gradient(135deg,rgb(97, 1, 50), rgb(3, 79, 210))",
+          }}
         >
           <div className={styles.adisevenheading}>
             What to Bring to Your ADI Part 2 Test

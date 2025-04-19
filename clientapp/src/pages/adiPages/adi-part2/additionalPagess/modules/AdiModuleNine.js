@@ -272,7 +272,13 @@ export default function AdiModuleNine() {
           </div>
         </section>
         {/* //////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{
+            background:
+              "linear-gradient(135deg,rgb(44, 3, 210),rgb(216, 27, 226))",
+          }}
+        >
           <div className={styles.adisevenheading}>
             🚘 Why Does Time Matter in Driving?
           </div>
@@ -301,8 +307,16 @@ export default function AdiModuleNine() {
             </div>
           </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3>More Time = Fewer Surprises</h3>
+          <div
+            className={styles.adiseventipBox}
+            style={{
+              background:
+                "linear-gradient(135deg,rgb(198, 0, 145),rgb(99, 0, 26))",
+            }}
+          >
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              More Time = Fewer Surprises
+            </h3>
             <p>
               Ever slammed on the brakes at the last second? Or misjudged a gap
               at a roundabout? That’s what happens when you don’t give yourself
@@ -333,13 +347,22 @@ export default function AdiModuleNine() {
           </div>
         </section>
         {/* //////////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{
+            background:
+              "linear-gradient(135deg,rgb(0, 198, 181),rgb(4, 63, 146))",
+            marginTop: "1rem",
+          }}
+        >
           <div className={styles.adisevenheading}>
             How to Be a Time-Management Pro on the Road
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>🔭 Look Ahead to Your Limit Points</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              🔭 Look Ahead to Your Limit Points
+            </h3>
             <p>
               Think of your eyes like a radar scanning for threats far ahead. By
               spotting bends, traffic lights, or merging vehicles early, you can
@@ -349,7 +372,9 @@ export default function AdiModuleNine() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>🏎 Adjust Speed to Conditions</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              🏎 Adjust Speed to Conditions
+            </h3>
             <p>
               Driving in heavy rain? Thick fog? Rush hour chaos? These
               situations demand more reaction time. Slowing down slightly gives
@@ -359,7 +384,9 @@ export default function AdiModuleNine() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>🚦 Master the Art of a Smooth Approach</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              🚦 Master the Art of a Smooth Approach
+            </h3>
             <p>
               Rushing toward a red light just to slam the brakes? Not a great
               move. Instead, ease off the accelerator early when approaching:
@@ -381,7 +408,9 @@ export default function AdiModuleNine() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>🛑 Give Hazards the Time They Deserve</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              🛑 Give Hazards the Time They Deserve
+            </h3>
             <p>
               People and cars can be unpredictable. A pedestrian might step onto
               the road. A parked car could pull out. Instead of reacting too
@@ -390,7 +419,9 @@ export default function AdiModuleNine() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>⏳ More Space = More Time</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              ⏳ More Space = More Time
+            </h3>
             <p>
               Keeping a safe distance (like the 2-second rule) isn’t just about
               avoiding crashes—it’s about buying yourself time to react. The
@@ -399,7 +430,9 @@ export default function AdiModuleNine() {
             </p>
           </div>
           <div className={styles.adiseventipBox}>
-            <h3>When Time Management is a Game-Changer</h3>
+            <h3 style={{ color: "rgb(49, 234, 255)" }}>
+              When Time Management is a Game-Changer
+            </h3>
 
             <ul>
               <li>
@@ -420,13 +453,22 @@ export default function AdiModuleNine() {
           </div>
         </section>
 
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{
+            background:
+              "linear-gradient(135deg,rgb(219, 74, 255),rgb(99, 4, 146))",
+            marginTop: "1rem",
+          }}
+        >
           <div className={styles.adisevenheading}>
             🚗 Ready for a Challenge? Test Your Time Awareness!
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>📝 Pre-Drive Planning</h3>
+            <h3 style={{ color: "rgb(183, 129, 255)" }}>
+              📝 Pre-Drive Planning
+            </h3>
             <p>Before you hit the road, ask yourself:</p>
 
             <ul>
@@ -445,7 +487,10 @@ export default function AdiModuleNine() {
           </div>
         </section>
         {/* //////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
+        <div
+          className={styles.AdiModuleOneTextBox}
+         
+        >
           <label>
             Have you ever experienced a situation where better timing could have
             improved your reaction or decision?
@@ -501,17 +546,17 @@ export default function AdiModuleNine() {
           </div>
         </div>
 
-          <div className={styles.quizStartDiv}>
-                  <section className={styles.startQuizSection}>
-                    <h1>Start Quiz</h1>
-                    <h3>15 Questions</h3>
-                    <p></p>
-                    <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
-                      {" "}
-                      <button>Start Quiz</button>
-                    </Link>
-                  </section>
-                </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
 
         {/* ////////////////////////////////////////////////////////// */}
       </div>

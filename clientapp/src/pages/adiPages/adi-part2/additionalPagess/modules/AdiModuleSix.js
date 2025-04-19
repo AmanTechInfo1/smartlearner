@@ -11,8 +11,8 @@ import tunnelVision from "../../../../../assets/images/tunnelVissonImg.png";
 import funnelVision from "../../../../../assets/images/funnelVision.png";
 import farRearImg from "../../../../../assets/images/far-near-rear-VissionImg.png";
 import limitPoints from "../../../../../assets/images/limitPoints.png";
-import roadImage from "../../../../../assets/images/2ndRuleImg.png";
-import cloudImage from "../../../../../assets/images/rainFogImg.png";
+import roadImage from "../../../../../assets/images/twosecondrule.jpg";
+import cloudImage from "../../../../../assets/images/raincloud.jpg";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -375,7 +375,7 @@ export default function AdiModuleSix() {
               coming next.
             </p>
           </div>
-          <div className={styles.AdiModuleContentParaBoxm3}>
+          <div className={styles.AdiModuleContentParaBoxm3}style={{marginTop:'1rem'}}>
             <p>
               In the COAST method, observation is your superpower. It helps you
               spot hazards, read the road ahead, and make proactive

@@ -384,7 +384,10 @@ export default function AdiModuleEight() {
           </div>
         </div>
         {/* //////////////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ background: "linear-gradient(135deg, #037cd2, #000240)" }}
+        >
           <div className={styles.adisevenheading}>
             Types of Space You Need to Master
           </div>
@@ -394,7 +397,7 @@ export default function AdiModuleEight() {
               distance:
             </p>
           </div>
-          <div className={styles.adiseventipBox}>
+          <div className={styles.adiseventipBox2}>
             <h3>🚘 Following Distance</h3>
             <p>
               If you’re too close to the car in front, you’re asking for
@@ -406,7 +409,7 @@ export default function AdiModuleEight() {
             </p>
           </div>
 
-          <div className={styles.adiseventipBox}>
+          <div className={styles.adiseventipBox2}>
             <h3>🛑 Stopping Distance</h3>
             <p>
               Braking takes longer than you think—especially in bad weather.
@@ -416,7 +419,7 @@ export default function AdiModuleEight() {
             </p>
           </div>
 
-          <div className={styles.adiseventipBox}>
+          <div className={styles.adiseventipBox2}>
             <h3>🏍 Side Space</h3>
             <p>
               Cyclists, motorcyclists, and parked cars all need their personal
@@ -426,7 +429,7 @@ export default function AdiModuleEight() {
             </p>
           </div>
 
-          <div className={styles.adiseventipBox}>
+          <div className={styles.adiseventipBox2}>
             <h3>🚛 Space Behind</h3>
             <p>
               Got a tailgater breathing down your neck? Don’t hit the brakes to
@@ -436,7 +439,7 @@ export default function AdiModuleEight() {
             </p>
           </div>
 
-          <div className={styles.adiseventipBox}>
+          <div className={styles.adiseventipBox2}>
             <h3>🚦 Space at Junctions and Roundabouts</h3>
             <p>
               Ever seen someone creep forward at a red light, only to get stuck
@@ -448,7 +451,10 @@ export default function AdiModuleEight() {
         </section>
 
         {/* ////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem", background: "#00a06d" }}
+        >
           <div className={styles.adisevenheading}>
             How to Keep Your Space Like a Pro
           </div>
@@ -460,7 +466,7 @@ export default function AdiModuleEight() {
             </p>
           </div>
           <div className={styles.adiseventipBox}>
-            <h3>👀 Anticipate What’s Coming</h3>
+            <h3 style={{ color: "#63ffa7" }}>👀 Anticipate What’s Coming</h3>
             <p>
               Watch for brake lights, turn signals, and changes in traffic flow.
               The sooner you spot a potential issue, the easier it is to adjust
@@ -469,7 +475,7 @@ export default function AdiModuleEight() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>📍 Position Yourself Smartly</h3>
+            <h3 style={{ color: "#63ffa7" }}>📍 Position Yourself Smartly</h3>
             <p>
               Your lane position can make a big difference. When passing parked
               cars, move slightly to the left to avoid unexpected door swings.
@@ -479,7 +485,9 @@ export default function AdiModuleEight() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>🏎 Adapt to Speed and Conditions</h3>
+            <h3 style={{ color: "#63ffa7" }}>
+              🏎 Adapt to Speed and Conditions
+            </h3>
             <p>
               The faster you're going, the more space you need. On a dry road,
               you might be fine with the 2-second rule, but in rain or fog? Give
@@ -488,7 +496,9 @@ export default function AdiModuleEight() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>😡 Handle Close-Followers with Confidence</h3>
+            <h3 style={{ color: "#63ffa7" }}>
+              😡 Handle Close-Followers with Confidence
+            </h3>
             <p>
               If someone’s tailgating you, don’t panic. Stay cool, slow down
               gradually, and let them pass if necessary. It’s better to lose a
@@ -498,13 +508,16 @@ export default function AdiModuleEight() {
         </section>
 
         {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.adisevenhintsSection}>
+        <section
+          className={styles.adisevenhintsSection}
+          style={{ marginTop: "1rem" }}
+        >
           <div className={styles.adisevenheading}>
             🛞 On-the-Road Spacing Challenge
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>1️⃣ Following Distance Check:</h3>
+            <h3 style={{ color: "#e563ff" }}>1️⃣ Following Distance Check:</h3>
             <p>
               Pick a fixed point (like a road sign) and test your 2-second rule.
               If you reach the point too soon, back off and adjust your
@@ -513,7 +526,7 @@ export default function AdiModuleEight() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>2️⃣ Side Space Awareness:</h3>
+            <h3 style={{ color: "#e563ff" }}>2️⃣ Side Space Awareness:</h3>
             <p>
               When passing cyclists or parked cars, keep that 1.5-meter gap. If
               space is tight, slow down and wait for a safer moment to overtake.
@@ -521,7 +534,7 @@ export default function AdiModuleEight() {
           </div>
 
           <div className={styles.adiseventipBox}>
-            <h3>3️⃣ Reaction Space Test:</h3>
+            <h3 style={{ color: "#e563ff" }}>3️⃣ Reaction Space Test:</h3>
             <p>
               As you approach junctions or roundabouts, leave enough room to
               stop safely if needed. Stay alert and be ready to adjust if
@@ -652,19 +665,19 @@ export default function AdiModuleEight() {
 
         {/* /////////////////// */}
         <div className={styles.quizStartDiv}>
-                  <section className={styles.startQuizSection}>
-                    <h1>Start Quiz</h1>
-                    <h3>15 Questions</h3>
-                    <p>
-                      Here’s a quick summary quiz to test your understanding of of Part
-                      2: Human checks before setting off
-                    </p>
-                    <Link to="/takequizCatName/Space-in-the-COAST-Method">
-                      {" "}
-                      <button>Start Quiz</button>
-                    </Link>
-                  </section>
-                </div>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p>
+              Here’s a quick summary quiz to test your understanding of of Part
+              2: Human checks before setting off
+            </p>
+            <Link to="/takequizCatName/Space-in-the-COAST-Method">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
         {/* ///////////////////////////////////////////// */}
       </div>
     </>

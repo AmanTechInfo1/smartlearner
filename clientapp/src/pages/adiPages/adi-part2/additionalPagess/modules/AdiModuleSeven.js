@@ -417,7 +417,7 @@ export default function AdiModuleSeven() {
               always one step ahead).
             </p>
           </div>
-          <div className={styles.AdiModuleContentParaBoxm3}>
+          <div className={styles.AdiModuleContentParaBoxm3} style={{marginTop:'1rem'}}>
             <p>
               In advanced driving, anticipation is key. The examiner in your ADI
               Part 2 exam will be watching to see if you can read the road like

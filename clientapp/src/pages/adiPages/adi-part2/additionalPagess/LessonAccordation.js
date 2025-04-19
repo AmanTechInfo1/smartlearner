@@ -84,7 +84,7 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <MdContactPage />
               </span>{" "}
-              ⁠vehicle checks to perform before the test
+              Vehicle checks to perform before the test
             </div>
             {openIndex === 3 && (
               <p className={styles.description}>

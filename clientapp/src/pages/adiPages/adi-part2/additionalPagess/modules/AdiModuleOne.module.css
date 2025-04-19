@@ -44,7 +44,7 @@
   font-weight: 400;
 }
 .AdiModuleOneTextBox {
-  max-width: 1000px;
+  max-width: 1240px;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -171,6 +171,7 @@
   margin: 1rem 0px;
   color: #e5efff;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .AdiModuleContentParaBox {
@@ -516,7 +517,6 @@
   height: 400px;
 }
 /* ////////////////////////////////////////////////////////////// */
-
 
 .trainingDetails {
   background-color: #0e0b18d7;
@@ -1087,12 +1087,12 @@
 /* ///////////////////////////////////////////////// */
 
 .AdiModuleContentBoxcontainer {
-  background-color: #0a0b20e9;
+  background: linear-gradient(135deg, #d20391, #02839a);
   color: #e0e0e0;
   padding: 2rem;
   border-radius: 12px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 2rem auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   border: 1px solid rgb(60, 89, 106);
@@ -1204,6 +1204,7 @@
 .adi2ndImghintBox {
   position: relative;
   max-width: 600px;
+  max-height: 400px;
   width: 100%;
 }
 
@@ -1292,6 +1293,39 @@
   list-style-type: "✨ ";
 }
 
+/* //////////////////////////////////////////////////////////// */
+.adiseventipBox2 {
+  background: rgba(4, 1, 26, 0.786);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid #00ffe1;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.adiseventipBox2:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 255, 225, 0.2);
+}
+
+.adiseventipBox2 h3 {
+  color: #6d63ff;
+  margin-bottom: 0.75rem;
+}
+
+.adiseventipBox2 p,
+.adiseventipBox2 ul {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.adiseventipBox2 ul {
+  padding-left: 1.2rem;
+  list-style-type: "✨ ";
+}
+/* ///////////////////////////////////////// */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1377,4 +1411,10 @@
   color: #c8feff;
   line-height: 1.5;
   font-size: 1rem;
+}
+
+.iconCell {
+  text-align: center;
+  font-size: 20px;
+  transition: color 0.2s ease;
 }

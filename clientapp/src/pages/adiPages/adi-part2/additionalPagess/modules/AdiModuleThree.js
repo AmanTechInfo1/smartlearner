@@ -424,6 +424,30 @@ export default function AdiModuleThree() {
       });
   }, []);
 
+  // ///////////////////////////////////////////////////////////////////
+  const [skillFeedback, setSkillFeedback] = useState({});
+
+  const handleSkillClick = ( skill, feedbackType) => {
+    const updatedFeedback = {
+      ...skillFeedback,
+      [skill]: {
+        userId,
+        feedback: feedbackType,
+      },
+    };
+    setSkillFeedback(updatedFeedback);
+
+    // Save to localStorage
+    localStorage.setItem("userSkillFeedback", JSON.stringify(updatedFeedback));
+  };
+
+  useEffect(() => {
+    const savedFeedback = JSON.parse(localStorage.getItem("userSkillFeedback"));
+    if (savedFeedback) {
+      setSkillFeedback(savedFeedback);
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
@@ -661,6 +685,7 @@ export default function AdiModuleThree() {
             </div>
           </div>
         </section>
+        {/* ////////////////////////////////////////////////////// */}
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.adimoduletableContainer}>
             <table className={styles.adimoduleskillTable}>
@@ -677,13 +702,38 @@ export default function AdiModuleThree() {
                 </tr>
               </thead>
               <tbody>
-                {skills.map((skill, index) => (
-                  <tr key={index}>
-                    <td>{skill}</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                ))}
+                {skills.map((skill, index) => {
+                  const feedback = skillFeedback[skill]?.feedback;
+
+                  return (
+                    <tr key={index}>
+                      <td>{skill}</td>
+                      <td
+                        className={styles.iconCell}
+                        onClick={() => handleSkillClick(skill, "confident")}
+                        style={{
+                          cursor: "pointer",
+                          color: feedback === "confident" ? "green" : "#ccc",
+                        }}
+                      >
+                        ✔
+                      </td>
+                      <td
+                        className={styles.iconCell}
+                        onClick={() =>
+                          handleSkillClick(skill, "needsImprovement")
+                        }
+                        style={{
+                          cursor: "pointer",
+                          color:
+                            feedback === "needsImprovement" ? "red" : "#ccc",
+                        }}
+                      >
+                        ✘
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
