@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b98326f0.css",
-    "main.js": "/static/js/main.54f9350a.js",
+    "main.css": "/static/css/main.248a3271.css",
+    "main.js": "/static/js/main.a3bc3059.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -219,7 +219,6 @@
     "static/media/halloffame33.png": "/static/media/halloffame33.518efc7475f56f891034.png",
     "static/media/vvphones.png": "/static/media/vvphones.3db4de6b3ebf0300527e.png",
     "static/media/2-second-rule.jpg": "/static/media/2-second-rule.29eaa1b00e6afa89e042.jpg",
-    "static/media/2ndRuleImg.png": "/static/media/2ndRuleImg.4dfa4e395280f7ee782c.png",
     "static/media/traf-lights.jpg": "/static/media/traf-lights.1771249db2c029b2f3d2.jpg",
     "static/media/img7.jpg": "/static/media/img7.eb50a68772057cecc360.jpg",
     "static/media/img1.jpg": "/static/media/img1.eb23142fa83ab583a4a7.jpg",
@@ -281,7 +280,6 @@
     "static/media/userIndentification.png": "/static/media/userIndentification.d2b711ba1c4b7fac9688.png",
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
-    "static/media/rainFogImg.png": "/static/media/rainFogImg.e62562cde6081ac45506.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
     "static/media/theoryTestCrausalImg.jpg": "/static/media/theoryTestCrausalImg.6f7b6bb065bc765a1cba.jpg",
@@ -322,6 +320,7 @@
     "static/media/mway.jpg": "/static/media/mway.cf2e8616f8ac33106f27.jpg",
     "static/media/incidents-pinjk.png": "/static/media/incidents-pinjk.983c95f6992039cd1786.png",
     "static/media/hover1.png": "/static/media/hover1.3ef6403ecffa3ea25650.png",
+    "static/media/raincloud.jpg": "/static/media/raincloud.a66b552414993d156999.jpg",
     "static/media/buliding img.png": "/static/media/buliding img.76a265334dba3af7966a.png",
     "static/media/red-yellow-lorry-sign-300x183.jpg": "/static/media/red-yellow-lorry-sign-300x183.11f4137af7266501621a.jpg",
     "static/media/pinkCartImg.png": "/static/media/pinkCartImg.36c8300e87c081e61b17.png",
@@ -337,6 +336,7 @@
     "static/media/smartlearnerSupportImg.png": "/static/media/smartlearnerSupportImg.c871efa43a99d199a684.png",
     "static/media/school-bus-300x300.jpg": "/static/media/school-bus-300x300.0169eba8894ec1f48bc5.jpg",
     "static/media/green-ruler.png": "/static/media/green-ruler.11b1cf62a80951b4c68d.png",
+    "static/media/twosecondrule.jpg": "/static/media/twosecondrule.b3aa8222b020a522e1e3.jpg",
     "static/media/adapted teaching.png": "/static/media/adapted teaching.dea8841269d05fbb9988.png",
     "static/media/goal-skills.png": "/static/media/goal-skills.2dfc091a4b06ce1ec012.png",
     "static/media/trreeCouncil.jpg": "/static/media/trreeCouncil.f3cfb1ae52e4be39f3bb.jpg",
@@ -353,12 +353,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.b98326f0.css.map": "/static/css/main.b98326f0.css.map",
-    "main.54f9350a.js.map": "/static/js/main.54f9350a.js.map",
+    "main.248a3271.css.map": "/static/css/main.248a3271.css.map",
+    "main.a3bc3059.js.map": "/static/js/main.a3bc3059.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b98326f0.css",
-    "static/js/main.54f9350a.js"
+    "static/css/main.248a3271.css",
+    "static/js/main.a3bc3059.js"
   ]
 }
