@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.248a3271.css",
-    "main.js": "/static/js/main.a3bc3059.js",
+    "main.css": "/static/css/main.afb4457e.css",
+    "main.js": "/static/js/main.7293570e.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -35,12 +35,14 @@
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
     "static/media/manualround1.png": "/static/media/manualround1.51cea707a66fddf1a9a5.png",
+    "static/media/pdibanner3.jpg": "/static/media/pdibanner3.0b4162778054ed0beb8f.jpg",
     "static/media/Mcqbanner.png": "/static/media/Mcqbanner.f8b9bd92355b53f95fc0.png",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
     "static/media/manualround2.jpg": "/static/media/manualround2.2919359ed1345bd42ca0.jpg",
     "static/media/bgDark.jpg": "/static/media/bgDark.92c9fb7372440b5bec53.jpg",
     "static/media/roadRulesBanner.jpg": "/static/media/roadRulesBanner.b4f2974ba1945c790801.jpg",
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
+    "static/media/lessonModulebanner.jpg": "/static/media/lessonModulebanner.c7e1e83382a58d064545.jpg",
     "static/media/dribbble_1.gif": "/static/media/dribbble_1.181c5a6430bcb77324b1.gif",
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
@@ -353,12 +355,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.248a3271.css.map": "/static/css/main.248a3271.css.map",
-    "main.a3bc3059.js.map": "/static/js/main.a3bc3059.js.map",
+    "main.afb4457e.css.map": "/static/css/main.afb4457e.css.map",
+    "main.7293570e.js.map": "/static/js/main.7293570e.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.248a3271.css",
-    "static/js/main.a3bc3059.js"
+    "static/css/main.afb4457e.css",
+    "static/js/main.7293570e.js"
   ]
 }
