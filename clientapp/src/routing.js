@@ -158,6 +158,9 @@ import AdiModuleNine from "./pages/adiPages/adi-part2/additionalPagess/modules/A
 import AdiModuleTen from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModuleTen";
 import AdiModule11 from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModule11";
 import AdiModule12 from "./pages/adiPages/adi-part2/additionalPagess/modules/AdiModule12";
+import Adi3Module from "./pages/adiPages/adi-part3/additionalPages/Adi3Module";
+import Adi3Moduletwo from "./pages/adiPages/adi-part3/additionalPages/Adi3Moduletwo";
+import Adi3Modulethree from "./pages/adiPages/adi-part3/additionalPages/Adi3Modulethree";
 
 export const router = createBrowserRouter([
   {
@@ -325,6 +328,15 @@ export const router = createBrowserRouter([
       },
       {
         path:"quizModuleTwelve", element: <AdiModule12/>
+      },
+      {
+        path:"national-standards", element: <Adi3Module/>
+      },
+      {
+        path:"good-instructor-module", element: <Adi3Moduletwo/>
+      },
+      {
+        path:"legal-stuff", element: <Adi3Modulethree/>
       },
       {
         path: "driving-instructor-packages/:section?",

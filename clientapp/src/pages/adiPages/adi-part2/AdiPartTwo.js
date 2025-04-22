@@ -500,12 +500,7 @@ export default function AdiPartTwo() {
                   {" "}
                   <button>Contact Us</button>
                 </Link>
-                {/* <Link
-                                to="/part-1-trainning-material"
-                                style={{ textDecoration: "none" }}
-                              >
-                                <button>NEXT PAGE</button>
-                              </Link> */}
+            
               </div>
             </div>
           </div>

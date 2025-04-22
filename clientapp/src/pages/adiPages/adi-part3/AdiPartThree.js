@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import styles from "../AdiPartOne.module.css";
-import { IoMdArrowDropright } from "react-icons/io";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import scoreCard from "../../../assets/images/scroreCardImg.png";
-import testRoutesImg1 from "../../../assets/images/Screenshot-2023-02-09-110346-150x150.jpg";
-import testRoutesImg2 from "../../../assets/images/Screenshot-2023-02-09-110505-150x150.jpg";
-import { Link,useNavigate } from "react-router-dom";
+import styles from "./AdiPartThree.module.css";
+
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
 
-import {
-  
-  fetchUserSubscriptions,
-} from "./../../../redux/features/subscriptionSlice";
+import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSlice";
+import { useRef } from "react";
+
+import gsap from "gsap";
+import { motion } from "framer-motion";
+import { Sparkles, BookOpenCheck, Lightbulb, Timer } from "lucide-react";
+import LessonModules from "./additionalPages/LessonModules";
+
 export default function AdiPartThree() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,8 +21,7 @@ export default function AdiPartThree() {
     (state) => state.subscription.userSubscription
   );
   const userId = userDetails?._id;
-  
-  
+
   const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
 
   useEffect(() => {
@@ -33,379 +32,279 @@ export default function AdiPartThree() {
         .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
     }
   }, [dispatch, userId]);
- 
-  
-  
-  useEffect(() => {
-    
 
+  useEffect(() => {
     if (!userDetails || Object.keys(userDetails).length === 0) {
       navigate("/pdi-login"); // Redirect to login if user is not logged in
     } else if (userDetails.role === "admin") {
       // Allow admin to access the portal
       return;
-    }else if (userDetails.role === "instructortrainee") {
+    } else if (userDetails.role === "instructortrainee") {
       // Allow admin to access the portal
       return;
     } else if (subscriptionLoaded) {
+      const hasAccess =
+        Array.isArray(userSubscription) &&
+        userSubscription.some((subscription) => {
+          const { planCategory } = subscription.subscriptionId || {};
+          const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
 
-      const hasAccess = Array.isArray(userSubscription) &&  userSubscription.some((subscription) => {
-        const { planCategory } = subscription.subscriptionId || {};
-        const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
-      
-        return (
-          (subscription.isActive && (
-            planCategory === "pdi-part-three packages" ||
-            planCategory === "Complete packages"
-          )) 
-        );
-      });
+          return (
+            subscription.isActive &&
+            (planCategory === "pdi-part-three packages" ||
+              planCategory === "Complete packages")
+          );
+        });
       if (!hasAccess) {
         navigate("/driving-instructor-packages/instructor-packages"); // Redirect to subscription page if no valid plan found
-      }    
-     
-    
-    
+      }
     }
-  }, [userDetails, userSubscription,subscriptionLoaded, dispatch, navigate]);
+  }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+
+  // ////////////////////////////////////////////////////////////////////////////////////////////
+  const textRef = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const splitText = () => {
+    const firstPart = "Congratulations on Passing"; // First part before "Driving"
+    const secondPart = "Your Part 2 ADI Exam!"; // Second part after "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
+
+  useEffect(() => {
+    const letters = textRef.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1>
-                  Forget the rest, <span> learn with the best!</span>
-                </h1>
-              </div>
+    <>
+      <div className={styles.AdiPartOne}>
+        <div className={styles.AdiPortalPartOne}>
+          <section className={styles.imageSection}>
+            <div className={styles.opicity}></div>
+            <div className={styles.maincontent}>
+              <div className={styles.content}>
+                <div className={styles.heading1}>
+                  <h1 ref={textRef}>{splitText()}</h1>
+                </div>
 
-              <div className={styles.heading2}>
-                <h2>
-                  AWARD-WINNING <span>DRIVING LESSONS</span>
-                </h2>
-              </div>
-              <div className={styles.alertBtn}>
-              <Link to="/Contact-Us">
-                {" "}
-                <button id={styles.btn}>Contact Us</button>
-              </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* ///////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            Introduction <span>To Part 3</span>
-          </h2>
-          <hr style={{ opacity: "1", border: "1px solid black" }}></hr>
-          <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <div className={styles.innerTheorySupportContent}>
-                <div className={styles.theorySupportContentVideo}>
-                  <iframe
-                    width="500px"
-                    height="500px"
-                    src="https://www.youtube.com/embed/dq_oRHXWQMo"
-                    title="Tommy - Part 3 - Introduction"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen></iframe>
+                <div className={styles.gGpFrontListP}>
+                  <p>
+                    {" "}
+                    <strong>Well done!</strong>
+                    <br />
+                    You've successfully completed Part 2 of the Approved Driving
+                    Instructor (ADI) exam, and you've demonstrated the skills
+                    and professionalism required to advance to the next step in
+                    your journey toward becoming a fully qualified ADI.
+                  </p>
+                </div>
+                <div className={styles.gGpFrontListP}>
+                  <p>
+                    Your hard work, dedication, and attention to detail have
+                    paid off, and now you're ready to move on to Part 3 of the
+                    ADI exam!
+                  </p>
+                </div>
+                <div className={styles.alertBtn}>
+                  <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
+                    {" "}
+                    <button>Contact Us</button>
+                  </Link>
                 </div>
               </div>
             </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    • A Driver and Vehicle Standards Agency examiner will watch
-                    you give a client-centred driving lesson lasting about an
-                    hour to one of your pupils.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • Your pupil can be a learner or a full licence holder. They
-                    can’t be an ADI or someone else who is preparing to take the
-                    ADI part 3 test.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • You can take your trainer or mentor with you, but they
-                    can’t take part in the lesson.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The examiner will look for evidence that you meet the{" "}
-                    <a
-                      href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training"
-                      style={{ color: "red", textDecoration: "none" }}>
-                      national standard for driver and rider training.
-                    </a>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The 17 areas of competence are listed in the{" "}
-                    <a
-                      href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1122510/adi-part-3-test-report-form.pdf"
-                      style={{ color: "red", textDecoration: "none" }}>
-                      {" "}
-                      ADI part 3 test
-                    </a>{" "}
-                    report form, which the examiner will fill in at the end of
-                    your test.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • You’ll get a score from 0 to 3 for each of the 17
-                    competencies, which are added up to work out if you’ve
-                    passed the test, and what your grade will be..
-                  </p>
-                </li>
-                <h2
-                  style={{
-                    color: "red",
-                    fontSize: "2.5rem",
-                    textAlign: "center",
-                  }}>
-                  Test result
-                </h2>
-                <li>
-                  <p>
-                    After you give the lesson, the examiner will discuss your
-                    performance and give you your result. You’ll get your grade,
-                    along with your completed ADI part 3 test report form.{" "}
-                  </p>
-                </li>
-              </ul>
-            </div>
           </section>
-        </section>
 
-        {/* /////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////// */}
+          <div className={styles.adiPart3firstcontainer}>
+            <motion.h1
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={styles.adiPart3firstheading}
+            >
+              What's Next? The Part 3 ADI Exam
+            </motion.h1>
 
-        {/* ///////////////////////////////////////////////// */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className={styles.adiPart3firstintro}
+            >
+              The Part 3 exam is your opportunity to showcase your ability to
+              teach others, not just drive. This is the instructional phase of
+              the ADI exam, where you will be assessed on how well you can
+              convey your driving knowledge, skills, and techniques to a learner
+              driver.
+            </motion.p>
 
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            Test <span>Score</span>{" "}
-          </h2>
-          <div className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img
-                src={scoreCard}
-                alt="scoreCard"
-                style={{ backgroundColor: "white" }}
-              />{" "}
-            </div>
-            <section className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    0-30 GRADE FAIL: Your performance is unsatisfactory, and you
-                    won’t join the ADI register.{" "}
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    31-42 GRADE B: You’ll be allowed to join the ADI register.
-                  </p>
-                </li>
-                <li>
-                  {" "}
-                  <p>
-                    43-51 GRADE A: You have shown a high standard of instruction
-                    and you’ll be allowed to join the ADI register.{" "}
-                  </p>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </section>
-        {/* /////////////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  When you pass the ADI part 3 test you can apply for your first
-                  ADI badge.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Your pupil can be a learner or a full licence holder. They
-                  can’t be an ADI or someone else who is preparing to take the
-                  ADI part 3 test.
-                </p>
-              </li>
-              <li>
-                <p>
-                  The examiner’s supervisor may attend the test too. They will
-                  be watching the examiner’s performance only and won’t have
-                  comment or assess how you’re tested or affect your result.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
-        {/* //////////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2> Cost</h2>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  You have 3 attempts at this test. Should you fail the 3rd
-                  attempt, you will have to wait for the 2 year period to end
-                  (that started when you passed your part 1) and re sit part 1.
-                </p>
-              </li>
-              <li>
-                <p>You must pay the DVSA £111 for this test.</p>
-              </li>
-              <li>
-                <p>
-                  Once you have qualified, you can apply for your ‘ADI lience’
-                  (otherwise known as your ‘Green Badge’). You must pay the DVSA
-                  £300 for this badge.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className={styles.adiPart3firstsubheading}
+            >
+              What to Expect in Part 3:
+            </motion.h2>
 
-        {/* ///////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            Driving <span>Test Routes</span>
-          </h2>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
+            <div className={styles.adiPart3firstcardsWrapper}>
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}
+              >
+                <BookOpenCheck className={styles.adiPart3firsticon} />
+                <h3>Instructing a Learner Driver</h3>
                 <p>
-                  Recently the Driver and Vehicle Standards Agency (DVSA)
-                  stopped publishing the driving test routes for each test
-                  centre to prevent test candidates from practicing the routes
-                  that the examiners take you on.
+                  Teach a learner driver in a real or simulated scenario,
+                  breaking down complex driving tasks and giving clear,
+                  effective instructions.
                 </p>
-              </li>
-              <li>
-                <p>
-                  The driving test routes may have altered in the mean-time,
-                  although it is likely they are very similar if not identical.
-                  Listed below are the driving test centre routes for areas you
-                  may cover with your pupils.Recently the Driver and Vehicle
-                  Standards Agency (DVSA) stopped publishing the driving test
-                  routes for each test centre to prevent test candidates from
-                  practicing the routes that the examiners take you on.
-                </p>
-              </li>
-              <li>
-                <p>
-                  The driving test routes should be used for a guide only as
-                  test routes are for the discretion of the test examiner and
-                  may be subject to change.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
-        {/* ////////////////////////////////////////////////////////////////////////// */}
+              </motion.div>
 
-        {/* ////////////////////////////////////////////////////// */}
-        {/* <section className={styles.RouteSection}>
-          <div className={styles.allRoutes}>
-            <div className={styles.routes}>
-              <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="https://smartlearner.com/wp-content/uploads/2023/02/CoventryDrivingTestRoutes.pdf">
-                Coventry Driving Test Routes
-              </a>
-            </div>
-            <div className={styles.routes}>
-              <img src={testRoutesImg2} alt="testRoutesImg" />
-              <a href="https://smartlearner.com/wp-content/uploads/2023/02/NuneatonDrivingTestRoutes.pdf">
-                Nuneaton Driving Test Routes
-              </a>
-            </div>
-            <div className={styles.routes}>
-              <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="https://smartlearner.com/wp-content/uploads/2023/02/Rugby-Driving-Test-Routes.pdf">
-                Rugby Driving Test Routes
-              </a>
-            </div>
-            <div className={styles.routes}>
-              <img src={testRoutesImg2} alt="testRoutesImg" />
-              <a href="https://smartlearner.com/wp-content/uploads/2023/02/HinckleyDrivingTest-Routes.pdf">
-                Hinckley Driving Test Routes
-              </a>
-            </div>
-            <div className={styles.routes}>
-              <img src={testRoutesImg1} alt="testRoutesImg" />
-              <a href="https://smartlearner.com/wp-content/uploads/2023/02/WarwickDrivingTestRoutes.pdf">
-                Warwick Driving Test Routes
-              </a>
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Lightbulb className={styles.adiPart3firsticon} />
+                <h3>Assessment Areas</h3>
+                <p>
+                  Be evaluated on your planning, communication, feedback,
+                  observation, correction skills, and overall professionalism.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Timer className={styles.adiPart3firsticon} />
+                <h3>Duration</h3>
+                <p>
+                  The exam lasts about an hour, during which you will conduct a
+                  full lesson just like a real-world teaching experience.
+                </p>
+              </motion.div>
             </div>
           </div>
-        </section> */}
-        {/* /////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <p>
-              By clicking the button below you will be taken to different
-              reading materials that will support you in passing your part 3.
-            </p>
+
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
+          <div className={styles.adiPart3secondcontainer}>
+            <div className={styles.adiPart3secondglowBorder}>
+              <h1 className={styles.adiPart3secondheading}>
+                Good Luck on Your Journey to Part 3!
+              </h1>
+              <p className={styles.adiPart3secondparagraph}>
+                You're one step closer to achieving your goal of becoming a
+                fully qualified ADI. The skills you're developing now will serve
+                you throughout your career, as you help learners become safe and
+                confident drivers.
+              </p>
+              <p className={styles.adiPart3secondparagraph}>
+                Stay focused, keep practicing, and continue refining your
+                teaching techniques. Best of luck in your preparation for Part 3
+                – you’ve got this!
+              </p>
+              <p className={styles.adiPart3secondsuccess}>
+                We look forward to hearing about your success!
+              </p>
+            </div>
           </div>
 
-          <div id={styles.btnDiv}>
-            <Link to="/gde-matrix">
-              <button id={styles.hazzardBtn}>GDE Matrix</button>
-            </Link>
-            <Link to="/standards-check-sheet">
-              <button id={styles.hazzardBtn}>Standards Check Sheet</button>
-            </Link>
-            <Link to="/learning-styles">
-              <button id={styles.hazzardBtn}>Learning Style/Vark/Client</button>
-            </Link>
-            <Link to="/smart-targets">
-              <button id={styles.hazzardBtn}>Smart Targets</button>
-            </Link>
-            <Link to="/lesson-plannings">
-              <button id={styles.hazzardBtn}>Lesson Plannings</button>
-            </Link>
-            <Link to="/risk-management">
-              <button id={styles.hazzardBtn}>Risk Managements</button>
-            </Link>
-            <Link to="/question-techniques">
-              <button id={styles.hazzardBtn}>Questioning Techniques</button>
-            </Link>
-            <Link to="/instruction-and-feedback">
-              <button id={styles.hazzardBtn}>
-                Giving Instruction/Feedback
-              </button>
-            </Link>
-            <Link to="/lesson-plan-layouts">
-              <button id={styles.hazzardBtn}>
-                Lesson/Pupil Learning Plans
-              </button>
-            </Link>
-            <Link to="/training-videos">
-              <button id={styles.hazzardBtn}>Training Videos</button>
-            </Link>
-            <Link to="/starting-on-road">
-              <button id={styles.hazzardBtn}>Starting On Road</button>
-            </Link>
-          </div>
-        </section>
+          {/* ///////////////////////////////////////////////////////////////////// */}
+          <section style={{ padding: "1rem", backgroundColor: "#0b0b0b" }}>
+            <LessonModules />
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

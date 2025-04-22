@@ -1,0 +1,910 @@
+.AdiModuleOnecontainer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 4rem;
+}
+.AdiModuleOneheader {
+  margin-top: 1rem;
+  position: relative;
+  width: 100%;
+  background-image: url(../../../../assets/images/lessonModulebanner.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+.AdiModuleOneheading {
+  max-width: 1640px;
+  width: 100%;
+  padding: 200px 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  position: sticky;
+}
+.AdiModuleOneheading h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: left;
+  text-shadow: 2px 2px 4px #000000;
+}
+.AdiModuleOneTextArea {
+  padding: 1rem;
+  margin-top: 1rem;
+  max-width: 1240px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.AdiModuleOneTextArea h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(224, 241, 255);
+  font-weight: 400;
+}
+.AdiModuleOneTextBox {
+  max-width: 1240px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
+.AdiModuleOneTextBox label {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.AdiModuleOneTextBox textarea {
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  background-color: #0a0a10;
+  border-radius: 10px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  color: rgba(235, 238, 255, 0.871);
+}
+.AdiModuleOneTextBox textarea:focus {
+  box-shadow: 0 0 0 0.25rem rgba(10, 108, 255, 0.417);
+
+  border: 1px solid #86b7fe;
+}
+.AdiModuleOneTextBox button {
+  border-radius: 6px;
+  padding: 0.7rem 2rem;
+  background-color: #0063f6;
+  color: white;
+  border: none;
+  margin: 1rem 0.5rem;
+}
+.thoughtsListArea {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  border-radius: 6px;
+}
+.thoughtsListArea ul {
+  padding-left: 0px;
+}
+.thoughtsListArea ul li {
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #005362;
+  box-shadow: 0 8px 8px -4px rgb(1, 40, 53);
+  margin-top: 0.5rem;
+}
+.thoughtsListArea ul li p {
+  margin-bottom: 0px;
+}
+.thoughtsListArea ul li span {
+  min-width: 80px;
+}
+#editListIcon {
+  color: #00159a;
+  font-size: 1.5rem;
+  margin: 0px 0.5rem;
+  cursor: pointer;
+}
+#editListIcon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.3s;
+}
+#binListIcon {
+  color: #d50039;
+  font-size: 1.5rem;
+  margin: 0px 0.5rem;
+  cursor: pointer;
+}
+#binListIcon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.3s;
+}
+
+@media (max-width: 767px) {
+  .AdiModuleOneheading {
+    padding: 150px 1rem;
+  }
+  .AdiModuleOneheading h1 {
+    font-size: 2rem;
+  }
+  .AdiModuleOneTextArea h2 {
+    font-size: 1.5rem;
+  }
+  .AdiModuleOneTextBox label {
+    font-size: 1rem;
+  }
+  .thoughtsListArea ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .thoughtsListArea ul li span {
+    min-width: 100%;
+    width: 100%;
+    text-align: end;
+  }
+}
+@media (max-width: 467px) {
+  .AdiModuleOneheading {
+    padding: 100px 1rem;
+  }
+  .AdiModuleOneheading h1 {
+    font-size: 1.5rem;
+  }
+  .AdiModuleOneTextArea h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* //////////////////////////////////////////////////////////////// */
+.adiModuleSectionPart {
+  max-width: 1640px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* NationalStandardSection.module.css */
+.firstLessonModulecontainer {
+  background: #090909;
+  color: #e0e0e0;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstLessonModulecard {
+  background: linear-gradient(145deg, #010809, #292929);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 251, 255, 0.2);
+  padding: 3rem;
+  max-width: 800px;
+  text-align: center;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 247, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 238, 255, 0.6);
+  }
+}
+
+.firstLessonModuletitle {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #00ddff, #ff6e49);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.firstLessonModuletext {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  color: #cccccc;
+}
+
+.firstLessonModuledownloadBtn {
+  margin-top: 2rem;
+  background: linear-gradient(to right, #ff3075, #ff7e5f);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.firstLessonModuledownloadBtn:hover {
+  background: linear-gradient(to right, #ff7e5f, #ff0057);
+}
+
+/* ////////////////////////////////////////////////////////////////////// */
+/* KeyAreas.module.css */
+.firstLessonModulesecondcontainer {
+  background: #090909;
+  color: #e0e0e0;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.firstLessonModulesecondheading {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #00f7ff;
+  animation: glow2 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow2 {
+  from {
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff0004;
+  }
+  to {
+    text-shadow: 0 0 20px #ff00d4, 0 0 30px #00ffcc;
+  }
+}
+
+.firstLessonModulesecondcardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.firstLessonModulesecondcard {
+  background: linear-gradient(145deg, #010809, #292929);
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
+}
+
+.firstLessonModulesecondcard:hover {
+  box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+}
+
+.firstLessonModulesecondcardTitle {
+  font-size: 1.4rem;
+  color: #ff2255;
+  margin-bottom: 0.75rem;
+}
+
+.firstLessonModulesecondcardContent {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+/* /////////////////////////////////////////////////////////////////// */
+/* AdiPartThree.module.css */
+.firstLessonModulesecondthirdcontainer {
+  background: #090909;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 900px;
+  padding: 1rem;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(77, 231, 255, 0.6);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.firstLessonModulesecondthirdheading {
+  font-size: 2.5rem;
+  color: #ff2e6d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.firstLessonModulesecondthirddescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #dddddd;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.firstLessonModulesecondthirdsection,
+.firstLessonModulesecondthirdscores {
+  background: linear-gradient(145deg, #010809, #292929);
+  padding: 1.5rem;
+  border-left: 5px solid #ff4d4d;
+  margin: 1rem 0;
+  border-radius: 10px;
+}
+
+.firstLessonModulesecondthirdsection h2,
+.firstLessonModulesecondthirdscores h2 {
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+}
+
+.firstLessonModulesecondthirdsection ul,
+.firstLessonModulesecondthirdscores ul {
+  padding-left: 1.5rem;
+  list-style-type: square;
+}
+
+.firstLessonModulesecondthirdsection li,
+.firstLessonModulesecondthirdscores li {
+  margin-bottom: 0.5rem;
+  color: #cccccc;
+}
+
+.firstLessonModulesecondthirddownload {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.firstLessonModulesecondthirddownloadBtn {
+  background-color: #ff4d4d;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(77, 231, 255, 0.6);
+  transition: transform 0.2s ease-in-out;
+  border: none;
+}
+.firstLessonModulesecondthirddownload a {
+  text-decoration: none;
+}
+
+.firstLessonModulesecondthirddownloadBtn:hover {
+  transform: scale(1.05);
+  background-color: #e60000;
+}
+/* ///////////////////////////////////////////////////////////// */
+@media screen and (max-width: 768px) {
+  .firstLessonModulesecondthirdcontainer {
+    padding: 1.5rem;
+  }
+
+  .firstLessonModulesecondthirdheading {
+    font-size: 2rem;
+  }
+
+  .firstLessonModulesecondthirddescription {
+    font-size: 1rem;
+  }
+
+  .firstLessonModulesecondthirdsection,
+  .firstLessonModulesecondthirdscores {
+    padding: 1rem;
+  }
+
+  .firstLessonModulesecondthirddownloadBtn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .firstLessonModulesecondthirdheading {
+    font-size: 1.75rem;
+  }
+
+  .firstLessonModulesecondthirddescription {
+    font-size: 0.95rem;
+  }
+
+  .firstLessonModulesecondthirdsection ul,
+  .firstLessonModulesecondthirdscores ul {
+    padding-left: 1rem;
+  }
+
+  .firstLessonModulesecondthirddownloadBtn {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+}
+
+/* ///////////////////////////////////////////////////// */
+.istlesson4thcontainer {
+  background: linear-gradient(145deg, #010809, #292929);
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.istlesson4thtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #00bcd4; /* Neon teal */
+  margin-bottom: 30px;
+}
+
+.istlesson4thsection {
+  margin-bottom: 20px;
+}
+
+.istlesson4thheading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f44336; /* Neon red */
+  margin-bottom: 10px;
+}
+
+.istlesson4thsection ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.istlesson4thsection li {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.istlesson4thsection strong {
+  color: #ff9800; /* Amber */
+}
+.tesmktosdbkjqwpara p {
+  padding: 1rem;
+  margin: 1rem;
+  background: linear-gradient(145deg, #062226, #380418);
+}
+/* //////////////////////////////////////////////////////// */
+
+.AdiModuleOneTextArea {
+  padding: 1rem;
+  margin-top: 1rem;
+  max-width: 1240px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.AdiModuleOneTextArea h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(224, 241, 255);
+  font-weight: 400;
+}
+.AdiModuleOneTextBox {
+  max-width: 1240px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
+.AdiModuleOneTextBox label {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.AdiModuleOneTextBox textarea {
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  background-color: #0a0a10;
+  border-radius: 10px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  color: rgba(235, 238, 255, 0.871);
+}
+.AdiModuleOneTextBox textarea:focus {
+  box-shadow: 0 0 0 0.25rem rgba(10, 108, 255, 0.417);
+
+  border: 1px solid #86b7fe;
+}
+.AdiModuleOneTextBox button {
+  border-radius: 6px;
+  padding: 0.7rem 2rem;
+  background-color: #0063f6;
+  color: white;
+  border: none;
+  margin: 1rem 0.5rem;
+}
+.thoughtsListArea {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  border-radius: 6px;
+}
+.thoughtsListArea ul {
+  padding-left: 0px;
+}
+.thoughtsListArea ul li {
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #005362;
+  box-shadow: 0 8px 8px -4px rgb(1, 40, 53);
+  margin-top: 0.5rem;
+}
+.thoughtsListArea ul li p {
+  margin-bottom: 0px;
+}
+.thoughtsListArea ul li span {
+  min-width: 80px;
+}
+#editListIcon {
+  color: #00159a;
+  font-size: 1.5rem;
+  margin: 0px 0.5rem;
+  cursor: pointer;
+}
+#editListIcon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.3s;
+}
+#binListIcon {
+  color: #d50039;
+  font-size: 1.5rem;
+  margin: 0px 0.5rem;
+  cursor: pointer;
+}
+#binListIcon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 0.3s;
+}
+
+@media (max-width: 767px) {
+  .AdiModuleOneheading h1 {
+    font-size: 2rem;
+  }
+  .AdiModuleOneTextArea h2 {
+    font-size: 1.5rem;
+  }
+  .AdiModuleOneTextBox label {
+    font-size: 1rem;
+  }
+  .thoughtsListArea ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .thoughtsListArea ul li span {
+    min-width: 100%;
+    width: 100%;
+    text-align: end;
+  }
+}
+@media (max-width: 467px) {
+  .AdiModuleOneheading h1 {
+    font-size: 1.5rem;
+  }
+  .AdiModuleOneTextArea h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* //////////////////////////////////////////////////////////// */
+/* InstructorImpact.module.css */
+.Adiparttwowrapper {
+  padding: 4rem 2rem;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.Adiparttwocontainer {
+  max-width: 800px;
+  width: 100%;
+  background: linear-gradient(145deg, #010809, #292929);
+  border-radius: 20px;
+  padding: 3rem;
+
+  transition: box-shadow 0.3s ease;
+}
+
+.Adiparttwocontainer:hover {
+  box-shadow: 0 0 30px rgba(0, 50, 59, 0.5);
+}
+
+.Adiparttwotitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #ff4c4c;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 76, 76, 0.7);
+}
+
+.Adiparttwoparagraph {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.Adiparttwosubheading {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  color: #00e6e6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Adiparttwoicon {
+  color: #00e6e6;
+  animation: glow3 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow3 {
+  from {
+    filter: drop-shadow(0 0 5px #00e6e6);
+  }
+  to {
+    filter: drop-shadow(0 0 15px #00e6e6);
+  }
+}
+/* ////////////////////////////////////////////////////////////// */
+.Adi3rdlastcontainer {
+  color: #e0e0e0;
+  padding: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1240px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+.Adi3rdlasttitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00e0ff;
+  margin-bottom: 2rem;
+
+  padding-bottom: 1rem;
+}
+
+.Adi3rdlastsection {
+  background: linear-gradient(145deg, #010809, #292929);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.Adi3rdlastsection:hover {
+  transform: scale(1.01);
+}
+
+.Adi3rdlastsection h2 {
+  color: #00e0ff;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.Adi3rdlastsection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.Adi3rdlastsection li {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Adi3rdlastsection li svg {
+  color: #00ff9d;
+}
+
+.Adi3rdlastexample {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-left: 5px solid #ffde59;
+  font-style: italic;
+  border-radius: 0.5rem;
+  color: #ffde59;
+}
+
+.Adi3rdlastexample svg {
+  margin-right: 0.5rem;
+  color: #ffde59;
+}
+
+.whyItMatters {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+}
+
+.whyItMatters h2 {
+  color: #ff5722;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.whyItMatters ul {
+  padding-left: 1.5rem;
+}
+
+.whyItMatters li {
+  margin-bottom: 0.75rem;
+}
+
+/* ///////////////////////////////////////////////////////////////// */
+/* LegalActs.module.css */
+.adipart3threecontainer {
+  
+  color: #e0e0e0;
+  padding: 2rem;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+.adipart3threeheading {
+  font-size: 2.5rem;
+  color: #00ffff;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: fadeInDown1 1s ease-out;
+}
+
+.adipart3threesubheading {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ccc;
+  animation: fadeIn1 2s ease-in-out;
+}
+
+.adipart3threegrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.adipart3threecard {
+  background: linear-gradient(145deg, #010809, #292929);
+  padding: 1.5rem;
+  border: 2px solid;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.adipart3threeicon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.adipart3threetitle {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
+
+.adipart3threelist {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.6;
+}
+
+.licenseSection {
+  margin-top: 4rem;
+  background: linear-gradient(145deg, #010809, #292929);
+  padding: 2rem;
+  border-radius: 15px;
+  animation: fadeInUp1 1.5s ease-out;
+}
+
+.licenseHeading {
+  font-size: 1.8rem;
+  color: #66ffcc;
+  margin-bottom: 1rem;
+}
+
+.licenseText {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.8;
+}
+
+.licenseText a {
+  color: #66ffff;
+  text-decoration: underline;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeInDown1 {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp1 {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* //// */
+
+@media (max-width: 480px) {
+    .adipart3threeheading {
+      font-size: 1.8rem;
+    }
+  
+    .adipart3threesubheading {
+      font-size: 0.95rem;
+    }
+  
+    .licenseHeading {
+      font-size: 1.3rem;
+    }
+  
+    .licenseText {
+      font-size: 1rem;
+    }
+  }
