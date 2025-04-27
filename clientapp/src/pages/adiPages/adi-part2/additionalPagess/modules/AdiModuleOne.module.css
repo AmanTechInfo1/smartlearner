@@ -1419,3 +1419,28 @@
   font-size: 20px;
   transition: color 0.2s ease;
 }
+/* /////////////////////////////////////// */
+
+.videoContainer {
+  padding: 2rem;
+  background-color: #202439;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.videotitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #bddeff;
+  text-align: center;
+}
+
+.videodesign {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 8px;
+  outline: none;
+}

@@ -214,17 +214,11 @@ const Quiz = () => {
       const result = await response.data;
       if (myDivRef.current) {
         myDivRef.current.innerHTML = result.question;
-        if (result.question) {
-          speak(result.question);
-        }
       }
 
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
           document.getElementById(option).innerHTML = result[option];
-          if (result[option]) {
-            speak(result[option]);
-          }
         }
       });
       console.log("Translation response:", result);
@@ -453,7 +447,7 @@ const Quiz = () => {
                       }}
                       onClick={handleTranslationAndSpeech}
                     >
-                      Speak
+                      Translate
                     </button>
                   </div>
                   <div className={styles.totalTimer2}>
@@ -488,7 +482,10 @@ const Quiz = () => {
                   </div>
                 )}
                 <div>
-                  <div className={styles.questionNumbers} style={{ marginBottom: "1rem" }}>
+                  <div
+                    className={styles.questionNumbers}
+                    style={{ marginBottom: "1rem" }}
+                  >
                     {Array.from({ length: totalQuestions }, (_, index) => {
                       if (index < visibleQuestions) {
                         return (
@@ -510,13 +507,15 @@ const Quiz = () => {
                       }
                       return null;
                     })}
-                      {totalQuestions > 10 && (
-                    <button className={styles.seeMoreButton} onClick={handleToggle}>
-                      {showAll ? "See Less" : "See More"}
-                    </button>
-                  )}
+                    {totalQuestions > 10 && (
+                      <button
+                        className={styles.seeMoreButton}
+                        onClick={handleToggle}
+                      >
+                        {showAll ? "See Less" : "See More"}
+                      </button>
+                    )}
                   </div>
-                
                 </div>
                 <div className={styles.totalTimer}>
                   <span>Category: </span>
@@ -528,7 +527,9 @@ const Quiz = () => {
                 <div className={styles.questionCount}>
                   <span>Question: </span>
                   <div
+                    disabled={!hasTranslated || isTranslating}
                     ref={myDivRef}
+                    id="questionTextt"
                     dangerouslySetInnerHTML={{
                       __html: oneQuiz[currentQuestionIndex]?.question.replace(
                         ">",
@@ -536,6 +537,18 @@ const Quiz = () => {
                       ),
                     }}
                   />
+                  <button
+                    style={{
+                      marginTop: "8px",
+                      border: "none",
+                      backgroundColor: "darkblue",
+                    }}
+                    onClick={() =>
+                      speak(document.getElementById("questionTextt")?.innerText)
+                    }
+                  >
+                    🔊
+                  </button>
                 </div>
                 {oneQuiz[currentQuestionIndex]?.questionImage && (
                   <div style={{ display: "flex", justifyContent: "center" }}>
@@ -544,8 +557,8 @@ const Quiz = () => {
                         maxWidth: "300px",
                         width: "100%",
                         borderRadius: "6px",
-                        filter: "drop-shadow(0.35rem 0.35rem 0.4rem rgba(19, 19, 19, 0.8))",
-                        
+                        filter:
+                          "drop-shadow(0.35rem 0.35rem 0.4rem rgba(19, 19, 19, 0.8))",
                       }}
                       src={
                         imageBaseUrl +
@@ -631,6 +644,23 @@ const Quiz = () => {
                               >
                                 {answerOption}
                               </p>
+                              <button
+                                disabled={!hasTranslated || isTranslating}
+                                type="button"
+                                style={{
+                                  border: "none",
+                                }}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  speak(
+                                    document.getElementById(
+                                      "option" + (index + 1)
+                                    )?.innerText
+                                  );
+                                }}
+                              >
+                                🔊
+                              </button>
                               {oneQuiz[currentQuestionIndex]?.optionImage[
                                 index
                               ] && (

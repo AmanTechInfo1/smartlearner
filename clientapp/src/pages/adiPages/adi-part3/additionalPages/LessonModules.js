@@ -162,7 +162,7 @@ export default function LessonModules() {
           </li>
         </Link>
         {/* Agree Roles & Responsibilities */}
-        <Link to="">
+        <Link to="/learning-style">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -175,11 +175,11 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              The COAST Method in Advanced Driving
+              Learning needs and styles
             </div>
             {openIndex === 8 && (
               <p className={styles.description}>
-                Understand What is advanced driving
+                Understand WLearning needs and styles
               </p>
             )}
           </li>
@@ -196,15 +196,17 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz advanced driving
+              Quiz Learning needs and styles
             </div>
             {openIndex === 9 && (
-              <p className={styles.description}>Quiz advanced driving</p>
+              <p className={styles.description}>
+                Quiz Learning needs and styles
+              </p>
             )}
           </li>
         </Link>
         {/* ///////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/lesson-structure">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -217,10 +219,10 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Concentration in the Coast Method
+              Lesson structure
             </div>
             {openIndex === 10 && (
-              <p className={styles.description}>Understand The coast method</p>
+              <p className={styles.description}>Understand Lesson structure</p>
             )}
           </li>
         </Link>
@@ -236,15 +238,15 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz the cost method
+              Quiz Lesson structure
             </div>
             {openIndex === 11 && (
-              <p className={styles.description}>Quiz the cost method</p>
+              <p className={styles.description}>Quiz Lesson structure</p>
             )}
           </li>
         </Link>
         {/* ////////////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/gde-matrix-grow">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -257,12 +259,11 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Observation in the COAST Method for Advanced Driving
+              GDE Matrix and Grow Model
             </div>
             {openIndex === 12 && (
               <p className={styles.description}>
-                Understand The Observation in the COAST Method for Advanced
-                Driving
+                Understand GDE Matrix and Grow Model
               </p>
             )}
           </li>
@@ -279,15 +280,17 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Observation
+              Quiz GDE Matrix and Grow Model
             </div>
             {openIndex === 13 && (
-              <p className={styles.description}>Quiz Observation</p>
+              <p className={styles.description}>
+                Quiz GDE Matrix and Grow Model
+              </p>
             )}
           </li>
         </Link>
         {/* /////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/lesson-planning">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -300,12 +303,10 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Anticipation in the COAST Method for Advanced Driving
+              Lesson Planning
             </div>
             {openIndex === 14 && (
-              <p className={styles.description}>
-                Understand Anticipation-in-the-COAST-Method-for-Advanced-Driving
-              </p>
+              <p className={styles.description}>Understand Lesson Planning</p>
             )}
           </li>
         </Link>
@@ -321,15 +322,15 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Anticipation
+              Quiz Lesson Planning
             </div>
             {openIndex === 15 && (
-              <p className={styles.description}>Quiz Anticipation</p>
+              <p className={styles.description}>Quiz Lesson Planning</p>
             )}
           </li>
         </Link>
         {/* /////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/route-planning">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -342,12 +343,10 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Space in the COAST Method for Advanced Driving
+              Route Planning
             </div>
             {openIndex === 16 && (
-              <p className={styles.description}>
-                Understand Space in the COAST Method for Advanced Driving
-              </p>
+              <p className={styles.description}>Understand Route Planning</p>
             )}
           </li>
         </Link>
@@ -363,15 +362,15 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz anticipation
+              Quiz Route Planning
             </div>
             {openIndex === 17 && (
-              <p className={styles.description}>Quiz anticipation</p>
+              <p className={styles.description}>Quiz Route Planning</p>
             )}
           </li>
         </Link>
         {/* /////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/route-direction">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -384,11 +383,11 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Time in the COAST Method for Advanced Driving
+              Giving Route Directions
             </div>
             {openIndex === 18 && (
               <p className={styles.description}>
-                Understand Time in the COAST Method for Advanced Driving
+                Understand Giving Route Directions
               </p>
             )}
           </li>
@@ -405,17 +404,15 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Time in the COAST Method for Advanced Driving
+              Quiz Giving Route Directions
             </div>
             {openIndex === 19 && (
-              <p className={styles.description}>
-                Space Time in the COAST Method for Advanced Driving
-              </p>
+              <p className={styles.description}>Giving Route Directions</p>
             )}
           </li>
         </Link>
         {/* /////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/client-centred-learning">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -428,12 +425,10 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              Mastering the TUG Method for Safer and Smoother Driving
+              Client Centred Learning
             </div>
             {openIndex === 20 && (
-              <p className={styles.description}>
-                Mastering the TUG Method for Safer and Smoother Driving
-              </p>
+              <p className={styles.description}>Client Centred Learning</p>
             )}
           </li>
         </Link>
@@ -449,17 +444,55 @@ export default function LessonModules() {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Mastering the TUG Method for Safer and Smoother Driving
+              Quiz Client Centred Learning
             </div>
             {openIndex === 21 && (
-              <p className={styles.description}>
-                Quiz Mastering the TUG Method for Safer and Smoother Driving
-              </p>
+              <p className={styles.description}>Quiz Client Centred Learning</p>
+            )}
+          </li>
+        </Link>
+        {/* //////////////////////////////////////////////////// */}
+        <Link to="/questioning-techniques">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 2009 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(2009)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Questioning techniques
+            </div>
+            {openIndex === 2009 && (
+              <p className={styles.description}>Questioning techniques</p>
+            )}
+          </li>
+        </Link>
+        <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 2109 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(2109)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Questioning techniques
+            </div>
+            {openIndex === 2109 && (
+              <p className={styles.description}>Quiz Questioning techniques</p>
             )}
           </li>
         </Link>
         {/* /////////////////////////////////////////////// */}
-        <Link to="">
+        <Link to="/body-language">
           {" "}
           <li
             className={`${styles.itemLesson} ${
@@ -472,30 +505,241 @@ export default function LessonModules() {
               <span className={styles.checkIcon}>
                 <MdContactPage />
               </span>{" "}
-              ⁠Show me tell me questions
+              Body Language
             </div>
             {openIndex === 22 && (
-              <p className={styles.description}>⁠Show me tell me questions</p>
+              <p className={styles.description}>Understand Body Language</p>
             )}
           </li>
         </Link>
         <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 212 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(212)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Body Language
+            </div>
+            {openIndex === 212 && (
+              <p className={styles.description}>Quiz Body Language</p>
+            )}
+          </li>
+        </Link>
+
+        {/* //////////////////////////////////////////////////////////////// */}
+        <Link to="/giving-instruction-and-feedback">
           {" "}
           <li
             className={`${styles.itemLesson} ${
-              openIndex === 23 ? styles.lessonOpen : ""
+              openIndex === 223 ? styles.lessonOpen : ""
             }`}
-            onMouseEnter={() => handleMouseEnter(23)}
+            onMouseEnter={() => handleMouseEnter(223)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Giving Instruction and Feedback
+            </div>
+            {openIndex === 223 && (
+              <p className={styles.description}>
+                Understand Giving Instruction and Feedback
+              </p>
+            )}
+          </li>
+        </Link>
+        <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 233 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(233)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Giving Instruction and Feedback
+            </div>
+            {openIndex === 233 && (
+              <p className={styles.description}>
+                Quiz Giving Instruction and Feedback
+              </p>
+            )}
+          </li>
+        </Link>
+        {/* /////////////////////////////////////////////////////////// */}
+        <Link to="/adapting-lessons">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 1224 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(1224)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Adapting Lessons
+            </div>
+            {openIndex === 1224 && (
+              <p className={styles.description}>Understand Adapting Lessons</p>
+            )}
+          </li>
+        </Link>
+        <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 433 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(433)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Adapting Lessons
+            </div>
+            {openIndex === 433 && (
+              <p className={styles.description}>Quiz Adapting Lessons</p>
+            )}
+          </li>
+        </Link>
+        {/* /////////////////////////////////////////////////////////////////// */}
+        <Link to="/risk-management-and-responsibility">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 555 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(555)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Risk Management and Responsibility
+            </div>
+            {openIndex === 555 && (
+              <p className={styles.description}>
+                Risk Management and Responsibility
+              </p>
+            )}
+          </li>
+        </Link>
+        <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 477 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(477)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Risk Management and Responsibility
+            </div>
+            {openIndex === 477 && (
+              <p className={styles.description}>
+                Quiz Risk Management and Responsibility
+              </p>
+            )}
+          </li>
+        </Link>
+        {/* /////////////////////////////////////////////////////////////////////// */}
+        <Link to="/intervention">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 435 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(435)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.checkIcon}>
+                <MdContactPage />
+              </span>{" "}
+              Intervention
+            </div>
+            {openIndex === 435 && (
+              <p className={styles.description}>Intervention</p>
+            )}
+          </li>
+        </Link>
+        <Link to="">
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 427 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(427)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <TiTick />
+              </span>
+              Quiz Intervention
+            </div>
+            {openIndex === 427 && (
+              <p className={styles.description}>Quiz Intervention</p>
+            )}
+          </li>
+        </Link>
+
+        {/* ///////////////////////////////////////////////////////////// */}
+        <Link to="/trainee-badge">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 2389 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(2389)}
             onMouseLeave={handleMouseLeave}
           >
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <MdContactPage />
               </span>
-              ⁠Booking the Part 2 test
+              Trainee badge
             </div>
-            {openIndex === 23 && (
-              <p className={styles.description}>⁠Booking the Part 2 test</p>
+            {openIndex === 2389 && (
+              <p className={styles.description}>Trainee badge</p>
+            )}
+          </li>
+        </Link>
+        {/* //////////////////////////////////////////////////// */}
+        <Link to="/book-adi-part-3">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 2304 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(2304)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <MdContactPage />
+              </span>
+              How to book adi part 3 Test
+            </div>
+            {openIndex === 2304 && (
+              <p className={styles.description}>How to book adi part 3 Test</p>
             )}
           </li>
         </Link>

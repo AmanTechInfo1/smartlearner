@@ -6,6 +6,7 @@ import { IoTrashBin } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import humancheck from "../../../../../assets/part3videos/humancheck.mp4"
 
 export default function AdiModuleOne() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -230,6 +231,14 @@ export default function AdiModuleOne() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
+
+         <div className={styles.videoContainer}>
+                  <h2 className={styles.videotitle}>Watch Our Video</h2>
+                  <video className={styles.videodesign} controls muted loop>
+                    <source src={humancheck} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
 
         <section className={styles.AdiModuleOneTextArea}>
           <h2>

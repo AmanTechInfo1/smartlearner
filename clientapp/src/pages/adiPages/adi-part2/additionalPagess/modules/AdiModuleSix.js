@@ -15,7 +15,7 @@ import roadImage from "../../../../../assets/images/twosecondrule.jpg";
 import cloudImage from "../../../../../assets/images/raincloud.jpg";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import observation from "../../../../../assets/part3videos/observation.mp4";
 export default function AdiModuleSix() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -361,6 +361,13 @@ export default function AdiModuleSix() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={observation} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <div className={styles.AdiModuleContentBox}>
           <h2>See More, Drive Smarter!</h2>
@@ -375,7 +382,10 @@ export default function AdiModuleSix() {
               coming next.
             </p>
           </div>
-          <div className={styles.AdiModuleContentParaBoxm3}style={{marginTop:'1rem'}}>
+          <div
+            className={styles.AdiModuleContentParaBoxm3}
+            style={{ marginTop: "1rem" }}
+          >
             <p>
               In the COAST method, observation is your superpower. It helps you
               spot hazards, read the road ahead, and make proactive
@@ -732,42 +742,46 @@ export default function AdiModuleSix() {
           <h3 onClick={toggleHints} className={styles.adi2ndImgclickText}>
             CLICK TO REVEAL TWO HINTS{" "}
             <FaChevronDown
-              className={`${styles.adi2ndImgarrow} ${showHints ? styles.adi2ndImgrotate : ""}`}
+              className={`${styles.adi2ndImgarrow} ${
+                showHints ? styles.adi2ndImgrotate : ""
+              }`}
             />
           </h3>
 
-          <div className={`${styles.adi2ndImghintContainer} ${showHints ? styles.adi2ndImgshow : ''}`}>
-            
-              <div className={styles.adi2ndImghintBox}>
-                <img
-                  src={roadImage}
-                  alt="2 Second Rule"
-                  className={styles.adi2ndImgimage}
-                />
-                <div className={styles.adi2ndImgtooltip}>
-                  <strong>2 Second rule</strong>
-                  <p>
-                    Have you ever heard the saying only a fool breaks the two
-                    second rule? This is the...
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.adi2ndImghintBox}>
-                <img
-                  src={cloudImage}
-                  alt="Weather Conditions"
-                  className={styles.adi2ndImgimage}
-                />
-                <div className={styles.adi2ndImgtooltip}>
-                  <p>
-                    When you’re driving in rain, fog or snow, your vision is
-                    impaired. This can affect your observations.
-                  </p>
-                </div>
+          <div
+            className={`${styles.adi2ndImghintContainer} ${
+              showHints ? styles.adi2ndImgshow : ""
+            }`}
+          >
+            <div className={styles.adi2ndImghintBox}>
+              <img
+                src={roadImage}
+                alt="2 Second Rule"
+                className={styles.adi2ndImgimage}
+              />
+              <div className={styles.adi2ndImgtooltip}>
+                <strong>2 Second rule</strong>
+                <p>
+                  Have you ever heard the saying only a fool breaks the two
+                  second rule? This is the...
+                </p>
               </div>
             </div>
-         
+
+            <div className={styles.adi2ndImghintBox}>
+              <img
+                src={cloudImage}
+                alt="Weather Conditions"
+                className={styles.adi2ndImgimage}
+              />
+              <div className={styles.adi2ndImgtooltip}>
+                <p>
+                  When you’re driving in rain, fog or snow, your vision is
+                  impaired. This can affect your observations.
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className={styles.adi2ndImgnote}>
             <p>
@@ -778,17 +792,17 @@ export default function AdiModuleSix() {
           </div>
         </div>
         {/* ////////////////////////////////////////////////////////////////////// */}
-         <div className={styles.quizStartDiv}>
-                  <section className={styles.startQuizSection}>
-                    <h1>Start Quiz</h1>
-                    <h3>15 Questions</h3>
-                    <p></p>
-                    <Link to="/takequizCatName/Observation-in-the-COAST-Method-for-Advanced-Driving">
-                      {" "}
-                      <button>Start Quiz</button>
-                    </Link>
-                  </section>
-                </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/Observation-in-the-COAST-Method-for-Advanced-Driving">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
 
         {/* ///////////////////////////////////////////////////////////////////// */}
       </div>

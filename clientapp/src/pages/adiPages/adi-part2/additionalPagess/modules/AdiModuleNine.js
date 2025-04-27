@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import time from "../../../../../assets/part3videos/time.mp4";
 
 export default function AdiModuleNine() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -227,6 +228,14 @@ export default function AdiModuleNine() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
+
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={time} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         {/* //////////////////////////////////////////////////// */}
         <section className={styles.AdiModuleOneTextArea}>
@@ -487,10 +496,7 @@ export default function AdiModuleNine() {
           </div>
         </section>
         {/* //////////////////////////////////////////////////////////////// */}
-        <div
-          className={styles.AdiModuleOneTextBox}
-         
-        >
+        <div className={styles.AdiModuleOneTextBox}>
           <label>
             Have you ever experienced a situation where better timing could have
             improved your reaction or decision?

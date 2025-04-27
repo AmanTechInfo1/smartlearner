@@ -161,6 +161,21 @@ import AdiModule12 from "./pages/adiPages/adi-part2/additionalPagess/modules/Adi
 import Adi3Module from "./pages/adiPages/adi-part3/additionalPages/Adi3Module";
 import Adi3Moduletwo from "./pages/adiPages/adi-part3/additionalPages/Adi3Moduletwo";
 import Adi3Modulethree from "./pages/adiPages/adi-part3/additionalPages/Adi3Modulethree";
+import Adi3ModuleFour from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleFour";
+import Adi3Modulefive from "./pages/adiPages/adi-part3/additionalPages/Adi3Modulefive";
+import Adi3ModuleSix from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleSix";
+import Adi3ModuleSeven from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleSeven";
+import Adi3ModuleEight from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleEight";
+import Adi3ModuleNine from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleNine";
+import Adi3ModuleTen from "./pages/adiPages/adi-part3/additionalPages/Adi3ModuleTen";
+import Adi3Module11 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module11";
+import Adi3Module12 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module12";
+import Adi3Module13 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module13";
+import Adi3Module14 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module14";
+import Adi3Module15 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module15";
+import Adi3Module16 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module16";
+import Adi3Module17 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module17";
+import Adi3Module18 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module18";
 
 export const router = createBrowserRouter([
   {
@@ -229,10 +244,13 @@ export const router = createBrowserRouter([
       { path: "my-account", element: <MyAccount /> },
       { path: "checkout", element: <Checkout /> },
       { path: "part-one-theory-questions", element: <AdiPartOne /> },
-      {path: "band-one-Road-Procedure", element: <Band1 />},
-      {path:"band-two-traffic-signs-and-signals", element: <Band2 />},
-      {path:"band-three-driving-tests-disabilities-and-the-law", element: <Band3 />},
-      {path:"band-four-publications-techniques", element: <Band4 />},
+      { path: "band-one-Road-Procedure", element: <Band1 /> },
+      { path: "band-two-traffic-signs-and-signals", element: <Band2 /> },
+      {
+        path: "band-three-driving-tests-disabilities-and-the-law",
+        element: <Band3 />,
+      },
+      { path: "band-four-publications-techniques", element: <Band4 /> },
 
       { path: "band-1-Road-Procedure", element: <RoadProcedureBand /> },
       {
@@ -281,10 +299,22 @@ export const router = createBrowserRouter([
       { path: "paymentProcessing", element: <PaymentProcessing /> },
       { path: "email", element: <Email /> },
       { path: "hazard-preception-part-2", element: <HazardPreceptions /> },
-      { path: "driving-instructor-training-part-one", element: <PartOneSubscription /> },
-      { path: "driving-instructor-training-part-two", element: <PartTwoSubscription /> },
-      { path: "driving-instructor-training-part-three", element: <PartThreeSubscription /> },
-      { path: "driving-instructor-training-full-course", element: <CompleteSubscription /> },
+      {
+        path: "driving-instructor-training-part-one",
+        element: <PartOneSubscription />,
+      },
+      {
+        path: "driving-instructor-training-part-two",
+        element: <PartTwoSubscription />,
+      },
+      {
+        path: "driving-instructor-training-part-three",
+        element: <PartThreeSubscription />,
+      },
+      {
+        path: "driving-instructor-training-full-course",
+        element: <CompleteSubscription />,
+      },
       { path: "blogs", element: <Blogs /> },
       { path: "privilege-cards", element: <PrivledgeCards /> },
       { path: "glossary-terms", element: <Glossary /> },
@@ -294,50 +324,126 @@ export const router = createBrowserRouter([
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
       {
-        path:"quizModuleOne", element: <AdiModuleOne/>
+        path: "quizModuleOne",
+        element: <AdiModuleOne />,
       },
       {
-        path:"quizModuletwo", element: <AdiModuleTwo/>
+        path: "quizModuletwo",
+        element: <AdiModuleTwo />,
       },
       {
-        path:"quizModulethree", element: <AdiModuleThree/>
+        path: "quizModulethree",
+        element: <AdiModuleThree />,
       },
       {
-        path:"quizModulefour", element: <AdiModuleFour/>
+        path: "quizModulefour",
+        element: <AdiModuleFour />,
       },
       {
-        path:"quizModulefive", element: <AdiModuleFive/>
+        path: "quizModulefive",
+        element: <AdiModuleFive />,
       },
       {
-        path:"quizModulesix", element: <AdiModuleSix/>
+        path: "quizModulesix",
+        element: <AdiModuleSix />,
       },
       {
-        path:"quizModuleseven", element: <AdiModuleSeven/>
+        path: "quizModuleseven",
+        element: <AdiModuleSeven />,
       },
       {
-        path:"quizModule-eight", element: <AdiModuleEight/>
+        path: "quizModule-eight",
+        element: <AdiModuleEight />,
       },
       {
-        path:"quizModulenine", element: <AdiModuleNine/>
+        path: "quizModulenine",
+        element: <AdiModuleNine />,
       },
       {
-        path:"quizModule-Ten", element: <AdiModuleTen/>
+        path: "quizModule-Ten",
+        element: <AdiModuleTen />,
       },
       {
-        path:"quizModuleEleven", element: <AdiModule11/>
+        path: "quizModuleEleven",
+        element: <AdiModule11 />,
       },
       {
-        path:"quizModuleTwelve", element: <AdiModule12/>
+        path: "quizModuleTwelve",
+        element: <AdiModule12 />,
       },
       {
-        path:"national-standards", element: <Adi3Module/>
+        path: "national-standards",
+        element: <Adi3Module />,
       },
       {
-        path:"good-instructor-module", element: <Adi3Moduletwo/>
+        path: "good-instructor-module",
+        element: <Adi3Moduletwo />,
       },
       {
-        path:"legal-stuff", element: <Adi3Modulethree/>
+        path: "legal-stuff",
+        element: <Adi3Modulethree />,
       },
+      {
+        path: "learning-style",
+        element: <Adi3ModuleFour />,
+      },
+      {
+        path: "lesson-structure",
+        element: <Adi3Modulefive />,
+      },
+      {
+        path: "gde-matrix-grow",
+        element: <Adi3ModuleSix />,
+      },
+      {
+        path: "lesson-planning",
+        element: <Adi3ModuleSeven />,
+      },
+      {
+        path: "route-planning",
+        element: <Adi3ModuleEight />,
+      },
+      {
+        path: "route-direction",
+        element: <Adi3ModuleNine />,
+      },
+      {
+        path: "client-centred-learning",
+        element: <Adi3ModuleTen />,
+      },
+      {
+        path: "body-language",
+        element: <Adi3Module11 />,
+      },
+      {
+        path: "giving-instruction-and-feedback",
+        element: <Adi3Module12 />,
+      },
+      {
+        path: "adapting-lessons",
+        element: <Adi3Module13 />,
+      },
+      {
+        path: "risk-management-and-responsibility",
+        element: <Adi3Module14 />,
+      },
+      {
+        path: "intervention",
+        element: <Adi3Module15 />,
+      },
+      {
+        path: "trainee-badge",
+        element: <Adi3Module16 />,
+      },
+      {
+        path: "questioning-techniques",
+        element: <Adi3Module17 />,
+      },
+      {
+        path: "book-adi-part-3",
+        element: <Adi3Module18 />,
+      },
+
       {
         path: "driving-instructor-packages/:section?",
         element: <DrivingTransmission />,
@@ -345,7 +451,8 @@ export const router = createBrowserRouter([
       { path: "cpd-events", element: <CbdEvents /> },
       { path: "businesscoaching", element: <BusinessCoaching /> },
       {
-        path:"all-results", element: <AllResult/>
+        path: "all-results",
+        element: <AllResult />,
       },
       {
         path: "trainning-material",
@@ -384,7 +491,7 @@ export const router = createBrowserRouter([
         path: "/quizGive",
         element: <QuizCategoryHome />,
       },
-     
+
       {
         path: "/takequiz/:cid/:id",
         element: <Quiz />,
@@ -423,7 +530,8 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}></RequireAuth>
+        element={<AdminLayout />}
+      ></RequireAuth>
     ),
     children: [
       {

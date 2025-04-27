@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 import roadImg from "../../../../../assets/images/moduleNine1Img.png";
 import road2Img from "../../../../../assets/images/moduleNine2Img.png";
+import tug from "../../../../../assets/part3videos/tug.mp4";
 
 export default function AdiModuleTen() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -346,6 +347,13 @@ export default function AdiModuleTen() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={tug} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         {/* /////////////////////////////////////////////////// */}
         <section
@@ -593,7 +601,9 @@ export default function AdiModuleTen() {
             </p>
           </div>
           <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(255, 129, 165)" }}>How to Give Information:</h3>
+            <h3 style={{ color: "rgb(255, 129, 165)" }}>
+              How to Give Information:
+            </h3>
 
             <ul>
               <li>
@@ -611,7 +621,9 @@ export default function AdiModuleTen() {
             </ul>
           </div>
           <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(255, 129, 165)" }}>Example: Changing Lanes on the Motorway:</h3>
+            <h3 style={{ color: "rgb(255, 129, 165)" }}>
+              Example: Changing Lanes on the Motorway:
+            </h3>
 
             <ul>
               <li>
@@ -719,7 +731,7 @@ export default function AdiModuleTen() {
 
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.AdiModuleContentParaBoxm2}>
-            <p style={{textAlign:'center', marginBottom:"0px"}}>
+            <p style={{ textAlign: "center", marginBottom: "0px" }}>
               Once you’ve written it, review your plan with an instructor or a
               fellow learner.
             </p>

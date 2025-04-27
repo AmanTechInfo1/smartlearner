@@ -19,6 +19,7 @@ import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSl
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 
 import { useRef } from "react";
+import welcomepdi2 from "../../../assets/part3videos/WhatsApp Video 2025-04-22 at 10.25.14 PM.mp4";
 
 import gsap from "gsap";
 import LessonAccordation from "./additionalPagess/LessonAccordation";
@@ -500,13 +501,19 @@ export default function AdiPartTwo() {
                   {" "}
                   <button>Contact Us</button>
                 </Link>
-            
               </div>
             </div>
           </div>
         </section>
 
         {/* ///////////////////////////////////// */}
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={welcomepdi2} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <p id={styles.hazardTestWorkListSectionPara3}>
           Now, as you step into Module 2, you'll dive deeper into the practical
@@ -525,9 +532,11 @@ export default function AdiPartTwo() {
         <div className={styles.downArrowiconDiv}>
           <FaRegArrowAltCircleDown
             onClick={toggleGlossary}
-            className={`${styles.downArrowicon} ${isVisible ? styles.rotate : ""}`}
+            className={`${styles.downArrowicon} ${
+              isVisible ? styles.rotate : ""
+            }`}
           />
-         <p>CLICK ME</p>
+          <p>CLICK ME</p>
         </div>
         <div
           className={`${styles.glossarycontainer} ${
@@ -560,9 +569,11 @@ export default function AdiPartTwo() {
         <div className={styles.downArrowiconDiv}>
           <FaRegArrowAltCircleDown
             onClick={toggleGlossary2}
-            className={`${styles.downArrowicon} ${isVisible2 ? styles.rotate : ""}`}
+            className={`${styles.downArrowicon} ${
+              isVisible2 ? styles.rotate : ""
+            }`}
           />
-         <p>CLICK ME</p>
+          <p>CLICK ME</p>
         </div>
         <div
           className={`${styles.glossarycontainer} ${
@@ -582,7 +593,7 @@ export default function AdiPartTwo() {
               aspects of driving.
             </li>
           </ul>
-          <h2 className={styles.glossarysubTitle} style={{marginTop:'1rem'}}>
+          <h2 className={styles.glossarysubTitle} style={{ marginTop: "1rem" }}>
             Five Aspects of Driving Being Assessed:
           </h2>
           <ol className={styles.glossarylist}>
@@ -609,7 +620,6 @@ export default function AdiPartTwo() {
           </ol>
         </div>
 
-          
         {/* ////////////////////////////////////////////////////// */}
         <section className={styles.theoryTestSectionQ}>
           <div className={styles.theoryTestDivQ}>
@@ -619,9 +629,11 @@ export default function AdiPartTwo() {
         <div className={styles.downArrowiconDiv}>
           <FaRegArrowAltCircleDown
             onClick={toggleGlossary3}
-            className={`${styles.downArrowicon} ${isVisible3 ? styles.rotate : ""}`}
+            className={`${styles.downArrowicon} ${
+              isVisible3 ? styles.rotate : ""
+            }`}
           />
-         <p>CLICK ME</p>
+          <p>CLICK ME</p>
         </div>
         <div
           className={`${styles.glossarycontainer} ${
@@ -652,7 +664,9 @@ export default function AdiPartTwo() {
               road signs or a sat-nav for around 20 minutes.{" "}
             </li>
           </ul>
-          <h2 className={styles.glossarysubTitle} style={{marginTop:'1rem'}}>Assessment Criteria:</h2>
+          <h2 className={styles.glossarysubTitle} style={{ marginTop: "1rem" }}>
+            Assessment Criteria:
+          </h2>
           <ul className={styles.glossarylist}>
             <li>
               - You are allowed up to six driving faults (similar to minors in a
@@ -670,7 +684,6 @@ export default function AdiPartTwo() {
         </div>
 
         {/* ////////////////////////////////////////////////////// */}
-        
 
         {/* //////////////////////////////////////////////////////////// */}
         <section className={styles.lessonAccordionContainer}>
