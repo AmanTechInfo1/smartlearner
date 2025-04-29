@@ -2,8 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 import { motion } from "framer-motion";
-import { FaBalanceScale, FaCarCrash, FaUserShield, FaLock, FaRegMoneyBillAlt, FaExclamationTriangle } from "react-icons/fa";
-
+import {
+  FaBalanceScale,
+  FaCarCrash,
+  FaUserShield,
+  FaLock,
+  FaRegMoneyBillAlt,
+  FaExclamationTriangle,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Adi3Modulethree() {
   const textRef = useRef(null);
@@ -96,53 +103,64 @@ export default function Adi3Modulethree() {
       });
   }, []);
 
-
-//   ///////////////////////////////////////////////////////
-const sections = [
+  //   ///////////////////////////////////////////////////////
+  const sections = [
     {
-      icon: <FaBalanceScale />, title: "Equality & Diversity Laws", color: "#ff4d4d",
+      icon: <FaBalanceScale />,
+      title: "Equality & Diversity Laws",
+      color: "#ff4d4d",
       points: [
         "Equality Act 2010 – Ensures fair and equal treatment for all learners.",
-        "Disability Discrimination Act – Accommodate disabled learners."
-      ]
+        "Disability Discrimination Act – Accommodate disabled learners.",
+      ],
     },
     {
-      icon: <FaCarCrash />, title: "Road Traffic Laws & Instructor Regulations", color: "#ffa64d",
+      icon: <FaCarCrash />,
+      title: "Road Traffic Laws & Instructor Regulations",
+      color: "#ffa64d",
       points: [
         "Road Traffic Act 1988 – Governs safe road use.",
         "Motor Vehicles Regulations 1999 – Supervision and eyesight rules.",
-        "Instructor Suspension Act 2009 – DVSA authority for suspensions."
-      ]
+        "Instructor Suspension Act 2009 – DVSA authority for suspensions.",
+      ],
     },
     {
-      icon: <FaLock />, title: "Data Protection & Confidentiality", color: "#4dd2ff",
+      icon: <FaLock />,
+      title: "Data Protection & Confidentiality",
+      color: "#4dd2ff",
       points: [
-        "UK GDPR & Data Protection Act 2018 – Secure personal data handling."
-      ]
+        "UK GDPR & Data Protection Act 2018 – Secure personal data handling.",
+      ],
     },
     {
-      icon: <FaExclamationTriangle />, title: "Health & Safety Regulations", color: "#4dff88",
+      icon: <FaExclamationTriangle />,
+      title: "Health & Safety Regulations",
+      color: "#4dff88",
       points: [
         "Health & Safety at Work Act 1974 – Safe learning environment.",
-        "Management of H&S 1999 – Risk assessments for safe lessons."
-      ]
+        "Management of H&S 1999 – Risk assessments for safe lessons.",
+      ],
     },
     {
-      icon: <FaRegMoneyBillAlt />, title: "Consumer Rights & Business Compliance", color: "#ff66cc",
+      icon: <FaRegMoneyBillAlt />,
+      title: "Consumer Rights & Business Compliance",
+      color: "#ff66cc",
       points: [
         "Consumer Rights Act 2015 – Fair pricing and service.",
-        "Supply of Goods & Services Act – Reasonable care and skill."
-      ]
+        "Supply of Goods & Services Act – Reasonable care and skill.",
+      ],
     },
     {
-      icon: <FaUserShield />, title: "Criminal Record & Safeguarding Laws", color: "#cccc00",
+      icon: <FaUserShield />,
+      title: "Criminal Record & Safeguarding Laws",
+      color: "#cccc00",
       points: [
         "Rehabilitation of Offenders Act – DBS checks required.",
-        "Children & Safeguarding Acts – Protect young/vulnerable learners."
-      ]
-    }
+        "Children & Safeguarding Acts – Protect young/vulnerable learners.",
+      ],
+    },
   ];
-// ////////////////////////////////////////////////////////////////  
+  // ////////////////////////////////////////////////////////////////
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
@@ -155,42 +173,80 @@ const sections = [
       </section>
       {/* ////////////////////////////////////////////////////////////// */}
       <div className={styles.adipart3threecontainer}>
-      <h1 className={styles.adipart3threeheading}>Legal Requirements for Driving Instructors</h1>
-      <p className={styles.adipart3threesubheading}>Here’s a brief explanation of each legal act with examples relevant to driving instructors:</p>
-      <div className={styles.adipart3threegrid}>
-        {sections.map((section, index) => (
-          <motion.div
-            key={index}
-            className={styles.adipart3threecard}
-            style={{ borderColor: section.color }}
-            whileHover={{ rotate: 5, scale: 1.05 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className={styles.adipart3threeicon} style={{ color: section.color }}>{section.icon}</div>
-            <h3 className={styles.adipart3threetitle}>{section.title}</h3>
-            <ul className={styles.adipart3threelist}>
-              {section.points.map((point, idx) => <li key={idx}>🔹 {point}</li>)}
-            </ul>
-          </motion.div>
-        ))}
+        <h1 className={styles.adipart3threeheading}>
+          Legal Requirements for Driving Instructors
+        </h1>
+        <p className={styles.adipart3threesubheading}>
+          Here’s a brief explanation of each legal act with examples relevant to
+          driving instructors:
+        </p>
+        <div className={styles.adipart3threegrid}>
+          {sections.map((section, index) => (
+            <motion.div
+              key={index}
+              className={styles.adipart3threecard}
+              style={{ borderColor: section.color }}
+              whileHover={{ rotate: 5, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div
+                className={styles.adipart3threeicon}
+                style={{ color: section.color }}
+              >
+                {section.icon}
+              </div>
+              <h3 className={styles.adipart3threetitle}>{section.title}</h3>
+              <ul className={styles.adipart3threelist}>
+                {section.points.map((point, idx) => (
+                  <li key={idx}>🔹 {point}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className={styles.licenseSection}>
+          <h2 className={styles.licenseHeading}>Licence Check Code</h2>
+          <p className={styles.licenseText}>
+            Just because a student presents a provisional licence doesn’t mean
+            it’s valid. Always confirm its authenticity at:
+            <a
+              href="https://www.gov.uk/view-driving-licence"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.gov.uk/view-driving-licence
+            </a>
+            <br />
+            Then use the code at:
+            <a
+              href="https://www.gov.uk/check-driving-information"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://www.gov.uk/check-driving-information
+            </a>
+          </p>
+        </div>
+      </div>
+      {/* ///////////////////////////////////////////////// */}
+
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            The legal stuff the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/legal-stuff">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
       </div>
 
-      <div className={styles.licenseSection}>
-        <h2 className={styles.licenseHeading}>Licence Check Code</h2>
-        <p className={styles.licenseText}>
-          Just because a student presents a provisional licence doesn’t mean it’s valid.
-          Always confirm its authenticity at:
-          <a href="https://www.gov.uk/view-driving-licence" target="_blank" rel="noopener noreferrer">
-            https://www.gov.uk/view-driving-licence
-          </a>
-          <br />
-          Then use the code at:
-          <a href="https://www.gov.uk/check-driving-information" target="_blank" rel="noopener noreferrer">
-            https://www.gov.uk/check-driving-information
-          </a>
-        </p>
-      </div>
-    </div>
+      {/* ////////////////////////////////////////////////////////// */}
     </div>
   );
 }

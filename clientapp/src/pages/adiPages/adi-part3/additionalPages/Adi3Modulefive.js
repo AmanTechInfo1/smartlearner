@@ -22,6 +22,7 @@ import pedestrianCrossing from "../../../../assets/images/pedestrian.png";
 import meetingOncoming from "../../../../assets/images/Meeting-oncoming-traffic.png";
 import planningAnticipation from "../../../../assets/images/Anticipation-and-planning.png";
 import MockTests from "../../../../assets/images/Mock-testsp3.png";
+import { Link } from "react-router-dom";
 
 export default function Adi3Modulefive() {
   const skills = [
@@ -321,6 +322,20 @@ export default function Adi3Modulefive() {
         </p>
       </section>
       {/* ///////////////////////////////////// */}
+      <div className={styles.quizStartDiv}>
+              <section className={styles.startQuizSection}>
+                <h1>Start Quiz</h1>
+                <h3>15 Questions</h3>
+                <p>
+                  Here’s a quick summary quiz to test your understanding of of Part 3:
+                  Lesson Structure the lesson before setting off
+                </p>
+                <Link to="/takequizCatName/lesson-structure">
+                  {" "}
+                  <button>Start Quiz</button>
+                </Link>
+              </section>
+            </div>
     </div>
   );
 }

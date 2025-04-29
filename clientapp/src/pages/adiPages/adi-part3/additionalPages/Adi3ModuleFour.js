@@ -8,6 +8,7 @@ import { IoTrashBin } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { FaLightbulb, FaCheckCircle, FaThumbtack } from "react-icons/fa";
 import { BookOpen, Ear, Eye, HandMetal, HelpCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Adi3ModuleFour() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -751,6 +752,21 @@ export default function Adi3ModuleFour() {
             </ul>
           )}
         </div>
+      </div>
+      {/* /////////////////////////////// */}
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Learning Needs and Styles the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/learning-styles">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
       </div>
     </div>
   );

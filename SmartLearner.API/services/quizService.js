@@ -9,6 +9,7 @@ class quizService {
   async createQuizAsync(quizData) {
     try {
       const quiz = await QuizQuestion.create(quizData);
+      console.log("eihskudfasdasad",quizData)
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Added Successfully",

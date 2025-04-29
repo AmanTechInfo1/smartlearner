@@ -7,7 +7,7 @@ import { IoTrashBin } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { FaCheckCircle, FaLightbulb, FaCar } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 
 export default function Adi3Moduletwo() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -280,26 +280,30 @@ export default function Adi3Moduletwo() {
       });
   }, []);
 
-//   /////////////////////////////////////////////////////////////////
-const Section = ({ title, items, example }) => (
-    <motion.div 
+  //   /////////////////////////////////////////////////////////////////
+  const Section = ({ title, items, example }) => (
+    <motion.div
       className={styles.Adi3rdlastsection}
-      initial={{ opacity: 0, y: 50 }} 
-      whileInView={{ opacity: 1, y: 0 }} 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       <h2>{title}</h2>
       <ul>
         {items.map((item, index) => (
-          <li key={index}><FaCheckCircle /> {item}</li>
+          <li key={index}>
+            <FaCheckCircle /> {item}
+          </li>
         ))}
       </ul>
       {example && (
-        <p className={styles.Adi3rdlastexample}><FaLightbulb /> {example}</p>
+        <p className={styles.Adi3rdlastexample}>
+          <FaLightbulb /> {example}
+        </p>
       )}
     </motion.div>
   );
-//   ///////////////////////////////////////////////////////////////
+  //   ///////////////////////////////////////////////////////////////
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
@@ -514,110 +518,131 @@ const Section = ({ title, items, example }) => (
 
       {/* //////////////////////////////////////////////////////////////////////////// */}
       <div className={styles.Adi3rdlastcontainer}>
-      <motion.h1 
-        className={styles.Adi3rdlasttitle}
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        What Makes Good Customer Service in Driving Instruction
-      </motion.h1>
+        <motion.h1
+          className={styles.Adi3rdlasttitle}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          What Makes Good Customer Service in Driving Instruction
+        </motion.h1>
 
-      <Section
-        title="1. Clear and Effective Communication"
-        items={[
-          "Listening to the Learner: Understanding their concerns, anxieties, and goals.",
-          "Explaining Clearly: Giving easy-to-follow instructions in a calm, patient manner.",
-          "Providing Constructive Feedback: Explaining how to improve supportively."
-        ]}
-      />
+        <Section
+          title="1. Clear and Effective Communication"
+          items={[
+            "Listening to the Learner: Understanding their concerns, anxieties, and goals.",
+            "Explaining Clearly: Giving easy-to-follow instructions in a calm, patient manner.",
+            "Providing Constructive Feedback: Explaining how to improve supportively.",
+          ]}
+        />
 
-      <Section
-        title="2. Responsiveness & Efficiency"
-        items={[
-          "Punctuality: Arriving on time and keeping lessons well-structured.",
-          "Quick Support: Responding promptly to booking inquiries.",
-          "Following Up: Checking in on progress and readiness for tests."
-        ]}
-        example="Sending a quick text before lessons to confirm times or following up after a test with encouragement."
-      />
+        <Section
+          title="2. Responsiveness & Efficiency"
+          items={[
+            "Punctuality: Arriving on time and keeping lessons well-structured.",
+            "Quick Support: Responding promptly to booking inquiries.",
+            "Following Up: Checking in on progress and readiness for tests.",
+          ]}
+          example="Sending a quick text before lessons to confirm times or following up after a test with encouragement."
+        />
 
-      <Section
-        title="3. Empathy & Understanding"
-        items={[
-          "Calming Nerves: Being patient and reassuring.",
-          "Adjusting to Different Learning Styles.",
-          "Staying Patient: Supporting students who take longer to grasp concepts."
-        ]}
-        example="A nervous learner struggles with roundabouts. Instead of rushing, break it down calmly and practice at quieter times."
-      />
+        <Section
+          title="3. Empathy & Understanding"
+          items={[
+            "Calming Nerves: Being patient and reassuring.",
+            "Adjusting to Different Learning Styles.",
+            "Staying Patient: Supporting students who take longer to grasp concepts.",
+          ]}
+          example="A nervous learner struggles with roundabouts. Instead of rushing, break it down calmly and practice at quieter times."
+        />
 
-      <Section
-        title="4. Knowledge & Expertise"
-        items={[
-          "Mastering the National Standard.",
-          "Understanding Road Laws & Test Requirements.",
-          "Providing Valuable Tips beyond just passing the test."
-        ]}
-        example="Teaching eco-friendly driving techniques and hazard perception."
-      />
+        <Section
+          title="4. Knowledge & Expertise"
+          items={[
+            "Mastering the National Standard.",
+            "Understanding Road Laws & Test Requirements.",
+            "Providing Valuable Tips beyond just passing the test.",
+          ]}
+          example="Teaching eco-friendly driving techniques and hazard perception."
+        />
 
-      <Section
-        title="5. Professionalism & Positive Attitude"
-        items={[
-          "Maintaining a Calm Demeanour.",
-          "Respecting the Learner.",
-          "Dressing & Behaving Professionally."
-        ]}
-        example="If a learner stalls, reassure them with calm encouragement."
-      />
+        <Section
+          title="5. Professionalism & Positive Attitude"
+          items={[
+            "Maintaining a Calm Demeanour.",
+            "Respecting the Learner.",
+            "Dressing & Behaving Professionally.",
+          ]}
+          example="If a learner stalls, reassure them with calm encouragement."
+        />
 
-      <Section
-        title="6. Personalisation & Going the Extra Mile"
-        items={[
-          "Tailoring Lessons to the Learner.",
-          "Providing Extra Resources.",
-          "Offering Flexible Lesson Times."
-        ]}
-        example="If a student struggles with parking, create a personalised strategy."
-      />
+        <Section
+          title="6. Personalisation & Going the Extra Mile"
+          items={[
+            "Tailoring Lessons to the Learner.",
+            "Providing Extra Resources.",
+            "Offering Flexible Lesson Times.",
+          ]}
+          example="If a student struggles with parking, create a personalised strategy."
+        />
 
-      <Section
-        title="7. Accountability & Problem-Solving"
-        items={[
-          "Taking Responsibility for scheduling mistakes.",
-          "Adapting When Challenges Arise.",
-          "Ensuring a Positive Experience."
-        ]}
-        example="If roadworks interrupt, use it as a learning opportunity."
-      />
+        <Section
+          title="7. Accountability & Problem-Solving"
+          items={[
+            "Taking Responsibility for scheduling mistakes.",
+            "Adapting When Challenges Arise.",
+            "Ensuring a Positive Experience.",
+          ]}
+          example="If roadworks interrupt, use it as a learning opportunity."
+        />
 
-      <Section
-        title="8. Consistency Across All Channels"
-        items={[
-          "Professionalism in Messages & Calls.",
-          "Clear Pricing & Booking Policies.",
-          "Using Social Media & Reviews Wisely."
-        ]}
-        example="A smooth booking system avoids confusion and builds trust."
-      />
+        <Section
+          title="8. Consistency Across All Channels"
+          items={[
+            "Professionalism in Messages & Calls.",
+            "Clear Pricing & Booking Policies.",
+            "Using Social Media & Reviews Wisely.",
+          ]}
+          example="A smooth booking system avoids confusion and builds trust."
+        />
 
-      <motion.div 
-        className={styles.whyItMatters}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <h2>Why Good Customer Service Matters <FaCar /></h2>
-        <ul>
-          <li>🚗 Happy learners = more referrals and better reviews.</li>
-          <li>🚗 A positive, patient approach creates safer, more confident drivers.</li>
-          <li>🚗 It's about lifelong driving skills, not just passing a test.</li>
-        </ul>
-      </motion.div>
-    </div>
+        <motion.div
+          className={styles.whyItMatters}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <h2>
+            Why Good Customer Service Matters <FaCar />
+          </h2>
+          <ul>
+            <li>🚗 Happy learners = more referrals and better reviews.</li>
+            <li>
+              🚗 A positive, patient approach creates safer, more confident
+              drivers.
+            </li>
+            <li>
+              🚗 It's about lifelong driving skills, not just passing a test.
+            </li>
+          </ul>
+        </motion.div>
+      </div>
 
       {/* //////////////////////////////////////////////////////////// */}
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Good Instructor the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/good-instructor">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

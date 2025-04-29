@@ -360,10 +360,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz anticipation
+              Quiz Space in the COAST Method for Advanced Driving
             </div>
             {openIndex === 17 && (
-              <p className={styles.description}>Quiz anticipation</p>
+              <p className={styles.description}>Quiz Space in the COAST Method for Advanced Driving</p>
             )}
           </li>
         </Link>

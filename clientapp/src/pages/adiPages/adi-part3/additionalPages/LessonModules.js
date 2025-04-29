@@ -21,7 +21,7 @@ export default function LessonModules() {
       <div className={styles.LessonAccordionheader}>
         <span>SKILLS</span>
         <span className={styles.LessonAccordionProgress}>
-          12 Steps | 10 Quizzes
+          18 Steps | 15 Quizzes
         </span>
       </div>
       <ul className={styles.listLessonData}>
@@ -50,7 +50,7 @@ export default function LessonModules() {
         </Link>
 
         {/* Giving Route Directions */}
-        <Link to="">
+        <Link to="/takequizCatName/national-standard">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 2 ? styles.lessonOpen : ""
@@ -96,7 +96,7 @@ export default function LessonModules() {
           </li>
         </Link>
 
-        <Link to="">
+        <Link to="/takequizCatName/good-instructor">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 5 ? styles.lessonOpen : ""
@@ -141,7 +141,7 @@ export default function LessonModules() {
           </li>
         </Link>
 
-        <Link to="">
+        <Link to="/takequizCatName/legal-stuff">
           {/* QUIZ – Levels of Instruction */}
           <li
             className={`${styles.itemLesson} ${
@@ -184,7 +184,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/learning-styles">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 9 ? styles.lessonOpen : ""
@@ -226,7 +226,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/lesson-structure">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 11 ? styles.lessonOpen : ""
@@ -268,7 +268,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/gde-matrix">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 13 ? styles.lessonOpen : ""
@@ -310,7 +310,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/lesson-planning">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 15 ? styles.lessonOpen : ""
@@ -350,7 +350,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/route-planning">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 17 ? styles.lessonOpen : ""
@@ -392,7 +392,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/giving-routes">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 19 ? styles.lessonOpen : ""
@@ -432,7 +432,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/client-centred-learning">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 21 ? styles.lessonOpen : ""
@@ -472,7 +472,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/questioning-techniques">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 2109 ? styles.lessonOpen : ""
@@ -512,7 +512,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/body-language">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 212 ? styles.lessonOpen : ""
@@ -555,7 +555,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/giving-feedback">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 233 ? styles.lessonOpen : ""
@@ -597,7 +597,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/adapting">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 433 ? styles.lessonOpen : ""
@@ -639,7 +639,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/risk-management-responsbilities">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 477 ? styles.lessonOpen : ""
@@ -681,7 +681,7 @@ export default function LessonModules() {
             )}
           </li>
         </Link>
-        <Link to="">
+        <Link to="/takequizCatName/intervention">
           <li
             className={`${styles.itemLesson} ${
               openIndex === 427 ? styles.lessonOpen : ""
@@ -740,6 +740,27 @@ export default function LessonModules() {
             </div>
             {openIndex === 2304 && (
               <p className={styles.description}>How to book adi part 3 Test</p>
+            )}
+          </li>
+        </Link>
+
+        <Link to="/adi-videos">
+          {" "}
+          <li
+            className={`${styles.itemLesson} ${
+              openIndex === 297 ? styles.lessonOpen : ""
+            }`}
+            onMouseEnter={() => handleMouseEnter(297)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.lessonRow}>
+              <span className={styles.quizIcon}>
+                <MdContactPage />
+              </span>
+              Videos of Part 3
+            </div>
+            {openIndex === 297 && (
+              <p className={styles.description}> Videos of Part 3</p>
             )}
           </li>
         </Link>

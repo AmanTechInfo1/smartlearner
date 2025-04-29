@@ -319,7 +319,7 @@ export const createQuiz =
         reset();
         toggleAddQuizModal();
         dispatch(getAllQuizzes(state.search, state.page, state.pageSize));
-        // dispatch(createQuizSuccess(response.data.data));
+        
       } else {
         toast.error(response.data.message);
         dispatch(createQuizFailure());

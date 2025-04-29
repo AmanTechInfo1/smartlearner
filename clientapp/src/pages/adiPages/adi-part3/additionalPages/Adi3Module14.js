@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Adi3Module14() {
   const textRef = useRef(null);
@@ -590,6 +591,20 @@ instructor takes proactive steps to ensure safety.
       </section>
 
       {/* ////////////////////////////////////////////////////////// */}
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Risk Management and Responsibility the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/risk-management-responsbilities">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

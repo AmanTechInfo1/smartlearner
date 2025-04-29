@@ -54,7 +54,7 @@ const AddQuizUpdatedModal = (props) => {
     reset,
     setValue,
   } = useForm({
-    // resolver: yupResolver(productSchema),
+    
   });
 
   const getListAllCategoryById = (id) => {
@@ -76,18 +76,14 @@ const AddQuizUpdatedModal = (props) => {
       option3Image,
       option4Image,
     ];
-
-    //
-
     const { answer, category, description, question, module, answerImage } = data;
-
     const formDataToSend = new FormData();
     formDataToSend.append("answer", answer);
     formDataToSend.append("description", description);
 
     formDataToSend.append("category", category);
     formDataToSend.append("question", question);
-    formDataToSend.append("option", final_data.option.join(","));
+    formDataToSend.append("option", final_data.option.join("&"));
     formDataToSend.append("option1Image", option1Image);
     formDataToSend.append("option2Image", option2Image);
     formDataToSend.append("option3Image", option3Image);

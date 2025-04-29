@@ -3,6 +3,7 @@ import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 import { Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Adi3Module() {
   const textRef = useRef(null);
@@ -414,6 +415,21 @@ export default function Adi3Module() {
           </div>
         </div>
       </section>
+
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            National Standard before setting off
+          </p>
+          <Link to="/takequizCatName/national-standard">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

@@ -1,13 +1,33 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab654639.css",
-    "main.js": "/static/js/main.d0433f7c.js",
+    "main.css": "/static/css/main.44f11604.css",
+    "main.js": "/static/js/main.62d375e6.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
+    "static/media/PART 3 - USE OF SPEED.mp4": "/static/media/PART 3 - USE OF SPEED.d76e6e4767fdfa7bd13f.mp4",
+    "static/media/PART 3 - 1. AGREEGOALS.mp4": "/static/media/PART 3 - 1. AGREEGOALS.eacaae990fafc6c2de44.mp4",
+    "static/media/PART 3 - 4. THE LEVEL OF INSTRUCTION.mp4": "/static/media/PART 3 - 4. THE LEVEL OF INSTRUCTION.6c4ae78c649c3033f183.mp4",
+    "static/media/PART 3 - 14. GIVING DEMO.mp4": "/static/media/PART 3 - 14. GIVING DEMO.5df1ec690661ac7a7d96.mp4",
+    "static/media/PART 3 - 2. ROUTE DIRECTIONS.mp4": "/static/media/PART 3 - 2. ROUTE DIRECTIONS.23cc876b0ede9265bb23.mp4",
+    "static/media/PART 3 28. VEHICLE SAFETY.mp4": "/static/media/PART 3 28. VEHICLE SAFETY.4e583cda3eb3452eae44.mp4",
+    "static/media/PART 3 - THE MANOUVERES.mp4": "/static/media/PART 3 - THE MANOUVERES.e2544bc2e753a6344f9b.mp4",
+    "static/media/PART 3 - 15. BEGINNERS FIRST LESSON.mp4": "/static/media/PART 3 - 15. BEGINNERS FIRST LESSON.376920d1eb314482c0b6.mp4",
+    "static/media/PART 3 - 15. FIRST LESSON.mp4": "/static/media/PART 3 - 15. FIRST LESSON.376920d1eb314482c0b6.mp4",
+    "static/media/PART 3 - 21 - JUDGEMENT OF ORU.mp4": "/static/media/PART 3 - 21 - JUDGEMENT OF ORU.20b1b0d38e6a21d171f7.mp4",
+    "static/media/PART 3 - USE OF SIGNALS.mp4": "/static/media/PART 3 - USE OF SIGNALS.ff1790ea1a1ad6d8fe47.mp4",
+    "static/media/PART 3 - 3.ROUTE PLANNING.mp4": "/static/media/PART 3 - 3.ROUTE PLANNING.5740462e15d29386802f.mp4",
+    "static/media/PART 3 - 16.JUNCTIONS.mp4": "/static/media/PART 3 - 16.JUNCTIONS.418df3fde15ed4f17406.mp4",
+    "static/media/PART 3 - 7.LESSON STRUCTURE.mp4": "/static/media/PART 3 - 7.LESSON STRUCTURE.8261e33cdf412d4b9b13.mp4",
+    "static/media/PART 3 - USE OF MIRRORS.mp4": "/static/media/PART 3 - USE OF MIRRORS.bb182afd836c1c6e5a84.mp4",
     "static/media/coastmethod.mp4": "/static/media/coastmethod.7db33618f23b58d5b2f2.mp4",
+    "static/media/PART 3 - 12.SELF REFLECTION.mp4": "/static/media/PART 3 - 12.SELF REFLECTION.6f72d71e260f9ad56b43.mp4",
+    "static/media/PART 3 - GIVING FEEDBACK .mp4": "/static/media/PART 3 - GIVING FEEDBACK .5c01bd31b47823d24c31.mp4",
+    "static/media/PART 3 - 8.BRIEFING AND VISUAL AIDS.mp4": "/static/media/PART 3 - 8.BRIEFING AND VISUAL AIDS.88c9865014332073911a.mp4",
     "static/media/time.mp4": "/static/media/time.6085815916a2833ad89c.mp4",
     "static/media/tug.mp4": "/static/media/tug.6085815916a2833ad89c.mp4",
     "static/media/space.mp4": "/static/media/space.88708e7938fc00b6c383.mp4",
+    "static/media/PART 3 - 10. ASKING EFFECTIVE QUESTIONS.mp4": "/static/media/PART 3 - 10. ASKING EFFECTIVE QUESTIONS.44d45e23b78681d4d3be.mp4",
     "static/media/concentration.mp4": "/static/media/concentration.3f8d637f9288508d66ce.mp4",
+    "static/media/PART 3 - 9.CONTROL&INTERVENTION.mp4": "/static/media/PART 3 - 9.CONTROL&INTERVENTION.aedd356c4e6900f98b03.mp4",
     "static/media/anticipation.mp4": "/static/media/anticipation.ef39e8b5a01c52355df0.mp4",
     "static/media/observation.mp4": "/static/media/observation.694001a05ba2fe200e55.mp4",
     "static/media/WhatsApp Video 2025-04-22 at 10.25.14 PM.mp4": "/static/media/WhatsApp Video 2025-04-22 at 10.25.14 PM.208230c67d512f3502ab.mp4",
@@ -380,12 +400,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.ab654639.css.map": "/static/css/main.ab654639.css.map",
-    "main.d0433f7c.js.map": "/static/js/main.d0433f7c.js.map",
+    "main.44f11604.css.map": "/static/css/main.44f11604.css.map",
+    "main.62d375e6.js.map": "/static/js/main.62d375e6.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab654639.css",
-    "static/js/main.d0433f7c.js"
+    "static/css/main.44f11604.css",
+    "static/js/main.62d375e6.js"
   ]
 }

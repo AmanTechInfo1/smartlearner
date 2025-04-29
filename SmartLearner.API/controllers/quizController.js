@@ -4,19 +4,20 @@ const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
 const { translate } = require("free-translate");
 const axios = require("axios");
-const { JSDOM } = require('jsdom');
+const { JSDOM } = require("jsdom");
 
 class QuizController {
   async addNewQuiz(req, res, next) {
     try {
       var quizData = req.body;
-      quizData["option"] = quizData.option.split(",");
+      quizData["option"] = quizData.option.split("&");
       quizData["optionImage"] = [
         quizData.option1Image,
         quizData.option2Image,
         quizData.option3Image,
         quizData.option4Image,
       ];
+      console.log("2193872103912", quizData);
       delete quizData.option1Image;
       delete quizData.option2Image;
       delete quizData.option3Image;
@@ -233,7 +234,6 @@ class QuizController {
         req.params.id,
         quizData
       );
-      
 
       res.status(201).json(quiz);
     } catch (err) {
@@ -301,33 +301,36 @@ class QuizController {
       const { question, lang, option1, option2, option3, option4 } = req.body;
 
       const options = {
-        method: 'POST',
-        url: 'https://google-translate113.p.rapidapi.com/api/v1/translator/html',
+        method: "POST",
+        url: "https://google-translate113.p.rapidapi.com/api/v1/translator/html",
         headers: {
-          'x-rapidapi-key': '27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b', // Replace with your actual key
-          'x-rapidapi-host': 'google-translate113.p.rapidapi.com',
-          'Content-Type': 'application/json',
+          "x-rapidapi-key":
+            "27c3e98cefmshcfbbe861d4cfc1fp1cdd32jsn06528e2aa53b", // Replace with your actual key
+          "x-rapidapi-host": "google-translate113.p.rapidapi.com",
+          "Content-Type": "application/json",
         },
         data: {
-          from: 'en',
+          from: "en",
           to: lang,
           html: `<ul>
                    <li>${question}</li>
-                   <li>${option1 || ''}</li>
-                   <li>${option2 || ''}</li>
-                   <li>${option3 || ''}</li>
-                   <li>${option4 || ''}</li>
+                   <li>${option1 || ""}</li>
+                   <li>${option2 || ""}</li>
+                   <li>${option3 || ""}</li>
+                   <li>${option4 || ""}</li>
                  </ul>`,
-
         },
       };
 
       // Send translation request
       try {
         const response = await axios.request(options);
-        console.log("dsolkjsoidksjdlskadjsldk",response.data); // Check the response data
+        console.log("dsolkjsoidksjdlskadjsldk", response.data); // Check the response data
       } catch (error) {
-        console.error("Error response:", error.response ? error.response.data : error.message);
+        console.error(
+          "Error response:",
+          error.response ? error.response.data : error.message
+        );
       }
       const response = await axios.request(options);
       // Extract translated content from the response
@@ -336,12 +339,22 @@ class QuizController {
       // Parse the translated HTML and extract question and options
       const dom = new JSDOM(translatedHTML);
       const doc = dom.window.document;
-      
-      const translatedQuestion = doc.querySelector('ul > li:nth-child(1)').textContent;
-      const translatedOption1 = doc.querySelector('ul > li:nth-child(2)').textContent;
-      const translatedOption2 = doc.querySelector('ul > li:nth-child(3)').textContent;
-      const translatedOption3 = doc.querySelector('ul > li:nth-child(4)').textContent;
-      const translatedOption4 = doc.querySelector('ul > li:nth-child(5)').textContent;
+
+      const translatedQuestion = doc.querySelector(
+        "ul > li:nth-child(1)"
+      ).textContent;
+      const translatedOption1 = doc.querySelector(
+        "ul > li:nth-child(2)"
+      ).textContent;
+      const translatedOption2 = doc.querySelector(
+        "ul > li:nth-child(3)"
+      ).textContent;
+      const translatedOption3 = doc.querySelector(
+        "ul > li:nth-child(4)"
+      ).textContent;
+      const translatedOption4 = doc.querySelector(
+        "ul > li:nth-child(5)"
+      ).textContent;
 
       // Send the translated response back
       res.json({
@@ -351,7 +364,6 @@ class QuizController {
         option3: translatedOption3,
         option4: translatedOption4,
       });
-
     } catch (err) {
       next(err);
     }

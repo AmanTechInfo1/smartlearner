@@ -176,6 +176,7 @@ import Adi3Module15 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module1
 import Adi3Module16 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module16";
 import Adi3Module17 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module17";
 import Adi3Module18 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module18";
+import Adi3Videos from "./pages/adiPages/adi-part3/additionalPages/Adi3Videos";
 
 export const router = createBrowserRouter([
   {
@@ -371,6 +372,7 @@ export const router = createBrowserRouter([
         path: "quizModuleTwelve",
         element: <AdiModule12 />,
       },
+      // ////////////////////////////////////////////
       {
         path: "national-standards",
         element: <Adi3Module />,
@@ -442,6 +444,10 @@ export const router = createBrowserRouter([
       {
         path: "book-adi-part-3",
         element: <Adi3Module18 />,
+      },
+      {
+        path: "adi-videos",
+        element: <Adi3Videos />,
       },
 
       {

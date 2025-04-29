@@ -222,52 +222,81 @@ export default function Adi3Module16() {
 
       {/* /////////////////////////////////////////////////////////// */}
       <div className={styles.adi3module162ndcontainer}>
-      <div className={styles.adi3module162ndcard}>
-        <h2 className={styles.adi3module162ndtitle}>Pros and Cons</h2>
-        <div className={styles.adi3module162ndcontent}>
-          <div className={styles.adi3module162ndsection}>
-            <h3 className={styles.adi3module162ndsubTitle}>Aspect</h3>
-            <ul className={styles.adi3module162ndlist}>
-              <li><strong>Trainee Licence (PDI Badge)</strong> - Go Straight to Part 3</li>
-              <li><strong>Experience</strong> - Real-world teaching with actual learners</li>
-              <li><strong>No teaching experience outside of training</strong></li>
-            </ul>
+        <div className={styles.adi3module162ndcard}>
+          <h2 className={styles.adi3module162ndtitle}>Pros and Cons</h2>
+          <div className={styles.adi3module162ndcontent}>
+            <div className={styles.adi3module162ndsection}>
+              <h3 className={styles.adi3module162ndsubTitle}>Aspect</h3>
+              <ul className={styles.adi3module162ndlist}>
+                <li>
+                  <strong>Trainee Licence (PDI Badge)</strong> - Go Straight to
+                  Part 3
+                </li>
+                <li>
+                  <strong>Experience</strong> - Real-world teaching with actual
+                  learners
+                </li>
+                <li>
+                  <strong>No teaching experience outside of training</strong>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.adi3module162ndsection}>
+              <h3 className={styles.adi3module162ndsubTitle}>Earnings</h3>
+              <ul className={styles.adi3module162ndlist}>
+                <li>
+                  <strong>Can earn while training</strong> (within franchise
+                  rules)
+                </li>
+                <li>
+                  <strong>No earnings until fully qualified</strong>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.adi3module162ndsection}>
+              <h3 className={styles.adi3module162ndsubTitle}>Preparation</h3>
+              <ul className={styles.adi3module162ndlist}>
+                <li>
+                  <strong>Hands-on, practical experience with feedback</strong>
+                </li>
+                <li>
+                  <strong>Limited to simulations or private practice</strong>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.adi3module162ndsection}>
+              <h3 className={styles.adi3module162ndsubTitle}>Cost</h3>
+              <ul className={styles.adi3module162ndlist}>
+                <li>
+                  <strong>£140 + 20 hours additional training</strong>
+                </li>
+                <li>
+                  <strong>No badge cost</strong>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.adi3module162ndsection}>
+              <h3 className={styles.adi3module162ndsubTitle}>
+                Part 3 Readiness
+              </h3>
+              <ul className={styles.adi3module162ndlist}>
+                <li>
+                  <strong>Easier to book test with your own pupils</strong>
+                </li>
+                <li>
+                  <strong>Must provide your own pupil for the test</strong>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className={styles.adi3module162ndsection}>
-            <h3 className={styles.adi3module162ndsubTitle}>Earnings</h3>
-            <ul className={styles.adi3module162ndlist}>
-              <li><strong>Can earn while training</strong> (within franchise rules)</li>
-              <li><strong>No earnings until fully qualified</strong></li>
-            </ul>
-          </div>
-          <div className={styles.adi3module162ndsection}>
-            <h3 className={styles.adi3module162ndsubTitle}>Preparation</h3>
-            <ul className={styles.adi3module162ndlist}>
-              <li><strong>Hands-on, practical experience with feedback</strong></li>
-              <li><strong>Limited to simulations or private practice</strong></li>
-            </ul>
-          </div>
-          <div className={styles.adi3module162ndsection}>
-            <h3 className={styles.adi3module162ndsubTitle}>Cost</h3>
-            <ul className={styles.adi3module162ndlist}>
-              <li><strong>£140 + 20 hours additional training</strong></li>
-              <li><strong>No badge cost</strong></li>
-            </ul>
-          </div>
-          <div className={styles.adi3module162ndsection}>
-            <h3 className={styles.adi3module162ndsubTitle}>Part 3 Readiness</h3>
-            <ul className={styles.adi3module162ndlist}>
-              <li><strong>Easier to book test with your own pupils</strong></li>
-              <li><strong>Must provide your own pupil for the test</strong></li>
-            </ul>
-          </div>
+          <p className={styles.adi3module162ndfooter}>
+            If you're unsure which path suits you best, feel free to reach out
+            for a chat. We’ll help you weigh up the pros and cons based on your
+            goals, availability, and experience—so you can make the right choice
+            for your journey to becoming a fully qualified driving instructor.
+          </p>
         </div>
-        <p className={styles.adi3module162ndfooter}>
-          If you're unsure which path suits you best, feel free to reach out for a chat. We’ll help you weigh up the pros and cons based on your goals, availability, and experience—so you can make the right choice for your journey to becoming a fully qualified driving instructor.
-        </p>
       </div>
-    </div>
-
     </div>
   );
 }

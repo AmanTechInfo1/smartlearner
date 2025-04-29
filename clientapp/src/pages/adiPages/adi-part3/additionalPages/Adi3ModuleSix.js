@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function () {
   const textRef = useRef(null);
@@ -924,6 +925,20 @@ export default function () {
       </div>
 
       {/* ///////////////////////////////////////////////////// */}
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            GDE MATRIX and GROW Model the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/gde-matrix">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }
