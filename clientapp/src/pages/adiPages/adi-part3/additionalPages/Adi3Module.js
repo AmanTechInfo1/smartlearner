@@ -152,8 +152,7 @@ export default function Adi3Module() {
             className={styles.firstLessonModulecard}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+            transition={{ duration: 1 }}>
             <h2 className={styles.firstLessonModuletitle}>
               Understanding the National Standard
             </h2>
@@ -179,8 +178,7 @@ export default function Adi3Module() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               <Download size={20} /> Download the National Standard
             </motion.a>
           </motion.div>
@@ -192,8 +190,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={styles.firstLessonModulesecondheading}
-          >
+            className={styles.firstLessonModulesecondheading}>
             Key Areas of the National Standard
           </motion.h1>
           <div className={styles.firstLessonModulesecondcardGrid}>
@@ -204,8 +201,7 @@ export default function Adi3Module() {
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
-              >
+                transition={{ delay: index * 0.2, duration: 0.5 }}>
                 <h2 className={styles.firstLessonModulesecondcardTitle}>
                   {area.title}
                 </h2>
@@ -223,8 +219,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={styles.firstLessonModulesecondthirdheading}
-          >
+            className={styles.firstLessonModulesecondthirdheading}>
             ADI Part 3: The Final Assessment
           </motion.h1>
 
@@ -232,8 +227,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className={styles.firstLessonModulesecondthirddescription}
-          >
+            className={styles.firstLessonModulesecondthirddescription}>
             The ADI Part 3 test is the final step in becoming a fully qualified
             Approved Driving Instructor (ADI). This in-car assessment, conducted
             by a DVSA examiner, lasts about 45 minutes. You’ll bring a learner
@@ -244,8 +238,7 @@ export default function Adi3Module() {
             className={styles.firstLessonModulesecondthirdsection}
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
+            transition={{ delay: 0.8, duration: 0.8 }}>
             <h2>Assessment Areas:</h2>
             <ul>
               <li>Lesson Planning</li>
@@ -258,8 +251,7 @@ export default function Adi3Module() {
             className={styles.firstLessonModulesecondthirdscores}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-          >
+            transition={{ delay: 1, duration: 0.8 }}>
             <h2>Scoring:</h2>
             <ul>
               <li>
@@ -281,16 +273,13 @@ export default function Adi3Module() {
             className={styles.firstLessonModulesecondthirddownload}
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
-          >
+            transition={{ delay: 1.3, duration: 0.8 }}>
             <a
               href="https://assets.publishing.service.gov.uk/media/6537d4895e47a50014989903/adi-standards-check-form-example.pdf"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               <button
-                className={styles.firstLessonModulesecondthirddownloadBtn}
-              >
+                className={styles.firstLessonModulesecondthirddownloadBtn}>
                 <Download size={18} /> Download ADI Standards Form
               </button>
             </a>
@@ -303,8 +292,7 @@ export default function Adi3Module() {
             className={styles.istlesson4thtitle}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
+            transition={{ duration: 0.8 }}>
             Understanding the ADI Part 3 Marking Sheet
           </motion.h1>
 
@@ -313,8 +301,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
             <h2 className={styles.istlesson4thheading}>Lesson Planning 📍</h2>
             <ul>
               <li>
@@ -346,8 +333,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
             <h2 className={styles.istlesson4thheading}>Risk Management 🚦</h2>
             <p>
               Risk management is about sharing responsibility for safety between
@@ -372,8 +358,7 @@ export default function Adi3Module() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+            viewport={{ once: true }}>
             <h2 className={styles.istlesson4thheading}>
               Teaching & Learning Strategies 🎓
             </h2>
@@ -415,7 +400,15 @@ export default function Adi3Module() {
           </div>
         </div>
       </section>
+      {/* ///////////////////////////////////// */}
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/good-instructor-module">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
+      {/* //////////////////////////////// */}
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>
           <h1>Start Quiz</h1>

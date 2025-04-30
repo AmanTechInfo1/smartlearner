@@ -4,7 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function Adi3Module18() {
@@ -211,6 +211,13 @@ export default function Adi3Module18() {
           </p>
         </div>
       </div>
+
+       <div className={styles.adiLastNextbtn}>
+              <Link to="/adi-videos">
+                {" "}
+                <button className={styles.adinextbtns}>Next Page</button>
+              </Link>
+            </div>
     </div>
   );
 }

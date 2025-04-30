@@ -231,6 +231,16 @@ export default function Adi3Modulethree() {
       </div>
       {/* ///////////////////////////////////////////////// */}
 
+
+
+ <div className={styles.adiLastNextbtn}>
+              <Link to="/learning-style">
+                {" "}
+                <button className={styles.adinextbtns}>Next Page</button>
+              </Link>
+            </div>
+
+
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>
           <h1>Start Quiz</h1>

@@ -817,6 +817,13 @@ export default function Adi3ModuleSeven() {
           Download ZIP
         </a>
       </div>
+
+       <div className={styles.adiLastNextbtn}>
+                                <Link to="/route-planning">
+                                  {" "}
+                                  <button className={styles.adinextbtns}>Next Page</button>
+                                </Link>
+                              </div>
       {/* ///////////////////////////////////////////// */}
        <div className={styles.quizStartDiv}>
               <section className={styles.startQuizSection}>

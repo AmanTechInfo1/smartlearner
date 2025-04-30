@@ -299,8 +299,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13mainTitle}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+          transition={{ duration: 1 }}>
           🔄 Responsive Teaching: The Art of Adapting a Driving Lesson
         </motion.h1>
 
@@ -308,8 +307,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13section}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
+          transition={{ duration: 1 }}>
           <h2>📘 Introduction: Planning with Flexibility</h2>
           <p>
             As driving instructors, we start every lesson with a structure —
@@ -375,8 +373,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13sectionAlt}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-        >
+          transition={{ duration: 1.2 }}>
           <h2>🧭 Scenario 1: When the Lesson Shouldn’t Begin</h2>
           <p>
             You arrive for an 8 AM lesson. The pupil takes ages to answer the
@@ -447,8 +444,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13section}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.4 }}
-        >
+          transition={{ duration: 1.4 }}>
           <h2>🧭 Scenario 2: Correcting Course Midway</h2>
           <p>
             Your pupil has been progressing steadily. Today, you’ve planned to
@@ -473,8 +469,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13section}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.4 }}
-        >
+          transition={{ duration: 1.4 }}>
           <h2>🎯 Scenario 3: When the Lesson Needs a New Goal</h2>
           <p>
             You’ve planned to build confidence with a specific manoeuvre, based
@@ -535,8 +530,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13triggersSection}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.6 }}
-        >
+          transition={{ duration: 1.6 }}>
           <h2>🚗 Everyday Adaptation Triggers</h2>
           <p>
             Adaptation doesn’t always stem from dramatic changes. Here are
@@ -578,8 +572,7 @@ export default function Adi3Module13() {
           className={styles.adi3Module13adaptationSection}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.8 }}
-        >
+          transition={{ duration: 1.8 }}>
           <h2>🔁 Adaptation ≠ Abandoning the Plan</h2>
           <p>Adaptation is intentional and discussed:</p>
           <ol>
@@ -608,6 +601,12 @@ export default function Adi3Module13() {
         </motion.section>
       </div>
 
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/risk-management-and-responsibility">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* /////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>

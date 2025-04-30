@@ -323,7 +323,14 @@ export default function Adi3Module11() {
           </div>
         </div>
       </section>
-
+ <div className={styles.adiLastNextbtn}>
+              <Link to="/giving-instruction-and-feedback">
+              
+              
+                {" "}
+                <button className={styles.adinextbtns}>Next Page</button>
+              </Link>
+            </div>
       {/* //////////////////////////////////////////// */}
        <div className={styles.quizStartDiv}>
               <section className={styles.startQuizSection}>

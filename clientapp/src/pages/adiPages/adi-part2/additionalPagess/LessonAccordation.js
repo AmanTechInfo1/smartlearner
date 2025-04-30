@@ -132,7 +132,7 @@ const LessonAccordation = () => {
             </div>
             {openIndex === 6 && (
               <p className={styles.description}>
-                Learn about the familiarising yourself with vehicle technology
+                Learn about What is Advanced Driving trainning Part 2 ?
               </p>
             )}
           </li>
@@ -151,10 +151,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>{" "}
-              Quiz the familiarising yourself with vehicle technology
+              Quiz What is Advanced Driving trainning Part 2 quiz?
             </div>
             {openIndex === 7 && (
-              <p className={styles.description}>Quiz the familiarising yourself with vehicle technology</p>
+              <p className={styles.description}>Quiz What is Advanced Driving trainning Part 2 quiz?</p>
             )}
           </li>
         </Link>
@@ -176,7 +176,7 @@ const LessonAccordation = () => {
             </div>
             {openIndex === 8 && (
               <p className={styles.description}>
-                Understand What is advanced driving
+                Understand The COAST Method in Advanced Driving
               </p>
             )}
           </li>
@@ -193,10 +193,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz advanced driving
+              Quiz The COAST Method in Advanced Driving
             </div>
             {openIndex === 9 && (
-              <p className={styles.description}>Quiz advanced driving</p>
+              <p className={styles.description}>Quiz The COAST Method in Advanced Driving</p>
             )}
           </li>
         </Link>
@@ -217,7 +217,7 @@ const LessonAccordation = () => {
               Concentration in the Coast Method
             </div>
             {openIndex === 10 && (
-              <p className={styles.description}>Understand The coast method</p>
+              <p className={styles.description}>Understand Concentration in the Coast Method</p>
             )}
           </li>
         </Link>
@@ -233,10 +233,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz the cost method
+              Quiz Concentration in the Coast Method
             </div>
             {openIndex === 11 && (
-              <p className={styles.description}>Quiz the cost method</p>
+              <p className={styles.description}>Quiz Concentration in the Coast Method</p>
             )}
           </li>
         </Link>
@@ -276,10 +276,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Observation
+              Quiz Observation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 13 && (
-              <p className={styles.description}>Quiz Observation</p>
+              <p className={styles.description}>Quiz Observation in the COAST Method for Advanced Driving</p>
             )}
           </li>
         </Link>
@@ -318,10 +318,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>
-              Quiz Anticipation
+              Quiz Anticipation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 15 && (
-              <p className={styles.description}>Quiz Anticipation</p>
+              <p className={styles.description}>Quiz Anticipation in the COAST Method for Advanced Driving</p>
             )}
           </li>
         </Link>

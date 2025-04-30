@@ -321,6 +321,14 @@ export default function Adi3Modulefive() {
           subjects, how can you teach someone else something you don’t know?
         </p>
       </section>
+
+
+       <div className={styles.adiLastNextbtn}>
+                    <Link to="/gde-matrix-grow">
+                      {" "}
+                      <button className={styles.adinextbtns}>Next Page</button>
+                    </Link>
+                  </div>
       {/* ///////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
               <section className={styles.startQuizSection}>

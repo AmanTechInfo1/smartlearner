@@ -605,6 +605,14 @@ export default function Adi3ModuleTen() {
         </div>
       </div>
 
+      <div className={styles.adiLastNextbtn}>
+              <Link to="/questioning-techniques">
+                {" "}
+                <button className={styles.adinextbtns}>Next Page</button>
+              </Link>
+            </div>
+      
+
       {/* /////////////////////////////////////// */}
 
       <div className={styles.quizStartDiv}>

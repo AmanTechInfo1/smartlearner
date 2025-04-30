@@ -590,6 +590,13 @@ instructor takes proactive steps to ensure safety.
         </div>
       </section>
 
+       <div className={styles.adiLastNextbtn}>
+              <Link to="/intervention">
+                {" "}
+                <button className={styles.adinextbtns}>Next Page</button>
+              </Link>
+            </div>
+
       {/* ////////////////////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>

@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Adi3Module16() {
   const textRef = useRef(null);
@@ -252,28 +253,41 @@ export default function Adi3Module16() {
       <div className={styles.adi3partlastcontainer}>
         <h2 className={styles.adi3partlastheading}>Summary: Pros and Cons</h2>
         <div className={styles.adi3partlasttable}>
-          <div className={`${styles.adi3partlastrow} ${styles.adi3partlastheader}`}>
+          <div
+            className={`${styles.adi3partlastrow} ${styles.adi3partlastheader}`}>
             <div className={styles.adi3partlastcell}>Aspect</div>
-            <div className={styles.adi3partlastcell}>Trainee Licence (PDI Badge)</div>
+            <div className={styles.adi3partlastcell}>
+              Trainee Licence (PDI Badge)
+            </div>
             <div className={styles.adi3partlastcell}>Go Straight to Part 3</div>
           </div>
           {data.map((item, index) => (
-            <div key={index} className={`${styles.adi3partlastrow} ${styles.adi3partlastfadeIn}`}>
+            <div
+              key={index}
+              className={`${styles.adi3partlastrow} ${styles.adi3partlastfadeIn}`}>
               <div className={styles.adi3partlastcell} data-label="Aspect">
                 {item.aspect}
               </div>
               <div
                 className={styles.adi3partlastcell}
-                data-label="Trainee Licence (PDI Badge)"
-              >
+                data-label="Trainee Licence (PDI Badge)">
                 {item.trainee}
               </div>
-              <div className={styles.adi3partlastcell} data-label="Go Straight to Part 3">
+              <div
+                className={styles.adi3partlastcell}
+                data-label="Go Straight to Part 3">
                 {item.part3}
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/book-adi-part-3">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
       </div>
     </div>
   );

@@ -646,8 +646,9 @@ export default function Adi3ModuleNine() {
             Say them out loud. Get the rhythm, timing, and tone right. Then
             think, how would I phrase that for a learner? <br /> As your pupils
             improve, you can give directions closer to real-time. But early on,
-            timing is everything.<br/> Too early = confusion. <br/> Too late = panic. <br/>Just
-            right = success.
+            timing is everything.
+            <br /> Too early = confusion. <br /> Too late = panic. <br />
+            Just right = success.
           </p>
         </div>
       </div>
@@ -705,21 +706,29 @@ export default function Adi3ModuleNine() {
           </ul>
         </div>
       </div>
+
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/client-centred-learning">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
+
       {/* ////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  Giving Route Directions the lesson before setting off
-                </p>
-                <Link to="/takequizCatName/giving-routes">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Giving Route Directions the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/giving-routes">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
 
       {/* /////////////////////////////////////////////////////// */}
     </div>

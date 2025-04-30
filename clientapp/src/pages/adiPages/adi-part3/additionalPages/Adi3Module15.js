@@ -661,6 +661,14 @@ export default function Adi3Module15() {
         </div>
       </div>
 
+        <div className={styles.adiLastNextbtn}>
+                    <Link to="/trainee-badge">
+                      {" "}
+                      <button className={styles.adinextbtns}>Next Page</button>
+                    </Link>
+                  </div>
+      
+
       {/* ///////////////////////////////////////////////////////// */}
        <div className={styles.quizStartDiv}>
               <section className={styles.startQuizSection}>

@@ -644,7 +644,12 @@ export default function Adi3Module17() {
           </div>
         </div>
       </section>
-
+   <div className={styles.adiLastNextbtn}>
+        <Link to="/body-language">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* ///////////////////////////////////////// */}
 
       <div className={styles.quizStartDiv}>

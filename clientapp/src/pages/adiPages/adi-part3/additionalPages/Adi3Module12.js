@@ -767,6 +767,14 @@ export default function Adi3Module12() {
           </p>
         </div>
       </div>
+
+
+       <div className={styles.adiLastNextbtn}>
+                    <Link to="/adapting-lessons">
+                      {" "}
+                      <button className={styles.adinextbtns}>Next Page</button>
+                    </Link>
+                  </div>
       {/* ///////////////////// */}
 
        <div className={styles.quizStartDiv}>

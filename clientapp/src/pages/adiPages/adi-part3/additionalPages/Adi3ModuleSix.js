@@ -924,6 +924,13 @@ export default function () {
         </div>
       </div>
 
+             <div className={styles.adiLastNextbtn}>
+                          <Link to="/lesson-planning">
+                            {" "}
+                            <button className={styles.adinextbtns}>Next Page</button>
+                          </Link>
+                        </div>
+
       {/* ///////////////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>
