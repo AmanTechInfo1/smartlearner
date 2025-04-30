@@ -8,7 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
-import coastmethods from "../../../../../assets/part3videos/concentration.mp4"
+import coastmethods from "../../../../../assets/part3videos/concentration.mp4";
 
 export default function AdiModuleFive() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -173,13 +173,13 @@ export default function AdiModuleFive() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
-         <div className={styles.videoContainer}>
-                  <h2 className={styles.videotitle}>Watch Our Video</h2>
-                  <video className={styles.videodesign} controls muted loop>
-                    <source src={coastmethods} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={coastmethods} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.AdiModuleContentParaBoxm2}>
@@ -337,22 +337,24 @@ export default function AdiModuleFive() {
             </div>
           </div>
         </div>
-
-
+<div className={styles.adiLastNextbtn}>
+          <Link to="/quizModulesix">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
         {/* ///////////////////////////////////// */}
-         <div className={styles.quizStartDiv}>
-                          <section className={styles.startQuizSection}>
-                            <h1>Start Quiz</h1>
-                            <h3>15 Questions</h3>
-                            <p>
-                             
-                            </p>
-                            <Link to="/takequizCatName/Concentration-in-the-Coast-Method">
-                              {" "}
-                              <button>Start Quiz</button>
-                            </Link>
-                          </section>
-                        </div>
+        <div className={styles.quizStartDiv}>
+          <section className={styles.startQuizSection}>
+            <h1>Start Quiz</h1>
+            <h3>15 Questions</h3>
+            <p></p>
+            <Link to="/takequizCatName/Concentration-in-the-Coast-Method">
+              {" "}
+              <button>Start Quiz</button>
+            </Link>
+          </section>
+        </div>
       </div>
     </>
   );

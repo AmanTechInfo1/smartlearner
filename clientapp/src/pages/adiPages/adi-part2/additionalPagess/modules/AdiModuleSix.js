@@ -791,6 +791,12 @@ export default function AdiModuleSix() {
             </p>
           </div>
         </div>
+        <div className={styles.adiLastNextbtn}>
+                  <Link to="/quizModuleseven">
+                    {" "}
+                    <button className={styles.adinextbtns}>Next Page</button>
+                  </Link>
+                </div>
         {/* ////////////////////////////////////////////////////////////////////// */}
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>

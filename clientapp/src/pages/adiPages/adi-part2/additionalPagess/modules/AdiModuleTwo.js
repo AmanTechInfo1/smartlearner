@@ -485,8 +485,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("P")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               P
               <p>
                 {" "}
@@ -501,8 +500,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("O")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               O
               <p>
                 {" "}
@@ -518,8 +516,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("W")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               W
               <p>
                 {hoveredLetter === "W" && (
@@ -535,8 +532,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("D")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               D
               <p>
                 {" "}
@@ -551,8 +547,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("E")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               E
               <p>
                 {" "}
@@ -569,8 +564,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("R")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               R
               <p>
                 {hoveredLetter === "R" && (
@@ -586,8 +580,7 @@ export default function AdiModuleTwo() {
             <span
               className={styles.powerwordletter}
               onMouseEnter={() => setHoveredLetter("Y")}
-              onMouseLeave={() => setHoveredLetter(null)}
-            >
+              onMouseLeave={() => setHoveredLetter(null)}>
               Y
               <p>
                 {hoveredLetter === "Y" && (
@@ -619,15 +612,13 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront233}
-                  >
+                    id={styles.flipboxfront233}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails1}
-                  >
+                    id={styles.trainingDetails1}>
                     <h3>Dashboard controls:</h3>
                     <hr />
                     <p>
@@ -641,15 +632,13 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront244}
-                  >
+                    id={styles.flipboxfront244}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails2}
-                  >
+                    id={styles.trainingDetails2}>
                     <h3>Electronic parking brake:</h3>
                     <hr />
                     <p>
@@ -663,16 +652,14 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront255}
-                  >
+                    id={styles.flipboxfront255}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
 
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails3}
-                  >
+                    id={styles.trainingDetails3}>
                     <h3>Sat Nav:</h3>
                     <hr />
                     <p>
@@ -686,8 +673,7 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront266}
-                  >
+                    id={styles.flipboxfront266}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>{" "}
                   </div>
@@ -706,15 +692,13 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront277}
-                  >
+                    id={styles.flipboxfront277}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails5}
-                  >
+                    id={styles.trainingDetails5}>
                     <h3>Air conditioning/Demisters:</h3>
                     <hr />
                     <p>
@@ -728,15 +712,13 @@ export default function AdiModuleTwo() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront288}
-                  >
+                    id={styles.flipboxfront288}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails6}
-                  >
+                    id={styles.trainingDetails6}>
                     <h3>Reversing aids:</h3>
                     <hr />
                     <p>
@@ -970,6 +952,13 @@ export default function AdiModuleTwo() {
             </div>
           </div>
         </section>
+
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModulethree">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>
             <h1>Start Quiz</h1>

@@ -6,7 +6,7 @@ import { IoTrashBin } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import humancheck from "../../../../../assets/part3videos/humancheck.mp4"
+import humancheck from "../../../../../assets/part3videos/humancheck.mp4";
 
 export default function AdiModuleOne() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -232,13 +232,13 @@ export default function AdiModuleOne() {
           </section>
         </section>
 
-         <div className={styles.videoContainer}>
-                  <h2 className={styles.videotitle}>Watch Our Video</h2>
-                  <video className={styles.videodesign} controls muted loop>
-                    <source src={humancheck} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src={humancheck} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <section className={styles.AdiModuleOneTextArea}>
           <h2>
@@ -346,15 +346,13 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront23}
-                  >
+                    id={styles.flipboxfront23}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails1}
-                  >
+                    id={styles.trainingDetails1}>
                     <h3>Physical Well-Being</h3>
                     <hr />
                     <p>
@@ -368,15 +366,13 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront24}
-                  >
+                    id={styles.flipboxfront24}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails2}
-                  >
+                    id={styles.trainingDetails2}>
                     <h3>Mental Well-Being</h3>
                     <hr />
                     <p>
@@ -390,16 +386,14 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront25}
-                  >
+                    id={styles.flipboxfront25}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
 
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails3}
-                  >
+                    id={styles.trainingDetails3}>
                     <h3>Emotional Well-Being</h3>
                     <hr />
                     <p>
@@ -413,8 +407,7 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront26}
-                  >
+                    id={styles.flipboxfront26}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>{" "}
                   </div>
@@ -436,15 +429,13 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront27}
-                  >
+                    id={styles.flipboxfront27}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails5}
-                  >
+                    id={styles.trainingDetails5}>
                     <h3>Mental Well-Being</h3>
                     <hr />
                     <p>
@@ -461,15 +452,13 @@ export default function AdiModuleOne() {
                 <div className={styles.flipbox2}>
                   <div
                     className={styles.flipboxfront2}
-                    id={styles.flipboxfront28}
-                  >
+                    id={styles.flipboxfront28}>
                     <div className="opicity"></div>
                     <h2>CLICK TO FLIP</h2>
                   </div>
                   <div
                     className={styles.trainingDetails}
-                    id={styles.trainingDetails6}
-                  >
+                    id={styles.trainingDetails6}>
                     <h3>Emotional Well-Being</h3>
                     <hr />
                     <p>
@@ -529,7 +518,12 @@ export default function AdiModuleOne() {
             )}
           </div>
         </div>
-        <div></div>
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModuletwo">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
 
         {/* ////////////////////////////////////////////////// */}
         {/* ////////////////////////////////////////// */}

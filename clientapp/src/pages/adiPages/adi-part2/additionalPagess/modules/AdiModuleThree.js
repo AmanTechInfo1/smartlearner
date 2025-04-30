@@ -7,7 +7,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import advancedriving from "../../../../../assets/part3videos/advancedriving.mp4"
+import advancedriving from "../../../../../assets/part3videos/advancedriving.mp4";
 
 export default function AdiModuleThree() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -497,8 +497,7 @@ export default function AdiModuleThree() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     One of the most crucial aspects of advanced driving is
                     observation. A skilled driver constantly scans the road
@@ -541,8 +540,7 @@ export default function AdiModuleThree() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible2 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     Maintaining full control of the vehicle is essential for
                     advanced driving. This starts with smooth acceleration and
@@ -591,8 +589,7 @@ export default function AdiModuleThree() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible3 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     Eco-safe driving is an integral part of advanced driving,
                     focusing on minimizing fuel consumption and reducing wear
@@ -627,8 +624,7 @@ export default function AdiModuleThree() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible4 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     Adhering to road laws and regulations is fundamental to
                     advanced driving. Drivers must strictly follow the Highway
@@ -663,8 +659,7 @@ export default function AdiModuleThree() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible5 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     Beyond technical skills, advanced driving requires the right
                     mindset. A professional driver remains composed under
@@ -722,8 +717,7 @@ export default function AdiModuleThree() {
                         style={{
                           cursor: "pointer",
                           color: feedback === "confident" ? "green" : "#ccc",
-                        }}
-                      >
+                        }}>
                         ✔
                       </td>
                       <td
@@ -735,8 +729,7 @@ export default function AdiModuleThree() {
                           cursor: "pointer",
                           color:
                             feedback === "needsImprovement" ? "red" : "#ccc",
-                        }}
-                      >
+                        }}>
                         ✘
                       </td>
                     </tr>
@@ -998,6 +991,12 @@ export default function AdiModuleThree() {
             </div>
           </div>
         </section>
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModulefour">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
 
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>

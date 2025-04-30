@@ -670,6 +670,12 @@ export default function AdiModuleEight() {
             </p>
           </div>
         </div>
+           <div className={styles.adiLastNextbtn}>
+                                  <Link to="/quizModulenine">
+                                    {" "}
+                                    <button className={styles.adinextbtns}>Next Page</button>
+                                  </Link>
+                                </div>
 
         {/* /////////////////// */}
         <div className={styles.quizStartDiv}>

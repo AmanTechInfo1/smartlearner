@@ -286,8 +286,7 @@ export default function AdiModuleNine() {
           style={{
             background:
               "linear-gradient(135deg,rgb(44, 3, 210),rgb(216, 27, 226))",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             🚘 Why Does Time Matter in Driving?
           </div>
@@ -303,8 +302,7 @@ export default function AdiModuleNine() {
             </div>
             <div
               className={styles.AdiModuleContentParaBox}
-              style={{ marginTop: "1rem" }}
-            >
+              style={{ marginTop: "1rem" }}>
               <p>
                 Time isn’t just about how fast you go—it’s about how much room
                 you give yourself to think, react, and make the right decisions.
@@ -321,8 +319,7 @@ export default function AdiModuleNine() {
             style={{
               background:
                 "linear-gradient(135deg,rgb(198, 0, 145),rgb(99, 0, 26))",
-            }}
-          >
+            }}>
             <h3 style={{ color: "rgb(49, 234, 255)" }}>
               More Time = Fewer Surprises
             </h3>
@@ -362,8 +359,7 @@ export default function AdiModuleNine() {
             background:
               "linear-gradient(135deg,rgb(0, 198, 181),rgb(4, 63, 146))",
             marginTop: "1rem",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             How to Be a Time-Management Pro on the Road
           </div>
@@ -468,8 +464,7 @@ export default function AdiModuleNine() {
             background:
               "linear-gradient(135deg,rgb(219, 74, 255),rgb(99, 4, 146))",
             marginTop: "1rem",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             🚗 Ready for a Challenge? Test Your Time Awareness!
           </div>
@@ -550,6 +545,13 @@ export default function AdiModuleNine() {
               time means more control! 🚗✨
             </p>
           </div>
+        </div>
+
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModule-Ten">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
         </div>
 
         <div className={styles.quizStartDiv}>

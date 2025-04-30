@@ -12,7 +12,6 @@ import { enquiryData } from "../redux/features/enquirySlice";
 import gsap from "gsap";
 import { Helmet } from "react-helmet-async";
 
-
 export default function ContactUs() {
   const dispatch = useDispatch();
 
@@ -215,12 +214,14 @@ export default function ContactUs() {
         color: "white",
         paddingBottom: "5rem",
       }}>
-         <Helmet>
-                <meta charSet="utf-8" />
-                <title>Get in Touch with Us</title>
-                <link rel="canonical" href="https://smartlearner.com/Contact-Us" />
-                <meta name="description" content="Have questions or need more information? Contact us today! " />
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Get in Touch with Us</title>
+        <link rel="canonical" href="https://smartlearner.com/Contact-Us" />
+        <meta property="og:title" content="Get in Touch with Us" />
+        <meta property="og:url" content="https://smartlearner.com/Contact-Us" />
+        <meta property="og:description" content="Get in Touch with Us" />
+      </Helmet>
       <div className={styles.contactHead}>
         <div className="opicity"></div>
         <div className={styles.contactheadinghead}>
@@ -282,7 +283,6 @@ export default function ContactUs() {
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2431.76492499033!2d-1.510095!3d52.447173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c1a41cee7455%3A0x371db3a56741de7!2sSmartLearner%20Driving%20School!5e0!3m2!1sen!2sin!4v1719565626829!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              
               frameBorder="0"
               style={{ border: 0 }}
               allowFullScreen=""
