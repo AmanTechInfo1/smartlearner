@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c3fea9d0.css",
-    "main.js": "/static/js/main.2b0c7e01.js",
+    "main.css": "/static/css/main.e8b695a2.css",
+    "main.js": "/static/js/main.905a5a28.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/PART 3 - USE OF SPEED.mp4": "/static/media/PART 3 - USE OF SPEED.d76e6e4767fdfa7bd13f.mp4",
     "static/media/PART 3 - 1. AGREEGOALS.mp4": "/static/media/PART 3 - 1. AGREEGOALS.eacaae990fafc6c2de44.mp4",
@@ -401,12 +401,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.c3fea9d0.css.map": "/static/css/main.c3fea9d0.css.map",
-    "main.2b0c7e01.js.map": "/static/js/main.2b0c7e01.js.map",
+    "main.e8b695a2.css.map": "/static/css/main.e8b695a2.css.map",
+    "main.905a5a28.js.map": "/static/js/main.905a5a28.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3fea9d0.css",
-    "static/js/main.2b0c7e01.js"
+    "static/css/main.e8b695a2.css",
+    "static/js/main.905a5a28.js"
   ]
 }
