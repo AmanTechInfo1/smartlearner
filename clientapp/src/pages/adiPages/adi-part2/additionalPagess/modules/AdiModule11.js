@@ -275,6 +275,14 @@ export default function AdiModule11() {
             </motion.div>
           ))}
         </div>
+        <div></div>
+        {/* /////////////////////////// */}
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModuleTwelve">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
       </div>
     </>
   );

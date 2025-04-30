@@ -110,8 +110,8 @@ export default function Adi3Modulethree() {
       title: "Equality & Diversity Laws",
       color: "#ff4d4d",
       points: [
-        "Equality Act 2010 – Ensures fair and equal treatment for all learners.",
-        "Disability Discrimination Act – Accommodate disabled learners.",
+        "Equality Act 2010 – Ensures that all learners receive fair and equal treatment, regardless of age, disability, gender, race, religion, or sexual orientation. 🔹 Example: A driving instructor should make reasonable adjustments for a learner with dyslexia by providing verbal voice recordings of feedback instead of written notes.",
+        "Disability Discrimination Act 1995 (now covered by the Equality Act 2010) – Requires instructors to accommodate disabled learners, ensuring they have equal access to driving lessons. 🔹 Example: If a learner has limited mobility, the instructor should use a vehicle with hand controls if needed or recommend them to an appropriate trainer.",
       ],
     },
     {
@@ -119,9 +119,9 @@ export default function Adi3Modulethree() {
       title: "Road Traffic Laws & Instructor Regulations",
       color: "#ffa64d",
       points: [
-        "Road Traffic Act 1988 – Governs safe road use.",
-        "Motor Vehicles Regulations 1999 – Supervision and eyesight rules.",
-        "Instructor Suspension Act 2009 – DVSA authority for suspensions.",
+        "Road Traffic Act 1988 – Governs safe road use and requires instructors to ensure learners drive legally and safely. 🔹 Example: An instructor must ensure that a learner has a valid provisinal licence before beginning lessons.",
+        "Motor Vehicles (Driving Licences) Regulations 1999 – Outlines the legal requirements for learner drivers, including supervision and eyesight standards. 🔹 Example: An instructor must ensure their learner can read a number plate from 20 metres before starting lessons.",
+        "Driving Instruction (Suspension and Exemption Powers) Act 2009 – Allows the DVSA to suspend instructors who pose a risk to learners. 🔹 Example: If an instructor has unsafe teaching practices, such as allowing learners to drive without proper supervision, they may be suspended.",
       ],
     },
     {
@@ -129,7 +129,7 @@ export default function Adi3Modulethree() {
       title: "Data Protection & Confidentiality",
       color: "#4dd2ff",
       points: [
-        "UK GDPR & Data Protection Act 2018 – Secure personal data handling.",
+        "UK General Data Protection Regulation (UK GDPR) & Data Protection Act 2018 – Requires instructors to handle personal data securely and not share it without consent. 🔹 Example: A driving instructor must not share a learner’s phone number or test results without permission.",
       ],
     },
     {
@@ -137,8 +137,8 @@ export default function Adi3Modulethree() {
       title: "Health & Safety Regulations",
       color: "#4dff88",
       points: [
-        "Health & Safety at Work Act 1974 – Safe learning environment.",
-        "Management of H&S 1999 – Risk assessments for safe lessons.",
+        "Health and Safety at Work Act 1974 – Ensures a safe learning environment for both the instructor and learner. 🔹 Example: Instructors must regularly maintain their vehicle to prevent mechanical failiures during lesson.",
+        "Management of Health and Safety at Work Regulations 1999 – Requires risk assessments to ensure lessons are conducted safely. 🔹 Example: If road conditions are hazardous due to ice, an instructor should assess whether it’s safe to conduct the lesson or postpone it.",
       ],
     },
     {
@@ -146,8 +146,8 @@ export default function Adi3Modulethree() {
       title: "Consumer Rights & Business Compliance",
       color: "#ff66cc",
       points: [
-        "Consumer Rights Act 2015 – Fair pricing and service.",
-        "Supply of Goods & Services Act – Reasonable care and skill.",
+        "Consumer Rights Act 2015 – Ensures that driving lessons are fairly priced and meet expected service standards. 🔹 Example: If an instructor cancels a prepaid lesson without rescheduling, they must offer a refund.",
+        "The Supply of Goods and Services Act 1982 – Requires instructors to deliver lessons with reasonable care and skill. 🔹 Example: An instructor must provide clear, structured lessons rather than cutting lessons short or failing to give proper guidance.",
       ],
     },
     {
@@ -155,8 +155,8 @@ export default function Adi3Modulethree() {
       title: "Criminal Record & Safeguarding Laws",
       color: "#cccc00",
       points: [
-        "Rehabilitation of Offenders Act – DBS checks required.",
-        "Children & Safeguarding Acts – Protect young/vulnerable learners.",
+        "Rehabilitation of Offenders Act 1974 – Requires instructors to undergo an enhanced DBS check to ensure they are safe to work with young and vulnerable learners. 🔹 Example: An instructor with a history of serious driving offences or safeguarding concerns may be refused a licence to teach.",
+        "Children Act 1989 & Safeguarding Vulnerable Groups Act 2006 – Protects young and vulnerable learners from harm or abuse. 🔹 Example: If a young learner confides in their instructor about being in danger, the instructor must report it to the appropriate safeguarding authority.",
       ],
     },
   ];

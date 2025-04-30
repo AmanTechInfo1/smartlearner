@@ -97,7 +97,35 @@ export default function Adi3Module16() {
         stagger: 0.1, // Stagger the color change for each letter
       });
   }, []);
-
+  // /////////////////////////////////////////////////
+  const data = [
+    {
+      aspect: "Experience",
+      trainee: "Real-world teaching with actual learners",
+      part3: "No teaching experience outside of training",
+    },
+    {
+      aspect: "Earnings",
+      trainee: "Can earn while training (within franchise rules)",
+      part3: "No earnings until fully qualified",
+    },
+    {
+      aspect: "Preparation",
+      trainee: "Hands-on, practical experience with feedback",
+      part3: "Limited to simulations or private practice",
+    },
+    {
+      aspect: "Cost",
+      trainee: "£140 + 20 hours additional training",
+      part3: "No badge cost",
+    },
+    {
+      aspect: "Part 3 Readiness",
+      trainee: "Easier to book test with your own pupils",
+      part3: "Must provide your own pupil for the test",
+    },
+  ];
+  ///////////////////////////////////////////////////////
   return (
     <div className={styles.AdiModuleOnecontainer}>
       <section className={styles.AdiModuleOneheader}>
@@ -221,80 +249,30 @@ export default function Adi3Module16() {
       </div>
 
       {/* /////////////////////////////////////////////////////////// */}
-      <div className={styles.adi3module162ndcontainer}>
-        <div className={styles.adi3module162ndcard}>
-          <h2 className={styles.adi3module162ndtitle}>Pros and Cons</h2>
-          <div className={styles.adi3module162ndcontent}>
-            <div className={styles.adi3module162ndsection}>
-              <h3 className={styles.adi3module162ndsubTitle}>Aspect</h3>
-              <ul className={styles.adi3module162ndlist}>
-                <li>
-                  <strong>Trainee Licence (PDI Badge)</strong> - Go Straight to
-                  Part 3
-                </li>
-                <li>
-                  <strong>Experience</strong> - Real-world teaching with actual
-                  learners
-                </li>
-                <li>
-                  <strong>No teaching experience outside of training</strong>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.adi3module162ndsection}>
-              <h3 className={styles.adi3module162ndsubTitle}>Earnings</h3>
-              <ul className={styles.adi3module162ndlist}>
-                <li>
-                  <strong>Can earn while training</strong> (within franchise
-                  rules)
-                </li>
-                <li>
-                  <strong>No earnings until fully qualified</strong>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.adi3module162ndsection}>
-              <h3 className={styles.adi3module162ndsubTitle}>Preparation</h3>
-              <ul className={styles.adi3module162ndlist}>
-                <li>
-                  <strong>Hands-on, practical experience with feedback</strong>
-                </li>
-                <li>
-                  <strong>Limited to simulations or private practice</strong>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.adi3module162ndsection}>
-              <h3 className={styles.adi3module162ndsubTitle}>Cost</h3>
-              <ul className={styles.adi3module162ndlist}>
-                <li>
-                  <strong>£140 + 20 hours additional training</strong>
-                </li>
-                <li>
-                  <strong>No badge cost</strong>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.adi3module162ndsection}>
-              <h3 className={styles.adi3module162ndsubTitle}>
-                Part 3 Readiness
-              </h3>
-              <ul className={styles.adi3module162ndlist}>
-                <li>
-                  <strong>Easier to book test with your own pupils</strong>
-                </li>
-                <li>
-                  <strong>Must provide your own pupil for the test</strong>
-                </li>
-              </ul>
-            </div>
+      <div className={styles.adi3partlastcontainer}>
+        <h2 className={styles.adi3partlastheading}>Summary: Pros and Cons</h2>
+        <div className={styles.adi3partlasttable}>
+          <div className={`${styles.adi3partlastrow} ${styles.adi3partlastheader}`}>
+            <div className={styles.adi3partlastcell}>Aspect</div>
+            <div className={styles.adi3partlastcell}>Trainee Licence (PDI Badge)</div>
+            <div className={styles.adi3partlastcell}>Go Straight to Part 3</div>
           </div>
-          <p className={styles.adi3module162ndfooter}>
-            If you're unsure which path suits you best, feel free to reach out
-            for a chat. We’ll help you weigh up the pros and cons based on your
-            goals, availability, and experience—so you can make the right choice
-            for your journey to becoming a fully qualified driving instructor.
-          </p>
+          {data.map((item, index) => (
+            <div key={index} className={`${styles.adi3partlastrow} ${styles.adi3partlastfadeIn}`}>
+              <div className={styles.adi3partlastcell} data-label="Aspect">
+                {item.aspect}
+              </div>
+              <div
+                className={styles.adi3partlastcell}
+                data-label="Trainee Licence (PDI Badge)"
+              >
+                {item.trainee}
+              </div>
+              <div className={styles.adi3partlastcell} data-label="Go Straight to Part 3">
+                {item.part3}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

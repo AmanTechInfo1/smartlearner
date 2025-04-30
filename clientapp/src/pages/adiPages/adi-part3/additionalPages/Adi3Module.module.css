@@ -5007,3 +5007,110 @@
   transition: ease-in-out 0.3s;
   background: linear-gradient(135deg, #004037, #00ffc4);
 }
+/* ........./////////////////////////// */
+.adi3partlastcontainer {
+  padding: 2rem;
+  background: linear-gradient(to right, #00cae4, #003765);
+
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  animation: fadeInbh 1s ease-in-out;
+  overflow-x: auto;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.adi3partlastheading {
+  text-align: center;
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.adi3partlasttable {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px; /* Ensures horizontal scroll if needed */
+}
+
+.adi3partlastrow {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  align-items: start;
+  padding: 1rem;
+  border-radius: 6px;
+  border: #000;
+  margin: 0.1rem 0px;
+  background: #1b000ad6;
+  transition: transform 0.3s ease;
+  word-break: break-word;
+  color: white;
+}
+
+.adi3partlastrow:hover {
+  transform: scale(1.02);
+  background: #660079;
+  color: white;
+}
+
+.adi3partlastheader {
+  font-weight: bold;
+  background: #660079;
+  color: white;
+}
+
+.adi3partlastcell {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.adi3partlastfadeIn {
+  animation: fadeInRowbh 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeInRowbh {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInbh {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  .adi3partlasttable {
+    min-width: 100%;
+  }
+
+  .adi3partlastrow {
+    grid-template-columns: 1fr;
+    background: #ffffff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .adi3partlastheader {
+    display: none; /* Hide the header row on mobile for a stacked view */
+  }
+
+  .adi3partlastcell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #00796b;
+  }
+}

@@ -151,10 +151,10 @@ const LessonAccordation = () => {
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>{" "}
-              Quiz vehicle technology
+              Quiz the familiarising yourself with vehicle technology
             </div>
             {openIndex === 7 && (
-              <p className={styles.description}>Quiz vehicle technology</p>
+              <p className={styles.description}>Quiz the familiarising yourself with vehicle technology</p>
             )}
           </li>
         </Link>
