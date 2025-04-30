@@ -809,7 +809,7 @@ export default function Adi3ModuleSeven() {
           Click below to download all documents as a ZIP file.
         </p>
         <a
-          href="../../../../../public/lessonPlanning-Docs.zip"
+          href="/lessonPlanning-Docs.zip"
           download
           style={style.adiDownLoadbutton}
         >
