@@ -1107,8 +1107,6 @@ class quizService {
         const attemptedIds = await AttemptQuizQuestion.find({
           userId: new ObjectId(userId),
         }).distinct("questionId");
-        
-        console.log("Attempted Question IDs:", attemptedIds);
 
         const data = await QuizQuestion.aggregate([
           {
