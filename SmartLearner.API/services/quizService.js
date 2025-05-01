@@ -9,7 +9,7 @@ class quizService {
   async createQuizAsync(quizData) {
     try {
       const quiz = await QuizQuestion.create(quizData);
-      console.log("eihskudfasdasad",quizData)
+      console.log("eihskudfasdasad", quizData);
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Added Successfully",
@@ -440,7 +440,7 @@ class quizService {
       // const quizResult2 = await AttemptQuizQuestion.aggregate(aggr);
       // const totalCount2 = await AttemptQuizQuestion.countDocuments(filter);
 
-      // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20); 
+      // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
       const quizResult = await ResultQuizQuestion.aggregate(aggr);
       const totalCount = await ResultQuizQuestion.countDocuments(filter);
 
@@ -882,38 +882,34 @@ class quizService {
     try {
       if (cid === "Mock--Tests") {
         const bands = ["band 1", "band 2", "band 3", "band 4"];
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "Mock--Tests",
+        }).select("_id");
+
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+            canRestart: true,
+          };
+        }
+
+        const attemptedIds = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+        }).distinct("questionId");
+
         let data = [];
 
         for (let band of bands) {
           const bandQuestions = await QuizQuestion.aggregate([
             {
-              $lookup: {
-                from: "attemptquizquestions",
-                localField: "_id",
-                foreignField: "questionId",
-                pipeline: [
-                  {
-                    $match: {
-                      userId: { $eq: new ObjectId(userId) },
-                    },
-                  },
-                ],
-                as: "result",
-              },
-            },
-            {
-              $addFields: {
-                sizeRes: { $size: "$result" },
-                questionId: { $toString: "$_id" },
-              },
-            },
-            {
               $match: {
-                sizeRes: 0,
+                category: category._id,
+                band: band,
+                _id: { $nin: attemptedIds },
               },
-            },
-            {
-              $match: { band: band },
             },
             {
               $lookup: {
@@ -934,24 +930,12 @@ class quizService {
                 "quizcategoriesresult.catUnqName": "Mock--Tests",
               },
             },
-            {
-              $lookup: {
-                from: "quizmodules",
-                localField: "module",
-                foreignField: "_id",
-                as: "quizmodulesresult",
-              },
-            },
-            {
-              $unwind: {
-                path: "$quizmodulesresult",
-                preserveNullAndEmptyArrays: true,
-              },
-            },
+
             {
               $addFields: {
                 quizCategory: "$quizcategoriesresult.name",
-                quizModuleName: "$quizmodulesresult.moduleName",
+                questionId: { $toString: "$_id" },
+                randomSort: { $rand: {} },
               },
             },
             {
@@ -963,7 +947,10 @@ class quizService {
               },
             },
             {
-              $sample: { size: 25 },
+              $sort: { randomSort: 1 },
+            },
+            {
+              $limit: 25,
             },
           ]);
 
@@ -971,14 +958,22 @@ class quizService {
             data = [...data, ...bandQuestions];
           }
         }
+        const totalQuestionsData = 100;
+        const attemptedQuestionData = attemptedIds.length;
 
         if (data.length === 100) {
           return {
             message: "Mock-Test questions fetched successfully",
             statusCode: 200,
             success: true,
-            data: {data},
+            data: {
+              data,
+              attemptedQuestionData,
+              totalQuestionsData,
+            },
             canRestart: false,
+            attemptedQuestionData,
+            totalQuestionsData,
           };
         } else {
           return {
@@ -990,376 +985,31 @@ class quizService {
           };
         }
       } else if (cid === "Mock-Test") {
-        // If the category is "road-procedure", fetch only 50 random questions
-        const data = await QuizQuestion.aggregate([
-          {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
-              questionId: { $toString: "$_id" },
-            },
-          },
-          {
-            $match: {
-              sizeRes: 0,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizcategories",
-              localField: "category",
-              foreignField: "_id",
-              as: "quizcategoriesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $match: {
-              "quizcategoriesresult.catUnqName": "Mock-Test", // Filter by category
-            },
-          },
-          {
-            $lookup: {
-              from: "quizmodules",
-              localField: "module",
-              foreignField: "_id",
-              as: "quizmodulesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizmodulesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $addFields: {
-              quizCategory: "$quizcategoriesresult.name",
-              quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $sample: { size: 50 }, // Limit to 50 random questions
-          },
-        ]);
-        
-
-        const resultObject = {
-          message:
-          data.length > 0
-              ? "data questions fetched successfully"
-              : "No data questions available",
-          statusCode: data.length > 0 ? 200 : 400,
-          success: data.length > 0,
-          data: {data},
-          canRestart: data.length === 0,
-        };
-
-        return resultObject;
-      } else if (cid === "band-one-test") {
-        // If the category is "road-procedure", fetch only 50 random questions
-        const data = await QuizQuestion.aggregate([
-          {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
-              questionId: { $toString: "$_id" },
-            },
-          },
-          {
-            $match: {
-              sizeRes: 0,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizcategories",
-              localField: "category",
-              foreignField: "_id",
-              as: "quizcategoriesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $match: {
-              "quizcategoriesresult.catUnqName": "band-one-test", // Filter by category
-            },
-          },
-          {
-            $lookup: {
-              from: "quizmodules",
-              localField: "module",
-              foreignField: "_id",
-              as: "quizmodulesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizmodulesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $addFields: {
-              quizCategory: "$quizcategoriesresult.name",
-              quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $sample: { size: 25 }, // Limit to 50 random questions
-          },
-        ]);
         const category = await QuizCategoryModel.findOne({
-          catUnqName: "band-one-test",
+          catUnqName: "Mock-Test",
         }).select("_id");
+
         if (!category) {
           return {
             message: "Category not found",
             statusCode: 404,
             success: false,
             data: null,
+            canRestart: true,
           };
         }
 
-        const attemptedQuestionData = await AttemptQuizQuestion.find({
+        // Step 2: Get list of attempted question IDs by user (faster filtering)
+        const attemptedIds = await AttemptQuizQuestion.find({
           userId: new ObjectId(userId),
-          questionId: {
-            $in: await QuizQuestion.find({
-              category: category._id,
-            }).distinct("_id"),
-          },
-        });
+        }).distinct("questionId");
 
-        const totalQuestionsData = await QuizQuestion.find({
-          category: category._id,
-        }).distinct("_id");
-
-        const attemptedData = attemptedQuestionData.length;
-        const totalQuestiondata = totalQuestionsData.length;
-
-        const resultObject = {
-          message:
-          data.length > 0
-              ? "data questions fetched successfully"
-              : "No data questions available",
-          statusCode: data.length > 0 ? 200 : 400,
-          success: data.length > 0,
-          data: {
-            data,
-            attemptedQuestionData: attemptedData,
-            totalQuestionsData: 25,
-          },
-          canRestart: data.length === 0,
-        };
-
-        return resultObject;
-      } else if (cid === "band-Two-test") {
-        // If the category is "road-procedure", fetch only 50 random questions
+        // Step 3: Query unattempted questions in this category
         const data = await QuizQuestion.aggregate([
           {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
-              questionId: { $toString: "$_id" },
-            },
-          },
-          {
             $match: {
-              sizeRes: 0,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizcategories",
-              localField: "category",
-              foreignField: "_id",
-              as: "quizcategoriesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $match: {
-              "quizcategoriesresult.catUnqName": "band-Two-test", // Filter by category
-            },
-          },
-          {
-            $lookup: {
-              from: "quizmodules",
-              localField: "module",
-              foreignField: "_id",
-              as: "quizmodulesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizmodulesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $addFields: {
-              quizCategory: "$quizcategoriesresult.name",
-              quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $sample: { size: 25 }, // Limit to 50 random questions
-          },
-        ]);
-        const category = await QuizCategoryModel.findOne({
-          catUnqName: "band-Two-test",
-        }).select("_id");
-        if (!category) {
-          return {
-            message: "Category not found",
-            statusCode: 404,
-            success: false,
-            data: null,
-          };
-        }
-
-        const attemptedQuestionData = await AttemptQuizQuestion.find({
-          userId: new ObjectId(userId),
-          questionId: {
-            $in: await QuizQuestion.find({
               category: category._id,
-            }).distinct("_id"),
-          },
-        });
-
-        const totalQuestionsData = await QuizQuestion.find({
-          category: category._id,
-        }).distinct("_id");
-
-        const attemptedData = attemptedQuestionData.length;
-        const totalQuestiondata = totalQuestionsData.length;
-
-        const resultObject = {
-          message:
-          data.length > 0
-              ? "data questions fetched successfully"
-              : "No data questions available",
-          statusCode: data.length > 0 ? 200 : 400,
-          success: data.length > 0,
-          data: {
-            data,
-            attemptedQuestionData: attemptedData,
-            totalQuestionsData: 25,
-          },
-          canRestart: data.length === 0,
-          attemptedQuestionData: attemptedData,
-          totalQuestionsData: totalQuestiondata,
-        };
-
-        return resultObject;
-      } else if (cid === "band-three-test") {
-        // If the category is "road-procedure", fetch only 50 random questions
-        const data = await QuizQuestion.aggregate([
-          {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
-              questionId: { $toString: "$_id" },
-            },
-          },
-          {
-            $match: {
-              sizeRes: 0,
+              _id: { $nin: attemptedIds },
             },
           },
           {
@@ -1373,12 +1023,12 @@ class quizService {
           {
             $unwind: {
               path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
+              preserveNullAndEmptyArrays: false,
             },
           },
           {
             $match: {
-              "quizcategoriesresult.catUnqName": "band-three-test", // Filter by category
+              "quizcategoriesresult.catUnqName": "Mock-Test",
             },
           },
           {
@@ -1399,288 +1049,379 @@ class quizService {
             $addFields: {
               quizCategory: "$quizcategoriesresult.name",
               quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $sample: { size: 25 }, // Limit to 50 random questions
-          },
-        ]);
-        const category = await QuizCategoryModel.findOne({
-          catUnqName: "band-three-test",
-        }).select("_id");
-        if (!category) {
-          return {
-            message: "Category not found",
-            statusCode: 404,
-            success: false,
-            data: null,
-          };
-        }
-
-        const attemptedQuestionData = await AttemptQuizQuestion.find({
-          userId: new ObjectId(userId),
-          questionId: {
-            $in: await QuizQuestion.find({
-              category: category._id,
-            }).distinct("_id"),
-          },
-        });
-
-        const totalQuestionsData = await QuizQuestion.find({
-          category: category._id,
-        }).distinct("_id");
-
-        const attemptedData = attemptedQuestionData.length;
-        const totalQuestiondata = totalQuestionsData.length;
-
-        const resultObject = {
-          message:
-            data.length > 0
-              ? "data questions fetched successfully"
-              : "No data questions available",
-          statusCode: data.length > 0 ? 200 : 400,
-          success: data.length > 0,
-          data: {
-            data,
-            attemptedQuestionData: attemptedData,
-            totalQuestionsData: 25,
-          },
-          canRestart: data.length === 0,
-          attemptedQuestionData: attemptedData,
-          totalQuestionsData: totalQuestiondata,
-        };
-
-        return resultObject;
-      } else if (cid === "band-four-test") {
-        // If the category is "road-procedure", fetch only 50 random questions
-        const data = await QuizQuestion.aggregate([
-          {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
               questionId: { $toString: "$_id" },
-            },
-          },
-          {
-            $match: {
-              sizeRes: 0,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizcategories",
-              localField: "category",
-              foreignField: "_id",
-              as: "quizcategoriesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $match: {
-              "quizcategoriesresult.catUnqName": "band-four-test", // Filter by category
-            },
-          },
-          {
-            $lookup: {
-              from: "quizmodules",
-              localField: "module",
-              foreignField: "_id",
-              as: "quizmodulesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizmodulesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $addFields: {
-              quizCategory: "$quizcategoriesresult.name",
-              quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $sample: { size: 25 }, // Limit to 50 random questions
-          },
-        ]);
-
-        const category = await QuizCategoryModel.findOne({
-          catUnqName: "band-four-test",
-        }).select("_id");
-        if (!category) {
-          return {
-            message: "Category not found",
-            statusCode: 404,
-            success: false,
-            data: null,
-          };
-        }
-
-        const attemptedQuestionData = await AttemptQuizQuestion.find({
-          userId: new ObjectId(userId),
-          questionId: {
-            $in: await QuizQuestion.find({
-              category: category._id,
-            }).distinct("_id"),
-          },
-        });
-
-        const totalQuestionsData = await QuizQuestion.find({
-          category: category._id,
-        }).distinct("_id");
-
-        const attemptedData = attemptedQuestionData.length;
-        const totalQuestiondata = totalQuestionsData.length;
-
-        const resultObject = {
-          message:
-            data.length > 0
-              ? "data questions fetched successfully"
-              : "No data questions available",
-          statusCode: data.length > 0 ? 200 : 400,
-          success: data.length > 0,
-          data: {
-            data,
-            attemptedQuestionData: attemptedData,
-            totalQuestionsData: 25,
-          },
-          canRestart: data.length === 0,
-          attemptedQuestionData: attemptedData,
-          totalQuestionsData: totalQuestiondata,
-        };
-
-        return resultObject;
-      } else {
-        let aggr = [];
-
-        aggr.push(
-          {
-            $lookup: {
-              from: "attemptquizquestions",
-              localField: "_id",
-              foreignField: "questionId",
-              pipeline: [
-                {
-                  $match: {
-                    userId: { $eq: new ObjectId(userId) },
-                  },
-                },
-              ],
-              as: "result",
-            },
-          },
-
-          {
-            $addFields: {
-              sizeRes: { $size: "$result" },
-              questionId: { $toString: "$_id" },
-            },
-          },
-          {
-            $match: {
-              sizeRes: 0,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizcategories",
-              localField: "category",
-              foreignField: "_id",
-              as: "quizcategoriesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizcategoriesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $match: {
-              "quizcategoriesresult.catUnqName": cid,
-            },
-          },
-          {
-            $lookup: {
-              from: "quizmodules",
-              localField: "module",
-              foreignField: "_id",
-              as: "quizmodulesresult",
-            },
-          },
-          {
-            $unwind: {
-              path: "$quizmodulesresult",
-              preserveNullAndEmptyArrays: true,
-            },
-          },
-          {
-            $addFields: {
-              quizCategory: "$quizcategoriesresult.name",
-              quizModuleName: "$quizmodulesresult.moduleName",
-            },
-          },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              sizeRes: 0,
-              _id: 0,
-            },
-          },
-          {
-            $addFields: {
               randomSort: { $rand: {} },
             },
           },
           {
-            $sort: {
-              randomSort: 1,
+            $project: {
+              result: 0,
+              answer: 0,
+              sizeRes: 0,
+              _id: 0,
             },
-          }
-        );
+          },
+          {
+            $sort: { randomSort: 1 },
+          },
+          {
+            $limit: 50,
+          },
+        ]);
 
-        const data = await QuizQuestion.aggregate(aggr);
+        const totalQuestionsData = 50;
+        const attemptedQuestionData = attemptedIds.length;
+
+        const resultObject = {
+          message:
+            data.length > 0
+              ? "Mock-Test questions fetched successfully"
+              : "No questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData,
+            totalQuestionsData,
+          },
+          canRestart: data.length === 0,
+          attemptedQuestionData,
+          totalQuestionsData,
+        };
+
+        return resultObject;
+      } else if (cid === "band-one-test") {
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-one-test",
+        }).select("_id name");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+            canRestart: true,
+          };
+        }
+
+        const attemptedIds = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+        }).distinct("questionId");
+        
+        console.log("Attempted Question IDs:", attemptedIds);
+
+        const data = await QuizQuestion.aggregate([
+          {
+            $match: {
+              category: category._id,
+              _id: { $nin: attemptedIds },
+            },
+          },
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              questionId: { $toString: "$_id" },
+              quizCategory: category.name,
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
+          },
+          {
+            $project: {
+              answer: 0, // Remove this if you want to show answers
+              _id: 0,
+            },
+          },
+          {
+            $sample: { size: 25 },
+          },
+        ]);
+
+        const totalQuestionsData = await QuizQuestion.find({
+          category: category._id,
+        }).distinct("_id");
+
+        const attemptedQuestionData = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+          questionId: { $in: totalQuestionsData },
+        });
+
+        const attemptedCount = attemptedIds.filter(
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+        ).length;
+        const attemptedData = attemptedQuestionData.length;
+        const totalQuestiondata = totalQuestionsData.length;
+        return {
+          message:
+            data.length > 0
+              ? "Data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedData,
+            totalQuestionsData: 25,
+          },
+          canRestart: data.length === 0,
+        };
+      } else if (cid === "band-Two-test") {
+        // If the category is "road-procedure", fetch only 50 random questions
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-Two-test",
+        }).select("_id name");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+            canRestart: true,
+          };
+        }
+
+        const attemptedIds = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+        }).distinct("questionId");
+
+        const data = await QuizQuestion.aggregate([
+          {
+            $match: {
+              category: category._id,
+              _id: { $nin: attemptedIds },
+            },
+          },
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              questionId: { $toString: "$_id" },
+              quizCategory: category.name,
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
+          },
+          {
+            $project: {
+              answer: 0, // Remove this if you want to show answers
+              _id: 0,
+            },
+          },
+          {
+            $sample: { size: 25 },
+          },
+        ]);
+
+        const totalQuestionsCount = 25;
+
+        const attemptedCount = attemptedIds.filter(
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+        ).length;
+
+        return {
+          message:
+            data.length > 0
+              ? "Data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedCount,
+            totalQuestionsData: totalQuestionsCount,
+          },
+          canRestart: data.length === 0,
+        };
+      } else if (cid === "band-three-test") {
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-three-test",
+        }).select("_id name");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+            canRestart: true,
+          };
+        }
+
+        const attemptedIds = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+        }).distinct("questionId");
+
+        const data = await QuizQuestion.aggregate([
+          {
+            $match: {
+              category: category._id,
+              _id: { $nin: attemptedIds },
+            },
+          },
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              questionId: { $toString: "$_id" },
+              quizCategory: category.name,
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
+          },
+          {
+            $project: {
+              answer: 0, // Remove this if you want to show answers
+              _id: 0,
+            },
+          },
+          {
+            $sample: { size: 25 },
+          },
+        ]);
+
+        const totalQuestionsCount = 25;
+
+        const attemptedCount = attemptedIds.filter(
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+        ).length;
+
+        return {
+          message:
+            data.length > 0
+              ? "Data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedCount,
+            totalQuestionsData: totalQuestionsCount,
+          },
+          canRestart: data.length === 0,
+        };
+      } else if (cid === "band-four-test") {
+        const category = await QuizCategoryModel.findOne({
+          catUnqName: "band-four-test",
+        }).select("_id name");
+        if (!category) {
+          return {
+            message: "Category not found",
+            statusCode: 404,
+            success: false,
+            data: null,
+            canRestart: true,
+          };
+        }
+
+        const attemptedIds = await AttemptQuizQuestion.find({
+          userId: new ObjectId(userId),
+        }).distinct("questionId");
+
+        const data = await QuizQuestion.aggregate([
+          {
+            $match: {
+              category: category._id,
+              _id: { $nin: attemptedIds },
+            },
+          },
+          {
+            $lookup: {
+              from: "quizmodules",
+              localField: "module",
+              foreignField: "_id",
+              as: "quizmodulesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizmodulesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              questionId: { $toString: "$_id" },
+              quizCategory: category.name,
+              quizModuleName: "$quizmodulesresult.moduleName",
+            },
+          },
+          {
+            $project: {
+              answer: 0, // Remove this if you want to show answers
+              _id: 0,
+            },
+          },
+          {
+            $sample: { size: 25 },
+          },
+        ]);
+
+        const totalQuestionsCount = 25;
+
+        const attemptedCount = attemptedIds.filter(
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+        ).length;
+
+        return {
+          message:
+            data.length > 0
+              ? "Data questions fetched successfully"
+              : "No data questions available",
+          statusCode: data.length > 0 ? 200 : 400,
+          success: data.length > 0,
+          data: {
+            data,
+            attemptedQuestionData: attemptedCount,
+            totalQuestionsData: totalQuestionsCount,
+          },
+          canRestart: data.length === 0,
+        };
+      } else {
+        if (!ObjectId.isValid(userId)) {
+          return {
+            message: "Invalid user ID",
+            statusCode: 400,
+            success: false,
+            data: null,
+          };
+        }
 
         const category = await QuizCategoryModel.findOne({
           catUnqName: cid,
-        }).select("_id");
+        }).lean();
         if (!category) {
           return {
             message: "Category not found",
@@ -1690,6 +1431,7 @@ class quizService {
           };
         }
 
+        // Get attempted question IDs
         const attemptedQuestionData = await AttemptQuizQuestion.find({
           userId: new ObjectId(userId),
           questionId: {
@@ -1697,30 +1439,80 @@ class quizService {
               category: category._id,
             }).distinct("_id"),
           },
-        });
+        }).distinct("questionId");
 
+        const unattemptedQuestions = await QuizQuestion.aggregate([
+          {
+            $match: {
+              category: category._id,
+              _id: { $nin: attemptedQuestionData },
+            },
+          },
+          {
+            $lookup: {
+              from: "quizcategories", // Ensure this is the correct collection
+              localField: "category",
+              foreignField: "_id",
+              as: "quizcategoriesresult",
+            },
+          },
+          {
+            $unwind: {
+              path: "$quizcategoriesresult",
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $addFields: {
+              randomSort: { $rand: {} }, // Add a random field to shuffle the results
+            },
+          },
+          {
+            $project: {
+              result: 0,
+              answer: 0,
+              _id: 0,
+            },
+          },
+          {
+            $project: {
+              question: 1,
+              questionImage: 1,
+              description: 1,
+              option: 1,
+              optionImage: 1,
+              category: 1,
+              quizCategory: "$quizcategoriesresult.name",
+              randomSort: 1,
+              questionId: { $toString: "$_id" },
+            },
+          },
+          {
+            $sort: { randomSort: 1 }, // Sort questions randomly
+          },
+        ]);
+
+        // Step 4: Calculate the total number of questions
         const totalQuestionsData = await QuizQuestion.find({
           category: category._id,
-        }).distinct("_id");
+        }).countDocuments();
 
-        const attemptedData = attemptedQuestionData.length;
-        const totalQuestiondata = totalQuestionsData.length;
-
+        // Step 5: Send the response with the unattempted questions
         const resultObject = {
           message:
-            data.length > 0
-              ? "Question fetched successfully"
+            unattemptedQuestions.length > 0
+              ? "Questions fetched successfully"
               : "No questions available",
-          statusCode: data.length > 0 ? 200 : 400,
+          statusCode: unattemptedQuestions.length > 0 ? 200 : 400,
           success: true,
           data: {
-            data,
-            attemptedQuestionData: attemptedData,
-            totalQuestionsData: totalQuestiondata,
+            data: unattemptedQuestions,
+            attemptedQuestionData: attemptedQuestionData.length,
+            totalQuestionsData,
           },
-          canRestart: data.length === 0,
-          attemptedQuestionData: attemptedData,
-          totalQuestionsData: totalQuestiondata,
+          canRestart: unattemptedQuestions.length === 0,
+          attemptedQuestionData: attemptedQuestionData.length,
+          totalQuestionsData,
         };
 
         return resultObject;
@@ -1728,7 +1520,7 @@ class quizService {
     } catch (err) {
       console.error("Error during fetching questions:", err);
       const resultObject = {
-        message: "Could not fetch products",
+        message: "Could not fetch questions",
         statusCode: 400,
         success: false,
         data: null,
@@ -1736,7 +1528,6 @@ class quizService {
       return resultObject;
     }
   }
-
   async restartQuiz(userId, cid, moduleId = null) {
     try {
       // Clear user's previous attempts for this category
