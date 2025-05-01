@@ -1507,13 +1507,7 @@ class quizService {
               randomSort: { $rand: {} }, // Add a random field to shuffle the results
             },
           },
-          {
-            $project: {
-              result: 0,
-              answer: 0,
-              _id: 0,
-            },
-          },
+         
           {
             $project: {
               question: 1,
@@ -1532,6 +1526,13 @@ class quizService {
                   onNull: null,
                 },
               },
+            },
+          },
+          {
+            $project: {
+              result: 0,
+              answer: 0,
+              _id: 0,
             },
           },
           {
