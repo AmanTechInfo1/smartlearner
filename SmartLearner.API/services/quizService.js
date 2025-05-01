@@ -934,7 +934,14 @@ class quizService {
             {
               $addFields: {
                 quizCategory: "$quizcategoriesresult.name",
-                questionId: { $toString: "$_id" },
+                questionId: {
+                  $convert: {
+                    input: "$_id",
+                    to: "string",
+                    onError: null,
+                    onNull: null,
+                  },
+                },
                 randomSort: { $rand: {} },
               },
             },
@@ -1049,7 +1056,14 @@ class quizService {
             $addFields: {
               quizCategory: "$quizcategoriesresult.name",
               quizModuleName: "$quizmodulesresult.moduleName",
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
               randomSort: { $rand: {} },
             },
           },
@@ -1131,7 +1145,14 @@ class quizService {
           },
           {
             $addFields: {
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
               quizCategory: category.name,
               quizModuleName: "$quizmodulesresult.moduleName",
             },
@@ -1217,7 +1238,14 @@ class quizService {
           },
           {
             $addFields: {
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
               quizCategory: category.name,
               quizModuleName: "$quizmodulesresult.moduleName",
             },
@@ -1294,7 +1322,14 @@ class quizService {
           },
           {
             $addFields: {
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
               quizCategory: category.name,
               quizModuleName: "$quizmodulesresult.moduleName",
             },
@@ -1371,7 +1406,14 @@ class quizService {
           },
           {
             $addFields: {
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
               quizCategory: category.name,
               quizModuleName: "$quizmodulesresult.moduleName",
             },
@@ -1482,7 +1524,14 @@ class quizService {
               category: 1,
               quizCategory: "$quizcategoriesresult.name",
               randomSort: 1,
-              questionId: { $toString: "$_id" },
+              questionId: {
+                $convert: {
+                  input: "$_id",
+                  to: "string",
+                  onError: null,
+                  onNull: null,
+                },
+              },
             },
           },
           {
