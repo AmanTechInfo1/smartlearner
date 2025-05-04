@@ -154,6 +154,8 @@ const Quiz = () => {
 
   const [visibleQuestions, setVisibleQuestions] = useState(10); // Initially show 10 questions
   const [showAll, setShowAll] = useState(false);
+  const [translatedQuestionText, setTranslatedQuestionText] = useState("");
+  const [translatedOptions, setTranslatedOptions] = useState({});
 
   const [confettiActive, setConfettiActive] = useState(false);
 
@@ -213,12 +215,17 @@ const Quiz = () => {
 
       const result = await response.data;
       if (myDivRef.current) {
-        myDivRef.current.innerHTML = result.question;
+        setTranslatedQuestionText(result.question);
       }
 
       ["option1", "option2", "option3", "option4"].forEach((option) => {
         if (result[option]) {
-          document.getElementById(option).innerHTML = result[option];
+          setTranslatedOptions({
+            option1: result.option1,
+            option2: result.option2,
+            option3: result.option3,
+            option4: result.option4,
+          });
         }
       });
       console.log("Translation response:", result);
@@ -228,6 +235,12 @@ const Quiz = () => {
       setIsTranslating(false);
     }
   };
+  useEffect(() => {
+    if (questionTranslate !== "en-Us") {
+      handleTranslationAndSpeech();
+    }
+  }, [questionTranslate, currentQuestionIndex]);
+
   const hasFetchedRef = useRef(false);
   useEffect(() => {
     // Create a ref to track if the API has already been called
@@ -409,8 +422,7 @@ const Quiz = () => {
                 <span>Time's Up!</span>
                 <button
                   onClick={handleRestart}
-                  className="btn btn-secondary bg-danger"
-                >
+                  className="btn btn-secondary bg-danger">
                   Restart Quiz
                 </button>
               </div>
@@ -419,8 +431,7 @@ const Quiz = () => {
                 <span>Quiz Completed!</span>
                 <button
                   onClick={handleRestart}
-                  className="btn btn-secondary bg-danger"
-                >
+                  className="btn btn-secondary bg-danger">
                   Restart Quiz
                 </button>
               </div>
@@ -436,19 +447,6 @@ const Quiz = () => {
                       ))}
                     </select>
                     {isTranslating && <span>Loading...</span>}
-                    <button
-                      style={{
-                        border: "none",
-                        borderRadius: "6px",
-                        padding: "4px 15px",
-                        backgroundColor: "red",
-                        color: "white",
-                        fontWeight: "400",
-                      }}
-                      onClick={handleTranslationAndSpeech}
-                    >
-                      Translate
-                    </button>
                   </div>
                   <div className={styles.totalTimer2}>
                     {quizCategory?.timer && (
@@ -461,14 +459,12 @@ const Quiz = () => {
                             color: "black",
                             fontWeight: "400",
                             fontSize: "18px",
-                          }}
-                        >
+                          }}>
                           Time left: {formatTime(timer)}
                         </span>
                         <button
                           onClick={handlePauseResume}
-                          id={styles.linkButton}
-                        >
+                          id={styles.linkButton}>
                           {isPaused ? "Resume" : "Pause"}
                         </button>
                       </div>
@@ -484,8 +480,7 @@ const Quiz = () => {
                 <div>
                   <div
                     className={styles.questionNumbers}
-                    style={{ marginBottom: "1rem" }}
-                  >
+                    style={{ marginBottom: "1rem" }}>
                     {Array.from({ length: totalQuestions }, (_, index) => {
                       if (index < visibleQuestions) {
                         return (
@@ -499,8 +494,7 @@ const Quiz = () => {
                                 ? "answered"
                                 : ""
                             }`}
-                            onClick={() => handleQuestionClick(index)}
-                          >
+                            onClick={() => handleQuestionClick(index)}>
                             {index + 1}
                           </button>
                         );
@@ -510,8 +504,7 @@ const Quiz = () => {
                     {totalQuestions > 10 && (
                       <button
                         className={styles.seeMoreButton}
-                        onClick={handleToggle}
-                      >
+                        onClick={handleToggle}>
                         {showAll ? "See Less" : "See More"}
                       </button>
                     )}
@@ -527,7 +520,6 @@ const Quiz = () => {
                 <div className={styles.questionCount}>
                   <span>Question: </span>
                   <div
-                    disabled={!hasTranslated || isTranslating}
                     ref={myDivRef}
                     id="questionTextt"
                     dangerouslySetInnerHTML={{
@@ -538,15 +530,18 @@ const Quiz = () => {
                     }}
                   />
                   <button
+                    disabled={!hasTranslated || isTranslating}
                     style={{
                       marginTop: "8px",
                       border: "none",
                       backgroundColor: "darkblue",
+                      cursor:
+                        !hasTranslated || isTranslating
+                          ? "not-allowed"
+                          : "pointer",
+                      opacity: !hasTranslated || isTranslating ? 0.5 : 1,
                     }}
-                    onClick={() =>
-                      speak(document.getElementById("questionTextt")?.innerText)
-                    }
-                  >
+                    onClick={() => speak(translatedQuestionText)}>
                     🔊
                   </button>
                 </div>
@@ -633,32 +628,35 @@ const Quiz = () => {
                               "Option" + (index + 1),
                               "Image" + (index + 1)
                             )
-                          }
-                        >
+                          }>
                           {answerOption && (
                             <>
                               <p id={"option" + (index + 1)}>{answerOption}</p>
                               <p
                                 style={{ display: "none" }}
-                                id={"laboption" + (index + 1)}
-                              >
+                                id={"laboption" + (index + 1)}>
                                 {answerOption}
                               </p>
                               <button
                                 disabled={!hasTranslated || isTranslating}
-                                type="button"
                                 style={{
                                   border: "none",
+                                  cursor:
+                                    !hasTranslated || isTranslating
+                                      ? "not-allowed"
+                                      : "pointer",
+                                  opacity:
+                                    !hasTranslated || isTranslating ? 0.5 : 1,
                                 }}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  speak(
-                                    document.getElementById(
-                                      "option" + (index + 1)
-                                    )?.innerText
-                                  );
-                                }}
-                              >
+                                  const optionKey = `option${index + 1}`;
+                                  const textToSpeak =
+                                    translatedOptions[optionKey];
+                                  if (textToSpeak) {
+                                    speak(textToSpeak);
+                                  }
+                                }}>
                                 🔊
                               </button>
                               {oneQuiz[currentQuestionIndex]?.optionImage[
@@ -711,8 +709,7 @@ const Quiz = () => {
                 Quiz Completed Veiw result
                 <button
                   className="btn btn-secondary bg-danger"
-                  onClick={handleRestart}
-                >
+                  onClick={handleRestart}>
                   Restart Quiz
                 </button>
               </div>
@@ -722,8 +719,7 @@ const Quiz = () => {
               <button onClick={endQuiz}>View Result</button>
               <button
                 onClick={backbtn}
-                className="btn btn-secondary bg-info ml-3 py-2 px-3 "
-              >
+                className="btn btn-secondary bg-info ml-3 py-2 px-3 ">
                 Back
               </button>
               {oneQuizOutput.answerAttempt && !quizCompleted && !timeUp && (

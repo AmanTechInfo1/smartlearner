@@ -6,7 +6,7 @@
 
 .homepage {
   background-color: black;
-  font-family: "Antonio", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* .homepageContainerDiv {
   /* max-width: 1400px;
@@ -584,6 +584,7 @@
 .cardtrophyFrame p {
   color: white;
   text-align: center;
+  font-weight: 600;
 }
 .cardInnertrophyFrame {
   position: relative;

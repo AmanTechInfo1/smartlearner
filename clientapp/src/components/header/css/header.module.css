@@ -137,8 +137,7 @@ nav .menu {
 
 .dropdownContent a li {
   padding: 5px 12px;
-  min-width: 270px;
-  width: 100%;
+ 
 }
 
 .dropdownContent li a:hover {

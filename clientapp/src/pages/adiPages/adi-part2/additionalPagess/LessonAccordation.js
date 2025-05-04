@@ -154,7 +154,7 @@ const LessonAccordation = () => {
               Quiz What is Advanced Driving trainning Part 2 quiz?
             </div>
             {openIndex === 7 && (
-              <p className={styles.description}>Quiz What is Advanced Driving trainning Part 2 quiz?</p>
+              <p className={styles.description}>Quiz What is Advanced Driving training Part 2 quiz?</p>
             )}
           </li>
         </Link>

@@ -151,7 +151,7 @@ const QuizResult = () => {
                     to="/all-results"
                     id={styles.linkButton}
                   >
-                    Veiw All
+                    Veiw all
                   </Link>
                 </h3>
 
