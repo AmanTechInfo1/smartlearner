@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 import roadImg from "../../../../../assets/images/moduleNine1Img.png";
 import road2Img from "../../../../../assets/images/moduleNine2Img.png";
-import tug from "../../../../../assets/part3videos/tug.mp4";
+
 
 export default function AdiModuleTen() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -350,7 +350,7 @@ export default function AdiModuleTen() {
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
           <video className={styles.videodesign} controls muted loop>
-            <source src={tug} type="video/mp4" />
+            <source src="/tug.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

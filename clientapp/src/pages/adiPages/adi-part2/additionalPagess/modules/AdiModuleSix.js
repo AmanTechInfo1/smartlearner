@@ -15,7 +15,7 @@ import roadImage from "../../../../../assets/images/twosecondrule.jpg";
 import cloudImage from "../../../../../assets/images/raincloud.jpg";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import observation from "../../../../../assets/part3videos/observation.mp4";
+
 export default function AdiModuleSix() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -364,7 +364,7 @@ export default function AdiModuleSix() {
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
           <video className={styles.videodesign} controls muted loop>
-            <source src={observation} type="video/mp4" />
+            <source src="/observation.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

@@ -7,7 +7,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import advancedriving from "../../../../../assets/part3videos/advancedriving.mp4";
+
 
 export default function AdiModuleThree() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -475,7 +475,7 @@ export default function AdiModuleThree() {
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
           <video className={styles.videodesign} controls muted loop>
-            <source src={advancedriving} type="video/mp4" />
+            <source src="/advancedriving.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

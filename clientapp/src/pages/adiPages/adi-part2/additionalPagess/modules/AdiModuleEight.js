@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import space from "../../../../../assets/part3videos/space.mp4";
+
 
 export default function AdiModuleEight() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -289,7 +289,7 @@ export default function AdiModuleEight() {
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
           <video className={styles.videodesign} controls muted loop>
-            <source src={space} type="video/mp4" />
+            <source src="/space.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

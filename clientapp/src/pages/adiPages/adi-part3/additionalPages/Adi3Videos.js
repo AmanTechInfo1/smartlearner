@@ -2,31 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 
-import agreegoals from "../../../../assets/PART 3 2/PART 3 - 1. AGREEGOALS.mp4";
-import routeDirection from "../../../../assets/PART 3 2/PART 3 - 2. ROUTE DIRECTIONS.mp4";
-import routePlanning from "../../../../assets/PART 3 2/PART 3 - 3.ROUTE PLANNING.mp4";
-import levelInstruction from "../../../../assets/PART 3 2/PART 3 - 4. THE LEVEL OF INSTRUCTION.mp4";
-// import agreeRoals from "../../../../assets/PART 3 2/PART 3 - 5.AGREE ROLES & RESPONSIBILITIES.mp4";
-// import fixingfaults from "../../../../assets/PART 3 2/PART 3 - 6. FIXING FAULTS.mp4";
-import lessonStructure from "../../../../assets/PART 3 2/PART 3 - 7.LESSON STRUCTURE.mp4";
-import briefingVisual from "../../../../assets/PART 3 2/PART 3 - 8.BRIEFING AND VISUAL AIDS.mp4";
-import controlIntervention from "../../../../assets/PART 3 2/PART 3 - 9.CONTROL&INTERVENTION.mp4";
-import askingEfective from "../../../../assets/PART 3 2/PART 3 - 10. ASKING EFFECTIVE QUESTIONS.mp4";
-// import emergencyStop from "../../../../assets/PART 3 (1)/PART 3 - EMERGENCY STOP .mp4";
-import selfReflection from "../../../../assets/PART 3 2/PART 3 - 12.SELF REFLECTION.mp4";
-import manouveres from "../../../../assets/PART 3 (1)/PART 3 - THE MANOUVERES.mp4";
-import givingDemo from "../../../../assets/PART 3 (1)/PART 3 - 14. GIVING DEMO.mp4";
-import firstlessons from "../../../../assets/PART 3 2/PART 3 - 15. FIRST LESSON.mp4";
-import givingFeedback from "../../../../assets/PART 3 2/PART 3 - GIVING FEEDBACK .mp4";
-import beginnersfirst from "../../../../assets/PART 3 (1)/PART 3 - 15. BEGINNERS FIRST LESSON.mp4";
-import junctions from "../../../../assets/PART 3 (1)/PART 3 - 16.JUNCTIONS.mp4";
-import judgement from "../../../../assets/PART 3 (1)/PART 3 - 21 - JUDGEMENT OF ORU.mp4";
-import useMirrors from "../../../../assets/PART 3 (1)/PART 3 - USE OF MIRRORS.mp4";
-import useSignal from "../../../../assets/PART 3 (1)/PART 3 - USE OF SIGNALS.mp4";
-import useSpeed from "../../../../assets/PART 3 (1)/PART 3 - USE OF SPEED.mp4";
-// import dualCarriage from "../../../../assets/PART 3 (1)/PART 3 24. DUAL CARRIAGE WAYS AND MOTORWAYS.mp4";
-// import townCities from "../../../../assets/PART 3 (1)/PART 3 26. TOWN & CITIES .mp4";
-import vehicleSafety from "../../../../assets/PART 3 (1)/PART 3 28. VEHICLE SAFETY.mp4";
 
 export default function Adi3Videos() {
   const textRef = useRef(null);
@@ -131,79 +106,64 @@ export default function Adi3Videos() {
       <h2 className={styles.videotitle2}>Watch Our Video</h2>
       <div className={styles.videoContainer2}>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={agreegoals} type="video/mp4" />
+          <source src="/agreegoals.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={routeDirection} type="video/mp4" />
+          <source src="/routedirection.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={routePlanning} type="video/mp4" />
+          <source src="/routeplaning.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={levelInstruction} type="video/mp4" />
-        </video>
-        {/* <video className={styles.videodesign2} controls muted loop>
-          <source src={agreeRoals} type="video/mp4" />
+          <source src="/levelofinstruction.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={fixingfaults} type="video/mp4" />
-        </video> */}
-        <video className={styles.videodesign2} controls muted loop>
-          <source src={lessonStructure} type="video/mp4" />
+          <source src="/lessonstructure.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={briefingVisual} type="video/mp4" />
+          <source src="/breifingandvisuals.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={controlIntervention} type="video/mp4" />
+          <source src="/controlandinterventions.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={askingEfective} type="video/mp4" />
-        </video>
-        {/* <video className={styles.videodesign2} controls muted loop>
-          <source src={emergencyStop} type="video/mp4" />
-        </video> */}
-        <video className={styles.videodesign2} controls muted loop>
-          <source src={selfReflection} type="video/mp4" />
+          <source src="/askingeffectivequestions.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={manouveres} type="video/mp4" />
+          <source src="/selfreflection.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={givingDemo} type="video/mp4" />
+          <source src="/monuveres.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={firstlessons} type="video/mp4" />
+          <source src="/givingdemo.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={givingFeedback} type="video/mp4" />
+          <source src="/firstlesson.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={beginnersfirst} type="video/mp4" />
+          <source src="/givingfeedback.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={junctions} type="video/mp4" />
+          <source src="/beginnersfirstlesson.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={judgement} type="video/mp4" />
+          <source src="/junction.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={useMirrors} type="video/mp4" />
+          <source src="/judgementoforu.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={useSignal} type="video/mp4" />
+          <source src="/useofmirrors.mp4" type="video/mp4" />
         </video>
         <video className={styles.videodesign2} controls muted loop>
-          <source src={useSpeed} type="video/mp4" />
+          <source src="/useofsignals.mp4" type="video/mp4" />
         </video>
-        {/* <video className={styles.videodesign2} controls muted loop>
-          <source src={dualCarriage} type="video/mp4" />
-        </video> */}
-        {/* <video className={styles.videodesign2} controls muted loop>
-          <source src={townCities} type="video/mp4" />
-        </video> */}
         <video className={styles.videodesign2} controls muted loop>
-          <source src={vehicleSafety} type="video/mp4" />
+          <source src="/useofspeed.mp4" type="video/mp4" />
+        </video>
+        <video className={styles.videodesign2} controls muted loop>
+          <source src="/vehiclesefaty.mp4" type="video/mp4" />
         </video>
       </div>
     </div>

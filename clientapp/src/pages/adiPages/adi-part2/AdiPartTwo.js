@@ -19,8 +19,7 @@ import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSl
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 
 import { useRef } from "react";
-import welcomepdi2 from "../../../assets/part3videos/WhatsApp Video 2025-04-22 at 10.25.14 PM.mp4";
-import welcomepdi23 from "../../../assets/part3videos/what.mp4";
+
 import gsap from "gsap";
 import LessonAccordation from "./additionalPagess/LessonAccordation";
 
@@ -510,7 +509,7 @@ export default function AdiPartTwo() {
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
           <video className={styles.videodesign} controls muted loop>
-            <source src={welcomepdi2} type="video/mp4" />
+            <source src="/WhatsApp.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -538,18 +537,14 @@ export default function AdiPartTwo() {
           />
           <p>CLICK ME</p>
         </div>
-        
+
         <div
           className={`${styles.glossarycontainer} ${
             isVisible ? styles.glossarycontainerOneshow : ""
           }`}>
-            <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src={welcomepdi23} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+          <div className={styles.videoContainer}>
+            <h2 className={styles.videotitle}>Watch Our Video</h2>
+          </div>
           <h2 className={styles.glossarysubTitle}>
             In this module, you'll explore a blend of theory and practical
             advice to help you master:
@@ -648,6 +643,10 @@ export default function AdiPartTwo() {
           <h2 className={styles.glossarysubTitle}>
             The driving ability test includes a mix of:
           </h2>
+          <video className={styles.videodesign} controls muted loop>
+            <source src="/what.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <ul className={styles.glossarylist}>
             <li>
               <strong>General Driving:</strong> Driving in various environments
