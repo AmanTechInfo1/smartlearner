@@ -8,7 +8,6 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-
 export default function AdiModuleFour() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -196,10 +195,16 @@ export default function AdiModuleFour() {
         </section>
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/coastmethod.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/6I_4SAGRT7g"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
         </div>
 
         <div className={styles.AdiModuleContentBox}>
@@ -246,8 +251,7 @@ export default function AdiModuleFour() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     How to Stay Laser-Focused:
                     <br />✅ Put your phone on "Do Not Disturb"—that
@@ -294,8 +298,7 @@ export default function AdiModuleFour() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible2 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     Your Observation Toolkit:
                     <br />✅ Mirrors, Mirrors, Mirrors! Before you brake,
@@ -343,8 +346,7 @@ export default function AdiModuleFour() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible3 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     🔹 How to Stay Ahead of the Game: <br /> ✅Ask yourself,
                     "What if?"– What if that cyclist suddenly swerves? What if
@@ -392,8 +394,7 @@ export default function AdiModuleFour() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible4 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     🔹 Space-Saving Strategies: <br /> ✅ Follow the two-second
                     rule—pick a stationary object, and when the car ahead passes
@@ -443,8 +444,7 @@ export default function AdiModuleFour() {
                 <div
                   className={`${styles.AdiModuleContentParaBox23} ${
                     isVisible5 ? styles.glossarycontainerOneshow : ""
-                  }`}
-                >
+                  }`}>
                   <p>
                     🔹 Time Management on the Road:
                     <br />✅ Leave earlier—rushing leads to risky decisions.
@@ -511,7 +511,7 @@ export default function AdiModuleFour() {
             )}
           </div>
         </div>
- <div className={styles.adiLastNextbtn}>
+        <div className={styles.adiLastNextbtn}>
           <Link to="/quizModulefive">
             {" "}
             <button className={styles.adinextbtns}>Next Page</button>

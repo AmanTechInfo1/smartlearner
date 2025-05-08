@@ -508,10 +508,16 @@ export default function AdiPartTwo() {
         {/* ///////////////////////////////////// */}
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/WhatsApp.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/G3ccqQJwM-k"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
         </div>
 
         <p id={styles.hazardTestWorkListSectionPara3}>
@@ -542,9 +548,7 @@ export default function AdiPartTwo() {
           className={`${styles.glossarycontainer} ${
             isVisible ? styles.glossarycontainerOneshow : ""
           }`}>
-          <div className={styles.videoContainer}>
-            <h2 className={styles.videotitle}>Watch Our Video</h2>
-          </div>
+       
           <h2 className={styles.glossarysubTitle}>
             In this module, you'll explore a blend of theory and practical
             advice to help you master:
@@ -581,6 +585,32 @@ export default function AdiPartTwo() {
           className={`${styles.glossarycontainer} ${
             isVisible2 ? styles.glossarycontainerOneshow : ""
           }`}>
+               <div className={styles.videoContainer}>
+            <h2 className={styles.videotitle}>Watch Our Video</h2>
+            <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/ORyqaIi3BCk"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+          </div>
+          <div className={styles.videoContainer}>
+            <h2 className={styles.videotitle}>Watch Our Video</h2>
+            <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/cdPRimqZ12s"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+          </div>
           <ul className={styles.glossarylist}>
             <li>
               <strong>Duration:</strong> Around one hour.{" "}
@@ -643,10 +673,7 @@ export default function AdiPartTwo() {
           <h2 className={styles.glossarysubTitle}>
             The driving ability test includes a mix of:
           </h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/what.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+         
           <ul className={styles.glossarylist}>
             <li>
               <strong>General Driving:</strong> Driving in various environments

@@ -20,6 +20,8 @@ class AccountService {
     try {
       const { username, email, password, phoneNumber, roleName } = userData;
 
+      email = email.toLowerCase();
+
       const existingUser = await User.findOne({ email });
       if (existingUser) {
         throw new Error("Email already exists");
@@ -44,13 +46,7 @@ class AccountService {
       });
 
       await sendWelcomeEmail(user); // Send thank-you email to the user
-      await sendAdminNotification(
-        username,
-        email,
-        phoneNumber,
-        roleName
-      );
-
+      await sendAdminNotification(username, email, phoneNumber, roleName);
 
       return user;
     } catch (err) {
@@ -62,11 +58,15 @@ class AccountService {
   async loginUserAsync(credentials) {
     try {
       const passwordHash = new PasswordHash(8, true);
-      const { email, password } = credentials;
+      const { usernameOremail, password } = credentials;
+    
 
-      const user = await User.findOne({ email });
+      const user = await User.findOne({
+        $or: [{ email: usernameOremail }, { username: usernameOremail }],
+      });
+
       if (!user) {
-        throw new Error("Invalid Email");
+        throw new Error("Invalid Email or username");
       }
       if (user.isBcryptHashed) {
         const isPasswordValid = await bcrypt.compare(password, user.password);

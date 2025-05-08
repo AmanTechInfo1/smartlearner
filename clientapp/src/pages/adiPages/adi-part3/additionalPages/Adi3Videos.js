@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 
-
 export default function Adi3Videos() {
   const textRef = useRef(null);
 
@@ -94,6 +93,35 @@ export default function Adi3Videos() {
       });
   }, []);
 
+  const videoURLs = [
+    "https://www.youtube.com/embed/jC-WfuMn3lg",
+    "https://www.youtube.com/embed/KAp_8tY8XlU",
+    "https://www.youtube.com/embed/Gp67bz0h6CA",
+    "https://www.youtube.com/embed/OqKph2W6NnU",
+    "https://www.youtube.com/embed/bMquHCIV0VU",
+    "https://www.youtube.com/embed/o1jVoJudh78",
+    "https://www.youtube.com/embed/XOsU9zcT3Xo",
+    "https://www.youtube.com/embed/xe5_s5RIi0k",
+    "https://www.youtube.com/embed/AT2tDuTinHQ",
+    "https://www.youtube.com/embed/ipWmNV7Ag2A",
+    "https://www.youtube.com/embed/ef3H8_j23x4",
+    "https://www.youtube.com/embed/MJtJE4KbsAo",
+    "https://www.youtube.com/embed/Z50xcQf5sDs",
+    "https://www.youtube.com/embed/s7m10uQXmfA",
+    "https://www.youtube.com/embed/a6VzbbsI2SU",
+    "https://www.youtube.com/embed/posgHcCZ2_o",
+    "https://www.youtube.com/embed/8x81pNap9VY",
+    "https://www.youtube.com/embed/E4lwWVDCeX4",
+    "https://www.youtube.com/embed/_V-J0lKUiOI",
+    "https://www.youtube.com/embed/jblrjOWx3X4",
+    "https://www.youtube.com/embed/XM-3KcWW4NQ",
+    "https://www.youtube.com/embed/hnlpqDPSONQ",
+    "https://www.youtube.com/embed/MPwMHzIq8gY",
+    "https://www.youtube.com/embed/ZcGHOd0dlPQ",
+    "https://www.youtube.com/embed/sJYbPlMSMbg",
+    "https://www.youtube.com/embed/4LLujhoI308",
+  ];
+
   return (
     <div className={styles.AdiModuleOnecontainer}>
       <section className={styles.AdiModuleOneheader}>
@@ -104,67 +132,20 @@ export default function Adi3Videos() {
         </section>
       </section>
       <h2 className={styles.videotitle2}>Watch Our Video</h2>
+
       <div className={styles.videoContainer2}>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/agreegoals.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/routedirection.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/routeplaning.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/levelofinstruction.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/lessonstructure.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/breifingandvisuals.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/controlandinterventions.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/askingeffectivequestions.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/selfreflection.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/monuveres.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/givingdemo.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/firstlesson.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/givingfeedback.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/beginnersfirstlesson.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/junction.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/judgementoforu.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/useofmirrors.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/useofsignals.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/useofspeed.mp4" type="video/mp4" />
-        </video>
-        <video className={styles.videodesign2} controls muted loop>
-          <source src="/vehiclesefaty.mp4" type="video/mp4" />
-        </video>
+        {videoURLs.map((url, index) => (
+          <div className={styles.videodesign2}>
+            <iframe
+              width="100%"
+              height="270px"
+              src={url}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        ))}
       </div>
     </div>
   );

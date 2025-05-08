@@ -173,13 +173,19 @@ export default function AdiModuleFive() {
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/concentration.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+            <div className={styles.videoContainer}>
+                 <h2 className={styles.videotitle}>Watch Our Video</h2>
+                 <div className={styles.videodesign}>
+                   <iframe
+                     width="100%"
+                     height="300px"
+                     src="https://www.youtube.com/embed/g-GIiLNVfx8"
+                     title="YouTube video player"
+                     frameBorder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                     allowFullScreen></iframe>
+                 </div>
+               </div>
 
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.AdiModuleContentParaBoxm2}>

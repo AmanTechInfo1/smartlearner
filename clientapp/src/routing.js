@@ -177,6 +177,7 @@ import Adi3Module16 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module1
 import Adi3Module17 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module17";
 import Adi3Module18 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module18";
 import Adi3Videos from "./pages/adiPages/adi-part3/additionalPages/Adi3Videos";
+import UserReport from "./containers/userReports/UserReport";
 
 export const router = createBrowserRouter([
   {
@@ -619,6 +620,11 @@ export const router = createBrowserRouter([
 
       { path: "/admin/order-Invoice", element: <OrderInvoice /> },
       { path: "/admin/orderInvoice/:invoiceId", element: <OrderInvoice /> },
+
+      { path: "/admin/userReport", element: <UserReport /> },
+
+      // { path: "/admin/userReport-invoice", element: <OrderInvoice /> },
+      // { path: "/admin/orderInvoice/:invoiceId", element: <OrderInvoice /> },
     ],
   },
 ]);

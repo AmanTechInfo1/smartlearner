@@ -33,15 +33,11 @@ export const forgotPassword = yup.object({
     .required("Email is required")
     .matches(emailrgx, "Invalid Email")
     .trim(),
- 
+  
 });
 
 export const loginformSchema = yup.object({
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(emailrgx, "Invalid Email")
-    .trim(),
+  usernameOremail: yup.string().required("username or Email is required").trim(),
   password: yup.string().required("Password is required").trim(),
 });
 

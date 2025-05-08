@@ -32,7 +32,7 @@ export default function PdiLogin() {
 
   const handleLogin = async (data) => {
     const formData = new FormData();
-    formData.append("email", data.email);
+    formData.append("usernameOremail", data.usernameOremail);
     formData.append("password", data.password);
     dispatch(loginUser({ loginData: data, navigate }));
   };
@@ -185,17 +185,17 @@ export default function PdiLogin() {
                   <h2>Sign in</h2>
                   <form onSubmit={handleSubmit(handleLogin)}>
                     <Controller
-                      name="email"
+                      name="usernameOremail"
                       control={control}
                       render={({ field: { value, onChange } }) => (
                         <FloatingLabel
                           controlId="floatingInput"
-                          label="Email address">
+                          label="Email or username">
                           <Form.Control
-                            type="email"
+                            type="text"
                             value={value}
                             onChange={onChange}
-                            placeholder="Email Address"
+                            placeholder="Email or username"
                             className={styles.formControlWithIcon}
                           />
                         </FloatingLabel>

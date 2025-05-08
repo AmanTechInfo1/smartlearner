@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import roadImg from "../../../../../assets/images/moduleNine1Img.png";
 import road2Img from "../../../../../assets/images/moduleNine2Img.png";
 
-
 export default function AdiModuleTen() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -349,10 +348,16 @@ export default function AdiModuleTen() {
         </section>
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/tug.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/_myGENJPhVg"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
         </div>
 
         {/* /////////////////////////////////////////////////// */}
@@ -362,8 +367,7 @@ export default function AdiModuleTen() {
             marginTop: "1rem",
             background:
               "linear-gradient(135deg,rgb(85, 1, 107),rgb(155, 29, 218))",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>What’s the TUG Method?</div>
 
           <div className={styles.adiseventipBox}>
@@ -494,8 +498,7 @@ export default function AdiModuleTen() {
             background:
               "linear-gradient(135deg,rgb(32, 106, 138),rgb(4, 37, 146))",
             marginTop: "1rem",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             Use – Making the Most of the Road's Info 🔍
           </div>
@@ -588,8 +591,7 @@ export default function AdiModuleTen() {
             background:
               "linear-gradient(135deg,rgb(162, 0, 65),rgb(141, 4, 146))",
             marginTop: "1rem",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             Give – Let Others Know Your Moves 💬
           </div>
@@ -642,8 +644,7 @@ export default function AdiModuleTen() {
 
         <div
           className={styles.AdiModuleOneTextBox}
-          style={{ marginTop: "1rem" }}
-        >
+          style={{ marginTop: "1rem" }}>
           <label>
             Imagine you’re about to merge onto a busy motorway. Write out the
             steps you’d take to signal, position, and change lanes safely and
@@ -689,8 +690,7 @@ export default function AdiModuleTen() {
         {/* ///////////////////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}
-        >
+          style={{ marginTop: "1rem" }}>
           <div className={styles.adisevenheading}>
             Final Activity: TUG in Action!
           </div>
@@ -775,12 +775,12 @@ export default function AdiModuleTen() {
             )}
           </div>
         </div>
-             <div className={styles.adiLastNextbtn}>
-                  <Link to="/quizModuleEleven">
-                    {" "}
-                    <button className={styles.adinextbtns}>Next Page</button>
-                  </Link>
-                </div>
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModuleEleven">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
 
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>

@@ -20,6 +20,7 @@ import productSpecialSlice from "../features/productSpecialSlice";
 import subscriptionSlice from "../features/subscriptionSlice";
 import blogSlice from "../features/blogSlice";
 import notepadSlice from "../features/notepadSlice";
+import userReportsSlice from "../features/userReportsSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice,
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   subscription: subscriptionSlice,
   blog: blogSlice,
   notepad: notepadSlice,
+  userReport: userReportsSlice,
 });
 
 export default rootReducer;

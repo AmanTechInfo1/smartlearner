@@ -363,10 +363,16 @@ export default function AdiModuleSix() {
         </section>
         <div className={styles.videoContainer}>
           <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <video className={styles.videodesign} controls muted loop>
-            <source src="/observation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/x2Sye46W1KY"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
         </div>
 
         <div className={styles.AdiModuleContentBox}>
@@ -384,8 +390,7 @@ export default function AdiModuleSix() {
           </div>
           <div
             className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}
-          >
+            style={{ marginTop: "1rem" }}>
             <p>
               In the COAST method, observation is your superpower. It helps you
               spot hazards, read the road ahead, and make proactive
@@ -501,8 +506,7 @@ export default function AdiModuleSix() {
           </div>
           <div
             className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}
-          >
+            style={{ marginTop: "1rem" }}>
             <p>
               Using funnel vision strategically while driving—by shifting focus
               between far, mid, rear, and side views— helps you stay aware of
@@ -751,8 +755,7 @@ export default function AdiModuleSix() {
           <div
             className={`${styles.adi2ndImghintContainer} ${
               showHints ? styles.adi2ndImgshow : ""
-            }`}
-          >
+            }`}>
             <div className={styles.adi2ndImghintBox}>
               <img
                 src={roadImage}
@@ -792,11 +795,11 @@ export default function AdiModuleSix() {
           </div>
         </div>
         <div className={styles.adiLastNextbtn}>
-                  <Link to="/quizModuleseven">
-                    {" "}
-                    <button className={styles.adinextbtns}>Next Page</button>
-                  </Link>
-                </div>
+          <Link to="/quizModuleseven">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
         {/* ////////////////////////////////////////////////////////////////////// */}
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>

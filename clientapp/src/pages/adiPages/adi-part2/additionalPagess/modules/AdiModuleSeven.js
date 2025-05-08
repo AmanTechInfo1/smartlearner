@@ -405,12 +405,18 @@ export default function AdiModuleSeven() {
         </section>
 
          <div className={styles.videoContainer}>
-                  <h2 className={styles.videotitle}>Watch Our Video</h2>
-                  <video className={styles.videodesign} controls muted loop>
-                    <source src="/anticipation.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+                 <h2 className={styles.videotitle}>Watch Our Video</h2>
+                 <div className={styles.videodesign}>
+                   <iframe
+                     width="100%"
+                     height="300px"
+                     src="https://www.youtube.com/embed/dyvWRDGJI58"
+                     title="YouTube video player"
+                     frameBorder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                     allowFullScreen></iframe>
+                 </div>
+               </div>
 
         <div className={styles.AdiModuleContentBox}>
           <h2>What is Anticipation and Why Does It Matter?</h2>
