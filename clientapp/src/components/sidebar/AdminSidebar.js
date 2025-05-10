@@ -146,6 +146,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               Orders
             </li>
           </Link>
+
+          <Link to="/admin/userReport">
+            <li className={styles.adminSidebarListItem}>
+              <MdArrowDropDownCircle className={styles.adminIcon} />
+              Users Report
+            </li>
+          </Link>
         </ul>
       </aside>
     </>

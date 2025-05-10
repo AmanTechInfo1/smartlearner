@@ -195,7 +195,9 @@ export default function Register() {
                           <Form.Control
                             type="email"
                             value={value}
-                            onChange={onChange}
+                            onChange={(e) =>
+                              onChange(e.target.value.toLowerCase())
+                            }
                             placeholder="Email Address"
                           />
                         </FloatingLabel>

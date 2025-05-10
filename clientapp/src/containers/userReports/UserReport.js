@@ -5,14 +5,14 @@ import Loader from "../../components/loader/Loader";
 import { getUserReports } from "../../redux/features/userReportsSlice";
 import { Table } from "antd";
 import styles from "../../assets/css/admin.module.css";
-import { LiaUserEditSolid } from "react-icons/lia";
+import { FaFileInvoice } from "react-icons/fa";
 
 import { Link, useNavigate } from "react-router-dom";
 
 const UserReport = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, userReport, userReportCount } = useSelector(
+  const { loading, users, usersCount } = useSelector(
     (state) => state.userReport
   );
 
@@ -51,21 +51,34 @@ const UserReport = () => {
   const columns = [
     {
       title: "User Name",
-      dataIndex: "userName",
+      dataIndex: "username",
       align: "center",
       sorter: (a, b) => a.name.length - b.name.length,
     },
     {
-      title: "Complete Address",
-      dataIndex: "completeAddress",
-      align: "center",
-      sorter: (a, b) => a.name.length - b.name.length,
+      title: "Email",
+      dataIndex: "email",
+      sorter: (a, b) => a.email.length - b.email.length,
     },
     {
       title: "Phone No.",
       dataIndex: "phoneNumber",
       align: "center",
       sorter: (a, b) => a.phoneNumber.length - b.phoneNumber.length,
+    },
+    {
+      title: "Joined On",
+      dataIndex: "createdOn",
+      align: "center",
+      sorter: (a, b) => new Date(a.createdOn) - new Date(b.createdOn),
+      render: (text) => {
+        const date = new Date(text);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short", // Use 'long' for full month name
+          day: "2-digit",
+        });
+      },
     },
     {
       title: "Action",
@@ -79,7 +92,7 @@ const UserReport = () => {
             onClick={(e) => {
               navigate(`/admin/userreport-invoice/${record._id}`);
             }}>
-            <LiaUserEditSolid />
+            <FaFileInvoice />
           </Link>
         </div>
       ),
@@ -98,7 +111,7 @@ const UserReport = () => {
             pagination={{
               current: state.page,
               pageSize: state.pageSize,
-              total: userReportCount,
+              total: usersCount,
               showTotal: (total, range) =>
                 `Showing ${range[0]} to ${range[1]} of ${total} entries`,
               showSizeChanger: true,
@@ -109,7 +122,7 @@ const UserReport = () => {
             }}
             style={{ overflowX: "auto" }}
             columns={columns}
-            dataSource={userReport}
+            dataSource={users}
             rowKey={(record) => record._id}
           />
         ) : (

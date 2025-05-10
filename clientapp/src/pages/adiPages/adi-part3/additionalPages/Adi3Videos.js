@@ -132,6 +132,7 @@ export default function Adi3Videos() {
         </section>
       </section>
       <h2 className={styles.videotitle2}>Watch Our Video</h2>
+      
 
       <div className={styles.videoContainer2}>
         {videoURLs.map((url, index) => (

@@ -20,8 +20,6 @@ class AccountService {
     try {
       const { username, email, password, phoneNumber, roleName } = userData;
 
-      email = email.toLowerCase();
-
       const existingUser = await User.findOne({ email });
       if (existingUser) {
         throw new Error("Email already exists");
@@ -59,7 +57,7 @@ class AccountService {
     try {
       const passwordHash = new PasswordHash(8, true);
       const { usernameOremail, password } = credentials;
-    
+      console.log("sadzx", credentials);
 
       const user = await User.findOne({
         $or: [{ email: usernameOremail }, { username: usernameOremail }],

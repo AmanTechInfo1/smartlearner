@@ -94,7 +94,7 @@ export const registerUser = createAsyncThunk(
         dispatch(
           loginUser({
             loginData: {
-              email: requestData.email,
+              usernameOremail: requestData.email,
               password: requestData.password,
             },
             navigate,
