@@ -511,16 +511,17 @@ const Quiz = () => {
                   </div>
                 </div>
                 <div className={styles.totalTimer}>
-                  <span>Category: </span>
+                  <span>Category : </span>
                   <p>
                     {oneQuiz[currentQuestionIndex]?.quizCategory ||
                       "Not specified"}
                   </p>
                 </div>
                 <div className={styles.questionCount}>
-                  <span>Question: </span>
+                  <span>Question : </span>
                   <div
                     ref={myDivRef}
+                    className={styles.questionTextt}
                     id="questionTextt"
                     dangerouslySetInnerHTML={{
                       __html: oneQuiz[currentQuestionIndex]?.question.replace(
@@ -532,9 +533,9 @@ const Quiz = () => {
                   <button
                     disabled={!hasTranslated || isTranslating}
                     style={{
-                      marginTop: "8px",
+                      
                       border: "none",
-                      backgroundColor: "darkblue",
+                      backgroundColor: "#4f008b",
                       cursor:
                         !hasTranslated || isTranslating
                           ? "not-allowed"

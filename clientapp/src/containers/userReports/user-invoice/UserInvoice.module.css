@@ -1,0 +1,114 @@
+.userReportInvoicecontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f4f6f9;
+  font-family: sans-serif;
+}
+
+/* Left Section */
+.userReportInvoiceleftCard {
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userReportInvoiceprofileCard {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.userReportInvoiceavatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.userReportInvoicebuttons {
+  margin-top: 10px;
+}
+
+.userReportInvoicefollow,
+.userReportInvoicemessage {
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.userReportInvoicefollow {
+  background-color: #007bff;
+  color: white;
+}
+
+.userReportInvoicemessage {
+  background-color: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.userReportInvoicesocialCard {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userReportInvoicesocialCard div {
+  margin-bottom: 8px;
+}
+
+/* Right Section */
+.userReportInvoicerightCard {
+  flex: 2;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userReportInvoiceinfoCard {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userReportInvoiceinfoCard div {
+  margin-bottom: 10px;
+}
+
+.userReportInvoiceeditBtn {
+  margin-top: 10px;
+  background-color: #00bcd4;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.userReportInvoiceprojectCard {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.userReportInvoiceprogressBar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 8px;
+  margin-bottom: 10px;
+}
+
+.userReportInvoiceprogress {
+  height: 100%;
+  background-color: #2196f3;
+}

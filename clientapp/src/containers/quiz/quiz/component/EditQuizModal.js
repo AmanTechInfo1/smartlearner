@@ -10,6 +10,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { createQuiz, editQuiz } from "../../../../redux/features/quizSlice";
 import { imageBaseUrl } from "../../../../utils/constants";
+import "./AdminQuiz.css";
 
 const EditQuizUpdatedModal = (props) => {
   const [option1Image, setoption1Image] = useState("");
@@ -137,8 +138,7 @@ const EditQuizUpdatedModal = (props) => {
     <>
       <Modal
         isOpen={props.showEditQuizCategoryModal}
-        toggle={props.toggleEditQuizCategoryModal}
-      >
+        toggle={props.toggleEditQuizCategoryModal}>
         <ModalHeader toggle={props.toggleEditQuizCategoryModal}>
           Edit Quiz
         </ModalHeader>
@@ -194,11 +194,21 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.questionImage && (
+                  <div className="editquizdeletebtnbox">
                 <img
                   src={imageBaseUrl + optionsData.questionImage}
                   alt="Current Question"
                   style={{ width: "50px", height: "50px", marginTop: "10px" }}
                 />
+                <button
+                    className="editquizdeletebtn"
+                    type="button"
+                    onClick={() =>
+                      setoptionsData((prev) => ({ ...prev, questionImage: "" }))
+                    }>
+                    ❌
+                  </button>
+                </div>
               )}
             </div>
 
@@ -260,11 +270,27 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.optionImage[0] && (
-                <img
-                  src={imageBaseUrl + optionsData.optionImage[0]}
-                  alt="Current Question"
-                  style={{ width: "50px", height: "50px", marginTop: "10px" }}
-                />
+                <div className="editquizdeletebtnbox">
+                  <img
+                    src={imageBaseUrl + optionsData.optionImage[0]}
+                    alt="Current Option 1"
+                    style={{ width: "50px", height: "50px" }}
+                  />
+                  <button
+                    className="editquizdeletebtn"
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = [...optionsData.optionImage];
+                      updatedImages[0] = null; // or ""
+                      setoptionsData((prev) => ({
+                        ...prev,
+                        optionImage: updatedImages,
+                      }));
+                      setoption1Image(""); // also clear the file from the input
+                    }}>
+                    ❌
+                  </button>
+                </div>
               )}
             </div>
             <div className="form-group">
@@ -325,11 +351,27 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.optionImage[1] && (
-                <img
-                  src={imageBaseUrl + optionsData.optionImage[1]}
-                  alt="Current Question"
-                  style={{ width: "50px", height: "50px", marginTop: "10px" }}
-                />
+                <div className="editquizdeletebtnbox">
+                  <img
+                    src={imageBaseUrl + optionsData.optionImage[1]}
+                    alt="Current Question"
+                    style={{ width: "50px", height: "50px", marginTop: "10px" }}
+                  />
+                  <button
+                    className="editquizdeletebtn"
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = [...optionsData.optionImage];
+                      updatedImages[1] = null; // or ""
+                      setoptionsData((prev) => ({
+                        ...prev,
+                        optionImage: updatedImages,
+                      }));
+                      setoption2Image(""); // also clear the file from the input
+                    }}>
+                    ❌
+                  </button>
+                </div>
               )}
             </div>
             <div className="form-group">
@@ -390,11 +432,27 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.optionImage[2] && (
-                <img
-                  src={imageBaseUrl + optionsData.optionImage[2]}
-                  alt="Current Question"
-                  style={{ width: "50px", height: "50px", marginTop: "10px" }}
-                />
+                <div className="editquizdeletebtnbox">
+                  <img
+                    src={imageBaseUrl + optionsData.optionImage[2]}
+                    alt="Current Question"
+                    style={{ width: "50px", height: "50px", marginTop: "10px" }}
+                  />
+                  <button
+                    className="editquizdeletebtn"
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = [...optionsData.optionImage];
+                      updatedImages[2] = null; // or ""
+                      setoptionsData((prev) => ({
+                        ...prev,
+                        optionImage: updatedImages,
+                      }));
+                      setoption3Image(""); // also clear the file from the input
+                    }}>
+                    ❌
+                  </button>
+                </div>
               )}
             </div>
             <div className="form-group">
@@ -455,11 +513,27 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.optionImage[3] && (
-                <img
-                  src={imageBaseUrl + optionsData.optionImage[3]}
-                  alt="Current Question"
-                  style={{ width: "50px", height: "50px", marginTop: "10px" }}
-                />
+                <div className="editquizdeletebtnbox">
+                  <img
+                    src={imageBaseUrl + optionsData.optionImage[3]}
+                    alt="Current Question"
+                    style={{ width: "50px", height: "50px", marginTop: "10px" }}
+                  />
+                  <button
+                    className="editquizdeletebtn"
+                    type="button"
+                    onClick={() => {
+                      const updatedImages = [...optionsData.optionImage];
+                      updatedImages[3] = null; // or ""
+                      setoptionsData((prev) => ({
+                        ...prev,
+                        optionImage: updatedImages,
+                      }));
+                      setoption4Image(""); // also clear the file from the input
+                    }}>
+                    ❌
+                  </button>
+                </div>
               )}
             </div>
 
@@ -475,8 +549,7 @@ const EditQuizUpdatedModal = (props) => {
                   }));
                 }}
                 className={`form-control ${errors.answer ? "error-input" : ""}`}
-                value={optionsData.answer || ""}
-              >
+                value={optionsData.answer || ""}>
                 <option disabled value="">
                   Select...
                 </option>
@@ -502,8 +575,7 @@ const EditQuizUpdatedModal = (props) => {
                     {...field}
                     className={`form-control ${
                       errors.roleName ? "error-input" : ""
-                    }`}
-                  >
+                    }`}>
                     <option disabled value="">
                       Select...
                     </option>
@@ -552,8 +624,7 @@ const EditQuizUpdatedModal = (props) => {
             <div className="form-group text-center mt-3">
               <button
                 className="btn btn-primary account-btn btn-lg"
-                type="submit"
-              >
+                type="submit">
                 Submit
               </button>
             </div>

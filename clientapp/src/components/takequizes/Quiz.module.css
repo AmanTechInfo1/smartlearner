@@ -15,9 +15,9 @@
 
 .quiz {
   background: linear-gradient(
-    180deg,
-    #0003bf,
-    #04003e
+    135deg,
+    #9a00bf,
+    #1a003e
   ); /* dark gray background */
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -29,14 +29,14 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  color: #ff4040; /* red text */
+  color: #ffffff; /* red text */
   font-size: 18px;
   margin-bottom: 10px;
 }
 .totalTimer,
 .questionCount,
 .OptionsText {
-  color: #ff4040; /* red text */
+  color: #ffffff; /* red text */
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -60,12 +60,9 @@
   color: white;
   margin-bottom: 0px;
 }
-.questionCount div {
-  color: white;
-}
 
 .questionCount {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .answerSection {
@@ -200,4 +197,11 @@
 
 .seeMoreButton:hover {
   background-color: #0056b3;
+}
+.questionTextt {
+  background-color: rgb(238, 249, 255);
+  padding: 0.6rem;
+  border: 1px solid rgb(0, 0, 0);
+  color: black;
+  border-radius: 6px;
 }
