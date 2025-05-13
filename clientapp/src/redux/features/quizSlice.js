@@ -275,6 +275,25 @@ export const getQuizResult = (userId, type) => async (dispatch) => {
   }
 };
 
+
+export const getQuizResultAdmin = (userReportId) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    const response = await httpHandler.get(
+      `/api/quiz/getAdminQuizResult/${userReportId}`
+    );
+    if (response.data.success) {
+      dispatch(getQuizResultSuccess(response.data.data.quizResult));
+    } else {
+      toast.error(response.data.message);
+      dispatch(getQuizResultFailure());
+    }
+  } catch (error) {
+    toast.error(error.message);
+    dispatch(getQuizResultFailure());
+  }
+};
+
 export const getAnswerRandomQuestion = (data) => async (dispatch) => {
   try {
     // dispatch(setLoading());

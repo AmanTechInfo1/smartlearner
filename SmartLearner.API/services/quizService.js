@@ -457,6 +457,92 @@ class quizService {
     }
   }
 
+  async getQuizAdminResultAsync(userReportId) {
+    try {
+      const aggr = [
+        {
+          $match: {
+            userId: new ObjectId(userReportId),
+          },
+        },
+        {
+          $lookup: {
+            from: "quizquestions",
+            localField: "questionId",
+            foreignField: "_id",
+            as: "question",
+          },
+        },
+        {
+          $unwind: {
+            path: "$question",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $addFields: {
+            questioncategory: "$question.category",
+            questionmodule: "$question.module",
+          },
+        },
+        {
+          $lookup: {
+            from: "quizcategories",
+            localField: "questioncategory",
+            foreignField: "_id",
+            as: "result",
+          },
+        },
+        {
+          $unwind: {
+            path: "$result",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "quizmodules",
+            localField: "questionmodule",
+            foreignField: "_id",
+            as: "moduleresult",
+          },
+        },
+        {
+          $unwind: {
+            path: "$moduleresult",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $lookup: {
+            from: "users",
+            localField: "userId",
+            foreignField: "_id",
+            as: "user",
+          },
+        },
+        {
+          $unwind: {
+            path: "$user",
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+      ];
+
+      const quizResult = await ResultQuizQuestion.aggregate(aggr);
+      const totalCount = quizResult.length;
+
+      return {
+        message: "Fetched successfully",
+        statusCode: 200,
+        success: true,
+        data: { quizResult, totalCount },
+      };
+    } catch (err) {
+      throw new Error("Could not fetch quiz results by userId");
+    }
+  }
+
   async deleteQuizCategoryAsync(categoryId) {
     try {
       await QuizCategoryModel.findByIdAndDelete(categoryId);
@@ -1507,7 +1593,7 @@ class quizService {
               randomSort: { $rand: {} }, // Add a random field to shuffle the results
             },
           },
-         
+
           {
             $project: {
               question: 1,

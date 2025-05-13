@@ -10,7 +10,7 @@ class QuizController {
   async addNewQuiz(req, res, next) {
     try {
       var quizData = req.body;
-      quizData["option"] = quizData.option.split("&");
+      quizData["option"] = quizData.option.split("^");
       quizData["optionImage"] = [
         quizData.option1Image,
         quizData.option2Image,
@@ -165,6 +165,21 @@ class QuizController {
         pagesize,
         search,
         req.params.resType
+      );
+      res.json(result);
+    } catch (err) {
+      next(err);
+    }
+  }
+  async getQuizAdminResult(req, res, next) {
+    try {
+      const { page, pagesize, search } = req.query;
+
+      const result = await quizService.getQuizAdminResultAsync(
+        req.params.userReportId,
+        page,
+        pagesize,
+        search
       );
       res.json(result);
     } catch (err) {

@@ -623,7 +623,10 @@ export const router = createBrowserRouter([
 
       { path: "/admin/userReport", element: <UserReport /> },
 
-      { path: "/admin/userReport-invoice", element: <UserInvoice /> },
+      {
+        path: "/admin/userReport-invoice/:invoiceId",
+        element: <UserInvoice />,
+      },
       // { path: "/admin/orderInvoice/:invoiceId", element: <OrderInvoice /> },
     ],
   },

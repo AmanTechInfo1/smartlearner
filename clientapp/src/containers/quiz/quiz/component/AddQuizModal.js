@@ -9,11 +9,6 @@ import { createQuiz } from "../../../../redux/features/quizSlice";
 const AddQuizUpdatedModal = (props) => {
   const dispatch = useDispatch();
 
-
-
-
-
-
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -31,8 +26,6 @@ const AddQuizUpdatedModal = (props) => {
   const [option2Image, setoption2Image] = useState("");
   const [option3Image, setoption3Image] = useState("");
   const [option4Image, setoption4Image] = useState("");
-
-
 
   const { quizCategoriesList, quizCategoryModule } = useSelector((state) => {
     return state.quizCategory;
@@ -53,9 +46,7 @@ const AddQuizUpdatedModal = (props) => {
     formState: { errors },
     reset,
     setValue,
-  } = useForm({
-    
-  });
+  } = useForm({});
 
   const getListAllCategoryById = (id) => {
     setValue("category", id);
@@ -76,14 +67,15 @@ const AddQuizUpdatedModal = (props) => {
       option3Image,
       option4Image,
     ];
-    const { answer, category, description, question, module, answerImage } = data;
+    const { answer, category, description, question, module, answerImage } =
+      data;
     const formDataToSend = new FormData();
     formDataToSend.append("answer", answer);
     formDataToSend.append("description", description);
 
     formDataToSend.append("category", category);
     formDataToSend.append("question", question);
-    formDataToSend.append("option", final_data.option.join("&"));
+    formDataToSend.append("option", final_data.option.join("^"));
     formDataToSend.append("option1Image", option1Image);
     formDataToSend.append("option2Image", option2Image);
     formDataToSend.append("option3Image", option3Image);
@@ -99,34 +91,29 @@ const AddQuizUpdatedModal = (props) => {
       )
     );
     // Reset form state for options and images manually after submit
-  setoptionsData({
-    optionone: "",
-    optiontwo: "",
-    optionthree: "",
-    optionfour: "",
-  });
-  setoption1Image("");
-  setoption2Image("");
-  setoption3Image("");
-  setoption4Image("");
-  setquestionImage("");
+    setoptionsData({
+      optionone: "",
+      optiontwo: "",
+      optionthree: "",
+      optionfour: "",
+    });
+    setoption1Image("");
+    setoption2Image("");
+    setoption3Image("");
+    setoption4Image("");
+    setquestionImage("");
   };
 
- 
   return (
     <>
       <Modal
         isOpen={props.showAddQuizCategoryModal}
-        toggle={props.toggleAddQuizCategoryModal}
-      >
+        toggle={props.toggleAddQuizCategoryModal}>
         <ModalHeader toggle={props.toggleAddQuizCategoryModal}>
           Add Quiz
-          
         </ModalHeader>
         <ModalBody>
           <form onSubmit={handleSubmit(onSubmit)}>
-
-            
             <div className="form-group">
               <label>Question</label>
               <Controller
@@ -426,8 +413,7 @@ const AddQuizUpdatedModal = (props) => {
                 }}
                 className={`form-control ${
                   errors.roleName ? "error-input" : ""
-                }`}
-              >
+                }`}>
                 <option selected disabled value="">
                   Select...
                 </option>
@@ -458,8 +444,7 @@ const AddQuizUpdatedModal = (props) => {
                     }}
                     className={`form-control ${
                       errors.roleName ? "error-input" : ""
-                    }`}
-                  >
+                    }`}>
                     <option disabled value="">
                       Select...
                     </option>
@@ -507,8 +492,7 @@ const AddQuizUpdatedModal = (props) => {
             <div className="form-group text-center mt-3">
               <button
                 className="btn btn-primary account-btn btn-lg"
-                type="submit"
-              >
+                type="submit">
                 Submit
               </button>
             </div>

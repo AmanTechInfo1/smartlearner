@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/loader/Loader";
 import { getUserReports } from "../../redux/features/userReportsSlice";
-import { Table } from "antd";
+import { Input, Table } from "antd";
 import styles from "../../assets/css/admin.module.css";
 import { FaFileInvoice } from "react-icons/fa";
 
@@ -36,6 +36,9 @@ const UserReport = () => {
 
   const onShowSizeChange = (current, pageSize) => {
     setState({ ...state, page: 1, pagesize: pageSize });
+  };
+  const handleSearchChange = (e) => {
+    setState({ ...state, search: e.target.value });
   };
 
   const itemRender = (current, type, originalElement) => {
@@ -105,6 +108,14 @@ const UserReport = () => {
         <div className={styles.usersHeading}>
           <h2 className={styles.userHeading}>User Reports</h2>
         </div>
+        <div className="search-container mb-3">
+          <Input
+            placeholder="Search by Username or Email"
+            value={state.search}
+            onChange={handleSearchChange}
+            allowClear
+          />
+         </div>
         {!loading ? (
           <Table
             className="table-striped"

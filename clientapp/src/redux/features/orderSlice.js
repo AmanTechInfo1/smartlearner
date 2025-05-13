@@ -14,6 +14,8 @@ const orderSlice = createSlice({
     orderCount: null,
     allOrdersCount: null,
     productsCategoryCount: null,
+    userOrders: [],
+    totalOrderCount: null,
     loading: false,
   },
   reducers: {
@@ -44,6 +46,18 @@ const orderSlice = createSlice({
     },
     getOrdersIdFailure: (state) => {
       state.singleOrder = {};
+      state.loading = false;
+    },
+
+    // //////////////////////////////////////////
+    getUserOrderByIdSuccess: (state, action) => {
+      state.userOrders = action.payload.orders;
+      state.totalOrderCount = action.payload.totalOrderCount;
+      state.loading = false;
+    },
+    getUserOrderByIdFailure: (state) => {
+      state.userOrders = [];
+      state.totalOrderCount = null;
       state.loading = false;
     },
 
@@ -176,6 +190,23 @@ export const getOrdersById = (orderId) => async (dispatch) => {
   } catch (error) {
     toast.error(error.message);
     dispatch(getAllPaypalOrdersFailure());
+  }
+};
+
+// ////////////////////////////////////////////////////////
+export const getUserOrderById = (userEmail) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    const response = await httpHandler.get(`/api/order/user/${userEmail}`);
+    if (response.data.success) {
+      dispatch(getUserOrderByIdSuccess(response.data.data));
+    } else {
+      toast.error(response.data.message);
+      dispatch(getUserOrderByIdFailure());
+    }
+  } catch (error) {
+    toast.error(error.message);
+    dispatch(getUserOrderByIdFailure());
   }
 };
 
@@ -345,6 +376,8 @@ export const {
   createCategoryFailure,
   deleteProductSuccess,
   deleteProductFailure,
+  getUserOrderByIdSuccess,
+  getUserOrderByIdFailure,
   setLoading,
 } = orderSlice.actions;
 

@@ -18,7 +18,7 @@ router.post(
 );
 router.post(
   "/updateQuestion/:id",
- 
+
   multipleimageSaverMiddleware,
   requireAuth,
   quizController.updateQuiz
@@ -36,6 +36,12 @@ router.get(
   requireAuth,
   quizController.getQuizResult
 );
+router.get(
+  "/getAdminQuizResult/:userReportId/",
+  requireAuth,
+  quizController.getQuizAdminResult
+);
+
 router.get("/quiz/:id", requireAuth, quizController.getOneQuestion);
 router.get(
   "/getRandomQuestion/:cid/:id",
@@ -48,12 +54,7 @@ router.get(
   requireAuth,
   quizController.getQuestionCatName
 );
-router.get(
-  "/restart-quiz/:cid",
-  requireAuth,
-  quizController.restartQuiz
-);
-
+router.get("/restart-quiz/:cid", requireAuth, quizController.restartQuiz);
 
 router.get("/getQuizCategory", requireAuth, quizController.getQuizCategory);
 router.get(

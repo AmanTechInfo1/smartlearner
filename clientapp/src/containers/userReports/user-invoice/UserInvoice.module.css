@@ -1,10 +1,13 @@
+.userReportInvoicecontainer2 {
+  padding: 20px;
+  background-color: #f4f6f9;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .userReportInvoicecontainer {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
-  background-color: #f4f6f9;
-  font-family: sans-serif;
 }
 
 /* Left Section */
@@ -22,6 +25,14 @@
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+}
+.userReportInvoiceprofileCard h2 {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+.userReportcardnames {
+  display: flex;
+  justify-content: space-between;
 }
 
 .userReportInvoiceavatar {
@@ -71,7 +82,7 @@
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .userReportInvoiceinfoCard {
@@ -80,9 +91,6 @@
   border-radius: 10px;
 }
 
-.userReportInvoiceinfoCard div {
-  margin-bottom: 10px;
-}
 
 .userReportInvoiceeditBtn {
   margin-top: 10px;
@@ -98,6 +106,7 @@
   background: white;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 1rem;
 }
 
 .userReportInvoiceprogressBar {
@@ -111,4 +120,17 @@
 .userReportInvoiceprogress {
   height: 100%;
   background-color: #2196f3;
+}
+
+.userReportInvoicesubscription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}
+.userReportInvoicesubscription strong {
+  color: #000dca;
+}
+.userReportInvoicesubscription p {
+  margin-bottom: 0px;
 }

@@ -171,6 +171,28 @@ class OrderService {
       return resultObject;
     }
   }
+
+  // /////////////////////////////////////
+  async getUserOrdersById(email) {
+    try {
+      const orders = await Paypalorder.find({ email });
+      console.log("asdasda", email);
+      const totalOrderCount = orders.length;
+      const resultObject = {
+        success: true,
+        message: "order fetched successfully",
+        data: { orders, totalOrderCount },
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        success: false,
+        message: err.message,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
   // ///////////////////////////////////////
 
   async getMyOrderAsync(uid) {

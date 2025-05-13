@@ -11,6 +11,8 @@ router.get('/getAllOrder', upload.none(),requireAuth, OrderController.getAllOrde
 // =========================================================
 router.get('/get-all-orders', upload.none(),requireAuth, OrderController.getAllOrders);
 router.get('/get-all-orders/:id', upload.none(),requireAuth, OrderController.getAllOrdersById);
+
+router.get('/user/:userEmail', upload.none(),requireAuth, OrderController.getUserOrdersById);
 // ///////////////////////////////////////////////
 router.get('/getOrder/:id', upload.none(),requireAuth, OrderController.getOneOrder);
 router.get('/myOrder', upload.none(),requireAuth, OrderController.getMyOrder);
