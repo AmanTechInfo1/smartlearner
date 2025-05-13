@@ -20,6 +20,7 @@ const notepadRoutes = require("./routes/notepadRoutes");
 const path = require("path");
 
 const cors = require("cors");
+const prerender = require("prerender-node");
 
 const app = express();
 connectDB();
@@ -27,6 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors());
+
+prerender.set('prerenderToken', '1GUqcwJ5AHPJmlN0w5q5');
+app.use(prerender);
+
 app.use((req, res, next) => {
   console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
   next();

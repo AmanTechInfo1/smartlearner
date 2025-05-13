@@ -194,11 +194,14 @@ export default function About() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>About Our Driving School</title>
+        <meta name="description" content="About SmartLearner Driving School" />
         <link rel="canonical" href="https://smartlearner.com/about" />
         <meta property="og:title" content="About Our Driving School" />
         <meta property="og:url" content="https://smartlearner.com/about" />
-        <meta property="og:description" content="Learn more about our driving school’s mission, values, and experienced instructors." />
-        
+        <meta
+          property="og:description"
+          content="Learn more about our driving school’s mission, values, and experienced instructors."
+        />
       </Helmet>
       <div className={styles.TcHomeBanner}>
         <div className={styles.opicity}></div>
