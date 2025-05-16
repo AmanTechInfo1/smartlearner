@@ -11,7 +11,7 @@ import { router } from "./routing";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"; // Add this import
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { HelmetProvider } from "react-helmet-async"; 
+import { HelmetProvider } from "react-helmet-async";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -23,7 +23,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <HelmetProvider>
       <PayPalScriptProvider
         options={{
           "client-id":
@@ -32,12 +31,12 @@ root.render(
           intent: "capture",
         }}>
         <Elements stripe={stripePromise}>
-          <RouterProvider router={router} />
-
+          <HelmetProvider>
+            <RouterProvider router={router} />
+          </HelmetProvider>
           <Toaster position="center" />
         </Elements>
       </PayPalScriptProvider>
-      </HelmetProvider>
     </Provider>
     {/* <App /> */}
   </React.StrictMode>

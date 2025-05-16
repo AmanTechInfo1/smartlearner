@@ -33,8 +33,7 @@ const LessonAccordation = () => {
               openIndex === 1 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(1)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <FaFileAlt />
@@ -56,8 +55,7 @@ const LessonAccordation = () => {
               openIndex === 2 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(2)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <TiTick />
@@ -78,8 +76,7 @@ const LessonAccordation = () => {
               openIndex === 3 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(3)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <MdContactPage />
@@ -100,8 +97,7 @@ const LessonAccordation = () => {
               openIndex === 5 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(5)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -122,8 +118,7 @@ const LessonAccordation = () => {
               openIndex === 6 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(6)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -132,7 +127,7 @@ const LessonAccordation = () => {
             </div>
             {openIndex === 6 && (
               <p className={styles.description}>
-                Learn about What is Advanced Driving trainning Part 2 ?
+                Learn about What is Advanced Driving training Part 2 ?
               </p>
             )}
           </li>
@@ -145,16 +140,17 @@ const LessonAccordation = () => {
               openIndex === 7 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(7)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
               </span>{" "}
-              Quiz What is Advanced Driving trainning Part 2 quiz?
+              Quiz What is Advanced Driving training Part 2 quiz?
             </div>
             {openIndex === 7 && (
-              <p className={styles.description}>Quiz What is Advanced Driving training Part 2 quiz?</p>
+              <p className={styles.description}>
+                Quiz What is Advanced Driving training Part 2 quiz?
+              </p>
             )}
           </li>
         </Link>
@@ -166,8 +162,7 @@ const LessonAccordation = () => {
               openIndex === 8 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(8)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -187,8 +182,7 @@ const LessonAccordation = () => {
               openIndex === 9 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(9)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -196,7 +190,9 @@ const LessonAccordation = () => {
               Quiz The COAST Method in Advanced Driving
             </div>
             {openIndex === 9 && (
-              <p className={styles.description}>Quiz The COAST Method in Advanced Driving</p>
+              <p className={styles.description}>
+                Quiz The COAST Method in Advanced Driving
+              </p>
             )}
           </li>
         </Link>
@@ -208,8 +204,7 @@ const LessonAccordation = () => {
               openIndex === 10 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(10)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -217,7 +212,9 @@ const LessonAccordation = () => {
               Concentration in the Coast Method
             </div>
             {openIndex === 10 && (
-              <p className={styles.description}>Understand Concentration in the Coast Method</p>
+              <p className={styles.description}>
+                Understand Concentration in the Coast Method
+              </p>
             )}
           </li>
         </Link>
@@ -227,8 +224,7 @@ const LessonAccordation = () => {
               openIndex === 11 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(11)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -236,7 +232,9 @@ const LessonAccordation = () => {
               Quiz Concentration in the Coast Method
             </div>
             {openIndex === 11 && (
-              <p className={styles.description}>Quiz Concentration in the Coast Method</p>
+              <p className={styles.description}>
+                Quiz Concentration in the Coast Method
+              </p>
             )}
           </li>
         </Link>
@@ -248,8 +246,7 @@ const LessonAccordation = () => {
               openIndex === 12 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(12)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -270,8 +267,7 @@ const LessonAccordation = () => {
               openIndex === 13 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(13)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -279,7 +275,9 @@ const LessonAccordation = () => {
               Quiz Observation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 13 && (
-              <p className={styles.description}>Quiz Observation in the COAST Method for Advanced Driving</p>
+              <p className={styles.description}>
+                Quiz Observation in the COAST Method for Advanced Driving
+              </p>
             )}
           </li>
         </Link>
@@ -291,8 +289,7 @@ const LessonAccordation = () => {
               openIndex === 14 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(14)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -312,8 +309,7 @@ const LessonAccordation = () => {
               openIndex === 15 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(15)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -321,7 +317,9 @@ const LessonAccordation = () => {
               Quiz Anticipation in the COAST Method for Advanced Driving
             </div>
             {openIndex === 15 && (
-              <p className={styles.description}>Quiz Anticipation in the COAST Method for Advanced Driving</p>
+              <p className={styles.description}>
+                Quiz Anticipation in the COAST Method for Advanced Driving
+              </p>
             )}
           </li>
         </Link>
@@ -333,8 +331,7 @@ const LessonAccordation = () => {
               openIndex === 16 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(16)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -354,8 +351,7 @@ const LessonAccordation = () => {
               openIndex === 17 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(17)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -363,7 +359,9 @@ const LessonAccordation = () => {
               Quiz Space in the COAST Method for Advanced Driving
             </div>
             {openIndex === 17 && (
-              <p className={styles.description}>Quiz Space in the COAST Method for Advanced Driving</p>
+              <p className={styles.description}>
+                Quiz Space in the COAST Method for Advanced Driving
+              </p>
             )}
           </li>
         </Link>
@@ -375,8 +373,7 @@ const LessonAccordation = () => {
               openIndex === 18 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(18)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -396,8 +393,7 @@ const LessonAccordation = () => {
               openIndex === 19 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(19)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -419,8 +415,7 @@ const LessonAccordation = () => {
               openIndex === 20 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(20)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -440,8 +435,7 @@ const LessonAccordation = () => {
               openIndex === 21 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(21)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <TiTick />
@@ -463,8 +457,7 @@ const LessonAccordation = () => {
               openIndex === 22 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(22)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.checkIcon}>
                 <MdContactPage />
@@ -483,8 +476,7 @@ const LessonAccordation = () => {
               openIndex === 23 ? styles.lessonOpen : ""
             }`}
             onMouseEnter={() => handleMouseEnter(23)}
-            onMouseLeave={handleMouseLeave}
-          >
+            onMouseLeave={handleMouseLeave}>
             <div className={styles.lessonRow}>
               <span className={styles.quizIcon}>
                 <MdContactPage />
