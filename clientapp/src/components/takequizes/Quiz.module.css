@@ -73,13 +73,14 @@
 }
 
 .answerSection button {
-  background-color: #03062e; /* red button background */
+  background-color: #d9dcff; /* red button background */
   color: #ffffff; /* white text */
   gap: 20px;
   border: 1px solid rgb(255, 2, 82);
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
+  color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: flex;
@@ -97,7 +98,8 @@
 }
 
 .answerSection button:hover {
-  background-color: #ff004c; /* darker red on hover */
+  background-color: #410013; 
+  color: white;/* darker red on hover */
 }
 
 .navigationButtons {

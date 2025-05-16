@@ -185,7 +185,7 @@ const Quiz = () => {
 
   const speak = (text) => {
     if (text) {
-      const Voice = "Hindi Female"; // Get the language code
+      const Voice = "UK English Male"; // Get the language code
       window.responsiveVoice.speak(text, Voice); // Use ResponsiveVoice
     } else {
       console.error("No text provided to speak.");
@@ -518,7 +518,7 @@ const Quiz = () => {
                   </p>
                 </div>
                 <div className={styles.questionCount}>
-                  <span>Question : </span>
+                  <span>Question: </span>
                   <div
                     ref={myDivRef}
                     className={styles.questionTextt}
