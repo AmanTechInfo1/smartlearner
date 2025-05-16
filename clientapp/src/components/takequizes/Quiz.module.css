@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 0.7rem;
   color: #ffffff;
 }
 
@@ -98,8 +99,8 @@
 }
 
 .answerSection button:hover {
-  background-color: #410013; 
-  color: white;/* darker red on hover */
+  background-color: #410013;
+  color: white; /* darker red on hover */
 }
 
 .navigationButtons {
@@ -109,7 +110,11 @@
 }
 
 .navigationButtons button {
-  background-color: #000000; /* black button background */
+  background: linear-gradient(
+    135deg,
+    #660027,
+    #1a003e
+  ); /* black button background */
   color: #ffffff; /* white text */
   border: 1px solid #ff4040; /* red border */
   border-radius: 5px;
@@ -120,7 +125,11 @@
 }
 
 .navigationButtons button:hover {
-  background-color: #ff4040; /* dark gray on hover */
+  background: linear-gradient(
+    135deg,
+    #1a003e,
+    #660027
+  ); /* dark gray on hover */
   color: #ffffff; /* red text on hover */
 }
 

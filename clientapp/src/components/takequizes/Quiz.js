@@ -533,7 +533,6 @@ const Quiz = () => {
                   <button
                     disabled={!hasTranslated || isTranslating}
                     style={{
-                      
                       border: "none",
                       backgroundColor: "#4f008b",
                       cursor:
@@ -718,11 +717,7 @@ const Quiz = () => {
 
             <div className={styles.navigationButtons}>
               <button onClick={endQuiz}>View Result</button>
-              <button
-                onClick={backbtn}
-                className="btn btn-secondary bg-info ml-3 py-2 px-3 ">
-                Back
-              </button>
+              <button onClick={backbtn}>Back</button>
               {oneQuizOutput.answerAttempt && !quizCompleted && !timeUp && (
                 <button onClick={handleNextQuestion}>Next</button>
               )}
