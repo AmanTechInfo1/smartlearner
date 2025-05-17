@@ -132,6 +132,63 @@ const languageCodes = {
   Yoruba: "yo",
   Zulu: "zu",
 };
+const fallbackVoice = "Hindi Male";
+const languageCodeToVoice = {
+  en: "UK English Male",
+  ar: "Arabic Male",
+  hy: "Armenian Male",
+  bn: "Bangla India Male",
+  pt: "Brazilian Portuguese Female",
+  zh: "Chinese Female",
+  "zh-HK": "Chinese (Hong Kong) Male",
+  "zh-TW": "Chinese Taiwan Male",
+  cs: "Czech Female",
+  da: "Danish Female",
+  de: "Deutsch Male",
+  nl: "Dutch Male",
+  et: "Estonian Male",
+  tl: "Filipino Female",
+  fi: "Finnish Female",
+  fr: "French Female",
+  "fr-CA": "French Canadian Female",
+  el: "Greek Female",
+  hi: "Hindi Male",
+  hu: "Hungarian Female",
+  id: "Indonesian Male",
+  it: "Italian Male",
+  ja: "Japanese Female",
+  ko: "Korean Female",
+  la: "Latin Male",
+  ne: "Nepali",
+  no: "Norwegian Male",
+  pl: "Polish Male",
+  ro: "Romanian Female",
+  ru: "Russian Female",
+  si: "Sinhala",
+  sk: "Slovak Female",
+  es: "Spanish Female",
+  "es-419": "Spanish Latin American Male",
+  sv: "Swedish Male",
+  ta: "Tamil Male",
+  th: "Thai Male",
+  tr: "Turkish Male",
+  uk: "Ukrainian Female",
+  vi: "Vietnamese Male",
+  af: "Afrikaans Male",
+  sq: "Albanian Male",
+  bs: "Bosnian Male",
+  ca: "Catalan Male",
+  hr: "Croatian Male",
+  eo: "Esperanto Male",
+  is: "Icelandic Female",
+  lv: "Latvian Male",
+  mk: "Macedonian Male",
+  mo: "Moldavian Female",
+  sr: "Serbian Male",
+  sh: "Serbo-Croatian Male",
+  sw: "Swahili Male",
+  cy: "Welsh Male",
+};
 
 const Quiz = () => {
   const { cid, id } = useParams();
@@ -183,10 +240,33 @@ const Quiz = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (window.responsiveVoice) {
+      const availableVoices = window.responsiveVoice.getVoices();
+      console.log("Available voices:");
+      availableVoices.forEach((voice) => {
+        console.log(`• ${voice.name} (${voice.lang})`);
+      });
+    }
+  }, []);
+
+  const getVoiceForLanguage = (langCode) => {
+    const voices = window.responsiveVoice?.getVoices() || [];
+    const lang = langCode.split("-")[0]; // e.g. 'en-US' → 'en'
+    const selectedVoice = languageCodeToVoice[lang];
+
+    if (voices.some((voice) => voice.name === selectedVoice)) {
+      return selectedVoice;
+    }
+
+    // fallback if selectedVoice doesn't exist
+    return fallbackVoice;
+  };
+
   const speak = (text) => {
     if (text) {
-      const Voice = "UK English Male"; // Get the language code
-      window.responsiveVoice.speak(text, Voice); // Use ResponsiveVoice
+      const selectedVoice = getVoiceForLanguage(questionTranslate);
+      window.responsiveVoice.speak(text, selectedVoice); // Use ResponsiveVoice
     } else {
       console.error("No text provided to speak.");
     }
