@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UserInvoice.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getUserById } from "../../../redux/features/userSlice";
 import { fetchUserSubscriptions } from "../../../redux/features/subscriptionSlice";
 import {
@@ -12,7 +12,11 @@ import { getUserOrderById } from "../../../redux/features/orderSlice";
 import { Table } from "antd";
 import Loader from "../../../components/loader/Loader";
 
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+
 const UserInvoice = () => {
+  const navigate = useNavigate();
+
   const params = useParams();
   const dispatch = useDispatch();
   const [isQuizLoading, setIsQuizLoading] = useState(true);
@@ -52,25 +56,48 @@ const UserInvoice = () => {
   useEffect(() => {
     if (quizResult && quizResult.length > 0) {
       const categoryMap = {};
+      let correctCount = 0; // To count the correct attempts
+      let incorrectCount = 0;
+      let totalAttempts = 0;
+      let totalCorrect = 0;
 
       quizResult.forEach((entry) => {
         const categoryName = entry?.result?.name || "Unknown Category";
         if (!categoryMap[categoryName]) {
-          categoryMap[categoryName] = { attempted: 0, total: 0 };
+          categoryMap[categoryName] = {
+            attempted: 0,
+            total: 0,
+            correct: 0,
+            incorrect: 0,
+          };
         }
         categoryMap[categoryName].attempted += 1;
+        totalAttempts += 1;
+        if (entry.answerAttempt === "Correct") {
+          categoryMap[categoryName].correct += 1;
+          correctCount += 1;
+          totalCorrect += 1;
+        } else {
+          categoryMap[categoryName].incorrect += 1;
+          incorrectCount += 1;
+        }
       });
 
       quizzes.forEach((quiz) => {
         const categoryName = quiz?.categoryName || "Unknown";
         if (!categoryMap[categoryName]) {
-          categoryMap[categoryName] = { attempted: 0, total: 0 };
+          categoryMap[categoryName] = {
+            attempted: 0,
+            total: 0,
+            correct: 0,
+            incorrect: 0,
+          };
         }
         categoryMap[categoryName].total += 1;
       });
 
       const summaryArray = Object.entries(categoryMap).map(
-        ([categoryName, { attempted, total }]) => {
+        ([categoryName, { attempted, total, correct, incorrect }]) => {
           let note = "";
           let multiplier = 1;
 
@@ -82,6 +109,14 @@ const UserInvoice = () => {
           } else {
             note = `(1 time attempt)`;
           }
+
+          const correctPercentage =
+            total > 0 ? ((correct / total) * 100).toFixed(2) : 0;
+          const incorrectPercentage =
+            total > 0 ? ((incorrect / total) * 100).toFixed(2) : 0;
+
+          const categoryTotalPercentage =
+            attempted > 0 ? ((correct / attempted) * 100).toFixed(2) : 0;
 
           const timeSpentSeconds = attempted * 30;
           const minutes = Math.floor(timeSpentSeconds / 60);
@@ -95,10 +130,16 @@ const UserInvoice = () => {
             multiplier,
             note,
             overAttempted: attempted > total,
+
+            correct,
+            incorrect,
+            correctPercentage,
+            incorrectPercentage,
+            categoryTotalPercentage,
             timeSpentFormatted,
           };
         }
-      );
+      ).filter((item) => item.attempted > 0);
 
       setSummary(summaryArray);
     }
@@ -121,7 +162,7 @@ const UserInvoice = () => {
   }, [dispatch, state.page, state.pageSize, userEmail]);
 
   const onShowSizeChange = (current, pageSize) => {
-    setState({ ...state, page: 1, pagesize: pageSize });
+    setState({ ...state, page: 1, pageSize });
   };
 
   const itemRender = (current, type, originalElement) => {
@@ -158,12 +199,31 @@ const UserInvoice = () => {
           "-"
         ),
     },
+    {
+      title: "Created On",
+      dataIndex: "createdOn",
+      align: "center",
+      sorter: (a, b) => new Date(a.createdOn) - new Date(b.createdOn),
+      render: (text) => {
+        const date = new Date(text);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short", // Use 'long' for full month namesdxzc
+          day: "2-digit",
+        });
+      },
+    },
   ];
+
+  const backbtn = () => {
+    navigate("/admin/userReport");
+  };
 
   // /////////////////////////////////////////////////////////
 
   return (
     <div className={styles.userReportInvoicecontainer2}>
+      <FaArrowAltCircleLeft id={styles.backsbtn} onClick={backbtn} />
       <div className={styles.userReportInvoicecontainer}>
         <div className={styles.userReportInvoiceleftCard}>
           <div className={styles.userReportInvoiceprofileCard}>
@@ -223,7 +283,7 @@ const UserInvoice = () => {
                   onShowSizeChange: onShowSizeChange,
                   itemRender: itemRender,
                   onChange: (page, pageSize) =>
-                    setState({ ...state, page, pagesize: pageSize }),
+                    setState({ ...state, page, pageSize }),
                 }}
                 style={{ overflowX: "auto" }}
                 columns={columns}
@@ -253,7 +313,7 @@ const UserInvoice = () => {
           <p style={{ textAlign: "center", fontWeight: "600" }}>
             Loading quiz results...
           </p>
-        ) : summary.length === 0 ? (
+        ) : summary?.length === 0 ? (
           <p
             className={styles.userReportInvoiceinfoCard}
             style={{ textAlign: "center", fontWeight: "600" }}>
@@ -267,6 +327,11 @@ const UserInvoice = () => {
               total,
               note,
               overAttempted,
+              correct,
+              incorrect,
+              correctPercentage,
+              incorrectPercentage,
+              categoryTotalPercentage,
               timeSpentFormatted,
             }) => (
               <div
@@ -277,6 +342,17 @@ const UserInvoice = () => {
                   <p>
                     {attempted} attempted / {total} total{" "}
                     {note && <span>{note}</span>}
+                    <br />
+                    <span>
+                      |{" "}
+                      <strong>
+                        Total Accuracy: {categoryTotalPercentage}%
+                      </strong>
+                    </span>
+                    <br />
+                    Correct: {correct} ({correctPercentage}%)
+                    <br />
+                    Incorrect: {incorrect} ({incorrectPercentage}%)
                     <br />
                     <span style={{ fontSize: "0.9em", color: "#555" }}>
                       Time spent: {timeSpentFormatted}

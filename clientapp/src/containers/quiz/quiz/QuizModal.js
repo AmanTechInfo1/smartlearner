@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getListQuizCategories } from "../../../redux/features/quizCategorySlice";
-import { Table,Input } from "antd";
+import { Table, Input } from "antd";
 import styles from "../../../assets/css/admin.module.css";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Fill } from "react-icons/ri";
@@ -33,7 +33,7 @@ const QuizModal = () => {
 
   const [state, setState] = useState({
     search: "",
-    categorySearch: "", 
+    categorySearch: "",
     page: 1,
     pageSize: 10,
   });
@@ -46,7 +46,7 @@ const QuizModal = () => {
 
     // Log the quizzes response whenever data changes
     if (quizzes && quizzes.length) {
-      console.log("Quizzes Response:", quizzes); // Log quizzes data when it's available
+      console.log("Quizzes Response:", quizzes); // Log quizzes data when it's availableewrfsdc
     }
   }, [dispatch, state.search, state.page, state.pageSize]);
 
@@ -147,15 +147,13 @@ const QuizModal = () => {
       render: (text, record) => (
         <div
           className="d-flex justify-content-center"
-          data-popper-placement="bottom-end"
-        >
+          data-popper-placement="bottom-end">
           <Button
             className="dropdown-item px-2 text-success"
             onClick={(e) => {
               e.preventDefault();
               handleEditClick(record._id);
-            }}
-          >
+            }}>
             <LiaUserEditSolid />
           </Button>
           <Button
@@ -163,8 +161,7 @@ const QuizModal = () => {
             onClick={(e) => {
               e.preventDefault();
               handleDelete(record._id);
-            }}
-          >
+            }}>
             <RiDeleteBin6Fill />
           </Button>
         </div>
@@ -172,12 +169,13 @@ const QuizModal = () => {
     },
   ];
 
-  const filteredQuizzes = quizzes.filter((quiz) =>
-    quiz.question.toLowerCase().includes(state.search.toLowerCase()) &&
-    quiz.categoryName.toLowerCase().includes(state.categorySearch.toLowerCase())
+  const filteredQuizzes = quizzes.filter(
+    (quiz) =>
+      quiz.question.toLowerCase().includes(state.search.toLowerCase()) &&
+      quiz.categoryName
+        .toLowerCase()
+        .includes(state.categorySearch.toLowerCase())
   );
-
- 
 
   return (
     <>
@@ -190,8 +188,7 @@ const QuizModal = () => {
               e.preventDefault();
               toggleAddQuizCategoryModal();
               handleAddClick();
-            }}
-          >
+            }}>
             Add Quiz
           </button>
         </div>
@@ -202,7 +199,7 @@ const QuizModal = () => {
             placeholder="Search Questions"
             value={state.search}
             onChange={(e) => setState({ ...state, search: e.target.value })}
-            style={{width: "100%",margin:'10px auto',padding:'1rem auto' }}
+            style={{ width: "100%", margin: "10px auto", padding: "1rem auto" }}
           />
           <Input
             type="text"
@@ -211,7 +208,7 @@ const QuizModal = () => {
             onChange={(e) =>
               setState({ ...state, categorySearch: e.target.value })
             }
-            style={{ width: "100%", padding:'1rem auto' }}
+            style={{ width: "100%", padding: "1rem auto" }}
           />
         </div>
 

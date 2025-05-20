@@ -175,7 +175,7 @@ class OrderService {
   // /////////////////////////////////////
   async getUserOrdersById(email) {
     try {
-      const orders = await Paypalorder.find({ email });
+      const orders = await Paypalorder.find({ email }).sort({ createdOn: -1 });
       console.log("asdasda", email);
       const totalOrderCount = orders.length;
       const resultObject = {

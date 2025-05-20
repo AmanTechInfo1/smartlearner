@@ -125,23 +125,43 @@ class AccountService {
 
   async getAllUsersAsync(pageNumber, pagesize, query) {
     try {
-      const skip = (pageNumber - 1) * (pagesize || 20);
-      let filter = { isDeleted: false };
+      const skip = pageNumber - 1;
+      let filter = {};
 
       if (query) {
         const regex = new RegExp(query, "i");
-        filter.$or = [{ email: regex }, { username: regex }];
+
+        // Get role matches
+        const matchedRoles = await Role.find({ name: regex });
+        const roleIds = matchedRoles.map((role) => role._id);
+
+        // Get userIds by matching roleIds
+        let userIdsFromRoles = [];
+        if (roleIds.length > 0) {
+          userIdsFromRoles = await UserRole.find({
+            roleId: { $in: roleIds },
+          }).distinct("userId");
+        }
+
+        filter.$or = [
+          { email: regex },
+          { username: regex },
+          { _id: { $in: userIdsFromRoles } },
+        ];
       }
-      const role = await roleService.getRoleByNameAsync(ROLES.ADMIN);
+
+      const adminRole = await roleService.getRoleByNameAsync(ROLES.ADMIN);
 
       filter._id = {
-        $nin: await UserRole.find({ roleId: role._id }).distinct("userId"),
+        $nin: await UserRole.find({ roleId: adminRole._id }).distinct("userId"),
+        ...(filter._id || {}),
       };
 
       // Retrieve the total count of users matching the filter
       const totalCount = await User.countDocuments(filter);
 
       const users = await User.find(filter)
+        .sort({ createdOn: -1 })
         .skip(skip)
         .limit(pagesize || 20);
 

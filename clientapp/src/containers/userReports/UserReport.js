@@ -6,8 +6,9 @@ import { getUserReports } from "../../redux/features/userReportsSlice";
 import { Input, Table } from "antd";
 import styles from "../../assets/css/admin.module.css";
 import { FaFileInvoice } from "react-icons/fa";
-
+import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
+import { deleteUser } from "../../redux/features/userSlice";
 
 const UserReport = () => {
   const dispatch = useDispatch();
@@ -31,14 +32,19 @@ const UserReport = () => {
     setShowEditPostcodeModal(!showEditPostcodeModal);
 
   useEffect(() => {
-    dispatch(getUserReports(state.search, state.page, state.pageSize));
-  }, [dispatch, state.search, state.page, state.pageSize]);
+    dispatch(
+      getUserReports(state.search, state.page, state.pageSize, state.role)
+    );
+  }, [dispatch, state.search, state.page, state.pageSize, state.role]);
 
   const onShowSizeChange = (current, pageSize) => {
-    setState({ ...state, page: 1, pagesize: pageSize });
+    setState({ ...state, page: 1, pageSize });
   };
   const handleSearchChange = (e) => {
     setState({ ...state, search: e.target.value });
+  };
+  const handleDeleteClick = (id) => {
+    dispatch(deleteUser(id));
   };
 
   const itemRender = (current, type, originalElement) => {
@@ -78,7 +84,7 @@ const UserReport = () => {
         const date = new Date(text);
         return date.toLocaleDateString("en-US", {
           year: "numeric",
-          month: "short", // Use 'long' for full month name
+          month: "short", // Use 'long' for full month namesdxzc
           day: "2-digit",
         });
       },
@@ -97,6 +103,14 @@ const UserReport = () => {
             }}>
             <FaFileInvoice />
           </Link>
+          <Link
+            className="dropdown-item px-2 text-danger"
+            to="#"
+            onClick={() => {
+              handleDeleteClick(record._id);
+            }}>
+            <RiDeleteBin6Fill />
+          </Link>
         </div>
       ),
     },
@@ -110,12 +124,12 @@ const UserReport = () => {
         </div>
         <div className="search-container mb-3">
           <Input
-            placeholder="Search by Username or Email"
+            placeholder="Search by Username, role or Email"
             value={state.search}
             onChange={handleSearchChange}
             allowClear
           />
-         </div>
+        </div>
         {!loading ? (
           <Table
             className="table-striped"
@@ -129,7 +143,7 @@ const UserReport = () => {
               onShowSizeChange: onShowSizeChange,
               itemRender: itemRender,
               onChange: (page, pageSize) =>
-                setState({ ...state, page, pagesize: pageSize }),
+                setState({ ...state, page, pageSize }),
             }}
             style={{ overflowX: "auto" }}
             columns={columns}

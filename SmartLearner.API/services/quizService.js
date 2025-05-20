@@ -1702,6 +1702,27 @@ class quizService {
       };
     }
   }
+
+  async deleteQuizModuleCategoryAsync(id) {
+    try {
+      await QuizCategoryModel.findByIdAndDelete(id);
+      const resultObject = {
+        message: "quiz deleted successfully",
+        statusCode: 201,
+        success: true,
+        data: null,
+      };
+      return resultObject;
+    } catch (err) {
+      const resultObject = {
+        message: err.message,
+        statusCode: 400,
+        success: false,
+        data: null,
+      };
+      return resultObject;
+    }
+  }
 }
 
 module.exports = new quizService();

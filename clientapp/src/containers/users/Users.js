@@ -39,7 +39,7 @@ function Users() {
     }, [dispatch, state.search, state.page, state.pageSize]);
 
     const onShowSizeChange = (current, pageSize) => {
-        setState({ ...state, page: 1, pagesize: pageSize });
+        setState({ ...state, page: 1,  pageSize });
     };
 
     const itemRender = (current, type, originalElement) => {
@@ -173,7 +173,7 @@ function Users() {
                             onShowSizeChange: onShowSizeChange,
                             itemRender: itemRender,
                             onChange: (page, pageSize) =>
-                                setState({ ...state, page, pagesize: pageSize }),
+                                setState({ ...state, page,  pageSize }),
                         }}
                         style={{ overflowX: "auto" }}
                         columns={columns}
