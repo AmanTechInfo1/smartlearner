@@ -170,7 +170,7 @@ class UserSubscriptionService {
   }
 
   // //////////////////////////////coupon code ///////////////////////////
-  async applyCouponCode(userId, couponCode) {
+  async applyCouponCode(userId, planId, couponCode) {
     const validCoupon = "FREETHEORY"; // The valid coupon code
 
     if (couponCode === validCoupon) {
@@ -229,6 +229,18 @@ class UserSubscriptionService {
       }); // Update user with first subscription
 
       return { message: "FreetTheory Coupon applied successfully" };
+    } else if (couponCode === "GET80OFF") {
+      const plan = await Plans.findById(planId);
+
+      const discountedPrice = plan.price * 0.2; // Apply 50% off
+
+      const resultObject = {
+        message: "80% discount applied",
+        statusCode: 200,
+        success: true,
+        data: discountedPrice,
+      };
+      return resultObject;
     } else {
       throw new Error("Invalid coupon code");
     }
@@ -366,7 +378,7 @@ class UserSubscriptionService {
         message: "50% discount applied",
         statusCode: 200,
         success: true,
-        data: discountedPrice ,
+        data: discountedPrice,
       };
       return resultObject;
     } else {

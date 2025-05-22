@@ -9,9 +9,7 @@ export const fetchPlans = createAsyncThunk(
     const response = await httpHandler.get("/api/subscription/plans");
     localStorage.removeItem("subsdiscountedPrice");
     return response.data;
-   
   }
-
 );
 export const fetchUserSubscriptions = createAsyncThunk(
   "subscription/fetchUserSubscriptions",
@@ -56,7 +54,7 @@ export const createPayment = createAsyncThunk(
       "/api/subscription/create-payment",
       { subscriptionId, price }
     );
-   
+
     console.log("jdsklzhdnskadhznaskj", price);
     return response.data;
   }
@@ -85,11 +83,11 @@ export const checkTrialEligibility = createAsyncThunk(
 
 export const applyCouponCode = createAsyncThunk(
   "subscription/applyCouponCode",
-  async ({ userId, couponCode }, { rejectWithValue }) => {
+  async ({ userId, planId, couponCode }, { rejectWithValue }) => {
     try {
       const response = await httpHandler.post(
         "/api/subscription/apply-coupon",
-        { userId, couponCode }
+        { userId, planId, couponCode }
       );
       toast.success(response.data.message);
       return response.data;
@@ -125,9 +123,9 @@ export const pdiPartOneApplyCouponCode = createAsyncThunk(
     try {
       const response = await httpHandler.post(
         "/api/subscription/pdiPartOneApply-coupon",
-        { userId,planId, couponCode }
+        { userId, planId, couponCode }
       );
-      
+
       toast.success(response.data.message);
       return response.data;
     } catch (error) {
@@ -239,10 +237,12 @@ const subscriptionSlice = createSlice({
       })
       .addCase(applyCouponCode.fulfilled, (state, action) => {
         state.couponMessage = action.payload.message; // Store the success message
+        state.subsdiscountedPrice = action.payload.data;
       })
       .addCase(applyCouponCode.rejected, (state, action) => {
         state.couponMessage =
           action.payload?.message || "Coupon application failed.";
+        state.subsdiscountedPrice = null;
       })
       .addCase(pdiApplyCouponCode.fulfilled, (state, action) => {
         state.couponMessage = action.payload.message; // Store the success message
@@ -258,13 +258,11 @@ const subscriptionSlice = createSlice({
       .addCase(pdiPartOneApplyCouponCode.fulfilled, (state, action) => {
         state.loading = false;
         state.subsdiscountedPrice = action.payload.data;
-       
       })
       .addCase(pdiPartOneApplyCouponCode.rejected, (state, action) => {
         state.loading = false;
         state.isCouponValid = false;
         state.subsdiscountedPrice = null;
-       
       });
   },
 });

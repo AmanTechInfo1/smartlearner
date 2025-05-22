@@ -38,16 +38,8 @@ const TheorySubscription = () => {
   }, [dispatch, userId]);
   // Added userId as a dependency
   ////////////////////////////////////////////////////////
-  const handleCouponSubmit = async () => {
-    try {
-      await dispatch(applyCouponCode({ userId, couponCode })).unwrap();
-      navigate("/Theory-portal");
-    } catch (error) {
-      console.error("Error applying coupon:", error);
-    }
-  };
 
-  // /////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////
 
   const handleCreateTrialSubscription = async (plan) => {
     try {
@@ -75,7 +67,7 @@ const TheorySubscription = () => {
     }
   };
 
-  const handleCreateSubscription = async (ogPlan) => {
+  const handleCreateSubscription = async (ogPlan, subsdiscountedPrice) => {
     const priceToUse = subsdiscountedPrice || ogPlan.price; // Use the updated price directly
     console.log("Price to use for payment:", subsdiscountedPrice);
 
@@ -135,6 +127,14 @@ const TheorySubscription = () => {
 
   const planId = paidPlans[0]?._id;
 
+  const handleCouponSubmit = async () => {
+    try {
+      await dispatch(applyCouponCode({ userId, planId, couponCode })).unwrap();
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+    }
+  };
+
   return (
     <div className="subscription-cardBox">
       <div className={styles.cartPage}>
@@ -177,8 +177,7 @@ const TheorySubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -202,13 +201,23 @@ const TheorySubscription = () => {
                       <div className={styles.basketHeadingTitle}>
                         <p>
                           <span>Subtotal:</span>
-                          <span>£ {plan.price}</span>
+                          <span>
+                            £{" "}
+                            {subsdiscountedPrice
+                              ? subsdiscountedPrice
+                              : plan.price.toFixed(2)}
+                          </span>
                         </p>
                         <p>
                           <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
                         </p>
                         <p>
-                          <span>Total:</span> <span>{plan.price}</span>
+                          <span>Total:</span>{" "}
+                          <span>
+                            {subsdiscountedPrice
+                              ? subsdiscountedPrice
+                              : plan.price.toFixed(2)}
+                          </span>
                         </p>
                         <div>
                           <img src={paypalLogo} alt="paypal" />

@@ -33,7 +33,7 @@ const PartOneSubscription = () => {
 
   const navigate = useNavigate();
 
-  // Fetch subscription plans when component mounts
+  // Fetch subscription plans when component mountsaa
   useEffect(() => {
     if (userId) {
       dispatch(fetchUserSubscriptions(userId));

@@ -80,7 +80,7 @@ class userSubscriptionController {
 
   async createPayment(req, res) {
     const { subscriptionId, price } = req.body;
-    
+
     console.log("workkkkkk", price);
     try {
       const order = await userSubscriptionService.createPayment(
@@ -123,10 +123,11 @@ class userSubscriptionController {
   }
   // ////////////////COUPON CODE///////////////////////
   async couponAccess(req, res, next) {
-    const { userId, couponCode } = req.body;
+    const { userId, planId, couponCode } = req.body;
     try {
       const couponAccess = await userSubscriptionService.applyCouponCode(
         userId,
+        planId,
         couponCode
       );
       res.status(200).json(couponAccess);
