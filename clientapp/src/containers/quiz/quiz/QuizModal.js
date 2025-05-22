@@ -171,7 +171,9 @@ const QuizModal = () => {
 
   const filteredQuizzes = quizzes.filter(
     (quiz) =>
+      quiz.question &&
       quiz.question.toLowerCase().includes(state.search.toLowerCase()) &&
+      quiz.categoryName &&
       quiz.categoryName
         .toLowerCase()
         .includes(state.categorySearch.toLowerCase())
