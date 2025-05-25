@@ -783,6 +783,17 @@ const Quiz = () => {
                     }
                   )}
                 </div>
+                {/* Show description only after an answer is selected */}
+                {outputData.find(
+                  (item) =>
+                    item.questionId ===
+                    oneQuiz[currentQuestionIndex]?.questionId
+                )?.answerAttempt && (
+                  <div className={styles.descriptionBox}>
+                    <h4>Explanation:</h4>
+                    <p>{oneQuiz[currentQuestionIndex]?.description}</p>
+                  </div>
+                )}
               </>
             ) : (
               <div className={styles.totalTimer}>
