@@ -313,7 +313,15 @@ class QuizController {
     console.log("Received translation request:", req.body);
 
     try {
-      const { question, lang, option1, option2, option3, option4 } = req.body;
+      const {
+        question,
+        description,
+        lang,
+        option1,
+        option2,
+        option3,
+        option4,
+      } = req.body;
 
       const options = {
         method: "POST",
@@ -329,6 +337,7 @@ class QuizController {
           to: lang,
           html: `<ul>
                    <li>${question}</li>
+                   <li>${description}</li>
                    <li>${option1 || ""}</li>
                    <li>${option2 || ""}</li>
                    <li>${option3 || ""}</li>
@@ -370,14 +379,18 @@ class QuizController {
       const translatedOption4 = doc.querySelector(
         "ul > li:nth-child(5)"
       ).textContent;
+      const translatedOption5 = doc.querySelector(
+        "ul > li:nth-child(6)"
+      ).textContent;
 
       // Send the translated response back
       res.json({
         question: translatedQuestion,
-        option1: translatedOption1,
-        option2: translatedOption2,
-        option3: translatedOption3,
-        option4: translatedOption4,
+        description: translatedOption1,
+        option1: translatedOption2,
+        option2: translatedOption3,
+        option3: translatedOption4,
+        option4: translatedOption5,
       });
     } catch (err) {
       next(err);

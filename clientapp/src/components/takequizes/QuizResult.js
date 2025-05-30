@@ -106,15 +106,13 @@ const QuizResult = () => {
         color: "white",
         paddingTop: "4rem",
         paddingBottom: "5rem",
-      }}
-    >
+      }}>
       <div className="container mx-auto p-1">
         <h2 className="text-center text-2xl font-semibold mb-4">
           Quiz Results{" "}
           <button
             onClick={() => navigate(-3)}
-            className="btn btn-secondary bg-info ml-5 py-3 px-5 "
-          >
+            className="btn btn-secondary bg-info ml-5 py-3 px-5 ">
             Go Back
           </button>
         </h2>
@@ -136,8 +134,7 @@ const QuizResult = () => {
                       });
                     }
                   }}
-                  className={styles.catebtn}
-                >
+                  className={styles.catebtn}>
                   {truncateQuizName(quizName)}
                 </button>
               ))}
@@ -147,10 +144,7 @@ const QuizResult = () => {
               <div key={quizName} id={quizName} className="mb-5">
                 <h3 className="text-xl font-semibold">
                   {quizName}{" "}
-                  <Link
-                    to="/all-results"
-                    id={styles.linkButton}
-                  >
+                  <Link to="/all-results" id={styles.linkButton}>
                     Veiw all
                   </Link>
                 </h3>
@@ -176,24 +170,22 @@ const QuizResult = () => {
                       <div className={styles.tableWrapperCollapse}>
                         <div className={styles.tableWrapperScroller}>
                           <table
-                            className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}
-                          >
+                            className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}>
                             <thead>
                               <tr
                                 className="w-full bg-zinc-800 dark:bg-zinc-700 text-white"
-                                id={styles.tableRowBg}
-                              >
+                                id={styles.tableRowBg}>
                                 {[
                                   "Quiz Name",
                                   "Question",
                                   "Correct Answer",
                                   "Answer Attempt",
+                                  "Description",
                                   "Submit Time",
                                 ].map((header) => (
                                   <th
                                     key={header}
-                                    className="py-2 px-4 text-left border "
-                                  >
+                                    className="py-2 px-4 text-left border ">
                                     {header}
                                   </th>
                                 ))}
@@ -203,8 +195,7 @@ const QuizResult = () => {
                               {results.map((itm) => (
                                 <tr
                                   className="border-b dark:border-zinc-700"
-                                  key={itm.result?._id}
-                                >
+                                  key={itm.result?._id}>
                                   <td className="py-2 px-4 border ">
                                     {quizName || "N/A"}
                                   </td>
@@ -228,8 +219,7 @@ const QuizResult = () => {
                                         itm.answerAttempt === "Incorrect"
                                           ? "#990309"
                                           : "#024902",
-                                    }}
-                                  >
+                                    }}>
                                     {getAnswerText(itm.question, itm.answer)}
                                     {itm.answerAttempt === "Correct" ? (
                                       <TiTick
@@ -250,6 +240,9 @@ const QuizResult = () => {
                                         }}
                                       />
                                     )}
+                                  </td>
+                                  <td className="py-2 px-4 border ">
+                                    {itm.question.description || "N/A"}
                                   </td>
 
                                   <td className="py-2 px-4 border ">

@@ -212,6 +212,8 @@ const Quiz = () => {
   const [visibleQuestions, setVisibleQuestions] = useState(10); // Initially show 10 questions
   const [showAll, setShowAll] = useState(false);
   const [translatedQuestionText, setTranslatedQuestionText] = useState("");
+  const [translatedDescriptionText, setTranslatedDescriptionText] =
+    useState("");
   const [translatedOptions, setTranslatedOptions] = useState({});
 
   const [confettiActive, setConfettiActive] = useState(false);
@@ -279,8 +281,9 @@ const Quiz = () => {
     const formdata = new FormData();
     const question =
       oneQuiz[currentQuestionIndex]?.question || "No question provided";
-
+    const description = oneQuiz[currentQuestionIndex]?.description || "N/A";
     formdata.append("question", question);
+    formdata.append("description", description);
     formdata.append("lang", questionTranslate);
 
     ["option1", "option2", "option3", "option4"].forEach((option) => {
@@ -296,6 +299,9 @@ const Quiz = () => {
       const result = await response.data;
       if (myDivRef.current) {
         setTranslatedQuestionText(result.question);
+      }
+      if (myDivRef.current) {
+        setTranslatedDescriptionText(result.description);
       }
 
       ["option1", "option2", "option3", "option4"].forEach((option) => {
@@ -790,7 +796,23 @@ const Quiz = () => {
                     oneQuiz[currentQuestionIndex]?.questionId
                 )?.answerAttempt && (
                   <div className={styles.descriptionBox}>
-                    <h4>Explanation:</h4>
+                    <h4>
+                      Explanation:{" "}
+                      <button
+                        disabled={!hasTranslated || isTranslating}
+                        style={{
+                          border: "none",
+                          backgroundColor: "#f0f0f0",
+                          cursor:
+                            !hasTranslated || isTranslating
+                              ? "not-allowed"
+                              : "pointer",
+                          opacity: !hasTranslated || isTranslating ? 0.5 : 1,
+                        }}
+                        onClick={() => speak(translatedDescriptionText)}>
+                        🔊
+                      </button>
+                    </h4>
                     <p>{oneQuiz[currentQuestionIndex]?.description}</p>
                   </div>
                 )}

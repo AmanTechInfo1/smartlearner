@@ -81,9 +81,9 @@ const AllResult = () => {
   };
 
   const getAnswer2Text = (question, answer) => {
-    if (!question || !answer || !question.option) return "N/A";  // Safe check for undefined question or answer
+    if (!question || !answer || !question.option) return "N/A"; // Safe check for undefined question or answer
     const answerIndex = parseInt(answer.replace("Option", "")) - 1;
-    return question.option[answerIndex] || "N/A";  // Safe access to the option array
+    return question.option[answerIndex] || "N/A"; // Safe access to the option array
   };
 
   const calculatePercentage = (correct, incorrect) => {
@@ -92,7 +92,11 @@ const AllResult = () => {
   };
 
   const getPassOrFail = (percentage) => {
-    return percentage >= 80 ? <span style={{color:"green",margin:"0px 0.5rem"}}>Pass</span> : <span style={{color:'red',margin:"0px 0.5rem"}}>Fail</span>;
+    return percentage >= 80 ? (
+      <span style={{ color: "green", margin: "0px 0.5rem" }}>Pass</span>
+    ) : (
+      <span style={{ color: "red", margin: "0px 0.5rem" }}>Fail</span>
+    );
   };
 
   return (
@@ -100,17 +104,15 @@ const AllResult = () => {
       style={{
         backgroundColor: "black",
         color: "white",
-        paddingTop:'4rem',
+        paddingTop: "4rem",
         paddingBottom: "5rem",
-      }}
-    >
+      }}>
       <div className="container mx-auto p-1">
         <h2 className="text-center text-2xl font-semibold mb-4">
           Quiz Results{" "}
           <button
             onClick={() => navigate(-1)}
-            className="btn btn-secondary bg-info ml-5 py-3 px-5 "
-          >
+            className="btn btn-secondary bg-info ml-5 py-3 px-5 ">
             Go Back
           </button>
         </h2>
@@ -119,9 +121,9 @@ const AllResult = () => {
         ) : (
           <>
             <div className="mb-4">
-              {Object.keys(groupedResults).map((quizName) => (
+              {Object.keys(groupedResults).map((quizName, index) => (
                 <button
-                  key={quizName}
+                  key={`${quizName}-${index}`}
                   onClick={() => {
                     // Scroll to the quiz category section when button is clicked
                     const element = document.getElementById(quizName);
@@ -132,9 +134,7 @@ const AllResult = () => {
                       });
                     }
                   }}
-                  className={styles.catebtn}
-              
-                >
+                  className={styles.catebtn}>
                   {truncateQuizName(quizName)}
                 </button>
               ))}
@@ -144,49 +144,53 @@ const AllResult = () => {
               <div key={quizName} id={quizName} className="mb-5">
                 <h3 className="text-xl font-semibold">{quizName}</h3>
 
-                {Object.entries(bands).map(([band, data]) => {
+                {Object.entries(bands).map(([band, data], index) => {
                   const { results, correct, incorrect } = data;
                   const percentage = calculatePercentage(correct, incorrect);
                   const passOrFail = getPassOrFail(percentage);
 
                   return (
-                    <div key={band}>
+                    <div key={`${band}-${index}`}>
                       <h4>{band}</h4>
-                      <p style={{fontSize:"1.5rem", fontWeight:"500"}}>
-                        Total Score: {percentage}% ({passOrFail}) 
-                        
-                        <span style={{color:"green", marginLeft:"1rem"}}>Correct: </span> {correct} <span style={{color:"red",}}>Incorrect: </span>{incorrect}
+                      <p style={{ fontSize: "1.5rem", fontWeight: "500" }}>
+                        Total Score: {percentage}% ({passOrFail})
+                        <span style={{ color: "green", marginLeft: "1rem" }}>
+                          Correct:{" "}
+                        </span>{" "}
+                        {correct}{" "}
+                        <span style={{ color: "red" }}>Incorrect: </span>
+                        {incorrect}
                       </p>
 
                       <div className={styles.tableWrapperCollapse}>
                         <div className={styles.tableWrapperScroller}>
                           <table
-                            className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}
-                          >
+                            className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}>
                             <thead>
-                              <tr className="w-full bg-zinc-800 dark:bg-zinc-700 text-white" id={styles.tableRowBg}>
+                              <tr
+                                className="w-full bg-zinc-800 dark:bg-zinc-700 text-white"
+                                id={styles.tableRowBg}>
                                 {[
                                   "Quiz Name",
                                   "Question",
                                   "Correct Answer",
                                   "Answer Attempt",
+                                  "Description",
                                   "Submit Time",
                                 ].map((header) => (
                                   <th
                                     key={header}
-                                    className="py-2 px-4 text-left border "
-                                  >
+                                    className="py-2 px-4 text-left border ">
                                     {header}
                                   </th>
                                 ))}
                               </tr>
                             </thead>
                             <tbody id={styles.tablebodyRowBg}>
-                              {results.map((itm) => (
+                              {results.map((itm, index) => (
                                 <tr
                                   className="border-b dark:border-zinc-700"
-                                  key={itm.result?._id}
-                                >
+                                  key={`${itm.result?._id}-${index}`}>
                                   <td className="py-2 px-4 border ">
                                     {quizName || "N/A"}
                                   </td>
@@ -210,8 +214,7 @@ const AllResult = () => {
                                         itm.answerAttempt === "Incorrect"
                                           ? "#990309"
                                           : "#024902",
-                                    }}
-                                  >
+                                    }}>
                                     {getAnswerText(itm.question, itm.answer)}
                                     {itm.answerAttempt === "Correct" ? (
                                       <TiTick
@@ -233,7 +236,9 @@ const AllResult = () => {
                                       />
                                     )}
                                   </td>
-
+                                  <td className="py-2 px-4 border ">
+                                    {itm.question?.description || "N/A"}
+                                  </td>
                                   <td className="py-2 px-4 border ">
                                     {new Date(itm.createdOn).toLocaleString() ||
                                       "N/A"}
