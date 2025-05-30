@@ -33,7 +33,7 @@ class QuizController {
   async updateQuiz(req, res, next) {
     try {
       var quizData = req.body;
-      quizData["option"] = quizData.option.split(",");
+      quizData["option"] = quizData.option.split("^");
       quizData["optionImage"] = [
         quizData.option1Image,
         quizData.option2Image,

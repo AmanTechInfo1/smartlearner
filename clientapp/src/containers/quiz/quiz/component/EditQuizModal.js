@@ -81,7 +81,7 @@ const EditQuizUpdatedModal = (props) => {
     formDataToSend.append("description", description);
     formDataToSend.append("category", category);
     formDataToSend.append("question", question);
-    formDataToSend.append("option", final_data.option.join(","));
+    formDataToSend.append("option", final_data.option.join("^"));
     if (option1Image) {
       formDataToSend.append("option1Image", option1Image);
     }
