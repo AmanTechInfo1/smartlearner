@@ -4,7 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-
+import backgroundImage from "../../../../assets/images/questionsTech.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -226,7 +226,12 @@ export default function Adi3Module17() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: "bottom",
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -344,8 +349,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Late decisions, excessive
                   braking, avoiding situations like roundabouts or junctions.
@@ -377,8 +381,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Speeding, poor
                   observations, not anticipating hazards.
@@ -407,8 +410,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Wrong lane, missed
                   signal, confusion at roundabouts.
@@ -439,8 +441,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Lack of focus, zoning
                   out, passive learning.
@@ -467,8 +468,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Timid decision-making,
                   second-guessing, relying too much on you.
@@ -499,8 +499,7 @@ export default function Adi3Module17() {
               </div>
               <div
                 className={styles.adi3Module142ndback}
-                id={styles.aid3Module172ndback}
-              >
+                id={styles.aid3Module172ndback}>
                 <p>
                   <strong>What you might see:</strong> Pupil unsure how they’ve
                   done or waiting for you to lead the summary.
@@ -561,7 +560,16 @@ export default function Adi3Module17() {
       <section className={styles.AdiModuleOneTextArea}>
         {/* ////////////////////////////////////////////////////////////// */}
         <div className={styles.AdiModuleOneTextBox}>
-          <label>Write your thoughts :</label>
+          <label>
+            Write your thoughts how you can improve your questions ?
+          </label>
+          <label>
+            What question do you personally think is the most important to ask
+            your learner?{" "}
+          </label>
+          <label>
+            Put yourself in the shoes of your learner or a first time student
+          </label>
           <textarea
             ref={textareaRef}
             value={text}
@@ -604,8 +612,7 @@ export default function Adi3Module17() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Start to think about the curriculum for learning to drive, what
-            types of questions could you ask for the subjects Write your
-            thoughts below
+            types of questions could you ask for the subjects
           </label>
           <textarea
             ref={textareaRef2}
@@ -644,7 +651,7 @@ export default function Adi3Module17() {
           </div>
         </div>
       </section>
-   <div className={styles.adiLastNextbtn}>
+      <div className={styles.adiLastNextbtn}>
         <Link to="/body-language">
           {" "}
           <button className={styles.adinextbtns}>Next Page</button>

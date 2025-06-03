@@ -4,7 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-
+import backgroundImage from "../../../../assets/images/routeplanningbanner.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -163,7 +163,11 @@ export default function Adi3ModuleEight() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -189,6 +193,10 @@ export default function Adi3ModuleEight() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             What type of roads do you think you would be looking for a beginner?
+          </label>
+          <label>
+            What kind of driving environment do you think would best support
+            someone learning the basics?
           </label>
           <textarea
             ref={textareaRef}
@@ -399,11 +407,11 @@ export default function Adi3ModuleEight() {
       </div>
 
       <div className={styles.adiLastNextbtn}>
-                                      <Link to="/route-direction">
-                                        {" "}
-                                        <button className={styles.adinextbtns}>Next Page</button>
-                                      </Link>
-                                    </div>
+        <Link to="/route-direction">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>

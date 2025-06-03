@@ -203,80 +203,7 @@ export default function AdiPartThree() {
             </div>
           </section>
 
-          {/* /////////////////////////////////////////////////////// */}
-          <div className={styles.adiPart3firstcontainer}>
-            <motion.h1
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className={styles.adiPart3firstheading}
-            >
-              What's Next? The Part 3 ADI Exam
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className={styles.adiPart3firstintro}
-            >
-              The Part 3 exam is your opportunity to showcase your ability to
-              teach others, not just drive. This is the instructional phase of
-              the ADI exam, where you will be assessed on how well you can
-              convey your driving knowledge, skills, and techniques to a learner
-              driver.
-            </motion.p>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className={styles.adiPart3firstsubheading}
-            >
-              What to Expect in Part 3:
-            </motion.h2>
-
-            <div className={styles.adiPart3firstcardsWrapper}>
-              <motion.div
-                className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
-                <BookOpenCheck className={styles.adiPart3firsticon} />
-                <h3>Instructing a Learner Driver</h3>
-                <p>
-                  Teach a learner driver in a real or simulated scenario,
-                  breaking down complex driving tasks and giving clear,
-                  effective instructions.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Lightbulb className={styles.adiPart3firsticon} />
-                <h3>Assessment Areas</h3>
-                <p>
-                  Be evaluated on your planning, communication, feedback,
-                  observation, correction skills, and overall professionalism.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Timer className={styles.adiPart3firsticon} />
-                <h3>Duration</h3>
-                <p>
-                  The exam lasts about an hour, during which you will conduct a
-                  full lesson just like a real-world teaching experience.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* ///////////////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////// */}
           <div className={styles.adiPart3secondcontainer}>
             <div className={styles.adiPart3secondglowBorder}>
               <h1 className={styles.adiPart3secondheading}>
@@ -298,6 +225,75 @@ export default function AdiPartThree() {
               </p>
             </div>
           </div>
+
+          {/* /////////////////////////////////////////////////////// */}
+          <div className={styles.adiPart3firstcontainer}>
+            <motion.h1
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={styles.adiPart3firstheading}>
+              What's Next? The Part 3 ADI Exam
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className={styles.adiPart3firstintro}>
+              The Part 3 exam is your opportunity to showcase your ability to
+              teach others, not just drive. This is the instructional phase of
+              the ADI exam, where you will be assessed on how well you can
+              convey your driving knowledge, skills, and techniques to a learner
+              driver.
+            </motion.p>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className={styles.adiPart3firstsubheading}>
+              What to Expect in Part 3:
+            </motion.h2>
+
+            <div className={styles.adiPart3firstcardsWrapper}>
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}>
+                <BookOpenCheck className={styles.adiPart3firsticon} />
+                <h3>Instructing a Learner Driver</h3>
+                <p>
+                  Teach a learner driver in a real or simulated scenario,
+                  breaking down complex driving tasks and giving clear,
+                  effective instructions.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}>
+                <Lightbulb className={styles.adiPart3firsticon} />
+                <h3>Assessment Areas</h3>
+                <p>
+                  Be evaluated on your planning, communication, feedback,
+                  observation, correction skills, and overall professionalism.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className={styles.adiPart3firstcard}
+                whileHover={{ scale: 1.05 }}>
+                <Timer className={styles.adiPart3firsticon} />
+                <h3>Duration</h3>
+                <p>
+                  The exam lasts about an hour, during which you will conduct a
+                  full lesson just like a real-world teaching experience.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* ///////////////////////////////////////////////////////////////////////////// */}
 
           {/* ///////////////////////////////////////////////////////////////////// */}
           <section style={{ padding: "1rem", backgroundColor: "#0b0b0b" }}>

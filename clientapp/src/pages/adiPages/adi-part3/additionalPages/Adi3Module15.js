@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/interventionbanner.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -286,7 +287,11 @@ export default function Adi3Module15() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -404,7 +409,7 @@ export default function Adi3Module15() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Write down how you would manage responsibility and what potential
-            risks there could be
+            risks there could be.
           </label>
           <textarea
             ref={textareaRef2}
@@ -471,7 +476,11 @@ export default function Adi3Module15() {
       </div>
       <section className={styles.AdiModuleOneTextArea}>
         <div className={styles.AdiModuleOneTextBox}>
-          <label>Write your thoughts below:</label>
+          <label>
+            Write your thoughts about how you would physically or verbally
+            intervene if needed on a lesson, how would you do it and what would
+            you say to ensure it is communicated correctly and effectively?
+          </label>
           <textarea
             ref={textareaRef3}
             value={text3}
@@ -661,29 +670,28 @@ export default function Adi3Module15() {
         </div>
       </div>
 
-        <div className={styles.adiLastNextbtn}>
-                    <Link to="/trainee-badge">
-                      {" "}
-                      <button className={styles.adinextbtns}>Next Page</button>
-                    </Link>
-                  </div>
-      
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/trainee-badge">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* ///////////////////////////////////////////////////////// */}
-       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  intervention the lesson before setting off
-                </p>
-                <Link to="/takequizCatName/intervention">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            intervention the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/intervention">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

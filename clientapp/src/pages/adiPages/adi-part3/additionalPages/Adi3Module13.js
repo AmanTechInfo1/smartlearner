@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/drivinglessons.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -286,7 +287,11 @@ export default function Adi3Module13() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -304,7 +309,7 @@ export default function Adi3Module13() {
         </motion.h1>
 
         <motion.section
-          className={styles.adi3Module13section}
+          className={styles.adi3Module13sectionAlt}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}>
@@ -312,8 +317,10 @@ export default function Adi3Module13() {
           <p>
             As driving instructors, we start every lesson with a structure —
             clear route, defined objectives, and strategy tailored to
-            development. <br />
-            But real-life doesn’t always follow the script. <br />
+            development.
+          </p>
+          <p> But real-life doesn’t always follow the script.</p>
+          <p>
             An effective lesson plan must be flexible. Because true
             learner-centred instruction doesn’t just focus on ticking boxes — it
             focuses on progress, confidence, and safety. That means knowing when
@@ -328,7 +335,7 @@ export default function Adi3Module13() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Why do you think receiving feedback during a driving lesson is
-            important, and how might it help you improve as a instructor
+            important, and how might it help you improve as a instructor ?
           </label>
           <textarea
             ref={textareaRef}

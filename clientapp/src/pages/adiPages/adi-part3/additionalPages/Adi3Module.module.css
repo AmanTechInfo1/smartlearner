@@ -50,6 +50,53 @@
   margin-left: auto;
   color: white;
 }
+
+/* Wrapper to hold the textarea and the pen */
+.AdiModuleOneTextBox {
+  position: relative;
+}
+
+/* Your existing textarea styles */
+.AdiModuleOneTextBox textarea {
+  border: 1px solid rgba(58, 65, 101, 0.794);
+  background-color: #0a0a10;
+  border-radius: 10px;
+  transition: 0.5s;
+  outline: none;
+  color: rgba(235, 238, 255, 0.871);
+  padding-right: 40px; /* space for pen */
+}
+
+/* Pen animation using a pseudo-element */
+.AdiModuleOneTextBox::after {
+  content: "✏️";
+  position: absolute;
+  top: 30px;
+  right: 12px;
+  font-size: 1.7rem;
+  display: inline-block;
+  animation: bouncew 0.6s infinite alternate;
+  transition: opacity 0.3s;
+  opacity: 1;
+  pointer-events: none;
+  line-height: 1;
+}
+@keyframes bouncew {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(10deg);
+  }
+}
+
+/* Show animated pen when textarea is focused */
+.AdiModuleOneTextBox:has(textarea:focus)::after {
+  opacity: 0;
+}
+
+/* Bouncing effect for pen */
+
 .AdiModuleOneTextBox label {
   font-size: 1.2rem;
   padding: 0.5rem;
@@ -183,9 +230,9 @@
 }
 
 .firstLessonModulecard {
-  background: linear-gradient(145deg, #010809, #292929);
+  background: linear-gradient(145deg, #c400ba, #640037);
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 251, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 67, 68, 0.2);
   padding: 3rem;
   max-width: 800px;
   text-align: center;
@@ -240,7 +287,7 @@
   background: #090909;
   color: #e0e0e0;
   padding: 3rem 2rem;
-  min-height: 100vh;
+
   font-family: "Segoe UI", sans-serif;
 }
 
@@ -265,6 +312,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
+}
+.firstLessonModulesecondcardGrid
+  > *:nth-last-child(1):nth-child(odd):last-child {
+  grid-column: 1 / -1; /* Make it span full row */
+  justify-self: center;
+  max-width: 550px; /* Center the item */
+  width: 100%;
 }
 
 .firstLessonModulesecondcard {
@@ -291,6 +345,11 @@
   line-height: 1.6;
   color: #ccc;
 }
+@media (max-width: 427px) {
+  .firstLessonModulesecondcardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
 /* /////////////////////////////////////////////////////////////////// */
 /* AdiPartThree.module.css */
 .firstLessonModulesecondthirdcontainer {
@@ -298,7 +357,7 @@
   color: #ffffff;
   padding: 2rem;
   border-radius: 1rem;
-  max-width: 900px;
+  max-width: 1140px;
   padding: 1rem;
   margin: 2rem auto;
   box-shadow: 0 0 10px rgba(77, 231, 255, 0.6);
@@ -307,7 +366,10 @@
 
 .firstLessonModulesecondthirdheading {
   font-size: 2.5rem;
-  color: #ff2e6d;
+  background: linear-gradient(90deg, #ff6b6b, #f7d794, #70a1ff, #7bed9f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -612,7 +674,7 @@
 }
 
 .Adiparttwocontainer {
-  max-width: 800px;
+  max-width: 1240px;
   width: 100%;
   background: linear-gradient(145deg, #010809, #292929);
   border-radius: 20px;
@@ -1028,8 +1090,8 @@
 }
 
 .adi4secondsubheading {
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1.1rem;
+  text-align: left;
   max-width: 1240px;
   margin: 0 auto 2rem auto;
   color: #cccccc;
@@ -1285,8 +1347,8 @@
 
 .adiSix1stdescription {
   text-align: center;
-  font-size: 1.3rem;
-  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   color: #ccc;
   animation: fadeInq 1.5s ease-in-out forwards;
 }
@@ -1493,6 +1555,7 @@
 .adisix2ndlevels {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   gap: 2rem;
   max-width: 1640px;
   width: 100%;
@@ -1511,7 +1574,7 @@
 }
 
 .adisix2ndlevelCard:hover {
-  transform: translateY(-10px);
+  transform: scale(1.02);
   box-shadow: 0 0 25px rgba(64, 252, 255, 0.5);
 }
 
@@ -1560,17 +1623,6 @@
 @keyframes slideDownj {
   from {
     transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUpj {
-  from {
-    transform: translateY(20px);
     opacity: 0;
   }
   to {
@@ -1771,6 +1823,11 @@
 
 .adiSix3rdstep3 {
   box-shadow: 0px 4px 20px rgba(255, 255, 0, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 189, 202, 0.926),
+    rgba(148, 0, 247, 0.885)
+  );
 }
 
 @media (max-width: 1068px) {
@@ -2032,19 +2089,18 @@
 .adi3Nine1stheading {
   font-size: 2.5rem;
   text-align: center;
-  color: #00ffe1;
-  animation: pulsedd 2s infinite;
+  color: #00ffdd;
 }
 
 .adi3Nine1stheading span {
-  color: #ff0066;
+  color: #008cff;
 }
 
 .adi3Nine1stsubHeading {
   font-size: 1.8rem;
   text-align: center;
   margin: 1rem 0;
-  color: #ffaa00;
+  color: #ff0080;
   animation: slideIndd 1.5s ease-in-out;
 }
 
@@ -2067,7 +2123,7 @@
 
 .adi3Nine1struleBox {
   margin-top: 2rem;
-  background: linear-gradient(135deg, #ff0066, #6600ff);
+  background: linear-gradient(135deg, #ff0066, #2600ff);
   padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
@@ -2234,7 +2290,7 @@
 }
 
 .adi3Nine2ndwarning h2 {
-  color: #ff5555;
+  color: #fa066c;
 }
 
 .adi3Nine2ndsubsection {
@@ -2242,7 +2298,7 @@
 }
 
 .adi3Nine2ndnote {
-  color: #ffa500;
+  color: #00ff80;
   margin-top: 0.5rem;
   font-style: italic;
 }
@@ -2612,11 +2668,18 @@
 }
 
 .adi11ModuletipBox {
-  background: linear-gradient(135deg, #0a2926, #280128);
+  background: linear-gradient(135deg, #0a1929, #460231);
   padding: 2rem;
   border-radius: 20px;
   margin: 3rem 0;
   animation: bounceInmk 1.2s ease forwards;
+}
+.adi11ModuletipBox h3 {
+  font-size: 1.2rem;
+  color: #ff1381;
+}
+.adi11ModuletipBox li {
+  animation: pulsell 2s infinite ease-in-out;
 }
 
 .adi11ModuletipBox h2 {
@@ -2635,7 +2698,7 @@
   margin: 0.8rem 0;
   padding-left: 1rem;
   position: relative;
-  color: #d1fff5;
+  color: #eef6ff;
   font-size: 1.1rem;
 }
 
@@ -3452,6 +3515,9 @@
 }
 
 .adi3Module13sectionAlt {
+  max-width: 1640px;
+  width: 100%;
+  margin: 0px auto;
   background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   color: #1a1a1a;
   padding: 2rem;
@@ -4223,7 +4289,7 @@
 }
 
 .Adi3Module161stcard {
-  background: linear-gradient(145deg, #00a2e2, #0009a3);
+  background: linear-gradient(145deg, #bc00e293, #008ba398);
   border: 1px solid #161616;
   border-radius: 1rem;
   padding: 2rem;
@@ -4238,12 +4304,12 @@
 .Adi3Module161stcardTitle {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #800024;
+  color: #ff0177;
 }
 
 .Adi3Module161stcardContent {
   font-size: 1rem;
-  color: #ddd;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -4484,14 +4550,14 @@
 .Adi3Module17title {
   font-size: 3rem;
   text-align: center;
-  color: #ff3f3f;
+  color: #ff0055;
 }
 
 .Adi3Module17subTitle {
   font-size: 2rem;
   margin-top: 20px;
-  color: #50fa7b;
-  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+  animation: pulseq 2s infinite;
+  color: #00ffdd;
 }
 
 .Adi3Module17text {
@@ -4499,6 +4565,13 @@
   line-height: 1.6;
   margin-top: 10px;
   color: #dcdcdc;
+}
+
+.adi3module17contentbox {
+  font-size: 17px;
+}
+.adi3module17contentbox strong {
+  color: #00ffdd;
 }
 
 @keyframes fadeInr {
@@ -4731,13 +4804,14 @@
 .adi3module7firststepContainer {
   display: flex;
   flex-direction: row;
+
   align-items: center;
   position: relative;
   gap: 20px;
 }
 
 .adi3module7firststep {
-  background: linear-gradient(135deg, #eef2f3, #8e9eab);
+  background: linear-gradient(135deg, #ff6b6b, #f7d794, #70a1ff, #7bed9f);
   border-radius: 12px;
   padding: 1.5rem;
   width: 100%;
@@ -5142,4 +5216,19 @@
   .adiLastNextbtn button {
     padding: 0.8rem 2.5rem;
   }
+}
+.textareaGlow {
+  transition: all 0.3s ease;
+  border: 2px solid #ccc;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  resize: vertical;
+}
+
+.textareaGlow:focus {
+  border-color: #7b61ff;
+  box-shadow: 0 0 10px rgba(123, 97, 255, 0.5);
+  outline: none;
 }

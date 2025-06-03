@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/traineebadges.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -129,7 +130,12 @@ export default function Adi3Module16() {
   ///////////////////////////////////////////////////////
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: "top",
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}

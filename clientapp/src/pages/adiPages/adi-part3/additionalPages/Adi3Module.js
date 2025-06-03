@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../../../assets/images/national-standard2.jpg";
 
 export default function Adi3Module() {
   const textRef = useRef(null);
@@ -137,7 +138,11 @@ export default function Adi3Module() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -287,9 +292,9 @@ export default function Adi3Module() {
         </div>
 
         {/* /////////////////////////////////////////////////////////////////// */}
-        <div className={styles.istlesson4thcontainer}>
+        <div className={styles.firstLessonModulesecondthirdcontainer}>
           <motion.h1
-            className={styles.istlesson4thtitle}
+            className={styles.firstLessonModulesecondthirdheading}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8 }}>
@@ -297,7 +302,7 @@ export default function Adi3Module() {
           </motion.h1>
 
           <motion.div
-            className={styles.istlesson4thsection}
+            className={styles.firstLessonModulesecondthirdsection}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -329,7 +334,7 @@ export default function Adi3Module() {
           </motion.div>
 
           <motion.div
-            className={styles.istlesson4thsection}
+            className={styles.firstLessonModulesecondthirdsection}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -354,7 +359,7 @@ export default function Adi3Module() {
           </motion.div>
 
           <motion.div
-            className={styles.istlesson4thsection}
+            className={styles.firstLessonModulesecondthirdsection}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

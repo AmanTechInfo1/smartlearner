@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
+import backgroundImage from "../../../../assets/images/adi3videos.jpg";
 
 export default function Adi3Videos() {
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = "Adi part Videos"; // First part before "Driving"
+    const firstPart = "Adi part 3 Videos"; // First part before "Driving"
 
     // Split both parts into individual characters and map them to <span>
     const firstLine = firstPart
@@ -124,7 +125,11 @@ export default function Adi3Videos() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -132,7 +137,6 @@ export default function Adi3Videos() {
         </section>
       </section>
       <h2 className={styles.videotitle2}>Watch Our Video</h2>
-      
 
       <div className={styles.videoContainer2}>
         {videoURLs.map((url, index) => (

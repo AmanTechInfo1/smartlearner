@@ -286,8 +286,7 @@ export default function Adi3Moduletwo() {
       className={styles.Adi3rdlastsection}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
+      transition={{ duration: 0.6 }}>
       <h2>{title}</h2>
       <ul>
         {items.map((item, index) => (
@@ -320,12 +319,16 @@ export default function Adi3Moduletwo() {
         {/* ////////////////////////////////////////////////////////////// */}
         <div className={styles.AdiModuleOneTextBox}>
           <label>
-            Think back to your own driving lessons—do you remember your
-            instructor? <br /> What stood out to you? Were they patient and
-            encouraging, or did they make you feel nervous? What qualities did
-            you appreciate, and what could have been better? Take a moment to
-            reflect and jot down your thoughts.
+            Think back to your own driving lessons - Do you remember your
+            instructor?
           </label>
+          <label style={{ marginBottom: "1rem" }}>
+            {" "}
+            What stood out to you? Were they patient and encouraging, or did
+            they make you feel nervous? What qualities did you appreciate, and
+            what could have been better?
+          </label>
+          <label> Take a moment to reflect and jot down your thoughts.</label>
           <textarea
             ref={textareaRef}
             value={text}
@@ -369,12 +372,10 @@ export default function Adi3Moduletwo() {
           className={styles.Adiparttwocontainer}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+          transition={{ duration: 1 }}>
           <motion.p
             className={styles.Adiparttwoparagraph}
-            whileHover={{ scale: 1.02 }}
-          >
+            whileHover={{ scale: 1.02 }}>
             Being a driving instructor is more than just teaching someone to
             operate a car. You become a teacher, coach, mentor, and sometimes
             even a confidant. Your students will look to you not just for
@@ -383,8 +384,7 @@ export default function Adi3Moduletwo() {
 
           <motion.p
             className={styles.Adiparttwoparagraph}
-            whileHover={{ scale: 1.02 }}
-          >
+            whileHover={{ scale: 1.02 }}>
             Now, consider this: What do you want your students to remember about
             you? When they reflect on their lessons years from now, what
             qualities do you hope stand out? Think about the impact you want to
@@ -442,8 +442,7 @@ export default function Adi3Moduletwo() {
           className={styles.Adiparttwocontainer}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+          transition={{ duration: 1 }}>
           <motion.p className={styles.paragraph} whileHover={{ scale: 1.02 }}>
             As an instructor, you play a crucial role in shaping a learner’s
             driving habits. The way you teach, support, and guide them will
@@ -468,8 +467,7 @@ export default function Adi3Moduletwo() {
             className={styles.subheading}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-          >
+            transition={{ delay: 1.2, duration: 0.8 }}>
             <Sparkles size={24} className={styles.icon} /> Customer Service
           </motion.h2>
         </motion.div>
@@ -477,7 +475,14 @@ export default function Adi3Moduletwo() {
       {/* ///////////////////////////////////////////////////////////////// */}
       <section className={styles.AdiModuleOneTextArea}>
         <div className={styles.AdiModuleOneTextBox}>
-          <label>1. What do you class as good customer service?</label>
+          <label>
+            1. What do you personally define as truly exceptional customer
+            service?
+          </label>
+          <label>
+            Can you share an experience that challenged or reshaped your
+            expectations of what great service really looks like?
+          </label>
           <textarea
             ref={textareaRef3}
             value={text3}
@@ -522,8 +527,7 @@ export default function Adi3Moduletwo() {
           className={styles.Adi3rdlasttitle}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+          transition={{ duration: 0.5 }}>
           What Makes Good Customer Service in Driving Instruction
         </motion.h1>
 
@@ -610,8 +614,7 @@ export default function Adi3Moduletwo() {
           className={styles.whyItMatters}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
+          transition={{ delay: 0.3 }}>
           <h2>
             Why Good Customer Service Matters <FaCar />
           </h2>
@@ -629,11 +632,11 @@ export default function Adi3Moduletwo() {
       </div>
 
       <div className={styles.adiLastNextbtn}>
-              <Link to="/legal-stuff">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
+        <Link to="/legal-stuff">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* //////////////////////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>

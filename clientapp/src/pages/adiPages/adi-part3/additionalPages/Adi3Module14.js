@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/risk-management.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -258,7 +259,11 @@ instructor takes proactive steps to ensure safety.
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -550,7 +555,7 @@ instructor takes proactive steps to ensure safety.
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Write down how you would manage responsibility and what potential
-            risks there could be
+            risks there could be.
           </label>
           <textarea
             ref={textareaRef2}
@@ -590,12 +595,12 @@ instructor takes proactive steps to ensure safety.
         </div>
       </section>
 
-       <div className={styles.adiLastNextbtn}>
-              <Link to="/intervention">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/intervention">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* ////////////////////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>

@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import backgroundImage from "../../../../assets/images/legulstuffbanner.jpg";
+
 export default function Adi3Modulethree() {
   const textRef = useRef(null);
 
@@ -164,7 +166,11 @@ export default function Adi3Modulethree() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -187,19 +193,24 @@ export default function Adi3Modulethree() {
               className={styles.adipart3threecard}
               style={{ borderColor: section.color }}
               whileHover={{ rotate: 5, scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-            >
+              transition={{ duration: 0.5 }}>
               <div
                 className={styles.adipart3threeicon}
-                style={{ color: section.color }}
-              >
+                style={{ color: section.color }}>
                 {section.icon}
               </div>
               <h3 className={styles.adipart3threetitle}>{section.title}</h3>
               <ul className={styles.adipart3threelist}>
-                {section.points.map((point, idx) => (
-                  <li key={idx}>🔹 {point}</li>
-                ))}
+                {section.points.map((point, idx) => {
+                  const parts = point.split("🔹").filter(Boolean); // Remove empty strings
+                  return (
+                    <li key={idx}>
+                      {parts.map((part, subIdx) => (
+                        <p key={subIdx}>🔹 {part.trim()}</p>
+                      ))}
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           ))}
@@ -213,8 +224,7 @@ export default function Adi3Modulethree() {
             <a
               href="https://www.gov.uk/view-driving-licence"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               https://www.gov.uk/view-driving-licence
             </a>
             <br />
@@ -222,8 +232,7 @@ export default function Adi3Modulethree() {
             <a
               href="https://www.gov.uk/check-driving-information"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               https://www.gov.uk/check-driving-information
             </a>
           </p>
@@ -231,15 +240,12 @@ export default function Adi3Modulethree() {
       </div>
       {/* ///////////////////////////////////////////////// */}
 
-
-
- <div className={styles.adiLastNextbtn}>
-              <Link to="/learning-style">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
-
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/learning-style">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       <div className={styles.quizStartDiv}>
         <section className={styles.startQuizSection}>

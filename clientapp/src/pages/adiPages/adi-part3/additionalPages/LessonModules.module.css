@@ -1,15 +1,21 @@
 .accordionContainer {
-  max-width: 800px;
-
+  max-width: 1440px;
   width: 100%;
   margin: 0pc auto;
-  background: linear-gradient(135deg, #2b0513a9, #12025cab);
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
+
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.lessonFlexContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.lessonContainer {
+  background: linear-gradient(135deg, #2b0513a9, #12025cab);
+  border-radius: 5px;
+}
 .LessonAccordionheader {
   display: flex;
   justify-content: space-between;
@@ -43,7 +49,19 @@
   font-weight: 600;
   position: relative;
 }
-
+@media (max-width: 467px) {
+  .LessonAccordionheader{
+    font-weight: bold;
+  font-size: 1.2rem;
+  }
+  .LessonAccordionProgress{
+    font-size: 1rem;
+  }
+  .itemLesson {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
 .listLessonData a {
   text-decoration: none;
   color: rgb(255, 255, 255);

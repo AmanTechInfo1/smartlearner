@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import backgroundImage from "../../../../assets/images/bookpart3.jpg";
 
 export default function Adi3Module18() {
   const textRef = useRef(null);
@@ -100,7 +101,11 @@ export default function Adi3Module18() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -123,8 +128,7 @@ export default function Adi3Module18() {
             <a
               href="https://www.gov.uk/adi-part-3-test"
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               GOV.UK ADI Part 3 booking page
             </a>
           </p>
@@ -204,20 +208,23 @@ export default function Adi3Module18() {
           </p>
           <p>
             Need help?{" "}
-            <span className={styles.adi3module18highlight}>
-              Reach out to us anytime!
-            </span>{" "}
+            <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
+              {" "}
+              <span className={styles.adi3module18highlight}>
+                Reach out to us anytime!
+              </span>{" "}
+            </a>
             🚀
           </p>
         </div>
       </div>
 
-       <div className={styles.adiLastNextbtn}>
-              <Link to="/adi-videos">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/adi-videos">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
     </div>
   );
 }

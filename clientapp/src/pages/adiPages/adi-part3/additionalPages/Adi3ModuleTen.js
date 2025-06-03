@@ -4,7 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-
+import backgroundImage from "../../../../assets/images/client-centered.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -317,7 +317,11 @@ export default function Adi3ModuleTen() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -394,24 +398,28 @@ export default function Adi3ModuleTen() {
           Client-Centred Learning in Practice
         </h2>
         <div className={styles.adi10Module1stcard}>
-          <p className={styles.adi10Module1sttext}>
-            During the ADI Part 3 test, the DVSA examiner assesses your ability
-            to deliver lessons that are aligned with client-centred principles.
-            This includes the way you plan, deliver, adapt, and reflect upon the
-            lesson in collaboration with the learner. <br />
-            At the start of the lesson, the learner should be involved in goal
-            setting. This means that instead of the instructor deciding what
-            will be taught, the session should begin with a conversation that
-            explores what the learner wants to achieve, what they feel confident
-            in, and where they think they need further support.
-            <br />
-            This open dialogue forms the basis of a mutually agreed lesson plan.
-            The instructor must then guide the pupil toward achieving their
-            goals by offering support that matches the learner’s current stage
-            of development. The level of instruction and intervention should
-            vary according to the pupil’s ability, ensuring they are neither
-            overwhelmed nor under-challenged.
-          </p>
+          <div className={styles.adi10Module1sttext}>
+            <p>
+              During the ADI Part 3 test, the DVSA examiner assesses your
+              ability to deliver lessons that are aligned with client-centred
+              principles. This includes the way you plan, deliver, adapt, and
+              reflect upon the lesson in collaboration with the learner. <br />
+              At the start of the lesson, the learner should be involved in goal
+              setting. This means that instead of the instructor deciding what
+              will be taught, the session should begin with a conversation that
+              explores what the learner wants to achieve, what they feel
+              confident in, and where they think they need further support.
+            </p>
+            <p>
+              {" "}
+              This open dialogue forms the basis of a mutually agreed lesson
+              plan. The instructor must then guide the pupil toward achieving
+              their goals by offering support that matches the learner’s current
+              stage of development. The level of instruction and intervention
+              should vary according to the pupil’s ability, ensuring they are
+              neither overwhelmed nor under-challenged.
+            </p>
+          </div>
         </div>
 
         <h2 className={styles.adi10Module1stsubheading}>
@@ -483,20 +491,27 @@ export default function Adi3ModuleTen() {
           Adapting to the Learner’s Needs
         </h2>
         <div className={styles.adi10Module1stcard}>
-          <p className={styles.adi10Module1sttext}>
-            Client-Centred Learning requires the instructor to remain adaptable.
-            This means recognising when a learner is struggling or anxious and
-            adjusting the lesson accordingly. The instructor should be able to
-            read verbal and non-verbal cues—such as tone of voice or body
-            language—and respond with empathy and encouragement. <br />
-            For example, if a pupil appears nervous about joining a roundabout,
-            rather than pushing them through it, the instructor might ask, “What
-            part of this situation make you feel usure? "or" would you like to
-            talk through what we are trying to do before trying again ?"
-            <br />
-            This tailored, supportive method ensures that learners feel safe and
-            respected, increasing their engagement and confidence.
-          </p>
+          <div className={styles.adi10Module1sttext}>
+            <p>
+              Client-Centred Learning requires the instructor to remain
+              adaptable. This means recognising when a learner is struggling or
+              anxious and adjusting the lesson accordingly. The instructor
+              should be able to read verbal and non-verbal cues—such as tone of
+              voice or body language—and respond with empathy and encouragement.
+            </p>
+            <p>
+              {" "}
+              For example, if a pupil appears nervous about joining a
+              roundabout, rather than pushing them through it, the instructor
+              might ask, “What part of this situation make you feel usure? "or"
+              would you like to talk through what we are trying to do before
+              trying again ?"
+            </p>
+            <p>
+              This tailored, supportive method ensures that learners feel safe
+              and respected, increasing their engagement and confidence.
+            </p>
+          </div>
         </div>
       </div>
       {/* //////////////////////////////////////////////////////// */}
@@ -553,37 +568,48 @@ export default function Adi3ModuleTen() {
           Shared Responsibility and Learning Outcomes
         </h2>
         <div className={styles.adi10Module1stcard}>
-          <p className={styles.adi10Module1sttext}>
-            A final component of client-centred instruction is the concept of
-            shared responsibility. While the instructor is the expert, the
-            learner is actively involved in shaping the learning process.
-            Together, they identify objectives, evaluate progress, and make
-            decisions about when and how to increase levels of independence.{" "}
-            <br />
-            For example, if a pupil is beginning to grasp the skill of parallel
-            parking, the instructor might say, “You’ve done a few great attempts
-            with my help—do you feel ready to try one more with less input from
-            me?” This kind of dialogue promotes autonomy and reinforces trust in
-            the pupil's own abilities.
-            <br />
-            At the conclusion of the lesson, the instructor should invite the
-            learner to reflect on what they’ve achieved, what could be improved,
-            and what they’d like to focus on next time. This ongoing cycle of
-            discussion and reflection is central to the CCL model and is a key
-            area of focus in the Part 3 marking criteria.
-            <br />
-            Client-Centred Learning is not just a teaching method—it’s a
-            mindset. For driving instructors preparing for the ADI Part 3,
-            understanding and applying CCL is vital. It enables you to deliver
-            personalised, effective lessons that empower learners to take
-            ownership of their progress and prepare them for a lifetime of safe
-            driving.
-            <br />
-            By embedding CCL principles into your lesson planning,
-            communication, feedback, and goal setting, you demonstrate your
-            ability to develop competent and confident drivers—exactly what the
-            DVSA is looking for in a qualified ADI.
-          </p>
+          <div className={styles.adi10Module1sttext}>
+            <p>
+              {" "}
+              A final component of client-centred instruction is the concept of
+              shared responsibility. While the instructor is the expert, the
+              learner is actively involved in shaping the learning process.
+              Together, they identify objectives, evaluate progress, and make
+              decisions about when and how to increase levels of independence.
+            </p>
+            <p>
+              {" "}
+              For example, if a pupil is beginning to grasp the skill of
+              parallel parking, the instructor might say, “You’ve done a few
+              great attempts with my help—do you feel ready to try one more with
+              less input from me?” This kind of dialogue promotes autonomy and
+              reinforces trust in the pupil's own abilities.
+            </p>
+            <p>
+              {" "}
+              At the conclusion of the lesson, the instructor should invite the
+              learner to reflect on what they’ve achieved, what could be
+              improved, and what they’d like to focus on next time. This ongoing
+              cycle of discussion and reflection is central to the CCL model and
+              is a key area of focus in the Part 3 marking criteria.
+            </p>
+            <p>
+              {" "}
+              Client-Centred Learning is not just a teaching method—it’s a
+              mindset. For driving instructors preparing for the ADI Part 3,
+              understanding and applying CCL is vital. It enables you to deliver
+              personalised, effective lessons that empower learners to take
+              ownership of their progress and prepare them for a lifetime of
+              safe driving.
+            </p>
+            <p>
+              {" "}
+              By embedding CCL principles into your lesson planning,
+              communication, feedback, and goal setting, you demonstrate your
+              ability to develop competent and confident drivers—exactly what
+              the DVSA is looking for in a qualified ADI.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -606,12 +632,11 @@ export default function Adi3ModuleTen() {
       </div>
 
       <div className={styles.adiLastNextbtn}>
-              <Link to="/questioning-techniques">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
-      
+        <Link to="/questioning-techniques">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* /////////////////////////////////////// */}
 

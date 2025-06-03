@@ -269,8 +269,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4firstheading}
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+            transition={{ duration: 0.8 }}>
             Inclusive Driving Lessons
           </motion.h1>
 
@@ -278,9 +277,8 @@ export default function Adi3ModuleFour() {
             className={styles.adi4firstparagraph}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            A a driving instructor, you will work with learners from diverse
+            transition={{ delay: 0.2 }}>
+            As a driving instructor, you will work with learners from diverse
             backgrounds, each with unique needs and abilities. It is essential
             to treat every student with fairness and respect, ensuring that no
             one experiences discrimination. Some learners may have learning
@@ -292,8 +290,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4firstparagraph}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
+            transition={{ delay: 0.4 }}>
             By understanding these challenges, you can tailor your teaching
             approach to create a supportive learning environment. Personalizing
             lessons not only helps reduce anxiety but also builds confidence,
@@ -305,8 +302,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4firstsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
+            transition={{ delay: 0.6 }}>
             <h2 className={styles.adi4firstsubheading}>
               Types of Learning Disabilities & Their Impact on Driving Lessons
             </h2>
@@ -553,7 +549,7 @@ export default function Adi3ModuleFour() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             How might misunderstanding a learner’s behaviour lead to unfair
-            treatment or missed teaching opportunities
+            treatment or missed teaching opportunities ?
           </label>
           <textarea
             ref={textareaRef}
@@ -605,16 +601,14 @@ export default function Adi3ModuleFour() {
             className={styles.adi4secondheading}
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+            transition={{ duration: 0.8 }}>
             How Can You Support Your Learner?
           </motion.h1>
           <motion.p
             className={styles.adi4secondsubheading}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            transition={{ delay: 0.5 }}>
             When working with each client, it's essential to understand how you
             can best support their learning needs. There’s no one-size-fits-all
             approach to coaching and driving instruction.
@@ -623,8 +617,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4secondsubheading}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            transition={{ delay: 0.5 }}>
             Think about how you personally prefer to learn. Do you like reading
             instructions and books, watching video tutorials, or diving in and
             learning through hands-on experience? Take a moment to reflect on
@@ -634,8 +627,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4secondsubheading}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            transition={{ delay: 0.5 }}>
             One of the best ways to help your learner is by asking them directly
             how they learn best and what kind of support they need from you. If
             they’re unsure, encourage them to complete a VARK Questionnaire.
@@ -645,8 +637,7 @@ export default function Adi3ModuleFour() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            style={{ marginBottom: "2rem" }}
-          >
+            style={{ marginBottom: "2rem" }}>
             <HelpCircle size={36} color="#87CEFA" />
             <p>
               The VARK Questionnaire is a tool designed to identify an
@@ -666,8 +657,7 @@ export default function Adi3ModuleFour() {
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-              >
+                transition={{ delay: index * 0.2 }}>
                 <div className={styles.adi4secondicon}>{style.icon}</div>
                 <h3>{style.title}</h3>
                 <p>{style.description}</p>
@@ -678,8 +668,7 @@ export default function Adi3ModuleFour() {
             className={styles.adi4secondvarkInfo}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
+            transition={{ delay: 1 }}>
             <HelpCircle size={36} color="#87CEFA" />
             <p>
               By completing the VARK questionnaire, individuals can identify
@@ -695,8 +684,7 @@ export default function Adi3ModuleFour() {
               color: "#cccccc",
               fontSize: "1.2rem",
               textDecoration: "none",
-            }}
-          >
+            }}>
             Have a go yourself{" "}
             <a
               target="_blank"
@@ -704,8 +692,8 @@ export default function Adi3ModuleFour() {
               style={{
                 color: "rgb(50, 228, 255)",
                 textDecoration: "none",
-              }}
-            >
+                fontWeight: "700",
+              }}>
               Here
             </a>
           </p>
@@ -754,12 +742,12 @@ export default function Adi3ModuleFour() {
         </div>
       </div>
 
- <div className={styles.adiLastNextbtn}>
-              <Link to="/lesson-structure">
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/lesson-structure">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* /////////////////////////////// */}
       <div className={styles.quizStartDiv}>

@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/giving-routes.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -344,7 +345,11 @@ export default function Adi3ModuleNine() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -450,7 +455,7 @@ export default function Adi3ModuleNine() {
       <div className={styles.AdiModuleOneTextBox} style={{ marginTop: "2rem" }}>
         <label>
           How might a vague instruction like 'Turn left' cause confusion during
-          a lesson
+          a lesson ?
         </label>
         <textarea
           ref={textareaRef2}
@@ -579,7 +584,7 @@ export default function Adi3ModuleNine() {
             How might using the GROW model help a learner feel more involved and
             motivated during a lesson? Can you think of a goal-setting question
             you might ask to help a future pupil identify what they want to
-            achieve?"
+            achieve?
           </label>
           <textarea
             ref={textareaRef3}
@@ -654,7 +659,7 @@ export default function Adi3ModuleNine() {
       </div>
       <div className={styles.AdiModuleOneTextBox}>
         <label>
-          what ways do you think shifting from giving instructions to using a
+          What ways do you think shifting from giving instructions to using a
           coaching approach—like the GROW model—might change how a learner
           experiences a driving lesson?
         </label>

@@ -23,11 +23,12 @@ import meetingOncoming from "../../../../assets/images/Meeting-oncoming-traffic.
 import planningAnticipation from "../../../../assets/images/Anticipation-and-planning.png";
 import MockTests from "../../../../assets/images/Mock-testsp3.png";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../../../assets/images/lessonStructure.jpg";
 
 export default function Adi3Modulefive() {
   const skills = [
     { title: "Moving off Stopping", img: movingOff },
-    { title: "Forword Bay Park", img: forwordbaypark },
+    { title: "Forward Bay Park", img: forwordbaypark },
     { title: "Reverse Bay park", img: reversebaypark },
     { title: "Parallel park", img: parallelpark },
     { title: "Park on the right", img: parkonright },
@@ -53,6 +54,37 @@ export default function Adi3Modulefive() {
   const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
   const [editIndex, setEditIndex] = useState(null);
   const textareaRef = useRef(null);
+
+  const [typedText, setTypedText] = useState("");
+  const [colorIndex, setColorIndex] = useState(0);
+
+  const fullText = "Write your thoughts here...";
+  const colors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF"];
+
+  useEffect(() => {
+    let charIndex = 0;
+    let currentText = "";
+    let isClearing = false;
+    const interval = setInterval(() => {
+      if (!isClearing) {
+        currentText += fullText[charIndex];
+        setTypedText(currentText);
+        charIndex++;
+        if (charIndex >= fullText.length) {
+          isClearing = true;
+          setTimeout(() => {
+            currentText = "";
+            setTypedText("");
+            charIndex = 0;
+            isClearing = false;
+            setColorIndex((prev) => (prev + 1) % colors.length);
+          }, 1000); // pause after full text
+        }
+      }
+    }, 120);
+
+    return () => clearInterval(interval);
+  }, [colorIndex]);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -200,7 +232,11 @@ export default function Adi3Modulefive() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -215,8 +251,7 @@ export default function Adi3Modulefive() {
             className={styles.firstLessonModulecard}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+            transition={{ duration: 1 }}>
             <h2 className={styles.firstLessonModuletitle}>
               How do you determine what to teach?
             </h2>
@@ -253,6 +288,18 @@ export default function Adi3Modulefive() {
             should master. Write down as many topics as you can think of, and
             use this as a reference point for your lessons.
           </label>
+
+          <div className={styles.textareaWrapper}>
+            {/* Colorful typing effect behind transparent textarea */}
+            {text.length === 0 && (
+              <div
+                className={styles.fakePlaceholder}
+                style={{ color: colors[colorIndex] }}>
+                {typedText}
+              </div>
+            )}
+          </div>
+
           <textarea
             ref={textareaRef}
             value={text}
@@ -312,8 +359,7 @@ export default function Adi3Modulefive() {
             maxWidth: "1240px",
             width: "100%",
             margin: "2rem auto",
-          }}
-        >
+          }}>
           While these topics serve as a solid foundation, keep in mind that the
           order and focus may vary based on your learner's needs and
           preferences. This is simply a guide to help structure your lessons. It
@@ -322,28 +368,27 @@ export default function Adi3Modulefive() {
         </p>
       </section>
 
-
-       <div className={styles.adiLastNextbtn}>
-                    <Link to="/gde-matrix-grow">
-                      {" "}
-                      <button className={styles.adinextbtns}>Next Page</button>
-                    </Link>
-                  </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/gde-matrix-grow">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* ///////////////////////////////////// */}
       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  Lesson Structure the lesson before setting off
-                </p>
-                <Link to="/takequizCatName/lesson-structure">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Lesson Structure the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/lesson-structure">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

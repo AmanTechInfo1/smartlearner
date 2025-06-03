@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/gde-matrix.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -505,7 +506,11 @@ export default function () {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -520,11 +525,13 @@ export default function () {
           The Goals for Driver Education (GDE) Matrix structures driver
           education into different hierarchical levels and addresses key
           influencing factors shaping a driver's decisions.
-          <br /> By combining these elements, it ensures that driver training is
-          not just about technical skills, but also about understanding risks,
+        </p>
+        <p className={styles.adiSix1stdescription}>
+          {" "}
+          By combining these elements, it ensures that driver training is not
+          just about technical skills, but also about understanding risks,
           personal decision-making, and external influences.
         </p>
-
         <section className={styles.adiSix1stsection}>
           <h2 className={styles.adiSix1stsubTitle}>
             1. Breaking Down Driving into Four Levels
@@ -742,8 +749,7 @@ export default function () {
             key={index}
             className={`${styles.adiSix3rdstepCard} ${
               styles[`adiSix3rdstep${index}`]
-            }`}
-          >
+            }`}>
             <h2 className={styles.adiSix3rdstepTitle}>{step.title}</h2>
             {step.content.map((para, idx) => (
               <p key={idx} className={styles.adiSix3rdstepContent}>
@@ -924,12 +930,12 @@ export default function () {
         </div>
       </div>
 
-             <div className={styles.adiLastNextbtn}>
-                          <Link to="/lesson-planning">
-                            {" "}
-                            <button className={styles.adinextbtns}>Next Page</button>
-                          </Link>
-                        </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/lesson-planning">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
 
       {/* ///////////////////////////////////////////////////// */}
       <div className={styles.quizStartDiv}>

@@ -8,6 +8,8 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
+import backgroundImage from "../../../../assets/images/lessonPlanning.jpg";
+
 import { Link } from "react-router-dom";
 
 export default function Adi3ModuleSeven() {
@@ -372,7 +374,11 @@ export default function Adi3ModuleSeven() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -421,8 +427,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
+          className={styles.firstLessonModulesecondthirdheading}>
           Before the Lesson: Set a Clear Plan
         </motion.h1>
 
@@ -430,8 +435,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
+          className={styles.firstLessonModulesecondthirddescription}>
           Your learner’s previous lesson or introductory call should have helped
           you identify what they want to work on next. Use that insight to
           pre-plan an appropriate and progressive lesson structure.
@@ -441,8 +445,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <ul>
             <li>Focus on the learner’s short-term and long-term goals</li>
             <li>
@@ -507,8 +510,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
+          className={styles.firstLessonModulesecondthirdheading}>
           At the Start of the Lesson: Reconfirm and Recalibrate
         </motion.h1>
 
@@ -516,8 +518,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
+          className={styles.firstLessonModulesecondthirddescription}>
           Begin the session by checking in with the student:
         </motion.p>
 
@@ -525,8 +526,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <ul>
             <li>Reconfirm their goals with open-ended, probing questions</li>
             <li>Assess their existing knowledge of the subject</li>
@@ -548,8 +548,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
+          className={styles.firstLessonModulesecondthirdheading}>
           Define the Objectives and Roles Clearly
         </motion.h1>
 
@@ -557,8 +556,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
+          className={styles.firstLessonModulesecondthirddescription}>
           Set specific, measurable goals for the session. For example: What do
           you want to achieve by the end of today's lesson? I want to be able to
           complete a reverse bay park with no help.
@@ -568,8 +566,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <h2>This conversation helps ensure that goals are:</h2>
           <ul>
             <li>Clear</li>
@@ -581,8 +578,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdscores}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
+          transition={{ delay: 1, duration: 0.8 }}>
           <h2>Then, agree on the balance of responsibility for the session:</h2>
           <ul>
             <li>Will you guide them step-by-step?</li>
@@ -597,8 +593,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
+          className={styles.firstLessonModulesecondthirdheading}>
           Choose the Right Practice Area
         </motion.h1>
 
@@ -606,8 +601,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
+          className={styles.firstLessonModulesecondthirddescription}>
           Select a suitable environment that matches the learner’s objective.
           Keep it local—within a 10-minute drive from the starting point.
           <br /> ✅ Practicing mini roundabouts? Pick a route with multiple mini
@@ -618,8 +612,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <h2>The practice area should:</h2>
           <ul>
             <li>Align with the lesson goals</li>
@@ -722,8 +715,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
+          className={styles.firstLessonModulesecondthirdheading}>
           Adjust Responsibility as Skills Grow
         </motion.h1>
 
@@ -731,8 +723,7 @@ export default function Adi3ModuleSeven() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
+          className={styles.firstLessonModulesecondthirddescription}>
           As learners become more confident, gradually shift more responsibility
           onto them. This helps build independent driving habits.
         </motion.p>
@@ -741,8 +732,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <h2>However, always:</h2>
           <ul>
             <li>Discuss and agree before making these changes</li>
@@ -756,8 +746,7 @@ export default function Adi3ModuleSeven() {
           className={styles.firstLessonModulesecondthirdsection}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
+          transition={{ delay: 0.8, duration: 0.8 }}>
           <h2>Wrap-Up and Reflect</h2>
           <p>
             Always keep an eye on time to ensure you return to the drop-off
@@ -786,8 +775,7 @@ export default function Adi3ModuleSeven() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
-          >
+            transition={{ duration: 0.8, delay: index * 0.2 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               {section.title}
             </h2>
@@ -811,34 +799,33 @@ export default function Adi3ModuleSeven() {
         <a
           href="/lessonPlanning-Docs.zip"
           download
-          style={style.adiDownLoadbutton}
-        >
+          style={style.adiDownLoadbutton}>
           <FaDownload style={style.adiDownLoadicon} />
           Download ZIP
         </a>
       </div>
 
-       <div className={styles.adiLastNextbtn}>
-                                <Link to="/route-planning">
-                                  {" "}
-                                  <button className={styles.adinextbtns}>Next Page</button>
-                                </Link>
-                              </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/route-planning">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* ///////////////////////////////////////////// */}
-       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  Lesson Planning the lesson before setting off
-                </p>
-                <Link to="/takequizCatName/lesson-planning">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Lesson Planning the lesson before setting off
+          </p>
+          <Link to="/takequizCatName/lesson-planning">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
 
       {/* //////////////////////////////////////////// */}
     </div>

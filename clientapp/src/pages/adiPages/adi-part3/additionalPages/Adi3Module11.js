@@ -4,6 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../assets/images/bodylanguage.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -166,7 +167,11 @@ export default function Adi3Module11() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -216,6 +221,7 @@ export default function Adi3Module11() {
           <div className={styles.adi11ModuletipBox}>
             <h2>✨ So how do you harness that silent superpower?</h2>
             <ul>
+              <h3>🧍‍♂️ Posture = Presence</h3>
               <li>
                 ✨ Start by becoming aware of what your body’s saying. Sit tall
                 but relaxed, like you’re in control but not on edge. When they
@@ -223,6 +229,7 @@ export default function Adi3Module11() {
                 “nice one!” with a little fist bump. That little moment will
                 stick in their memory way more than a tick in a box.
               </li>
+                <h3>👁️ Active Listening Through Body Language</h3>
               <li>
                 ✨ When you’re asking reflective questions—especially the deeper
                 ones like “What were you thinking as you approached that?” Make
@@ -231,12 +238,14 @@ export default function Adi3Module11() {
                 simple "hmm" of encouragement—these micro-movements tell your
                 learner: I'm with you.
               </li>
+                <h3>👐 Visual Learning = Gestures Matter</h3>
               <li>
                 ✨ Got a visual learner? Break out the hand gestures. Use your
                 hands to show a lane change or the movement of a car at a
                 roundabout. These little “air diagrams” help them see the
                 situation, not just hear about it.
               </li>
+              <h3>😬 Mistakes? Stay Chill</h3>
               <li>
                 ✨ Now let’s talk nerves. You know that moment when your learner
                 misses a gear and panic creeps in? They’ll be watching you to
@@ -246,6 +255,7 @@ export default function Adi3Module11() {
                 learn that mistakes aren’t disasters—they’re part of the
                 process.
               </li>
+                <h3>😄 Lighten the Mood</h3>
               <li>
                 ✨ And hey, sometimes your body language can lighten the mood. A
                 playful raise of the eyebrow when they forget to cancel the
@@ -253,6 +263,7 @@ export default function Adi3Module11() {
                 nail that parallel park can create shared laughs—and that builds
                 trust.
               </li>
+              <h3>⚠️ What NOT to Do</h3>
               <li>
                 ✨ But a little warning: learners pick up on everything. Crossed
                 arms, tapping your pen, checking your watch—it can come off as
@@ -323,29 +334,27 @@ export default function Adi3Module11() {
           </div>
         </div>
       </section>
- <div className={styles.adiLastNextbtn}>
-              <Link to="/giving-instruction-and-feedback">
-              
-              
-                {" "}
-                <button className={styles.adinextbtns}>Next Page</button>
-              </Link>
-            </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/giving-instruction-and-feedback">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* //////////////////////////////////////////// */}
-       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  Body Language before setting off
-                </p>
-                <Link to="/takequizCatName/body-language">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            Body Language before setting off
+          </p>
+          <Link to="/takequizCatName/body-language">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

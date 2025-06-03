@@ -4,7 +4,7 @@ import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-
+import backgroundImage from "../../../../assets/images/givingfeedback.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -346,7 +346,11 @@ export default function Adi3Module12() {
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
+      <section
+        className={styles.AdiModuleOneheader}
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -360,7 +364,7 @@ export default function Adi3Module12() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Why do you think receiving feedback during a driving lesson is
-            important, and how might it help you improve as a instructor
+            important, and how might it help you improve as a instructor ?
           </label>
           <textarea
             ref={textareaRef}
@@ -404,7 +408,7 @@ export default function Adi3Module12() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             How do you think an instructor can give feedback in a way that
-            builds your confidence rather than knocks it?"
+            builds your confidence rather than knocks it?
           </label>
           <textarea
             ref={textareaRef2}
@@ -666,7 +670,7 @@ export default function Adi3Module12() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             Why might asking questions before a driving decision help someone
-            learn more effectively than giving feedback after a mistake
+            learn more effectively than giving feedback after a mistake ?
           </label>
           <textarea
             ref={textareaRef4}
@@ -711,7 +715,7 @@ export default function Adi3Module12() {
         <h1 className={styles.adi3Module3rdheading}>
           Celebrate Success, Not Just Mistakes
         </h1>
-        <p className={styles.adi3Module3rdtext} style={{textAlign:'center'}}>
+        <p className={styles.adi3Module3rdtext} style={{ textAlign: "center" }}>
           Avoid making “pulling over” synonymous with criticism. Stop to
           highlight progress, reflect on a tricky junction, or simply allow for
           a reset.
@@ -768,30 +772,28 @@ export default function Adi3Module12() {
         </div>
       </div>
 
-
-       <div className={styles.adiLastNextbtn}>
-                    <Link to="/adapting-lessons">
-                      {" "}
-                      <button className={styles.adinextbtns}>Next Page</button>
-                    </Link>
-                  </div>
+      <div className={styles.adiLastNextbtn}>
+        <Link to="/adapting-lessons">
+          {" "}
+          <button className={styles.adinextbtns}>Next Page</button>
+        </Link>
+      </div>
       {/* ///////////////////// */}
 
-       <div className={styles.quizStartDiv}>
-              <section className={styles.startQuizSection}>
-                <h1>Start Quiz</h1>
-                <h3>15 Questions</h3>
-                <p>
-                  Here’s a quick summary quiz to test your understanding of of Part 3:
-                  giving feedback before setting off
-                </p>
-                <Link to="/takequizCatName/giving-feedback">
-                  {" "}
-                  <button>Start Quiz</button>
-                </Link>
-              </section>
-            </div>
-
+      <div className={styles.quizStartDiv}>
+        <section className={styles.startQuizSection}>
+          <h1>Start Quiz</h1>
+          <h3>15 Questions</h3>
+          <p>
+            Here’s a quick summary quiz to test your understanding of of Part 3:
+            giving feedback before setting off
+          </p>
+          <Link to="/takequizCatName/giving-feedback">
+            {" "}
+            <button>Start Quiz</button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }
