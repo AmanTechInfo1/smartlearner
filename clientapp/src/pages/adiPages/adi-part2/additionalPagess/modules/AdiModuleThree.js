@@ -7,7 +7,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import backgroundImage from "../../../../../assets/images/whatjpg.jpg";
 
 export default function AdiModuleThree() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -452,7 +452,12 @@ export default function AdiModuleThree() {
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundPosition: "bottom",
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -473,18 +478,18 @@ export default function AdiModuleThree() {
           </div>
         </div>
         <div className={styles.videoContainer}>
-                        <h2 className={styles.videotitle}>Watch Our Video</h2>
-                        <div className={styles.videodesign}>
-                          <iframe
-                            width="100%"
-                            height="300px"
-                            src="https://www.youtube.com/embed/JJqpyJE1lO4"
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen></iframe>
-                        </div>
-                      </div>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/JJqpyJE1lO4"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        </div>
         <section className={styles.instructorContainer}>
           <div className={styles.AdiModuleContentBox}>
             <h2>Observation and Planning</h2>
@@ -748,17 +753,20 @@ export default function AdiModuleThree() {
 
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.AdiModuleContentParaBox}>
-            <p>
+            <p style={{ marginTop: "0.8rem" }}>
               1. Go for a short drive in a controlled environment (with your
               trainer if needed).
             </p>
-            <p>
+            <p style={{ marginTop: "0.8rem" }}>
               2. During the drive, focus on the following tasks:<br></br>- Spot
               hazards early (e.g., parked cars, cyclists, or junctions).
               <br />- Verbally describe what you see and explain how you’re
-              responding to it (e.g., slowing down, changing lanes). E.g. I am
-              going to take the next turn on the left, I am beginning my
-              observations checking my centre left mirror, applying my left
+              responding to it (e.g., slowing down, changing lanes).
+            </p>
+            <p style={{ marginTop: "0.8rem" }}>
+              {" "}
+              E.g. I am going to take the next turn on the left, I am beginning
+              my observations checking my centre left mirror, applying my left
               indicator, slowing down slowly with my brake, checking my left
               mirror before I turn’
             </p>
@@ -767,13 +775,13 @@ export default function AdiModuleThree() {
 
         {/* /////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.AdiModuleOneTextArea}>
-          <h2>
-            3. Ask your trainer or a trusted observer to provide feedback on
-            your performance. What was the feedback? Did you do better or worse
-            than you predicted? What will you learn from this?
-          </h2>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>
+            <label>
+              3. Ask your trainer or a trusted observer to provide feedback on
+              your performance. What was the feedback? Did you do better or
+              worse than you predicted? What will you learn from this?
+            </label>
             <label>Write your answer below</label>
             <textarea
               ref={textareaRef}
@@ -952,11 +960,14 @@ export default function AdiModuleThree() {
               - Practice advanced driving during your day whether it be driving
               to work or on the school run, focusing on your weakest skill from
               the self-assessment.
-              <br />- Review the Highway Code to reinforce legal compliance and
-              driving etiquette.
-              <br />
+            </label>
+            <label>
               What do you think is the most challenging aspect of advanced
               driving, and how do you plan to improve it?
+            </label>
+            <label>
+              Review the Highway Code to reinforce legal compliance and driving
+              etiquette.
             </label>
             <textarea
               ref={textareaRef5}

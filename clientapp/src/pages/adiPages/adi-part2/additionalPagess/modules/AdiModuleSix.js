@@ -14,6 +14,7 @@ import limitPoints from "../../../../../assets/images/limitPoints.png";
 import roadImage from "../../../../../assets/images/twosecondrule.jpg";
 import cloudImage from "../../../../../assets/images/raincloud.jpg";
 import { FaChevronDown } from "react-icons/fa";
+import backgroundImage from "../../../../../assets/images/humanchecksbg.jpg";
 import { Link } from "react-router-dom";
 
 export default function AdiModuleSix() {
@@ -354,7 +355,11 @@ export default function AdiModuleSix() {
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -402,9 +407,10 @@ export default function AdiModuleSix() {
         </div>
 
         <section className={styles.AdiModuleOneTextArea}>
-          <h2>How do you view the road?</h2>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>
+            <label>How do you view the road?</label>
+            <br></br>
             <label>Write your thoughts below</label>
             <textarea
               ref={textareaRef}

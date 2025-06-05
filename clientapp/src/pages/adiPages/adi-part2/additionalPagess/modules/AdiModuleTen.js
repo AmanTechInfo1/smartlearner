@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import backgroundImage from "../../../../../assets/images/ten.jpg";
 
 import roadImg from "../../../../../assets/images/moduleNine1Img.png";
 import road2Img from "../../../../../assets/images/moduleNine2Img.png";
@@ -339,7 +340,11 @@ export default function AdiModuleTen() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -371,23 +376,23 @@ export default function AdiModuleTen() {
           <div className={styles.adisevenheading}>What’s the TUG Method?</div>
 
           <div className={styles.adiseventipBox}>
-            <p>
+            <p style={{ marginBottom: "1rem" }}>
               Think of the TUG Method as your personal driving toolkit. It’s a
               simple yet powerful way to make sure you stay in control, aware of
               your surroundings, and connected with other road users. Here’s the
               breakdown:
             </p>
             <ul>
-              <li>
+              <li style={{ marginBottom: "1rem" }}>
                 <strong>Take:</strong> Take information. Grab that space to make
                 sure you have maximum visibility and safety to take in the most
                 information from your observations.
               </li>
-              <li>
+              <li style={{ marginBottom: "1rem" }}>
                 <strong>Use:</strong> Take full advantage of the information
                 around you to make smarter decisions.
               </li>
-              <li>
+              <li style={{ marginBottom: "1rem" }}>
                 <strong>Give:</strong> Let other road users know exactly what
                 you’re doing with clear signals and positioning.
               </li>
@@ -397,16 +402,16 @@ export default function AdiModuleTen() {
               quickest reaction time. It's like being the road superhero, always
               ready for whatever comes your way! 💪
             </p>
-            <p>
+            <p style={{ marginBottom: "1rem" }}>
               <strong>Examples of Taking Space:</strong>
             </p>
             <ul>
-              <li>
+              <li style={{ marginBottom: "1rem" }}>
                 <strong>Country Roads:</strong>
                 If the road’s narrow, shift a little closer to the center to get
                 a better view of oncoming traffic.
               </li>
-              <li>
+              <li style={{ marginBottom: "1rem" }}>
                 <strong>Bends:</strong>
                 Steer towards the center line to see more around the curve (but
                 always check if it’s safe!).
@@ -453,7 +458,9 @@ export default function AdiModuleTen() {
         <section className={styles.AdiModuleOneTextArea}>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>
-            <label>Write down your reasoning :</label>
+            <label>
+              “Why does taking space help? Write down your reasoning:
+            </label>
             <textarea
               ref={textareaRef}
               value={text}
@@ -644,7 +651,7 @@ export default function AdiModuleTen() {
 
         <div
           className={styles.AdiModuleOneTextBox}
-          style={{ marginTop: "1rem" }}>
+          style={{ marginTop: "2rem" }}>
           <label>
             Imagine you’re about to merge onto a busy motorway. Write out the
             steps you’d take to signal, position, and change lanes safely and

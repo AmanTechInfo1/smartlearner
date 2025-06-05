@@ -3,10 +3,10 @@ import gsap from "gsap";
 import styles from "./AdiModuleOne.module.css";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import backgroundImage from "../../../../../assets/images/humanchecksbg.jpg";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 
 export default function AdiModuleOne() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -224,7 +224,11 @@ export default function AdiModuleOne() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -232,19 +236,19 @@ export default function AdiModuleOne() {
           </section>
         </section>
 
-         <div className={styles.videoContainer}>
-                  <h2 className={styles.videotitle}>Watch Our Video</h2>
-                  <div className={styles.videodesign}>
-                    <iframe
-                      width="100%"
-                      height="300px"
-                      src="https://www.youtube.com/embed/B4UL4xfR-gA"
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen></iframe>
-                  </div>
-                </div>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/B4UL4xfR-gA"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        </div>
 
         <section className={styles.AdiModuleOneTextArea}>
           <h2>
@@ -485,8 +489,8 @@ export default function AdiModuleOne() {
         <div className={styles.AdiModuleOneTextBox}>
           <label>
             By taking a moment to assess your readiness in these three areas,
-            you can help ensure a safer, more responsible driving experience for
-            yourself and others on the road.
+            how can you ensure that you provide a more responsible driving
+            experience for yourself and others on the road?
           </label>
           <textarea
             ref={textareaRef2}

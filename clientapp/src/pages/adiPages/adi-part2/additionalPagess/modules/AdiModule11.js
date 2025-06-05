@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import backgroundImage from "../../../../../assets/images/showme.jpg";
 import { motion } from "framer-motion";
 
 export default function AdiModule11() {
@@ -138,6 +138,13 @@ export default function AdiModule11() {
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(null); // Track active question index
+
+  const toggleAnswer = (index) => {
+    // Toggle answer visibility by index
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -232,54 +239,63 @@ export default function AdiModule11() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
-            {" "}
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
 
-        {/* ////////////////////////////////////////// */}
         <div className={styles.module11container}>
           <motion.h1
             className={styles.module11title}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+            animate={{ opacity: 1 }}>
             ADI Part 2 - Show Me, Tell Me Questions
           </motion.h1>
-          {questions.map((section, index) => (
+
+          {questions.map((section, sectionIndex) => (
             <motion.div
-              key={index}
+              key={sectionIndex}
               className={styles.module11section}
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: index * 0.2 }}
-            >
+              transition={{ delay: sectionIndex * 0.2 }}>
               <h2 className={styles.module11heading}>
                 {section.category} Questions
               </h2>
+
               <ul className={styles.module11list}>
                 {section.items.map((item, idx) => (
                   <motion.li
                     key={idx}
                     className={styles.module11card}
-                    whileHover={{ scale: 1.05 }}
-                  >
+                    whileHover={{ scale: 1.01 }}
+                    onClick={() => toggleAnswer(idx)}>
                     <strong>{item.question}</strong>
-                    {item.answer && <p>{item.answer}</p>}
+
+                    {/* Show the answer with slide-down animation */}
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: activeIndex === idx ? "auto" : 0,
+                        opacity: activeIndex === idx ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className={styles.answer}>
+                      {item.answer && <p>{item.answer}</p>}
+                    </motion.div>
                   </motion.li>
                 ))}
               </ul>
             </motion.div>
           ))}
         </div>
-        <div></div>
-        {/* /////////////////////////// */}
+
         <div className={styles.adiLastNextbtn}>
           <Link to="/quizModuleTwelve">
-            {" "}
             <button className={styles.adinextbtns}>Next Page</button>
           </Link>
         </div>

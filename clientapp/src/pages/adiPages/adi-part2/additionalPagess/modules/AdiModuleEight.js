@@ -6,6 +6,7 @@ import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import backgroundImage from "../../../../../assets/images/concentration.jpg";
 
 export default function AdiModuleEight() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -275,41 +276,138 @@ export default function AdiModuleEight() {
       });
   }, []);
 
+  /////////////////////////////////////////
+  const text2Ref = useRef(null);
+
+  // Function to split the text into individual letters wrapped in <span>
+  const split2Text = () => {
+    const firstPart = "Mastering Space: The secret to smooth and safe driving"; // First part before "Driving"
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
+
+  useEffect(() => {
+    const letters = text2Ref.current.querySelectorAll("span");
+
+    // GSAP Timeline for the text animation
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+    tl.from(letters, {
+      opacity: 0.6,
+      y: 100,
+      ease: "bounce.out", // Start from below
+      stagger: 0.1, // Stagger the animation for each letter
+      rotationX: 90, // Initial rotation effect
+      transformOrigin: "bottom center", // Center for rotation
+      scale: 0.5,
+    })
+      .to(letters, {
+        scale: 1, // Scale to normal size
+        opacity: 1, // Fade in to full opacity
+        rotationX: 0, // Reset rotation
+        y: 0, // Move to original position
+        stagger: 0.1, // Slight stagger for each letter
+        duration: 0.8, // Smooth transition duration
+      })
+      .to(letters, {
+        color: "#fd9235", // Change text color to red
+        rotationY: 360, // Apply rotation on the Y-axis
+        stagger: 0.1,
+        duration: 1, // Rotate each letter over 1 second
+      })
+      .to(letters, {
+        scale: 1.2, // Slightly enlarge text
+        opacity: 0.8, // Reduce opacity slightly
+        rotationX: -10, // Slight tilt effect
+        stagger: 0.1, // Stagger the scaling
+        duration: 1, // Animation duration
+      })
+      .to(letters, {
+        scale: 1, // Return to original scale
+        opacity: 1, // Full opacity
+        rotationX: 0, // Reset rotation
+        color: "#04fad4", // Reset color to black
+        stagger: 0.1, // Maintain stagger effect
+        duration: 1, // Final duration
+      })
+      .to(letters, {
+        rotation: 10, // Add shake effect
+        x: -5, // Horizontal shake
+        yoyo: true, // Yoyo effect for shake (goes back and forth)
+        repeat: 2, // Repeat the shake twice
+        duration: 0.1, // Short shake duration
+        stagger: 0.05, // Stagger shake on each letter
+      })
+      .to(letters, {
+        scale: 1.3, // Increase size slightly for bounce effect
+        opacity: 1, // Ensure opacity stays full
+        ease: "bounce.out", // Bounce easing for effect
+        stagger: 0.05, // Stagger bounce
+        duration: 1, // Bounce duration
+      })
+      .to(letters, {
+        scale: 1, // Reset scale
+        opacity: 1, // Reset opacity
+        y: -30, // Vertical movement for final bounce
+        duration: 0.5, // Short duration for final bounce
+      })
+      // Infinite color change with loop
+      .to(letters, {
+        color: "#ff54d7", // Change color to a pinkish hue
+        duration: 2, // Duration of color change
+        repeat: -1, // Repeat infinitely
+        yoyo: true, // Reverse color change for alternating effect
+        stagger: 0.1, // Stagger the color change for each letter
+      });
+  }, []);
+
   return (
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
-         <div className={styles.videoContainer}>
-                         <h2 className={styles.videotitle}>Watch Our Video</h2>
-                         <div className={styles.videodesign}>
-                           <iframe
-                             width="100%"
-                             height="300px"
-                             src="https://www.youtube.com/embed/75chHph3nmk"
-                             title="YouTube video player"
-                             frameBorder="0"
-                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                             allowFullScreen></iframe>
-                         </div>
-                       </div>
+
+        <div className={styles.AdiModuleOneTextArea}>
+          <h2 ref={text2Ref}>{split2Text()} 🚗💨</h2>
+        </div>
+
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/75chHph3nmk"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        </div>
 
         {/* /////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextArea}>
-          <h2>Mastering Space: The Secret to Smooth and Safe Driving 🚗💨</h2>
-        </div>
 
         {/* ///////////////////////////////////////////////////// */}
         <section className={styles.AdiModuleOneTextArea}>
-          <h2>Why Does Space Matter?</h2>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>
+            <label>Why Does Space Matter?</label>
             <label>Write your thoughts below</label>
             <textarea
               ref={textareaRef}
@@ -362,8 +460,7 @@ export default function AdiModuleEight() {
           </div>
           <div
             className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}
-          >
+            style={{ marginTop: "1rem" }}>
             <p>
               In advanced driving, space isn’t just about avoiding
               accidents—it’s about staying ahead of the game. The more space you
@@ -386,8 +483,7 @@ export default function AdiModuleEight() {
           </div>
           <div
             className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}
-          >
+            style={{ marginTop: "1rem" }}>
             <p>
               More space means more time to react. It cuts down the risk of
               collisions, makes driving less stressful, and keeps everything
@@ -400,8 +496,7 @@ export default function AdiModuleEight() {
         {/* //////////////////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ background: "linear-gradient(135deg, #037cd2, #000240)" }}
-        >
+          style={{ background: "linear-gradient(135deg, #037cd2, #000240)" }}>
           <div className={styles.adisevenheading}>
             Types of Space You Need to Master
           </div>
@@ -467,8 +562,7 @@ export default function AdiModuleEight() {
         {/* ////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem", background: "#00a06d" }}
-        >
+          style={{ marginTop: "1rem", background: "#00a06d" }}>
           <div className={styles.adisevenheading}>
             How to Keep Your Space Like a Pro
           </div>
@@ -524,8 +618,7 @@ export default function AdiModuleEight() {
         {/* /////////////////////////////////////////////////////// */}
         <section
           className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}
-        >
+          style={{ marginTop: "1rem" }}>
           <div className={styles.adisevenheading}>
             🛞 On-the-Road Spacing Challenge
           </div>
@@ -667,8 +760,7 @@ export default function AdiModuleEight() {
           </div>
           <div
             className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}
-          >
+            style={{ marginTop: "1rem" }}>
             <p>
               Next time you're behind the wheel, ask yourself: Do I have enough
               space to handle anything that happens next? Keep practicing, and
@@ -676,12 +768,12 @@ export default function AdiModuleEight() {
             </p>
           </div>
         </div>
-           <div className={styles.adiLastNextbtn}>
-                                  <Link to="/quizModulenine">
-                                    {" "}
-                                    <button className={styles.adinextbtns}>Next Page</button>
-                                  </Link>
-                                </div>
+        <div className={styles.adiLastNextbtn}>
+          <Link to="/quizModulenine">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
 
         {/* /////////////////// */}
         <div className={styles.quizStartDiv}>

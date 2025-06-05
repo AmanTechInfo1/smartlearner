@@ -7,6 +7,7 @@ import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../../../../assets/images/coast.jpg";
 
 export default function AdiModuleFour() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -186,7 +187,11 @@ export default function AdiModuleFour() {
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -213,13 +218,15 @@ export default function AdiModuleFour() {
               Now you have completed your first initial assessment and you have
               base knowledge of what the examiner is going to be looking for in
               the exam. Lets look at the COAST model.
-              <br />
+            </p>
+            <p style={{ marginTop: "0.8rem" }}>
               The COAST method is a foundational approach in advanced driving
               that focuses on proactive, safe, and efficient driving. COAST
               stands for Concentration, Observation, Anticipation, Space, and
               Time. This method encourages drivers to stay ahead of potential
               hazards, reduce risks, and drive more smoothly.
-              <br></br>
+            </p>
+            <p style={{ marginTop: "0.8rem" }}>
               For advanced drivers, such as those preparing for the ADI Part 2
               exam, mastering the COAST method demonstrates professionalism and
               competence on the road.
@@ -474,7 +481,11 @@ export default function AdiModuleFour() {
         </section>
 
         <div className={styles.AdiModuleOneTextBox}>
-          <label>Write your answer below</label>
+          <label>
+            Think about what situation or scenario on the road that you would
+            use the Coast method? How will this method improve your driving, and
+            why will this have a good impact on other road users?
+          </label>
           <textarea
             ref={textareaRef}
             value={text}

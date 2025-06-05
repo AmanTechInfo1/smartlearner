@@ -6,6 +6,8 @@ import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import backgroundImage from "../../../../../assets/images/time.jpg";
+
 export default function AdiModuleNine() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -220,7 +222,11 @@ export default function AdiModuleNine() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -244,9 +250,11 @@ export default function AdiModuleNine() {
 
         {/* //////////////////////////////////////////////////// */}
         <section className={styles.AdiModuleOneTextArea}>
-          <h2>How could giving yourself more time help with your driving?</h2>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>
+            <label>
+              How could giving yourself more time help with your driving?
+            </label>
             <label>Write your thoughts below</label>
             <textarea
               ref={textareaRef}
@@ -496,7 +504,9 @@ export default function AdiModuleNine() {
           </div>
         </section>
         {/* //////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
+        <div
+          className={styles.AdiModuleOneTextBox}
+          style={{ marginTop: "1.5rem" }}>
           <label>
             Have you ever experienced a situation where better timing could have
             improved your reaction or decision?

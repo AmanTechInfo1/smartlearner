@@ -8,7 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import backgroundImage from "../../../../../assets/images/concentration.jpg";
 
 export default function AdiModuleFive() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -166,29 +166,35 @@ export default function AdiModuleFive() {
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
             <h1 ref={textRef}>{splitText()}</h1>
           </section>
         </section>
-            <div className={styles.videoContainer}>
-                 <h2 className={styles.videotitle}>Watch Our Video</h2>
-                 <div className={styles.videodesign}>
-                   <iframe
-                     width="100%"
-                     height="300px"
-                     src="https://www.youtube.com/embed/g-GIiLNVfx8"
-                     title="YouTube video player"
-                     frameBorder="0"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                     allowFullScreen></iframe>
-                 </div>
-               </div>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/g-GIiLNVfx8"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        </div>
 
         <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBoxm2}>
+          <div
+            className={styles.AdiModuleContentParaBoxm2}
+            style={{ marginBottom: "0.8rem" }}>
             <p>
               Mastering Concentration: The Key to Advanced Driving Success{" "}
               <br /> Ready to Train Your Brain for the Road? <br /> Imagine
@@ -343,7 +349,7 @@ export default function AdiModuleFive() {
             </div>
           </div>
         </div>
-<div className={styles.adiLastNextbtn}>
+        <div className={styles.adiLastNextbtn}>
           <Link to="/quizModulesix">
             {" "}
             <button className={styles.adinextbtns}>Next Page</button>

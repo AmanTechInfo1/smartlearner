@@ -1536,6 +1536,9 @@
   margin-right: auto;
   margin-left: auto;
 }
+.adisix2ndintro p {
+  margin-bottom: 0px;
+}
 
 .adisix2ndintro h2 {
   font-size: 2rem;

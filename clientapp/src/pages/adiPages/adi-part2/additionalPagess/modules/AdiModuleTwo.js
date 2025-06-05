@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import backgroundImage from "../../../../../assets/images/vehicalchecksbg.jpg";
 
 export default function AdiModuleTwo() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -410,7 +411,11 @@ export default function AdiModuleTwo() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -421,7 +426,7 @@ export default function AdiModuleTwo() {
         {/* ////////////////////////////////////////////////////// */}
         <section className={styles.AdiModuleOneTextArea}>
           <h2>
-            What types of things were you asked, and did you need to check?
+            What types of vehicle checks do you think you need to perform?
           </h2>
           {/* ////////////////////////////////////////////////////////////// */}
           <div className={styles.AdiModuleOneTextBox}>

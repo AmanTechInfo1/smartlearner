@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import backgroundImage from "../../../../../assets/images/whatjpg.jpg";
 
 export default function AdiModule12() {
   const textRef = useRef(null);
@@ -102,7 +103,11 @@ export default function AdiModule12() {
     <>
       {" "}
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -129,8 +134,7 @@ export default function AdiModule12() {
           style={{
             background: "linear-gradient(135deg, #037cd2 , #000240)",
             marginTop: "1rem",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             How to Book the ADI Part 2 Test
           </div>
@@ -215,8 +219,7 @@ export default function AdiModule12() {
             marginTop: "2rem",
             background:
               "linear-gradient(135deg,rgb(97, 1, 50), rgb(3, 79, 210))",
-          }}
-        >
+          }}>
           <div className={styles.adisevenheading}>
             What to Bring to Your ADI Part 2 Test
           </div>
@@ -312,8 +315,7 @@ export default function AdiModule12() {
               color: "red",
               fontSize: "1.5rem",
               margin: "1.5rem 1rem",
-            }}
-          >
+            }}>
             Good luck!
           </h1>
         </section>

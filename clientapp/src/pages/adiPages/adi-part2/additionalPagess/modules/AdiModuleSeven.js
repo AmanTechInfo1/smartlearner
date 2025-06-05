@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import backgroundImage from "../../../../../assets/images/Anticipation.jpg";
 
 export default function AdiModuleSeven() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -396,7 +396,11 @@ export default function AdiModuleSeven() {
   return (
     <>
       <div className={styles.AdiModuleOnecontainer}>
-        <section className={styles.AdiModuleOneheader}>
+        <section
+          className={styles.AdiModuleOneheader}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}>
           <div className="opicity"></div>
           <section className={styles.AdiModuleOneheading}>
             {" "}
@@ -404,19 +408,19 @@ export default function AdiModuleSeven() {
           </section>
         </section>
 
-         <div className={styles.videoContainer}>
-                 <h2 className={styles.videotitle}>Watch Our Video</h2>
-                 <div className={styles.videodesign}>
-                   <iframe
-                     width="100%"
-                     height="300px"
-                     src="https://www.youtube.com/embed/dyvWRDGJI58"
-                     title="YouTube video player"
-                     frameBorder="0"
-                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                     allowFullScreen></iframe>
-                 </div>
-               </div>
+        <div className={styles.videoContainer}>
+          <h2 className={styles.videotitle}>Watch Our Video</h2>
+          <div className={styles.videodesign}>
+            <iframe
+              width="100%"
+              height="300px"
+              src="https://www.youtube.com/embed/dyvWRDGJI58"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
+        </div>
 
         <div className={styles.AdiModuleContentBox}>
           <h2>What is Anticipation and Why Does It Matter?</h2>
@@ -432,7 +436,9 @@ export default function AdiModuleSeven() {
               always one step ahead).
             </p>
           </div>
-          <div className={styles.AdiModuleContentParaBoxm3} style={{marginTop:'1rem'}}>
+          <div
+            className={styles.AdiModuleContentParaBoxm3}
+            style={{ marginTop: "1rem" }}>
             <p>
               In advanced driving, anticipation is key. The examiner in your ADI
               Part 2 exam will be watching to see if you can read the road like
@@ -777,11 +783,11 @@ export default function AdiModuleSeven() {
         </div>
 
         <div className={styles.adiLastNextbtn}>
-                          <Link to="/quizModule-eight">
-                            {" "}
-                            <button className={styles.adinextbtns}>Next Page</button>
-                          </Link>
-                        </div>
+          <Link to="/quizModule-eight">
+            {" "}
+            <button className={styles.adinextbtns}>Next Page</button>
+          </Link>
+        </div>
 
         <div className={styles.quizStartDiv}>
           <section className={styles.startQuizSection}>
