@@ -21,7 +21,7 @@ export default function LessonModules() {
       <div className={styles.lessonFlexContainer}>
         <div className={styles.lessonContainer}>
           <div className={styles.LessonAccordionheader}>
-            <span>SKILLS</span>
+            <span>Topics</span>
             <span className={styles.LessonAccordionProgress}>
               18 Steps | 15 Quizzes
             </span>
@@ -456,7 +456,7 @@ export default function LessonModules() {
         {/* //////////////////////////////////////// */}
         <div className={styles.lessonContainer}>
           <div className={styles.LessonAccordionheader}>
-            <span>SKILLS</span>
+            <span>Quiz</span>
             <span className={styles.LessonAccordionProgress}>
               18 Steps | 15 Quizzes
             </span>

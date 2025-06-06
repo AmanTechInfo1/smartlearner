@@ -132,15 +132,7 @@ const QuizModal = () => {
         return a.categoryName.length - b.categoryName.length;
       },
     },
-    {
-      title: "Module Name",
-      dataIndex: "moduleName",
-      align: "center",
-      sorter: (a, b) => {
-        if (!a?.moduleName || !b?.moduleName) return 0; // Handle undefined or null cases
-        return a.moduleName.length - b.moduleName.length;
-      },
-    },
+
     {
       title: "Action",
       align: "left",

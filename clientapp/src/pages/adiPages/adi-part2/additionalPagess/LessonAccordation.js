@@ -22,7 +22,7 @@ const LessonAccordation = () => {
       <div className={styles.lessonFlexContainer}>
         <div className={styles.lessonContainer}>
           <div className={styles.LessonAccordionheader}>
-            <span>SKILLS</span>
+            <span>Topics</span>
             <span className={styles.LessonAccordionProgress}>
               12 Steps | 10 Quizzes
             </span>
@@ -306,7 +306,7 @@ const LessonAccordation = () => {
         {/* //////////////////////////////////////// */}
         <div className={styles.lessonContainer}>
           <div className={styles.LessonAccordionheader}>
-            <span>SKILLS</span>
+            <span>Quiz</span>
             <span className={styles.LessonAccordionProgress}>
               12 Steps | 10 Quizzes
             </span>
