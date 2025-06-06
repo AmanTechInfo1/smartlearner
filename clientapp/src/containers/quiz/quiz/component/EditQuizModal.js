@@ -134,6 +134,46 @@ const EditQuizUpdatedModal = (props) => {
     }
   }, [oneproduct, setValue, reset]);
 
+  const handleImageRemove = async (type, index = null) => {
+    try {
+      const payload = {
+        quizId: oneproduct._id,
+        imageType: type, // "questionImage" or "optionImage"
+        index: index, // Index for option images only
+      };
+
+      const response = await fetch(
+        "http://localhost:5000/api/quiz/remove-image",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        if (type === "questionImage") {
+          setoptionsData((prev) => ({
+            ...prev,
+            questionImage: "",
+          }));
+        } else if (type === "optionImage") {
+          setoptionsData((prev) => {
+            const updatedImages = [...prev.optionImage];
+            updatedImages[index] = "";
+            return { ...prev, optionImage: updatedImages };
+          });
+        }
+      }
+    } catch (err) {
+      console.error("Failed to remove image", err);
+    }
+  };
+
   return (
     <>
       <Modal
@@ -194,18 +234,16 @@ const EditQuizUpdatedModal = (props) => {
                 ""
               )}
               {optionsData.questionImage && (
-                  <div className="editquizdeletebtnbox">
-                <img
-                  src={imageBaseUrl + optionsData.questionImage}
-                  alt="Current Question"
-                  style={{ width: "50px", height: "50px", marginTop: "10px" }}
-                />
-                <button
+                <div className="editquizdeletebtnbox">
+                  <img
+                    src={imageBaseUrl + optionsData.questionImage}
+                    alt="Current Question"
+                    style={{ width: "50px", height: "50px", marginTop: "10px" }}
+                  />
+                  <button
                     className="editquizdeletebtn"
                     type="button"
-                    onClick={() =>
-                      setoptionsData((prev) => ({ ...prev, questionImage: "" }))
-                    }>
+                    onClick={() => handleImageRemove("questionImage")}>
                     ❌
                   </button>
                 </div>
@@ -279,15 +317,7 @@ const EditQuizUpdatedModal = (props) => {
                   <button
                     className="editquizdeletebtn"
                     type="button"
-                    onClick={() => {
-                      const updatedImages = [...optionsData.optionImage];
-                      updatedImages[0] = null; // or ""
-                      setoptionsData((prev) => ({
-                        ...prev,
-                        optionImage: updatedImages,
-                      }));
-                      setoption1Image(""); // also clear the file from the input
-                    }}>
+                    onClick={() => handleImageRemove("optionImage", 0)}>
                     ❌
                   </button>
                 </div>
@@ -360,15 +390,7 @@ const EditQuizUpdatedModal = (props) => {
                   <button
                     className="editquizdeletebtn"
                     type="button"
-                    onClick={() => {
-                      const updatedImages = [...optionsData.optionImage];
-                      updatedImages[1] = null; // or ""
-                      setoptionsData((prev) => ({
-                        ...prev,
-                        optionImage: updatedImages,
-                      }));
-                      setoption2Image(""); // also clear the file from the input
-                    }}>
+                    onClick={() => handleImageRemove("optionImage", 1)}>
                     ❌
                   </button>
                 </div>
@@ -441,15 +463,7 @@ const EditQuizUpdatedModal = (props) => {
                   <button
                     className="editquizdeletebtn"
                     type="button"
-                    onClick={() => {
-                      const updatedImages = [...optionsData.optionImage];
-                      updatedImages[2] = null; // or ""
-                      setoptionsData((prev) => ({
-                        ...prev,
-                        optionImage: updatedImages,
-                      }));
-                      setoption3Image(""); // also clear the file from the input
-                    }}>
+                    onClick={() => handleImageRemove("optionImage", 2)}>
                     ❌
                   </button>
                 </div>
@@ -522,15 +536,7 @@ const EditQuizUpdatedModal = (props) => {
                   <button
                     className="editquizdeletebtn"
                     type="button"
-                    onClick={() => {
-                      const updatedImages = [...optionsData.optionImage];
-                      updatedImages[3] = null; // or ""
-                      setoptionsData((prev) => ({
-                        ...prev,
-                        optionImage: updatedImages,
-                      }));
-                      setoption4Image(""); // also clear the file from the input
-                    }}>
+                    onClick={() => handleImageRemove("optionImage", 3)}>
                     ❌
                   </button>
                 </div>

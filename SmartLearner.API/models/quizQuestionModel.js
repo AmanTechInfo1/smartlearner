@@ -8,9 +8,7 @@ const QuizQuestionSchema = new mongoose.Schema({
   optionImage: { type: Array, required: true },
   band: { type: String}, 
   answer: { type: String, required: true },
-  // answerImage: { type: String, required: true },
   category: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizCategory' },
-  // module: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'quizmodules' }
 });
 const QuizQuestion = mongoose.model("quizQuestion", QuizQuestionSchema);
 module.exports = QuizQuestion;

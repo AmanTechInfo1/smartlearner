@@ -8,7 +8,8 @@ import styles from "../../assets/css/admin.module.css";
 import { FaFileInvoice } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteUser } from "../../redux/features/userSlice";
+import { deleteUser, getUserById } from "../../redux/features/userSlice";
+import UserInvoice from "./user-invoice/UserInvoice";
 
 const UserReport = () => {
   const dispatch = useDispatch();
@@ -23,13 +24,16 @@ const UserReport = () => {
     pageSize: 10,
   });
 
-  const [showAddPostcodeModal, setShowAddPostcodeModal] = useState(false);
-  const toggleAddPostcodeModal = () =>
-    setShowAddPostcodeModal(!showAddPostcodeModal);
+  const [userObj, setUserObj] = useState();
 
-  const [showEditPostcodeModal, setShowEditPostcodeModal] = useState(false);
-  const toggleEditPostcodeModal = () =>
-    setShowEditPostcodeModal(!showEditPostcodeModal);
+  const [showOpenModal, setShowOpenModal] = useState(false);
+  const toggleOpenModal = () => setShowOpenModal(!showOpenModal);
+
+  const handleOpenClick = (id) => {
+    dispatch(getUserById(id));
+
+    toggleOpenModal();
+  };
 
   useEffect(() => {
     dispatch(
@@ -38,7 +42,7 @@ const UserReport = () => {
   }, [dispatch, state.search, state.page, state.pageSize, state.role]);
 
   const onShowSizeChange = (current, pageSize) => {
-    setState({ ...state, page: 1, pageSize });
+    setState({ ...state, page: 1, pagesize: pageSize });
   };
   const handleSearchChange = (e) => {
     setState({ ...state, search: e.target.value });
@@ -98,8 +102,10 @@ const UserReport = () => {
           data-popper-placement="bottom-end">
           <Link
             className="dropdown-item px-2 text-success"
-            onClick={(e) => {
-              navigate(`/admin/userreport-invoice/${record._id}`);
+            to="#"
+            onClick={(event) => {
+              event.preventDefault();
+              handleOpenClick(record._id);
             }}>
             <FaFileInvoice />
           </Link>
@@ -154,6 +160,12 @@ const UserReport = () => {
           <Loader />
         )}
       </div>
+      <UserInvoice
+        toggleOpenModal={toggleOpenModal}
+        showOpenModal={showOpenModal}
+        userObj={userObj}
+        state={state}
+      />
     </>
   );
 };

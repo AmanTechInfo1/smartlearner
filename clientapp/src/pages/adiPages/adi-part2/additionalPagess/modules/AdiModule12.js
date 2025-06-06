@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 import backgroundImage from "../../../../../assets/images/whatjpg.jpg";
 
 export default function AdiModule12() {

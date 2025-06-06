@@ -4,12 +4,14 @@ const QuizQuestion = require("../models/quizQuestionModel");
 const QuizCategoryModel = require("../models/quizCategoryModel");
 const QuizModuleModel = require("../models/quizModuleModel");
 const ResultQuizQuestion = require("../models/ResultQuizModal");
+const fs = require("fs");
+const path = require("path");
 
 class quizService {
   async createQuizAsync(quizData) {
     try {
       const quiz = await QuizQuestion.create(quizData);
-      console.log("eihskudfasdasad", quizData);
+
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Added Successfully",
@@ -29,10 +31,16 @@ class quizService {
     }
   }
 
+  async getQuizById(quizId) {
+    const quiz = await QuizQuestion.findById(quizId);
+    if (!quiz) throw new Error("Quiz not found");
+    return quiz;
+  } 
+
   async updateQuizAsync(quizId, quizData) {
     try {
       const quiz = await QuizQuestion.findByIdAndUpdate(quizId, quizData);
-      console.log("dattttttt", quiz);
+
       const totalCount = await QuizQuestion.countDocuments();
       const resultObject = {
         message: "Quiz Updated Successfully",
@@ -52,6 +60,29 @@ class quizService {
     }
   }
 
+  async removeQuizImage(id, type, index) {
+    const quiz = await QuizQuestion.findById(id);
+    if (!quiz) throw new Error("Quiz not found");
+
+    let imagePath = "";
+
+    if (type === "questionImage") {
+      imagePath = quiz.questionImage;
+      quiz.questionImage = "";
+    } else if (type === "optionImage") {
+      if (index < 0 || index >= quiz.optionImage.length) {
+        throw new Error("Invalid option image index");
+      }
+      imagePath = quiz.optionImage[index];
+      quiz.optionImage[index] = "";
+    } else {
+      throw new Error("Invalid image type");
+    }
+
+    await quiz.save();
+
+    return quiz;
+  }
   async getQuizCategoryByQuestionAsync() {
     try {
       let aggr = [

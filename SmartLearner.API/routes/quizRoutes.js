@@ -101,5 +101,8 @@ router.get(
   requireAuth,
   quizController.deleteQuizModule
 );
+
+router.post("/remove-image", quizController.handleRemoveQuizImage);
+
 router.post("/translate", upload.none(), quizController.translator);
 module.exports = router;

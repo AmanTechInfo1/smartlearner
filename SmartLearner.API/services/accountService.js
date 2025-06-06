@@ -125,7 +125,7 @@ class AccountService {
 
   async getAllUsersAsync(pageNumber, pagesize, query) {
     try {
-      const skip = pageNumber - 1;
+      const skip = (pageNumber - 1) * pagesize;
       let filter = {};
 
       if (query) {
@@ -163,7 +163,7 @@ class AccountService {
       const users = await User.find(filter)
         .sort({ createdOn: -1 })
         .skip(skip)
-        .limit(pagesize || 20);
+        .limit(pagesize);
 
       const resultObject = {
         message: "Fetched successfully",

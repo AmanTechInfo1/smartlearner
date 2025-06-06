@@ -3,6 +3,7 @@ const quizService = require("../services/quizService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
 const { translate } = require("free-translate");
+const QuizQuestion = require("../models/quizQuestionModel");
 const axios = require("axios");
 const { JSDOM } = require("jsdom");
 
@@ -33,14 +34,31 @@ class QuizController {
   async updateQuiz(req, res, next) {
     try {
       var quizData = req.body;
-      console.log("asdadas", quizData);
+
       quizData["option"] = quizData.option.split("^");
+      // Fetch the existing quiz
+      const existingQuiz = await QuizQuestion.findById(req.params.id);
+
+      // Merge existing images with new ones
       quizData["optionImage"] = [
-        quizData.option1Image,
-        quizData.option2Image,
-        quizData.option3Image,
-        quizData.option4Image,
+        quizData.option1Image !== undefined
+          ? quizData.option1Image
+          : existingQuiz.optionImage[0],
+        quizData.option2Image !== undefined
+          ? quizData.option2Image
+          : existingQuiz.optionImage[1],
+        quizData.option3Image !== undefined
+          ? quizData.option3Image
+          : existingQuiz.optionImage[2],
+        quizData.option4Image !== undefined
+          ? quizData.option4Image
+          : existingQuiz.optionImage[3],
       ];
+      quizData["questionImage"] =
+        quizData.questionImage !== undefined
+          ? quizData.questionImage
+          : existingQuiz.questionImage;
+
       delete quizData.option1Image;
       delete quizData.option2Image;
       delete quizData.option3Image;
@@ -50,6 +68,37 @@ class QuizController {
       res.status(201).json(quiz);
     } catch (err) {
       next(err);
+    }
+  }
+
+  async handleRemoveQuizImage(req, res, next) {
+    try {
+      const { quizId, imageType, index } = req.body;
+      console.log("sdzxcsa", quizId, imageType, index);
+
+      const quiz = await QuizQuestion.findById(quizId);
+      if (!quiz) {
+        return res.status(404).json({ message: "Quiz not found" });
+      }
+
+      if (imageType === "questionImage") {
+        quiz.questionImage = "";
+      } else if (imageType === "optionImage" && typeof index === "number") {
+        quiz.optionImage[index] = null; // Or remove using splice if you prefer
+      } else {
+        return res.status(400).json({ message: "Invalid imageType or index" });
+      }
+
+      await quiz.save();
+
+      res.status(200).json({
+        message: "Image removed successfully",
+        success: true,
+        data: quiz,
+      });
+    } catch (err) {
+      console.error("Image removal error", err);
+      res.status(500).json({ message: "Server error", success: false });
     }
   }
 
@@ -64,6 +113,7 @@ class QuizController {
       next(err);
     }
   }
+
   async getQuestionCatName(req, res, next) {
     try {
       const response = await quizService.getRandomQuizCatName(
