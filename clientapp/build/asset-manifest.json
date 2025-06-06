@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4b61b9ce.css",
-    "main.js": "/static/js/main.1055758d.js",
+    "main.css": "/static/css/main.5ec3d8ee.css",
+    "main.js": "/static/js/main.8f37d8ba.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -396,12 +396,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.4b61b9ce.css.map": "/static/css/main.4b61b9ce.css.map",
-    "main.1055758d.js.map": "/static/js/main.1055758d.js.map",
+    "main.5ec3d8ee.css.map": "/static/css/main.5ec3d8ee.css.map",
+    "main.8f37d8ba.js.map": "/static/js/main.8f37d8ba.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b61b9ce.css",
-    "static/js/main.1055758d.js"
+    "static/css/main.5ec3d8ee.css",
+    "static/js/main.8f37d8ba.js"
   ]
 }
