@@ -122,6 +122,9 @@ function DrivingInstructorUI() {
           blueStarImg,
           blueStarImg,
         ];
+      case "workshop":
+        return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
+
       case "instructor training part three":
         return [
           yellowStarImg,
@@ -149,6 +152,8 @@ function DrivingInstructorUI() {
         return redCartImg;
       case "instructor training part two":
         return pinkCartImg;
+      case "workshop":
+        return redCartImg;
       case "instructor training part three":
         return yellowCartImg;
 
@@ -164,6 +169,9 @@ function DrivingInstructorUI() {
         return "red";
       case "instructor training part two":
         return "#00a1f1";
+
+      case "workshop":
+        return "red";
       case "instructor training part three":
         return "#FFD700";
 
@@ -177,6 +185,9 @@ function DrivingInstructorUI() {
         return "linear-gradient(  135deg, #6f00ab, #e3aaff)";
       case "instructor training part two":
         return "linear-gradient(  135deg, #010269, #008efa)";
+
+      case "workshop":
+        return "linear-gradient(  135deg,rgb(171, 0, 134),rgb(88, 0, 49))";
       case "instructor training part three":
         return "linear-gradient(135deg, rgb(155 73 0), #ffae88)";
 
@@ -190,6 +201,9 @@ function DrivingInstructorUI() {
         return "#a05dc1";
       case "instructor training part two":
         return "#4b99f5";
+
+      case "workshop":
+        return "#a05dc1";
       case "instructor training part three":
         return "#d1945fbc";
 
@@ -254,174 +268,178 @@ function DrivingInstructorUI() {
       className={styles.carouselContainer}
       style={{ maxWidth: "1300px", margin: "0px auto" }}>
       <div className={styles.carousel} style={{ justifyContent: "flex-start" }}>
-        {["instructor training part one", "instructor training part two"].map(
-          (categoryName) =>
-            filteredData(categoryName).map((item) => (
-              <div
-                style={{
-                  background: getBgColor(categoryName),
-                }}
-                key={item.id}
-                className={`${styles.carouselColumn} ${
-                  expandedCategory === item._id ? styles.expanded : ""
-                }`}
-                onClick={() => handleExpandCategory(item._id)}>
-                <div className={styles.carouselColumnHeading}>
-                  <img
-                    id={styles.CorouselImgBanner}
-                    src={LplateImg}
-                    alt="Category Image"
-                  />
-                  <div className={styles.CorouselhaddingBanner}>
-                    <h2
-                      style={{
-                        color:
-                          getHeadingAndButtonColorForCategory(categoryName),
-                      }}>
-                      {(() => {
-                        switch (categoryName) {
-                          case "instructor training part one":
-                            return "Instructor Training";
-                          case "instructor training part two":
-                            return "Bolt on Training";
+        {[
+          "instructor training part one",
+          "instructor training part two",
+          "workshop",
+        ].map((categoryName) =>
+          filteredData(categoryName).map((item) => (
+            <div
+              style={{
+                background: getBgColor(categoryName),
+              }}
+              key={item.id}
+              className={`${styles.carouselColumn} ${
+                expandedCategory === item._id ? styles.expanded : ""
+              }`}
+              onClick={() => handleExpandCategory(item._id)}>
+              <div className={styles.carouselColumnHeading}>
+                <img
+                  id={styles.CorouselImgBanner}
+                  src={LplateImg}
+                  alt="Category Image"
+                />
+                <div className={styles.CorouselhaddingBanner}>
+                  <h2
+                    style={{
+                      color: getHeadingAndButtonColorForCategory(categoryName),
+                    }}>
+                    {(() => {
+                      switch (categoryName) {
+                        case "instructor training part one":
+                          return "Instructor Training";
+                        case "instructor training part two":
+                          return "Bolt on Training";
+                           case "workshop":
+                          return "Workshop";
 
-                          default:
-                            return "Instructor Training"; // Default case
-                        }
-                      })()}
-                    </h2>
+                        default:
+                          return "Instructor Training"; // Default case
+                      }
+                    })()}
+                  </h2>
 
-                    {expandedCategory === item._id && (
-                      <Link to="/cart">
-                        <span>
-                          <img
-                            id={styles.CorouselImgcart}
-                            src={cartbanner} // Dynamic cart image
-                            alt="cartImg"
-                          />
-                        </span>
-                      </Link>
-                    )}
-                  </div>
+                  {expandedCategory === item._id && (
+                    <Link to="/cart">
+                      <span>
+                        <img
+                          id={styles.CorouselImgcart}
+                          src={cartbanner} // Dynamic cart image
+                          alt="cartImg"
+                        />
+                      </span>
+                    </Link>
+                  )}
                 </div>
-                {expandedCategory === item._id ? (
-                  <ul type="none">
-                    {item.data.map((info, index) => (
-                      <div key={index}>
-                        <li className={styles.expandedColData}>
-                          <span
-                            style={{
-                              color: "white",
-                              backgroundColor: "black",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              maxWidth: "235px",
-                              width: "100%",
-                              borderRadius: "40px 0px 0px 40px",
-                              padding: "8px",
-                            }}>
-                            <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                            <p style={{ marginBottom: "0px", width: "49x" }}>
-                              £ {info.price}
-                            </p>
-                          </span>
-                          <div className={styles.btnGroup}>
-                            {myCart.length === 0 ||
-                            !myCart.find(
-                              (cartItem) =>
-                                cartItem.id ===
-                                `${info._id}_${index}_${info.price}`
-                            ) ? (
-                              <button
-                                className={styles.bookNow}
-                                style={{
-                                  backgroundColor:
-                                    getHeadingAndButtonColorForCategory(
-                                      categoryName
-                                    ),
-                                }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  addToCart(info, index);
-                                }}>
-                                Book
-                              </button>
-                            ) : (
-                              <div id={styles.cartTableBtn}>
-                                <div className={styles.quantityControl}>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleDecrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.decreaseButton}>
-                                    -
-                                  </button>
-                                  <span>
-                                    {myCart.find(
-                                      (cartItem) =>
-                                        cartItem.id ===
-                                        `${info._id}_${index}_${info.price}`
-                                    )?.count || 0}
-                                  </span>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleIncrease(
-                                        `${info._id}_${index}_${info.price}`,
-                                        1
-                                      );
-                                    }}
-                                    className={styles.increaseButton}>
-                                    +
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </li>
-                        <section
+              </div>
+              {expandedCategory === item._id ? (
+                <ul type="none">
+                  {item.data.map((info, index) => (
+                    <div key={index}>
+                      <li className={styles.expandedColData}>
+                        <span
                           style={{
-                            backgroundColor: getdescBgColor(categoryName),
-                            border: "1px solid #a9a9a9",
-                          }}
-                          className={styles.corouselDescription}>
-                          <p>
-                            {isReadMore[index]
-                              ? info.description // Show full content
-                              : info.description
-                                  .split(" ")
-                                  .slice(0, wordLimit)
-                                  .join(" ") + "..."}
+                            color: "white",
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            maxWidth: "235px",
+                            width: "100%",
+                            borderRadius: "40px 0px 0px 40px",
+                            padding: "8px",
+                          }}>
+                          <p style={{ marginBottom: "0px" }}>{info.name}</p>
+                          <p style={{ marginBottom: "0px", width: "49x" }}>
+                            £ {info.price}
                           </p>
-                          {info.description.split(" ").length > wordLimit && (
+                        </span>
+                        <div className={styles.btnGroup}>
+                          {myCart.length === 0 ||
+                          !myCart.find(
+                            (cartItem) =>
+                              cartItem.id ===
+                              `${info._id}_${index}_${info.price}`
+                          ) ? (
                             <button
+                              className={styles.bookNow}
+                              style={{
+                                backgroundColor:
+                                  getHeadingAndButtonColorForCategory(
+                                    categoryName
+                                  ),
+                              }}
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleReadMoreToggle(index);
+                                addToCart(info, index);
                               }}>
-                              {isReadMore[index] ? "Read Less" : "Read More"}
+                              Book
                             </button>
+                          ) : (
+                            <div id={styles.cartTableBtn}>
+                              <div className={styles.quantityControl}>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDecrease(
+                                      `${info._id}_${index}_${info.price}`,
+                                      1
+                                    );
+                                  }}
+                                  className={styles.decreaseButton}>
+                                  -
+                                </button>
+                                <span>
+                                  {myCart.find(
+                                    (cartItem) =>
+                                      cartItem.id ===
+                                      `${info._id}_${index}_${info.price}`
+                                  )?.count || 0}
+                                </span>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleIncrease(
+                                      `${info._id}_${index}_${info.price}`,
+                                      1
+                                    );
+                                  }}
+                                  className={styles.increaseButton}>
+                                  +
+                                </button>
+                              </div>
+                            </div>
                           )}
-                        </section>
-                      </div>
-                    ))}
-                  </ul>
-                ) : (
-                  <div
-                    className={`${styles.carouselStarImgContainer} ${
-                      expandedCategory === item._id ? styles.compress : ""
-                    }`}>
-                    {getStarImagesForCategory(categoryName).map((star, idx) => (
-                      <img key={idx} src={star} alt={`starImg${idx}`} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))
+                        </div>
+                      </li>
+                      <section
+                        style={{
+                          backgroundColor: getdescBgColor(categoryName),
+                          border: "1px solid #a9a9a9",
+                        }}
+                        className={styles.corouselDescription}>
+                        <p>
+                          {isReadMore[index]
+                            ? info.description // Show full content
+                            : info.description
+                                .split(" ")
+                                .slice(0, wordLimit)
+                                .join(" ") + "..."}
+                        </p>
+                        {info.description.split(" ").length > wordLimit && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleReadMoreToggle(index);
+                            }}>
+                            {isReadMore[index] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
+                      </section>
+                    </div>
+                  ))}
+                </ul>
+              ) : (
+                <div
+                  className={`${styles.carouselStarImgContainer} ${
+                    expandedCategory === item._id ? styles.compress : ""
+                  }`}>
+                  {getStarImagesForCategory(categoryName).map((star, idx) => (
+                    <img key={idx} src={star} alt={`starImg${idx}`} />
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
         )}
 
         {filteredData("instructor training part three").map((item) => {
@@ -489,7 +507,9 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/driving-instructor-training-full-course");
+                              navigate(
+                                "/driving-instructor-training-full-course"
+                              );
                             }}>
                             Book
                           </button>
@@ -678,7 +698,9 @@ function DrivingInstructorUI() {
                             style={{ backgroundColor: "#ffa500" }}
                             onClick={(e) => {
                               e.stopPropagation();
-                              navigate("/driving-instructor-training-part-three");
+                              navigate(
+                                "/driving-instructor-training-part-three"
+                              );
                             }}>
                             Book
                           </button>

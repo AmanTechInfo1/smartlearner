@@ -64,6 +64,9 @@
   display: flex;
   gap: 50px;
 }
+.home-bannerbnt-sec {
+  padding: 1.5rem 0px;
+}
 .home-bannerbnt-sec span a {
   background: linear-gradient(
     135deg,
@@ -319,6 +322,13 @@
   .homecontent-Sec {
     padding: 2rem 0px;
   }
+  .button-style {
+    padding: 8px 20px;
+    font-size: 1.2rem;
+  }
+  .home-bannerbnt-sec span a {
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: 500px) {
   #home-drivingImg-1 {
@@ -335,6 +345,9 @@
     position: absolute;
     top: 10px;
     right: 300px;
+  }
+  .home-bannerbnt-sec {
+    padding: 1rem 0px;
   }
 }
 @media (max-width: 420px) {
@@ -367,7 +380,7 @@
     font-weight: 400;
   }
   .button-style {
-    padding: 8px 25px;
+    padding: 5px 15px;
     font-size: 1.2rem;
   }
   .home-bannerbnt-sec span {

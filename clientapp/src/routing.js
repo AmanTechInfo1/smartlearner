@@ -179,6 +179,7 @@ import Adi3Module18 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module1
 import Adi3Videos from "./pages/adiPages/adi-part3/additionalPages/Adi3Videos";
 import UserReport from "./containers/userReports/UserReport";
 import UserInvoice from "./containers/userReports/user-invoice/UserInvoice";
+import SimulatorTraining from "./pages/SimulatorTraining";
 
 export const router = createBrowserRouter([
   {
@@ -458,6 +459,8 @@ export const router = createBrowserRouter([
       },
       { path: "cpd-events", element: <CbdEvents /> },
       { path: "businesscoaching", element: <BusinessCoaching /> },
+
+      { path: "simulator-training", element: <SimulatorTraining /> },
       {
         path: "all-results",
         element: <AllResult />,

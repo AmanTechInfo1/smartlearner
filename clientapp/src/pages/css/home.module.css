@@ -6,7 +6,7 @@
 
 .homepage {
   background-color: black;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 /* .homepageContainerDiv {
   /* max-width: 1400px;
@@ -534,7 +534,7 @@
   position: relative;
   padding: 4rem 1rem;
 }
-.trophyFrame2{
+.trophyFrame2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -960,6 +960,7 @@
   font-size: 15px;
   display: flex;
   flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   align-items: flex-end;
 }
 .corouselDescription p {
@@ -1135,7 +1136,7 @@
 }
 
 /* ///////////////////////images caursel //////////////////// */
-.imageSliderContainer{
+.imageSliderContainer {
   padding-top: 4rem;
 }
 .imageSliderContainer h2 {

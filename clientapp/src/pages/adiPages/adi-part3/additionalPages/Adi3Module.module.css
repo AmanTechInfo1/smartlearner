@@ -5235,3 +5235,147 @@
   box-shadow: 0 0 10px rgba(123, 97, 255, 0.5);
   outline: none;
 }
+
+/* ///////////////////////////////// */
+/* //////////////////////////////////// */
+/* //////////////////////////////////// */
+/* ////////////////////////////////// */
+.adaptingLessonsflowchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  border-radius: 10px;
+}
+
+.adaptingLessonsrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+}
+.adaptingLessonsflowchart h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+}
+.adaptingLessonsflowchart em {
+  color: white;
+}
+.adaptingLessonsbox {
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.adaptingLessonsbox:hover {
+  transform: scale(1.03);
+}
+
+.adaptingLessonsleft {
+  align-self: flex-start;
+}
+
+.adaptingLessonsright {
+  align-self: flex-end;
+}
+
+.adaptingLessonscenter {
+  align-self: center;
+
+  max-width: 600px;
+}
+
+.adaptingLessonsbox h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.adaptingLessonsbox ul {
+  padding-left: 1.2rem;
+}
+
+.adaptingLessonsbox p,
+.adaptingLessonsbox li {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.adaptingLessonsarrow {
+  font-size: 2rem;
+  color: white;
+  animation: bouncewa 1.2s infinite;
+  text-align: center;
+}
+
+.adaptingLessonsright {
+  margin: 0 1rem;
+}
+
+.down {
+  font-size: 2rem;
+  animation: bounceYwa 1s infinite;
+}
+
+@keyframes bouncewa {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes bounceYwa {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 938px) {
+  .adaptingLessonsbox {
+    padding: 1rem;
+  }
+  .adaptingLessonsrow {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 924px) {
+  .adaptingLessonsrow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left,
+  .right,
+  .center {
+    max-width: 100%;
+  }
+
+  .adaptingLessonsarrow {
+    transform: rotate(90deg);
+  }
+}
+@media (max-width: 724px) {
+  .adaptingLessonsflowchart h2 {
+    font-size: 1.5rem;
+  }
+}

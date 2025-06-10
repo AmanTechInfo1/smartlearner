@@ -10,6 +10,25 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function Adi3Module13() {
+  const Box = ({ title, content, color, className }) => (
+    <motion.div
+      className={`${styles.adaptingLessonsbox} ${styles[className]}`}
+      style={{ backgroundColor: color }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}>
+      <h3>{title}</h3>
+      <div>{content}</div>
+    </motion.div>
+  );
+
+  const Arrow = ({ direction = "down" }) => (
+    <div className={`${styles.adaptingLessonsarrow} ${styles[direction]}`}>
+      {direction === "right" ? "→" : "↓"}
+    </div>
+  );
+
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
@@ -607,6 +626,125 @@ export default function Adi3Module13() {
           </p>
         </motion.section>
       </div>
+
+      {/* //////////////////////////////////////////////////////// */}
+      <div className={styles.adaptingLessonsflowchart}>
+        <h2>CAUSE (KUSA)</h2>
+        <div className={styles.adaptingLessonsrow}>
+          <Box
+            className={styles.adaptingLessonsleft}
+            color="#ffd6d6"
+            content={
+              <>
+                <p>
+                  <strong>
+                    What are their thoughts on why this is happening?
+                  </strong>{" "}
+                </p>
+              </>
+            }
+          />
+          <em>OR</em>
+
+          <Box
+            className={styles.adaptingLessonsright}
+            color="#d4fdd9"
+            content={
+              <>
+                <ul>
+                  <li>
+                    <strong>Knowledge</strong> - Do they know{" "}
+                    <strong>how</strong> to do this?
+                  </li>
+                  <li>
+                    <strong>Understanding</strong> - Do they know{" "}
+                    <strong>why</strong> it's done in this way?
+                  </li>
+                  <li>
+                    <strong>Skill</strong> - Can they do it?
+                  </li>
+                  <li>
+                    <strong>Attitude</strong> - Do they recognise the
+                    importance?
+                  </li>
+                </ul>
+              </>
+            }
+          />
+        </div>
+        <h2>RISK (moment of realisation)</h2>
+        <div className={styles.adaptingLessonsrow}>
+          <Box
+            className={styles.adaptingLessonsleft}
+            color="#ffd6d6"
+            content={
+              <p>
+                <strong>
+                  What are their thoughts on the risks that this issue could
+                  bring?
+                </strong>{" "}
+              </p>
+            }
+          />
+
+          <em>OR</em>
+
+          <Box
+            className={styles.adaptingLessonsright}
+            color="#d4fdd9"
+            content={
+              <p>
+                Stimulate their thoughts into realising what the risks could be.
+              </p>
+            }
+          />
+        </div>
+
+        <Arrow direction="down" />
+        <Box
+          title="SOLUTION"
+          className={styles.adaptingLessonscenter}
+          color="#ffe3b3"
+          content={
+            <>
+              <p>
+                What do <strong>they</strong> think they could do differently to
+                alleviate this risk?
+              </p>
+              <p>
+                <strong>= GOAL</strong>
+              </p>
+            </>
+          }
+        />
+
+        <Arrow direction="down" />
+        <Box
+          title="AGREED ROLES AND RESPONSIBILITIES"
+          className={styles.adaptingLessonscenter}
+          color="#ffcce6"
+          content={
+            <>
+              <p>What help would they like from you?</p>
+              <p>Tell them?</p>
+              <p>Remind them?</p>
+              <p>Try it on their own?</p>
+            </>
+          }
+        />
+
+        <Arrow direction="down" />
+        <Box
+          title="AGREED DURATION"
+          className={styles.adaptingLessonscenter}
+          color="#d6e8ff"
+          content={
+            <p>How many minutes or attempts should we try it like this?</p>
+          }
+        />
+      </div>
+
+      {/* //////////////////////////////////////////////////////// */}
 
       <div className={styles.adiLastNextbtn}>
         <Link to="/risk-management-and-responsibility">
