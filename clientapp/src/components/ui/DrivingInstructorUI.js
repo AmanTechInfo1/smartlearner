@@ -654,7 +654,7 @@ function DrivingInstructorUI() {
                             ? "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes." // Show full content
                             : "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes."
                                 .split(" ")
-                                .slice(0, 10)
+                                .slice(0, 15)
                                 .join(" ") + "..."}
                         </p>
                         {"Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes.".split(
