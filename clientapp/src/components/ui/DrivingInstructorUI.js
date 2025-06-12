@@ -300,7 +300,7 @@ function DrivingInstructorUI() {
                           return "Instructor Training";
                         case "instructor training part two":
                           return "Bolt on Training";
-                           case "workshop":
+                        case "workshop":
                           return "Workshop";
 
                         default:
@@ -587,13 +587,13 @@ function DrivingInstructorUI() {
                         className={styles.corouselDescription}>
                         <p>
                           {isReadMore["id2222222"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                            ? "Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included." // Show full content
+                            : "Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included."
                                 .split(" ")
                                 .slice(0, 10)
                                 .join(" ") + "..."}
                         </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                        {"Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included.".split(
                           " "
                         ).length > 10 && (
                           <button
@@ -651,13 +651,13 @@ function DrivingInstructorUI() {
                         className={styles.corouselDescription}>
                         <p>
                           {isReadMore["id33333333"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                            ? "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes." // Show full content
+                            : "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes."
                                 .split(" ")
                                 .slice(0, 10)
                                 .join(" ") + "..."}
                         </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                        {"Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes.".split(
                           " "
                         ).length > 10 && (
                           <button
@@ -717,13 +717,13 @@ function DrivingInstructorUI() {
                         className={styles.corouselDescription}>
                         <p>
                           {isReadMore["id44444444"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
+                            ? "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding." // Show full content
+                            : "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding."
                                 .split(" ")
                                 .slice(0, 10)
                                 .join(" ") + "..."}
                         </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
+                        {"Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding.".split(
                           " "
                         ).length > 10 && (
                           <button
