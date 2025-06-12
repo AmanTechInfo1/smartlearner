@@ -5379,3 +5379,157 @@
     font-size: 1.5rem;
   }
 }
+/* ///////////////////////////////////////// */
+/* ////////////////////////////////////////// */
+/* //////////////////////////////////////// */
+
+.Adi3Module19header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.Adi3Module19navButton {
+  padding: 0.6rem 1rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.Adi3Module19navButton:hover {
+  background-color: #1976d2;
+}
+
+.Adi3Module19container {
+  padding: 2rem;
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f8fb;
+  border-radius: 6px;
+}
+
+.Adi3Module19card {
+  scroll-margin-top: 200px;
+  background: linear-gradient(135deg, #ffffff, #f1faff);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.Adi3Module19card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+}
+
+.Adi3Module19title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid #64b5f6;
+  padding-left: 0.75rem;
+}
+
+.Adi3Module19description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+.tableWrapper3 {
+  overflow-x: auto;
+}
+
+.Adi3Module19table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+
+  min-width: 500px;
+}
+
+.Adi3Module19table th {
+  background-color: #1565c0;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+}
+
+.Adi3Module19table td {
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  background-color: #f1f8ff;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+.Adi3Module19table td:hover {
+  border-right: 1px solid silver;
+  border-left: 1px solid silver;
+}
+.Adi3Module19table tr:hover td {
+  background-color: #e3f2fd;
+}
+.Adi3Module19faultType {
+  font-weight: 600;
+  color: #0d47a1;
+}
+
+.Adi3Module19faultExample {
+  color: #424242;
+}
+
+.Adi3Module19link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e88e5;
+  transition: color 0.3s;
+}
+
+.Adi3Module19link:hover {
+  color: #0d47a1;
+}
+
+@media (max-width: 768px) {
+  .Adi3Module19title {
+    font-size: 1.6rem;
+  }
+
+  .Adi3Module19card {
+    padding: 1.5rem;
+  }
+
+  .Adi3Module19table th,
+  .Adi3Module19table td {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Adi3Module19card {
+    padding: 1.2rem;
+  }
+
+  .Adi3Module19title {
+    font-size: 1.4rem;
+  }
+
+  .Adi3Module19description {
+    font-size: 1rem;
+  }
+}
+/* //////////////////////////////////////////*/

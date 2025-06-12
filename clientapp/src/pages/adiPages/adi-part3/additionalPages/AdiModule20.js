@@ -6,15 +6,21 @@ import { motion } from "framer-motion";
 
 const faultData = [
   {
-    title: "Accelerator",
+    title: "Awareness / planning",
     description:
-      "The pupil should use the accelerator and clutch to make a smooth start.",
+      "Reasons to record a fault under ‘awareness / planning’ include:",
     shortDec: (
       <>
-        Reasons to record a fault include:
         <ul>
-          <li>1. Making uncontrolled use of the accelerator</li>
-          <li>2. Revving excessively</li>
+          <li>
+            1. not considering the actions of vulnerable road users such as
+            pedestrians, cyclists, motorcyclists and horse riders
+          </li>
+          <li>2. not anticipating road and traffic conditions in good time</li>
+          <li>
+            3. reacting to other road users at the last moment rather than in
+            good time
+          </li>
         </ul>
       </>
     ),
@@ -22,76 +28,112 @@ const faultData = [
     faults: [
       {
         type: "Driving fault",
-        example: "Uncontrolled or harsh use of the accelerator",
+        example: "Late reaction to what other road users are doing",
       },
       {
         type: "Serious fault",
         example:
-          "Continuous habitual uncontrolled or harsh use of the accelerator",
+          "Last minute and sudden reaction to other road users compromising their safety",
       },
       {
         type: "Dangerous fault",
         example:
-          "Uncontrolled use of the accelerator leading to a situation involving actual danger",
+          "Any situation brought about by a last minute and sudden reaction to other road users that results in actual danger to the pupil, instructor, general public or property",
       },
     ],
   },
   {
-    title: "Clutch",
+    title: "Clearance",
     description:
-      "The pupil should use the accelerator and clutch to make a smooth start. The clutch should be depressed before the car stops. They should not allow the car to coast by running on in neutral or with the clutch depressed.",
+      "The pupil should allow plenty of room when passing stationary vehicles and obstructions. They should be able to display the readiness to be prepared to slow down or stop, as a door may open, a child may run out or a vehicle may pull out without warning.",
+    shortDec: (
+      <>
+        <ul>
+          <li>
+            Record a fault under ‘clearance’ if the pupil drives too close to
+            stationary vehicles and obstructions.
+          </li>
+        </ul>
+      </>
+    ),
     faults: [
       {
         type: "Driving fault",
         example:
-          "The clutch is not depressed in time when coming to a stop causing the engine to stall, but no other traffic is affected",
+          "Passes too close to a stationary vehicle when road conditions allowed the correct clearance",
       },
       {
         type: "Serious fault",
         example:
-          "The clutch is not depressed in time habitually throughout the drive",
+          "Narrowly avoids a collision with a stationary vehicle when road conditions enable the correct and safe course to be taken",
       },
       {
         type: "Dangerous fault",
         example:
-          "The clutch is not depressed in time when coming to a stop, resulting in the instructor needing to take action to prevent actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Gears",
-    description:
-      "The pupil should select the correct gear to match the road and traffic conditions.",
-    shortDec:
-      "They should not allow the car to coast by running on in neutral or with the clutch depressed.",
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Selecting the wrong gear, resulting in a reduction in vehicle speed with no risk to following vehicles",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Selecting the wrong gear, resulting in a sudden reduction in vehicle speed, causing following traffic to alter speed or direction",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Any situation brought about by a control fault that results in actual danger to the pupil, instructor, general public or property",
+          "Passes dangerously close to or striking a stationary vehicle, resulting in actual danger to the pupil, instructor, general public or property",
       },
     ],
   },
   //////////////////////////////////////
   {
-    title: "Footbrake",
-    description:
-      "The pupil should use the footbrake smoothly and progressively.",
+    title: "Following distance",
+    description: (
+      <>
+        The car must always be a safe distance between the pupil and other
+        vehicles.
+        <ul>
+          <li>1. On wet or slippery roads it takes much longer to stop.</li>
+          <li>
+            2. When the car has stopped in traffic queues, sufficient space
+            should be left to pull out if the vehicle in front has problems.
+          </li>
+        </ul>
+      </>
+    ),
+    shortDec: (
+      <>
+        Reasons to record a fault under ‘following distance’ include:
+        <ul>
+          <li>1. getting too close to moving vehicles</li>
+          <li>2. pulling up too close to vehicle ahead</li>
+        </ul>
+      </>
+    ),
     faults: [
       {
         type: "Driving fault",
-        example: "Uncontrolled or harsh use of footbrake",
+        example: "Not maintaining the full separation distance required",
+      },
+      {
+        type: "Serious fault",
+        example:
+          "Driving too close to the vehicle ahead, where the separation distance left little margin for error",
+      },
+      {
+        type: "Dangerous fault",
+        example:
+          "Any situation brought about by dangerously driving too close to the car in front that results in actual danger to the pupil, instructor, general public or property - the instructor must take action as necessary to increase separation distance and avoid the possibility of a collision",
+      },
+    ],
+  },
+  //////////////////////////////////////
+  {
+    title: "Use of speed",
+    description: (
+      <>
+        Reasons to record a fault under ‘use of speed’ include:
+        <ul>
+          <li>1. driving too fast for prevailing road traffic and weather conditions</li>
+          <li>
+            2. breaking the speed limit
+          </li>
+        </ul>
+      </>
+    ),
+    faults: [
+      {
+        type: "Driving fault",
+        example: "Driving too fast for the road or traffic conditions for a short period",
       },
       {
         type: "Serious fault",
@@ -865,12 +907,12 @@ const faultData = [
 
 const colors = ["#4db6ac", "#7986cb", "#ba68c8", "#ffb74d", "#81c784"];
 
-const Adi3Module19 = () => {
+const Adi3Module20 = () => {
   const textRef = useRef(null);
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = "Control – Junctions"; // First part before "Driving"
+    const firstPart = "Awareness"; // First part before "Driving"
 
     // Split both parts into individual characters and map them to <span>
     const firstLine = firstPart
@@ -956,13 +998,6 @@ const Adi3Module19 = () => {
       });
   }, []);
 
-  const handleClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <div className={styles.AdiModuleOnecontainer}>
       <section
@@ -977,20 +1012,8 @@ const Adi3Module19 = () => {
         </section>
       </section>
       <div className={styles.Adi3Module19container}>
-        <div className={styles.Adi3Module19header}>
-          {faultData?.map((section, idx) => (
-            <button
-              key={idx}
-              className={styles.Adi3Module19navButton}
-              onClick={() => handleClick(`section-${idx}`)}>
-              {section.title}
-            </button>
-          ))}
-        </div>
-
         {faultData?.map((section, idx) => (
           <motion.div
-            id={`section-${idx}`}
             key={idx}
             className={styles.Adi3Module19card}
             initial={{ opacity: 0, y: 50 }}
@@ -1054,4 +1077,4 @@ const Adi3Module19 = () => {
   );
 };
 
-export default Adi3Module19;
+export default Adi3Module20;
