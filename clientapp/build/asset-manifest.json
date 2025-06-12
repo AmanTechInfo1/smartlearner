@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e9f1b538.css",
-    "main.js": "/static/js/main.4c23d0da.js",
+    "main.css": "/static/css/main.315284a3.css",
+    "main.js": "/static/js/main.9fd12ccd.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -204,6 +204,7 @@
     "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
     "static/media/CChampion-1.jpg": "/static/media/CChampion-1.f27cb8208facbf5cfe50.jpg",
     "static/media/hand-plant.png": "/static/media/hand-plant.5a44f35675b1afd13386.png",
+    "static/media/control-junction.jpg": "/static/media/control-junction.fc0e01fde234af63946f.jpg",
     "static/media/Intensive-Driving-Course-1024x768.jpg": "/static/media/Intensive-Driving-Course-1024x768.13b9760aee7883e2ee4e.jpg",
     "static/media/padestrienCrossing.jpg": "/static/media/padestrienCrossing.d6d912875b2b5e141f6b.jpg",
     "static/media/choose-img.jpg": "/static/media/choose-img.ceedd820c5868bcffab6.jpg",
@@ -397,12 +398,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.e9f1b538.css.map": "/static/css/main.e9f1b538.css.map",
-    "main.4c23d0da.js.map": "/static/js/main.4c23d0da.js.map",
+    "main.315284a3.css.map": "/static/css/main.315284a3.css.map",
+    "main.9fd12ccd.js.map": "/static/js/main.9fd12ccd.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9f1b538.css",
-    "static/js/main.4c23d0da.js"
+    "static/css/main.315284a3.css",
+    "static/js/main.9fd12ccd.js"
   ]
 }
