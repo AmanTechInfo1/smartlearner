@@ -181,6 +181,7 @@ import UserReport from "./containers/userReports/UserReport";
 import UserInvoice from "./containers/userReports/user-invoice/UserInvoice";
 import SimulatorTraining from "./pages/SimulatorTraining";
 import Adi3Module19 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module19";
+import Adi3Module20 from "./pages/adiPages/adi-part3/additionalPages/AdiModule20";
 
 export const router = createBrowserRouter([
   {
@@ -463,6 +464,8 @@ export const router = createBrowserRouter([
 
       { path: "simulator-training", element: <SimulatorTraining /> },
       { path: "control-module", element: <Adi3Module19 /> },
+      { path: "awareness-module", element: <Adi3Module20 /> },
+
       {
         path: "all-results",
         element: <AllResult />,

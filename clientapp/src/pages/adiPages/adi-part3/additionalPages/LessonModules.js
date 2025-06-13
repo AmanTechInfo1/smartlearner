@@ -388,6 +388,44 @@ export default function LessonModules() {
                 )}
               </li>
             </Link>
+            <Link to="/control-module">
+              {" "}
+              <li
+                className={`${styles.itemLesson} ${
+                  openIndex === 4355 ? styles.lessonOpen : ""
+                }`}
+                onMouseEnter={() => handleMouseEnter(4355)}
+                onMouseLeave={handleMouseLeave}>
+                <div className={styles.lessonRow}>
+                  <span className={styles.checkIcon}>
+                    <MdContactPage />
+                  </span>{" "}
+                  Control
+                </div>
+                {openIndex === 4355 && (
+                  <p className={styles.description}>Control</p>
+                )}
+              </li>
+            </Link>
+            <Link to="/awareness-module">
+              {" "}
+              <li
+                className={`${styles.itemLesson} ${
+                  openIndex === 4375 ? styles.lessonOpen : ""
+                }`}
+                onMouseEnter={() => handleMouseEnter(4375)}
+                onMouseLeave={handleMouseLeave}>
+                <div className={styles.lessonRow}>
+                  <span className={styles.checkIcon}>
+                    <MdContactPage />
+                  </span>{" "}
+                  Awareness
+                </div>
+                {openIndex === 4375 && (
+                  <p className={styles.description}>Awareness</p>
+                )}
+              </li>
+            </Link>
 
             {/* ///////////////////////////////////////////////////////////// */}
             <Link to="/trainee-badge">

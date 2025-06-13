@@ -123,128 +123,11 @@ const faultData = [
       <>
         Reasons to record a fault under ‘use of speed’ include:
         <ul>
-          <li>1. driving too fast for prevailing road traffic and weather conditions</li>
           <li>
-            2. breaking the speed limit
+            1. driving too fast for prevailing road traffic and weather
+            conditions
           </li>
-        </ul>
-      </>
-    ),
-    faults: [
-      {
-        type: "Driving fault",
-        example: "Driving too fast for the road or traffic conditions for a short period",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Uncontrolled or harsh use of footbrake habitually throughout the drive",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "No timely attempt to use the foot brake, resulting in the instructor needing to take action to prevent actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Parking brake",
-    description:
-      "The pupil should make full use of the parking brake to prevent the car rolling backwards or forwards.",
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Parking brake not applied for stopping on hill start, car rolls back a short distance",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Parking brake not applied for stopping on hill start, car rolls back a significant distance",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Parking brake not applied for stopping on hill start, car rolls back with a vehicle or other road user behind causing actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Steering",
-    description:
-      "The pupil should steer the car as smoothly as possible. Steering too early or late may cause the car to hit the kerb or swing out towards another road user.",
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Steers sufficiently late when turning right at a junction to cause a ‘swan neck’ steering line which is recovered",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Steers significantly early when turning left at a junction causing a wheel to mount the pavement",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Steers significantly late when turning right at a junction, causing a wheel to mount the pavement when there is a pedestrian present causing actual danger - the instructor has to take action to prevent the situation escalating",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Precautions",
-    description:
-      "Before the engine is started, the pupil should make sure that they are comfortably seated and all controls can be safely operated.",
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "After stalling at a road junction, handbrake applied but pupil attempts to start the engine whilst in gear",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "At a road junction, engine started whilst in gear, resulting in car entering the new road with potential risk to other road users",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Any situation brought about by a lack of ability to recognise the need to operate or being unable to operate the controls, which directly affects other traffic or pedestrians and causes actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Ancillary controls",
-    description: (
-      <>
-        The pupil should understand the function of all the controls and
-        switches, especially those that have a bearing on road safety. These
-        include:
-        <ul>
-          <li>1. Indicators</li>
-          <li>2. Lights</li>
-          <li>3. Windscreen wipers</li>
-          <li>4. Demisters</li>
-          <li>5. Heaters</li>
-        </ul>
-      </>
-    ),
-    shortDec: (
-      <>
-        The pupil should be able to find these controls and operate them
-        correctly, when necessary, without looking down or causing a loss of
-        control. Reasons to record a fault include:
-        <ul>
-          <li>1. Failing to use ancillary controls when necessary</li>
-          <li>2. Being unable to operate the controls</li>
-          <li>
-            3. Being unable to locate or operate essential ancillary controls
-          </li>
-          <li>4. Losing control whilst operating ancillary controls</li>
+          <li>2. breaking the speed limit</li>
         </ul>
       </>
     ),
@@ -252,29 +135,23 @@ const faultData = [
       {
         type: "Driving fault",
         example:
-          "Pupil is not completely familiar with the location and operation of controls. Control of the car is compromised but with no effect on road safety",
+          "Driving too fast for the road or traffic conditions for a short period",
       },
       {
         type: "Serious fault",
         example:
-          "Pupil is unaware of the location and operation of the controls, resulting in a serious loss of vehicle control and road safety being compromised",
+          "Driving too fast for the road or traffic conditions, exceeding speed limits",
       },
       {
         type: "Dangerous fault",
         example:
-          "Any situation brought about by a fault locating or operating ancillary controls that results in actual danger to the pupil, instructor, general public or property",
-      },
-    ],
-    links2: [
-      {
-        title: "Click to View",
-        link: "https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#assessment-criteria",
+          "Any situation brought about by the inability to meet approaching traffic that results in actual danger to the pupil, instructor, general public or property",
       },
     ],
   },
   //////////////////////////////////////
   {
-    title: "Move off",
+    title: "Progress",
     description: (
       <>
         On the form you need to record any faults made related to:
@@ -282,17 +159,17 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#safety-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking">
               {" "}
-              Safety
+              appropriate speed
             </a>
           </li>
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#control-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking">
               {" "}
-              Control
+              undue hesitation
             </a>
           </li>
         </ul>
@@ -300,19 +177,19 @@ const faultData = [
     ),
     shortDec: (
       <>
-        Safety:
+        The pupil should drive at a safe and appropriate speed for the
+        prevailing road and traffic conditions. Speed limits are not target
+        speeds and there will be occasions where pupils need to reduce their
+        speed to deal safely with situations such as narrow residential streets
+        or busy high streets - this should not be considered as a fault.
         <ul>
-          <li>Reasons to record a fault under ‘safety’ include:</li>
-          <li>1. not checking their blind spot</li>
-          <li>2. checking their blind spot at the wrong time</li>
+          Appropriate speed <br />
+          Reasons to record a fault under ‘appropriate speed’ include:
           <li>
-            3. moving away unsafely, making a blind spot check only over the
-            left shoulder for normal stops and angle starts
+            1. not driving at an appropriate speed for the road and traffic
+            conditions
           </li>
-          <li>
-            4.pulling away with the right signal on following the ‘pull up on
-            the right and reverse’ exercise
-          </li>
+          <li>2. holding up following traffic</li>
         </ul>
       </>
     ),
@@ -320,41 +197,32 @@ const faultData = [
       {
         type: "Driving fault",
         example:
-          "Incorrect timing of the blind spot check when moving off with no risk to other road users - for example, checking the blind spot after the car has moved off",
+          "Driving at 20mph in a 30mph area with no mitigating circumstances",
       },
       {
         type: "Serious fault",
         example:
-          "Moving off into the path of traffic or failing to make observation at all",
+          "Driving on a dual carriageway significantly below the permitted speed limit, affecting following road users",
       },
       {
         type: "Dangerous fault",
         example:
-          "Failure to make observation causes actual danger to the pupil, instructor, general public or property",
+          "Driving at a speed significantly below the speed limit and creating a situation that encourages other road users to put themselves at risk",
       },
     ],
   },
   //////////////////////////////////////
   {
-    title: "Control",
+    title: "Undue hesitation",
     description: (
       <>
-        The pupil should:
+        Reasons to record a fault under ‘undue hesitation’ include:
         <ul>
-          <li>1. move off smoothly and safely on a gradient and at an angle</li>
-          <li>2. make the correct precautionary observations</li>
-        </ul>
-      </>
-    ),
-    shortDec: (
-      <>
-        Reasons to record a fault under ‘control’ include:
-        <ul>
-          <li>1.stalling</li>
-          <li>2. moving off with the handbrake applied</li>
-          <li>3. rolling backwards when attempting to move off</li>
-          <li>4. not engaging a gear when attempting to move off</li>
-          <li>5. attempting to pull away in too high a gear</li>
+          <li>
+            1. stopping unnecessarily at junctions (except traffic light
+            controlled junctions) and other hazards
+          </li>
+          <li>2. not proceeding when it is safe to do so at junctions</li>
         </ul>
       </>
     ),
@@ -362,546 +230,387 @@ const faultData = [
       {
         type: "Driving fault",
         example:
-          "Attempts to move away but stalls the engine, no other road users are affected",
+          "Shows a lack of judgement by not proceeding when it is safe and correct to do so",
       },
       {
         type: "Serious fault",
-        example: "Attempts to move away and repeatedly stalls the engine",
+        example:
+          "Stopping and waiting when it is safe and reasonable to proceed",
       },
       {
         type: "Dangerous fault",
         example:
-          "Attempts to move away uphill, stalls the engine and allows car to roll back with another vehicle behind causing actual danger",
+          "Undue hesitation is unlikely to become dangerous in itself unless it creates situations that encourage other road users to put themselves at risk",
       },
     ],
-    links2: [
+  },
+  //////////////////////////////////////
+  {
+    title: "Response to signs/signals",
+    description: (
+      <>
+        On the form you need to record any faults made related to:
+        <ul>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-signs-marking">
+              {" "}
+              traffic signs
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#road-markings-marking">
+              {" "}
+              road markings
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-lights-marking">
+              {" "}
+              traffic lights
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-controllers-marking">
+              {" "}
+              traffic controllers
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#other-road-users-marking">
+              {" "}
+              other road users
+            </a>
+          </li>
+          The pupil should:
+          <li>
+            1. be able to understand and be able to react to all traffic signs
+            and road markings
+          </li>
+          <li>
+            2. act correctly at traffic lights, checking that the road is clear
+            before proceeding when the green light shows
+          </li>
+          <li>
+            3. obey all signals given by police officers, traffic wardens and
+            school crossing patrols
+          </li>
+          <li>
+            4. display the awareness to be able to react to signals given by
+            other road users, including people in charge of animals, and be
+            ready to act accordingly
+          </li>
+        </ul>
+      </>
+    ),
+    shortDec: (
+      <>
+        Traffic signs <br />
+        Reasons to record a fault under ‘traffic signs’ include:
+        <ul>
+          <li>1. going to the wrong side of a keep left sign</li>
+          <li>2. not complying with a stop sign</li>
+          <li>3. not complying with a no entry sign</li>
+          <li>
+            4. driving in a bus lane when times on the sign prohibit its use
+          </li>
+          <li>5. not complying with mandatory signs</li>
+        </ul>
+      </>
+    ),
+
+    faults: [
       {
-        title: "Click to View",
-        link: "https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#assessment-criteria",
+        type: "Driving fault",
+        example:
+          "Late reaction to a clearly visible sign that shows a lower speed limit change",
+      },
+      {
+        type: "Serious fault",
+        example:
+          "Attempting to continue into a road with a clearly visible no entry sign",
+      },
+      {
+        type: "Dangerous fault",
+        example:
+          "A situation that requires the instructor to take action in order to prevent actual danger",
+      },
+    ],
+  },
+  //////////////////////////////////////
+  {
+    title: "Road markings",
+    description: (
+      <>
+        Reasons to record a fault under ‘road markings’ include:
+        <ul>
+          <li>1. crossing the solid white centre lines unnecessarily</li>
+          <li>2. not conforming to directional arrows</li>
+          <li>
+            3. stopping in a yellow box junction when the exit is not clear
+          </li>
+        </ul>
+      </>
+    ),
+
+    faults: [
+      {
+        type: "Driving fault",
+        example:
+          "Straddling lanes with separate clear visible painted directional arrows in individual lanes on approach to a junction",
+      },
+      {
+        type: "Serious fault",
+        example:
+          "Entering and stopping in a clearly marked yellow box junction when going ahead at a junction",
+      },
+      {
+        type: "Dangerous fault",
+        example:
+          "A situation that has caused actual danger to other road users",
+      },
+    ],
+  },
+  //////////////////////////////////////
+  {
+    title: "Traffic lights",
+    description: (
+      <>
+        Reasons to record a fault under ‘traffic lights include:
+        <ul>
+          <li>1. waiting at a green filter light when safe to proceed</li>
+          <li>
+            2. waiting to turn right in a junction, when the red repeater light
+            is on the opposite side and it is safe to proceed
+          </li>
+          <li>3. not conforming to a red light</li>
+          <li>4. making a late reaction to the amber traffic light</li>
+          <li>5. remaining at the stop line when safe to move forwards</li>
+          <li>
+            6. stopping beyond the solid white line going into an area
+            designated for cyclists
+          </li>
+        </ul>
+      </>
+    ),
+
+    faults: [
+      {
+        type: "Driving fault",
+        example:
+          "Late reaction to an amber traffic light, with no effect to safety",
+      },
+      {
+        type: "Serious fault",
+        example:
+          "Failing to comply correctly and promptly with an appropriate traffic light or breaching a legal requirement",
+      },
+      {
+        type: "Dangerous fault",
+        example:
+          "A breach of a legal requirement that results in actual danger to the pupil, instructor, general public or property - the instructor may have to take action to avoid a legal requirement being breached",
+      },
+    ],
+  },
+  //////////////////////////////////////
+  {
+    title: "Traffic controllers",
+    description: (
+      <>
+        Record a fault under ‘traffic controllers’ if the pupil fails to respond
+        to:
+        <ul>
+          <li>1. police</li>
+          <li>2. traffic warden</li>
+          <li>3. traffic warden</li>
+          <li>4. school crossing patrol</li>
+          <li>5. other persons directing traffic</li>
+        </ul>
+      </>
+    ),
+
+    faults: [
+      {
+        type: "Driving fault",
+        example:
+          "A late reaction to a traffic controller holding a stop sign at temporary road works",
+      },
+      {
+        type: "Serious fault",
+        example:
+          "No reaction to a school crossing controller waiting to step into the road",
+      },
+      {
+        type: "Dangerous fault",
+        example:
+          "Driving towards a school crossing patrol resulting in the instructor having to take action to prevent actual danger to the public",
       },
     ],
   },
 
   // ///////////////////////////
   {
-    title: "Use of mirrors",
+    title: "Other road users",
     description: (
       <>
-        On the form you need to record any faults made related to:
-        <ul>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#signalling-marking">
-              {" "}
-              signalling
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#changing-direction-marking">
-              {" "}
-              changing direction
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#changing-speed-marking">
-              {" "}
-              changing speed
-            </a>
-          </li>
-        </ul>
-        <ul>
-          The pupil should:
-          <li>
-            1. make full and effective use of all mirrors fitted to the car
-          </li>
-          <li>2. use the mirror - signal - manoeuvre (MSM) routine</li>
-        </ul>
+        Record a fault under ‘other road users’ if the pupil does not react
+        appropriately to the signals given by other road users.
       </>
     ),
-    shortDec: (
-      <>
-        Reasons to record a fault include:
-        <ul>
-          <li>1. not using the exterior mirrors when essential</li>
 
-          <li>2. using the mirrors but not reacting to the information</li>
-          <li>3. not using the mirrors at all</li>
-          <li>4. pulling up with no mirror checks</li>
-          <li>5. increasing their speed with no mirror checks</li>
-          <li>6. making late use of mirrors</li>
-        </ul>
-        Signalling:
-      </>
-    ),
     faults: [
       {
         type: "Driving fault",
         example:
-          "Mirrors are not used before signalling but no other road users are affected",
+          "Does not continue ahead safely past a car that is signalling and waiting to turn right from a major to minor road",
       },
       {
         type: "Serious fault",
         example:
-          "Mirrors are not used before signalling repeatedly throughout the drive",
+          "Waiting behind a bus that has clearly signalled and has stopped, inconveniencing following traffic that could overtake",
       },
       {
         type: "Dangerous fault",
         example:
-          "Mirrors are not used before signalling for right turn, vehicle behind has to abandon overtake causing actual danger",
+          "A situation that has caused the instructor to take action to prevent actual danger taking place",
       },
     ],
   },
   //////////////////////////////////////
   {
-    title: "Change direction",
+    title: "Examiner took action (ETA)",
+    description: (
+      <>
+        Record a fault under ‘ETA’ if at any point your pupil’s driving becomes
+        dangerous and you have to take action to correct it. This action may be:
+        <ul>
+          <li>1. physical</li>
+          <li>2. verbal</li>
 
-    faults: [
-      {
-        type: "Driving fault",
-        example: "Late use of exterior mirror before changing direction",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Does not use the exterior mirror before a significant change in direction",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Any situation brought about by a serious neglect of using the mirrors, resulting in actual danger to the pupil, instructor, general public or property",
-      },
-    ],
+          <h3>Eco (fuel-efficient driving)</h3>
+          <li>On the form you can record any faults made related to:</li>
+
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking">
+              {" "}
+              control
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.Adi3Module19link}
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking">
+              {" "}
+              planning
+            </a>
+          </li>
+        </ul>
+      </>
+    ),
+    shortDec: (
+      <>
+        The pupil should drive in an eco friendly manner to reduce pollution and
+        save fuel. They should:
+        <ul>
+          <li>1. plan well ahead and choose appropriate gears</li>
+          <li>
+            2. avoid heavy braking and over revving of the engine, particularly
+            when stopped or moving off
+          </li>
+          <li>
+            3. consider stopping the engine when stopped for long periods of
+            time
+          </li>
+          <li>
+            4. Although eco-safe driving is assessed during the driving test, it
+            does not affect the overall result. You use this when you give
+            feedback at the end of the test.
+          </li>
+        </ul>
+      </>
+    ),
   },
 
   // /////////////////////////////////
   {
-    title: "Change speed",
+    title: "Give feedback at the end of the test",
 
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Does not use mirrors before making a normal stop but no other road users are affected",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Does not use mirrors before making a normal stop and no signal is given, significantly affecting the following traffic",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Does not use mirrors before a normal stop and no signal is given, causing actual danger to following traffic",
-      },
-    ],
-    links2: [
-      {
-        title: "Click to View",
-        link: "https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#assessment-criteria",
-      },
-    ],
+    description: (
+      <>
+        The pupil will pass the test if they make:
+        <ul>
+          <li>1. no more than 15 driving faults (sometimes called ‘minors’)</li>
+          <li>2. no serious or dangerous faults (sometimes called ‘majors’)</li>
+        </ul>
+      </>
+    ),
+    shortDec: (
+      <>
+        When giving the feedback at the end of the test, you could either:
+        <ul>
+          <li>1. give the feedback as though you’re the examiner</li>
+          <li>2. ask their pupil how they think they did</li>
+        </ul>
+      </>
+    ),
   },
 
   ///////////////////////////////////
 
   {
-    title: "Signals",
+    title: "Giving feedback as though you’re the examiner",
     description: (
       <>
-        On the form you need to record any faults made related to signals not
-        being:
+        You could give the result and feedback while still roleplaying as the
+        examiner. This will give the pupil a feel for how much feedback the
+        examiner will give.
         <ul>
           <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#necessary-marking">
-              {" "}
-              necessary
-            </a>
+            Offer the pupil a brief explanation of the faults that you have
+            recorded on the marking sheet. Explain all serious and dangerous
+            faults, and a selection of repeated driving faults.
           </li>
           <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#correct-marking">
-              {" "}
-              correct
-            </a>
+            If the pupil fails the test due to making 15 or more driving faults,
+            you’ll need to explain all of the faults.
           </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#timed-marking">
-              {" "}
-              timed
-            </a>
-          </li>
-          <li>
-            The pupil should give clear signals to let other road users know the
-            intended course to be taken. Signals shown in the Highway Code
-            should only be used if it would help other road users (including
-            pedestrians).
-          </li>
-          <li>
-            Signals should be given in good time and cancelled after the
-            manoeuvre has been completed.
-          </li>
-          <li>Pedestrians should not be beckoned to cross the road.</li>
         </ul>
       </>
     ),
     shortDec: (
       <>
-        Necessary
+        <h2>End the mock test and give feedback</h2>
+        When the mock test is finished, you can stop roleplaying as the examiner
+        and:
         <ul>
-          <li>Reasons to record a fault under ‘necessary’ include:</li>
+          <li>
+            1. give more feedback about their driving during the mock test
+          </li>
 
-          <li>1. failing to re-apply the signal when it self cancels</li>
-          <li>2. failing to give a signal where necessary</li>
+          <li>2. ask coaching questions about any faults</li>
+          <li>
+            3. answer any questions they have about the test and how they drove
+          </li>
+          <li>
+            4. use the results of the mock test to plan their future lessons
+          </li>
         </ul>
       </>
     ),
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Applies signal but cancels before the change in direction is complete, where another road user is present who would benefit from the signal",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Omits an essential signal to inform other road user of a change in direction",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Omits an essential signal to inform other road user of a change in direction, resulting in actual danger to the pupil, instructor, general public or property",
-      },
-    ],
   },
   //////////////////////////////////////
-  {
-    title: "Correctly",
-    description: (
-      <>
-        Reasons to record a fault under ‘correctly’ include:
-        <ul>
-          <li>1. signalling unnecessarily</li>
-          <li>2. giving wrong arm signals</li>
-          <li>3. failing to cancel after use</li>
-          <li>
-            4. signalling incorrectly (for example signalling left for right or
-            right for left)
-          </li>
-          <li>
-            5. flashing the headlights at another driver to proceed or turn
-          </li>
-          <li>6. having the hazard lights on whilst on the move</li>
-          <li>7. making unnecessary use of the horn</li>
-          <li>8. beckoning pedestrians </li>
-        </ul>
-      </>
-    ),
 
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Does not cancel left signal after leaving roundabout, continues with signal on for sufficient distance with no effect",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Does not cancel left signal after leaving roundabout, continues with signal on towards junction on left with vehicle waiting to emerge, has to be asked to cancel signal",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Beckons pedestrian to cross road causing actual danger, oncoming vehicle has to brake heavily to avoid pedestrian",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Timed",
-    description: (
-      <>
-        Reasons to record a fault under ‘timed’ include:
-        <ul>
-          <li>1. giving late exit signals at roundabouts</li>
-          <li>2. arriving at a junction and then signalling</li>
-          <li>3. signalling after starting the manoeuvre</li>
-          <li>4. signalling far too early or too late</li>
-          <li>
-            5. giving a misleading signal before intended left and right turn
-          </li>
-        </ul>
-      </>
-    ),
-
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Gives a necessary signal late when turning at junction, having a sufficient effect on other road users to warrant recording a fault",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Gives a very late signal for turning at junction with traffic present who are significantly affected",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Gives a very late signal for turning at a junction and causes actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Signals",
-    description: (
-      <>
-        On the form you need to record any faults made related to signals not
-        being:
-        <ul>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#approach-speed-marking">
-              {" "}
-              approach speed
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#observation-marking">
-              {" "}
-              observation
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#turning-right-marking">
-              {" "}
-              turning right
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#turning-left-marking">
-              {" "}
-              turning left
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#cutting-corners-marking">
-              {" "}
-              cutting corners
-            </a>
-          </li>
-        </ul>
-      </>
-    ),
-    shortDec: (
-      <>
-        Approach speed
-        <ul>
-          <li>
-            The pupil should be able to judge the correct speed of approach so
-            that the car can enter a junction safely or stop if necessary.
-          </li>
-          <li>Reasons to record a fault under ‘approach speed’ include:</li>
-          <li>1. approaching too fast</li>
-          <li>2. approaching too slow</li>
-        </ul>
-      </>
-    ),
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Approaches a junction sufficiently quickly that control of the car is compromised",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Approaches a junction far too quickly, significantly affecting control of the car",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Approaches a junction far too quickly, causing the instructor to take action to avoid actual danger",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Observation",
-    description: (
-      <>
-        The pupil should:
-        <ul>
-          <li>
-            1. make effective observations before moving into a junction and
-            make sure it is safe before proceeding.
-          </li>
-          <li>
-            2. watch out for cyclists and motorcyclists coming up on their left
-            and pedestrians who are crossing
-          </li>
-        </ul>
-      </>
-    ),
-    shortDec: (
-      <>
-        Reasons to record a fault under ‘observation’ include:
-        <ul>
-          <li>1. not taking effective observation before emerging</li>
-          <li>
-            2. looking both ways but still emerges to affect other road users
-          </li>
-        </ul>
-      </>
-    ),
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Misjudges the speed and distance of an approaching vehicle, does not compromise safety of other road users",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Does not take effective observation before emerging at junctions, emerging into the path of other vehicles",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Any situation brought about by the severe lack of effective observation that results in actual danger to the pupil, instructor, general public or property",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Turning right",
-    description: (
-      <>
-        The car should be positioned correctly, using the correct lane. When
-        turning right, the car should be positioned to the centre of the road as
-        is safe. The car should not cut the corner when turning right.
-      </>
-    ),
-    shortDec: (
-      <>
-        Reasons to record a fault under ‘turning right’ include:
-        <ul>
-          <li>1. positioning the car too far to the left</li>
-          <li>2. positioning the car too far to the right</li>
-          <li>
-            3. stopping short of the turning point when turning from a major to
-            minor road
-          </li>
-          <li>4. taking an incorrect position before turning right</li>
-        </ul>
-      </>
-    ),
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Approaches a T junction to turn right and positions the car part way over the central road marking with no effect on any road user",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Does not attempt to use a clear available right hand lane when turning right at a major roundabout",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Approaches a T junction to turn right and positions on the wrong side of the road with a high risk of safety to oncoming traffic",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Turning left",
-    description: (
-      <>
-        When turning left, the car should be over to the left to avoid swinging
-        out.
-      </>
-    ),
-    shortDec: (
-      <>
-        Reasons to record a fault under ‘turning left’ include:
-        <ul>
-          <li>
-            1. positioning the car too far to the right or too close to the kerb
-          </li>
-          <li>2. swinging out prior to reaching the corner</li>
-          <li>
-            3. positioning the car in an unmarked inappropriate lane to turn
-            left
-          </li>
-        </ul>
-      </>
-    ),
-    faults: [
-      {
-        type: "Driving fault",
-        example: "Approaches a T junction to turn left and brushes the kerb",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Habitually positions the car extremely close to the kerb or brushes it when turning left",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Approaches a T junction to turn left and brushes the kerb, causing the instructor to take action to prevent actual danger to pedestrian close to kerb edge",
-      },
-    ],
-  },
-  //////////////////////////////////////
-  {
-    title: "Cutting corners",
-    description: (
-      <>
-        Record the fault under ‘cutting corners’ if the pupil cuts corners when
-        turning from a major to minor road.
-      </>
-    ),
-
-    faults: [
-      {
-        type: "Driving fault",
-        example:
-          "Turning right from a major to minor road with the car positioned part way over the central dividing line of the minor road, with no effect on other road users approaching the junction",
-      },
-      {
-        type: "Serious fault",
-        example:
-          "Turning right from a major to minor road with the car positioned completely on the wrong side of the road in the minor road with no mitigating circumstances",
-      },
-      {
-        type: "Dangerous fault",
-        example:
-          "Turning right from a major to minor road with the car positioned completely on the wrong side of the road in the minor road, causing the instructor to take action to prevent actual danger to other road users",
-      },
-    ],
-  },
   //////////////////////////////////////
 ];
 
@@ -998,6 +707,13 @@ const Adi3Module20 = () => {
       });
   }, []);
 
+  const handleClick = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className={styles.AdiModuleOnecontainer}>
       <section
@@ -1012,8 +728,20 @@ const Adi3Module20 = () => {
         </section>
       </section>
       <div className={styles.Adi3Module19container}>
+        <div className={styles.Adi3Module19header}>
+          {faultData?.map((section, idx) => (
+            <button
+              key={idx}
+              className={styles.Adi3Module19navButton}
+              onClick={() => handleClick(`section-${idx}`)}>
+              {section.title}
+            </button>
+          ))}
+        </div>
+
         {faultData?.map((section, idx) => (
           <motion.div
+            id={`section-${idx}`}
             key={idx}
             className={styles.Adi3Module19card}
             initial={{ opacity: 0, y: 50 }}
@@ -1033,7 +761,7 @@ const Adi3Module20 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {section?.faults.map((fault, i) => (
+                  {section?.faults?.map((fault, i) => (
                     <tr
                       key={i}
                       className={styles.Adi3Module19row}

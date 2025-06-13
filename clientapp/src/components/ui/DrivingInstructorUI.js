@@ -720,7 +720,7 @@ function DrivingInstructorUI() {
                             ? "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding." // Show full content
                             : "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding."
                                 .split(" ")
-                                .slice(0, 10)
+                                .slice(0, 13)
                                 .join(" ") + "..."}
                         </p>
                         {"Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding.".split(
