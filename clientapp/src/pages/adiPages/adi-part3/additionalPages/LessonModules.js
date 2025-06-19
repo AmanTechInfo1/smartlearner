@@ -426,6 +426,25 @@ export default function LessonModules() {
                 )}
               </li>
             </Link>
+            <Link to="/mockTest-module">
+              {" "}
+              <li
+                className={`${styles.itemLesson} ${
+                  openIndex === 4323 ? styles.lessonOpen : ""
+                }`}
+                onMouseEnter={() => handleMouseEnter(4323)}
+                onMouseLeave={handleMouseLeave}>
+                <div className={styles.lessonRow}>
+                  <span className={styles.checkIcon}>
+                    <MdContactPage />
+                  </span>{" "}
+                  MockTest
+                </div>
+                {openIndex === 4323 && (
+                  <p className={styles.description}>MockTest</p>
+                )}
+              </li>
+            </Link>
 
             {/* ///////////////////////////////////////////////////////////// */}
             <Link to="/trainee-badge">

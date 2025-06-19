@@ -137,6 +137,67 @@ export default function Adi3Modulefive() {
     }
   }, []);
 
+
+  // /////////////////////////////////////////
+   const [text2, setText2] = useState("");
+    const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
+    const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
+    const [editIndex2, setEditIndex2] = useState(null);
+    const textareaRef2 = useRef(null);
+  
+    const handleChange2 = (e) => {
+      setText2(e.target.value);
+    };
+  
+    const saveText2 = () => {
+      if (text2.trim()) {
+        // If editing an existing item, replace it
+        if (isEditing2) {
+          const updatedTexts2 = [...savedTexts2];
+          updatedTexts2[editIndex2] = text2;
+          setSavedTexts2(updatedTexts2);
+          setIsEditing2(false); // Reset editing flag
+          setEditIndex2(null);
+        } else {
+          setSavedTexts2([...savedTexts2, text2]);
+        }
+        localStorage.setItem(
+          `notepadTexts2Part3pagew7_${userId}`,
+          JSON.stringify([...savedTexts2, text2])
+        );
+  
+        setText2("");
+      }
+    };
+  
+    const editText2 = (index) => {
+      setIsEditing2(true);
+      setEditIndex2(index);
+      setText2(savedTexts2[index]); // Set the text to be edited
+      if (textareaRef2.current) {
+        textareaRef2.current.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+  
+    // Delete the selected text
+    const deleteText2 = (index) => {
+      const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
+      setSavedTexts2(updatedTexts2);
+      localStorage.setItem(
+        `notepadTexts2Part3pagew7_${userId}`,
+        JSON.stringify(updatedTexts2)
+      );
+    };
+  
+    useEffect(() => {
+      const savedData2 = localStorage.getItem(
+        `notepadTexts2Part3pagew7_${userId}`
+      );
+      if (savedData2) {
+        setSavedTexts2(JSON.parse(savedData2));
+      }
+    }, []);
+
   // ///////////////////////////////////////////////
   const textRef = useRef(null);
 
@@ -227,6 +288,40 @@ export default function Adi3Modulefive() {
         stagger: 0.1, // Stagger the color change for each letter
       });
   }, []);
+
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6 },
+    }),
+  };
+  
+
+    const cakeLayers = [
+      {
+        title: "We’ve now reached the top layer of our lesson plan cake.",
+        description:
+          "At this stage, the learner takes full responsibility for moving and stopping the car. With these core skills now in place, you’re ready to progress to the next focus area—such assteering",
+      },
+      {
+        title: "Now we reach the upper layer of our lesson plan cake.",
+        description:
+          "At this point, the student can confidently move the car in a straight line. It may now be appropriate to begin handing over more responsibility— such as managing observations and overall safety. Up until now, you've taken the lead in these areas, but if the learner is ready, this is the time to gradually transfer that responsibility to them.",
+      },
+      {
+        title: "This is the second layer of our lesson plan cake.",
+        description:
+          "Once the learner has a solid grasp of the foundational skills, you can begin to introduce more responsibility. At this stage, that might involve moving the car in a straight line from point A to point B—using only first gear and focusing on straight steering. During this phase, you share responsibility for safety and observations, allowing the learner to concentrate solely on controlling the car and stopping. You may need to repeat this stage several times until they demonstrate consistent competence.",
+      },
+      {
+        title: "This is the base layer of our lesson plan cake—the foundation.",
+        description:
+          "Represents the very first step in teaching a subject. For example, if the subject is Moving Off and  whopping, the foundational skill might be understanding how the clutch works and how to find the ng point. At this stage, there’s no need for the car to move—focus solely on the relevant",
+      },
+    ];
 
   //   /////////////////////////////////////////////////////////////////
 
@@ -367,6 +462,314 @@ export default function Adi3Modulefive() {
           subjects, how can you teach someone else something you don’t know?
         </p>
       </section>
+
+      {/* ///////////////////////////////////////////// */}
+
+      <div className={styles.Adi3Module22container}>
+        <motion.h1
+          className={styles.Adi3Module22title}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          custom={0}
+        >
+          Subjects vs Skill Sets
+        </motion.h1>
+
+        <motion.p
+          className={styles.Adi3Module22para}
+          variants={fadeUp}
+          custom={1}
+          initial="hidden"
+          animate="visible"
+        >
+          When planning a lesson, it’s essential to have a clear idea of what
+          your learner would benefit from. However, it’s equally important to
+          remember that lesson plans should be flexible. Think of your lesson
+          plan as a guide rather than a rigid structure—something that can
+          evolve based on your student’s needs. There is no one-size-fits-all
+          ABCD format that works for every learner or every session. Instead,
+          you should develop your own approach that’s adaptable and
+          student-centered.
+        </motion.p>
+
+        <motion.div
+          className={styles.Adi3Module22box}
+          variants={fadeUp}
+          custom={2}
+          initial="hidden"
+          animate="visible"
+        >
+          <strong>
+            What do you think the difference between subjects vs skillsets is?
+          </strong>
+          <div className={styles.AdiModuleOneTextBox}>
+            <textarea
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                marginTop: "1rem",
+              }}
+              ref={textareaRef2}
+              value={text2}
+              onChange={handleChange2}
+              rows="5"
+              cols="30"
+              placeholder="Write your thoughts here..."
+            />
+            <br />
+            <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+
+            <div className={styles.thoughtsListArea}>
+              {savedTexts2.length === 0 ? (
+                <p style={{ color: "black" }}>No saved thoughts.</p>
+              ) : (
+                <ul>
+                  {savedTexts2.map((savedText2, index) => (
+                    <li key={index}>
+                      <p>{savedText2}</p>
+                      <span>
+                        <FaEdit
+                          onClick={() => editText2(index)}
+                          id={styles.editListIcon}
+                        />
+
+                        <IoTrashBin
+                          onClick={() => deleteText2(index)}
+                          id={styles.binListIcon}
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.h2
+          className={styles.Adi3Module22subTitle}
+          variants={fadeUp}
+          custom={3}
+          initial="hidden"
+          animate="visible"
+        >
+          Let’s explore an important distinction:
+        </motion.h2>
+
+        <motion.div
+          className={styles.Adi3Module22table}
+          variants={fadeUp}
+          custom={4}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className={styles.Adi3Module22column}>
+            <h3>Subjects</h3>
+            <p>
+              Subjects are the broader topics or goals of a lesson. For example:{" "}
+              <em>
+                Forward Bay Parking, Emergency Stop, Moving Off and Stopping.
+              </em>
+            </p>
+          </div>
+          <div className={styles.Adi3Module22column}>
+            <h3>Skill Sets</h3>
+            <p>
+              Skill sets are the specific skills needed to achieve the overall
+              subject. For example:{" "}
+              <em>
+                How to find the biting point, how to move the car in a straight
+                line, how to steer accurately into a bay.
+              </em>
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.p
+          className={styles.Adi3Module22para}
+          variants={fadeUp}
+          custom={5}
+          initial="hidden"
+          animate="visible"
+        >
+          Your lesson should be designed to break down each subject into
+          manageable, bite-sized chunks. These chunks are the individual skills
+          that, when combined, lead to mastery of the subject.
+        </motion.p>
+
+        <motion.p
+          className={styles.Adi3Module22para}
+          variants={fadeUp}
+          custom={6}
+          initial="hidden"
+          animate="visible"
+        >
+          We don’t just teach <strong>what</strong> to do—we focus on{" "}
+          <strong>how</strong>, <strong>why</strong>, and <strong>when</strong>{" "}
+          to do it. We also develop the behaviours that support those skills,
+          which leads to a deeper, more practical understanding.
+        </motion.p>
+
+        <motion.h2
+          className={styles.Adi3Module22subTitle}
+          variants={fadeUp}
+          custom={7}
+          initial="hidden"
+          animate="visible"
+        >
+          The Importance of Structure and Simplicity
+        </motion.h2>
+
+        <motion.div
+          className={styles.Adi3Module22scenario}
+          variants={fadeUp}
+          custom={8}
+          initial="hidden"
+          animate="visible"
+        >
+          <p>
+            Now imagine this scenario: It’s your first day training for your
+            Part 3 exam to become a driving instructor. Your trainer bombards
+            you with a list of instructions:
+          </p>
+          <blockquote>
+            “First ask the student this, then say that, now tell them to do
+            this, and then... go!”
+          </blockquote>
+          <p>
+            How would you feel? Overwhelmed? Confused? Unprepared? Probably.
+          </p>
+          <p>
+            This is exactly why we break things down. Teaching should be
+            delivered in clear, manageable steps so learners can absorb and
+            apply what they're being taught. It’s more important that a student
+            understands the
+            <strong> why</strong>, <strong>how</strong>, and{" "}
+            <strong>when</strong> than simply ticking off tasks.
+          </p>
+          <p>
+            You may not complete an entire subject in one lesson—and that’s
+            absolutely okay. As long as the learner is developing the necessary
+            skills, they’re making progress.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className={styles.Adi3Module22scenario}
+          variants={fadeUp}
+          custom={8}
+          initial="hidden"
+          animate="visible"
+        >
+          <p>
+            <strong>So, How Do You Plan a Lesson?</strong>
+          </p>
+          <p>Start with this key question:</p>
+          <p>
+            <strong>
+              “What skills do I need to teach in order to cover this subject?”
+            </strong>
+          </p>
+          <p>
+            We like to refer to this as building your{" "}
+            <strong>“Lesson Plan Cake”</strong> —a layered approach to
+            structuring learning in a way that is digestible, logical, and
+            effective.
+          </p>
+        </motion.div>
+
+        <div className={styles.Adi3Module22container2}>
+          <h1 className={styles.Adi3Module22heading2}>Lesson Plan Cake</h1>
+          <div className={styles.Adi3Module22cakeWrapper}>
+            {cakeLayers.map((layer, index) => (
+              <motion.div
+                key={index}
+                className={styles.Adi3Module22layer}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.3 }}
+              >
+                <h2 className={styles.Adi3Module22layerTitle}>{layer.title}</h2>
+                <p className={styles.Adi3Module22description}>
+                  {layer.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <motion.div
+          className={styles.Adi3Module22scenario}
+          variants={fadeUp}
+          custom={8}
+          initial="hidden"
+          animate="visible"
+        >
+          <p>
+            Remember, When teaching, always focus on the{" "}
+            <blockquote>
+              <strong>whys, hows, and whens</strong>
+            </blockquote>{" "}
+            of each skill. Help your learners understand the reasoning behind
+            what they’re doing—not just the actions themselves.
+          </p>
+
+          <p>
+            Avoid simply giving them all the answers. Instead, use open
+            questions and guided discovery to encourage them to think for
+            themselves. This builds real understanding and confidence.
+          </p>
+          <p>
+            <strong> Never say things like:</strong>
+          </p>
+          <ul>
+            <li>✅ “Because I said so.”</li>
+            <li>✅ “That’s just what you have to do to pass the test.”</li>
+          </ul>
+          <p>
+            These responses shut down learning and don’t support long-term
+            development. Your goal is to help learners understand{" "}
+            <strong>whys</strong> something matters, <strong> hows </strong> to
+            do it effectively, and <strong>whens</strong> to apply it in
+            real-world situations. That’s what creates a safe, skilled, and
+            independent driver.
+          </p>
+          <p>
+            This is why it's essential for you, as an instructor, to fully
+            understand the individual skills required within each subject—so you
+            can teach them effectively and at the right pace.
+          </p>
+          <p>
+            Also, remember:{" "}
+            <strong>
+              not every learner will start at the bottom layer of your cake.
+            </strong>
+            Some may already have prior knowledge or experience and could begin
+            at the second, third, or even top layer. You’ll discover this
+            through the effective use of open questions during your lesson.
+          </p>
+          <p>
+            <strong>Task:</strong>
+          </p>
+          <p>
+            For each driving topic, create your own Lesson Plan Cake. <br />
+            Ask yourself:
+          </p>
+          <p>
+            <strong>
+              What specific skills are required to complete this subject?
+            </strong>
+          </p>
+          <p>
+            Break the subject down into clear, progressive layers—starting from
+            foundational skills up to full independence.
+          </p>
+        </motion.div>
+      </div>
+
+
+      {/* //////////////////////////////////////////////////// */}
 
       <div className={styles.adiLastNextbtn}>
         <Link to="/gde-matrix-grow">
