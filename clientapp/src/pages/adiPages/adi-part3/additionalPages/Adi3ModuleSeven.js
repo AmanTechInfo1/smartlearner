@@ -990,7 +990,7 @@ export default function Adi3ModuleSeven() {
             </p>
           </motion.div>
 
-          <motion.div
+          <motion.div   
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -259,7 +259,6 @@ export const router = createBrowserRouter([
         element: <Band3 />,
       },
       { path: "band-four-publications-techniques", element: <Band4 /> },
-
       { path: "band-1-Road-Procedure", element: <RoadProcedureBand /> },
       {
         path: "band-2-traffic-signs-and-signals",
