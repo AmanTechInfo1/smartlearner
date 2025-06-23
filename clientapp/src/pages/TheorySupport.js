@@ -123,6 +123,11 @@ export default function TheorySupport() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Theory Test Help & Support</title>
+        <meta property="og:title" content="Theory Test Help & Support" />
+        <meta
+          property="og:description"
+          content="Need help with your driving theory test? Access support, guidance, and answers to common questions here."
+        />
         <link rel="canonical" href="https://smartlearner.com/Theory-Support" />
         <meta
           name="description"

@@ -101,9 +101,11 @@ export default function IntensiveTransmission() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Intensive Driving Courses</title>
-        <link
-          rel="canonical"
-          href="https://smartlearner.com/intensive"
+        <link rel="canonical" href="https://smartlearner.com/intensive" />
+        <meta property="og:title" content="Intensive Driving Courses" />
+        <meta
+          property="og:description"
+          content="Pass your driving test faster with our intensive driving courses. Designed for quick learners who want to get on the road in less time."
         />
         <meta
           name="description"

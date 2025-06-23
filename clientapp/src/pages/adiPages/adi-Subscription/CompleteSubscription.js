@@ -16,6 +16,7 @@ import {
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const CompleteSubscription = () => {
   const dispatch = useDispatch();
@@ -114,6 +115,24 @@ const CompleteSubscription = () => {
 
   return (
     <div className="subscription-cardBox">
+       <Helmet>
+              <meta charSet="utf-8" />
+              <title>PDI Complete Subscription Plans</title>
+              <link
+                rel="canonical"
+                href="https://smartlearner.com/driving-instructor-training-full-course"
+              />
+              <meta property="og:title" content="PDI Complete Subscription Plans" />
+              <meta
+                property="og:description"
+                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+              />
+      
+              <meta
+                name="description"
+                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+              />
+            </Helmet>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>

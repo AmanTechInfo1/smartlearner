@@ -240,6 +240,14 @@ export default function DrivingInstructorTraining() {
           href="https://smartlearner.com/Driving-Instructor-Training"
         />
         <meta
+          property="og:title"
+          content="Driving Instructor Training Courses"
+        />
+        <meta
+          property="og:description"
+          content="Start your career as a driving instructor with our DVSA-approved training courses. Expert guidance, flexible learning, and full support throughout."
+        />
+        <meta
           name="description"
           content="Start your career as a driving instructor with our DVSA-approved training courses. Expert guidance, flexible learning, and full support throughout."
         />

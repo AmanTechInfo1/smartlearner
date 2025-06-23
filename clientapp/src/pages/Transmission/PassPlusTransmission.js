@@ -147,6 +147,7 @@ const PassPlusTransmission = () => {
   };
   return (
     <div>
+      
       <section className={styles.manualBanner}>
         <div className="opicity"></div>
         <div className="home-banner-flex">

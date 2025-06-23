@@ -174,11 +174,23 @@ export default function TheoryPortal() {
   return (
     <div className={styles.TheoryPortal}>
       <Helmet>
-                <meta charSet="utf-8" />
-                <title>Driving Theory Lessons & Resources</title>
-                <link rel="canonical" href="https://smartlearner.com/Theory-Portal" />
-                <meta name="description" content="Prepare for your driving test with our comprehensive theory lessons." />
-            </Helmet>
+        <meta charSet="utf-8" />
+        <title>Driving Theory Lessons & Resources</title>
+        <meta
+          property="og:title"
+          content="Driving Theory Lessons & Resources"
+        />
+        <meta
+          property="og:description"
+          content="Prepare for your driving test with our comprehensive theory lessons."
+        />
+
+        <link rel="canonical" href="https://smartlearner.com/Theory-Portal" />
+        <meta
+          name="description"
+          content="Prepare for your driving test with our comprehensive theory lessons."
+        />
+      </Helmet>
       <section className={styles.imageSection}>
         <div className={styles.opicity}></div>
         <div className={styles.maincontent}>
@@ -219,7 +231,8 @@ export default function TheoryPortal() {
           <div className={styles.choicesDivTheoryPortal}>
             <div
               id={styles.choiceIdMc}
-              className={styles.ChoicesContentContainer}>
+              className={styles.ChoicesContentContainer}
+            >
               <section>
                 <h2>Multiple-choice</h2>
                 <hr />
@@ -246,7 +259,8 @@ export default function TheoryPortal() {
             </div>
             <div
               id={styles.choiceIdHP}
-              className={styles.ChoicesContentContainer}>
+              className={styles.ChoicesContentContainer}
+            >
               <div>
                 <h2>Hazard Perception</h2>
                 <hr />
@@ -289,7 +303,8 @@ export default function TheoryPortal() {
               width="560"
               height="315"
               src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
-              title="YouTube video player"></iframe>
+              title="YouTube video player"
+            ></iframe>
           </div>
         </section>
       </div>
@@ -550,7 +565,8 @@ export default function TheoryPortal() {
                 style={{ borderRadius: "30px" }}
                 allowFullScreen=""
                 aria-hidden="false"
-                tabIndex="0"></iframe>
+                tabIndex="0"
+              ></iframe>
             </div>
           </div>
         </div>

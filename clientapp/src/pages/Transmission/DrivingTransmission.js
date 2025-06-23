@@ -120,6 +120,11 @@ export default function DrivingTransmission() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Driving Instructor Packages</title>
+        <meta property="og:title" content="Driving Instructor Packages" />
+        <meta
+          property="og:description"
+          content="Explore our tailored driving instructor packages designed to support your journey from qualification to starting your own business. Affordable and flexible options available."
+        />
         <link
           rel="canonical"
           href="https://smartlearner.com/driving-instructor-packages"

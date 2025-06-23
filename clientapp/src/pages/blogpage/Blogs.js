@@ -50,6 +50,11 @@ const Blogs = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>SmartLearner Blog</title>
+        <meta property="og:title" content="SmartLearner Blog" />
+        <meta
+          property="og:description"
+          content="Stay updated with the latest news, tips, and insights from SmartLearner. Explore expert advice on driving, learner education, road safety, and more."
+        />
         <link rel="canonical" href="https://smartlearner.com/blogs" />
         <meta
           name="description"

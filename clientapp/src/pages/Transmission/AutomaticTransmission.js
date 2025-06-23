@@ -105,6 +105,11 @@ const AutomaticTransmission = () => {
           rel="canonical"
           href="https://smartlearner.com/automatic-transmisson"
         />
+         <meta property="og:title" content="Automatic Driving Lesson Packages" />
+        <meta
+          property="og:description"
+          content="Browse our automatic driving lesson packages tailored for stress-free learning. Ideal for beginners and those looking for a smoother driving experience."
+        />
         <meta
           name="description"
           content="Browse our automatic driving lesson packages tailored for stress-free learning. Ideal for beginners and those looking for a smoother driving experience."

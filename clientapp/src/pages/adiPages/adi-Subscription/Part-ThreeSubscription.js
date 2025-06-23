@@ -19,6 +19,7 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
+import { Helmet } from "react-helmet-async";
 
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
@@ -133,6 +134,24 @@ const PartThreeSubscription = () => {
 
   return (
     <div className="subscription-cardBox">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>PDI Part Three Plans</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/driving-instructor-training-part-three"
+        />
+        <meta property="og:title" content="PDI Part Three Plans" />
+        <meta
+          property="og:description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+
+        <meta
+          name="description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+      </Helmet>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>
@@ -191,7 +210,7 @@ const PartThreeSubscription = () => {
             </div>
             <div className={styles.cartBtnsContainer}>
               {paidPlans.map((plan, index) => (
-                <div >
+                <div>
                   <div>
                     <div className={styles.basketHeadingTitles}>
                       <h2>BASKET TOTAL</h2>

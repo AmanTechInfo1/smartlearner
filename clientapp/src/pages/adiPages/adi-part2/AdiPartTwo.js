@@ -487,6 +487,14 @@ export default function AdiPartTwo() {
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
+        <meta
+          property="og:title"
+          content="Driving instructor training in Solihull | Hinckley | Rugby"
+        />
+        <meta
+          property="og:description"
+          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test."
+        />
         <link
           rel="canonical"
           href="https://smartlearner.com/part-two-theory-questions"

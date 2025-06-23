@@ -164,7 +164,7 @@ export default function Home() {
           name="description"
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
-           <meta property="og:title" content="SmartLearner Driving School West Midlands - Your premier driving school Warwichshire" />
+           <meta property="og:title" content="Smartlearner driving school in coventry, Bedworth, Nuneaton, Kenilworth" />
            <meta property="og:description" content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. " />
       </Helmet>
       <div className={styles.homepageContainerDiv}>

@@ -132,6 +132,11 @@ export default function SimulatorTraining() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Driving Simulator Training</title>
+        <meta property="og:title" content="Driving Simulator Training" />
+        <meta
+          property="og:description"
+          content="Enhance your driving skills with our advanced simulator training. Safe, realistic, and ideal for beginners or nervous drivers."
+        />
         <link
           rel="canonical"
           href="https://smartlearner.com/simulator-training"

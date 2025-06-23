@@ -175,14 +175,24 @@ export default function AdiPartOne() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>
-          Driving instructor training in Kenilworth | Warwick | Solihull | Hinckley | Rugby
+          Driving instructor training in Kenilworth | Warwick | Solihull |
+          Hinckley | Rugby
         </title>
         <meta
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
+        <meta
+          property="og:title"
+          content="Driving instructor training in Kenilworth | Warwick | Solihull | Hinckley | Rugby"
+        />
+        <meta
+          property="og:description"
+          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test."
+        />
+
         <link
-          rel="canonical" 
+          rel="canonical"
           href="https://smartlearner.com/part-one-theory-questions"
         />
       </Helmet>

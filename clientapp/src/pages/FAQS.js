@@ -112,6 +112,7 @@ export default function FAQS() {
         <meta charSet="utf-8" />
         <title>FAQs – SmartLearner Driving School</title>
         <link rel="canonical" href="https://smartlearner.com/faqs" />
+        <meta property="og:title" content="FAQs – SmartLearner Driving School" />
         <meta
           name="description"
           content="Find answers to the most frequently asked questions about SmartLearner’s driving lessons, instructors, pricing, booking process, and more. Get the information you need, fast."

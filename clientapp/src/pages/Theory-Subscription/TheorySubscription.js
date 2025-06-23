@@ -145,6 +145,12 @@ const TheorySubscription = () => {
           rel="canonical"
           href="https://smartlearner.com/Theory-Subscription"
         />
+        <meta property="og:title" content="Driving Theory Subscription Plans" />
+        <meta
+          property="og:description"
+          content="Choose a driving theory subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+
         <meta
           name="description"
           content="Choose a driving theory subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."

@@ -133,6 +133,24 @@ const PartTwoSubscription = () => {
 
   return (
     <div className="subscription-cardBox">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>PDI Part Two Plans</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/driving-instructor-training-part-two"
+        />
+        <meta property="og:title" content="PDI Part Two Plans" />
+        <meta
+          property="og:description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+
+        <meta
+          name="description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+      </Helmet>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>

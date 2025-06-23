@@ -320,6 +320,11 @@ export default function DrivingInstructorFranchise() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Driving School Franchise</title>
+        <meta property="og:title" content="Driving School Franchise" />
+        <meta
+          property="og:description"
+          content="Join our successful driving school franchise and grow your business with expert support, branding, and proven systems. Start your journey with SmartLearner today."
+        />
         <link
           rel="canonical"
           href="https://smartlearner.com/Driving-Instructor-Franchise"
