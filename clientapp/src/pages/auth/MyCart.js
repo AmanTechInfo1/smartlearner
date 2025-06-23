@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../../redux/features/authSlice";
 import LoadingWeb from "../../components/loader/LoadingWeb";
 import { loginformSchema } from "../../schemas/account/index";
+import { Helmet } from "react-helmet-async";
 
 export default function MyCart() {
   const dispatch = useDispatch();
@@ -25,17 +26,14 @@ export default function MyCart() {
 
   const handleLogin = async (data) => {
     const formData = new FormData();
-    formData.append('email', data.email);
-    formData.append('password', data.password);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
     dispatch(loginUser({ loginData: data, navigate }));
   };
-
-
 
   // ////////////////////////////////////
   const [webLoading, setwebLoading] = useState(true);
   useEffect(() => {
-
     const timeout2 = setTimeout(() => {
       setwebLoading(false);
     }, 500);
@@ -43,14 +41,15 @@ export default function MyCart() {
     return () => clearTimeout(timeout2);
   }, []);
 
-
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Cart</title>
+      </Helmet>
       {!webLoading ? (
         <div className={styles.loginRegisterPage}>
-
           <section className={styles.loginRegisterSection}>
-
             <div className={styles.loginheading}>
               <h1>Welcome</h1>
               <p>Please sign in to your account using the form below.</p>
@@ -58,19 +57,13 @@ export default function MyCart() {
             <div className={styles.loginformContainer}>
               <section className={styles.loginRegistration}>
                 <h2>Login</h2>
-                <div style={{display:"flex",flexDirection:"column"}}> 
-                  <span>
-                    Sub Total
-                  </span>
-                  <span>
-                    Tax
-                  </span>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <span>Sub Total</span>
+                  <span>Tax</span>
                 </div>
               </section>
               <div className={styles.formFooter}>
-                <p>
-                  Total Amount
-                </p>
+                <p>Total Amount</p>
               </div>
             </div>
           </section>

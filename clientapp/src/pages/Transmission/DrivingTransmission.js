@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { Link, useParams } from "react-router-dom";
 import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
 import { Element, scroller } from "react-scroll";
+import { Helmet } from "react-helmet-async";
 
 export default function DrivingTransmission() {
   const { section } = useParams();
@@ -116,6 +117,19 @@ export default function DrivingTransmission() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Driving Instructor Packages</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/driving-instructor-packages"
+        />
+        <meta
+          name="description"
+          content="Explore our tailored driving instructor packages designed to support your journey from qualification to starting your own business. Affordable and flexible options available."
+        />
+      </Helmet>
+
       <div className={styles.manualComponent}>
         <section className={styles.manualBanner}>
           <div className="opicity"></div>
@@ -133,7 +147,8 @@ export default function DrivingTransmission() {
                   {" "}
                   <a
                     href="tel:+4402475092784"
-                    style={{ textDecoration: "none" }}>
+                    style={{ textDecoration: "none" }}
+                  >
                     <IoCallSharp className="gradient-icon" /> 02475092784
                   </a>
                 </span>

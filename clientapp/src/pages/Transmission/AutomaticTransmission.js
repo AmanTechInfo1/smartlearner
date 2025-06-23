@@ -7,6 +7,7 @@ import manualround1 from "./automaticround.jpg";
 import manualround2 from "./automaticround2.jpg";
 import AutomaticCarousel from "../../components/ui/AutomaticCarousel";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AutomaticTransmission = () => {
   const textRef = useRef(null);
@@ -97,6 +98,18 @@ const AutomaticTransmission = () => {
 
   return (
     <div className={styles.manualComponent}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Automatic Driving Lesson Packages</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/automatic-transmisson"
+        />
+        <meta
+          name="description"
+          content="Browse our automatic driving lesson packages tailored for stress-free learning. Ideal for beginners and those looking for a smoother driving experience."
+        />
+      </Helmet>
       <section className={styles.manualBanner}>
         <div className="opicity"></div>
         <div className="home-banner-flex">

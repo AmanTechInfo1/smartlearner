@@ -11,6 +11,7 @@ import { forgotPassword } from "../../schemas/account/index";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
+import { Helmet } from "react-helmet-async";
 export default function ForgotPassword() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,6 +43,10 @@ export default function ForgotPassword() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>ForgotPassword</title>
+      </Helmet>
       {!webLoading ? (
         <div className={styles.loginRegisterPage}>
           <section className={styles.loginRegisterSection}>

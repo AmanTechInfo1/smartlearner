@@ -9,6 +9,7 @@ import treeImg from "../../assets/images/tree img.png";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function ElectricCarScheme() {
   const text2Ref = useRef(null);
@@ -113,6 +114,19 @@ export default function ElectricCarScheme() {
 
   return (
     <div className={styles.ElectricCarScheme}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Electric Car Scheme</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Electric-Car-Scheme"
+        />
+        <meta
+          name="description"
+          content="Explore SmartLearner’s Electric Car Scheme and drive toward a greener future. Benefit from cost-effective, eco-friendly vehicles while reducing your carbon footprint."
+        />
+      </Helmet>
+
       {/* /////////////////// frontc ///////////////////// */}
       <div className={styles.eCsfront}>
         <section className={styles.eCSfrontSection}>
@@ -137,7 +151,7 @@ export default function ElectricCarScheme() {
             <h2>
               {" "}
               <span>SKY BLUE CITY</span>{" "}
-              <span style={{ color: "rgb(6, 169, 88)"}}>TURNS GREEN</span>
+              <span style={{ color: "rgb(6, 169, 88)" }}>TURNS GREEN</span>
             </h2>
             <section className={styles.csrPagesLd2}>
               {" "}
@@ -155,10 +169,8 @@ export default function ElectricCarScheme() {
                 emissions. SmartLearner is partnering with Coventry city council
                 to offer electric cars for our instructors and students.
               </p>
-             
             </div>
             <div className={styles.csrPagesLd22}>
-             
               <p>
                 This initiative sets a green example for our community and
                 promotes eco-conscious driving choices. With this change, we aim
@@ -172,30 +184,30 @@ export default function ElectricCarScheme() {
         <section className={styles.textMainSection}>
           <section className={styles.textEscsection}>
             <div className={styles.csrPagesLd232}>
-            <p>
-              Thanks to Coventry city council's support we're leading the way
-              towards a healthier environment.
-              <span>
-                {" "}
-                SmartLearner is proud to be the first driving school in the West
-                Midlands with an electric car.
-              </span>
-            </p>
+              <p>
+                Thanks to Coventry city council's support we're leading the way
+                towards a healthier environment.
+                <span>
+                  {" "}
+                  SmartLearner is proud to be the first driving school in the
+                  West Midlands with an electric car.
+                </span>
+              </p>
             </div>
-           
           </section>
           <section className={styles.treeImgsSection}>
             <img src={treesImgs} alt="trees-Img" />
             <img src={treesImgs} alt="trees-Img" />
             <img src={treesImgs} alt="trees-Img" />
           </section>
-          
         </section>
 
         {/* ////////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>ELECTRIC <span   style={{ color: "rgb(6, 169, 88)"}}>ENGINES</span></h2>
+            <h2>
+              ELECTRIC <span style={{ color: "rgb(6, 169, 88)" }}>ENGINES</span>
+            </h2>
           </div>
           <section className={styles.escBenifits}>
             <div className={styles.escBDDiv} id={styles.escBDDivcd}>
@@ -230,8 +242,10 @@ export default function ElectricCarScheme() {
         {/* /////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>COMBUSTION <span   style={{ color: "rgb(6, 169, 88)"}}>ENGINES</span></h2>
-          
+            <h2>
+              COMBUSTION{" "}
+              <span style={{ color: "rgb(6, 169, 88)" }}>ENGINES</span>
+            </h2>
           </div>
           <section className={styles.escBenifits}>
             <div className={styles.escBDDiv} id={styles.escBDDivcd}>
@@ -263,8 +277,10 @@ export default function ElectricCarScheme() {
         {/* ///////////////////////////////////////////// */}
         <section className={styles.escBDSection}>
           <div className={styles.escBdHeading}>
-            <h2>OUR OTHER <span  style={{ color: "rgb(6, 169, 88)"}}>PROJECTS</span> </h2>
-           
+            <h2>
+              OUR OTHER{" "}
+              <span style={{ color: "rgb(6, 169, 88)" }}>PROJECTS</span>{" "}
+            </h2>
           </div>
           <section className={styles.csr3rdDivSecLinks}>
             <Link to="/Going-Green-Project" id={styles.escBDDivcd}>

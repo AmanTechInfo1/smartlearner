@@ -8,22 +8,21 @@ import { FaFacebook, FaInstagram, FaSnapchat, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import News from "./News";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllBlogs, getAllBlogs, getBlogById } from "../../redux/features/blogSlice";
+import {
+  fetchAllBlogs,
+  getAllBlogs,
+  getBlogById,
+} from "../../redux/features/blogSlice";
 import { imageBaseUrl } from "../../utils/constants";
-
-
-
+import { Helmet } from "react-helmet-async";
 
 const Blogs = () => {
-const dispatch = useDispatch();
-  const { allblogs, loading } = useSelector(
-    (state) => state.blog
-  );
-  
-  useEffect(()=>{
-    dispatch(fetchAllBlogs())
-  },[dispatch])
+  const dispatch = useDispatch();
+  const { allblogs, loading } = useSelector((state) => state.blog);
 
+  useEffect(() => {
+    dispatch(fetchAllBlogs());
+  }, [dispatch]);
 
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
   const blogsPerPage = 10; // Number of blogs per page
@@ -42,13 +41,22 @@ const dispatch = useDispatch();
 
   // Handle blog click to navigate to single blog
   const handleClick = (blog) => {
-   dispatch(getBlogById(blog._id))
+    dispatch(getBlogById(blog._id));
     navigate(`/singleblog/${blog._id}`);
   };
 
-
   return (
     <div className={styles.blogsPage}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>SmartLearner Blog</title>
+        <link rel="canonical" href="https://smartlearner.com/blogs" />
+        <meta
+          name="description"
+          content="Stay updated with the latest news, tips, and insights from SmartLearner. Explore expert advice on driving, learner education, road safety, and more."
+        />
+      </Helmet>
+
       <div className={styles.blogscontainer}>
         <div className={styles.blogsHomeBanner}>
           <div className={styles.opicity}></div>
@@ -59,7 +67,7 @@ const dispatch = useDispatch();
           </section>
         </div>
         <section>
-          <News/>
+          <News />
         </section>
         <div className={styles.blogsContainerRows}>
           <div className={styles.blogsrow}>
@@ -77,9 +85,7 @@ const dispatch = useDispatch();
                     />
                   </div>
                   <p>{blog.shortContent.slice(0, 200)}...</p>{" "}
-                  <Button
-                    variant="danger"
-                    onClick={() => handleClick(blog)}>
+                  <Button variant="danger" onClick={() => handleClick(blog)}>
                     Read More..
                   </Button>
                 </div>
@@ -118,31 +124,36 @@ const dispatch = useDispatch();
                   <a
                     href="https://www.facebook.com/smartlearnerdrivingschool"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     <FaFacebook id={styles.FollowIcons} />
                   </a>
                   <a
                     href="https://www.instagram.com/smartlearnerdrivingschool"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     <FaInstagram id={styles.FollowIcons} />
                   </a>
                   <a
                     href="https://www.snapchat.com/add/smartlearner"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     <FaSnapchat id={styles.FollowIcons} />
                   </a>
                   <a
                     href="https://twitter.com/smartlearner"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     <FaXTwitter id={styles.FollowIcons} />
                   </a>
                   <a
                     href="https://www.youtube.com/channel/UCWqlTyiFfPNqgKeffuo68rghttp"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                  >
                     <FaYoutube id={styles.FollowIcons} />
                   </a>
                 </div>
@@ -165,7 +176,8 @@ const dispatch = useDispatch();
                 <Pagination.Item
                   key={index + 1}
                   active={index + 1 === currentPage}
-                  onClick={() => handlePageClick(index + 1)}>
+                  onClick={() => handlePageClick(index + 1)}
+                >
                   {index + 1}
                 </Pagination.Item>
               ))}

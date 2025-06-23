@@ -4,13 +4,14 @@ import buildingImg from "../../assets/images/buildingImg.png";
 import greenStarImg from "../../assets/images/greenStar.png";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function OurOfficeGreenEfforts() {
 
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
-    const firstPart = "OUR OFFICE EFFORTS";
+    const firstPart = "OUR OFFICE GREEN EFFORTS";
     // Second part after "Driving"
 
     // Split both parts into individual characters and map them to <span>
@@ -206,6 +207,19 @@ export default function OurOfficeGreenEfforts() {
 
   return (
     <div className={styles.OurOfficeGreenEfforts}>
+      <Helmet>
+  <meta charSet="utf-8" />
+  <title>Our Office Green Efforts</title>
+  <link
+    rel="canonical"
+    href="https://smartlearner.com/Our-Office-Green-Efforts"
+  />
+  <meta
+    name="description"
+    content="Learn how SmartLearner is committed to sustainability through our green office initiatives. From reducing waste to saving energy, see how we're making a positive environmental impact."
+  />
+</Helmet>
+
       <div>
         <div className={styles.csrPageFront}>
           <div className="opicity"></div>

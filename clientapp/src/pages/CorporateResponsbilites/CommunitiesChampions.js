@@ -28,6 +28,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 
 export default function CommunitiesChampions() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -223,6 +224,19 @@ export default function CommunitiesChampions() {
 
   return (
     <div className={styles.OurOfficeGreenEfforts}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Communities Champions</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Communities-Champions"
+        />
+        <meta
+          name="description"
+          content="Discover how SmartLearner supports local heroes and drives positive change through our Communities Champions initiative. Empowering individuals and making a difference together."
+        />
+      </Helmet>
+
       <div className={styles.eCsfront}>
         <div className={styles.csrPageFront}>
           <div className="opicity"></div>

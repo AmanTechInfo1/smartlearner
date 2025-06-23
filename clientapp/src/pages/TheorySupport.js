@@ -17,6 +17,7 @@ import manualround1 from "../assets/images/theorySupportbanner.png";
 import manualround2 from "../assets/images/theorySupportRound1.jpg";
 import { gsap } from "gsap";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
+import { Helmet } from "react-helmet-async";
 
 export default function TheorySupport() {
   const { section } = useParams();
@@ -119,6 +120,15 @@ export default function TheorySupport() {
 
   return (
     <div className={styles.theorySupportPage}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Theory Test Help & Support</title>
+        <link rel="canonical" href="https://smartlearner.com/Theory-Support" />
+        <meta
+          name="description"
+          content="Need help with your driving theory test? Access support, guidance, and answers to common questions here."
+        />
+      </Helmet>
       <section className={styles.manualBanner}>
         <div className="opicity"></div>
         <div className="home-banner-flex">

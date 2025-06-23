@@ -31,6 +31,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 
 export default function GoingGreenProject() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -254,6 +255,19 @@ export default function GoingGreenProject() {
 
   return (
     <div className={styles.goingGreenProject}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Going Green Project</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Going-Green-Project"
+        />
+        <meta
+          name="description"
+          content="Learn about SmartLearner’s Going Green Project—our initiative to promote environmental sustainability through eco-friendly practices, education, and innovation in driver training."
+        />
+      </Helmet>
+
       <div>
         <div className={styles.csrPageFront}>
           <div className="opicity"></div>

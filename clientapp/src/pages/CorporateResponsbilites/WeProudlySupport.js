@@ -19,9 +19,9 @@ import nuneatonlionsclub from "../../assets/images/Lion-Club.png";
 import bedwortheagles from "../../assets/images/unitedToAchieve.jpg";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function WeProudlySupport() {
-
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
@@ -33,14 +33,8 @@ export default function WeProudlySupport() {
       .split("")
       .map((char, index) => <span key={`first-${index}`}>{char}</span>);
 
-  
     // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-       
-      </>
-    );
+    return <>{firstLine}</>;
   };
 
   useEffect(() => {
@@ -120,11 +114,23 @@ export default function WeProudlySupport() {
 
   return (
     <div className={styles.weProudlySupport}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>We Proudly Support</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/We-Proudly-Support"
+        />
+        <meta
+          name="description"
+          content="Explore partnership opportunities with SmartLearner. Collaborate with us to drive innovation, expand reach, and create impactful learning experiences across the UK."
+        />
+      </Helmet>
+
       <div className={styles.csrPageFront}>
         <div className="opicity"></div>
         <section className={styles.imageSection}>
-         
-        <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
+          <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
         </section>
       </div>
       {/* /////////////////////////////////////////// */}

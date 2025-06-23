@@ -11,6 +11,7 @@ import manualround2 from "./manualround2.jpg";
 import gsap from "gsap";
 import ManualCorousel from "../../components/ui/ManualCarousel";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Manual = () => {
   const textRef = useRef(null);
@@ -104,6 +105,18 @@ const Manual = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Manual Driving Lesson Packages</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/manual"
+        />
+        <meta
+          name="description"
+          content="Explore our manual driving lesson packages designed to suit all experience levels. Flexible pricing and expert instructors to help you pass with confidence."
+        />
+      </Helmet>
       <div className={styles.manualComponent}>
         <section className={styles.manualBanner}>
           <div className="opicity"></div>
@@ -121,7 +134,8 @@ const Manual = () => {
                   {" "}
                   <a
                     href="tel:+4402475092784"
-                    style={{ textDecoration: "none" }}>
+                    style={{ textDecoration: "none" }}
+                  >
                     <IoCallSharp className="gradient-icon" /> 02475092784
                   </a>
                 </span>

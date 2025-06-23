@@ -226,12 +226,18 @@ export default function ADITrainingPortal() {
 
   return (
     <div className={styles.ADITrainingPortalPage}>
-       <Helmet>
-                <meta charSet="utf-8" />
-                <title>Post-Driving Instruction (PDI) Services</title>
-                <meta name="description" content="Explore our Post-Driving Instruction (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. " />
-                <link rel="canonical" href="https://smartlearner.com/ADI-Training-Portal" />
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Driving instructor training in Coventry | Bedworth | Nuneaton</title>
+        <meta
+          name="description"
+          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
+        />
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/ADI-Training-Portal"
+        />
+      </Helmet>
       <div className={styles.adiPortalPage}>
         <div className={styles.adiPortalPageFirstdiv}>
           <div className={styles.opicity}></div>
@@ -277,15 +283,15 @@ export default function ADITrainingPortal() {
               <p>
                 Please See <span>The Below Content.</span>
               </p>
-              <hr
-                id={styles.hrAdi}
-                style={{ border: "2px solid #ce033c" }}
-              />
+              <hr id={styles.hrAdi} style={{ border: "2px solid #ce033c" }} />
             </div>
           </div>
           <div className={styles.adiTrainingPortalLearning}>
             <div className={styles.adiTrainingPortalLearningInnerContent}>
-              <FaBook id={styles.adiPortalFaIcons} style={{ color: "#f67504" }} />
+              <FaBook
+                id={styles.adiPortalFaIcons}
+                style={{ color: "#f67504" }}
+              />
               <h2 style={{ color: "#f67504" }}>Part 1 - Theory</h2>
               <Link to="/part-one-theory-questions">
                 <button

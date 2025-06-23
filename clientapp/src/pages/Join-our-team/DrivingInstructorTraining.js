@@ -10,6 +10,7 @@ import { useEffect, useState, useRef } from "react";
 
 import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function DrivingInstructorTraining() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -231,6 +232,19 @@ export default function DrivingInstructorTraining() {
 
   return (
     <div className={styles.drivingInstructorTraining}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Driving Instructor Training Courses</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Driving-Instructor-Training"
+        />
+        <meta
+          name="description"
+          content="Start your career as a driving instructor with our DVSA-approved training courses. Expert guidance, flexible learning, and full support throughout."
+        />
+      </Helmet>
+
       <div className={styles.dITPages}>
         <section className={styles.dITPageseees}>
           <div className="opicity"></div>

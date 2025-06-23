@@ -22,6 +22,7 @@ import { useRef } from "react";
 
 import gsap from "gsap";
 import LessonAccordation from "./additionalPagess/LessonAccordation";
+import { Helmet } from "react-helmet-async";
 
 export default function AdiPartTwo() {
   const [isVisible, setIsVisible] = useState(false);
@@ -477,6 +478,20 @@ export default function AdiPartTwo() {
 
   return (
     <div className={styles.AdiPartOne}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          Driving instructor training in Solihull | Hinckley | Rugby
+        </title>
+        <meta
+          name="description"
+          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
+        />
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/part-two-theory-questions"
+        />
+      </Helmet>
       <div className={styles.AdiPortalPartOne}>
         <section className={styles.imageSection}>
           <div className={styles.opicity}></div>
@@ -516,7 +531,8 @@ export default function AdiPartTwo() {
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
 
@@ -547,8 +563,8 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible ? styles.glossarycontainerOneshow : ""
-          }`}>
-       
+          }`}
+        >
           <h2 className={styles.glossarysubTitle}>
             In this module, you'll explore a blend of theory and practical
             advice to help you master:
@@ -584,32 +600,35 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible2 ? styles.glossarycontainerOneshow : ""
-          }`}>
-               <div className={styles.videoContainer}>
+          }`}
+        >
+          <div className={styles.videoContainer}>
             <h2 className={styles.videotitle}>Watch Our Video</h2>
             <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/ORyqaIi3BCk"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
-          </div>
+              <iframe
+                width="100%"
+                height="300px"
+                src="https://www.youtube.com/embed/ORyqaIi3BCk"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
           <div className={styles.videoContainer}>
             <h2 className={styles.videotitle}>Watch Our Video</h2>
             <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/cdPRimqZ12s"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
-          </div>
+              <iframe
+                width="100%"
+                height="300px"
+                src="https://www.youtube.com/embed/cdPRimqZ12s"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
           <ul className={styles.glossarylist}>
             <li>
@@ -669,11 +688,12 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible3 ? styles.glossarycontainerOneshow : ""
-          }`}>
+          }`}
+        >
           <h2 className={styles.glossarysubTitle}>
             The driving ability test includes a mix of:
           </h2>
-         
+
           <ul className={styles.glossarylist}>
             <li>
               <strong>General Driving:</strong> Driving in various environments

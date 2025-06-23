@@ -8,6 +8,7 @@ import { completePasswordReset } from "../../redux/features/authSlice"; // assum
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
+import { Helmet } from "react-helmet-async";
 
 const ResetPasswordPage = () => {
   const { resetToken } = useParams(); // Get the reset token from the URL
@@ -50,6 +51,10 @@ const ResetPasswordPage = () => {
 
   return (
     <div className={styles.loginRegisterPage}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>ResetPassword</title>
+      </Helmet>
       <section className={styles.loginRegisterSection}>
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
           <Link to="/">

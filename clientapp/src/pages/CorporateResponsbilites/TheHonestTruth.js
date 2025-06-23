@@ -19,6 +19,7 @@ import gsap from "gsap";
 
 import { useEffect, useState, useRef } from "react";
 import Truths from "./Truths";
+import { Helmet } from "react-helmet-async";
 
 export default function TheHonestTruth() {
   const [animatedValue1, setAnimatedValue1] = useState(0);
@@ -227,6 +228,19 @@ export default function TheHonestTruth() {
 
   return (
     <div className={styles.TheHonestTruth}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>The Honest Truth Partnership</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/The-Honest-Truth"
+        />
+        <meta
+          name="description"
+          content="SmartLearner proudly partners with The Honest Truth to promote safer driving through real stories and impactful education. Together, we're shaping more responsible young drivers."
+        />
+      </Helmet>
+
       <div>
         {/* ////////////////////////////////////////////////////////////////////////// */}
         <div className={styles.csrPageFront}>
@@ -249,8 +263,8 @@ export default function TheHonestTruth() {
         {/* ////////////////////////////////////////// */}
         <div className={styles.THTSec}>
           <section className={styles.videosContentSections}>
-          <h2 ref={textRef}>{splitText()}</h2>
-          
+            <h2 ref={textRef}>{splitText()}</h2>
+
             <div>
               <section className={styles.videosFramesSec}>
                 <div className={styles.innerTheorySupportContent}>
@@ -416,7 +430,9 @@ export default function TheHonestTruth() {
 
           {/* //////////////////////////////////////////////////////// */}
           <section className={styles.features}>
-            <h4>The 10 <span>Truths</span></h4>
+            <h4>
+              The 10 <span>Truths</span>
+            </h4>
 
             <Truths />
           </section>

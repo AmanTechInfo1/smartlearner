@@ -8,35 +8,33 @@ import { Link } from "react-router-dom";
 import handShake from "../../assets/images/hand shake.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function CorporateResponsbilities() {
-
-
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
-    const firstPart =
-      "CORPORATE SOCIAL";
-      const secondPart = "RESPONSIBILITY"; // Second part after "Driving"
+    const firstPart = "CORPORATE SOCIAL";
+    const secondPart = "RESPONSIBILITY"; // Second part after "Driving"
 
-      // Split both parts into individual characters and map them to <span>
-      const firstLine = firstPart
-        .split("")
-        .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-  
-      const secondLine = secondPart
-        .split("")
-        .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-  
-      // Return the first line, a <br>, and then the second line
-      return (
-        <>
-          {firstLine}
-          <br />
-          {secondLine}
-        </>
-      );
-    };
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
 
   useEffect(() => {
     const letters = text2Ref.current.querySelectorAll("span");
@@ -112,32 +110,31 @@ export default function CorporateResponsbilities() {
         stagger: 0.1, // Stagger the color change for each letter
       });
   }, []);
-// ///////////////////////////////////////////////////////////////////////////
-const textRef = useRef(null);
+  // ///////////////////////////////////////////////////////////////////////////
+  const textRef = useRef(null);
 
   const splitText = () => {
-    const firstPart =
-      "OUR PLANET";
-      const secondPart = "OUR RESPONSIBILITY"; // Second part after "Driving"
+    const firstPart = "OUR PLANET";
+    const secondPart = "OUR RESPONSIBILITY"; // Second part after "Driving"
 
-      // Split both parts into individual characters and map them to <span>
-      const firstLine = firstPart
-        .split("")
-        .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-  
-      const secondLine = secondPart
-        .split("")
-        .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-  
-      // Return the first line, a <br>, and then the second line
-      return (
-        <>
-          {firstLine}
-          <br />
-          {secondLine}
-        </>
-      );
-    };
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    const secondLine = secondPart
+      .split("")
+      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return (
+      <>
+        {firstLine}
+        <br />
+        {secondLine}
+      </>
+    );
+  };
 
   useEffect(() => {
     const letters = textRef.current.querySelectorAll("span");
@@ -218,24 +215,16 @@ const textRef = useRef(null);
   const text3Ref = useRef(null);
 
   const splitText3 = () => {
-    const firstPart =
-      "SL SAVING THE PLANET";
-      
-      // Split both parts into individual characters and map them to <span>
-      const firstLine = firstPart
-        .split("")
-        .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-  
-      
-  
-      // Return the first line, a <br>, and then the second line
-      return (
-        <>
-          {firstLine}
-        
-        </>
-      );
-    };
+    const firstPart = "SL SAVING THE PLANET";
+
+    // Split both parts into individual characters and map them to <span>
+    const firstLine = firstPart
+      .split("")
+      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
+
+    // Return the first line, a <br>, and then the second line
+    return <>{firstLine}</>;
+  };
 
   useEffect(() => {
     const letters = text3Ref.current.querySelectorAll("span");
@@ -312,36 +301,44 @@ const textRef = useRef(null);
       });
   }, []);
 
-  
   return (
     <div className={styles.csrPages}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Corporate Responsibilities</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Corporate-Responsbilities"
+        />
+        <meta
+          name="description"
+          content="Discover how SmartLearner embraces corporate responsibility through sustainable practices, community engagement, and ethical business values. Learn more about our commitment to making a positive impact."
+        />
+      </Helmet>
+
       <div className={styles.csrpages}>
         <div className={styles.csrPageFront}>
           <div className="opicity"></div>
           <section className={styles.csrSectionFornt}>
-            <h2 ref={text2Ref}>{splitTextPartTwo()}
-            </h2>
+            <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
             <div className={styles.csrPagesLd}>
-          <p>
-            Here at SmartLearner driving school it is our social responsibility
-            to reducing our carbon footprint!
-          </p>
-          <p>
-            Throughout 2024 and the future we plan to take steps towards
-            becoming a sustainable and eco-friendly company.
-          </p>
-        </div>
+              <p>
+                Here at SmartLearner driving school it is our social
+                responsibility to reducing our carbon footprint!
+              </p>
+              <p>
+                Throughout 2024 and the future we plan to take steps towards
+                becoming a sustainable and eco-friendly company.
+              </p>
+            </div>
           </section>
-      
         </div>
         {/* ///////////////////////////////////////////////// */}
-     
 
         <div className={styles.csr2ndDiv}>
           <section className={styles.csr2ndDivHS}>
             <div className={styles.csr2ndDivHeading}>
-              <h2 ref={textRef}>{splitText()} 
-              </h2>
+              <h2 ref={textRef}>{splitText()}</h2>
             </div>
             <div className={styles.csr2ndDivImg}>
               <img src={earthImg} alt="earth Img" />
@@ -374,15 +371,15 @@ const textRef = useRef(null);
             </p>
           </section>
           <section className={styles.csr3rdDivSecLinks}>
-            <Link to='/Electric-Car-Scheme'>
+            <Link to="/Electric-Car-Scheme">
               <img src={eclectricImg} alt="eclectric-Img" />
               <p>Electric Car Scheme</p>
             </Link>
-            <Link to='/Going-Green-Project'>
+            <Link to="/Going-Green-Project">
               <img src={treeImg} alt="eclectric-Img" />
               <p>Going Green Project</p>
             </Link>
-            <Link to='/Our-Office-Green-Efforts'>
+            <Link to="/Our-Office-Green-Efforts">
               <img src={BuildingImg} alt="eclectric-Img" />
               <p>Our Office Efforts</p>
             </Link>
@@ -393,11 +390,12 @@ const textRef = useRef(null);
         <div className={styles.smartlearnerPladgesSection}>
           <section id={styles.smartlearnerPladges}>
             <img src={handShake} alt="hand-Shake" />
-            
           </section>
           <div className={styles.smartlearnerPladgesheading}>
-          <h2>SMARTLEARNER <span>PLEDGES</span></h2>
-          <hr />
+            <h2>
+              SMARTLEARNER <span>PLEDGES</span>
+            </h2>
+            <hr />
           </div>
           <section className={styles.smartlearnerPlListSection}>
             <div className={styles.smartlearnerPlLists}>
@@ -415,19 +413,17 @@ const textRef = useRef(null);
                 partnering up with multiple schools & colleges to plant trees
                 within the West Midlands and Warwickshire.
               </p>
-            </div >
+            </div>
             <div className={styles.smartlearnerPlLists}>
               <img src={BuildingImg} alt="building-Img" />
               <p>
                 Our office will engage focus on becoming more environmentally
                 friendly and focus on being sustainable.
               </p>
-            </div> 
+            </div>
           </section>
         </div>
         {/* /////////////////////////////////////////////////// */}
-        
-
       </div>
     </div>
   );

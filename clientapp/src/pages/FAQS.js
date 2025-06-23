@@ -16,6 +16,7 @@ import { useState, useEffect, useRef } from "react";
 import Review from "../components/views/Review";
 import Testemonial from "../components/testimonials/Testemonial";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
+import { Helmet } from "react-helmet-async";
 export default function FAQS() {
   const textRef = useRef(null);
 
@@ -107,12 +108,23 @@ export default function FAQS() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FAQs – SmartLearner Driving School</title>
+        <link rel="canonical" href="https://smartlearner.com/faqs" />
+        <meta
+          name="description"
+          content="Find answers to the most frequently asked questions about SmartLearner’s driving lessons, instructors, pricing, booking process, and more. Get the information you need, fast."
+        />
+      </Helmet>
+
       <section
         style={{
           backgroundColor: "black",
           color: "white",
           paddingBottom: "4rem",
-        }}>
+        }}
+      >
         <section className={styles.theorySupportHeadingContent}>
           <div className={styles.TSfirstContent}>
             <div className="opicity"></div>

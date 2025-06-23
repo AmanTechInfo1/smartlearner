@@ -14,6 +14,7 @@ import {
 import { useRef } from "react";
 
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 export default function AdiPartOne() {
   const dispatch = useDispatch();
@@ -171,7 +172,21 @@ export default function AdiPartOne() {
 
   return (
     <div className={styles.AdiPartOne}>
-      
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          Driving instructor training in Kenilworth | Warwick | Solihull | Hinckley | Rugby
+        </title>
+        <meta
+          name="description"
+          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
+        />
+        <link
+          rel="canonical" 
+          href="https://smartlearner.com/part-one-theory-questions"
+        />
+      </Helmet>
+
       <div className={styles.AdiPortalPartOne}>
         <section className={styles.imageSection}>
           <div className={styles.opicity}></div>
@@ -211,7 +226,7 @@ export default function AdiPartOne() {
             the mechanical skills of driving a car. As well as these skills, an
             ADI is responsible for developing:
           </p>
-          
+
           {/* <section className={styles.AdiParttwoDisplayFlex}>
             <div className={styles.hazardTestWorkListDivImg}>
               <img src={prizeTrophy} alt="prizeTrophy" />
@@ -354,7 +369,8 @@ export default function AdiPartOne() {
         <section className={styles.hazardTestWorkListSection}>
           <section className={styles.pdiContainer}>
             <h2>
-              Create a Strong <span style={{color:'#cb6205'}}>Study Plan</span>
+              Create a Strong{" "}
+              <span style={{ color: "#cb6205" }}>Study Plan</span>
             </h2>
             <div className={styles.pdiTwo}>
               <h3>Multiple-Choice Questions</h3>
@@ -470,7 +486,7 @@ export default function AdiPartOne() {
 
         {/* //////////////////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
-          <h2 >
+          <h2>
             The hazard perception<span> Test Explained:</span>
           </h2>
           <section className={styles.AdiParttwoDisplayFlex}>
@@ -503,10 +519,10 @@ export default function AdiPartOne() {
             </section>
           </section>
           <div className={styles.linkBtnSec}>
-              <Link to="/hazard-preception-part-2">
-                <button>Hazard Perception</button>
-              </Link>
-            </div>
+            <Link to="/hazard-preception-part-2">
+              <button>Hazard Perception</button>
+            </Link>
+          </div>
         </section>
         {/* /////////////////////////////////////////////////////////////////// */}
         {/* <section className={styles.hazardTestWorkListSection2}>
@@ -605,14 +621,13 @@ export default function AdiPartOne() {
             
           </div>
         </section> */}
-        
+
         {/* /////////////////////////////////////////// */}
         <section className={styles.hazardTestWorkListSection}>
           <div className={styles.hazardTestWorkListDiv}>
             <div className={styles.innerTheorySupportContent}>
               <div className={styles.theorySupportContentVideo}>
                 <iframe
-
                   width="900"
                   height="500"
                   src="https://www.youtube.com/embed/-bsLPF0Q35Y"
@@ -624,9 +639,7 @@ export default function AdiPartOne() {
                 ></iframe>
               </div>
             </div>
-            
           </div>
-         
         </section>
 
         {/* ////////////////////////////////////////////////////////////////////// */}

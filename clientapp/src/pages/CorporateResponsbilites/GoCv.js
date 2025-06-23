@@ -7,11 +7,9 @@ import smartlearner2ndLogo from "../../assets/images/White-Logo-Fixed-1024x174.p
 import Accordion from "../../components/ui/accordation/Accordion";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-
+import { Helmet } from "react-helmet-async";
 
 export default function GoCv() {
-
-
   const text2Ref = useRef(null);
 
   const splitTextPartTwo = () => {
@@ -23,14 +21,8 @@ export default function GoCv() {
       .split("")
       .map((char, index) => <span key={`first-${index}`}>{char}</span>);
 
-  
     // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-       
-      </>
-    );
+    return <>{firstLine}</>;
   };
 
   useEffect(() => {
@@ -108,7 +100,6 @@ export default function GoCv() {
       });
   }, []);
 
-
   const textRef = useRef(null);
 
   const splitText = () => {
@@ -120,14 +111,8 @@ export default function GoCv() {
       .split("")
       .map((char, index) => <span key={`first-${index}`}>{char}</span>);
 
-  
     // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-       
-      </>
-    );
+    return <>{firstLine}</>;
   };
 
   useEffect(() => {
@@ -207,13 +192,25 @@ export default function GoCv() {
 
   return (
     <div className={styles.goCv}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Go CV Partnership</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/Go-Cv"
+        />
+        <meta
+          name="description"
+          content="SmartLearner is proud to partner with Go CV to offer exclusive benefits to Coventry residents. Discover how this partnership makes learning to drive more accessible and affordable."
+        />
+      </Helmet>
+
       <div className={styles.goCvFirstdiv}>
         <div className={styles.csrPageFront}>
           <div className="opicity"></div>
           <section className={styles.goCvFirstSection}>
             <div className={styles.goCvFirstSectionHeading}>
-            <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
-           
+              <h2 ref={text2Ref}>{splitTextPartTwo()}</h2>
             </div>
             <div className={styles.goCvFirstSectionHeadingImg}>
               <img src={goCv} alt="goCv" id={styles.goCvImg} />
@@ -236,8 +233,8 @@ export default function GoCv() {
       <div className={styles.GoCvWsection}>
         <section className={styles.goCv2ndSection}>
           <div id={styles.goCv2ndSection}>
-          <h2 ref={textRef}>{splitText()}</h2>
-           
+            <h2 ref={textRef}>{splitText()}</h2>
+
             <img src={smartlearner2ndLogo} alt="smartlearnerLogo" />
           </div>
           <section>

@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./css/TermsAndConditions.module.css";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 
 const TermsAndConditions = () => {
   const textRef = useRef(null);
@@ -96,6 +97,19 @@ const TermsAndConditions = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Terms and Conditions – SmartLearner</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/term-and-condition"
+        />
+        <meta
+          name="description"
+          content="Read the full terms and conditions for using SmartLearner’s services, including policies on bookings, payments, cancellations, and responsibilities. Stay informed and protected."
+        />
+      </Helmet>
+
       <div className={styles.Tccontainer}>
         <div className={styles.TcHomeBanner}>
           <div className={styles.opicity}></div>
@@ -109,10 +123,8 @@ const TermsAndConditions = () => {
         <div className={styles.TcContentSection}>
           <section className={styles.TcintroHeading}>
             <p className={styles.Tcintro}>
-              Welcome to our Terms and Conditions page.
-             
-                Please read these terms carefully before using our service.
-              
+              Welcome to our Terms and Conditions page. Please read these terms
+              carefully before using our service.
             </p>
           </section>
           <section className={styles.tcBoxes}>

@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet-async";
 
 const features = [
   {
@@ -128,6 +129,19 @@ export default function SimulatorTraining() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Driving Simulator Training</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/simulator-training"
+        />
+        <meta
+          name="description"
+          content="Enhance your driving skills with our advanced simulator training. Safe, realistic, and ideal for beginners or nervous drivers."
+        />
+      </Helmet>
+
       <div className={styles.simulatorComponent2}>
         <section className={styles.manualBanner2}>
           <div className="opicity"></div>
@@ -156,7 +170,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorheading}
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}>
+            transition={{ duration: 0.6 }}
+          >
             <strong>The Smarter Way to Learn How to Drive</strong>
           </motion.h2>
 
@@ -164,7 +179,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorintro}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}>
+            transition={{ delay: 0.3 }}
+          >
             At SmartLearner, we combine cutting-edge technology with expert
             instruction to give you a safer, smarter start to your driving
             journey. Our state-of-the-art driving simulator provides a realistic
@@ -176,7 +192,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorheading}
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}>
+            transition={{ duration: 0.6 }}
+          >
             Why choose simulated?
           </motion.h2>
 
@@ -187,7 +204,8 @@ export default function SimulatorTraining() {
                 className={styles.simulatorfeatureCard}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}>
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
                 <span className={styles.simulatorcheckmark}>✔</span>
                 <div>
                   <h4>{feat.title}</h4>
@@ -201,7 +219,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorguidance}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}>
+            transition={{ duration: 0.5, delay: 1 }}
+          >
             <h3>Flexible guidance options to suit your comfort:</h3>
             <ul>
               <li>
@@ -220,7 +239,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorintro}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}>
+            transition={{ delay: 0.3 }}
+          >
             <br />
             Perfect for age 10+ for those excited to get their licence all the
             way up to 80+ and want an assessment for their driving.
@@ -230,7 +250,8 @@ export default function SimulatorTraining() {
             className={styles.simulatorpriceSection}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}>
+            transition={{ delay: 1.2 }}
+          >
             <h3>Book Now</h3>
             <p className={styles.simulatorprice}>£10.00 / hour</p>
             <button className={styles.simulatorbookBtn}>Book a Session</button>

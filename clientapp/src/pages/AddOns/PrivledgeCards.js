@@ -14,6 +14,7 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { CreditCard, Building2 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const TableWrapper = styled.div`
   padding: 20px;
@@ -273,8 +274,8 @@ export default function PrivledgeCards() {
       discount: "Free ‘simple me’ when you spend over £15",
       contact:
         "Dean – 07944554680 https://www.facebook.com/profile.php?id=100063886427482",
-     logo: deansDessert
-     },
+      logo: deansDessert,
+    },
     {
       name: "Tropic Vegan Products",
       discount: "Free hand cream for all orders over £40",
@@ -286,8 +287,8 @@ export default function PrivledgeCards() {
       discount: "50% off first services, inc – nails, hair & beauty",
       contact:
         "General Phone – 07823758690 https://www.instagram.com/saystylists",
-     logo: sayStylist,
-     },
+      logo: sayStylist,
+    },
     {
       name: "Tays Bespoke Treats",
       discount: "10% off any order over £30",
@@ -335,6 +336,10 @@ export default function PrivledgeCards() {
 
   return (
     <div className={styles.CardPage}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>our privilege cards</title>
+      </Helmet>
       <div className={styles.Cardcontainer}>
         <div className={styles.CardHomeBanner}>
           <div className={styles.opicity}></div>
@@ -423,7 +428,7 @@ export default function PrivledgeCards() {
                       {item.logo && (
                         <img
                           src={item.logo}
-                          alt='img'
+                          alt="img"
                           id={styles.companyLogoImgs}
                         />
                       )}

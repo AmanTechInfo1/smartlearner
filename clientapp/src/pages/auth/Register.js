@@ -13,6 +13,7 @@ import { registerformSchema } from "../../schemas/account/index";
 import smartlearnerLogo from "../../assets/images/White-Logo-Fixed-1024x174.png";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import { Helmet } from "react-helmet-async";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -60,6 +61,10 @@ export default function Register() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login/Register</title>
+      </Helmet>
       {!loading ? (
         <div className={styles.loginRegisterPage}>
           <div className="opicity"></div>
@@ -80,7 +85,8 @@ export default function Register() {
                   <div className={styles.loginLogo}>
                     <iframe
                       style={{ height: "150px" }}
-                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"></iframe>
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
+                    ></iframe>
                   </div>
 
                   <h2>Create Account</h2>
@@ -91,7 +97,8 @@ export default function Register() {
                       render={({ field: { value, onChange } }) => (
                         <FloatingLabel
                           controlId="floatingInput"
-                          label="username">
+                          label="username"
+                        >
                           <Form.Control
                             type="text"
                             value={value}
@@ -117,7 +124,8 @@ export default function Register() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="Password"
-                            className={styles.formControlWithIcon}>
+                            className={styles.formControlWithIcon}
+                          >
                             <Form.Control
                               type={showPassword ? "text" : "password"}
                               value={value}
@@ -154,7 +162,8 @@ export default function Register() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="confirm password"
-                            className={styles.formControlWithIcon}>
+                            className={styles.formControlWithIcon}
+                          >
                             <Form.Control
                               type={confirmShowPassword ? "text" : "password"}
                               value={value}
@@ -191,7 +200,8 @@ export default function Register() {
                         <FloatingLabel
                           controlId="floatingInput"
                           label="Email Address"
-                          className={styles.formControlWithIcon}>
+                          className={styles.formControlWithIcon}
+                        >
                           <Form.Control
                             type="email"
                             value={value}
@@ -217,7 +227,8 @@ export default function Register() {
                         <FloatingLabel
                           controlId="floatingInput"
                           label="Mobile Number"
-                          className={styles.formControlWithIcon}>
+                          className={styles.formControlWithIcon}
+                        >
                           <Form.Control
                             type="tel"
                             value={value}
@@ -247,7 +258,8 @@ export default function Register() {
                             {AccountTypes.map((accountType) => (
                               <option
                                 key={accountType.value}
-                                value={accountType.value}>
+                                value={accountType.value}
+                              >
                                 {accountType.label}
                               </option>
                             ))}
