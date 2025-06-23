@@ -18,6 +18,7 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
+import { Helmet } from "react-helmet-async";
 
 const PartTwoSubscription = () => {
   const dispatch = useDispatch();
