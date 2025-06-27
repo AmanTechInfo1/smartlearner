@@ -184,6 +184,7 @@ import Adi3Module19 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module1
 import Adi3Module20 from "./pages/adiPages/adi-part3/additionalPages/AdiModule20";
 import Adi3Module21 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module21";
 import Adi3Module22 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module22";
+import LearnerPortal from "./pages/learnerPortal/LearnerPortal";
 
 export const router = createBrowserRouter([
   {
@@ -454,6 +455,10 @@ export const router = createBrowserRouter([
       {
         path: "adi-videos",
         element: <Adi3Videos />,
+      },
+       {
+        path: "learner-portal",
+        element: <LearnerPortal/>,
       },
 
       {
