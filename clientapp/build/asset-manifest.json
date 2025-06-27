@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.76db4311.css",
-    "main.js": "/static/js/main.fab3d341.js",
+    "main.css": "/static/css/main.331fb41a.css",
+    "main.js": "/static/js/main.742b78e3.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -287,6 +287,7 @@
     "static/media/redStar.png": "/static/media/redStar.0869c08648653bd057cb.png",
     "static/media/Trailer2.png": "/static/media/Trailer2.11e28bc3f248e6a320d1.png",
     "static/media/Stripe-logo.png": "/static/media/Stripe-logo.beb931dfd418cb401ebf.png",
+    "static/media/tableImg.png": "/static/media/tableImg.813845a930a7f6e7dac3.png",
     "static/media/greenStar.png": "/static/media/greenStar.cb5371daca3d0f478073.png",
     "static/media/agedPersonIMG.jpg": "/static/media/agedPersonIMG.b6da71570d7fcb52937d.jpg",
     "static/media/bannerCart.png": "/static/media/bannerCart.7f0881b1cfd867c78576.png",
@@ -398,12 +399,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.76db4311.css.map": "/static/css/main.76db4311.css.map",
-    "main.fab3d341.js.map": "/static/js/main.fab3d341.js.map",
+    "main.331fb41a.css.map": "/static/css/main.331fb41a.css.map",
+    "main.742b78e3.js.map": "/static/js/main.742b78e3.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.76db4311.css",
-    "static/js/main.fab3d341.js"
+    "static/css/main.331fb41a.css",
+    "static/js/main.742b78e3.js"
   ]
 }
