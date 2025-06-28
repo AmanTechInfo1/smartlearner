@@ -40,7 +40,7 @@ const ResetPasswordPage = () => {
         completePasswordReset({ resetToken, newPassword: password, navigate })
       );
       if (response.success) {
-        navigate("/login"); // Redirect to login after successful password reset
+        navigate("/"); // Redirect to login after successful password reset
       } // Redirect to login after successful password reset
     } catch (err) {
       setError(err.message);

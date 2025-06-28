@@ -83,9 +83,16 @@ function Header() {
                 <li>Theory Portal </li>
               </NavLink>
 
+
               <NavLink to="/Theory-Subscription" className={styles.activeLink}>
                 {" "}
                 <li>Theory Subscription</li>
+              </NavLink>
+               <NavLink
+                to="/learner-portal"
+                className={styles.activeLink}>
+                {" "}
+                <li>Learner Portal</li>
               </NavLink>
             </ul>
           </li>
