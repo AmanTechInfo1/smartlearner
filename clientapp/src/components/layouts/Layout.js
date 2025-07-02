@@ -8,8 +8,11 @@ import Scroll from "../Scroll";
 import { useExitIntent } from "use-exit-intent";
 import CallBackForm from "../forms/CallBackForm";
 import { IoIosCloseCircle } from "react-icons/io";
+import usePageTracking from "../../usePageTracking";
 
 function Layout() {
+  usePageTracking();
+  
   const [loading, setLoading] = useState(true);
   const [webLoading, setWebLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -77,10 +80,12 @@ function Layout() {
             <section style={{ position: "relative" }}>
               <section
                 className="callbackFormSection"
-                style={callbackFormSectionStyle}>
+                style={callbackFormSectionStyle}
+              >
                 <div
                   className="callbackFormContent"
-                  style={callbackFormContentStyle}>
+                  style={callbackFormContentStyle}
+                >
                   <CallBackForm />
                   <div className="callbackFormContentPG">
                     <p
@@ -88,12 +93,14 @@ function Layout() {
                         fontSize: "3rem",
                         color: "red",
                         fontWeight: "700",
-                      }}>
+                      }}
+                    >
                       Call Us Now !{" "}
                     </p>
                     <a
                       href="tel:02475092784"
-                      style={{ textDecoration: "none" }}>
+                      style={{ textDecoration: "none" }}
+                    >
                       <button
                         style={{
                           padding: "10px 20px",
@@ -102,7 +109,8 @@ function Layout() {
                           color: "white",
                           fontWeight: "bolder",
                           borderRadius: "6px",
-                        }}>
+                        }}
+                      >
                         Get In Touch
                       </button>
                     </a>
