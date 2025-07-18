@@ -143,7 +143,7 @@ const EditQuizUpdatedModal = (props) => {
       };
 
       const response = await fetch(
-        "http://localhost:5000/api/quiz/remove-image",
+        "https://api.smartlearner.com/api/quiz/remove-image",
         {
           method: "POST",
           headers: {
