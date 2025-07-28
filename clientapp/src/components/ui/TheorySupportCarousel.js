@@ -58,7 +58,7 @@ function TheoryCorousel() {
 
   useEffect(() => {
     const offersManualCategory = data.find(
-      (item) => item._id === "Theory Support"
+      (item) => item._id === "theory support"
     );
     if (offersManualCategory) {
       // Set default expanded category
@@ -101,7 +101,7 @@ function TheoryCorousel() {
 
   // Map category names to star colors
   const starColorMap = {
-    "Theory Support": {
+    "theory support": {
       starImg: yellowStarImg, // Assuming this category has a yellow star
       color: "#0046c3", // Yellow color for text and button
     },
@@ -154,7 +154,7 @@ function TheoryCorousel() {
     <>
       <section className={styles.carouselContainer}>
         <div className={styles.carousel}>
-          {filteredData("Theory Support").map((item) => {
+          {filteredData("theory support").map((item) => {
             const below10Products = item.data.filter(
               (product) => product.price <= 10
             );
@@ -319,7 +319,7 @@ function TheoryCorousel() {
               </div>
             );
           })}
-          {filteredData("Theory Support").map((item) => {
+          {filteredData("theory support").map((item) => {
             const above10Products = item.data.filter(
               (product) => product.price > 10
             );
@@ -485,7 +485,7 @@ function TheoryCorousel() {
             );
           })}
 
-          {filteredData("Theory Support").map((item) => {
+          {filteredData("theory support").map((item) => {
             return (
               <div
                 style={{

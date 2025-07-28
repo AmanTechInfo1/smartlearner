@@ -22,9 +22,8 @@ import {
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 
 function Corousel() {
+  const navigate = useNavigate();
 
-      const navigate = useNavigate();
-  
   const [quantities, setQuantities] = useState({});
   const [expandedCategory, setExpandedCategory] = useState("");
 
@@ -63,12 +62,15 @@ function Corousel() {
   const addToCart = (info, index) => {
     const productId = `${info._id}_${index}_${info.price}`;
     dispatch(
-      getAddToCart({
-        id: productId,
-        count: 1,
-        service: info.name,
-        price: info.price,
-      },navigate)
+      getAddToCart(
+        {
+          id: productId,
+          count: 1,
+          service: info.name,
+          price: info.price,
+        },
+        navigate
+      )
     );
   };
 
@@ -81,7 +83,7 @@ function Corousel() {
     switch (categoryName) {
       case "manual":
         return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
-      case "Automatic":
+      case "automatic":
         return [
           blueStarImg,
           blueStarImg,
@@ -89,7 +91,7 @@ function Corousel() {
           blueStarImg,
           blueStarImg,
         ];
-      case "Theory Support":
+      case "theory support":
         return [
           yellowStarImg,
           yellowStarImg,
@@ -97,7 +99,7 @@ function Corousel() {
           yellowStarImg,
           yellowStarImg,
         ];
-      case "Intensive":
+      case "intensive":
         return [
           greenStarImg,
           greenStarImg,
@@ -121,11 +123,11 @@ function Corousel() {
     switch (categoryName) {
       case "manual":
         return redCartImg;
-      case "Automatic":
+      case "automatic":
         return pinkCartImg;
-      case "Theory Support":
+      case "theory Support":
         return yellowCartImg;
-      case "Intensive":
+      case "intensive":
         return greenCartImg;
       default:
         return defaultCartImg;
@@ -137,11 +139,11 @@ function Corousel() {
     switch (categoryName) {
       case "manual":
         return "red";
-      case "Automatic":
+      case "automatic":
         return "#00a1f1";
-      case "Theory Support":
+      case "theory Support":
         return "#FFD700";
-      case "Intensive":
+      case "intensive":
         return "green";
       default:
         return "gold";
@@ -154,7 +156,7 @@ function Corousel() {
         className={styles.carouselContainer}
         style={{ maxWidth: "1300px", margin: "0px auto" }}>
         <div className={styles.carousel} style={{ justifyContent: "center" }}>
-          {["manual", "Automatic", "Theory Support", "Intensive"].map(
+          {["manual", "automatic", "theory Support", "intensive"].map(
             (categoryName) =>
               filteredData(categoryName).map((item) => (
                 <div
@@ -175,10 +177,10 @@ function Corousel() {
                           color:
                             getHeadingAndButtonColorForCategory(categoryName),
                         }}>
-                        {item._id === "Theory Support"
+                        {item._id === "theory support"
                           ? expandedCategory === item._id
-                            ? "Theory Support".toUpperCase()
-                            : "Theory".toUpperCase()
+                            ? "theory support".toUpperCase()
+                            : "theory".toUpperCase()
                           : item._id.toUpperCase()}
                       </h2>
                       {expandedCategory === item._id && (

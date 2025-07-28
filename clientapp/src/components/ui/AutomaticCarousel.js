@@ -33,7 +33,7 @@ function AutomaticCarousel() {
   const myCart = useSelector((state) => state.cart.cart || []);
   useEffect(() => {
     const offersAutomaticCategory = data.find(
-      (item) => item._id === "Offers Automatic"
+      (item) => item._id === "offers automatic"
     );
     if (offersAutomaticCategory) {
       setExpandedCategory(offersAutomaticCategory._id);
@@ -71,9 +71,9 @@ function AutomaticCarousel() {
   };
   const getColorForCategory = (categoryName) => {
     switch (categoryName) {
-      case "Offers Automatic":
+      case "offers automatic":
         return "#00a1f1"; // Color for Offers Automatic
-      case "Automatic":
+      case "automatic":
         return "#00a1f1"; // Color for Automatic
       default:
         return "gold"; // Default color for other categories
@@ -83,7 +83,7 @@ function AutomaticCarousel() {
     <section className={styles.carouselContainer}>
       <div className={styles.carousel}>
         {" "}
-        {filteredData("Offers Automatic").map((item) => (
+        {filteredData("offers automatic").map((item) => (
           <div
             style={{
               background: "linear-gradient(  135deg, #010269, #008efa)",
@@ -233,7 +233,7 @@ function AutomaticCarousel() {
             )}
           </div>
         ))}
-        {filteredData("Automatic").map((item) => {
+        {filteredData("automatic").map((item) => {
           const above100Products = item.data.filter(
             (product) => product.price > 100
           );
@@ -396,7 +396,7 @@ function AutomaticCarousel() {
             </div>
           );
         })}
-        {filteredData("Automatic").map((item) => {
+        {filteredData("automatic").map((item) => {
           const below100Products = item.data.filter(
             (product) => product.price <= 100
           );

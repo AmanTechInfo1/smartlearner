@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const connectDB = require("./config/database");
 const errorHandler = require("./middlewares/errorHandler");
 const accountRoutes = require("./routes/accountRoutes");
@@ -16,6 +17,12 @@ const orderRoutes = require("./routes/orderRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const notepadRoutes = require("./routes/notepadRoutes");
+const openaiRoutes = require("./routes/openaiRoutes");
+const chatRoutes = require("./routes/chatRoutes");
+
+const http = require("http");
+const { Server } = require("socket.io");
+const chatSocket = require("./socket/chatSocket");
 
 const path = require("path");
 
@@ -29,7 +36,7 @@ app.use(express.json());
 
 app.use(cors());
 
-prerender.set('prerenderToken', '1GUqcwJ5AHPJmlN0w5q5');
+prerender.set("prerenderToken", "1GUqcwJ5AHPJmlN0w5q5");
 app.use(prerender);
 
 app.use((req, res, next) => {
@@ -38,7 +45,7 @@ app.use((req, res, next) => {
 });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "/static/no_image_found.jpg")); 
+  res.sendFile(path.join(__dirname, "/static/no_image_found.jpg"));
 });
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use("/api/account", accountRoutes);
@@ -56,10 +63,24 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/notepad", notepadRoutes);
+
+app.use("/api/chatbot", openaiRoutes);
+app.use("/api/chat-all", chatRoutes);
+
 app.use(errorHandler);
 
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "*", // Or restrict to your frontend domain
+    methods: ["GET", "POST"],
+  },
+});
+chatSocket(io);
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, "127.0.0.1", () => {
+server.listen(PORT, "127.0.0.1", () => {
   console.log(`server is running ${PORT}`);
 });
 

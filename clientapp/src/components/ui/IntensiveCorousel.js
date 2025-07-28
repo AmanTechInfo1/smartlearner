@@ -38,7 +38,7 @@ function IntensiveCorousel() {
 
   useEffect(() => {
     const offersIntensiveCategory = data.find(
-      (item) => item._id === "Intensive"
+      (item) => item._id === "intensive"
     );
     if (offersIntensiveCategory) {
       // Set default expanded category
@@ -80,7 +80,7 @@ function IntensiveCorousel() {
   // Function to get the button color based on the category
   const getButtonColorForCategory = (categoryName) => {
     switch (categoryName) {
-      case "Intensive":
+      case "intensive":
         return "#ff9c08"; // LimeGreen color matching the green star for Intensive category
       default:
         return "black"; // Default color if category doesn't match
@@ -91,7 +91,7 @@ function IntensiveCorousel() {
     <section className={styles.carouselContainer}>
       <div className={styles.carousel}>
         {/* Display products below £500 */}
-        {filteredData("Intensive").map((item) => {
+        {filteredData("intensive").map((item) => {
           const below500Products = item.data.filter(
             (product) => product.price < 500
           );
@@ -262,7 +262,7 @@ function IntensiveCorousel() {
         })}
 
         {/* Display products between £500 and £1000 */}
-        {filteredData("Intensive").map((item) => {
+        {filteredData("intensive").map((item) => {
           const between500And1000Products = item.data.filter(
             (product) => product.price >= 500 && product.price <= 1400
           );
@@ -433,7 +433,7 @@ function IntensiveCorousel() {
         })}
 
         {/* Display products above £1000 */}
-        {filteredData("Intensive").map((item) => {
+        {filteredData("intensive").map((item) => {
           const above1000Products = item.data.filter(
             (product) => product.price > 1400
           );

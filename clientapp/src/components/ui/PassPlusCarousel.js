@@ -37,8 +37,8 @@ function PassPlusCarousel() {
   }, [dispatch]);
 
   useEffect(() => {
-    const offersManualCategory = data.find((item) => item._id === "Pass Plus");
-    console.log("aaadhaisudhsaius", offersManualCategory);
+    const offersManualCategory = data.find((item) => item._id === "pass plus");
+    
 
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
@@ -82,7 +82,7 @@ function PassPlusCarousel() {
     <>
       <section className={styles.carouselContainer}>
         <div className={styles.carousel}>
-          {["Pass Plus"].map((categoryName) =>
+          {["pass plus"].map((categoryName) =>
             filteredData(categoryName).map((item) => (
               <>
                 {item.data.map((info, index) => (

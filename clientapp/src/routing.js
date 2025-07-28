@@ -185,6 +185,7 @@ import Adi3Module20 from "./pages/adiPages/adi-part3/additionalPages/AdiModule20
 import Adi3Module21 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module21";
 import Adi3Module22 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module22";
 import LearnerPortal from "./pages/learnerPortal/LearnerPortal";
+import AdminLiveChat from "./containers/liveChat/AdminLiveChat";
 
 export const router = createBrowserRouter([
   {
@@ -456,9 +457,9 @@ export const router = createBrowserRouter([
         path: "adi-videos",
         element: <Adi3Videos />,
       },
-       {
+      {
         path: "learner-portal",
-        element: <LearnerPortal/>,
+        element: <LearnerPortal />,
       },
 
       {
@@ -472,7 +473,6 @@ export const router = createBrowserRouter([
       { path: "control-module", element: <Adi3Module19 /> },
       { path: "awareness-module", element: <Adi3Module20 /> },
       { path: "mockTest-module", element: <Adi3Module21 /> },
-      
 
       {
         path: "all-results",
@@ -608,6 +608,10 @@ export const router = createBrowserRouter([
       //   element:<QuizzesModal/>,
       // },
 
+      {
+        path: "/admin/smartBot-livechat",
+        element: <AdminLiveChat />,
+      },
       {
         path: "/admin/quizCategory",
         element: <Quiz />,

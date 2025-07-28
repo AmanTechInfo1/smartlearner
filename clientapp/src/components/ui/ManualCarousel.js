@@ -38,7 +38,7 @@ function ManualCarousel() {
 
   useEffect(() => {
     const offersManualCategory = data.find(
-      (item) => item._id === "Offers manual"
+      (item) => item._id === "offers manual"
     );
     if (offersManualCategory) {
       setExpandedCategory(offersManualCategory._id);
@@ -79,7 +79,7 @@ function ManualCarousel() {
 
   const getColorForCategory = (categoryName) => {
     switch (categoryName) {
-      case "Offers manual":
+      case "offers manual":
         return "#810000";
       case "manual":
         return "#810000";
@@ -89,7 +89,7 @@ function ManualCarousel() {
   };
 
   // Separate category arrays
-  const offerCategories = filteredData("Offers manual");
+  const offerCategories = filteredData("offers manual");
   const manualCategories = filteredData("manual");
 
   return (

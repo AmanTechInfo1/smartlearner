@@ -153,6 +153,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               Users Report
             </li>
           </Link>
+          <Link to="/admin/smartBot-livechat">
+            <li className={styles.adminSidebarListItem}>
+              {" "}
+              <TbCategoryFilled className={styles.adminIcon} />
+              Live Chat
+            </li>
+          </Link>
         </ul>
       </aside>
     </>
