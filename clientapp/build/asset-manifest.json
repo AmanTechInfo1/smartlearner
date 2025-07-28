@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bd00a501.css",
-    "main.js": "/static/js/main.10e5686f.js",
+    "main.css": "/static/css/main.6bcb257c.css",
+    "main.js": "/static/js/main.82a00503.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -53,6 +53,7 @@
     "static/media/drivinglessons.jpg": "/static/media/drivinglessons.3fa64f3fa0a3b751e69a.jpg",
     "static/media/client-centered.jpg": "/static/media/client-centered.1ede52a0695f7171f7e9.jpg",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
+    "static/media/notify.wav": "/static/media/notify.591785cc57aac9ba4e30.wav",
     "static/media/manualround2.jpg": "/static/media/manualround2.2919359ed1345bd42ca0.jpg",
     "static/media/lessonStructure.jpg": "/static/media/lessonStructure.6d6d74b217abf5ab2c44.jpg",
     "static/media/bgDark.jpg": "/static/media/bgDark.92c9fb7372440b5bec53.jpg",
@@ -259,7 +260,9 @@
     "static/media/traf-lights.jpg": "/static/media/traf-lights.1771249db2c029b2f3d2.jpg",
     "static/media/img7.jpg": "/static/media/img7.eb50a68772057cecc360.jpg",
     "static/media/img1.jpg": "/static/media/img1.eb23142fa83ab583a4a7.jpg",
+    "static/media/botImg.jpeg": "/static/media/botImg.5d9695b27dd68bf1f428.jpeg",
     "static/media/GDE-matrix.png": "/static/media/GDE-matrix.8640bd5af69e51f81c0d.png",
+    "static/media/userImg.jpeg": "/static/media/userImg.4f99a151010f7fc0eaf2.jpeg",
     "static/media/hazardlight.jpg": "/static/media/hazardlight.e7b911d61a3e3a58ba86.jpg",
     "static/media/simulated2img.jpg": "/static/media/simulated2img.19079663473bb99030f5.jpg",
     "static/media/img3.jpg": "/static/media/img3.2d8096dd362ae4f5a718.jpg",
@@ -399,12 +402,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.bd00a501.css.map": "/static/css/main.bd00a501.css.map",
-    "main.10e5686f.js.map": "/static/js/main.10e5686f.js.map",
+    "main.6bcb257c.css.map": "/static/css/main.6bcb257c.css.map",
+    "main.82a00503.js.map": "/static/js/main.82a00503.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd00a501.css",
-    "static/js/main.10e5686f.js"
+    "static/css/main.6bcb257c.css",
+    "static/js/main.82a00503.js"
   ]
 }
