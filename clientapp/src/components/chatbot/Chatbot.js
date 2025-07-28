@@ -17,6 +17,7 @@ const Chatbot = () => {
   const [joinedChat, setJoinedChat] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [liveChatInput, setLiveChatInput] = useState("");
+  const [sendLiveMail, setSendLiveEmail] = useState("");
   const [emailSetSubmitted, setEmailSetSubmitted] = useState(false);
 
   const getValidSession = () => {
@@ -105,7 +106,7 @@ const Chatbot = () => {
           ...prev,
           {
             sender: "admin",
-            content: "🔴 Live chat has ended. You're now back with SmartBot.",
+            content: "",
           },
         ]);
       }
@@ -208,7 +209,7 @@ const Chatbot = () => {
 
     setMessages((prev) => [...prev, { sender: "user", content: email }]);
     scrollToBottom();
-
+    setEmail("");
     setIsTyping(true);
     try {
       const { data } = await axios.post(
@@ -222,7 +223,9 @@ const Chatbot = () => {
       if (data.reply.message === "email submitted successfully") {
         setEmailSetSubmitted(true);
         setEmailSubmitted(true);
+        setSendLiveEmail(data.reply.email);
       }
+      console.log("check", data.reply.email);
     } catch (e) {
       console.error(e);
       await typeBotMessage("Oops, that didn't work. Please try again.");
@@ -239,7 +242,7 @@ const Chatbot = () => {
       sessionId,
       sender: "user",
       content: liveChatInput,
-      email: email,
+      email: sendLiveMail,
       liveChat: true, // Optional flag to distinguish live chat
     };
 
@@ -263,13 +266,13 @@ const Chatbot = () => {
       sessionId,
       sender: "user",
       content: "👉 connecting to admin...",
-      email: email,
+      email: sendLiveMail,
     };
 
     console.log("🟡 Emitting newChatRequest with:", sessionId);
     // Send to server via socket
     socket.emit("sendMessage", userMsg);
-    socket.emit("newChatRequest", { sessionId, email: email });
+    socket.emit("newChatRequest", { sessionId, email: sendLiveMail });
     console.log("✅ Emitted newChatRequest");
   };
 
@@ -316,6 +319,10 @@ const Chatbot = () => {
 
     fetchMessages();
   }, [sessionId]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className="chatbot-container">

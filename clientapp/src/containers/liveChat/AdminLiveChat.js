@@ -182,7 +182,9 @@ const AdminLiveChat = () => {
 
   const endChat = async (sessionId) => {
     try {
-      await axios.post("https://api.smartlearner.com/api/chat-all/end", { sessionId });
+      await axios.post("https://api.smartlearner.com/api/chat-all/end", {
+        sessionId,
+      });
       socket.emit("endChat", { sessionId });
     } catch (err) {
       console.error("Failed to end chat", err);

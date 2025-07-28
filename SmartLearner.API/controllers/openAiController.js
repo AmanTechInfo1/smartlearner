@@ -92,6 +92,7 @@ const chatbot = async (req, res) => {
       return res.json({
         reply: {
           message: "email submitted successfully",
+          email: message,
           statusCode: 201,
           success: true,
           data: data,
@@ -107,6 +108,7 @@ const chatbot = async (req, res) => {
       return res.json({
         reply: {
           message: "email submitted successfully",
+          email: session.guestEmail,
           statusCode: 201,
           success: true,
           data: data,
@@ -182,7 +184,11 @@ const chatbot = async (req, res) => {
     // Check if user is asking about products
   }
 
-  if (message.toLowerCase().includes("driving instructor")) {
+  if (
+    message.toLowerCase().includes("driving instructor") ||
+    message.toLowerCase().includes("pdi portal") ||
+    message.toLowerCase().includes("pdi")
+  ) {
     try {
       const categories = await Plans.find({ subCat: "pdi" });
       let data;
@@ -260,7 +266,7 @@ const chatbot = async (req, res) => {
             if (
               planNameLower.includes("Lifetime Theory Portal Access £30.00")
             ) {
-              link = "httpa://smartlearner.com/Theory-subscription";
+              link = "https://smartlearner.com/Theory-subscription";
             }
 
             return `${index + 1}. ${cat.planname} * ${cat.price}${
@@ -309,7 +315,7 @@ const chatbot = async (req, res) => {
     const categories = await Category.find({ isDeleted: false });
 
     const matchedCategory = categories.find((cat) =>
-      message.includes(cat.name)
+      message.toLowerCase().includes(cat.name.toLowerCase())
     );
     let data;
 
@@ -352,7 +358,10 @@ const chatbot = async (req, res) => {
   }
   //////////////////////////////////////////////
   // ✅ New block: Show all available products if message includes "products"
-  if (message.toLowerCase().includes("products")) {
+  if (
+    message.toLowerCase().includes("products") ||
+    message.toLowerCase().includes("product")
+  ) {
     try {
       const products = await Category.find({ isDeleted: false });
 
@@ -410,7 +419,10 @@ const chatbot = async (req, res) => {
       return res.json({ reply: data });
     }
     console.error(err);
-    res.status(500).json({ reply: "Something went wrong. Please try again." });
+    res.status(500).json({
+      reply:
+        "SmartBot do not have knowledge about it please connect to live chat",
+    });
   }
 };
 
