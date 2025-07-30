@@ -185,9 +185,11 @@ const chatbot = async (req, res) => {
   }
 
   if (
+    message.toLowerCase().includes("driving instructing") ||
     message.toLowerCase().includes("driving instructor") ||
     message.toLowerCase().includes("pdi portal") ||
-    message.toLowerCase().includes("pdi")
+    message.toLowerCase().includes("pdi") ||
+    message.toLowerCase().includes("Adi")
   ) {
     try {
       const categories = await Plans.find({ subCat: "pdi" });
@@ -198,28 +200,37 @@ const chatbot = async (req, res) => {
         const categoryList = categories
           .map((cat, index) => {
             let link = "";
+            let para = "";
             const planNameLower = cat.planname;
 
-            if (planNameLower.includes("PDI Part One")) {
+            if (planNameLower.includes("PDI Complete Package")) {
               link =
-                "https://smartlearner.com/driving-instructor-training-part-one";
+                "https://smartlearner.com/driving-instructor-training-full-course";
+
+              para =
+                "SmartLearners’ Part 1 training module offers in-depth theory training for trainee driving instructors, featuring comprehensive study materials, mock tests, and a bonus quiz with exclusive, never-before-seen questions to boost confidence and readiness for the ADI Part 1 exam. ";
             } else if (planNameLower.includes("PDI Part Two")) {
               link =
                 "https://smartlearner.com/driving-instructor-training-part-two";
+              para =
+                "SmartLearners’ Part 2 training module provides detailed guidance on advanced driving skills, including commentary driving, manoeuvres, and mock tests tricks and more ";
             } else if (planNameLower.includes("PDI Part Three")) {
               link =
                 "https://smartlearner.com/driving-instructor-training-part-three";
-            } else if (planNameLower.includes("PDI Complete Package")) {
+              para =
+                "SmartLearners’ Part 3 training module delivers expert instruction on teaching techniques, lesson planning, and core competencies. With clear guidance and structured support, it helps trainee instructors develop the skills needed to confidently plan and deliver effective driving lessons for the ADI exam.";
+            } else if (planNameLower.includes("PDI Part One")) {
               link =
-                "https://smartlearner.com/driving-instructor-training-full-course";
+                "https://smartlearner.com/driving-instructor-training-part-one";
             }
 
-            return `${index + 1}. ${cat.planname} * ${cat.price}${
+            return `${index + 1}. ${cat.planname} * ${cat.price}
+            ${
               link ? `\n🔗<a href="${link}" target="_blank">${link}</a>` : ""
-            }`;
+            }  ${para ? `\n ${para}` : ""}`;
           })
           .join("\n");
-        data = `🛍️ Here are the available packages categories:\n\n${categoryList}\n\n`;
+        data = `🛍️ SmartLearners' PDI training portal is an online platform offering interactive lessons, resources, and tools to help trainee driving instructors develop their skills. Accessible across devices, it supports self-paced learning with structured modules tailored to prepare for the ADI qualification. You can become a driving instructor by clicking on these links  :\n${categoryList}\n`;
       }
 
       await saveMessage({ sessionId, sender: "admin", content: data });
@@ -261,17 +272,20 @@ const chatbot = async (req, res) => {
         const categoryList = categories
           .map((cat, index) => {
             let link = "";
+            let para = "";
             const planNameLower = cat.planname;
 
             if (
               planNameLower.includes("Lifetime Theory Portal Access £30.00")
             ) {
               link = "https://smartlearner.com/Theory-subscription";
+              para =
+                "SmartLearners’ learner theory portal offers comprehensive theory test preparation with interactive lessons, practice questions, and hazard perception clips. It features multilingual voiceovers, making learning accessible and engaging for all learners, regardless of their preferred language or background.";
             }
 
             return `${index + 1}. ${cat.planname} * ${cat.price}${
               link ? `\n🔗<a href="${link}" target="_blank">${link}</a>` : ""
-            }`;
+            } ${para ? `\n ${para}` : ""}`;
           })
           .join("\n");
         data = `🛍️ Here are the available packages categories:\n\n${categoryList}\n\n`;
@@ -360,7 +374,10 @@ const chatbot = async (req, res) => {
   // ✅ New block: Show all available products if message includes "products"
   if (
     message.toLowerCase().includes("products") ||
-    message.toLowerCase().includes("product")
+    message.toLowerCase().includes("product") ||
+    message.toLowerCase().includes("book lesson") ||
+    message.toLowerCase().includes("book a lesson") ||
+    message.toLowerCase().includes("pay for lesson")
   ) {
     try {
       const products = await Category.find({ isDeleted: false });
@@ -371,10 +388,471 @@ const chatbot = async (req, res) => {
         data = "There are currently no available products.";
       } else {
         const productList = products.map((product) => `• ${product.name} `);
-        data = `Here are our available product categories please choose and search which product you want:\n${productList.join(
+        data = `Here are our available lessons categories please choose and search which lesson you want to book:\n${productList.join(
           "\n"
         )}`;
       }
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  // =================================================
+  if (
+    message.toLowerCase().includes("intensive course practical test") ||
+    message.toLowerCase().includes("practical test")
+  ) {
+    try {
+      let data = "We offer both options, with and without a practical test!";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ////////////////////////////////////////////////
+  if (message.toLowerCase().includes("license requirement")) {
+    try {
+      let data =
+        "You must have either a valid provisional licence, a full driving license or an international licence that is valid for UK roads";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ================================================
+  if (
+    message.toLowerCase().includes("how to make a payment") ||
+    message.toLowerCase().includes("payment")
+  ) {
+    try {
+      let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Stripe with your card details. \n Need help? Click the “Live Chat Agent” button.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  ////////////////////////////////////////////////
+  // if (
+  //   message
+  //     .toLowerCase()
+  //     .includes("What happens after I have paid for my lesson")
+  // ) {
+  //   try {
+  //     let data = `A notice will be sent to our team with your contact details to get in touchwith you as soon as possible. Please look out for any calls or emails.`;
+
+  //     await saveMessage({ sessionId, sender: "admin", content: data });
+
+  //     return res.json({
+  //       reply: {
+  //         message: "reply successfully",
+  //         statusCode: 201,
+  //         success: true,
+  //         data: data,
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     return res.status(500).json({
+  //       reply: {
+  //         message: "Server error while fetching products.",
+  //         statusCode: 500,
+  //         success: false,
+  //         data: null,
+  //       },
+  //     });
+  //   }
+  // }
+  ////////////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("refund policy") ||
+    message.toLowerCase().includes("refund")
+  ) {
+    try {
+      let data = `If you cancel your lesson within 24 hours to its time, you will be charged at full rate. \n All packages have a 6-month validity period, after this, any unused prepaid hours are invalidated. \n Intensive courses are nonrefundable within 7 days of its start date \n Beginners package is nonrefundable 
+ If you are seeking a refund of a block package, the lessons taken will be charged at the full hourly rate and any remainder will be refunded back to the client \n Admin fee for tests and service fee is nonrefundable`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ===============================================
+  if (
+    message.toLowerCase().includes("Cant log in ") ||
+    message.toLowerCase().includes("unable to login")
+  ) {
+    try {
+      let data = `We are sorry to hear you are having trouble logging in,\n please email our team at <a href="admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>  with the email you used to sign up with and any information you can provide and they will look into this for you`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("taster session")) {
+    try {
+      let data = `The taster session is for a student's first lesson only, it is a 1.5 hour lesson to get a feel for driving, the instructor, and the car. \n This can only be used once per person and, only for the first lesson`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("Reset Password")) {
+    try {
+      let data = `We are sorry to hear you are having trouble logging in, \n please email our team at <a href="admin@smartlearner.com" target="_blank">admin@smartlearner.com</a> with the email you used to sign up with and any information you can provide and they will look into this for you`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("beginners package")) {
+    try {
+      let data = `The beginners package is designed for students with NO previous driving experience. Covering the basics of moving off and stopping.  \n The lesson structure is: \n 2 x 1.5 hours lessons 
+\n 2 hours saved for the date of your practical test when you are ready to go. \n The idea is it covers the first two lessons you take and hopefully the last two hours you take.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("my instructor has not turned up") ||
+    message.toLowerCase().includes("instructor not come")
+  ) {
+    try {
+      let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at Admin@smartlearner.com for us to provide support.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ==================================
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("simulator lessons")) {
+    try {
+      let data = `SmartLearner’s Virtual reality driving simulator is the one of a kind experience in the UK, based in our office in Coventry, learners from across England come to use the simulator whether to improve their skills or boost their confidence. Starting from ONLY £10 per hour, learners can cut prices and develop a plethora of different skills in a safe and controlled environment.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ====================================
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("cancel my lesson")) {
+    try {
+      let data = `Please bare in mind that cancelling your scheduled driving lesson outside 24 hours will potential include a lesson cancellation fee for the full price of the lesson you have booked. To avoid this cancellation fee, ensure you have made your instructor aware of the cancellation, before 24 hours. If you do not have your instructor’s contact details, please inform us on 02475092784 or email us at Admin@smartlearner.com.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("apply for a theory test")) {
+    try {
+      let data = `You must have a valid provisional licence, and must have lived in England, Wales or Scotland for at least 185 days in the last 12 months before the day you take your theory or driving test. Car and motorcycle tests cost £23. You can apply for a theory test by going onto the GOV.UK - ( https://www.gov.uk/book-theory-test ) website and book a date and time that suits you to take the test in your local city.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("practical driving test")) {
+    try {
+      let data = `The driving test costs £62. Booking during - Evenings, weekends and bank holidays are £75.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("postcode")) {
+    try {
+      let data = `We cover the following Postcodes: CV1, CV2, CV3, CV4, CV5, CV6, CV7, CV8, CV9, CV10, CV11, CV12, CV21 CV22, CV23, CV31, CV32, CV33, CV34, CV35, B26, LE17. To confirm or for Other postcodes - please call us at 02475092784 or email us at Admin@smartlearner.com.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (message.toLowerCase().includes("driving licence")) {
+    try {
+      let data = `1. Apply for your provisional licence here. \n
+2. Pass your Theory test with us! Learn more.\n
+3. Take manual or automatic lessons here. \n
+4. Pass your driving test!`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -421,7 +899,7 @@ const chatbot = async (req, res) => {
     console.error(err);
     res.status(500).json({
       reply:
-        "SmartBot do not have knowledge about it please connect to live chat",
+        "SmartBot does not have knowledge about it please connect to live chat",
     });
   }
 };

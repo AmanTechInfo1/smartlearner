@@ -167,7 +167,6 @@ const Chatbot = () => {
       email: email,
     };
     socket.emit("sendMessage", userMsg);
-    setMessages((prev) => [...prev, userMsg]);
 
     try {
       const { data } = await axios.post(
@@ -195,7 +194,9 @@ const Chatbot = () => {
       setIsTyping(true);
     } catch (e) {
       console.error(e);
-      await typeBotMessage("Sorry, something went wrong.");
+      await typeBotMessage(
+        "we dont have knowledge about it please click Live Chat Button"
+      );
     } finally {
       setIsTyping(false);
       scrollToBottom();
