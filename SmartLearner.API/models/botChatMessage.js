@@ -11,6 +11,17 @@ const botChatMessageSchema = new mongoose.Schema({
     enum: ["user", "admin"],
     required: true,
   },
+  joinAs: {
+    type: String,
+  },
+  pass: {
+    type: Boolean,
+    default: false,
+  },
+  login: {
+    type: Boolean,
+    default: false,
+  },
   content: {
     type: mongoose.Schema.Types.Mixed, // to allow both string and objects (like productList)
     required: true,

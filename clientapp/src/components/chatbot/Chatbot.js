@@ -19,6 +19,10 @@ const Chatbot = () => {
   const [liveChatInput, setLiveChatInput] = useState("");
   const [sendLiveMail, setSendLiveEmail] = useState("");
   const [emailSetSubmitted, setEmailSetSubmitted] = useState(false);
+  const [emailSetSubmitted2, setEmailSetSubmitted2] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordRequired, setPasswordRequired] = useState(false);
+  const [passwordSubmitted, setPasswordSubmitted] = useState(false);
 
   const getValidSession = () => {
     const saved = localStorage.getItem("sessionData");
@@ -203,9 +207,17 @@ const Chatbot = () => {
     }
   };
 
+  const isValidEmail = (email) => {
+    // Simple regex for email validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     if (!email.trim()) return;
 
     setMessages((prev) => [...prev, { sender: "user", content: email }]);
@@ -221,9 +233,14 @@ const Chatbot = () => {
         }
       );
       await typeBotMessage(addEmojis(data.reply.data || ""));
-      if (data.reply.message === "email submitted successfully") {
+      if (data.reply.message === "Please enter your password to continue.") {
+        setEmailSetSubmitted2(true);
+        setPasswordRequired(true);
+        console.log("🔐 Server replied:", data.reply.message);
+      } else if (data.reply.message === "email submitted successfully") {
         setEmailSetSubmitted(true);
         setEmailSubmitted(true);
+
         setSendLiveEmail(data.reply.email);
       }
       console.log("check", data.reply.email);
@@ -235,6 +252,50 @@ const Chatbot = () => {
       scrollToBottom();
     }
   };
+
+  // ////////////////////////////////////////////////////////////
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!password.trim()) {
+      alert("Please enter your password.");
+      return;
+    }
+
+    setMessages((prev) => [...prev, { sender: "user", content: password }]);
+    scrollToBottom();
+    setPassword("");
+    setIsTyping(true);
+
+    try {
+      const { data } = await axios.post(
+        "https://api.smartlearner.com/api/chatbot/chat",
+        {
+          sessionId,
+          message: password,
+          password,
+        }
+      );
+
+      await typeBotMessage(addEmojis(data.reply.data || ""));
+
+      if (data.reply.message === "email submitted successfully") {
+        setPasswordRequired(false);
+        setEmailSetSubmitted(true);
+        setEmailSubmitted(true);
+        setPasswordSubmitted(true);
+        setSendLiveEmail(data.reply.email);
+      }
+    } catch (e) {
+      console.error(e);
+      await typeBotMessage("Invalid password. Please try again.");
+    } finally {
+      setIsTyping(false);
+      scrollToBottom();
+    }
+  };
+
+  // /////////////////////////////////////////////////////////
 
   const handleLiveChatSend = () => {
     if (!liveChatInput.trim()) return;
@@ -310,6 +371,31 @@ const Chatbot = () => {
 
         if (userEmailMsg) {
           setEmail(userEmailMsg.content); // optionally set email state too
+        }
+
+        const userEmailMsg2 = data.messages.find(
+          (msg) =>
+            msg.sender === "user" &&
+            (msg.pass === "DBUSER" || msg.joinAs === "guest")
+        );
+
+        if (userEmailMsg2) {
+          setEmailSubmitted(true);
+          setEmailSetSubmitted(true);
+        }
+
+        const userEmailMsg3 = data.messages.find((msg) => msg.pass === true);
+
+        if (userEmailMsg3) {
+          setEmailSetSubmitted2(true);
+          setEmailSubmitted(true);
+          setEmailSetSubmitted(true);
+        }
+
+        const userEmailMsg4 = data.messages.find((msg) => msg.login === true);
+
+        if (userEmailMsg4) {
+          setPasswordSubmitted(true);
           setEmailSubmitted(true);
           setEmailSetSubmitted(true);
         }
@@ -420,15 +506,27 @@ const Chatbot = () => {
         <div ref={chatEndRef} />
       </div>
 
-      {!emailSubmitted && getValidSession() ? (
+      {!emailSubmitted && !emailSetSubmitted2 && getValidSession() ? (
         // Show email input first
         <form className="chat-input-area" onSubmit={handleEmailSubmit}>
           <input
             placeholder="Enter your text..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            name="email"
           />
-          <IoSend onClick={handleEmailSubmit} className="chatBtn" />
+          <IoSend
+            onClick={(e) => {
+              if (isValidEmail(email)) {
+                handleEmailSubmit(e);
+              } else {
+                alert("Please enter a valid email address.");
+              }
+            }}
+            className="chatBtn"
+            style={{ cursor: isValidEmail(email) ? "pointer" : "not-allowed" }}
+          />
         </form>
       ) : (
         <>
@@ -469,6 +567,28 @@ const Chatbot = () => {
             <></>
           )}
         </>
+      )}
+      {passwordRequired && !passwordSubmitted && (
+        <form className="chat-input-area" onSubmit={handlePasswordSubmit}>
+          <input
+            placeholder="Enter your password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            name="password"
+          />
+          <IoSend
+            onClick={(e) => {
+              if (password.trim()) {
+                handlePasswordSubmit(e);
+              } else {
+                alert("Please enter your password.");
+              }
+            }}
+            className="chatBtn"
+            style={{ cursor: password.trim() ? "pointer" : "not-allowed" }}
+          />
+        </form>
       )}
     </div>
   );

@@ -6,29 +6,48 @@ const Product = require("../models/productModel");
 const Category = require("../models/categoryModel");
 const Plans = require("../models/planUserModel");
 const BotChatMessage = require("../models/botChatMessage");
+const bcrypt = require("bcryptjs");
+const { getCategoryWiseResults } = require("../services/quizService");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_KEY,
 });
 const sessionMemory = {};
 
-const saveMessage = async ({ sessionId, sender, content }) => {
+const saveMessage = async ({
+  sessionId,
+  sender,
+  joinAs,
+  pass,
+  login,
+  content,
+}) => {
   try {
-    await BotChatMessage.create({ sessionId, sender, content });
+    await BotChatMessage.create({
+      sessionId,
+      sender,
+      joinAs,
+      pass,
+      login,
+      content,
+    });
   } catch (err) {
     console.error("Error saving chat message:", err);
   }
 };
 
 const chatbot = async (req, res) => {
-  const { sessionId, message } = req.body;
+  const { sessionId, message, password } = req.body;
 
   console.log("sduhaiu", sessionId, message);
-  await saveMessage({ sessionId, sender: "user", content: message });
+  await saveMessage({
+    sessionId,
+    sender: "user",
+
+    content: message,
+  });
 
   if (!sessionMemory[sessionId]) {
-    sessionMemory[sessionId] = { step: "askEmail" };
-
     // ✅ Check DB for past email submission in this session
     const prev = await BotChatMessage.find({ sessionId });
     const emailMsg = prev.find(
@@ -38,14 +57,23 @@ const chatbot = async (req, res) => {
     if (emailMsg) {
       const foundUser = await User.findOne({ email: emailMsg.content });
       if (foundUser) {
-        sessionMemory[sessionId] = { step: "chatting", user: foundUser };
-        const replyText = `Welcome back ${foundUser.username}! How can I assist you today?`;
-        await saveMessage({ sessionId, sender: "admin", content: replyText });
+        sessionMemory[sessionId] = {
+          step: "awaitingPassword",
+          user: foundUser,
+        };
+        const replyText = `Welcome here ${foundUser.username}! Please enter your password to proceed.`;
+        await saveMessage({
+          sessionId,
+          sender: "admin",
+          pass: true,
+          content: replyText,
+        });
         return res.json({
           reply: {
-            message: "session resumed",
+            message: "Please enter your password to continue.",
             statusCode: 200,
             success: true,
+
             data: replyText,
           },
         });
@@ -54,67 +82,88 @@ const chatbot = async (req, res) => {
           step: "guest",
           guestEmail: emailMsg.content,
         };
-        const replyText = `Welcome back ${emailMsg.content}! How can I help you today?`;
-        await saveMessage({ sessionId, sender: "admin", content: replyText });
+        const replyText = `Welcome ${emailMsg.content}! to smartlearner How can I help you`;
+        await saveMessage({
+          sessionId,
+          sender: "admin",
+          joinAs: "guest",
+          content: replyText,
+        });
         return res.json({
           reply: {
-            message: "session resumed",
+            message: "email submitted successfully",
             statusCode: 200,
+
+            email: emailMsg.content,
             success: true,
             data: replyText,
           },
         });
       }
     }
-
-    const prompt = "hi ! 👋 Before we begin, Please enter your email";
-    await saveMessage({ sessionId, sender: "admin", content: prompt });
-    return res.json({
-      reply: {
-        message: "reply successfully",
-        statusCode: 201,
-        success: true,
-        data: prompt,
-      },
-    });
   }
 
   const session = sessionMemory[sessionId];
 
-  if (session.step === "askEmail") {
-    const user = await User.findOne({ email: message });
-    if (user) {
-      session.user = user;
-      session.step = "chatting";
+  if (session.step === "awaitingPassword" && session.user) {
+    const user = session.user;
 
-      const data = `Welcome  ${user.username}! You can ask about your my  subscription, my purchases, our pruducts or anything else.`;
-      await saveMessage({ sessionId, sender: "admin", content: data });
-      return res.json({
-        reply: {
-          message: "email submitted successfully",
-          email: message,
-          statusCode: 201,
-          success: true,
-          data: data,
-        },
+    if (!password) {
+      const replyText = "Please enter your password to continue.";
+      await saveMessage({
+        sessionId,
+        sender: "admin",
+        pass: true,
+        content: replyText,
       });
-    } else {
-      session.guestEmail = message;
-      session.step = "guest";
-
-      const data = `Welcome ${session.guestEmail}! to smartlearner How can I help you`;
-
-      await saveMessage({ sessionId, sender: "admin", content: data });
       return res.json({
         reply: {
-          message: "email submitted successfully",
-          email: session.guestEmail,
-          statusCode: 201,
-          success: true,
-          data: data,
+          message: "Password required",
+          statusCode: 401,
+          success: false,
+          data: replyText,
         },
       });
     }
+
+    const isPasswordValid = user.isBcryptHashed
+      ? await bcrypt.compare(password, user.password)
+      : false;
+
+    if (!isPasswordValid) {
+      const replyText = "Invalid password. Please try again.";
+      await saveMessage({ sessionId, sender: "admin", content: replyText });
+      return res.json({
+        reply: {
+          message: "Invalid password",
+          statusCode: 401,
+          success: false,
+          data: replyText,
+        },
+      });
+    }
+    sessionMemory[sessionId].step = "chatting";
+
+    const replyText = `Login successful! Welcome ${user.username}, how can I help you today?`;
+    await saveMessage({
+      sessionId,
+      sender: "admin",
+      joinAs: "DBUSER",
+      pass: true,
+      login: true,
+      content: replyText,
+    });
+
+    return res.json({
+      reply: {
+        message: "email submitted successfully",
+        statusCode: 200,
+        success: true,
+
+        email: user.email,
+        data: replyText,
+      },
+    });
   }
 
   if (session.step === "chatting" && session.user) {
@@ -182,6 +231,49 @@ const chatbot = async (req, res) => {
       });
     }
     // Check if user is asking about products
+
+    if (
+      message.toLowerCase().includes("quiz results") ||
+      message.toLowerCase().includes("weak")
+    ) {
+      const results = await getCategoryWiseResults(session.user._id);
+
+      if (!results.length) {
+        return res.json({
+          reply: {
+            message: "No quiz results found.",
+            statusCode: 200,
+            success: true,
+            data: "You haven't attempted any quiz yet.",
+          },
+        });
+      }
+
+      // Optional: Build markdown table for reply
+      const tableHeader = "📖 Category  | Result % |\n";
+      const tableBody = results
+        .map((r, index) => `${index + 1} ${r.category} | ${r.percentage}% `)
+        .join("\n");
+
+      // | Total |
+      // | ${r.totalQuestions} |
+      const table = `${tableHeader}\n${tableBody}`;
+
+      await saveMessage({
+        sessionId,
+        sender: "admin",
+        content: table,
+      });
+
+      return res.json({
+        reply: {
+          message: "Here is your quiz result summary:",
+          statusCode: 200,
+          success: true,
+          data: table,
+        },
+      });
+    }
   }
 
   if (
@@ -206,7 +298,9 @@ const chatbot = async (req, res) => {
             if (planNameLower.includes("PDI Complete Package")) {
               link =
                 "https://smartlearner.com/driving-instructor-training-full-course";
-
+            } else if (planNameLower.includes("PDI Part One")) {
+              link =
+                "https://smartlearner.com/driving-instructor-training-part-one";
               para =
                 "SmartLearners’ Part 1 training module offers in-depth theory training for trainee driving instructors, featuring comprehensive study materials, mock tests, and a bonus quiz with exclusive, never-before-seen questions to boost confidence and readiness for the ADI Part 1 exam. ";
             } else if (planNameLower.includes("PDI Part Two")) {
@@ -219,9 +313,6 @@ const chatbot = async (req, res) => {
                 "https://smartlearner.com/driving-instructor-training-part-three";
               para =
                 "SmartLearners’ Part 3 training module delivers expert instruction on teaching techniques, lesson planning, and core competencies. With clear guidance and structured support, it helps trainee instructors develop the skills needed to confidently plan and deliver effective driving lessons for the ADI exam.";
-            } else if (planNameLower.includes("PDI Part One")) {
-              link =
-                "https://smartlearner.com/driving-instructor-training-part-one";
             }
 
             return `${index + 1}. ${cat.planname} * ${cat.price}

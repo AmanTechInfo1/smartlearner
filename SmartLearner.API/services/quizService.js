@@ -1,4 +1,6 @@
 const { ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+
 const AttemptQuizQuestion = require("../models/attemptQuizQuestionModel");
 const QuizQuestion = require("../models/quizQuestionModel");
 const QuizCategoryModel = require("../models/quizCategoryModel");
@@ -35,7 +37,7 @@ class quizService {
     const quiz = await QuizQuestion.findById(quizId);
     if (!quiz) throw new Error("Quiz not found");
     return quiz;
-  } 
+  }
 
   async updateQuizAsync(quizId, quizData) {
     try {
@@ -1753,6 +1755,89 @@ class quizService {
       };
       return resultObject;
     }
+  }
+
+  async getCategoryWiseResults(userId) {
+    // Step 1: Get all quiz attempts of the user with category info
+    const results = await ResultQuizQuestion.aggregate([
+      { $match: { userId: new mongoose.Types.ObjectId(userId) } },
+      {
+        $lookup: {
+          from: "quizquestions",
+          localField: "questionId",
+          foreignField: "_id",
+          as: "question",
+        },
+      },
+      { $unwind: "$question" },
+      {
+        $group: {
+          _id: "$question.category",
+          attempted: { $sum: 1 },
+          correct: {
+            $sum: {
+              $cond: [{ $eq: ["$answerAttempt", "Correct"] }, 1, 0],
+            },
+          },
+        },
+      },
+      {
+        $lookup: {
+          from: "quizcategories",
+          localField: "_id",
+          foreignField: "_id",
+          as: "category",
+        },
+      },
+      { $unwind: "$category" },
+      {
+        $project: {
+          categoryId: "$_id",
+          categoryName: "$category.name",
+          attempted: 1,
+          correct: 1,
+        },
+      },
+    ]);
+
+    // Step 2: Get total question count per category
+    const categoryStats = await QuizCategoryModel.aggregate([
+      {
+        $lookup: {
+          from: "quizquestions",
+          localField: "_id",
+          foreignField: "category",
+          as: "questions",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          name: 1,
+          totalQuestions: { $size: "$questions" },
+        },
+      },
+    ]);
+
+    // Step 3: Merge both
+    const merged = results.map((item) => {
+      const totalCat = categoryStats.find(
+        (c) => c._id.toString() === item.categoryId.toString()
+      );
+      const total = totalCat?.totalQuestions || 0;
+      const scorePercent =
+        total > 0 ? ((item.correct / total) * 100).toFixed(2) : "0.00";
+
+      return {
+        category: item.categoryName,
+        totalQuestions: total,
+        attempted: item.attempted,
+        correct: item.correct,
+        percentage: scorePercent,
+      };
+    });
+
+    return merged;
   }
 }
 

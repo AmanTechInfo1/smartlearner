@@ -19,7 +19,7 @@ router.get("/messages/:sessionId", async (req, res) => {
       .sort({ timestamp: 1 });
 
     res.json({ messages });
-  } catch (err) {
+  } catch (err) { 
     console.error("Error fetching chat history:", err);
     res.status(500).json({ error: "Failed to fetch messages" });
   }
