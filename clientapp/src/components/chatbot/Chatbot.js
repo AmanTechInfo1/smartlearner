@@ -338,7 +338,7 @@ const Chatbot = () => {
     console.log("✅ Emitted newChatRequest");
   };
 
-  const fullText = "Welcome I'm SmartBot. How can I help you?";
+  const fullText = "Welcome I'm SmartBot. Please enter your email to continue";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
 
@@ -510,7 +510,7 @@ const Chatbot = () => {
         // Show email input first
         <form className="chat-input-area" onSubmit={handleEmailSubmit}>
           <input
-            placeholder="Enter your text..."
+            placeholder="Enter your email address..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
