@@ -173,3 +173,30 @@
   margin-right: 1rem;
   border-radius: 50%;
 }
+.end-chat-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.end-chat-btn:hover {
+  background-color: #d9363e;
+  transform: scale(1.03);
+}
+
+.end-chat-btn:active {
+  transform: scale(0.98);
+}
+
+.end-chat-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

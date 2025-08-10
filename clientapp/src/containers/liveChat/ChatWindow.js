@@ -13,12 +13,14 @@ const ChatWindow = ({ sessionId, onBack }) => {
   const endRef = useRef();
 
   useEffect(() => {
-    axios.get(`https://api.smartlearner.com/api/chat-all/${sessionId}`).then((res) => {
-      const data = Array.isArray(res.data) ? res.data : [];
-      setMessages(data);
-      const email = data.find((m) => m.email)?.email;
-      setUserEmail(email);
-    });
+    axios
+      .get(`https://api.smartlearner.com/api/chat-all/${sessionId}`)
+      .then((res) => {
+        const data = Array.isArray(res.data) ? res.data : [];
+        setMessages(data);
+        const email = data.find((m) => m.email)?.email;
+        setUserEmail(email);
+      });
     socket.emit("adminJoin", { sessionId });
 
     const messageHandler = (msg) => {
@@ -42,6 +44,21 @@ const ChatWindow = ({ sessionId, onBack }) => {
 
     setInput("");
   };
+
+  useEffect(() => {
+    const handleChatEnded = ({ sessionId: endedSession, message }) => {
+      console.log("📨 Message received in AdminLiveChat", message);
+      if (endedSession === sessionId) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "system", content: message },
+        ]);
+      }
+    };
+
+    socket.on("chatEndedAdmin", handleChatEnded);
+    return () => socket.off("chatEndedAdmin", handleChatEnded);
+  }, [sessionId]);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -72,32 +89,46 @@ const ChatWindow = ({ sessionId, onBack }) => {
         </div>
         <div className="chat-messages">
           {/* /////////////////////////////// */}
-          {messages.map((m, i) => (
-            <div
-              key={i}
-              className={`chat-bubble ${
-                m.sender === "admin" ? "admin-message" : "user-message"
-              }`}>
-              {m.sender === "admin" ? (
-                <>
-                  {" "}
-                  <img
-                    src={userImg}
-                    alt="User"
-                    className="avatar user-avatar"
-                  />
-                  {m.content}
-                </>
-              ) : (
-                <div
-                  style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-                  {" "}
-                  <img src={botImg} alt="Bot" className="avatar bot-avatar" />
-                  <p style={{ marginBottom: "0px" }}>{m.content}</p>
+          {messages.map((m, i) => {
+            if (m.sender === "system") {
+              return (
+                <div key={i} className="chat-bubble system-msg">
+                  <em>{m.content}</em>
                 </div>
-              )}
-            </div>
-          ))}
+              );
+            }
+
+            return (
+              <div
+                key={i}
+                className={`chat-bubble ${
+                  m.sender === "admin" ? "admin-message" : "user-message"
+                }`}>
+                {m.sender === "admin" ? (
+                  <>
+                    {" "}
+                    <img
+                      src={userImg}
+                      alt="User"
+                      className="avatar user-avatar"
+                    />
+                    {m.content}
+                  </>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "5px",
+                      alignItems: "center",
+                    }}>
+                    {" "}
+                    <img src={botImg} alt="Bot" className="avatar bot-avatar" />
+                    <p style={{ marginBottom: "0px" }}>{m.content}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
           {/* ///////////////////////// */}
           <div ref={endRef} />
         </div>

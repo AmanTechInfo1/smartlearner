@@ -62,12 +62,21 @@ const Chatbot = () => {
     if (timeout > 0) {
       const timer = setTimeout(() => {
         localStorage.removeItem("sessionData");
+        localStorage.removeItem("userEmail");
         setSessionId(null); // Optional: force rerender or show expired UI
       }, timeout);
       return () => clearTimeout(timer);
     } else {
       localStorage.removeItem("sessionData");
+      localStorage.removeItem("userEmail");
       setSessionId(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("userEmail");
+    if (savedEmail) {
+      setSendLiveEmail(savedEmail);
     }
   }, []);
 
@@ -103,14 +112,14 @@ const Chatbot = () => {
         setMessages((msgs) => [...msgs, msg]);
       }
     });
-    socket.on("chatEndedAdmin", ({ sessionId }) => {
-      if (sessionId) {
+    socket.on("endChates", ({ sessionId: endedSession }) => {
+      if (endedSession === sessionId) {
         setJoinedChat(false);
         setMessages((prev) => [
           ...prev,
           {
             sender: "admin",
-            content: "",
+            content: "✅ You have ended the chat.",
           },
         ]);
       }
@@ -214,10 +223,7 @@ const Chatbot = () => {
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    if (!isValidEmail(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
+
     if (!email.trim()) return;
 
     setMessages((prev) => [...prev, { sender: "user", content: email }]);
@@ -240,7 +246,7 @@ const Chatbot = () => {
       } else if (data.reply.message === "email submitted successfully") {
         setEmailSetSubmitted(true);
         setEmailSubmitted(true);
-
+        localStorage.setItem("userEmail", data.reply.email);
         setSendLiveEmail(data.reply.email);
       }
       console.log("check", data.reply.email);
@@ -254,46 +260,6 @@ const Chatbot = () => {
   };
 
   // ////////////////////////////////////////////////////////////
-  const handlePasswordSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!password.trim()) {
-      alert("Please enter your password.");
-      return;
-    }
-
-    setMessages((prev) => [...prev, { sender: "user", content: password }]);
-    scrollToBottom();
-    setPassword("");
-    setIsTyping(true);
-
-    try {
-      const { data } = await axios.post(
-        "https://api.smartlearner.com/api/chatbot/chat",
-        {
-          sessionId,
-          message: password,
-          password,
-        }
-      );
-
-      await typeBotMessage(addEmojis(data.reply.data || ""));
-
-      if (data.reply.message === "email submitted successfully") {
-        setPasswordRequired(false);
-        setEmailSetSubmitted(true);
-        setEmailSubmitted(true);
-        setPasswordSubmitted(true);
-        setSendLiveEmail(data.reply.email);
-      }
-    } catch (e) {
-      console.error(e);
-      await typeBotMessage("Invalid password. Please try again.");
-    } finally {
-      setIsTyping(false);
-      scrollToBottom();
-    }
-  };
 
   // /////////////////////////////////////////////////////////
 
@@ -316,14 +282,14 @@ const Chatbot = () => {
 
     scrollToBottom();
   };
-
+  // ////////
   const handleJoinLiveChat = () => {
     console.log("👉 Join Live Chat clicked");
 
     if (joinedChat) return; // Prevent duplicate joins
 
     setJoinedChat(true); // Switch to live chat mode
-
+    localStorage.setItem("liveChat", "true");
     const userMsg = {
       sessionId,
       sender: "user",
@@ -337,8 +303,34 @@ const Chatbot = () => {
     socket.emit("newChatRequest", { sessionId, email: sendLiveMail });
     console.log("✅ Emitted newChatRequest");
   };
+  const handleEndChat = () => {
+    const endMsg = {
+      sessionId,
+      sender: "user",
+      content: "🚫 User has ended live chat",
+      email: sendLiveMail,
+      liveChat: true,
+    };
 
-  const fullText = "Welcome I'm SmartBot. Please enter your email to continue";
+    socket.emit("sendMessage", endMsg);
+
+    setLiveChatInput("");
+    scrollToBottom();
+
+    // Update state and remove from localStorage
+    setJoinedChat(false);
+    localStorage.removeItem("liveChat");
+  };
+  useEffect(() => {
+    const storedLiveChat = localStorage.getItem("liveChat");
+    if (storedLiveChat === "true") {
+      setJoinedChat(true);
+    }
+  }, []);
+
+  // //////////////////////////////////////////////////
+  const fullText =
+    "Welcome I'm SmartBot. Please enter firstName Or email to continue";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
 
@@ -357,50 +349,59 @@ const Chatbot = () => {
       if (!sessionId) return;
 
       try {
-        const { data } = await axios.get(
-          `https://api.smartlearner.com/api/chatbot/messages/${sessionId}`
+        // Fetch messages from both APIs
+        const [chatbotRes, liveChatRes] = await Promise.all([
+          axios.get(
+            `https://api.smartlearner.com/api/chatbot/messages/${sessionId}`
+          ),
+          axios.get(`https://api.smartlearner.com/api/chat-all/${sessionId}`),
+        ]);
+
+        // Merge both message arrays
+        const combinedMessages = [
+          ...chatbotRes.data.messages,
+          ...liveChatRes.data,
+        ];
+
+        // Sort messages by timestamp (adjust field name as needed)
+        combinedMessages.sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
         );
 
-        setMessages(data.messages);
+        setMessages(combinedMessages);
 
-        // ✅ Check if user has submitted an email previously
+        // Email and session state setup (optional, reusing your logic)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const userEmailMsg = data.messages.find(
+        const userEmailMsg = combinedMessages.find(
           (msg) => msg.sender === "user" && emailRegex.test(msg.content)
         );
+        if (userEmailMsg) setEmail(userEmailMsg.content);
 
-        if (userEmailMsg) {
-          setEmail(userEmailMsg.content); // optionally set email state too
-        }
-
-        const userEmailMsg2 = data.messages.find(
-          (msg) =>
-            msg.sender === "user" &&
-            (msg.pass === "DBUSER" || msg.joinAs === "guest")
+        const userEmailMsg2 = combinedMessages.find(
+          (msg) => msg.sender === "user"
         );
-
         if (userEmailMsg2) {
           setEmailSubmitted(true);
           setEmailSetSubmitted(true);
         }
 
-        const userEmailMsg3 = data.messages.find((msg) => msg.pass === true);
-
+        const userEmailMsg3 = combinedMessages.find((msg) => msg.pass === true);
         if (userEmailMsg3) {
           setEmailSetSubmitted2(true);
           setEmailSubmitted(true);
           setEmailSetSubmitted(true);
         }
 
-        const userEmailMsg4 = data.messages.find((msg) => msg.login === true);
-
+        const userEmailMsg4 = combinedMessages.find(
+          (msg) => msg.login === true
+        );
         if (userEmailMsg4) {
           setPasswordSubmitted(true);
           setEmailSubmitted(true);
           setEmailSetSubmitted(true);
         }
       } catch (err) {
-        console.error("Error loading previous messages:", err);
+        console.error("❌ Error loading messages:", err);
       }
     };
 
@@ -419,7 +420,6 @@ const Chatbot = () => {
       </div>
 
       <div className="chat-messages">
-        <iframe src="https://lottie.host/embed/ff516f95-edf4-4ad2-9b38-689c593b4900/FtVJnzvWIt.lottie"></iframe>
         <div className="chat-bubble bot-msg typing-animation">
           👋 {displayedText}
         </div>
@@ -506,27 +506,16 @@ const Chatbot = () => {
         <div ref={chatEndRef} />
       </div>
 
-      {!emailSubmitted && !emailSetSubmitted2 && getValidSession() ? (
+      {!emailSubmitted && getValidSession() ? (
         // Show email input first
         <form className="chat-input-area" onSubmit={handleEmailSubmit}>
           <input
-            placeholder="Enter your email address..."
+            placeholder="Enter your name or email..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            type="email"
             name="email"
           />
-          <IoSend
-            onClick={(e) => {
-              if (isValidEmail(email)) {
-                handleEmailSubmit(e);
-              } else {
-                alert("Please enter a valid email address.");
-              }
-            }}
-            className="chatBtn"
-            style={{ cursor: isValidEmail(email) ? "pointer" : "not-allowed" }}
-          />
+          <IoSend onClick={handleEmailSubmit} className="chatBtn" />
         </form>
       ) : (
         <>
@@ -547,15 +536,20 @@ const Chatbot = () => {
 
           {/* Show live chat input if live chat HAS been joined */}
           {joinedChat && (
-            <div className="chat-input-area">
-              <input
-                placeholder="Type your message to live agent..."
-                value={liveChatInput}
-                onChange={(e) => setLiveChatInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleLiveChatSend()}
-              />
-              <IoSend onClick={handleLiveChatSend} className="chatBtn" />
-            </div>
+            <>
+              <div className="chat-input-area">
+                <input
+                  placeholder="Type your message to live agent..."
+                  value={liveChatInput}
+                  onChange={(e) => setLiveChatInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleLiveChatSend()}
+                />
+                <IoSend onClick={handleLiveChatSend} className="chatBtn" />
+              </div>
+              <button className="end-chat-btn" onClick={handleEndChat}>
+                ❌ End Chat
+              </button>
+            </>
           )}
 
           {/* Always show this button after email is submitted, until joined */}
@@ -567,28 +561,6 @@ const Chatbot = () => {
             <></>
           )}
         </>
-      )}
-      {passwordRequired && !passwordSubmitted && (
-        <form className="chat-input-area" onSubmit={handlePasswordSubmit}>
-          <input
-            placeholder="Enter your password..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            name="password"
-          />
-          <IoSend
-            onClick={(e) => {
-              if (password.trim()) {
-                handlePasswordSubmit(e);
-              } else {
-                alert("Please enter your password.");
-              }
-            }}
-            className="chatBtn"
-            style={{ cursor: password.trim() ? "pointer" : "not-allowed" }}
-          />
-        </form>
       )}
     </div>
   );

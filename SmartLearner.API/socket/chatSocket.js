@@ -40,6 +40,13 @@ const chatSocket = (io) => {
       }
     });
 
+    socket.on("endChates", ({ sessionId }) => {
+       console.log("Server received endChates for session:", sessionId);
+      const systemMsg = "Chat has ended.";
+      io.to(sessionId).emit("chatEnded", { sessionId, message: systemMsg });
+      io.emit("chatEndedAdmin", { sessionId, message: systemMsg }); // Notify admin
+    });
+
     socket.on("endChat", async ({ sessionId }) => {
       try {
         await LiveChatSession.deleteOne({ sessionId });

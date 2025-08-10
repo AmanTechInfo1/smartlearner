@@ -6,8 +6,6 @@ const Product = require("../models/productModel");
 const Category = require("../models/categoryModel");
 const Plans = require("../models/planUserModel");
 const BotChatMessage = require("../models/botChatMessage");
-const bcrypt = require("bcryptjs");
-const { getCategoryWiseResults } = require("../services/quizService");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_KEY,
@@ -37,7 +35,7 @@ const saveMessage = async ({
 };
 
 const chatbot = async (req, res) => {
-  const { sessionId, message, password } = req.body;
+  const { sessionId, message } = req.body;
 
   console.log("sduhaiu", sessionId, message);
   await saveMessage({
@@ -50,230 +48,88 @@ const chatbot = async (req, res) => {
   if (!sessionMemory[sessionId]) {
     // ✅ Check DB for past email submission in this session
     const prev = await BotChatMessage.find({ sessionId });
-    const emailMsg = prev.find(
-      (m) => m.sender === "user" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.content)
-    );
+    const emailMsg = prev.find((m) => m.sender === "user");
 
     if (emailMsg) {
-      const foundUser = await User.findOne({ email: emailMsg.content });
-      if (foundUser) {
-        sessionMemory[sessionId] = {
-          step: "awaitingPassword",
-          user: foundUser,
-        };
-        const replyText = `Welcome here ${foundUser.username}! Please enter your password to proceed.`;
-        await saveMessage({
-          sessionId,
-          sender: "admin",
-          pass: true,
-          content: replyText,
-        });
-        return res.json({
-          reply: {
-            message: "Please enter your password to continue.",
-            statusCode: 200,
-            success: true,
-
-            data: replyText,
-          },
-        });
-      } else {
-        sessionMemory[sessionId] = {
-          step: "guest",
-          guestEmail: emailMsg.content,
-        };
-        const replyText = `Welcome ${emailMsg.content}! to smartlearner How can I help you`;
-        await saveMessage({
-          sessionId,
-          sender: "admin",
-          joinAs: "guest",
-          content: replyText,
-        });
-        return res.json({
-          reply: {
-            message: "email submitted successfully",
-            statusCode: 200,
-
-            email: emailMsg.content,
-            success: true,
-            data: replyText,
-          },
-        });
-      }
-    }
-  }
-
-  const session = sessionMemory[sessionId];
-
-  if (session.step === "awaitingPassword" && session.user) {
-    const user = session.user;
-
-    if (!password) {
-      const replyText = "Please enter your password to continue.";
+      sessionMemory[sessionId] = {
+        step: "guest",
+        user: emailMsg.content,
+      };
+      const replyText = `Welcome ${emailMsg.content}! to smartlearner How can I help you`;
       await saveMessage({
         sessionId,
         sender: "admin",
-        pass: true,
+
         content: replyText,
       });
       return res.json({
         reply: {
-          message: "Password required",
-          statusCode: 401,
-          success: false,
+          message: "email submitted successfully",
+          statusCode: 200,
+
+          email: emailMsg.content,
+          success: true,
           data: replyText,
         },
       });
     }
+  }
 
-    const isPasswordValid = user.isBcryptHashed
-      ? await bcrypt.compare(password, user.password)
-      : false;
+  if (
+    message.toLowerCase().includes("my subscription") ||
+    message.toLowerCase().includes("purchased packages")
+  ) {
+    let data = `You can check your Subscription here:\n🔗<a href="https://smartlearner.com/my-account" target="_blank">Click Here</a>`;
 
-    if (!isPasswordValid) {
-      const replyText = "Invalid password. Please try again.";
-      await saveMessage({ sessionId, sender: "admin", content: replyText });
-      return res.json({
-        reply: {
-          message: "Invalid password",
-          statusCode: 401,
-          success: false,
-          data: replyText,
-        },
-      });
-    }
-    sessionMemory[sessionId].step = "chatting";
-
-    const replyText = `Login successful! Welcome ${user.username}, how can I help you today?`;
-    await saveMessage({
-      sessionId,
-      sender: "admin",
-      joinAs: "DBUSER",
-      pass: true,
-      login: true,
-      content: replyText,
-    });
-
+    await saveMessage({ sessionId, sender: "admin", content: data });
     return res.json({
       reply: {
-        message: "email submitted successfully",
-        statusCode: 200,
+        message: "reply successfully",
+        statusCode: 201,
         success: true,
 
-        email: user.email,
-        data: replyText,
+        data: data,
       },
     });
   }
 
-  if (session.step === "chatting" && session.user) {
-    if (
-      message.toLowerCase().includes("my subscription") ||
-      message.toLowerCase().includes("purchased packages")
-    ) {
-      const userSubscription = await UserSubscription.findOne({
-        userId: session.user._id,
-        isActive: true,
-      }).populate("subscriptionId"); // populate the plan details
+  if (
+    message.toLowerCase().includes("my purchases") ||
+    message.toLowerCase().includes("my orders") ||
+    message.toLowerCase().includes("order history") ||
+    message.toLowerCase().includes("purchased products")
+  ) {
+    let data = `You can check your order here:\n🔗<a href="https://smartlearner.com/my-account" target="_blank">Click Here</a>`;
 
-      let data;
+    await saveMessage({ sessionId, sender: "admin", content: data });
+    return res.json({
+      reply: {
+        message: "reply successfully",
+        statusCode: 201,
+        success: true,
 
-      if (!userSubscription) {
-        data = "You do not have any active subscription.";
-      } else {
-        const plan = userSubscription.subscriptionId;
-        data = `Your current subscription is "${plan.planname}" priced at $${plan.price}`;
-      }
-      await saveMessage({ sessionId, sender: "admin", content: data });
-      return res.json({
-        reply: {
-          message: "reply successfully",
-          statusCode: 201,
-          success: true,
+        data: data,
+      },
+    });
+  }
+  // Check if user is asking about products
 
-          data: data,
-        },
-      });
-    }
+  if (
+    message.toLowerCase().includes("quiz results") ||
+    message.toLowerCase().includes("weak")
+  ) {
+    let data = `You can check your quiz results here:\n🔗<a href="https://smartlearner.com/quizResult" target="_blank">Click Here</a>`;
 
-    if (
-      message.toLowerCase().includes("my purchases") ||
-      message.toLowerCase().includes("my orders") ||
-      message.toLowerCase().includes("order history") ||
-      message.toLowerCase().includes("purchased products")
-    ) {
-      // Fetch all orders using the user's email (not userId)
-      const orders = await Paypalorder.find({
-        email: session.user.email,
-      });
+    await saveMessage({ sessionId, sender: "admin", content: data });
+    return res.json({
+      reply: {
+        message: "reply successfully",
+        statusCode: 201,
+        success: true,
 
-      if (!orders.length) {
-        data = "You have no completed orders yet.";
-      } else {
-        const purchasedItems = orders.flatMap((order) =>
-          order.myCart.map(
-            (item) => `• ${item.service} (${item.count}) (£ ${item.price})`
-          )
-        );
-        data = `Here are your purchased products: ${purchasedItems.join("\n")}`;
-      }
-
-      await saveMessage({ sessionId, sender: "admin", content: data });
-
-      return res.json({
-        reply: {
-          message: "reply successfully",
-          statusCode: 201,
-          success: true,
-
-          data: data,
-        },
-      });
-    }
-    // Check if user is asking about products
-
-    if (
-      message.toLowerCase().includes("quiz results") ||
-      message.toLowerCase().includes("weak")
-    ) {
-      const results = await getCategoryWiseResults(session.user._id);
-
-      if (!results.length) {
-        return res.json({
-          reply: {
-            message: "No quiz results found.",
-            statusCode: 200,
-            success: true,
-            data: "You haven't attempted any quiz yet.",
-          },
-        });
-      }
-
-      // Optional: Build markdown table for reply
-      const tableHeader = "📖 Category  | Result % |\n";
-      const tableBody = results
-        .map((r, index) => `${index + 1} ${r.category} | ${r.percentage}% `)
-        .join("\n");
-
-      // | Total |
-      // | ${r.totalQuestions} |
-      const table = `${tableHeader}\n${tableBody}`;
-
-      await saveMessage({
-        sessionId,
-        sender: "admin",
-        content: table,
-      });
-
-      return res.json({
-        reply: {
-          message: "Here is your quiz result summary:",
-          statusCode: 200,
-          success: true,
-          data: table,
-        },
-      });
-    }
+        data: data,
+      },
+    });
   }
 
   if (
