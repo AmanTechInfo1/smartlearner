@@ -173,13 +173,6 @@ const Chatbot = () => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    const userMsg = {
-      sessionId,
-      sender: "user",
-      content: input,
-      email: email,
-    };
-    socket.emit("sendMessage", userMsg);
 
     try {
       const { data } = await axios.post(

@@ -208,7 +208,8 @@ const chatbot = async (req, res) => {
   //
   if (
     message.toLowerCase().includes("theory portal") ||
-    message.toLowerCase().includes("theory packages")
+    message.toLowerCase().includes("theory packages") ||
+    message.toLowerCase().includes("theory package")
   ) {
     try {
       const categories = await Plans.find({ subCat: "theory" });
