@@ -12,7 +12,12 @@ const ChatLauncher = () => {
   const launcherRef = useRef(null);
 
   useEffect(() => {
-    setShowPopup(true);
+    // Check if the popup has already been shown (on page refresh)
+    const popupShown = sessionStorage.getItem("popupShown");
+    if (!popupShown) {
+      setShowPopup(true);
+      sessionStorage.setItem("popupShown", "true");
+    }
   }, []);
 
   // Close chatbot when clicking outside

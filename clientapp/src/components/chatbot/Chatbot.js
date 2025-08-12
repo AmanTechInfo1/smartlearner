@@ -174,6 +174,13 @@ const Chatbot = () => {
   const handleSend = async () => {
     if (!input.trim()) return;
 
+    setMessages((prev) => [
+      ...prev,
+      { sessionId, sender: "user", content: input },
+    ]);
+
+    setInput("");
+
     try {
       const { data } = await axios.post(
         "https://api.smartlearner.com/api/chatbot/chat",
@@ -322,8 +329,7 @@ const Chatbot = () => {
   }, []);
 
   // //////////////////////////////////////////////////
-  const fullText =
-    "Welcome I'm SmartBot. Please enter firstName Or email to continue";
+  const fullText = "Welcome I'm SmartBot. Please enter First-Name to continue";
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
 
@@ -503,7 +509,7 @@ const Chatbot = () => {
         // Show email input first
         <form className="chat-input-area" onSubmit={handleEmailSubmit}>
           <input
-            placeholder="Enter your name or email..."
+            placeholder="Enter your first name..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             name="email"

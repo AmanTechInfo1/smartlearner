@@ -75,6 +75,20 @@ const chatbot = async (req, res) => {
     }
   }
 
+  const greetings = ["hi", "hello", "hey", "hola", "greetings", "howdy"];
+  if (greetings.some((greet) => message.toLowerCase().includes(greet))) {
+    const greetMessage = "Hi! How can I assist you today?";
+    await saveMessage({ sessionId, sender: "admin", content: greetMessage });
+    return res.json({
+      reply: {
+        message: "greeted successfully",
+        statusCode: 200,
+        success: true,
+        data: greetMessage,
+      },
+    });
+  }
+
   if (
     message.toLowerCase().includes("my subscription") ||
     message.toLowerCase().includes("purchased packages")
@@ -329,23 +343,21 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("product") ||
     message.toLowerCase().includes("book lesson") ||
     message.toLowerCase().includes("book a lesson") ||
-    message.toLowerCase().includes("pay for lesson") ||
     message.toLowerCase().includes("driving lesson") ||
-    message.toLowerCase().includes("driving lessons")
+    message.toLowerCase().includes("driving lessons") ||
+    message.toLowerCase().includes("what do you offer")
   ) {
     try {
-      const products = await Category.find({ isDeleted: false });
-
-      let data;
-
-      if (!products.length) {
-        data = "There are currently no available products.";
-      } else {
-        const productList = products.map((product) => `• ${product.name} `);
-        data = `Here are our available lessons categories please choose and search which lesson you want to book:\n${productList.join(
-          "\n"
-        )}`;
-      }
+      const data = `Here are our available lessons categories please choose and search which lesson you want to book and also you can visit through links also:
+\n • Theory support - <a href="https://smartlearner.com/Theory-Support/Theory-package" >visit now</a>
+• Automatic - <a href="https://smartlearner.com/automatic-transmisson" >visit now</a>
+• Manual - <a href="https://smartlearner.com/manual" >visit now</a>
+• Pass plus - <a href="https://smartlearner.com/pass-plus" >visit now</a> 
+• Intensive - <a href="https://smartlearner.com/intensive" >visit now</a>
+• Instructor training part one - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Instructor training part two - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Instructor training part three - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Workshop - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -369,6 +381,69 @@ const chatbot = async (req, res) => {
       });
     }
   }
+
+  // ////////////////////////////////////////
+  // ////////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("pass my theory before starting lesson") ||
+    message.toLowerCase().includes("pass my theory")
+  ) {
+    try {
+      let data = "Yes you have to pass theory before starting lesson";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  // ////////////////////////////////////////////
+  if (message.toLowerCase().includes("next availability")) {
+    try {
+      let data =
+        "if you to connect to alive agent they can support you with availability with your local instructor";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  /////////////////////////////////////////
 
   // =================================================
   if (
@@ -431,7 +506,8 @@ const chatbot = async (req, res) => {
   // ================================================
   if (
     message.toLowerCase().includes("how to make a payment") ||
-    message.toLowerCase().includes("payment")
+    message.toLowerCase().includes("payment") ||
+    message.toLowerCase().includes("how to pay")
   ) {
     try {
       let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Stripe with your card details. \n Need help? Click the “Live Chat Agent” button.`;
@@ -527,7 +603,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("unable to login")
   ) {
     try {
-      let data = `We are sorry to hear you are having trouble logging in,\n please email our team at <a href="admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>  with the email you used to sign up with and any information you can provide and they will look into this for you`;
+      let data = `We are sorry to hear you are having trouble logging in,\n please email our team at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>  with the email you used to sign up with and any information you can provide and they will look into this for you`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -581,7 +657,7 @@ const chatbot = async (req, res) => {
   ///////////////////////////////////////////////
   if (message.toLowerCase().includes("Reset Password")) {
     try {
-      let data = `We are sorry to hear you are having trouble logging in, \n please email our team at <a href="admin@smartlearner.com" target="_blank">admin@smartlearner.com</a> with the email you used to sign up with and any information you can provide and they will look into this for you`;
+      let data = `We are sorry to hear you are having trouble logging in, \n please email our team at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a> with the email you used to sign up with and any information you can provide and they will look into this for you`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -639,7 +715,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("instructor not come")
   ) {
     try {
-      let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at Admin@smartlearner.com for us to provide support.`;
+      let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>for us to provide support.`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -761,7 +837,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("make complaint")
   ) {
     try {
-      let data = `We are sorry to hear you want to make a complaint. You can file an official complaint by emailing admin@smartlearner.com`;
+      let data = `We are sorry to hear you want to make a complaint. You can file an official complaint by emailing <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -939,7 +1015,7 @@ const chatbot = async (req, res) => {
   ///////////////////////////////////////////////
   if (message.toLowerCase().includes("cancel my lesson")) {
     try {
-      let data = `Please bare in mind that cancelling your scheduled driving lesson outside 24 hours will potential include a lesson cancellation fee for the full price of the lesson you have booked. To avoid this cancellation fee, ensure you have made your instructor aware of the cancellation, before 24 hours. If you do not have your instructor’s contact details, please inform us on 02475092784 or email us at Admin@smartlearner.com.`;
+      let data = `Please bare in mind that cancelling your scheduled driving lesson outside 24 hours will potential include a lesson cancellation fee for the full price of the lesson you have booked. To avoid this cancellation fee, ensure you have made your instructor aware of the cancellation, before 24 hours. If you do not have your instructor’s contact details, please inform us on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>.`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1020,7 +1096,7 @@ const chatbot = async (req, res) => {
   ///////////////////////////////////////////////
   if (message.toLowerCase().includes("postcode")) {
     try {
-      let data = `We cover the following Postcodes: CV1, CV2, CV3, CV4, CV5, CV6, CV7, CV8, CV9, CV10, CV11, CV12, CV21 CV22, CV23, CV31, CV32, CV33, CV34, CV35, B26, LE17. To confirm or for Other postcodes - please call us at 02475092784 or email us at Admin@smartlearner.com.`;
+      let data = `We cover the following Postcodes: CV1, CV2, CV3, CV4, CV5, CV6, CV7, CV8, CV9, CV10, CV11, CV12, CV21 CV22, CV23, CV31, CV32, CV33, CV34, CV35, B26, LE17. To confirm or for Other postcodes - please call us at 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a> .`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1095,10 +1171,19 @@ const chatbot = async (req, res) => {
       return res.json({ reply: data });
     }
     console.error(err);
-    res.status(500).json({
-      reply:
-        "SmartBot does not have knowledge about it please connect to live chat",
-    });
+
+    if (err.status === 500) {
+      const data =
+        "SmartBot does not have knowledge about it please connect to live chat";
+      await saveMessage({ sessionId, sender: "admin", content: data });
+      return res.json({ reply: { data } });
+    }
+    if (err.status === 401) {
+      const data =
+        "SmartBot does not have knowledge about it please connect to live chat";
+      await saveMessage({ sessionId, sender: "admin", content: data });
+      return res.json({ reply: { data } });
+    }
   }
 };
 
