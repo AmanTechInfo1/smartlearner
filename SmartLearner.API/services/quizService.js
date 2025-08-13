@@ -397,7 +397,7 @@ class quizService {
       }
 
       let aggr = [];
-      if (resType == "quizResult") {
+      if (resType == "quizResult" || "all-results") {
         aggr.push({
           $match: {
             userId: new ObjectId(userId),
@@ -475,6 +475,7 @@ class quizService {
 
       // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
       const quizResult = await ResultQuizQuestion.aggregate(aggr);
+      console.log(quizResult);
       const totalCount = await ResultQuizQuestion.countDocuments(filter);
 
       const resultObject = {

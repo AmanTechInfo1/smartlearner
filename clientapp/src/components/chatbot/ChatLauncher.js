@@ -56,9 +56,8 @@ const ChatLauncher = () => {
           <p>
             <span style={{ fontSize: "1.3rem" }}> 😊</span>{" "}
             <em>
-              Welcome to the <strong>SmartLearner</strong> live chat,
-              <br />
-              how can we help you today?
+              Can't find anything what you look for. Ask our{" "}
+              <strong>SmartBot</strong>
             </em>
           </p>
           <iframe

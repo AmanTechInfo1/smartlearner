@@ -26,6 +26,8 @@ const QuizResult = () => {
     }
   }, [dispatch, userId, url]);
 
+  console.log("asdassdas", quizResult);
+
   const currentTime = new Date();
   const twentyFourHoursAgo = new Date(currentTime - 24 * 60 * 60 * 1000);
 
@@ -115,6 +117,9 @@ const QuizResult = () => {
             className="btn btn-secondary bg-info ml-5 py-3 px-5 ">
             Go Back
           </button>
+          <Link to="/all-results" id={styles.linkButton}>
+            View all
+          </Link>
         </h2>
         {loading ? (
           <LoadingWeb />
@@ -145,7 +150,7 @@ const QuizResult = () => {
                 <h3 className="text-xl font-semibold">
                   {quizName}{" "}
                   <Link to="/all-results" id={styles.linkButton}>
-                    Veiw all
+                    View all
                   </Link>
                 </h3>
 
