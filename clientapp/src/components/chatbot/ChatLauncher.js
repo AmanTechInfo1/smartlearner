@@ -62,13 +62,18 @@ const ChatLauncher = () => {
               <br />
             </em>
           </p>
-          <video
-            src="/Untitled design (1).mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          <div
+            className="iframe-click-overlay"
+            onClick={() => setShowPopup(false)}></div>
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/1110115201?h=c2724c5c32&autoplay=1&muted=1&loop=1&playsinline=1&background=1"
+            width="100%"
+            height="250"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            allowfullscreen></iframe>
         </div>
       )}
 
