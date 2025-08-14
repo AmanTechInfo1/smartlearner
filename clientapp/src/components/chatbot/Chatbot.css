@@ -10,12 +10,14 @@
 }
 
 .chat-header {
-  padding: 15px;
-  background: linear-gradient(135deg, rgb(60, 1, 103), rgb(0, 151, 185));
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.chat-heading {
+  background: linear-gradient(135deg, rgb(60, 1, 103), rgb(0, 151, 185));
+  text-align: center;
+  padding: 15px;
 }
 .chat-header p {
   color: white;

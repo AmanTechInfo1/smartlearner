@@ -413,11 +413,15 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <div className="chat-header">
-        <div className="chatbotAvtarrImg"></div>
-        <p>SmartBot</p>
+      <div className="chat-heading">
+        <div className="chat-header">
+          <div className="chatbotAvtarrImg"></div>
+          <p>SmartBot</p>
+        </div>
+        <em style={{ fontSize: "0.8rem", color: "white" }}>
+          Live Chat: Mon-Fri 9:00 AM to 7:00 PM || Sat-Sun 10:00 AM to 4:00 PM
+        </em>
       </div>
-
       <div className="chat-messages">
         <div className="chat-bubble bot-msg typing-animation">
           👋 {displayedText}

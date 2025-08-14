@@ -4,6 +4,8 @@ import "./ChatLauncher.css";
 import { FaCommentDots } from "react-icons/fa";
 import poppupImg from "../../assets/images/IMG_2423.JPG";
 import { useRef } from "react";
+import Botvideo from "../../assets/videos/Untitled design (1).mp4";
+
 const ChatLauncher = () => {
   const [isOpened, setIsOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -58,12 +60,11 @@ const ChatLauncher = () => {
             <em>
               Can't find anything what you look for. Ask our{" "}
               <strong>SmartBot</strong>
+              <br />
+              
             </em>
           </p>
-          <iframe
-            src="https://lottie.host/embed/4e40f25c-e8c1-433d-8504-5a0e481a807f/xq2cmgA4Zw.lottie"
-            width="200px"
-            height="130px"></iframe>
+          <video src={Botvideo} autoPlay muted loop playsInline />
         </div>
       )}
 

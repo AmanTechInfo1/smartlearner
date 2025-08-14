@@ -61,14 +61,13 @@
   right: 22px;
   background: linear-gradient(
     135deg,
-    rgba(0, 69, 158, 0.603),
-    rgba(0, 217, 255, 0.452)
+    rgba(0, 69, 158, 0.219),
+    rgba(0, 217, 255, 0.062)
   );
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #fff;
 
-  padding: 14px 8px;
   border-radius: 14px;
   width: 240px;
   font-size: 14px;
@@ -81,18 +80,18 @@
   text-align: center;
 }
 .chat-popup p {
-  margin-bottom: 0.5rem;
+  padding: 8px;
+  margin-bottom: 0rem;
 }
 .chat-popup p strong {
   color: #ff006a;
 }
 /* Popup image */
-.chat-popup img {
+.chat-popup video {
   max-width: 95%;
   height: auto;
 
   border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Pointer arrow toward the chat icon */
@@ -129,4 +128,8 @@
   .chat-popup-arrow {
     right: 15px;
   }
+}
+.chat-popup video {
+  width: 100%;
+  mix-blend-mode: color-burn;
 }
