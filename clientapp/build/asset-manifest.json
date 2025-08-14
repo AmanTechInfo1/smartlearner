@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.fae6e8b8.css",
-    "main.js": "/static/js/main.24710956.js",
+    "main.css": "/static/css/main.73406a9b.css",
+    "main.js": "/static/js/main.77734313.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -150,6 +150,7 @@
     "static/media/finished-road-map-1.png": "/static/media/finished-road-map-1.f3dd111279280b3aac10.png",
     "static/media/docsList.png": "/static/media/docsList.08ebdc1b9a5abb2505fa.png",
     "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
+    "static/media/Untitled design (1).mp4": "/static/media/Untitled design (1).71b5697adc9ad8a77aac.mp4",
     "static/media/bloggingImage.jpg": "/static/media/bloggingImage.c059bd9a1af6edda623f.jpg",
     "static/media/alertnessBanner.jpg": "/static/media/alertnessBanner.05b8841f32498e528007.jpg",
     "static/media/physicalwellbeing.png": "/static/media/physicalwellbeing.cd11f5aa31fc2054e958.png",
@@ -403,12 +404,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.fae6e8b8.css.map": "/static/css/main.fae6e8b8.css.map",
-    "main.24710956.js.map": "/static/js/main.24710956.js.map",
+    "main.73406a9b.css.map": "/static/css/main.73406a9b.css.map",
+    "main.77734313.js.map": "/static/js/main.77734313.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fae6e8b8.css",
-    "static/js/main.24710956.js"
+    "static/css/main.73406a9b.css",
+    "static/js/main.77734313.js"
   ]
 }
