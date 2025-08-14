@@ -4,7 +4,6 @@ import "./ChatLauncher.css";
 import { FaCommentDots } from "react-icons/fa";
 import poppupImg from "../../assets/images/IMG_2423.JPG";
 import { useRef } from "react";
-import Botvideo from "../../assets/videos/Untitled design (1).mp4";
 
 const ChatLauncher = () => {
   const [isOpened, setIsOpen] = useState(false);
@@ -61,10 +60,15 @@ const ChatLauncher = () => {
               Can't find anything what you look for. Ask our{" "}
               <strong>SmartBot</strong>
               <br />
-              
             </em>
           </p>
-          <video src={Botvideo} autoPlay muted loop playsInline />
+          <video
+            src="/Untitled design (1).mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
       )}
 
