@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
 import cartIcon from "../../../assets/images/cartIcon1.png";
-import httpHandler from "../../../utils/httpHandler";
+
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,11 +14,15 @@ import {
   pdiApplyCouponCode,
   fetchUserSubscriptions,
   pdiPartOneApplyCouponCode,
-
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
+import httpHandler from "../../../utils/httpHandler";
+import revolutLogo from "../../../assets/images/RevolutLogo.png";
+import LoadingWeb from "../../../components/loader/LoadingWeb";
 
 const PartOneSubscription = () => {
   const dispatch = useDispatch();
@@ -29,8 +33,7 @@ const PartOneSubscription = () => {
     (state) => state.subscription.subsdiscountedPrice
   );
   const [couponCode, setCouponCode] = useState("");
-
-  
+  const [revolutLoading, setRevolutLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,32 +45,6 @@ const PartOneSubscription = () => {
     dispatch(fetchPlans());
   }, [dispatch, userId]);
 
- 
-
-  // const handleCreateTrialSubscription = async (plan) => {
-  //   try {
-  //     const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
-
-  //     if (!trialEligible) {
-
-  //       return;
-  //     }
-
-  //     const subscriptionData = {
-  //       userId: userId,
-  //       subscriptionId: plan._id,
-  //       isTrial: true,
-  //     };
-
-  //     const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
-  //     console.log("Trial subscription created successfully:", subscription);
-  //   } catch (error) {
-  //     console.error("Error creating trial subscription:", error);
-  //   }
-  // };
-
-  // ////////////////////////////////////////////
-
   const paidPlans = plans.filter(
     (plan) => plan.planCategory === "pdi-part-one packages"
   );
@@ -75,19 +52,15 @@ const PartOneSubscription = () => {
 
   const planId = paidPlans[0]?._id;
 
-
   const handleCouponSubmit = async () => {
     try {
       await dispatch(
         pdiPartOneApplyCouponCode({ userId, planId, couponCode })
       ).unwrap();
-     
     } catch (error) {
       console.error("Error applying coupon:", error);
     }
   };
-
-
 
   // /////////////////////////////////
 
@@ -139,29 +112,101 @@ const PartOneSubscription = () => {
     }
   };
 
-  // Separate plans into trial and paid
-  // const trialPlans = plans.filter(plan => plan.planCategory === 'free-trial');
+  const revolut5ContainerRef = useRef(null);
+  const [activePlan, setActivePlan] = useState(null);
+
+  const initRevolutPay = async (plan) => {
+    setActivePlan(plan);
+
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+      });
+
+      revolutPay.mount(revolut5ContainerRef.current, {
+        currency: "GBP",
+        totalAmount: Math.round(parseFloat(plan.price) * 100),
+
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/part-one-theory-questions`,
+          failure: `${window.location.origin}/driving-instructor-training-part-one`,
+          cancel: `${window.location.origin}/driving-instructor-training-part-one`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post(
+            "/api/subscription/revolut-charge",
+            {
+              amount: Math.round(parseFloat(plan.price) * 100),
+              currency: "GBP",
+              subscriptionId: plan._id,
+              userId: userId,
+            }
+          );
+
+          console.log("sa123sdasd", res);
+          console.log("Asas", res.data.token);
+
+          return { publicId: res.data.token };
+          // this token should be generated from your backend
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setRevolutLoading(true);
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-success",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+              navigate("/part-one-theory-questions");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Failed to initialize Revolut payment");
+    }
+  };
 
   return (
     <div className="subscription-cardBox">
-       <Helmet>
-              <meta charSet="utf-8" />
-              <title>PDI Part One Plans</title>
-              <link
-                rel="canonical"
-                href="https://smartlearner.com/driving-instructor-training-part-one"
-              />
-              <meta property="og:title" content="PDI Part One Plans" />
-              <meta
-                property="og:description"
-                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-              />
-      
-              <meta
-                name="description"
-                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-              />
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>PDI Part One Plans</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/driving-instructor-training-part-one"
+        />
+        <meta property="og:title" content="PDI Part One Plans" />
+        <meta
+          property="og:description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+
+        <meta
+          name="description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+      </Helmet>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>
@@ -203,8 +248,7 @@ const PartOneSubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -225,8 +269,7 @@ const PartOneSubscription = () => {
                   <div>
                     <div className={styles.basketHeadingTitles}>
                       <h2>BASKET TOTAL</h2>
-                     
-                    
+
                       <div className={styles.basketHeadingTitle}>
                         <p>
                           <span>Subtotal:</span>
@@ -250,10 +293,31 @@ const PartOneSubscription = () => {
                         </p>
                         <div>
                           <img src={paypalLogo} alt="paypal" />
+                          <img
+                            src={revolutLogo}
+                            alt="revolutLogo"
+                            id={styles.revolutLogo}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className={styles.basketHeadingTitle}></div>
+                  </div>
+
+                  <div style={{ marginBottom: "20px" }}>
+                    <button
+                      className={styles.revolutbutton}
+                      onClick={() => initRevolutPay(plan)}>
+                      Pay with Revolut
+                    </button>
+                    {activePlan?._id === plan._id && (
+                      <div className={styles.revolutbuttoncontainer}>
+                        <div
+                          ref={revolut5ContainerRef}
+                          className="revolut-pay-button"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -292,6 +356,8 @@ const PartOneSubscription = () => {
           </div>
         </div>
       </div>
+
+      {revolutLoading && <LoadingWeb />}
     </div>
   );
 };

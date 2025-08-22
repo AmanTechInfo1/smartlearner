@@ -379,6 +379,9 @@
   width: 100%;
   margin: 0px 1rem;
 }
+#revolutLogo {
+  max-width: 100px;
+}
 
 .basketbtnProceed {
   background-color: #b2beff;
@@ -596,4 +599,32 @@
     max-width: 100%;
     width: 100%;
   }
+}
+
+.revolutbutton {
+  padding: 0.6rem 1rem;
+
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+}
+.revolutbutton:hover {
+  background-color: rgb(34, 31, 31);
+}
+.revolutbuttoncontainer {
+  margin-top: 1rem;
+  padding: 1rem 0.6rem;
+  border-radius: 5px;
+  border: 1px solid rgba(15, 15, 15, 0.685);
+  background-color: white;
+}
+.revolutbuttoncontainer2 {
+  margin-top: 1rem;
+  padding: 1rem 0.6rem;
+  border-radius: 5px;
+
+  background-color: white;
 }

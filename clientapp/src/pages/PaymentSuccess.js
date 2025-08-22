@@ -43,17 +43,17 @@ const PaymentSuccess = () => {
               </div>
               <div className={styles.formFooter3333}>
                 <div className={styles.formFooter2222}>
-                  <Link type="button" to="/adi-part-one">
+                  <Link type="button" to="/part-one-theory-questions">
                     PDI Part 1
                   </Link>
                 </div>
                 <div className={styles.formFooter2222}>
-                  <Link type="button" to="/adi-part-2">
+                  <Link type="button" to="/part-two-theory-questions">
                     PDI Part 2
                   </Link>
                 </div>
                 <div className={styles.formFooter2222}>
-                  <Link type="button" to="/adi-part-3">
+                  <Link type="button" to="/part-three-theory-questions">
                     PDI Part 3
                   </Link>
                 </div>

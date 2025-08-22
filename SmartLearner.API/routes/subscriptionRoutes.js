@@ -6,7 +6,10 @@ const UserSubscriptionService = require("../services/userSubscriptionService");
 const { requireAuth } = require("../middlewares/authMiddleware");
 // Define routes for subscription management
 router.post("/add-plan", SubscriptionController.createPlan);
-router.get("/plan/:id/apply-coupon/:couponCode?", SubscriptionController.getPlanById); 
+router.get(
+  "/plan/:id/apply-coupon/:couponCode?",
+  SubscriptionController.getPlanById
+);
 // Optional couponCode in the URL
 
 router.get("/plans", SubscriptionController.getAllPlan);
@@ -34,11 +37,37 @@ router.post(
 ); // New route for creating a payment
 router.post("/confirm-payment", userSubscriptionController.confirmPayment); // New route for confirming payment
 router.get("/checkTrial/:userId", userSubscriptionController.checkTrialStatus);
-router.post("/apply-coupon",requireAuth, userSubscriptionController.couponAccess);
+router.post(
+  "/apply-coupon",
+  requireAuth,
+  userSubscriptionController.couponAccess
+);
 
-router.post("/pdiApply-coupon",requireAuth, userSubscriptionController.pdiCouponAccess);
-router.post("/pdiPartOneApply-coupon",requireAuth, userSubscriptionController.pdiPartOneCouponAccess);
-router.post("/pdiPartTwoApply-coupon",requireAuth, userSubscriptionController.pdiPartTwoCouponAccess);
-router.post("/pdiPartThreeApply-coupon",requireAuth, userSubscriptionController.pdiPartThreeCouponAccess);
+router.post(
+  "/pdiApply-coupon",
+  requireAuth,
+  userSubscriptionController.pdiCouponAccess
+);
+router.post(
+  "/pdiPartOneApply-coupon",
+  requireAuth,
+  userSubscriptionController.pdiPartOneCouponAccess
+);
+router.post(
+  "/pdiPartTwoApply-coupon",
+  requireAuth,
+  userSubscriptionController.pdiPartTwoCouponAccess
+);
+router.post(
+  "/pdiPartThreeApply-coupon",
+  requireAuth,
+  userSubscriptionController.pdiPartThreeCouponAccess
+);
+
+router.post("/revolut-charge", userSubscriptionController.createRevolutCharge);
+router.post(
+  "/revolut-payment-success",
+  userSubscriptionController.revolutPaymentSuccess
+);
+
 module.exports = router;
- 

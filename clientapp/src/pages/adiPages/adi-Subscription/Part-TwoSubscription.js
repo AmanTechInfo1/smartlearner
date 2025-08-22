@@ -19,6 +19,12 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../../utils/httpHandler";
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
+
+import revolutLogo from "../../../assets/images/RevolutLogo.png";
+import LoadingWeb from "../../../components/loader/LoadingWeb";
 
 const PartTwoSubscription = () => {
   const dispatch = useDispatch();
@@ -26,6 +32,7 @@ const PartTwoSubscription = () => {
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
+  const [revolutLoading, setRevolutLoading] = useState(false);
   const navigate = useNavigate();
 
   const subsdiscountedPrice = useSelector(
@@ -49,31 +56,6 @@ const PartTwoSubscription = () => {
       console.error("Error applying coupon:", error);
     }
   };
-
-  // const handleCreateTrialSubscription = async (plan) => {
-  //   try {
-  //     const trialEligible = await dispatch(
-  //       checkTrialEligibility(userId)
-  //     ).unwrap();
-
-  //     if (!trialEligible) {
-  //       return;
-  //     }
-
-  //     const subscriptionData = {
-  //       userId: userId,
-  //       subscriptionId: plan._id,
-  //       isTrial: true,
-  //     };
-
-  //     const subscription = await dispatch(
-  //       createUserSubscription(subscriptionData)
-  //     ).unwrap();
-  //     console.log("Trial subscription created successfully:", subscription);
-  //   } catch (error) {
-  //     console.error("Error creating trial subscription:", error);
-  //   }
-  // };
 
   const handleCreateSubscription = async (ogPlan) => {
     const priceToUse = subsdiscountedPrice || ogPlan.price; // Use the updated price directly
@@ -131,6 +113,81 @@ const PartTwoSubscription = () => {
   const ogPlan = paidPlans[0];
 
   const planId = paidPlans[0]?._id;
+
+  const revolut3ContainerRef = useRef(null);
+  const [activePlan, setActivePlan] = useState(null);
+
+  const initRevolutPay = async (plan) => {
+    setActivePlan(plan);
+
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+      });
+
+      revolutPay.mount(revolut3ContainerRef.current, {
+        currency: "GBP",
+        totalAmount: Math.round(parseFloat(plan.price) * 100),
+
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/part-two-theory-questions`,
+          failure: `${window.location.origin}/driving-instructor-training-part-two`,
+          cancel: `${window.location.origin}/driving-instructor-training-part-two`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post(
+            "/api/subscription/revolut-charge",
+            {
+              amount: Math.round(parseFloat(plan.price) * 100),
+              currency: "GBP",
+              subscriptionId: plan._id,
+              userId: userId,
+            }
+          );
+
+          console.log("sa123sdasd", res);
+          console.log("Asas", res.data.token);
+
+          return { publicId: res.data.token };
+          // this token should be generated from your backend
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setRevolutLoading(true);
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-success",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+              navigate("/part-two-theory-questions");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Failed to initialize Revolut payment");
+    }
+  };
 
   return (
     <div className="subscription-cardBox">
@@ -193,8 +250,7 @@ const PartTwoSubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -229,10 +285,30 @@ const PartTwoSubscription = () => {
                         </p>
                         <div>
                           <img src={paypalLogo} alt="paypal" />
+                          <img
+                            src={revolutLogo}
+                            alt="revolutLogo"
+                            id={styles.revolutLogo}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className={styles.basketHeadingTitle}></div>
+                  </div>
+                  <div style={{ marginBottom: "20px" }}>
+                    <button
+                      className={styles.revolutbutton}
+                      onClick={() => initRevolutPay(plan)}>
+                      Pay with Revolut
+                    </button>
+                    {activePlan?._id === plan._id && (
+                      <div className={styles.revolutbuttoncontainer}>
+                        <div
+                          ref={revolut3ContainerRef}
+                          className="revolut-pay-button"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -271,6 +347,8 @@ const PartTwoSubscription = () => {
           </div>
         </div>
       </div>
+
+      {revolutLoading && <LoadingWeb />}
     </div>
   );
 };

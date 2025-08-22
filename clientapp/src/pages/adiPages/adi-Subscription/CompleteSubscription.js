@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../../pages/Theory-Subscription/TheorySubscription.css";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
+import revolutLogo from "../../../assets/images/RevolutLogo.png";
 import cartIcon from "../../../assets/images/cartIcon1.png";
-
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
+import httpHandler from "../../../utils/httpHandler";
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +20,7 @@ import {
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import LoadingWeb from "../../../components/loader/LoadingWeb";
 
 const CompleteSubscription = () => {
   const dispatch = useDispatch();
@@ -24,6 +28,9 @@ const CompleteSubscription = () => {
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
+  const revolut2ContainerRef = useRef(null);
+  const [activePlan, setActivePlan] = useState(null); // For Revolut
+  const [revolutLoading, setRevolutLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,28 +50,6 @@ const CompleteSubscription = () => {
       console.error("Error applying coupon:", error);
     }
   };
-
-  // const handleCreateTrialSubscription = async (plan) => {
-  //   try {
-  //     const trialEligible = await dispatch(checkTrialEligibility(userId)).unwrap();
-
-  //     if (!trialEligible) {
-
-  //       return;
-  //     }
-
-  //     const subscriptionData = {
-  //       userId: userId,
-  //       subscriptionId: plan._id,
-  //       isTrial: true,
-  //     };
-
-  //     const subscription = await dispatch(createUserSubscription(subscriptionData)).unwrap();
-  //     console.log("Trial subscription created successfully:", subscription);
-  //   } catch (error) {
-  //     console.error("Error creating trial subscription:", error);
-  //   }
-  // };
 
   const handleCreateSubscription = async (plan) => {
     try {
@@ -113,26 +98,98 @@ const CompleteSubscription = () => {
     (plan) => plan.planCategory === "Complete packages"
   );
 
+  const initRevolutPay = async (plan) => {
+    setActivePlan(plan);
+
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+      });
+
+      revolutPay.mount(revolut2ContainerRef.current, {
+        currency: "GBP",
+        totalAmount: Math.round(parseFloat(plan.price) * 100),
+
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/paymentSuccess`,
+          failure: `${window.location.origin}/driving-instructor-training-full-course`,
+          cancel: `${window.location.origin}/driving-instructor-training-full-course`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post(
+            "/api/subscription/revolut-charge",
+            {
+              amount: Math.round(parseFloat(plan.price) * 100),
+              currency: "GBP",
+              subscriptionId: plan._id,
+              userId: userId,
+            }
+          );
+
+          console.log("sa123sdasd", res);
+          console.log("Asas", res.data.token);
+
+          return { publicId: res.data.token };
+          // this token should be generated from your backend
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setRevolutLoading(true);
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-success",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+              navigate("/paymentSuccess");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Failed to initialize Revolut payment");
+    }
+  };
+
   return (
     <div className="subscription-cardBox">
-       <Helmet>
-              <meta charSet="utf-8" />
-              <title>PDI Complete Subscription Plans</title>
-              <link
-                rel="canonical"
-                href="https://smartlearner.com/driving-instructor-training-full-course"
-              />
-              <meta property="og:title" content="PDI Complete Subscription Plans" />
-              <meta
-                property="og:description"
-                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-              />
-      
-              <meta
-                name="description"
-                content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-              />
-            </Helmet>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>PDI Complete Subscription Plans</title>
+        <link
+          rel="canonical"
+          href="https://smartlearner.com/driving-instructor-training-full-course"
+        />
+        <meta property="og:title" content="PDI Complete Subscription Plans" />
+        <meta
+          property="og:description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+
+        <meta
+          name="description"
+          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+        />
+      </Helmet>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <div className={styles.cartheading}>
@@ -151,7 +208,9 @@ const CompleteSubscription = () => {
               Apply Coupon
             </button>
           </div>
-          <p style={{textAlign:'center', color:"white"}}>Apply Coupon Code To Get Free Access Of PDI Portal</p>
+          <p style={{ textAlign: "center", color: "white" }}>
+            Apply Coupon Code To Get Free Access Of PDI Portal
+          </p>
           <div className={styles.cartContentContainer}>
             <div className={styles.cartItemsContainer}>
               <table className={styles.cartTable}>
@@ -171,8 +230,7 @@ const CompleteSubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -205,6 +263,11 @@ const CompleteSubscription = () => {
                       </p>
                       <div>
                         <img src={paypalLogo} alt="paypal" />
+                        <img
+                          src={revolutLogo}
+                          alt="revolutLogo"
+                          id={styles.revolutLogo}
+                        />
                       </div>
                     </div>
                   </div>
@@ -222,11 +285,27 @@ const CompleteSubscription = () => {
                     fundingSource="paypal"
                   />
                 </div>
+                <div style={{ marginTop: "20px" }}>
+                  <button
+                    className={styles.revolutbutton}
+                    onClick={() => initRevolutPay(plan)}>
+                    Pay with Revolut
+                  </button>
+                  {activePlan?._id === plan._id && (
+                    <div className={styles.revolutbuttoncontainer}>
+                      <div
+                        ref={revolut2ContainerRef}
+                        className="revolut-pay-button"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+      {revolutLoading && <LoadingWeb />}
     </div>
   );
 };

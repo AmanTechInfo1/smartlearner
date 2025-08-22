@@ -3,7 +3,7 @@ import "./Checkout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
+import styles from "../../../pages/shop/cart/Cart.module.css";
 import httpHandler from "../../../utils/httpHandler";
 import LoadingWeb from "../../../components/loader/LoadingWeb";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,9 @@ import { emptyCart } from "../../../redux/features/cartSlice";
 import toast from "react-hot-toast";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
 import stripLogo from "../../../assets/images/Stripe-logo.png";
+
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -25,6 +28,7 @@ export default function PaymentProcessing() {
   const [webloading, setWebLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const revolutContainerRef = useRef(null);
 
   const carting = useSelector((state) => state.cart.payment);
 
@@ -165,10 +169,84 @@ export default function PaymentProcessing() {
   useEffect(() => {
     createPayment();
   }, []);
+  ///////////////////////////////////////////////////////////
+
+  const initRevolutPay = async () => {
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf",
+      });
+
+      revolutPay.mount(revolutContainerRef.current, {
+        currency: "GBP",
+
+        totalAmount: Math.round(parseFloat(carting.total) * 100),
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/paymentSuccess`,
+          failure: `${window.location.origin}/paymentProcessing`,
+          cancel: `${window.location.origin}/paymentProcessing`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post("/api/order/revolut-charge", {
+            amount: Math.round(parseFloat(carting.total) * 100),
+            currency: "GBP",
+
+            orderId,
+          });
+
+          if (!res.data.success) {
+            throw new Error("Revolut order creation failed");
+          }
+
+          return { publicId: res.data.token };
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setWebLoading(true);
+            try {
+              await httpHandler.post("/api/order/revolut-payment-success", {
+                orderId: orderId,
+              });
+              dispatch(emptyCart());
+              navigate("/paymentSuccess");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Revolut payment failed to initialize");
+    }
+  };
+
+  useEffect(() => {}, [isPaymentCreated, orderId]);
+
+  const revolutbtn = () => {
+    if (isPaymentCreated && orderId) {
+      initRevolutPay();
+    }
+  };
 
   return (
     <div className="paymentComponent">
-      <p style={{fontSize:'1.3rem',color:"white",textAlign:'center'}}>Complete your payment using PayPal or a debit card.</p>
+      <p style={{ fontSize: "1.3rem", color: "white", textAlign: "center" }}>
+        Complete your payment using PayPal or a debit card.
+      </p>
       <div>
         <div className="payment-container">
           {webloading && <LoadingWeb />}
@@ -220,12 +298,37 @@ export default function PaymentProcessing() {
               {stripeError && (
                 <div className="error-message">{stripeError}</div>
               )}
+              {/* <div className="revolut-section" style={{ marginTop: "20px" }}>
+                <img
+                  src="https://seeklogo.com/images/R/revolut-logo-F5735C9769-seeklogo.com.png"
+                  alt="Revolut"
+                  style={{ width: "150px", marginBottom: "10px" }}
+                />
+                <button
+                  className="payment-button revolut"
+                  onClick={handleRevolutPayment}>
+                  Pay with Revolut
+                </button>
+              </div> */}
+              <div style={{ marginTop: "20px" }}>
+                <button className={styles.revolutbutton} onClick={revolutbtn}>
+                  Pay with Revolut
+                </button>
+
+                <div className={styles.revolutbuttoncontainer2}>
+                  <div
+                    ref={revolutContainerRef}
+                    className="revolut-pay-button"
+                  />
+                </div>
+              </div>
             </div>
           )}
 
           {loading && !isPaymentCreated && <div>Loading... Please wait.</div>}
         </div>
       </div>
+      {webloading && <LoadingWeb />}
     </div>
   );
 }

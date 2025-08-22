@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./TheorySubscription.css";
 // import subsIcon from "../../assets/images/subsIconSvg.svg";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPlans,
@@ -17,6 +18,11 @@ import cartIcon from "../../assets/images/cartIcon1.png";
 
 import styles from "../../pages/shop/cart/Cart.module.css";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../utils/httpHandler";
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
+import revolutLogo from "../../assets/images/RevolutLogo.png";
+import LoadingWeb from "../../components/loader/LoadingWeb";
 
 const TheorySubscription = () => {
   const dispatch = useDispatch();
@@ -25,6 +31,7 @@ const TheorySubscription = () => {
   const userId = userDetails?._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
+  const [revolutLoading, setRevolutLoading] = useState(false);
 
   const subsdiscountedPrice = useSelector(
     (state) => state.subscription.subsdiscountedPrice
@@ -136,6 +143,83 @@ const TheorySubscription = () => {
     }
   };
 
+  // ///////////////////////////////////////
+
+  const revolut7ContainerRef = useRef(null);
+  const [activePlan, setActivePlan] = useState(null);
+
+  const initRevolutPay = async (plan) => {
+    setActivePlan(plan);
+
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+      });
+
+      revolutPay.mount(revolut7ContainerRef.current, {
+        currency: "GBP",
+        totalAmount: Math.round(parseFloat(plan.price) * 100),
+
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/Theory-Portal`,
+          failure: `${window.location.origin}/Theory-subscription`,
+          cancel: `${window.location.origin}/Theory-subscription`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post(
+            "/api/subscription/revolut-charge",
+            {
+              amount: Math.round(parseFloat(plan.price) * 100),
+              currency: "GBP",
+              subscriptionId: plan._id,
+              userId: userId,
+            }
+          );
+
+          console.log("sa123sdasd", res);
+          console.log("Asas", res.data.token);
+
+          return { publicId: res.data.token };
+          // this token should be generated from your backend
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setRevolutLoading(true);
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-success",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+              navigate("/Theory-Portal");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Failed to initialize Revolut payment");
+    }
+  };
+
   return (
     <div className="subscription-cardBox">
       <Helmet>
@@ -196,8 +280,7 @@ const TheorySubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -241,10 +324,31 @@ const TheorySubscription = () => {
                         </p>
                         <div>
                           <img src={paypalLogo} alt="paypal" />
+                          <img
+                            src={revolutLogo}
+                            alt="revolutLogo"
+                            id={styles.revolutLogo}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className={styles.basketHeadingTitle}></div>
+                  </div>
+
+                  <div style={{ marginBottom: "20px" }}>
+                    <button
+                      className={styles.revolutbutton}
+                      onClick={() => initRevolutPay(plan)}>
+                      Pay with Revolut
+                    </button>
+                    {activePlan?._id === plan._id && (
+                      <div className={styles.revolutbuttoncontainer}>
+                        <div
+                          ref={revolut7ContainerRef}
+                          className="revolut-pay-button"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -283,6 +387,7 @@ const TheorySubscription = () => {
           </div>
         </div>
       </div>
+      {revolutLoading && <LoadingWeb />}
     </div>
   );
 };

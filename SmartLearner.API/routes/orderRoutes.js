@@ -1,28 +1,79 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const OrderController = require('../controllers/orderController');
+const OrderController = require("../controllers/orderController");
 const { requireAuth } = require("../middlewares/authMiddleware");
 const multer = require("multer");
 const upload = multer();
 
-router.post('/CompleteCheckout', upload.none(), OrderController.CompleteCheckout);
-router.get('/getMyOrder', upload.none(),requireAuth, OrderController.getMyOrder);
-router.get('/getAllOrder', upload.none(),requireAuth, OrderController.getAllOrder);
+router.post(
+  "/CompleteCheckout",
+  upload.none(),
+  OrderController.CompleteCheckout
+);
+router.get(
+  "/getMyOrder",
+  upload.none(),
+  requireAuth,
+  OrderController.getMyOrder
+);
+router.get(
+  "/getAllOrder",
+  upload.none(),
+  requireAuth,
+  OrderController.getAllOrder
+);
 // =========================================================
-router.get('/get-all-orders', upload.none(),requireAuth, OrderController.getAllOrders);
-router.get('/get-all-orders/:id', upload.none(),requireAuth, OrderController.getAllOrdersById);
+router.get(
+  "/get-all-orders",
+  upload.none(),
+  requireAuth,
+  OrderController.getAllOrders
+);
+router.get(
+  "/get-all-orders/:id",
+  upload.none(),
+  requireAuth,
+  OrderController.getAllOrdersById
+);
 
-router.get('/user/:userEmail', upload.none(),requireAuth, OrderController.getUserOrdersById);
+router.get(
+  "/user/:userEmail",
+  upload.none(),
+  requireAuth,
+  OrderController.getUserOrdersById
+);
 // ///////////////////////////////////////////////
-router.get('/getOrder/:id', upload.none(),requireAuth, OrderController.getOneOrder);
-router.get('/myOrder', upload.none(),requireAuth, OrderController.getMyOrder);
-router.post('/generate_hash', upload.none(),requireAuth, OrderController.generate_hash);
-router.post('/paymentSuccess', upload.none(), OrderController.paymentSuccess);
-router.post('/paymentFailed', upload.none(), OrderController.paymentFailed);
-router.post('/create', OrderController.createPayment);  // for creating payment
-router.post('/execute', OrderController.executePayment); 
-router.get('/cancel', OrderController.cancelPayment);
+router.get(
+  "/getOrder/:id",
+  upload.none(),
+  requireAuth,
+  OrderController.getOneOrder
+);
+router.get("/myOrder", upload.none(), requireAuth, OrderController.getMyOrder);
+router.post(
+  "/generate_hash",
+  upload.none(),
+  requireAuth,
+  OrderController.generate_hash
+);
+router.post("/paymentSuccess", upload.none(), OrderController.paymentSuccess);
+router.post("/paymentFailed", upload.none(), OrderController.paymentFailed);
+router.post("/create", OrderController.createPayment); // for creating payment
+router.post("/execute", OrderController.executePayment);
+router.get("/cancel", OrderController.cancelPayment);
 // /////////////////////////////////////
-router.post('/stripe-charge', OrderController.createStripeCharge); 
+router.post("/stripe-charge", OrderController.createStripeCharge);
+// ///////////////////////////////////////////
+
+router.post("/revolut-charge", OrderController.createRevolutCharge);
+
+// Webhook endpoint (optional)
+router.post("/revolut-payment-success", OrderController.revolutPaymentSuccess);
+
+// router.post("/revolut-pay", OrderController.createRevolutOrder);
+
+// router.post("/webhook", OrderController.handleWebhook);
+
+// router.post("/verify-payment", OrderController.verifyOrderStatus);
 
 module.exports = router;

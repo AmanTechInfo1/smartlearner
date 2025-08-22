@@ -6,6 +6,9 @@ const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
 
 const nodemailer = require("nodemailer");
 
+const baseUrl = process.env.REVOLUT_API_URL;
+const secretKey = process.env.REVOLUT_API_SECRET_KEY;
+
 class OrderService {
   async createOrderAsync(data) {
     try {
@@ -569,6 +572,45 @@ class OrderService {
       throw new Error("Payment capture failed");
     }
   }
+  //////////////////////////////////////////////////////////////////////////////
+
+  async findOrderById(orderId) {
+    return await Paypalorder.findById(orderId); // Replace with your model/method
+  }
+
+  async createRevoultOrder(amount, currency, orderId) {
+    const order = await Paypalorder.findById(orderId);
+
+    const response = await fetch(`${baseUrl}/api/1.0/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+      body: JSON.stringify({
+        amount: Math.round(parseFloat(amount)), // convert to minor units
+        currency: currency || "GBP",
+        capture_mode: "AUTOMATIC",
+        description: `Order #${orderId}`,
+        email: order.email, // assuming Order has email field
+        merchant_order_ext_ref: orderId,
+        success_url: `https://smartlearner.com/paymentSuccess?revolut_token=${orderId}`,
+        cancel_url: `https://smartlearner.com/paymentProcessing?revolut_token=${orderId}`,
+      }),
+    });
+
+    const data = await response.json();
+    console.log("asdsa", data);
+    if (!response.ok) {
+      console.error("Revolut API error:", data);
+      throw new Error(data.message || "Failed to create Revolut order");
+    }
+
+    return data;
+  }
+
+  ///////////////////////////////////////////////////////////
 
   async sendEmail(orderDetails, status, method) {
     const transporter = nodemailer.createTransport({

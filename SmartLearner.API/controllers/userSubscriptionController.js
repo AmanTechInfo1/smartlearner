@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userSubscriptionService = require("../services/userSubscriptionService");
 const UserSubscription = require("../models/subscriptionModal");
+const orderService = require("../services/orderService");
 
 class userSubscriptionController {
   // Add a new subscription plan
@@ -121,6 +122,74 @@ class userSubscriptionController {
       );
     }
   }
+
+  // /////////////////////////////////////////////////////
+  async createRevolutCharge(req, res) {
+    const { amount, currency, subscriptionId, userId } = req.body;
+
+    console.log("asas", amount, currency, subscriptionId, userId);
+    try {
+      const response = await userSubscriptionService.createRevoultOrder(
+        amount,
+        currency,
+        subscriptionId,
+        userId
+      );
+
+      res.status(200).json({
+        success: true,
+        message: "Revolut order created",
+        token: response.public_id,
+      });
+    } catch (error) {
+      console.error("Revolut Charge Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to create Revolut charge",
+        error: error.message,
+      });
+    }
+  }
+
+  async revolutPaymentSuccess(req, res) {
+    const { userId, subscriptionId, isTrial } = req.body;
+
+    try {
+      const userSubscription =
+        await userSubscriptionService.createUserSubscription(
+          userId,
+          subscriptionId,
+          isTrial
+        );
+
+      const subs = await UserSubscription.findOne({
+        userId,
+      });
+
+      subs.paymentStatus = "completed";
+      await subs.save();
+
+      await userSubscriptionService.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "COMPLETED"
+      );
+
+      res.status(200).json({
+        success: true,
+        message: "Order marked as paid and email sent",
+        userSubscription,
+      });
+    } catch (error) {
+      console.error("Revolut Payment Success Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to mark payment success",
+        error: error.message,
+      });
+    }
+  }
+
   // ////////////////COUPON CODE///////////////////////
   async couponAccess(req, res, next) {
     const { userId, planId, couponCode } = req.body;

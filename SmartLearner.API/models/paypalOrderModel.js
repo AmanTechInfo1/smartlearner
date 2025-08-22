@@ -25,6 +25,8 @@ const paypalOrderSchema = new mongoose.Schema({
     enum: ["pending", "completed", "failed"],
     default: "pending",
   },
+  checkout_url: { type: String },
+  paymentToken: { type: String },
   paymentMethod: { type: String, required: false },
   paymentDetails: { type: Object, required: false }, // To store payment details like Stripe response
   stripePaymentId: { type: String, required: false },

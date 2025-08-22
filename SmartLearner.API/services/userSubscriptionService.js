@@ -8,6 +8,9 @@ const moment = require("moment");
 const nodemailer = require("nodemailer");
 const DiscountCoupon = require("../models/discountCoupon");
 
+const baseUrl = process.env.REVOLUT_API_URL;
+const secretKey = process.env.REVOLUT_API_SECRET_KEY;
+
 class UserSubscriptionService {
   async createUserSubscription(userId, subscriptionId, isTrial = false) {
     const plan = await Plans.findById(subscriptionId);
@@ -142,6 +145,47 @@ class UserSubscriptionService {
       throw new Error("Payment was not completed");
     }
   }
+
+  // ////////////////////////////////////////////////////////////
+
+  async createRevoultOrder(amount, currency, subscriptionId, userId) {
+    const plan = await Plans.findById(subscriptionId);
+
+    console.log("2312312asas", amount, currency, subscriptionId, userId);
+    if (!plan) {
+      throw new Error("Plan not found");
+    }
+
+    const response = await fetch(`${baseUrl}/api/1.0/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+      body: JSON.stringify({
+        amount: Math.round(parseFloat(amount)), // convert to minor units
+        currency: currency || "GBP",
+        capture_mode: "AUTOMATIC",
+        description: `Order #${plan.planname}`,
+        userId: userId, // assuming Order has email field
+        merchant_order_ext_ref: userId,
+        success_url: `https://smartlearner.com/paymentSuccess?revolut_token=${subscriptionId}`,
+        cancel_url: `https://smartlearner.com/paymentProcessing?revolut_token=${subscriptionId}`,
+      }),
+    });
+
+    const data = await response.json();
+    console.log("asdsa", data);
+    if (!response.ok) {
+      console.error("Revolut API error:", data);
+      throw new Error(data.message || "Failed to create Revolut order");
+    }
+
+    return data;
+  }
+
+  //////////////////////////////////////////////////////////////////
 
   async getUserSubscriptions(userId) {
     const subscriptions = await UserSubscription.find({ userId }).populate(

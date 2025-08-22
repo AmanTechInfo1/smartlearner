@@ -6,6 +6,9 @@ const paymentSuccess = require("../models/paymentSuccessModel");
 const Order = require("../models/orderModel");
 const Paypalorder = require("../models/paypalOrderModel");
 const stripe = require("../config/stripe");
+const baseUrl = process.env.REVOLUT_API_URL || "https://merchant.revolut.com";
+const secretKey = process.env.REVOLUT_API_SECRET_KEY;
+
 class OrderController {
   async getAllOrders(req, res, next) {
     try {
@@ -370,6 +373,161 @@ class OrderController {
       res.status(500).json({
         success: false,
         message: "Payment failed: " + error.message,
+      });
+    }
+  }
+  ///////////////////////////////////////////////////
+  // ////////////////////////////////////////
+
+  // async createRevolutOrder(req, res) {
+  //   const { amount, currency, orderId } = req.body;
+
+  //   try {
+  //     const orderRecord = await Paypalorder.findById(orderId);
+  //     if (!orderRecord) {
+  //       return res
+  //         .status(404)
+  //         .json({ success: false, message: "Order not found" });
+  //     }
+
+  //     const resp = await fetch(`${baseUrl}/api/1.0/orders`, {
+  //       method: "POST",
+  //       headers: {
+  //         Authorization: `Bearer ${secretKey}`,
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         amount: Math.round(parseFloat(amount) * 100), // convert to minor units
+  //         currency: currency || "GBP",
+  //         capture_mode: "AUTOMATIC",
+  //         description: `Order #${orderId}`,
+  //         email: orderRecord.email, // assuming Order has email field
+  //         merchant_order_ext_ref: orderId,
+  //         return_url: `https://smartlearner.com/payment-completed`,
+  //         success_url: `https://smartlearner.com/paymentSuccess?revolut_token=${data.public_id}`,
+  //         cancel_url: `https://smartlearner.com/paymentProcessing?revolut_token=${data.public_id}`,
+  //       }),
+  //     });
+
+  //     const data = await resp.json();
+  //     if (!resp.ok) {
+  //       console.error(data);
+  //       return res.status(400).json({ success: false, message: data });
+  //     }
+  //     console.error("Revolut API error:", data);
+
+  //     orderRecord.revolutToken = data.public_id; // store public_id if needed
+  //     orderRecord.status = "pending";
+  //     await orderRecord.save();
+
+  //     res.json({ success: true, checkout_url: data.checkout_url });
+  //   } catch (err) {
+  //     console.error(err);
+  //     res.status(500).json({ success: false, message: err.message });
+  //   }
+  // }
+
+  // async handleWebhook(req, res) {
+  //   const event = req.body;
+  //   // Optionally validate signing via REVOLUT_WEBHOOK_SECRET...
+  //   console.log("Webhook:", event);
+
+  //   // Example of handling ORDER_COMPLETED
+  //   if (event.type === "ORDER_COMPLETED") {
+  //     const token = event.data.token;
+  //     const order = await Paypalorder.findOne({ revolutToken: token });
+  //     if (order) {
+  //       order.status = "completed";
+  //       await order.save();
+  //     }
+  //   }
+
+  //   res.status(200).send("OK");
+  // }
+
+  // async verifyOrderStatus(req, res) {
+  //   const { token } = req.body;
+  //   try {
+  //     const resp = await fetch(`${baseUrl}/api/1.0/orders/${token}`, {
+  //       method: "GET",
+  //       headers: { Authorization: `Bearer ${secretKey}` },
+  //     });
+  //     const data = await resp.json();
+  //     res.json({ success: true, order: data });
+  //   } catch (err) {
+  //     console.error(err);
+  //     res.status(500).json({ success: false, message: err.message });
+  //   }
+  // }
+
+  async createRevolutCharge(req, res) {
+    const { amount, currency, orderId } = req.body;
+
+    try {
+      const order = await Paypalorder.findById(
+        new mongoose.Types.ObjectId(orderId)
+      );
+      if (!order) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Order not found" });
+      }
+      const email = order.email;
+      console.log("email", email);
+
+      const response = await orderService.createRevoultOrder(
+        amount,
+        currency,
+        orderId
+      );
+      order.paymentToken = response.public_id;
+      order.status = "pending";
+      await order.save();
+
+      res.status(200).json({
+        success: true,
+        message: "Revolut order created",
+        token: response.public_id,
+      });
+    } catch (error) {
+      console.error("Revolut Charge Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to create Revolut charge",
+        error: error.message,
+      });
+    }
+  }
+
+  // POST /api/order/revolut-payment-success
+  async revolutPaymentSuccess(req, res) {
+    const { orderId } = req.body;
+
+    try {
+      const order = await Paypalorder.findById(orderId);
+      if (!order) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Order not found" });
+      }
+
+      order.status = "completed";
+      await order.save();
+
+      // Send success email
+      await orderService.sendEmail(order, "completed", "Revolut");
+
+      res.status(200).json({ 
+        success: true,
+        message: "Order marked as paid and email sent",
+      });
+    } catch (error) {
+      console.error("Revolut Payment Success Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to mark payment success",
+        error: error.message,
       });
     }
   }

@@ -20,6 +20,12 @@ import cartIcon from "../../../assets/images/cartIcon1.png";
 import { toast } from "react-hot-toast";
 import styles from "../../../pages/shop/cart/Cart.module.css";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../../utils/httpHandler";
+import RevolutCheckout from "@revolut/checkout";
+import { useRef } from "react";
+import LoadingWeb from "../../../components/loader/LoadingWeb";
+
+import revolutLogo from "../../../assets/images/RevolutLogo.png";
 
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
@@ -31,6 +37,7 @@ const PartThreeSubscription = () => {
   );
 
   const [couponCode, setCouponCode] = useState("");
+  const [revolutLoading, setRevolutLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -132,6 +139,81 @@ const PartThreeSubscription = () => {
 
   const planId = paidPlans[0]?._id;
 
+  const revolut4ContainerRef = useRef(null);
+  const [activePlan, setActivePlan] = useState(null);
+
+  const initRevolutPay = async (plan) => {
+    setActivePlan(plan);
+
+    try {
+      const { revolutPay } = await RevolutCheckout.payments({
+        locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+      });
+
+      revolutPay.mount(revolut4ContainerRef.current, {
+        currency: "GBP",
+        totalAmount: Math.round(parseFloat(plan.price) * 100),
+
+        mobileRedirectUrls: {
+          success: `${window.location.origin}/part-three-theory-questions`,
+          failure: `${window.location.origin}/driving-instructor-training-part-three`,
+          cancel: `${window.location.origin}/driving-instructor-training-part-three`,
+        },
+
+        createOrder: async () => {
+          const res = await httpHandler.post(
+            "/api/subscription/revolut-charge",
+            {
+              amount: Math.round(parseFloat(plan.price) * 100),
+              currency: "GBP",
+              subscriptionId: plan._id,
+              userId: userId,
+            }
+          );
+
+          console.log("sa123sdasd", res);
+          console.log("Asas", res.data.token);
+
+          return { publicId: res.data.token };
+          // this token should be generated from your backend
+        },
+      });
+
+      revolutPay.on("payment", async (event) => {
+        switch (event.type) {
+          case "success":
+            setRevolutLoading(true);
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-success",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+              navigate("/part-three-theory-questions");
+              toast.success("Payment completed successfully");
+            } catch (err) {
+              console.error("Error notifying backend of Revolut success:", err);
+              toast.error("Payment succeeded, but backend notification failed");
+            }
+            break;
+          case "error":
+            toast.error("Revolut payment failed");
+            break;
+          case "cancel":
+            toast("Revolut payment cancelled");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Revolut init error:", error);
+      toast.error("Failed to initialize Revolut payment");
+    }
+  };
+
   return (
     <div className="subscription-cardBox">
       <Helmet>
@@ -192,8 +274,7 @@ const PartThreeSubscription = () => {
                         fontSize: "1.2rem",
                         textAlign: "center",
                         width: "100%",
-                      }}
-                    >
+                      }}>
                       Loading plans...
                     </p>
                   )}
@@ -227,10 +308,30 @@ const PartThreeSubscription = () => {
                         </p>
                         <div>
                           <img src={paypalLogo} alt="paypal" />
+                          <img
+                            src={revolutLogo}
+                            alt="revolutLogo"
+                            id={styles.revolutLogo}
+                          />
                         </div>
                       </div>
                     </div>
                     <div className={styles.basketHeadingTitle}></div>
+                  </div>
+                  <div style={{ marginBottom: "20px" }}>
+                    <button
+                      className={styles.revolutbutton}
+                      onClick={() => initRevolutPay(plan)}>
+                      Pay with Revolut
+                    </button>
+                    {activePlan?._id === plan._id && (
+                      <div className={styles.revolutbuttoncontainer}>
+                        <div
+                          ref={revolut4ContainerRef}
+                          className="revolut-pay-button"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -269,6 +370,8 @@ const PartThreeSubscription = () => {
           </div>
         </div>
       </div>
+
+      {revolutLoading && <LoadingWeb />}
     </div>
   );
 };
