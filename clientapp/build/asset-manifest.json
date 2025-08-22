@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.74be2f23.css",
-    "main.js": "/static/js/main.e9261402.js",
+    "main.css": "/static/css/main.889a89a8.css",
+    "main.js": "/static/js/main.d41520e2.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -325,6 +325,7 @@
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/majortomajorleft.png": "/static/media/majortomajorleft.bb88f2949e96bbf802bd.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
+    "static/media/RevolutLogo.png": "/static/media/RevolutLogo.cb6578976e775ba92002.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
     "static/media/theoryTestCrausalImg.jpg": "/static/media/theoryTestCrausalImg.6f7b6bb065bc765a1cba.jpg",
@@ -403,12 +404,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.74be2f23.css.map": "/static/css/main.74be2f23.css.map",
-    "main.e9261402.js.map": "/static/js/main.e9261402.js.map",
+    "main.889a89a8.css.map": "/static/css/main.889a89a8.css.map",
+    "main.d41520e2.js.map": "/static/js/main.d41520e2.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.74be2f23.css",
-    "static/js/main.e9261402.js"
+    "static/css/main.889a89a8.css",
+    "static/js/main.d41520e2.js"
   ]
 }
