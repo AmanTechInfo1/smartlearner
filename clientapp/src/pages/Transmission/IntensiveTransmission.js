@@ -171,7 +171,7 @@ export default function IntensiveTransmission() {
           <p>Designed for those eager to learn quickly and efficiently,</p>
           <p>
             {" "}
-            our immersive programmes offer focused instruction and hands-on
+            Our immersive programmes offer focused instruction and hands-on
             experience to help you become a confident driver in no time. Get
             behind the wheel and fast-track your path to driving independence
             with our intensive driving courses.

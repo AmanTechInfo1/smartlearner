@@ -60,7 +60,7 @@
 
 @media (max-width: 600px) {
   .chat-window {
-    height: 70vh;
+    height: 65vh;
   }
 }
 .chat-popup {

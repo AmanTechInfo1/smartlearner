@@ -47,8 +47,8 @@ const blogSlice = createSlice({
     },
     fetchNewsFailure: (state) => {
       state.news = localStorage.getItem("news")
-      ? JSON.parse(localStorage.getItem("news"))
-      : [];
+        ? JSON.parse(localStorage.getItem("news"))
+        : [];
       state.loading = false;
       state.error = "news";
     },
@@ -145,7 +145,7 @@ export const getAllBlogs = (search, page, pagesize) => async (dispatch) => {
   try {
     dispatch(setLoading());
     const response = await httpHandler.get(
-      `/api/blogs/all-blogs?search=${search}&page=${page}&pagesize=${pagesize}`
+      `/api/blogs/all-blogs?search=${search}&page=${page}`
     );
     if (response.data.success) {
       dispatch(getAllBlogsSuccess(response.data.data));
@@ -163,7 +163,7 @@ export const createBlog =
   (data, reset, toggleAddBlogModal) => async (dispatch) => {
     try {
       dispatch(setLoading());
-      console.log("data...............",data)
+      console.log("data...............", data);
       const response = await httpHandler.post(`/api/blogs/create-blog`, data);
       if (response.data.success) {
         toast.success(response.data.message);

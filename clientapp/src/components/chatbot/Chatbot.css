@@ -17,7 +17,7 @@
 .chat-heading {
   background: linear-gradient(135deg, rgb(60, 1, 103), rgb(0, 151, 185));
   text-align: center;
-  padding: 15px;
+  padding: 12px;
 }
 .chat-header p {
   color: white;
@@ -44,15 +44,15 @@
 }
 
 .user-avatar {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin: 0 10px;
   object-fit: cover;
 }
 .bot-avatar {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin: 0 10px;
   object-fit: cover;
@@ -163,7 +163,18 @@
   display: block;
   width: fit-content;
 }
-
+@media (max-width: 468px) {
+  .chat-input-area {
+    padding: 7px;
+  }
+  .chat-input-area input {
+    padding: 7px;
+  }
+  .live-chat-btn {
+    margin: 4px auto 8px;
+    padding: 7px 14px;
+  }
+}
 .live-chat-btn:hover {
   background-color: #0056b3;
 }

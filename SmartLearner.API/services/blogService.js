@@ -1,8 +1,6 @@
 const Blogs = require("../models/blogModal");
 const axios = require("axios");
 
-
-
 class BlogService {
   // Create a new blog
   async createBlogAsync(blogData) {
@@ -39,10 +37,9 @@ class BlogService {
     }
   }
 
-  // Get paginated blogs with optional search query
   async getBlogsAsync(pageNumber, pageSize, query) {
     try {
-      const skip = (pageNumber - 1) * (pageSize || 20);
+      const skip = pageNumber - 1;
       let filter = {};
       if (query) {
         const regex = new RegExp(query, "i");
@@ -54,8 +51,9 @@ class BlogService {
       }
       const totalCount = await Blogs.countDocuments(filter);
       const blogs = await Blogs.find(filter)
+        .sort({ createdOn: -1 })
         .skip(skip)
-        .limit(pageSize || 20);
+        .limit(pageSize);
 
       const resultObject = {
         message: "Blogs fetched successfully",
@@ -116,7 +114,7 @@ class BlogService {
       const blog = await Blogs.findByIdAndUpdate(blogId, blogData, {
         new: true,
       });
-      console.log(blog)
+      console.log(blog);
       const resultObject = {
         message: "Blog updated successfully",
         statusCode: 201,

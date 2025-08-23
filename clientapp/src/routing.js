@@ -186,6 +186,13 @@ import Adi3Module21 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module2
 import Adi3Module22 from "./pages/adiPages/adi-part3/additionalPages/Adi3Module22";
 import LearnerPortal from "./pages/learnerPortal/LearnerPortal";
 import AdminLiveChat from "./containers/liveChat/AdminLiveChat";
+import Bedworth from "./pages/locationPages/Bedworth";
+import Coventry from "./pages/locationPages/Coventry";
+import Leamington from "./pages/locationPages/Leamington";
+import Nuneaton from "./pages/locationPages/Nuneaton";
+import Rugby from "./pages/locationPages/Rugby";
+import Solihull from "./pages/locationPages/Solihull";
+import Warwick from "./pages/locationPages/Warwick";
 
 export const router = createBrowserRouter([
   {
@@ -473,6 +480,19 @@ export const router = createBrowserRouter([
       { path: "control-module", element: <Adi3Module19 /> },
       { path: "awareness-module", element: <Adi3Module20 /> },
       { path: "mockTest-module", element: <Adi3Module21 /> },
+
+      { path: "bedworth", element: <Bedworth /> },
+
+      { path: "coventry", element: <Coventry /> },
+
+      { path: "leamington", element: <Leamington /> },
+
+      { path: "nuneaton", element: <Nuneaton /> },
+
+      { path: "rugby", element: <Rugby /> },
+
+      { path: "solihull", element: <Solihull /> },
+      { path: "warwick", element: <Warwick /> },
 
       {
         path: "all-results",

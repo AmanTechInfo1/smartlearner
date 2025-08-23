@@ -137,66 +137,65 @@ export default function Adi3Modulefive() {
     }
   }, []);
 
-
   // /////////////////////////////////////////
-   const [text2, setText2] = useState("");
-    const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
-    const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
-    const [editIndex2, setEditIndex2] = useState(null);
-    const textareaRef2 = useRef(null);
-  
-    const handleChange2 = (e) => {
-      setText2(e.target.value);
-    };
-  
-    const saveText2 = () => {
-      if (text2.trim()) {
-        // If editing an existing item, replace it
-        if (isEditing2) {
-          const updatedTexts2 = [...savedTexts2];
-          updatedTexts2[editIndex2] = text2;
-          setSavedTexts2(updatedTexts2);
-          setIsEditing2(false); // Reset editing flag
-          setEditIndex2(null);
-        } else {
-          setSavedTexts2([...savedTexts2, text2]);
-        }
-        localStorage.setItem(
-          `notepadTexts2Part3pagew7_${userId}`,
-          JSON.stringify([...savedTexts2, text2])
-        );
-  
-        setText2("");
+  const [text2, setText2] = useState("");
+  const [savedTexts2, setSavedTexts2] = useState([]); // Store multiple saved texts
+  const [isEditing2, setIsEditing2] = useState(false); // Track if the user is editing
+  const [editIndex2, setEditIndex2] = useState(null);
+  const textareaRef2 = useRef(null);
+
+  const handleChange2 = (e) => {
+    setText2(e.target.value);
+  };
+
+  const saveText2 = () => {
+    if (text2.trim()) {
+      // If editing an existing item, replace it
+      if (isEditing2) {
+        const updatedTexts2 = [...savedTexts2];
+        updatedTexts2[editIndex2] = text2;
+        setSavedTexts2(updatedTexts2);
+        setIsEditing2(false); // Reset editing flag
+        setEditIndex2(null);
+      } else {
+        setSavedTexts2([...savedTexts2, text2]);
       }
-    };
-  
-    const editText2 = (index) => {
-      setIsEditing2(true);
-      setEditIndex2(index);
-      setText2(savedTexts2[index]); // Set the text to be edited
-      if (textareaRef2.current) {
-        textareaRef2.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-  
-    // Delete the selected text
-    const deleteText2 = (index) => {
-      const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
-      setSavedTexts2(updatedTexts2);
       localStorage.setItem(
         `notepadTexts2Part3pagew7_${userId}`,
-        JSON.stringify(updatedTexts2)
+        JSON.stringify([...savedTexts2, text2])
       );
-    };
-  
-    useEffect(() => {
-      const savedData2 = localStorage.getItem(
-        `notepadTexts2Part3pagew7_${userId}`
-      );
-      if (savedData2) {
-        setSavedTexts2(JSON.parse(savedData2));
-      }
-    }, []);
+
+      setText2("");
+    }
+  };
+
+  const editText2 = (index) => {
+    setIsEditing2(true);
+    setEditIndex2(index);
+    setText2(savedTexts2[index]); // Set the text to be edited
+    if (textareaRef2.current) {
+      textareaRef2.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Delete the selected text
+  const deleteText2 = (index) => {
+    const updatedTexts2 = savedTexts2.filter((_, i) => i !== index);
+    setSavedTexts2(updatedTexts2);
+    localStorage.setItem(
+      `notepadTexts2Part3pagew7_${userId}`,
+      JSON.stringify(updatedTexts2)
+    );
+  };
+
+  useEffect(() => {
+    const savedData2 = localStorage.getItem(
+      `notepadTexts2Part3pagew7_${userId}`
+    );
+    if (savedData2) {
+      setSavedTexts2(JSON.parse(savedData2));
+    }
+  }, []);
 
   // ///////////////////////////////////////////////
   const textRef = useRef(null);
@@ -289,7 +288,6 @@ export default function Adi3Modulefive() {
       });
   }, []);
 
-
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
@@ -298,30 +296,29 @@ export default function Adi3Modulefive() {
       transition: { delay: i * 0.2, duration: 0.6 },
     }),
   };
-  
 
-    const cakeLayers = [
-      {
-        title: "We’ve now reached the top layer of our lesson plan cake.",
-        description:
-          "At this stage, the learner takes full responsibility for moving and stopping the car. With these core skills now in place, you’re ready to progress to the next focus area—such assteering",
-      },
-      {
-        title: "Now we reach the upper layer of our lesson plan cake.",
-        description:
-          "At this point, the student can confidently move the car in a straight line. It may now be appropriate to begin handing over more responsibility— such as managing observations and overall safety. Up until now, you've taken the lead in these areas, but if the learner is ready, this is the time to gradually transfer that responsibility to them.",
-      },
-      {
-        title: "This is the second layer of our lesson plan cake.",
-        description:
-          "Once the learner has a solid grasp of the foundational skills, you can begin to introduce more responsibility. At this stage, that might involve moving the car in a straight line from point A to point B—using only first gear and focusing on straight steering. During this phase, you share responsibility for safety and observations, allowing the learner to concentrate solely on controlling the car and stopping. You may need to repeat this stage several times until they demonstrate consistent competence.",
-      },
-      {
-        title: "This is the base layer of our lesson plan cake—the foundation.",
-        description:
-          "Represents the very first step in teaching a subject. For example, if the subject is Moving Off and  whopping, the foundational skill might be understanding how the clutch works and how to find the ng point. At this stage, there’s no need for the car to move—focus solely on the relevant",
-      },
-    ];
+  const cakeLayers = [
+    {
+      title: "We’ve now reached the top layer of our lesson plan cake.",
+      description:
+        "At this stage, the learner takes full responsibility for moving and stopping the car. With these core skills now in place, you’re ready to progress to the next focus area—such assteering",
+    },
+    {
+      title: "Now we reach the upper layer of our lesson plan cake.",
+      description:
+        "At this point, the student can confidently move the car in a straight line. It may now be appropriate to begin handing over more responsibility— such as managing observations and overall safety. Up until now, you've taken the lead in these areas, but if the learner is ready, this is the time to gradually transfer that responsibility to them.",
+    },
+    {
+      title: "This is the second layer of our lesson plan cake.",
+      description:
+        "Once the learner has a solid grasp of the foundational skills, you can begin to introduce more responsibility. At this stage, that might involve moving the car in a straight line from point A to point B—using only first gear and focusing on straight steering. During this phase, you share responsibility for safety and observations, allowing the learner to concentrate solely on controlling the car and stopping. You may need to repeat this stage several times until they demonstrate consistent competence.",
+    },
+    {
+      title: "This is the base layer of our lesson plan cake—the foundation.",
+      description:
+        "Represents the very first step in teaching a subject. For example, if the subject is Moving Off and  stopping, the foundational skill might be understanding how the clutch works and how to find the ng point. At this stage, there’s no need for the car to move—focus solely on the relevant",
+    },
+  ];
 
   //   /////////////////////////////////////////////////////////////////
 
@@ -471,8 +468,7 @@ export default function Adi3Modulefive() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          custom={0}
-        >
+          custom={0}>
           Subjects vs Skill Sets
         </motion.h1>
 
@@ -481,8 +477,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={1}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           When planning a lesson, it’s essential to have a clear idea of what
           your learner would benefit from. However, it’s equally important to
           remember that lesson plans should be flexible. Think of your lesson
@@ -498,8 +493,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={2}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           <strong>
             What do you think the difference between subjects vs skillsets is?
           </strong>
@@ -518,7 +512,9 @@ export default function Adi3Modulefive() {
               placeholder="Write your thoughts here..."
             />
             <br />
-            <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+            <button onClick={saveText2}>
+              {isEditing2 ? "Update" : "Save"}
+            </button>
 
             <div className={styles.thoughtsListArea}>
               {savedTexts2.length === 0 ? (
@@ -552,8 +548,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={3}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           Let’s explore an important distinction:
         </motion.h2>
 
@@ -562,8 +557,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={4}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           <div className={styles.Adi3Module22column}>
             <h3>Subjects</h3>
             <p>
@@ -591,8 +585,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={5}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           Your lesson should be designed to break down each subject into
           manageable, bite-sized chunks. These chunks are the individual skills
           that, when combined, lead to mastery of the subject.
@@ -603,8 +596,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={6}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           We don’t just teach <strong>what</strong> to do—we focus on{" "}
           <strong>how</strong>, <strong>why</strong>, and <strong>when</strong>{" "}
           to do it. We also develop the behaviours that support those skills,
@@ -616,8 +608,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={7}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           The Importance of Structure and Simplicity
         </motion.h2>
 
@@ -626,8 +617,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={8}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           <p>
             Now imagine this scenario: It’s your first day training for your
             Part 3 exam to become a driving instructor. Your trainer bombards
@@ -660,8 +650,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={8}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           <p>
             <strong>So, How Do You Plan a Lesson?</strong>
           </p>
@@ -688,8 +677,7 @@ export default function Adi3Modulefive() {
                 className={styles.Adi3Module22layer}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.3 }}
-              >
+                transition={{ duration: 0.8, delay: index * 0.3 }}>
                 <h2 className={styles.Adi3Module22layerTitle}>{layer.title}</h2>
                 <p className={styles.Adi3Module22description}>
                   {layer.description}
@@ -704,8 +692,7 @@ export default function Adi3Modulefive() {
           variants={fadeUp}
           custom={8}
           initial="hidden"
-          animate="visible"
-        >
+          animate="visible">
           <p>
             Remember, When teaching, always focus on the{" "}
             <blockquote>
@@ -767,7 +754,6 @@ export default function Adi3Modulefive() {
           </p>
         </motion.div>
       </div>
-
 
       {/* //////////////////////////////////////////////////// */}
 

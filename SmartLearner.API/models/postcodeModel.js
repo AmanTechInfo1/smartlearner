@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 
 const postcodeSchema = new mongoose.Schema({
-    postcode: { type: String, required: true, unique: true },
-    city: { type: String, required: true },
-    country: { type: String, required: true },
-   
+  postcode: { type: String },
+  city: { type: String },
+  country: { type: String },
 });
 
-const Postcode = mongoose.model('Postcode', postcodeSchema);
+const Postcode = mongoose.model("Postcode", postcodeSchema);
 
 module.exports = Postcode;

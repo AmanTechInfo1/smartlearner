@@ -378,8 +378,7 @@ export default function Adi3ModuleSeven() {
         className={styles.AdiModuleOneheader}
         style={{
           backgroundImage: `url(${backgroundImage})`,
-        }}
-      >
+        }}>
         <div className="opicity"></div>
         <section className={styles.AdiModuleOneheading}>
           {" "}
@@ -387,436 +386,15 @@ export default function Adi3ModuleSeven() {
         </section>
       </section>
 
-      <div style={{ maxWidth: "1640px", margin: "1rem auto" }}>
-        <div className={styles.adisix2ndintro}>
-          <p>
-            Lesson planning is an essential part of delivering structured,
-            meaningful and student-focused driving instruction. By preparing in
-            advance and keeping the learner’s goals at the forefront, you can
-            ensure each session maximises progress and builds confidence behind
-            the wheel.
-          </p>
-        </div>
-      </div>
-
-      {/* /////////////////////////////////////////////////// */}
-      <div className={styles.adi3module7firstcontainer}>
-        {steps.map((step, index) => (
-          <div key={index} className={styles.adi3module7firststepContainer}>
-            <div className={styles.adi3module7firststep}>
-              <h2 className={styles.adi3module7firsttitle}>{step.title}</h2>
-              <ul className={styles.adi3module7firstlist}>
-                {step.items.map((item, idx) => (
-                  <li key={idx} className={styles.adi3module7firstlistItem}>
-                    ✓ {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {index !== steps.length - 1 && (
-              <div className={styles.adi3module7firstarrow}>
-                <FaLongArrowAltRight id={styles.adi3module7firstarrow} />
-                <FaLongArrowAltDown id={styles.adi3module7firstarrow2} />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      {/* //////////////////////////////////////////// */}
-      <div className={styles.firstLessonModulesecondthirdcontainer}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
-          Before the Lesson: Set a Clear Plan
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
-          Your learner’s previous lesson or introductory call should have helped
-          you identify what they want to work on next. Use that insight to
-          pre-plan an appropriate and progressive lesson structure.
-        </motion.p>
-
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <ul>
-            <li>Focus on the learner’s short-term and long-term goals</li>
-            <li>
-              Design activities that are challenging enough to promote growth,
-              but still within their capabilities
-            </li>
-            <li>
-              Be flexible – always have a Plan B in case the learner’s mindset
-              or circumstances have changed on the day
-            </li>
-          </ul>
-        </motion.div>
-      </div>
-      {/* /////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Why is it important to reconfirm the learner’s goals at the start of
-            each lesson, even if they were discussed previously?
-          </label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
-      {/* ////////////////////////////////////////////////////// */}
-      <div className={styles.firstLessonModulesecondthirdcontainer}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
-          At the Start of the Lesson: Reconfirm and Recalibrate
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
-          Begin the session by checking in with the student:
-        </motion.p>
-
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <ul>
-            <li>Reconfirm their goals with open-ended, probing questions</li>
-            <li>Assess their existing knowledge of the subject</li>
-            <li>Ask: “What do you want to practice today—and why?”</li>
-            <li>
-              Pay close attention to verbal and non-verbal cues (e.g., nervous
-              body language, uncertainty)
-            </li>
-            <p>
-              This ensures that the lesson remains learner-centred, adaptive,
-              and relevant.
-            </p>
-          </ul>
-        </motion.div>
-      </div>
-      {/* ////////////////////////////////////////////// */}
-      <div className={styles.firstLessonModulesecondthirdcontainer}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
-          Define the Objectives and Roles Clearly
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
-          Set specific, measurable goals for the session. For example: What do
-          you want to achieve by the end of today's lesson? I want to be able to
-          complete a reverse bay park with no help.
-        </motion.p>
-
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <h2>This conversation helps ensure that goals are:</h2>
-          <ul>
-            <li>Clear</li>
-            <li>Achievable</li>
-            <li>Motivating</li>
-          </ul>
-        </motion.div>
-        <motion.div
-          className={styles.firstLessonModulesecondthirdscores}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          <h2>Then, agree on the balance of responsibility for the session:</h2>
-          <ul>
-            <li>Will you guide them step-by-step?</li>
-            <li>Will they attempt the skill independently?</li>
-            <li>What kind of support will you provide, and when?</li>
-          </ul>
-        </motion.div>
-      </div>
-      {/* ///////////////////////////////////////////// */}
-      <div className={styles.firstLessonModulesecondthirdcontainer}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
-          Choose the Right Practice Area
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
-          Select a suitable environment that matches the learner’s objective.
-          Keep it local—within a 10-minute drive from the starting point.
-          <br /> ✅ Practicing mini roundabouts? Pick a route with multiple mini
-          roundabouts, not dual carriageways.
-        </motion.p>
-
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <h2>The practice area should:</h2>
-          <ul>
-            <li>Align with the lesson goals</li>
-            <li>Be safe and manageable for the learner’s current ability</li>
-            <li>Allow opportunities to repeat and reflect</li>
-          </ul>
-        </motion.div>
-      </div>
-      {/* //////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            How would you choose a suitable practice area for a lesson on
-            pedestrian crossings ? What factors would influence your decision?
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
-      {/* //////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Explain why having a Plan B is important when pre-planning lessons.
-            Give an example of when this might be necessary
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
-      {/* //////////////////////////////////////////// */}
-      <div className={styles.firstLessonModulesecondthirdcontainer}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirdheading}
-        >
-          Adjust Responsibility as Skills Grow
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className={styles.firstLessonModulesecondthirddescription}
-        >
-          As learners become more confident, gradually shift more responsibility
-          onto them. This helps build independent driving habits.
-        </motion.p>
-
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <h2>However, always:</h2>
-          <ul>
-            <li>Discuss and agree before making these changes</li>
-            <li>Ensure the learner feels comfortable and supported</li>
-            <li>Be ready to step back in if needed</li>
-          </ul>
-        </motion.div>
-
-        {/* ///////////////////////////////////////////// */}
-        <motion.div
-          className={styles.firstLessonModulesecondthirdsection}
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <h2>Wrap-Up and Reflect</h2>
-          <p>
-            Always keep an eye on time to ensure you return to the drop-off
-            location within the scheduled lesson duration.
-            <br />
-            At the end of the session, conduct a short debrief:
-          </p>
-          <ul>
-            <li>Ask the learner to reflect on their performance</li>
-            <li>What went well?</li>
-            <li>What could be improved?</li>
-            <li>What would they like to work on next time?</li>
-          </ul>
-        </motion.div>
-      </div>
-
-      {/* //////////////////////////////////////////////////// */}
-      <div className={styles.adi3module72ndcontainer}>
-        <h1 className={styles.adi3module72ndmainHeading}>
-          🚗 Lesson Recap & Planning
-        </h1>
-        {sections.map((section, index) => (
-          <motion.div
-            key={index}
-            className={styles.adi3module72ndsection}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
-          >
-            <h2 className={styles.adi3module72ndsectionTitle}>
-              {section.title}
-            </h2>
-            <ul className={styles.adi3module72ndsectionContent}>
-              {section.content.map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-      </div>
-
       {/* //////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////// */}
-      <div className={styles.LessonPlanningcontainer}>
+      <div className={styles.LessonPlanningcontainer}style={{marginTop:'1rem'}}>
         <div className={styles.LessonPlanningcontainer2}>
           <motion.h1
             className={styles.adi3module72ndmainHeading}
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+            transition={{ duration: 1 }}>
             Lesson Planning
           </motion.h1>
 
@@ -824,8 +402,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningdescription}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            transition={{ delay: 0.5 }}>
             Now that you’re familiar with the concept of the lesson structure
             "cake," it’s time to explore how to effectively plan a lesson. There
             is no single, fixed way to teach any lesson your approach should
@@ -837,8 +414,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningdescription}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+            transition={{ delay: 0.5 }}>
             {" "}
             Each learner may begin at a different “layer” of the cake depending
             on their prior knowledge and experience. You’ll uncover this by
@@ -850,8 +426,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
+            transition={{ delay: 1 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>Task</h2>
             <h3>Skill Brainstorming A–Z</h3>
             <p>
@@ -882,8 +457,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-          >
+            transition={{ delay: 1.5 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               Starting the Lesson Plan
             </h2>
@@ -931,8 +505,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-          >
+            transition={{ delay: 2 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               Providing Support
             </h2>
@@ -955,8 +528,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.5 }}
-          >
+            transition={{ delay: 2.5 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               Sharing Responsibility
             </h2>
@@ -977,8 +549,7 @@ export default function Adi3ModuleSeven() {
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3 }}
-          >
+            transition={{ delay: 3 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               Practice and Progression
             </h2>
@@ -990,12 +561,11 @@ export default function Adi3ModuleSeven() {
             </p>
           </motion.div>
 
-          <motion.div   
+          <motion.div
             className={styles.LessonPlanningsection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3.5 }}
-          >
+            transition={{ delay: 3.5 }}>
             <h2 className={styles.adi3module72ndsectionTitle}>
               Confirming Learning
             </h2>
@@ -1028,8 +598,7 @@ export default function Adi3ModuleSeven() {
         <a
           href="/lessonPlanning-Docs.zip"
           download
-          style={style.adiDownLoadbutton}
-        >
+          style={style.adiDownLoadbutton}>
           <FaDownload style={style.adiDownLoadicon} />
           Download ZIP
         </a>

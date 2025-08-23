@@ -39,7 +39,8 @@ const ChatWindow = ({ sessionId, onBack }) => {
 
   const sendMessage = () => {
     if (!input.trim()) return;
-    const msg = { sessionId, sender: "admin", content: input };
+    const createdAt = new Date().toISOString();
+    const msg = { sessionId, sender: "admin", content: input, createdAt };
     socket.emit("sendMessage", msg);
 
     setInput("");
@@ -65,65 +66,90 @@ const ChatWindow = ({ sessionId, onBack }) => {
   }, [messages]);
 
   return (
-    <div className="chatbot-window">
+    <div className="chat-window">
       <div className="chatbot-container">
-        <div className="chat-header">
-          <button
-            onClick={onBack}
-            style={{
-              marginRight: "10px",
-              backgroundColor: "rgb(255, 0, 115)",
-              color: "white",
-              border: "none",
-              padding: "0.5rem 0.8rem",
-              borderRadius: "6px",
-            }}>
-            ← Back
-          </button>
-          <h3
-            style={{ marginBottom: "0px", color: "white", fontSize: "1.3rem" }}>
-            {userEmail
-              ? `Chat with: ${userEmail}`
-              : `Chat ID: ${sessionId.slice(-8)}`}
-          </h3>
+        <div className="chat-heading">
+          <div className="chat-header">
+            <button
+              onClick={onBack}
+              style={{
+                marginRight: "10px",
+                backgroundColor: "rgb(255, 0, 115)",
+                color: "white",
+                border: "none",
+                padding: "0.5rem 0.8rem",
+                borderRadius: "6px",
+              }}>
+              ← Back
+            </button>
+            <h3
+              style={{
+                marginBottom: "0px",
+                color: "white",
+                fontSize: "1.2rem",
+              }}>
+              {userEmail
+                ? `Chat with: ${userEmail}`
+                : `Chat ID: ${sessionId.slice(-8)}`}
+            </h3>
+          </div>
         </div>
         <div className="chat-messages">
           {/* /////////////////////////////// */}
           {messages.map((m, i) => {
+            const formattedTime = new Date(m.createdAt).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
             if (m.sender === "system") {
               return (
                 <div key={i} className="chat-bubble system-msg">
                   <em>{m.content}</em>
+                  <em className="message-time">{formattedTime}</em>
                 </div>
               );
             }
 
             return (
               <div
+                style={{ padding: "7px " }}
                 key={i}
                 className={`chat-bubble ${
                   m.sender === "admin" ? "admin-message" : "user-message"
                 }`}>
                 {m.sender === "admin" ? (
-                  <>
+                  <div
+                    style={{
+                      display: "flex",
+
+                      flexDirection: "column",
+                    }}>
                     {" "}
-                    <img
-                      src={userImg}
-                      alt="User"
-                      className="avatar user-avatar"
-                    />
-                    {m.content}
-                  </>
+                    <section>{m.content}</section>
+                    <em
+                      style={{
+                        textAlign: "right",
+                        fontSize: "0.7rem",
+                      }}>
+                      {formattedTime}
+                    </em>
+                  </div>
                 ) : (
                   <div
                     style={{
                       display: "flex",
-                      gap: "5px",
-                      alignItems: "center",
+
+                      flexDirection: "column",
                     }}>
                     {" "}
-                    <img src={botImg} alt="Bot" className="avatar bot-avatar" />
                     <p style={{ marginBottom: "0px" }}>{m.content}</p>
+                    <em
+                      style={{
+                        textAlign: "right",
+                        fontSize: "0.7rem",
+                      }}>
+                      {formattedTime}
+                    </em>
                   </div>
                 )}
               </div>

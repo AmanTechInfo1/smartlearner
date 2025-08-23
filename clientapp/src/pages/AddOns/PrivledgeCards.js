@@ -316,21 +316,26 @@ export default function PrivledgeCards() {
     },
     {
       name: "Cafe Locco",
-      discount: "",
-      contact: "",
+      discount: "10% off and a  Free dessert when you pass",
+      contact: "+442477049561 https://www.cafelocco.com/ ",
       logo: cafeloco,
     },
     {
       name: "Phia’s Beauty Lounge ",
-      discount: "",
-      contact: "",
+      discount: "10% off on services",
+      contact: "https://www.instagram.com/phia.beautylounge/",
       logo: phiaBeauty,
     },
     {
       name: "Stylie’s Jerk Station",
-      discount: "",
-      contact: "",
+      discount: "10% on orders over £20.00",
+      contact: "Arena Retail Shopping Park ",
       logo: styliesJerk,
+    },
+    {
+      name: "La Crep hut",
+      discount: "10% off everything ",
+      contact: "Arena Retail Shopping Park",
     },
   ];
 
@@ -401,8 +406,7 @@ export default function PrivledgeCards() {
                   </li>
                 </ul>
                 <p
-                  className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}
-                >
+                  className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}>
                   It’s completely <strong>FREE</strong>—just our way of saying
                   thank you for choosing SmartLearner! — grab your Privilege
                   Card today!

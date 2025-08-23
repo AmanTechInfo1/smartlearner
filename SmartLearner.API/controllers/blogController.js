@@ -23,14 +23,12 @@ class BlogController {
   }
   async getBlogsData(req, res, next) {
     try {
-     
       const blogs = await blogService.getBlogs();
       res.json(blogs);
     } catch (err) {
       next(err);
     }
   }
-
 
   // Get a list of all blogs (no pagination)
   async getBlogList(req, res, next) {

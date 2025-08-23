@@ -266,12 +266,15 @@ const Chatbot = () => {
   const handleLiveChatSend = () => {
     if (!liveChatInput.trim()) return;
 
+    const createdAt = new Date().toISOString();
+
     const userMsg = {
       sessionId,
       sender: "user",
       content: liveChatInput,
       email: sendLiveMail,
-      liveChat: true, // Optional flag to distinguish live chat
+      liveChat: true,
+      createdAt, // Optional flag to distinguish live chat
     };
 
     // Send message via socket
@@ -282,7 +285,35 @@ const Chatbot = () => {
 
     scrollToBottom();
   };
-  // ////////
+  // //////////////////////////////////
+  const getUKDate = () => {
+    return new Date(
+      new Date().toLocaleString("en-GB", {
+        timeZone: "Europe/London",
+      })
+    );
+  };
+
+  const isWithinSupportHours = () => {
+    const now = getUKDate(); // UK time
+
+    const day = now.getDay(); // 0 = Sunday, 6 = Saturday
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    const totalMinutes = hours * 60 + minutes;
+
+    if (day >= 1 && day <= 5) {
+      // Monday to Friday: 9:00 AM – 7:00 PM
+      return totalMinutes >= 9 * 60 && totalMinutes <= 19 * 60;
+    } else if (day === 0 || day === 6) {
+      // Saturday & Sunday: 10:00 AM – 4:00 PM
+      return totalMinutes >= 10 * 60 && totalMinutes <= 16 * 60;
+    }
+
+    return false; // fallback
+  };
+
   const handleJoinLiveChat = () => {
     console.log("👉 Join Live Chat clicked");
 
@@ -290,6 +321,26 @@ const Chatbot = () => {
 
     setJoinedChat(true); // Switch to live chat mode
     localStorage.setItem("liveChat", "true");
+
+    const isAvailable = isWithinSupportHours();
+
+    if (!isAvailable) {
+      // Inform user via chatbot message
+      const unavailableMsg = {
+        sessionId,
+        sender: "admin",
+
+        content:
+          "⏰ Sorry We are not available Mon-Fri 9:00 AM to 7:00 PM || Sat-Sun 10:00 AM to 4:00 PM. Please end your chat to continue with SmartBot.",
+        email: sendLiveMail, // ✅ Add user email
+      };
+
+      // Send message via socket so it appears in both admin and user UI
+      socket.emit("sendMessage", unavailableMsg);
+      socket.emit("newChatRequest", { sessionId, email: sendLiveMail });
+      return; // Don't allow joining live chat
+    }
+
     const userMsg = {
       sessionId,
       sender: "user",
@@ -304,12 +355,15 @@ const Chatbot = () => {
     console.log("✅ Emitted newChatRequest");
   };
   const handleEndChat = () => {
+    const createdAt = new Date().toISOString();
+
     const endMsg = {
       sessionId,
       sender: "user",
       content: "🚫 User has ended live chat",
       email: sendLiveMail,
       liveChat: true,
+      createdAt,
     };
 
     socket.emit("sendMessage", endMsg);
@@ -414,13 +468,7 @@ const Chatbot = () => {
   return (
     <div className="chatbot-container">
       <div className="chat-heading">
-        <div className="chat-header">
-          <div className="chatbotAvtarrImg"></div>
-          <p>SmartBot</p>
-        </div>
-        <em style={{ fontSize: "0.8rem", color: "white" }}>
-          Live Chat: Mon-Fri 9:00 AM to 7:00 PM || Sat-Sun 10:00 AM to 4:00 PM
-        </em>
+        <div className="chat-header"></div>
       </div>
       <div className="chat-messages">
         <div className="chat-bubble bot-msg typing-animation">

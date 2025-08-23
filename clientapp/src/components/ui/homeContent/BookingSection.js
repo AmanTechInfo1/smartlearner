@@ -170,7 +170,7 @@ export default function BookingSection() {
               spaceBetween={30} // Space between slides
               loop={true} // Make it loop infinitely
               autoplay={{
-                delay: 1000, // Time between slide transitions
+                // Time between slide transitions
                 disableOnInteraction: false, // Don't stop autoplay when interacting
               }}
               centeredSlides={true} // Keep the active slide centered
@@ -179,7 +179,7 @@ export default function BookingSection() {
                 clickable: true,
               }}
               navigation={true}
-              speed={3000} // Add navigation buttons (next/prev)
+              // Add navigation buttons (next/prev)
               modules={[Pagination, Navigation, Autoplay]} // Enable Pagination, Navigation, and Autoplay modules
               className="mySwiper"
               onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
@@ -206,8 +206,7 @@ export default function BookingSection() {
                   slidesPerView: 4,
                   spaceBetween: 30,
                 },
-              }}
-            >
+              }}>
               <SwiperSlide>
                 <Link to="/manual">
                   <div className={styles.slide1}>
@@ -215,12 +214,12 @@ export default function BookingSection() {
                     <div id={styles.crousalContent}>
                       <h2>MANUAL</h2>
                       <p>
-                        DiscDiscover the thrill of hands-on control with our
-                        manual driving lessons. From mastering the clutch to
-                        shifting gears seamlessly, our expert instructors will
-                        guide you through the art of manual driving, empowering
-                        you with the skills and confidence to navigate any road
-                        with finesse and precision.
+                        Discover the thrill of hands-on control with our manual
+                        driving lessons. From mastering the clutch to shifting
+                        gears seamlessly, our expert instructors will guide you
+                        through the art of manual driving, empowering you with
+                        the skills and confidence to navigate any road with
+                        finesse and precision.
                       </p>
                       <button>Explore Now</button>
                     </div>

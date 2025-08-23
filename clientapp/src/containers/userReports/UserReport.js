@@ -122,6 +122,7 @@ const UserReport = () => {
     },
   ];
 
+  
   return (
     <>
       <div className={styles.usersContainer}>
