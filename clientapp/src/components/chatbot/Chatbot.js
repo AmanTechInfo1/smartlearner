@@ -331,7 +331,7 @@ const Chatbot = () => {
         sender: "admin",
 
         content:
-          "⏰ Sorry We are not available Mon-Fri 9:00 AM to 7:00 PM || Sat-Sun 10:00 AM to 4:00 PM. Please end your chat to continue with SmartBot.",
+          "⏰ Live chat is available Mon–Fri 9 AM–7 PM | Sat–Sun 10 AM–4 PM. Leave your contact details, and we’ll reach out. End the chat to continue with SmartBot.",
         email: sendLiveMail, // ✅ Add user email
       };
 
