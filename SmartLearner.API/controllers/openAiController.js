@@ -446,6 +446,284 @@ const chatbot = async (req, res) => {
 
   /////////////////////////////////////////
 
+  if (
+    message.toLowerCase().includes("corporate responsbilities") ||
+    message.toLowerCase().includes("corporate responsbility")
+  ) {
+    try {
+      let data =
+        "Here at SmartLearner driving school it is our social responsibility to reducing our carbon footprint! Throughout 2024 and the future we plan to take steps towards becoming a sustainable and eco-friendly company.\n You can visit our page <a href='https://smartlearner.com/Corporate-Responsbilities' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  if (
+    message.toLowerCase().includes("electric car scheme") ||
+    message.toLowerCase().includes("electric car")
+  ) {
+    try {
+      let data =
+        "Here at SmartLearner Driving school we are committed to reducing our carbon footprint! Throughout 2024 and the future, we continuously strive to become an even more sustainable and eco-friendly company.\n You can visit our page <a href='https://smartlearner.com/Electric-Car-Scheme' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (
+    message.toLowerCase().includes("going green project") ||
+    message.toLowerCase().includes("going green")
+  ) {
+    try {
+      let data =
+        "SmartLearner Driving School champions environmental sustainability. Through our Going Green Project, we inspire eco-conscious driving and advocate for environmental preservation through tree planting and education. Committed to reducing our carbon footprint, we continuously strive to become a sustainable and eco-friendly company.\n You can visit our page <a href='https://smartlearner.com/Going-Green-Project' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (
+    message.toLowerCase().includes("communities champions") ||
+    message.toLowerCase().includes("community champion")
+  ) {
+    try {
+      let data =
+        "The local school for local people Winners of Intelligent Instructors Awards 2023 & 2024 'Community Champion Of The Year'\n You can visit our page <a href='https://smartlearner.com/Communities-Champions' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (
+    message.toLowerCase().includes("We proudly support") ||
+    message.toLowerCase().includes("partnership") ||
+    message.toLowerCase().includes("in partnership with") ||
+    message.toLowerCase().includes("our partners") ||
+    message.toLowerCase().includes("our partnership with") ||
+    message.toLowerCase().includes("partnership with") ||
+    message.toLowerCase().includes("support with")
+  ) {
+    try {
+      let data =
+        " You can visit our page <a href='https://smartlearner.com/We-Proudly-Support' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (
+    message.toLowerCase().includes("go cv") ||
+    message.toLowerCase().includes("go cv partnership") ||
+    message.toLowerCase().includes("cv partnership") ||
+    message.toLowerCase().includes("in collaboration with")
+  ) {
+    try {
+      let data =
+        "SmartLearner Driving School regularly sponsors and partners with GO CV to support events and attractions for underprivileged individuals and families in coventry.\n You can visit our page <a href='https://smartlearner.com/Go-Cv' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (
+    message.toLowerCase().includes("our office green") ||
+    message.toLowerCase().includes("green efforts") ||
+    message.toLowerCase().includes("office green efforts")
+  ) {
+    try {
+      let data =
+        "Here at Smart Learner driving school we are committed to reducing our carbon footprint! We plan to take steps towards becoming a more sustainable and eco-friendly company.\n You can visit our page <a href='https://smartlearner.com/Our-Office-Green-Efforts' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  if (message.toLowerCase().includes("honest truth")) {
+    try {
+      let data =
+        "SmartLearner have teamed up with First car on their 'The Honest Truth' campaign to help deliver their road safety project across the West MidLands and Warwickshire!\n You can visit our page <a href='https://smartlearner.com/The-Honest-Truth' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  if (message.toLowerCase().includes("terms and conditions")) {
+    try {
+      let data =
+        "Welcome to our Terms and Conditions page. \n You can visit our page <a href='https://smartlearner.com/term-and-condition' target='_blank'>Click Here</a>";
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  /////////////////////////////////////////////
+  ///////////////////////////////////////////
+  /////////////////////////////////
+
   // =================================================
   if (
     message.toLowerCase().includes("intensive course practical test") ||

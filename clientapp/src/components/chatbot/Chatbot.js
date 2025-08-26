@@ -287,11 +287,23 @@ const Chatbot = () => {
   };
   // //////////////////////////////////
   const getUKDate = () => {
-    return new Date(
-      new Date().toLocaleString("en-GB", {
-        timeZone: "Europe/London",
-      })
-    );
+    const ukDateStr = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/London",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(new Date());
+
+    // Parse "dd/mm/yyyy, HH:MM:SS" into a Date object manually
+    const [datePart, timePart] = ukDateStr.split(", ");
+    const [day, month, year] = datePart.split("/");
+    const [hours, minutes, seconds] = timePart.split(":");
+
+    return new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
   };
 
   const isWithinSupportHours = () => {
@@ -323,6 +335,7 @@ const Chatbot = () => {
     localStorage.setItem("liveChat", "true");
 
     const isAvailable = isWithinSupportHours();
+    console.log("📡 Is live chat available?", isAvailable);
 
     if (!isAvailable) {
       // Inform user via chatbot message

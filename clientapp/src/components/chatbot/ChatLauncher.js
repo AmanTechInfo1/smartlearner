@@ -17,6 +17,7 @@ const ChatLauncher = () => {
     const popupShown = sessionStorage.getItem("popupShown");
     if (!popupShown) {
       setShowPopup(true);
+      setIsOpen(true);
       sessionStorage.setItem("popupShown", "true");
     }
   }, []);
