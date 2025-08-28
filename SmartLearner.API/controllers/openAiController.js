@@ -75,20 +75,6 @@ const chatbot = async (req, res) => {
     }
   }
 
-  const greetings = ["hi", "hello", "hey", "hola", "greetings", "howdy"];
-  if (greetings.some((greet) => message.toLowerCase().includes(greet))) {
-    const greetMessage = "Hi! How can I assist you today?";
-    await saveMessage({ sessionId, sender: "admin", content: greetMessage });
-    return res.json({
-      reply: {
-        message: "greeted successfully",
-        statusCode: 200,
-        success: true,
-        data: greetMessage,
-      },
-    });
-  }
-
   if (
     message.toLowerCase().includes("my subscription") ||
     message.toLowerCase().includes("purchased packages")
@@ -443,7 +429,34 @@ const chatbot = async (req, res) => {
       });
     }
   }
+  // ////////////////////////////////////////////
+  if (message.toLowerCase().includes("pass theory before")) {
+    try {
+      let data =
+        "No you don’t not need to pass theory first, sometimes doing both together helps your learning process. You will need to pass your theory before you can book your practical test though.";
 
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
   /////////////////////////////////////////
 
   if (
@@ -571,6 +584,8 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("We proudly support") ||
     message.toLowerCase().includes("partnership") ||
     message.toLowerCase().includes("in partnership with") ||
+    message.toLowerCase().includes("our partner") ||
+    message.toLowerCase().includes("partners") ||
     message.toLowerCase().includes("our partners") ||
     message.toLowerCase().includes("our partnership with") ||
     message.toLowerCase().includes("partnership with") ||
@@ -606,6 +621,8 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("go cv") ||
     message.toLowerCase().includes("go cv partnership") ||
     message.toLowerCase().includes("cv partnership") ||
+    message.toLowerCase().includes("go cv partners") ||
+    message.toLowerCase().includes("go cv partner") ||
     message.toLowerCase().includes("in collaboration with")
   ) {
     try {
@@ -693,7 +710,13 @@ const chatbot = async (req, res) => {
     }
   }
 
-  if (message.toLowerCase().includes("terms and conditions")) {
+  if (
+    message.toLowerCase().includes("terms and conditions") ||
+    message.toLowerCase().includes("term and condition") ||
+    message.toLowerCase().includes("term and conditions") ||
+    message.toLowerCase().includes("terms and condition") ||
+    message.toLowerCase().includes("t&c")
+  ) {
     try {
       let data =
         "Welcome to our Terms and Conditions page. \n You can visit our page <a href='https://smartlearner.com/term-and-condition' target='_blank'>Click Here</a>";
@@ -786,7 +809,9 @@ const chatbot = async (req, res) => {
   if (
     message.toLowerCase().includes("how to make a payment") ||
     message.toLowerCase().includes("payment") ||
-    message.toLowerCase().includes("how to pay")
+    message.toLowerCase().includes("how to pay") ||
+    message.toLowerCase().includes("how do i pay") ||
+    message.toLowerCase().includes("how do pay")
   ) {
     try {
       let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Stripe with your card details. \n Need help? Click the “Live Chat Agent” button.`;
@@ -813,7 +838,72 @@ const chatbot = async (req, res) => {
       });
     }
   }
+  /////////////////////////////////////////////
 
+  if (message.toLowerCase().includes("change my lesson")) {
+    try {
+      let data = `You can contact your instructor directly, call our office on (put the phone number) or connect to an agent via live chat `;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("discount") ||
+    message.toLowerCase().includes("discounts")
+  ) {
+    try {
+      let data = `We offer bulk buy discounts and beginners discounts. You can view our packages here: \n • Theory support - <a href="https://smartlearner.com/Theory-Support/Theory-package" >visit now</a>
+• Automatic - <a href="https://smartlearner.com/automatic-transmisson" >visit now</a>
+• Manual - <a href="https://smartlearner.com/manual" >visit now</a>
+• Pass plus - <a href="https://smartlearner.com/pass-plus" >visit now</a> 
+• Intensive - <a href="https://smartlearner.com/intensive" >visit now</a>
+• Instructor training part one - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Instructor training part two - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Instructor training part three - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>
+• Workshop - <a href="https://smartlearner.com/driving-instructor-packages" >visit now</a>`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
   ////////////////////////////////////////////////
   // if (
   //   message
@@ -848,7 +938,8 @@ const chatbot = async (req, res) => {
   ////////////////////////////////////////////////
   if (
     message.toLowerCase().includes("refund policy") ||
-    message.toLowerCase().includes("refund")
+    message.toLowerCase().includes("refund") ||
+    message.toLowerCase().includes("cancellation policy")
   ) {
     try {
       let data = `If you cancel your lesson within 24 hours to its time, you will be charged at full rate. \n All packages have a 6-month validity period, after this, any unused prepaid hours are invalidated. \n Intensive courses are nonrefundable within 7 days of its start date \n Beginners package is nonrefundable 
@@ -995,6 +1086,92 @@ const chatbot = async (req, res) => {
   ) {
     try {
       let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>for us to provide support.`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ///////////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("instructor cancelled on me") ||
+    message.toLowerCase().includes("instructor cancelled")
+  ) {
+    try {
+      let data = `We are sorry to hear your instructor has cancelled, we assure you this would not be without good reason. You can contact your instructor directly to rebook or contact our office on (put phone number in) 
+`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  ////////////////////////////////////////////////////
+  if (message.toLowerCase().includes("contact you")) {
+    try {
+      let data = `Please visit our page here: <a href='https://smartlearner.com/Contact-Us' target='_blank'>Click Here</a>`;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  ////////////////////////////////////////////////////
+  if (message.toLowerCase().includes("join smartLearner")) {
+    try {
+      let data = `That’s great to hear, visit our franchise page here: <a href='https://smartlearner.com/Driving-Instructor-Franchise' target='_blank'>Click Here</a> or give our office a call on +44 02475092784`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1172,9 +1349,69 @@ const chatbot = async (req, res) => {
     }
   }
   // ============================================
-  if (message.toLowerCase().includes("franchise")) {
+  if (message.toLowerCase().includes("what is franchise")) {
     try {
-      let data = `Smartlearner offers both a part time and full time franchise. For more information contact us on 02475092784`;
+      let data = `Smartlearner offers both a part time and full time franchise. For more information contact us on 02475092784 and vist our page <a href='https://smartlearner.com/Driving-Instructor-Franchise' target='_blank'>Click Here</a> `;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ============================================
+  if (
+    message.toLowerCase().includes("how much is franchise") ||
+    message.toLowerCase().includes("much is franchise ")
+  ) {
+    try {
+      let data = `We offer franchise options both part time and full time with car lease or with your own car. Contact us on 02475092784 to discuss your options `;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+  // ============================================
+  if (
+    message.toLowerCase().includes("my instructor charged") ||
+    message.toLowerCase().includes("instructor charged")
+  ) {
+    try {
+      let data = `We do have a 24 hour cancellation policy in place for all lessons to help protect our instructors. You can view this policy on our terms and conditions <a href='https://smartlearner.com/term-and-condition' target='_blank'>Click Here</a> `;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
