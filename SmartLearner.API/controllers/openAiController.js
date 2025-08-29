@@ -811,7 +811,8 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("payment") ||
     message.toLowerCase().includes("how to pay") ||
     message.toLowerCase().includes("how do i pay") ||
-    message.toLowerCase().includes("how do pay")
+    message.toLowerCase().includes("how do pay") ||
+    message.toLowerCase().includes("pay for lesson")
   ) {
     try {
       let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Revolut with your card details. \n Need help? Click the “Live Chat Agent” button.`;
@@ -842,7 +843,7 @@ const chatbot = async (req, res) => {
 
   if (message.toLowerCase().includes("change my lesson")) {
     try {
-      let data = `You can contact your instructor directly, call our office on (put the phone number) or connect to an agent via live chat `;
+      let data = `You can contact your instructor directly, call our office on 02475092784 or connect to an agent via live chat `;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1349,7 +1350,10 @@ const chatbot = async (req, res) => {
     }
   }
   // ============================================
-  if (message.toLowerCase().includes("what is franchise")) {
+  if (
+    message.toLowerCase().includes("what is franchise") ||
+    message.toLowerCase().includes("instructor franchise")
+  ) {
     try {
       let data = `Smartlearner offers both a part time and full time franchise. For more information contact us on 02475092784 and vist our page <a href='https://smartlearner.com/Driving-Instructor-Franchise' target='_blank'>Click Here</a> `;
 
