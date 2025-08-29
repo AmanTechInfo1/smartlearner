@@ -210,7 +210,8 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("theory portal") ||
     message.toLowerCase().includes("theory packages") ||
     message.toLowerCase().includes("theory package") ||
-    message.toLowerCase().includes("theory training")
+    message.toLowerCase().includes("theory training") ||
+    message.toLowerCase().includes("theory subscription")
   ) {
     try {
       const categories = await Plans.find({ subCat: "theory" });
@@ -332,7 +333,11 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("book a lesson") ||
     message.toLowerCase().includes("driving lesson") ||
     message.toLowerCase().includes("driving lessons") ||
-    message.toLowerCase().includes("what do you offer")
+    message.toLowerCase().includes("what do you offer") ||
+    message.toLowerCase().includes("what are price") ||
+    message.toLowerCase().includes("what are prices") ||
+    message.toLowerCase().includes("how much is cost") ||
+    message.toLowerCase().includes("how much is price")
   ) {
     try {
       const data = `Here are our available lessons categories please choose and search which lesson you want to book and also you can visit through links also:
@@ -841,9 +846,43 @@ const chatbot = async (req, res) => {
   }
   /////////////////////////////////////////////
 
-  if (message.toLowerCase().includes("change my lesson")) {
+  if (
+    message.toLowerCase().includes("change my lesson") ||
+    message.toLowerCase().includes("change lesson")
+  ) {
     try {
       let data = `You can contact your instructor directly, call our office on 02475092784 or connect to an agent via live chat `;
+
+      await saveMessage({ sessionId, sender: "admin", content: data });
+
+      return res.json({
+        reply: {
+          message: "reply successfully",
+          statusCode: 201,
+          success: true,
+          data: data,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res.status(500).json({
+        reply: {
+          message: "Server error while fetching products.",
+          statusCode: 500,
+          success: false,
+          data: null,
+        },
+      });
+    }
+  }
+
+  ////////////////////////////////////////////
+  if (
+    message.toLowerCase().includes("book driving test") ||
+    message.toLowerCase().includes("help book driving")
+  ) {
+    try {
+      let data = `If you are learning with us we can help you look for a test date `;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1143,7 +1182,10 @@ const chatbot = async (req, res) => {
   }
 
   ////////////////////////////////////////////////////
-  if (message.toLowerCase().includes("contact you")) {
+  if (
+    message.toLowerCase().includes("contact you") ||
+    message.toLowerCase().includes("how to contact")
+  ) {
     try {
       let data = `Please visit our page here: <a href='https://smartlearner.com/Contact-Us' target='_blank'>Click Here</a>`;
 
