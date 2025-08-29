@@ -814,7 +814,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("how do pay")
   ) {
     try {
-      let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Stripe with your card details. \n Need help? Click the “Live Chat Agent” button.`;
+      let data = `Click on any lesson or package to go directly to the checkout page.\n Click “Proceed to Checkout”, enter your billing details, and then click “Checkout”. \n You can complete your payment securely using PayPal or Revolut with your card details. \n Need help? Click the “Live Chat Agent” button.`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1085,7 +1085,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("instructor not come")
   ) {
     try {
-      let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>for us to provide support.`;
+      let data = `If your instructor has not turned up, please wait 5-10 minutes, they may be stuck in traffic, or may have had their prior lesson overlap onto yours. If they have not turned up after 5-10 minutes after your lesson start time, call or contact them if you have their number. If they have not picked up and are not available, please call us on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a> for us to provide support.`;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
 
@@ -1115,7 +1115,7 @@ const chatbot = async (req, res) => {
     message.toLowerCase().includes("instructor cancelled")
   ) {
     try {
-      let data = `We are sorry to hear your instructor has cancelled, we assure you this would not be without good reason. You can contact your instructor directly to rebook or contact our office on (put phone number in) 
+      let data = `We are sorry to hear your instructor has cancelled, we assure you this would not be without good reason. You can contact your instructor directly to rebook or contact our office on 02475092784 or email us at <a href="mailto:admin@smartlearner.com" target="_blank">admin@smartlearner.com</a>
 `;
 
       await saveMessage({ sessionId, sender: "admin", content: data });
@@ -1169,7 +1169,7 @@ const chatbot = async (req, res) => {
     }
   }
   ////////////////////////////////////////////////////
-  if (message.toLowerCase().includes("join smartLearner")) {
+  if (message.toLowerCase().includes("join smartlearner")) {
     try {
       let data = `That’s great to hear, visit our franchise page here: <a href='https://smartlearner.com/Driving-Instructor-Franchise' target='_blank'>Click Here</a> or give our office a call on +44 02475092784`;
 
