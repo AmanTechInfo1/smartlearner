@@ -14,6 +14,7 @@ import stripLogo from "../../../assets/images/Stripe-logo.png";
 
 import RevolutCheckout from "@revolut/checkout";
 import { useRef } from "react";
+import Loader from "../../../components/loader/Loader";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -243,62 +244,62 @@ export default function PaymentProcessing() {
   };
 
   return (
-    <div className="paymentComponent">
-      <p style={{ fontSize: "1.3rem", color: "white", textAlign: "center" }}>
-        Complete your payment using PayPal or a debit card.
-      </p>
-      <div>
-        <div className="payment-container">
-          {webloading && <LoadingWeb />}
+    <>
+      {webloading && <Loader />}
+      <div className="paymentComponent">
+        <p style={{ fontSize: "1.3rem", color: "white", textAlign: "center" }}>
+          Complete your payment using PayPal or a debit card.
+        </p>
+        <div>
+          <div className="payment-container">
+            <h1>
+              Amount to be paid: <span>£{carting.total}</span>
+            </h1>
+            <h3>
+              Sub Total: <span>£{carting.subtotal}</span>
+            </h3>
+            <h3>
+              Service Charge: <span>£{carting.serviceCharge}</span>
+            </h3>
 
-          <h1>
-            Amount to be paid: <span>£{carting.total}</span>
-          </h1>
-          <h3>
-            Sub Total: <span>£{carting.subtotal}</span>
-          </h3>
-          <h3>
-            Service Charge: <span>£{carting.serviceCharge}</span>
-          </h3>
-
-          {isPaymentCreated && !loading && (
-            <div>
-              <img src={paypalLogo} alt="paypal" />
-              <PayPalButtons
-                style={{ layout: "vertical" }}
-                createOrder={(data, actions) => {
-                  return actions.order.create({
-                    purchase_units: [
-                      {
-                        amount: {
-                          value: carting.total.toFixed(2),
-                          currency_code: "GBP",
+            {isPaymentCreated && !loading && (
+              <div>
+                <img src={paypalLogo} alt="paypal" />
+                <PayPalButtons
+                  style={{ layout: "vertical" }}
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: carting.total.toFixed(2),
+                            currency_code: "GBP",
+                          },
                         },
-                      },
-                    ],
-                  });
-                }}
-                onApprove={handleApprove}
-                onError={handleError}
-                fundingSource="paypal"
-              />
+                      ],
+                    });
+                  }}
+                  onApprove={handleApprove}
+                  onError={handleError}
+                  fundingSource="paypal"
+                />
 
-              {/* Stripe Payment */}
-              <img src={stripLogo} alt="stripe" />
-              <form onSubmit={handleStripePayment}>
-                <CardElement className="stripe-card-input" />
-                <button
-                  className="payment-button"
-                  type="submit"
-                  disabled={!stripe}>
-                  Pay with Stripe
-                </button>
-              </form>
+                {/* Stripe Payment */}
+                <img src={stripLogo} alt="stripe" />
+                <form onSubmit={handleStripePayment}>
+                  <CardElement className="stripe-card-input" />
+                  <button
+                    className="payment-button"
+                    type="submit"
+                    disabled={!stripe}>
+                    Pay with Stripe
+                  </button>
+                </form>
 
-              {stripeError && (
-                <div className="error-message">{stripeError}</div>
-              )}
-              {/* <div className="revolut-section" style={{ marginTop: "20px" }}>
+                {stripeError && (
+                  <div className="error-message">{stripeError}</div>
+                )}
+                {/* <div className="revolut-section" style={{ marginTop: "20px" }}>
                 <img
                   src="https://seeklogo.com/images/R/revolut-logo-F5735C9769-seeklogo.com.png"
                   alt="Revolut"
@@ -310,25 +311,26 @@ export default function PaymentProcessing() {
                   Pay with Revolut
                 </button>
               </div> */}
-              <div style={{ marginTop: "20px" }}>
-                <button className={styles.revolutbutton} onClick={revolutbtn}>
-                  Pay with Revolut
-                </button>
+                <div style={{ marginTop: "20px" }}>
+                  <button className={styles.revolutbutton} onClick={revolutbtn}>
+                    Pay with Revolut
+                  </button>
 
-                <div className={styles.revolutbuttoncontainer2}>
-                  <div
-                    ref={revolutContainerRef}
-                    className="revolut-pay-button"
-                  />
+                  <div className={styles.revolutbuttoncontainer2}>
+                    <div
+                      ref={revolutContainerRef}
+                      className="revolut-pay-button"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {loading && !isPaymentCreated && <div>Loading... Please wait.</div>}
+            {loading && !isPaymentCreated && <div>Loading... Please wait.</div>}
+          </div>
         </div>
+        {webloading && <LoadingWeb />}
       </div>
-      {webloading && <LoadingWeb />}
-    </div>
+    </>
   );
 }

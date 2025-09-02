@@ -495,7 +495,7 @@ const TermsAndConditions = () => {
             </ul>
           </section>
           <section className={styles.tcBoxes}>
-            <h2 className={styles.Tcsubtitle}>12. Acknowledgementn</h2>
+            <h2 className={styles.Tcsubtitle}>12. Acknowledgement</h2>
             <ul>
               <li>
                 Where You make any payments and the Instructor fails to pass on

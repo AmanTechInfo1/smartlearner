@@ -465,9 +465,8 @@ class OrderController {
     const { amount, currency, orderId } = req.body;
 
     try {
-      const order = await Paypalorder.findById(
-        new mongoose.Types.ObjectId(orderId)
-      );
+      const order = await Paypalorder.findById(orderId);
+      console.log("dasdjal", orderId);
       if (!order) {
         return res
           .status(404)
@@ -518,7 +517,7 @@ class OrderController {
       // Send success email
       await orderService.sendEmail(order, "completed", "Revolut");
 
-      res.status(200).json({ 
+      res.status(200).json({
         success: true,
         message: "Order marked as paid and email sent",
       });
