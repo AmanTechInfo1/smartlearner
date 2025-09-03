@@ -76,6 +76,7 @@ export default function FinalCheckout(props) {
         serviceCharge: serviceCharge,
         total: total,
         myCart: cleanCartItems,
+        orderNotes: orderNotes,
       };
       dispatch(
         getCompleteCheckout(finalArr, () => {
@@ -121,8 +122,7 @@ export default function FinalCheckout(props) {
               className="form-textarea"
               value={orderNotes}
               onChange={handleOrderNotesChange}
-              placeholder="Notes about your order, e.g. special notes for delivery"
-            ></textarea>
+              placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
           </div>
         </form>
         <div>
@@ -154,7 +154,6 @@ export default function FinalCheckout(props) {
             </div>
             {isError && (
               <div className="text-danger text-center mt-2">
-                
                 You must agree to both terms and conditions before proceeding.
               </div>
             )}
@@ -166,7 +165,6 @@ export default function FinalCheckout(props) {
                   callFunApi();
                 }}
                 type="submit" // Change to type="button" to prevent form submission
-                
               >
                 checkout
               </button>

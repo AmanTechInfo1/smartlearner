@@ -683,6 +683,10 @@ class OrderService {
                   <th>Phone No.</th>
                   <td>${orderDetails.phoneNumber}</td>
                 </tr>
+                  <tr>
+                  <th>Order Notes</th>
+                  <td>${orderDetails.ordernotes}</td>
+                </tr>
                 <tr>
                   <th>Address</th>
                   <td>${orderDetails.streetAddress1} ${

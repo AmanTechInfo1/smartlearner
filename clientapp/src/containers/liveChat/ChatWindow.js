@@ -4,6 +4,7 @@ import axios from "axios";
 import { IoSend } from "react-icons/io5";
 import userImg from "../../assets/images/userImg.jpeg";
 import botImg from "../../assets/images/botImg.jpeg";
+import popupSound from "../../assets/longpopup.wav";
 
 const ChatWindow = ({ sessionId, onBack }) => {
   const [messages, setMessages] = useState([]);
@@ -11,6 +12,11 @@ const ChatWindow = ({ sessionId, onBack }) => {
 
   const [input, setInput] = useState("");
   const endRef = useRef();
+
+  const playSound = () => {
+    const audio = new Audio(popupSound);
+    audio.play().catch((e) => console.error("Sound playback failed:", e));
+  };
 
   useEffect(() => {
     axios
@@ -24,6 +30,10 @@ const ChatWindow = ({ sessionId, onBack }) => {
     socket.emit("adminJoin", { sessionId });
 
     const messageHandler = (msg) => {
+      if (msg.sender === "user") {
+        playSound();
+      }
+
       if (msg.sessionId === sessionId) {
         setMessages((msgs) => [...msgs, msg]);
         if (msg.email && !userEmail) {

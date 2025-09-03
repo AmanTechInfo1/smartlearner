@@ -121,6 +121,14 @@ export default function Adi3Videos() {
     "https://www.youtube.com/embed/ZcGHOd0dlPQ",
     "https://www.youtube.com/embed/sJYbPlMSMbg",
     "https://www.youtube.com/embed/4LLujhoI308",
+    "https://www.youtube.com/embed/4pp9okPgHs8",
+    "https://www.youtube.com/embed/VZBFmwv6qYk",
+    "https://www.youtube.com/embed/GsuG9Y0otX8",
+    "https://www.youtube.com/embed/tSfVRIXd3OA",
+    "https://www.youtube.com/embed/7baN8EobcAw",
+    "https://www.youtube.com/embed/Pa-zR6toI2E",
+    "https://www.youtube.com/embed/hz86gIZqmqc",
+    "https://www.youtube.com/embed/uXT2-5ymAjA",
   ];
 
   return (
