@@ -169,21 +169,19 @@ export default function AdiPartThree() {
       <div className={styles.AdiPartOne}>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>
-            Driving instructor training in Rugby | Bedworth | Nuneaton
-          </title>
+          <title>Driving instructor training in Rugby</title>
           <meta
             name="description"
             content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
           />
-           <meta
-          property="og:title"
-          content="Driving instructor training in Rugby | Bedworth | Nuneaton"
-        />
-        <meta
-          property="og:description"
-          content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test."
-        />
+          <meta
+            property="og:title"
+            content="Driving instructor training in Rugby "
+          />
+          <meta
+            property="og:description"
+            content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test."
+          />
           <link
             rel="canonical"
             href="https://smartlearner.com/part-three-theory-questions"
@@ -255,8 +253,7 @@ export default function AdiPartThree() {
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className={styles.adiPart3firstheading}
-            >
+              className={styles.adiPart3firstheading}>
               What's Next? The Part 3 ADI Exam
             </motion.h1>
 
@@ -264,8 +261,7 @@ export default function AdiPartThree() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className={styles.adiPart3firstintro}
-            >
+              className={styles.adiPart3firstintro}>
               The Part 3 exam is your opportunity to showcase your ability to
               teach others, not just drive. This is the instructional phase of
               the ADI exam, where you will be assessed on how well you can
@@ -277,16 +273,14 @@ export default function AdiPartThree() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
-              className={styles.adiPart3firstsubheading}
-            >
+              className={styles.adiPart3firstsubheading}>
               What to Expect in Part 3:
             </motion.h2>
 
             <div className={styles.adiPart3firstcardsWrapper}>
               <motion.div
                 className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
+                whileHover={{ scale: 1.05 }}>
                 <BookOpenCheck className={styles.adiPart3firsticon} />
                 <h3>Instructing a Learner Driver</h3>
                 <p>
@@ -298,8 +292,7 @@ export default function AdiPartThree() {
 
               <motion.div
                 className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
+                whileHover={{ scale: 1.05 }}>
                 <Lightbulb className={styles.adiPart3firsticon} />
                 <h3>Assessment Areas</h3>
                 <p>
@@ -310,8 +303,7 @@ export default function AdiPartThree() {
 
               <motion.div
                 className={styles.adiPart3firstcard}
-                whileHover={{ scale: 1.05 }}
-              >
+                whileHover={{ scale: 1.05 }}>
                 <Timer className={styles.adiPart3firsticon} />
                 <h3>Duration</h3>
                 <p>

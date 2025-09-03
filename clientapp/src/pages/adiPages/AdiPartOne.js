@@ -174,17 +174,14 @@ export default function AdiPartOne() {
     <div className={styles.AdiPartOne}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Driving instructor training in Kenilworth | Warwick | Solihull |
-          Hinckley | Rugby
-        </title>
+        <title>Driving instructor training in Kenilworth</title>
         <meta
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
         <meta
           property="og:title"
-          content="Driving instructor training in Kenilworth | Warwick | Solihull | Hinckley | Rugby"
+          content="Driving instructor training in Kenilworth "
         />
         <meta
           property="og:description"
@@ -645,8 +642,7 @@ export default function AdiPartOne() {
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen
-                ></iframe>
+                  allowfullscreen></iframe>
               </div>
             </div>
           </div>

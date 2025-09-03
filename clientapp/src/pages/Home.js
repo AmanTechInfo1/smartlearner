@@ -159,13 +159,19 @@ export default function Home() {
     <div className={styles.homepage}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Smartlearner driving school in coventry, Bedworth, Nuneaton, Kenilworth - Driving lessons</title>
+        <title>Smartlearner driving school in coventry Driving lessons</title>
         <meta
           name="description"
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
-           <meta property="og:title" content="Smartlearner driving school in coventry, Bedworth, Nuneaton, Kenilworth" />
-           <meta property="og:description" content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. " />
+        <meta
+          property="og:title"
+          content="Smartlearner driving school in coventry"
+        />
+        <meta
+          property="og:description"
+          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
+        />
       </Helmet>
       <div className={styles.homepageContainerDiv}>
         <section className={styles.homeSection}>
@@ -220,8 +226,7 @@ export default function Home() {
               padding: "4rem 2rem",
               width: "100%",
               margin: "2rem auto",
-            }}
-          >
+            }}>
             <ImagesCarousel />
           </div>
           <div className={styles.spiralImgContainer}>

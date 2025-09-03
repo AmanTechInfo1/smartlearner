@@ -480,16 +480,14 @@ export default function AdiPartTwo() {
     <div className={styles.AdiPartOne}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Driving instructor training in Solihull | Hinckley | Rugby
-        </title>
+        <title>Driving instructor training in Solihull</title>
         <meta
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
         <meta
           property="og:title"
-          content="Driving instructor training in Solihull | Hinckley | Rugby"
+          content="Driving instructor training in Solihull"
         />
         <meta
           property="og:description"
@@ -539,8 +537,7 @@ export default function AdiPartTwo() {
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+              allowFullScreen></iframe>
           </div>
         </div>
 
@@ -571,8 +568,7 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible ? styles.glossarycontainerOneshow : ""
-          }`}
-        >
+          }`}>
           <h2 className={styles.glossarysubTitle}>
             In this module, you'll explore a blend of theory and practical
             advice to help you master:
@@ -608,8 +604,7 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible2 ? styles.glossarycontainerOneshow : ""
-          }`}
-        >
+          }`}>
           <div className={styles.videoContainer}>
             <h2 className={styles.videotitle}>Watch Our Video</h2>
             <div className={styles.videodesign}>
@@ -620,8 +615,7 @@ export default function AdiPartTwo() {
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+                allowFullScreen></iframe>
             </div>
           </div>
           <div className={styles.videoContainer}>
@@ -634,8 +628,7 @@ export default function AdiPartTwo() {
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+                allowFullScreen></iframe>
             </div>
           </div>
           <ul className={styles.glossarylist}>
@@ -696,8 +689,7 @@ export default function AdiPartTwo() {
         <div
           className={`${styles.glossarycontainer} ${
             isVisible3 ? styles.glossarycontainerOneshow : ""
-          }`}
-        >
+          }`}>
           <h2 className={styles.glossarysubTitle}>
             The driving ability test includes a mix of:
           </h2>
