@@ -286,65 +286,66 @@ const Chatbot = () => {
   const mediaStreamRef = useRef(null);
   const voiceRef = useRef(null);
 
-  useEffect(() => {
-    // Request microphone access on mount and initialize VoiceToText
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      .then((stream) => {
-        mediaStreamRef.current = stream;
-
-        voiceRef.current = new VoiceToText({
-          converter: "vosk",
-          language: "en",
-          sampleRate: 16000,
-          mediaStream: stream, // Pass stream here to avoid getAudioTracks undefined
-        });
-
-        voiceRef.current.init?.();
-
-        const handleVoice = (e) => {
-          const { text, type } = e.detail;
-          if (type === "INTERIM") {
-            setLiveTranscript(text); // show real-time text
-          } else if (type === "FINAL") {
-            setInput((prev) => (prev ? prev + " " : "") + text);
-            setLiveTranscript(""); // clear after final
-          }
-        };
-
-        window.addEventListener("voice", handleVoice);
-
-        return () => {
-          window.removeEventListener("voice", handleVoice);
-          voiceRef.current?.stop?.();
-          if (mediaStreamRef.current) {
-            mediaStreamRef.current.getTracks().forEach((track) => track.stop());
-          }
-        };
-      })
-      .catch((err) => {
-        console.error("Microphone access denied or error:", err);
-        alert(
-          "Please allow microphone access for speech-to-text functionality."
-        );
-      });
-  }, []);
-
-  const toggleListening = () => {
-    if (!voiceRef.current) {
-      alert("Voice recognition not initialized.");
+  const toggleListening = async () => {
+    if (isListening2) {
+      // Stop listening
+      voiceRef.current?.stop();
+      setIsListening2(false);
+      setLiveTranscript("");
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+      voiceRef.current = null;
       return;
     }
 
-    if (isListening2) {
-      voiceRef.current.stop();
-      setIsListening2(false);
-    } else {
-      setLiveTranscript("");
+    // If not listening, request mic and start
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaStreamRef.current = stream;
+
+      voiceRef.current = new VoiceToText({
+        converter: "vosk",
+        language: "en",
+        sampleRate: 16000,
+        mediaStream: stream,
+      });
+
+      voiceRef.current.init?.();
+
+      // Listen to voice events
+      const handleVoice = (e) => {
+        const { text, type } = e.detail;
+        if (type === "INTERIM") {
+          setLiveTranscript(text);
+        } else if (type === "FINAL") {
+          setInput((prev) => (prev ? prev + " " : "") + text);
+          setLiveTranscript("");
+        }
+      };
+
+      window.addEventListener("voice", handleVoice);
+
       voiceRef.current.start();
       setIsListening2(true);
+
+      // Cleanup listener when stopping
+      voiceRef.current._cleanup = () => {
+        window.removeEventListener("voice", handleVoice);
+      };
+    } catch (err) {
+      console.error("Microphone access denied or error:", err);
+      alert("Please allow microphone access for speech-to-text.");
     }
   };
+
+  useEffect(() => {
+    if (!isListening2 && voiceRef.current?._cleanup) {
+      voiceRef.current._cleanup();
+    }
+  }, [isListening2]);
+
   //////////////////////////////////////////////
 
   // ////////////////////////////////////
