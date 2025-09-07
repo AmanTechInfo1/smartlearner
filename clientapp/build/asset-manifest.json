@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.5d084760.css",
-    "main.js": "/static/js/main.c510b3bc.js",
+    "main.js": "/static/js/main.d868565d.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
+    "static/js/562.c8725e7c.chunk.js": "/static/js/562.c8725e7c.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
@@ -40,6 +41,7 @@
     "static/media/lessonPlanning.jpg": "/static/media/lessonPlanning.ab8d04769956ea1a1432.jpg",
     "static/media/passplusbanner.png": "/static/media/passplusbanner.10c2812af0a5f4ebc148.png",
     "static/media/interventionbanner.jpg": "/static/media/interventionbanner.af0f80430ff3a6245e2c.jpg",
+    "static/media/vosk.wasm": "/static/media/vosk.7bba807550480b123de3.wasm",
     "static/media/risk-management.jpg": "/static/media/risk-management.d01f475f0bafe973c679.jpg",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
@@ -243,6 +245,7 @@
     "static/media/Meeting-oncoming-traffic.png": "/static/media/Meeting-oncoming-traffic.940cef2bc50b05dcbee1.png",
     "static/media/motorway-studs-1-rotated.jpg": "/static/media/motorway-studs-1-rotated.08d0fb244e69ebb208f7.jpg",
     "static/media/routesPlanning.jpg": "/static/media/routesPlanning.ecd8790f74a81f2feecf.jpg",
+    "static/media/vosk-worker.js": "/static/media/vosk-worker.901e32a02e5275b5a52a.js",
     "static/media/halloffame44.png": "/static/media/halloffame44.1bc38ffacd601aec0ee1.png",
     "static/media/halloffame22.png": "/static/media/halloffame22.739e47ad1f5359b293d1.png",
     "static/media/passplusround2.jpg": "/static/media/passplusround2.54669e6091d15d01c848.jpg",
@@ -326,6 +329,7 @@
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/majortomajorleft.png": "/static/media/majortomajorleft.bb88f2949e96bbf802bd.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
+    "static/media/voice2text-helper_bg.wasm": "/static/media/voice2text-helper_bg.755555ed9b9acdc54316.wasm",
     "static/media/RevolutLogo.png": "/static/media/RevolutLogo.cb6578976e775ba92002.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
@@ -406,11 +410,12 @@
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "main.5d084760.css.map": "/static/css/main.5d084760.css.map",
-    "main.c510b3bc.js.map": "/static/js/main.c510b3bc.js.map",
-    "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
+    "main.d868565d.js.map": "/static/js/main.d868565d.js.map",
+    "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map",
+    "562.c8725e7c.chunk.js.map": "/static/js/562.c8725e7c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5d084760.css",
-    "static/js/main.c510b3bc.js"
+    "static/js/main.d868565d.js"
   ]
 }
