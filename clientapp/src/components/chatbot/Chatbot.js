@@ -10,6 +10,8 @@ import { getAddToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { IoMic, IoMicOff } from "react-icons/io5";
 
+import VoiceToText from "voice2text";
+
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -277,6 +279,49 @@ const Chatbot = () => {
       }
     }
   };
+  ////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
+  const [transcript, setTranscript] = useState("");
+  const voice2textRef = useRef(null);
+
+  // Initialize voice2text once
+  useEffect(() => {
+    voice2textRef.current = new VoiceToText({
+      converter: "vosk",
+      language: "en",
+      sampleRate: 16000,
+    });
+    voice2textRef.current.init?.();
+
+    const handleVoiceEvent = (e) => {
+      if (e.detail.type === "FINAL") {
+        setTranscript((prev) => prev + " " + e.detail.text);
+      }
+    };
+
+    window.addEventListener("voice", handleVoiceEvent);
+
+    return () => {
+      window.removeEventListener("voice", handleVoiceEvent);
+      voice2textRef.current?.stop?.();
+    };
+  }, []);
+
+  const toggleVoiceRecognition = () => {
+    if (!voice2textRef.current) return;
+
+    if (isListening) {
+      voice2textRef.current.stop();
+      setIsListening(false);
+      setInput((prev) => prev + " " + transcript);
+      setTranscript("");
+    } else {
+      setTranscript("");
+      voice2textRef.current.start();
+      setIsListening(true);
+    }
+  };
+  //////////////////////////////////////////////
 
   // ////////////////////////////////////
   const handleSend = async () => {
@@ -702,8 +747,14 @@ const Chatbot = () => {
           {/* Show chatbot input if live chat has NOT been joined */}
           {emailSubmitted && !joinedChat ? (
             <div className="chat-input-area">
-              <button
+              {/* <button
                 onClick={handleVoiceInput}
+                className={`mic-btn ${isListening ? "listening" : ""}`}>
+                {isListening ? <IoMicOff /> : <IoMic />}
+              </button> */}
+
+              <button
+                onClick={toggleVoiceRecognition}
                 className={`mic-btn ${isListening ? "listening" : ""}`}>
                 {isListening ? <IoMicOff /> : <IoMic />}
               </button>
