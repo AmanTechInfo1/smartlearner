@@ -8,6 +8,7 @@ import botImg from "../../assets/images/botImg.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { IoMic, IoMicOff } from "react-icons/io5";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -23,6 +24,11 @@ const Chatbot = () => {
   const [password, setPassword] = useState("");
   const [passwordRequired, setPasswordRequired] = useState(false);
   const [passwordSubmitted, setPasswordSubmitted] = useState(false);
+  // Speech Recognition states
+  const [isListening, setIsListening] = useState(false);
+  const [isLiveListening, setIsLiveListening] = useState(false);
+  const recognitionRef = useRef(null);
+  const liveRecognitionRef = useRef(null);
 
   const getValidSession = () => {
     const saved = localStorage.getItem("sessionData");
@@ -131,12 +137,56 @@ const Chatbot = () => {
     };
   }, [sessionId]);
 
+  // //////////////speak//////////////
+  const cleanTextForSpeech = (htmlString) => {
+    if (!htmlString) return "";
+
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlString;
+
+    // 👉 Keep the inner text of <a> tags
+    const links = tempDiv.querySelectorAll("a");
+    links.forEach((link) => {
+      // Replace <a> with its textContent
+      const text = link.textContent || link.innerText || "";
+      link.replaceWith(text);
+    });
+
+    let text = tempDiv.textContent || tempDiv.innerText || "";
+
+    text = text
+      .replace(/\n/g, " ") // Convert newlines to space
+      .replace(/[*]/g, "") // Remove asterisks and bullets
+      .replace(/🔗|🛍️|✅|👉|📞|🧑‍💻/g, "") // Remove emojis
+      .replace(/\s+/g, " ") // Normalize whitespace
+      .trim();
+
+    return text;
+  };
+
+  const speakText = (text) => {
+    const plainText = cleanTextForSpeech(text);
+
+    if (window.responsiveVoice && plainText) {
+      window.responsiveVoice.speak(plainText, "UK English Male", {
+        pitch: 1,
+        rate: 1,
+        volume: 1,
+      });
+    }
+  };
+
+  // /////////////////////////////////////////////
+
   const typeBotMessage = (text = "", delay = 30) => {
     return new Promise((resolve) => {
       if (typeof text !== "string") return resolve();
       let i = 0,
         cur = "",
         msgId = Date.now();
+
+      speakText(text);
+
       setMessages((prev) => [
         ...prev,
         { id: msgId, sender: "admin", content: "", typing: true },
@@ -171,6 +221,64 @@ const Chatbot = () => {
     }
   };
 
+  // /////////////////////////////////////////////
+  const handleVoiceInput = () => {
+    if (
+      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
+    ) {
+      alert("Speech recognition not supported in your browser.");
+      return;
+    }
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!recognitionRef.current) {
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.lang = "en-UK";
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.maxAlternatives = 1;
+
+      recognitionRef.current.onstart = () => {
+        console.log("🎤 Voice recognition started.");
+      };
+
+      recognitionRef.current.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.trim();
+        console.log("🎤 Transcript received:", transcript);
+        setInput(transcript); // ✅ Just update input — don't auto-send
+      };
+
+      recognitionRef.current.onerror = (event) => {
+        console.error("🎤 Speech recognition error:", event.error);
+        if (event.error === "not-allowed") {
+          alert(
+            "Microphone access was blocked. Please allow mic permission in your browser."
+          );
+        }
+      };
+
+      recognitionRef.current.onend = () => {
+        console.log("🎤 Voice recognition ended.");
+        setIsListening(false);
+      };
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      try {
+        recognitionRef.current.start();
+        setIsListening(true);
+        console.log("🎙️ Starting recognition...");
+      } catch (err) {
+        console.error("❌ Failed to start recognition:", err);
+      }
+    }
+  };
+
+  // ////////////////////////////////////
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -193,6 +301,12 @@ const Chatbot = () => {
         typeof data.reply.data === "object" &&
         data.reply.data.type === "productList"
       ) {
+        const productListText = data.reply.data.products
+          .map((product) => `${product.name} for £${product.price}`)
+          .join(", ");
+
+        speakText(productListText);
+
         setMessages((prev) => [
           ...prev,
           { sessionId, sender: "admin", content: data.reply.data },
@@ -407,6 +521,8 @@ const Chatbot = () => {
         setIndex((prev) => prev + 1);
       }, 50); // Typing speed in ms
       return () => clearTimeout(timeout);
+    } else if (index === fullText.length) {
+      // Speak welcome message when typing is done
     }
   }, [index, fullText]);
 
@@ -586,6 +702,11 @@ const Chatbot = () => {
           {/* Show chatbot input if live chat has NOT been joined */}
           {emailSubmitted && !joinedChat ? (
             <div className="chat-input-area">
+              <button
+                onClick={handleVoiceInput}
+                className={`mic-btn ${isListening ? "listening" : ""}`}>
+                {isListening ? <IoMicOff /> : <IoMic />}
+              </button>
               <input
                 placeholder="Type your message to SmartBot..."
                 value={input}

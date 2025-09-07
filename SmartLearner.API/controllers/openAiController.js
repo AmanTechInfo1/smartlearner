@@ -236,7 +236,7 @@ const chatbot = async (req, res) => {
             }
 
             return `${index + 1}. ${cat.planname} * ${cat.price}${
-              link ? `\n🔗<a href="${link}" target="_blank">${link}</a>` : ""
+              link ? `\n🔗<a href="${link}" target="_blank">Get access</a>` : ""
             } ${para ? `\n ${para}` : ""}`;
           })
           .join("\n");
