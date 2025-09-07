@@ -283,6 +283,7 @@ const Chatbot = () => {
   ////////////////////////////////////////////////////
   const [isListening2, setIsListening2] = useState(false);
   const [liveTranscript, setLiveTranscript] = useState("");
+  const mediaStreamRef = useRef(null);
   const voiceRef = useRef(null);
 
   useEffect(() => {
