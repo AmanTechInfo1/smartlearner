@@ -232,6 +232,11 @@ const Chatbot = () => {
       return;
     }
 
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+      alert("Speech Recognition not supported on Safari.");
+    }
+
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -779,12 +784,12 @@ const Chatbot = () => {
               </button> */}
 
               <button
-                onClick={toggleListening}
-                className={`mic-btn ${isListening2 ? "listening" : ""}`}>
-                {isListening2 ? <IoMicOff /> : <IoMic />}
+                onClick={handleVoiceInput}
+                className={`mic-btn ${isListening ? "listening" : ""}`}>
+                {isListening ? <IoMicOff /> : <IoMic />}
               </button>
               <input
-                placeholder={isListening2 ? "Listening..." : "Type or speak..."}
+                placeholder={isListening ? "Listening..." : "Type or speak..."}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
