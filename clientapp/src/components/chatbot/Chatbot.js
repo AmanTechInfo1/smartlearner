@@ -286,33 +286,55 @@ const Chatbot = () => {
   const voiceRef = useRef(null);
 
   useEffect(() => {
-    voiceRef.current = new VoiceToText({
-      converter: "vosk",
-      language: "en",
-      sampleRate: 16000,
-    });
+    // Request microphone access on mount and initialize VoiceToText
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .then((stream) => {
+        mediaStreamRef.current = stream;
 
-    voiceRef.current.init?.();
+        voiceRef.current = new VoiceToText({
+          converter: "vosk",
+          language: "en",
+          sampleRate: 16000,
+          mediaStream: stream, // Pass stream here to avoid getAudioTracks undefined
+        });
 
-    const handleVoice = (e) => {
-      const { text, type } = e.detail;
-      if (type === "INTERIM") {
-        setLiveTranscript(text); // show real-time text
-      } else if (type === "FINAL") {
-        setInput((prev) => prev + " " + text);
-        setLiveTranscript(""); // clear after final
-      }
-    };
+        voiceRef.current.init?.();
 
-    window.addEventListener("voice", handleVoice);
+        const handleVoice = (e) => {
+          const { text, type } = e.detail;
+          if (type === "INTERIM") {
+            setLiveTranscript(text); // show real-time text
+          } else if (type === "FINAL") {
+            setInput((prev) => (prev ? prev + " " : "") + text);
+            setLiveTranscript(""); // clear after final
+          }
+        };
 
-    return () => {
-      window.removeEventListener("voice", handleVoice);
-      voiceRef.current?.stop?.();
-    };
+        window.addEventListener("voice", handleVoice);
+
+        return () => {
+          window.removeEventListener("voice", handleVoice);
+          voiceRef.current?.stop?.();
+          if (mediaStreamRef.current) {
+            mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+          }
+        };
+      })
+      .catch((err) => {
+        console.error("Microphone access denied or error:", err);
+        alert(
+          "Please allow microphone access for speech-to-text functionality."
+        );
+      });
   }, []);
 
   const toggleListening = () => {
+    if (!voiceRef.current) {
+      alert("Voice recognition not initialized.");
+      return;
+    }
+
     if (isListening2) {
       voiceRef.current.stop();
       setIsListening2(false);
