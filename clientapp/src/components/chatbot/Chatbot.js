@@ -281,44 +281,45 @@ const Chatbot = () => {
   };
   ////////////////////////////////////////////////////
   ////////////////////////////////////////////////////
-  const [transcript, setTranscript] = useState("");
-  const voice2textRef = useRef(null);
+  const [isListening2, setIsListening2] = useState(false);
+  const [liveTranscript, setLiveTranscript] = useState("");
+  const voiceRef = useRef(null);
 
-  // Initialize voice2text once
   useEffect(() => {
-    voice2textRef.current = new VoiceToText({
+    voiceRef.current = new VoiceToText({
       converter: "vosk",
       language: "en",
       sampleRate: 16000,
     });
-    voice2textRef.current.init?.();
 
-    const handleVoiceEvent = (e) => {
-      if (e.detail.type === "FINAL") {
-        setTranscript((prev) => prev + " " + e.detail.text);
+    voiceRef.current.init?.();
+
+    const handleVoice = (e) => {
+      const { text, type } = e.detail;
+      if (type === "INTERIM") {
+        setLiveTranscript(text); // show real-time text
+      } else if (type === "FINAL") {
+        setInput((prev) => prev + " " + text);
+        setLiveTranscript(""); // clear after final
       }
     };
 
-    window.addEventListener("voice", handleVoiceEvent);
+    window.addEventListener("voice", handleVoice);
 
     return () => {
-      window.removeEventListener("voice", handleVoiceEvent);
-      voice2textRef.current?.stop?.();
+      window.removeEventListener("voice", handleVoice);
+      voiceRef.current?.stop?.();
     };
   }, []);
 
-  const toggleVoiceRecognition = () => {
-    if (!voice2textRef.current) return;
-
-    if (isListening) {
-      voice2textRef.current.stop();
-      setIsListening(false);
-      setInput((prev) => prev + " " + transcript);
-      setTranscript("");
+  const toggleListening = () => {
+    if (isListening2) {
+      voiceRef.current.stop();
+      setIsListening2(false);
     } else {
-      setTranscript("");
-      voice2textRef.current.start();
-      setIsListening(true);
+      setLiveTranscript("");
+      voiceRef.current.start();
+      setIsListening2(true);
     }
   };
   //////////////////////////////////////////////
@@ -754,12 +755,12 @@ const Chatbot = () => {
               </button> */}
 
               <button
-                onClick={toggleVoiceRecognition}
-                className={`mic-btn ${isListening ? "listening" : ""}`}>
-                {isListening ? <IoMicOff /> : <IoMic />}
+                onClick={toggleListening}
+                className={`mic-btn ${isListening2 ? "listening" : ""}`}>
+                {isListening2 ? <IoMicOff /> : <IoMic />}
               </button>
               <input
-                placeholder="Type your message to SmartBot..."
+                placeholder={isListening2 ? "Listening..." : "Type or speak..."}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
