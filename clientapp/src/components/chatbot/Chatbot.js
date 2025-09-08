@@ -9,11 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAddToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { IoMic, IoMicOff } from "react-icons/io5";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
 
-import VoiceToText from "voice2text";
+const isAppleDevice = () => {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  return /iPad|iPhone|iPod|Macintosh/.test(ua) && !window.MSStream;
+};
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -230,29 +230,93 @@ const Chatbot = () => {
   };
 
   // /////////////////////////////////////////////
-  const handleVoiceInput = () => {
-    if (
-      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
-    ) {
+  // const handleVoiceInput = () => {
+  //   if (
+  //     !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
+  //   ) {
+  //     alert("Speech recognition not supported in your browser.");
+  //     return;
+  //   }
+
+  //   const SpeechRecognition =
+  //     window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  //   if (!recognitionRef.current) {
+  //     recognitionRef.current = new SpeechRecognition();
+  //     recognitionRef.current.lang = "en-IN";
+  //     recognitionRef.current.interimResults = true; // 👈 Enable live transcription
+  //     recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
+  //     recognitionRef.current.maxAlternatives = 1;
+
+  //     let silenceTimeout;
+
+  //     recognitionRef.current.onstart = () => {
+  //       console.log("🎤 Voice recognition started.");
+  //     };
+
+  //     recognitionRef.current.onresult = (event) => {
+  //       let transcript = "";
+
+  //       for (let i = event.resultIndex; i < event.results.length; ++i) {
+  //         transcript += event.results[i][0].transcript;
+  //       }
+
+  //       setInput(transcript.trim());
+
+  //       // Reset silence timeout on every result
+  //       clearTimeout(silenceTimeout);
+  //       silenceTimeout = setTimeout(() => {
+  //         recognitionRef.current?.stop();
+  //         setIsListening(false);
+  //         console.log("⏹️ Auto-stopped due to 2s silence");
+  //       }, 2000); // 2s silence detection
+  //     };
+
+  //     recognitionRef.current.onerror = (event) => {
+  //       console.error("🎤 Speech recognition error:", event.error);
+  //       if (event.error === "not-allowed") {
+  //         alert(
+  //           "Microphone access was blocked. Please allow mic permission in your browser."
+  //         );
+  //       }
+  //     };
+
+  //     recognitionRef.current.onend = () => {
+  //       console.log("🎤 Voice recognition ended.");
+  //       setIsListening(false);
+  //     };
+  //   }
+
+  //   if (isListening) {
+  //     recognitionRef.current.stop();
+  //     setIsListening(false);
+  //   } else {
+  //     try {
+  //       recognitionRef.current.start();
+  //       setIsListening(true);
+  //       console.log("🎙️ Starting recognition...");
+  //     } catch (err) {
+  //       console.error("❌ Failed to start recognition:", err);
+  //     }
+  //   }
+  // };
+
+  // //////////////////////////////////////////////
+  const handleBrowserSpeechRecognition = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
       alert("Speech recognition not supported in your browser.");
       return;
     }
 
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
     if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.lang = "en-IN";
-      recognitionRef.current.interimResults = true; // 👈 Enable live transcription
-      recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
-      recognitionRef.current.maxAlternatives = 1;
+      recognitionRef.current.lang = "en-US"; // or en-GB, etc.
+      recognitionRef.current.interimResults = true;
 
       let silenceTimeout;
-
-      recognitionRef.current.onstart = () => {
-        console.log("🎤 Voice recognition started.");
-      };
 
       recognitionRef.current.onresult = (event) => {
         let transcript = "";
@@ -263,26 +327,19 @@ const Chatbot = () => {
 
         setInput(transcript.trim());
 
-        // Reset silence timeout on every result
+        // Auto-stop on 2s silence
         clearTimeout(silenceTimeout);
         silenceTimeout = setTimeout(() => {
           recognitionRef.current?.stop();
           setIsListening(false);
-          console.log("⏹️ Auto-stopped due to 2s silence");
-        }, 2000); // 2s silence detection
+        }, 2000);
       };
 
       recognitionRef.current.onerror = (event) => {
-        console.error("🎤 Speech recognition error:", event.error);
-        if (event.error === "not-allowed") {
-          alert(
-            "Microphone access was blocked. Please allow mic permission in your browser."
-          );
-        }
+        console.error("Speech recognition error:", event.error);
       };
 
       recognitionRef.current.onend = () => {
-        console.log("🎤 Voice recognition ended.");
         setIsListening(false);
       };
     }
@@ -291,68 +348,67 @@ const Chatbot = () => {
       recognitionRef.current.stop();
       setIsListening(false);
     } else {
-      try {
-        recognitionRef.current.start();
-        setIsListening(true);
-        console.log("🎙️ Starting recognition...");
-      } catch (err) {
-        console.error("❌ Failed to start recognition:", err);
-      }
+      recognitionRef.current.start();
+      setIsListening(true);
     }
   };
 
-  // const {
-  //   transcript,
-  //   interimTranscript,
-  //   finalTranscript,
-  //   listening,
-  //   resetTranscript,
-  //   browserSupportsSpeechRecognition,
-  // } = useSpeechRecognition();
+  // Handle SpeechNotes transcription for Apple devices
+  const handleSpeechNotesTranscription = async () => {
+    setIsListening(true);
 
-  // const silenceTimerRef = useRef(null); // silence detection timer
+    const username = "iewX7ZFdglfngyTEJoXgburo88P2";
+    const password = "KqohZTLb4A";
+    const credentials = btoa(`${username}:${password}`);
 
-  // const handleVoiceInput = () => {
-  //   stopSpeaking();
-  //   if (listening) {
-  //     // Stop manually
-  //     SpeechRecognition.stopListening();
-  //     setIsListening(false);
-  //     clearTimeout(silenceTimerRef.current);
-  //   } else {
-  //     resetTranscript();
-  //     SpeechRecognition.startListening({ continuous: true, language: "en-GB" });
-  //     setIsListening(true);
-  //   }
-  // };
+    try {
+      const response = await fetch(
+        "https://api.speechnotes.co/Api_20250209_7get",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Basic ${credentials}`,
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify({
+            type: "upload",
+            fileName: "Christopher Sample",
+            fileUrl: "https://ttsreader.com/player/audio/Christopher.mp3",
+            language: "en-US",
+            numSpeakers: "1",
+            api_custom: "test-client-001",
+          }),
+        }
+      );
 
-  // useEffect(() => {
-  //   if (listening && interimTranscript) {
-  //     setInput(interimTranscript);
+      const data = await response.json();
+      console.log("📝 Transcription Response:", data);
 
-  //     // Restart silence detection timer
-  //     clearTimeout(silenceTimerRef.current);
-  //     silenceTimerRef.current = setTimeout(() => {
-  //       SpeechRecognition.stopListening();
-  //       setIsListening(false);
-  //       setInput(finalTranscript || interimTranscript);
-  //     }, 3000); // 2s after user stops talking
-  //   }
-  // }, [interimTranscript]);
+      if (data.text) {
+        setInput(data.text);
+      } else {
+        alert("No transcription returned.");
+      }
+    } catch (err) {
+      console.error("❌ Error while transcribing:", err);
+      alert("Failed to transcribe the audio.");
+    } finally {
+      setIsListening(false);
+    }
+  };
 
-  // // Cleanup on unmount
-  // useEffect(() => {
-  //   return () => clearTimeout(silenceTimerRef.current);
-  // }, []);
-
-  ////////////////////////////////////////////////////
+  // Decide which method to use
+  const handleVoiceInput = () => {
+    if (isAppleDevice()) {
+      handleSpeechNotesTranscription();
+    } else {
+      handleBrowserSpeechRecognition();
+    }
+  };
 
   // ////////////////////////////////////
   const handleSend = async () => {
     if (!input.trim()) return;
-
-    // SpeechRecognition.stopListening();
-    // resetTranscript();
 
     setMessages((prev) => [
       ...prev,
@@ -776,7 +832,8 @@ const Chatbot = () => {
             <div className="chat-input-area">
               <button
                 onClick={handleVoiceInput}
-                className={`mic-btn ${isListening ? "listening" : ""}`}>
+                className={`mic-btn ${isListening ? "listening" : ""}`}
+                title={isAppleDevice() ? "ios" : ""}>
                 {isListening ? <IoMicOff /> : <IoMic />}
               </button>
 
