@@ -283,7 +283,6 @@ const Chatbot = () => {
   //     }
   //   }
   // };
-  const [voiceFinal, setVoiceFinal] = useState("");
 
   const {
     transcript,
@@ -294,33 +293,39 @@ const Chatbot = () => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
-  useEffect(() => {
-    if (listening) {
-      setInput(interimTranscript);
-    }
-  }, [interimTranscript, listening]);
-
-  // When listening stops, set final transcript
-  useEffect(() => {
-    if (!listening && finalTranscript) {
-      setInput(finalTranscript);
-      setVoiceFinal(finalTranscript);
-    }
-  }, [finalTranscript, listening]);
+  const silenceTimerRef = useRef(null); // silence detection timer
 
   const handleVoiceInput = () => {
-    if (!browserSupportsSpeechRecognition) {
-      alert("mic is not working in your browser please use chrome.");
-      return;
-    }
-
     if (listening) {
+      // Stop manually
       SpeechRecognition.stopListening();
+      setIsListening(false);
+      clearTimeout(silenceTimerRef.current);
     } else {
       resetTranscript();
       SpeechRecognition.startListening({ continuous: true, language: "en-GB" });
+      setIsListening(true);
     }
   };
+
+  useEffect(() => {
+    if (listening && interimTranscript) {
+      setInput(interimTranscript);
+
+      // Restart silence detection timer
+      clearTimeout(silenceTimerRef.current);
+      silenceTimerRef.current = setTimeout(() => {
+        SpeechRecognition.stopListening();
+        setIsListening(false);
+        setInput(finalTranscript || interimTranscript);
+      }, 3000); // 2s after user stops talking
+    }
+  }, [interimTranscript]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => clearTimeout(silenceTimerRef.current);
+  }, []);
 
   ////////////////////////////////////////////////////
 
