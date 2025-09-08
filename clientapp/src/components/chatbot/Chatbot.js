@@ -230,110 +230,120 @@ const Chatbot = () => {
   };
 
   // /////////////////////////////////////////////
-  // const handleVoiceInput = () => {
-  //   if (
-  //     !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
-  //   ) {
-  //     alert("Speech recognition not supported in your browser.");
-  //     return;
-  //   }
-
-  //   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  //   if (isSafari) {
-  //     alert("mic is not working on Safari use chrome.");
-  //   }
-
-  //   const SpeechRecognition =
-  //     window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  //   if (!recognitionRef.current) {
-  //     recognitionRef.current = new SpeechRecognition();
-  //     recognitionRef.current.lang = "en-UK";
-  //     recognitionRef.current.interimResults = false;
-  //     recognitionRef.current.maxAlternatives = 1;
-
-  //     recognitionRef.current.onstart = () => {
-  //       console.log("🎤 Voice recognition started.");
-  //     };
-
-  //     recognitionRef.current.onresult = (event) => {
-  //       const transcript = event.results[0][0].transcript.trim();
-  //       console.log("🎤 Transcript received:", transcript);
-  //       setInput(transcript); // ✅ Just update input — don't auto-send
-  //     };
-
-  //     recognitionRef.current.onerror = (event) => {
-  //       console.error("🎤 Speech recognition error:", event.error);
-  //       if (event.error === "not-allowed") {
-  //         alert(
-  //           "Microphone access was blocked. Please allow mic permission in your browser."
-  //         );
-  //       }
-  //     };
-
-  //     recognitionRef.current.onend = () => {
-  //       console.log("🎤 Voice recognition ended.");
-  //       setIsListening(false);
-  //     };
-  //   }
-
-  //   if (isListening) {
-  //     recognitionRef.current.stop();
-  //     setIsListening(false);
-  //   } else {
-  //     try {
-  //       recognitionRef.current.start();
-  //       setIsListening(true);
-  //       console.log("🎙️ Starting recognition...");
-  //     } catch (err) {
-  //       console.error("❌ Failed to start recognition:", err);
-  //     }
-  //   }
-  // };
-
-  const {
-    transcript,
-    interimTranscript,
-    finalTranscript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
-
-  const silenceTimerRef = useRef(null); // silence detection timer
-
   const handleVoiceInput = () => {
-    stopSpeaking();
-    if (listening) {
-      // Stop manually
-      SpeechRecognition.stopListening();
+    if (
+      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
+    ) {
+      alert("Speech recognition not supported in your browser.");
+      return;
+    }
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!recognitionRef.current) {
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.lang = "en-UK";
+      recognitionRef.current.interimResults = true; // 👈 Enable live transcription
+      recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
+      recognitionRef.current.maxAlternatives = 1;
+
+      let silenceTimeout;
+
+      recognitionRef.current.onstart = () => {
+        console.log("🎤 Voice recognition started.");
+      };
+
+      recognitionRef.current.onresult = (event) => {
+        let transcript = "";
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+
+        setInput(transcript.trim());
+
+        // Reset silence timeout on every result
+        clearTimeout(silenceTimeout);
+        silenceTimeout = setTimeout(() => {
+          recognitionRef.current?.stop();
+          setIsListening(false);
+          console.log("⏹️ Auto-stopped due to 2s silence");
+        }, 2000); // 2s silence detection
+      };
+
+      recognitionRef.current.onerror = (event) => {
+        console.error("🎤 Speech recognition error:", event.error);
+        if (event.error === "not-allowed") {
+          alert(
+            "Microphone access was blocked. Please allow mic permission in your browser."
+          );
+        }
+      };
+
+      recognitionRef.current.onend = () => {
+        console.log("🎤 Voice recognition ended.");
+        setIsListening(false);
+      };
+    }
+
+    if (isListening) {
+      recognitionRef.current.stop();
       setIsListening(false);
-      clearTimeout(silenceTimerRef.current);
     } else {
-      resetTranscript();
-      SpeechRecognition.startListening({ continuous: true, language: "en-GB" });
-      setIsListening(true);
+      try {
+        recognitionRef.current.start();
+        setIsListening(true);
+        console.log("🎙️ Starting recognition...");
+      } catch (err) {
+        console.error("❌ Failed to start recognition:", err);
+      }
     }
   };
 
-  useEffect(() => {
-    if (listening && interimTranscript) {
-      setInput(interimTranscript);
+  // const {
+  //   transcript,
+  //   interimTranscript,
+  //   finalTranscript,
+  //   listening,
+  //   resetTranscript,
+  //   browserSupportsSpeechRecognition,
+  // } = useSpeechRecognition();
 
-      // Restart silence detection timer
-      clearTimeout(silenceTimerRef.current);
-      silenceTimerRef.current = setTimeout(() => {
-        SpeechRecognition.stopListening();
-        setIsListening(false);
-        setInput(finalTranscript || interimTranscript);
-      }, 3000); // 2s after user stops talking
-    }
-  }, [interimTranscript]);
+  // const silenceTimerRef = useRef(null); // silence detection timer
 
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => clearTimeout(silenceTimerRef.current);
-  }, []);
+  // const handleVoiceInput = () => {
+  //   stopSpeaking();
+  //   if (listening) {
+  //     // Stop manually
+  //     SpeechRecognition.stopListening();
+  //     setIsListening(false);
+  //     clearTimeout(silenceTimerRef.current);
+  //   } else {
+  //     resetTranscript();
+  //     SpeechRecognition.startListening({ continuous: true, language: "en-GB" });
+  //     setIsListening(true);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (listening && interimTranscript) {
+  //     setInput(interimTranscript);
+
+  //     // Restart silence detection timer
+  //     clearTimeout(silenceTimerRef.current);
+  //     silenceTimerRef.current = setTimeout(() => {
+  //       SpeechRecognition.stopListening();
+  //       setIsListening(false);
+  //       setInput(finalTranscript || interimTranscript);
+  //     }, 3000); // 2s after user stops talking
+  //   }
+  // }, [interimTranscript]);
+
+  // // Cleanup on unmount
+  // useEffect(() => {
+  //   return () => clearTimeout(silenceTimerRef.current);
+  // }, []);
 
   ////////////////////////////////////////////////////
 
@@ -341,8 +351,8 @@ const Chatbot = () => {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    SpeechRecognition.stopListening();
-    resetTranscript();
+    // SpeechRecognition.stopListening();
+    // resetTranscript();
 
     setMessages((prev) => [
       ...prev,
@@ -769,12 +779,6 @@ const Chatbot = () => {
                 className={`mic-btn ${isListening ? "listening" : ""}`}>
                 {isListening ? <IoMicOff /> : <IoMic />}
               </button>
-
-              {/*   <button
-                onClick={handleVoiceInput}
-                className={`mic-btn ${isListening ? "listening" : ""}`}>
-                {isListening ? <IoMicOff /> : <IoMic />}
-              </button>*/}
 
               <input
                 placeholder={isListening ? "Listening..." : "Type or speak..."}
