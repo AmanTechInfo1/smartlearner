@@ -354,7 +354,39 @@ const Chatbot = () => {
   };
 
   // Handle SpeechNotes transcription for Apple devices
-  const handleSpeechNotesTranscription = async () => {
+  const uploadToCloudinary = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file); // File or Blob (audio)
+    formData.append("upload_preset", "mic_upload"); // 🔁 Your preset
+    formData.append("folder", "recordings"); // Optional: to match your asset folder
+
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dqjvmpggb/raw/upload", // ❗ raw = for audio, PDF, etc
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    console.log("✅ Uploaded to Cloudinary:", data);
+
+    return data.secure_url; // 🎯 Use this in SpeechNotes fileUrl
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const uploadedUrl = await uploadToCloudinary(file);
+
+    if (uploadedUrl) {
+      // Now call SpeechNotes with uploadedUrl
+      handleSpeechNotesTranscription(uploadedUrl);
+    }
+  };
+
+  const handleSpeechNotesTranscription = async (fileUrl) => {
     setIsListening(true);
 
     const username = "iewX7ZFdglfngyTEJoXgburo88P2";
@@ -373,7 +405,7 @@ const Chatbot = () => {
           body: JSON.stringify({
             type: "upload",
             fileName: "Christopher Sample",
-            fileUrl: "https://ttsreader.com/player/audio/Christopher.mp3",
+            fileUrl,
             language: "en-US",
             numSpeakers: "1",
             api_custom: "test-client-001",
