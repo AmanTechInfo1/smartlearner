@@ -384,9 +384,9 @@ const Chatbot = () => {
 
     recorder.ondataavailable = (e) => chunks.push(e.data);
     recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/webm" });
-      const file = new File([blob], "ios_recording.webm", {
-        type: "audio/webm",
+      const blob = new Blob(chunks, { type: "audio/mp4" });
+      const file = new File([blob], "ios_recording.mp4", {
+        type: "audio/mp4",
       });
 
       // 2. Upload to Cloudinary
@@ -419,8 +419,19 @@ const Chatbot = () => {
         );
 
         const data = await res.json();
-        if (data.text) setInput(data.text);
-        else alert("No transcription returned.");
+        console.log("📡 SpeechNotes response:", data);
+        if (!res.ok) {
+          console.error("❌ API error", res.status, data);
+          alert(`SpeechNotes error: ${data?.message || "Unknown error"}`);
+          return;
+        }
+
+        if (data?.text) {
+          setInput(data.text);
+        } else {
+          console.error("⚠️ No transcription found in response:", data);
+          alert("No transcription returned.");
+        }
       } catch (err) {
         console.error("Transcription error:", err);
         alert("Failed to transcribe the audio.");
