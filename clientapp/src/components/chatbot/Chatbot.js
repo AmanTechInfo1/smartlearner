@@ -177,6 +177,13 @@ const Chatbot = () => {
     }
   };
 
+  const stopSpeaking = () => {
+    if (window.responsiveVoice && window.responsiveVoice.isPlaying()) {
+      window.responsiveVoice.cancel();
+      console.log("🔇 responsiveVoice stopped");
+    }
+  };
+
   // /////////////////////////////////////////////
 
   const typeBotMessage = (text = "", delay = 30) => {
@@ -296,6 +303,7 @@ const Chatbot = () => {
   const silenceTimerRef = useRef(null); // silence detection timer
 
   const handleVoiceInput = () => {
+    stopSpeaking();
     if (listening) {
       // Stop manually
       SpeechRecognition.stopListening();
