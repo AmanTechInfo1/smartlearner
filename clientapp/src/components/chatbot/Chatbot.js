@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAddToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { IoMic, IoMicOff } from "react-icons/io5";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 import VoiceToText from "voice2text";
 
@@ -23,14 +26,10 @@ const Chatbot = () => {
   const [sendLiveMail, setSendLiveEmail] = useState("");
   const [emailSetSubmitted, setEmailSetSubmitted] = useState(false);
   const [emailSetSubmitted2, setEmailSetSubmitted2] = useState(false);
-  const [password, setPassword] = useState("");
   const [passwordRequired, setPasswordRequired] = useState(false);
   const [passwordSubmitted, setPasswordSubmitted] = useState(false);
-  // Speech Recognition states
   const [isListening, setIsListening] = useState(false);
-  const [isLiveListening, setIsLiveListening] = useState(false);
   const recognitionRef = useRef(null);
-  const liveRecognitionRef = useRef(null);
 
   const getValidSession = () => {
     const saved = localStorage.getItem("sessionData");
@@ -224,138 +223,107 @@ const Chatbot = () => {
   };
 
   // /////////////////////////////////////////////
-  const handleVoiceInput = () => {
-    if (
-      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
-    ) {
-      alert("Speech recognition not supported in your browser.");
-      return;
-    }
+  // const handleVoiceInput = () => {
+  //   if (
+  //     !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
+  //   ) {
+  //     alert("Speech recognition not supported in your browser.");
+  //     return;
+  //   }
 
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    if (isSafari) {
-      alert("Speech Recognition not supported on Safari.");
-    }
+  //   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  //   if (isSafari) {
+  //     alert("mic is not working on Safari use chrome.");
+  //   }
 
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+  //   const SpeechRecognition =
+  //     window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    if (!recognitionRef.current) {
-      recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.lang = "en-UK";
-      recognitionRef.current.interimResults = false;
-      recognitionRef.current.maxAlternatives = 1;
+  //   if (!recognitionRef.current) {
+  //     recognitionRef.current = new SpeechRecognition();
+  //     recognitionRef.current.lang = "en-UK";
+  //     recognitionRef.current.interimResults = false;
+  //     recognitionRef.current.maxAlternatives = 1;
 
-      recognitionRef.current.onstart = () => {
-        console.log("🎤 Voice recognition started.");
-      };
+  //     recognitionRef.current.onstart = () => {
+  //       console.log("🎤 Voice recognition started.");
+  //     };
 
-      recognitionRef.current.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim();
-        console.log("🎤 Transcript received:", transcript);
-        setInput(transcript); // ✅ Just update input — don't auto-send
-      };
+  //     recognitionRef.current.onresult = (event) => {
+  //       const transcript = event.results[0][0].transcript.trim();
+  //       console.log("🎤 Transcript received:", transcript);
+  //       setInput(transcript); // ✅ Just update input — don't auto-send
+  //     };
 
-      recognitionRef.current.onerror = (event) => {
-        console.error("🎤 Speech recognition error:", event.error);
-        if (event.error === "not-allowed") {
-          alert(
-            "Microphone access was blocked. Please allow mic permission in your browser."
-          );
-        }
-      };
+  //     recognitionRef.current.onerror = (event) => {
+  //       console.error("🎤 Speech recognition error:", event.error);
+  //       if (event.error === "not-allowed") {
+  //         alert(
+  //           "Microphone access was blocked. Please allow mic permission in your browser."
+  //         );
+  //       }
+  //     };
 
-      recognitionRef.current.onend = () => {
-        console.log("🎤 Voice recognition ended.");
-        setIsListening(false);
-      };
-    }
+  //     recognitionRef.current.onend = () => {
+  //       console.log("🎤 Voice recognition ended.");
+  //       setIsListening(false);
+  //     };
+  //   }
 
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    } else {
-      try {
-        recognitionRef.current.start();
-        setIsListening(true);
-        console.log("🎙️ Starting recognition...");
-      } catch (err) {
-        console.error("❌ Failed to start recognition:", err);
-      }
-    }
-  };
-  ////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////
-  const [isListening2, setIsListening2] = useState(false);
-  const [liveTranscript, setLiveTranscript] = useState("");
-  const mediaStreamRef = useRef(null);
-  const voiceRef = useRef(null);
+  //   if (isListening) {
+  //     recognitionRef.current.stop();
+  //     setIsListening(false);
+  //   } else {
+  //     try {
+  //       recognitionRef.current.start();
+  //       setIsListening(true);
+  //       console.log("🎙️ Starting recognition...");
+  //     } catch (err) {
+  //       console.error("❌ Failed to start recognition:", err);
+  //     }
+  //   }
+  // };
 
-  const toggleListening = async () => {
-    if (isListening2) {
-      // Stop listening
-      voiceRef.current?.stop();
-      setIsListening2(false);
-      setLiveTranscript("");
-      if (mediaStreamRef.current) {
-        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
-        mediaStreamRef.current = null;
-      }
-      voiceRef.current = null;
-      return;
-    }
-
-    // If not listening, request mic and start
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaStreamRef.current = stream;
-
-      voiceRef.current = new VoiceToText({
-        converter: "vosk",
-        language: "en",
-        sampleRate: 16000,
-        mediaStream: stream,
-      });
-
-      voiceRef.current.init?.();
-
-      // Listen to voice events
-      const handleVoice = (e) => {
-        const { text, type } = e.detail;
-        if (type === "INTERIM") {
-          setLiveTranscript(text);
-        } else if (type === "FINAL") {
-          setInput((prev) => (prev ? prev + " " : "") + text);
-          setLiveTranscript("");
-        }
-      };
-
-      window.addEventListener("voice", handleVoice);
-
-      voiceRef.current.start();
-      setIsListening2(true);
-
-      // Cleanup listener when stopping
-      voiceRef.current._cleanup = () => {
-        window.removeEventListener("voice", handleVoice);
-      };
-    } catch (err) {
-      console.error("Microphone access denied or error:", err);
-      alert("Please allow microphone access for speech-to-text.");
-    }
-  };
+  const {
+    transcript,
+    interimTranscript,
+    finalTranscript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
 
   useEffect(() => {
-    if (!isListening2 && voiceRef.current?._cleanup) {
-      voiceRef.current._cleanup();
+    if (listening) {
+      setInput(interimTranscript);
     }
-  }, [isListening2]);
+  }, [interimTranscript, listening]);
 
-  //////////////////////////////////////////////
+  const handleVoiceInput = () => {
+    if (!browserSupportsSpeechRecognition) {
+      alert("mic is not working in your browser please use chrome.");
+      return;
+    }
+
+    if (listening) {
+      SpeechRecognition.stopListening();
+    } else {
+      resetTranscript();
+      SpeechRecognition.startListening({ continuous: true, language: "en-GB" });
+    }
+  };
+
+  ////////////////////////////////////////////////////
 
   // ////////////////////////////////////
   const handleSend = async () => {
     if (!input.trim()) return;
+
+    if (listening) {
+      SpeechRecognition.stopListening();
+    }
+
+    resetTranscript();
 
     setMessages((prev) => [
       ...prev,
@@ -777,17 +745,18 @@ const Chatbot = () => {
           {/* Show chatbot input if live chat has NOT been joined */}
           {emailSubmitted && !joinedChat ? (
             <div className="chat-input-area">
-              {/* <button
-                onClick={handleVoiceInput}
-                className={`mic-btn ${isListening ? "listening" : ""}`}>
-                {isListening ? <IoMicOff /> : <IoMic />}
-              </button> */}
-
               <button
                 onClick={handleVoiceInput}
+                className={`mic-btn ${listening ? "listening" : ""}`}>
+                {listening ? <IoMicOff /> : <IoMic />}
+              </button>
+
+              {/*   <button
+                onClick={handleVoiceInput}
                 className={`mic-btn ${isListening ? "listening" : ""}`}>
                 {isListening ? <IoMicOff /> : <IoMic />}
-              </button>
+              </button>*/}
+
               <input
                 placeholder={isListening ? "Listening..." : "Type or speak..."}
                 value={input}
