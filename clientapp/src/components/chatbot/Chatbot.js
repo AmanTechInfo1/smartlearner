@@ -283,6 +283,7 @@ const Chatbot = () => {
   //     }
   //   }
   // };
+  const [voiceFinal, setVoiceFinal] = useState("");
 
   const {
     transcript,
@@ -298,6 +299,14 @@ const Chatbot = () => {
       setInput(interimTranscript);
     }
   }, [interimTranscript, listening]);
+
+  // When listening stops, set final transcript
+  useEffect(() => {
+    if (!listening && finalTranscript) {
+      setInput(finalTranscript);
+      setVoiceFinal(finalTranscript);
+    }
+  }, [finalTranscript, listening]);
 
   const handleVoiceInput = () => {
     if (!browserSupportsSpeechRecognition) {
@@ -319,10 +328,7 @@ const Chatbot = () => {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    if (listening) {
-      SpeechRecognition.stopListening();
-    }
-
+    SpeechRecognition.stopListening();
     resetTranscript();
 
     setMessages((prev) => [
