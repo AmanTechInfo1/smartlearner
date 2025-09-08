@@ -374,59 +374,66 @@ const Chatbot = () => {
     return data.secure_url; // 🎯 Use this in SpeechNotes fileUrl
   };
 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const uploadedUrl = await uploadToCloudinary(file);
-
-    if (uploadedUrl) {
-      // Now call SpeechNotes with uploadedUrl
-      handleSpeechNotesTranscription(uploadedUrl);
-    }
-  };
-
-  const handleSpeechNotesTranscription = async (fileUrl) => {
+  const handleSpeechNotesTranscription = async () => {
     setIsListening(true);
 
-    const username = "iewX7ZFdglfngyTEJoXgburo88P2";
-    const password = "KqohZTLb4A";
-    const credentials = btoa(`${username}:${password}`);
+    // 1. Get mic input
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const recorder = new MediaRecorder(stream);
+    let chunks = [];
 
-    try {
-      const response = await fetch(
-        "https://api.speechnotes.co/Api_20250209_7get",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Basic ${credentials}`,
-            "Content-Type": "application/json; charset=utf-8",
-          },
-          body: JSON.stringify({
-            type: "upload",
-            fileName: "Christopher Sample",
-            fileUrl,
-            language: "en-US",
-            numSpeakers: "1",
-            api_custom: "test-client-001",
-          }),
-        }
-      );
+    recorder.ondataavailable = (e) => chunks.push(e.data);
+    recorder.onstop = async () => {
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      const file = new File([blob], "ios_recording.webm", {
+        type: "audio/webm",
+      });
 
-      const data = await response.json();
-      console.log("📝 Transcription Response:", data);
-
-      if (data.text) {
-        setInput(data.text);
-      } else {
-        alert("No transcription returned.");
+      // 2. Upload to Cloudinary
+      const uploadedUrl = await uploadToCloudinary(file);
+      if (!uploadedUrl) {
+        alert("Upload failed.");
+        setIsListening(false);
+        return;
       }
-    } catch (err) {
-      console.error("❌ Error while transcribing:", err);
-      alert("Failed to transcribe the audio.");
-    } finally {
-      setIsListening(false);
-    }
+
+      // 3. Call SpeechNotes API
+      const credentials = btoa("iewX7ZFdglfngyTEJoXgburo88P2:KqohZTLb4A");
+      try {
+        const res = await fetch(
+          "https://api.speechnotes.co/Api_20250209_7get",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Basic ${credentials}`,
+              "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+              type: "upload",
+              fileName: "ios_audio",
+              fileUrl: uploadedUrl,
+              language: "en-US",
+              numSpeakers: "1",
+            }),
+          }
+        );
+
+        const data = await res.json();
+        if (data.text) setInput(data.text);
+        else alert("No transcription returned.");
+      } catch (err) {
+        console.error("Transcription error:", err);
+        alert("Failed to transcribe the audio.");
+      } finally {
+        setIsListening(false);
+      }
+    };
+
+    recorder.start();
+    setTimeout(() => {
+      recorder.stop();
+      stream.getTracks().forEach((t) => t.stop());
+    }, 5000); // record 5 seconds
   };
 
   // Decide which method to use
