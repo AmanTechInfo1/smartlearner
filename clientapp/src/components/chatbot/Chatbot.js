@@ -758,8 +758,8 @@ const Chatbot = () => {
             <div className="chat-input-area">
               <button
                 onClick={handleVoiceInput}
-                className={`mic-btn ${listening ? "listening" : ""}`}>
-                {listening ? <IoMicOff /> : <IoMic />}
+                className={`mic-btn ${isListening ? "listening" : ""}`}>
+                {isListening ? <IoMicOff /> : <IoMic />}
               </button>
 
               {/*   <button
