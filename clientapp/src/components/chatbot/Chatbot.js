@@ -243,7 +243,7 @@ const Chatbot = () => {
 
     if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.lang = "en-UK";
+      recognitionRef.current.lang = "en-IN";
       recognitionRef.current.interimResults = true; // 👈 Enable live transcription
       recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
       recognitionRef.current.maxAlternatives = 1;
