@@ -384,9 +384,9 @@ const Chatbot = () => {
 
     recorder.ondataavailable = (e) => chunks.push(e.data);
     recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/mp4" });
-      const file = new File([blob], "ios_recording.mp4", {
-        type: "audio/mp4",
+      const blob = new Blob(chunks, { type: "audio/mp3" });
+      const file = new File([blob], "ios_recording.mp3", {
+        type: "audio/mp3",
       });
 
       // 2. Upload to Cloudinary
@@ -434,7 +434,7 @@ const Chatbot = () => {
         }
       } catch (err) {
         console.error("Transcription error:", err);
-        alert("Failed to transcribe the audio.");
+        alert(`Failed to transcribe the audio.${err}`);
       } finally {
         setIsListening(false);
       }
