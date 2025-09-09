@@ -10,8 +10,6 @@ import { getAddToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { IoMic, IoMicOff } from "react-icons/io5";
 
-
-
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -299,6 +297,80 @@ const Chatbot = () => {
   };
 
   // //////////////////////////////////////////////
+  const handleSpeechNotesTranscription = async () => {
+    setIsListening(true);
+
+    // 1. Get mic input
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" }); // ✅ better compatibility
+    let chunks = [];
+
+    recorder.ondataavailable = (e) => chunks.push(e.data);
+
+    recorder.onstop = async () => {
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      const file = new File([blob], "mic_recording.webm", {
+        type: "audio/webm",
+      });
+
+      // 2. Send audio directly to SpeechNotes
+      const credentials = btoa("iewX7ZFdglfngyTEJoXgburo88P2:KqohZTLb4A");
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("fileName", "mic_recording.webm");
+      formData.append("language", "en-US");
+      formData.append("numSpeakers", "1");
+
+      try {
+        const res = await fetch(
+          "https://api.speechnotes.co/Api_20250209_7get",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Basic ${credentials}`,
+              // ❌ do NOT set Content-Type, fetch will set it with boundaries
+            },
+            body: formData,
+          }
+        );
+
+        const raw = await res.text();
+        console.log("🔍 Raw SpeechNotes response:", raw);
+
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          throw new Error("Invalid JSON from SpeechNotes");
+        }
+
+        if (!res.ok) {
+          console.error("❌ API error", res.status, data);
+          alert(`SpeechNotes error: ${data?.message || "Unknown error"}`);
+          return;
+        }
+
+        if (data?.text) {
+          setInput(data.text);
+        } else {
+          console.warn("⚠️ No transcription found:", data);
+          alert("No transcription returned.");
+        }
+      } catch (err) {
+        console.error("Transcription error:", err);
+        alert("Failed to transcribe the audio.");
+      } finally {
+        setIsListening(false);
+      }
+    };
+
+    // 3. Start + Stop recording after 5s
+    recorder.start();
+    setTimeout(() => {
+      recorder.stop();
+      stream.getTracks().forEach((t) => t.stop());
+    }, 5000);
+  };
 
   // ////////////////////////////////////
   const handleSend = async () => {
@@ -725,7 +797,7 @@ const Chatbot = () => {
           {emailSubmitted && !joinedChat ? (
             <div className="chat-input-area">
               <button
-                onClick={handleVoiceInput}
+                onClick={handleSpeechNotesTranscription}
                 className={`mic-btn ${isListening ? "listening" : ""}`}>
                 {isListening ? <IoMicOff /> : <IoMic />}
               </button>
