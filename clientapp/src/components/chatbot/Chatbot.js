@@ -384,9 +384,9 @@ const Chatbot = () => {
 
     recorder.ondataavailable = (e) => chunks.push(e.data);
     recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/mp4" });
-      const file = new File([blob], "ios_recording.mp4", {
-        type: "audio/mp4",
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      const file = new File([blob], "ios_recording.webm", {
+        type: "audio/webm",
       });
 
       // 2. Upload to Cloudinary
