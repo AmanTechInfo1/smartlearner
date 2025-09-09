@@ -451,9 +451,9 @@ const Chatbot = () => {
   // Decide which method to use
   const handleVoiceInput = () => {
     if (isAppleDevice()) {
-      handleSpeechNotesTranscription();
-    } else {
       handleBrowserSpeechRecognition();
+    } else {
+      handleSpeechNotesTranscription();
     }
   };
 
