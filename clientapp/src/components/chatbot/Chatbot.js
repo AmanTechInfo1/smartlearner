@@ -379,14 +379,14 @@ const Chatbot = () => {
 
     // 1. Get mic input
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
+    const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
     let chunks = [];
 
     recorder.ondataavailable = (e) => chunks.push(e.data);
     recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/mp3" });
-      const file = new File([blob], "ios_recording.mp3", {
-        type: "audio/mp3",
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      const file = new File([blob], "ios_recording.webm", {
+        type: "audio/webm",
       });
 
       // 2. Upload to Cloudinary
