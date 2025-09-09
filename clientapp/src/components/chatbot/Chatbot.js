@@ -454,7 +454,8 @@ const Chatbot = () => {
     if (isAppleDevice()) {
       handleSpeechNotesTranscription();
     } else {
-      handleBrowserSpeechRecognition();
+      handleSpeechNotesTranscription();
+      // handleBrowserSpeechRecognition();
     }
   };
 
