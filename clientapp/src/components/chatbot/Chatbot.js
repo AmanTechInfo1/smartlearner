@@ -417,54 +417,35 @@ const Chatbot = () => {
             }),
           }
         );
-        try {
-          const res = await fetch(
-            "https://api.speechnotes.co/Api_20250209_7get",
-            {
-              method: "POST",
-              headers: {
-                Authorization: `Basic ${credentials}`,
-                "Content-Type": "application/json; charset=utf-8",
-              },
-              body: JSON.stringify({
-                type: "upload",
-                fileName: "ios_audio",
-                fileUrl: uploadedUrl,
-                language: "en-US",
-                numSpeakers: "1",
-              }),
-            }
-          );
+        const dataA = await res.json();
+        const rawText = await res.text(); // 👈 get raw response first
+        console.log("📡 Raw SpeechNotes response:", rawText);
 
-          const rawText = await res.text(); // 👈 get raw response first
-          console.log("📡 Raw SpeechNotes response:", rawText);
-
-          if (!res.ok) {
-            throw new Error(`❌ API error ${res.status}: ${rawText}`);
-          }
-
-          let data;
-          try {
-            data = JSON.parse(rawText); // 👈 manually parse if JSON
-          } catch {
-            console.warn("⚠️ Response is not JSON, using plain text");
-            data = { text: rawText };
-          }
-
-          console.log("✅ Parsed response:", data);
-
-          if (data?.text) {
-            const cleanedText = data.text
-              .replace(/\{.*?\}/g, "")
-              .replace(/---.*---/g, "")
-              .trim();
-
-            setInput(cleanedText);
-          }
-        } catch (err) {
-          console.error("Transcription error:", err);
-          alert("Failed to transcribe the audio.");
+        if (!res.ok) {
+          throw new Error(`❌ API error ${res.status}: ${rawText}`);
         }
+
+        let data;
+        try {
+          data = JSON.parse(rawText); // 👈 manually parse if JSON
+        } catch {
+          console.warn("⚠️ Response is not JSON, using plain text");
+          data = { text: rawText };
+        }
+
+        console.log("✅ Parsed response:", data);
+
+        if (data?.text) {
+          const cleanedText = data.text
+            .replace(/\{.*?\}/g, "")
+            .replace(/---.*---/g, "")
+            .trim();
+
+          setInput(cleanedText);
+        }
+      } catch (err) {
+        console.error("Transcription error:", err);
+        alert("Failed to transcribe the audio.");
       } finally {
         setIsListening(false);
       }
