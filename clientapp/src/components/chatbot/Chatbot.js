@@ -379,14 +379,14 @@ const Chatbot = () => {
 
     // 1. Get mic input
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+    const recorder = new MediaRecorder(stream);
     let chunks = [];
 
     recorder.ondataavailable = (e) => chunks.push(e.data);
     recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/webm" });
-      const file = new File([blob], "ios_recording.webm", {
-        type: "audio/webm",
+      const blob = new Blob(chunks, { type: "audio/mp4" });
+      const file = new File([blob], "ios_recording.mp4", {
+        type: "audio/mp4",
       });
 
       // 2. Upload to Cloudinary
@@ -420,7 +420,7 @@ const Chatbot = () => {
 
         const data = await res.json();
         console.log("📡 SpeechNotes response:", data);
-        alert(`SpeechNotes: ${data}`);
+        alert("Failed to transcribe the audio.", data);
         if (!res.ok) {
           console.error("❌ API error", res.status, data);
           alert(`SpeechNotes error: ${data?.message || "Unknown error"}`);
@@ -435,7 +435,7 @@ const Chatbot = () => {
         }
       } catch (err) {
         console.error("Transcription error:", err);
-        alert(`Failed to transcribe the audio.${err}`);
+        alert("Failed to transcribe the audio.", err);
       } finally {
         setIsListening(false);
       }
