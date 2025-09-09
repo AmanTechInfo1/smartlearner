@@ -418,6 +418,8 @@ const Chatbot = () => {
           }
         );
         const dataA = await res.json();
+        console.log("adas", res);
+        console.log("sdff", dataA);
         const rawText = await res.text(); // 👈 get raw response first
         console.log("📡 Raw SpeechNotes response:", rawText);
 
