@@ -439,7 +439,7 @@ const Chatbot = () => {
           setInput(data.text);
         } else {
           console.error("⚠️ No transcription found in response:", data);
-          alert("No transcription returned.");
+          alert("No transcription returned.",data);
         }
       } catch (err) {
         console.error("Transcription error:", err);
