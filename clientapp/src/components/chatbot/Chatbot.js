@@ -418,17 +418,9 @@ const Chatbot = () => {
           }
         );
 
-        const text = await res.text();
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch (e) {
-          console.error("❌ Response is not valid JSON:", text);
-          throw e;
-        }
-
+        const data = await res.json();
         console.log("📡 SpeechNotes response:", data);
-
+        alert(`SpeechNotes: ${data}`);
         if (!res.ok) {
           console.error("❌ API error", res.status, data);
           alert(`SpeechNotes error: ${data?.message || "Unknown error"}`);
@@ -438,12 +430,12 @@ const Chatbot = () => {
         if (data?.text) {
           setInput(data.text);
         } else {
-          console.error("⚠️ No transcription foundED in response:", data);
-          alert("No transcription returned.", data);
+          console.error("⚠️ No transcription found in response:", data);
+          alert("No transcription returned.");
         }
       } catch (err) {
         console.error("Transcription error:", err);
-        alert(`Failed to transcribe the audio. ${err.message || err}`);
+        alert(`Failed to transcribe the audio.${err}`);
       } finally {
         setIsListening(false);
       }
