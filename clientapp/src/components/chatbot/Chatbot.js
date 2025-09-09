@@ -230,93 +230,30 @@ const Chatbot = () => {
   };
 
   // /////////////////////////////////////////////
-  // const handleVoiceInput = () => {
-  //   if (
-  //     !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
-  //   ) {
-  //     alert("Speech recognition not supported in your browser.");
-  //     return;
-  //   }
-
-  //   const SpeechRecognition =
-  //     window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  //   if (!recognitionRef.current) {
-  //     recognitionRef.current = new SpeechRecognition();
-  //     recognitionRef.current.lang = "en-IN";
-  //     recognitionRef.current.interimResults = true; // 👈 Enable live transcription
-  //     recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
-  //     recognitionRef.current.maxAlternatives = 1;
-
-  //     let silenceTimeout;
-
-  //     recognitionRef.current.onstart = () => {
-  //       console.log("🎤 Voice recognition started.");
-  //     };
-
-  //     recognitionRef.current.onresult = (event) => {
-  //       let transcript = "";
-
-  //       for (let i = event.resultIndex; i < event.results.length; ++i) {
-  //         transcript += event.results[i][0].transcript;
-  //       }
-
-  //       setInput(transcript.trim());
-
-  //       // Reset silence timeout on every result
-  //       clearTimeout(silenceTimeout);
-  //       silenceTimeout = setTimeout(() => {
-  //         recognitionRef.current?.stop();
-  //         setIsListening(false);
-  //         console.log("⏹️ Auto-stopped due to 2s silence");
-  //       }, 2000); // 2s silence detection
-  //     };
-
-  //     recognitionRef.current.onerror = (event) => {
-  //       console.error("🎤 Speech recognition error:", event.error);
-  //       if (event.error === "not-allowed") {
-  //         alert(
-  //           "Microphone access was blocked. Please allow mic permission in your browser."
-  //         );
-  //       }
-  //     };
-
-  //     recognitionRef.current.onend = () => {
-  //       console.log("🎤 Voice recognition ended.");
-  //       setIsListening(false);
-  //     };
-  //   }
-
-  //   if (isListening) {
-  //     recognitionRef.current.stop();
-  //     setIsListening(false);
-  //   } else {
-  //     try {
-  //       recognitionRef.current.start();
-  //       setIsListening(true);
-  //       console.log("🎙️ Starting recognition...");
-  //     } catch (err) {
-  //       console.error("❌ Failed to start recognition:", err);
-  //     }
-  //   }
-  // };
-
-  // //////////////////////////////////////////////
-  const handleBrowserSpeechRecognition = () => {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
+  const handleVoiceInput = () => {
+    stopSpeaking();
+    if (
+      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
+    ) {
       alert("Speech recognition not supported in your browser.");
       return;
     }
 
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
     if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.lang = "en-US"; // or en-GB, etc.
-      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = "en-IN";
+      recognitionRef.current.interimResults = true; // 👈 Enable live transcription
+      recognitionRef.current.continuous = false; // Don't use continuous; we'll auto-stop
+      recognitionRef.current.maxAlternatives = 1;
 
       let silenceTimeout;
+
+      recognitionRef.current.onstart = () => {
+        console.log("🎤 Voice recognition started.");
+      };
 
       recognitionRef.current.onresult = (event) => {
         let transcript = "";
@@ -327,19 +264,26 @@ const Chatbot = () => {
 
         setInput(transcript.trim());
 
-        // Auto-stop on 2s silence
+        // Reset silence timeout on every result
         clearTimeout(silenceTimeout);
         silenceTimeout = setTimeout(() => {
           recognitionRef.current?.stop();
           setIsListening(false);
-        }, 2000);
+          console.log("⏹️ Auto-stopped due to 2s silence");
+        }, 2000); // 2s silence detection
       };
 
       recognitionRef.current.onerror = (event) => {
-        console.error("Speech recognition error:", event.error);
+        console.error("🎤 Speech recognition error:", event.error);
+        if (event.error === "not-allowed") {
+          alert(
+            "Microphone access was blocked. Please allow mic permission in your browser."
+          );
+        }
       };
 
       recognitionRef.current.onend = () => {
+        console.log("🎤 Voice recognition ended.");
         setIsListening(false);
       };
     }
@@ -348,126 +292,170 @@ const Chatbot = () => {
       recognitionRef.current.stop();
       setIsListening(false);
     } else {
-      recognitionRef.current.start();
-      setIsListening(true);
-    }
-  };
-
-  // Handle SpeechNotes transcription for Apple devices
-  const uploadToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append("file", file); // File or Blob (audio)
-    formData.append("upload_preset", "mic_upload"); // 🔁 Your preset
-    formData.append("folder", "recordings"); // Optional: to match your asset folder
-
-    const response = await fetch(
-      "https://api.cloudinary.com/v1_1/dqjvmpggb/raw/upload", // ❗ raw = for audio, PDF, etc
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    const data = await response.json();
-    console.log("✅ Uploaded to Cloudinary:", data);
-
-    return data.secure_url; // 🎯 Use this in SpeechNotes fileUrl
-  };
-
-  const handleSpeechNotesTranscription = async () => {
-    setIsListening(true);
-
-    // 1. Get mic input
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const recorder = new MediaRecorder(stream);
-    let chunks = [];
-
-    recorder.ondataavailable = (e) => chunks.push(e.data);
-    recorder.onstop = async () => {
-      const blob = new Blob(chunks, { type: "audio/webm" });
-      const file = new File([blob], "ios_recording.webm", {
-        type: "audio/webm",
-      });
-
-      // 2. Upload to Cloudinary
-      const uploadedUrl = await uploadToCloudinary(file);
-      if (!uploadedUrl) {
-        alert("Upload failed.");
-        setIsListening(false);
-        return;
-      }
-
-      // 3. Call SpeechNotes API
-      const credentials = btoa("iewX7ZFdglfngyTEJoXgburo88P2:KqohZTLb4A");
       try {
-        const res = await fetch(
-          "https://api.speechnotes.co/Api_20250209_7get",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Basic ${credentials}`,
-              "Content-Type": "application/json; charset=utf-8",
-            },
-            body: JSON.stringify({
-              type: "upload",
-              fileName: "ios_audio",
-              fileUrl: uploadedUrl,
-              language: "en-US",
-              numSpeakers: "1",
-            }),
-          }
-        );
-
-        console.log("adas", res);
-
-        const rawText = await res.text(); // 👈 get raw response first
-        console.log("📡 Raw SpeechNotes response:", rawText);
-
-        if (!res.ok) {
-          throw new Error(`❌ API error ${res.status}: ${rawText}`);
-        }
-
-        let data;
-        try {
-          data = JSON.parse(rawText); // 👈 manually parse if JSON
-        } catch {
-          console.warn("⚠️ Response is not JSON, using plain text");
-          data = { text: rawText };
-        }
-
-        console.log("✅ Parsed response:", data);
-
-        if (data?.text) {
-          const cleanedText = data.text
-            .replace(/\{.*?\}/g, "")
-            .replace(/---.*---/g, "")
-            .trim();
-
-          setInput(cleanedText);
-        }
+        recognitionRef.current.start();
+        setIsListening(true);
+        console.log("🎙️ Starting recognition...");
       } catch (err) {
-        console.error("Transcription error:", err);
-        alert("Failed to transcribe the audio.");
-      } finally {
-        setIsListening(false);
+        console.error("❌ Failed to start recognition:", err);
       }
-    };
-
-    recorder.start();
-    setTimeout(() => {
-      recorder.stop();
-      stream.getTracks().forEach((t) => t.stop());
-    }, 5000); // record 5 seconds
-  };
-
-  // Decide which method to use
-  const handleVoiceInput = () => {
-    if (isAppleDevice()) {
-      handleSpeechNotesTranscription();
-    } else {
-      handleBrowserSpeechRecognition();
     }
   };
+
+  // //////////////////////////////////////////////
+  // const handleBrowserSpeechRecognition = () => {
+  //   const SpeechRecognition =
+  //     window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  //   if (!SpeechRecognition) {
+  //     alert("Speech recognition not supported in your browser.");
+  //     return;
+  //   }
+
+  //   if (!recognitionRef.current) {
+  //     recognitionRef.current = new SpeechRecognition();
+  //     recognitionRef.current.lang = "en-US"; // or en-GB, etc.
+  //     recognitionRef.current.interimResults = true;
+
+  //     let silenceTimeout;
+
+  //     recognitionRef.current.onresult = (event) => {
+  //       let transcript = "";
+
+  //       for (let i = event.resultIndex; i < event.results.length; ++i) {
+  //         transcript += event.results[i][0].transcript;
+  //       }
+
+  //       setInput(transcript.trim());
+
+  //       // Auto-stop on 2s silence
+  //       clearTimeout(silenceTimeout);
+  //       silenceTimeout = setTimeout(() => {
+  //         recognitionRef.current?.stop();
+  //         setIsListening(false);
+  //       }, 2000);
+  //     };
+
+  //     recognitionRef.current.onerror = (event) => {
+  //       console.error("Speech recognition error:", event.error);
+  //     };
+
+  //     recognitionRef.current.onend = () => {
+  //       setIsListening(false);
+  //     };
+  //   }
+
+  //   if (isListening) {
+  //     recognitionRef.current.stop();
+  //     setIsListening(false);
+  //   } else {
+  //     recognitionRef.current.start();
+  //     setIsListening(true);
+  //   }
+  // };
+
+  // // Handle SpeechNotes transcription for Apple devices
+  // const uploadToCloudinary = async (file) => {
+  //   const formData = new FormData();
+  //   formData.append("file", file); // File or Blob (audio)
+  //   formData.append("upload_preset", "mic_upload"); // 🔁 Your preset
+  //   formData.append("folder", "recordings"); // Optional: to match your asset folder
+
+  //   const response = await fetch(
+  //     "https://api.cloudinary.com/v1_1/dqjvmpggb/raw/upload", // ❗ raw = for audio, PDF, etc
+  //     {
+  //       method: "POST",
+  //       body: formData,
+  //     }
+  //   );
+
+  //   const data = await response.json();
+
+  //   return data.secure_url; // 🎯 Use this in SpeechNotes fileUrl
+  // };
+
+  // const handleSpeechNotesTranscription = async () => {
+  //   setIsListening(true);
+
+  //   // 1. Get mic input
+  //   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //   const recorder = new MediaRecorder(stream);
+  //   let chunks = [];
+
+  //   recorder.ondataavailable = (e) => chunks.push(e.data);
+  //   recorder.onstop = async () => {
+  //     const blob = new Blob(chunks, { type: "audio/mp3" });
+  //     const file = new File([blob], "ios_recording.mp3", {
+  //       type: "audio/mp3",
+  //     });
+
+  //     // 2. Upload to Cloudinary
+  //     const uploadedUrl = await uploadToCloudinary(file);
+  //     console.log("ss", uploadedUrl);
+  //     if (!uploadedUrl) {
+  //       alert("Upload failed.");
+  //       setIsListening(false);
+  //       return;
+  //     }
+
+  //     // 3. Call SpeechNotes API
+  //     const credentials = btoa("iewX7ZFdglfngyTEJoXgburo88P2:KqohZTLb4A");
+  //     try {
+  //       const res = await fetch(
+  //         "https://api.speechnotes.co/Api_20250209_7get",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             Authorization: `Basic ${credentials}`,
+  //             "Content-Type": "application/json; charset=utf-8",
+  //           },
+  //           body: JSON.stringify({
+  //             type: "upload",
+  //             fileName: "ios_audio",
+  //             fileUrl: uploadedUrl,
+  //             language: "en-US",
+  //             numSpeakers: "1",
+  //           }),
+  //         }
+  //       );
+
+  //       const data = await res.json();
+  //       console.log("📡 SpeechNotes response:", data);
+  //       if (!res.ok) {
+  //         console.error("❌ API error", res.status, data);
+  //         alert(`SpeechNotes error: ${data?.message || "Unknown error"}`);
+  //         return;
+  //       }
+
+  //       if (data?.text) {
+  //         setInput(data.text);
+  //       } else {
+  //         console.error("⚠️ No transcription found in response:", data);
+  //         alert("No transcription returned.");
+  //       }
+  //     } catch (err) {
+  //       console.error("Transcription error:", err);
+  //       alert("Failed to transcribe the audio.");
+  //     } finally {
+  //       setIsListening(false);
+  //     }
+  //   };
+
+  //   recorder.start();
+  //   setTimeout(() => {
+  //     recorder.stop();
+  //     stream.getTracks().forEach((t) => t.stop());
+  //   }, 5000); // record 5 seconds
+  // };
+
+  // // Decide which method to use
+  // const handleVoiceInput = () => {
+  //   if (isAppleDevice()) {
+  //     handleSpeechNotesTranscription();
+  //   } else {
+  //     handleBrowserSpeechRecognition();
+  //   }
+  // };
 
   // ////////////////////////////////////
   const handleSend = async () => {
@@ -894,7 +882,7 @@ const Chatbot = () => {
           {emailSubmitted && !joinedChat ? (
             <div className="chat-input-area">
               <button
-                onClick={handleSpeechNotesTranscription}
+                onClick={handleVoiceInput}
                 className={`mic-btn ${isListening ? "listening" : ""}`}>
                 {isListening ? <IoMicOff /> : <IoMic />}
               </button>
