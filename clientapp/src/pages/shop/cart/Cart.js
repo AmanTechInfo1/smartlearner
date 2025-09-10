@@ -10,7 +10,7 @@ import {
 } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import paypalLogo from "../../../assets/images/paypalLogos.png";
-import stripLogo from "../../../assets/images/Stripe-logo.png";
+import stripLogo from "../../../assets/images/RevolutLogo.png";
 import Form from "react-bootstrap/Form";
 
 const Cart = () => {
@@ -114,7 +114,11 @@ const Cart = () => {
                   </p>
                   <div>
                     <img src={paypalLogo} alt="paypal" />
-                    <img src={stripLogo} alt="stripe" />
+                    <img
+                      src={stripLogo}
+                      alt="stripe"
+                      style={{ maxWidth: "80px" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -148,7 +152,10 @@ const Cart = () => {
       </div>
       <div className={styles.cartContainerFooter}>
         <p>
-       "Click on proceed to checkout. You’ll be prompted to sign in or create an account if you don’t already have one. (If you’ve used a coupon code, you’ll be redirected to our training portal to begin practicing.)"
+          "Click on proceed to checkout. You’ll be prompted to sign in or create
+          an account if you don’t already have one. (If you’ve used a coupon
+          code, you’ll be redirected to our training portal to begin
+          practicing.)"
         </p>
       </div>
     </div>

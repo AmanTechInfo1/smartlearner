@@ -285,7 +285,7 @@ export default function PaymentProcessing() {
                 />
 
                 {/* Stripe Payment */}
-                <img src={stripLogo} alt="stripe" />
+                {/*   <img src={stripLogo} alt="stripe" />
                 <form onSubmit={handleStripePayment}>
                   <CardElement className="stripe-card-input" />
                   <button
