@@ -306,6 +306,7 @@ const Chatbot = () => {
   /////////////////////////////////////////
   const recorderRef = useRef(null);
   const streamRef = useRef(null);
+  const [isTranscribing, setIsTranscribing] = useState(false);
 
   const handleMicClick = async () => {
     if (!isListening) {
@@ -336,6 +337,8 @@ const Chatbot = () => {
       recorderRef.current?.stop();
       streamRef.current?.getTracks().forEach((track) => track.stop());
       setIsListening(false);
+      setIsTranscribing(true);
+      setInput("Transcribing...");
     }
   };
 
@@ -373,6 +376,8 @@ const Chatbot = () => {
     } catch (err) {
       console.error("Transcription error:", err);
       alert("Failed to transcribe the audio.");
+    } finally {
+      setIsTranscribing(false);
     }
   };
 
@@ -819,8 +824,11 @@ const Chatbot = () => {
               <input
                 placeholder={isListening ? "Listening..." : "Type or speak..."}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => {
+                  if (!isTranscribing) setInput(e.target.value);
+                }}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                disabled={isTranscribing}
               />
               <IoSend onClick={handleSend} className="chatBtn" />
             </div>
