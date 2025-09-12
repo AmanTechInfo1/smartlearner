@@ -267,6 +267,12 @@ class OrderController {
           .status(404)
           .json({ success: false, message: "Order not found" });
       }
+      order.status = "pending";
+      order.paymentMethod = "PayPal";
+      await order.save();
+
+      // ✅ Step 2: Send pending email
+      await orderService.sendEmail(order, "pending", "PayPal");
 
       // Capture PayPal payment
       const paypalResponse = await orderService.capturePayment(
@@ -482,8 +488,9 @@ class OrderController {
       );
       order.paymentToken = response.public_id;
       order.status = "pending";
+      order.paymentMethod = "Revolut";
       await order.save();
-
+      await orderService.sendEmail(order, "pending", "Revolut");
       res.status(200).json({
         success: true,
         message: "Revolut order created",
@@ -512,6 +519,7 @@ class OrderController {
       }
 
       order.status = "completed";
+      order.paymentMethod = "Revolut";
       await order.save();
 
       // Send success email
