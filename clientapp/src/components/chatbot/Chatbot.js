@@ -443,10 +443,7 @@ const Chatbot = () => {
     }
   };
 
-  const isValidEmail = (email) => {
-    // Simple regex for email validation
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+ 
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
