@@ -12,14 +12,14 @@ export default function Rugby() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Rugby | Smartlearner driving school</title>
+        <title>Smartlearner driving school in Rugby, driving lessons in Rugby</title>
         <meta
           name="description"
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Rugby with advanced technology. "
         />
         <meta
           property="og:title"
-          content="Rugby | Smartlearner driving school"
+          content="Smartlearner driving school in Rugby, driving lessons in Rugby"
         />
         <meta
           property="og:description"

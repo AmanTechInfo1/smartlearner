@@ -12,14 +12,17 @@ export default function Warwick() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Warwick | Smartlearner driving school</title>
+        <title>
+          {" "}
+          Smartlearner driving school in Warwick, driving lessons in Warwick
+        </title>
         <meta
           name="description"
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Warwick with advanced technology. "
         />
         <meta
           property="og:title"
-          content="Warwick | Smartlearner driving school"
+          content="Smartlearner driving school in Warwick, driving lessons in Warwick"
         />
         <meta
           property="og:description"

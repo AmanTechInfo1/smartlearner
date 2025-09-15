@@ -12,7 +12,13 @@ const baseUrl = process.env.REVOLUT_API_URL;
 const secretKey = process.env.REVOLUT_API_SECRET_KEY;
 
 class UserSubscriptionService {
-  async createUserSubscription(userId, subscriptionId, isTrial = false) {
+  async createUserSubscription(
+    userId,
+    subscriptionId,
+    method,
+    status,
+    isTrial = false
+  ) {
     const plan = await Plans.findById(subscriptionId);
     const currentDate = new Date();
 
@@ -45,6 +51,8 @@ class UserSubscriptionService {
       ); // Extend the end date
 
       // Update the subscription with the new plan end date
+      existingSubscription.paymentMethod = method;
+      existingSubscription.paymentStatus = status; // ✅ Correct
       existingSubscription.planEndDate = planEndDate;
       existingSubscription.subscriptionId = subscriptionId; // Update to new plan if needed
       existingSubscription.planStartDate = currentDate; // Update the start date
@@ -61,6 +69,8 @@ class UserSubscriptionService {
       const userSubscription = new UserSubscription({
         userId,
         subscriptionId,
+        paymentMethod: method,
+        paymentStatus: status,
         isActive: true,
         planStartDate: currentDate,
         planEndDate: planEndDate,
@@ -86,20 +96,33 @@ class UserSubscriptionService {
 
     const accessToken = await getAccessToken();
 
+    const paymentData = {
+      intent: "CAPTURE",
+      payer: { payment_method: "paypal" },
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "GBP",
+            value: parseFloat(price).toFixed(2),
+          },
+          description: "Order payment",
+          item_list: {
+            plan: plan._id,
+            name: plan.planname,
+            price: parseFloat(plan.price).toFixed(2),
+          },
+        },
+      ],
+      redirect_urls: {
+        return_url: "http://api.smartlearner.com/api/order/executePayment",
+        cancel_url: "http://api.smartlearner.com/api/order/cancel",
+      },
+    };
+
     try {
       const response = await axios.post(
         `${PAYPAL_API_BASE}/v2/checkout/orders`,
-        {
-          intent: "CAPTURE",
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "GBP",
-                value: parseFloat(price).toFixed(2), // Ensure it's a string with two decimal places
-              },
-            },
-          ],
-        },
+        paymentData,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -122,9 +145,13 @@ class UserSubscriptionService {
   async confirmPayment(orderId, userId, subscriptionId) {
     const accessToken = await getAccessToken();
 
+    const captureData = {
+      payer_id: orderId,
+    };
+
     const response = await axios.post(
       `${PAYPAL_API_BASE}/v2/checkout/orders/${orderId}/capture`,
-      {},
+      captureData,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -139,8 +166,32 @@ class UserSubscriptionService {
         subscriptionId,
         (isTrial = false)
       );
-      await this.sendSubscriptionEmail(subscriptionId, userId, "success");
-      return { userSubscription, paymentStatus: "COMPLETED" };
+
+      const subs = await UserSubscription.findOne({
+        userId,
+      });
+
+      subs.paymentStatus = "completed";
+      subs.paymentMethod = "PayPal";
+      await subs.save();
+
+      await this.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "success",
+        "PayPal"
+      );
+
+      return console.log("sds", response);
+    } else if (response.data.status === "PENDING") {
+      // just send pending email, don't activate subscription yet
+      await this.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "pending",
+        "PayPal"
+      );
+      return { paymentStatus: "PENDING" };
     } else {
       throw new Error("Payment was not completed");
     }
@@ -594,7 +645,7 @@ class UserSubscriptionService {
 
   // ==================================================================
   // ====////////////////////////////////////////////////////////
-  async sendSubscriptionEmail(userId, subscriptionId, status) {
+  async sendSubscriptionEmail(userId, subscriptionId, status, method) {
     const user = await User.findById(userId);
     const subscription = await Plans.findById(subscriptionId);
 
@@ -655,7 +706,9 @@ class UserSubscriptionService {
               <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
             </div>
             <div class="body">
-              <h2>Subscription ${status} - Plan: ${subscription.planname}</h2>
+              <h2>Method ${method}, Subscription ${status} - Plan: ${
+      subscription.planname
+    }</h2>
               <p><strong>Dear ${user.username},</strong></p>
               <p>Your payment for Order #${
                 subscription.planname

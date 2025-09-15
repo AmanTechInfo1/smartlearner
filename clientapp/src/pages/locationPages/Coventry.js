@@ -12,18 +12,20 @@ export default function Coventry() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Coventry | Smartlearner driving school</title>
+        <title>
+          Smartlearner driving school in Coventry, driving lessons in Coventry
+        </title>
         <meta
           name="description"
-          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Coventry with advanced technology. "
+          content="SmartLearner Driving School Coventry, established in 2004, offers expert driving lessons in the Coventry with advanced technology. "
         />
         <meta
           property="og:title"
-          content="Coventry | Smartlearner driving school"
+          content="Smartlearner driving school in Coventry, driving lessons in Coventry"
         />
         <meta
           property="og:description"
-          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Coventry with advanced technology. "
+          content="SmartLearner Driving School Coventry, established in 2004, offers expert driving lessons in the Coventry with advanced technology. "
         />
         <link rel="canonical" href="https://smartlearner.com/coventry" />
       </Helmet>

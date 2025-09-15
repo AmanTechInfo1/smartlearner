@@ -12,14 +12,17 @@ export default function Leamington() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Leamington | Smartlearner driving school</title>
+        <title> 
+          Smartlearner driving school in Leamington, driving lessons in
+          Leamington
+        </title>
         <meta
           name="description"
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Leamington with advanced technology. "
         />
         <meta
           property="og:title"
-          content="Leamington | Smartlearner driving school"
+          content="Smartlearner driving school in Leamington, driving lessons in Leamington"
         />
         <meta
           property="og:description"

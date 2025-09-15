@@ -14,7 +14,7 @@ import stripLogo from "../../../assets/images/Stripe-logo.png";
 
 import RevolutCheckout from "@revolut/checkout";
 import { useRef } from "react";
-import Loader from "../../../components/loader/Loader";
+import Loader2 from "../../../components/loader/Loader2";
 
 export default function PaymentProcessing() {
   const [hashCode, setHashCode] = useState("");
@@ -176,6 +176,7 @@ export default function PaymentProcessing() {
     try {
       const { revolutPay } = await RevolutCheckout.payments({
         locale: "en",
+
         publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf",
       });
 
@@ -223,9 +224,23 @@ export default function PaymentProcessing() {
             break;
           case "error":
             toast.error("Revolut payment failed");
+            try {
+              await httpHandler.post("/api/order/revolut-payment-failure", {
+                orderId: orderId,
+              });
+            } catch (err) {
+              console.error("Error notifying backend of payment failure:", err);
+            }
             break;
           case "cancel":
             toast("Revolut payment cancelled");
+            try {
+              await httpHandler.post("/api/order/revolut-payment-failure", {
+                orderId: orderId,
+              });
+            } catch (err) {
+              console.error("Error notifying backend of payment failure:", err);
+            }
             break;
         }
       });
@@ -245,7 +260,7 @@ export default function PaymentProcessing() {
 
   return (
     <>
-      {webloading && <Loader />}
+      {webloading && <Loader2 />}
       <div className="paymentComponent">
         <p style={{ fontSize: "1.3rem", color: "white", textAlign: "center" }}>
           Complete your payment using PayPal or a debit card.

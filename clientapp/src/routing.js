@@ -193,6 +193,7 @@ import Nuneaton from "./pages/locationPages/Nuneaton";
 import Rugby from "./pages/locationPages/Rugby";
 import Solihull from "./pages/locationPages/Solihull";
 import Warwick from "./pages/locationPages/Warwick";
+import PaymentModel from "./containers/Payments/PaymentModel";
 
 export const router = createBrowserRouter([
   {
@@ -623,10 +624,10 @@ export const router = createBrowserRouter([
         path: "/admin/quiz-module",
         element: <QuizUModule />,
       },
-      // {
-      //   path:"/admin/quiz",
-      //   element:<QuizzesModal/>,
-      // },
+      {
+        path: "/admin/payments",
+        element: <PaymentModel />,
+      },  
 
       {
         path: "/admin/smartBot-livechat",

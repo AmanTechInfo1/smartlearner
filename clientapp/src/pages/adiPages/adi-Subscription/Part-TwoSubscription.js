@@ -25,6 +25,7 @@ import { useRef } from "react";
 
 import revolutLogo from "../../../assets/images/RevolutLogo.png";
 import LoadingWeb from "../../../components/loader/LoadingWeb";
+import Loader2 from "../../../components/loader/Loader2";
 
 const PartTwoSubscription = () => {
   const dispatch = useDispatch();
@@ -93,6 +94,7 @@ const PartTwoSubscription = () => {
         userId: userId,
         subscriptionId: ogPlan._id,
         orderId: order.id,
+        method: "PayPal",
         isTrial: false,
       };
 
@@ -177,9 +179,31 @@ const PartTwoSubscription = () => {
             break;
           case "error":
             toast.error("Revolut payment failed");
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-failure",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+            } catch (err) {
+              console.error("Error notifying backend of payment failure:", err);
+            }
             break;
           case "cancel":
             toast("Revolut payment cancelled");
+            try {
+              await httpHandler.post(
+                "/api/subscription/revolut-payment-failure",
+                {
+                  subscriptionId: plan._id,
+                  userId: userId,
+                }
+              );
+            } catch (err) {
+              console.error("Error notifying backend of payment failure:", err);
+            }
             break;
         }
       });
@@ -190,131 +214,155 @@ const PartTwoSubscription = () => {
   };
 
   return (
-    <div className="subscription-cardBox">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>PDI Part Two Plans</title>
-        <link
-          rel="canonical"
-          href="https://smartlearner.com/driving-instructor-training-part-two"
-        />
-        <meta property="og:title" content="PDI Part Two Plans" />
-        <meta
-          property="og:description"
-          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-        />
+    <>
+      {" "}
+      {revolutLoading && <Loader2 />}
+      <div className="subscription-cardBox">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>PDI Part Two Plans</title>
+          <link
+            rel="canonical"
+            href="https://smartlearner.com/driving-instructor-training-part-two"
+          />
+          <meta property="og:title" content="PDI Part Two Plans" />
+          <meta
+            property="og:description"
+            content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+          />
 
-        <meta
-          name="description"
-          content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
-        />
-      </Helmet>
-      <div className={styles.cartPage}>
-        <div className={styles.cartContainer}>
-          <div className={styles.cartheading}>
-            <h2>CHECKOUT</h2>
-            <img src={cartIcon} alt="cart icon" className={styles.carIconImg} />
-          </div>
-          <div className="coupon-section">
-            <input
-              type="text"
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
-              placeholder="Enter Coupon Code"
-              className="coupon-input"
-            />
-            <button onClick={handleCouponSubmit} className="coupon-button">
-              Apply Coupon
-            </button>
-          </div>
-          <p style={{ textAlign: "center", color: "white" }}>
-            Apply Coupon Code To Get Free Access Of PDI Portal
-          </p>
-
-          <div className={styles.cartContentContainer}>
-            <div className={styles.cartItemsContainer}>
-              <table className={styles.cartTable}>
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {loading && (
-                    <p
-                      style={{
-                        color: "white",
-                        fontSize: "1.2rem",
-                        textAlign: "center",
-                        width: "100%",
-                      }}>
-                      Loading plans...
-                    </p>
-                  )}
-
-                  {paidPlans.map((plan, index) => (
-                    <tr className={styles.cartRow}>
-                      <td>{plan.planname}</td>
-                      <td>£ {plan.price}</td>
-                      <td> 1 </td>
-                      <td>£ {plan.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <meta
+            name="description"
+            content="Choose a driving PDI subscription plan that fits your needs. Get full access to lessons, practice tests, and learning tools."
+          />
+        </Helmet>
+        <div className={styles.cartPage}>
+          <div className={styles.cartContainer}>
+            <div className={styles.cartheading}>
+              <h2>CHECKOUT</h2>
+              <img
+                src={cartIcon}
+                alt="cart icon"
+                className={styles.carIconImg}
+              />
             </div>
-            <div className={styles.cartBtnsContainer}>
-              {paidPlans.map((plan, index) => (
-                <div>
+            <div className="coupon-section">
+              <input
+                type="text"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+                placeholder="Enter Coupon Code"
+                className="coupon-input"
+              />
+              <button onClick={handleCouponSubmit} className="coupon-button">
+                Apply Coupon
+              </button>
+            </div>
+            <p style={{ textAlign: "center", color: "white" }}>
+              Apply Coupon Code To Get Free Access Of PDI Portal
+            </p>
+
+            <div className={styles.cartContentContainer}>
+              <div className={styles.cartItemsContainer}>
+                <table className={styles.cartTable}>
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {loading && (
+                      <p
+                        style={{
+                          color: "white",
+                          fontSize: "1.2rem",
+                          textAlign: "center",
+                          width: "100%",
+                        }}>
+                        Loading plans...
+                      </p>
+                    )}
+
+                    {paidPlans.map((plan, index) => (
+                      <tr className={styles.cartRow}>
+                        <td>{plan.planname}</td>
+                        <td>£ {plan.price}</td>
+                        <td> 1 </td>
+                        <td>£ {plan.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className={styles.cartBtnsContainer}>
+                {paidPlans.map((plan, index) => (
                   <div>
-                    <div className={styles.basketHeadingTitles}>
-                      <h2>BASKET TOTAL</h2>
-                      <div className={styles.basketHeadingTitle}>
-                        <p>
-                          <span>Subtotal:</span>
-                          <span>£ {plan.price}</span>
-                        </p>
-                        <p>
-                          <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
-                        </p>
-                        <p>
-                          <span>Total:</span> <span>{plan.price}</span>
-                        </p>
-                        <div>
-                          <img src={paypalLogo} alt="paypal" />
-                          <img
-                            src={revolutLogo}
-                            alt="revolutLogo"
-                            id={styles.revolutLogo}
-                          />
+                    <div>
+                      <div className={styles.basketHeadingTitles}>
+                        <h2>BASKET TOTAL</h2>
+                        <div className={styles.basketHeadingTitle}>
+                          <p>
+                            <span>Subtotal:</span>
+                            <span>£ {plan.price}</span>
+                          </p>
+                          <p>
+                            <span>ONLINE SERVICE CHARGE:</span>{" "}
+                            <span>£ 0%</span>
+                          </p>
+                          <p>
+                            <span>Total:</span> <span>{plan.price}</span>
+                          </p>
+                          <div>
+                            <img src={paypalLogo} alt="paypal" />
+                            <img
+                              src={revolutLogo}
+                              alt="revolutLogo"
+                              id={styles.revolutLogo}
+                            />
+                          </div>
                         </div>
                       </div>
+                      <div className={styles.basketHeadingTitle}></div>
                     </div>
-                    <div className={styles.basketHeadingTitle}></div>
+                    <div style={{ marginBottom: "20px" }}>
+                      <button
+                        className={styles.revolutbutton}
+                        onClick={() => initRevolutPay(plan)}>
+                        Pay with Revolut
+                      </button>
+                      {activePlan?._id === plan._id && (
+                        <div className={styles.revolutbuttoncontainer}>
+                          <div
+                            ref={revolut3ContainerRef}
+                            className="revolut-pay-button"
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div style={{ marginBottom: "20px" }}>
-                    <button
-                      className={styles.revolutbutton}
-                      onClick={() => initRevolutPay(plan)}>
-                      Pay with Revolut
-                    </button>
-                    {activePlan?._id === plan._id && (
-                      <div className={styles.revolutbuttoncontainer}>
-                        <div
-                          ref={revolut3ContainerRef}
-                          className="revolut-pay-button"
-                        />
-                      </div>
-                    )}
-                  </div>
+                ))}
+                <div>
+                  {" "}
+                  {ogPlan && !subsdiscountedPrice ? (
+                    <PayPalButtons
+                      createOrder={(data, actions) =>
+                        handleCreateSubscription(ogPlan, subsdiscountedPrice)
+                      }
+                      onApprove={(data, actions) =>
+                        handleApprovePayment(ogPlan, actions)
+                      }
+                      fundingSource="paypal"
+                      disabled={subsdiscountedPrice}
+                    />
+                  ) : (
+                    <></>
+                  )}
                 </div>
-              ))}
-              <div>
-                {" "}
-                {ogPlan && !subsdiscountedPrice ? (
+
+                {ogPlan && subsdiscountedPrice ? (
                   <PayPalButtons
                     createOrder={(data, actions) =>
                       handleCreateSubscription(ogPlan, subsdiscountedPrice)
@@ -323,33 +371,16 @@ const PartTwoSubscription = () => {
                       handleApprovePayment(ogPlan, actions)
                     }
                     fundingSource="paypal"
-                    disabled={subsdiscountedPrice}
                   />
                 ) : (
                   <></>
                 )}
               </div>
-
-              {ogPlan && subsdiscountedPrice ? (
-                <PayPalButtons
-                  createOrder={(data, actions) =>
-                    handleCreateSubscription(ogPlan, subsdiscountedPrice)
-                  }
-                  onApprove={(data, actions) =>
-                    handleApprovePayment(ogPlan, actions)
-                  }
-                  fundingSource="paypal"
-                />
-              ) : (
-                <></>
-              )}
             </div>
           </div>
         </div>
       </div>
-
-      {revolutLoading && <LoadingWeb />}
-    </div>
+    </>
   );
 };
 

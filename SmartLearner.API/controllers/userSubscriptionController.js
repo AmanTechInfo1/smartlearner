@@ -7,20 +7,23 @@ const orderService = require("../services/orderService");
 class userSubscriptionController {
   // Add a new subscription plan
   async createUserSubscription(req, res, next) {
-    const { userId, subscriptionId, isTrial } = req.body;
+    const { userId, subscriptionId, method, isTrial } = req.body;
     try {
       const userSubscription =
         await userSubscriptionService.createUserSubscription(
           userId,
           subscriptionId,
+          method,
+          "COMPLETED",
           isTrial
         );
 
-      let status = "success";
+      let status = "COMPLETED";
       await userSubscriptionService.sendSubscriptionEmail(
         userId,
         subscriptionId,
-        status
+        status,
+        "paypal"
       );
       res.status(201).json({
         message: "Subscription created successfully",
@@ -31,7 +34,8 @@ class userSubscriptionController {
       await userSubscriptionService.sendSubscriptionEmail(
         userId,
         subscriptionId,
-        status
+        status,
+        "paypal"
       );
       next(err);
     }
@@ -136,6 +140,13 @@ class userSubscriptionController {
         userId
       );
 
+      await userSubscriptionService.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "PROCESSING",
+        "Revolut"
+      );
+
       res.status(200).json({
         success: true,
         message: "Revolut order created",
@@ -159,6 +170,8 @@ class userSubscriptionController {
         await userSubscriptionService.createUserSubscription(
           userId,
           subscriptionId,
+          "Revolut",
+          "completed",
           isTrial
         );
 
@@ -167,12 +180,14 @@ class userSubscriptionController {
       });
 
       subs.paymentStatus = "completed";
+      subs.paymentMethod = "Revolut";
       await subs.save();
 
       await userSubscriptionService.sendSubscriptionEmail(
         userId,
         subscriptionId,
-        "COMPLETED"
+        "COMPLETED",
+        "Revolut"
       );
 
       res.status(200).json({
@@ -185,6 +200,31 @@ class userSubscriptionController {
       res.status(500).json({
         success: false,
         message: "Failed to mark payment success",
+        error: error.message,
+      });
+    }
+  }
+
+  async revolutPaymentFailure(req, res) {
+    const { userId, subscriptionId } = req.body;
+
+    try {
+      await userSubscriptionService.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "failed",
+        "Revolut"
+      );
+
+      res.status(200).json({
+        success: true,
+        message: "Order marked as failed and failure email sent",
+      });
+    } catch (error) {
+      console.error("Revolut Payment Failure Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to mark payment as failed",
         error: error.message,
       });
     }

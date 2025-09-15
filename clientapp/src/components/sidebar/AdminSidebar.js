@@ -21,6 +21,7 @@ import {
   MdOutlineProductionQuantityLimits,
 } from "react-icons/md";
 import { IoIosPaper } from "react-icons/io";
+import { MdPayment } from "react-icons/md";
 
 function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
   return (
@@ -158,6 +159,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               {" "}
               <TbCategoryFilled className={styles.adminIcon} />
               Live Chat
+            </li>
+          </Link>
+          <Link to="/admin/payments">
+            <li className={styles.adminSidebarListItem}>
+              {" "}
+              <MdPayment className={styles.adminIcon} />
+              Payments
             </li>
           </Link>
         </ul>

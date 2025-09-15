@@ -69,5 +69,9 @@ router.post(
   "/revolut-payment-success",
   userSubscriptionController.revolutPaymentSuccess
 );
+router.post(
+  "/revolut-payment-failure",
+  userSubscriptionController.revolutPaymentFailure
+);
 
 module.exports = router;

@@ -1,12 +1,12 @@
-import React from "react";
-import "./css/loader.css";
+import React from 'react'
+import './css/loader.css';
 
 function Loader() {
-  return (
-    <div className="loader-overlay">
-      <div className="loading"></div>
-    </div>
-  );
+    return (
+        <>
+            <div className="loading"></div>
+        </>
+    )
 }
 
-export default Loader;
+export default Loader

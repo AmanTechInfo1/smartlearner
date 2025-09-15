@@ -62,13 +62,13 @@ router.post("/create", OrderController.createPayment); // for creating payment
 router.post("/execute", OrderController.executePayment);
 router.get("/cancel", OrderController.cancelPayment);
 // /////////////////////////////////////
-router.post("/stripe-charge", OrderController.createStripeCharge);
+// router.post("/stripe-charge", OrderController.createStripeCharge);
 // ///////////////////////////////////////////
 
 router.post("/revolut-charge", OrderController.createRevolutCharge);
 
-// Webhook endpoint (optional)
 router.post("/revolut-payment-success", OrderController.revolutPaymentSuccess);
+router.post("/revolut-payment-failure", OrderController.revolutPaymentFailure);
 
 // router.post("/revolut-pay", OrderController.createRevolutOrder);
 

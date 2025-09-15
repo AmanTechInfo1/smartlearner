@@ -320,68 +320,68 @@ class OrderController {
   }
 
   // ////////////////////////////////////////////////////////////
-  async createStripeCharge(req, res) {
-    const { paymentMethodData, amount, orderId } = req.body;
+  // async createStripeCharge(req, res) {
+  //   const { paymentMethodData, amount, orderId } = req.body;
 
-    try {
-      const order = await Paypalorder.findById(orderId);
-      if (!order) {
-        return res
-          .status(404)
-          .json({ success: false, message: "Order not found" });
-      }
+  //   try {
+  //     const order = await Paypalorder.findById(orderId);
+  //     if (!order) {
+  //       return res
+  //         .status(404)
+  //         .json({ success: false, message: "Order not found" });
+  //     }
 
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: Math.round(amount * 100), // Amount in pence (or smallest unit of your currency)
-        currency: "gbp",
-        payment_method_data: paymentMethodData,
-        confirm: true,
-        automatic_payment_methods: {
-          enabled: true,
-          allow_redirects: "never", // Automatically enable payment methods
-        },
-        return_url: "https://smartlearner.com/payment-completed",
-      });
-      if (
-        paymentIntent.status === "requires_action" ||
-        paymentIntent.status === "requires_source_action"
-      ) {
-        return res.status(200).json({
-          success: true,
-          requiresAction: true,
-          paymentIntentClientSecret: paymentIntent.client_secret,
-        });
-      }
+  //     const paymentIntent = await stripe.paymentIntents.create({
+  //       amount: Math.round(amount * 100), // Amount in pence (or smallest unit of your currency)
+  //       currency: "gbp",
+  //       payment_method_data: paymentMethodData,
+  //       confirm: true,
+  //       automatic_payment_methods: {
+  //         enabled: true,
+  //         allow_redirects: "never", // Automatically enable payment methods
+  //       },
+  //       return_url: "https://smartlearner.com/payment-completed",
+  //     });
+  //     if (
+  //       paymentIntent.status === "requires_action" ||
+  //       paymentIntent.status === "requires_source_action"
+  //     ) {
+  //       return res.status(200).json({
+  //         success: true,
+  //         requiresAction: true,
+  //         paymentIntentClientSecret: paymentIntent.client_secret,
+  //       });
+  //     }
 
-      order.status = "completed";
-      await order.save();
-      order.paymentDetails = paymentIntent;
-      order.paymentMethod = "Stripe";
-      await orderService.sendEmail(order, "success", "Stripe");
+  //     order.status = "completed";
+  //     await order.save();
+  //     order.paymentDetails = paymentIntent;
+  //     order.paymentMethod = "Stripe";
+  //     await orderService.sendEmail(order, "success", "Stripe");
 
-      res
-        .status(200)
-        .json({ success: true, message: "Payment successful", paymentIntent });
-    } catch (error) {
-      console.error(error);
+  //     res
+  //       .status(200)
+  //       .json({ success: true, message: "Payment successful", paymentIntent });
+  //   } catch (error) {
+  //     console.error(error);
 
-      const order = await Paypalorder.findById(orderId);
-      if (order) {
-        order.status = "failed";
-        await order.save();
-      }
+  //     const order = await Paypalorder.findById(orderId);
+  //     if (order) {
+  //       order.status = "failed";
+  //       await order.save();
+  //     }
 
-      // Send failure email
-      if (order) {
-        await orderService.sendEmail(order, "failure", "Stripe");
-      }
-      console.error("Payment capture failed:", error);
-      res.status(500).json({
-        success: false,
-        message: "Payment failed: " + error.message,
-      });
-    }
-  }
+  //     // Send failure email
+  //     if (order) {
+  //       await orderService.sendEmail(order, "failure", "Stripe");
+  //     }
+  //     console.error("Payment capture failed:", error);
+  //     res.status(500).json({
+  //       success: false,
+  //       message: "Payment failed: " + error.message,
+  //     });
+  //   }
+  // }
   ///////////////////////////////////////////////////
   // ////////////////////////////////////////
 
@@ -534,6 +534,38 @@ class OrderController {
       res.status(500).json({
         success: false,
         message: "Failed to mark payment success",
+        error: error.message,
+      });
+    }
+  }
+
+  // In your controller
+  async revolutPaymentFailure(req, res) {
+    const { orderId } = req.body;
+
+    try {
+      const order = await Paypalorder.findById(orderId);
+      if (!order) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Order not found" });
+      }
+
+      order.status = "failed";
+      await order.save();
+
+      // Send failure email
+      await orderService.sendEmail(order, "failed", "Revolut");
+
+      res.status(200).json({
+        success: true,
+        message: "Order marked as failed and failure email sent",
+      });
+    } catch (error) {
+      console.error("Revolut Payment Failure Error:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to mark payment as failed",
         error: error.message,
       });
     }
