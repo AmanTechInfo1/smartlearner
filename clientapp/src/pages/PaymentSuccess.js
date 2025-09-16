@@ -1,12 +1,47 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./css/notfound.module.css";
 import { removingCart } from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 import smartlearnerLogo from "../assets/images/smartlearnerLogo-removebg-preview.png";
+import { toast } from "react-toastify";
+import httpHandler from "../utils/httpHandler";
 
 const PaymentSuccess = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const orderId = localStorage.getItem("lastOrderId");
+
+      if (!orderId) {
+        toast.error("Missing order ID");
+        return;
+      }
+
+      try {
+        const res = await httpHandler.post(
+          "/api/order/revolut-payment-success",
+          {
+            orderId,
+          }
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("lastOrderId"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+        toast.error("Failed to verify payment");
+      }
+    };
+
+    verifyPayment();
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {

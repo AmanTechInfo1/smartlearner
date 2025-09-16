@@ -201,7 +201,7 @@ export default function PaymentProcessing() {
           if (!res.data.success) {
             throw new Error("Revolut order creation failed");
           }
-
+          localStorage.setItem("lastOrderId", orderId);
           return { publicId: res.data.token };
         },
       });
@@ -211,12 +211,21 @@ export default function PaymentProcessing() {
           case "success":
             setWebLoading(true);
             try {
-              await httpHandler.post("/api/order/revolut-payment-success", {
-                orderId: orderId,
-              });
-              dispatch(emptyCart());
-              navigate("/paymentSuccess");
-              toast.success("Payment completed successfully");
+              const res = await httpHandler.post(
+                "/api/order/revolut-payment-success",
+                {
+                  orderId,
+                }
+              );
+
+              if (res.data.success) {
+                localStorage.removeItem("lastOrderId");
+                dispatch(emptyCart());
+                navigate("/paymentSuccess");
+                toast.success("Payment completed successfully");
+              } else {
+                console.error("Payment verification failed");
+              }
             } catch (err) {
               console.error("Error notifying backend of Revolut success:", err);
               toast.error("Payment succeeded, but backend notification failed");
