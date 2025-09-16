@@ -595,7 +595,7 @@ class OrderService {
         description: `Order #${orderId}`,
         email: order.email, // assuming Order has email field
         merchant_order_ext_ref: orderId,
-        success_url: `https://smartlearner.com/paymentSuccess?revolut_token=${orderId}`,
+        success_url: `https://smartlearner.com/paymentProcessing?revolut_token=${orderId}`,
         cancel_url: `https://smartlearner.com/paymentProcessing?revolut_token=${orderId}`,
       }),
     });
