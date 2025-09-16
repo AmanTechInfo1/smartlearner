@@ -46,9 +46,9 @@ function AddPostcodeModel(props) {
             <label>Postcode</label>
             <Controller
               name="postcode"
-              control={control}
+              control={control} 
               render={({ field: { value, onChange } }) => (
-                <input
+                <input 
                   className={`form-control ${
                     errors.postcode ? "error-input" : ""
                   }`}

@@ -161,13 +161,28 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               Live Chat
             </li>
           </Link>
-          <Link to="/admin/payments">
-            <li className={styles.adminSidebarListItem}>
-              {" "}
-              <MdPayment className={styles.adminIcon} />
-              Payments
-            </li>
-          </Link>
+
+          <li className={styles.adminSidebarListItem}>
+            <div className={styles.addropdown}>
+              <div className={`${styles.link} ${styles.admainLink}`}>
+                <MdPayment className={styles.adminIcon} />
+                <span id={styles.DodownSpan}>
+                  Payments
+                  <MdArrowDropDownCircle className={styles.addropdownIcon} />
+                </span>
+              </div>
+              <div className={styles.addropdownContent}>
+                <Link to="/admin/sell-subscription" className={styles.link}>
+                  <MdPayment className={styles.addropdownIcon} />
+                  Sell Subscription
+                </Link>
+                <Link to="/admin/sell-products" className={styles.link}>
+                  <MdPayment className={styles.addropdownIcon} />
+                  Sell Products
+                </Link>
+              </div>
+            </div>
+          </li>
         </ul>
       </aside>
     </>

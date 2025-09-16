@@ -176,8 +176,8 @@ export default function PaymentProcessing() {
     try {
       const { revolutPay } = await RevolutCheckout.payments({
         locale: "en",
-
-        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf",
+        mode: "sandbox",
+        publicToken: "pk_DSAuLvLFUSjuSVDDZgSYfRV9UzZzPuWvBfqbfj4Rx3A7c50C",
       });
 
       revolutPay.mount(revolutContainerRef.current, {
