@@ -4,7 +4,6 @@ import styles from "./css/notfound.module.css";
 import { removingCart } from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 import smartlearnerLogo from "../assets/images/smartlearnerLogo-removebg-preview.png";
-import { toast } from "react-toastify";
 import httpHandler from "../utils/httpHandler";
 
 const PaymentSuccess = () => {
@@ -15,11 +14,6 @@ const PaymentSuccess = () => {
   useEffect(() => {
     const verifyPayment = async () => {
       const orderId = localStorage.getItem("lastOrderId");
-
-      if (!orderId) {
-        toast.error("Missing order ID");
-        return;
-      }
 
       try {
         const res = await httpHandler.post(
@@ -36,7 +30,6 @@ const PaymentSuccess = () => {
         }
       } catch (err) {
         console.error("Verification error:", err);
-        toast.error("Failed to verify payment");
       }
     };
 
