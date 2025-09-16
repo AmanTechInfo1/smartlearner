@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { Sparkles, BookOpenCheck, Lightbulb, Timer } from "lucide-react";
 import LessonModules from "./additionalPages/LessonModules";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../../utils/httpHandler";
 
 export default function AdiPartThree() {
   const dispatch = useDispatch();
@@ -61,6 +62,34 @@ export default function AdiPartThree() {
       }
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+  ///////////////////////////////////////////////////////////////
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const subscriptionData2 = localStorage.getItem("PdiPartThreeSubsBuy");
+
+      if (!subscriptionData2) return;
+
+      try {
+        const parsedData = JSON.parse(subscriptionData2);
+        const res = await httpHandler.post(
+          "/api/subscription/revolut-payment-success",
+          {
+            parsedData,
+          }
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("PdiPartThreeSubsBuy"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+      }
+    };
+
+    verifyPayment();
+  }, []);
 
   // ////////////////////////////////////////////////////////////////////////////////////////////
   const textRef = useRef(null);

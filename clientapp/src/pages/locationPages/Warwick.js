@@ -14,7 +14,7 @@ export default function Warwick() {
         <meta charSet="utf-8" />
         <title>
           {" "}
-          Smartlearner driving school in Warwick, driving lessons in Warwick
+          driving school in Warwick | driving lessons in warwick
         </title>
         <meta
           name="description"
@@ -22,7 +22,7 @@ export default function Warwick() {
         />
         <meta
           property="og:title"
-          content="Smartlearner driving school in Warwick, driving lessons in Warwick"
+          content="driving school in Warwick | driving lessons in warwick"
         />
         <meta
           property="og:description"
@@ -38,12 +38,12 @@ export default function Warwick() {
               <div className="home-banner-flex">
                 <div className="home-content-D">
                   <h2 className="home-content-D-h2">
-                    Your guide to learning to drive in Nuneaton.
+                    Your guide to learning to drive in warwick.
                   </h2>
                   <p
                     className="home-content-D-p"
                     style={{ fontSize: "1.1rem" }}>
-                    Our local driving instructors in Nuneaton know the area like
+                    Our local driving instructors in warwick know the area like
                     the back of their hand. Our instructors are well trusted
                     because of their combination of intricate local knowledge
                     and excellent training. They’ve been navigating the areas

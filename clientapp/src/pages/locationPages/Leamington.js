@@ -12,9 +12,8 @@ export default function Leamington() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title> 
-          Smartlearner driving school in Leamington, driving lessons in
-          Leamington
+        <title>
+          driving school in leamington | driving lessons in leamington
         </title>
         <meta
           name="description"
@@ -22,7 +21,8 @@ export default function Leamington() {
         />
         <meta
           property="og:title"
-          content="Smartlearner driving school in Leamington, driving lessons in Leamington"
+          content=" driving school in leamington | driving lessons in
+          leamington"
         />
         <meta
           property="og:description"
@@ -38,21 +38,21 @@ export default function Leamington() {
               <div className="home-banner-flex">
                 <div className="home-content-D">
                   <h2 className="home-content-D-h2">
-                    Your guide to learning to drive in Nuneaton.
+                    Your guide to learning to drive in Leamington.
                   </h2>
                   <p
                     className="home-content-D-p"
                     style={{ fontSize: "1.1rem" }}>
-                    Our local driving instructors in Nuneaton know the area like
-                    the back of their hand. Our instructors are well trusted
-                    because of their combination of intricate local knowledge
-                    and excellent training. They’ve been navigating the areas
-                    highways and byways for years and will ensure you’re
-                    prepared for everything that could be thrown at you. They’ll
-                    pass on all of this knowledge and make sure you’re prepared
-                    for everything and anything on test day. If you want to
-                    boost your chances of success, there’s only one choice to
-                    make.
+                    Our local driving instructors in Leamington know the area
+                    like the back of their hand. Our instructors are well
+                    trusted because of their combination of intricate local
+                    knowledge and excellent training. They’ve been navigating
+                    the areas highways and byways for years and will ensure
+                    you’re prepared for everything that could be thrown at you.
+                    They’ll pass on all of this knowledge and make sure you’re
+                    prepared for everything and anything on test day. If you
+                    want to boost your chances of success, there’s only one
+                    choice to make.
                   </p>
                   <div className="home-bannerbnt-sec">
                     <Link to="/Contact-Us" style={{ textDecoration: "none" }}>

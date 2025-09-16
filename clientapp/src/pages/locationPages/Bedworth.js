@@ -12,16 +12,14 @@ export default function Bedworth() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Smartlearner driving school in Bedworth, driving lessons in Bedworth
-        </title>
+        <title>driving school in bedworth | driving lessons in bedworth</title>
         <meta
           name="description"
           content="SmartLearner Driving School Bedworth, established in 2004, offers expert driving lessons in the Bedworth with advanced technology. "
         />
         <meta
           property="og:title"
-          content="Smartlearner driving school in Bedworth, driving lessons in Bedworth"
+          content="driving school in bedworth | driving lessons in bedworth"
         />
         <meta
           property="og:description"
@@ -37,12 +35,12 @@ export default function Bedworth() {
               <div className="home-banner-flex">
                 <div className="home-content-D">
                   <h2 className="home-content-D-h2">
-                    Your guide to learning to drive in Nuneaton.
+                    Your guide to learning to drive in Bedworth.
                   </h2>
                   <p
                     className="home-content-D-p"
                     style={{ fontSize: "1.1rem" }}>
-                    Our local driving instructors in Nuneaton know the area like
+                    Our local driving instructors in Bedworth know the area like
                     the back of their hand. Our instructors are well trusted
                     because of their combination of intricate local knowledge
                     and excellent training. They’ve been navigating the areas

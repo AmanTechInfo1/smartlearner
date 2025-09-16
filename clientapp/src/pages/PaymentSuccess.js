@@ -14,7 +14,7 @@ const PaymentSuccess = () => {
   useEffect(() => {
     const verifyPayment = async () => {
       const orderId = localStorage.getItem("lastOrderId");
-
+      if (!orderId) return;
       try {
         const res = await httpHandler.post(
           "/api/order/revolut-payment-success",
@@ -35,6 +35,37 @@ const PaymentSuccess = () => {
 
     verifyPayment();
   }, []);
+
+  // ///////////////////////////////
+  useEffect(() => {
+    const verifyPayment2 = async () => {
+      const subscriptionData2 = localStorage.getItem("CompletePdiBuy");
+
+      if (!subscriptionData2) return;
+
+      try {
+        const parsedData = JSON.parse(subscriptionData2);
+        const res = await httpHandler.post(
+          "/api/subscription/revolut-payment-success",
+          {
+            parsedData,
+          }
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("CompletePdiBuy"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+      }
+    };
+
+    verifyPayment2();
+  }, []);
+
+  // ////////////////////////////
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {

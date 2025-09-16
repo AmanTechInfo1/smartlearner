@@ -15,6 +15,7 @@ import { useRef } from "react";
 
 import gsap from "gsap";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../utils/httpHandler";
 
 export default function AdiPartOne() {
   const dispatch = useDispatch();
@@ -66,6 +67,35 @@ export default function AdiPartOne() {
       }
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+
+  //////////////////////////////////////////////////////////////
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const subscriptionData2 = localStorage.getItem("PdiPartOneSubsBuy");
+
+      if (!subscriptionData2) return;
+
+      try {
+        const parsedData = JSON.parse(subscriptionData2);
+        const res = await httpHandler.post(
+          "/api/subscription/revolut-payment-success",
+          {
+            parsedData,
+          }
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("PdiPartOneSubsBuy"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+      }
+    };
+
+    verifyPayment();
+  }, []);
 
   // //////////////////////////////////////////////////////////////////////////////////////
 
@@ -174,14 +204,14 @@ export default function AdiPartOne() {
     <div className={styles.AdiPartOne}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Driving instructor training in Kenilworth</title>
+        <title>Driving instructor training in kenilworth</title>
         <meta
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
         <meta
           property="og:title"
-          content="Driving instructor training in Kenilworth "
+          content="Driving instructor training in kenilworth "
         />
         <meta
           property="og:description"

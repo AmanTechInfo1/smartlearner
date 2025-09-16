@@ -14,7 +14,7 @@ export default function Nuneaton() {
         <meta charSet="utf-8" />
         <title>
           {" "}
-          Smartlearner driving school in Nuneaton, driving lessons in Nuneaton{" "}
+          driving school in Nuneaton | driving lessons in Nuneaton{" "}
         </title>
         <meta
           name="description"

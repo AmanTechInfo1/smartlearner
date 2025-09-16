@@ -23,6 +23,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import LessonAccordation from "./additionalPagess/LessonAccordation";
 import { Helmet } from "react-helmet-async";
+import httpHandler from "../../../utils/httpHandler";
 
 export default function AdiPartTwo() {
   const [isVisible, setIsVisible] = useState(false);
@@ -98,6 +99,34 @@ export default function AdiPartTwo() {
       // Check the subscription plan category
     }
   }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+  ////////////////////////////////////////
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const subscriptionData2 = localStorage.getItem("PdiPartTwoSubsBuy");
+
+      if (!subscriptionData2) return;
+
+      try {
+        const parsedData = JSON.parse(subscriptionData2);
+        const res = await httpHandler.post(
+          "/api/subscription/revolut-payment-success",
+          {
+            parsedData,
+          }
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("PdiPartTwoSubsBuy"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+      }
+    };
+
+    verifyPayment();
+  }, []);
 
   // ///////////////////////////////////////////////////
   const textRef = useRef(null);
@@ -480,14 +509,14 @@ export default function AdiPartTwo() {
     <div className={styles.AdiPartOne}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Driving instructor training in Solihull</title>
+        <title>Driving instructor training in Doncaster</title>
         <meta
           name="description"
           content="Explore our Driving Instruction training (PDI) program designed to help new drivers build confidence and refine their skills after passing their test. "
         />
         <meta
           property="og:title"
-          content="Driving instructor training in Solihull"
+          content="Driving instructor training in Doncaster"
         />
         <meta
           property="og:description"

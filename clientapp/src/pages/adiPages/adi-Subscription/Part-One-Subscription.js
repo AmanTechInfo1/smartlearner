@@ -155,6 +155,14 @@ const PartOneSubscription = () => {
           console.log("sa123sdasd", res);
           console.log("Asas", res.data.token);
 
+          localStorage.setItem(
+            "PdiPartOneSubsBuy",
+            JSON.stringify({
+              userId: userId,
+              subscriptionId: ogPlan._id,
+            })
+          );
+
           return { publicId: res.data.token };
           // this token should be generated from your backend
         },
@@ -165,15 +173,19 @@ const PartOneSubscription = () => {
           case "success":
             setRevolutLoading(true);
             try {
-              await httpHandler.post(
+              const res = await httpHandler.post(
                 "/api/subscription/revolut-payment-success",
                 {
                   subscriptionId: ogPlan._id,
                   userId: userId,
                 }
               );
-              navigate("/part-one-theory-questions");
-              toast.success("Payment completed successfully");
+              if (res.data.success) {
+                localStorage.removeItem("PdiPartOneSubsBuy");
+
+                navigate("/part-one-theory-questions");
+                toast.success("Payment completed successfully");
+              }
             } catch (err) {
               console.error("Error notifying backend of Revolut success:", err);
               toast.error("Payment succeeded, but backend notification failed");
