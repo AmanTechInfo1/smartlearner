@@ -215,6 +215,31 @@ export const getAddToCart = (product, navigate) => async (dispatch) => {
   }
 };
 
+export const getAddToCart2 = (product) => async (dispatch) => {
+  try {
+    dispatch(setLoading());
+    toast.success("Product added to cart", {
+      position: "center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      newestOnTop: false,
+      theme: "dark",
+      transition: "Bounce",
+    });
+
+    dispatch(AddToCart(product));
+  } catch (error) {
+    toast.error("Failed to add to cart", {
+      position: "center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      newestOnTop: false,
+      theme: "dark",
+      transition: "Bounce",
+    });
+  }
+};
+
 export const emptyCart = () => async (dispatch) => {
   try {
     toast.success("Cart emptied successfully");

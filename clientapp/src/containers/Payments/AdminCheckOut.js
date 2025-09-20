@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./Checkout.css";
-import FinalCheckout from "./FinalCheckout";
-import { useSelector } from "react-redux";
+import "../../pages/shop/checkout/Checkout.css";
+import AdminFinalCheckout from "./AdminFinalCheckout";
 
-export default function Checkout() {
+export default function AdminCheckOut() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -130,7 +129,7 @@ export default function Checkout() {
           </form>
         </div>
         {/* /////////////////////////////////////////////////////// */}
-        <FinalCheckout
+        <AdminFinalCheckout
           formData={formData}
           setFormData={setFormData}
           handleLocalChange={handleLocalChange}

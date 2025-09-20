@@ -196,6 +196,8 @@ import Warwick from "./pages/locationPages/Warwick";
 import PaymentModel from "./containers/Payments/SellSubscription";
 import SellSubscription from "./containers/Payments/SellSubscription";
 import SellProducts from "./containers/Payments/SellProducts";
+import AdminCheckOut from "./containers/Payments/AdminCheckOut";
+import AdminPaymentProcessing from "./containers/Payments/AdminPaymentProcessing";
 
 export const router = createBrowserRouter([
   {
@@ -629,11 +631,11 @@ export const router = createBrowserRouter([
       {
         path: "/admin/sell-subscription",
         element: <SellSubscription />,
-      }, 
+      },
       {
         path: "/admin/sell-products",
         element: <SellProducts />,
-      },  
+      },
 
       {
         path: "/admin/smartBot-livechat",
@@ -658,6 +660,14 @@ export const router = createBrowserRouter([
       {
         path: "/admin/quizViewResult",
         element: <QuizResult />,
+      },
+      {
+        path: "/admin/adminCheckout",
+        element: <AdminCheckOut />,
+      },
+      {
+        path: "/admin/adminProcessing",
+        element: <AdminPaymentProcessing />,
       },
       {
         path: "/admin/quiz",

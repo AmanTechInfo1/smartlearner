@@ -159,3 +159,15 @@
 
   background-color: white;
 }
+.sellProductFlex {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  gap: 20px;
+}
+.sellProductSelect {
+  width: 600px;
+}
+.sellProductFlex button {
+  width: 100px;
+}
