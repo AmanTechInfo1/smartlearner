@@ -46,11 +46,11 @@ export default function AdminHome() {
               className={styles.card}
               style={{ backgroundImage: itm.bgColor }}>
               <div className={styles.cardInner}>
-                <h3>{itm.label}</h3>
-                {dataIcon[itm.label]}
+                <h3>{itm.label}</h3> 
+                {dataIcon[itm.label]} 
               </div>
               <h1>{itm.value}</h1>
-            </div>
+            </div> 
           ))
         ) : (
           <p>No cards available</p>

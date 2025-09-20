@@ -1,10 +1,10 @@
 const accountService = require("../services/accountService");
 const roleService = require("../services/roleService");
 const userRoleServices = require("../services/userRoleService");
-const emailService  = require("../services/emailService")
+const emailService = require("../services/emailService");
 const bcrypt = require("bcryptjs");
 
-const crypto = require('crypto');
+const crypto = require("crypto");
 
 class AccountController {
   async registerUser(req, res, next) {
@@ -52,6 +52,7 @@ class AccountController {
   async getAllUsers(req, res, next) {
     try {
       const { page, pagesize, search } = req.query;
+      console.log("ad", search);
       const response = await accountService.getAllUsersAsync(
         page,
         pagesize,
@@ -62,7 +63,6 @@ class AccountController {
       next(err);
     }
   }
- 
 
   async getOneUsers(req, res, next) {
     try {
@@ -76,7 +76,6 @@ class AccountController {
 
   async updateUser(req, res, next) {
     try {
-     
       const updatedUser = await accountService.updateUserAsync(
         req.params.id,
         req.body
@@ -111,23 +110,24 @@ class AccountController {
     const { resetToken, newPassword } = req.body;
 
     try {
-      const result = await accountService.resetPasswordAsync(resetToken,newPassword);
+      const result = await accountService.resetPasswordAsync(
+        resetToken,
+        newPassword
+      );
       res.json(result);
     } catch (err) {
-      res.status(400).json({success: false,  message: err.message });
+      res.status(400).json({ success: false, message: err.message });
     }
   }
   async verifySignature(req, transmissionSig, transmissionId) {
     const body = JSON.stringify(req.body);
-    const secret = '0LX99488XP412803T'; // PayPal webhook secret
-    
-    const hmac = crypto.createHmac('sha256', secret);
+    const secret = "0LX99488XP412803T"; // PayPal webhook secret
+
+    const hmac = crypto.createHmac("sha256", secret);
     hmac.update(`${transmissionId}|${body}`);
-    const calculatedSig = hmac.digest('hex');
+    const calculatedSig = hmac.digest("hex");
     return calculatedSig === transmissionSig;
   }
-  
-
 }
 
 // =========================================

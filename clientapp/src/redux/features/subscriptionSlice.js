@@ -191,6 +191,10 @@ const subscriptionSlice = createSlice({
       localStorage.removeItem("userSubscription");
       state.userSubscription = {};
     },
+    resetDiscountedPrice: (state) => {
+      state.subsdiscountedPrice = null;
+      localStorage.removeItem("subsdiscountedPrice");
+    },
   },
 
   extraReducers: (builder) => {
@@ -198,6 +202,7 @@ const subscriptionSlice = createSlice({
       .addCase(fetchPlans.pending, (state) => {
         state.loading = true;
       })
+
       .addCase(fetchPlans.fulfilled, (state, action) => {
         state.loading = false;
         state.plans = action.payload;
@@ -259,6 +264,7 @@ const subscriptionSlice = createSlice({
         state.loading = false;
         state.subsdiscountedPrice = action.payload.data;
       })
+
       .addCase(pdiPartOneApplyCouponCode.rejected, (state, action) => {
         state.loading = false;
         state.isCouponValid = false;
@@ -268,5 +274,5 @@ const subscriptionSlice = createSlice({
 });
 
 // Export actions and reducer
-export const { removeSubs } = subscriptionSlice.actions;
+export const { removeSubs, resetDiscountedPrice } = subscriptionSlice.actions;
 export default subscriptionSlice.reducer;
