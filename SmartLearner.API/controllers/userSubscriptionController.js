@@ -140,13 +140,6 @@ class userSubscriptionController {
         userId
       );
 
-      await userSubscriptionService.sendSubscriptionEmail(
-        userId,
-        subscriptionId,
-        "PROCESSING",
-        "Revolut"
-      );
-
       res.status(200).json({
         success: true,
         message: "Revolut order created",

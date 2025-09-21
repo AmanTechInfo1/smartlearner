@@ -272,7 +272,6 @@ class OrderController {
       await order.save();
 
       // ✅ Step 2: Send pending email
-      await orderService.sendEmail(order, "pending", "PayPal");
 
       // Capture PayPal payment
       const paypalResponse = await orderService.capturePayment(
@@ -490,7 +489,7 @@ class OrderController {
       order.status = "pending";
       order.paymentMethod = "Revolut";
       await order.save();
-      await orderService.sendEmail(order, "pending", "Revolut");
+
       res.status(200).json({
         success: true,
         message: "Revolut order created",
