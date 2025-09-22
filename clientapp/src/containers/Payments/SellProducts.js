@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../pages/shop/cart/Cart.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,8 @@ export default function SellProducts() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userDetails = useSelector((state) => state.auth.userDetails);
+
+  const [extraCharges, setExtraCharges] = useState(0);
 
   const myCart = useSelector((state) => state.cart.cart) || [];
 
@@ -100,6 +102,7 @@ export default function SellProducts() {
                       <span>2% ONLINE SERVICE CHARGE:</span>{" "}
                       <span>£{serviceCharge.toFixed(2)}</span>
                     </p>
+
                     <p>
                       <span>Total:</span> <span>£{total.toFixed(2)}</span>
                     </p>

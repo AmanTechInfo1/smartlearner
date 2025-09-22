@@ -143,6 +143,25 @@ export default function LessonModules() {
                 )}
               </li>
             </Link>
+            <Link to="/adi-videos">
+              {" "}
+              <li
+                className={`${styles.itemLesson} ${
+                  openIndex === 297 ? styles.lessonOpen : ""
+                }`}
+                onMouseEnter={() => handleMouseEnter(297)}
+                onMouseLeave={handleMouseLeave}>
+                <div className={styles.lessonRow}>
+                  <span className={styles.quizIcon}>
+                    <MdContactPage />
+                  </span>
+                  Videos of Part 3
+                </div>
+                {openIndex === 297 && (
+                  <p className={styles.description}> Videos of Part 3</p>
+                )}
+              </li>
+            </Link>
 
             {/* ////////////////////////////////////////////////////// */}
             <Link to="/gde-matrix-grow">
@@ -485,26 +504,6 @@ export default function LessonModules() {
                   <p className={styles.description}>
                     How to book adi part 3 Test
                   </p>
-                )}
-              </li>
-            </Link>
-
-            <Link to="/adi-videos">
-              {" "}
-              <li
-                className={`${styles.itemLesson} ${
-                  openIndex === 297 ? styles.lessonOpen : ""
-                }`}
-                onMouseEnter={() => handleMouseEnter(297)}
-                onMouseLeave={handleMouseLeave}>
-                <div className={styles.lessonRow}>
-                  <span className={styles.quizIcon}>
-                    <MdContactPage />
-                  </span>
-                  Videos of Part 3
-                </div>
-                {openIndex === 297 && (
-                  <p className={styles.description}> Videos of Part 3</p>
                 )}
               </li>
             </Link>

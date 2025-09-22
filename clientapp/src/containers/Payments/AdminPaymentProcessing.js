@@ -285,6 +285,9 @@ export default function AdminPaymentProcessing() {
             <h3>
               Service Charge: <span>£{carting.serviceCharge}</span>
             </h3>
+            <h3>
+              Extra Charge: <span>£{carting.extraCharges}</span>
+            </h3>
 
             {isPaymentCreated && !loading && (
               <div>

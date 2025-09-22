@@ -701,6 +701,10 @@ class OrderService {
                   <th>Total</th>
                   <td>£ ${orderDetails.total.toFixed(2)}</td>
                 </tr>
+                 <tr>
+                  <th>Extra Charges</th>
+                  <td>${orderDetails.extraCharges}</td>
+                </tr>
               </table>
   
               <h3>Product Details:</h3>

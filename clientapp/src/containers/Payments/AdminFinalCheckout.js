@@ -60,9 +60,12 @@ export default function AdminFinalCheckout(props) {
       }
     });
   };
+
+  const [extraCharges, setExtraCharges] = useState(0);
+
   const subtotal = calculateSubtotal();
   const serviceCharge = subtotal * 0.02;
-  const total = subtotal + serviceCharge;
+  const total = subtotal + serviceCharge + Number(extraCharges || 0);
   const callFunApi = () => {
     if (!isTermsChecked || !isEmailChecked) {
       setIsError(true); // Show error if any checkbox is not checked
@@ -74,6 +77,7 @@ export default function AdminFinalCheckout(props) {
         ...props.formData,
         subtotal: subtotal,
         serviceCharge: serviceCharge,
+        extraCharges: Number(extraCharges || 0),
         total: total,
         myCart: cleanCartItems,
         orderNotes: orderNotes,
@@ -146,6 +150,23 @@ export default function AdminFinalCheckout(props) {
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>2% ONLINE SERVICE CHARGE</span>
                 <span>£{serviceCharge}</span>
+              </div>
+              <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
+                <span>Extra Charges:</span>
+                <span>
+                  £
+                  <Form.Control
+                    type="number"
+                    min="0"
+                    value={extraCharges}
+                    onChange={(e) => setExtraCharges(e.target.value)}
+                    style={{
+                      width: "100px",
+                      display: "inline-block",
+                      marginLeft: "10px",
+                    }}
+                  />
+                </span>
               </div>
 
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
