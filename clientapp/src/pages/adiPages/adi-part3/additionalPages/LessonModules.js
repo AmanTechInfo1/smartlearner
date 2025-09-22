@@ -161,7 +161,7 @@ export default function LessonModules() {
                   <p className={styles.description}> Videos of Part 3</p>
                 )}
               </li>
-            </Link>
+            </Link> 
 
             {/* ////////////////////////////////////////////////////// */}
             <Link to="/gde-matrix-grow">
