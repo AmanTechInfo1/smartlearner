@@ -6008,3 +6008,31 @@ blockquote {
 .LessonPlanningsection em {
   color: #81ecec;
 }
+/* //////////////////////////// */
+.loadMoreWrapperVideo {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.loadMoreBtnVideo {
+  background-color: #fd9235;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.loadMoreBtnVideo:hover {
+  background-color: #fc7c10;
+  transform: scale(1.05);
+}
+
+.loadMoreBtnVideo:active {
+  background-color: #e56c00;
+  transform: scale(0.98);
+}

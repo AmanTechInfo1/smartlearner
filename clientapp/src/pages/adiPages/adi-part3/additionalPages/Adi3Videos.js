@@ -214,6 +214,11 @@ export default function Adi3Videos() {
     "https://www.youtube.com/embed/F-3gn9cw7mU",
     "https://www.youtube.com/embed/rLb4ryBfHnQ",
   ];
+  const [visibleCount, setVisibleCount] = useState(10); // start with 10
+
+  const loadMore = () => {
+    setVisibleCount((prev) => prev + 10);
+  };
 
   return (
     <div className={styles.AdiModuleOnecontainer}>
@@ -231,19 +236,26 @@ export default function Adi3Videos() {
       <h2 className={styles.videotitle2}>Watch Our Video</h2>
 
       <div className={styles.videoContainer2}>
-        {videoURLs.map((url, index) => (
-          <div className={styles.videodesign2}>
+        {videoURLs.slice(0, visibleCount).map((url, index) => (
+          <div className={styles.videodesign2} key={index}>
             <iframe
               width="100%"
               height="270px"
               src={url}
-              title="YouTube video player"
+              title={`YouTube video ${index}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen></iframe>
           </div>
         ))}
       </div>
+      {visibleCount < videoURLs.length && (
+        <div className={styles.loadMoreWrapperVideo}>
+          <button className={styles.loadMoreBtnVideo} onClick={loadMore}>
+            Load More Videos
+          </button>
+        </div>
+      )}
     </div>
   );
 }
