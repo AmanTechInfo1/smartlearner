@@ -198,6 +198,7 @@ import SellSubscription from "./containers/Payments/SellSubscription";
 import SellProducts from "./containers/Payments/SellProducts";
 import AdminCheckOut from "./containers/Payments/AdminCheckOut";
 import AdminPaymentProcessing from "./containers/Payments/AdminPaymentProcessing";
+import WorkshopTransmission from "./pages/Transmission/WorkshopTransmission";
 
 export const router = createBrowserRouter([
   {
@@ -344,6 +345,7 @@ export const router = createBrowserRouter([
       { path: "manual", element: <Manual /> },
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
+      { path: "workshop", element: <WorkshopTransmission /> },
       {
         path: "quizModuleOne",
         element: <AdiModuleOne />,

@@ -63,9 +63,7 @@ function Header() {
                 {" "}
                 <li>Simulator</li>
               </NavLink>
-              <NavLink
-                to="/driving-instructor-packages/instructor-packages"
-                className={styles.activeLink}>
+              <NavLink to="/workshop" className={styles.activeLink}>
                 <li>Workshop</li>
               </NavLink>
             </ul>

@@ -51,33 +51,6 @@ const ChatLauncher = () => {
 
   return (
     <>
-      {/* Popup */}
-      {showPopup && !isOpened && (
-        <div className="chat-popup" onClick={() => setShowPopup(false)}>
-          <div className="chat-popup-arrow" />
-          <p>
-            <span style={{ fontSize: "1.3rem" }}> 😊</span>{" "}
-            <em>
-              Can't find anything what you look for. Ask our{" "}
-              <strong>SmartBot</strong>
-              <br />
-            </em>
-          </p>
-          <div
-            className="iframe-click-overlay"
-            onClick={() => setShowPopup(false)}></div>
-          <iframe
-            title="vimeo-player"
-            src="https://player.vimeo.com/video/1110115201?h=c2724c5c32&autoplay=1&muted=1&loop=1&playsinline=1&background=1"
-            width="100%"
-            height="250"
-            frameborder="0"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            allowfullscreen></iframe>
-        </div>
-      )}
-
       {isOpened && (
         <div className="chat-window" ref={chatWindowRef}>
           <Chatbot />

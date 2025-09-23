@@ -247,6 +247,23 @@ export default function BookingSection() {
                 </Link>
               </SwiperSlide>
               <SwiperSlide>
+                <Link to="/workshop">
+                  <div className={styles.slide5}>
+                    <div className={styles.opicity}></div>{" "}
+                    <div id={styles.crousalContent}>
+                      <h2>WorkShops</h2>
+                      <p>
+                        At SmartLearner Driving School, we go beyond the basics.
+                        Our specialised workshops are designed to equip learners
+                        and new drivers with the practical knowledge, skills,
+                        and confidence needed for real-life driving
+                      </p>
+                      <button>Explore Now</button>
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Link to="/intensive">
                   <div className={styles.slide3}>
                     <div className={styles.opicity}></div>{" "}
