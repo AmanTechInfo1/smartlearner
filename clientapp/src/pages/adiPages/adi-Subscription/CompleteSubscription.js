@@ -26,7 +26,7 @@ import Loader2 from "../../../components/loader/Loader2";
 const CompleteSubscription = () => {
   const dispatch = useDispatch();
   const { userDetails } = useSelector((state) => state.auth);
-  const userId = userDetails?._id; // Added optional chaining for safety
+  const userId = userDetails._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
   const revolut2ContainerRef = useRef(null);

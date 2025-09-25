@@ -64,7 +64,11 @@ router.post(
   userSubscriptionController.pdiPartThreeCouponAccess
 );
 
-router.post("/revolut-charge", userSubscriptionController.createRevolutCharge);
+router.post(
+  "/revolut-charge",
+  requireAuth,
+  userSubscriptionController.createRevolutCharge
+);
 router.post(
   "/revolut-payment-success",
   userSubscriptionController.revolutPaymentSuccess

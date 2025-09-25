@@ -31,7 +31,7 @@ import Loader2 from "../../../components/loader/Loader2";
 const PartThreeSubscription = () => {
   const dispatch = useDispatch();
   const { userDetails } = useSelector((state) => state.auth);
-  const userId = userDetails?._id; // Added optional chaining for safety
+  const userId = userDetails._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const subsdiscountedPrice = useSelector(
     (state) => state.subscription.subsdiscountedPrice

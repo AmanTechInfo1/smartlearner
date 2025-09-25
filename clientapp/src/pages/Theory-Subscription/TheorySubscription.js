@@ -29,7 +29,7 @@ const TheorySubscription = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userDetails } = useSelector((state) => state.auth);
-  const userId = userDetails?._id; // Added optional chaining for safety
+  const userId = userDetails._id; // Added optional chaining for safety
   const { plans, loading, error } = useSelector((state) => state.subscription);
   const [couponCode, setCouponCode] = useState("");
   const [revolutLoading, setRevolutLoading] = useState(false);
