@@ -759,8 +759,8 @@ class UserSubscriptionService {
     `;
 
     const mailOptions = {
-      from: "admin@smartlearner.com",
-      to: [user.email, "admin@smartlearner.com"],
+      from: "sranchandel@gmail.com",
+      to: [user.email, "sranchandel@gmail.com"],
       subject: `Subscription ${status} - Plan: ${subscription.planname}`,
       html: htmlContent,
     };
