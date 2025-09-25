@@ -1,7 +1,7 @@
 // config/paypal.js
 const axios = require("axios");
 
-const PAYPAL_API_BASE = "	https://www.sandbox.paypal.com/";
+const PAYPAL_API_BASE = "https://www.sandbox.paypal.com";
 const CLIENT_ID =
   "ATdRkhDRm0xZMlOCi5jXXhAXy1q_HBXFWcSGiYjdvIcuiDOpwCc81ozkjOsR";
 const CLIENT_SECRET =
