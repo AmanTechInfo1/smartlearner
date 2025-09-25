@@ -29,10 +29,11 @@ root.render(
       <PayPalScriptProvider
         options={{
           "client-id":
-            "ATdRkhDRm0xZMlOCi5jXXhAXy1q_HBXFWcSGiYjdvIcuiDOpwCc81ozkjOsR",
+            "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL",
           currency: "GBP",
           intent: "capture",
-        }}>
+        }}
+      >
         <Elements stripe={stripePromise}>
           <HelmetProvider>
             <RouterProvider router={router} />
