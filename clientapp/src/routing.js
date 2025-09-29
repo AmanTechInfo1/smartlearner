@@ -199,6 +199,7 @@ import SellProducts from "./containers/Payments/SellProducts";
 import AdminCheckOut from "./containers/Payments/AdminCheckOut";
 import AdminPaymentProcessing from "./containers/Payments/AdminPaymentProcessing";
 import WorkshopTransmission from "./pages/Transmission/WorkshopTransmission";
+import BusinessMentoringPage from "./pages/AddOns/BusinessMentoring";
 
 export const router = createBrowserRouter([
   {
@@ -321,6 +322,7 @@ export const router = createBrowserRouter([
       { path: "paymentProcessing", element: <PaymentProcessing /> },
       { path: "email", element: <Email /> },
       { path: "hazard-preception-part-2", element: <HazardPreceptions /> },
+      { path: "business-mentoring", element: <BusinessMentoringPage /> },
       {
         path: "driving-instructor-training-part-one",
         element: <PartOneSubscription />,
