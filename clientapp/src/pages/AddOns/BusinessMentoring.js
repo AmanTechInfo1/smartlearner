@@ -421,7 +421,7 @@ export default function BusinessMentoringPage() {
 
         {/* CONTACT / CTA */}
         <Container>
-          <Title>Workshop Products</Title>
+         
           <Grid>
             {workshopCategory?.data?.map((product, index) => {
               const productId = `${product._id}_${index}_${product.price}`;
