@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Star, Clock, Bolt, Users, Clipboard, CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
 import {
@@ -135,7 +135,9 @@ export default function BusinessMentoringPage() {
   `;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-sky-50 text-slate-900 antialiased">
+    <div
+      className="min-h-screen bg-gradient-to-b from-slate-50 to-sky-50 text-slate-900 antialiased"
+      style={{ backgroundColor: "white" }}>
       {/* Container */}
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* HERO */}
@@ -181,16 +183,11 @@ export default function BusinessMentoringPage() {
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <a
-                href="#how"
+              <Link
+                to="/Contact-Us"
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-5 py-3 rounded-lg font-semibold shadow hover:shadow-md transform hover:-translate-y-1 transition">
-                Book a free intro
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 border border-amber-600 text-amber-600 px-5 py-3 rounded-lg font-semibold hover:bg-amber-50 transition">
                 Ask a question
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -199,7 +196,9 @@ export default function BusinessMentoringPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
             className="rounded-2xl p-8 bg-gradient-to-br from-white to-sky-100 shadow-lg">
-            <h3 className="text-lg font-semibold text-slate-800">Who I am</h3>
+            <h3 className="text-lg text-slate-800">
+              Who I am <span style={{ fontWeight: "700" }}>Tommy Sandhu</span>
+            </h3>
             <p className="mt-3 text-slate-700 leading-relaxed">
               I grew my own driving school from scratch into a
               multi-award-winning business and supported thousands of
@@ -251,6 +250,56 @@ export default function BusinessMentoringPage() {
             </ul>
           </motion.div>
         </header>
+
+        <Container style={{ marginTop: "1rem" }}>
+          <Grid>
+            {workshopCategory?.data?.map((product, index) => {
+              const productId = `${product._id}_${index}_${product.price}`;
+              const inCart = myCart.find((item) => item.id === productId);
+              return (
+                <Card
+                  key={product._id}
+                  whileHover={{ scale: 1.03 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}>
+                  <Content>
+                    <Name>{product.name}</Name>
+                    <Price>£ {product.price}</Price>
+                    <StarWrapper>
+                      {[...Array(5)].map((_, i) => (
+                        <img
+                          key={i}
+                          src={redStarImg}
+                          alt="star"
+                          style={{ width: 20, height: 20 }}
+                        />
+                      ))}
+                    </StarWrapper>
+
+                    {inCart ? (
+                      <QuantityWrapper>
+                        <button onClick={() => handleDecrease(productId)}>
+                          -
+                        </button>
+                        <span>{inCart.count}</span>
+                        <button onClick={() => handleIncrease(productId)}>
+                          +
+                        </button>
+                      </QuantityWrapper>
+                    ) : (
+                      <ActionButtons>
+                        <Button onClick={() => handleAddToCart(product, index)}>
+                          Book
+                        </Button>
+                      </ActionButtons>
+                    )}
+                  </Content>
+                </Card>
+              );
+            })}
+          </Grid>
+        </Container>
 
         {/* BENEFITS */}
         <section id="benefits" className="mt-16">
@@ -420,57 +469,6 @@ export default function BusinessMentoringPage() {
         </section>
 
         {/* CONTACT / CTA */}
-        <Container>
-         
-          <Grid>
-            {workshopCategory?.data?.map((product, index) => {
-              const productId = `${product._id}_${index}_${product.price}`;
-              const inCart = myCart.find((item) => item.id === productId);
-              return (
-                <Card
-                  key={product._id}
-                  whileHover={{ scale: 1.03 }}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}>
-                  <Img src={redCartImg || defaultImg} alt={product.name} />
-                  <Content>
-                    <Name>{product.name}</Name>
-                    <Price>£ {product.price}</Price>
-                    <StarWrapper>
-                      {[...Array(5)].map((_, i) => (
-                        <img
-                          key={i}
-                          src={redStarImg}
-                          alt="star"
-                          style={{ width: 20, height: 20 }}
-                        />
-                      ))}
-                    </StarWrapper>
-
-                    {inCart ? (
-                      <QuantityWrapper>
-                        <button onClick={() => handleDecrease(productId)}>
-                          -
-                        </button>
-                        <span>{inCart.count}</span>
-                        <button onClick={() => handleIncrease(productId)}>
-                          +
-                        </button>
-                      </QuantityWrapper>
-                    ) : (
-                      <ActionButtons>
-                        <Button onClick={() => handleAddToCart(product, index)}>
-                          Book
-                        </Button>
-                      </ActionButtons>
-                    )}
-                  </Content>
-                </Card>
-              );
-            })}
-          </Grid>
-        </Container>
 
         <footer className="mt-10 text-center text-sm text-slate-500">
           © {new Date().getFullYear()} Business Mentoring — ORDIT & Fleet
