@@ -11,14 +11,11 @@ const ChatLauncher = () => {
 
   const chatWindowRef = useRef(null);
   const launcherRef = useRef(null);
-
   useEffect(() => {
-    // Check if the popup has already been shown (on page refresh)
     const popupShown = sessionStorage.getItem("popupShown");
     if (!popupShown) {
-      setShowPopup(true);
-      setIsOpen(true);
-      sessionStorage.setItem("popupShown", "true");
+      setShowPopup(true); // Show the popup once when the page loads
+      sessionStorage.setItem("popupShown", "true"); // Set session storage to remember the popup has been shown
     }
   }, []);
 
