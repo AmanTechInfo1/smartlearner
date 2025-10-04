@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Star, Clock, Bolt, Users, Clipboard, CheckCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
 } from "../../redux/features/cartSlice";
 import styled from "styled-components";
 import redStarImg from "../../assets/images/redStar.png";
+import CallBackForm from "../../components/forms/CallBackForm";
 import redCartImg from "../../assets/images/redCartImg.png";
 import defaultImg from "../../assets/images/bannerCart.png";
 
@@ -134,6 +135,16 @@ export default function BusinessMentoringPage() {
     }
   `;
 
+  const sectionRef = useRef(null);
+
+  const handleScroll = (e) => {
+    e.preventDefault();
+    sectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div
       className="min-h-screen bg-gradient-to-b from-slate-50 to-sky-50 text-slate-900 antialiased"
@@ -184,9 +195,9 @@ export default function BusinessMentoringPage() {
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
               <Link
-                to="/Contact-Us"
+                onClick={handleScroll}
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-5 py-3 rounded-lg font-semibold shadow hover:shadow-md transform hover:-translate-y-1 transition">
-                Ask a question
+                Book your free consultation today
               </Link>
             </div>
           </motion.div>
@@ -197,14 +208,20 @@ export default function BusinessMentoringPage() {
             transition={{ duration: 0.7 }}
             className="rounded-2xl p-8 bg-gradient-to-br from-white to-sky-100 shadow-lg">
             <h3 className="text-lg text-slate-800">
-              Who I am <span style={{ fontWeight: "700" }}>Tommy Sandhu</span>
+              Who I Am —<span style={{ fontWeight: "700" }}>Tommy Sandhu</span>{" "}
+              Business Mentor
             </h3>
             <p className="mt-3 text-slate-700 leading-relaxed">
-              I grew my own driving school from scratch into a
-              multi-award-winning business and supported thousands of
-              instructors. I deliver driver and fleet training across the UK and
-              internationally, and consult for large training groups. Now I
-              bring that experience to mentor instructors like you.
+              I’m the Director of Smartlearner, a business I built from scratch
+              when everyone said it couldn’t be done — and I proved them wrong.
+              <br></br>Over the past two decades, I’ve built multiple
+              successful, award-winning businesses and helped countless
+              professionals do the same. I know what it’s like to start with an
+              idea, face setbacks, and wonder how to turn effort into real
+              progress — because I’ve lived it.<br></br>
+              Now, I use that experience to help business owners like you grow
+              faster, avoid the costly mistakes, and build a business that truly
+              works for you
             </p>
 
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -467,7 +484,11 @@ export default function BusinessMentoringPage() {
             </p>
           </motion.div>
         </section>
-
+        <section
+          style={{ maxWidth: "600px", margin: "1rem auto" }}
+          ref={sectionRef}>
+          <CallBackForm />
+        </section>
         {/* CONTACT / CTA */}
 
         <footer className="mt-10 text-center text-sm text-slate-500">
