@@ -82,6 +82,9 @@
 }
 .home-bannerbnt-sec {
   padding: 1.5rem 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .home-bannerbnt-sec span a {
   background: linear-gradient(

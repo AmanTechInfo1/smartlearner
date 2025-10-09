@@ -105,7 +105,7 @@ const AutomaticTransmission = () => {
           rel="canonical"
           href="https://smartlearner.com/automatic-transmisson"
         />
-         <meta property="og:title" content="Automatic Driving Lesson Packages" />
+        <meta property="og:title" content="Automatic Driving Lesson Packages" />
         <meta
           property="og:description"
           content="Browse our automatic driving lesson packages tailored for stress-free learning. Ideal for beginners and those looking for a smoother driving experience."
@@ -129,7 +129,14 @@ const AutomaticTransmission = () => {
               </Link>
               <span>
                 {" "}
-                <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
+                <a
+                  href="tel:+4402475092784"
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}>
                   <IoCallSharp className="gradient-icon" /> 02475092784
                 </a>
               </span>

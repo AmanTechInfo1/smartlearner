@@ -136,8 +136,12 @@ const Manual = () => {
                   {" "}
                   <a
                     href="tel:+4402475092784"
-                    style={{ textDecoration: "none" }}
-                  >
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}>
                     <IoCallSharp className="gradient-icon" /> 02475092784
                   </a>
                 </span>

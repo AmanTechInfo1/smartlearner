@@ -724,6 +724,11 @@
   align-items: center;
   margin-bottom: 2rem;
 }
+.dManualDiv span {
+  display: flex;
+
+  align-items: center;
+}
 .dManualDiv h2 {
   font-size: 3.5rem;
   color: white;

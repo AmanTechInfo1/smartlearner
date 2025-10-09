@@ -147,7 +147,6 @@ const PassPlusTransmission = () => {
   };
   return (
     <div>
-      
       <section className={styles.manualBanner}>
         <div className="opicity"></div>
         <div className="home-banner-flex">
@@ -162,7 +161,14 @@ const PassPlusTransmission = () => {
               </Link>
               <span>
                 {" "}
-                <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
+                <a
+                  href="tel:+4402475092784"
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}>
                   <IoCallSharp className="gradient-icon" /> 02475092784
                 </a>
               </span>
