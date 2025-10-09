@@ -14,7 +14,7 @@ import redStarImg from "../../assets/images/redStar.png";
 import CallBackForm from "../../components/forms/CallBackForm";
 import redCartImg from "../../assets/images/redCartImg.png";
 import defaultImg from "../../assets/images/bannerCart.png";
-
+import { Quote } from "lucide-react";
 import bookImg from "../../assets/IMG_3318.JPG";
 import tommyImg from "../../assets/IMG_3341.JPG";
 import smartlearnerLogo from "../../assets/images/smartlearnerLogo-removebg-preview.png";
@@ -151,12 +151,23 @@ export default function BusinessMentoringPage() {
     });
   };
 
+  const testimonials = [
+    {
+      text: "After illness took me off the road with no income, Tommy helped me rebuild my business and confidence. I achieved more than I ever thought possible.",
+      author: "G.O",
+    },
+    {
+      text: "I wanted to grow my driving school, and with Tommy’s guidance I now have 16 franchisees and a thriving business.",
+      author: "S.R",
+    },
+  ];
+
   return (
     <div style={{ backgroundColor: "yellow", padding: "1.5rem" }}>
       {/* Container */}
 
       {/* //////////////////////////////////////// */}
-      <div style={{ backgroundColor: "blue" }}>
+      <div className="  bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 overflow-hidden">
         <section className={styles.headerSectionbuss}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }} // start below and invisible
@@ -421,11 +432,55 @@ export default function BusinessMentoringPage() {
               </ul>
             </motion.div>
           </section>
+          <section className="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 overflow-hidden">
+            {/* Floating background glow shapes */}
+            <motion.div
+              className="absolute top-10 left-10 w-48 h-48 bg-blue-500 rounded-full opacity-30 blur-3xl"
+              animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+              transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-10 right-10 w-64 h-64 bg-yellow-400 rounded-full opacity-20 blur-3xl"
+              animate={{ y: [0, -20, 0], x: [0, -30, 0] }}
+              transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+            />
+
+            <div className="relative max-w-5xl mx-auto text-center px-6">
+              <motion.h2
+                initial={{ opacity: 0, y: -40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl sm:text-5xl font-extrabold text-yellow-400 drop-shadow-lg mb-12">
+                What Our Mentored Learners Say
+              </motion.h2>
+
+              <div className="grid sm:grid-cols-2 gap-10">
+                {testimonials.map((t, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.2, duration: 0.8 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-gradient-to-br from-blue-800/70 to-gray-800/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-yellow-400/40 hover:border-yellow-300 transition-all duration-500">
+                    <Quote className="w-10 h-10 mx-auto mb-4 text-yellow-300" />
+                    <p className="text-lg text-gray-100 italic leading-relaxed">
+                      {t.text}
+                    </p>
+                    <div className="mt-4 font-bold text-yellow-400 text-xl">
+                      – {t.author}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
           <footer
             className="mt-10 text-center  text-slate-500"
-            style={{ color: "white", fontSize: "1rem" }}>
+            style={{ color: "white", fontSize: "1.1rem" }}>
             “The SmartLearner way isn’t just about teaching students — it’s
-            about building a business that drives itself.” — Tommy Sandhu
+            about building a business that drives itself.” —{" "}
+            <strong>Tommy Sandhu</strong>
           </footer>
         </div>
 
