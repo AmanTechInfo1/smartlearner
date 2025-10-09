@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.40322f07.css",
-    "main.js": "/static/js/main.efa3e6c8.js",
+    "main.css": "/static/css/main.8b13a208.css",
+    "main.js": "/static/js/main.a2ea694b.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -98,6 +98,7 @@
     "static/media/cimg7.jpg": "/static/media/cimg7.7429a73b8951a6df4826.jpg",
     "static/media/cyclistsImg.png": "/static/media/cyclistsImg.56735108317b38ad6ff7.png",
     "static/media/cimg20.jpg": "/static/media/cimg20.713195b4b4645b8833f4.jpg",
+    "static/media/IMG_3341.JPG": "/static/media/IMG_3341.38574755cc4ff5305f25.JPG",
     "static/media/diversLargeVehicle.png": "/static/media/diversLargeVehicle.750f4504d5ffd7d750aa.png",
     "static/media/roadSurface.png": "/static/media/roadSurface.3e60f6554d234feeb9dc.png",
     "static/media/image_2021_03_03T15_33_28_479Z-1024x768.png": "/static/media/image_2021_03_03T15_33_28_479Z-1024x768.7603d63437e201495224.png",
@@ -284,6 +285,7 @@
     "static/media/boxJunction.jpg": "/static/media/boxJunction.f468ba3ac39f1d7b743b.jpg",
     "static/media/video-poster-img.jpg": "/static/media/video-poster-img.d2157401da635ab3cf32.jpg",
     "static/media/motCertificate.gif": "/static/media/motCertificate.71d252ba4bd3d5c2e041.gif",
+    "static/media/IMG_3318.JPG": "/static/media/IMG_3318.7e141f7b3d821a6de570.JPG",
     "static/media/no-speed-lim.png": "/static/media/no-speed-lim.ebdfd042f951922e698b.png",
     "static/media/tyerBursting.jpg": "/static/media/tyerBursting.809ff52bc7b8a15f0c70.jpg",
     "static/media/vehicalS.jpeg": "/static/media/vehicalS.14b0d5c9db883df31921.jpeg",
@@ -326,6 +328,7 @@
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/majortomajorleft.png": "/static/media/majortomajorleft.bb88f2949e96bbf802bd.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
+    "static/media/bgimg.jpg": "/static/media/bgimg.10c18c305a7a81cc5765.jpg",
     "static/media/RevolutLogo.png": "/static/media/RevolutLogo.cb6578976e775ba92002.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
@@ -405,12 +408,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.40322f07.css.map": "/static/css/main.40322f07.css.map",
-    "main.efa3e6c8.js.map": "/static/js/main.efa3e6c8.js.map",
+    "main.8b13a208.css.map": "/static/css/main.8b13a208.css.map",
+    "main.a2ea694b.js.map": "/static/js/main.a2ea694b.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.40322f07.css",
-    "static/js/main.efa3e6c8.js"
+    "static/css/main.8b13a208.css",
+    "static/js/main.a2ea694b.js"
   ]
 }
