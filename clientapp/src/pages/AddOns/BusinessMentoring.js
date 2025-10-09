@@ -184,15 +184,17 @@ export default function BusinessMentoringPage() {
             With Tommy Sandhu
           </motion.p>
         </section>
+        <div id={styles.ImgSections}>
+          <div className="opicity"></div>
+          <section className={styles.ImgSections}>
+            <img src={tommyImg} alt="" id={styles.bookAuthor} />
+            <div>
+              <img src={bookImg} alt="" id={styles.smartlearnerauthor} />
 
-        <section className={styles.ImgSections}>
-          <img src={tommyImg} alt="" id={styles.bookAuthor} />
-          <div>
-            <img src={bookImg} alt="" id={styles.smartlearnerauthor} />
-
-            <img src={smartlearnerLogo} alt="" id={styles.smartlearnerLogo} />
-          </div>
-        </section>
+              <img src={smartlearnerLogo} alt="" id={styles.smartlearnerLogo} />
+            </div>
+          </section>
+        </div>
         {/* ////////////////////////////////////////////////////// */}
         <div
           className="mt-6 flex flex-col sm:flex-row gap-4"
@@ -474,7 +476,7 @@ export default function BusinessMentoringPage() {
               </ul>
             </motion.div>
           </section>
-          <section className="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-gray-900 overflow-hidden">
+          <section className="relative py-20    to-gray-900 overflow-hidden">
             {/* Floating background glow shapes */}
             <motion.div
               className="absolute top-10 left-10 w-48 h-48 bg-blue-500 rounded-full opacity-30 blur-3xl"
@@ -516,6 +518,11 @@ export default function BusinessMentoringPage() {
                 ))}
               </div>
             </div>
+          </section>
+          <section
+            style={{ maxWidth: "600px", margin: "0rem auto" }}
+            ref={sectionRef}>
+            <CallBackForm />
           </section>
           <footer
             className="mt-10 text-center  text-slate-500"

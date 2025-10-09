@@ -128,7 +128,7 @@
 
 /* ////////////////////////////////////// */
 .headerSectionbuss {
-  padding: 2rem 0px;
+  padding: 2rem 0px 0px 0px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .headerSectionbuss h2 {
@@ -149,6 +149,13 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  position: sticky;
+  padding: 4rem 0px;
+}
+#ImgSections {
+  background: url("../../assets/bgimg.jpg");
+  position: relative;
+  background-size: cover;
 }
 .ImgSections img {
   max-width: 400px;
