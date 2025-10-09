@@ -331,14 +331,12 @@ export default function BusinessMentoringPage() {
             </motion.div>
 
             {/* 10 Module Overview */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="max-w-5xl mx-auto mb-12">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-6">
-                10-Module Overview
-              </h2>
+              <h2 className="text-2xl font-semibold text-blue-700 mb-6"></h2>
               <div className="overflow-x-auto">
                 <table className="min-w-full bg-white rounded-2xl overflow-hidden shadow-md">
                   <thead className="bg-blue-700 text-white">
@@ -350,56 +348,16 @@ export default function BusinessMentoringPage() {
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {[
-                      [
-                        "1",
-                        "Setting Your Vision & Foundation",
-                        "Clarify your goals and business direction.",
-                      ],
-                      [
-                        "2",
-                        "Understanding Supply, Demand & Market Shift",
-                        "Learn to adapt your business to market conditions.",
-                      ],
-                      [
-                        "3",
-                        "Money Mastery",
-                        "Forecast, manage cash flow, and understand profitability.",
-                      ],
-                      [
-                        "4",
-                        "Marketing & Community Engagement",
-                        "Grow your presence online and locally.",
-                      ],
-                      [
-                        "5",
-                        "Building & Managing a Team",
-                        "Recruit, train, and lead a growing team.",
-                      ],
-                      [
-                        "6",
-                        "Systems & Operations Management",
-                        "Streamline operations with scalable systems.",
-                      ],
-                      [
-                        "7",
-                        "Branding & Customer Experience",
-                        "Build a trusted local brand and customer loyalty.",
-                      ],
-                      [
-                        "8",
-                        "Growth Through Partnerships & Expansion",
-                        "Explore franchising and collaboration models.",
-                      ],
-                      [
-                        "9",
-                        "Leadership & Mindset",
-                        "Develop confidence and lead your business effectively.",
-                      ],
-                      [
-                        "10",
-                        "Long-Term Strategy & Legacy Planning",
-                        "Create sustainability and a business that outlasts you.",
-                      ],
+                      ["1", "", ""],
+                      ["2", "", ""],
+                      ["3", "", ""],
+                      ["4", "", ""],
+                      ["5", "", ""],
+                      ["6", "", ""],
+                      ["7", "", ""],
+                      ["8", "", ""],
+                      ["9", "", ""],
+                      ["10", "", ""],
                     ].map(([num, module, focus]) => (
                       <tr key={num} className="hover:bg-blue-50 transition">
                         <td className="px-4 py-3 font-semibold text-blue-700">
@@ -412,7 +370,91 @@ export default function BusinessMentoringPage() {
                   </tbody>
                 </table>
               </div>
-            </motion.div>
+            </motion.div> */}
+
+            {/* //////////////////////////////////////////////////////////// */}
+            {/* BENEFITS */}
+            <section id="benefits" className="mt-16">
+              <motion.h2
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl font-bold text-slate-800">
+                10-Module Overview
+              </motion.h2>
+
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "Setting Your Vision & Foundation",
+                    desc: "Clarify your goals and business direction.",
+                    icon: <Star className="w-6 h-6 text-amber-500" />,
+                  },
+                  {
+                    title: "Understanding Supply, Demand & Market Shift",
+                    desc: "Learn to adapt your business to market conditions.",
+                    icon: <Bolt className="w-6 h-6 text-emerald-500" />,
+                  },
+                  {
+                    title: "Money Mastery",
+                    desc: "Forecast, manage cash flow, and understand profitability.",
+                    icon: <Clock className="w-6 h-6 text-sky-500" />,
+                  },
+                  {
+                    title: "Marketing & Community Engagement",
+                    desc: "Grow your presence online and locally.",
+                    icon: <Users className="w-6 h-6 text-indigo-500" />,
+                  },
+                  {
+                    title: "Building & Managing a Team",
+                    desc: "Recruit, train, and lead a growing team.",
+                    icon: <Clipboard className="w-6 h-6 text-purple-500" />,
+                  },
+                  {
+                    title: "Systems & Operations Management",
+                    desc: "Streamline operations with scalable systems.",
+                    icon: <CheckCircle className="w-6 h-6 text-amber-600" />,
+                  },
+                  {
+                    title: "Branding & Customer Experience",
+                    desc: "Build a trusted local brand and customer loyalty.",
+                    icon: <Users className="w-6 h-6 text-emerald-600" />,
+                  },
+                  {
+                    title: "Growth Through Partnerships & Expansion",
+                    desc: "Explore franchising and collaboration models.",
+                    icon: <Star className="w-6 h-6 text-sky-600" />,
+                  },
+                  {
+                    title: "Leadership & Mindset",
+                    desc: "Develop confidence and lead your business effectively.",
+                    icon: <Clipboard className="w-6 h-6 text-rose-500" />,
+                  },
+                  {
+                    title: "Long-Term Strategy & Legacy Planning",
+                    desc: "Create sustainability and a business that outlasts you.",
+                    icon: <Bolt className="w-6 h-6 text-indigo-600" />,
+                  },
+                ].map((b, i) => (
+                  <motion.article
+                    key={i}
+                    whileHover={{ y: -6 }}
+                    className="bg-white rounded-2xl p-5 shadow hover:shadow-lg border border-slate-100">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 bg-slate-50 rounded-xl ring-1 ring-slate-100">
+                        {b.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-slate-800">
+                          {b.title}
+                        </h4>
+                        <p className="text-sm text-slate-600 mt-1">{b.desc}</p>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </section>
 
             {/* Program Benefits */}
             <motion.div
