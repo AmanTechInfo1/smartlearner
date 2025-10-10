@@ -35,6 +35,9 @@
 .chackoutPageD .p-4 {
   padding: 1rem;
 }
+.chackoutPageD input {
+  color: black;
+}
 
 .chackoutPageD .bg-white {
   background-color: black;
