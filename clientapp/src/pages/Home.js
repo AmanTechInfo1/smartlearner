@@ -243,27 +243,35 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center items-center z-10">
+            {/* BOOK LESSONS BUTTON */}
             <motion.div
               whileHover={{ scale: 1.05, rotate: 1 }}
               whileTap={{ scale: 0.95 }}>
               <button
                 onClick={() => handleShow("lessons")}
-                className={`flex flex-col items-center justify-center w-64 sm:w-auto bg-white text-black font-bold rounded-2xl px-8 py-6 text-lg shadow-lg hover:bg-yellow-300 transition ${
-                  activeSection === "lessons" ? "ring-4 ring-yellow-400" : ""
-                }`}>
+                className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-lg transition-all duration-300
+        ${
+          activeSection === "lessons"
+            ? "bg-yellow-400 text-black shadow-yellow-300 shadow-xl scale-105"
+            : "bg-white text-black hover:bg-yellow-200"
+        }`}>
                 <Calendar className="w-6 h-6 mb-2" />
                 Book Lessons
               </button>
             </motion.div>
 
+            {/* BOOK PDI BUTTON */}
             <motion.div
               whileHover={{ scale: 1.05, rotate: -1 }}
               whileTap={{ scale: 0.95 }}>
               <button
                 onClick={() => handleShow("pdi")}
-                className={`flex flex-col items-center justify-center w-64 sm:w-auto bg-yellow-400 text-black font-bold rounded-2xl px-8 py-6 text-lg shadow-lg hover:bg-yellow-300 transition ${
-                  activeSection === "pdi" ? "ring-4 ring-yellow-400" : ""
-                }`}>
+                className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-lg transition-all duration-300
+        ${
+          activeSection === "pdi"
+            ? "bg-yellow-400 text-black shadow-yellow-300 shadow-xl scale-105"
+            : "bg-white text-black hover:bg-yellow-200"
+        }`}>
                 <Sparkles className="w-6 h-6 mb-2" />
                 Book PDI
               </button>

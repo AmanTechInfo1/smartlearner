@@ -101,7 +101,7 @@ function Navbar() {
                     placement="bottomRight"
                     arrow={{ pointAtCenter: true }}
                     className="custom-dropdown">
-                    <button>
+                    <button id={styles.accountDropDown}>
                       Account <MdOutlineKeyboardArrowDown />
                     </button>
                   </Dropdown>

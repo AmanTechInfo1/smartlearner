@@ -201,7 +201,8 @@ export default function BusinessMentoringPage() {
           style={{ justifyContent: "center" }}>
           <Link
             onClick={handleScroll}
-            className="inline-flex items-center justify-center gap-2 bg-amber-600 text-white px-5 py-3 rounded-lg font-semibold shadow hover:shadow-md transform hover:-translate-y-1 transition">
+            style={{ backgroundColor: "#00c5f1" }}
+            className="inline-flex items-center justify-center gap-2 -600 text-white px-5 py-3 rounded-lg font-semibold shadow hover:shadow-md transform hover:-translate-y-1 transition">
             Book your free consultation today
           </Link>
         </div>
@@ -441,16 +442,16 @@ export default function BusinessMentoringPage() {
                   <motion.article
                     key={i}
                     whileHover={{ y: -6 }}
-                    className="bg-white rounded-2xl p-5 shadow hover:shadow-lg border border-slate-100">
+                    className="bg-info rounded-2xl p-5 shadow hover:shadow-lg border border-slate-100 text-light">
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-slate-50 rounded-xl ring-1 ring-slate-100">
                         {b.icon}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-slate-800">
+                        <h4 className="font-semibold text-light-800">
                           {b.title}
                         </h4>
-                        <p className="text-sm text-slate-600 mt-1">{b.desc}</p>
+                        <p className="text-sm text-light">{b.desc}</p>
                       </div>
                     </div>
                   </motion.article>

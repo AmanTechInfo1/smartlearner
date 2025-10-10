@@ -34,6 +34,8 @@ const ProductShowcase = () => {
     "instructor training part two",
     "instructor training part one",
     "businessmentoring",
+    "pass plus",
+    "theory support",
   ];
 
   const normalizedExclusions = excludedCategories.map((c) =>
@@ -132,7 +134,7 @@ const ProductShowcase = () => {
 
   const visibleProducts = showAll
     ? filteredProducts
-    : filteredProducts.slice(0, 4);
+    : filteredProducts.slice(0, 3);
 
   return (
     <section className="py-10 bg-gradient-to-b from-blue-100 ">
@@ -167,7 +169,7 @@ const ProductShowcase = () => {
         <AnimatePresence>
           <div
             layout
-            className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {loadingCategory || loading
               ? // 🦴 Skeleton loader for each product (while products load)
                 Array(8)
@@ -193,11 +195,31 @@ const ProductShowcase = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3 }}
-                      className={`rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
+                      transition={{ duration: 0.4 }}
+                      className={`relative rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
                         gradients[idx % gradients.length]
                       }`}>
-                      {/* Product Image */}
+                      {/* SALE BADGE */}
+                      {product.maxPrice && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{
+                            delay: 0.2,
+                            type: "spring",
+                            stiffness: 120,
+                          }}
+                          className="absolute top-3 right-1 bg-light text-blue-900 font-bold px-3 py-1 rounded-full shadow-md text-sm z-20">
+                          SALE{" "}
+                          {(
+                            ((product.maxPrice - product.price) /
+                              product.maxPrice) *
+                            100
+                          ).toFixed(2)}
+                          % OFF
+                        </motion.div>
+                      )}
+
                       <div className="relative">
                         <img
                           id={styles.redCartImg12}
@@ -238,11 +260,30 @@ const ProductShowcase = () => {
                         </StarWrapper>
 
                         <div className="flex items-center justify-between mt-4">
-                          <span className="text-white-600 font-bold text-md">
-                            {product.price
-                              ? `£${product.price}`
-                              : "Price Unavailable"}
-                          </span>
+                          <div className="flex flex-col">
+                            {product.maxPrice ? (
+                              <>
+                                <motion.span
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.4 }}
+                                  className="text-xl  font-bold  text-white-600 line-through ">
+                                  £{product.maxPrice}
+                                </motion.span>
+                                <motion.span
+                                  initial={{ scale: 0.8, opacity: 0 }}
+                                  animate={{ scale: 1, opacity: 1 }}
+                                  transition={{ delay: 0.2, duration: 0.4 }}
+                                  className="text-xl font-bold text-blue-700">
+                                  £{product.price}
+                                </motion.span>
+                              </>
+                            ) : (
+                              <span className="text-xl font-bold text-blue-700">
+                                £{product.price || "Price Unavailable"}
+                              </span>
+                            )}
+                          </div>
                           {inCart ? (
                             <div className="flex items-center gap-2">
                               <button
@@ -280,7 +321,7 @@ const ProductShowcase = () => {
           </div>
         </AnimatePresence>
 
-        {filteredProducts.length > 4 && (
+        {filteredProducts.length > 3 && (
           <div className="flex justify-center mt-10">
             <motion.button
               whileHover={{

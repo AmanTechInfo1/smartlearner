@@ -169,9 +169,9 @@
   box-shadow: 0 8px 8px -4px rgb(54, 69, 75);
 }
 #smartlearnerauthor {
-  max-width: 300px;
+  max-width: 410px;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 50%;
 }
 #bookAuthor {
