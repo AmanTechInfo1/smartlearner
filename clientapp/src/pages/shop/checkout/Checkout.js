@@ -41,6 +41,7 @@ export default function Checkout() {
                 First Name <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="firstName"
@@ -54,6 +55,7 @@ export default function Checkout() {
                 Last Name <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="lastName"
@@ -70,6 +72,7 @@ export default function Checkout() {
                 Street Address <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded mb-2"
                 type="text"
                 id="streetAddress1"
@@ -79,6 +82,7 @@ export default function Checkout() {
                 required
               />
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="streetAddress2"
@@ -92,6 +96,7 @@ export default function Checkout() {
                 Town / City <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="city"
@@ -106,6 +111,7 @@ export default function Checkout() {
                 Postcode <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="postcode"
@@ -119,6 +125,7 @@ export default function Checkout() {
                 Phone number <span className="text-red-500">*</span>
               </label>
               <input
+                style={{ color: "black" }}
                 className="w-full p-2 border border-zinc-300 rounded"
                 type="text"
                 id="phoneNumber"

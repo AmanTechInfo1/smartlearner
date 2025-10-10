@@ -76,7 +76,7 @@ const Cart = () => {
                     <tr key={item.id} className={styles.cartRow}>
                       <td>{item.service}</td>
                       <td>£{item.price}</td>
-                      <td>
+                      <td id={styles.questityCartBtn}>
                         <button
                           className={styles.quantityButton}
                           onClick={() => handleDecrease(item.id, 1)}>
@@ -112,7 +112,7 @@ const Cart = () => {
                   <p>
                     <span>Total:</span> <span>£{total.toFixed(2)}</span>
                   </p>
-                  <div>
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <img src={paypalLogo} alt="paypal" />
                     <img
                       src={stripLogo}

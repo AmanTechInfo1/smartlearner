@@ -199,6 +199,9 @@
     height: 60px;
     width: 60px;
   }
+  #questityCartBtn {
+    width: 0px;
+  }
 }
 .cartoverflow {
   overflow: auto;
