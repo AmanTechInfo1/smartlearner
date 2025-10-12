@@ -50,6 +50,7 @@ import { Helmet } from "react-helmet-async";
 import ProductShowcase from "../components/ui/productShowCase/Productshowcase";
 import SubscriptionPdi from "../components/ui/productShowCase/SubscriptionPdi";
 import { useState } from "react";
+import HomeBanner from "../components/ui/HomeBanner";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -204,6 +205,11 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
+      {/* 
+      <section>
+        <HomeBanner />
+      </section> */}
+
       <div className={styles.homepageContainerDiv}>
         <section className={styles.homeSection}>
           <div className={styles.homeContainer}>
@@ -309,6 +315,8 @@ export default function Home() {
         </AnimatePresence>
 
         {/* /////////////////////////////////////////////////////// */}
+
+        {/* ////////////////////////////// */}
         <section>
           <BookingSection />
         </section>
