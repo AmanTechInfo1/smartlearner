@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import carImage from "../../assets/view-3d-car.png";
+import carImg from "../../assets/view-3d-car.png";
 import gsap from "gsap";
 import { IoCallSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -109,51 +109,30 @@ export default function HomeBanner() {
       });
   }, []);
 
-  const backgroundStyle = {
-    background:
-      "radial-gradient(circle, rgba(255, 0, 76, 0.42), rgba(0, 0, 0, 1))",
-    filter: "blur(10px)", // Blur effect to match the image's look
-    width: "100vw",
-    borderRadius: "50%",
-    marginTop: "4rem",
-    height: "100vh",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    zIndex: -1, // Ensures that this gradient stays in the background
-  };
-
-  const contentStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-
-    color: "white",
-    fontSize: "24px",
-    fontFamily: "Arial, sans-serif",
-    zIndex: 1, // Ensures that the text appears above the background
-  };
-
   return (
     <section
-      style={{
-        maxWidth: "1940px",
-        width: "100%",
-        height: "700px",
-      }}
-      className="relative  overflow-hidden rounded-2xl shadow-2xl mx-auto  my-12 flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-10">
-      {/* ==== LEFT CONTENT ==== */}
+      id="paddingId"
+      className="relative overflow-hidden  text-white py-16 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between">
+      {/* Animated background lights */}
       <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full md:w-1/2 z-20 space-y-6">
-        {/* Logo */}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 4, repeat: Infinity }}
+        id="bg-ImgHomeBnner"
+        className="absolute top-0 left-0 w-full h-full z-0"></motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.2, 0.6, 0.2] }}
+        transition={{ duration: 5, repeat: Infinity }}
+        className="absolute bottom-0 right-0 w-full h-full z-0"></motion.div>
 
-        <div
-          className="home-content-D"
-          style={{ maxWidth: "90%", width: "100%", marginTop: "1rem" }}>
+      {/* Right side text */}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="relative z-10 text-center md:text-left mt-10 md:mt-0 w-full md:w-1/2">
+        <div className="home-content-D">
           <h1 ref={textRef}>{splitText()}</h1>
           <p>
             Starting your driving journey is an exciting step toward
@@ -181,38 +160,36 @@ export default function HomeBanner() {
             </span>
           </div>
         </div>
-
-        {/* Buttons */}
-        <div className="flex items-center gap-4 pt-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="bg-black hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded-full flex items-center gap-2 shadow-lg transition-all">
-            Book a Test Drive <ArrowRight className="w-5 h-5" />
-          </motion.button>
-        </div>
       </motion.div>
 
-      {/* ==== RIGHT IMAGE ==== */}
+      {/* Left side Car */}
       <motion.div
-        initial={{ opacity: 0, x: 80 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="relative w-full md:w-1/2 mt-10 md:mt-0">
-        {/* Red Overlay Shape */}
-        <div
-          style={backgroundStyle}
-          className="absolute top-0 right-0 w-[97%] z-0 overflow-hidden"></div>
-
-        {/* Image */}
-        <img
-          src={carImage}
-          alt="Car"
-          className="relative z-10 rounded-2xl w-full object-cover"
+        initial={{ x: 100, opacity: 0 }}
+        id="noneDisplay"
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="relative z-10 flex justify-center md:justify-start w-full md:w-1/2">
+        <div className="absolute w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-[radial-gradient(circle,#ff000060,transparent_70%)] blur-3xl rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"></div>
+        <motion.img
+          src={carImg}
+          alt="car"
+          className="w-[90%] md:w-[110%] drop-shadow-2xl relative z-10"
+          whileHover={{ scale: 1.05, rotate: 1 }}
+          transition={{ type: "spring", stiffness: 100 }}
         />
       </motion.div>
-
-      {/* Soft Shadow at Bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/10 to-transparent"></div>
+      <div className="absolute bottom-8  left-0 w-[120%] h-[200px] bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 shadow-inner overflow-hidden z-5 origin-bottom-left -rotate-6 md:-rotate-0 ">
+        <motion.div
+          animate={{ x: [0, 100, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[45%] left-0 w-full flex justify-between px-4">
+          {[...Array(10)].map((_, i) => (
+            <div
+              key={i}
+              className="w-16 h-2 bg-yellow-400 rounded-full opacity-80"></div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

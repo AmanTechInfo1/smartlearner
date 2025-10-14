@@ -3,27 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { getAllProductsCategory } from "../../../redux/features/productSlice";
-import redCartImg from "../../../assets/images/redCartImg.png";
-import redStarImg from "../../../assets/images/redStar.png";
 import styled from "styled-components";
-import styles from "./ProductShowCase.module.css";
+import { useNavigate } from "react-router-dom";
+
 import {
   getAddToCart,
   getDecreaseCart,
   getIncreaseCart,
 } from "../../../redux/features/cartSlice";
-import { useNavigate } from "react-router-dom";
+import { getAllProductsCategory } from "../../../redux/features/productSlice";
+
+import redCartImg from "../../../assets/images/redCartImg.png";
+import redStarImg from "../../../assets/images/redStar.png";
+import styles from "./ProductShowCase.module.css";
 
 const gradients = [
-  "from-pink-200 via-pink-300 to-pink-400",
-  "from-yellow-200 via-yellow-300 to-yellow-400",
-  "from-green-200 via-green-300 to-green-400",
-  "from-blue-200 via-blue-300 to-blue-400",
-  "from-purple-200 via-purple-300 to-purple-400",
-  "from-red-200 via-red-300 to-red-400",
-  "from-indigo-200 via-indigo-300 to-indigo-400",
-  "from-teal-200 via-teal-300 to-teal-400",
+  "from-blue-100 to-blue-200",
+  "from-green-100 to-green-200",
+  "from-pink-100 to-pink-200",
+  "from-yellow-100 to-yellow-200",
 ];
 
 const StarWrapper = styled.div`
@@ -32,11 +30,11 @@ const StarWrapper = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const ProductShowcase = () => {
+export default function TheoryProductShowCase() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState("manual");
+  const [selectedCategory, setSelectedCategory] = useState("theory support");
   const [showAll, setShowAll] = useState(false);
 
   const {
@@ -95,34 +93,25 @@ const ProductShowcase = () => {
     : filteredProducts.slice(0, 3);
 
   return (
-    <section className="py-10 bg-gradient-to-b from-blue-100">
+    <section className="py-10 bg-gradient-to-b from-blue-100 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-10 text-blue-700">
-          Explore Our products
+          Theory Support
         </h2>
-        {/* 🧭 Category Buttons */}
         <div
           className={`${styles.flexCateButton} flex flex-wrap gap-3 justify-center mb-8`}>
-          {[
-            "intensive",
-            "offers manual",
-            "automatic",
-            "manual",
-            "offers automatic",
-            "workshop",
-          ].map((categoryName) => (
-            <motion.button
-              key={categoryName}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleSelectCategory(categoryName)}
-              className={`px-6 py-2 rounded text-sm font-medium transition-colors duration-300 ${
-                selectedCategory === categoryName
-                  ? "bg-blue-700 text-white shadow-lg"
-                  : "bg-white text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-green"
-              }`}>
-              {categoryName.toUpperCase()}
-            </motion.button>
+          {["theory support"].map((categoryName) => (
+            <></>
+            // <motion.button
+            //   key={categoryName}
+            //   whileHover={{ scale: 1.1 }}
+            //   whileTap={{ scale: 0.95 }}
+            //   onClick={() => handleSelectCategory(categoryName)}
+            //   className={`px-6 py-2 rounded text-sm font-medium transition-colors duration-300 ${
+            //     selectedCategory === categoryName
+            //       ? "bg-blue-700 text-white shadow-lg"
+            //       : "bg-white text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-green"
+            //   }`}></motion.button>
           ))}
         </div>
 
@@ -222,7 +211,7 @@ const ProductShowcase = () => {
                         <div className="flex flex-col">
                           {product.maxPrice ? (
                             <>
-                              <span className="text-lg line-through font-bold text-gray-600">
+                              <span className="text-lg line-through text-gray-500">
                                 £{product.maxPrice}
                               </span>
                               <span className="text-xl font-bold text-blue-700">
@@ -294,6 +283,4 @@ const ProductShowcase = () => {
       </div>
     </section>
   );
-};
-
-export default ProductShowcase;
+}
