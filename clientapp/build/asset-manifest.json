@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.48c14f34.css",
-    "main.js": "/static/js/main.f01581cf.js",
+    "main.css": "/static/css/main.09b8c48e.css",
+    "main.js": "/static/js/main.716452d8.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -41,6 +41,7 @@
     "static/media/passplusbanner.png": "/static/media/passplusbanner.10c2812af0a5f4ebc148.png",
     "static/media/interventionbanner.jpg": "/static/media/interventionbanner.af0f80430ff3a6245e2c.jpg",
     "static/media/risk-management.jpg": "/static/media/risk-management.d01f475f0bafe973c679.jpg",
+    "static/media/bg.jpg": "/static/media/bg.8aa0b6879fe170114998.jpg",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
     "static/media/bookpart3.jpg": "/static/media/bookpart3.d249a58efdfbb4dc2f1e.jpg",
@@ -58,6 +59,7 @@
     "static/media/lessonStructure.jpg": "/static/media/lessonStructure.6d6d74b217abf5ab2c44.jpg",
     "static/media/bgDark.jpg": "/static/media/bgDark.92c9fb7372440b5bec53.jpg",
     "static/media/roadRulesBanner.jpg": "/static/media/roadRulesBanner.b4f2974ba1945c790801.jpg",
+    "static/media/view-3d-car.png": "/static/media/view-3d-car.6c5e52795a28b0b549fe.png",
     "static/media/time.jpg": "/static/media/time.8333008db7791bced552.jpg",
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
     "static/media/lessonModulebanner.jpg": "/static/media/lessonModulebanner.c7e1e83382a58d064545.jpg",
@@ -66,7 +68,6 @@
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
     "static/media/routeplanningbanner.jpg": "/static/media/routeplanningbanner.d87aab2543866c742ff1.jpg",
-    "static/media/view-3d-car.png": "/static/media/view-3d-car.89f055d6fe385b2be5ee.png",
     "static/media/glossaryImgbanner.jpg": "/static/media/glossaryImgbanner.8e2fd827a19c7b606c9a.jpg",
     "static/media/concentration.jpg": "/static/media/concentration.33c7c0c37660b5840c96.jpg",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
@@ -409,12 +410,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.48c14f34.css.map": "/static/css/main.48c14f34.css.map",
-    "main.f01581cf.js.map": "/static/js/main.f01581cf.js.map",
+    "main.09b8c48e.css.map": "/static/css/main.09b8c48e.css.map",
+    "main.716452d8.js.map": "/static/js/main.716452d8.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.48c14f34.css",
-    "static/js/main.f01581cf.js"
+    "static/css/main.09b8c48e.css",
+    "static/js/main.716452d8.js"
   ]
 }
