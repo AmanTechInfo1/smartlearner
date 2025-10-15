@@ -52,6 +52,7 @@ import SubscriptionPdi from "../components/ui/productShowCase/SubscriptionPdi";
 import { useState } from "react";
 import HomeBanner from "../components/ui/HomeBanner";
 import TheoryProductShowCase from "../components/ui/productShowCase/TheoryProductShowCase";
+import DrivingLessonsCarousel from "../components/ui/drivingLesson/DrivingLessonsCarousel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -344,8 +345,9 @@ export default function Home() {
         {/* /////////////////////////////////////////////////////// */}
 
         {/* ////////////////////////////// */}
+
         <section>
-          <BookingSection />
+          <DrivingLessonsCarousel />
         </section>
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         <section className={styles.homeSection}>
