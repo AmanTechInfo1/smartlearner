@@ -14,7 +14,12 @@ import theoryImg from "../../../assets/images/theoryTestCrausalImg.jpg";
 const lessons = [
   {
     title: "MANUAL DRIVING LESSONS",
-    description: ` Discover the thrill of hands-on control with our manual driving lessons. From mastering the clutch to shifting gears seamlessly, our expert instructors will guide you through the art of manual driving.`,
+    description: `  Discover the thrill of hands-on control with our manual
+                        driving lessons. From mastering the clutch to shifting
+                        gears seamlessly, our expert instructors will guide you
+                        through the art of manual driving, empowering you with
+                        the skills and confidence to navigate any road with
+                        finesse and precision.`,
     image: manualImg,
     link: "https://smartlearner.com/manual",
   },
@@ -86,6 +91,7 @@ const DrivingLessonsCarousel = () => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,

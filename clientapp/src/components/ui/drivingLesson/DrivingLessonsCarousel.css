@@ -102,7 +102,24 @@
 }
 
 @media (max-width: 527px) {
+  .card-img12345 {
+    width: 150px;
+    height: 150px;
+  }
+  .card-title12345 {
+    font-size: 22px;
+  }
+  .carousel-section12345 {
+    padding: 4rem 0rem;
+  }
   .carousel-card12345 {
-    height: 750px;
+    height: 670px;
+    padding: 10px;
+  }
+  .card-desc12345 {
+    padding: 1rem 0.5rem;
+  }
+  .card-content12345 {
+    padding: 2rem 15px;
   }
 }
