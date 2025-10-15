@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.09b8c48e.css",
-    "main.js": "/static/js/main.716452d8.js",
+    "main.css": "/static/css/main.71f008f2.css",
+    "main.js": "/static/js/main.77f6cad2.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -236,6 +236,7 @@
     "static/media/Asset_108.png": "/static/media/Asset_108.9883bf3b7c0dd8834158.png",
     "static/media/callbacksupportimage.jpg": "/static/media/callbacksupportimage.a7dce6e4ce1a6035edf7.jpg",
     "static/media/motorbikes-cyclist.jpg": "/static/media/motorbikes-cyclist.1b4229eebebb79618375.jpg",
+    "static/media/40485234_8845412.jpg": "/static/media/40485234_8845412.aa2c7a49f6fdd592a6e2.jpg",
     "static/media/parkingImg.jpg": "/static/media/parkingImg.9f6f054f150842dc5bbd.jpg",
     "static/media/horse-road-1024x576.jpg": "/static/media/horse-road-1024x576.a95dae61018e8ed46858.jpg",
     "static/media/mentalwellBeing.png": "/static/media/mentalwellBeing.e8ad0340daf6d42b7e3f.png",
@@ -410,12 +411,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.09b8c48e.css.map": "/static/css/main.09b8c48e.css.map",
-    "main.716452d8.js.map": "/static/js/main.716452d8.js.map",
+    "main.71f008f2.css.map": "/static/css/main.71f008f2.css.map",
+    "main.77f6cad2.js.map": "/static/js/main.77f6cad2.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.09b8c48e.css",
-    "static/js/main.716452d8.js"
+    "static/css/main.71f008f2.css",
+    "static/js/main.77f6cad2.js"
   ]
 }
