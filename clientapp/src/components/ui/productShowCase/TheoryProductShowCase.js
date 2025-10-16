@@ -2,27 +2,17 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import styled from "styled-components";
 import {
   getAddToCart,
   getDecreaseCart,
   getIncreaseCart,
 } from "../../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../../redux/features/productSlice";
-
-import redCartImg from "../../../assets/images/redCartImg.png";
 import redStarImg from "../../../assets/images/redStar.png";
+import redCartImg from "../../../assets/images/redCartImg.png";
 import styles from "./ProductShowCase.module.css";
-
-const gradients = [
-  "from-blue-100 to-blue-200",
-  "from-green-100 to-green-200",
-  "from-pink-100 to-pink-200",
-  "from-yellow-100 to-yellow-200",
-];
 
 const StarWrapper = styled.div`
   display: flex;
@@ -30,15 +20,35 @@ const StarWrapper = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-export default function TheoryProductShowCase() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+const gradients = [
+  "from-blue-100 to-blue-200",
+  "from-green-100 to-green-200",
+  "from-pink-100 to-pink-200",
+  "from-yellow-100 to-yellow-200",
+  "from-purple-200 via-purple-300 to-purple-400",
+  "from-red-200 via-red-300 to-red-400",
+];
 
-  const [selectedCategory, setSelectedCategory] = useState("theory support");
+// Static PDI Products
+const pdiProducts = [
+  {
+    title: "Theory Portal",
+    description:
+      "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!",
+    price: "30",
+    navigatePath: "/Theory-subscription",
+  },
+];
+
+export default function TheoryProductShowCase() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [activeTab, setActiveTab] = useState("theoryportal"); // "pdi"
   const [showAll, setShowAll] = useState(false);
 
   const {
-    productsCategory: data = [],
+    productsCategory = [],
     loadingCategory,
     loading,
   } = useSelector((state) => state.product);
@@ -48,24 +58,30 @@ export default function TheoryProductShowCase() {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
 
-  const handleSelectCategory = (id) => {
-    setSelectedCategory((prev) => (prev === id ? "" : id));
+  const workshopCategory = useMemo(
+    () => productsCategory.find((item) => item._id === "theory support"),
+    [productsCategory]
+  );
+
+  const workshopProducts = workshopCategory?.data || [];
+
+  const visibleworkshopProducts = showAll
+    ? workshopProducts
+    : workshopProducts.slice(0, 3);
+
+  const getProductId = (product, idx) =>
+    `${product._id}_${idx}_${product.price}`;
+  const getCartItem = (product, idx) => {
+    const id = getProductId(product, idx);
+    return myCart.find((item) => item.id === id);
   };
 
-  const handleIncrease = (id, qty = 1) => {
-    dispatch(getIncreaseCart(id, qty));
-  };
-
-  const handleDecrease = (id, qty = 1) => {
-    dispatch(getDecreaseCart(id, qty));
-  };
-
-  const handleAddToCart = (info, index) => {
-    const productId = `${info._id}_${index}_${info.price}`;
+  const handleAddToCart = (info, idx) => {
+    const id = `${info._id}_${idx}_${info.price}`;
     dispatch(
       getAddToCart(
         {
-          id: productId,
+          id,
           count: 1,
           service: info.name,
           price: info.price,
@@ -75,205 +91,237 @@ export default function TheoryProductShowCase() {
     );
   };
 
-  const getProductId = (product, idx) =>
-    `${product._id}_${idx}_${product.price}`;
+  const handleIncrease = (id) => dispatch(getIncreaseCart(id));
+  const handleDecrease = (id) => dispatch(getDecreaseCart(id));
 
-  const getCartItem = (product, idx) => {
-    const id = getProductId(product, idx);
-    return myCart.find((item) => item.id === id);
-  };
-
-  const filteredProducts = useMemo(() => {
-    const selected = data.find((item) => item._id === selectedCategory);
-    return selected?.data || [];
-  }, [data, selectedCategory]);
-
-  const visibleProducts = showAll
-    ? filteredProducts
-    : filteredProducts.slice(0, 3);
+  const [expandedProductId, setExpandedProductId] = useState(null);
 
   return (
-    <section className="py-10 bg-gradient-to-b from-blue-100 to-white">
+    <section className="py-10 bg-gradient-to-b from-blue-100">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10 text-blue-700">
-          Theory Support
-        </h2>
-        <div
-          className={`${styles.flexCateButton} flex flex-wrap gap-3 justify-center mb-8`}>
-          {["theory support"].map((categoryName) => (
-            <></>
-            // <motion.button
-            //   key={categoryName}
-            //   whileHover={{ scale: 1.1 }}
-            //   whileTap={{ scale: 0.95 }}
-            //   onClick={() => handleSelectCategory(categoryName)}
-            //   className={`px-6 py-2 rounded text-sm font-medium transition-colors duration-300 ${
-            //     selectedCategory === categoryName
-            //       ? "bg-blue-700 text-white shadow-lg"
-            //       : "bg-white text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-green"
-            //   }`}></motion.button>
-          ))}
+        <div className="flex justify-center gap-4 mb-10">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            onClick={() => setActiveTab("theoryportal")}
+            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              activeTab === "theoryportal"
+                ? "bg-blue-700 text-white"
+                : "bg-white border border-blue-700 text-blue-700"
+            }`}>
+            Theory Products
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            onClick={() => setActiveTab("workshop")}
+            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              activeTab === "workshop"
+                ? "bg-blue-700 text-white"
+                : "bg-white border border-blue-700 text-blue-700"
+            }`}>
+            Theory Portal
+          </motion.button>
         </div>
 
-        {/* 🧱 Product Grid */}
-        <AnimatePresence>
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-            {loadingCategory || loading ? (
-              Array(6)
-                .fill(0)
-                .map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
-                    <Skeleton height={180} className="mb-4 rounded-lg" />
-                    <Skeleton width={`80%`} height={20} className="mb-2" />
-                    <Skeleton width={`60%`} height={18} className="mb-3" />
-                    <Skeleton width={`50%`} height={30} />
+        {/* Content Rendering */}
+        {activeTab === "theoryportal" ? (
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {pdiProducts.map((product, idx) => {
+              const productId = getProductId(product, idx);
+
+              const isExpanded = expandedProductId === productId;
+
+              const toggleExpand = () => {
+                setExpandedProductId(isExpanded ? null : productId);
+              };
+
+              return (
+                <motion.div
+                  key={idx}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                  className={`rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
+                    gradients[idx % gradients.length]
+                  }`}>
+                  <div className="relative">
+                    <img
+                      src={redCartImg}
+                      alt="product"
+                      className="w-full h-48 object-cover rounded-t-2xl"
+                    />
                   </div>
-                ))
-            ) : visibleProducts?.length > 0 ? (
-              visibleProducts.map((product, idx) => {
-                const productId = getProductId(product, idx);
-                const inCart = getCartItem(product, idx);
-
-                return (
-                  <motion.div
-                    key={product._id || idx}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.4 }}
-                    className={`relative rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
-                      gradients[idx % gradients.length]
-                    }`}>
-                    {/* SALE BADGE */}
-                    {product.maxPrice && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{
-                          delay: 0.2,
-                          type: "spring",
-                          stiffness: 120,
-                        }}
-                        className="absolute top-3 right-1 bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md text-sm z-20">
-                        SALE{" "}
-                        {(
-                          ((product.maxPrice - product.price) /
-                            product.maxPrice) *
-                          100
-                        ).toFixed(2)}
-                        % OFF
-                      </motion.div>
-                    )}
-
-                    <div className="relative">
-                      <img
-                        id={styles.redCartImg12}
-                        src={redCartImg}
-                        alt={product.name}
-                        className="w-full h-48 object-cover rounded-t-2xl"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center">
-                        <motion.button
-                          whileHover={{
-                            scale: 1.1,
-                            backgroundColor: "#2563eb",
-                            color: "#fff",
-                          }}
-                          className="mb-4 px-4 py-2 text-sm font-medium text-white bg-blue-600/80 rounded-full backdrop-blur-sm border border-white/30 transition-all">
-                          View Details
-                        </motion.button>
-                      </div>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="p-4">
-                      <h4 className="text-lg font-semibold text-gray-800 mb-1 truncate">
-                        {product.name}
+                  <div className="p-4">
+                    <div className="flex items-start justify-between">
+                      <h4
+                        className={`text-lg font-semibold text-gray-800 mb-1 ${
+                          !isExpanded ? "truncate" : ""
+                        }`}>
+                        {product.title}
                       </h4>
-                      <p className="text-sm text-gray-500 mb-2 line-clamp-2">
-                        {product.description || "No description available."}
-                      </p>
-                      <StarWrapper>
-                        {[...Array(5)].map((_, i) => (
-                          <img
-                            key={i}
-                            src={redStarImg}
-                            alt="star"
-                            style={{ width: 20, height: 20 }}
-                          />
-                        ))}
-                      </StarWrapper>
+                      <button
+                        onClick={toggleExpand}
+                        className="ml-2 text-gray-600 hover:text-blue-700 transition"
+                        title={isExpanded ? "Collapse" : "Expand"}>
+                        {isExpanded ? "▲" : "▼"}
+                      </button>
+                    </div>
+                    <p
+                      className={`text-sm text-gray-500 mb-2 ${
+                        !isExpanded ? "line-clamp-2" : ""
+                      }`}>
+                      {product.description || "No description available."}
+                    </p>
+                    <StarWrapper>
+                      {[...Array(5)].map((_, i) => (
+                        <img
+                          key={i}
+                          src={redStarImg}
+                          alt="star"
+                          style={{ width: 20, height: 20 }}
+                        />
+                      ))}
+                    </StarWrapper>
+                    <div className="flex items-center justify-between mt-4">
+                      <span className="text-blue-600 font-bold text-md">
+                        £ {product.price}
+                      </span>
+                      <motion.button
+                        onClick={() => navigate(product.navigatePath)}
+                        whileHover={{
+                          scale: 1.1,
+                          backgroundColor: "#16a34a",
+                          color: "#fff",
+                        }}
+                        className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
+                        View Course
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+            {loadingCategory || loading
+              ? Array(6)
+                  .fill(0)
+                  .map((_, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
+                      <Skeleton height={180} className="mb-4 rounded-lg" />
+                      <Skeleton width={`80%`} height={20} className="mb-2" />
+                      <Skeleton width={`60%`} height={18} className="mb-3" />
+                      <Skeleton width={`50%`} height={30} />
+                    </div>
+                  ))
+              : visibleworkshopProducts.map((product, idx) => {
+                  const productId = getProductId(product, idx);
+                  const inCart = getCartItem(product, idx);
 
-                      <div className="flex items-center justify-between mt-4">
-                        <div className="flex flex-col">
-                          {product.maxPrice ? (
-                            <>
-                              <span className="text-lg line-through text-gray-500">
-                                £{product.maxPrice}
-                              </span>
-                              <span className="text-xl font-bold text-blue-700">
-                                £{product.price}
-                              </span>
-                            </>
+                  const isExpanded = expandedProductId === productId;
+
+                  const toggleExpand = () => {
+                    setExpandedProductId(isExpanded ? null : productId);
+                  };
+
+                  return (
+                    <motion.div
+                      key={product._id || idx}
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                      className={`relative rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
+                        gradients[idx % gradients.length]
+                      }`}>
+                      <div className="relative">
+                        <img
+                          id={styles.redCartImg12}
+                          src={`https://api.smartlearner.com/uploads/${product.image}`}
+                          alt={product.name}
+                          className="w-full h-48 object-cover rounded-t-2xl"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <div className="flex items-start justify-between">
+                          <h4
+                            className={`text-lg font-semibold text-gray-800 mb-1 ${
+                              !isExpanded ? "truncate" : ""
+                            }`}>
+                            {product.name}
+                          </h4>
+                          <button
+                            onClick={toggleExpand}
+                            className="ml-2 text-gray-600 hover:text-blue-700 transition"
+                            title={isExpanded ? "Collapse" : "Expand"}>
+                            {isExpanded ? "▲" : "▼"}
+                          </button>
+                        </div>
+                        <p
+                          className={`text-sm text-gray-500 mb-2 ${
+                            !isExpanded ? "line-clamp-2" : ""
+                          }`}>
+                          {product.description || "No description available."}
+                        </p>
+                        <StarWrapper>
+                          {[...Array(5)].map((_, i) => (
+                            <img
+                              key={i}
+                              src={redStarImg}
+                              alt="star"
+                              style={{ width: 20, height: 20 }}
+                            />
+                          ))}
+                        </StarWrapper>
+
+                        <div className="flex items-center justify-between mt-4">
+                          <span className="text-blue-600 font-bold text-md">
+                            £ {product.price || "N/A"}
+                          </span>
+                          {inCart ? (
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => handleDecrease(productId)}
+                                className="px-2 py-1 bg-red-500 text-white rounded">
+                                -
+                              </button>
+                              <span>{inCart.count}</span>
+                              <button
+                                onClick={() => handleIncrease(productId)}
+                                className="px-2 py-1 bg-green-500 text-white rounded">
+                                +
+                              </button>
+                            </div>
                           ) : (
-                            <span className="text-xl font-bold text-blue-700">
-                              £{product.price || "Price Unavailable"}
-                            </span>
+                            <motion.button
+                              onClick={() => handleAddToCart(product, idx)}
+                              whileHover={{
+                                scale: 1.1,
+                                backgroundColor: "#16a34a",
+                                color: "#fff",
+                              }}
+                              className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
+                              Add to Cart
+                            </motion.button>
                           )}
                         </div>
-
-                        {inCart ? (
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => handleDecrease(productId)}
-                              className="px-2 py-1 bg-red-500 text-white rounded">
-                              -
-                            </button>
-                            <span>{inCart.count}</span>
-                            <button
-                              onClick={() => handleIncrease(productId)}
-                              className="px-2 py-1 bg-green-500 text-white rounded">
-                              +
-                            </button>
-                          </div>
-                        ) : (
-                          <motion.button
-                            onClick={() => handleAddToCart(product, idx)}
-                            whileHover={{
-                              scale: 1.1,
-                              backgroundColor: "#16a34a",
-                              color: "#fff",
-                            }}
-                            className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
-                            Add to Cart
-                          </motion.button>
-                        )}
                       </div>
-                    </div>
-                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent hover:border-blue-400/50 transition-all duration-300 pointer-events-none" />
-                  </motion.div>
-                );
-              })
-            ) : (
-              <p className="text-center text-gray-500 col-span-full">
-                No products available.
-              </p>
-            )}
+                    </motion.div>
+                  );
+                })}
           </div>
-        </AnimatePresence>
+        )}
 
-        {/* 🔽 Show More Button */}
-        {filteredProducts.length > 3 && (
+        {/* Show More Button */}
+        {activeTab === "workshop" && workshopProducts.length > 3 && (
           <div className="flex justify-center mt-10">
             <motion.button
-              whileHover={{
-                scale: 1.1,
-                boxShadow: "0px 0px 15px rgba(59,130,246,0.6)",
-              }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.1 }}
               onClick={() => setShowAll((prev) => !prev)}
               className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 transition-all">
               {showAll ? "Show Less" : "Show More"}

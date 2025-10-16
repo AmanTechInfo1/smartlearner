@@ -94,6 +94,8 @@ const ProductShowcase = () => {
     ? filteredProducts
     : filteredProducts.slice(0, 3);
 
+  const [expandedProductId, setExpandedProductId] = useState(null);
+
   return (
     <section className="py-10 bg-gradient-to-b from-blue-100">
       <div className="max-w-7xl mx-auto px-6">
@@ -109,7 +111,8 @@ const ProductShowcase = () => {
             "automatic",
             "manual",
             "offers automatic",
-            "workshop",
+
+            "pass plus",
           ].map((categoryName) => (
             <motion.button
               key={categoryName}
@@ -147,6 +150,12 @@ const ProductShowcase = () => {
                 const productId = getProductId(product, idx);
                 const inCart = getCartItem(product, idx);
 
+                const isExpanded = expandedProductId === productId;
+
+                const toggleExpand = () => {
+                  setExpandedProductId(isExpanded ? null : productId);
+                };
+
                 return (
                   <motion.div
                     key={product._id || idx}
@@ -168,13 +177,14 @@ const ProductShowcase = () => {
                           type: "spring",
                           stiffness: 120,
                         }}
-                        className="absolute top-3 right-1 bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md text-sm z-20">
+                        className="absolute top-3 right-1 bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md  z-20"
+                        style={{ fontSize: "1.1rem" }}>
                         SALE{" "}
-                        {(
+                        {Math.round(
                           ((product.maxPrice - product.price) /
                             product.maxPrice) *
-                          100
-                        ).toFixed(2)}
+                            100
+                        )}
                         % OFF
                       </motion.div>
                     )}
@@ -182,7 +192,10 @@ const ProductShowcase = () => {
                     <div className="relative">
                       <img
                         id={styles.redCartImg12}
-                        src={redCartImg}
+                        src={
+                          `https://api.smartlearner.com/uploads/${product.image}` ||
+                          redCartImg
+                        }
                         alt={product.name}
                         className="w-full h-48 object-cover rounded-t-2xl"
                       />
@@ -201,12 +214,28 @@ const ProductShowcase = () => {
 
                     {/* Product Info */}
                     <div className="p-4">
-                      <h4 className="text-lg font-semibold text-gray-800 mb-1 truncate">
-                        {product.name}
-                      </h4>
-                      <p className="text-sm text-gray-500 mb-2 line-clamp-2">
+                      <div className="flex items-start justify-between">
+                        <h4
+                          className={`text-lg font-semibold text-gray-800 mb-1 ${
+                            !isExpanded ? "truncate" : ""
+                          }`}>
+                          {product.name}
+                        </h4>
+                        <button
+                          onClick={toggleExpand}
+                          className="ml-2 text-gray-600 hover:text-blue-700 transition"
+                          title={isExpanded ? "Collapse" : "Expand"}>
+                          {isExpanded ? "▲" : "▼"}
+                        </button>
+                      </div>
+
+                      <p
+                        className={`text-sm text-gray-500 mb-2 ${
+                          !isExpanded ? "line-clamp-2" : ""
+                        }`}>
                         {product.description || "No description available."}
                       </p>
+
                       <StarWrapper>
                         {[...Array(5)].map((_, i) => (
                           <img

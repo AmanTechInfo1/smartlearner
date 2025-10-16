@@ -18,6 +18,7 @@ import manualround2 from "../assets/images/theorySupportRound1.jpg";
 import { gsap } from "gsap";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
 import { Helmet } from "react-helmet-async";
+import TheoryProductShowCase from "../components/ui/productShowCase/TheoryProductShowCase";
 
 export default function TheorySupport() {
   const { section } = useParams();
@@ -204,7 +205,7 @@ export default function TheorySupport() {
                 </p>
               </div>
               <section>
-                <TheoryCorousel />
+                <TheoryProductShowCase />
               </section>
             </section>
           </Element>

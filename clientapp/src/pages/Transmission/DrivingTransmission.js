@@ -11,6 +11,7 @@ import { Link, useParams } from "react-router-dom";
 import DrivingInstructorUI from "../../components/ui/DrivingInstructorUI";
 import { Element, scroller } from "react-scroll";
 import { Helmet } from "react-helmet-async";
+import SubscriptionPdi from "../../components/ui/productShowCase/SubscriptionPdi";
 
 export default function DrivingTransmission() {
   const { section } = useParams();
@@ -171,7 +172,7 @@ export default function DrivingTransmission() {
         <section>
           <Element name="instructor-packages-section">
             <section className={styles.ManualCorousel}>
-              <DrivingInstructorUI />
+              <SubscriptionPdi />
             </section>
           </Element>
         </section>

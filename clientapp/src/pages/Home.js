@@ -207,16 +207,16 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
-      <section>
+      {/* <section>
         <HomeBanner />
-      </section>
+      </section> */}
 
       <div className={styles.homepageContainerDiv}>
-        {/* <section className={styles.homeSection}>
+        <section className={styles.homeSection}>
           <div className={styles.homeContainer}>
             <HomeDesign />
           </div>
-        </section> */}
+        </section>
         {/* ///////////////////////////////////////////////////////////////// */}
         <section className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white">
           {/* Animated Background Orbs */}
@@ -255,6 +255,11 @@ export default function Home() {
               whileHover={{ scale: 1.05, rotate: 1 }}
               whileTap={{ scale: 0.95 }}>
               <button
+                style={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
                 onClick={() => handleShow("lessons")}
                 className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-lg transition-all duration-300
         ${
@@ -262,7 +267,7 @@ export default function Home() {
             ? "bg-yellow-400 text-black shadow-yellow-300 shadow-xl scale-105"
             : "bg-white text-black hover:bg-yellow-200"
         }`}>
-                <Calendar className="w-6 h-6 mb-2" />
+                <Calendar className="w-6 h-6 " />
                 Book Lessons
               </button>
             </motion.div>
@@ -272,6 +277,11 @@ export default function Home() {
               whileHover={{ scale: 1.05, rotate: -1 }}
               whileTap={{ scale: 0.95 }}>
               <button
+                style={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
                 onClick={() => handleShow("pdi")}
                 className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-lg transition-all duration-300
         ${
@@ -279,14 +289,19 @@ export default function Home() {
             ? "bg-yellow-400 text-black shadow-yellow-300 shadow-xl scale-105"
             : "bg-white text-black hover:bg-yellow-200"
         }`}>
-                <Sparkles className="w-6 h-6 mb-2" />
-                Book Instructor
+                <Sparkles className="w-6 h-6" />
+                Became Instructor
               </button>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05, rotate: -1 }}
               whileTap={{ scale: 0.95 }}>
               <button
+                style={{
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
                 onClick={() => handleShow("theory")}
                 className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-lg transition-all duration-300
         ${
@@ -294,7 +309,7 @@ export default function Home() {
             ? "bg-yellow-400 text-black shadow-yellow-300 shadow-xl scale-105"
             : "bg-white text-black hover:bg-yellow-200"
         }`}>
-                <BookOpenText className="w-6 h-6 mb-2" />
+                <BookOpenText className="w-6 h-6 " />
                 Book Theory
               </button>
             </motion.div>
