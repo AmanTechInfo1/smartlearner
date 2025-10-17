@@ -166,21 +166,32 @@ export default function Home() {
   }, []);
 
   const [activeSection, setActiveSection] = useState(null);
-  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    if (activeSection && sectionRef.current) {
-      setTimeout(() => {
-        sectionRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 200); // delay to allow animation start
+  const scrollToRef = (ref) => {
+    if (ref && ref.scrollIntoView) {
+      ref.scrollIntoView({ behavior: "smooth" });
     }
-  }, [activeSection]);
+  };
+  const lessonsRefCallback = (node) => {
+    if (node && activeSection === "lessons") {
+      scrollToRef(node);
+    }
+  };
+
+  const pdiRefCallback = (node) => {
+    if (node && activeSection === "pdi") {
+      scrollToRef(node);
+    }
+  };
+
+  const theoryRefCallback = (node) => {
+    if (node && activeSection === "theory") {
+      scrollToRef(node);
+    }
+  };
 
   const handleShow = (section) => {
-    setActiveSection((prev) => (prev === section ? null : section)); // toggle
+    setActiveSection(section); // Scroll will happen when section mounts
   };
 
   const sectionVariants = {
@@ -290,7 +301,7 @@ export default function Home() {
             : "bg-white text-black hover:bg-yellow-200"
         }`}>
                 <Sparkles className="w-6 h-6" />
-                Became Instructor
+                Became an instructor
               </button>
             </motion.div>
             <motion.div
@@ -317,10 +328,11 @@ export default function Home() {
         </section>
 
         {/* //////////////////////////////////////////////////////////// */}
-        <AnimatePresence mode="wait" ref={sectionRef}>
+        <AnimatePresence mode="wait">
           {activeSection === "lessons" && (
             <motion.section
               key="lessons"
+              ref={lessonsRefCallback}
               variants={sectionVariants}
               initial="hidden"
               animate="visible"
@@ -334,24 +346,27 @@ export default function Home() {
           {activeSection === "pdi" && (
             <motion.section
               key="pdi"
+              ref={pdiRefCallback}
               variants={sectionVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
               transition={{ duration: 0.6 }}
-              className="w-full ">
+              className="w-full">
               <SubscriptionPdi />
             </motion.section>
           )}
+
           {activeSection === "theory" && (
             <motion.section
               key="theory"
+              ref={theoryRefCallback}
               variants={sectionVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
               transition={{ duration: 0.6 }}
-              className="w-full ">
+              className="w-full">
               <TheoryProductShowCase />
             </motion.section>
           )}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
+import { FaDownload, FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import backgroundImage from "../../../../assets/images/gde-matrix.jpg";
 
@@ -930,6 +930,22 @@ export default function () {
         </div>
       </div>
 
+      <div style={style.adiDownLoadcontainer}>
+        <h2 style={style.adiDownLoadheading}>
+          Get Your Lesson Planning Documents
+        </h2>
+        <p style={style.adiDownLoadsubtext}>
+          Click below to download all documents as a ZIP file.
+        </p>
+        <a
+          href="/Lessonsubjectsskillsets.zip"
+          download
+          style={style.adiDownLoadbutton}>
+          <FaDownload style={style.adiDownLoadicon} />
+          Download ZIP
+        </a>
+      </div>
+
       <div className={styles.adiLastNextbtn}>
         <Link to="/lesson-planning">
           {" "}
@@ -955,3 +971,44 @@ export default function () {
     </div>
   );
 }
+const style = {
+  adiDownLoadcontainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "50vh",
+    background: "linear-gradient(135deg,rgb(125, 0, 67),rgb(3, 27, 94))",
+    padding: "40px",
+    borderRadius: "12px",
+    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+    margin: "50px auto",
+    maxWidth: "600px",
+  },
+  adiDownLoadheading: {
+    fontSize: "2rem",
+    marginBottom: "10px",
+    color: "white",
+  },
+  adiDownLoadsubtext: {
+    fontSize: "1rem",
+    marginBottom: "30px",
+    color: "white",
+  },
+  adiDownLoadbutton: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    padding: "12px 24px",
+    backgroundColor: "#007BFF",
+    color: "#fff",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    borderRadius: "8px",
+    textDecoration: "none",
+    transition: "background-color 0.3s ease",
+  },
+  adiDownLoadicon: {
+    fontSize: "1.2rem",
+  },
+};

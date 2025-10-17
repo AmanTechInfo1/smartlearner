@@ -13,6 +13,7 @@ import {
   getIncreaseCart,
 } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import styles from "./ProductShowCase.module.css";
 
 const gradients = [
   "from-pink-200 via-pink-300 to-pink-400",
@@ -35,7 +36,7 @@ const ProductShowcase = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState("manual");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [showAll, setShowAll] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
 
@@ -49,6 +50,12 @@ const ProductShowcase = () => {
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data?.length > 0 && !selectedCategory) {
+      setSelectedCategory("manual_combined");
+    }
+  }, [data, selectedCategory]);
 
   const handleSelectCategory = (id) => {
     setSelectedCategory((prev) => (prev === id ? "" : id));
@@ -151,11 +158,15 @@ const ProductShowcase = () => {
         </h2>
 
         {/* Category Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <div
+          className="flex flex-wrap justify-center gap-3 mb-8"
+          id={styles.cateButtonsOnProductshowcase}>
           {[
-            { id: "intensive", label: "🏃 Intensive" },
             { id: "manual_combined", label: "📘 Manual" },
+
             { id: "automatic_combined", label: "🚘 Automatic" },
+            { id: "intensive", label: "🏃 Intensive" },
+
             { id: "pass plus", label: "✅ Pass Plus" },
           ].map(({ id, label, special }) => {
             const isSelected = selectedCategory === id;
@@ -178,11 +189,12 @@ const ProductShowcase = () => {
 
             return (
               <motion.button
+                id={styles.cateButtonsOnProductshowcaseBtn}
                 key={id}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleSelectCategory(id)}
-                className={`px-5 py-2 rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}>
+                className={`rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}>
                 {label}
               </motion.button>
             );

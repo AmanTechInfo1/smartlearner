@@ -108,7 +108,7 @@ export default function TheoryProductShowCase() {
                 ? "bg-blue-700 text-white"
                 : "bg-white border border-blue-700 text-blue-700"
             }`}>
-            Theory Products
+            Theory Portal
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -118,7 +118,7 @@ export default function TheoryProductShowCase() {
                 ? "bg-blue-700 text-white"
                 : "bg-white border border-blue-700 text-blue-700"
             }`}>
-            Theory Portal
+            Theory Products
           </motion.button>
         </div>
 
