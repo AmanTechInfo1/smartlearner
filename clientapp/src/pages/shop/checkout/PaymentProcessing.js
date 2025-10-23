@@ -337,7 +337,7 @@ export default function PaymentProcessing() {
               </div> */}
                 <div style={{ marginTop: "20px" }}>
                   <button className={styles.revolutbutton} onClick={revolutbtn}>
-                    Pay with Revolut
+                    Pay with debit/credit card
                   </button>
 
                   <div className={styles.revolutbuttoncontainer2}>

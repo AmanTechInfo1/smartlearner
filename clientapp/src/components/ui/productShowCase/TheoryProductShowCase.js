@@ -184,7 +184,9 @@ export default function TheoryProductShowCase() {
                       ))}
                     </StarWrapper>
                     <div className="flex items-center justify-between mt-4">
-                      <span className="text-blue-600 font-bold text-md">
+                      <span
+                        className="text-blue-600 font-bold text-md"
+                        style={{ fontSize: "1.4rem" }}>
                         £ {product.price}
                       </span>
                       <motion.button
@@ -280,7 +282,9 @@ export default function TheoryProductShowCase() {
                         </StarWrapper>
 
                         <div className="flex items-center justify-between mt-4">
-                          <span className="text-blue-600 font-bold text-md">
+                          <span
+                            className="text-blue-600 font-bold text-md"
+                            style={{ fontSize: "1.4rem" }}>
                             £ {product.price || "N/A"}
                           </span>
                           {inCart ? (

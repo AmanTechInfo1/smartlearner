@@ -343,7 +343,7 @@ const PartTwoSubscription = () => {
                       <button
                         className={styles.revolutbutton}
                         onClick={() => initRevolutPay(plan)}>
-                        Pay with Revolut
+                        Pay with debit/credit card
                       </button>
                       {activePlan?._id === plan._id && (
                         <div className={styles.revolutbuttoncontainer}>

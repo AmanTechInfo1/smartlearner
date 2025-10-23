@@ -393,7 +393,7 @@ const TheorySubscription = () => {
                           initRevolutPay(ogPlan, subsdiscountedPrice)
                         }
                         disabled={subsdiscountedPrice}>
-                        Pay with Revolut
+                        Pay with debit/credit card
                       </button>
                       {activePlan?._id === ogPlan._id && (
                         <div className={styles.revolutbuttoncontainer}>
@@ -415,7 +415,7 @@ const TheorySubscription = () => {
                       onClick={() =>
                         initRevolutPay(ogPlan, subsdiscountedPrice)
                       }>
-                      Pay with Revolut
+                      Pay with debit/credit card
                     </button>
                     {activePlan?._id === ogPlan._id && (
                       <div className={styles.revolutbuttoncontainer}>

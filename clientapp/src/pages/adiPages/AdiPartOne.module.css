@@ -1979,6 +1979,10 @@ p {
   font-size: 1.3rem;
   text-decoration: none;
   color: #fff;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
 }
 .adiFooterContactInfo a:hover {
   color: rgb(0, 185, 0);
@@ -2070,7 +2074,6 @@ p {
 .startQuizSection h2 {
   font-size: 1.9rem;
   font-weight: 300;
-
 }
 .startQuizSection h3 {
   font-size: 1.9rem;
@@ -2115,7 +2118,7 @@ p {
 .glossarysubTitle {
   font-size: 2rem;
   color: #b8e4ff;
-  
+
   margin-bottom: 10px;
   background: linear-gradient(
     135deg,
@@ -2148,9 +2151,7 @@ p {
   background: linear-gradient(135deg, #bc971f, #744201);
   padding: 15px 10px;
   border-radius: 5px;
-  
 }
-
 
 .glossarylist strong {
   color: #00ffcc;

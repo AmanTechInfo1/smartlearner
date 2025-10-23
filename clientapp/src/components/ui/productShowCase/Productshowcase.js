@@ -263,7 +263,7 @@ const ProductShowcase = () => {
                         }}
                         className="absolute top-3 left-3 bg-red-500 text-white font-bold px-3 py-1 rounded-full shadow-lg text-xs z-20 animate-bounce">
                         {product.originCategory === "offers manual"
-                          ? "🔥 Hot Offer"
+                          ? "🔥 Special Offer"
                           : product.originCategory === "offers automatic"
                           ? "✨ Special Offer"
                           : ""}
@@ -351,11 +351,14 @@ const ProductShowcase = () => {
                       <div className="flex items-center justify-between mt-4">
                         <div className="flex flex-col">
                           {product.maxPrice && (
-                            <span className="text-lg line-through font-bold text-gray-600">
+                            <span
+                              className="text-lg line-through font-bold text-gray-600"
+                              style={{ fontSize: "1.4rem" }}>
                               £{product.maxPrice}
                             </span>
                           )}
                           <motion.span
+                            style={{ fontSize: "1.4rem" }}
                             className={`text-xl font-bold ${
                               isOffer ? "text-red-600" : "text-blue-700"
                             }`}

@@ -301,7 +301,7 @@ export default function Home() {
             : "bg-white text-black hover:bg-yellow-200"
         }`}>
                 <Sparkles className="w-6 h-6" />
-                Became an instructor
+                Become an instructor
               </button>
             </motion.div>
             <motion.div
