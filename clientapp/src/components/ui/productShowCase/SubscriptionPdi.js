@@ -11,7 +11,7 @@ import {
 } from "../../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../../redux/features/productSlice";
 import redStarImg from "../../../assets/images/redStar.png";
-import redCartImg from "../../../assets/images/redCartImg.png";
+import redCartImg from "../../../assets/images/pdi.png";
 import styles from "./ProductShowCase.module.css";
 
 const StarWrapper = styled.div`

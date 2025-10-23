@@ -11,6 +11,7 @@ import {
 import redStarImg from "../../assets/images/redStar.png";
 import redCartImg from "../../assets/images/redCartImg.png";
 import defaultImg from "../../assets/images/bannerCart.png";
+import workshop from "../../assets/images/workshop.jpeg";
 import { useNavigate } from "react-router-dom";
 
 // Styled-components
@@ -30,7 +31,7 @@ const Title = styled.h2`
 const Grid = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 `;
 
 const Card = styled(motion.div)`
@@ -149,7 +150,7 @@ const WorkShop = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}>
-              <Img src={redCartImg || defaultImg} alt={product.name} />
+              <Img src={workshop || defaultImg} alt={product.name} />
               <Content>
                 <Name>{product.name}</Name>
                 <Price>£ {product.price}</Price>
