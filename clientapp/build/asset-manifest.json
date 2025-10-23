@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.37b2a0c7.css",
-    "main.js": "/static/js/main.85622508.js",
+    "main.js": "/static/js/main.8e8ab6b6.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -71,10 +71,12 @@
     "static/media/glossaryImgbanner.jpg": "/static/media/glossaryImgbanner.8e2fd827a19c7b606c9a.jpg",
     "static/media/concentration.jpg": "/static/media/concentration.33c7c0c37660b5840c96.jpg",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
+    "static/media/theory.png": "/static/media/theory.ec139fdf727e51a8b90a.png",
     "static/media/automatic4.jpg": "/static/media/automatic4.5905db00d55f2568f589.jpg",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
     "static/media/communitybanner.jpg": "/static/media/communitybanner.add596cf2398493dfff1.jpg",
+    "static/media/pdi.png": "/static/media/pdi.bb8730c03f7619eb4d8e.png",
     "static/media/adi3videos.jpg": "/static/media/adi3videos.a825bd8fcda0f2d99460.jpg",
     "static/media/Cyclistssss.png": "/static/media/Cyclistssss.9be85f03098b9f468ce6.png",
     "static/media/equestrian.png": "/static/media/equestrian.217875f057a23dcc5f5e.png",
@@ -242,6 +244,7 @@
     "static/media/mentalwellBeing.png": "/static/media/mentalwellBeing.e8ad0340daf6d42b7e3f.png",
     "static/media/roadUserVulnerableuser.png": "/static/media/roadUserVulnerableuser.e1aba19d7421cfecc8f5.png",
     "static/media/hazzard-png.png": "/static/media/hazzard-png.67856d93960ed94a8b90.png",
+    "static/media/workshop.jpeg": "/static/media/workshop.7581f40367679a34dd8b.jpeg",
     "static/media/Diary-1536x681.jpg": "/static/media/Diary-1536x681.05297a53f598f81711b7.jpg",
     "static/media/Asset_109.png": "/static/media/Asset_109.249e54851dcb8e48cc9d.png",
     "static/media/Meeting-oncoming-traffic.png": "/static/media/Meeting-oncoming-traffic.940cef2bc50b05dcbee1.png",
@@ -412,11 +415,11 @@
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "main.37b2a0c7.css.map": "/static/css/main.37b2a0c7.css.map",
-    "main.85622508.js.map": "/static/js/main.85622508.js.map",
+    "main.8e8ab6b6.js.map": "/static/js/main.8e8ab6b6.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.37b2a0c7.css",
-    "static/js/main.85622508.js"
+    "static/js/main.8e8ab6b6.js"
   ]
 }
