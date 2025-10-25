@@ -210,34 +210,10 @@ export default function TheorySupport() {
             </section>
           </Element>
         </section>
-        {/* //////////CallBack Form section///////////// */}
-        {/* <section className={styles.callbackFormSection}>
-          <div className={styles.callbackFormContent}>
-            <div className={styles.callbackFormContentPG}>
-              <p>
-                We launched our 1-2-1 theory sessions in 2019 and since then we
-                have helped many people pass who thought they never could. Our
-                theory sessions focus on building your knowledge from the ground
-                up to ensure you don’t just know the answers but understand
-                them. We have had people from all over the country coming to us
-                looking for help in preparing for their exam. Currently we have
-                a 90% pass rate which is 41.5% higher than the national average!
-              </p>
-            </div>
-            <CallBackForm />
-          </div>
-          <div className={styles.productTab}></div>
-        </section> */}
+     
       </section>
 
-      {/* ///////////////////////////////////////////////////// */}
-
-      {/* ///////////////Testimonials////// */}
-      {/* <section>
-        <StaticTestimonial/>
-      </section> */}
-
-      {/* ///////////////////////Reviews//////// */}
+  
     </div>
   );
 }
