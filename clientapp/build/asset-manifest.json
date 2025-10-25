@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.37b2a0c7.css",
-    "main.js": "/static/js/main.8e8ab6b6.js",
+    "main.css": "/static/css/main.51c971df.css",
+    "main.js": "/static/js/main.a29d8819.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -44,6 +44,7 @@
     "static/media/bg.jpg": "/static/media/bg.8aa0b6879fe170114998.jpg",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.698662c3c954dd66527f.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
+    "static/media/banner4.png": "/static/media/banner4.1d9b217bb99c4c8449bf.png",
     "static/media/bookpart3.jpg": "/static/media/bookpart3.d249a58efdfbb4dc2f1e.jpg",
     "static/media/manualround1.png": "/static/media/manualround1.51cea707a66fddf1a9a5.png",
     "static/media/whatjpg.jpg": "/static/media/whatjpg.d563d55249e3ae59fc8a.jpg",
@@ -51,6 +52,7 @@
     "static/media/questionsTech.jpg": "/static/media/questionsTech.10c6be1da17acc7bcea5.jpg",
     "static/media/pdibanner3.jpg": "/static/media/pdibanner3.0b4162778054ed0beb8f.jpg",
     "static/media/Mcqbanner.png": "/static/media/Mcqbanner.f8b9bd92355b53f95fc0.png",
+    "static/media/banner7.png": "/static/media/banner7.6f52e587d7b6d34dbf51.png",
     "static/media/drivinglessons.jpg": "/static/media/drivinglessons.3fa64f3fa0a3b751e69a.jpg",
     "static/media/client-centered.jpg": "/static/media/client-centered.1ede52a0695f7171f7e9.jpg",
     "static/media/success.gif": "/static/media/success.1fafd1376fcce1a1f904.gif",
@@ -59,8 +61,8 @@
     "static/media/lessonStructure.jpg": "/static/media/lessonStructure.6d6d74b217abf5ab2c44.jpg",
     "static/media/bgDark.jpg": "/static/media/bgDark.92c9fb7372440b5bec53.jpg",
     "static/media/roadRulesBanner.jpg": "/static/media/roadRulesBanner.b4f2974ba1945c790801.jpg",
-    "static/media/view-3d-car.png": "/static/media/view-3d-car.6c5e52795a28b0b549fe.png",
     "static/media/time.jpg": "/static/media/time.8333008db7791bced552.jpg",
+    "static/media/banner6.png": "/static/media/banner6.b8648e66ab8e32f0657e.png",
     "static/media/iceImg.png": "/static/media/iceImg.a18bed68bc92cb33d21b.png",
     "static/media/lessonModulebanner.jpg": "/static/media/lessonModulebanner.c7e1e83382a58d064545.jpg",
     "static/media/Anticipation.jpg": "/static/media/Anticipation.d37a68d4462ce5ca4e94.jpg",
@@ -414,12 +416,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.37b2a0c7.css.map": "/static/css/main.37b2a0c7.css.map",
-    "main.8e8ab6b6.js.map": "/static/js/main.8e8ab6b6.js.map",
+    "main.51c971df.css.map": "/static/css/main.51c971df.css.map",
+    "main.a29d8819.js.map": "/static/js/main.a29d8819.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.37b2a0c7.css",
-    "static/js/main.8e8ab6b6.js"
+    "static/css/main.51c971df.css",
+    "static/js/main.a29d8819.js"
   ]
 }
