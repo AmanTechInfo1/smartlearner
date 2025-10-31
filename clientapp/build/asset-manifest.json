@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8de2556f.css",
-    "main.js": "/static/js/main.5b621ed1.js",
+    "main.css": "/static/css/main.930688f2.css",
+    "main.js": "/static/js/main.253bef34.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -98,6 +98,7 @@
     "static/media/Untitled design (7).png": "/static/media/Untitled design (7).57511098bcfaeb390376.png",
     "static/media/bgimg1111.png": "/static/media/bgimg1111.2085a4682cfc44310874.png",
     "static/media/cimg10.jpg": "/static/media/cimg10.936f2182fc473a907e3b.jpg",
+    "static/media/textbg.PNG": "/static/media/textbg.3b7423d28ada1e41a142.PNG",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
     "static/media/roadWorks.png": "/static/media/roadWorks.712794cddf2e856be4c3.png",
     "static/media/sunSet.png": "/static/media/sunSet.17f66146f84f0b0832e0.png",
@@ -347,6 +348,7 @@
     "static/media/RevolutLogo.png": "/static/media/RevolutLogo.cb6578976e775ba92002.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/theHonestLogo.png": "/static/media/theHonestLogo.32b0555a2ed07965f051.png",
+    "static/media/White-Logo-Fixed-1024x174 - Copy.png": "/static/media/White-Logo-Fixed-1024x174 - Copy.02412d8a5be71626a21c.png",
     "static/media/theoryTestCrausalImg.jpg": "/static/media/theoryTestCrausalImg.6f7b6bb065bc765a1cba.jpg",
     "static/media/Highways_England.jpg": "/static/media/Highways_England.ffe794fd0e8108d07d2d.jpg",
     "static/media/cartIcon1.png": "/static/media/cartIcon1.132bea975b266bc3806d.png",
@@ -423,12 +425,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.8de2556f.css.map": "/static/css/main.8de2556f.css.map",
-    "main.5b621ed1.js.map": "/static/js/main.5b621ed1.js.map",
+    "main.930688f2.css.map": "/static/css/main.930688f2.css.map",
+    "main.253bef34.js.map": "/static/js/main.253bef34.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8de2556f.css",
-    "static/js/main.5b621ed1.js"
+    "static/css/main.930688f2.css",
+    "static/js/main.253bef34.js"
   ]
 }
