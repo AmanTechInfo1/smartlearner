@@ -84,7 +84,7 @@ const DrivingLessonsCarousel = () => {
     dots: true,
     infinite: true,
     speed: 700,
-    slidesToShow: 3, // show 3 full cards
+    slidesToShow: 3, // show 3 
     slidesToScroll: 1,
     centerMode: true, // centers active slide
     centerPadding: "40px", // adjust this for how much side is visible

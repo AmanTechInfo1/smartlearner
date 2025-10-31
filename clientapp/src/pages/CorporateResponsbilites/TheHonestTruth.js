@@ -393,23 +393,7 @@ export default function TheHonestTruth() {
                 </p>
               </section>
               {/* ///////////////////////////////////// */}
-              {/* <section className={styles.getInContentSection}>
-              <span>
-                <BiSolidChevronsDown id={styles.downwordArrow} />
-              </span>
-              <h2>FINISH THE TRAINING</h2>
-              <hr />
-              <p>
-                At the start of your lessons, you will receive a Truth Card
-                listing 10 truths. Your instructor will sign off each truth as
-                you complete the related topics.
-              </p>
-              <p>
-                The 'Honest Truth' campaign aims to inform young drivers about
-                safe driving realistically and straight forwardly, hoping to
-                change their driving behavior.
-              </p>
-            </section> */}
+            
               {/* /////////////////////////////////////////// */}
               <section className={styles.getInContentSection}>
                 <span>

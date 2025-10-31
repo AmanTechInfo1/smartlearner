@@ -1,6 +1,8 @@
-import React, { useState } from "react";
 import "./ImageCarousel.css";
-import Slider from "react-slick";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import styles from "./ShowcaseSlider.module.css";
 
 import image1 from "../../assets/images/carouselImg/Cim1.jpg";
 import image2 from "../../assets/images/carouselImg/cimg2.jpg";
@@ -22,6 +24,8 @@ import image17 from "../../assets/images/carouselImg/cimg17.jpg";
 import image18 from "../../assets/images/carouselImg/cimg18.jpg";
 import image19 from "../../assets/images/carouselImg/cimg19.jpg";
 import image20 from "../../assets/images/carouselImg/cimg20.jpg";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const images = [
   image1,
@@ -45,82 +49,95 @@ const images = [
   image19,
   image20,
 ];
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "red" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
-}
 
 function ImagesCarousel() {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const settings = {
-    dots: true,
-    infinite: true,
-    centerMode: true,
-    autoplay: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplaySpeed: 3000,
-    speed: 500,
-    beforeChange: (current, next) => setSlideIndex(next),
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+  const [current, setCurrent] = useState(0);
+  const [spacing, setSpacing] = useState(315);
+  const intervalRef = useRef(null);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % images.length);
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev - 1 + images.length) % images.length);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 500) setSpacing(120);
+      else if (window.innerWidth < 768) setSpacing(150);
+      else if (window.innerWidth < 1024) setSpacing(250);
+      else setSpacing(315);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    startAutoSlide();
+    return stopAutoSlide;
+  }, [current, spacing]);
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 2000);
   };
+
+  const stopAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
   return (
-    <div
-      className="slider-container"
-      style={{ color: "white", maxWidth: "1000px", margin: "0 auto" }}>
-      <Slider {...settings}>
-        {images.map((img, index) => (
-          <div
-            className={index === slideIndex ? "slide slide-active" : "slide"}
-            key={index}>
-            <div style={{ borderTop: "1px solid rgb(255, 217, 0)" }}>
-              {" "}
-              <img
-                src={img}
-                alt=""
-                style={{ border: "1px solid rgb(255, 217, 0)" }}
-              />
-            </div>
-          </div>
-        ))}
-      </Slider>
+    <div className={styles.sliderContainer}>
+      <h2 className={styles.heading}>
+        <Sparkles className={styles.sparkleIcon} /> What Our Gallery Shows
+      </h2>
+
+      <div className={styles.sliderWrapper}>
+        <button className={styles.navButton} onClick={prevSlide}>
+          <ChevronLeft size={26} />
+        </button>
+
+        <div className={styles.imageShowcase}>
+          <AnimatePresence>
+            {images.map((img, index) => {
+              const offset = (index - current + images.length) % images.length;
+              const isActive = offset === 0;
+
+              // 🌟 New positioning logic – keep active image centered
+              let xPosition = 0;
+              if (offset === 1) xPosition = spacing; // right
+              else if (offset === images.length - 1)
+                xPosition = -spacing; // left
+              else if (offset === 2) xPosition = spacing * 2;
+              else if (offset === images.length - 2) xPosition = -spacing * 2;
+
+              return (
+                <motion.img
+                  key={img}
+                  src={img}
+                  alt=""
+                  className={`${styles.image} ${isActive ? styles.active : ""}`}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{
+                    scale: isActive ? 1 : 0.8,
+                    opacity: isActive ? 1 : 0.4,
+                    x: xPosition,
+                    zIndex: isActive ? 2 : 1,
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        <button className={styles.navButton} onClick={nextSlide}>
+          <ChevronRight size={26} />
+        </button>
+      </div>
     </div>
   );
 }

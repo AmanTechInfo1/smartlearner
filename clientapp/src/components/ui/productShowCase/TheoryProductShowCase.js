@@ -97,7 +97,7 @@ export default function TheoryProductShowCase() {
   const [expandedProductId, setExpandedProductId] = useState(null);
 
   return (
-    <section className="py-10 bg-gradient-to-b from-blue-100">
+    <section className="py-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-center gap-4 mb-10">
           <motion.button
@@ -106,7 +106,7 @@ export default function TheoryProductShowCase() {
             className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
               activeTab === "theoryportal"
                 ? "bg-blue-700 text-white"
-                : "bg-white border border-blue-700 text-blue-700"
+                : "bg-white border border-blue-700 text-black-700"
             }`}>
             Theory Portal
           </motion.button>

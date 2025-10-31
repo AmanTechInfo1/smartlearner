@@ -525,7 +525,9 @@ const Quiz = () => {
               <>
                 <div className={styles.totalTimer2}>
                   <div className={styles.totalTimer}>
-                    <select onChange={handleLanguageChange}>
+                    <select
+                      onChange={handleLanguageChange}
+                      style={{ color: "black" }}>
                       {Object.entries(languageCodes).map((itm) => (
                         <option key={itm[1]} value={itm[1]}>
                           {itm[0]}

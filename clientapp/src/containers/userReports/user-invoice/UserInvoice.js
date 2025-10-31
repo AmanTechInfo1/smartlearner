@@ -43,13 +43,10 @@ const UserInvoice = (props) => {
 
   useEffect(() => {
     if (userReportId) {
+      setSummary([]);
       setIsQuizLoading(true);
-      Promise.all([
-        dispatch(getQuizResultAdmin(userReportId)),
-        dispatch(getAllQuizzes("", 1, 1000)),
-      ]).then(() => {
-        setIsQuizLoading(false);
-      });
+      dispatch(getQuizResultAdmin(userReportId));
+      dispatch(getAllQuizzes("", 1, 1000));
     }
   }, [dispatch, userReportId]);
 
@@ -140,8 +137,11 @@ const UserInvoice = (props) => {
           };
         })
         .filter((item) => item.attempted > 0);
-
+        
+      setIsQuizLoading(false);
       setSummary(summaryArray);
+    } else if (quizResult !== undefined && quizzes !== undefined) {
+      setIsQuizLoading(false);
     }
   }, [quizResult, quizzes]);
 

@@ -17,6 +17,7 @@ import Review from "../components/views/Review";
 import Testemonial from "../components/testimonials/Testemonial";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
 import { Helmet } from "react-helmet-async";
+import FaqAccordion from "../components/ui/accordation/FaqAccordion";
 export default function FAQS() {
   const textRef = useRef(null);
 
@@ -112,7 +113,10 @@ export default function FAQS() {
         <meta charSet="utf-8" />
         <title>FAQs – SmartLearner Driving School</title>
         <link rel="canonical" href="https://smartlearner.com/faqs" />
-        <meta property="og:title" content="FAQs – SmartLearner Driving School" />
+        <meta
+          property="og:title"
+          content="FAQs – SmartLearner Driving School"
+        />
         <meta
           name="description"
           content="Find answers to the most frequently asked questions about SmartLearner’s driving lessons, instructors, pricing, booking process, and more. Get the information you need, fast."
@@ -124,8 +128,7 @@ export default function FAQS() {
           backgroundColor: "black",
           color: "white",
           paddingBottom: "4rem",
-        }}
-      >
+        }}>
         <section className={styles.theorySupportHeadingContent}>
           <div className={styles.TSfirstContent}>
             <div className="opicity"></div>
@@ -146,40 +149,10 @@ export default function FAQS() {
         <section className={styles.faqsAccordion}>
           <section className={styles.faqsAccordionIndex}>
             <h2>FAQS</h2>
-            <Accordion defaultActiveKey="0">
-              {faqs.map((item, index) => (
-                <Accordion.Item key={index} eventKey={index.toString()}>
-                  <Accordion.Header>
-                    <h5>{item.question}</h5>
-                  </Accordion.Header>
-                  <Accordion.Body>{item.answer}</Accordion.Body>
-                </Accordion.Item>
-              ))}
-            </Accordion>
+            <FaqAccordion />
           </section>
         </section>
-        <section>
-          {" "}
-          {/* //////////CallBack Form section///////////// */}
-          {/* <section className={styles.callbackFormSection}>
-            <div className={styles.callbackFormContent}>
-              <div className={styles.callbackFormContentPG}>
-                <p>
-                  We launched our 1-2-1 theory sessions in 2019 and since then
-                  we have helped many people pass who thought they never could.
-                  Our theory sessions focus on building your knowledge from the
-                  ground up to ensure you don’t just know the answers but
-                  understand them. We have had people from all over the country
-                  coming to us looking for help in preparing for their exam.
-                  Currently we have a 90% pass rate which is 41.5% higher than
-                  the national average!
-                </p>
-              </div>
-              <CallBackForm />
-            </div>
-           
-          </section> */}
-        </section>
+
         {/* /////////////////////////////////////////////// */}
 
         {/* ////////////////////////// */}
@@ -218,12 +191,7 @@ export default function FAQS() {
             </div>
           </div>
         </section>
-        {/* //////////////////////////////// */}
-        {/* <section className={styles.drivenBefore}>
-          <h2>Search for driving lessons in your area</h2>
-          <DrivenForm />
-        </section> */}
-        {/* ////////////////////////////////// */}
+
         <section className={styles.nextFormSection}>
           <div className={styles.nextFormContainer}>
             <div className={styles.nextFormDetailsContainer}>

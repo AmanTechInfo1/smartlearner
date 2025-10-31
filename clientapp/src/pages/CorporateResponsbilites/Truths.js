@@ -12,7 +12,7 @@ import {
   FaBed,
   FaBicycle,
 } from "react-icons/fa";
-import './Truths.css';
+import "./Truths.css";
 import { useState } from "react";
 
 function SampleNextArrow(props) {
@@ -148,13 +148,16 @@ export default function Truths() {
   return (
     <div>
       <div className="mainFeatures">
-        <div className="slider-container">
+        <div
+          className="slider-container"
+          style={{ color: "white", maxWidth: "1000px", margin: "0 auto" }}>
           <Slider {...settings}>
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className={index === slideIndex ? "slide slide-active" : "slide"}
-              >
+                className={
+                  index === slideIndex ? "slide slide-active" : "slide"
+                }>
                 <div className="column">
                   <a href={slide.link}>
                     <span>{slide.icon}</span>

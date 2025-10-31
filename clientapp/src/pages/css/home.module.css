@@ -293,6 +293,61 @@
     font-size: 2.2rem;
   }
 }
+/* //////////////////////////////////////////////////// */
+.bgColore {
+  background: linear-gradient(180deg, #ffffff, #ddbfff);
+}
+.heroSection12345 {
+  padding: 2rem;
+  text-align: center;
+}
+
+.heroText12345 {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.3;
+  background: linear-gradient(90deg, #2e8bff, #00c6ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.highlight12345 {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.pass12345 {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroText12345 {
+    font-size: 2rem;
+  }
+  .pass12345 {
+    font-size: 2.5rem;
+  }
+}
 
 /* ////////////////////////////////////////////////////////////// */
 .callbackformflex {
@@ -303,7 +358,6 @@
   gap: 30px;
   margin-right: auto;
   margin-left: auto;
-  padding: 1rem;
 }
 .callbackformflex section:nth-child(1) {
   max-width: 50%;
@@ -315,8 +369,6 @@
 }
 .callbackformflex img {
   width: 100%;
-  height: 500px;
-  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(255, 255, 255, 0.8));
 }
 @media (max-width: 767px) {
   .callbackformflex section:nth-child(1) {
@@ -617,6 +669,149 @@
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
   /* Make the back appear when flipped */
+}
+
+/* /////////////////////////////////////////////////// */
+.trophiesSection123 {
+  padding: 80px 20px;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.heading12333 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #d10024, #ff6363);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 3s infinite linear;
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.trophiesGrid123 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 50px;
+  justify-items: center;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.trophyCard123 {
+  perspective: 1000px;
+  width: 220px;
+  position: relative;
+}
+
+.cardInner123 {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.trophyCard123:hover .cardInner123 {
+  transform: rotateY(180deg);
+}
+
+.cardFront123,
+.cardBack123 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  background: white;
+}
+
+.cardFront123 img,
+.cardBack123 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardBack123 {
+  transform: rotateY(180deg);
+}
+
+/* Floating animation for trophies */
+.floatAnimation123 {
+  animation: floatUpDown11 4s ease-in-out infinite;
+}
+
+@keyframes floatUpDown11 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Shine effect */
+.shine123 {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.2)
+  );
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.trophyCard123:hover .shine123 {
+  left: 125%;
+}
+
+.trophyName123 {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.trophyCard123:hover .trophyName123 {
+  color: #d10024;
+  text-shadow: 0 0 10px rgba(209, 0, 36, 0.5);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .heading12333 {
+    font-size: 2rem;
+  }
+  .trophyCard123 {
+    width: 180px;
+  }
+  .cardInner123 {
+    height: 220px;
+  }
 }
 
 /* ////////////////////////////////////////////// */

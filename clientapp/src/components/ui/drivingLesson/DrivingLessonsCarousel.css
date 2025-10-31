@@ -1,6 +1,8 @@
 .carousel-section12345 {
-  background: url(../../../assets/40485234_8845412.jpg);
-  background-size: cover;
+  padding: 4rem 2rem;
+  position: relative;
+}
+.carousel-section123456 {
   padding: 4rem 2rem;
   position: relative;
 }

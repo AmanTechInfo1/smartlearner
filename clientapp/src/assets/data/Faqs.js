@@ -49,43 +49,37 @@ export const faqs = [
   },
   {
     id: "9",
-    question:
-      "DO SMARTLEARNER OFFER INTENSIVE DRIVING COURSES? (FAST TRACK)",
+    question: "DO SMARTLEARNER OFFER INTENSIVE DRIVING COURSES? (FAST TRACK)",
     answer:
       "Yes, we do offer intensive driving courses. These courses are always above 6 hours of driving lessons per week. Although, most learners opt to do 10+ hours per week. However, you must of passed your theory test before booking an intensive course. This is to ensure you can get a test date.",
   },
   {
     id: "10",
-    question:
-      "HOW MANY DRIVING LESSONS WILL I NEED TO TAKE?",
+    question: "HOW MANY DRIVING LESSONS WILL I NEED TO TAKE?",
     answer:
       "The number of lessons required varies from student to student and is dependent on many factors, such as availability, past experience and your unique learning style. However, the DVSA have recommended that an average learner will need 40 hours of driving lessons. Your instructor will monitor your progress using our ‘Reflective Log’ and this will help you to keep track of your own learning. ",
   },
   {
     id: "11",
-    question:
-      "HOW DO I NEED TO START DRIVING LESSONS?",
+    question: "HOW DO I NEED TO START DRIVING LESSONS?",
     answer:
       "Firstly, for most people you need to be at least 17 years of age. You will also be required to have a provisional license. You can apply for this through the DVLA online application or by getting an application form from your local post office. You should also practice your theory while you wait for your provisional to arrive. If you want information on how we can offer theory support call us on 0800 118 2001. Note: It is also worth having an eyesight check to ensure you can read a standard car number plate at 20.5 metres.",
   },
   {
     id: "12",
-    question:
-      "HOW MUCH ARE DRIVING LESSONS?",
+    question: "HOW MUCH ARE DRIVING LESSONS?",
     answer:
       "Driving lessons vary in cost depending on your area and the transmission you choose. You can find our the exact price in your area by using our postal code checker or calling our office on 0800 118 2001.",
   },
   {
     id: "13",
-    question:
-      "HOW OFTEN SHOULD I TAKE MY DRIVING LESSONS?",
+    question: "HOW OFTEN SHOULD I TAKE MY DRIVING LESSONS?",
     answer:
       "Continuity of driving lessons is important! Try not to take long breaks as this can really affect your progress and make it cost much more in the long run. At Smartlearner we recommend that you have between 2 and 4 hours per week. This will help you stay motivated, pass faster and if your paying in block can save you lots of money!",
   },
   {
     id: "14",
-    question:
-      "WHAT IS THE MOST COST-EFFECTIVE WAY TO BOOK DRIVING LESSONS?",
+    question: "WHAT IS THE MOST COST-EFFECTIVE WAY TO BOOK DRIVING LESSONS?",
     answer:
       "At SmartLearner we always offer block bookings at a discounted rate. This applies to blocks of 5, 10 and 20 hours in both manual and automatic. We also sometimes also offer seasonal discounts. The best way to see what we are offering at the moment is by calling our office on 0800 118 2001.",
   },

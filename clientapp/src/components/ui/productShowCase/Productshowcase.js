@@ -151,9 +151,9 @@ const ProductShowcase = () => {
     category === "offers manual" || category === "offers automatic";
 
   return (
-    <section className="py-10 bg-gradient-to-b from-blue-100">
+    <section className="py-10 ">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10 text-blue-700">
+        <h2 className="text-4xl font-bold text-center mb-10 text-black-700">
           Explore Our Products
         </h2>
 
