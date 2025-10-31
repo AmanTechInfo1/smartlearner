@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import style from "./NewHomeBanner.module.css";
 import { FaTrophy } from "react-icons/fa";
-
+import { RxCross2 } from "react-icons/rx";
 import trophy1 from "../../../assets/images/goldTrophyImg.jpg"; // replace with your trophy image
-import logo from "../../../assets/images/White-Logo-Fixed-1024x174.png";
+import logo from "../../../assets/images/White-Logo-Fixed-1024x174 - Copy.png";
 import trophy2 from "../../../assets/images/goldTrophyImg.jpg";
 import trophy3 from "../../../assets/images/silverTrophyImg.jpg";
 import tokanImg from "../../../assets/images/bg1.PNG";
@@ -72,12 +72,13 @@ export default function NewHomeBanner() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}>
-            <div>
+            <div id={style.logoImgBanner}>
               <img src={logo} alt="" className={style.logoImgBanner} />
+              <p>DRIVING SCHOOL</p>
             </div>
             <div className={style.bannerHeadingtext}>
               <h2>
-                Road and <span>Safety Month</span>
+                CELEBRATING <span>Road and Safety Month</span>
               </h2>
             </div>
             <section className={style.gridBox}>
@@ -94,7 +95,15 @@ export default function NewHomeBanner() {
                         {rule.id}
                       </span>
                     </div>
-                    <p className={style.gridImgsTitle}>{rule.title}</p>
+
+                    <p className={style.gridImgsTitle}>
+                      {" "}
+                      <span>
+                        {" "}
+                        <RxCross2 />
+                      </span>
+                      {rule.title}
+                    </p>
                   </div>
                 ))}
               </div>

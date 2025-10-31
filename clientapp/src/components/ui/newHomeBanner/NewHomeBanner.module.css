@@ -12,16 +12,31 @@
   margin-left: auto;
   padding: 3rem 1rem;
 }
-
+.bannerHeadingtext {
+  background: url(../../../assets/images/textbg.PNG);
+  padding: 7rem;
+  background-size: cover;
+  background-position: inherit;
+  max-width: 750px;
+  height: 400px;
+  width: 100%;
+}
 .bannerHeadingtext h2 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 900;
   text-align: left;
   color: rgb(255, 255, 255);
+  text-transform: uppercase;
 }
 
 .bannerHeadingtext h2 span {
-  color: rgb(212, 0, 0);
+  color: rgb(255, 196, 0);
+}
+#bannerShape {
+  background-color: #d7141a;
+  clip-path: polygon(3% 0%, 97% 0%, 100% 100%, 0% 100%);
+  transform: rotate(-2deg);
+  position: relative;
 }
 .gridBox {
   padding: 2rem 0px;
@@ -36,6 +51,11 @@
   background-color: white;
   max-width: 130px;
   border-radius: 50%;
+}
+.gridImgsTitle span {
+  color: #d7141a;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 .gridImgsTitle {
   margin-top: 0.1rem;
@@ -59,10 +79,19 @@
   padding-left: 0px;
 }
 
+#logoImgBanner {
+  margin-bottom: 2rem;
+  max-width: 300px;
+  width: 100%;
+}
+#logoImgBanner P {
+  text-align: right;
+  color: white;
+  font-weight: 700;
+}
 .logoImgBanner {
   max-width: 300px;
   width: 100%;
-  margin-bottom:4.5rem;
 }
 
 .headerImgs {
@@ -101,14 +130,27 @@
     background-position: center;
     position: relative;
   }
-
+  #logoImgBanner {
+    max-width: 200px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
   .logoImgBanner {
     max-width: 200px;
     width: 100%;
-    margin-bottom: 3.5rem;
+  }
+  .bannerHeadingtext {
+    background: url(../../../assets/images/textbg.PNG);
+    padding: 5rem;
+    background-size: cover;
+    background-position: inherit;
+    max-width: 550px;
+    width: 100%;
+    height: 300px;
+    width: 100%;
   }
   .bannerHeadingtext h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
     text-align: left;
     color: rgb(255, 255, 255);
@@ -160,6 +202,22 @@
   }
 }
 @media (max-width: 527px) {
+  .bannerHeadingtext {
+    background: url(../../../assets/images/textbg.PNG);
+    padding: 5rem 4rem;
+    background-size: cover;
+    background-position: inherit;
+    max-width: 450px;
+    width: 100%;
+    height: 300px;
+    width: 100%;
+  }
+  .bannerHeadingtext h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: left;
+    color: rgb(255, 255, 255);
+  }
   #tokenImg {
     position: absolute;
     right: 20px;
