@@ -176,7 +176,7 @@ export default function PaymentProcessing() {
     try {
       const { revolutPay } = await RevolutCheckout.payments({
         locale: "en",
-
+        
         publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf",
       });
 

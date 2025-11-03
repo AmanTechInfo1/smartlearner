@@ -589,14 +589,14 @@ class OrderService {
         Authorization: `Bearer ${secretKey}`,
       },
       body: JSON.stringify({
-        amount: Math.round(parseFloat(amount)), // convert to minor units
+      amount: Math.round(parseFloat(amount)), // convert to minor units
         currency: currency || "GBP",
         capture_mode: "AUTOMATIC",
         description: `Order #${orderId}`,
         email: order.email, // assuming Order has email field
         merchant_order_ext_ref: orderId,
-        success_url: `https://smartlearner.com/paymentProcessing?revolut_token=${orderId}`,
-        cancel_url: `https://smartlearner.com/paymentProcessing?revolut_token=${orderId}`,
+    success_url: "https://smartlearner.com/paymentProcessing",
+    cancel_url: "https://smartlearner.com/paymentProcessing",
       }),
     });
 
