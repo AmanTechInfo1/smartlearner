@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.81e94d9d.css",
-    "main.js": "/static/js/main.253bef34.js",
+    "main.css": "/static/css/main.a48c20db.css",
+    "main.js": "/static/js/main.87933558.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -51,7 +51,6 @@
     "static/media/bodylanguage.jpg": "/static/media/bodylanguage.5410eb4860ae8c082001.jpg",
     "static/media/questionsTech.jpg": "/static/media/questionsTech.10c6be1da17acc7bcea5.jpg",
     "static/media/pdibanner3.jpg": "/static/media/pdibanner3.0b4162778054ed0beb8f.jpg",
-    "static/media/bgimg11.PNG": "/static/media/bgimg11.205189d71dcb238a37a1.PNG",
     "static/media/Mcqbanner.png": "/static/media/Mcqbanner.f8b9bd92355b53f95fc0.png",
     "static/media/banner7.png": "/static/media/banner7.6f52e587d7b6d34dbf51.png",
     "static/media/drivinglessons.jpg": "/static/media/drivinglessons.3fa64f3fa0a3b751e69a.jpg",
@@ -96,9 +95,7 @@
     "static/media/privcard.png": "/static/media/privcard.0cef7b9cc7b694a421b1.png",
     "static/media/bends.png": "/static/media/bends.02da93c19426d4eec12e.png",
     "static/media/Untitled design (7).png": "/static/media/Untitled design (7).57511098bcfaeb390376.png",
-    "static/media/bgimg1111.png": "/static/media/bgimg1111.2085a4682cfc44310874.png",
     "static/media/cimg10.jpg": "/static/media/cimg10.936f2182fc473a907e3b.jpg",
-    "static/media/textbg.PNG": "/static/media/textbg.3b7423d28ada1e41a142.PNG",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
     "static/media/roadWorks.png": "/static/media/roadWorks.712794cddf2e856be4c3.png",
     "static/media/sunSet.png": "/static/media/sunSet.17f66146f84f0b0832e0.png",
@@ -131,7 +128,7 @@
     "static/media/tunnelVissonImg.png": "/static/media/tunnelVissonImg.73329a28762e4b9c13b3.png",
     "static/media/ecodriving.png": "/static/media/ecodriving.bc832fd22aa5637d805b.png",
     "static/media/passplusCarousalImg.jpg": "/static/media/passplusCarousalImg.bb8135c960cb1d974a75.jpg",
-    "static/media/bg1.PNG": "/static/media/bg1.7a56e3cccee31c7e1909.PNG",
+    "static/media/bgimg1112.png": "/static/media/bgimg1112.8fd332672949ef3dd150.png",
     "static/media/electric-Car.png": "/static/media/electric-Car.2555e0d8ed634bfe9893.png",
     "static/media/cimg14.jpg": "/static/media/cimg14.b183209c115fc6bca30f.jpg",
     "static/media/automatic1.jpg": "/static/media/automatic1.d1f9d4f90d164f69d022.jpg",
@@ -174,6 +171,7 @@
     "static/media/IMG_2423.JPG": "/static/media/IMG_2423.acb5b6a1316318d65771.JPG",
     "static/media/vehicleclearence.png": "/static/media/vehicleclearence.8e9c7dcc2641968bab25.png",
     "static/media/csrbannerssss.jpg": "/static/media/csrbannerssss.577eee979f982e0c6886.jpg",
+    "static/media/textbg.PNG": "/static/media/textbg.830f27c3d9516f625696.PNG",
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
     "static/media/legulstuffbanner.jpg": "/static/media/legulstuffbanner.3198d0aec7ee2a5dcd0b.jpg",
@@ -215,6 +213,7 @@
     "static/media/giving-routes.jpg": "/static/media/giving-routes.a4bae37b801dc8446c74.jpg",
     "static/media/img2.jpg": "/static/media/img2.6c9bf86f32d1461f6aa5.jpg",
     "static/media/cimg15.jpg": "/static/media/cimg15.f12bf944dbca57d1bd9a.jpg",
+    "static/media/textbg2.png": "/static/media/textbg2.cd147b0ee5655286823e.png",
     "static/media/simulator.png": "/static/media/simulator.b80414649964c9789a0a.png",
     "static/media/cbdEvents2.jpeg": "/static/media/cbdEvents2.27b5c93a557d498abb8c.jpeg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
@@ -261,6 +260,7 @@
     "static/media/motorway-studs-1-rotated.jpg": "/static/media/motorway-studs-1-rotated.08d0fb244e69ebb208f7.jpg",
     "static/media/routesPlanning.jpg": "/static/media/routesPlanning.ecd8790f74a81f2feecf.jpg",
     "static/media/halloffame44.png": "/static/media/halloffame44.1bc38ffacd601aec0ee1.png",
+    "static/media/bg1.PNG": "/static/media/bg1.6f05350a3f8ce23ad00c.PNG",
     "static/media/halloffame22.png": "/static/media/halloffame22.739e47ad1f5359b293d1.png",
     "static/media/passplusround2.jpg": "/static/media/passplusround2.54669e6091d15d01c848.jpg",
     "static/media/fillerCap.jpeg": "/static/media/fillerCap.77c33e936017f5e2851b.jpeg",
@@ -425,12 +425,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.81e94d9d.css.map": "/static/css/main.81e94d9d.css.map",
-    "main.253bef34.js.map": "/static/js/main.253bef34.js.map",
+    "main.a48c20db.css.map": "/static/css/main.a48c20db.css.map",
+    "main.87933558.js.map": "/static/js/main.87933558.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.81e94d9d.css",
-    "static/js/main.253bef34.js"
+    "static/css/main.a48c20db.css",
+    "static/js/main.87933558.js"
   ]
 }
