@@ -34,7 +34,7 @@ const lessons = [
     link: "https://smartlearner.com/automatic-transmisson",
   },
   {
-    title: "WORKSHOP",
+    title: "PDI / ADI Workshops",
     description: ` At SmartLearner Driving School, we go beyond the basics.
                         Our specialised workshops are designed to equip learners
                         and new drivers with the practical knowledge, skills,
@@ -84,7 +84,7 @@ const DrivingLessonsCarousel = () => {
     dots: true,
     infinite: true,
     speed: 700,
-    slidesToShow: 3, // show 3 
+    slidesToShow: 3, // show 3
     slidesToScroll: 1,
     centerMode: true, // centers active slide
     centerPadding: "40px", // adjust this for how much side is visible

@@ -48,9 +48,7 @@ export default function CallBackForm() {
           className="space-y-4"
           style={{ color: "black" }}>
           {/* Name */}
-          <div
-            className="relative"
-            style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}>
+          <div className="relative">
             <User
               className="absolute left-3 top-4 text-black/60"
               style={{ width: "20px" }}
@@ -65,6 +63,7 @@ export default function CallBackForm() {
                   value={value || ""}
                   onChange={onChange}
                   placeholder="Enter Full Name"
+                  style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}
                   className="w-full pl-10 pr-3 py-3 rounded-xl bg-white/20 text-black placeholder-black/70 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all"
                 />
               )}
@@ -75,9 +74,7 @@ export default function CallBackForm() {
           </div>
 
           {/* Email */}
-          <div
-            className="relative"
-            style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}>
+          <div className="relative">
             <Mail
               className="absolute left-3 top-4 text-black/60"
               style={{ width: "20px" }}
@@ -98,6 +95,7 @@ export default function CallBackForm() {
                   value={value || ""}
                   onChange={onChange}
                   placeholder="Email Address"
+                  style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}
                   className="w-full pl-10 pr-3 py-3 rounded-xl bg-white/20 text-black placeholder-black/70 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all"
                 />
               )}
@@ -110,9 +108,7 @@ export default function CallBackForm() {
           </div>
 
           {/* Phone Number */}
-          <div
-            className="relative"
-            style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}>
+          <div className="relative">
             <PhoneCall
               className="absolute left-3 top-4 text-black/60"
               style={{ width: "20px" }}
@@ -133,6 +129,7 @@ export default function CallBackForm() {
                   value={value || ""}
                   onChange={onChange}
                   placeholder="Mobile Number"
+                  style={{ border: "1px solid #d5d5d5", borderRadius: "6px" }}
                   className="w-full pl-10 pr-3 py-3 rounded-xl bg-white/20 text-black placeholder-black/70 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all"
                 />
               )}
@@ -176,6 +173,7 @@ export default function CallBackForm() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
+            style={{ border: "none" }}
             className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl font-semibold shadow-lg hover:shadow-pink-500/40 transition-all">
             SEND CALLBACK REQUEST
           </motion.button>

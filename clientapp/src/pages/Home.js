@@ -174,7 +174,9 @@ export default function Home() {
       <div className={styles.homepageContainerDiv}>
         {/* ///////////////////////////////////////////////////////////////// */}
         <Element name="our-courses-section">
-          <section className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden bg-gradient-to-r from-white via-gray-100 to-blue-50 text-gray-900">
+          <section
+            style={{ background: "linear-gradient(180deg, #ffcf4c, #ffea8c)" }}
+            className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900">
             {/* Animated Background Orbs */}
             <motion.div className="absolute -top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
             <motion.div className="absolute bottom-0 right-10 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gray-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
