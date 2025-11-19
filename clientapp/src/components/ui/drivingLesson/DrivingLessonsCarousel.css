@@ -125,3 +125,8 @@
     padding: 2rem 15px;
   }
 }
+@media (max-width: 427px) {
+  .carousel-card12345 {
+    padding: 7px;
+  }
+}

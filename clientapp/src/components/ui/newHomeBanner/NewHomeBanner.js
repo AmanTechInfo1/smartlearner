@@ -1,18 +1,16 @@
-import React from "react";
 import { motion } from "framer-motion";
 import style from "./NewHomeBanner.module.css";
-import { FaTrophy } from "react-icons/fa";
+
 import { RxCross2 } from "react-icons/rx";
-import trophy1 from "../../../assets/images/goldTrophyImg.jpg"; // replace with your trophy image
-import logo from "../../../assets/images/White-Logo-Fixed-1024x174 - Copy.png";
-import trophy2 from "../../../assets/images/goldTrophyImg.jpg";
-import trophy3 from "../../../assets/images/silverTrophyImg.jpg";
-import tokanImg from "../../../assets/images/bg1.PNG";
-import roadsafty1 from "../../../assets/images/bg2.PNG";
-import roadsafty2 from "../../../assets/images/bg3.PNG";
-import roadsafty3 from "../../../assets/images/bg4.PNG";
-import roadsafty4 from "../../../assets/images/bg6.PNG";
-import roadsafty5 from "../../../assets/images/bg7.PNG";
+
+import logo from "../../../assets/images/White-Logo-Fixed-1024x174.webp";
+
+import tokanImg from "../../../assets/images/bg1.webp";
+import roadsafty1 from "../../../assets/images/bg2.webp";
+import roadsafty2 from "../../../assets/images/bg3.webp";
+import roadsafty3 from "../../../assets/images/bg4.webp";
+import roadsafty4 from "../../../assets/images/bg6.webp";
+import roadsafty5 from "../../../assets/images/bg7.webp";
 
 export default function NewHomeBanner() {
   const rules = [
@@ -40,7 +38,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg}>
-          <img src={tokanImg} className={style.tokenImg} />
+          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <motion.div
           animate={{
@@ -52,7 +50,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg2}>
-          <img src={tokanImg} className={style.tokenImg} />
+          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <motion.div
           animate={{
@@ -64,7 +62,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg3}>
-          <img src={tokanImg} className={style.tokenImg} />
+          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <section className={style.bannerSections}>
           <motion.div
@@ -77,9 +75,11 @@ export default function NewHomeBanner() {
               <p>DRIVING SCHOOL</p>
             </div>
             <div className={style.bannerHeadingtext}>
-              <h2>
-                CELEBRATING <span>Road and Safety Month</span>
-              </h2>
+              <div id={style.bannerHeadingtextborder}>
+                <h2>
+                  CELEBRATING <span>Road and Safety Month</span>
+                </h2>
+              </div>
             </div>
             <section className={style.gridBox}>
               <div className={style.gridSection}>

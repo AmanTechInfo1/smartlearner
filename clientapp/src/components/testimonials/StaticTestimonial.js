@@ -6,7 +6,7 @@ import "../ui/drivingLesson/DrivingLessonsCarousel.css";
 import { motion } from "framer-motion";
 import { Quote, Star, User } from "lucide-react";
 
-import manualImg from "../../assets/images/manualcrouselImg.jpg";
+import manualImg from "../../assets/images/manualcrouselImg.webp";
 import autoImg from "../../assets/images/automaticCrousalImg.jpg";
 import intensiveImg from "../../assets/images/IntensiveCrousalImg.jpg";
 import passplusImg from "../../assets/images/passplusCarousalImg.jpg";
@@ -80,12 +80,13 @@ const StaticTestimonial = () => {
 
   return (
     <>
-      <section className="carousel-section123456">
+      <section className="carousel-section12345">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, type: "spring" }}
+          style={{ padding: "0px 1rem" }}
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10 text-gray-900 leading-snug">
           <span>What Our Customers Say</span>{" "}
           <motion.span

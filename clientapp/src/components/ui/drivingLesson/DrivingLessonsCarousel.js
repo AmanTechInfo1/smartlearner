@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./DrivingLessonsCarousel.css";
 import { Link } from "react-router-dom";
 
-import manualImg from "../../../assets/images/manualcrouselImg.jpg";
+import manualImg from "../../../assets/images/manualcrouselImg.webp";
 import autoImg from "../../../assets/images/automaticCrousalImg.jpg";
 import intensiveImg from "../../../assets/images/IntensiveCrousalImg.jpg";
 import passplusImg from "../../../assets/images/passplusCarousalImg.jpg";

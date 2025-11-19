@@ -37,36 +37,31 @@ function Footer() {
                     <a
                       href="https://www.facebook.com/smartlearnerdrivingschool"
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <FaFacebook id={styles.FollowIcons} />
                     </a>
                     <a
                       href="https://www.instagram.com/smartlearnerdrivingschool"
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <FaInstagram id={styles.FollowIcons} />
                     </a>
                     <a
                       href="https://www.snapchat.com/add/smartlearner"
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <FaSnapchat id={styles.FollowIcons} />
                     </a>
                     <a
                       href="https://twitter.com/smartlearner"
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <FaXTwitter id={styles.FollowIcons} />
                     </a>
                     <a
                       href="https://www.youtube.com/@SmartLearnerDrivingSchool"
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <FaYoutube id={styles.FollowIcons} />
                     </a>
                   </div>
@@ -171,8 +166,8 @@ function Footer() {
           </section>
           <div className={styles.copyRight}>
             <p>
-              CopyRight @ 2024 | Managed By{" "}
-              <a href="https://savvytechguru.com">Savvytechguru.com</a>
+              CopyRight @ 2026 | Managed By{" "}
+              <a href="https://smartlearner.com">smartlearner.com</a>
             </p>
           </div>
         </div>

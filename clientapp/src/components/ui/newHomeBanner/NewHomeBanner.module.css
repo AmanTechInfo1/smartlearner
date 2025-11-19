@@ -1,5 +1,5 @@
 .bannersnewSection {
-  background: url(../../../assets/images/bgimg1112.png);
+  background: url(../../../assets/images/bgimg11123.webp);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -14,14 +14,18 @@
   padding: 1rem 1rem;
 }
 .bannerHeadingtext {
-  background: url(../../../assets/images/textbg2.png);
+  clip-path: polygon(0 18%, 96% 0, 91% 75%, 24% 88%, 24% 100%, 10% 90%);
+  background-color: #d7141a;
+
   padding: 7rem;
-  background-size: cover;
-  background-position: inherit;
+
   max-width: 600px;
   height: 327px;
   width: 100%;
+
+  position: relative;
 }
+
 .bannerHeadingtext h2 {
   font-size: 2.2rem;
   font-weight: 900;
@@ -66,7 +70,7 @@
   font-weight: 600;
   padding: 0.5rem;
 
-  width: 200px;
+  width: 270px;
   text-transform: uppercase;
   display: inline-block; /* important for rotation */
   transform: rotate(-5deg); /* tilt slightly to the left */
@@ -176,6 +180,7 @@
 @media (max-width: 767px) {
   .bannersnewSection {
     margin-top: 0rem;
+    background: linear-gradient(135deg, #f77300, #ffae00);
   }
   .tokenImg {
     display: none;
@@ -191,7 +196,7 @@
     width: 100%;
   }
   .bannerHeadingtext {
-    background: url(../../../assets/images/textbg.PNG);
+   
     padding: 5rem;
     background-size: cover;
     background-position: inherit;
@@ -224,7 +229,6 @@
     font-weight: 600;
     padding: 1rem 0.5rem;
 
-    width: 200px;
     text-transform: uppercase;
     display: inline-block; /* important for rotation */
     transform: rotate(-5deg); /* tilt slightly to the left */
@@ -233,7 +237,7 @@
 }
 @media (max-width: 527px) {
   .bannerHeadingtext {
-    background: url(../../../assets/images/textbg.PNG);
+   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
@@ -251,7 +255,7 @@
 }
 @media (max-width: 447px) {
   .bannerHeadingtext {
-    background: url(../../../assets/images/textbg.PNG);
+   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
@@ -284,7 +288,6 @@
     font-weight: 500;
     padding: 0.5rem;
 
-    width: 200px;
     text-transform: uppercase;
     display: inline-block; /* important for rotation */
     transform: rotate(-5deg); /* tilt slightly to the left */
@@ -323,7 +326,7 @@
 
 @media (max-width: 400px) {
   .bannerHeadingtext {
-    background: url(../../../assets/images/textbg.PNG);
+   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
