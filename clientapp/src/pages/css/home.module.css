@@ -8,12 +8,7 @@
   background-color: black;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-/* .homepageContainerDiv {
-  /* max-width: 1400px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto; 
-} */
+
 .homeSection {
   width: 100%;
 }
@@ -560,31 +555,7 @@
     font-size: 2.2rem;
   }
 }
-.trophyImg img {
-  max-width: 270px;
-  width: 100%;
-  margin-top: -70px;
-}
-.trophyFrame {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 80px;
-  justify-content: center;
-  place-items: center;
-  align-items: center;
-  position: relative;
-  padding: 4rem 1rem;
-}
-.trophyFrame2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  place-items: center;
-  align-items: center;
-  position: relative;
-  padding: 4rem 1rem;
-}
+
 .cardFronttrophyFrame img {
   max-width: 200px;
   border-radius: 50%;
@@ -954,130 +925,7 @@
   }
 }
 
-/* /////////////////////////////coursel ///////////////////// */
 
-.carouselContainer {
-  max-width: 1200px;
-  padding: 2rem 0px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  position: relative;
-  scroll-snap-type: x mandatory;
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-  font-family: "Antonio", sans-serif;
-}
-
-.carousel {
-  display: flex;
-  min-width: 1000px;
-  flex-direction: row;
-
-  align-items: center;
-  gap: 10px;
-}
-
-.carouselColumn {
-  min-width: 20%;
-  min-height: 100px;
-  width: 20%;
-  position: relative;
-  background: linear-gradient(135deg, #11ff70, #d3fd00);
-  border-radius: 30px;
-  box-shadow: 0 0 20px #83878bdb;
-
-  padding: 20px;
-  cursor: pointer;
-  align-items: center;
-  transition: min-width 0.7s ease-in-out, min-height 0.7s ease-in-out;
-
-  position: relative;
-}
-.expanded {
-  min-width: 33%;
-
-  min-height: 350px;
-  height: 100%;
-}
-.carouselColumn ul {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  padding-left: 0px;
-}
-.carouselColumn ul li h2 {
-  margin-bottom: 0px;
-  color: rgb(255, 187, 0);
-  font-size: 15px;
-}
-.carouselColumn ul li p {
-  margin-bottom: 1rem;
-}
-.carouselColumnHeading {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  text-align: right;
-  gap: 10px;
-  margin-bottom: 1rem;
-}
-.carouselColumnHeading #CorouselImgBanner {
-  max-width: 35px;
-  position: absolute;
-  width: 100%;
-  top: -1rem;
-}
-.CorouselhaddingBanner {
-  display: flex;
-  color: white;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 1rem;
-  width: 100%;
-}
-.expanded .CorouselhaddingBanner {
-  justify-content: space-between;
-}
-
-#CorouselImgcart {
-  max-width: 35px;
-}
-.carouselColumnHeading h2 {
-  text-align: right;
-
-  color: white;
-}
-.carouselColumn h2 {
-  margin-top: 0;
-  text-align: right;
-}
-.carouselStarImgContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.carouselStarImgContainer img {
-  max-width: 40px;
-}
-
-/* /////////////////////// */
-
-.expandedColData {
-  display: flex;
-
-  align-items: center;
-}
-.expandedColData p {
-  font-size: 1.2rem;
-}
 #theoryP p {
   font-size: 1.2rem;
 }
@@ -1335,49 +1183,6 @@
   height: 450px;
   width: 100%;
 }
-/* .imageSliderContainer{
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem 0px;
-    max-width: 800px;
-    width: 100%;
-   }
-   .imageSliderContainer h2{
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: white;
-    text-align: center;
-    
-   }
-   .slider {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-   
-    animation: slideAnimation 15s infinite linear;
-  }
-  
-  .slider img {
-    min-width: 200px;
-    height: auto;
-    
-  }
-  .slider:hover{
-    animation-play-state: paused;
-  }
-  @keyframes slideAnimation {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-250px * 3)); 
-    }
-  } */
-
-/* /////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////// */
 .whyChooseText p {
   color: #afe0ff;
   font-weight: 900;

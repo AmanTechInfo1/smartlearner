@@ -1,30 +1,14 @@
 import styles from "./css/home.module.css";
-import hallOfFame1 from "../assets/images/halloffame11.png";
-import hallOfFame2 from "../assets/images/halloffame22.png";
-import hallOfFame3 from "../assets/images/halloffame33.png";
-import hallOfFame4 from "../assets/images/halloffame44.png";
-import hallOfFame5 from "../assets/images/halloffame5.png";
-import hallOfFame6 from "../assets/images/halloffame6.png";
-import hallOfFame7 from "../assets/images/halloffame7.png";
 import callbackimg from "../assets/images/callbacksupportimage.png";
-
 import { motion, AnimatePresence } from "framer-motion";
-
 import { Sparkles, Calendar, BookOpenText } from "lucide-react";
-
-import GoldTrophyImg from "../assets/images/goldTrophyImg.jpg";
-import silverTrophyImg from "../assets/images/silverTrophyImg.jpg";
-
 import ImagesCarousel from "../components/imageCarousel/ImagesCarousel";
 import CallBackForm from "../components/forms/CallBackForm";
 import StaticTestimonial from "../components/testimonials/StaticTestimonial";
-import { useEffect } from "react";
-
 import { Helmet } from "react-helmet-async";
 import ProductShowcase from "../components/ui/productShowCase/Productshowcase";
 import SubscriptionPdi from "../components/ui/productShowCase/SubscriptionPdi";
-import { useState } from "react";
-import HomeBanner from "../components/ui/HomeBanner";
+import { useState, useEffect } from "react";
 import TheoryProductShowCase from "../components/ui/productShowCase/TheoryProductShowCase";
 import DrivingLessonsCarousel from "../components/ui/drivingLesson/DrivingLessonsCarousel";
 import { Element, scroller } from "react-scroll";
@@ -79,73 +63,6 @@ export default function Home() {
     }
   }, [section]);
 
-  // //////////////////////////////////////////////////////
-
-  const trophies = [
-    {
-      id: 1,
-      frontImg: hallOfFame1,
-      backImg: GoldTrophyImg,
-      name: "REGIONAL, DRIVING SCHOOL OF THE YEAR 2022",
-    },
-    {
-      id: 2,
-      frontImg: hallOfFame2,
-      backImg: GoldTrophyImg,
-      name: "COMMUNITY CHAMPION OF THE YEAR 2023",
-    },
-    {
-      id: 3,
-      frontImg: hallOfFame3,
-      backImg: GoldTrophyImg,
-      name: "NATIONAL INSTRUCTOR AWARDS 2024",
-    },
-    {
-      id: 4,
-      frontImg: hallOfFame4,
-      backImg: silverTrophyImg,
-      name: "GREEN DRIVING SCHOOL OF THE YEAR 2023",
-    },
-    {
-      id: 5,
-      frontImg: hallOfFame5,
-      backImg: GoldTrophyImg,
-      name: "Prestige Awards Year 2024",
-    },
-    {
-      id: 6,
-      frontImg: hallOfFame6,
-      backImg: GoldTrophyImg,
-      name: "COMMUNITY CHAMPION OF THE YEAR 2024",
-    },
-    {
-      id: 7,
-      frontImg: hallOfFame7,
-      backImg: GoldTrophyImg,
-      name: "Global Award 2024 / 2025",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.25 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 40 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  };
-
-  ////////////////////////////////////////////
-
   return (
     <div className={styles.homepage}>
       <Helmet>
@@ -167,9 +84,6 @@ export default function Home() {
       <section>
         <NewHomeBanner />
       </section>
-      {/* <section>
-        <HomeBanner />
-      </section> */}
 
       <div className={styles.homepageContainerDiv}>
         {/* ///////////////////////////////////////////////////////////////// */}
@@ -352,47 +266,9 @@ export default function Home() {
             <ImagesCarousel />
           </div>
 
-          {/* ////////////////////////Reviews section //////////////////////// */}
           <section>
             <StaticTestimonial />
           </section>
-
-          {/* /////////////////////////////////////////////////////////// */}
-
-          {/* <section className={styles.trophiesSection123}>
-            <motion.h2
-              className={styles.heading12333}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}>
-              🏆 Award Winning Driving School
-            </motion.h2>
-
-            <motion.div
-              className={styles.trophiesGrid123}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible">
-              {trophies.map((trophy) => (
-                <motion.div
-                  key={trophy.id}
-                  variants={itemVariants}
-                  className={`${styles.trophyCard123} ${styles.floatAnimation123}`}
-                  whileHover={{ scale: 1.05 }}>
-                  <div className={styles.cardInner123}>
-                    <div className={styles.cardFront123}>
-                      <img src={trophy.frontImg} alt={trophy.name} />
-                      <div className={styles.shine123}></div>
-                    </div>
-                    <div className={styles.cardBack123}>
-                      <img src={trophy.backImg} alt={`${trophy.name} back`} />
-                    </div>
-                  </div>
-                  <h3 className={styles.trophyName123}>{trophy.name}</h3>
-                </motion.div>
-              ))}
-            </motion.div>
-          </section> */}
         </section>
         {/* /////////////////////////////////////////////////////////////////// */}
       </div>

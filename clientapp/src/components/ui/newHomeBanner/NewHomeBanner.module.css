@@ -196,7 +196,6 @@
     width: 100%;
   }
   .bannerHeadingtext {
-   
     padding: 5rem;
     background-size: cover;
     background-position: inherit;
@@ -237,7 +236,6 @@
 }
 @media (max-width: 527px) {
   .bannerHeadingtext {
-   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
@@ -255,7 +253,6 @@
 }
 @media (max-width: 447px) {
   .bannerHeadingtext {
-   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
@@ -326,7 +323,6 @@
 
 @media (max-width: 400px) {
   .bannerHeadingtext {
-   
     padding: 4rem 3rem;
     background-size: cover;
     background-position: inherit;
