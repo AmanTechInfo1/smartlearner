@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4830f68.css",
-    "main.js": "/static/js/main.09e61ccc.js",
+    "main.css": "/static/css/main.c854a5bf.css",
+    "main.js": "/static/js/main.2daebc0c.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -339,7 +339,6 @@
     "static/media/cartIcon1.png": "/static/media/cartIcon1.132bea975b266bc3806d.png",
     "static/media/Vulnerable-road-users.png": "/static/media/Vulnerable-road-users.2581646282835a1f300d.png",
     "static/media/majortomajorright.png": "/static/media/majortomajorright.8162449109f8513f51b6.png",
-    "static/media/White-Logo-Fixed-1024x174.png": "/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png",
     "static/media/theoryTestCrausalImg.jpg": "/static/media/theoryTestCrausalImg.0723fdcf0fba54155922.jpg",
     "static/media/electric-carBanner.jpg": "/static/media/electric-carBanner.c66104572e85fbcaa4cb.jpg",
     "static/media/deviation.jpg": "/static/media/deviation.726515eea46a59e57952.jpg",
@@ -376,6 +375,7 @@
     "static/media/turn-left-ahead-sign.jpg": "/static/media/turn-left-ahead-sign.bb536af747c762d935c5.jpg",
     "static/media/marrysGarrage.jpg": "/static/media/marrysGarrage.de68bf8abd1c5df81179.jpg",
     "static/media/mway.jpg": "/static/media/mway.cf2e8616f8ac33106f27.jpg",
+    "static/media/White-Logo-Fixed-1024x174.png": "/static/media/White-Logo-Fixed-1024x174.ba4b711f02d36fffad20.png",
     "static/media/incidents-pinjk.png": "/static/media/incidents-pinjk.983c95f6992039cd1786.png",
     "static/media/hover1.png": "/static/media/hover1.3ef6403ecffa3ea25650.png",
     "static/media/raincloud.jpg": "/static/media/raincloud.a66b552414993d156999.jpg",
@@ -412,12 +412,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.d4830f68.css.map": "/static/css/main.d4830f68.css.map",
-    "main.09e61ccc.js.map": "/static/js/main.09e61ccc.js.map",
+    "main.c854a5bf.css.map": "/static/css/main.c854a5bf.css.map",
+    "main.2daebc0c.js.map": "/static/js/main.2daebc0c.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4830f68.css",
-    "static/js/main.09e61ccc.js"
+    "static/css/main.c854a5bf.css",
+    "static/js/main.2daebc0c.js"
   ]
 }
