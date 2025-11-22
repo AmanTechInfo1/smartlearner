@@ -60,8 +60,11 @@ const UserInvoice = (props) => {
 
       quizResult.forEach((entry) => {
         const categoryName = entry?.result?.name || "Unknown Category";
+        const categoryId = entry?.result?._id; // 👈 add this
+
         if (!categoryMap[categoryName]) {
           categoryMap[categoryName] = {
+            categoryId,
             attempted: 0,
             total: 0,
             correct: 0,
@@ -94,50 +97,57 @@ const UserInvoice = (props) => {
       });
 
       const summaryArray = Object.entries(categoryMap)
-        .map(([categoryName, { attempted, total, correct, incorrect }]) => {
-          let note = "";
-          let multiplier = 1;
-
-          if (attempted === 0) {
-            note = "";
-          } else if (attempted > total) {
-            multiplier = Math.ceil(attempted / total);
-            note = `(${multiplier} times attempts)`;
-          } else {
-            note = `(1 time attempt)`;
-          }
-
-          const correctPercentage =
-            total > 0 ? ((correct / total) * 100).toFixed(2) : 0;
-          const incorrectPercentage =
-            total > 0 ? ((incorrect / total) * 100).toFixed(2) : 0;
-
-          const categoryTotalPercentage =
-            attempted > 0 ? ((correct / attempted) * 100).toFixed(2) : 0;
-
-          const timeSpentSeconds = attempted * 30;
-          const minutes = Math.floor(timeSpentSeconds / 60);
-          const seconds = timeSpentSeconds % 60;
-          const timeSpentFormatted = `${minutes}m ${seconds}s`;
-
-          return {
+        .map(
+          ([
             categoryName,
-            attempted,
-            total,
-            multiplier,
-            note,
-            overAttempted: attempted > total,
 
-            correct,
-            incorrect,
-            correctPercentage,
-            incorrectPercentage,
-            categoryTotalPercentage,
-            timeSpentFormatted,
-          };
-        })
+            { categoryId, attempted, total, correct, incorrect },
+          ]) => {
+            let note = "";
+            let multiplier = 1;
+
+            if (attempted === 0) {
+              note = "";
+            } else if (attempted > total) {
+              multiplier = Math.ceil(attempted / total);
+              note = `(${multiplier} times attempts)`;
+            } else {
+              note = `(1 time attempt)`;
+            }
+
+            const correctPercentage =
+              total > 0 ? ((correct / total) * 100).toFixed(2) : 0;
+            const incorrectPercentage =
+              total > 0 ? ((incorrect / total) * 100).toFixed(2) : 0;
+
+            const categoryTotalPercentage =
+              attempted > 0 ? ((correct / attempted) * 100).toFixed(2) : 0;
+
+            const timeSpentSeconds = attempted * 30;
+            const minutes = Math.floor(timeSpentSeconds / 60);
+            const seconds = timeSpentSeconds % 60;
+            const timeSpentFormatted = `${minutes}m ${seconds}s`;
+
+            return {
+              categoryName,
+              categoryId,
+              attempted,
+              total,
+              multiplier,
+              note,
+              overAttempted: attempted > total,
+
+              correct,
+              incorrect,
+              correctPercentage,
+              incorrectPercentage,
+              categoryTotalPercentage,
+              timeSpentFormatted,
+            };
+          }
+        )
         .filter((item) => item.attempted > 0);
-        
+
       setIsQuizLoading(false);
       setSummary(summaryArray);
     } else if (quizResult !== undefined && quizzes !== undefined) {
@@ -338,34 +348,107 @@ const UserInvoice = (props) => {
                 incorrectPercentage,
                 categoryTotalPercentage,
                 timeSpentFormatted,
-              }) => (
-                <div
-                  className={styles.userReportInvoiceinfoCard}
-                  key={categoryName}>
-                  <div className={styles.userReportInvoicesubscription}>
-                    <strong>{categoryName}</strong>
-                    <p>
-                      {attempted} attempted / {total} total{" "}
-                      {note && <span>{note}</span>}
-                      <br />
-                      <span>
-                        |{" "}
-                        <strong>
-                          Total Accuracy: {categoryTotalPercentage}%
-                        </strong>
-                      </span>
-                      <br />
-                      Correct: {correct} ({correctPercentage}%)
-                      <br />
-                      Incorrect: {incorrect} ({incorrectPercentage}%)
-                      <br />
-                      <span style={{ fontSize: "0.9em", color: "#555" }}>
-                        Time spent: {timeSpentFormatted}
-                      </span>
-                    </p>
+                categoryId, // Make sure you have categoryId in summary
+              }) => {
+                // Filter quizResult of this category
+                const attemptedQuestions = quizResult.filter(
+                  (q) => q.questioncategory === categoryId
+                );
+
+                return (
+                  <div
+                    className={styles.userReportInvoiceinfoCard}
+                    key={categoryName}>
+                    <div className={styles.userReportInvoicesubscription}>
+                      <strong>{categoryName}</strong>
+                      <p>
+                        {attempted} attempted / {total} total{" "}
+                        {note && <span>{note}</span>}
+                        <br />
+                        <span>
+                          |{" "}
+                          <strong>
+                            Total Accuracy: {categoryTotalPercentage}%
+                          </strong>
+                        </span>
+                        <br />
+                        Correct: {correct} ({correctPercentage}%)
+                        <br />
+                        Incorrect: {incorrect} ({incorrectPercentage}%)
+                        <br />
+                        <span style={{ fontSize: "0.9em", color: "#555" }}>
+                          Time spent: {timeSpentFormatted}
+                        </span>
+                      </p>
+                    </div>
+                    <details className="bg-gray-100 p-3 rounded-md mt-3">
+                      <summary className="cursor-pointer font-semibold text-gray-800">
+                        View Attempted Questions ({attemptedQuestions.length})
+                      </summary>
+
+                      <div className="mt-4 space-y-4">
+                        {attemptedQuestions.map((item, i) => {
+                          const question = item.question || {}; // fallback
+                          const options = question.option || []; // fallback
+
+                          // Safe parsing for correct option
+                          const correctOptionNumber =
+                            parseInt(question.answer?.replace("Option", "")) ||
+                            0;
+                          const correctOptionText =
+                            options[correctOptionNumber - 1] || "N/A";
+
+                          // Safe parsing for user-selected option
+                          const userOptionNumber =
+                            parseInt(item.answer?.replace("Option", "")) || 0;
+                          const userOptionText =
+                            options[userOptionNumber - 1] || "N/A";
+
+                          const isCorrect = item.answerAttempt === "Correct";
+
+                          return (
+                            <div
+                              key={item._id}
+                              className="bg-white p-4 rounded-lg shadow border border-gray-200">
+                              {/* Question */}
+                              <p className="font-medium text-gray-900">
+                                <span className="font-bold">Q{i + 1}:</span>{" "}
+                                {question.question || "Question unavailable"}
+                              </p>
+
+                              {/* User Attempted Answer */}
+                              <div
+                                className={`mt-3 p-2 rounded-md border ${
+                                  isCorrect
+                                    ? "bg-green-100 border-green-500 text-green-700"
+                                    : "bg-red-100 border-red-500 text-red-700"
+                                }`}>
+                                <strong>Your Answer:</strong>{" "}
+                                {item.answer || "N/A"} — {userOptionText}
+                              </div>
+
+                              {/* Correct Answer With Option Detail */}
+
+                              <div className="mt-2 p-2 rounded-md border bg-green-50 border-green-400 text-green-700">
+                                <strong>Correct Answer:</strong>{" "}
+                                {question.answer || "N/A"} — {correctOptionText}
+                              </div>
+
+                              {/* Correct / Incorrect Label */}
+                              {/* <p
+                                className={`mt-2 font-semibold ${
+                                  isCorrect ? "text-green-600" : "text-red-600"
+                                }`}>
+                                {isCorrect ? "✔ Correct" : "✘ Incorrect"}
+                              </p> */}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </details>
                   </div>
-                </div>
-              )
+                );
+              }
             )
           )}
         </div>

@@ -265,7 +265,6 @@ export default function Home() {
           <div>
             <ImagesCarousel />
           </div>
-
           <section>
             <StaticTestimonial />
           </section>
