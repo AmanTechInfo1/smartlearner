@@ -14,6 +14,7 @@ import DrivingLessonsCarousel from "../components/ui/drivingLesson/DrivingLesson
 import { Element, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import NewHomeBanner from "../components/ui/newHomeBanner/NewHomeBanner";
+import ChristmasBanner from "../components/ui/newHomeBanner/ChristmasBanner";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -81,6 +82,7 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
+     
       <section>
         <NewHomeBanner />
       </section>

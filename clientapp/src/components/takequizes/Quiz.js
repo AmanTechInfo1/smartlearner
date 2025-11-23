@@ -19,6 +19,8 @@ import httpHandler from "../../utils/httpHandler";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import { getQuizCategoryById } from "../../redux/features/quizCategorySlice";
+import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
+import toast from "react-hot-toast";
 
 const languageCodes = {
   Auto: "auto",
@@ -196,6 +198,61 @@ const Quiz = () => {
   const myDivRefQue = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // ///////////////////////////////////////////////
+
+  const userDetails = useSelector((state) => state.auth.userDetails);
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
+  const userId = userDetails?._id;
+
+  const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
+
+  useEffect(() => {
+    // If user is logged in and userId exists, fetch subscription data
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId))
+        .then(() => setSubscriptionLoaded(true)) // Set subscriptionLoaded to true once data is fetched
+        .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
+    }
+  }, [dispatch, userId]);
+
+  useEffect(() => {
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/");
+      toast.error("Access Denied"); // Redirect to login if user is not logged in
+    } else if (
+      userDetails.role === "admin" ||
+      userDetails.role === "instructortrainee" ||
+      userDetails.role === "theoryinstructor"
+    ) {
+      // Allow admin to access the portal
+      return;
+    } else if (subscriptionLoaded) {
+      const hasAccess =
+        Array.isArray(userSubscription) &&
+        userSubscription.some((subscription) => {
+          const { planCategory } = subscription.subscriptionId || {};
+          const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+
+          return (
+            subscription.isActive &&
+            (planCategory === "pdi-part-three packages" ||
+              planCategory === "Complete packages" ||
+              planCategory === "pdi-part-one packages" ||
+              planCategory === "pdi-part-two packages" ||
+              planCategory === "theory-portal package")
+          );
+        });
+      if (!hasAccess) {
+        navigate("/");
+        toast.error("Access Denied"); // Redirect to subscription page if no valid plan found
+      }
+    }
+  }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+
+  ////////////////////////////////////////////////////
 
   const [isPaused, setIsPaused] = useState(false);
   const [timer, setTimer] = useState(null);
