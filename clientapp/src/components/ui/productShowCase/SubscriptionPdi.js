@@ -227,119 +227,131 @@ export default function SubscriptionPdi() {
             })}
           </div>
         ) : (
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-            {loadingCategory || loading
-              ? Array(6)
-                  .fill(0)
-                  .map((_, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
-                      <Skeleton height={180} className="mb-4 rounded-lg" />
-                      <Skeleton width={`80%`} height={20} className="mb-2" />
-                      <Skeleton width={`60%`} height={18} className="mb-3" />
-                      <Skeleton width={`50%`} height={30} />
-                    </div>
-                  ))
-              : visibleworkshopProducts.map((product, idx) => {
-                  const productId = getProductId(product, idx);
-                  const inCart = getCartItem(product, idx);
-
-                  const isExpanded = expandedProductId === productId;
-
-                  const toggleExpand = () => {
-                    setExpandedProductId(isExpanded ? null : productId);
-                  };
-
-                  return (
-                    <motion.div
-                      key={product._id || idx}
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3 }}
-                      className={`relative rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
-                        gradients[idx % gradients.length]
-                      }`}>
-                      <div className="relative">
-                        <img
-                          id={styles.redCartImg12}
-                          src={`https://api.smartlearner.com/uploads/${product.image}`}
-                          alt={product.name}
-                          className="w-full h-48 object-cover rounded-t-2xl"
-                        />
+          <>
+            {" "}
+            <div style={{ maxWidth: "700px", margin: "0px auto" }}>
+              {" "}
+              <p className="bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20">
+                A mandatory booking fee of{" "}
+                <span style={{ color: "red" }}>£1.50</span> up to{" "}
+                <span style={{ color: "red" }}>£40</span> applies to all orders
+                per package purchase
+              </p>
+            </div>
+            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+              {loadingCategory || loading
+                ? Array(6)
+                    .fill(0)
+                    .map((_, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
+                        <Skeleton height={180} className="mb-4 rounded-lg" />
+                        <Skeleton width={`80%`} height={20} className="mb-2" />
+                        <Skeleton width={`60%`} height={18} className="mb-3" />
+                        <Skeleton width={`50%`} height={30} />
                       </div>
-                      <div className="p-4">
-                        <div className="flex items-start justify-between">
-                          <h4
-                            className={`text-lg font-semibold text-gray-800 mb-1 ${
-                              !isExpanded ? "truncate" : ""
+                    ))
+                : visibleworkshopProducts.map((product, idx) => {
+                    const productId = getProductId(product, idx);
+                    const inCart = getCartItem(product, idx);
+
+                    const isExpanded = expandedProductId === productId;
+
+                    const toggleExpand = () => {
+                      setExpandedProductId(isExpanded ? null : productId);
+                    };
+
+                    return (
+                      <motion.div
+                        key={product._id || idx}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                        className={`relative rounded-3xl shadow-xl overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br ${
+                          gradients[idx % gradients.length]
+                        }`}>
+                        <div className="relative">
+                          <img
+                            id={styles.redCartImg12}
+                            src={`https://api.smartlearner.com/uploads/${product.image}`}
+                            alt={product.name}
+                            className="w-full h-48 object-cover rounded-t-2xl"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <div className="flex items-start justify-between">
+                            <h4
+                              className={`text-lg font-semibold text-gray-800 mb-1 ${
+                                !isExpanded ? "truncate" : ""
+                              }`}>
+                              {product.name}
+                            </h4>
+                            <button
+                              onClick={toggleExpand}
+                              className="ml-2 text-gray-600 hover:text-blue-700 transition"
+                              title={isExpanded ? "Collapse" : "Expand"}>
+                              {isExpanded ? "▲" : "▼"}
+                            </button>
+                          </div>
+                          <p
+                            className={`text-sm text-gray-500 mb-2 ${
+                              !isExpanded ? "line-clamp-2" : ""
                             }`}>
-                            {product.name}
-                          </h4>
-                          <button
-                            onClick={toggleExpand}
-                            className="ml-2 text-gray-600 hover:text-blue-700 transition"
-                            title={isExpanded ? "Collapse" : "Expand"}>
-                            {isExpanded ? "▲" : "▼"}
-                          </button>
-                        </div>
-                        <p
-                          className={`text-sm text-gray-500 mb-2 ${
-                            !isExpanded ? "line-clamp-2" : ""
-                          }`}>
-                          {product.description || "No description available."}
-                        </p>
-                        <StarWrapper>
-                          {[...Array(5)].map((_, i) => (
-                            <img
-                              key={i}
-                              src={redStarImg}
-                              alt="star"
-                              style={{ width: 20, height: 20 }}
-                            />
-                          ))}
-                        </StarWrapper>
+                            {product.description || "No description available."}
+                          </p>
+                          <StarWrapper>
+                            {[...Array(5)].map((_, i) => (
+                              <img
+                                key={i}
+                                src={redStarImg}
+                                alt="star"
+                                style={{ width: 20, height: 20 }}
+                              />
+                            ))}
+                          </StarWrapper>
 
-                        <div className="flex items-center justify-between mt-4">
-                          <span
-                            className="text-blue-600 font-bold text-md"
-                            style={{ fontSize: "1.4rem" }}>
-                            £ {product.price || "N/A"}
-                          </span>
-                          {inCart ? (
-                            <div className="flex items-center gap-2">
-                              <button
-                                onClick={() => handleDecrease(productId)}
-                                className="px-2 py-1 bg-red-500 text-white rounded">
-                                -
-                              </button>
-                              <span>{inCart.count}</span>
-                              <button
-                                onClick={() => handleIncrease(productId)}
-                                className="px-2 py-1 bg-green-500 text-white rounded">
-                                +
-                              </button>
-                            </div>
-                          ) : (
-                            <motion.button
-                              onClick={() => handleAddToCart(product, idx)}
-                              whileHover={{
-                                scale: 1.1,
-                                backgroundColor: "#16a34a",
-                                color: "#fff",
-                              }}
-                              className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
-                              Add to Cart
-                            </motion.button>
-                          )}
+                          <div className="flex items-center justify-between mt-4">
+                            <span
+                              className="text-blue-600 font-bold text-md"
+                              style={{ fontSize: "1.4rem" }}>
+                              £ {product.price || "N/A"}
+                            </span>
+                            {inCart ? (
+                              <div className="flex items-center gap-2">
+                                <button
+                                  onClick={() => handleDecrease(productId)}
+                                  className="px-2 py-1 bg-red-500 text-white rounded">
+                                  -
+                                </button>
+                                <span>{inCart.count}</span>
+                                <button
+                                  onClick={() => handleIncrease(productId)}
+                                  className="px-2 py-1 bg-green-500 text-white rounded">
+                                  +
+                                </button>
+                              </div>
+                            ) : (
+                              <motion.button
+                                onClick={() => handleAddToCart(product, idx)}
+                                whileHover={{
+                                  scale: 1.1,
+                                  backgroundColor: "#16a34a",
+                                  color: "#fff",
+                                }}
+                                className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
+                                Add to Cart
+                              </motion.button>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-          </div>
+                      </motion.div>
+                    );
+                  })}
+            </div>
+          </>
         )}
 
         {/* Show More Button */}

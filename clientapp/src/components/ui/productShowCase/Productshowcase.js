@@ -188,17 +188,28 @@ const ProductShowcase = () => {
             };
 
             return (
-              <motion.button
-                id={styles.cateButtonsOnProductshowcaseBtn}
-                key={id}
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleSelectCategory(id)}
-                className={`rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}>
-                {label}
-              </motion.button>
+              <>
+                <motion.button
+                  id={styles.cateButtonsOnProductshowcaseBtn}
+                  key={id}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleSelectCategory(id)}
+                  className={`rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}>
+                  {label}
+                </motion.button>
+              </>
             );
           })}
+          <>
+            {" "}
+            <p className="bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20">
+              A mandatory booking fee of{" "}
+              <span style={{ color: "red" }}>£1.50</span> up to{" "}
+              <span style={{ color: "red" }}>£40</span> applies to all orders
+              per package purchase
+            </p>
+          </>
         </div>
 
         {/* Product Grid */}

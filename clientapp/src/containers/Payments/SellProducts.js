@@ -99,7 +99,7 @@ export default function SellProducts() {
                       <span>£{subtotal.toFixed(2)}</span>
                     </p>
                     <p>
-                      <span>2% ONLINE SERVICE CHARGE:</span>{" "}
+                      <span>2% Booking fee:</span>{" "}
                       <span>£{serviceCharge.toFixed(2)}</span>
                     </p>
 

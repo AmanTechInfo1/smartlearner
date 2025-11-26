@@ -148,7 +148,7 @@ export default function AdminFinalCheckout(props) {
                 <span>£{subtotal}</span>
               </div>
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
-                <span>2% ONLINE SERVICE CHARGE</span>
+                <span>2% Booking fee</span>
                 <span>£{serviceCharge}</span>
               </div>
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">

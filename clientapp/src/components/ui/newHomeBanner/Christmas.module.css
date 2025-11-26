@@ -1,5 +1,5 @@
 .christmasbanner {
-  background: url(../../../assets/images/christmasBanner2.png);
+  background: url(../../../assets/images/christmasBanner.png);
   background-size: cover;
   background-position: left;
 
@@ -226,13 +226,13 @@
 }
 @media (max-width: 467px) {
   .christmasbanner {
-    height: 600px;
+    height: 670px;
   }
   .displayImg img {
     max-width: 500px;
     width: 100%;
   }
   .christmasbannerheading {
-    padding: 3rem 0.5rem 0px 0.5rem;
+    padding: 3rem 0.5rem 1.5rem 0.5rem;
   }
 }
