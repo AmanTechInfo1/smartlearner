@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d6d5df66.css",
-    "main.js": "/static/js/main.ba86713d.js",
+    "main.css": "/static/css/main.ec0f9591.css",
+    "main.js": "/static/js/main.dd6f8d8d.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -72,7 +72,7 @@
     "static/media/theory.png": "/static/media/theory.ec139fdf727e51a8b90a.png",
     "static/media/automatic4.jpg": "/static/media/automatic4.5905db00d55f2568f589.jpg",
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
-    "static/media/christmasBanner2.png": "/static/media/christmasBanner2.9370252174e1af678a71.png",
+    "static/media/christmasBanner.png": "/static/media/christmasBanner.fbeb53fdc51e59d989a8.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
     "static/media/communitybanner.jpg": "/static/media/communitybanner.add596cf2398493dfff1.jpg",
     "static/media/pdi.png": "/static/media/pdi.bb8730c03f7619eb4d8e.png",
@@ -416,12 +416,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.d6d5df66.css.map": "/static/css/main.d6d5df66.css.map",
-    "main.ba86713d.js.map": "/static/js/main.ba86713d.js.map",
+    "main.ec0f9591.css.map": "/static/css/main.ec0f9591.css.map",
+    "main.dd6f8d8d.js.map": "/static/js/main.dd6f8d8d.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d6d5df66.css",
-    "static/js/main.ba86713d.js"
+    "static/css/main.ec0f9591.css",
+    "static/js/main.dd6f8d8d.js"
   ]
 }
