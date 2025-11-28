@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ec0f9591.css",
-    "main.js": "/static/js/main.dd6f8d8d.js",
+    "main.css": "/static/css/main.d09da1a1.css",
+    "main.js": "/static/js/main.7f6855d7.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -416,12 +416,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.ec0f9591.css.map": "/static/css/main.ec0f9591.css.map",
-    "main.dd6f8d8d.js.map": "/static/js/main.dd6f8d8d.js.map",
+    "main.d09da1a1.css.map": "/static/css/main.d09da1a1.css.map",
+    "main.7f6855d7.js.map": "/static/js/main.7f6855d7.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec0f9591.css",
-    "static/js/main.dd6f8d8d.js"
+    "static/css/main.d09da1a1.css",
+    "static/js/main.7f6855d7.js"
   ]
 }
