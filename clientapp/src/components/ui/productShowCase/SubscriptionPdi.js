@@ -229,13 +229,18 @@ export default function SubscriptionPdi() {
         ) : (
           <>
             {" "}
-            <div style={{ maxWidth: "700px", margin: "0px auto" }}>
+            <div
+              style={{
+                maxWidth: "800px",
+                margin: "0px auto",
+                textAlign: "center",
+              }}>
               {" "}
               <p className="bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20">
                 A mandatory booking fee of{" "}
-                <span style={{ color: "red" }}>£1.50</span> up to{" "}
-                <span style={{ color: "red" }}>£40</span> applies to all orders
-                per package purchase
+                <span style={{ color: "red" }}>£1.00 - £30 </span>
+                applies to all orders per purchase. This fee will be shown
+                clearly before you complete your purchase
               </p>
             </div>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">

@@ -82,16 +82,18 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
-     
+
       <section>
-        <NewHomeBanner />
+        <ChristmasBanner />
       </section>
 
       <div className={styles.homepageContainerDiv}>
         {/* ///////////////////////////////////////////////////////////////// */}
         <Element name="our-courses-section">
           <section
-            style={{ background: "linear-gradient(180deg, #ffcf4c, #ffea8c)" }}
+            style={{
+              background: "linear-gradient(180deg, #f53741ff, #ca0707ff)",
+            }}
             className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900">
             {/* Animated Background Orbs */}
             <motion.div className="absolute -top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
@@ -111,7 +113,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl text-gray-700 mb-10 text-center max-w-2xl z-10">
+              className="text-base sm:text-lg md:text-xl text-black-700 mb-10 text-center max-w-2xl z-10">
               Choose your path below — whether you’re booking personalized
               lessons or a PDI session, we’ve got you covered.
             </motion.p>

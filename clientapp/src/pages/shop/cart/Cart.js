@@ -106,7 +106,7 @@ const Cart = () => {
                     <span>£{subtotal.toFixed(2)}</span>
                   </p>
                   <p>
-                    <span>2% Booking fee:</span>{" "}
+                    <span> Booking fee:</span>{" "}
                     <span>£{serviceCharge.toFixed(2)}</span>
                   </p>
                   <p>
