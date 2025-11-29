@@ -2,7 +2,11 @@ import React from "react";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import styles from "./css/footer.module.css";
 import logo from "../../assets/images/White-Logo-Fixed-1024x174.png";
-import { otherLinks, quickLinks } from "../../assets/data/quicklinks";
+import {
+  locationPages,
+  otherLinks,
+  quickLinks,
+} from "../../assets/data/quicklinks";
 import paymentsImges from "../../assets/images/footerImgs.png";
 import visa from "../../assets/images/visa.png";
 import mastercard from "../../assets/images/Master-card.png";
@@ -123,12 +127,30 @@ function Footer() {
                     </tbody>
                   </table>
                 </div>
-                <section>
+                <section className={styles.locationflex}>
                   <div className={styles.lowerCol2}>
                     <h3>Quick Links</h3>
                     <div className={styles.quicklinks}>
                       <ul type="none" id={styles.quicklinks}>
                         {otherLinks.map((item, index) => (
+                          <li key={index}>
+                            <Link to={item.path}>
+                              {item.display}
+                              <span id={styles.arrowIcon}>
+                                <MdOutlineKeyboardDoubleArrowRight />
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className={styles.lowerCol2}>
+                    <h3>Locations</h3>
+                    <div className={styles.quicklinks}>
+                      <ul type="none" className={styles.quickLinks123}>
+                        {locationPages.map((item, index) => (
                           <li key={index}>
                             <Link to={item.path}>
                               {item.display}

@@ -15,9 +15,9 @@
   padding: 4rem 0 0;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
   color: white;
-  
-  border-top-left-radius: 13em 3em;  /* Horizontal and vertical radii for top-left corner */
-  border-top-right-radius: 13em 3em; 
+
+  border-top-left-radius: 13em 3em; /* Horizontal and vertical radii for top-left corner */
+  border-top-right-radius: 13em 3em;
 }
 
 .container {
@@ -188,18 +188,37 @@ article h4 {
   line-height: 1.2;
   color: white;
 }
-.lowerCol2{
-  padding: 2rem 0px;
+.lowerCol2 {
+  padding: 2rem 0px 0px;
 }
 .quicklinks ul {
   padding-left: 0;
 }
 
 #quicklinks li {
-  display: inline-block;
-  width: 48%;
+  width: 90%;
   margin: 0 0 10px;
 }
+
+/* //////////////////////////////////////////// */
+
+.quickLinks123 li {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 10px;
+}
+
+.quickLinks123 li a {
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+
+.quickLinks123 li a:hover {
+  color: #ed2025;
+}
+
+/* //////////////////////////////////////////////// */
 
 #quicklinks li a {
   font-family: "Montserrat", sans-serif;
@@ -236,7 +255,6 @@ article h4 {
 }
 
 .copyRight {
- 
   font-family: "Montserrat", sans-serif;
   color: #fff;
   font-size: 14px;
@@ -249,12 +267,12 @@ article h4 {
   line-height: 28px;
   display: block;
 }
-.copyRight a{
+.copyRight a {
   color: #ff5c98;
   text-decoration: none;
   font-weight: 500;
 }
-.copyRight a:hover{
+.copyRight a:hover {
   color: #ffcefb;
 }
 /* ///////////////////////////////////// */
@@ -348,6 +366,9 @@ article h4 {
   .socialFollowIcons {
     justify-content: center;
   }
+  .lowerCol2 {
+    padding: 0px;
+  }
 }
 @media (max-width: 460px) {
   .socialFollowIcons {
@@ -357,13 +378,10 @@ article h4 {
 }
 @media (max-width: 400px) {
   .socialFollowIcons {
-    
     justify-content: center;
   }
   .socialFollowIcons a {
-   
     padding: 5px 10px 5px 10px;
-   
   }
   #FollowIcons {
     font-size: 1.2rem;
@@ -374,4 +392,10 @@ article h4 {
   .col1 a img {
     width: 220px;
   }
+}
+
+.locationflex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 5px;
 }
