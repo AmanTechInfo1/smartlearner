@@ -3,7 +3,7 @@
   z-index: 100000;
 }
 .navContainer1 {
-  background-color: rgba(0, 20, 32, 0.877);
+  background: linear-gradient(135deg, #650000, #49001c);
   position: fixed;
   width: 100%;
   top: 0;
