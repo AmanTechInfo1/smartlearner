@@ -100,7 +100,7 @@
 }
 
 .slick-dots li.slick-active button:before {
-  color: #e11b22;
+  color: #fffdf2;
 }
 
 @media (max-width: 527px) {

@@ -21,7 +21,7 @@
 }
 
 .sparkleIcon {
-  color: #ef4444;
+  color: #efd544;
 }
 
 .sliderWrapper {
@@ -59,7 +59,7 @@
 }
 
 .navButton {
-  background: linear-gradient(135deg, #ff6b6b, #f59e0b);
+  background: linear-gradient(135deg, #ffe87f, #0bedf5);
   border: none;
   border-radius: 50%;
   padding: 0.8rem;
