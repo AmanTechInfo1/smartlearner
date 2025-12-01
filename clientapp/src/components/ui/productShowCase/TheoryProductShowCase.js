@@ -214,7 +214,11 @@ export default function TheoryProductShowCase() {
                 textAlign: "center",
               }}>
               {" "}
-              <p className="bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20">
+              <p
+                className="bg-white  px-3 py-1 shadow-md z-20"
+                style={{
+                  borderRadius: "4px",
+                }}>
                 A mandatory booking fee of{" "}
                 <span style={{ color: "red" }}>£1.00 - £30 </span>
                 applies to all orders per purchase. This fee will be shown

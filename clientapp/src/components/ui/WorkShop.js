@@ -139,6 +139,22 @@ const WorkShop = () => {
   return (
     <Container>
       <Title>Workshop Products</Title>
+      <>
+        {" "}
+        <p
+          className="bg-white  px-3 py-1  shadow-md z-20"
+          style={{
+            maxWidth: "800px",
+            margin: "1rem auto",
+            textAlign: "center",
+            borderRadius: "4px",
+          }}>
+          A mandatory booking fee of{" "}
+          <span style={{ color: "red" }}>£1.00 - £30 </span>
+          applies to all orders per purchase. This fee will be shown clearly
+          before you complete your purchase
+        </p>
+      </>
       <Grid>
         {workshopCategory?.data?.map((product, index) => {
           const productId = `${product._id}_${index}_${product.price}`;

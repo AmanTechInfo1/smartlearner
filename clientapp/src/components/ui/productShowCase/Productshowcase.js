@@ -205,11 +205,12 @@ const ProductShowcase = () => {
         <>
           {" "}
           <p
-            className="bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20"
+            className="bg-white  px-3 py-1  shadow-md z-20"
             style={{
               maxWidth: "800px",
               margin: "1rem auto",
               textAlign: "center",
+              borderRadius: "4px",
             }}>
             A mandatory booking fee of{" "}
             <span style={{ color: "red" }}>£1.00 - £30 </span>
