@@ -61,7 +61,7 @@ export default function FinalCheckout(props) {
     });
   };
   const subtotal = calculateSubtotal();
-  const serviceCharge = subtotal * 0.02;
+  const serviceCharge = subtotal * 0.025;
   const total = subtotal + serviceCharge;
   const callFunApi = () => {
     if (!isTermsChecked || !isEmailChecked) {

@@ -240,6 +240,7 @@ export default function SubscriptionPdi() {
                 className="bg-white  px-3 py-1  shadow-md z-20"
                 style={{
                   borderRadius: "4px",
+                  color: "black",
                 }}>
                 A mandatory booking fee of{" "}
                 <span style={{ color: "red" }}>£1.00 - £30 </span>

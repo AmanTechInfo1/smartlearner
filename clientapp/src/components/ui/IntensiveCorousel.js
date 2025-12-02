@@ -118,7 +118,7 @@ function IntensiveCorousel() {
             </motion.button>
           ))}
         </div>
-<>
+        <>
           {" "}
           <p
             className="bg-white  px-3 py-1  shadow-md z-20"
@@ -127,6 +127,7 @@ function IntensiveCorousel() {
               margin: "1rem auto",
               textAlign: "center",
               borderRadius: "4px",
+              color: "black",
             }}>
             A mandatory booking fee of{" "}
             <span style={{ color: "red" }}>£1.00 - £30 </span>

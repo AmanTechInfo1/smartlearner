@@ -64,7 +64,7 @@ export default function AdminFinalCheckout(props) {
   const [extraCharges, setExtraCharges] = useState(0);
 
   const subtotal = calculateSubtotal();
-  const serviceCharge = subtotal * 0.02;
+  const serviceCharge = subtotal * 0.025;
   const total = subtotal + serviceCharge + Number(extraCharges || 0);
   const callFunApi = () => {
     if (!isTermsChecked || !isEmailChecked) {

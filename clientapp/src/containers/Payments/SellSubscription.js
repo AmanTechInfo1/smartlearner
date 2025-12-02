@@ -458,7 +458,7 @@ export default function SellSubscription() {
             </Typography>
             <Typography>
               {" "}
-              <strong>Online Service Charge: </strong> <span>£ 0%</span>
+              <strong>Booking fee: </strong> <span>£ 0%</span>
             </Typography>
             <Typography>
               <strong>Total Amount:</strong> €

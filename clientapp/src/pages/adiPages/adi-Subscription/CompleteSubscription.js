@@ -298,7 +298,7 @@ const CompleteSubscription = () => {
                           <span>£ {plan.price}</span>
                         </p>
                         <p>
-                          <span>ONLINE SERVICE CHARGE:</span> <span>£ 0%</span>
+                          <span>Booking fee:</span> <span>£ 0%</span>
                         </p>
                         <p>
                           <span>Total:</span> <span>{plan.price}</span>

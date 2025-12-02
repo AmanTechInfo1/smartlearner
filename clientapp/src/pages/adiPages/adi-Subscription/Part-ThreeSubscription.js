@@ -344,7 +344,7 @@ const PartThreeSubscription = () => {
                             <span>£ {plan.price}</span>
                           </p>
                           <p>
-                            <span>ONLINE SERVICE CHARGE:</span>{" "}
+                            <span>Booking fee:</span>{" "}
                             <span>£ 0%</span>
                           </p>
                           <p>

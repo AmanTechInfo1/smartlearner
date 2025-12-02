@@ -40,7 +40,7 @@ export default function SellProducts() {
   };
 
   const subtotal = calculateSubtotal();
-  const serviceCharge = subtotal * 0.02;
+  const serviceCharge = subtotal * 0.025;
   const total = subtotal + serviceCharge;
 
   return (
