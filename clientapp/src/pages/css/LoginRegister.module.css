@@ -260,6 +260,9 @@
 .formFooter a:hover {
   color: #dadada;
 }
+.casesensetive {
+  display: none;
+}
 @media (max-width: 967px) {
   .loginheading {
     width: 100%;
@@ -301,6 +304,10 @@
   .loginDisplayflexImage {
     max-width: 100%;
     width: 100%;
+  }
+  .casesensetive {
+    display: block;
+    color: white;
   }
 }
 @media (max-width: 458px) {

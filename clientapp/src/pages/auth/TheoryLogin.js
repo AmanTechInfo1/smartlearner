@@ -184,8 +184,7 @@ export default function TheoryLogin() {
                   <div className={styles.loginLogo}>
                     <iframe
                       style={{ height: "150px" }}
-                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
-                    ></iframe>
+                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"></iframe>
                   </div>
 
                   <h2>Sign in</h2>
@@ -194,18 +193,22 @@ export default function TheoryLogin() {
                       name="usernameOremail"
                       control={control}
                       render={({ field: { value, onChange } }) => (
-                        <FloatingLabel
-                          controlId="floatingInput"
-                          label="Email or username"
-                        >
-                          <Form.Control
-                            type="text"
-                            value={value}
-                            onChange={onChange}
-                            placeholder="Email or username"
-                            className={styles.formControlWithIcon}
-                          />
-                        </FloatingLabel>
+                        <>
+                          <em className={styles.casesensetive}>
+                            Case Sensetive
+                          </em>
+                          <FloatingLabel
+                            controlId="floatingInput"
+                            label="Email or username">
+                            <Form.Control
+                              type="text"
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Email or username"
+                              className={styles.formControlWithIcon}
+                            />
+                          </FloatingLabel>
+                        </>
                       )}
                       defaultValue={""}
                     />
@@ -216,16 +219,14 @@ export default function TheoryLogin() {
                       style={{
                         textAlign: "right",
                         margin: "1rem 0px 6px 0px",
-                      }}
-                    >
+                      }}>
                       <Link
                         to="/forgot-password"
                         style={{
                           textDecoration: "none",
                           fontWeight: "500",
                           fontSize: "18px",
-                        }}
-                      >
+                        }}>
                         Forgot Password?
                       </Link>
                     </div>
@@ -237,8 +238,7 @@ export default function TheoryLogin() {
                           <FloatingLabel
                             controlId="floatingInput"
                             label="Password"
-                            className={styles.formControlWithIcon}
-                          >
+                            className={styles.formControlWithIcon}>
                             <Form.Control
                               type={showPassword ? "text" : "password"}
                               value={value}
