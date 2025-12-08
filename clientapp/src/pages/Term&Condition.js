@@ -478,7 +478,7 @@ const TermsAndConditions = () => {
                 receiving Your cheque for it to show in Your account.
               </li>
               <li>
-                An online processing/booking fee of 2% is payable for any lesson
+                An online processing/booking fee of 2.5% is payable for any lesson
                 package purchased via credit or debit card. We charge this fee
                 to administer the booking process on your behalf between you and
                 your instructor and to contribute to the cost of administering

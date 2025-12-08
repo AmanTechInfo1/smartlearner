@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import NewHomeBanner from "../components/ui/newHomeBanner/NewHomeBanner";
 import ChristmasBanner from "../components/ui/newHomeBanner/ChristmasBanner";
 import NewYearBanner from "../components/ui/newHomeBanner/NewYearBanner";
+import VelentineDayBanner from "../components/ui/newHomeBanner/VelentineDayBanner";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -84,7 +85,7 @@ export default function Home() {
         />
       </Helmet>
       {/* <NewYearBanner /> */}
-
+      {/* <VelentineDayBanner /> */}
       <section>
         <ChristmasBanner />
       </section>
