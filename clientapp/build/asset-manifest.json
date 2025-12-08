@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c422b838.css",
-    "main.js": "/static/js/main.0cf294bd.js",
+    "main.css": "/static/css/main.73fe4c5d.css",
+    "main.js": "/static/js/main.395037d8.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -66,6 +66,7 @@
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/contact-banner.png": "/static/media/contact-banner.6a1436b6361183f4b4fa.png",
     "static/media/routeplanningbanner.jpg": "/static/media/routeplanningbanner.d87aab2543866c742ff1.jpg",
+    "static/media/bgImg.png": "/static/media/bgImg.7250ad5cf5f548fc84f6.png",
     "static/media/glossaryImgbanner.jpg": "/static/media/glossaryImgbanner.8e2fd827a19c7b606c9a.jpg",
     "static/media/concentration.jpg": "/static/media/concentration.33c7c0c37660b5840c96.jpg",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
@@ -74,6 +75,7 @@
     "static/media/roundabouts.png": "/static/media/roundabouts.ed02b142822f1f2e8734.png",
     "static/media/christmasBanner.png": "/static/media/christmasBanner.4c2c30ba7b2bd586fabd.png",
     "static/media/junction.png": "/static/media/junction.55e7e4ad93e8b3d9f574.png",
+    "static/media/laptopbg2.png": "/static/media/laptopbg2.8b70292397d8ee2e2d56.png",
     "static/media/communitybanner.jpg": "/static/media/communitybanner.add596cf2398493dfff1.jpg",
     "static/media/pdi.png": "/static/media/pdi.bb8730c03f7619eb4d8e.png",
     "static/media/adi3videos.jpg": "/static/media/adi3videos.a825bd8fcda0f2d99460.jpg",
@@ -99,6 +101,7 @@
     "static/media/toucan.png": "/static/media/toucan.15226e4e74c617b89d42.png",
     "static/media/zebraCrossing.png": "/static/media/zebraCrossing.69520c96d664c38da7db.png",
     "static/media/cyclistsImg.png": "/static/media/cyclistsImg.56735108317b38ad6ff7.png",
+    "static/media/tabbg.png": "/static/media/tabbg.ff490c4c53e97d826664.png",
     "static/media/IMG_3341.JPG": "/static/media/IMG_3341.38574755cc4ff5305f25.JPG",
     "static/media/diversLargeVehicle.png": "/static/media/diversLargeVehicle.750f4504d5ffd7d750aa.png",
     "static/media/roadSurface.png": "/static/media/roadSurface.3e60f6554d234feeb9dc.png",
@@ -134,6 +137,7 @@
     "static/media/ElectronicParkingImg.png": "/static/media/ElectronicParkingImg.a22a5bbb2c8d3ebc2d7e.png",
     "static/media/cimg12.jpg": "/static/media/cimg12.a82a5ce045178f28b0ca.jpg",
     "static/media/cimg14.jpg": "/static/media/cimg14.8d34487509f800a206f2.jpg",
+    "static/media/heartImg2.png": "/static/media/heartImg2.7ede313275ffa18ecd2d.png",
     "static/media/cimg9.jpg": "/static/media/cimg9.e84966a1e344a0a335df.jpg",
     "static/media/ourpartners.jpg": "/static/media/ourpartners.9b045272760670a9fafc.jpg",
     "static/media/img4.jpg": "/static/media/img4.8e2cdcfc39532dcbd5ab.jpg",
@@ -150,6 +154,7 @@
     "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
     "static/media/bloggingImage.jpg": "/static/media/bloggingImage.c059bd9a1af6edda623f.jpg",
     "static/media/alertnessBanner.jpg": "/static/media/alertnessBanner.05b8841f32498e528007.jpg",
+    "static/media/mobiletab.png": "/static/media/mobiletab.f2affd1ccd138ee2f827.png",
     "static/media/physicalwellbeing.png": "/static/media/physicalwellbeing.cd11f5aa31fc2054e958.png",
     "static/media/cimg19.jpg": "/static/media/cimg19.de097c624a9cc768fe19.jpg",
     "static/media/cimg8.jpg": "/static/media/cimg8.01b4c6018364ebdd62f8.jpg",
@@ -173,6 +178,7 @@
     "static/media/VulnerableRoadUsers.jpg": "/static/media/VulnerableRoadUsers.b6a37f70bb396a28e041.jpg",
     "static/media/CChampion-2.jpg": "/static/media/CChampion-2.c89fb0c00fdb72a9a2a6.jpg",
     "static/media/moduleNine1Img.png": "/static/media/moduleNine1Img.2e6505052a48c26efdfe.png",
+    "static/media/mobile.png": "/static/media/mobile.6a65ef21ee8fba270cc3.png",
     "static/media/tabbanner.png": "/static/media/tabbanner.099bddc89a2a42de5cd5.png",
     "static/media/going-green-img3.jpg": "/static/media/going-green-img3.a99719f1a5d82a55e1f7.jpg",
     "static/media/going-green-img.jpg": "/static/media/going-green-img.aac79fce5d3bf2a41376.jpg",
@@ -386,6 +392,7 @@
     "static/media/marrysGarrage.jpg": "/static/media/marrysGarrage.de68bf8abd1c5df81179.jpg",
     "static/media/mway.jpg": "/static/media/mway.cf2e8616f8ac33106f27.jpg",
     "static/media/White-Logo-Fixed-1024x174.png": "/static/media/White-Logo-Fixed-1024x174.ba4b711f02d36fffad20.png",
+    "static/media/34.png": "/static/media/34.d840040118ec9219159a.png",
     "static/media/incidents-pinjk.png": "/static/media/incidents-pinjk.983c95f6992039cd1786.png",
     "static/media/hover1.png": "/static/media/hover1.3ef6403ecffa3ea25650.png",
     "static/media/raincloud.jpg": "/static/media/raincloud.a66b552414993d156999.jpg",
@@ -422,12 +429,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.c422b838.css.map": "/static/css/main.c422b838.css.map",
-    "main.0cf294bd.js.map": "/static/js/main.0cf294bd.js.map",
+    "main.73fe4c5d.css.map": "/static/css/main.73fe4c5d.css.map",
+    "main.395037d8.js.map": "/static/js/main.395037d8.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c422b838.css",
-    "static/js/main.0cf294bd.js"
+    "static/css/main.73fe4c5d.css",
+    "static/js/main.395037d8.js"
   ]
 }
