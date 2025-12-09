@@ -429,7 +429,7 @@ export default function Solihull() {
         {/* Footer */}
         <footer className="no-underline py-8 text-sm text-center text-slate-500">
           <div className="no-underline container mx-auto px-6">
-            © {new Date().getFullYear()} YourBrand — Driving lessons in
+            © {new Date().getFullYear()} smartlearner — Driving lessons in
             Solihull. All rights reserved.
           </div>
         </footer>
