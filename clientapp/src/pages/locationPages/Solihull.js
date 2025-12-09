@@ -15,18 +15,22 @@ export default function Solihull() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>driving school in solihull | driving lessons in solihull</title>
+        <title>
+          Driving Lessons in Solihull | Professional Local Instructors
+        </title>
         <meta
           name="description"
-          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Solihull with advanced technology. "
+          content="Learn to drive with expert instructors in Solihull. Manual, automatic, and intensive driving courses designed to help you pass faster. Book your lessons today.
+"
         />
         <meta
           property="og:title"
-          content="  driving school in solihull | driving lessons in solihull"
+          content="Driving Lessons in Solihull | Professional Local Instructors"
         />
         <meta
           property="og:description"
-          content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the Solihull with advanced technology. "
+          content="Learn to drive with expert instructors in Solihull. Manual, automatic, and intensive driving courses designed to help you pass faster. Book your lessons today.
+"
         />
         <link rel="canonical" href="https://smartlearner.com/solihull" />
       </Helmet>
@@ -68,7 +72,7 @@ export default function Solihull() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     className="no-underline inline-flex items-center gap-3 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-2xl transition"
-                    href="/home/our-courses">
+                    href="/Contact-Us">
                     Book Lessons
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -419,20 +423,12 @@ export default function Solihull() {
             </p>
 
             <a
-              href="/home/our-courses"
+              href="/Contact-Us"
               className="no-underline inline-block bg-white text-red-600 px-6 py-3 rounded-lg font-semibold shadow hover:shadow-2xl transition">
               Book Driving Lessons in Solihull
             </a>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="no-underline py-8 text-sm text-center text-slate-500">
-          <div className="no-underline container mx-auto px-6">
-            © {new Date().getFullYear()} smartlearner — Driving lessons in
-            Solihull. All rights reserved.
-          </div>
-        </footer>
       </main>
     </div>
   );
