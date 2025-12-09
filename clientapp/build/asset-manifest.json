@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.73fe4c5d.css",
-    "main.js": "/static/js/main.e4be23bb.js",
+    "main.css": "/static/css/main.5e8ab9c3.css",
+    "main.js": "/static/js/main.2742e753.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/manual3.jpg": "/static/media/manual3.c05ef60170e7759ad398.jpg",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
@@ -42,6 +42,7 @@
     "static/media/risk-management.jpg": "/static/media/risk-management.d01f475f0bafe973c679.jpg",
     "static/media/bg.jpg": "/static/media/bg.8aa0b6879fe170114998.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
+    "static/media/banner4.png": "/static/media/banner4.1d9b217bb99c4c8449bf.png",
     "static/media/bookpart3.jpg": "/static/media/bookpart3.d249a58efdfbb4dc2f1e.jpg",
     "static/media/manualround1.png": "/static/media/manualround1.51cea707a66fddf1a9a5.png",
     "static/media/whatjpg.jpg": "/static/media/whatjpg.d563d55249e3ae59fc8a.jpg",
@@ -429,12 +430,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.73fe4c5d.css.map": "/static/css/main.73fe4c5d.css.map",
-    "main.e4be23bb.js.map": "/static/js/main.e4be23bb.js.map",
+    "main.5e8ab9c3.css.map": "/static/css/main.5e8ab9c3.css.map",
+    "main.2742e753.js.map": "/static/js/main.2742e753.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.73fe4c5d.css",
-    "static/js/main.e4be23bb.js"
+    "static/css/main.5e8ab9c3.css",
+    "static/js/main.2742e753.js"
   ]
 }
