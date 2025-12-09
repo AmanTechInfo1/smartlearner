@@ -283,6 +283,9 @@ ul {
   }
 }
 /* ///////////////////////////////main features////////////////// */
+ul {
+  padding-left: 0px;
+}
 .features {
   padding: 2rem 0;
 }
