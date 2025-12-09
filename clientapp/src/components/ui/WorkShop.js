@@ -170,7 +170,8 @@ const WorkShop = () => {
               <Img src={workshop || defaultImg} alt={product.name} />
               <Content>
                 <Name>{product.name}</Name>
-                <Price>£ {product.price}</Price>
+                <Price>£ {product.price}0</Price>
+                <p>{product.description}</p>
                 <StarWrapper>
                   {[...Array(5)].map((_, i) => (
                     <img

@@ -706,7 +706,7 @@ class UserSubscriptionService {
               <img src="https://smartlearner.com/static/media/White-Logo-Fixed-1024x174.36cf39f0d189481b24c1.png" alt="Company Logo" />
             </div>
             <div class="body">
-              <h2>Method ${method}, Subscription ${status} - Plan: ${
+              <h2>Method ${method}, Package ${status} - Plan: ${
       subscription.planname
     }</h2>
               <p><strong>Dear ${user.username},</strong></p>
@@ -768,7 +768,7 @@ class UserSubscriptionService {
     try {
       await transporter.sendMail(mailOptions);
     } catch (error) {
-      console.error("Error sending email:", error); 
+      console.error("Error sending email:", error);
       throw new Error("Email sending failed");
     }
   }
