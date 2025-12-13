@@ -197,6 +197,146 @@ class UserSubscriptionService {
     }
   }
 
+  ///////////////////////////////////////////////////////
+
+  async createPaypalProduct() {
+    const accessToken = await getAccessToken();
+
+    console.log("Access Token", accessToken);
+    const response = await axios.post(
+      `${PAYPAL_API_BASE}/v1/catalogs/products`,
+      {
+        name: "SmartLearner Business Mentoring Subscription",
+        description: "Recurring monthly subscription",
+        type: "SERVICE",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  }
+
+  async createPaypalPlan(product_id, price) {
+    const accessToken = await getAccessToken();
+
+    const payload = {
+      product_id,
+      name: "SmartLearner Business Mentoring Subscription",
+      billing_cycles: [
+        {
+          frequency: { interval_unit: "MONTH", interval_count: 1 },
+          tenure_type: "REGULAR",
+          sequence: 1,
+          total_cycles: 0,
+          pricing_scheme: {
+            fixed_price: { value: price, currency_code: "GBP" },
+          },
+        },
+      ],
+      payment_preferences: {
+        auto_bill_outstanding: true,
+        setup_fee_failure_action: "CONTINUE",
+        payment_failure_threshold: 3,
+      },
+    };
+
+    try {
+      const response = await axios.post(
+        `${PAYPAL_API_BASE}/v1/billing/plans`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error(
+        "PayPal Plan Error:",
+        JSON.stringify(error.response?.data, null, 2)
+      );
+      throw error;
+    }
+  }
+
+  async createPaypalSubscription(
+    userId,
+    subscriptionId,
+    paypalSubscriptionId,
+    method
+  ) {
+    const accessToken = await getAccessToken();
+
+    const response = await axios.get(
+      `${PAYPAL_API_BASE}/v1/billing/subscriptions/${paypalSubscriptionId}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    if (response.data.status !== "ACTIVE") {
+      throw new Error("PayPal subscription not active");
+    }
+    const status = response.data.status;
+    console.log("res", response.data);
+
+    if (status === "ACTIVE") {
+      const userSubscription = await this.createUserSubscription(
+        userId,
+        subscriptionId,
+        false
+      );
+      console.log("active");
+      const subs = await UserSubscription.findOne({ userId });
+
+      subs.paymentStatus = "completed";
+      subs.paymentMethod = method;
+      subs.paypalSubscriptionId = paypalSubscriptionId;
+      subs.nextBillingDate = response.data.billing_info?.next_billing_time;
+
+      await subs.save();
+
+      // 📧 SUCCESS EMAIL
+      await this.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "success",
+        "PayPal"
+      );
+
+      return {
+        paymentStatus: "ACTIVE",
+        paypalStatus: status,
+      };
+    }
+    if (status === "SUSPENDED") {
+      await this.sendSubscriptionEmail(
+        userId,
+        subscriptionId,
+        "failed",
+        "PayPal"
+      );
+
+      return {
+        paymentStatus: "failed",
+        paypalStatus: status,
+      };
+    } else {
+      throw new Error(`Subscription status: ${status}`);
+    }
+  }
+
   // ////////////////////////////////////////////////////////////
 
   async createRevoultOrder(amount, currency, subscriptionId, userId) {
@@ -729,7 +869,7 @@ class UserSubscriptionService {
                
                 </table>
   
-              <h3>Subscription Details:</h3>
+              <h3>Package Details:</h3>
               <table>
                 <tr>
                   <th>Plan Name</th>
@@ -761,7 +901,7 @@ class UserSubscriptionService {
     const mailOptions = {
       from: "admin@smartlearner.com",
       to: [user.email, "admin@smartlearner.com"],
-      subject: `Subscription ${status} - Plan: ${subscription.planname}`,
+      subject: `Package ${status} - Plan: ${subscription.planname}`,
       html: htmlContent,
     };
 

@@ -78,4 +78,11 @@ router.post(
   userSubscriptionController.revolutPaymentFailure
 );
 
+router.post("/create-product", userSubscriptionController.createProduct);
+router.post("/create-plan", userSubscriptionController.createPayPalPlan);
+router.post(
+  "/create-subscription",
+  userSubscriptionController.createSubscription
+);
+
 module.exports = router;

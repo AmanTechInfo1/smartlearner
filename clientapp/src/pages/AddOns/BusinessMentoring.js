@@ -362,23 +362,11 @@ export default function BusinessMentoringPage() {
                       ))}
                     </StarWrapper>
 
-                    {inCart ? (
-                      <QuantityWrapper>
-                        <button onClick={() => handleDecrease(productId)}>
-                          -
-                        </button>
-                        <span>{inCart.count}</span>
-                        <button onClick={() => handleIncrease(productId)}>
-                          +
-                        </button>
-                      </QuantityWrapper>
-                    ) : (
-                      <ActionButtons>
-                        <Button onClick={() => handleAddToCart(product, index)}>
-                          Book
-                        </Button>
-                      </ActionButtons>
-                    )}
+                    <ActionButtons>
+                      <Button onClick={() => navigate("/businessSubs-cart")}>
+                        Book
+                      </Button>
+                    </ActionButtons>
                   </Content>
                 </Card>
               );

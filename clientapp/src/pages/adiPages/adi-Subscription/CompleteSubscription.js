@@ -13,14 +13,12 @@ import {
   fetchPlans,
   createPayment,
   createUserSubscription,
-  checkTrialEligibility,
   pdiApplyCouponCode,
   fetchUserSubscriptions,
 } from "../../../redux/features/subscriptionSlice";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import LoadingWeb from "../../../components/loader/LoadingWeb";
 import Loader2 from "../../../components/loader/Loader2";
 
 const CompleteSubscription = () => {

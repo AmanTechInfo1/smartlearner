@@ -200,6 +200,7 @@ import AdminCheckOut from "./containers/Payments/AdminCheckOut";
 import AdminPaymentProcessing from "./containers/Payments/AdminPaymentProcessing";
 import WorkshopTransmission from "./pages/Transmission/WorkshopTransmission";
 import BusinessMentoringPage from "./pages/AddOns/BusinessMentoring";
+import BusinessSubs from "./pages/adiPages/adi-Subscription/BusinessSubs";
 
 export const router = createBrowserRouter([
   {
@@ -334,6 +335,9 @@ export const router = createBrowserRouter([
       {
         path: "driving-instructor-training-part-three",
         element: <PartThreeSubscription />,
+      }, {
+        path: "businessSubs-cart",
+        element: <BusinessSubs/>,
       },
       {
         path: "driving-instructor-training-full-course",

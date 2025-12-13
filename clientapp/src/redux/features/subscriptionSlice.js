@@ -46,6 +46,20 @@ export const createUserSubscription = createAsyncThunk(
     }
   }
 );
+export const createAutoUserSubscription = createAsyncThunk(
+  "subscription/createAutoUserSubscription",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await httpHandler.post(
+        "/api/subscription/create-subscription",
+        payload
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const createPayment = createAsyncThunk(
   "subscription/createPayment",

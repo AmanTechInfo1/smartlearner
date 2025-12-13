@@ -16,6 +16,8 @@ const userSubscriptionSchema = new mongoose.Schema({
   pdiPartOneCouponApplied: { type: Boolean, default: false },
   pdiPartTwoCouponApplied: { type: Boolean, default: false },
   pdiPartThreeCouponApplied: { type: Boolean, default: false },
+  paypalSubscriptionId: { type: String },
+  nextBillingDate: { type: Date },
   couponEndDate: { type: String },
 });
 

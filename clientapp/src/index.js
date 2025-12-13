@@ -32,8 +32,7 @@ root.render(
             "ASzR9RCfn9wYYvtySf5-jvqFuRcR48EwxVV8KGq000JxdubcsXDO1ggsyllL",
           currency: "GBP",
           intent: "capture",
-        }}
-      >
+        }}>
         <Elements stripe={stripePromise}>
           <HelmetProvider>
             <RouterProvider router={router} />

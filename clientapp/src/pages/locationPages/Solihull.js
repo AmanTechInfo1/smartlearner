@@ -431,7 +431,7 @@ export default function Solihull() {
         </section>
       </main>
     </div>
-  );
+  );                      
 }
 function FeatureCard({ title, desc, icon }) {
   return (

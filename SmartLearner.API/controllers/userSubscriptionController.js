@@ -127,6 +127,56 @@ class userSubscriptionController {
     }
   }
 
+  /////////////////////////////////////////////////////////
+
+  async createProduct(req, res) {
+    try {
+      const product = await userSubscriptionService.createPaypalProduct();
+      res.json(product);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+
+  async createPayPalPlan(req, res) {
+    try {
+      const { price } = req.body;
+      const plan = await userSubscriptionService.createPaypalPlan(
+        "PROD-2YY73427Y72016337",
+        price
+      );
+      res.json(plan);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+
+  async createSubscription(req, res) {
+    try {
+      const { userId, subscriptionId, paypalSubscriptionId, method } = req.body;
+      console.log(
+        "check",
+        userId,
+        subscriptionId,
+        paypalSubscriptionId,
+        method
+      );
+      const subscription =
+        await userSubscriptionService.createPaypalSubscription(
+          userId,
+          subscriptionId,
+          paypalSubscriptionId,
+          method
+        );
+  
+      res.json(subscription);
+      console.log("test", subscription);
+    } catch (err) {
+      console.log("Error", err);
+      res.status(400).json({ error: err.message });
+    }
+  }
+
   // /////////////////////////////////////////////////////
   async createRevolutCharge(req, res) {
     const { amount, currency, subscriptionId, userId } = req.body;
