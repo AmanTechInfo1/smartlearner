@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import style from "./NewYearBanner.module.css";
 import logo from "../../../assets/images/White-Logo-Fixed-1024x174.webp";
 import nameheader from "../../../assets/images/bannerImges/nameheader2.png";
-
+import tokanImg from "../../../assets/images/bg1.webp";
 // //////////////////////////////////////////////
 
-//////////////////////////////////////////////
-import tokanImg from "../../../assets/images/bg1.webp";
 export default function NewYearBanner() {
   return (
     <div className={style.newyearbannerPage}>

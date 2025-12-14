@@ -17,6 +17,9 @@ import NewHomeBanner from "../components/ui/newHomeBanner/NewHomeBanner";
 import ChristmasBanner from "../components/ui/newHomeBanner/ChristmasBanner";
 import NewYearBanner from "../components/ui/newHomeBanner/NewYearBanner";
 import VelentineDayBanner from "../components/ui/newHomeBanner/VelentineDayBanner";
+import SpringBanner from "../components/ui/newHomeBanner/SpringBanner";
+import AprilBanner from "../components/ui/newHomeBanner/AprilBanner";
+import RabbitBanner from "../components/ui/newHomeBanner/RabbitBanner";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -86,6 +89,9 @@ export default function Home() {
       </Helmet>
       {/* <NewYearBanner /> */}
       {/* <VelentineDayBanner /> */}
+      {/* <SpringBanner /> */}
+      {/* <AprilBanner /> */}
+      {/* <RabbitBanner /> */}
       <section>
         <ChristmasBanner />
       </section>
