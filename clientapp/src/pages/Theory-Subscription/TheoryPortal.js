@@ -21,7 +21,6 @@ import {
   FaVideo,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import QuizMain from "../../components/takequizes/QuizMain";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
@@ -31,6 +30,7 @@ import { useRef } from "react";
 import httpHandler from "../../utils/httpHandler";
 
 import gsap from "gsap";
+import HomeBanner from "../../components/ui/HomeBanner";
 
 export default function TheoryPortal() {
   const userSubscription = useSelector(
@@ -221,6 +221,7 @@ export default function TheoryPortal() {
           content="Prepare for your driving test with our comprehensive theory lessons."
         />
       </Helmet>
+      {/* <HomeBanner /> */}
       <section className={styles.imageSection}>
         <div className={styles.opicity}></div>
         <div className={styles.maincontent}>

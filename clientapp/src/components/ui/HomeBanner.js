@@ -2,37 +2,37 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./homeContent/BookingSectio.module.css"; // We'll style it here
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import banner1 from "../../assets/images/banner7.png";
-import banner2 from "../../assets/images/banner4.png";
+import banner1 from "../../assets/images/clockCheck.png";
+import banner2 from "../../assets/images/quizAttempt.png";
 import banner3 from "../../assets/images/banner6.png";
 import { Link } from "react-router-dom";
 
 const slides = [
   {
     id: 1,
-    title: "Want to try a new driving adventure?",
-    subtitle: "new driving adventure",
+    title: "Theory support gets you test ready",
+    subtitle: "Everything You Need to Pass Your Driving Theory Test",
     description:
-      "Experience a thrilling treasure-hunt-style driving adventure designed to take you and your team across scenic routes within the UK. Discover hidden clues, complete fun challenges, and enjoy a memorable journey that mixes learning, excitement, and teamwork — perfect for both new and experienced drivers.",
-    image: banner1,
+      "Access powerful theory learning products built to boost your knowledge, improve accuracy, and build real test confidence. Study at your own pace with interactive content, practice questions, and clear explanations tailored for learner drivers.",
+    image: banner3,
     link: "/home/our-courses",
   },
   {
     id: 2,
-    title: "Learn with expert instructors",
-    subtitle: "driving excellence",
+    title: "Practice real theory test questions with our quizes",
+    subtitle: "Attempt Theory Quizzes & Track Progress",
     description:
-      "Train under the guidance of our highly qualified and friendly instructors who make every session engaging and confidence-boosting. From mastering vehicle control to understanding road safety and advanced maneuvers, our lessons are structured to help you become a responsible and skilled driver.",
+      "Test your knowledge with carefully designed driving theory quizzes based on real exam standards. Each quiz attempt helps you understand your strengths and identify areas that need improvement.",
     image: banner2,
     link: "/driving-instructor-packages/instructor-packages",
   },
   {
     id: 3,
-    title: "Your journey to confidence starts here",
-    subtitle: "drive with confidence",
+    title: "Book Your Driving Test Time",
+    subtitle: "Plan Smart. Test Ready.",
     description:
-      "Whether you’re preparing for your first test or refining your skills, we provide personalized driving sessions tailored to your comfort and progress. Our modern teaching approach, combined with real-world practice, helps you build confidence, stay safe, and enjoy the freedom of the open road.",
-    image: banner3,
+      "Select your preferred time and stay prepared for your driving test with ease.",
+    image: banner1,
     link: "/Theory-Support/Theory-package",
   },
 ];
