@@ -7,7 +7,7 @@ import { IoCallSharp } from "react-icons/io5";
 import { useEffect, useRef } from "react";
 import manualround1 from "./manualround1.png";
 import manualround2 from "./manualround2.jpg";
-
+import "../../components/ui/homeContent/HomeDesign.css";
 import gsap from "gsap";
 import ManualCorousel from "../../components/ui/ManualCarousel";
 import { Link } from "react-router-dom";

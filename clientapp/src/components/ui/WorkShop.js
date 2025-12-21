@@ -138,7 +138,7 @@ const WorkShop = () => {
 
   return (
     <Container>
-      <Title>Workshop Products</Title>
+      <Title>ADI/PDI Workshop Products</Title>
       <>
         {" "}
         <p

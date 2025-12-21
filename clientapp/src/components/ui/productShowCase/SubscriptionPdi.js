@@ -32,7 +32,7 @@ const gradients = [
 // Static PDI Products
 const pdiProducts = [
   {
-    title: "Complete Course",
+    title: "Complete Course online",
     description:
       "A complete instructor training course covering all parts of the ADI qualification.",
     price: "499.99",
@@ -129,7 +129,7 @@ export default function SubscriptionPdi() {
                 ? "bg-blue-700 text-white"
                 : "bg-white border border-blue-700 text-black-700"
             }`}>
-            PDI Packages
+            PDI Packages Online
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -139,7 +139,7 @@ export default function SubscriptionPdi() {
                 ? "bg-blue-700 text-white"
                 : "bg-white border border-blue-700 text-blue-700"
             }`}>
-            Workshop
+            ADI/PDI Workshops
           </motion.button>
         </div>
 

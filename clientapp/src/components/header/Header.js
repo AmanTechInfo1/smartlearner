@@ -64,7 +64,7 @@ function Header() {
                 <li>Simulator</li>
               </NavLink>
               <NavLink to="/workshop" className={styles.activeLink}>
-                <li>Workshop</li>
+                <li>ADI/PDI Workshops</li>
               </NavLink>
             </ul>
           </li>
@@ -120,6 +120,11 @@ function Header() {
                 className={styles.activeLink}>
                 {" "}
                 <li>Franchise </li>
+              </NavLink><NavLink
+                to="/business-mentoring"
+                className={styles.activeLink}>
+                {" "}
+                <li>Business mentoring </li>
               </NavLink>
             </ul>
           </li>

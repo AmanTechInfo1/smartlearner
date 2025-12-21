@@ -189,11 +189,16 @@ p {
   padding: 2rem 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.theoryPortalTimer {
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
 .theoryPortalTimer h4 {
-  background: rgba(255, 255, 255, 0.432);
+  background: rgba(209, 196, 196, 0.671);
   padding: 0.8rem;
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: 1.2rem;
 }
 @media (max-width: 760px) {
@@ -208,7 +213,7 @@ p {
 }
 
 .theoryPortalTimerInputField {
-  background: linear-gradient(135deg, #ff780269, #ff007359);
+  background: linear-gradient(135deg, #02a2ff93, #ff007359);
   box-shadow: 0 3px 10px rgba(37, 37, 37, 0.39);
   display: flex;
   justify-content: center;
@@ -224,7 +229,7 @@ p {
 
 .theoryPortalTimerInputField input {
   background-color: #ffffff;
-  color: #ff00008a;
+  color: #000000;
 }
 .theoryPortalTimerInputField label {
   font-size: 20px;

@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .TheoryPortal {
-  background-color: #111;
+  background: linear-gradient(135deg, #e3fcff, #7df0ff);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   padding-bottom: 4rem;
@@ -169,7 +169,7 @@
 }
 /* //////////////////////////////////////////// */
 .theoryTestSectionQ {
-  padding: 1rem;
+  padding: 2rem 1rem;
   max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
@@ -177,28 +177,29 @@
 }
 
 .theoryTestDivQ h2 {
-  font-size: 5rem;
-  font-weight: 700;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #ff871e, #c00258);
-  color: #ffffff;
+  font-size: 3.8rem;
+  font-weight: 800;
+  font-family: "Roboto", Sans-serif;
+
+  color: #000000;
   border-radius: 10px;
   padding: 1rem;
 }
 
 .theoryTestDivQ hr {
-  border: 2px solid #ff0055;
+  border: 2px solid #000000;
   opacity: 1;
   max-width: 700px;
   margin-right: auto;
   margin-left: auto;
 }
 .theoryTestDivQ p {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 18px;
-  background: linear-gradient(135deg, #00d4b8, #004214);
-  padding: 1rem;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.726);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
 }
 @media (max-width: 778px) {
   .theoryTestDivQ h2 {
@@ -221,13 +222,9 @@
   }
 }
 /* ////////////////////////////////////////////////////// */
-.choicesSectionTheoryPortal123 {
-  border-radius: 20px;
-  background-color: #00318b75;
-  margin-bottom: 2rem;
-}
+
 .choicesSectionTheoryPortal {
-  padding: 3rem 1rem;
+  padding: 1rem;
   max-width: 1340px;
   margin-right: auto;
   margin-left: auto;
@@ -312,8 +309,6 @@
 }
 /* ////////////////////////////////////////////// */
 .theoryPortalYoutubeVideosSection123 {
-  background: linear-gradient(135deg, #ff7402, #ff0040);
-  border-radius: 20px;
   margin-bottom: 2rem;
 }
 .theoryPortalYoutubeVideosSection {
@@ -419,11 +414,10 @@
 }
 .thchoiceListSection {
   margin: 1rem 0px;
-  background-color: #4d04465b;
 }
 .features {
   padding: 2rem 0;
-  background-color: #2b016e9a;
+
   border-radius: 20px;
 }
 .features h4 {
@@ -561,21 +555,17 @@
 }
 
 /* ////////////////////////////////// */
-.thAdditionalSupportSection {
-  padding: 2rem 1rem;
-  margin: 1rem 0px;
-}
+
 .thAdditionalSupportHeader {
   background-color: #ff006262;
-  padding: 2rem 0px;
-  border-radius: 20px;
+  padding: 2rem 1rem;
 }
 
 .thAdditionalSupportHeader h2 {
   font-size: 4rem;
   font-weight: 700;
   text-align: center;
-  color: #00f1d1;
+  color: #ffffff;
 
   margin: 0 auto;
 
@@ -598,7 +588,7 @@
   color: #ff0055;
 }
 .thAdditionalSupport2ndHeader h2 {
-  color: #00ffff;
+  color: #000000;
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
@@ -613,10 +603,10 @@
 }
 .thAdditionalSupport2ndHeader section {
   box-shadow: 0px 0px 55px 5px rgba(196, 196, 196, 0.203);
-  background: linear-gradient(135deg, #ff0281, #850122);
-  color: rgb(255, 255, 255);
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  color: rgb(0, 0, 0);
   padding: 2rem;
-  border-radius: 30px;
+  border-radius: 10px;
   opacity: 0;
   transform: translateY(-100%);
   animation: slideDown 3s forwards;
@@ -637,6 +627,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 1rem;
 }
 .formmap {
   width: 100%;
@@ -669,7 +660,7 @@
   color: #ff004c;
 }
 .thFooterDiv h2 {
-  color: #00ffea;
+  color: #ffffff;
   font-size: 3rem;
   font-weight: 600;
   text-align: center;

@@ -6,6 +6,9 @@ import logo from "../../../assets/images/White-Logo-Fixed-1024x174.webp";
 import tokanImg from "../../../assets/images/bg1.webp";
 import rabbitEar from "../../../assets/images/rabit/rabitEar.png";
 import rabbits from "../../../assets/images/rabit/rabits.png";
+import tokanImg1 from "../../../assets/images/token1.png";
+import tokanImg2 from "../../../assets/images/token2.png";
+import tokanImg3 from "../../../assets/images/token3.png";
 
 export default function RabbitBanner() {
   return (
@@ -25,7 +28,7 @@ export default function RabbitBanner() {
           ease: "easeInOut",
         }}
         id={styles.tokenImg}>
-        <img src={tokanImg} className={styles.tokenImg} alt="tokanImg" />
+        <img src={tokanImg1} className={styles.tokenImg} alt="tokanImg" />
       </motion.div>
       <motion.div
         animate={{
@@ -37,7 +40,7 @@ export default function RabbitBanner() {
           ease: "easeInOut",
         }}
         id={styles.tokenImg2}>
-        <img src={tokanImg} className={styles.tokenImg} alt="tokanImg" />
+        <img src={tokanImg2} className={styles.tokenImg} alt="tokanImg" />
       </motion.div>
       <motion.div
         animate={{
@@ -49,7 +52,7 @@ export default function RabbitBanner() {
           ease: "easeInOut",
         }}
         id={styles.tokenImg3}>
-        <img src={tokanImg} className={styles.tokenImg} alt="tokanImg" />
+        <img src={tokanImg3} className={styles.tokenImg} alt="tokanImg" />
       </motion.div>
 
       <div className={styles.headingName}>

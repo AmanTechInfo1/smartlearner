@@ -28,6 +28,15 @@
   z-index: 20;
   pointer-events: none;
 }
+
+.bee2 {
+  position: absolute;
+  width: 180px;
+  top: 30%;
+  left: 40%;
+  z-index: 20;
+  pointer-events: none;
+}
 .headingName {
   max-width: 800px;
   width: 100%;

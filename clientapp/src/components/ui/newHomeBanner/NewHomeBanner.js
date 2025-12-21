@@ -4,7 +4,9 @@ import style from "./NewHomeBanner.module.css";
 import { RxCross2 } from "react-icons/rx";
 
 import logo from "../../../assets/images/White-Logo-Fixed-1024x174.webp";
-
+import tokanImg1 from "../../../assets/images/token1.png";
+import tokanImg2 from "../../../assets/images/token2.png";
+import tokanImg3 from "../../../assets/images/token3.png";
 import tokanImg from "../../../assets/images/bg1.webp";
 import roadsafty1 from "../../../assets/images/bg2.webp";
 import roadsafty2 from "../../../assets/images/bg3.webp";
@@ -38,7 +40,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg}>
-          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
+          <img src={tokanImg1} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <motion.div
           animate={{
@@ -50,7 +52,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg2}>
-          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
+          <img src={tokanImg2} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <motion.div
           animate={{
@@ -62,7 +64,7 @@ export default function NewHomeBanner() {
             ease: "easeInOut",
           }}
           id={style.tokenImg3}>
-          <img src={tokanImg} className={style.tokenImg} alt="tokanImg" />
+          <img src={tokanImg3} className={style.tokenImg} alt="tokanImg" />
         </motion.div>
         <section className={style.bannerSections}>
           <motion.div
