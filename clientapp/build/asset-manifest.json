@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2e565eb9.css",
-    "main.js": "/static/js/main.385afef3.js",
+    "main.css": "/static/css/main.b266063f.css",
+    "main.js": "/static/js/main.d81ad62d.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
@@ -34,6 +34,7 @@
     "static/media/lessonPlanning.jpg": "/static/media/lessonPlanning.ab8d04769956ea1a1432.jpg",
     "static/media/interventionbanner.jpg": "/static/media/interventionbanner.af0f80430ff3a6245e2c.jpg",
     "static/media/risk-management.jpg": "/static/media/risk-management.d01f475f0bafe973c679.jpg",
+    "static/media/bg.jpg": "/static/media/bg.8aa0b6879fe170114998.jpg",
     "static/media/theorySupportRound1.jpg": "/static/media/theorySupportRound1.270a2acc78959f0526a5.jpg",
     "static/media/banner4.png": "/static/media/banner4.1d9b217bb99c4c8449bf.png",
     "static/media/bookpart3.jpg": "/static/media/bookpart3.d249a58efdfbb4dc2f1e.jpg",
@@ -90,6 +91,7 @@
     "static/media/carDrivers.png": "/static/media/carDrivers.be8ff4073f91719ab3e4.png",
     "static/media/privcard.png": "/static/media/privcard.0cef7b9cc7b694a421b1.png",
     "static/media/bends.png": "/static/media/bends.02da93c19426d4eec12e.png",
+    "static/media/Untitled design (7).png": "/static/media/Untitled design (7).57511098bcfaeb390376.png",
     "static/media/banner2.png": "/static/media/banner2.8bb354f3c4d1284f8762.png",
     "static/media/parkedCars.png": "/static/media/parkedCars.7c929b887a1c18a1c5e7.png",
     "static/media/roadWorks.png": "/static/media/roadWorks.712794cddf2e856be4c3.png",
@@ -136,6 +138,7 @@
     "static/media/cimg12.jpg": "/static/media/cimg12.a82a5ce045178f28b0ca.jpg",
     "static/media/cimg14.jpg": "/static/media/cimg14.8d34487509f800a206f2.jpg",
     "static/media/heartImg2.png": "/static/media/heartImg2.7ede313275ffa18ecd2d.png",
+    "static/media/token3.png": "/static/media/token3.04ec5223b83ab2d53df5.png",
     "static/media/cimg9.jpg": "/static/media/cimg9.e84966a1e344a0a335df.jpg",
     "static/media/ourpartners.jpg": "/static/media/ourpartners.9b045272760670a9fafc.jpg",
     "static/media/img4.jpg": "/static/media/img4.8e2cdcfc39532dcbd5ab.jpg",
@@ -165,10 +168,12 @@
     "static/media/vehicleclearence.png": "/static/media/vehicleclearence.8e9c7dcc2641968bab25.png",
     "static/media/csrbannerssss.jpg": "/static/media/csrbannerssss.577eee979f982e0c6886.jpg",
     "static/media/cimg17.jpg": "/static/media/cimg17.917a38052f0baa2935f0.jpg",
+    "static/media/token1.png": "/static/media/token1.d8c0cf18d8fc640432ae.png",
     "static/media/cimg6.jpg": "/static/media/cimg6.02f171053e3ce61c77cc.jpg",
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/cimg3.jpg": "/static/media/cimg3.34592db37fa076e76f76.jpg",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
+    "static/media/token2.png": "/static/media/token2.c49a4b11337f83fcc857.png",
     "static/media/legulstuffbanner.jpg": "/static/media/legulstuffbanner.3198d0aec7ee2a5dcd0b.jpg",
     "static/media/far-near-rear-VissionImg.png": "/static/media/far-near-rear-VissionImg.bb56a5793a7693f4d608.png",
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
@@ -338,6 +343,7 @@
     "static/media/one-wayStreet.jpg": "/static/media/one-wayStreet.b0fad5e1da67d3998a88.jpg",
     "static/media/ssl-logo.png": "/static/media/ssl-logo.8c174247fbd59801e088.png",
     "static/media/CChampion-13.jpg": "/static/media/CChampion-13.18c884883d32dd747096.jpg",
+    "static/media/mobileRoad.png": "/static/media/mobileRoad.4edfb8b1afd254ab7060.png",
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
     "static/media/majortomajorleft.png": "/static/media/majortomajorleft.bb88f2949e96bbf802bd.png",
     "static/media/blueStarImg.png": "/static/media/blueStarImg.989f7c372f2889e91290.png",
@@ -401,6 +407,7 @@
     "static/media/greenCartImg.png": "/static/media/greenCartImg.0ba4ced4b7cbfbaafa8c.png",
     "static/media/covcollege.png": "/static/media/covcollege.67fe9810657bac404d54.png",
     "static/media/redCartImg.png": "/static/media/redCartImg.ba7538af4bf1e49e973a.png",
+    "static/media/road.png": "/static/media/road.d06a75026e82569832f4.png",
     "static/media/handleiding-300x300.png": "/static/media/handleiding-300x300.7458d51ad5d3dc499157.png",
     "static/media/unitedToAchieve.jpg": "/static/media/unitedToAchieve.06e6e384b9303f8cfa38.jpg",
     "static/media/THT_logo.png": "/static/media/THT_logo.1429352c67d15c647192.png",
@@ -425,12 +432,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.2e565eb9.css.map": "/static/css/main.2e565eb9.css.map",
-    "main.385afef3.js.map": "/static/js/main.385afef3.js.map",
+    "main.b266063f.css.map": "/static/css/main.b266063f.css.map",
+    "main.d81ad62d.js.map": "/static/js/main.d81ad62d.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e565eb9.css",
-    "static/js/main.385afef3.js"
+    "static/css/main.b266063f.css",
+    "static/js/main.d81ad62d.js"
   ]
 }
