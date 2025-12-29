@@ -88,7 +88,7 @@ const StaticTestimonial = () => {
           transition={{ duration: 0.7, type: "spring" }}
           style={{ padding: "0px 1rem" }}
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10 text-gray-900 leading-snug">
-          <span>What Our Customers Say</span>{" "}
+          <span  style={{ color: "white" }}>What Our Customers Say</span>{" "}
           <motion.span
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

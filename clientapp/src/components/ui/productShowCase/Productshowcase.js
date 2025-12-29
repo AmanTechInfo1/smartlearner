@@ -153,14 +153,18 @@ const ProductShowcase = () => {
   return (
     <section className="py-10 ">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10 text-black-700">
+        <h2
+          className="text-4xl font-bold text-center mb-10 text-white-700"
+          style={{ color: "white" }}
+        >
           Explore Our Products
         </h2>
 
         {/* Category Buttons */}
         <div
           className="flex flex-wrap justify-center gap-3 mb-8"
-          id={styles.cateButtonsOnProductshowcase}>
+          id={styles.cateButtonsOnProductshowcase}
+        >
           {[
             { id: "manual_combined", label: "📘 Manual" },
 
@@ -183,7 +187,7 @@ const ProductShowcase = () => {
                   : "bg-white text-purple-700 border border-purple-300 hover:bg-purple-50";
               }
               return isSelected
-                ? "bg-blue-700 text-white"
+                ? "bg-red-700 text-white"
                 : "bg-white text-blue-700 border border-blue-700 hover:bg-blue-50";
             };
 
@@ -195,7 +199,8 @@ const ProductShowcase = () => {
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSelectCategory(id)}
-                  className={`rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}>
+                  className={`rounded-full font-semibold shadow-sm text-sm transition-all ${getBtnClasses()}`}
+                >
                   {label}
                 </motion.button>
               </>
@@ -212,7 +217,8 @@ const ProductShowcase = () => {
               textAlign: "center",
               borderRadius: "4px",
               color: "black",
-            }}>
+            }}
+          >
             A mandatory booking fee of{" "}
             <span style={{ color: "red" }}>£1.00 - £30 </span>
             applies to all orders per purchase. This fee will be shown clearly
@@ -228,7 +234,8 @@ const ProductShowcase = () => {
                 .map((_, idx) => (
                   <div
                     key={idx}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden p-4"
+                  >
                     <Skeleton height={180} className="mb-4 rounded-lg" />
                     <Skeleton width={`80%`} height={20} className="mb-2" />
                     <Skeleton width={`60%`} height={18} className="mb-3" />
@@ -268,7 +275,8 @@ const ProductShowcase = () => {
                         : `bg-gradient-to-br ${
                             gradients[idx % gradients.length]
                           }`
-                    }`}>
+                    }`}
+                  >
                     {/* Offer Badge */}
                     {isOffer && (
                       <motion.div
@@ -279,7 +287,8 @@ const ProductShowcase = () => {
                           type: "spring",
                           stiffness: 100,
                         }}
-                        className="absolute top-3 left-3 bg-red-500 text-white font-bold px-3 py-1 rounded-full shadow-lg text-xs z-20 animate-bounce">
+                        className="absolute top-3 left-3 bg-red-500 text-white font-bold px-3 py-1 rounded-full shadow-lg text-xs z-20 animate-bounce"
+                      >
                         {product.originCategory === "offers manual"
                           ? "🔥 Special Offer"
                           : product.originCategory === "offers automatic"
@@ -299,7 +308,8 @@ const ProductShowcase = () => {
                           stiffness: 120,
                         }}
                         className="absolute top-3 right-1 bg-white text-blue-900 font-bold px-3 py-1 rounded-full shadow-md z-20"
-                        style={{ fontSize: "1.1rem" }}>
+                        style={{ fontSize: "1.1rem" }}
+                      >
                         SALE{" "}
                         {Math.round(
                           ((product.maxPrice - product.price) /
@@ -326,7 +336,8 @@ const ProductShowcase = () => {
                             backgroundColor: "#2563eb",
                             color: "#fff",
                           }}
-                          className="mb-4 px-4 py-2 text-sm font-medium text-white bg-blue-600/80 rounded-full backdrop-blur-sm border border-white/30 transition-all">
+                          className="mb-4 px-4 py-2 text-sm font-medium text-white bg-blue-600/80 rounded-full backdrop-blur-sm border border-white/30 transition-all"
+                        >
                           View Details
                         </motion.button>
                       </div>
@@ -337,13 +348,15 @@ const ProductShowcase = () => {
                         <h4
                           className={`text-lg font-semibold text-gray-800 mb-1 ${
                             !isExpanded ? "truncate" : ""
-                          }`}>
+                          }`}
+                        >
                           {product.name}
                         </h4>
                         <button
                           onClick={toggleExpand}
                           className="ml-2 text-gray-600 hover:text-blue-700 transition"
-                          title={isExpanded ? "Collapse" : "Expand"}>
+                          title={isExpanded ? "Collapse" : "Expand"}
+                        >
                           {isExpanded ? "▲" : "▼"}
                         </button>
                       </div>
@@ -351,7 +364,8 @@ const ProductShowcase = () => {
                       <p
                         className={`text-sm text-gray-600 mb-2 ${
                           !isExpanded ? "line-clamp-2" : ""
-                        }`}>
+                        }`}
+                      >
                         {product.description || "No description available."}
                       </p>
 
@@ -371,7 +385,8 @@ const ProductShowcase = () => {
                           {product.maxPrice && (
                             <span
                               className="text-lg line-through font-bold text-gray-600"
-                              style={{ fontSize: "1.4rem" }}>
+                              style={{ fontSize: "1.4rem" }}
+                            >
                               £{product.maxPrice}
                             </span>
                           )}
@@ -389,7 +404,8 @@ const ProductShowcase = () => {
                             }
                             transition={
                               isOffer ? { repeat: Infinity, duration: 1.5 } : {}
-                            }>
+                            }
+                          >
                             £{product.price}
                           </motion.span>
                         </div>
@@ -398,13 +414,15 @@ const ProductShowcase = () => {
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => handleDecrease(productId)}
-                              className="px-2 py-1 bg-red-500 text-white rounded">
+                              className="px-2 py-1 bg-red-500 text-white rounded"
+                            >
                               -
                             </button>
                             <span>{inCart.count}</span>
                             <button
                               onClick={() => handleIncrease(productId)}
-                              className="px-2 py-1 bg-green-500 text-white rounded">
+                              className="px-2 py-1 bg-green-500 text-white rounded"
+                            >
                               +
                             </button>
                           </div>
@@ -416,7 +434,8 @@ const ProductShowcase = () => {
                               backgroundColor: "#16a34a",
                               color: "#fff",
                             }}
-                            className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all">
+                            className="px-4 py-2 text-sm font-medium border border-green-500 text-green-600 rounded-full hover:bg-green-600 hover:text-white transition-all"
+                          >
                             Add to Cart
                           </motion.button>
                         )}
@@ -441,11 +460,13 @@ const ProductShowcase = () => {
             <motion.button
               whileHover={{
                 scale: 1.1,
-                boxShadow: "0px 0px 15px rgba(59,130,246,0.6)",
+                boxShadow: "0px 0px 15px rgba(159, 59, 246, 0.6)",
               }}
+              style={{ border: "none" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAll((prev) => !prev)}
-              className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 transition-all">
+              className="px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-gray-700 transition-all"
+            >
               {showAll ? "Show Less" : "Show More"}
             </motion.button>
           </div>

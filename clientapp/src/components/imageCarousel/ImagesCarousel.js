@@ -90,7 +90,7 @@ function ImagesCarousel() {
 
   return (
     <div className={styles.sliderContainer}>
-      <h2 className={styles.heading}>
+      <h2 className={styles.heading}  style={{ color: "white" }}>
         <Sparkles className={styles.sparkleIcon} /> What Our Gallery Shows
       </h2>
 

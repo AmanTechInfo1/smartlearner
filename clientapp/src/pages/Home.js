@@ -87,13 +87,13 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
-      {/* <NewYearBanner />
+      {/* <ChristmasBanner />
       <VelentineDayBanner />
       <SpringBanner />          
       <AprilBanner />
       <RabbitBanner /> */}
       <section>
-        <ChristmasBanner />
+        <NewYearBanner />
       </section>
 
       <div className={styles.homepageContainerDiv}>
@@ -101,9 +101,10 @@ export default function Home() {
         <Element name="our-courses-section">
           <section
             style={{
-              background: "linear-gradient(180deg, #f53741ff, #ca0707ff)",
+              background: "linear-gradient(180deg, #4818e6ff, #1317e3ff)",
             }}
-            className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900">
+            className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
+          >
             {/* Animated Background Orbs */}
             <motion.div className="absolute -top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
             <motion.div className="absolute bottom-0 right-10 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gray-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
@@ -112,8 +113,10 @@ export default function Home() {
             <motion.h2
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              style={{ color: "white" }}
               transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-md text-center z-10">
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-md text-center z-10"
+            >
               Ready to Elevate Your Skills?
             </motion.h2>
 
@@ -122,7 +125,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl text-black-700 mb-10 text-center max-w-2xl z-10">
+              style={{ color: "white" }}
+              className="text-base sm:text-lg md:text-xl text-white-700 mb-10 text-center max-w-2xl z-10"
+            >
               Choose your path below — whether you’re booking personalized
               lessons or a PDI session, we’ve got you covered.
             </motion.p>
@@ -132,11 +137,13 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center items-center z-10">
+              className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center items-center z-10"
+            >
               {/* Book Theory */}
               <motion.div
                 whileHover={{ scale: 1.05, rotate: -1 }}
-                whileTap={{ scale: 0.95 }}>
+                whileTap={{ scale: 0.95 }}
+              >
                 <button
                   style={{
                     flexDirection: "row",
@@ -149,7 +156,8 @@ export default function Home() {
             activeSection === "theory"
               ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
               : "bg-white text-black hover:bg-yellow-100"
-          }`}>
+          }`}
+                >
                   <BookOpenText className="w-6 h-6" />
                   Book Theory
                 </button>
@@ -158,7 +166,8 @@ export default function Home() {
               {/* Book Lessons */}
               <motion.div
                 whileHover={{ scale: 1.05, rotate: 1 }}
-                whileTap={{ scale: 0.95 }}>
+                whileTap={{ scale: 0.95 }}
+              >
                 <button
                   style={{
                     flexDirection: "row",
@@ -171,7 +180,8 @@ export default function Home() {
             activeSection === "lessons"
               ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
               : "bg-white text-black hover:bg-yellow-100"
-          }`}>
+          }`}
+                >
                   <Calendar className="w-6 h-6" />
                   Book Lessons
                 </button>
@@ -180,7 +190,8 @@ export default function Home() {
               {/* Become Instructor */}
               <motion.div
                 whileHover={{ scale: 1.05, rotate: -1 }}
-                whileTap={{ scale: 0.95 }}>
+                whileTap={{ scale: 0.95 }}
+              >
                 <button
                   style={{
                     flexDirection: "row",
@@ -193,7 +204,8 @@ export default function Home() {
             activeSection === "pdi"
               ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
               : "bg-white text-black hover:bg-yellow-100"
-          }`}>
+          }`}
+                >
                   <Sparkles className="w-6 h-6" />
                   Become an Instructor
                 </button>
@@ -213,7 +225,8 @@ export default function Home() {
                 animate="visible"
                 exit="exit"
                 transition={{ duration: 0.6 }}
-                className="w-full">
+                className="w-full"
+              >
                 <ProductShowcase />
               </motion.section>
             )}
@@ -227,7 +240,8 @@ export default function Home() {
                 animate="visible"
                 exit="exit"
                 transition={{ duration: 0.6 }}
-                className="w-full">
+                className="w-full"
+              >
                 <SubscriptionPdi />
               </motion.section>
             )}
@@ -241,7 +255,8 @@ export default function Home() {
                 animate="visible"
                 exit="exit"
                 transition={{ duration: 0.6 }}
-                className="w-full">
+                className="w-full"
+              >
                 <TheoryProductShowCase />
               </motion.section>
             )}
@@ -268,7 +283,8 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              whileHover={{ scale: 1.02 }}>
+              whileHover={{ scale: 1.02 }}
+            >
               See Why People Choose{" "}
               <span className={styles.highlight12345}>SmartLearner</span> to
               <span className={styles.pass12345}> PASS </span> Their Driving

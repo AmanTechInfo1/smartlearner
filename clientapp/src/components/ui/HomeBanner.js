@@ -141,7 +141,8 @@ export default function HomeBanner() {
       <div className={styles.slider}>
         <div
           className={styles.mobileBackground}
-          style={{ backgroundImage: `url(${slides[current].image})` }}></div>
+          //  style={{ backgroundImage: `url(${slides[current].image})` }}
+         ></div>
         <AnimatePresence mode="wait">
           <motion.div
             key={slides[current].id}
@@ -176,7 +177,7 @@ export default function HomeBanner() {
             </div>
 
             <div className={styles.imageSection}>
-              <motion.img
+              {/* <motion.img
                 key={slides[current].image}
                 src={slides[current].image}
                 alt="Driving Adventure"
@@ -184,7 +185,7 @@ export default function HomeBanner() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6 }}
-              />
+              /> */}
             </div>
           </motion.div>
         </AnimatePresence>

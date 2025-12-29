@@ -12,18 +12,18 @@ export default function Bedworth() {
       {" "}
       <Helmet>
         <meta charSet="utf-8" />
-        <title>driving school in bedworth | driving lessons in bedworth</title>
+        <title>Driving Lessons in Bedworth | Manual & Automatic Driving Courses</title>
         <meta
           name="description"
-          content="SmartLearner Driving School Bedworth, established in 2004, offers expert driving lessons in the Bedworth with advanced technology. "
+          content="Looking for driving lessons in Bedworth? Learn with local instructors offering manual, automatic, intensive courses and theory support. Book today."
         />
         <meta
           property="og:title"
-          content="driving school in bedworth | driving lessons in bedworth"
+          content="Driving Lessons in Bedworth | Manual & Automatic Driving Courses"
         />
         <meta
           property="og:description"
-          content="SmartLearner Driving School Bedworth, established in 2004, offers expert driving lessons in the Bedworth with advanced technology. "
+          content="Looking for driving lessons in Bedworth? Learn with local instructors offering manual, automatic, intensive courses and theory support. Book today."
         />
         <link rel="canonical" href="https://smartlearner.com/bedworth" />
       </Helmet>

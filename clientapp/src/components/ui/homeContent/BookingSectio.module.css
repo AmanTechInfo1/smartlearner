@@ -379,21 +379,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: radial-gradient(
-    circle,
-    rgb(244, 252, 255) 0%,
-    rgb(11, 137, 146) 100%
-  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  background: url(../../../assets/newyearbg.png);
   position: relative;
-  height: 860px;
+  height: 800px;
   overflow: hidden;
   width: 100%;
 }
 
 .slide {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   max-width: 1640px;
@@ -404,6 +402,7 @@
 .textSection {
   display: flex;
   flex-direction: column;
+
   gap: 1.2rem;
   width: 50%;
   z-index: 2;
@@ -411,7 +410,7 @@
 
 .subtitle {
   font-size: 1.4rem;
-  color: #2d2f90;
+  color: #d3d3d3;
   font-weight: 700;
   text-align: left;
 }
@@ -420,14 +419,14 @@
   font-size: 2.8rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #000;
+  color: #a4ffff;
   text-align: left;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .description {
   font-size: 1.1rem;
-  color: #444;
+  color: #ebebeb;
   line-height: 1.6;
 }
 
@@ -437,10 +436,10 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 2rem;
-  border: 2px solid #000;
+  border: 2px solid #ffffff;
   border-radius: 50px;
   background: transparent;
-  color: #000;
+  color: #ffffff;
   max-width: 200px;
   width: 100%;
   font-size: 1rem;
@@ -456,7 +455,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50px;
-  background: linear-gradient(90deg, #ff4d4d, #ff914d, #ff4d4d);
+  background: linear-gradient(90deg, #009ea9, #00d3e6, #00a9b5);
   z-index: -1;
   transition: opacity 0.4s ease;
   opacity: 0;
