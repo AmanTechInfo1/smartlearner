@@ -54,7 +54,8 @@ const Cart = () => {
         </div>
         <button
           className={styles.basketbtnProceed2}
-          onClick={() => navigate(-1)}>
+          onClick={() => navigate(-1)}
+        >
           Continue Shopping
         </button>
         <div className={styles.cartContentContainer}>
@@ -79,13 +80,15 @@ const Cart = () => {
                       <td id={styles.questityCartBtn}>
                         <button
                           className={styles.quantityButton}
-                          onClick={() => handleDecrease(item.id, 1)}>
+                          onClick={() => handleDecrease(item.id, 1)}
+                        >
                           -
                         </button>
                         <span id={styles.countssss}>{item.count}</span>
                         <button
                           className={styles.quantityButton}
-                          onClick={() => handleIncrease(item.id, 1)}>
+                          onClick={() => handleIncrease(item.id, 1)}
+                        >
                           +
                         </button>
                       </td>
@@ -95,6 +98,39 @@ const Cart = () => {
                 </tbody>
               </table>
             )}
+            <ol
+              type="number"
+              style={{
+                color: "white",
+                paddingLeft: "0rem",
+                maxWidth: "800px",
+                margin: "0px auto",
+              }}
+            >
+              <li>
+                The Beginners Package is non-refundable and only instructor
+                transferable.
+              </li>
+              <li>
+                All lessons require 24 hours' notice to be cancelled or
+                rearranged at any time; failing to do this will result in you
+                being liable to pay for 100% of the lesson fee.
+              </li>
+              <li>
+                No reimbursement or extension of lesson use is applicable if six
+                months have elapsed since your last lesson.
+              </li>
+              <li>
+                We have the right to refuse the use of any vehicle for lessons
+                or test dates at any time.
+              </li>
+              <li>
+                For the full Terms & Conditions, please{" "}
+                <a href="https://smartlearner.com/term-and-condition">
+                  Click here
+                </a>{" "}
+              </li>
+            </ol>
           </div>
           <div className={styles.cartBtnsContainer}>
             <div>
@@ -128,7 +164,8 @@ const Cart = () => {
               <button
                 className={styles.basketbtnProceed}
                 disabled={myCart.length === 0}
-                onClick={() => navigate("/checkout")}>
+                onClick={() => navigate("/checkout")}
+              >
                 {userDetails.username
                   ? "PROCEED TO CHECKOUT"
                   : "GUEST CHECKOUT"}
@@ -142,7 +179,8 @@ const Cart = () => {
               {!userDetails.username && (
                 <p
                   className={styles.basketbtnProceed23}
-                  onClick={() => navigate("/register")}>
+                  onClick={() => navigate("/register")}
+                >
                   LOGIN / REGISTER
                 </p>
               )}
