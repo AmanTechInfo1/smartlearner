@@ -144,12 +144,12 @@ export default function FinalCheckout(props) {
               </div>
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span> Booking fee</span>
-                <span>£{serviceCharge}</span>
+                <span>£{serviceCharge.toFixed(2)}</span>
               </div>
 
               <div className="d-flex justify-content-between py-2 border-bottom border-danger text-white">
                 <span>Total</span>
-                <span>£{total}</span>
+                <span>£{total.toFixed(2)}</span>
               </div>
             </div>
             {isError && (

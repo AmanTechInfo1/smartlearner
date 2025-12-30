@@ -108,7 +108,7 @@ const DrivingLessonsCarousel = () => {
           {lessons.map((lesson, index) => (
             <div
               className={`carousel-card12345 ${
-                index % 2 === 0 ? "card-up12345" : "card-down12345"
+                index % 1 === 0 ? "card-up12345" : "card-down12345"
               }`}
               key={index}>
               <div className="card-content12345">

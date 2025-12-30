@@ -91,7 +91,7 @@ function ImagesCarousel() {
   return (
     <div className={styles.sliderContainer}>
       <h2 className={styles.heading}  style={{ color: "white" }}>
-        <Sparkles className={styles.sparkleIcon} /> What Our Gallery Shows
+        <Sparkles className={styles.sparkleIcon} /> HALL OF FAME
       </h2>
 
       <div className={styles.sliderWrapper}>

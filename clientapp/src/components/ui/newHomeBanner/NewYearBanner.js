@@ -17,40 +17,13 @@ export default function NewYearBanner() {
         <p>DRIVING SCHOOL</p>
       </div>
 
-      <motion.div
-        animate={{
-          x: [0, 15, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 3,
-          ease: "easeInOut",
-        }}
-        id={style.tokenImg}>
+      <motion.div id={style.tokenImg}>
         <img src={tokanImg1} className={style.tokenImg} alt="tokanImg" />
       </motion.div>
-      <motion.div
-        animate={{
-          x: [0, 15, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 3,
-          ease: "easeInOut",
-        }}
-        id={style.tokenImg2}>
+      <motion.div id={style.tokenImg2}>
         <img src={tokanImg2} className={style.tokenImg} alt="tokanImg" />
       </motion.div>
-      <motion.div
-        animate={{
-          x: [0, 15, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 3,
-          ease: "easeInOut",
-        }}
-        id={style.tokenImg3}>
+      <motion.div id={style.tokenImg3}>
         <img src={tokanImg3} className={style.tokenImg} alt="tokanImg" />
       </motion.div>
 

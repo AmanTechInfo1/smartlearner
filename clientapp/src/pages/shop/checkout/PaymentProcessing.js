@@ -176,7 +176,7 @@ export default function PaymentProcessing() {
     try {
       const { revolutPay } = await RevolutCheckout.payments({
         locale: "en",
-        
+
         publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf",
       });
 
@@ -277,13 +277,15 @@ export default function PaymentProcessing() {
         <div>
           <div className="payment-container">
             <h1>
-              Amount to be paid: <span>£{carting.total}</span>
+              Amount to be paid:{" "}
+              <span>£{Number(carting.total).toFixed(2)}</span>
             </h1>
             <h3>
               Sub Total: <span>£{carting.subtotal}</span>
             </h3>
             <h3>
-              Service Charge: <span>£{carting.serviceCharge}</span>
+              Service Charge:{" "}
+              <span>£{Number(carting.serviceCharge).toFixed(2)}</span>
             </h3>
 
             {isPaymentCreated && !loading && (

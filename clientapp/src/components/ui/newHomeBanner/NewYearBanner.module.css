@@ -34,16 +34,16 @@
 }
 #tokenImg2 {
   position: absolute;
-  right: 250px;
+  right: 275px;
   top: 10px;
 }
 #tokenImg3 {
   position: absolute;
-  right: 400px;
+  right: 450px;
   top: 10px;
 }
 .tokenImg {
-  max-width: 140px;
+  max-width: 160px;
   width: 100%;
 }
 @media (max-width: 1300px) {
