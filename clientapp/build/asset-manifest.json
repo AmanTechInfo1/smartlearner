@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.50744740.css",
-    "main.js": "/static/js/main.86f20dd6.js",
+    "main.css": "/static/css/main.3e4e90b4.css",
+    "main.js": "/static/js/main.ad8bbd9a.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
@@ -103,6 +103,7 @@
     "static/media/zebraCrossing.png": "/static/media/zebraCrossing.69520c96d664c38da7db.png",
     "static/media/cyclistsImg.png": "/static/media/cyclistsImg.56735108317b38ad6ff7.png",
     "static/media/tabbg.png": "/static/media/tabbg.ff490c4c53e97d826664.png",
+    "static/media/token2.png": "/static/media/token2.758a28f4be6ff5a76f9b.png",
     "static/media/IMG_3341.JPG": "/static/media/IMG_3341.38574755cc4ff5305f25.JPG",
     "static/media/diversLargeVehicle.png": "/static/media/diversLargeVehicle.750f4504d5ffd7d750aa.png",
     "static/media/roadSurface.png": "/static/media/roadSurface.3e60f6554d234feeb9dc.png",
@@ -123,9 +124,11 @@
     "static/media/pedestrian.png": "/static/media/pedestrian.fcc2dbfe5ff5808c88c4.png",
     "static/media/cimg20.jpg": "/static/media/cimg20.9031b5f4018a243af86b.jpg",
     "static/media/tunnelVissonImg.png": "/static/media/tunnelVissonImg.73329a28762e4b9c13b3.png",
+    "static/media/token1.png": "/static/media/token1.c7c70e27c6a62b44ee17.png",
     "static/media/ecodriving.png": "/static/media/ecodriving.bc832fd22aa5637d805b.png",
     "static/media/laptopbanner.png": "/static/media/laptopbanner.b7de42fd03dbbecc9ff4.png",
     "static/media/electric-Car.png": "/static/media/electric-Car.2555e0d8ed634bfe9893.png",
+    "static/media/token3.png": "/static/media/token3.90191b6d78c9ad23910f.png",
     "static/media/Cim1.jpg": "/static/media/Cim1.64b55c427036630c7fdf.jpg",
     "static/media/cimg2.jpg": "/static/media/cimg2.1f244a7a23c97dc65446.jpg",
     "static/media/otherTypesVehicleBanner.jpg": "/static/media/otherTypesVehicleBanner.368c740271fde954979f.jpg",
@@ -136,7 +139,6 @@
     "static/media/manualBanner.webp": "/static/media/manualBanner.89134f082b6e81c69789.webp",
     "static/media/temptation.png": "/static/media/temptation.064ad4d26c58bc4acc8c.png",
     "static/media/ElectronicParkingImg.png": "/static/media/ElectronicParkingImg.a22a5bbb2c8d3ebc2d7e.png",
-    "static/media/token3.png": "/static/media/token3.1abe6b3de31a15137a1f.png",
     "static/media/cimg12.jpg": "/static/media/cimg12.a82a5ce045178f28b0ca.jpg",
     "static/media/cimg14.jpg": "/static/media/cimg14.8d34487509f800a206f2.jpg",
     "static/media/heartImg2.png": "/static/media/heartImg2.7ede313275ffa18ecd2d.png",
@@ -169,12 +171,10 @@
     "static/media/vehicleclearence.png": "/static/media/vehicleclearence.8e9c7dcc2641968bab25.png",
     "static/media/csrbannerssss.jpg": "/static/media/csrbannerssss.577eee979f982e0c6886.jpg",
     "static/media/cimg17.jpg": "/static/media/cimg17.917a38052f0baa2935f0.jpg",
-    "static/media/token1.png": "/static/media/token1.d8c0cf18d8fc640432ae.png",
     "static/media/cimg6.jpg": "/static/media/cimg6.02f171053e3ce61c77cc.jpg",
     "static/media/tmdimh.png": "/static/media/tmdimh.ab75b1c6e0a0e1b3a068.png",
     "static/media/cimg3.jpg": "/static/media/cimg3.34592db37fa076e76f76.jpg",
     "static/media/flower-img.png": "/static/media/flower-img.016d209a8f7d7e801701.png",
-    "static/media/token2.png": "/static/media/token2.c49a4b11337f83fcc857.png",
     "static/media/legulstuffbanner.jpg": "/static/media/legulstuffbanner.3198d0aec7ee2a5dcd0b.jpg",
     "static/media/far-near-rear-VissionImg.png": "/static/media/far-near-rear-VissionImg.bb56a5793a7693f4d608.png",
     "static/media/trams.jpg": "/static/media/trams.dbeaf9c06f0633b1c272.jpg",
@@ -431,12 +431,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.50744740.css.map": "/static/css/main.50744740.css.map",
-    "main.86f20dd6.js.map": "/static/js/main.86f20dd6.js.map",
+    "main.3e4e90b4.css.map": "/static/css/main.3e4e90b4.css.map",
+    "main.ad8bbd9a.js.map": "/static/js/main.ad8bbd9a.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50744740.css",
-    "static/js/main.86f20dd6.js"
+    "static/css/main.3e4e90b4.css",
+    "static/js/main.ad8bbd9a.js"
   ]
 }
