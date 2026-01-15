@@ -1,398 +1,304 @@
-import React from "react";
-import styles from "./css/OtherTypes.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import { IoMdArrowDropright } from "react-icons/io";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
+import {
+  Truck,
+  Bus,
+  TramFront,
+  Wind,
+  Caravan,
+  ShieldCheck,
+} from "lucide-react";
+
+import alertnessBanner from "../../../assets/alertbg.png";
+
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+
 import largeVehicleJunction from "../../../assets/images/truck-oncoming-trasffic.jpg";
 import largeVehicle from "../../../assets/images/behindLargeVehicle.jpg";
 import trams from "../../../assets/images/trams.jpg";
 import busses from "../../../assets/images/London-bus.jpg";
-import { FaTimesCircle, FaCheckCircle } from "react-icons/fa";
 import towingcars from "../../../assets/images/tick-green.jpg";
 import sideWinds from "../../../assets/images/side-Winds.jpeg";
-import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function OtherVehicle() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = " Topic: Other Types"; // First part before "Driving"
-    const secondPart = "Of Vehicles";
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{
+            backgroundImage: `url(${alertnessBanner})`,
+          }}
+        />
 
-              <div className={styles.alertBtn}>
-                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>
-                    <MdKeyboardDoubleArrowLeft /> Back
-                  </button>
-                </Link>
-                <Link
-                  to="/takequizCatName/Other-Types-of-Vehicles"
-                  style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Start Quiz</button>
-                </Link>
-                <Link to="/vehicle-handling" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>
-                    Next <MdKeyboardDoubleArrowRight />
-                  </button>
-                </Link>
-              </div>
-              {/* ////////////////////////////////////////////////////////////////////////////////// */}
-            </div>
-          </div>
-        </section>
+        {/* Dark Overlay (controls opacity) */}
+        <div className="absolute inset-0 bg-black/50" />
 
-        {/* /////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h1>Large Vehicles at Junctions/Roundabouts</h1>
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl text-left">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
+                Other <span className="text-red-500">Type</span> of vehicle
+              </h1>
 
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={largeVehicleJunction} alt="largeVehicleJunction" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    The 7th topic is Other Types of Vehicles. Large vehicles
-                    often need to take unorthodox paths at junctions/roundabouts
-                    because of their size.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    For example, it’s not uncommon to see a large truck indicate
-                    left but position to the right. They do this to make it
-                    easier for them to turn. If you see a truck turning in front
-                    of you you should always leave plenty of room to allow them
-                    to turn safely.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Large vehicles can also hide overtaking traffic so always be
-                    extra cautious when pulling out at junctions when large
-                    vehicles are oncoming. Remember larger vehicles mean larger
-                    hazards!
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-        {/* //////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.hazardTestWorkListSection}
-          id={styles.hazardTestWorkListSection}>
-          <h3>
-            When behind <span>Large vehicles</span>
-          </h3>
-
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex1}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={largeVehicle} alt="largeVehicle" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    You must stay well behind a large vehicle as because of the
-                    size they often obstruct your view of the road. It’s
-                    advisable to leave extra room between your vehicle and
-                    theirs as it allows you to see more clearly what is up
-                    ahead.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Please remember that before you overtake a larger vehicle
-                    you need a clear view. This is because of their length they
-                    are longer they take more time to pass.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Beware of surface spray coming from large vehicles when
-                    driving behind them on a wet road. If it’s affecting your
-                    view drop back.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-        {/* ////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            Public <span>Transport</span>
-          </h2>
-
-          <section className={styles.AdiParttwoDisplayFlex}>
-            <div
-              className={styles.hazardTestWorkListDiv}
-              id={styles.hazardTestWorkListDiv12}>
-              <ul type="none">
-                <div className={styles.hazardTestWorkListDiv}>
-                  <img src={trams} alt="trams" />
-                </div>
-                <h4>Trams</h4>
-                <section id={styles.resLists1}>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      Are eco friendly because they are powered by electricity.
-                    </p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>
-                      Their rails pose threats to cyclists as their wheels could
-                      get stuck.
-                    </p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>Cannot steer to avoid obstacles.</p>
-                  </li>
-                </section>
-              </ul>
-            </div>
-            <div
-              className={styles.hazardTestWorkListDiv}
-              id={styles.hazardTestWorkListDiv123}>
-              <ul type="none">
-                <div className={styles.hazardTestWorkListDiv}>
-                  <img src={busses} alt="busses" />
-                </div>
-                <h4>
-                  <span>Buses</span>
-                </h4>
-                <section id={styles.resLists2}>
-                  <li>
-                    <FaCheckCircle id="listrightIcon" />{" "}
-                    <p>
-                      If safe, you should should give way to buses looking to
-                      move off.
-                    </p>
-                  </li>
-                  <li>
-                    <FaTimesCircle id="listrightIcon" />{" "}
-                    <p>
-                      When overtaking a stopped bus be aware of pedestrians
-                      leaving the bus, as they may potentially try crossing
-                      infront of the bus.
-                    </p>
-                  </li>
-                </section>
-              </ul>
-            </div>
-          </section>
-        </section>
-
-        {/* ////////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.hazardTestWorkListSection}
-          id={styles.hazardTestWorkListSection}>
-          <h3 className={styles.hazardTestH2}>
-            Towing a <span>Caravan</span>
-          </h3>
-
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex1}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={towingcars} alt="towingcars" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    When towing a caravan it is advisable to use an
-                    extended-side arm mirror. This is because towing a large
-                    trailer or caravan can greatly reduce your view of the road
-                    behind. By using an extended-arm side mirror so that you can
-                    see clearly behind and down both sides of the caravan, or
-                    trailer.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-        {/* ////////////////////////////////////////////////////// */}
-        <section
-          className={styles.hazardTestWorkListSection}
-          id={styles.hazardTestWorkListSection}>
-          <h3>Sidewinds</h3>
-
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex1}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={sideWinds} alt="sideWinds" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    High-sided vehicles are most affected by windy weather, but
-                    strong gusts can also blow a car, cyclist, motorcyclist or
-                    horse rider off course. This can happen on open stretches of
-                    road exposed to strong crosswinds, or when passing bridges
-                    or gaps in hedges.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    In very windy weather your vehicle may be affected by
-                    turbulence created by large vehicles. Motorcyclists are
-                    particularly affected, so keep well back from them when they
-                    are overtaking a high-sided vehicle.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-        {/* /////////////////////////////////////////////////////////// */}
-
-        {/* ////////////////////////////////////////////// */}
-
-        <section className={styles.mockTestContainerSection}>
-          <div className={styles.mockTestHeadingContainerDIv}>
-            <h2 style={{ textAlign: "center", color: "red" }}>Test Yourself</h2>
-          </div>
-          <div className={styles.quizStartDiv}>
-            <section className={styles.startQuizSection}>
-              <h2>Start Quiz</h2>
-              <h3>All Questions</h3>
-              <p>
-                Click the start quiz button to start the quiz and See your
-                result
+              <p className="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-xl text-slate-200 leading-relaxed">
+                Understanding how different vehicles behave on the road helps
+                you anticipate hazards, make better decisions, and drive safely.
               </p>
-              <Link to="/takequizCatName/Other-Types-of-Vehicles">
-                {" "}
-                <button>Start Quiz</button>
+
+              <Link to="/Contact-Us">
+                <button
+                  className="mt-6 sm:mt-8 px-6 py-2.5 sm:px-7 sm:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-sm sm:text-base font-semibold text-white shadow-lg"
+                  style={{ border: "none" }}
+                >
+                  Contact Us
+                </button>
               </Link>
-            </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        {/* ================= LARGE VEHICLES AT JUNCTIONS ================= */}
+        <section className="py-12 sm:py-16 bg-slate-50 fade-up">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-2 items-center">
+            <img
+              src={largeVehicleJunction}
+              alt="Large vehicle junction"
+              className="w-full aspect-[16/10] object-cover rounded-2xl shadow-xl"
+            />
+
+            <div>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold flex gap-2 items-center">
+                <Truck className="text-red-600" />
+                Large Vehicles at
+                <span className="text-red-600">Junctions/Roundabouts</span>
+              </h2>
+
+              <ul
+                className="mt-4 space-y-3 text-sm sm:text-base text-slate-700"
+                style={{ paddingLeft: "0px" }}
+              >
+                <li>
+                  The 7th topic is Other Types of Vehicles. Large vehicles often
+                  need to take unorthodox paths at junctions/roundabouts because
+                  of their size.
+                </li>
+                <li>
+                  For example, it’s not uncommon to see a large truck indicate
+                  left but position to the right. They do this to make it easier
+                  for them to turn. If you see a truck turning in front of you
+                  you should always leave plenty of room to allow them to turn
+                  safely.
+                </li>
+                <li>
+                  Large vehicles can also hide overtaking traffic so always be
+                  extra cautious when pulling out at junctions when large
+                  vehicles are oncoming. Remember larger vehicles mean larger
+                  hazards!
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
-        {/* ////////////////// */}
-      </div>
-    </div>
+
+        {/* ================= BEHIND LARGE VEHICLES ================= */}
+        <section className="py-12 sm:py-16 bg-white fade-up">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-2 items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+                When Behind <span className="text-red-600">Large Vehicles</span>
+              </h2>
+
+              <ul
+                className="mt-4 space-y-3 text-sm sm:text-base text-slate-700"
+                style={{ paddingLeft: "0px" }}
+              >
+                <li>
+                  You must stay well behind a large vehicle as because of the
+                  size they often obstruct your view of the road. It’s advisable
+                  to leave extra room between your vehicle and theirs as it
+                  allows you to see more clearly what is up ahead.
+                </li>
+                <li>
+                  Please remember that before you overtake a larger vehicle you
+                  need a clear view. This is because of their length they are
+                  longer they take more time to pass.
+                </li>
+                <li>
+                  Beware of surface spray coming from large vehicles when
+                  driving behind them on a wet road. If it’s affecting your view
+                  drop back.
+                </li>
+              </ul>
+            </div>
+
+            <img
+              src={largeVehicle}
+              alt="Driving behind a large vehicle"
+              className="order-1 lg:order-2 w-full aspect-[16/10] object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+        </section>
+
+        {/* ================= PUBLIC TRANSPORT ================= */}
+        <section className="py-12 sm:py-16 fade-up bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-2">
+              <Bus className="text-red-600" /> Public Transport
+            </h2>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              {[
+                {
+                  img: trams,
+                  title: "Trams",
+                  icon: <TramFront />,
+                  pros: ["Eco-friendly"],
+                  cons: ["Cannot steer", "Dangerous rails"],
+                },
+                {
+                  img: busses,
+                  title: "Buses",
+                  icon: <Bus />,
+                  pros: ["Give way when safe"],
+                  cons: ["Watch for pedestrians"],
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-white p-6 rounded-2xl shadow-lg">
+                  <img
+                    src={item.img}
+                    className="w-full h-44 object-cover rounded-xl"
+                    alt=""
+                  />
+                  <h3 className="mt-4 font-semibold flex items-center gap-2">
+                    {item.icon} {item.title}
+                  </h3>
+                  <ul className="mt-3 space-y-2 text-sm" style={{paddingLeft:"0px"}}>
+                    {item.pros.map((p, i) => (
+                      <li key={i} className="flex gap-2">
+                        <FaCheckCircle className="text-green-600 mt-1" /> {p}
+                      </li>
+                    ))}
+                    {item.cons.map((c, i) => (
+                      <li key={i} className="flex gap-2">
+                        <FaTimesCircle className="text-red-600 mt-1" /> {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= TOWING ================= */}
+        <section className="py-16 sm:py-20 bg-white fade-up">
+          <div className="container mx-auto px-4 sm:px-6 grid gap-10 lg:grid-cols-2 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center gap-2">
+                <Caravan className="text-red-600" /> Towing a Caravan
+              </h2>
+
+              <p className="mt-4 text-slate-700 text-sm sm:text-base">
+                When towing a caravan it is advisable to use an extended-side
+                arm mirror. This is because towing a large trailer or caravan
+                can greatly reduce your view of the road behind. By using an
+                extended-arm side mirror so that you can see clearly behind and
+                down both sides of the caravan, or trailer.
+              </p>
+            </div>
+
+            <img
+              src={towingcars}
+              alt="Towing a caravan"
+              className="w-full h-[260px] sm:h-[340px] object-cover rounded-3xl shadow-xl"
+            />
+          </div>
+        </section>
+
+        {/* ================= SIDE WINDS ================= */}
+        <section className="py-16 sm:py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-4 sm:px-6 grid gap-10 lg:grid-cols-2 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold flex items-center gap-2">
+                <Wind className="text-red-600" /> Side Winds
+              </h2>
+
+              <ul
+                className="mt-4 space-y-4 text-slate-700 text-sm sm:text-base"
+                style={{ paddingLeft: "0px" }}
+              >
+                <li>
+                  High-sided vehicles are most affected by windy weather, but
+                  strong gusts can also blow a car, cyclist, motorcyclist or
+                  horse rider off course. This can happen on open stretches of
+                  road exposed to strong crosswinds, or when passing bridges or
+                  gaps in hedges.
+                </li>
+                <li>
+                  In very windy weather your vehicle may be affected by
+                  turbulence created by large vehicles. Motorcyclists are
+                  particularly affected, so keep well back from them when they
+                  are overtaking a high-sided vehicle.
+                </li>
+              </ul>
+            </div>
+
+            <img
+              src={sideWinds}
+              alt="Side winds"
+              className="w-full h-[260px] sm:h-[340px] object-cover rounded-3xl shadow-xl"
+            />
+          </div>
+        </section>
+
+        {/* ================= QUIZ CTA ================= */}
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-red-50 to-white text-center">
+          <ShieldCheck className="w-12 h-12 sm:w-14 sm:h-14 text-red-600 mx-auto mb-4" />
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-3">
+            Test Yourself
+          </h2>
+          <p className="text-slate-600 mb-6 text-sm sm:text-base">
+            Start the quiz now and check your understanding of other types of
+            vehicles.
+          </p>
+
+          <Link to="/takequizCatName/Other-Types-of-Vehicles">
+            <button className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold text-lg shadow-lg">
+              Start Quiz
+            </button>
+          </Link>
+        </section>
+      </section>
+    </main>
   );
 }
