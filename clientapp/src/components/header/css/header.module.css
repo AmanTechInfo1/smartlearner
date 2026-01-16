@@ -53,18 +53,18 @@ nav ul li {
 /* //////////////////////////////////////////////// */
 nav ul li a {
   padding: 7px 15px;
-  border: 1px solid rgba(1, 43, 69, 0.642);
+  border: 1px solid rgba(219, 0, 84, 0.816);
   text-decoration: none;
   color: white;
 }
 
 nav ul li:hover {
-  color: rgb(148, 191, 255);
+  color: rgb(255, 148, 194);
 }
 
 nav ul li a:hover {
-  color: rgb(148, 191, 255);
-  border: 1px solid rgb(2, 69, 110);
+  color: rgb(255, 148, 194);
+  border: 1px solid rgb(214, 0, 104);
 }
 
 nav .menu {
@@ -83,7 +83,7 @@ nav .menu {
   left: 550px;
 
   display: none;
-  background-color: #00172ee8;
+  background-color: #63001ee8;
 
   max-width: 1200px;
   width: 100%;
@@ -131,7 +131,7 @@ nav .menu {
   align-items: center;
   justify-content: center;
   padding: 1rem 15px;
-  border: 1px solid rgba(1, 43, 69, 0.642);
+  border: 1px solid rgba(129, 0, 47, 0.642);
   transition: ease-in-out 0.5s;
 }
 
@@ -177,7 +177,7 @@ nav .menu {
     display: block;
   }
   .dropdownContent {
-    background-color: #00468c;
+    background-color: #8c0031;
   }
   nav .menu {
     display: flex;
@@ -193,7 +193,7 @@ nav .menu {
     flex-direction: column;
     width: 100%;
     gap: 20px;
-    background-color: rgb(3, 0, 32);
+    background-color: rgb(68, 0, 22);
   }
 
   nav ul.open {

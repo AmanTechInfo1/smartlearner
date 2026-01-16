@@ -1,13 +1,11 @@
-import React from "react";
-import styles from "./css/VehicleLoading.module.css";
-import Lplateimg from "../../../assets/images/L-Plate.jpg";
-import { IoMdArrowDropright } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+import styles from "./css/VehicleLoading.module.css";
+import Lplateimg from "../../../assets/images/L-Plate.jpg";
+import alertnessBanner from "../../../assets/alertbg.png";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoClips() {
   const videoURLs = [
@@ -22,198 +20,151 @@ export default function VideoClips() {
     "https://www.youtube.com/embed/QLFxPP9axq8",
   ];
 
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Topic: Video"; // First part before "Driving"
-    const secondPart = "clips";
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      {/* ================= FIXED BANNER ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{
+            backgroundImage: `url(${alertnessBanner})`,
+          }}
+        />
 
-              <div className={styles.alertBtn}>
-                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>
-                    <MdKeyboardDoubleArrowLeft /> Back
-                  </button>
-                </Link>
-              </div>
-              {/* ////////////////////////////////////////////////////////////////////////////////// */}
+        {/* Dark Overlay (controls opacity) */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl text-left">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
+                Topic: <span className="text-red-500">Video</span> clips
+              </h1>
+
+              <Link to="/Contact-Us">
+                <button
+                  className="mt-6 sm:mt-8 px-6 py-2.5 sm:px-7 sm:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-sm sm:text-base font-semibold text-white shadow-lg"
+                  style={{ border: "none" }}
+                >
+                  Contact Us
+                </button>
+              </Link>
             </div>
           </div>
-        </section>
-        {/* /////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            What are the <span>video clips?</span>{" "}
-          </h2>
-
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
+        </div>
+      </section>
+      <section className="bg-white">
+        {/* ================= WHAT ARE VIDEO CLIPS ================= */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
+                What are <span className="text-red-600">video clips?</span>
+              </h2>
+              <ul className="list-disc list-inside space-y-4 text-slate-700">
+                <li>
                   At the end of your theory test you will be shown a video clip,
                   you will then have 3 questions to answer based on these
                   videos.
-                </p>
-              </li>
-              <li>
-                <p>
+                </li>
+                <li>
                   You can play the video clip as many times as you would like
                   during the 3 questions.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section>
-        {/* //////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            What type of <span>questions can I get?</span>
-          </h2>
+                </li>
+              </ul>
+            </div>
 
-          <div className={styles.bgColorList33}>
-            <ul type="none">
+            <div className="grid grid-cols-1 gap-6">
+              {videoURLs.slice(0, 2).map((url, index) => (
+                <div
+                  className="aspect-video rounded-3xl overflow-hidden shadow-2xl"
+                  key={index}
+                >
+                  <iframe
+                    className="w-full h-full"
+                    src={url}
+                    title={`Video Clip ${index + 1}`}
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= TYPES OF QUESTIONS ================= */}
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
+              What type of{" "}
+              <span className="text-red-600">questions can I get?</span>
+            </h2>
+            <ul className="list-disc list-inside space-y-4 text-slate-700">
+              <li>Questions may vary depending on the video clip shown.</li>
               <li>
-                <p>Questions may vary depending on the video clip shown.</p>
+                For example, you may see a clip of a carvan swerving side to
+                side on a motorway, questions can be surrounding the hazard that
+                is happening, you may also get questions such as the speed limit
+                for the road.
               </li>
               <li>
-                <p>
-                  For example, you may see a clip of a carvan swerving side to
-                  side on a motorway, questions can be surrounding the hazard
-                  that is happening, you may also get questions such as the
-                  speed limit for the road.
-                </p>
-              </li>
-              <li>
-                <p>
-                  It is important to take note of every detail in the video,
-                  look out for road signs, road markings, weather condtions etc.
-                </p>
+                It is important to take note of every detail in the video, look
+                out for road signs, road markings, weather condtions etc.
               </li>
             </ul>
           </div>
         </section>
-        {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>Test Yourself</h2>
-        </section>
-        <div className={styles.hazardVideosGridContainer}>
-          <div id={styles.hazardVideosGridContainer}>
-            {videoURLs.map((url, index) => (
-              <div className={styles.hazardGridItem} key={index}>
-                <iframe
-                  width="300"
-                  height="200"
-                  src={url}
-                  allowFullScreen></iframe>
-              </div>
-            ))}
+
+        {/* ================= TEST YOURSELF ================= */}
+        <section className="py-20 bg-gradient-to-br from-red-50 to-white fade-up">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-10">
+              Test <span className="text-red-600">Yourself</span>
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {videoURLs.map((url, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:scale-[1.02] transition"
+                >
+                  <div className="relative aspect-video">
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={url}
+                      title={`Video Clip ${index + 1}`}
+                      frameBorder="0"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </main>
   );
 }

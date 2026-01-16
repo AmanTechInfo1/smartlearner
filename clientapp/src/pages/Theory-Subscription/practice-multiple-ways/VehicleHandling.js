@@ -1,384 +1,258 @@
-import React from "react";
-import styles from "./css/VehicleHandel.module.css";
-
-import { IoMdArrowDropright } from "react-icons/io";
-import handlngIconImg from "../../../assets/images/handling-icon-300x300.png";
-import { FaCheckCircle } from "react-icons/fa";
-import speedBreaker from "../../../assets/images/speedBreaker.jpeg";
-import { Link } from "react-router-dom";
-import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
+import { FaCheckCircle } from "react-icons/fa";
+import {
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+} from "react-icons/md";
+
+import handlngIconImg from "../../../assets/images/handling-icon-300x300.png";
+import speedBreaker from "../../../assets/images/speedBreaker.jpeg";
+import banner from "../../../assets/alertbg.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function VehicleHandling() {
   const textRef = useRef(null);
 
-  // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const firstPart = " Topic: Vehicle "; // First part before "Driving"
-    const secondPart = "Handling";
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
+    const text = "Vehicle Handling";
+    return text.split("").map((char, i) => (
+      <span key={i} className="inline-block">
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
   };
 
   useEffect(() => {
     const letters = textRef.current.querySelectorAll("span");
 
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+    gsap.fromTo(
+      letters,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        duration: 1,
+        ease: "power4.out",
+      }
+    );
 
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${banner})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-              <div className={styles.alertBtn}>
-                <Link to="/Theory-Portal" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>
-                    <MdKeyboardDoubleArrowLeft /> Back
-                  </button>
-                </Link>
-                <Link
-                  to="/takequizCatName/Vehicle-Handling"
-                  style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Start Quiz</button>
-                </Link>
-                <Link to="/motorway-rules" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>
-                    Next <MdKeyboardDoubleArrowRight />
-                  </button>
-                </Link>
-              </div>
-              {/* ////////////////////////////////////////////////////////////////////////////////// */}
-            </div>
-          </div>
-        </section>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1
+              ref={textRef}
+              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight"
+            >
+              {splitText()}
+            </h1>
 
-        {/* /////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            What is <span>Vehicle handling ?</span>
-          </h2>
-
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={handlngIconImg} alt="handlngIconImg" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    The 8th topic from the theory test is road conditions and
-                    vehicle handling. When you’re driving, there are various
-                    situations in which your ability to control your vehicle can
-                    be affected—from a change in weather conditions, to the time
-                    of day, to the surface of the road. You need to be able to
-                    identify these conditions quickly, in order to safely adjust
-                    your driving style accordingly.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-          <section className={styles.hazardTestWorkListDiv}>
-            <ul type="none">
-              <h1>
-                In this section, <span>you’ll learn how to maintain</span> Safe
-                Driving Standards By Learning:
-              </h1>
-            </ul>
-          </section>
-          <section className={styles.bgColorList2}>
-            <ul type="none">
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>How to keep control of your vehicle</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>
-                  About different weather conditions and how they affect your
-                  driving
-                </p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>About road surfaces and traffic-calming measures</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>How to drive at night safely</p>
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        {/* /////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2 className={styles.hazardTestH2}>
-            Controlling <span>Your Vehicle</span>
-          </h2>
-          <hr
-            style={{
-              opacity: "1",
-              border: "2px solid #09e9d6",
-              maxWidth: "700px",
-              width1: "100%",
-              margin: "1rem auto",
-            }}></hr>
-          <section className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  Learning how to have full control of your vehicle at all times
-                  is a fundamental part of learning to drive safely. Your
-                  control of the car is reduced by keeping the clutch down or in
-                  neutral for any length of time (otherwise known as
-                  ‘coasting’). This is dangerous when steering and braking,
-                  particularly if you’re traveling downhill, as your vehicle
-                  will speed up when there’s no engine braking.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Your vehicle’s engine is a perfect tool to help you control
-                  your speed: For example, if you select a lower gear when
-                  you’re driving down a steep hill, the engine will act as a
-                  brake. Doing this helps avoid your brakes overheating which
-                  can lead to them becoming less effective.
-                </p>
-              </li>
-              <li>
-                <p>
-                  It’s important to note that, when you’re driving up a steep
-                  hill, the engine has to work harder. You should change down to
-                  a lower gear as this will help prevent the engine from
-                  struggling as it delivers the power needed to climb the hill.
-                  If you take your foot off the accelerator to reduce speed,
-                  you’ll slow down sooner than usual. You must be aware of this
-                  and use sufficient power to ensure you don’t roll down the
-                  hill. On single-track roads, be aware of the limited space
-                  available. If you see a vehicle coming towards you, pull into
-                  (or opposite) a passing place. Always match your driving to
-                  the road and weather conditions.
-                </p>
-              </li>
-            </ul>
-          </section>
-        </section>
-
-        {/* ////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <section className={styles.hazardTestWorkListDiv}>
-            <ul type="none">
-              <h1>
-                Your stopping distance will be{" "}
-                <span>Affected by several factors, including:</span>
-              </h1>
-            </ul>
-          </section>
-          <section className={styles.bgColorList2}>
-            <ul type="none" style={{ textAlign: "center" }}>
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>How to keep control of your vehicle</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" /> <p>Your speed</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" />{" "}
-                <p>The conditions of your tyres</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" /> <p>The road surface</p>
-              </li>
-              <li>
-                <FaCheckCircle id="listrightIcon" /> <p>The weather</p>
-              </li>
-            </ul>
-          </section>
-        </section>
-        {/* /////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h1>
-            Driving in different <span>Weather Conditions</span>
-          </h1>
-          <section className={styles.theoryPortalYoutubeVideosSection}>
-            <div className={styles.theoryPortalYoutubeVideosDiv}>
-              <iframe
-                style={{
-                  borderRadius: "30px",
-                  boxShadow: "0 3px 10px rgba(255, 255, 255, 0.644)",
-                }}
-                width="100%"
-                height="500"
-                src="https://www.youtube.com/embed/3GEgB-xui0M"
-                title="Tyre Safety Month 2014 Aquaplaning animation - TyreSafe"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen></iframe>
-            </div>
-          </section>
-        </section>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.hazardTestWorkListSection}
-          id={styles.hazardTestWorkListSection}>
-          <h3>
-            Traffic <span>Calming Measures</span>
-          </h3>
-
-          <section
-            className={styles.AdiParttwoDisplayFlex}
-            id={styles.AdiParttwoDisplayFlex1}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={speedBreaker} alt="speedBreaker" />
-            </div>
-            <div className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    Traffic calming tends to be found in residential areas and
-                    is used to make the roads safer for vulnerable users by
-                    reducing speed. One of the most common measures is road
-                    humps (sometimes called speed humps) but chicanes, speed
-                    tables, and road narrowing are also used.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    You will be warned of traffic calming measures by road
-                    signs, but other systems such as rumble devices (raised
-                    markings across the road) may be used to warn you of a
-                    hazard ahead, such as a roundabout, which requires you to
-                    reduce your speed.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </section>
-        {/* ///////////////////////////////////////////////////////////// */}
-
-        <section className={styles.mockTestContainerSection}>
-          <div className={styles.mockTestHeadingContainerDIv}>
-            <h2 style={{ textAlign: "center", color: "red" }}>Test YourSelf</h2>
-          </div>
-          <div className={styles.quizStartDiv}>
-            <section className={styles.startQuizSection}>
-              <h2>Start Quiz</h2>
-              <h3>All Questions</h3>
-              <p>
-                Click the start quiz button to start the quiz and See your
-                result
-              </p>
-              <Link to="/takequizCatName/Vehicle-Handling">
-                {" "}
-                <button>Start Quiz</button>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/Theory-Portal">
+                <button className="px-6 py-2 bg-white/90 hover:bg-white rounded-full font-semibold">
+                  <MdKeyboardDoubleArrowLeft /> Back
+                </button>
               </Link>
-            </section>
+
+              <Link to="/takequizCatName/Vehicle-Handling">
+                <button className="px-6 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-semibold">
+                  Start Quiz
+                </button>
+              </Link>
+
+              <Link to="/motorway-rules">
+                <button className="px-6 py-2 bg-white/90 hover:bg-white rounded-full font-semibold">
+                  Next <MdKeyboardDoubleArrowRight />
+                </button>
+              </Link>
+            </div>
           </div>
-        </section>
-        {/* //////////////////////////////////////////////////////////// */}
-      </div>
-    </div>
+        </div>
+      </section>
+
+      {/* ================= WHAT IS VEHICLE HANDLING ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center fade-up">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+              What is <span className="text-teal-600">Vehicle Handling?</span>
+            </h2>
+
+            <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
+              Vehicle handling refers to your ability to control your vehicle
+              safely under different road, weather, and traffic conditions.
+              Drivers must adapt their driving style quickly to maintain safety.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl p-10 flex justify-center">
+            <img
+              src={handlngIconImg}
+              alt="Vehicle Handling"
+              className="max-w-[280px]"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ================= LEARNING POINTS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-10 text-center">
+            You’ll Learn How To
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              "Keep full control of your vehicle",
+              "Drive safely in bad weather",
+              "Understand road surfaces",
+              "Drive safely at night",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-slate-50 p-6 rounded-2xl shadow-xl text-center hover:scale-105 transition"
+              >
+                <FaCheckCircle className="text-teal-500 text-3xl mx-auto mb-4" />
+                <p className="text-slate-700 font-medium">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CONTROLLING VEHICLE ================= */}
+      <section className="py-20 bg-gradient-to-br from-teal-50 to-white">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
+            Controlling <span className="text-teal-600">Your Vehicle</span>
+          </h2>
+
+          <div className="bg-white p-8 rounded-3xl shadow-2xl space-y-6 text-slate-700">
+            <p>
+              Keeping the clutch down or coasting reduces your control and
+              increases danger — especially downhill where engine braking is
+              required.
+            </p>
+
+            <p>
+              Selecting a lower gear downhill allows the engine to slow the car,
+              reducing brake wear and overheating.
+            </p>
+
+            <p>
+              Uphill driving requires sufficient power. Always adapt speed and
+              gear selection to road and weather conditions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= VIDEO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-10">
+            Driving in Different <span className="text-teal-600">Weather</span>
+          </h2>
+
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/3GEgB-xui0M"
+              title="Vehicle Handling Weather"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ================= TRAFFIC CALMING ================= */}
+      <section className="py-12 px-6 lg:px-20 bg-slate-50">
+        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-10">
+          Traffic <span className="text-teal-600">Calming Measures</span>
+        </h3>
+
+        <div className="flex flex-col lg:flex-row items-center gap-8">
+          {/* Image */}
+          <div className="flex-shrink-0 w-full lg:w-1/2">
+            <img
+              src={speedBreaker}
+              alt="Traffic Calming"
+              className="w-full h-auto rounded-xl shadow-lg object-cover"
+            />
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 w-full lg:w-1/2 bg-white p-6 sm:p-10 rounded-xl shadow-lg">
+            <ul style={{paddingLeft:'0px'}} className="list-disc list-inside space-y-4 text-slate-700 text-base sm:text-lg">
+              <li>
+                Traffic calming tends to be found in residential areas and is
+                used to make the roads safer for vulnerable users by reducing
+                speed. One of the most common measures is road humps (sometimes
+                called speed humps) but chicanes, speed tables, and road
+                narrowing are also used.
+              </li>
+              <li>
+                You will be warned of traffic calming measures by road signs,
+                but other systems such as rumble devices (raised markings across
+                the road) may be used to warn you of a hazard ahead, such as a
+                roundabout, which requires you to reduce your speed.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= START QUIZ ================= */}
+      <section className="py-20 bg-gradient-to-br from-teal-50 to-white">
+        <div className="container mx-auto px-6 text-center fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            Test <span className="text-teal-600">Your Knowledge</span>
+          </h2>
+
+          <p className="text-slate-600 mb-8">
+            Start the quiz and see how well you understand vehicle handling.
+          </p>
+
+          <Link to="/takequizCatName/Vehicle-Handling">
+            <button className="px-10 py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-semibold shadow-xl">
+              Start Quiz
+            </button>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

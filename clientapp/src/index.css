@@ -27,9 +27,9 @@ body {
   
 }
 .active {
-  color: rgb(148, 191, 255);
-  border: 1px solid rgb(2, 69, 110);
-  background-color: rgba(1, 15, 35, 0.957);
+  color: rgb(255, 148, 148);
+  border: 1px solid rgb(255, 24, 105);
+  background-color: rgba(72, 0, 31, 0.957);
 }
 .es-header-btn {
   display: none;

@@ -290,7 +290,7 @@
 }
 /* //////////////////////////////////////////////////// */
 .bgColore {
-  background: linear-gradient(180deg, #6337f5ff, #00028fff);
+  background: linear-gradient(180deg, rgb(236, 87, 209), rgb(255, 0, 123));
 }
 .heroSection12345 {
   padding: 2rem;

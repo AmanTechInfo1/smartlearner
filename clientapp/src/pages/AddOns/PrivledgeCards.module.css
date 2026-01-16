@@ -5,7 +5,7 @@
 }
 .CardHomeBanner {
   position: relative;
-  background: url("../../assets/images/contact-banner.png");
+  background: url("../../assets/images/privilege.jpeg");
   background-size: cover;
   background-position: center;
 
@@ -278,7 +278,7 @@
   }
 }
 
-#companyLogoImgs{
+#companyLogoImgs {
   max-width: 50px;
   width: 100%;
   margin-left: 0.5rem;
