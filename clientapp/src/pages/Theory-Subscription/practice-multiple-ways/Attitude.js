@@ -97,11 +97,10 @@ export default function Attitude() {
       {/* ================= INTRO ================= */}
       <section
         ref={(el) => (sectionsRef.current[0] = el)}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-14 sm:py-20"
-      >
+        className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-14 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 bg-white rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10">
           <div>
-            <h2 className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 flex items-center gap-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 flex items-center gap-3">
               <span className="p-3 bg-red-100 rounded-xl text-red-600">
                 <ShieldCheck />
               </span>
@@ -113,26 +112,18 @@ export default function Attitude() {
             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
               The second topic is Attitude. This topic relates to a driver’s
               attitude towards other road users, the rules of the road, and
-              their own driving in general. It also covers how drivers should
-              react to things that occur on the road.
-              <br />
-              It is important that all drivers display a measure of patience,
-              control and awareness when taking to the road, avoiding reckless
-              and careless behaviour that can endanger themselves, and other
-              road users.
+              their own driving in general.
             </p>
           </div>
 
           <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl shadow-xl p-6 sm:p-8">
             <h3 className="font-bold mb-4 text-lg">Attitude rules:</h3>
             <ul
-              className="space-y-2 text-sm sm:text-base"
               style={{ paddingLeft: "0px" }}
-            >
+              className="space-y-2 text-sm sm:text-base">
               <li>✔ Give way and follow priority rules</li>
               <li>✔ Be considerate and patient</li>
               <li>✔ Make intentions clear</li>
-              <li>✔ Use horn and lights responsibly</li>
               <li>✔ Avoid tailgating</li>
               <li>✔ Be careful around animals</li>
             </ul>
@@ -158,51 +149,57 @@ export default function Attitude() {
         {
           title: "Adapted Teaching Style",
           img: adaptedImg,
-          icon: <Car />,
           text: "Tailgating is when a driver drives behind another vehicle while not leaving sufficient distance to stop without causing a collision if the vehicle in front stops suddenly. Is tailgating illegal? Yes, tailgating is a careless driving offence, and you could land yourself a fine of up to £200 or points on your license if you’re caught by the police.",
+          icon: <Car />,
         },
         {
           title: "Unmarked Junctions",
           img: unmarkedImg,
-          icon: <TrafficCone />,
           text: "The Highway Code reminds us that nobody has priority at unmarked crossroads (rule 146). That means that you don’t have any formal right to emerge onto the junction before other vehicles. Neither do they have the right to go ahead of you, so it is important that you evaluate the current situation and decide when it is safest for you to emerge.",
+          icon: <TrafficCone />,
         },
         {
           title: "Filler Cap",
           img: FillerCap,
-          icon: <AlertTriangle />,
           text: "A loose filler cap on a diesel fuel tank can cause the road to become slippery for other road users. This is particularly dangerous in wet conditions, although a huge amount of traction (tyre grip) is also lost in drier conditions.",
+          icon: <AlertTriangle />,
         },
         {
           title: "One-Way Streets",
           img: oneWayStreet,
-          icon: <Users />,
           text: "You can park/overtake on either side of this road type. When wanting to turn right you should position your car in the right-hand lane. If you do enter a one-way street incorrectly, you should not reverse back out again. Drivers in this situation should pull up on the side of the road as early as possible and put the hazard lights on, wait for a gap in the traffic so you can turn your vehicle around, and then drive out of the road safely.",
+          icon: <Users />,
         },
         {
           title: "2 Second Rule",
           img: secondRuleImg,
+          text: " In dry conditions, you should always leave a 2-second time gap in between yourself and the car in front of you. Depending on the weather conditions it will depend on the time gap you leave. For example, in wet conditions, it is 4 seconds, and in icy conditions, it is x10 more than dry conditions.",
           icon: <Lightbulb />,
-          text: "In dry conditions, you should always leave a 2-second time gap in between yourself and the car in front of you. Depending on the weather conditions it will depend on the time gap you leave. For example, in wet conditions, it is 4 seconds, and in icy conditions, it is x10 more than dry conditions.",
         },
+
         {
           title: "Trams",
           img: tramsImg,
-          icon: <ShieldCheck />,
           text: "Trams are eco-friendly, electric-powered modes of public transport. Their rails pose the most risk to cyclists and they cannot steer to avoid obstacles. Their signs are diamond-shaped.",
+          icon: <ShieldCheck />,
+        },
+        {
+          title: "Flashing Headlights",
+          img: secondRuleImg,
+          text: "Only flash your headlights to let other road users know that you are there. Do not flash your headlights to convey any other message or intimidate other road users. This is because flashing others, whether pedestrians or motorists, can send mixed signals, thus posing risks for everyone involved.",
+          icon: <Lightbulb />,
         },
         {
           title: "Horses",
           img: horsesRoadImg,
+          text: " If you see horses, slow down and allow plenty of room. If you happen to see a horse at a roundabout, you should never assume which direction they will go. This rule also applies to cyclists.",
           icon: <ShieldCheck />,
-          text: "Only flash your headlights to let other road users know that you are there. Do not flash your headlights to convey any other message or intimidate other road users. This is because flashing others, whether pedestrians or motorists, can send mixed signals, thus posing risks for everyone involved.",
         },
       ].map((item, i) => (
         <section
           key={i}
           ref={(el) => (sectionsRef.current[i + 1] = el)}
-          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10"
-        >
+          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white rounded-3xl shadow-2xl p-6 sm:p-8">
             <img
               src={item.img}
