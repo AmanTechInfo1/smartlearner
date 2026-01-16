@@ -13,7 +13,7 @@ export default function LoadingWeb() {
           xmlns="http://www.w3.org/2000/svg">
           <g
             transform="translate(10 5)"
-            stroke="#002742"
+            stroke="#420019"
             fill="none"
             fillRule="evenodd"
             strokeLinecap="round"
@@ -30,7 +30,7 @@ export default function LoadingWeb() {
               cy="53"
               rx="12"
               ry="12"
-              fill="rgb(0, 6, 34)"
+              fill="rgb(211, 0, 95)"
             />
             <ellipse
               className="car__wheel--right"
@@ -39,7 +39,7 @@ export default function LoadingWeb() {
               cy="53"
               rx="12"
               ry="12"
-              fill="rgb(0, 6, 34)"
+              fill="rgb(163, 0, 82)"
             />
             <path
               className="car__line car__line--top"
