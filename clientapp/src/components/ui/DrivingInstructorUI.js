@@ -1,763 +1,260 @@
-import React, { useEffect, useState } from "react";
-import LplateImg from "../../assets/images/1200px-Lplate.svg.png";
-import redStarImg from "../../assets/images/redStar.png";
-import blueStarImg from "../../assets/images/blueStarImg.png";
-import yellowStarImg from "../../assets/images/yellowStar.png";
-import greenStarImg from "../../assets/images/greenStar.png";
-import goldStarImg from "../../assets/images/goldstar.png";
-import redCartImg from "../../assets/images/redCartImg.png";
-import yellowCartImg from "../../assets/images/yellowCartImg.png";
-import pinkCartImg from "../../assets/images/pinkCartImg.png";
-import greenCartImg from "../../assets/images/greenCartImg.png";
-import cartbanner from "../../assets/images/bannerCart.png";
-import defaultCartImg from "../../assets/images/bannerCart.png";
-import styles from "../../pages/css/home.module.css";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShoppingCart, Plus, Minus, Star, Layers } from "lucide-react";
+import Img from "../../assets/images/pdi.png";
+import { useNavigate } from "react-router-dom";
 import {
   getAddToCart,
   getDecreaseCart,
   getIncreaseCart,
 } from "../../redux/features/cartSlice";
 import { getAllProductsCategory } from "../../redux/features/productSlice";
-import {
-  fetchPlans,
-  createPayment,
-  createUserSubscription,
-  checkTrialEligibility,
-  pdiApplyCouponCode,
-  fetchUserSubscriptions,
-} from "../../redux/features/subscriptionSlice";
-import { toast } from "react-hot-toast";
-import { PayPalButtons } from "@paypal/react-paypal-js";
 
-function DrivingInstructorUI() {
-  const navigate = useNavigate();
+/**
+ * FIXED & VERIFIED STRUCTURE
+ */
+
+const CATEGORY_ORDER = [
+  "instructor training part one",
+  "instructor training part two",
+  "workshop",
+  "instructor training part three",
+];
+
+const PART_THREE_ROUTES = {
+  "Complete Course": "/driving-instructor-training-full-course",
+  "ONLINE Part 1": "/driving-instructor-training-part-one",
+  "ONLINE Part 2": "/driving-instructor-training-part-two",
+  "ONLINE Part 3": "/driving-instructor-training-part-three",
+};
+
+export default function CategoryProductsUI() {
   const dispatch = useDispatch();
-  const { userDetails } = useSelector((state) => state.auth);
-  const userId = userDetails?._id; // Added optional chaining for safety
-  const { plans, loading, error } = useSelector((state) => state.subscription);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (userId) {
-      dispatch(fetchUserSubscriptions(userId));
-    }
-    dispatch(fetchPlans());
-  }, [dispatch, userId]);
+  const { productsCategory = [] } = useSelector((state) => state.product);
+  const cart = useSelector((state) => state.cart.cart || []);
 
-  const wordLimit = 15;
-  const [isReadMore, setIsReadMore] = useState(false);
-  const handleReadMoreToggle = (index) => {
-    setIsReadMore((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index], // Toggle the specific section's read more state
-    }));
-  };
-
-  const [quantities, setQuantities] = useState({});
-  const [expandedCategory, setExpandedCategory] = useState("");
-
-  const data = useSelector((state) => state.product.productsCategory);
+  const [activeCategory, setActiveCategory] = useState(
+    "instructor training part one"
+  );
+  const [openDesc, setOpenDesc] = useState({});
+  const [showMore, setShowMore] = useState({});
 
   useEffect(() => {
     dispatch(getAllProductsCategory("", 0));
   }, [dispatch]);
 
-  const myCart = useSelector((state) => state.cart.cart || []);
+  const filteredCategories = useMemo(() => {
+    return CATEGORY_ORDER.map((key) =>
+      productsCategory.find((c) => c._id === key)
+    ).filter(Boolean);
+  }, [productsCategory]);
 
-  useEffect(() => {
-    const offersManualCategory = data.find(
-      (item) => item._id === "instructor training part one"
-    );
-    if (offersManualCategory) {
-      setExpandedCategory(offersManualCategory._id);
+  const allActiveProducts = useMemo(() => {
+    return filteredCategories.find((c) => c._id === activeCategory)?.data || [];
+  }, [filteredCategories, activeCategory]);
+
+  const activeProducts = useMemo(() => {
+    if (!showMore[activeCategory]) {
+      return allActiveProducts.slice(0, 3);
     }
-  }, [data]);
+    return allActiveProducts;
+  }, [allActiveProducts, showMore, activeCategory]);
 
-  const handleExpandCategory = (id) => {
-    if (expandedCategory === id) {
-      setExpandedCategory("");
-    } else {
-      setExpandedCategory(id);
-    }
+  const cartItem = (product, index) => {
+    const id = `${product._id}_${index}_${product.price}`;
+    return cart.find((c) => c.id === id);
   };
 
-  const handleIncrease = (id, qty) => {
-    dispatch(getIncreaseCart(id, qty));
-  };
-
-  const handleDecrease = (id, qty) => {
-    dispatch(getDecreaseCart(id, qty));
-  };
-
-  const addToCart = (info, index) => {
-    const productId = `${info._id}_${index}_${info.price}`;
+  const addToCart = (product, index) => {
+    const id = `${product._id}_${index}_${product.price}`;
     dispatch(
       getAddToCart(
         {
-          id: productId,
+          id,
           count: 1,
-          service: info.name,
-          price: info.price,
+          service: product.name,
+          price: product.price,
         },
         navigate
       )
     );
   };
 
-  const filteredData = (categoryName) => {
-    return data.filter((item) => item._id === categoryName);
-  };
-
-  // Function to return the correct star image array based on category
-  const getStarImagesForCategory = (categoryName) => {
-    switch (categoryName) {
-      case "instructor training part one":
-        return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
-      case "instructor training part two":
-        return [
-          blueStarImg,
-          blueStarImg,
-          blueStarImg,
-          blueStarImg,
-          blueStarImg,
-        ];
-      case "workshop":
-        return [redStarImg, redStarImg, redStarImg, redStarImg, redStarImg];
-
-      case "instructor training part three":
-        return [
-          yellowStarImg,
-          yellowStarImg,
-          yellowStarImg,
-          yellowStarImg,
-          yellowStarImg,
-        ];
-
-      default:
-        return [
-          goldStarImg,
-          goldStarImg,
-          goldStarImg,
-          goldStarImg,
-          goldStarImg,
-        ];
-    }
-  };
-
-  // Function to return the correct cart image based on category
-  const getCartImageForCategory = (categoryName) => {
-    switch (categoryName) {
-      case "instructor training part one":
-        return redCartImg;
-      case "instructor training part two":
-        return pinkCartImg;
-      case "workshop":
-        return redCartImg;
-      case "instructor training part three":
-        return yellowCartImg;
-
-      default:
-        return defaultCartImg;
-    }
-  };
-
-  // Function to return the corresponding color for each category heading and buttons
-  const getHeadingAndButtonColorForCategory = (categoryName) => {
-    switch (categoryName) {
-      case "instructor training part one":
-        return "red";
-      case "instructor training part two":
-        return "#00a1f1";
-
-      case "workshop":
-        return "red";
-      case "instructor training part three":
-        return "#FFD700";
-
-      default:
-        return "gold";
-    }
-  };
-  const getBgColor = (categoryName) => {
-    switch (categoryName) {
-      case "instructor training part one":
-        return "linear-gradient(  135deg, #6f00ab, #e3aaff)";
-      case "instructor training part two":
-        return "linear-gradient(  135deg, #010269, #008efa)";
-
-      case "workshop":
-        return "linear-gradient(  135deg,rgb(171, 0, 134),rgb(88, 0, 49))";
-      case "instructor training part three":
-        return "linear-gradient(135deg, rgb(155 73 0), #ffae88)";
-
-      default:
-        return "gold";
-    }
-  };
-  const getdescBgColor = (categoryName) => {
-    switch (categoryName) {
-      case "instructor training part one":
-        return "#a05dc1";
-      case "instructor training part two":
-        return "#4b99f5";
-
-      case "workshop":
-        return "#a05dc1";
-      case "instructor training part three":
-        return "#d1945fbc";
-
-      default:
-        return "gold";
-    }
-  };
-
-  const handleCreateSubscription = async (plan) => {
-    try {
-      const order = await dispatch(createPayment(plan._id)).unwrap();
-      console.log("Order received from payment creation:", order);
-      if (order && order.id) {
-        return order.id;
-      } else {
-        throw new Error("Order ID not received");
-      }
-    } catch (error) {
-      console.error("Error during subscription creation:", error);
-      throw error;
-    }
-  };
-
-  const handleApprovePayment = async (plan, actions) => {
-    try {
-      const order = await actions.order.capture();
-      console.log("Order captured:", order);
-      if (!order || !order.id) {
-        console.error("No order ID received");
-        return;
-      }
-
-      const subscriptionData = {
-        userId: userId,
-        subscriptionId: plan._id,
-        orderId: order.id,
-        isTrial: false,
-      };
-
-      await dispatch(createUserSubscription(subscriptionData)).unwrap();
-      console.log("User subscription created successfully.");
-      navigate("/paymentSuccess");
-      toast.success("subscription added");
-    } catch (error) {
-      console.error("Error during order approval:", error);
-    }
-  };
-  const paidPlansComplete = plans.filter(
-    (plan) => plan.planCategory === "Complete packages"
-  );
-  const paidPlansPartOne = plans.filter(
-    (plan) => plan.planCategory === "pdi-part-one packages"
-  );
-  const paidPlansPartTwo = plans.filter(
-    (plan) => plan.planCategory === "pdi-part-two packages"
-  );
-  const paidPlansPartThree = plans.filter(
-    (plan) => plan.planCategory === "pdi-part-three packages"
-  );
   return (
-    <section
-      className={styles.carouselContainer}
-      style={{ maxWidth: "1300px", margin: "0px auto" }}>
-      <div className={styles.carousel} style={{ justifyContent: "flex-start" }}>
-        {[
-          "instructor training part one",
-          "instructor training part two",
-          "workshop",
-        ].map((categoryName) =>
-          filteredData(categoryName).map((item) => (
-            <div
-              style={{
-                background: getBgColor(categoryName),
-              }}
-              key={item.id}
-              className={`${styles.carouselColumn} ${
-                expandedCategory === item._id ? styles.expanded : ""
-              }`}
-              onClick={() => handleExpandCategory(item._id)}>
-              <div className={styles.carouselColumnHeading}>
-                <img
-                  id={styles.CorouselImgBanner}
-                  src={LplateImg}
-                  alt="Category Image"
-                />
-                <div className={styles.CorouselhaddingBanner}>
-                  <h2
-                    style={{
-                      color: getHeadingAndButtonColorForCategory(categoryName),
-                    }}>
-                    {(() => {
-                      switch (categoryName) {
-                        case "instructor training part one":
-                          return "Instructor Training";
-                        case "instructor training part two":
-                          return "Bolt on Training";
-                        case "workshop":
-                          return "Workshop";
+    <section className="max-w-7xl mx-auto px-4 py-16">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold">Instructor Training</h2>
+        <p className="text-gray-500 mt-3">
+          Choose a category to explore available products
+        </p>
+      </div>
 
-                        default:
-                          return "Instructor Training"; // Default case
+      {/* Category Buttons */}
+      <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {filteredCategories.map((cat) => (
+          <motion.button
+            key={cat._id}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setActiveCategory(cat._id)}
+            className={`px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-all ${
+              activeCategory === cat._id
+                ? "bg-black text-white shadow-lg"
+                : "bg-gray-100 hover:bg-gray-200"
+            }`}
+          >
+            <Layers size={16} />
+            {cat._id}
+          </motion.button>
+        ))}
+      </div>
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0px auto",
+          textAlign: "center",
+        }}
+      >
+        {" "}
+        <p
+          className="bg-white  px-3 py-1  shadow-md z-20"
+          style={{
+            borderRadius: "4px",
+            color: "black",
+          }}
+        >
+          A mandatory booking fee of{" "}
+          <span style={{ color: "red" }}>£1.00 - £30 </span>
+          applies to all orders per purchase. This fee will be shown clearly
+          before you complete your purchase
+        </p>
+      </div>
+      {/* Products */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.35 }}
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {activeProducts.map((product, index) => {
+            const item = cartItem(product, index);
+            const isPartThree =
+              activeCategory === "instructor training part three";
+
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ y: -6 }}
+                className="rounded-2xl border bg-white shadow-sm hover:shadow-xl transition-all overflow-hidden"
+              >
+                {/* Header */}
+                {/* Image */}
+                <div className="w-full h-48 bg-gray-100 overflow-hidden">
+                  <img
+                    src={Img}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="py-3 px-3 border-b">
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                  <div className="flex items-center gap-1 text-yellow-500 mt-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} fill="currentColor" />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="py-3 px-3 text-sm text-gray-600 min-h-[90px]">
+                  {openDesc[`${activeCategory}_${index}`]
+                    ? product.description
+                    : product.description.split(" ").slice(0, 20).join(" ") +
+                      "..."}
+
+                  <button
+                    onClick={() =>
+                      setOpenDesc((prev) => ({
+                        ...prev,
+                        [`${activeCategory}_${index}`]:
+                          !prev[`${activeCategory}_${index}`],
+                      }))
+                    }
+                    className="mt-2 block text-xs font-medium text-black px-1"
+                  >
+                    {openDesc[`${activeCategory}_${index}`] ? "Hide " : "Show"}
+                  </button>
+                </div>
+
+                {/* Footer */}
+                <div className="py-3 px-4 flex items-center justify-between">
+                  <span className="text-xl font-bold">£{product.price}</span>
+
+                  {isPartThree ? (
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() =>
+                        navigate(PART_THREE_ROUTES[product.name] || "/")
                       }
-                    })()}
-                  </h2>
-
-                  {expandedCategory === item._id && (
-                    <Link to="/cart">
-                      <span>
-                        <img
-                          id={styles.CorouselImgcart}
-                          src={cartbanner} // Dynamic cart image
-                          alt="cartImg"
-                        />
-                      </span>
-                    </Link>
+                      className="px-4 py-2 rounded-full bg-black text-white text-sm"
+                    >
+                      View
+                    </motion.button>
+                  ) : !item ? (
+                    <motion.button
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => addToCart(product, index)}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white text-sm"
+                    >
+                      <ShoppingCart size={16} /> Add
+                    </motion.button>
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => dispatch(getDecreaseCart(item.id, 1))}
+                        className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"
+                      >
+                        <Minus size={14} />
+                      </button>
+                      <span className="font-medium">{item.count}</span>
+                      <button
+                        onClick={() => dispatch(getIncreaseCart(item.id, 1))}
+                        className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"
+                      >
+                        <Plus size={14} />
+                      </button>
+                    </div>
                   )}
                 </div>
-              </div>
-              {expandedCategory === item._id ? (
-                <ul type="none">
-                  {item.data.map((info, index) => (
-                    <div key={index}>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            maxWidth: "235px",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>{info.name}</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ {info.price}
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          {myCart.length === 0 ||
-                          !myCart.find(
-                            (cartItem) =>
-                              cartItem.id ===
-                              `${info._id}_${index}_${info.price}`
-                          ) ? (
-                            <button
-                              className={styles.bookNow}
-                              style={{
-                                backgroundColor:
-                                  getHeadingAndButtonColorForCategory(
-                                    categoryName
-                                  ),
-                              }}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                addToCart(info, index);
-                              }}>
-                              Book
-                            </button>
-                          ) : (
-                            <div id={styles.cartTableBtn}>
-                              <div className={styles.quantityControl}>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleDecrease(
-                                      `${info._id}_${index}_${info.price}`,
-                                      1
-                                    );
-                                  }}
-                                  className={styles.decreaseButton}>
-                                  -
-                                </button>
-                                <span>
-                                  {myCart.find(
-                                    (cartItem) =>
-                                      cartItem.id ===
-                                      `${info._id}_${index}_${info.price}`
-                                  )?.count || 0}
-                                </span>
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleIncrease(
-                                      `${info._id}_${index}_${info.price}`,
-                                      1
-                                    );
-                                  }}
-                                  className={styles.increaseButton}>
-                                  +
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </li>
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(categoryName),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore[index]
-                            ? info.description // Show full content
-                            : info.description
-                                .split(" ")
-                                .slice(0, wordLimit)
-                                .join(" ") + "..."}
-                        </p>
-                        {info.description.split(" ").length > wordLimit && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle(index);
-                            }}>
-                            {isReadMore[index] ? "Read Less" : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                  ))}
-                </ul>
-              ) : (
-                <div
-                  className={`${styles.carouselStarImgContainer} ${
-                    expandedCategory === item._id ? styles.compress : ""
-                  }`}>
-                  {getStarImagesForCategory(categoryName).map((star, idx) => (
-                    <img key={idx} src={star} alt={`starImg${idx}`} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))
-        )}
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </AnimatePresence>
 
-        {filteredData("instructor training part three").map((item) => {
-          return (
-            <div
-              style={{
-                background: getBgColor("instructor training part three"),
-              }}
-              key={item.id}
-              className={`${styles.carouselColumn} ${
-                expandedCategory === item._id ? styles.expanded : ""
-              }`}
-              onClick={() => handleExpandCategory(item._id)}>
-              <div className={styles.carouselColumnHeading}>
-                <img
-                  id={styles.CorouselImgBanner}
-                  src={LplateImg}
-                  alt="Category Image"
-                />
-                <div className={styles.CorouselhaddingBanner}>
-                  <h2
-                    style={{
-                      color: getHeadingAndButtonColorForCategory(
-                        "instructor training part three"
-                      ),
-                    }}>
-                    Online Courses
-                  </h2>
-                  {/* {expandedCategory === item._id && (
-                      <Link to="/cart">
-                        <span>
-                          <img
-                            id={styles.CorouselImgcart}
-                            src={cartbanner} // Dynamic cart image
-                            alt="cartImg"
-                          />
-                        </span>
-                      </Link>
-                    )} */}
-                </div>
-              </div>
-              {expandedCategory === item._id ? (
-                <ul type="none">
-                  {paidPlansComplete.map((plan, index) => (
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Complete Course</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ {plan.price}
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
-                            style={{ backgroundColor: "#ffa500" }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(
-                                "/driving-instructor-training-full-course"
-                              );
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id111111"]
-                            ? "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey." // Show full content
-                            : "Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey."
-                                .split(" ")
-                                .slice(0, 10)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our SmartLearners online instructor training portal provides comprehensive theoretical modules for all three parts of the driving instructor qualification. This self-paced platform covers the key concepts and knowledge required for the Part 1 theory test, Part 2 driving ability test, and Part 3 instructional exam. It offers in-depth learning materials and resources to support your preparation, but please note that it does not include any practical training or test fees. The portal is a great way to build your foundation and study at your convenience before progressing to the next stages of your instructor journey.".split(
-                          " "
-                        ).length > 10 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id111111");
-                            }}>
-                            {isReadMore["id111111"] ? "Read Less" : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                  ))}
-                  {paidPlansPartOne.map((plan, index) => (
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 1</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ {plan.price}
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
-                            style={{ backgroundColor: "#ffa500" }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate("/driving-instructor-training-part-one");
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id2222222"]
-                            ? "Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included." // Show full content
-                            : "Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included."
-                                .split(" ")
-                                .slice(0, 10)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Our one-time purchase Theory Portal includes everything you need to pass your ADI Part 1—and more. Practice questions, mock tests, and our exclusive bonus quiz featuring the most commonly failed questions are all included.".split(
-                          " "
-                        ).length > 10 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id2222222");
-                            }}>
-                            {isReadMore["id2222222"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                  ))}
-                  {paidPlansPartTwo.map((plan, index) => (
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 2</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ {plan.price}
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
-                            style={{ backgroundColor: "#ffa500" }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate("/driving-instructor-training-part-two");
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id33333333"]
-                            ? "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes." // Show full content
-                            : "Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes."
-                                .split(" ")
-                                .slice(0, 15)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Get ready for your ADI Part 2 exam with our comprehensive online course. Study at your own pace with access to written tasks, hands-on practical exercises, and interactive quizzes.".split(
-                          " "
-                        ).length > 10 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id33333333");
-                            }}>
-                            {isReadMore["id33333333"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                  ))}
-                  {paidPlansPartThree.map((plan, index) => (
-                    <div>
-                      <li className={styles.expandedColData}>
-                        <span
-                          style={{
-                            color: "white",
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "space-between",
-
-                            width: "100%",
-                            borderRadius: "40px 0px 0px 40px",
-                            padding: "8px",
-                          }}>
-                          <p style={{ marginBottom: "0px" }}>Online Part 3</p>
-                          <p style={{ marginBottom: "0px", width: "49x" }}>
-                            £ {plan.price}
-                          </p>
-                        </span>
-                        <div className={styles.btnGroup}>
-                          <button
-                            className={styles.bookNow}
-                            style={{ backgroundColor: "#ffa500" }}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(
-                                "/driving-instructor-training-part-three"
-                              );
-                            }}>
-                            Book
-                          </button>
-                        </div>
-                      </li>
-
-                      <section
-                        style={{
-                          backgroundColor: getdescBgColor(
-                            "instructor training part three"
-                          ),
-                          border: "1px solid #a9a9a9",
-                        }}
-                        className={styles.corouselDescription}>
-                        <p>
-                          {isReadMore["id44444444"]
-                            ? "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding." // Show full content
-                            : "Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding."
-                                .split(" ")
-                                .slice(0, 13)
-                                .join(" ") + "..."}
-                        </p>
-                        {"Prepare confidently for the ADI Part 3 exam through our online training platform. Access all theoretical modules and test your knowledge with quizzes designed to reinforce your understanding.".split(
-                          " "
-                        ).length > 10 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleReadMoreToggle("id44444444");
-                            }}>
-                            {isReadMore["id44444444"]
-                              ? "Read Less"
-                              : "Read More"}
-                          </button>
-                        )}
-                      </section>
-                    </div>
-                  ))}
-                </ul>
-              ) : (
-                <div
-                  className={`${styles.carouselStarImgContainer} ${
-                    expandedCategory === item._id ? styles.compress : ""
-                  }`}>
-                  {getStarImagesForCategory(
-                    "instructor training part three"
-                  ).map((star, idx) => (
-                    <img key={idx} src={star} alt={`starImg${idx}`} />
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {/* Show More */}
+      {allActiveProducts.length > 3 && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() =>
+              setShowMore((prev) => ({
+                ...prev,
+                [activeCategory]: !prev[activeCategory],
+              }))
+            }
+            className="px-6 py-2 rounded-full bg-black text-white text-sm"
+          >
+            {showMore[activeCategory] ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
-
-export default DrivingInstructorUI;

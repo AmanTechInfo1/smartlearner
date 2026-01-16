@@ -3,7 +3,7 @@
   z-index: 100000;
 }
 .navContainer1 {
-  background: linear-gradient(135deg, #0a0065, #070049);
+  background: linear-gradient(135deg, #9b0058, #730047);
   position: fixed;
   width: 100%;
   top: 0;
@@ -65,7 +65,7 @@
   left: 0;
   width: 0;
   height: 2px; /* Line thickness */
-  background-color: rgb(2, 54, 86);
+  background-color: rgb(62, 0, 32);
   /* Line color */
   transition: width 0.3s ease; /* Controls the speed of the animation */
 }
@@ -93,14 +93,14 @@
 .navLinks ul button {
   padding: 2px 12px;
   background-color: rgba(1, 19, 30, 0.944);
-  border: 1px solid rgba(1, 43, 69, 0.642);
+  border: 1px solid rgba(69, 1, 38, 0.642);
   border-radius: 6px;
   color: white;
   font-size: 1.2rem;
   font-weight: 500;
 }
 .navLinks ul button:hover {
-  border: 1px solid rgb(2, 69, 110);
+  border: 1px solid rgb(110, 2, 61);
 }
 .navShoppingCart {
   display: inline-block;

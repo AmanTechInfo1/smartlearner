@@ -337,6 +337,21 @@ export default function PrivledgeCards() {
       discount: "10% off everything ",
       contact: "Arena Retail Shopping Park",
     },
+    {
+      name: "Mobile Kings",
+      discount: "10% off any repairs or free accessory with any purchases",
+      contact: "",
+    },
+    {
+      name: "SheLifts",
+      discount: "50% off group training for 2 months exclusive for ladies",
+      contact: "",
+    },
+    {
+      name: "Absolute Ink",
+      discount: "10% off for any tattoo",
+      contact: "",
+    },
   ];
 
   return (
@@ -406,7 +421,8 @@ export default function PrivledgeCards() {
                   </li>
                 </ul>
                 <p
-                  className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}>
+                  className={`${styles.privilegeCardText} ${styles.privilegeCardCenter}`}
+                >
                   It’s completely <strong>FREE</strong>—just our way of saying
                   thank you for choosing SmartLearner! — grab your Privilege
                   Card today!

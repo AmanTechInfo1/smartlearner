@@ -87,13 +87,14 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
+      {/* <NewYearBanner /> */}
       {/* <ChristmasBanner />
-      <VelentineDayBanner />
+     
       <SpringBanner />          
       <AprilBanner />
       <RabbitBanner /> */}
       <section>
-        <NewYearBanner />
+        <VelentineDayBanner />
       </section>
 
       <div className={styles.homepageContainerDiv}>
@@ -101,7 +102,7 @@ export default function Home() {
         <Element name="our-courses-section">
           <section
             style={{
-              background: "linear-gradient(180deg, #4818e6ff, #1317e3ff)",
+              background: "linear-gradient(180deg, rgb(230, 24, 161), rgb(227, 19, 113))",
             }}
             className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
           >

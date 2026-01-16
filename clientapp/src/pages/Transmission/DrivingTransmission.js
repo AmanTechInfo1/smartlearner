@@ -158,7 +158,8 @@ export default function DrivingTransmission() {
                       display: "flex",
                       alignItems: "center",
                       gap: "10px",
-                    }}>
+                    }}
+                  >
                     <IoCallSharp className="gradient-icon" /> 02475092784
                   </a>
                 </span>
@@ -169,13 +170,15 @@ export default function DrivingTransmission() {
           </div>
         </section>
         {/* ///////////////////////////// */}
-        <section>
+        <section className="bg-white">
           <Element name="instructor-packages-section">
             <section className={styles.ManualCorousel}>
-              <SubscriptionPdi />
+              {/* <SubscriptionPdi /> */}
+              <DrivingInstructorUI/>
             </section>
           </Element>
         </section>
+       
       </div>
     </div>
   );
