@@ -29,6 +29,13 @@ const PART_THREE_ROUTES = {
   "ONLINE Part 3": "/driving-instructor-training-part-three",
 };
 
+const CATEGORY_LABELS = {
+  "instructor training part one": "Full Package Training",
+  "instructor training part two": "Bolt On Training",
+  workshop: "Workshops",
+  "instructor training part three": "Online Training",
+};
+
 export default function CategoryProductsUI() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,7 +44,7 @@ export default function CategoryProductsUI() {
   const cart = useSelector((state) => state.cart.cart || []);
 
   const [activeCategory, setActiveCategory] = useState(
-    "instructor training part one"
+    "instructor training part one",
   );
   const [openDesc, setOpenDesc] = useState({});
   const [showMore, setShowMore] = useState({});
@@ -48,7 +55,7 @@ export default function CategoryProductsUI() {
 
   const filteredCategories = useMemo(() => {
     return CATEGORY_ORDER.map((key) =>
-      productsCategory.find((c) => c._id === key)
+      productsCategory.find((c) => c._id === key),
     ).filter(Boolean);
   }, [productsCategory]);
 
@@ -78,8 +85,8 @@ export default function CategoryProductsUI() {
           service: product.name,
           price: product.price,
         },
-        navigate
-      )
+        navigate,
+      ),
     );
   };
 
@@ -107,7 +114,7 @@ export default function CategoryProductsUI() {
             }`}
           >
             <Layers size={16} />
-            {cat._id}
+            {CATEGORY_LABELS[cat._id] || cat._id}
           </motion.button>
         ))}
       </div>

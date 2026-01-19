@@ -1,191 +1,212 @@
-import React, { useEffect } from "react";
-import styles from "../AdiPartOne.module.css";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import bannerImg from "../../../assets/alertbg.png";
+
+import {
+  Clock,
+  Bed,
+  Smile,
+  Eye,
+  CheckCircle,
+  AlertCircle,
+  Trophy,
+  ArrowRight,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function TestDayTips() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Test Day Tips"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
-              <div className={styles.alertBtn}>
-                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Contact Us</button>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+                Test Day <span className="text-red-500">Tips</span>
+              </h1>
+
+              <p className="mt-6 text-base sm:text-lg text-slate-200 leading-relaxed">
+                Walk into your test feeling calm, confident, and fully prepared.
+                Follow these simple strategies to perform at your best.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Link to="/Contact-Us">
+                  <button className="px-6 py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-white font-semibold shadow-lg">
+                    Contact Us
+                  </button>
                 </Link>
-                <Link
-                  to="/part-1-trainning-material"
-                  style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Back To Portal</button>
+
+                <Link to="/part-1-trainning-material">
+                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 transition rounded-full text-white font-semibold border border-white/30">
+                    Back to Portal
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
-        </section>
-        {/* ////////////////////////////////////////////// */}
-        <div className={styles.testDayTips}>
-          <section className={styles.testDayheader}>
-            <h1>Test Day Tips</h1>
-            <p>
-              The day of the test can be nerve-wracking, but with the right
-              strategies, you can walk in with confidence.
-            </p>
-          </section>
+        </div>
+      </section>
 
-          <section className={styles.testDaypart} id={styles.testDaybeforeTest}>
-            <h2>Before the Test</h2>
-            <ul>
-              <li>
-                <strong>Get a Good Night’s Sleep</strong> - Rest is crucial. A
-                well-rested mind is sharper and better at recalling information.
-              </li>
-              <li>
-                <strong>Arrive Early</strong> - Aim to arrive at least 10
-                minutes before your test. This gives you time to relax and
-                settle in.
-              </li>
-            </ul>
-          </section>
+      {/* ================= INTRO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 text-center max-w-3xl fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold">
+            Stay <span className="text-red-600">Focused</span> & Confident
+          </h2>
+          <p className="mt-4 text-slate-700 text-lg">
+            The day of the test can be nerve-wracking, but with the right
+            strategies, you can walk in with confidence.
+          </p>
+        </div>
+      </section>
 
-          <section className={styles.testDaypart} id={styles.testDayduringTest}>
-            <h2>During the Test</h2>
-            <ul>
-              <li>
-                <strong>Stay Calm</strong> - It’s natural to feel nervous, but
-                don’t let anxiety take over. Take deep breaths and focus on the
-                questions.
-              </li>
-              <li>
-                <strong>Read Questions Carefully</strong> - Take your time to
-                read each question thoroughly. Misreading a question could lead
-                to a wrong answer.
-              </li>
-              <li>
-                <strong>Review Your Answers</strong> - If you finish the
-                Multiple Choice section early, use the remaining time to review
-                your answers. Double-checking can help catch any mistakes.
-              </li>
-            </ul>
-          </section>
+      {/* ================= BEFORE TEST ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <Clock className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Before the <span className="text-red-600">Test</span>
+            </h2>
+          </div>
 
-          <section className={styles.testDaypart} id={styles.testDayafterTest}>
-            <h2>After the Test</h2>
-            <p>
+          <div className="grid md:grid-cols-2 gap-10">
+            <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-red-500 fade-up">
+              <div className="flex items-center gap-4 mb-4">
+                <Bed className="w-8 h-8 text-red-600" />
+                <h3 className="text-xl font-semibold">
+                  Get a Good Night’s Sleep
+                </h3>
+              </div>
+              <p className="text-slate-700 leading-relaxed">
+                Rest is crucial. A well-rested mind is sharper and better at
+                recalling information.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-red-500 fade-up">
+              <div className="flex items-center gap-4 mb-4">
+                <Clock className="w-8 h-8 text-red-600" />
+                <h3 className="text-xl font-semibold">Arrive Early</h3>
+              </div>
+              <p className="text-slate-700 leading-relaxed">
+                Aim to arrive at least 10 minutes before your test. This gives
+                you time to relax and settle in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= DURING TEST ================= */}
+      <section className="py-20 bg-gradient-to-br from-red-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <Eye className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              During the <span className="text-red-600">Test</span>
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-10">
+            <div className="bg-white p-8 rounded-3xl shadow-xl fade-up">
+              <Smile className="w-9 h-9 text-red-600 mb-4" />
+              <h4 className="text-xl font-semibold mb-2">Stay Calm</h4>
+              <p className="text-slate-700">
+                It’s natural to feel nervous, but don’t let anxiety take over.
+                Take deep breaths and focus on the questions.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-xl fade-up">
+              <AlertCircle className="w-9 h-9 text-red-600 mb-4" />
+              <h4 className="text-xl font-semibold mb-2">Read Carefully</h4>
+              <p className="text-slate-700">
+                Take your time to read each question thoroughly. Misreading a
+                question could lead to a wrong answer.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl shadow-xl fade-up">
+              <CheckCircle className="w-9 h-9 text-red-600 mb-4" />
+              <h4 className="text-xl font-semibold mb-2">Review Answers</h4>
+              <p className="text-slate-700">
+                If you finish the Multiple Choice section early, use the
+                remaining time to review your answers. Double-checking can help
+                catch any mistakes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= AFTER TEST ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="flex items-center gap-4 mb-8 fade-up">
+            <Trophy className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              After the <span className="text-red-600">Test</span>
+            </h2>
+          </div>
+
+          <div className="bg-slate-50 p-10 rounded-3xl shadow-2xl border-l-8 border-red-500 fade-up">
+            <p className="text-slate-700 mb-4">
               You’ll get your results immediately after completing the test. If
-              you pass, congratulations! You’re one step closer to becoming an
-              ADI.
+              you pass, congratulations! 🎉 You’re one step closer to becoming
+              an ADI.
             </p>
-            <p>
+            <p className="text-slate-700">
               If you don’t pass, don’t be discouraged. Use the feedback provided
               to identify areas that need improvement and focus on those when
               preparing for your retake.
             </p>
-          </section>
+          </div>
         </div>
-        <div className={styles.TMnextPage}>
+      </section>
+
+      {/* ================= NEXT PAGE ================= */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6 text-center fade-up">
           <Link to="/goodluck">
-            <button className={styles.TMnextButton}>NEXT PAGE</button>
+            <button className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 transition text-white font-semibold rounded-full shadow-lg">
+              Next Page
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </Link>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

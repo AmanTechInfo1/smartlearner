@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux"; // Import useSelector
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import styles from "./AdiPartOne.module.css";
-import prizeTrophy from "../../assets/images/pdiTrophi.png";
-import docsList from "../../assets/images/docsList.png";
-import Qostion from "../../assets/images/hazzard-png.png";
-import { Link } from "react-router-dom";
-import {
-  getMyDashboard,
-  fetchUserSubscriptions,
-} from "../../redux/features/subscriptionSlice";
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate
 
-import { useRef } from "react";
+import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 
 import gsap from "gsap";
 import { Helmet } from "react-helmet-async";
 import httpHandler from "../../utils/httpHandler";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import {
+  BookOpen,
+  ClipboardList,
+  Layers,
+  ShieldCheck,
+  AlertTriangle,
+  PlayCircle,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
+
+import bannerImg from "../../assets/alertbg.png"; // <-- change if needed
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AdiPartOne() {
   const dispatch = useDispatch();
@@ -98,110 +106,44 @@ export default function AdiPartOne() {
   }, []);
 
   // //////////////////////////////////////////////////////////////////////////////////////
-
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Welcome to PDI "; // First part before "Driving"
-    const secondPart = "Part One"; // Second part after "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
+  const heroTextRef = useRef(null);
 
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
+    // Hero text animation
+    gsap.fromTo(
+      heroTextRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      }
+    );
 
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    // Scroll reveal animations
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
+    <main className="w-full overflow-hidden font-sans">
+      {" "}
       <Helmet>
         <meta charSet="utf-8" />
         <title>Driving instructor training in kenilworth</title>
@@ -223,195 +165,89 @@ export default function AdiPartOne() {
           href="https://smartlearner.com/part-one-theory-questions"
         />
       </Helmet>
+      {/* ================= HERO / BANNER ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
-              {/* <div className={styles.gGpFrontListP}>
-                <p>
-                  Unlock your driving potential with Smartlearner Learn from
-                  certified instructors in a safe, supportive environment. Start
-                  your journey to becoming a confident, skilled driver today!
-                </p>
-              </div> */}
-              <div className={styles.alertBtn}>
-                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button>Contact Us</button>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroTextRef} className="max-w-3xl space-y-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                Welcome to <span className="text-orange-400">PDI</span>
+                <br />
+                <span className="text-cyan-300">Part One</span>
+              </h1>
+
+              <p className="text-slate-200 text-base sm:text-lg lg:text-xl">
+                Begin your journey to becoming a professional Approved Driving
+                Instructor. Master theory, build confidence, and prepare to
+                succeed.
+              </p>
+
+              <div className="flex gap-4 pt-4">
+                <Link to="/Contact-Us">
+                  <button className="px-7 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-lg transition">
+                    Contact Us
+                  </button>
                 </Link>
-                {/* <Link
-                  to="/part-1-trainning-material"
-                  style={{ textDecoration: "none" }}
-                >
-                  <button>NEXT PAGE</button>
-                </Link> */}
+
+                <Link to="/part-1-trainning-material">
+                  <button className="px-7 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur border border-white/20 transition">
+                    Start Learning
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
-        </section>
-        {/* ///////////////////////////////////////////*/}
-
-        <section className={styles.hazardTestWorkListSection}>
-          <p id={styles.hazardTestWorkListSectionPara}>
-            The job of an ADI is very demanding but can also be extremely
-            rewarding. It’s a very important role, which extends beyond teaching
-            the mechanical skills of driving a car. As well as these skills, an
-            ADI is responsible for developing:
-          </p>
-
-          {/* <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={prizeTrophy} alt="prizeTrophy" />
-            </div>
-            <section className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    • – The knowledge and understanding that will help a novice
-                    driver make sense of the roads as they start to drive on
-                    their own.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The understanding that learning to drive is a process that
-                    doesn’t stop when a learner passes their test.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • To develop these skills and attitudes in learner drivers,
-                    an ADI will be expected to demonstrate:
-                  </p>
-                </li>
-                <li>
-                  <p>•– A high regard for all aspects of road safety.</p>
-                </li>
-                <li>
-                  <p>
-                    •– A high standard of driving and instructional ability.
-                  </p>
-                </li>
-                <li>
-                  <p>•– A professional approach to customers.</p>
-                </li>
-                <li>
-                  <p>•– A responsible attitude to pupils and the profession.</p>
-                </li>
-                <li>
-                  <p>•– That they’re a fit and proper person.</p>
-                </li>
-              </ul>
-            </section>
-          </section> */}
-        </section>
-        {/* ///////////////////////////////////////// */}
-
-        {/* <section className={styles.hazardTestWorkListSection}>
-          <p id={styles.hazardTestWorkListSectionPara}>
-            To see what the national standard for driver and rider training is
-            <a href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training">
-              {" "}
-              <span> click HERE</span>
-            </a>
-          </p>
-          <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img
-                src={docsList}
-                alt="List"
-                style={{ maxWidth: "650px", aspectRatio: "1/1" }}
-              />
-            </div>
-            <section className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    • The national standard for driver and rider training sets
-                    out everything that a driver or rider trainer should be able
-                    to do (skills), and the knowledge and understanding that
-                    they need to perform their role competently. We recommend
-                    that you read through the standard before you decide to
-                    proceed with your application.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The test for optential driving instructor’s requires a
-                    higher standard of knowledge than that expected of a learner
-                    driver. The test, which is conducted on a computer, is
-                    carried out in two parts: a multiple choice part and a
-                    hazard perception part. Both parts are taken at the same
-                    sitting. The test isavailable in English and Welsh.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The multiple choice questions test your knowledge of: –
-                    The highway code. -The rules of the road. -Instructional
-                    techniques.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • You’ll have 90 minutes to answer 100 questions, which are
-                    split into four bands of 25 questions each.{" "}
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The four bands cover the whole syllabus to make sure that
-                    candidates have a complete understanding of theory. They
-                    are:
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • – Road procedure. -Traffic signs and signals, car control,
-                    pedestrians, mechanical knowledge. -Driving test,
-                    disabilities, law. -Publications, instructional techniques
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • The questions are multiple choice and you’ll be asked to
-                    select the correct option for each. You do this by clicking
-                    a mouse.{" "}
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    • After a break up of up to three minutes, the hazard
-                    perception part of the test will start. This is designed to
-                    test your ability to identify hazards that develop while
-                    you’re driving. You’ll watch a video first, which will show
-                    you how to complete the test. This uses a sample clip with a
-                    soundtrack, which you’ll listen to through headphones. You
-                    may watch this video once more if you wish.{" "}
-                  </p>
-                </li>
-              </ul>
-            </section>
-          </section>
-        </section> */}
-
-        {/* //////////////////////////////////////////////////////// */}
-
-        {/* /////////////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <section className={styles.pdiContainer}>
-            <h2>
-              Create a Strong{" "}
-              <span style={{ color: "#cb6205" }}>Study Plan</span>
+        </div>
+      </section>
+      {/* ================= INTRO ================= */}
+      <section className="bg-slate-50 py-20">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center fade-up">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+              What is <span className="text-orange-500">PDI Part One?</span>
             </h2>
-            <div className={styles.pdiTwo}>
-              <h3>Multiple-Choice Questions</h3>
-              <p>
+            <p className="text-slate-700 text-base sm:text-lg leading-relaxed">
+              The PDI Part One exam tests your theoretical knowledge across key
+              driving and instructional topics. It is the foundation of your ADI
+              journey and a critical step toward becoming a certified
+              instructor.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl p-8">
+            <div className="flex items-center gap-4 mb-4">
+              <ShieldCheck className="w-10 h-10 text-orange-500" />
+              <h3 className="text-xl font-bold">Why It Matters</h3>
+            </div>
+            <p className="text-slate-600">
+              Strong theory knowledge ensures safer driving, better teaching,
+              and higher pass rates for both instructors and learners.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* ================= STUDY PLAN ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <BookOpen className="w-10 h-10 text-orange-500" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Create a{" "}
+              <span className="text-orange-500">Strong Study Plan</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-orange-500">
+              <ClipboardList className="w-9 h-9 text-orange-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Multiple Choice</h3>
+              <p className="text-slate-700">
                 The Multiple-Choice section includes 100 questions spread across
                 four key areas (bands). To pass, you must answer at least 85
                 questions correctly, with a minimum score of 20 out of 25 in
@@ -421,382 +257,255 @@ export default function AdiPartOne() {
               </p>
             </div>
 
-            <div className={styles.pdiThree}>
-              <h3>Daily Study Routine</h3>
-              <p>
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-orange-500">
+              <Layers className="w-9 h-9 text-orange-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Daily Routine</h3>
+              <p className="text-slate-700">
                 Focus on one band per day. This approach ensures balanced
                 coverage without overwhelming yourself. Regular, consistent
                 study sessions are far more effective than last-minute cramming.
               </p>
             </div>
-            <section className={styles.hazardTestWorkListSection}>
-              <h2 className={styles.hazardTestH23}>
-                Breakdown of <span> the Bands</span>
-              </h2>
-              <div className={styles.pdiBands}>
-                <div className={styles.pdiBandItem}>
-                  <h3>Band 1: Road Procedure</h3>
-                  <p>
-                    <strong>What It Covers:</strong> Rules of the road,
-                    including lane discipline, right-of-way, and how to handle
-                    various intersections and driving conditions.
-                  </p>
-                  <p>
-                    <strong>Why It Matters:</strong> Road procedure is the
-                    foundation of safe driving, and as an instructor, you need
-                    to teach these rules clearly.
-                  </p>
-                  <p>
-                    <strong>Study Tips:</strong> Familiarize yourself with the
-                    Highway Code, especially tricky scenarios like roundabouts
-                    and pedestrian crossings. Practice with mock questions based
-                    on real-world situations.
-                  </p>
-                </div>
 
-                <div className={styles.pdiBandItem}>
-                  <h3>
-                    Band 2: Traffic Signs, Signals, Car Control, Pedestrians,
-                    and Mechanical Knowledge
-                  </h3>
-                  <p>
-                    <strong>What It Covers:</strong> This band includes traffic
-                    signs, vehicle control, pedestrian safety, and basic car
-                    mechanics.
-                  </p>
-                  <p>
-                    <strong>Why It Matters:</strong> Understanding traffic signs
-                    and basic mechanics is critical for safe driving and
-                    effective teaching.
-                  </p>
-                  <p>
-                    <strong>Study Tips:</strong> Use flashcards to memorize
-                    traffic signs. For mechanical knowledge, focus on the
-                    basics—how brakes, tires, and the engine work. Practice
-                    interpreting signs in context.
-                  </p>
-                </div>
-
-                <div className={styles.pdiBandItem}>
-                  <h3>Band 3: Driving Test, Disabilities, and the Law</h3>
-                  <p>
-                    <strong>What It Covers:</strong> This section focuses on the
-                    driving test process, disabilities, and legal aspects of
-                    driving.
-                  </p>
-                  <p>
-                    <strong>Why It Matters:</strong> You’ll need to guide
-                    students through the driving test process, including
-                    accommodations for drivers with disabilities.
-                  </p>
-                  <p>
-                    <strong>Study Tips:</strong> Review DVSA guidelines on the
-                    driving test. Learn how to adjust your teaching for students
-                    with disabilities, and study the laws that apply to both
-                    drivers and instructors.
-                  </p>
-                </div>
-
-                <div className={styles.pdiBandItem}>
-                  <h3>Band 4: Publications and Instructional Techniques</h3>
-                  <p>
-                    <strong>What It Covers:</strong> This band is all about
-                    teaching—how to effectively communicate driving techniques
-                    and safety information.
-                  </p>
-                  <p>
-                    <strong>Why It Matters:</strong> Being knowledgeable isn’t
-                    enough—you need to communicate clearly and adapt to
-                    different learning styles.
-                  </p>
-                  <p>
-                    <strong>Study Tips:</strong> Study different teaching
-                    techniques. Practice explaining complex concepts in simple
-                    terms, and create sample lesson plans to refine your
-                    instructional approach.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </section>
-        </section>
-
-        {/* //////////////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <h2>
-            The hazard perception<span> Test Explained:</span>
-          </h2>
-          <section className={styles.AdiParttwoDisplayFlex}>
-            <div className={styles.hazardTestWorkListDivImg}>
-              <img src={Qostion} alt="List" />
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-orange-500">
+              <CheckCircle2 className="w-9 h-9 text-orange-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Exam Ready</h3>
+              <p className="text-slate-700">
+                Balanced preparation ensures you meet both overall and
+                band-specific requirements.
+              </p>
             </div>
-            <section className={styles.bgColorList}>
-              <ul type="none">
-                <li>
-                  <p>
-                    • Each clip contains one or more developing hazards, such as
-                    vehicles, pedestrians and road conditions. You should
-                    respond by clicking the mouse as soon as you see a hazard
-                    developing that may result in you, the driver, having to
-                    take some action, such as changing speed or direction. The
-                    earlier you notice a developing hazard and make a response,
-                    the higher your score. However, you must wait until the
-                    hazard actually starts to develop and not click too early.
-                    Your response won’t cause the scene in the video to change
-                    in any way. However, a red flag will appear at the bottom of
-                    the screen to show that your response has been noted. Before
-                    each clip starts, there’ll be a 10-second pause so that you
-                    can see the new road situation. The hazard perception tests
-                    lasts about 20 minutes. There are 15 scoreable hazards in
-                    total. You can score up to five marks on each. The total
-                    available score is 75.
-                  </p>
-                </li>
-              </ul>
-            </section>
-          </section>
-          <div className={styles.linkBtnSec}>
-            <Link to="/hazard-preception-part-2">
-              <button>Hazard Perception</button>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 fade-up">
+            Breakdown of <span className="text-orange-500">the Bands</span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* BAND 1 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-l-8 border-orange-500">
+              <h3 className="text-xl font-bold mb-2">Band 1: Road Procedure</h3>
+              <p className="text-slate-700 mb-2">
+                <strong>What it covers:</strong> Rules of the road, including
+                lane discipline, right-of-way, and how to handle various
+                intersections and driving conditions.
+              </p>{" "}
+              <p className="text-slate-700 mb-2">
+                <strong>Why It Matters: </strong>Road procedure is the
+                foundation of safe driving, and as an instructor, you need to
+                teach these rules clearly.
+              </p>
+              <p className="text-slate-700">
+                <strong>Study Tip:</strong> Familiarize yourself with the
+                Highway Code, especially tricky scenarios like roundabouts and
+                pedestrian crossings. Practice with mock questions based on
+                real-world situations.
+              </p>
+            </div>
+
+            {/* BAND 2 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-l-8 border-orange-500">
+              <h3 className="text-xl font-bold mb-2">
+                Band 2: Traffic Signs, Signals, Car Control, Pedestrians, and
+                Mechanical Knowledge
+              </h3>
+              <p className="text-slate-700 mb-2">
+                <strong>What it covers:</strong> This band includes traffic
+                signs, vehicle control, pedestrian safety, and basic car
+                mechanics.
+              </p>{" "}
+              <p className="text-slate-700 mb-2">
+                <strong>Why It Matters: </strong> Understanding traffic signs
+                and basic mechanics is critical for safe driving and effective
+                teaching.
+              </p>
+              <p className="text-slate-700">
+                <strong>Study Tip:</strong> Use flashcards to memorize traffic
+                signs. For mechanical knowledge, focus on the basics—how brakes,
+                tires, and the engine work. Practice interpreting signs in
+                context.
+              </p>
+            </div>
+
+            {/* BAND 3 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-l-8 border-orange-500">
+              <h3 className="text-xl font-bold mb-2">
+                Band 3: Driving Test, Disabilities, and the Law
+              </h3>
+              <p className="text-slate-700 mb-2">
+                <strong>What it covers:</strong> This section focuses on the
+                driving test process, disabilities, and legal aspects of
+                driving.
+              </p>{" "}
+              <p className="text-slate-700 mb-2">
+                <strong>Why It Matters: </strong> You’ll need to guide students
+                through the driving test process, including accommodations for
+                drivers with disabilities.
+              </p>
+              <p className="text-slate-700">
+                <strong>Study Tip:</strong> Review DVSA guidelines on the
+                driving test. Learn how to adjust your teaching for students
+                with disabilities, and study the laws that apply to both drivers
+                and instructors.
+              </p>
+            </div>
+
+            {/* BAND 4 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-l-8 border-orange-500">
+              <h3 className="text-xl font-bold mb-2">
+                Band 4: Publications and Instructional Techniques
+              </h3>
+              <p className="text-slate-700 mb-2">
+                <strong>What it covers:</strong> This band is all about
+                teaching—how to effectively communicate driving techniques and
+                safety information.
+              </p>{" "}
+              <p className="text-slate-700 mb-2">
+                <strong>Why It Matters: </strong> Being knowledgeable isn’t
+                enough—you need to communicate clearly and adapt to different
+                learning styles.
+              </p>
+              <p className="text-slate-700">
+                <strong>Study Tip:</strong> Study different teaching techniques.
+                Practice explaining complex concepts in simple terms, and create
+                sample lesson plans to refine your instructional approach.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ================= HAZARD PERCEPTION ================= */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-white">
+        <div className="container mx-auto px-6 fade-up">
+          <div className="flex items-center gap-4 mb-6">
+            <AlertTriangle className="w-10 h-10 text-orange-500" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              The Hazard Perception{" "}
+              <span className="text-orange-500">Test Explained</span>
+            </h2>
+          </div>
+
+          <div className="bg-white p-10 rounded-3xl shadow-2xl">
+            <p className="text-slate-700 leading-relaxed mb-6">
+              Each clip contains one or more developing hazards, such as
+              vehicles, pedestrians and road conditions. You should respond by
+              clicking the mouse as soon as you see a hazard developing that may
+              result in you, the driver, having to take some action, such as
+              changing speed or direction. The earlier you notice a developing
+              hazard and make a response, the higher your score. However, you
+              must wait until the hazard actually starts to develop and not
+              click too early. Your response won’t cause the scene in the video
+              to change in any way. However, a red flag will appear at the
+              bottom of the screen to show that your response has been noted.
+              Before each clip starts, there’ll be a 10-second pause so that you
+              can see the new road situation. The hazard perception tests lasts
+              about 20 minutes. There are 15 scoreable hazards in total. You can
+              score up to five marks on each. The total available score is 75.
+            </p>
+
+            <Link
+              to="/hazard-preception-part-2"
+              className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:gap-3 transition"
+            >
+              Go to Hazard Perception
+              <ArrowRight />
             </Link>
           </div>
-        </section>
-        {/* /////////////////////////////////////////////////////////////////// */}
-        {/* <section className={styles.hazardTestWorkListSection2}>
-          <h2 className={styles.hazardTestH234}>
-            Why is the hazard perception{" "}
-           Test included in the ADI theory test?
-          </h2>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  • Just as in theory test for learner drivers and riders, the
-                  hazard perception test is included in the ADI part 1 theory
-                  test to assess your skills in: -Anticipation. -Scanning.
-                  -Hazard recognition.
-                </p>
-              </li>
-            </ul>
-          </div>
-        </section> */}
-        {/* /////////////////////////////////////////////////////// */}
-        {/* <section className={styles.hazardTestWorkListSection2}>
-          <h2 className={styles.hazardTestH234}>
-            How does it differ from the hazard perception{" "}
-            <span>Test that learner drivers and riders take?</span>
-          </h2>
-          <div className={styles.bgColorList33}>
-            <ul type="none">
-              <li>
-                <p>
-                  • Although all car and motorcycle candidates are shown 14
-                  clips, the ADI hazards perception test is different because
-                  the pass mark is higher. To pass:
-                </p>
-              </li>
-              <li>
-                <p>
-                  • – Learner drivers and riders must achieve a score of 44 our
-                  of 75.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • – Potential driving instructors must achieve 57 out of 75.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • This is because ADIs are expected to have a higher standard
-                  of knowledge and better reactions than a learner, so you’ll
-                  need to prepare thoroughly.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • You need to pass both parts of the theory test in the same
-                  sitting to get an overall pass result. The overall pass mark
-                  for the multiple choice part of the test is 85% (85% questions
-                  answered correctly). However, you must reach a minimum mark of
-                  80% (20 correct questions) in each of the four bands given
-                  above. So, it’s possible for you to get an overall mark of 85%
-                  or higher but still fail the test because you haven’ gained
-                  the minimum of 80% in one or more of the four bands. For the
-                  hazard perception test, the pass mark is 57 out of a possible
-                  75. The results of your theory test are usually given to you
-                  before you leave the test centre, along with details on
-                  applying for the test of driving ability if you’re successful.
-                  If you fail, you’ll be told which bands contained wrong
-                  answers. You won’t, however, be given details of the actual
-                  questions.
-                </p>
-              </li>
-              <li>
-                <p>
-                  • If you have special needs, it’s important to say so when you
-                  book your test so that the necessary adjustments can be made.
-                  If you have dyslexia or other reading difficulties, you can
-                  hear the test through the headphones. You can also ask for
-                  extra time to take the multiple choice part of the test. If
-                  you do have these needs, DVSA will need to see a letter about
-                  your reading ability from any of these people:
-                </p>
-              </li>
-              <li>
-                <p>•-Teacher. -Educationalist. -Psychologist. -Doctor.</p>
-              </li>
-              <li>
-                <p>
-                  • It may not be possible for you to get a relevant
-                  professional person to write this letter; if this is the case,
-                  The DVSA will consider a letter from an independent person who
-                  knows about your reading ability, such as an employer.{" "}
-                </p>
-              </li>
-            </ul>
-            
-          </div>
-        </section> */}
-
-        {/* /////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.hazardTestWorkListDiv}>
-            <div className={styles.innerTheorySupportContent}>
-              <div className={styles.theorySupportContentVideo}>
-                <iframe
-                  width="900"
-                  height="500"
-                  src="https://www.youtube.com/embed/-bsLPF0Q35Y"
-                  title="Road Safety: Joining the Motorway"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen></iframe>
-              </div>
+        </div>
+      </section>
+      {/* ================= VIDEO ================= */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6 fade-up">
+          <div className="bg-slate-50 rounded-3xl shadow-2xl overflow-hidden">
+            <div className="relative aspect-video">
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/-bsLPF0Q35Y"
+                title="PDI Training Video"
+                allowFullScreen
+              />
+            </div>
+            <div className="p-6 flex items-center gap-3">
+              <PlayCircle className="text-orange-500" />
+              <p className="font-semibold" style={{ marginBottom: "0px" }}>
+                Watch & Learn
+              </p>
             </div>
           </div>
-        </section>
-
-        {/* ////////////////////////////////////////////////////////////////////// */}
-
-        <div className={styles.tipsContainer}>
-          <section className={styles.hazardTips}>
-            <h2 className={styles.pdiTipsSectionTitle}>
+        </div>
+      </section>
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12">
+          {/* Hazard Tips */}
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">
               Tips for the Hazard Perception Test
-            </h2>
-            <ul>
-              <li className={styles.pdiTipsOne}>
-                <strong>Practice Makes Perfect:</strong> Use online resources to
-                practice with mock clips.
+            </h3>
+            <ul
+              className="space-y-3 text-slate-700"
+              style={{ paddingLeft: "0px" }}
+            >
+              <li>
+                <strong>Practice Makes Perfect: </strong> Use online resources
+                to practice with mock clips.
               </li>
-              <li className={styles.pdiTipsTwo}>
-                <strong>The Click-Click Technique:</strong> Click twice in quick
-                succession when you see a potential hazard.
+              <li>
+                <strong>The Click-Click Technique: </strong> Click twice in
+                quick succession when you see a potential hazard.
               </li>
-              <li className={styles.pdiTipsThree}>
-                <strong>Stay Alert: </strong>Hazards can appear at any moment,
+              <li>
+                <strong>Stay Alert: </strong> Hazards can appear at any moment,
                 so don’t lose focus.
               </li>
-              <li className={styles.pdiTipsFour}>
-                <strong>Watch for Dual Hazards:</strong> Keep your attention
+              <li>
+                <strong>Watch for Dual Hazards: </strong> Keep your attention
                 sharp until each video ends.
               </li>
             </ul>
-          </section>
+          </div>
 
-          <section className={styles.generalTips}>
-            <h2 className={styles.pdiTipsSectionTitle}>
+          {/* General Tips */}
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">
               General Tips for Success
-            </h2>
-            <ul>
-              <li className={styles.pdiTipsFive}>
-                <strong>Consistency is Key:</strong> Regular study and practice
+            </h3>
+            <ul
+              className="space-y-3 text-slate-700 "
+              style={{ paddingLeft: "0px" }}
+            >
+              <li>
+                <strong>Consistency is Key: </strong> Regular study and practice
                 are crucial.
               </li>
-              <li className={styles.pdiTipsSix}>
-                <strong>Avoid Over-clicking:</strong> Focus on identifying
+              <li>
+                <strong>Avoid Over-clicking: </strong> Focus on identifying
                 hazards early.
               </li>
-              <li className={styles.pdiTipsSeven}>
-                <strong>Stay Calm and Focused:</strong> Perform better under
+              <li>
+                <strong>Stay Calm and Focused: </strong> Perform better under
                 pressure by staying calm.
               </li>
             </ul>
-          </section>
+          </div>
         </div>
-
-        {/* ////////////////////////////////////////// */}
-        <div className={styles.TMnextPage}>
-          <Link to="/part-1-trainning-material">
-            <button className={styles.TMnextButton}>NEXT PAGE</button>
-          </Link>
-        </div>
-
-        {/* /////////////////////////////////////////////////////// */}
-
-        {/* <div id={styles.btnDiv}>
-          <a href="https://www.highwaycodeuk.co.uk/" id={styles.hazzardBtn}>
-            {" "}
-            The Highway Code
-          </a>
-          <a
-            href="https://assets.publishing.service.gov.uk/media/656ef4271104cf0013fa74ef/know-your-traffic-signs-dft.pdf"
-            id={styles.hazzardBtn}
-            className={styles.hazzardBtn}
-          >
-            {" "}
-            Traffic Signs
-          </a>
-          <a
-            href="https://books.google.com.bz/books?id=indItQEACAAJ&printsec=copyright&hl=en#v=onepage&q&f=false"
-            id={styles.hazzardBtn}
-          >
-            {" "}
-            DSA Guide
-          </a>
-          <a
-            href="https://www.rsa.ie/docs/default-source/services/s3.2-adi/21-driving-instructor-handbook-2019-(1).pdf?sfvrsn=b4be5476_5"
-            id={styles.hazzardBtn}
-            className={styles.hazzardBtn}
-          >
-            {" "}
-            Instructor Handbook
-          </a>
-        </div> */}
-        {/* <ul type="none">
-          <li className="text-center mt-2 text-danger">
-            <p>
-              • Click the buttons below to visit each category of the multiple
-              choice test.
-            </p>
-          </li>
-        </ul>
-        <div id={styles.btnDiv}>
-          <Link to="/band-1-Road-Procedure">
-            <button id={styles.hazzardBtn}>Part 1 Band 1</button>
-          </Link>
-          <Link to="/band-2-traffic-signs-and-signals">
-            <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
-              Part 1 Band 2
-            </button>
-          </Link>
-          <Link to="/band-3-driving-tests-disabilities-and-the-law">
-            <button id={styles.hazzardBtn}>Part 1 Band 3</button>
-          </Link>
-          <Link to="/band-4-publications-techniques">
-            <button id={styles.hazzardBtn} className={styles.hazzardBtn}>
-              Part 1 Band 4
-            </button>
-          </Link>
-          <Link to="/Adi-part-1-MockTest">
-            <button id={styles.hazzardBtn}>Bonus Quiz</button>
-          </Link>
-          <Link to="/Adi-part-1-MockTest">
-            <button id={styles.hazzardBtn}>Mock Test</button>
-          </Link>
-        </div> */}
-      </div>
-    </div>
+      </section>
+      {/* ================= NEXT STEP ================= */}
+      <section className="py-20 bg-slate-900 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          Ready to Continue?
+        </h2>
+        <p className="text-slate-300 mb-8">
+          Move on to structured training material and quizzes.
+        </p>
+        <Link to="/part-1-trainning-material">
+          <button className="px-10 py-4 rounded-full bg-orange-500 hover:bg-orange-600 font-semibold shadow-xl transition">
+            NEXT PAGE
+          </button>
+        </Link>
+      </section>
+    </main>
   );
 }

@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
-import styles from "./css/TrainingMaterials.module.css";
-import DrivingInstructorHandbook from "../../../assets/images/tmdimh.png";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  BookOpen,
+  ExternalLink,
+  GraduationCap,
+  ShieldCheck,
+} from "lucide-react";
+
+import bannerImg from "../../../assets/alertbg.png";
+import DrivingInstructorHandbook from "../../../assets/images/tmdimh.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const trainingMaterialsData = [
   {
@@ -13,240 +21,189 @@ const trainingMaterialsData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHubgfRmLV-tic-TgN31dYaNhdrH8SjNgjpA&s",
     caption:
-      "This national standard sets out the skills, knowledge and understanding needed to deliver a programme of driver/rider training.",
+      "Defines the skills, knowledge and understanding required for driver and rider training.",
   },
   {
     title: "Highway Code",
     link: "https://www.safedrivingforlife.info/shop/official-dvsa-highway-code/",
     image:
       "https://upload.wikimedia.org/wikipedia/en/2/26/The_Highway_Code%2C_cover_to_2022_edition.jpg",
-    caption:
-      "A book that can help with answering questions in bands one, two, and some of the questions in band three.",
+    caption: "Essential reading for Band 1, 2 and selected Band 3 questions.",
   },
   {
-    title: "Practical Teaching Skills for Driving Instructors",
+    title: "Practical Teaching Skills",
     link: "https://www.safedrivingforlife.info/shop/practical-teaching-skills-driving-instructors/",
     image:
       "https://cdn.koganpage.com/media/public/image/xxlarge_9781398607569.jpg",
     caption:
-      "Improve your teaching and communication skills with this guide, recommended by DVSA for ADI exams.",
+      "DVSA-recommended guide to improve teaching and communication skills.",
   },
   {
-    title: "Driving the Essential Skills",
+    title: "Driving Essential Skills",
     link: "https://www.safedrivingforlife.info/shop/official-dvsa-guide-driving-essential-skills/",
     image:
       "https://the-road-ahead.co.uk/wp-content/uploads/2021/03/dvsa-driving-essential-skills.webp",
-    caption:
-      "A book that can help with answering questions in bands one, two, and some in band three.",
+    caption: "Covers fundamental driving knowledge for exam preparation.",
   },
   {
     title: "Driving Instructor Handbook",
     link: "https://www.safedrivingforlife.info/shop/driving-instructors-guide/",
     image: DrivingInstructorHandbook,
     caption:
-      "Covers every aspect of being a driving instructor, including preparation for the ADI exams.",
+      "Complete reference covering every aspect of becoming a driving instructor.",
   },
   {
-    title: "Know your Traffic Signs",
+    title: "Know Your Traffic Signs",
     link: "https://www.safedrivingforlife.info/shop/know-your-traffic-signs/",
     image:
       "https://m.media-amazon.com/images/I/71nsk6w2ZWL._AC_UF894,1000_QL80_.jpg",
-    caption:
-      "This guide explains all road signs anyone using the UK roads is likely to encounter.",
+    caption: "Detailed explanations of all UK road signs you may encounter.",
   },
 ];
 
-export default function TrainningMaterial() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = " Forget the rest,"; // First part before "Driving"
-    const secondPart = "learn with the best!"; // Second part after "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
-
+export default function TrainingMaterials() {
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
-              <div className={styles.gGpFrontListP}>
-                <p>
-                  Unlock your driving potential with Smartlearner Learn from
-                  certified instructors in a safe, supportive environment. Start
-                  your journey to becoming a confident, skilled driver today!
-                </p>
-              </div>
-              <div className={styles.alertBtn}>
-                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Contact Us</button>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+                Training <span className="text-red-500">Materials</span>
+              </h1>
+
+              <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+                Hand-picked DVSA-recommended resources designed to help you
+                confidently pass your ADI Part 1 exam.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Link to="/Contact-Us">
+                  <button className="px-7 py-3 bg-red-600 hover:bg-red-700 transition rounded-full font-semibold text-white shadow-lg">
+                    Contact Us
+                  </button>
                 </Link>
-                <Link
-                  to="/part-1-trainning-material"
-                  style={{ textDecoration: "none" }}
-                >
-                  {" "}
-                  <button id={styles.btn}>Back To Portal</button>
+
+                <Link to="/part-1-trainning-material">
+                  <button className="px-7 py-3 bg-white/10 hover:bg-white/20 transition rounded-full font-semibold text-white backdrop-blur">
+                    Back to Portal
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
-        </section>
-        {/* /////////////////////////////////////////////////////////// */}
-        <section className={styles.hazarddivsectionmanner}>
-        <div className={styles.TMcontainer}>
-          {trainingMaterialsData.map((material, index) => (
-            <div
-              className={`${styles.materialCard} ${
-                index % 2 === 0 ? styles.Tmeven : styles.Tmodd
-              }`}
-              key={index}
-            >
-              <a href={material.link} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={material.image}
-                  alt={material.title}
-                  className={styles.materialImage}
-                />
-              </a>
-              <div className={styles.materialDetails}>
-                <h3>{material.title}</h3>
-                <p>{material.caption}</p>
-              </div>
-            </div>
-          ))}
         </div>
-        <section className={styles.hazardTestWorkListSection}>
-          <div className={styles.bgColorList3322}>
-            <ul type="none">
-              <li>
-                <p>
-                  Reading the recommended books for the ADI Part 1 exam is
-                  crucial for your success, as they provide comprehensive
-                  coverage of the key topics you'll be tested on. These
-                  resources are specifically designed to deepen your
-                  understanding of road safety, driving laws, and instructional
-                  techniques, ensuring you're fully prepared for both the
-                  multiple-choice questions and the hazard perception test. The
-                  material in these books is often aligned with the official
-                  DVSA syllabus, offering insights that go beyond basic
-                  knowledge and helping you tackle more challenging questions
-                  with confidence. By thoroughly studying these books, you'll be
-                  better equipped to master each section of the exam, avoid
-                  common pitfalls, and approach the test with the depth of
-                  knowledge needed to excel.
-                </p>
-              </li>
-            </ul>
+      </section>
+
+      {/* ================= MATERIALS GRID ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12 fade-up">
+            <GraduationCap className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+              Recommended <span className="text-red-600">Books</span>
+            </h2>
           </div>
-        </section>
-        {/* <div className={styles.TMnextPage}>
-          <Link to="/band-1-Road-Procedure">
-            {" "}
-            <button className={styles.TMnextButton}>NEXT PAGE Band - 1</button>
-          </Link>
-        </div> */}
-        </section>
-      </div>
-    </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {trainingMaterialsData.map((item, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition overflow-hidden fade-up"
+              >
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/10" />
+                  </div>
+                </a>
+
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <BookOpen className="text-red-600 w-6 h-6" />
+                    <h3 className="text-xl font-bold">{item.title}</h3>
+                  </div>
+
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    {item.caption}
+                  </p>
+
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 text-red-600 font-semibold hover:underline"
+                  >
+                    View Resource <ExternalLink size={16} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WHY IT MATTERS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl fade-up">
+          <div className="flex items-center gap-4 mb-6">
+            <ShieldCheck className="w-9 h-9 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Why These Materials Matter
+            </h2>
+          </div>
+
+          <div className="bg-slate-50 p-8 sm:p-10 rounded-3xl shadow-xl border-l-8 border-red-500">
+            <p className="text-slate-700 text-sm sm:text-lg leading-relaxed">
+              Reading the recommended books for the ADI Part 1 exam is crucial
+              for your success, as they provide comprehensive coverage of the
+              key topics you'll be tested on. These resources are specifically
+              designed to deepen your understanding of road safety, driving
+              laws, and instructional techniques, ensuring you're fully prepared
+              for both the multiple-choice questions and the hazard perception
+              test.
+              <br />
+              <br />
+              The material in these books is often aligned with the official
+              DVSA syllabus, offering insights that go beyond basic knowledge
+              and helping you tackle more challenging questions with confidence.
+              By thoroughly studying these books, you'll be better equipped to
+              master each section of the exam, avoid common pitfalls, and
+              approach the test with the depth of knowledge needed to excel.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

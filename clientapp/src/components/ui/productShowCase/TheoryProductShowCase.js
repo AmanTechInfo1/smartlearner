@@ -35,7 +35,7 @@ const pdiProducts = [
     title: "Theory Portal",
     description:
       "Need support on passing your theory test? We offer 1-2-1 in house, from the comfort of your house on Zoom, or if you want to touch up you driving skills, get ahead or have fun, we have a driving simulator in office!",
-    price: "30",
+    price: "4.99",
     navigatePath: "/Theory-subscription",
   },
 ];

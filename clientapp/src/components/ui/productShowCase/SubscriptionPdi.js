@@ -42,7 +42,7 @@ const pdiProducts = [
     title: "Online Part 1",
     description:
       "Theory Portal for ADI Part 1 with mock tests and bonus quizzes.",
-    price: "49.99",
+    price: "29.99",
     navigatePath: "/driving-instructor-training-part-one",
   },
   {
