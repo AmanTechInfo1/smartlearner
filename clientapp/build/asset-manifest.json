@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.d3994c73.css",
-    "main.js": "/static/js/main.34081d99.js",
+    "main.css": "/static/css/main.3fe801c3.css",
+    "main.js": "/static/js/main.c5875ee3.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
-    "static/media/training-mate-banner.jpg": "/static/media/training-mate-banner.8082a9fb07cdaff6b2f4.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
     "static/media/vehicalchecksbg.jpg": "/static/media/vehicalchecksbg.60e067abd446e8e5ae00.jpg",
     "static/media/theorySupportbanner2.jpg": "/static/media/theorySupportbanner2.ef0a428ae207a62c4712.jpg",
@@ -21,7 +20,6 @@
     "static/media/gde-matrix.jpg": "/static/media/gde-matrix.0c12cae38e2caa366e49.jpg",
     "static/media/givingfeedback.jpg": "/static/media/givingfeedback.0398564037f844ba7335.jpg",
     "static/media/moduleonebanner.jpg": "/static/media/moduleonebanner.46c1c7f8fc978909c93d.jpg",
-    "static/media/pdi-bannerss.jpg": "/static/media/pdi-bannerss.8a0bc261567004946eb8.jpg",
     "static/media/traineebadges.jpg": "/static/media/traineebadges.b4e1043bc0f5d8664cef.jpg",
     "static/media/humanchecksbg.jpg": "/static/media/humanchecksbg.3d9a85f7f307020231bc.jpg",
     "static/media/Video-1886-041219-B.mp4": "/static/media/Video-1886-041219-B.49c3893a20c4ac9f5225.mp4",
@@ -55,7 +53,6 @@
     "static/media/dlbannerimg.png": "/static/media/dlbannerimg.61d20c121ec1c49835f1.png",
     "static/media/routeplanningbanner.jpg": "/static/media/routeplanningbanner.d87aab2543866c742ff1.jpg",
     "static/media/bgImg.png": "/static/media/bgImg.7250ad5cf5f548fc84f6.png",
-    "static/media/glossaryImgbanner.jpg": "/static/media/glossaryImgbanner.8e2fd827a19c7b606c9a.jpg",
     "static/media/concentration.jpg": "/static/media/concentration.33c7c0c37660b5840c96.jpg",
     "static/media/rainImg.png": "/static/media/rainImg.b5e13227911935c457d5.png",
     "static/media/theory.png": "/static/media/theory.ec139fdf727e51a8b90a.png",
@@ -142,7 +139,6 @@
     "static/media/reversingAidsImg.png": "/static/media/reversingAidsImg.ad1c587fb3a193d10dcc.png",
     "static/media/automaticCrousalImg.jpg": "/static/media/automaticCrousalImg.029f1de479b1538298da.jpg",
     "static/media/finished-road-map-1.png": "/static/media/finished-road-map-1.f3dd111279280b3aac10.png",
-    "static/media/docsList.png": "/static/media/docsList.08ebdc1b9a5abb2505fa.png",
     "static/media/img6.jpg": "/static/media/img6.1e5b14cb446df90fd549.jpg",
     "static/media/bloggingImage.jpg": "/static/media/bloggingImage.c059bd9a1af6edda623f.jpg",
     "static/media/alertnessBanner.jpg": "/static/media/alertnessBanner.05b8841f32498e528007.jpg",
@@ -211,7 +207,6 @@
     "static/media/cbdEvents2.jpeg": "/static/media/cbdEvents2.27b5c93a557d498abb8c.jpeg",
     "static/media/CChampion-14.jpg": "/static/media/CChampion-14.e47ba50d3ced4c68bab0.jpg",
     "static/media/thehonesttruthbanner.jpg": "/static/media/thehonesttruthbanner.ad9d454563b685e7278a.jpg",
-    "static/media/pdiTrophi.png": "/static/media/pdiTrophi.48b7c2173bf0dd28c2f0.png",
     "static/media/cimg15.jpg": "/static/media/cimg15.3350b276cd473187a690.jpg",
     "static/media/mobile2banner.png": "/static/media/mobile2banner.30b9fa9a59c84b1d5e2a.png",
     "static/media/img5.jpg": "/static/media/img5.99fee5a45707d30908b4.jpg",
@@ -246,7 +241,6 @@
     "static/media/horse-road-1024x576.jpg": "/static/media/horse-road-1024x576.a95dae61018e8ed46858.jpg",
     "static/media/mentalwellBeing.png": "/static/media/mentalwellBeing.e8ad0340daf6d42b7e3f.png",
     "static/media/roadUserVulnerableuser.png": "/static/media/roadUserVulnerableuser.e1aba19d7421cfecc8f5.png",
-    "static/media/hazzard-png.png": "/static/media/hazzard-png.67856d93960ed94a8b90.png",
     "static/media/workshop.jpeg": "/static/media/workshop.7581f40367679a34dd8b.jpeg",
     "static/media/Diary-1536x681.jpg": "/static/media/Diary-1536x681.05297a53f598f81711b7.jpg",
     "static/media/Asset_109.png": "/static/media/Asset_109.249e54851dcb8e48cc9d.png",
@@ -418,12 +412,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.d3994c73.css.map": "/static/css/main.d3994c73.css.map",
-    "main.34081d99.js.map": "/static/js/main.34081d99.js.map",
+    "main.3fe801c3.css.map": "/static/css/main.3fe801c3.css.map",
+    "main.c5875ee3.js.map": "/static/js/main.c5875ee3.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3994c73.css",
-    "static/js/main.34081d99.js"
+    "static/css/main.3fe801c3.css",
+    "static/js/main.c5875ee3.js"
   ]
 }
