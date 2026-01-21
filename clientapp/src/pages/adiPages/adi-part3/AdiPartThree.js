@@ -73,9 +73,9 @@ export default function AdiPartThree() {
         const parsedData = JSON.parse(subscriptionData2);
         const res = await httpHandler.post(
           "/api/subscription/revolut-payment-success",
-          {
+          
             parsedData,
-          }
+          
         );
 
         if (res.data.success) {

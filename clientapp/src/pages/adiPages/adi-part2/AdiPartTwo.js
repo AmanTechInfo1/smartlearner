@@ -6,9 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import bannerImg from "../../../assets/alertbg.png";
 import smartlearnerLogo from "../../../assets/images/White-Logo-Fixed-1024x174.png";
-
+import { useSelector, useDispatch } from "react-redux"; 
 import LessonAccordation from "./additionalPagess/LessonAccordation";
-
+import { fetchUserSubscriptions } from "./../../../redux/features/subscriptionSlice";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowDownCircle,
   Phone,
@@ -27,6 +28,87 @@ export default function WelcomeToPDI() {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
+
+
+
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userDetails = useSelector((state) => state.auth.userDetails);
+  const userId = userDetails?._id;
+
+  const [subscriptionLoaded, setSubscriptionLoaded] = useState(false); // Track when subscription data is loaded
+
+  useEffect(() => {
+    // If user is logged in and userId exists, fetch subscription data
+    if (userId) {
+      dispatch(fetchUserSubscriptions(userId))
+        .then(() => setSubscriptionLoaded(true)) // Set subscriptionLoaded to true once data is fetched
+        .catch(() => setSubscriptionLoaded(true)); // Handle error and set subscriptionLoaded to true
+    }
+  }, [dispatch, userId]);
+  const userSubscription = useSelector(
+    (state) => state.subscription.userSubscription
+  );
+
+  useEffect(() => {
+    // Fetch user subscriptions
+
+    if (!userDetails || Object.keys(userDetails).length === 0) {
+      navigate("/pdi-login"); // Redirect to login if user is not logged in
+    } else if (userDetails.role === "admin") {
+      // Allow admin to access the portal
+      return;
+    } else if (userDetails.role === "instructortrainee") {
+      // Allow admin to access the portal
+      return;
+    } else if (subscriptionLoaded) {
+      const hasAccess =
+        Array.isArray(userSubscription) &&
+        userSubscription.some((subscription) => {
+          const { planCategory } = subscription.subscriptionId || {};
+          const { couponApplied } = subscription; // Assuming couponApplied is part of the subscription object
+
+          return (
+            subscription.isActive &&
+            (planCategory === "pdi-part-two packages" ||
+              planCategory === "Complete packages")
+          );
+        });
+      if (!hasAccess) {
+        navigate("/driving-instructor-packages/instructor-packages"); // Redirect to subscription page if no valid plan found
+      }
+      // Check the subscription plan category
+    }
+  }, [userDetails, userSubscription, subscriptionLoaded, dispatch, navigate]);
+  ////////////////////////////////////////
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const subscriptionData2 = localStorage.getItem("PdiPartTwoSubsBuy");
+
+      if (!subscriptionData2) return;
+
+      try {
+        const parsedData = JSON.parse(subscriptionData2);
+        const res = await httpHandler.post(
+          "/api/subscription/revolut-payment-success",
+          
+            parsedData,
+          
+        );
+
+        if (res.data.success) {
+          localStorage.removeItem("PdiPartTwoSubsBuy"); // clean up
+        } else {
+          console.error("Payment verification failed");
+        }
+      } catch (err) {
+        console.error("Verification error:", err);
+      }
+    };
+
+    verifyPayment();
+  }, []);
 
   useEffect(() => {
     gsap.utils.toArray(".fade-up").forEach((el) => {

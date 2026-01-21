@@ -206,7 +206,7 @@ class userSubscriptionController {
   }
 
   async revolutPaymentSuccess(req, res) {
-   const { userId, subscriptionId, isTrial } = req.body.parsedData || {};
+   const { userId, subscriptionId, isTrial } = req.body
 
     try {
       const userSubscription =
@@ -249,7 +249,7 @@ class userSubscriptionController {
   }
 
   async revolutPaymentFailure(req, res) {
-   const { userId, subscriptionId, isTrial } = req.body.parsedData || {};
+   const { userId, subscriptionId, isTrial } = req.body
 
     try {
       await userSubscriptionService.sendSubscriptionEmail(

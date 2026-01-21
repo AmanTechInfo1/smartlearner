@@ -34,7 +34,7 @@ import HomeBanner from "../../components/ui/HomeBanner";
 
 export default function TheoryPortal() {
   const userSubscription = useSelector(
-    (state) => state.subscription.userSubscription
+    (state) => state.subscription.userSubscription,
   );
 
   const dispatch = useDispatch();
@@ -91,9 +91,8 @@ export default function TheoryPortal() {
         const parsedData = JSON.parse(subscriptionData2);
         const res = await httpHandler.post(
           "/api/subscription/revolut-payment-success",
-          {
-            parsedData,
-          }
+
+          parsedData,
         );
 
         if (res.data.success) {
@@ -154,7 +153,8 @@ export default function TheoryPortal() {
           <div className={styles.choicesDivTheoryPortal}>
             <div
               id={styles.choiceIdMc}
-              className={styles.ChoicesContentContainer}>
+              className={styles.ChoicesContentContainer}
+            >
               <section>
                 <h2>Multiple-choice</h2>
                 <hr />
@@ -181,7 +181,8 @@ export default function TheoryPortal() {
             </div>
             <div
               id={styles.choiceIdHP}
-              className={styles.ChoicesContentContainer}>
+              className={styles.ChoicesContentContainer}
+            >
               <div>
                 <h2>Hazard Perception</h2>
                 <hr />
@@ -224,11 +225,11 @@ export default function TheoryPortal() {
               width="560"
               height="315"
               src="https://www.youtube.com/embed/7womeV0brCo?controls=1&rel=0&playsinline=0&modestbranding=0&autoplay=0&enablejsapi=1&origin=https%3A%2F%2Fsmartlearner.com&widgetid=1"
-              title="YouTube video player"></iframe>
+              title="YouTube video player"
+            ></iframe>
           </div>
         </section>
       </div>
-   
 
       {/* ////////////////////////////////////////////////////////////// */}
       <section className={styles.thchoiceListSection}>
@@ -305,7 +306,8 @@ export default function TheoryPortal() {
                 style={{ borderRadius: "30px" }}
                 allowFullScreen=""
                 aria-hidden="false"
-                tabIndex="0"></iframe>
+                tabIndex="0"
+              ></iframe>
             </div>
           </div>
         </div>
