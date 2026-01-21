@@ -35,7 +35,7 @@ const TheorySubscription = () => {
   const [revolutLoading, setRevolutLoading] = useState(false);
 
   const subsdiscountedPrice = useSelector(
-    (state) => state.subscription.subsdiscountedPrice
+    (state) => state.subscription.subsdiscountedPrice,
   );
 
   // Fetch subscription plans when component mounts
@@ -53,7 +53,7 @@ const TheorySubscription = () => {
   const handleCreateTrialSubscription = async (plan) => {
     try {
       const trialEligible = await dispatch(
-        checkTrialEligibility(userId)
+        checkTrialEligibility(userId),
       ).unwrap();
 
       if (!trialEligible) {
@@ -67,7 +67,7 @@ const TheorySubscription = () => {
       };
 
       const subscription = await dispatch(
-        createUserSubscription(subscriptionData)
+        createUserSubscription(subscriptionData),
       ).unwrap();
       console.log("Trial subscription created successfully:", subscription);
       navigate("/Theory-Portal");
@@ -126,11 +126,11 @@ const TheorySubscription = () => {
 
   // Separate plans into trial and paid
   const trialPlans = plans.filter(
-    (plan) => plan.planCategory === "theory-portal free-trial"
+    (plan) => plan.planCategory === "theory-portal free-trial",
   );
 
   const paidPlans = plans.filter(
-    (plan) => plan.planCategory === "theory-portal package"
+    (plan) => plan.planCategory === "theory-portal package",
   );
 
   const ogPlan = paidPlans[0];
@@ -157,8 +157,8 @@ const TheorySubscription = () => {
     try {
       const { revolutPay } = await RevolutCheckout.payments({
         locale: "en",
-
-        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+        mode: "sandbox",
+        publicToken: "pk_DSAuLvLFUSjuSVDDZgSYfRV9UzZzPuWvBfqbfj4Rx3A7c50C", // Use env variable in prod
       });
 
       revolutPay.mount(revolut7ContainerRef.current, {
@@ -179,7 +179,7 @@ const TheorySubscription = () => {
               currency: "GBP",
               subscriptionId: ogPlan._id,
               userId: userId,
-            }
+            },
           );
 
           console.log("sa123sdasd", res);
@@ -190,7 +190,7 @@ const TheorySubscription = () => {
             JSON.stringify({
               userId: userId,
               subscriptionId: ogPlan._id,
-            })
+            }),
           );
 
           return { publicId: res.data.token };
@@ -208,7 +208,7 @@ const TheorySubscription = () => {
                 {
                   subscriptionId: ogPlan._id,
                   userId: userId,
-                }
+                },
               );
               if (res.data.success) {
                 localStorage.removeItem("TheorySubsBuy");
@@ -229,7 +229,7 @@ const TheorySubscription = () => {
                 {
                   subscriptionId: ogPlan._id,
                   userId: userId,
-                }
+                },
               );
             } catch (err) {
               console.error("Error notifying backend of payment failure:", err);
@@ -243,7 +243,7 @@ const TheorySubscription = () => {
                 {
                   subscriptionId: ogPlan._id,
                   userId: userId,
-                }
+                },
               );
             } catch (err) {
               console.error("Error notifying backend of payment failure:", err);
@@ -327,7 +327,8 @@ const TheorySubscription = () => {
                           fontSize: "1.2rem",
                           textAlign: "center",
                           width: "100%",
-                        }}>
+                        }}
+                      >
                         Loading plans...
                       </p>
                     )}
@@ -391,7 +392,8 @@ const TheorySubscription = () => {
                         onClick={() =>
                           initRevolutPay(ogPlan, subsdiscountedPrice)
                         }
-                        disabled={subsdiscountedPrice}>
+                        disabled={subsdiscountedPrice}
+                      >
                         Pay with debit/credit card
                       </button>
                       {activePlan?._id === ogPlan._id && (
@@ -413,7 +415,8 @@ const TheorySubscription = () => {
                       className={styles.revolutbutton}
                       onClick={() =>
                         initRevolutPay(ogPlan, subsdiscountedPrice)
-                      }>
+                      }
+                    >
                       Pay with debit/credit card
                     </button>
                     {activePlan?._id === ogPlan._id && (
