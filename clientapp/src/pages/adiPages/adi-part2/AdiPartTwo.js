@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import httpHandler from "../../../utils/httpHandler";
 import bannerImg from "../../../assets/alertbg.png";
 import smartlearnerLogo from "../../../assets/images/White-Logo-Fixed-1024x174.png";
 import { useSelector, useDispatch } from "react-redux"; 
@@ -24,7 +24,7 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function WelcomeToPDI() {
+export default function AdiPartTwo() {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
