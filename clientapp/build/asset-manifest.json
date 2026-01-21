@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3fe801c3.css",
-    "main.js": "/static/js/main.c5875ee3.js",
+    "main.css": "/static/css/main.d191509d.css",
+    "main.js": "/static/js/main.6c233a1c.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
@@ -12,7 +12,6 @@
     "static/media/pdi-training-banner.jpg": "/static/media/pdi-training-banner.aa4382174c2c2ea170d0.jpg",
     "static/media/automaticround.jpg": "/static/media/automaticround.bf477bac8170d3177a82.jpg",
     "static/media/vehicleLoadingBanner.jpg": "/static/media/vehicleLoadingBanner.004ad9615dc8f1e23cf0.jpg",
-    "static/media/pdi-banner2.jpg": "/static/media/pdi-banner2.e7fed7efa6294e482572.jpg",
     "static/media/theory-banner.jpg": "/static/media/theory-banner.47a267a480740b34a34a.jpg",
     "static/media/contact-banner2.png": "/static/media/contact-banner2.684e276d92e370cec21e.png",
     "static/media/showme.jpg": "/static/media/showme.44c36e240b0b58e78464.jpg",
@@ -412,12 +411,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.3fe801c3.css.map": "/static/css/main.3fe801c3.css.map",
-    "main.c5875ee3.js.map": "/static/js/main.c5875ee3.js.map",
+    "main.d191509d.css.map": "/static/css/main.d191509d.css.map",
+    "main.6c233a1c.js.map": "/static/js/main.6c233a1c.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fe801c3.css",
-    "static/js/main.c5875ee3.js"
+    "static/css/main.d191509d.css",
+    "static/js/main.6c233a1c.js"
   ]
 }
