@@ -21,6 +21,19 @@ import { RxCross2 } from "react-icons/rx";
 import { getQuizCategoryById } from "../../redux/features/quizCategorySlice";
 import { fetchUserSubscriptions } from "../../redux/features/subscriptionSlice";
 import toast from "react-hot-toast";
+import {
+  Volume2,
+  Languages,
+  Clock,
+  Pause,
+  Play,
+  ChevronLeft,
+  ChevronRight,
+  BarChart3,
+  CheckCircle,
+  XCircle,
+} from "lucide-react";
+import Loader from "../loader/Loader";
 
 const languageCodes = {
   Auto: "auto",
@@ -203,7 +216,7 @@ const Quiz = () => {
 
   const userDetails = useSelector((state) => state.auth.userDetails);
   const userSubscription = useSelector(
-    (state) => state.subscription.userSubscription
+    (state) => state.subscription.userSubscription,
   );
   const userId = userDetails?._id;
 
@@ -555,343 +568,299 @@ const Quiz = () => {
       {confettiActive && (
         <Confetti run={confettiActive} width={width} height={height} />
       )}
-      <div className={styles.quizContainer}>
-        <div className={styles.quizDiv}>
-          <div className={styles.quiz}>
-            {loading ? (
-              <LoadingWeb />
-            ) : timeUp ? (
-              <div className={styles.totalTimer333}>
-                <span>Time's Up!</span>
-                <button
-                  onClick={handleRestart}
-                  className="btn btn-secondary bg-danger">
-                  Restart Quiz
-                </button>
-              </div>
-            ) : quizCompleted ? (
-              <div className={styles.totalTimer333}>
-                <span>Quiz Completed!</span>
-                <button
-                  onClick={handleRestart}
-                  className="btn btn-secondary bg-danger">
-                  Restart Quiz
-                </button>
-              </div>
-            ) : oneQuiz[currentQuestionIndex]?.question ? (
-              <>
-                <div className={styles.totalTimer2}>
-                  <div className={styles.totalTimer}>
-                    <select
-                      onChange={handleLanguageChange}
-                      style={{ color: "black" }}>
-                      {Object.entries(languageCodes).map((itm) => (
-                        <option key={itm[1]} value={itm[1]}>
-                          {itm[0]}
-                        </option>
-                      ))}
-                    </select>
-                    {isTranslating && <span>Loading...</span>}
-                  </div>
-                  <div className={styles.totalTimer2}>
-                    {quizCategory?.timer && (
-                      <div className={styles.totalTimer}>
-                        <span
-                          style={{
-                            border: "none",
-                            padding: "5px 10px",
-                            backgroundColor: "white",
-                            color: "black",
-                            fontWeight: "400",
-                            fontSize: "18px",
-                          }}>
-                          Time left: {formatTime(timer)}
-                        </span>
-                        <button
-                          onClick={handlePauseResume}
-                          id={styles.linkButton}>
-                          {isPaused ? "Resume" : "Pause"}
-                        </button>
-                      </div>
-                    )}
-                  </div>
+
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-yellow-50 to-blue-50 flex justify-center px-3 sm:px-4 py-6">
+        <div className="w-full max-w-6xl bg-white rounded-2xl shadow-xl p-4 sm:p-6 text-gray-800 border border-gray-100">
+          {loading ? (
+            <Loader />
+          ) : timeUp || quizCompleted ? (
+            <div className="flex flex-col items-center gap-6 py-16 text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold">
+                {timeUp ? "⏰ Time’s Up!" : "🎉 Quiz Completed!"}
+              </h2>
+              <button
+                onClick={handleRestart}
+                className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl shadow-lg hover:scale-105 transition"
+              >
+                Restart Quiz
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* HEADER */}
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6">
+                {/* Language */}
+                <div className="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-xl border">
+                  <Languages className="text-green-600" />
+                  <select
+                    onChange={handleLanguageChange}
+                    className="bg-transparent outline-none text-sm sm:text-base"
+                  >
+                    {Object.entries(languageCodes).map((itm) => (
+                      <option key={itm[1]} value={itm[1]}>
+                        {itm[0]}
+                      </option>
+                    ))}
+                  </select>
+                  {isTranslating && (
+                    <span className="text-xs text-gray-500">Loading…</span>
+                  )}
                 </div>
-                {TotalQuestions && AttemptedQuestions !== undefined && (
-                  <div className={styles.questionDataNumbers}>
-                    <p>Attempted : {AttemptedQuestions}</p>
-                    <p>TotalQuestions : {TotalQuestions}</p>
+
+                {/* Timer */}
+                {quizCategory?.timer && (
+                  <div className="flex items-center gap-3 bg-yellow-50 px-4 py-2 rounded-xl border border-yellow-200">
+                    <Clock className="text-yellow-600" />
+                    <span className="font-semibold">{formatTime(timer)}</span>
+                    <button onClick={handlePauseResume}>
+                      {isPaused ? <Play /> : <Pause />}
+                    </button>
                   </div>
                 )}
-                <div>
-                  <div
-                    className={styles.questionNumbers}
-                    style={{ marginBottom: "1rem" }}>
-                    {Array.from({ length: totalQuestions }, (_, index) => {
-                      if (index < visibleQuestions) {
-                        return (
-                          <button
-                            key={index}
-                            id={styles.questionNumbering}
-                            className={`question-number ${
-                              currentQuestionIndex === index ? "active" : ""
-                            } ${
-                              answeredQuestions.includes(index)
-                                ? "answered"
-                                : ""
-                            }`}
-                            onClick={() => handleQuestionClick(index)}>
-                            {index + 1}
-                          </button>
-                        );
-                      }
-                      return null;
-                    })}
-                    {totalQuestions > 10 && (
-                      <button
-                        className={styles.seeMoreButton}
-                        onClick={handleToggle}>
-                        {showAll ? "See Less" : "See More"}
-                      </button>
-                    )}
-                  </div>
-                </div>
-                <div className={styles.totalTimer}>
-                  <span>Category : </span>
-                  <p>
-                    {oneQuiz[currentQuestionIndex]?.quizCategory ||
-                      "Not specified"}
+              </div>
+
+              {/* QUESTION STATS */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-green-50 rounded-xl p-3 border border-green-200">
+                  <p style={{marginBottom:"0px"}} className="text-xs text-gray-500">Attempted</p>
+                  <p style={{marginBottom:"0px"}} className="font-semibold text-green-700">
+                    {AttemptedQuestions}
                   </p>
                 </div>
-                <div className={styles.questionCount}>
-                  <span>Question: </span>
+                <div className="bg-blue-50 rounded-xl p-3 border border-blue-200">
+                  <p className="text-xs text-gray-500" style={{marginBottom:"0px"}}>Total</p>
+                  <p style={{marginBottom:"0px"}} className="font-semibold text-blue-700">
+                    {TotalQuestions}
+                  </p>
+                </div>
+              </div>
+
+              {/* QUESTION NAVIGATION */}
+              <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+                {Array.from({ length: totalQuestions }, (_, index) =>
+                  index < visibleQuestions ? (
+                    <button
+                      key={index}
+                      onClick={() => handleQuestionClick(index)}
+                      className={`min-w-[40px] h-10 rounded-lg font-bold transition
+                  ${
+                    currentQuestionIndex === index
+                      ? "bg-blue-600 text-white scale-110"
+                      : "bg-gray-100"
+                  }
+                  ${
+                    answeredQuestions.includes(index)
+                      ? "ring-2 ring-green-400"
+                      : ""
+                  }`}
+                    >
+                      {index + 1}
+                    </button>
+                  ) : null,
+                )}
+
+                {totalQuestions > 10 && (
+                  <button
+                    onClick={handleToggle}
+                    className="px-4 h-10 rounded-lg bg-gray-100 whitespace-nowrap"
+                  >
+                    {showAll ? "See Less" : "See More"}
+                  </button>
+                )}
+              </div>
+
+              {/* QUESTION */}
+              <div className="bg-gray-50 rounded-2xl p-4 sm:p-6 mb-6 border">
+                <div className="flex flex-col sm:flex-row justify-between gap-4">
                   <div
                     ref={myDivRef}
-                    className={styles.questionTextt}
-                    id="questionTextt"
+                    className="text-base sm:text-lg leading-relaxed"
                     dangerouslySetInnerHTML={{
                       __html: oneQuiz[currentQuestionIndex]?.question.replace(
                         ">",
-                        "><br/>"
+                        "><br/>",
                       ),
                     }}
                   />
                   <button
                     disabled={!hasTranslated || isTranslating}
-                    style={{
-                      border: "none",
-                      backgroundColor: "#4f008b",
-                      cursor:
-                        !hasTranslated || isTranslating
-                          ? "not-allowed"
-                          : "pointer",
-                      opacity: !hasTranslated || isTranslating ? 0.5 : 1,
-                    }}
-                    onClick={() => speak(translatedQuestionText)}>
-                    🔊
+                    onClick={() => speak(translatedQuestionText)}
+                    className="text-blue-600 hover:scale-110 disabled:opacity-40"
+                  >
+                    <Volume2 />
                   </button>
                 </div>
-                {oneQuiz[currentQuestionIndex]?.questionImage && (
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <img
-                      style={{
-                        maxWidth: "300px",
-                        width: "100%",
-                        borderRadius: "6px",
-                        filter:
-                          "drop-shadow(0.35rem 0.35rem 0.4rem rgba(19, 19, 19, 0.8))",
-                      }}
-                      src={
-                        imageBaseUrl +
-                        oneQuiz[currentQuestionIndex]?.questionImage
-                      }
-                      alt="Question"
-                    />
-                  </div>
-                )}
-                <div className={styles.answerSection}>
-                  {oneQuiz[currentQuestionIndex]?.option?.map(
-                    (answerOption, index) => {
-                      // Check if there are matching output items based on questionId
-                      const outputItem = outputData.find(
-                        (item) =>
-                          item.questionId ===
-                          oneQuiz[currentQuestionIndex]?.questionId
-                      );
-                      // Check if the user has selected an answer and if it's correct or incorrect
-                      // Check if the user has selected an answer and if it's correct or incorrect
-                      const isAnswerSelected =
-                        outputItem?.answerAttempt !== undefined;
-                      const isCorrect = outputItem?.answerAttempt === "Correct";
-
-                      const isSelectedAnswer =
-                        `Option${index + 1}` === outputItem?.answer;
-                      const isButtonDisabled =
-                        outputItem?.questionId ===
-                        oneQuiz[currentQuestionIndex]?.questionId;
-
-                      // Determine the background color and icon display logic
-                      let buttonBackgroundColor = "";
-                      let showTick = false;
-                      let showCross = false;
-
-                      if (isAnswerSelected) {
-                        // If the selected answer is the user's choice and it's incorrect
-                        if (isSelectedAnswer && !isCorrect) {
-                          buttonBackgroundColor = "#e40000"; // Red for incorrect selected answer
-                          showCross = true; // Show cross icon
-                        } else if (isSelectedAnswer && isCorrect) {
-                          buttonBackgroundColor = "#00a600"; // Green for correct answer
-                          showTick = true;
-                        } else if (
-                          !isSelectedAnswer &&
-                          outputItem?.correctAnswer === `Option${index + 1}`
-                        ) {
-                          // If the user did not select the correct option, show it in green
-                          buttonBackgroundColor = "#00a600"; // Green for correct answer
-                          showTick = true; // Show tick icon
-                        }
-                      } else if (
-                        isCorrect &&
-                        outputItem?.correctAnswer === `Option${index + 1}`
-                      ) {
-                        // If no answer selected yet, highlight the correct option in green
-                        buttonBackgroundColor = "#00a600"; // Green for correct option
-                      }
-
-                      return (
-                        <button
-                          key={index}
-                          disabled={isButtonDisabled} // Disable button if the questionId matches
-                          style={{
-                            backgroundColor: buttonBackgroundColor,
-                            cursor: isButtonDisabled
-                              ? "not-allowed"
-                              : "pointer",
-                          }}
-                          onClick={() =>
-                            handleAnswerOptionClick(
-                              "Option" + (index + 1),
-                              "Image" + (index + 1)
-                            )
-                          }>
-                          {answerOption && (
-                            <>
-                              <p id={"option" + (index + 1)}>{answerOption}</p>
-                              <p
-                                style={{ display: "none" }}
-                                id={"laboption" + (index + 1)}>
-                                {answerOption}
-                              </p>
-                              <button
-                                disabled={!hasTranslated || isTranslating}
-                                style={{
-                                  border: "none",
-                                  cursor:
-                                    !hasTranslated || isTranslating
-                                      ? "not-allowed"
-                                      : "pointer",
-                                  opacity:
-                                    !hasTranslated || isTranslating ? 0.5 : 1,
-                                }}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  const optionKey = `option${index + 1}`;
-                                  const textToSpeak =
-                                    translatedOptions[optionKey];
-                                  if (textToSpeak) {
-                                    speak(textToSpeak);
-                                  }
-                                }}>
-                                🔊
-                              </button>
-                              {oneQuiz[currentQuestionIndex]?.optionImage[
-                                index
-                              ] && (
-                                <img
-                                  style={{ maxWidth: "120px", width: "100%" }}
-                                  src={
-                                    oneQuiz[currentQuestionIndex]?.optionImage[
-                                      index
-                                    ].includes("https")
-                                      ? oneQuiz[currentQuestionIndex]
-                                          ?.optionImage[index]
-                                      : imageBaseUrl +
-                                        oneQuiz[currentQuestionIndex]
-                                          ?.optionImage[index]
-                                  }
-                                />
-                              )}
-                              {/* Show the Tick icon if the selected answer is correct */}
-                              {showTick && (
-                                <TiTick
-                                  style={{
-                                    color: "white",
-                                    fontSize: "20px",
-                                    fontWeight: "900",
-                                  }}
-                                />
-                              )}
-                              {/* Show the Cross icon if the selected answer is incorrect */}
-                              {showCross && (
-                                <RxCross2
-                                  style={{
-                                    color: "white",
-                                    fontSize: "20px",
-                                    fontWeight: "900",
-                                  }}
-                                />
-                              )}
-                            </>
-                          )}
-                        </button>
-                      );
-                    }
-                  )}
-                </div>
-                {/* Show description only after an answer is selected */}
-                {outputData.find(
-                  (item) =>
-                    item.questionId ===
-                    oneQuiz[currentQuestionIndex]?.questionId
-                )?.answerAttempt && (
-                  <div className={styles.descriptionBox}>
-                    <h4>
-                      Explanation:{" "}
-                      <button
-                        disabled={!hasTranslated || isTranslating}
-                        style={{
-                          border: "none",
-                          backgroundColor: "#f0f0f0",
-                          cursor:
-                            !hasTranslated || isTranslating
-                              ? "not-allowed"
-                              : "pointer",
-                          opacity: !hasTranslated || isTranslating ? 0.5 : 1,
-                        }}
-                        onClick={() => speak(translatedDescriptionText)}>
-                        🔊
-                      </button>
-                    </h4>
-                    <p>{oneQuiz[currentQuestionIndex]?.description}</p>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className={styles.totalTimer}>
-                Quiz Completed Veiw result
-                <button
-                  className="btn btn-secondary bg-danger"
-                  onClick={handleRestart}>
-                  Restart Quiz
-                </button>
               </div>
-            )}
 
-            <div className={styles.navigationButtons}>
-              <button onClick={endQuiz}>View Result</button>
-              <button onClick={backbtn}>Back</button>
+              {/* IMAGE */}
+              {oneQuiz[currentQuestionIndex]?.questionImage && (
+                <div className="flex justify-center mb-6">
+                  <img
+                    src={
+                      imageBaseUrl +
+                      oneQuiz[currentQuestionIndex]?.questionImage
+                    }
+                    className="rounded-xl shadow max-w-full sm:max-w-xs"
+                    alt="Question"
+                  />
+                </div>
+              )}
+
+              {/* OPTIONS */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                {oneQuiz[currentQuestionIndex]?.option.map(
+                  (answerOption, index) => {
+                    const outputItem = outputData.find(
+                      (item) =>
+                        item.questionId ===
+                        oneQuiz[currentQuestionIndex]?.questionId,
+                    );
+
+                    const isSelected =
+                      `Option${index + 1}` === outputItem?.answer;
+                    const isCorrect = outputItem?.answerAttempt === "Correct";
+                    const optionImage =
+                      oneQuiz[currentQuestionIndex]?.optionImage?.[index];
+                    return (
+                      <button
+                        key={index}
+                        disabled={
+                          outputItem?.questionId ===
+                          oneQuiz[currentQuestionIndex]?.questionId
+                        }
+                        onClick={() =>
+                          handleAnswerOptionClick(
+                            "Option" + (index + 1),
+                            "Image" + (index + 1),
+                          )
+                        }
+                        className={`relative p-4 rounded-xl text-left border transition
+                     ${
+                       isSelected && isCorrect
+                         ? "bg-green-100 border border-green-400 text-green-900"
+                         : isSelected && !isCorrect
+                           ? "bg-red-100 border border-red-400 text-red-900"
+                           : "bg-white border border-gray-200 text-gray-800"
+                     }
+                   hover:scale-[1.02] disabled:opacity-70`}
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <p style={{marginBottom:"0px"}} className="text-sm sm:text-base leading-relaxed flex-1">
+                            {answerOption}
+                          </p>
+                          <div className="flex items-center gap-2">
+                            {isSelected &&
+                              (isCorrect ? (
+                                <CheckCircle className="text-green-600" />
+                              ) : (
+                                <XCircle className="text-red-600" />
+                              ))}
+                          </div>
+
+                          <button
+                            style={{
+                              border: "none",
+                              cursor:
+                                !hasTranslated || isTranslating
+                                  ? "not-allowed"
+                                  : "pointer",
+                              opacity:
+                                !hasTranslated || isTranslating ? 0.5 : 1,
+                            }}
+                            disabled={!hasTranslated || isTranslating}
+                            onClick={(e) => {
+                              e.stopPropagation();
+
+                              const optionKey = `option${index + 1}`;
+                              const textToSpeak =
+                                translatedOptions?.[optionKey] ||
+                                translatedOptions?.[optionKey.toLowerCase()] ||
+                                answerOption;
+
+                              if (!textToSpeak) {
+                                console.warn(
+                                  "No translated text for:",
+                                  optionKey,
+                                );
+                                return;
+                              }
+
+                              speak(textToSpeak);
+                            }}
+                            className="mt-0.5 text-indigo-600 hover:text-indigo-800
+             hover:scale-110 transition disabled:opacity-40"
+                          >
+                            <Volume2 size={18} />
+                          </button>
+                        </div>
+
+                        {/* OPTION IMAGE */}
+                        {optionImage && (
+                          <div className="mt-3 flex justify-center">
+                            <img
+                              src={
+                                optionImage.includes("https")
+                                  ? optionImage
+                                  : imageBaseUrl + optionImage
+                              }
+                              alt={`Option ${index + 1}`}
+                              className="max-w-[120px] w-full rounded-lg shadow-md"
+                            />
+                          </div>
+                        )}
+                      </button>
+                    );
+                  },
+                )}
+              </div>
+
+              {/* EXPLANATION */}
+              {outputData.find(
+                (item) =>
+                  item.questionId === oneQuiz[currentQuestionIndex]?.questionId,
+              )?.answerAttempt && (
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h4 className="font-bold">Explanation</h4>
+                    <button
+                      onClick={() => speak(translatedDescriptionText)}
+                      className="text-blue-600"
+                    >
+                      <Volume2 size={18} />
+                    </button>
+                  </div>
+                  <p style={{marginBottom:"0px"}}>{oneQuiz[currentQuestionIndex]?.description}</p>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* FOOTER */}
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6">
+            <button
+              onClick={endQuiz}
+              className="flex items-center justify-center gap-2 px-4 py-3
+          bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-500
+          text-white rounded-xl shadow hover:scale-105 w-full sm:w-auto"
+            >
+              <BarChart3 /> View Result
+            </button>
+
+            <div className="flex gap-3 w-full sm:w-auto">
+              <button
+                onClick={backbtn}
+                className="flex items-center justify-center gap-1 px-4 py-3 bg-gray-100 rounded-xl w-full sm:w-auto"
+              >
+                <ChevronLeft /> Back
+              </button>
+
               {oneQuizOutput.answerAttempt && !quizCompleted && !timeUp && (
-                <button onClick={handleNextQuestion}>Next</button>
+                <button
+                  onClick={handleNextQuestion}
+                  className="flex items-center justify-center gap-1 px-4 py-3 bg-green-600 text-white rounded-xl hover:scale-105 w-full sm:w-auto"
+                >
+                  Next <ChevronRight />
+                </button>
               )}
             </div>
           </div>

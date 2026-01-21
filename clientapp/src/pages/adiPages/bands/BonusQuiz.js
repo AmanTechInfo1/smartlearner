@@ -1,205 +1,54 @@
-import React from "react";
-import styles from "../AdiPartOne.module.css";
-
 import { Link } from "react-router-dom";
-
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
+import { Star, PlayCircle, ArrowRight } from "lucide-react";
 
 export default function BonusQuiz() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = " Forget the rest,"; // First part before "Driving"
-    const secondPart = "learn with the best!"; // Second part after "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
-
   return (
-    <div className={styles.AdiPartOne}>
-      <div className={styles.AdiPortalPartOne}>
-        <section className={styles.imageSection}>
-          <div className={styles.opicity}></div>
-          <div className={styles.maincontent}>
-            <div className={styles.content}>
-              <div className={styles.heading1}>
-                <h1 ref={textRef}>{splitText()}</h1>
-              </div>
-              <div className={styles.gGpFrontListP}>
-                <p>
-                  Unlock your driving potential with Smartlearner Learn from
-                  certified instructors in a safe, supportive environment. Start
-                  your journey to becoming a confident, skilled driver today!
-                </p>
-              </div>
-              <div className={styles.alertBtn}>
-                <Link to="/Contact-Us" style={{ textDecoration: "none" }}>
-                  {" "}
-                  <button id={styles.btn}>Contact Us</button>
-                </Link>
-                <Link
-                  to="/part-1-trainning-material"
-                  style={{ textDecoration: "none" }}
-                >
-                  {" "}
-                  <button id={styles.btn}>Back To Portal</button>
-                </Link>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-teal-50 to-white flex flex-col items-center justify-center px-4 py-12 gap-8">
+      {/* Bonus Quiz Card */}
+      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-cyan-100">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="p-4 bg-cyan-100 rounded-xl">
+            <Star className="w-8 h-8 text-cyan-600" />
           </div>
-        </section>
-        {/* ///////////////////////////////////// */}
-        {/* <section className={styles.hazardTestWorkListSection}>
-        <h2>
-          Part 1 -<span> Mock tests</span>
-        </h2>
-        <hr style={{ opacity: "1", border: "1px solid black" }}></hr>
-
-        <div className={styles.bgColorList33}>
-          <ul type="none">
-            <li>
-              <p>
-                Once you have booked your part one theory test, it goes
-                without saying that revision is essential and it is highly
-                unlikely that you will be able to pass this with no revision.
-                When you’re revising for your part one theory test, there are
-                lots of different things you can do to ensure that you’re
-                test-ready and arguably, one of the most important things is
-                to sit a few mock theory tests. The pass mark is 85. Thus
-                making it much stricter than the learners theory test. In
-                addition to scoring 90 marks. You will need score at least 20
-                out of a possible 25 marks in each of the 4 categories. This
-                scoring system makes the test a little bit more difficult. For
-                example you may have a total score of 90 but if you have 3
-                categories with 20 out of 20 and only 10 out of 20 on the
-                other category you would not pass.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section> */}
-        {/* //////////////////////////////////////////////// */}
-        <section className={styles.hazardTestWorkListSection}>
-          <div id={styles.btnDiv}>
-            <h2 >
-              Test Yourself
-            </h2>
-          </div>
-        </section>
-        {/* //////////////////////////////// */}
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h2>Start Quiz</h2>
-            <h3>All Questions</h3>
-            <p>
-              Click the start quiz button to start the quiz and See your result
+          <div>
+            <h2 className="text-3xl font-bold text-gray-800">Bonus Quiz</h2>
+            <p className="text-cyan-600 font-medium">
+              Extra practice for ADI Part 1
             </p>
-            <Link to="/takequizCatName/adi-part-1--bonus-Quiz">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
+          </div>
         </div>
-        <div className={styles.TMnextPage}>
-          <Link to="/hazard-preception-part-2">
-            <button className={styles.TMnextButton}>
-              NEXT PAGE Hazzard Preception{" "}
-            </button>
-          </Link>
-        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 leading-relaxed mb-8">
+          Click the button below to start the bonus quiz and see your results.
+          Perfect for extra practice and confidence building.
+        </p>
+
+        {/* Start Quiz Button */}
+        <Link to="/takequizCatName/adi-part-1--bonus-Quiz">
+          <button
+            className="w-full md:w-auto inline-flex items-center justify-center gap-3
+                       bg-gradient-to-r from-cyan-600 to-teal-500
+                       hover:from-cyan-700 hover:to-teal-600
+                       text-white px-8 py-4 rounded-xl font-semibold
+                       transition-all duration-300
+                       shadow-lg hover:shadow-xl"
+          >
+            <PlayCircle className="w-6 h-6" />
+            Start Quiz
+          </button>
+        </Link>
+      </div>
+
+      {/* Next Page Button */}
+      <div className="max-w-3xl w-full flex justify-end">
+        <Link to="/hazard-preception-part-2">
+          <button className="inline-flex items-center gap-2 bg-teal-50 hover:bg-teal-100 text-teal-700 px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-sm">
+            NEXT PAGE Hazard Perception
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </Link>
       </div>
     </div>
   );

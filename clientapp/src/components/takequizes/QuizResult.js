@@ -7,6 +7,9 @@ import styles from "./QuizResult.module.css";
 import { TiTick } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
 
+import { CheckCircle, XCircle, Trophy, ArrowLeft, Clock } from "lucide-react";
+import Loader from "../loader/Loader";
+
 const QuizResult = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +41,7 @@ const QuizResult = () => {
   });
 
   const sortedQuizResults = [...filteredQuizResults].sort(
-    (a, b) => new Date(b.createdOn) - new Date(a.createdOn)
+    (a, b) => new Date(b.createdOn) - new Date(a.createdOn),
   );
 
   const groupedResults = sortedQuizResults.reduce((acc, itm) => {
@@ -102,54 +105,65 @@ const QuizResult = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "black",
-        color: "white",
-        paddingTop: "4rem",
-        paddingBottom: "5rem",
-      }}>
-      <div className="container mx-auto p-1">
-        <h2 className="text-center text-2xl font-semibold mb-4">
-          Quiz Results{" "}
-          <button
-            onClick={() => navigate(-3)}
-            className="btn btn-secondary bg-info ml-5 py-3 px-5 ">
-            Go Back
-          </button>
-          <Link to="/all-results" id={styles.linkButton}>
-            View all
-          </Link>
-        </h2>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 pt-20 pb-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-10">
+          <h2 className="text-3xl font-bold text-slate-800 flex items-center gap-3">
+            <Trophy className="w-8 h-8 text-indigo-600" />
+            Quiz Results
+          </h2>
+
+          <div className="flex gap-4 mt-4 md:mt-0">
+            <button
+              onClick={() => navigate(-3)}
+              className="flex items-center gap-2 px-5 py-2 rounded-xl bg-indigo-600 text-white shadow-lg hover:scale-105 transition-transform"
+            >
+              <ArrowLeft size={18} /> Go Back
+            </button>
+
+            <Link
+              to="/all-results"
+              className="px-5 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-900 transition"
+            >
+              View All
+            </Link>
+          </div>
+        </div>
+
         {loading ? (
-          <LoadingWeb />
+          <Loader />
         ) : (
           <>
-            <div className="mb-4">
+            {/* Quiz Category Buttons */}
+            <div className="flex flex-wrap gap-3 mb-8">
               {Object.keys(groupedResults).map((quizName) => (
                 <button
                   key={quizName}
                   onClick={() => {
-                    // Scroll to the quiz category section when button is clicked
-                    const element = document.getElementById(quizName);
-                    if (element) {
-                      element.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                      });
-                    }
+                    const el = document.getElementById(quizName);
+                    el?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
-                  className={styles.catebtn}>
+                  className="px-4 py-2 rounded-lg bg-white shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all"
+                >
                   {truncateQuizName(quizName)}
                 </button>
               ))}
             </div>
 
+            {/* Results */}
             {Object.entries(groupedResults).map(([quizName, bands]) => (
-              <div key={quizName} id={quizName} className="mb-5">
-                <h3 className="text-xl font-semibold">
-                  {quizName}{" "}
-                  <Link to="/all-results" id={styles.linkButton}>
+              <div
+                key={quizName}
+                id={quizName}
+                className="mb-14 p-6 rounded-2xl bg-white shadow-xl border border-slate-200"
+              >
+                <h3 className="text-2xl font-semibold text-slate-800 mb-6 flex justify-between">
+                  {quizName}
+                  <Link
+                    to="/all-results"
+                    className="text-indigo-600 hover:underline"
+                  >
                     View all
                   </Link>
                 </h3>
@@ -157,108 +171,102 @@ const QuizResult = () => {
                 {Object.entries(bands).map(([band, data]) => {
                   const { results, correct, incorrect } = data;
                   const percentage = calculatePercentage(correct, incorrect);
-                  const passOrFail = getPassOrFail(percentage);
+                  const isPass = percentage >= 80;
 
                   return (
-                    <div key={band}>
-                      <h4>{band}</h4>
-                      <p style={{ fontSize: "1.5rem", fontWeight: "500" }}>
-                        Total Score: {percentage}% ({passOrFail})
-                        <span style={{ color: "green", marginLeft: "1rem" }}>
-                          Correct:{" "}
-                        </span>{" "}
-                        {correct}{" "}
-                        <span style={{ color: "red" }}>Incorrect: </span>
-                        {incorrect}
-                      </p>
+                    <div
+                      key={band}
+                      className="mb-10 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-200 shadow-lg p-6"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                        <h4 className="text-lg font-semibold text-slate-700">
+                          {band}
+                        </h4>
 
-                      <div className={styles.tableWrapperCollapse}>
-                        <div className={styles.tableWrapperScroller}>
-                          <table
-                            className={`${styles.quizResultTable} bg-dark dark:bg-zinc-800 border `}>
-                            <thead>
-                              <tr
-                                className="w-full bg-zinc-800 dark:bg-zinc-700 text-white"
-                                id={styles.tableRowBg}>
-                                {[
-                                  "Quiz Name",
-                                  "Question",
-                                  "Correct Answer",
-                                  "Answer Attempt",
-                                  "Description",
-                                  "Submit Time",
-                                ].map((header) => (
-                                  <th
-                                    key={header}
-                                    className="py-2 px-4 text-left border ">
-                                    {header}
-                                  </th>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody id={styles.tablebodyRowBg}>
-                              {results.map((itm) => (
-                                <tr
-                                  className="border-b dark:border-zinc-700"
-                                  key={itm.result?._id}>
-                                  <td className="py-2 px-4 border ">
-                                    {quizName || "N/A"}
-                                  </td>
-                                  <td className="py-2 px-4 border ">
-                                    {itm.question?.question.replace(
-                                      ">",
-                                      "><br/>"
-                                    ) || "N/A"}
-                                  </td>
-                                  <td className="py-2 px-4 border border-light bg-success">
-                                    {getAnswer2Text(
-                                      itm.question,
-                                      itm?.question?.answer
-                                    )}
-                                  </td>
-
-                                  <td
-                                    className="py-2 px-4 border border-light"
-                                    style={{
-                                      backgroundColor:
-                                        itm.answerAttempt === "Incorrect"
-                                          ? "#990309"
-                                          : "#024902",
-                                    }}>
-                                    {getAnswerText(itm.question, itm.answer)}
-                                    {itm.answerAttempt === "Correct" ? (
-                                      <TiTick
-                                        style={{
-                                          color: "white",
-                                          fontSize: "22px",
-                                          fontWeight: "700",
-                                          marginLeft: "10px",
-                                        }}
-                                      />
-                                    ) : (
-                                      <ImCross
-                                        style={{
-                                          color: "white",
-                                          fontSize: "15px",
-                                          fontWeight: "400",
-                                          marginLeft: "10px",
-                                        }}
-                                      />
-                                    )}
-                                  </td>
-                                  <td className="py-2 px-4 border ">
-                                    {itm.question.description || "N/A"}
-                                  </td>
-
-                                  <td className="py-2 px-4 border ">
-                                    {new Date(itm.createdOn).toLocaleString() ||
-                                      "N/A"}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                        <div
+                          className={`px-5 py-2 rounded-full text-white text-sm font-semibold shadow-md ${
+                            isPass ? "bg-emerald-600" : "bg-rose-600"
+                          }`}
+                        >
+                          {percentage}% • {isPass ? "Pass" : "Fail"}
                         </div>
+                      </div>
+
+                      <div className="flex gap-6 mb-6 text-sm">
+                        <span className="text-emerald-600 font-semibold">
+                          Correct: {correct}
+                        </span>
+                        <span className="text-rose-600 font-semibold">
+                          Incorrect: {incorrect}
+                        </span>
+                      </div>
+
+                      {/* Table */}
+                      <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-inner">
+                        <table className="w-full text-sm">
+                          <thead className="bg-slate-800 text-white sticky top-0">
+                            <tr>
+                              {[
+                                "Quiz",
+                                "Question",
+                                "Correct Answer",
+                                "Your Answer",
+                                "Description",
+                                "Time",
+                              ].map((h) => (
+                                <th key={h} className="px-4 py-3 text-left">
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            {results.map((itm) => (
+                              <tr
+                                key={itm.result?._id}
+                                className="border-b hover:bg-slate-50 transition"
+                              >
+                                <td className="px-4 py-3">{quizName}</td>
+
+                                <td className="px-4 py-3 max-w-md">
+                                  {itm.question?.question || "N/A"}
+                                </td>
+
+                                <td className="px-4 py-3 text-emerald-700 font-medium">
+                                  {getAnswer2Text(
+                                    itm.question,
+                                    itm?.question?.answer,
+                                  )}
+                                </td>
+
+                                <td
+                                  className={`px-4 py-3 font-medium flex items-center gap-2 ${
+                                    itm.answerAttempt === "Correct"
+                                      ? "text-emerald-700"
+                                      : "text-rose-700"
+                                  }`}
+                                >
+                                  {getAnswerText(itm.question, itm.answer)}
+                                  {itm.answerAttempt === "Correct" ? (
+                                    <CheckCircle size={18} />
+                                  ) : (
+                                    <XCircle size={18} />
+                                  )}
+                                </td>
+
+                                <td className="px-4 py-3">
+                                  {itm.question?.description || "N/A"}
+                                </td>
+
+                                <td className="px-4 py-3 flex items-center gap-2 text-slate-600">
+                                  <Clock size={14} />
+                                  {new Date(itm.createdOn).toLocaleString()}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   );
