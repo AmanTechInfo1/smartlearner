@@ -156,9 +156,10 @@ const TheorySubscription = () => {
 
     try {
       const { revolutPay } = await RevolutCheckout.payments({
-        locale: "en",
-        mode: "sandbox",
-        publicToken: "pk_DSAuLvLFUSjuSVDDZgSYfRV9UzZzPuWvBfqbfj4Rx3A7c50C", // Use env variable in prod
+          locale: "en",
+
+        publicToken: "pk_6beHPJuibNeh8OnYfdQnU25E6cCQjjh0tLXsDSvy54xkmMXf", // Use env variable in prod
+       // Use env variable in prod
       });
 
       revolutPay.mount(revolut7ContainerRef.current, {
