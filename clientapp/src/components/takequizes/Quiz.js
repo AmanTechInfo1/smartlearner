@@ -622,14 +622,30 @@ const Quiz = () => {
               {/* QUESTION STATS */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-green-50 rounded-xl p-3 border border-green-200">
-                  <p style={{marginBottom:"0px"}} className="text-xs text-gray-500">Attempted</p>
-                  <p style={{marginBottom:"0px"}} className="font-semibold text-green-700">
+                  <p
+                    style={{ marginBottom: "0px" }}
+                    className="text-xs text-gray-500"
+                  >
+                    Attempted
+                  </p>
+                  <p
+                    style={{ marginBottom: "0px" }}
+                    className="font-semibold text-green-700"
+                  >
                     {AttemptedQuestions}
                   </p>
                 </div>
                 <div className="bg-blue-50 rounded-xl p-3 border border-blue-200">
-                  <p className="text-xs text-gray-500" style={{marginBottom:"0px"}}>Total</p>
-                  <p style={{marginBottom:"0px"}} className="font-semibold text-blue-700">
+                  <p
+                    className="text-xs text-gray-500"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    Total
+                  </p>
+                  <p
+                    style={{ marginBottom: "0px" }}
+                    className="font-semibold text-blue-700"
+                  >
                     {TotalQuestions}
                   </p>
                 </div>
@@ -685,6 +701,9 @@ const Quiz = () => {
                   <button
                     disabled={!hasTranslated || isTranslating}
                     onClick={() => speak(translatedQuestionText)}
+                    style={{
+                      border: "none",
+                    }}
                     className="text-blue-600 hover:scale-110 disabled:opacity-40"
                   >
                     <Volume2 />
@@ -706,7 +725,6 @@ const Quiz = () => {
                 </div>
               )}
 
-              {/* OPTIONS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 {oneQuiz[currentQuestionIndex]?.option.map(
                   (answerOption, index) => {
@@ -716,11 +734,19 @@ const Quiz = () => {
                         oneQuiz[currentQuestionIndex]?.questionId,
                     );
 
-                    const isSelected =
-                      `Option${index + 1}` === outputItem?.answer;
-                    const isCorrect = outputItem?.answerAttempt === "Correct";
+                    const optionKey = `Option${index + 1}`;
+
+                    const isSelected = optionKey === outputItem?.answer;
+                    const isCorrectAttempt =
+                      outputItem?.answerAttempt === "Correct";
+
+                    // 👇 IMPORTANT: correct option key from backend
+                    const isCorrectOption =
+                      optionKey === outputItem?.correctAnswer;
+
                     const optionImage =
                       oneQuiz[currentQuestionIndex]?.optionImage?.[index];
+
                     return (
                       <button
                         key={index}
@@ -730,31 +756,38 @@ const Quiz = () => {
                         }
                         onClick={() =>
                           handleAnswerOptionClick(
-                            "Option" + (index + 1),
+                            optionKey,
                             "Image" + (index + 1),
                           )
                         }
                         className={`relative p-4 rounded-xl text-left border transition
-                     ${
-                       isSelected && isCorrect
-                         ? "bg-green-100 border border-green-400 text-green-900"
-                         : isSelected && !isCorrect
-                           ? "bg-red-100 border border-red-400 text-red-900"
-                           : "bg-white border border-gray-200 text-gray-800"
-                     }
-                   hover:scale-[1.02] disabled:opacity-70`}
+          ${
+            isCorrectOption
+              ? "bg-green-100 border-green-400 text-green-900"
+              : isSelected && !isCorrectAttempt
+                ? "bg-red-100 border-red-400 text-red-900"
+                : "bg-white border-gray-200 text-gray-800"
+          }
+          hover:scale-[1.02] disabled:opacity-70`}
                       >
                         <div className="flex items-start justify-between gap-4">
-                          <p style={{marginBottom:"0px"}} className="text-sm sm:text-base leading-relaxed flex-1">
+                          <p
+                            style={{ marginBottom: "0px" }}
+                            className="text-sm sm:text-base leading-relaxed flex-1"
+                          >
                             {answerOption}
                           </p>
+
                           <div className="flex items-center gap-2">
-                            {isSelected &&
-                              (isCorrect ? (
-                                <CheckCircle className="text-green-600" />
-                              ) : (
-                                <XCircle className="text-red-600" />
-                              ))}
+                            {/* ✅ Correct option icon (always shown) */}
+                            {isCorrectOption && (
+                              <CheckCircle className="text-green-600" />
+                            )}
+
+                            {/* ❌ Wrong selected option icon */}
+                            {isSelected && !isCorrectOption && (
+                              <XCircle className="text-red-600" />
+                            )}
                           </div>
 
                           <button
@@ -771,24 +804,20 @@ const Quiz = () => {
                             onClick={(e) => {
                               e.stopPropagation();
 
-                              const optionKey = `option${index + 1}`;
+                              const optionKeyLower = `option${index + 1}`;
                               const textToSpeak =
-                                translatedOptions?.[optionKey] ||
-                                translatedOptions?.[optionKey.toLowerCase()] ||
+                                translatedOptions?.[optionKeyLower] ||
+                                translatedOptions?.[
+                                  optionKeyLower.toLowerCase()
+                                ] ||
                                 answerOption;
 
-                              if (!textToSpeak) {
-                                console.warn(
-                                  "No translated text for:",
-                                  optionKey,
-                                );
-                                return;
-                              }
+                              if (!textToSpeak) return;
 
                               speak(textToSpeak);
                             }}
                             className="mt-0.5 text-indigo-600 hover:text-indigo-800
-             hover:scale-110 transition disabled:opacity-40"
+              hover:scale-110 transition disabled:opacity-40"
                           >
                             <Volume2 size={18} />
                           </button>
@@ -825,11 +854,16 @@ const Quiz = () => {
                     <button
                       onClick={() => speak(translatedDescriptionText)}
                       className="text-blue-600"
+                      style={{
+                        border: "none",
+                      }}
                     >
                       <Volume2 size={18} />
                     </button>
                   </div>
-                  <p style={{marginBottom:"0px"}}>{oneQuiz[currentQuestionIndex]?.description}</p>
+                  <p style={{ marginBottom: "0px" }}>
+                    {oneQuiz[currentQuestionIndex]?.description}
+                  </p>
                 </div>
               )}
             </>
