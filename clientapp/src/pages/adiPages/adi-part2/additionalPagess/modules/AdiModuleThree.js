@@ -3,11 +3,26 @@ import styles from "./AdiModuleOne.module.css";
 import { useSelector } from "react-redux";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { FaRegArrowAltCircleDown } from "react-icons/fa";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { TiTick } from "react-icons/ti";
+
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../../../assets/images/whatjpg.jpg";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Eye,
+  Car,
+  ShieldCheck,
+  Leaf,
+  FilePenLine,
+  Trash2,
+  Brain,
+  ChevronDown,
+  PlayCircle,
+  ArrowRight,
+  CheckCircle,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AdiModuleThree() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -42,6 +57,25 @@ export default function AdiModuleThree() {
     setIsVisible5((prevState) => !prevState); // Toggle visibility
   };
 
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
+
   // ////////////////////////////////////////////////////////////////////////////////
   const [text, setText] = useState("");
   const [savedTexts, setSavedTexts] = useState([]); // Store multiple saved texts
@@ -67,7 +101,7 @@ export default function AdiModuleThree() {
       }
       localStorage.setItem(
         `notepadTextspage3_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -89,7 +123,7 @@ export default function AdiModuleThree() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTextspage3_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -125,7 +159,7 @@ export default function AdiModuleThree() {
       }
       localStorage.setItem(
         `notepadText2spage3_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -147,7 +181,7 @@ export default function AdiModuleThree() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2spage3_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -183,7 +217,7 @@ export default function AdiModuleThree() {
       }
       localStorage.setItem(
         `notepadText3spage3_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -205,7 +239,7 @@ export default function AdiModuleThree() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadText3spage3_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
@@ -241,7 +275,7 @@ export default function AdiModuleThree() {
       }
       localStorage.setItem(
         `notepadText4spage3_${userId}`,
-        JSON.stringify([...savedTexts4, text4])
+        JSON.stringify([...savedTexts4, text4]),
       );
 
       setText4("");
@@ -263,7 +297,7 @@ export default function AdiModuleThree() {
     setSavedTexts4(updatedTexts4);
     localStorage.setItem(
       `notepadText4spage3_${userId}`,
-      JSON.stringify(updatedTexts4)
+      JSON.stringify(updatedTexts4),
     );
   };
 
@@ -300,7 +334,7 @@ export default function AdiModuleThree() {
       }
       localStorage.setItem(
         `notepadText5spage3_${userId}`,
-        JSON.stringify([...savedTexts5, text5])
+        JSON.stringify([...savedTexts5, text5]),
       );
 
       setText5("");
@@ -322,7 +356,7 @@ export default function AdiModuleThree() {
     setSavedTexts5(updatedTexts5);
     localStorage.setItem(
       `notepadText5spage3_${userId}`,
-      JSON.stringify(updatedTexts5)
+      JSON.stringify(updatedTexts5),
     );
   };
 
@@ -331,98 +365,6 @@ export default function AdiModuleThree() {
     if (savedData5) {
       setSavedTexts5(JSON.parse(savedData5));
     }
-  }, []);
-
-  // ////////////////////////////////////////////////////////////////////////////////
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart =
-      "What is Advanced Driving in Relation to the ADI Part 2 Exam?"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
   }, []);
 
   // ///////////////////////////////////////////////////////////////////
@@ -450,244 +392,193 @@ export default function AdiModuleThree() {
   }, []);
 
   return (
-    <>
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundPosition: "bottom",
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full">
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-bottom"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white max-w-4xl">
+              What is <span className="text-emerald-400">Advanced Driving</span>{" "}
+              in Relation to the ADI Part 2 Exam?
+            </h1>
+          </div>
+        </div>
+      </section>
+      {/* ================= INTRO ================= */}
+
+      <section className="bg-white">
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-extrabold flex items-center gap-3">
+                <PlayCircle className="w-9 h-9 text-emerald-600" /> Watch Our
+                Video
+              </h2>
+              <p className="mt-4 text-slate-600">
+                Advanced driving requires a high level of skill, awareness, and
+                control to ensure safety, efficiency, and professionalism on the
+                road. It involves a combination of observation, planning,
+                vehicle control, eco-safe driving, legal compliance, and the
+                right mindset. Mastering these components is essential for
+                anyone aiming to drive at an advanced level, particularly for
+                those preparing for professional driving tests.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+              <div className="relative aspect-video">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/JJqpyJE1lO4"
+                  title="Advanced Driving"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-6 flex items-center gap-3">
+                <PlayCircle className="text-emerald-500 w-7 h-7" />
+                <h3 className="font-semibold text-lg">Watch Our Video</h3>
+              </div>
+            </div>
+          </div>
         </section>
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Advanced driving requires a high level of skill, awareness, and
-              control to ensure safety, efficiency, and professionalism on the
-              road. It involves a combination of observation, planning, vehicle
-              control, eco-safe driving, legal compliance, and the right
-              mindset. Mastering these components is essential for anyone aiming
-              to drive at an advanced level, particularly for those preparing
-              for professional driving tests.
-            </p>
-          </div>
-        </div>
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/JJqpyJE1lO4"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
-          </div>
-        </div>
-        <section className={styles.instructorContainer}>
-          <div className={styles.AdiModuleContentBox}>
-            <h2>Observation and Planning</h2>
-            <div className={styles.dropdownContainer}>
-              {" "}
-              <div className={styles.downArrowiconDiv}>
-                <FaRegArrowAltCircleDown
-                  onClick={toggleGlossary}
-                  className={`${styles.downArrowicon} ${
-                    isVisible ? styles.rotate : ""
-                  }`}
-                />
-                <p>CLICK ME</p>
-              </div>
-              <div className={styles.AdiModuleContentParaBox121}>
-                <div
-                  className={`${styles.AdiModuleContentParaBox23} ${
-                    isVisible ? styles.glossarycontainerOneshow : ""
-                  }`}>
-                  <p>
-                    One of the most crucial aspects of advanced driving is
-                    observation. A skilled driver constantly scans the road
-                    ahead, to the sides, and behind using mirrors to maintain
-                    full awareness of their surroundings. This includes
-                    identifying potential hazards early, such as pedestrians,
-                    cyclists, changing road conditions, or unpredictable
-                    weather. By actively monitoring these factors, drivers can
-                    make informed decisions and reduce the likelihood of
-                    accidents.
-                  </p>
-                  <p>
-                    Planning is equally important, as it allows drivers to
-                    anticipate how hazards may develop and take the necessary
-                    precautions. This involves adjusting speed and positioning
-                    the vehicle appropriately for maximum safety and efficiency.
-                    For example, when approaching a bend, an advanced driver
-                    will position their vehicle to optimise visibility and
-                    control. Similarly, at junctions or roundabouts, they will
-                    assess traffic flow in advance to ensure smooth navigation.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.AdiModuleContentBox}>
-            <h2>Vehicle Control</h2>
-            <div className={styles.dropdownContainer}>
-              {" "}
-              <div className={styles.downArrowiconDiv}>
-                <FaRegArrowAltCircleDown
-                  onClick={toggleGlossary2}
-                  className={`${styles.downArrowicon} ${
-                    isVisible2 ? styles.rotate : ""
-                  }`}
-                />
-                <p>CLICK ME</p>
-              </div>
-              <div className={styles.AdiModuleContentParaBox122}>
-                <div
-                  className={`${styles.AdiModuleContentParaBox23} ${
-                    isVisible2 ? styles.glossarycontainerOneshow : ""
-                  }`}>
-                  <p>
-                    Maintaining full control of the vehicle is essential for
-                    advanced driving. This starts with smooth acceleration and
-                    braking. A skilled driver applies gentle, progressive
-                    pressure to the accelerator and brakes, avoiding sudden
-                    jolts that could destabilize the vehicle or cause discomfort
-                    to passengers. This smooth driving style not only enhances
-                    safety but also improves fuel efficiency.
-                  </p>
-                  <p>
-                    Gear selection is another key factor in vehicle control.
-                    Advanced drivers use the appropriate gear for their speed
-                    and road conditions, shifting smoothly to avoid unnecessary
-                    engine strain. Keeping the engine within its optimal power
-                    range helps maintain efficiency and control, particularly
-                    when navigating challenging road conditions such as steep
-                    inclines or heavy traffic.
-                  </p>
-                  <p>
-                    Steering technique also plays a vital role in advanced
-                    driving. A controlled and consistent approach, such as the
-                    push-pull method, ensures precise handling, particularly
-                    when manoeuvring through bends and turns. Maintaining a firm
-                    yet relaxed grip on the wheel allows for quick adjustments
-                    while keeping the vehicle stable and balanced.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* ================= DROPDOWN SECTIONS ================= */}
+        <section className="py-24 bg-slate-50">
+          <div className="container mx-auto px-6 space-y-10 max-w-5xl">
+            {/* Observation */}
+            <DropSection
+              title="Observation and Planning"
+              icon={<Eye />}
+              open={isVisible}
+              toggle={toggleGlossary}
+            >
+              <p>
+                One of the most crucial aspects of advanced driving is
+                observation. A skilled driver constantly scans the road ahead,
+                to the sides, and behind using mirrors to maintain full
+                awareness of their surroundings. This includes identifying
+                potential hazards early, such as pedestrians, cyclists, changing
+                road conditions, or unpredictable weather. By actively
+                monitoring these factors, drivers can make informed decisions
+                and reduce the likelihood of accidents.
+              </p>
+              <p className="mt-4">
+                Planning is equally important, as it allows drivers to
+                anticipate how hazards may develop and take the necessary
+                precautions. This involves adjusting speed and positioning the
+                vehicle appropriately for maximum safety and efficiency. For
+                example, when approaching a bend, an advanced driver will
+                position their vehicle to optimise visibility and control.
+                Similarly, at junctions or roundabouts, they will assess traffic
+                flow in advance to ensure smooth navigation.
+              </p>
+            </DropSection>
 
-          <div className={styles.AdiModuleContentBox}>
-            <h2>Eco-Safe Driving</h2>
-            <div className={styles.dropdownContainer}>
-              {" "}
-              <div className={styles.downArrowiconDiv}>
-                <FaRegArrowAltCircleDown
-                  onClick={toggleGlossary3}
-                  className={`${styles.downArrowicon} ${
-                    isVisible3 ? styles.rotate : ""
-                  }`}
-                />
-                <p>CLICK ME</p>
-              </div>
-              <div className={styles.AdiModuleContentParaBox123}>
-                <div
-                  className={`${styles.AdiModuleContentParaBox23} ${
-                    isVisible3 ? styles.glossarycontainerOneshow : ""
-                  }`}>
-                  <p>
-                    Eco-safe driving is an integral part of advanced driving,
-                    focusing on minimizing fuel consumption and reducing wear
-                    and tear on the vehicle. This involves maintaining a steady
-                    speed, avoiding harsh acceleration, and using higher gears
-                    where possible. By driving smoothly and efficiently, drivers
-                    can lower emissions, save on fuel costs, and extend the
-                    lifespan of their vehicle. Simple habits such as
-                    anticipating traffic flow, coasting when appropriate, and
-                    reducing unnecessary braking all contribute to a more
-                    environmentally friendly and cost-effective driving style.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* Vehicle Control */}
+            <DropSection
+              title="Vehicle Control"
+              icon={<Car />}
+              open={isVisible2}
+              toggle={toggleGlossary2}
+            >
+              <p>
+                Maintaining full control of the vehicle is essential for
+                advanced driving. This starts with smooth acceleration and
+                braking. A skilled driver applies gentle, progressive pressure
+                to the accelerator and brakes, avoiding sudden jolts that could
+                destabilize the vehicle or cause discomfort to passengers. This
+                smooth driving style not only enhances safety but also improves
+                fuel efficiency.
+              </p>
+              <p className="mt-4">
+                Gear selection is another key factor in vehicle control.
+                Advanced drivers use the appropriate gear for their speed and
+                road conditions, shifting smoothly to avoid unnecessary engine
+                strain. Keeping the engine within its optimal power range helps
+                maintain efficiency and control, particularly when navigating
+                challenging road conditions such as steep inclines or heavy
+                traffic.
+              </p>
+              <p className="mt-4">
+                Steering technique also plays a vital role in advanced driving.
+                A controlled and consistent approach, such as the push-pull
+                method, ensures precise handling, particularly when manoeuvring
+                through bends and turns. Maintaining a firm yet relaxed grip on
+                the wheel allows for quick adjustments while keeping the vehicle
+                stable and balanced.
+              </p>
+            </DropSection>
 
-          <div className={styles.AdiModuleContentBox}>
-            <h2>Legal Compliance</h2>
-            <div className={styles.dropdownContainer}>
-              {" "}
-              <div className={styles.downArrowiconDiv}>
-                <FaRegArrowAltCircleDown
-                  onClick={toggleGlossary4}
-                  className={`${styles.downArrowicon} ${
-                    isVisible4 ? styles.rotate : ""
-                  }`}
-                />
-                <p>CLICK ME</p>
-              </div>
-              <div className={styles.AdiModuleContentParaBox124}>
-                <div
-                  className={`${styles.AdiModuleContentParaBox23} ${
-                    isVisible4 ? styles.glossarycontainerOneshow : ""
-                  }`}>
-                  <p>
-                    Adhering to road laws and regulations is fundamental to
-                    advanced driving. Drivers must strictly follow the Highway
-                    Code, ensuring they comply with speed limits, road signs,
-                    and traffic signals at all times. Correct procedures must
-                    also be demonstrated at pedestrian crossings, roundabouts,
-                    and junctions, showing an understanding of right-of-way
-                    rules and safe interactions with other road users. Legal
-                    compliance not only prevents penalties and fines but also
-                    reinforces responsible driving habits that promote road
-                    safety.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* Eco Safe */}
+            <DropSection
+              title="Eco-Safe Driving"
+              icon={<Leaf />}
+              open={isVisible3}
+              toggle={toggleGlossary3}
+            >
+              <p>
+                Eco-safe driving is an integral part of advanced driving,
+                focusing on minimizing fuel consumption and reducing wear and
+                tear on the vehicle. This involves maintaining a steady speed,
+                avoiding harsh acceleration, and using higher gears where
+                possible. By driving smoothly and efficiently, drivers can lower
+                emissions, save on fuel costs, and extend the lifespan of their
+                vehicle. Simple habits such as anticipating traffic flow,
+                coasting when appropriate, and reducing unnecessary braking all
+                contribute to a more environmentally friendly and cost-effective
+                driving style.
+              </p>
+            </DropSection>
 
-          <div className={styles.AdiModuleContentBox}>
-            <h2>Mindset and Professionalism</h2>
-            <div className={styles.dropdownContainer}>
-              {" "}
-              <div className={styles.downArrowiconDiv}>
-                <FaRegArrowAltCircleDown
-                  onClick={toggleGlossary5}
-                  className={`${styles.downArrowicon} ${
-                    isVisible5 ? styles.rotate : ""
-                  }`}
-                />
-                <p>CLICK ME</p>
-              </div>
-              <div className={styles.AdiModuleContentParaBox125}>
-                <div
-                  className={`${styles.AdiModuleContentParaBox23} ${
-                    isVisible5 ? styles.glossarycontainerOneshow : ""
-                  }`}>
-                  <p>
-                    Beyond technical skills, advanced driving requires the right
-                    mindset. A professional driver remains composed under
-                    pressure, adapting smoothly to changing road conditions and
-                    unexpected situations. Courtesy and respect for other road
-                    users are also essential, whether allowing pedestrians to
-                    cross safely, giving way to merging traffic, or maintaining
-                    a safe following distance. By demonstrating patience and
-                    awareness, advanced drivers contribute to a safer and more
-                    cooperative driving environment.
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Legal */}
+            <DropSection
+              title="Legal Compliance"
+              icon={<ShieldCheck />}
+              open={isVisible4}
+              toggle={toggleGlossary4}
+            >
+              <p>
+                Adhering to road laws and regulations is fundamental to advanced
+                driving. Drivers must strictly follow the Highway Code, ensuring
+                they comply with speed limits, road signs, and traffic signals
+                at all times. Correct procedures must also be demonstrated at
+                pedestrian crossings, roundabouts, and junctions, showing an
+                understanding of right-of-way rules and safe interactions with
+                other road users. Legal compliance not only prevents penalties
+                and fines but also reinforces responsible driving habits that
+                promote road safety.
+              </p>
+            </DropSection>
+
+            {/* Mindset */}
+            <DropSection
+              title="Mindset and Professionalism"
+              icon={<Brain />}
+              open={isVisible5}
+              toggle={toggleGlossary5}
+            >
+              <p>
+                Beyond technical skills, advanced driving requires the right
+                mindset. A professional driver remains composed under pressure,
+                adapting smoothly to changing road conditions and unexpected
+                situations. Courtesy and respect for other road users are also
+                essential, whether allowing pedestrians to cross safely, giving
+                way to merging traffic, or maintaining a safe following
+                distance. By demonstrating patience and awareness, advanced
+                drivers contribute to a safer and more cooperative driving
+                environment.
+              </p>
+            </DropSection>
           </div>
-          <div className={styles.AdiModuleContentBox}>
-            <div className={styles.AdiModuleContentParaBox}>
+        </section>
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6 max-w-5xl">
+            <div className="bg-slate-50 p-10 rounded-3xl shadow-2xl">
               <p>
                 In summary, advanced driving is a combination of skill,
                 awareness, efficiency, and professionalism. By mastering
@@ -699,7 +590,6 @@ export default function AdiModuleThree() {
             </div>
           </div>
         </section>
-        {/* ////////////////////////////////////////////////////// */}
         <div className={styles.AdiModuleContentBox}>
           <div className={styles.adimoduletableContainer}>
             <table className={styles.adimoduleskillTable}>
@@ -727,9 +617,10 @@ export default function AdiModuleThree() {
                         onClick={() => handleSkillClick(skill, "confident")}
                         style={{
                           cursor: "pointer",
-                          color: feedback === "confident" ? "green" : "#ccc",
-                        }}>
-                        ✔
+                          color: feedback === "confident" ? "blue" : "#ccc",
+                        }}
+                      >
+                        <TiTick size={28} />
                       </td>
                       <td
                         className={styles.iconCell}
@@ -740,7 +631,8 @@ export default function AdiModuleThree() {
                           cursor: "pointer",
                           color:
                             feedback === "needsImprovement" ? "red" : "#ccc",
-                        }}>
+                        }}
+                      >
                         ✘
                       </td>
                     </tr>
@@ -750,283 +642,425 @@ export default function AdiModuleThree() {
             </table>
           </div>
         </div>
-
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p style={{ marginTop: "0.8rem" }}>
-              1. Go for a short drive in a controlled environment (with your
-              trainer if needed).
-            </p>
-            <p style={{ marginTop: "0.8rem" }}>
-              2. During the drive, focus on the following tasks:<br></br>- Spot
-              hazards early (e.g., parked cars, cyclists, or junctions).
-              <br />- Verbally describe what you see and explain how you’re
-              responding to it (e.g., slowing down, changing lanes).
-            </p>
-            <p style={{ marginTop: "0.8rem" }}>
-              {" "}
-              E.g. I am going to take the next turn on the left, I am beginning
-              my observations checking my centre left mirror, applying my left
-              indicator, slowing down slowly with my brake, checking my left
-              mirror before I turn’
-            </p>
-          </div>
-        </div>
-
-        {/* /////////////////////////////////////////////////////////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              3. Ask your trainer or a trusted observer to provide feedback on
-              your performance. What was the feedback? Did you do better or
-              worse than you predicted? What will you learn from this?
-            </label>
-            <label>Write your answer below</label>
-            <textarea
-              ref={textareaRef}
-              value={text}
-              onChange={handleChange}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+        ;{/* ================= PRACTICAL TASK ================= */}
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6 max-w-5xl">
+            <div className="bg-slate-50 p-10 rounded-3xl shadow-2xl">
+              <p>
+                1. Go for a short drive in a controlled environment (with your
+                trainer if needed)..
+              </p>
+              <p className="mt-3">
+                2. During the drive, focus on the following tasks:
+                <br />
+                <br />
+                - Spot hazards early (e.g., parked cars, cyclists, or
+                junctions).
+                <br />- Verbally describe what you see and explain how you’re
+                responding to it (e.g., slowing down, changing lanes).
+              </p>
+              <p className="mt-3 italic text-slate-600">
+                “E.g. I am going to take the next turn on the left, I am
+                beginning my observations checking my centre left mirror,
+                applying my left indicator, slowing down slowly with my brake,
+                checking my left mirror before I turn”
+              </p>
             </div>
           </div>
         </section>
+        {/* ///////////////////////////////// */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                3. Ask your trainer or a trusted observer to provide feedback on
+                your performance. What was the feedback? Did you do better or
+                worse than you predicted? What will you learn from this?
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
 
-        <section className={styles.AdiModuleOneTextArea}>
-          <h2>After the activity, answer these questions:</h2>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              1. What was your biggest strength in advanced driving?
-            </label>
-            <textarea
-              ref={textareaRef2}
-              value={text2}
-              onChange={handleChange2}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText2}>
-              {isEditing2 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts2.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts2.map((savedText2, index) => (
-                    <li key={index}>
-                      <p>{savedText2}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText2(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText2(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              Which area needs the most improvement (e.g., smoother control,
-              better planning)?
-            </label>
-            <textarea
-              ref={textareaRef3}
-              value={text3}
-              onChange={handleChange3}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText3}>
-              {isEditing3 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts3.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts3.map((savedText3, index) => (
-                    <li key={index}>
-                      <p>{savedText3}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText3(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText3(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              3. What will you do differently in your next practice session to
-              enhance your skills?
-            </label>
-            <textarea
-              ref={textareaRef4}
-              value={text4}
-              onChange={handleChange4}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText4}>
-              {isEditing4 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts4.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts4.map((savedText4, index) => (
-                    <li key={index}>
-                      <p>{savedText4}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText4(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText4(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              - Practice advanced driving during your day whether it be driving
-              to work or on the school run, focusing on your weakest skill from
-              the self-assessment.
-            </label>
-            <label>
-              What do you think is the most challenging aspect of advanced
-              driving, and how do you plan to improve it?
-            </label>
-            <label>
-              Review the Highway Code to reinforce legal compliance and driving
-              etiquette.
-            </label>
-            <textarea
-              ref={textareaRef5}
-              value={text5}
-              onChange={handleChange5}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText5}>
-              {isEditing5 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts5.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts5.map((savedText5, index) => (
-                    <li key={index}>
-                      <p>{savedText5}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText5(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText5(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
         </section>
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModulefour">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
-          </Link>
-        </div>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6">
+              After the activity, answer these questions:
+            </h2>
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                1. What was your biggest strength in advanced driving?
+              </label>
+              <textarea
+                ref={textareaRef2}
+                value={text2}
+                onChange={handleChange2}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText2}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing2 ? "Update" : "Save"}
+              </button>
 
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p></p>
-            <Link to="/takequizCatName/Advanced-Driving-in-Relation-to-the-ADI">
-              {" "}
-              <button>Start Quiz</button>
+              <div className="mt-6">
+                {savedTexts2.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts2.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText2(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText2(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Which area needs the most improvement (e.g., smoother control,
+                better planning)?
+              </label>
+              <textarea
+                ref={textareaRef3}
+                value={text3}
+                onChange={handleChange3}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText3}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing3 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts3.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts3.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText3(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText3(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                3. What will you do differently in your next practice session to
+                enhance your skills?
+              </label>
+              <textarea
+                ref={textareaRef4}
+                value={text4}
+                onChange={handleChange4}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText4}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing4 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts4.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts4.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText4(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText4(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                - Practice advanced driving during your day whether it be
+                driving to work or on the school run, focusing on your weakest
+                skill from the self-assessment.
+                <br></br>
+                What do you think is the most challenging aspect of advanced
+                driving, and how do you plan to improve it?<br></br>
+                Review the Highway Code to reinforce legal compliance and
+                driving etiquette.
+              </label>
+              <textarea
+                ref={textareaRef5}
+                value={text5}
+                onChange={handleChange5}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText5}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing5 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts5.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts5.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText5(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText5(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-16 bg-white fade-up">
+          <div className="container mx-auto px-6 flex justify-between">
+            <Link to="/quizModulefour">
+              <button className="px-8 py-3 bg-emerald-600 text-white rounded-full flex items-center gap-2 hover:bg-emerald-700">
+                Next Page <ArrowRight />
+              </button>
             </Link>
-          </section>
+          </div>
+        </section>
+        {/* ================= QUIZ ================= */}
+        <section className="py-24 bg-gradient-to-br from-emerald-50 to-white fade-up">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <div className="bg-white p-12 rounded-3xl shadow-2xl text-center">
+              <CheckCircle className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <h2 className="text-3xl font-extrabold mb-2">Start Quiz</h2>
+              <p className="text-slate-600 mb-6">
+                15 questions to test your understanding of vehicle checks.
+              </p>
+              <Link to="/takequizCatName/Advanced-Driving-in-Relation-to-the-ADI">
+                <button className="px-10 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-700">
+                  Start Quiz
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  );
+}
+
+/* ================= REUSABLE DROPDOWN ================= */
+function DropSection({ title, icon, open, toggle, children }) {
+  return (
+    <div className="bg-white rounded-3xl shadow-2xl p-8 fade-up">
+      <div
+        className="flex items-center justify-between cursor-pointer"
+        onClick={toggle}
+      >
+        <div className="flex items-center gap-3">
+          <div className="text-emerald-600 w-8 h-8">{icon}</div>
+          <h3 className="text-xl font-bold">{title}</h3>
         </div>
+        <ChevronDown
+          className={`w-6 h-6 transition ${
+            open ? "rotate-180 text-emerald-600" : ""
+          }`}
+        />
       </div>
-    </>
+
+      {open && (
+        <div className="mt-6 text-slate-700 leading-relaxed">{children}</div>
+      )}
+    </div>
   );
 }

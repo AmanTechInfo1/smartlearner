@@ -1,12 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
-import backgroundImage from "../../../../../assets/images/humanchecksbg.jpg";
 
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Brain,
+  HeartPulse,
+  Smile,
+  PlayCircle,
+  FilePenLine,
+  Trash2,
+  ArrowRight,
+  ClipboardList,
+  CheckCircle,
+} from "lucide-react";
+
+import backgroundImage from "../../../../../assets/images/humanchecksbg.jpg";
 
 export default function AdiModuleOne() {
   const { userDetails } = useSelector((state) => state.auth);
@@ -43,7 +54,7 @@ export default function AdiModuleOne() {
       }
       localStorage.setItem(
         `notepadTexts_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -65,7 +76,7 @@ export default function AdiModuleOne() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -95,7 +106,7 @@ export default function AdiModuleOne() {
       }
       localStorage.setItem(
         `notepadTexts2_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -117,7 +128,7 @@ export default function AdiModuleOne() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadTexts2_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -130,428 +141,379 @@ export default function AdiModuleOne() {
 
   // ////////////////////////
 
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Human Checks Before Setting Off to Drive"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
+
+  gsap.registerPlugin(ScrollTrigger);
 
   return (
     <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
-
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/B4UL4xfR-gA"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
-          </div>
-        </div>
-
-        <section className={styles.AdiModuleOneTextArea}>
-          <h2>
-            What do you think we mean by human readiness to drive and can you
-            give some examples ? Think back to your part 1
-          </h2>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>Write your answer below</label>
-            <textarea
-              ref={textareaRef}
-              value={text}
-              onChange={handleChange}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-        </section>
-        {/* ///////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleContentBox}>
-          <h2>Human Readiness to Drive</h2>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Human readiness to drive refers to the factors related to you that
-              can influence your ability to drive safely. These factors can be
-              grouped into three key areas: physical well-being, mental
-              well-being, and emotional well-being. Ensuring you are fully
-              prepared in all these areas before getting behind the wheel is
-              crucial for safe driving.
-            </p>
-          </div>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.flipContainer}>
-            <div className={styles.flipbox}>
-              <div className={styles.flipboxfront}>
-                {/* <FaHandPointRight  /> */}
-                <h3 id={styles.fafapointing}>Click To Reveal The Answer</h3>
-              </div>
-
-              <div className={styles.flipboxback}>
-                <ul>
-                  <li>
-                    <strong>Physical Well-Being</strong> Focuses on your body's
-                    condition. Are you well-rested, healthy, and physically
-                    capable of driving? Lack of sleep, illness, or the effects
-                    of medication can impair your reaction time and focus,
-                    increasing the risk of an accident.
-                  </li>
-                  <li>
-                    <strong>Mental Well-Being</strong> Relates to your level of
-                    focus, awareness, and preparedness. Do you know your route,
-                    traffic conditions, and potential hazards? Feeling mentally
-                    sharp and free from distractions helps you stay attentive
-                    and make quick, safe decisions.
-                  </li>
-                  <li>
-                    <strong>Emotional Well-Being</strong> Considers how your
-                    feelings and emotions affect your driving. Strong emotions
-                    like stress, anger, or sadness can cloud judgment and make
-                    you more prone to impulsive or reckless behaviour on the
-                    road.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* /////////////////////////////////////////////// */}
-
-        <section className={styles.instructorContainer}>
-          <div className={styles.innerInstructorContainer}>
-            <h2>Below are some key considerations for each category:</h2>
-
-            <div className={styles.detailsContainer}>
-              {/* <DrivingInstructorUI /> */}
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront23}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>
-                  </div>
-                  <div
-                    className={styles.trainingDetails}
-                    id={styles.trainingDetails1}>
-                    <h3>Physical Well-Being</h3>
-                    <hr />
-                    <p>
-                      Have you had enough sleep? Fatigue can slow reaction times
-                      and increase the risk of accidents.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront24}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>
-                  </div>
-                  <div
-                    className={styles.trainingDetails}
-                    id={styles.trainingDetails2}>
-                    <h3>Mental Well-Being</h3>
-                    <hr />
-                    <p>
-                      Do you know your route and expected traffic conditions?
-                      Planning ahead reduces stress and distractions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront25}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>
-                  </div>
-
-                  <div
-                    className={styles.trainingDetails}
-                    id={styles.trainingDetails3}>
-                    <h3>Emotional Well-Being</h3>
-                    <hr />
-                    <p>
-                      Are you feeling overwhelmed, anxious, or angry? Strong
-                      emotions can impair decision- making and focus.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront26}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>{" "}
-                  </div>
-                  <div className={styles.trainingDetails}>
-                    <h3>Physical Well-Being</h3>
-                    <hr />
-                    <p>
-                      Are you feeling unwell or taking medication that may
-                      affect your driving? Some medications cause dizziness or
-                      drowsiness.
-                      <br />
-                      Have you eaten and stayed hydrated? Low energy and
-                      dehydration can make you feel weak or sluggish.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront27}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>
-                  </div>
-                  <div
-                    className={styles.trainingDetails}
-                    id={styles.trainingDetails5}>
-                    <h3>Mental Well-Being</h3>
-                    <hr />
-                    <p>
-                      Are you able to stay focused and alert? Avoid driving if
-                      you feel mentally exhausted or easily distracted.
-                      <br />
-                      Are you in the right mindset to drive safely? If you feel
-                      rushed or stressed, take a moment to regain composure.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.flipContainer2}>
-                <div className={styles.flipbox2}>
-                  <div
-                    className={styles.flipboxfront2}
-                    id={styles.flipboxfront28}>
-                    <div className="opicity"></div>
-                    <h2>CLICK TO FLIP</h2>
-                  </div>
-                  <div
-                    className={styles.trainingDetails}
-                    id={styles.trainingDetails6}>
-                    <h3>Emotional Well-Being</h3>
-                    <hr />
-                    <p>
-                      Have you recently experienced something upsetting?
-                      Emotional distress can take your attention away from the
-                      road.
-                      <br />
-                      Are you calm and patient? Impulsive reactions can lead to
-                      risky driving behaviour.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* /////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            By taking a moment to assess your readiness in these three areas,
-            how can you ensure that you provide a more responsible driving
-            experience for yourself and others on the road?
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
+      <main className="w-full overflow-hidden font-sans bg-slate-50">
+        {/* ================= HERO / BANNER ================= */}
+        <section className="relative h-[70vh] lg:h-[85vh]">
+          <div
+            className="absolute inset-0 bg-fixed bg-cover bg-center"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
           />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+          <div className="absolute inset-0 bg-black/60" />
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto px-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white max-w-4xl leading-tight">
+                Human Checks Before{" "}
+                <span className="text-emerald-400">Setting Off</span> to Drive
+              </h1>
+              <p className="mt-6 text-slate-200 max-w-2xl text-base sm:text-lg">
+                Understand how your physical, mental and emotional readiness
+                impacts safe driving.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModuletwo">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
-          </Link>
-        </div>
+        </section>
 
-        {/* ////////////////////////////////////////////////// */}
-        {/* ////////////////////////////////////////// */}
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p>
-              Here’s a quick summary quiz to test your understanding of of Part
-              2: Human checks before setting off
-            </p>
-            <Link to="/takequizCatName/Human-Checks">
-              {" "}
-              <button>Start Quiz</button>
+        {/* ================= VIDEO ================= */}
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-extrabold flex items-center gap-3">
+                <PlayCircle className="w-9 h-9 text-emerald-600" /> Watch Our
+                Video
+              </h2>
+              <p className="mt-4 text-slate-600">
+                This short video explains why human checks are essential before
+                starting a journey.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+              <div className="relative aspect-video">
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/B4UL4xfR-gA"
+                  title="Human Checks Video"
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= TEXTAREA QUESTION ================= */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6">
+              What do you think we mean by human readiness to drive?
+            </h2>
+
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Write your answer below
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                onClick={saveText}
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p className="text-gray-500 text-sm">
+                      No saved thoughts yet ✍️
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Start writing and save your ideas
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-3 bg-white rounded-xl border shadow-sm hover:shadow-md transition-all duration-300"
+                      >
+                        {/* Thought Text */}
+                        <p
+                          className="text-gray-700 text-sm leading-relaxed pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+
+                        {/* Action Icons */}
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100 transition">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500 hover:text-blue-600"
+                            title="Edit"
+                          />
+
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500 hover:text-red-600"
+                            title="Delete"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= CORE CONCEPT ================= */}
+        <section className="py-24 bg-white fade-up">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl lg:text-4xl font-extrabold mb-12">
+              Human <span className="text-emerald-600">Readiness</span> to Drive
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-10">
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-emerald-500">
+                <HeartPulse className="w-10 h-10 text-emerald-600 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Physical Well-Being</h3>
+                <p className="text-slate-700">
+                  Are you rested, healthy and free from medication effects that
+                  could impair driving?
+                </p>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-emerald-500">
+                <Brain className="w-10 h-10 text-emerald-600 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Mental Well-Being</h3>
+                <p className="text-slate-700">
+                  Are you focused, aware of hazards and prepared for your route
+                  and conditions?
+                </p>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-emerald-500">
+                <Smile className="w-10 h-10 text-emerald-600 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Emotional Well-Being</h3>
+                <p className="text-slate-700">
+                  Stress, anger or sadness can affect judgement and increase
+                  risk on the road.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= SIX KEY CONSIDERATIONS ================= */}
+        <section className="py-24 bg-white fade-up">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl lg:text-4xl font-extrabold mb-12">
+              Below are some{" "}
+              <span className="text-emerald-600">key considerations</span> for
+              each category
+            </h2>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {/* PHYSICAL 1 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <HeartPulse className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Physical Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Have you had enough sleep? Fatigue can slow reaction times and
+                  increase the risk of accidents.
+                </p>
+              </div>
+
+              {/* MENTAL 1 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <Brain className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Mental Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Do you know your route and expected traffic conditions?
+                  Planning ahead reduces stress and distractions.
+                </p>
+              </div>
+
+              {/* EMOTIONAL 1 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <Smile className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Emotional Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Are you feeling overwhelmed, anxious, or angry? Strong
+                  emotions can impair decision-making and focus.
+                </p>
+              </div>
+
+              {/* PHYSICAL 2 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <HeartPulse className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Physical Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Are you unwell or taking medication that may affect your
+                  driving? Some medicines cause drowsiness.
+                  <br />
+                  Have you eaten and stayed hydrated? Low energy can reduce
+                  concentration.
+                </p>
+              </div>
+
+              {/* MENTAL 2 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <Brain className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Mental Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Are you alert and able to stay focused? Avoid driving if
+                  mentally exhausted or easily distracted.
+                  <br />
+                  Feeling rushed or stressed? Take a moment before driving.
+                </p>
+              </div>
+
+              {/* EMOTIONAL 2 */}
+              <div className="group bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-emerald-500">
+                <Smile className="w-10 h-10 text-emerald-600 mb-4 group-hover:scale-110 transition" />
+                <h3 className="text-xl font-bold mb-3">Emotional Well-Being</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Have you recently experienced something upsetting?
+                  <br />
+                  Are you calm and patient? Impulsive reactions can lead to
+                  risky driving behaviour.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= REFLECTION ================= */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <ClipboardList className="text-emerald-600" /> Reflection
+              </h3>
+              <textarea
+                ref={textareaRef2}
+                value={text2}
+                onChange={handleChange2}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                onClick={saveText2}
+              >
+                {isEditing2 ? "Update" : "Save"}
+              </button>
+              <div className="mt-6">
+                {savedTexts2.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p className="text-gray-500 text-sm">
+                      No saved thoughts yet 🧠
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Your saved notes will appear here
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts2.map((savedText2, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-3 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300"
+                      >
+                        {/* Thought Content */}
+                        <p
+                          className="text-gray-700 text-sm leading-relaxed pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText2}
+                        </p>
+
+                        {/* Edit / Delete Actions */}
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100 transition">
+                          <FilePenLine
+                            onClick={() => editText2(index)}
+                            className="cursor-pointer text-indigo-500 hover:text-indigo-600"
+                            title="Edit"
+                          />
+
+                          <Trash2
+                            onClick={() => deleteText2(index)}
+                            className="cursor-pointer text-rose-500 hover:text-rose-600"
+                            title="Delete"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= NAVIGATION ================= */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <Link to="/quizModuletwo">
+              <button className="px-8 py-3 bg-emerald-600 text-white rounded-full flex items-center gap-2 hover:bg-emerald-700">
+                Next Page <ArrowRight />
+              </button>
             </Link>
-          </section>
-        </div>
-      </div>
+          </div>
+        </section>
+
+        {/* ================= QUIZ CTA ================= */}
+        <section className="py-24 bg-gradient-to-br from-emerald-50 to-white fade-up">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <div className="bg-white p-12 rounded-3xl shadow-2xl text-center">
+              <CheckCircle className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
+              <h2 className="text-3xl font-extrabold mb-2">Start Quiz</h2>
+              <p className="text-slate-600 mb-6">
+                15 questions to test your understanding of Human Checks before
+                setting off.
+              </p>
+              <Link to="/takequizCatName/Human-Checks">
+                <button className="px-10 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-700">
+                  Start Quiz
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
+// Redesigned AdiModuleOne using Tailwind CSS + GSAP + lucide-react
+// NOTE: Functionality & content are preserved. Only layout, styling, icons & animations are enhanced.

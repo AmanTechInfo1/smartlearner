@@ -573,10 +573,10 @@ const Quiz = () => {
         <div className="w-full max-w-6xl bg-white rounded-2xl shadow-xl p-4 sm:p-6 text-gray-800 border border-gray-100">
           {loading ? (
             <Loader />
-          ) : timeUp || quizCompleted ? (
+          ) : timeUp ? (
             <div className="flex flex-col items-center gap-6 py-16 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold">
-                {timeUp ? "⏰ Time’s Up!" : "🎉 Quiz Completed!"}
+                "⏰ Time’s Up!"
               </h2>
               <button
                 onClick={handleRestart}
@@ -585,7 +585,22 @@ const Quiz = () => {
                 Restart Quiz
               </button>
             </div>
-          ) : (
+          ) : quizCompleted ? (
+            <div className="flex flex-col items-center justify-center gap-4 mt-8 p-6 bg-red-50 border border-red-200 rounded-2xl">
+              <p className="text-lg font-semibold text-red-700">
+                Quiz Completed – View Result
+              </p>
+
+              <button
+                onClick={handleRestart}
+                className="flex items-center gap-2 px-6 py-2 rounded-xl
+             bg-red-600 text-white font-semibold
+             hover:bg-red-700 transition active:scale-95"
+              >
+                Restart Quiz
+              </button>
+            </div>
+          ) : oneQuiz[currentQuestionIndex]?.question ? (
             <>
               {/* HEADER */}
               <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6">
@@ -867,10 +882,27 @@ const Quiz = () => {
                 </div>
               )}
             </>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-4 mt-8 p-6 bg-red-50 border border-red-200 rounded-2xl">
+              <p className="text-lg font-semibold text-red-700">
+                Quiz Completed – View Result
+              </p>
+
+              <button
+                onClick={handleRestart}
+                className="flex items-center gap-2 px-6 py-2 rounded-xl
+             bg-red-600 text-white font-semibold
+             hover:bg-red-700 transition active:scale-95"
+              >
+                Restart Quiz
+              </button>
+            </div>
           )}
 
           {/* FOOTER */}
           <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6">
+            {/* QUIZ COMPLETED / RESTART */}
+
             <button
               onClick={endQuiz}
               className="flex items-center justify-center gap-2 px-4 py-3
