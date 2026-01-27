@@ -1202,7 +1202,7 @@
   cursor: pointer;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #a7ffe3;
+  color: #ff004c;
   font-size: 1.5rem;
   display: inline-flex;
   align-items: center;
@@ -1281,7 +1281,7 @@
 .adi2ndImgnote {
   margin-top: 20px;
   font-size: 1.1rem;
-  color: #cbf4ff;
+  color: #797979;
   max-width: 1200px;
 
   width: 100%;
@@ -1313,11 +1313,12 @@
 }
 
 .adiseventipBox {
-  background: rgba(4, 1, 26, 0.786);
+  background: rgb(4, 1, 26);
   padding: 1.5rem;
   margin: 1rem 0;
   border-left: 4px solid #00ffe1;
   border-radius: 10px;
+  color:white;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

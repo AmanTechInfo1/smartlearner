@@ -12,99 +12,9 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import backgroundImage from "../../../../assets/images/legulstuffbanner.jpg";
+import bannerImg from "../../../../assets/images/legulstuffbanner.jpg";
 
 export default function Adi3Modulethree() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "The legal stuff"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
-
   //   ///////////////////////////////////////////////////////
   const sections = [
     {
@@ -165,103 +75,134 @@ export default function Adi3Modulethree() {
   // ////////////////////////////////////////////////////////////////
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <div className="w-full overflow-hidden font-sans">
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
+              The
+              <span className="text-emerald-400"> legal </span> stuff
+            </h1>
+
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />
+              You've successfully completed Part 2 of the Approved Driving
+              Instructor (ADI) exam, and you've demonstrated the skills and
+              professionalism required to advance to the next step.
+            </p>
+
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
+
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-emerald-500 hover:bg-emerald-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
       </section>
       {/* ////////////////////////////////////////////////////////////// */}
-      <div className={styles.adipart3threecontainer}>
-        <h1 className={styles.adipart3threeheading}>
-          Legal Requirements for Driving Instructors
-        </h1>
-        <p className={styles.adipart3threesubheading}>
-          Here’s a brief explanation of each legal act with examples relevant to
-          driving instructors:
-        </p>
-        <div className={styles.adipart3threegrid}>
-          {sections.map((section, index) => (
-            <motion.div
-              key={index}
-              className={styles.adipart3threecard}
-              style={{ borderColor: section.color }}
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              transition={{ duration: 0.5 }}>
-              <div
-                className={styles.adipart3threeicon}
-                style={{ color: section.color }}>
-                {section.icon}
-              </div>
-              <h3 className={styles.adipart3threetitle}>{section.title}</h3>
-              <ul className={styles.adipart3threelist}>
-                {section.points.map((point, idx) => {
-                  const parts = point.split("🔹").filter(Boolean); // Remove empty strings
-                  return (
-                    <li key={idx}>
-                      {parts.map((part, subIdx) => (
-                        <p key={subIdx}>🔹 {part.trim()}</p>
-                      ))}
-                    </li>
-                  );
-                })}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className={styles.licenseSection}>
-          <h2 className={styles.licenseHeading}>Licence Check Code</h2>
-          <p className={styles.licenseText}>
-            Just because a student presents a provisional licence doesn’t mean
-            it’s valid. Always confirm its authenticity at:
-            <a
-              href="https://www.gov.uk/view-driving-licence"
-              target="_blank"
-              rel="noopener noreferrer">
-              https://www.gov.uk/view-driving-licence
-            </a>
-            <br />
-            Then use the code at:
-            <a
-              href="https://www.gov.uk/check-driving-information"
-              target="_blank"
-              rel="noopener noreferrer">
-              https://www.gov.uk/check-driving-information
-            </a>
+      <section className="bg-white">
+        <div className={styles.adipart3threecontainer}>
+          <h1 className={styles.adipart3threeheading}>
+            Legal Requirements for Driving Instructors
+          </h1>
+          <p className={styles.adipart3threesubheading}>
+            Here’s a brief explanation of each legal act with examples relevant
+            to driving instructors:
           </p>
+          <div className={styles.adipart3threegrid}>
+            {sections.map((section, index) => (
+              <motion.div
+                key={index}
+                className={styles.adipart3threecard}
+                style={{ borderColor: section.color }}
+                whileHover={{ rotate: 5, scale: 1.05 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div
+                  className={styles.adipart3threeicon}
+                  style={{ color: section.color }}
+                >
+                  {section.icon}
+                </div>
+                <h3 className={styles.adipart3threetitle}>{section.title}</h3>
+                <ul className={styles.adipart3threelist}>
+                  {section.points.map((point, idx) => {
+                    const parts = point.split("🔹").filter(Boolean); // Remove empty strings
+                    return (
+                      <li key={idx}>
+                        {parts.map((part, subIdx) => (
+                          <p key={subIdx}>🔹 {part.trim()}</p>
+                        ))}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className={styles.licenseSection}>
+            <h2 className={styles.licenseHeading}>Licence Check Code</h2>
+            <p className={styles.licenseText}>
+              Just because a student presents a provisional licence doesn’t mean
+              it’s valid. Always confirm its authenticity at:
+              <a
+                href="https://www.gov.uk/view-driving-licence"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.gov.uk/view-driving-licence
+              </a>
+              <br />
+              Then use the code at:
+              <a
+                href="https://www.gov.uk/check-driving-information"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.gov.uk/check-driving-information
+              </a>
+            </p>
+          </div>
         </div>
-      </div>
-      {/* ///////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////// */}
 
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/learning-style">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-6 text-center space-y-10">
+            <Link to="/learning-style">
+              <button className="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition">
+                Next Page →
+              </button>
+            </Link>
 
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            The legal stuff the lesson before setting off
-          </p>
-          <Link to="/takequizCatName/legal-stuff">
-            {" "}
-            <button>Start Quiz</button>
-          </Link>
+            <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl mx-auto">
+              <h2 className="text-2xl font-extrabold mb-2">Start Quiz</h2>
+              <h4 className="text-slate-500 mb-4">15 Questions</h4>
+              <p className="text-slate-700 mb-6">
+                Test your understanding of the legal stuff before moving
+                forward.
+              </p>
+              <Link to="/takequizCatName/legal-stuff">
+                <button className="px-8 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 transition">
+                  Start Quiz
+                </button>
+              </Link>
+            </div>
+          </div>
         </section>
-      </div>
-
+      </section>
       {/* ////////////////////////////////////////////////////////// */}
     </div>
   );

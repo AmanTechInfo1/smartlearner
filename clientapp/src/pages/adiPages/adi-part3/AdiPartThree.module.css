@@ -1,7 +1,7 @@
 .AdiPartOne {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 255, 255);
+
   padding-top: 1rem;
   padding-bottom: 5rem;
 }
@@ -145,9 +145,9 @@
 /* //////////////////////////////////// */
 /* ///////////////////////////////////// */
 .adiPart3firstcontainer {
-  background-color: #0b0b0b;
+  background-color: #fcfcfc;
   padding: 4rem 2rem;
-  color: #e0e0e0;
+  color: #000000;
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

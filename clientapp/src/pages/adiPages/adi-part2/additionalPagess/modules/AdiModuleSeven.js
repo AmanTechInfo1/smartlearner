@@ -1,13 +1,45 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import backgroundImage from "../../../../../assets/images/Anticipation.jpg";
+import { useSelector } from "react-redux";
+
+import {
+  Eye,
+  Brain,
+  AlertTriangle,
+  Footprints,
+  Wind,
+  HelpCircle,
+  PlayCircle,
+  ArrowRight,
+  Trophy,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AdiModuleSeven() {
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
 
@@ -35,7 +67,7 @@ export default function AdiModuleSeven() {
       }
       localStorage.setItem(
         `notepadTextspage7_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -57,7 +89,7 @@ export default function AdiModuleSeven() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTextspage7_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -93,7 +125,7 @@ export default function AdiModuleSeven() {
       }
       localStorage.setItem(
         `notepadText2spage7_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -115,7 +147,7 @@ export default function AdiModuleSeven() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2spage7_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -151,7 +183,7 @@ export default function AdiModuleSeven() {
       }
       localStorage.setItem(
         `notepadText3spage7_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -173,7 +205,7 @@ export default function AdiModuleSeven() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadText3spage7_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
@@ -209,7 +241,7 @@ export default function AdiModuleSeven() {
       }
       localStorage.setItem(
         `notepadText4spage7_${userId}`,
-        JSON.stringify([...savedTexts4, text4])
+        JSON.stringify([...savedTexts4, text4]),
       );
 
       setText4("");
@@ -231,7 +263,7 @@ export default function AdiModuleSeven() {
     setSavedTexts4(updatedTexts4);
     localStorage.setItem(
       `notepadText4spage7_${userId}`,
-      JSON.stringify(updatedTexts4)
+      JSON.stringify(updatedTexts4),
     );
   };
 
@@ -268,7 +300,7 @@ export default function AdiModuleSeven() {
       }
       localStorage.setItem(
         `notepadText5spage7_${userId}`,
-        JSON.stringify([...savedTexts5, text5])
+        JSON.stringify([...savedTexts5, text5]),
       );
 
       setText5("");
@@ -290,7 +322,7 @@ export default function AdiModuleSeven() {
     setSavedTexts5(updatedTexts5);
     localStorage.setItem(
       `notepadText5spage7_${userId}`,
-      JSON.stringify(updatedTexts5)
+      JSON.stringify(updatedTexts5),
     );
   };
 
@@ -303,504 +335,519 @@ export default function AdiModuleSeven() {
 
   // ///////////////////////////////////////////////////////////////////////////////////////
 
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Anticipation in the COAST Method for Advanced Driving"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
-
   return (
     <>
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
-
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/dyvWRDGJI58"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
-          </div>
-        </div>
-
-        <div className={styles.AdiModuleContentBox}>
-          <h2>What is Anticipation and Why Does It Matter?</h2>
-          <div className={styles.AdiModuleContentParaBoxm2}>
-            <p>
-              Imagine you’re watching a movie, and you just know what’s going to
-              happen next. That’s anticipation— except in driving, it’s not just
-              about guessing right, it’s about staying safe and in control.
-              <br />
-              Anticipation is your ability to predict what might happen on the
-              road based on what you see and know. It’s what separates reactive
-              drivers (who panic at surprises) from proactive drivers (who are
-              always one step ahead).
-            </p>
-          </div>
+      <main className="w-full overflow-hidden font-sans">
+        {/* ================= HERO BANNER ================= */}
+        <section className="relative h-[75vh] w-full">
           <div
-            className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}>
-            <p>
-              In advanced driving, anticipation is key. The examiner in your ADI
-              Part 2 exam will be watching to see if you can read the road like
-              a pro, spot risks early, and make smooth, calculated decisions. No
-              crystal ball required—just sharp observation and smart thinking!
-              <br />
-              Think back to what you learned during Observation, You can
-              anticipate actions by doing good observations!
-            </p>
-          </div>
-        </div>
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+          />
+          <div className="absolute inset-0 bg-black/60" />
 
-        {/* ////////////////////////////////////////////////////////////////////////////////// */}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto px-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white max-w-3xl">
+                Anticipation in the{" "}
+                <span className="text-red-500">COAST Method</span>
+              </h1>
 
-        <section className={styles.adisevenhintsSection}>
-          <div className={styles.adisevenheading}>🚘 Here are your hints:</div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>👀 Look Far Ahead and Stay Aware</h3>
-            <p>
-              The road isn’t just what’s right in front of you—it’s everything
-              happening in your surroundings.
-            </p>
-            <p>
-              🎙 Try a commentary drive—say out loud everything you see and what
-              you think might happen next.
-            </p>
-            <p>
-              🪞 Keep checking your mirrors—what’s happening behind and to your
-              sides matters just as much as what’s in front!
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>🚶‍♂️ Read Other Road Users Like a Detective</h3>
-            <p>
-              People are predictable—if you know what to look for. Ask yourself:
-            </p>
-            <ul>
-              <li>❓ What’s happening now?</li>
-              <li>❓ What might happen next?</li>
-            </ul>
-            <p>Examples:</p>
-            <ul>
-              <li>
-                🚗 A parked car with brake lights on? It’s probably about to
-                move.
-              </li>
-              <li>
-                🚶‍♀️ A pedestrian at a crossing looking at traffic? They might
-                step out.
-              </li>
-              <li>
-                🚴‍♂️ A cyclist glancing over their shoulder? They could be about
-                to turn.
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>🚦 Let Road Signs and Markings Be Your Guide</h3>
-            <p>
-              Signs aren’t just there for decoration—they’re telling you what’s
-              coming!
-            </p>
-            <ul>
-              <li>
-                🛑 "Give Way" sign? Time to slow down and scan for traffic.
-              </li>
-              <li>
-                ↩️ Sharp bend sign? Reduce speed before you get there, not
-                during the turn!
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>🌧 Adjust for Weather and Road Conditions</h3>
-            <p>Rain, fog, or ice? Time to think ahead.</p>
-            <ul>
-              <li>
-                🌧 Wet roads? Increase your stopping distance and drive smoothly.
-              </li>
-              <li>
-                🌫 Fog ahead? Start scanning for cars with dim tail lights
-                appearing suddenly.
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>🔮 Use the "What If?" Game</h3>
-            <p>This is where you train your anticipation reflex:</p>
-            <ul>
-              <li>❓ What if that driver suddenly slams on the brakes?</li>
-              <li>❓ What if the cyclist swerves?</li>
-              <li>❓ What if the light turns red just as I approach?</li>
-            </ul>
-            <p>
-              By constantly asking yourself these questions, you’ll be ready for
-              anything—instead of being caught off guard.
-            </p>
-          </div>
-        </section>
-
-        {/* ?///////////////??///////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          <h2>
-            Before starting your next drive, ask yourself the following
-            questions to focus your anticipation:
-          </h2>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>What are the weather and road conditions?</label>
-            <textarea
-              ref={textareaRef}
-              value={text}
-              onChange={handleChange}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <p className="mt-6 text-lg text-slate-200 max-w-2xl">
+                Learn how advanced drivers stay ahead of danger by predicting
+                hazards before they happen.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              2. What potential hazards might I encounter in this environment
-              (e.g., pedestrians, roundabouts, parked cars)?
-            </label>
-            <textarea
-              ref={textareaRef2}
-              value={text2}
-              onChange={handleChange2}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText2}>
-              {isEditing2 ? "Update" : "Save"}
-            </button>
+        {/* ================= VIDEO ================= */}
+        <section className="bg-white">
+          {/* ================= INTRO CONTENT ================= */}
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 fade-up">
+              <div>
+                <h2 className="text-4xl font-extrabold mb-4">
+                  What is <span className="text-red-600">Anticipation?</span> &
+                  Why Does It Matter?
+                </h2>
 
-            <div className={styles.thoughtsListArea}>
-              {savedTexts2.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts2.map((savedText2, index) => (
-                    <li key={index}>
-                      <p>{savedText2}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText2(index)}
-                          id={styles.editListIcon}
-                        />
+                <p className="text-slate-700 leading-relaxed mb-4">
+                  Imagine you’re watching a movie, and you just know what’s
+                  going to happen next. That’s anticipation— except in driving,
+                  it’s not just about guessing right, it’s about staying safe
+                  and in control.
+                </p>
 
-                        <IoTrashBin
-                          onClick={() => deleteText2(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                <p className="text-slate-600 leading-relaxed">
+                  Anticipation is your ability to predict what might happen on
+                  the road based on what you see and know. It’s what separates
+                  reactive drivers (who panic at surprises) from proactive
+                  drivers (who are always one step ahead).
+                </p>
+                <div className="bg-slate-50 p-4 rounded-3xl shadow-xl border-l-8 border-red-500">
+                  <p className="text-slate-700 leading-relaxed">
+                    In advanced driving, anticipation is key. The examiner in
+                    your ADI Part 2 exam will be watching to see if you can read
+                    the road like a pro, spot risks early, and make smooth,
+                    calculated decisions. No crystal ball required—just sharp
+                    observation and smart thinking!
+                    <br />
+                    <br />
+                    Think back to what you learned during Observation, You can
+                    anticipate actions by doing good observations!
+                  </p>
+                </div>
+              </div>
+              <div className="container mx-auto px-6 fade-up">
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border">
+                  <div className="flex items-center gap-3 p-6 border-b">
+                    <PlayCircle className="w-8 h-8 text-red-600" />
+                    <h2 className="text-2xl font-bold">Watch Our Video</h2>
+                  </div>
+
+                  <div className="aspect-video">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/dyvWRDGJI58"
+                      title="Anticipation Video"
+                      frameBorder="0"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              3. How can I prepare for these hazards before setting off?
-            </label>
-            <textarea
-              ref={textareaRef3}
-              value={text3}
-              onChange={handleChange3}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText3}>
-              {isEditing3 ? "Update" : "Save"}
-            </button>
+          {/* ================= HINTS ================= */}
+          <section className="py-20 bg-gradient-to-br from-red-50 to-white">
+            <div className="container mx-auto px-6">
+              <h2 className="text-4xl font-extrabold mb-12 flex items-center gap-3">
+                <Brain className="text-red-600 w-10 h-10" />
+                Your Anticipation Hints
+              </h2>
 
-            <div className={styles.thoughtsListArea}>
-              {savedTexts3.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts3.map((savedText3, index) => (
-                    <li key={index}>
-                      <p>{savedText3}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText3(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText3(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {/* CARD */}
+                {[
+                  {
+                    icon: Eye,
+                    title: " Look Far Ahead and Stay Aware",
+                    text: "The road isn’t just what’s right in front of you—it’s everything happening in your surroundings.🎙 Try a commentary drive—say out loud everything you see and what you think might happen next. 🪞 Keep checking your mirrors—what’s happening behind and to your sides matters just as much as what’s in front!",
+                  },
+                  {
+                    icon: Footprints,
+                    title: "Read Other Road Users Like a Detective",
+                    text: "People are predictable—if you know what to look for. Ask yourself:❓ What’s happening now? ❓ What might happen next? Examples:🚗 A parked car with brake lights on? It’s probably about to move. 🚶‍♀️ A pedestrian at a crossing looking at traffic? They might step out. 🚴‍♂️ A cyclist glancing over their shoulder? They could be about to turn.",
+                  },
+                  {
+                    icon: AlertTriangle,
+                    title: "Let Road Signs and Markings Be Your Guide",
+                    text: "Signs aren’t just there for decoration—they’re telling you what’s coming! 🛑 'Give Way' sign? Time to slow down and scan for traffic. ↩️ Sharp bend sign? Reduce speed before you get there, not during the turn!",
+                  },
+                  {
+                    icon: Wind,
+                    title: "Adjust for Weather and Road Conditions",
+                    text: "Rain, fog, or ice? Time to think ahead. 🌧 Wet roads? Increase your stopping distance and drive smoothly. 🌫 Fog ahead? Start scanning for cars with dim tail lights appearing suddenly.",
+                  },
+                  {
+                    icon: HelpCircle,
+                    title: "Use the 'What If?' Game",
+                    text: "This is where you train your anticipation reflex: ❓ What if that driver suddenly slams on the brakes ❓ What if the cyclist swerves? ❓ What if the light turns red just as I approach? By constantly asking yourself these questions, you’ll be ready for anything—instead of being caught off guard.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-red-500 hover:shadow-2xl transition"
+                  >
+                    <item.icon className="w-10 h-10 text-red-600 mb-4" />
+                    <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              4. - After the drive, write down: - The hazards you identified. -
-              How you responded to them.
-            </label>
-            <textarea
-              ref={textareaRef4}
-              value={text4}
-              onChange={handleChange4}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText4}>
-              {isEditing4 ? "Update" : "Save"}
-            </button>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  What are the weather and road conditions?
+                </label>
+                <textarea
+                  ref={textareaRef}
+                  value={text}
+                  onChange={handleChange}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing ? "Update" : "Save"}
+                </button>
 
-            <div className={styles.thoughtsListArea}>
-              {savedTexts4.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts4.map((savedText4, index) => (
-                    <li key={index}>
-                      <p>{savedText4}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText4(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText4(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                <div className="mt-6">
+                  {savedTexts.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  2. What potential hazards might I encounter in this
+                  environment (e.g., pedestrians, roundabouts, parked cars)?
+                </label>
+                <textarea
+                  ref={textareaRef2}
+                  value={text2}
+                  onChange={handleChange2}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText2}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing2 ? "Update" : "Save"}
+                </button>
 
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              Any hazards you missed and how you could improve next time.
-            </label>
-            <textarea
-              ref={textareaRef5}
-              value={text5}
-              onChange={handleChange5}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText5}>
-              {isEditing5 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts5.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts5.map((savedText5, index) => (
-                    <li key={index}>
-                      <p>{savedText5}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText5(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText5(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                <div className="mt-6">
+                  {savedTexts2.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts2.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText2(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText2(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-        <div className={styles.AdiModuleContentBox}>
-          <h2>What is Anticipation and Why Does It Matter?</h2>
-          <div className={styles.AdiModuleContentParaBoxm2}>
-            <p>
-              Ask a trainer, mentor, or trusted observer to review your driving
-              and provide feedback on your anticipation.
-            </p>
-          </div>
-          <div className={styles.AdiModuleContentParaBoxm3}>
-            <p>
-              Discuss areas where you excelled and where improvement is needed.
-            </p>
-          </div>
-        </div>
+          </section>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  3. How can I prepare for these hazards before setting off?
+                </label>
+                <textarea
+                  ref={textareaRef3}
+                  value={text3}
+                  onChange={handleChange3}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText3}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing3 ? "Update" : "Save"}
+                </button>
 
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModule-eight">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
-          </Link>
-        </div>
+                <div className="mt-6">
+                  {savedTexts3.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts3.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText3(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText3(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  4. - After the drive, write down: - The hazards you
+                  identified. - How you responded to them.
+                </label>
+                <textarea
+                  ref={textareaRef4}
+                  value={text4}
+                  onChange={handleChange4}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText4}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing4 ? "Update" : "Save"}
+                </button>
 
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p></p>
-            <Link to="/takequizCatName/Anticipation-in-the-COAST-Method-for-Advanced-Driving">
-              {" "}
-              <button>Start Quiz</button>
+                <div className="mt-6">
+                  {savedTexts4.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts4.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText4(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText4(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  Any hazards you missed and how you could improve next time.
+                </label>
+                <textarea
+                  ref={textareaRef5}
+                  value={text5}
+                  onChange={handleChange5}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText5}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing5 ? "Update" : "Save"}
+                </button>
+
+                <div className="mt-6">
+                  {savedTexts5.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts5.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText5(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText5(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ================= FEEDBACK ================= */}
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-6 fade-up">
+              <div className="bg-slate-50 p-10 rounded-3xl shadow-2xl max-w-4xl">
+                <h2 className="text-3xl font-extrabold mb-4">
+                  What is Anticipation and Why Does It Matter?
+                </h2>
+                <p className="text-slate-700 mb-2">
+                  Ask a trainer, mentor, or trusted observer to review your
+                  driving and provide feedback on your anticipation.
+                </p>
+                <p className="text-slate-600">
+                  Discuss areas where you excelled and where improvement is
+                  needed.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-24 bg-gradient-to-br from-red-50 to-white">
+            <div className="container mx-auto px-6 text-center fade-up">
+              <Trophy className="w-14 h-14 text-red-600 mx-auto mb-4" />
+              <h2 className="text-4xl font-extrabold mb-2">
+                Ready for the Quiz?
+              </h2>
+              <p className="text-lg text-slate-700 mb-6">
+                Test your knowledge and see how well you understand observation.
+              </p>
+
+              <Link to="/takequizCatName/Anticipation-in-the-COAST-Method-for-Advanced-Driving">
+                <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full text-lg">
+                  Start Quiz
+                </button>
+              </Link>
+            </div>
+          </section>
+
+          {/* ================= NEXT PAGE ================= */}
+          <section className="py-12 bg-white text-center">
+            <Link to="/quizModule-eight">
+              <button className="px-8 py-3 bg-slate-800 text-white rounded-full">
+                Next Page →
+              </button>
             </Link>
           </section>
-        </div>
-      </div>
+        </section>
+        {/* ================= NAVIGATION ================= */}
+      </main>
     </>
   );
 }

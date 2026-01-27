@@ -1,15 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-import { FaCheckCircle, FaLightbulb, FaCar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Sparkles,
+  CheckCircle,
+  Lightbulb,
+  Car,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+import bannerImg from "../../../../assets/images/national-standard2.jpg";
+import styles from "./Adi3Module.module.css";
+import { motion } from "framer-motion";
 
-export default function Adi3Moduletwo() {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function AdiModule() {
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
 
@@ -38,7 +46,7 @@ export default function Adi3Moduletwo() {
       }
       localStorage.setItem(
         `notepadTexts1Part3_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -60,7 +68,7 @@ export default function Adi3Moduletwo() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -97,7 +105,7 @@ export default function Adi3Moduletwo() {
       }
       localStorage.setItem(
         `notepadText2sPart3_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -119,7 +127,7 @@ export default function Adi3Moduletwo() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2sPart3_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -155,7 +163,7 @@ export default function Adi3Moduletwo() {
       }
       localStorage.setItem(
         `notepadText3sPart3_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -177,7 +185,7 @@ export default function Adi3Moduletwo() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadText3sPart3_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
@@ -188,471 +196,468 @@ export default function Adi3Moduletwo() {
     }
   }, []);
 
-  //////////////////////////////////////////////////////
-
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "What makes a good instructor?"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
-  //   /////////////////////////////////////////////////////////////////
   const Section = ({ title, items, example }) => (
-    <motion.div
-      className={styles.Adi3rdlastsection}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}>
-      <h2>{title}</h2>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            <FaCheckCircle /> {item}
+    <div className="fade-up bg-white rounded-3xl shadow-xl p-8 border-l-8 border-indigo-500">
+      <h3 className="text-2xl font-bold mb-4">{title}</h3>
+      <ul className="space-y-3 text-slate-700" style={{ paddingLeft: "0px" }}>
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-3">
+            <CheckCircle className="text-indigo-600 w-5 h-5 mt-1" />
+            <span>{item}</span>
           </li>
         ))}
       </ul>
       {example && (
-        <p className={styles.Adi3rdlastexample}>
-          <FaLightbulb /> {example}
+        <p className="mt-4 flex gap-2 text-indigo-700 bg-indigo-50 p-4 rounded-xl">
+          <Lightbulb className="w-5 h-5 mt-0.5" /> {example}
         </p>
       )}
-    </motion.div>
+    </div>
   );
-  //   ///////////////////////////////////////////////////////////////
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section className={styles.AdiModuleOneheader}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
+              What makes a{" "}
+              <span className="text-indigo-400">Good Instructor?</span>
+            </h1>
+
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />
+              You've successfully completed Part 2 of the Approved Driving
+              Instructor (ADI) exam, and you've demonstrated the skills and
+              professionalism required to advance to the next step.
+            </p>
+
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
+
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-indigo-500 hover:bg-indigo-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <section className="py-12 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6">
+              Think back to your own driving lessons - Do you remember your
+              instructor?
+            </h2>
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                What stood out to you? Were they patient and encouraging, or did
+                they make you feel nervous? What qualities did you appreciate,
+                and what could have been better?
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
         </section>
-      </section>
+        <section className="py-12 bg-indigo-50">
+          <div className="container mx-auto px-6 max-w-4xl fade-up">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl">
+              <motion.p whileHover={{ scale: 1.02 }}>
+                Being a driving instructor is more than just teaching someone to
+                operate a car. You become a teacher, coach, mentor, and
+                sometimes even a confidant. Your students will look to you not
+                just for driving skills but for confidence, reassurance, and
+                guidance.
+              </motion.p>
 
-      {/* ////////////////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Think back to your own driving lessons - Do you remember your
-            instructor?
-          </label>
-          <label style={{ marginBottom: "1rem" }}>
-            {" "}
-            What stood out to you? Were they patient and encouraging, or did
-            they make you feel nervous? What qualities did you appreciate, and
-            what could have been better?
-          </label>
-          <label> Take a moment to reflect and jot down your thoughts.</label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+              <motion.p whileHover={{ scale: 1.02 }}>
+                Now, consider this: What do you want your students to remember
+                about you? When they reflect on their lessons years from now,
+                what qualities do you hope stand out? Think about the impact you
+                want to have and note down your thoughts.
+              </motion.p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>{" "}
+        <section className="py-12 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Which do you think is better for the best view of the road,
+                Write your thoughts below
+              </label>
+              <textarea
+                ref={textareaRef2}
+                value={text2}
+                onChange={handleChange2}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText2}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing2 ? "Update" : "Save"}
+              </button>
 
-      <div className={styles.Adiparttwowrapper}>
-        <motion.div
-          className={styles.Adiparttwocontainer}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}>
-          <motion.p
-            className={styles.Adiparttwoparagraph}
-            whileHover={{ scale: 1.02 }}>
-            Being a driving instructor is more than just teaching someone to
-            operate a car. You become a teacher, coach, mentor, and sometimes
-            even a confidant. Your students will look to you not just for
-            driving skills but for confidence, reassurance, and guidance.
-          </motion.p>
+              <div className="mt-6">
+                {savedTexts2.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts2.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText2(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText2(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ================= INTRO ================= */}
+        <section className="py-12 bg-indigo-50">
+          <div className="container mx-auto px-6 max-w-4xl fade-up">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl">
+              <motion.p whileHover={{ scale: 1.02 }}>
+                As an instructor, you play a crucial role in shaping a learner’s
+                driving habits. The way you teach, support, and guide them will
+                influence how they drive long after you’re no longer in the car
+                with them.
+              </motion.p>
 
-          <motion.p
-            className={styles.Adiparttwoparagraph}
-            whileHover={{ scale: 1.02 }}>
-            Now, consider this: What do you want your students to remember about
-            you? When they reflect on their lessons years from now, what
-            qualities do you hope stand out? Think about the impact you want to
-            have and note down your thoughts.
-          </motion.p>
-        </motion.div>
-      </div>
+              <motion.p whileHover={{ scale: 1.02 }}>
+                Imagine this: A student you trained for a year is involved in a
+                fatal road collision. How would that make you feel? Now, flip
+                the perspective—what if it was your friend or family member
+                learning from another instructor? How would you want them to be
+                taught and treated? This is why your job isn’t just about
+                helping learners pass a test—it’s about creating safer drivers
+                for life.
+              </motion.p>
+            </div>
+          </div>
+        </section>
+        <section className="py-12 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                1. What do you personally define as truly exceptional customer
+                service? <br />
+                Can you share an experience that challenged or reshaped your
+                expectations of what great service really looks like?
+              </label>
+              <textarea
+                ref={textareaRef3}
+                value={text3}
+                onChange={handleChange3}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText3}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing3 ? "Update" : "Save"}
+              </button>
 
-      {/* //////////////////////////////////////////////////////////////////////////////// */}
-      <div className={styles.AdiModuleOneTextBox}>
-        <label>
-          Which do you think is better for the best view of the road, Write your
-          thoughts below
-        </label>
-        <textarea
-          ref={textareaRef2}
-          value={text2}
-          onChange={handleChange2}
-          rows="5"
-          cols="30"
-          placeholder="Write your thoughts here..."
-        />
-        <br />
-        <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+              <div className="mt-6">
+                {savedTexts3.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts3.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText3(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText3(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ================= CUSTOMER SERVICE ================= */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-6 max-w-5xl">
+            <div className="flex items-center gap-3 mb-10 fade-up">
+              <Sparkles className="w-10 h-10 text-indigo-600" />
+              <h2 className="text-4xl font-extrabold">
+                What Makes Good Customer Service in Driving Instruction
+              </h2>
+            </div>
 
-        <div className={styles.thoughtsListArea}>
-          {savedTexts2.length === 0 ? (
-            <p>No saved thoughts.</p>
-          ) : (
-            <ul>
-              {savedTexts2.map((savedText2, index) => (
-                <li key={index}>
-                  <p>{savedText2}</p>
-                  <span>
-                    <FaEdit
-                      onClick={() => editText2(index)}
-                      id={styles.editListIcon}
-                    />
+            <div className="grid md:grid-cols-2 gap-10">
+              <Section
+                title="1. Clear and Effective Communication"
+                items={[
+                  "Listening to the Learner: Understanding their concerns, anxieties, and goals",
+                  "Explaining Clearly: Giving easy-to-follow instructions in a calm, patient manner",
+                  "Providing Constructive Feedback: Explaining how to improve supportively",
+                ]}
+              />
 
-                    <IoTrashBin
-                      onClick={() => deleteText2(index)}
-                      id={styles.binListIcon}
-                    />
-                  </span>
+              <Section
+                title="2. Responsiveness & Efficiency"
+                items={[
+                  "Punctuality: Arriving on time and keeping lessons well-structured.",
+                  "Quick Support: Responding promptly to booking inquiries.",
+                  "Following Up: Checking in on progress and readiness for tests.",
+                ]}
+                example=" Sending a quick text before lessons to confirm times or following up after a test with encouragement."
+              />
+
+              <Section
+                title="3. Empathy & Understanding"
+                items={[
+                  "Calming Nerves: Being patient and reassuring.",
+                  "Adjusting to Different Learning Styles.",
+                  "Staying Patient: Supporting students who take longer to grasp concepts.",
+                ]}
+                example="A nervous learner struggles with roundabouts. Instead of rushing, break it down calmly and practice at quieter times."
+              />
+
+              <Section
+                title="4. Knowledge & Expertise"
+                items={[
+                  "Mastering the National Standard.",
+                  "Understanding Road Laws & Test Requirements.",
+                  "Providing Valuable Tips beyond just passing the test",
+                ]}
+                example=" Teaching eco-friendly driving techniques and hazard perception."
+              />
+
+              <Section
+                title="5. Professionalism & Positive Attitude"
+                items={[
+                  "Maintaining a Calm Demeanour.",
+                  "Respecting the Learner",
+                  "Dressing & Behaving Professionally",
+                ]}
+                example="If a learner stalls, reassure them with calm encouragement."
+              />
+
+              <Section
+                title="6. Personalisation & Going the Extra Mile"
+                items={[
+                  "Tailoring Lessons to the Learner.",
+                  "Providing Extra Resources.",
+                  "Offering Flexible Lesson Times",
+                ]}
+                example="If a student struggles with parking, create a personalised strategy."
+              />
+
+              <Section
+                title="7. Accountability & Problem-Solving"
+                items={[
+                  "Taking Responsibility for scheduling mistakes",
+                  "Adapting When Challenges Arise.",
+                  "Ensuring a Positive Experience.",
+                ]}
+                example="If roadworks interrupt, use it as a learning opportunity."
+              />
+
+              <Section
+                title="8. Consistency Across All Channels"
+                items={[
+                  "Professionalism in Messages & Calls.",
+                  "Clear Pricing & Booking Policies.",
+                  "Using Social Media & Reviews Wisely",
+                ]}
+                example="A smooth booking system avoids confusion and builds trust."
+              />
+            </div>
+          </div>
+        </section>
+        {/* ================= WHY IT MATTERS ================= */}
+        <section className="py-20 bg-indigo-50">
+          <div className="container mx-auto px-6 max-w-4xl fade-up">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4 flex items-center gap-3">
+                Why Good Customer Service Matters{" "}
+                <Car className="text-indigo-600" />
+              </h3>
+              <ul
+                className="space-y-3 text-slate-700"
+                style={{ paddingLeft: "0px" }}
+              >
+                <li>🚗Happy learners = more referrals and better reviews.</li>
+                <li>
+                  🚗 A positive, patient approach creates safer, more confident
+                  drivers.
                 </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-
-      {/* //////////////////////////////////////////////////////////////////////////// */}
-      <div className={styles.Adiparttwowrapper}>
-        <motion.div
-          className={styles.Adiparttwocontainer}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}>
-          <motion.p className={styles.paragraph} whileHover={{ scale: 1.02 }}>
-            As an instructor, you play a crucial role in shaping a learner’s
-            driving habits. The way you teach, support, and guide them will
-            influence how they drive long after you’re no longer in the car with
-            them.
-          </motion.p>
-
-          <motion.p className={styles.paragraph} whileHover={{ scale: 1.02 }}>
-            Imagine this: A student you trained for a year is involved in a
-            fatal road collision. How would that make you feel? Now, flip the
-            perspective—what if it was your friend or family member learning
-            from another instructor? How would you want them to be taught and
-            treated?
-          </motion.p>
-
-          <motion.p className={styles.paragraph} whileHover={{ scale: 1.02 }}>
-            This is why your job isn’t just about helping learners pass a
-            test—it’s about creating safer drivers for life.
-          </motion.p>
-
-          <motion.h2
-            className={styles.subheading}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}>
-            <Sparkles size={24} className={styles.icon} /> Customer Service
-          </motion.h2>
-        </motion.div>
-      </div>
-      {/* ///////////////////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            1. What do you personally define as truly exceptional customer
-            service?
-          </label>
-          <label>
-            Can you share an experience that challenged or reshaped your
-            expectations of what great service really looks like?
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
+                <li>
+                  🚗 It's about lifelong driving skills, not just passing a
+                  test.
+                </li>
               </ul>
-            )}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* //////////////////////////////////////////////////////////////////////////// */}
-      <div className={styles.Adi3rdlastcontainer}>
-        <motion.h1
-          className={styles.Adi3rdlasttitle}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}>
-          What Makes Good Customer Service in Driving Instruction
-        </motion.h1>
-
-        <Section
-          title="1. Clear and Effective Communication"
-          items={[
-            "Listening to the Learner: Understanding their concerns, anxieties, and goals.",
-            "Explaining Clearly: Giving easy-to-follow instructions in a calm, patient manner.",
-            "Providing Constructive Feedback: Explaining how to improve supportively.",
-          ]}
-        />
-
-        <Section
-          title="2. Responsiveness & Efficiency"
-          items={[
-            "Punctuality: Arriving on time and keeping lessons well-structured.",
-            "Quick Support: Responding promptly to booking inquiries.",
-            "Following Up: Checking in on progress and readiness for tests.",
-          ]}
-          example="Sending a quick text before lessons to confirm times or following up after a test with encouragement."
-        />
-
-        <Section
-          title="3. Empathy & Understanding"
-          items={[
-            "Calming Nerves: Being patient and reassuring.",
-            "Adjusting to Different Learning Styles.",
-            "Staying Patient: Supporting students who take longer to grasp concepts.",
-          ]}
-          example="A nervous learner struggles with roundabouts. Instead of rushing, break it down calmly and practice at quieter times."
-        />
-
-        <Section
-          title="4. Knowledge & Expertise"
-          items={[
-            "Mastering the National Standard.",
-            "Understanding Road Laws & Test Requirements.",
-            "Providing Valuable Tips beyond just passing the test.",
-          ]}
-          example="Teaching eco-friendly driving techniques and hazard perception."
-        />
-
-        <Section
-          title="5. Professionalism & Positive Attitude"
-          items={[
-            "Maintaining a Calm Demeanour.",
-            "Respecting the Learner.",
-            "Dressing & Behaving Professionally.",
-          ]}
-          example="If a learner stalls, reassure them with calm encouragement."
-        />
-
-        <Section
-          title="6. Personalisation & Going the Extra Mile"
-          items={[
-            "Tailoring Lessons to the Learner.",
-            "Providing Extra Resources.",
-            "Offering Flexible Lesson Times.",
-          ]}
-          example="If a student struggles with parking, create a personalised strategy."
-        />
-
-        <Section
-          title="7. Accountability & Problem-Solving"
-          items={[
-            "Taking Responsibility for scheduling mistakes.",
-            "Adapting When Challenges Arise.",
-            "Ensuring a Positive Experience.",
-          ]}
-          example="If roadworks interrupt, use it as a learning opportunity."
-        />
-
-        <Section
-          title="8. Consistency Across All Channels"
-          items={[
-            "Professionalism in Messages & Calls.",
-            "Clear Pricing & Booking Policies.",
-            "Using Social Media & Reviews Wisely.",
-          ]}
-          example="A smooth booking system avoids confusion and builds trust."
-        />
-
-        <motion.div
-          className={styles.whyItMatters}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}>
-          <h2>
-            Why Good Customer Service Matters <FaCar />
-          </h2>
-          <ul>
-            <li>🚗 Happy learners = more referrals and better reviews.</li>
-            <li>
-              🚗 A positive, patient approach creates safer, more confident
-              drivers.
-            </li>
-            <li>
-              🚗 It's about lifelong driving skills, not just passing a test.
-            </li>
-          </ul>
-        </motion.div>
-      </div>
-
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/legal-stuff">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-
-      {/* //////////////////////////////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            Good Instructor the lesson before setting off
-          </p>
-          <Link to="/takequizCatName/good-instructor">
-            {" "}
-            <button>Start Quiz</button>
+        </section>
+        {/* ================= NEXT ================= */}
+        <section className="py-16 text-center">
+          <Link to="/legal-stuff">
+            <button className="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 transition rounded-full text-white font-semibold shadow-xl">
+              Next Page
+            </button>
           </Link>
         </section>
-      </div>
-    </div>
+        {/* ================= QUIZ ================= */}
+        <section className="py-20 bg-slate-900 text-white text-center">
+          <h2 className="text-4xl font-extrabold mb-2">Start Quiz</h2>
+          <p className="opacity-80 mb-6">15 Questions • Good Instructor</p>
+          <Link to="/takequizCatName/good-instructor">
+            <button className="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 transition rounded-full font-semibold">
+              Start Quiz
+            </button>
+          </Link>
+        </section>{" "}
+      </section>
+    </main>
   );
 }

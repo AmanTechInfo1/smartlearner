@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 import backgroundImage from "../../../../../assets/images/showme.jpg";
-import { motion } from "framer-motion";
+
+import {
+  HelpCircle,
+  Eye,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AdiModule11() {
   const questions = [
@@ -145,161 +154,131 @@ export default function AdiModule11() {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Show me Tell me Questions"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
   return (
-    <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{ backgroundImage: `url(${backgroundImage})` }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
+    <main className="w-full font-sans overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[70vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-        <div className={styles.module11container}>
-          <motion.h1
-            className={styles.module11title}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}>
-            ADI Part 2 - Show Me, Tell Me Questions
-          </motion.h1>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              Show Me Tell Me Questions
+            </h1>
+
+            <p className="mt-6 max-w-xl text-slate-200 text-lg">
+              Master the ADI Part 2 “Show Me, Tell Me” questions with clarity
+              and confidence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CONTENT ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-14 fade-up">
+            ADI Part 2 –{" "}
+            <span className="text-cyan-600">Practical Questions</span>
+          </h2>
 
           {questions.map((section, sectionIndex) => (
-            <motion.div
-              key={sectionIndex}
-              className={styles.module11section}
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: sectionIndex * 0.2 }}>
-              <h2 className={styles.module11heading}>
-                {section.category} Questions
-              </h2>
+            <div key={sectionIndex} className="mb-16 fade-up">
+              <div className="flex items-center gap-4 mb-8">
+                {section.category === "Tell me" ? (
+                  <ClipboardCheck className="w-9 h-9 text-cyan-600" />
+                ) : (
+                  <Eye className="w-9 h-9 text-cyan-600" />
+                )}
+                <h3 className="text-2xl sm:text-3xl font-bold">
+                  {section.category} Questions
+                </h3>
+              </div>
 
-              <ul className={styles.module11list}>
-                {section.items.map((item, idx) => (
-                  <motion.li
-                    key={idx}
-                    className={styles.module11card}
-                    whileHover={{ scale: 1.01 }}
-                    onClick={() => toggleAnswer(idx)}>
-                    <strong>{item.question}</strong>
+              <div className="grid gap-6">
+                {section.items.map((item, idx) => {
+                  const indexKey = `${sectionIndex}-${idx}`;
+                  const isOpen = activeIndex === indexKey;
 
-                    {/* Show the answer with slide-down animation */}
+                  return (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{
-                        height: activeIndex === idx ? "auto" : 0,
-                        opacity: activeIndex === idx ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className={styles.answer}>
-                      {item.answer && <p>{item.answer}</p>}
+                      key={indexKey}
+                      whileHover={{ scale: 1.01 }}
+                      onClick={() => toggleAnswer(indexKey)}
+                      className="bg-white p-6 rounded-2xl shadow-lg cursor-pointer border border-slate-200"
+                    >
+                      <div className="flex justify-between items-start gap-4">
+                        <div className="flex gap-3">
+                          <HelpCircle className="text-cyan-600 mt-1" />
+                          <h4 className="font-semibold text-lg">
+                            {item.question}
+                          </h4>
+                        </div>
+
+                        {isOpen ? (
+                          <ChevronUp className="text-cyan-600" />
+                        ) : (
+                          <ChevronDown className="text-cyan-600" />
+                        )}
+                      </div>
+
+                      {item.answer && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{
+                            height: isOpen ? "auto" : 0,
+                            opacity: isOpen ? 1 : 0,
+                          }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="mt-4 text-slate-700 leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </motion.div>
+                      )}
                     </motion.div>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           ))}
         </div>
+      </section>
 
-        <div className={styles.adiLastNextbtn}>
+      {/* ================= NEXT ================= */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6 flex justify-center">
           <Link to="/quizModuleTwelve">
-            <button className={styles.adinextbtns}>Next Page</button>
+            <button className="px-10 py-4 bg-cyan-600 hover:bg-cyan-700 transition rounded-full text-white text-lg font-semibold shadow-xl">
+              Next Page →
+            </button>
           </Link>
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }

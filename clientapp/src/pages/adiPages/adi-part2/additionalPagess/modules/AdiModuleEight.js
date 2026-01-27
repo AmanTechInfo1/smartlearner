@@ -1,14 +1,47 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+import {
+  Car,
+  ShieldCheck,
+  Clock,
+  Eye,
+  AlertTriangle,
+  ArrowRight,
+  PlayCircle,
+  Navigation,
+  Gauge,
+  Trophy,
+  Trash2,
+  FilePenLine,
+} from "lucide-react";
 
 import backgroundImage from "../../../../../assets/images/concentration.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function AdiModuleEight() {
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
 
@@ -36,7 +69,7 @@ export default function AdiModuleEight() {
       }
       localStorage.setItem(
         `notepadTextspage8_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -58,7 +91,7 @@ export default function AdiModuleEight() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTextspage8_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -94,7 +127,7 @@ export default function AdiModuleEight() {
       }
       localStorage.setItem(
         `notepadText2spage8_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -116,7 +149,7 @@ export default function AdiModuleEight() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2spage8_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -152,7 +185,7 @@ export default function AdiModuleEight() {
       }
       localStorage.setItem(
         `notepadText3spage8_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -174,7 +207,7 @@ export default function AdiModuleEight() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadText3spage8_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
@@ -186,612 +219,555 @@ export default function AdiModuleEight() {
   }, []);
 
   // ////////////////////////////////////////////////////
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Space in the COAST Method for Advanced Driving"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
 
   /////////////////////////////////////////
-  const text2Ref = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const split2Text = () => {
-    const firstPart = "Mastering Space: The secret to smooth and safe driving"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = text2Ref.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
 
   return (
-    <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh]">
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-        <div className={styles.AdiModuleOneTextArea}>
-          <h2 ref={text2Ref}>{split2Text()} 🚗💨</h2>
-        </div>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              Space in the <span className="text-emerald-400">COAST</span>{" "}
+              Method
+            </h1>
 
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/75chHph3nmk"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
+            <p className="mt-6 text-lg text-slate-200 max-w-2xl">
+              Mastering space is the secret to smooth, safe, and professional
+              advanced driving.
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* /////////////////////////////////////////////////// */}
+      {/* ================= INTRO ================= */}
+      <section className="bg-white">
+        <section className="bg-slate-50 py-20 ">
+          <div className="container mx-auto px-6 text-center">
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Mastering Space: The Secret to Smooth Driving
+            </h2>
+          </div>
+        </section>
 
-        {/* ///////////////////////////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>Why Does Space Matter?</label>
-            <label>Write your thoughts below</label>
-            <textarea
-              ref={textareaRef}
-              value={text}
-              onChange={handleChange}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 fade-up">
+            <div>
+              <div className="bg-slate-50 p-4 rounded-3xl shadow-xl border-l-8 border-red-500">
+                <p className="text-slate-700 leading-relaxed">
+                  In advanced driving, space isn’t just about avoiding
+                  accidents—it’s about staying ahead of the game. The more space
+                  you manage, the more calm, professional, and in control you’ll
+                  look behind the wheel. And guess what? Your examiner will
+                  definitely notice.
+                </p>
+              </div>
+            </div>
+            <div className="container mx-auto px-6 fade-up">
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border">
+                <div className="flex items-center gap-3 p-6 border-b">
+                  <PlayCircle className="w-8 h-8 text-red-600" />
+                  <h2 className="text-2xl font-bold">Watch Our Video</h2>
+                </div>
 
-            <div className={styles.thoughtsListArea}>
-              {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                <div className="aspect-video">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/75chHph3nmk"
+                    title="Space in COAST Method"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* /////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Imagine you're playing a high-stakes game of chess, but instead of
-              pieces on a board, you're surrounded by cars, cyclists,
-              pedestrians, and unpredictable road conditions. In this game,
-              space is your best friend —it gives you the time to think, the
-              room to move, and the control to keep everything running smoothly.
-            </p>
-          </div>
-          <div
-            className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}>
-            <p>
-              In advanced driving, space isn’t just about avoiding
-              accidents—it’s about staying ahead of the game. The more space you
-              manage, the more calm, professional, and in control you’ll look
-              behind the wheel. And guess what? Your examiner will definitely
-              notice.
-            </p>
-          </div>
-        </div>
-        {/* ///////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleContentBox}>
-          <h2>Think Fast, React Faster: The Power of Space</h2>
-          <div className={styles.AdiModuleContentParaBoxm2}>
-            <p>
-              Ever been stuck behind someone who slams their brakes at the last
-              second? Annoying, right? That’s what happens when drivers don’t
-              leave enough space. Keeping a safe distance isn’t just about
-              comfort —it’s your buffer zone for reacting to the unexpected.
-            </p>
-          </div>
-          <div
-            className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}>
-            <p>
-              More space means more time to react. It cuts down the risk of
-              collisions, makes driving less stressful, and keeps everything
-              flowing smoothly. Plus, when you're managing space well, you’re
-              always ready for what’s next—whether it’s a sudden stop, a merging
-              vehicle, or a cyclist swerving into the road.
-            </p>
-          </div>
-        </div>
-        {/* //////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{ background: "linear-gradient(135deg, #037cd2, #000240)" }}>
-          <div className={styles.adisevenheading}>
-            Types of Space You Need to Master
-          </div>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Not all space is created equal! Here’s where you need to keep your
-              distance:
-            </p>
-          </div>
-          <div className={styles.adiseventipBox2}>
-            <h3>🚘 Following Distance</h3>
-            <p>
-              If you’re too close to the car in front, you’re asking for
-              trouble. Use the 2-second rule in good weather— double it when the
-              roads are wet. That means picking a fixed point ahead, watching
-              when the car in front passes it, and counting, "One thousand and
-              one, one thousand and two." If you reach the point too soon, back
-              off!
-            </p>
-          </div>
+        {/* ================= VIDEO ================= */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Why Does Space Matter?Write your thoughts below
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
 
-          <div className={styles.adiseventipBox2}>
-            <h3>🛑 Stopping Distance</h3>
-            <p>
-              Braking takes longer than you think—especially in bad weather.
-              Always leave enough space to stop within the visible distance
-              ahead. If you can’t see past a bend or a hill, slow down and
-              expect the unexpected.
-            </p>
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
           </div>
+        </section>
+        {/* ================= CONTENT BLOCK ================= */}
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 fade-up">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <p>
+                Imagine you're playing a high-stakes game of chess, but instead
+                of pieces on a board, you're surrounded by cars, cyclists,
+                pedestrians, and unpredictable road conditions. In this game,
+                space is your best friend —it gives you the time to think, the
+                room to move, and the control to keep everything running
+                smoothly.
+              </p>
+            </div>
 
-          <div className={styles.adiseventipBox2}>
-            <h3>🏍 Side Space</h3>
-            <p>
-              Cyclists, motorcyclists, and parked cars all need their personal
-              space. When overtaking, leave at least 1.5 meters—or more if you
-              can. And when driving near parked cars, be ready for the dreaded
-              door swing from an unsuspecting passenger.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox2}>
-            <h3>🚛 Space Behind</h3>
-            <p>
-              Got a tailgater breathing down your neck? Don’t hit the brakes to
-              “teach them a lesson”—that’s a recipe for disaster. Instead,
-              gradually slow down to encourage them to back off. If they’re
-              still too close, find a safe place to let them pass.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox2}>
-            <h3>🚦 Space at Junctions and Roundabouts</h3>
-            <p>
-              Ever seen someone creep forward at a red light, only to get stuck
-              in the middle of the road? Don’t be that driver. Always leave
-              enough room for other vehicles to move freely—especially large
-              ones that need extra turning space.
-            </p>
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <p>
+                In advanced driving, space isn’t just about avoiding
+                accidents—it’s about staying ahead of the game. The more space
+                you manage, the more calm, professional, and in control you’ll
+                look behind the wheel. And guess what? Your examiner will
+                definitely notice.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* ////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem", background: "#00a06d" }}>
-          <div className={styles.adisevenheading}>
-            How to Keep Your Space Like a Pro
+        {/* ================= THINK FAST ================= */}
+        <section className="py-20 bg-white fade-up">
+          <div className="container mx-auto px-6">
+            <div className="flex items-center gap-4 mb-8">
+              <Clock className="text-blue-600 w-10 h-10" />
+              <h2 className="text-3xl sm:text-4xl font-extrabold">
+                Think Fast, React Faster: The Power of Space
+              </h2>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-10">
+              <div className="bg-slate-50 p-8 rounded-3xl shadow">
+                <p>
+                  Ever been stuck behind someone who slams their brakes at the
+                  last second? Annoying, right? That’s what happens when drivers
+                  don’t leave enough space. Keeping a safe distance isn’t just
+                  about comfort —it’s your buffer zone for reacting to the
+                  unexpected.
+                </p>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-3xl shadow">
+                <p>
+                  More space means more time to react. It cuts down the risk of
+                  collisions, makes driving less stressful, and keeps everything
+                  flowing smoothly. Plus, when you're managing space well,
+                  you’re always ready for what’s next—whether it’s a sudden
+                  stop, a merging vehicle, or a cyclist swerving into the road.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
+        </section>
+
+        {/* ================= TYPES OF SPACE ================= */}
+        <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-900 text-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-10">
+              Types of Space You Need to Master
+            </h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                [
+                  "Following Distance",
+                  Car,
+                  'If you’re too close to the car in front, you’re asking for trouble. Use the 2-second rule in good weather— double it when the roads are wet. That means picking a fixed point ahead, watching when the car in front passes it, and counting, "One thousand and one, one thousand and two." If you reach the point too soon, back off!',
+                ],
+                [
+                  "Stopping Distance",
+                  AlertTriangle,
+                  "Braking takes longer than you think—especially in bad weather. Always leave enough space to stop within the visible distance ahead. If you can’t see past a bend or a hill, slow down and expect the unexpected.",
+                ],
+                [
+                  "Side Space",
+                  ShieldCheck,
+                  "Cyclists, motorcyclists, and parked cars all need their personal space. When overtaking, leave at least 1.5 meters—or more if you can. And when driving near parked cars, be ready for the dreaded door swing from an unsuspecting passenger.",
+                ],
+                [
+                  "Space Behind",
+                  ArrowRight,
+                  "Got a tailgater breathing down your neck? Don’t hit the brakes to “teach them a lesson”—that’s a recipe for disaster. Instead, gradually slow down to encourage them to back off. If they’re still too close, find a safe place to let them pass.",
+                ],
+                [
+                  "Space at Junctions and Roundabouts",
+                  Eye,
+                  "Ever seen someone creep forward at a red light, only to get stuck in the middle of the road? Don’t be that driver. Always leave enough room for other vehicles to move freely—especially large ones that need extra turning space.",
+                ],
+              ].map(([title, Icon, text], i) => (
+                <div
+                  key={i}
+                  className="bg-white/10 backdrop-blur p-6 rounded-3xl shadow-xl fade-up"
+                >
+                  <Icon className="mb-4 w-8 h-8 text-emerald-300" />
+                  <h3 className="font-bold text-xl mb-2">{title}</h3>
+                  <p className="mt-4 text-white/80">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= HOW TO KEEP YOUR SPACE ================= */}
+        <section className="py-20 bg-gradient-to-br from-emerald-600 to-emerald-900 text-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 fade-up">
+              How to Keep Your Space Like a Pro
+            </h2>
+
+            <p className="max-w-3xl text-emerald-100 mb-12 fade-up">
               Space management isn’t just about keeping your distance—it’s about
               reading the road and staying ahead of the game. Here’s how to
               master it:
             </p>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#63ffa7" }}>👀 Anticipate What’s Coming</h3>
-            <p>
-              Watch for brake lights, turn signals, and changes in traffic flow.
-              The sooner you spot a potential issue, the easier it is to adjust
-              your space before it becomes a problem.
-            </p>
-          </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#63ffa7" }}>📍 Position Yourself Smartly</h3>
-            <p>
-              Your lane position can make a big difference. When passing parked
-              cars, move slightly to the left to avoid unexpected door swings.
-              When stopped in traffic, leave enough space to maneuver around the
-              car in front if needed.
-            </p>
-          </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* CARD 1 */}
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl fade-up">
+                <div className="flex items-center gap-4 mb-3">
+                  <Eye className="w-8 h-8 text-emerald-300" />
+                  <h3 className="text-xl font-bold text-emerald-200">
+                    Anticipate What’s Coming
+                  </h3>
+                </div>
+                <p className="text-emerald-100">
+                  Watch for brake lights, turn signals, and changes in traffic
+                  flow. The sooner you spot a potential issue, the easier it is
+                  to adjust your space before it becomes a problem.
+                </p>
+              </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#63ffa7" }}>
-              🏎 Adapt to Speed and Conditions
-            </h3>
-            <p>
-              The faster you're going, the more space you need. On a dry road,
-              you might be fine with the 2-second rule, but in rain or fog? Give
-              yourself extra room.
-            </p>
-          </div>
+              {/* CARD 2 */}
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl fade-up">
+                <div className="flex items-center gap-4 mb-3">
+                  <Navigation className="w-8 h-8 text-emerald-300" />
+                  <h3 className="text-xl font-bold text-emerald-200">
+                    Position Yourself Smartly
+                  </h3>
+                </div>
+                <p className="text-emerald-100">
+                  Your lane position can make a big difference. When passing
+                  parked cars, move slightly to the left to avoid unexpected
+                  door swings. When stopped in traffic, leave enough space to
+                  maneuver around the car in front if needed.
+                </p>
+              </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#63ffa7" }}>
-              😡 Handle Close-Followers with Confidence
-            </h3>
-            <p>
-              If someone’s tailgating you, don’t panic. Stay cool, slow down
-              gradually, and let them pass if necessary. It’s better to lose a
-              few seconds than risk an accident.
-            </p>
+              {/* CARD 3 */}
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl fade-up">
+                <div className="flex items-center gap-4 mb-3">
+                  <Gauge className="w-8 h-8 text-emerald-300" />
+                  <h3 className="text-xl font-bold text-emerald-200">
+                    Adapt to Speed and Conditions
+                  </h3>
+                </div>
+                <p className="text-emerald-100">
+                  The faster you're going, the more space you need. On a dry
+                  road, you might be fine with the 2-second rule, but in rain or
+                  fog? Give yourself extra room.
+                </p>
+              </div>
+
+              {/* CARD 4 */}
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl shadow-xl fade-up">
+                <div className="flex items-center gap-4 mb-3">
+                  <AlertTriangle className="w-8 h-8 text-emerald-300" />
+                  <h3 className="text-xl font-bold text-emerald-200">
+                    Handle Close-Followers with Confidence
+                  </h3>
+                </div>
+                <p className="text-emerald-100">
+                  If someone’s tailgating you, don’t panic. Stay cool, slow down
+                  gradually, and let them pass if necessary. It’s better to lose
+                  a few seconds than risk an accident.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ================= ON THE ROAD CHALLENGE ================= */}
+        <section className="py-20 bg-slate-50">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 fade-up">
+              🛞 On-the-Road Spacing Challenge
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* CHALLENGE 1 */}
+              <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-purple-500 fade-up">
+                <h3 className="text-lg font-bold text-purple-600 mb-2">
+                  1️⃣ Following Distance Check
+                </h3>
+                <p className="text-slate-700">
+                  Pick a fixed point (like a road sign) and test your 2-second
+                  rule. If you reach the point too soon, back off and adjust
+                  your distance.
+                </p>
+              </div>
+
+              {/* CHALLENGE 2 */}
+              <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-purple-500 fade-up">
+                <h3 className="text-lg font-bold text-purple-600 mb-2">
+                  2️⃣ Side Space Awareness
+                </h3>
+                <p className="text-slate-700">
+                  When passing cyclists or parked cars, keep that 1.5-meter gap.
+                  If space is tight, slow down and wait for a safer moment to
+                  overtake.
+                </p>
+              </div>
+
+              {/* CHALLENGE 3 */}
+              <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-purple-500 fade-up">
+                <h3 className="text-lg font-bold text-purple-600 mb-2">
+                  3️⃣ Reaction Space Test
+                </h3>
+                <p className="text-slate-700">
+                  As you approach junctions or roundabouts, leave enough room to
+                  stop safely if needed. Stay alert and be ready to adjust if
+                  traffic flow changes suddenly.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* /////////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}>
-          <div className={styles.adisevenheading}>
-            🛞 On-the-Road Spacing Challenge
-          </div>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Observe other drivers’ spacing habits and identify where
+                improvements could be made.
+              </label>
+              <textarea
+                ref={textareaRef2}
+                value={text2}
+                onChange={handleChange2}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText2}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing2 ? "Update" : "Save"}
+              </button>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#e563ff" }}>1️⃣ Following Distance Check:</h3>
-            <p>
-              Pick a fixed point (like a road sign) and test your 2-second rule.
-              If you reach the point too soon, back off and adjust your
-              distance.
-            </p>
+              <div className="mt-6">
+                {savedTexts2.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts2.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText2(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText2(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
           </div>
+        </section>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Have you ever experienced a situation where maintaining proper
+                space saved you from a collision?
+              </label>
+              <textarea
+                ref={textareaRef3}
+                value={text3}
+                onChange={handleChange3}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText3}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing3 ? "Update" : "Save"}
+              </button>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#e563ff" }}>2️⃣ Side Space Awareness:</h3>
-            <p>
-              When passing cyclists or parked cars, keep that 1.5-meter gap. If
-              space is tight, slow down and wait for a safer moment to overtake.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "#e563ff" }}>3️⃣ Reaction Space Test:</h3>
-            <p>
-              As you approach junctions or roundabouts, leave enough room to
-              stop safely if needed. Stay alert and be ready to adjust if
-              traffic flow changes suddenly.
-            </p>
+              <div className="mt-6">
+                {savedTexts3.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts3.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText3(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText3(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* ///////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Practice the Following Distance Check during your next three
-              driving sessions, especially in varying traffic and weather
-              conditions.
-            </p>
-          </div>
-        </div>
-        {/* //////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Observe other drivers’ spacing habits and identify where
-            improvements could be made.
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-
-        {/* //////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Have you ever experienced a situation where maintaining proper space
-            saved you from a collision?
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-        {/* ///////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleContentBox}>
-          <h2>
-            Final Thought: Are You Giving Yourself Enough Room to Breathe?
-          </h2>
-          <div className={styles.AdiModuleContentParaBoxm2}>
+        {/* ================= FINAL THOUGHT ================= */}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl text-center">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
+              Final Thought: Are You Giving Yourself Enough Room to Breathe?
+            </h2>
             <p>
               Space isn’t just empty air between vehicles—it’s your safety net,
               your escape route, and your best tool for stress-free driving.
               Master it, and you’ll be on your way to becoming a smooth,
               confident, and professional driver.
             </p>
+            <p></p>
           </div>
-          <div
-            className={styles.AdiModuleContentParaBoxm3}
-            style={{ marginTop: "1rem" }}>
-            <p>
-              Next time you're behind the wheel, ask yourself: Do I have enough
-              space to handle anything that happens next? Keep practicing, and
-              soon, space management will feel like second nature! 🚗✨
-            </p>
-          </div>
-        </div>
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModulenine">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
-          </Link>
-        </div>
+        </section>
 
-        {/* /////////////////// */}
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p>
-              Here’s a quick summary quiz to test your understanding of of Part
-              2: Human checks before setting off
+      
+
+        {/* ================= QUIZ ================= */}
+
+        <section className="py-24 bg-gradient-to-br from-red-50 to-white">
+          <div className="container mx-auto px-6 text-center fade-up">
+            <Trophy className="w-14 h-14 text-red-600 mx-auto mb-4" />
+            <h2 className="text-4xl font-extrabold mb-2">
+              Ready for the Quiz?
+            </h2>
+            <p className="text-lg text-slate-700 mb-6">
+              Test your knowledge and see how well you understand observation.
             </p>
+
             <Link to="/takequizCatName/Space-in-the-COAST-Method">
-              {" "}
-              <button>Start Quiz</button>
+              <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full text-lg">
+                Start Quiz
+              </button>
             </Link>
-          </section>
-        </div>
-        {/* ///////////////////////////////////////////// */}
-      </div>
-    </>
+          </div>
+        </section>
+
+        {/* ================= NEXT PAGE ================= */}
+        <section className="py-12 bg-white text-center">
+          <Link to="/quizModulenine">
+            <button className="px-8 py-3 bg-slate-800 text-white rounded-full">
+              Next Page →
+            </button>
+          </Link>
+        </section>
+      </section>
+    </main>
   );
 }

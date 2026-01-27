@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   background: linear-gradient(135deg, #040506, #15001b);
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 1.5rem;
   padding: 20px;

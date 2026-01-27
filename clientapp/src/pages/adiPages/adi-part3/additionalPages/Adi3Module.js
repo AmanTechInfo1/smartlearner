@@ -1,113 +1,39 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
-import styles from "./Adi3Module.module.css";
-import { Download } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import { Download, Award, ShieldCheck, ClipboardList } from "lucide-react";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../../assets/images/national-standard2.jpg";
+import {
+  MapPin,
+  AlertTriangle,
+  GraduationCap,
+  CheckCircle2,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Adi3Module() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "The National Standard for Driver and"; // First part before "Driving"
-    const secondPart = "Rider Training: A Guide for Instructors";
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    const secondLine = secondPart
-      .split("")
-      .map((char, index) => <span key={`second-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return (
-      <>
-        {firstLine}
-        <br />
-        {secondLine}
-      </>
-    );
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
-  //   ///////////////////////////////////////////////////////////////////////////////////////
   const keyAreas = [
     {
       title: "Instructor Competence 🚗",
@@ -137,31 +63,39 @@ export default function Adi3Module() {
   ];
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+        <div
+          className="absolute inset-0 bg-fixed bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              The <span className="text-red-500">National Standard</span> for
+              Driver & Rider Training
+            </h1>
+
+            <p className="mt-6 text-slate-200 text-base sm:text-lg">
+              A professional framework for becoming a confident, responsible and
+              fully qualified driving instructor.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* ///////////////////////////////////////////////////////// */}
-      <section className={styles.adiModuleSectionPart}>
-        <section className={styles.firstLessonModulecontainer}>
-          <motion.div
-            className={styles.firstLessonModulecard}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}>
-            <h2 className={styles.firstLessonModuletitle}>
+      {/* ================= INTRO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-5xl fade-up">
+          <div className="bg-white p-10 rounded-3xl shadow-2xl border-l-8 border-red-500">
+            <h2 className="text-3xl font-extrabold mb-4">
               Understanding the National Standard
             </h2>
-            <p className={styles.firstLessonModuletext}>
+
+            <p className="text-slate-700 leading-relaxed mb-4">
               The National Standard for Driver and Rider Training is the
               official framework that every UK driving and riding instructor
               must follow. Mastering this standard isn’t just about passing your
@@ -169,7 +103,8 @@ export default function Adi3Module() {
               delivers high-quality training and shapes safer drivers for the
               future.
             </p>
-            <p className={styles.firstLessonModuletext}>
+
+            <p className="text-slate-700 leading-relaxed mb-6">
               This standard outlines the essential skills, knowledge, and
               understanding required to provide top-tier instruction. By
               following its guidelines, instructors ensure that learners not
@@ -177,257 +112,299 @@ export default function Adi3Module() {
               driving habits. Ultimately, this contributes to improved road
               safety and consistency in training nationwide.
             </p>
-            <motion.a
-              href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training"
-              className={styles.firstLessonModuledownloadBtn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              target="_blank"
-              rel="noopener noreferrer">
-              <Download size={20} /> Download the National Standard
-            </motion.a>
-          </motion.div>
-        </section>
 
-        {/* ///////////////////////////////////////////////////////////////////// */}
-        <div className={styles.firstLessonModulesecondcontainer}>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={styles.firstLessonModulesecondheading}>
-            Key Areas of the National Standard
-          </motion.h1>
-          <div className={styles.firstLessonModulesecondcardGrid}>
-            {keyAreas.map((area, index) => (
-              <motion.div
-                key={index}
-                className={styles.firstLessonModulesecondcard}
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}>
-                <h2 className={styles.firstLessonModulesecondcardTitle}>
-                  {area.title}
-                </h2>
-                <p className={styles.firstLessonModulesecondcardContent}>
+            <a
+              href="https://www.gov.uk/government/publications/national-standard-for-driver-and-rider-training"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition"
+            >
+              <Download size={18} /> Download National Standard
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================= */}
+
+      {/* ================= KEY AREAS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12 fade-up">
+            <Award className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Key Areas of the National Standard
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {keyAreas.map((area, i) => (
+              <div
+                key={i}
+                className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition border-t-8 border-red-500"
+              >
+                <h3 className="text-xl font-bold mb-3">{area.title}</h3>
+                <p className="text-slate-700 leading-relaxed text-sm">
                   {area.content}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* /////////////////////////////////////////////////////////////////////////////// */}
-        <div className={styles.firstLessonModulesecondthirdcontainer}>
-          <motion.h1
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={styles.firstLessonModulesecondthirdheading}>
-            ADI Part 3: The Final Assessment
-          </motion.h1>
+      {/* ================= ADI PART 3 ================= */}
+      <section className="py-20 bg-gradient-to-br from-red-50 to-white">
+        <div className="container mx-auto px-6 max-w-5xl fade-up">
+          <div className="bg-white p-10 rounded-3xl shadow-2xl border-l-8 border-red-500">
+            <h2 className="text-3xl font-extrabold mb-4">
+              ADI Part 3: The Final Assessment
+            </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className={styles.firstLessonModulesecondthirddescription}>
-            The ADI Part 3 test is the final step in becoming a fully qualified
-            Approved Driving Instructor (ADI). This in-car assessment, conducted
-            by a DVSA examiner, lasts about 45 minutes. You’ll bring a learner
-            and demonstrate your instructional skills in real time.
-          </motion.p>
+            <p className="text-slate-700 mb-6">
+              The ADI Part 3 test is the final step in becoming a fully
+              qualified Approved Driving Instructor (ADI). This in-car
+              assessment, conducted by a DVSA examiner, lasts about 45 minutes.
+              You’ll bring a learner and demonstrate your instructional skills
+              in real time.
+            </p>
 
-          <motion.div
-            className={styles.firstLessonModulesecondthirdsection}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}>
-            <h2>Assessment Areas:</h2>
-            <ul>
-              <li>Lesson Planning</li>
-              <li>Risk Management</li>
-              <li>Teaching and Learning Strategies</li>
-            </ul>
-          </motion.div>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-bold mb-2 flex items-center gap-2">
+                  <ClipboardList className="text-red-600" /> Assessment Areas
+                </h4>
+                <ul
+                  className="list-disc list-inside text-slate-700"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  <li>Lesson Planning</li>
+                  <li>Risk Management</li>
+                  <li>Teaching & Learning Strategies</li>
+                </ul>
+              </div>
 
-          <motion.div
-            className={styles.firstLessonModulesecondthirdscores}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}>
-            <h2>Scoring:</h2>
-            <ul>
-              <li>
-                <strong>0 – 30:</strong> Fail – Performance is unsatisfactory;
-                you won’t be added to the ADI register.
-              </li>
-              <li>
-                <strong>31 – 42:</strong> Grade B – You’ll qualify and be added
-                to the ADI register.
-              </li>
-              <li>
-                <strong>43 – 51:</strong> Grade A – You’ve demonstrated a high
-                standard of instruction.
-              </li>
-            </ul>
-          </motion.div>
+              <div>
+                <h4 className="font-bold mb-2 flex items-center gap-2">
+                  <ShieldCheck className="text-red-600" /> Scoring
+                </h4>
+                <ul
+                  className="text-slate-700 space-y-2"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  <li>
+                    <strong>0–30:</strong> Fail – Performance is unsatisfactory;
+                    you won’t be added to the ADI register.
+                  </li>
+                  <li>
+                    <strong>31–42:</strong> Grade B – You’ll qualify and be
+                    added to the ADI register.
+                  </li>
+                  <li>
+                    <strong>43–51:</strong> Grade A – You’ve demonstrated a high
+                    standard of instruction.
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-          <motion.div
-            className={styles.firstLessonModulesecondthirddownload}
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.3, duration: 0.8 }}>
             <a
               href="https://assets.publishing.service.gov.uk/media/6537d4895e47a50014989903/adi-standards-check-form-example.pdf"
               target="_blank"
-              rel="noopener noreferrer">
-              <button
-                className={styles.firstLessonModulesecondthirddownloadBtn}>
-                <Download size={18} /> Download ADI Standards Form
-              </button>
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition"
+            >
+              <Download size={18} /> Download ADI Standards Form
             </a>
-          </motion.div>
+          </div>
         </div>
-
-        {/* /////////////////////////////////////////////////////////////////// */}
-        <div className={styles.firstLessonModulesecondthirdcontainer}>
+      </section>
+      <div className="py-20 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-6 max-w-6xl">
+          {/* SECTION HEADING */}
           <motion.h1
-            className={styles.firstLessonModulesecondthirdheading}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.8 }}>
-            Understanding the ADI Part 3 Marking Sheet
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-16"
+          >
+            Understanding the{" "}
+            <span className="text-red-600">ADI Part 3 Marking Sheet</span>
           </motion.h1>
 
-          <motion.div
-            className={styles.firstLessonModulesecondthirdsection}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}>
-            <h2 className={styles.istlesson4thheading}>Lesson Planning 📍</h2>
-            <ul>
-              <li>
-                <strong>Identifying the learner’s goals and needs:</strong> The
-                instructor should encourage the pupil to take an active role in
-                setting learning objectives based on their experience and skill
-                level.
-              </li>
-              <li>
-                <strong>Appropriateness of the lesson structure:</strong> The
-                lesson should be tailored to the learner’s ability, ensuring
-                achievable progress within the session.
-              </li>
-              <li>
-                <strong>Suitability of practice areas:</strong> The chosen
-                location should align with the lesson’s goals, considering
-                factors such as traffic, road type, and weather conditions.
-              </li>
-              <li>
-                <strong>Adaptability of the lesson plan:</strong> A good
-                instructor recognizes when adjustments are needed and involves
-                the learner in making changes where necessary.
-              </li>
-            </ul>
-          </motion.div>
+          {/* TIMELINE GRID */}
+          <div className="grid lg:grid-cols-2 gap-10">
+            {/* LESSON PLANNING */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl shadow-2xl p-8 border-t-8 border-red-500"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <MapPin className="w-9 h-9 text-red-600" />
+                <h2 className="text-2xl font-bold">Lesson Planning</h2>
+              </div>
 
-          <motion.div
-            className={styles.firstLessonModulesecondthirdsection}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}>
-            <h2 className={styles.istlesson4thheading}>Risk Management 🚦</h2>
-            <p>
-              Risk management is about sharing responsibility for safety between
-              the instructor and learner. There are five key competencies in
-              this section, with a maximum of 15 points available. Scoring at
-              least 8 points is essential to passing.
-            </p>
-            <p>
-              During your lesson, the examiner will assess whether you can
-              effectively control situations, maintain awareness of
-              surroundings, and ensure overall safety.
-            </p>
-            <p>
-              This doesn’t necessarily mean dramatic interventions—good risk
-              management involves anticipating issues before they arise through
-              proactive questioning and guidance.
-            </p>
-          </motion.div>
+              <ul
+                className="space-y-4 text-slate-700 list-disc list-inside"
+                style={{ paddingLeft: "0px" }}
+              >
+                <li>
+                  <strong>Identifying the learner’s goals and needs:</strong>{" "}
+                  The instructor should encourage the pupil to take an active
+                  role in setting learning objectives based on their experience
+                  and skill leve
+                </li>
+                <li>
+                  <strong>Appropriateness of the lesson structure:</strong> The
+                  lesson should be tailored to the learner’s ability, ensuring
+                  achievable progress within the session.
+                </li>
+                <li>
+                  <strong>Suitability of practice areas: </strong> The chosen
+                  location should align with the lesson’s goals, considering
+                  factors such as traffic, road type, and weather conditions.
+                </li>
+                <li>
+                  <strong>Adaptability of the lesson plan:</strong> A good
+                  instructor recognizes when adjustments are needed and involves
+                  the learner in making changes where necessary.
+                </li>
+              </ul>
+            </motion.div>
 
+            {/* RISK MANAGEMENT */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl shadow-2xl p-8 border-t-8 border-orange-500"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <AlertTriangle className="w-9 h-9 text-orange-500" />
+                <h2 className="text-2xl font-bold">Risk Management</h2>
+              </div>
+
+              <p className="text-slate-700 mb-4">
+                Risk management is about sharing responsibility for safety
+                between the instructor and learner. There are five key
+                competencies in this section, with a maximum of{" "}
+                <strong>15 points</strong> available. Scoring at least 8 points
+                is essential to passing.
+              </p>
+
+              <p className="text-slate-700 mb-4">
+                During your lesson, the examiner will assess whether you can
+                effectively control situations, maintain awareness of
+                surroundings, and ensure overall safety.
+              </p>
+
+              <p className="text-slate-700">
+                This doesn’t necessarily mean dramatic interventions—good risk
+                management involves anticipating issues before they arise
+                through proactive questioning and guidance.
+              </p>
+            </motion.div>
+
+            {/* TEACHING & LEARNING */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl shadow-2xl p-8 border-t-8 border-emerald-500"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <GraduationCap className="w-9 h-9 text-emerald-600" />
+                <h2 className="text-2xl font-bold">
+                  Teaching & Learning Strategies
+                </h2>
+              </div>
+
+              <p className="text-slate-700 mb-4">
+                This section evaluates how well you adapt your teaching style to
+                support the learner’s development. Effective instruction
+                involves clear explanations, encouraging self-reflection, and
+                fostering independent thinking rather than simply giving direct
+                commands.
+              </p>
+
+              <p className="text-slate-700 mb-4">
+                Balancing direct instruction with guided learning is essential.
+                Constructive feedback should help the learner progress without
+                overwhelming them. Lessons should be well-structured, making
+                efficient use of practice time, and encouraging learners to
+                apply their skills and reflect on their performance.
+              </p>
+
+              <p className="text-slate-700">
+                Promoting safe and responsible driving should remain a top
+                priority. Instructors must reinforce hazard perception,
+                decision-making skills, and overall risk awareness, ensuring
+                that learners take responsibility for their actions on the road.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* CONCLUSION CARD */}
           <motion.div
-            className={styles.firstLessonModulesecondthirdsection}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}>
-            <h2 className={styles.istlesson4thheading}>
-              Teaching & Learning Strategies 🎓
-            </h2>
-            <p>
-              This section evaluates how well you adapt your teaching style to
-              support the learner’s development. Effective instruction involves
-              clear explanations, encouraging self-reflection, and fostering
-              independent thinking rather than simply giving direct commands.
-            </p>
-            <p>
-              Balancing direct instruction with guided learning is essential.
-              Constructive feedback should help the learner progress without
-              overwhelming them. Lessons should be well-structured, making
-              efficient use of practice time, and encouraging learners to apply
-              their skills and reflect on their performance.
-            </p>
-            <p>
-              Promoting safe and responsible driving should remain a top
-              priority. Instructors must reinforce hazard perception,
-              decision-making skills, and overall risk awareness, ensuring that
-              learners take responsibility for their actions on the road.
-            </p>
-          </motion.div>
-          <div className={styles.tesmktosdbkjqwpara}>
-            <p>
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mt-20 bg-gradient-to-r from-red-50 to-white rounded-3xl p-10 shadow-xl border-l-8 border-red-500"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <ClipboardList className="w-8 h-8 text-red-600" />
+              <h3 className="text-2xl font-bold">Why This Matters</h3>
+            </div>
+
+            <p className="text-slate-700 mb-4">
               Mastering the{" "}
-              <strong> National Standard for Driver and Rider Training </strong>{" "}
+              <strong>National Standard for Driver and Rider Training</strong>{" "}
               is the foundation of being a great instructor. By following these
               principles, you won’t just help learners pass their tests—you’ll
               play a vital role in shaping safer drivers and reducing road risks
               for everyone.
             </p>
-            <p>
+
+            <p className="text-slate-700 flex items-start gap-2">
+              <CheckCircle2 className="w-6 h-6 text-green-600 mt-1" />
               Stay committed to professional development, embrace client-centred
               learning, and continuously refine your teaching strategies. Not
               only will this ensure your success as an instructor, but it will
               also make UK roads safer for all. 🚗💨
             </p>
+          </motion.div>
+        </div>
+      </div>
+      {/* ================= NAV + QUIZ ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 text-center space-y-10">
+          <Link to="/good-instructor-module">
+            <button className="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition">
+              Next Page →
+            </button>
+          </Link>
+
+          <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl mx-auto">
+            <h2 className="text-2xl font-extrabold mb-2">Start Quiz</h2>
+            <h4 className="text-slate-500 mb-4">15 Questions</h4>
+            <p className="text-slate-700 mb-6">
+              Test your understanding of the National Standard before moving
+              forward.
+            </p>
+            <Link to="/takequizCatName/national-standard">
+              <button className="px-8 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 transition">
+                Start Quiz
+              </button>
+            </Link>
           </div>
         </div>
       </section>
-      {/* ///////////////////////////////////// */}
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/good-instructor-module">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-
-      {/* //////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            National Standard before setting off
-          </p>
-          <Link to="/takequizCatName/national-standard">
-            {" "}
-            <button>Start Quiz</button>
-          </Link>
-        </section>
-      </div>
-    </div>
+    </main>
   );
 }

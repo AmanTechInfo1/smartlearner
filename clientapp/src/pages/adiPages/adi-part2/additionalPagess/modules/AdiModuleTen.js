@@ -6,11 +6,42 @@ import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import backgroundImage from "../../../../../assets/images/ten.jpg";
-
 import roadImg from "../../../../../assets/images/moduleNine1Img.png";
 import road2Img from "../../../../../assets/images/moduleNine2Img.png";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Info,
+  Eye,
+  Navigation,
+  Share2,
+  CheckCircle,
+  AlertTriangle,
+  BookOpen,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AdiModuleTen() {
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
 
@@ -38,7 +69,7 @@ export default function AdiModuleTen() {
       }
       localStorage.setItem(
         `notepadTextspage10_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -60,7 +91,7 @@ export default function AdiModuleTen() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTextspage10_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -96,7 +127,7 @@ export default function AdiModuleTen() {
       }
       localStorage.setItem(
         `notepadText2spage10_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -118,7 +149,7 @@ export default function AdiModuleTen() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2spage10_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -154,7 +185,7 @@ export default function AdiModuleTen() {
       }
       localStorage.setItem(
         `notepadText3spage10_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -176,7 +207,7 @@ export default function AdiModuleTen() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadText3spage10_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
@@ -212,7 +243,7 @@ export default function AdiModuleTen() {
       }
       localStorage.setItem(
         `notepadText4spage10_${userId}`,
-        JSON.stringify([...savedTexts4, text4])
+        JSON.stringify([...savedTexts4, text4]),
       );
 
       setText4("");
@@ -234,7 +265,7 @@ export default function AdiModuleTen() {
     setSavedTexts4(updatedTexts4);
     localStorage.setItem(
       `notepadText4spage10_${userId}`,
-      JSON.stringify(updatedTexts4)
+      JSON.stringify(updatedTexts4),
     );
   };
 
@@ -246,134 +277,65 @@ export default function AdiModuleTen() {
   }, []);
 
   // ///////////////////////////////////////////////////////
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Mastering the TUG Method for Safer and Smoother Driving"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
 
   return (
-    <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/_myGENJPhVg"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white max-w-3xl leading-tight">
+              Mastering the <span className="text-purple-400">TUG Method</span>{" "}
+              for Safer & Smoother Driving
+            </h1>
+            <p className="mt-6 max-w-2xl text-slate-200 text-lg">
+              Learn how to Take, Use, and Give information effectively to stay
+              ahead of hazards and communicate confidently on the road.
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* /////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            marginTop: "1rem",
-            background:
-              "linear-gradient(135deg,rgb(85, 1, 107),rgb(155, 29, 218))",
-          }}>
-          <div className={styles.adisevenheading}>What’s the TUG Method?</div>
+      {/* ================= VIDEO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center fade-up">
+          <div>
+            <h2 className="text-3xl lg:text-4xl font-extrabold mb-4 flex items-center gap-3">
+              <BookOpen className="w-8 h-8 text-purple-600" />
+              Watch & Learn
+            </h2>
+            <p className="text-slate-700">
+              This video explains how the TUG method works in real driving
+              scenarios and why it’s essential for safe decision-making.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/_myGENJPhVg"
+                title="TUG Method"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WHAT IS TUG ================= */}
+      <section className="py-20 bg-gradient-to-br from-purple-700 to-fuchsia-700 text-white">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-4xl font-extrabold mb-10 flex items-center gap-4">
+            <Info className="w-10 h-10" />
+            What’s the TUG Method?
+          </h2>
 
           <div className={styles.adiseventipBox}>
             <p style={{ marginBottom: "1rem" }}>
@@ -382,7 +344,7 @@ export default function AdiModuleTen() {
               your surroundings, and connected with other road users. Here’s the
               breakdown:
             </p>
-            <ul>
+            <ul style={{ paddingLeft: "0px" }}>
               <li style={{ marginBottom: "1rem" }}>
                 <strong>Take:</strong> Take information. Grab that space to make
                 sure you have maximum visibility and safety to take in the most
@@ -405,7 +367,7 @@ export default function AdiModuleTen() {
             <p style={{ marginBottom: "1rem" }}>
               <strong>Examples of Taking Space:</strong>
             </p>
-            <ul>
+            <ul style={{ paddingLeft: "0px" }}>
               <li style={{ marginBottom: "1rem" }}>
                 <strong>Country Roads:</strong>
                 If the road’s narrow, shift a little closer to the center to get
@@ -422,7 +384,7 @@ export default function AdiModuleTen() {
           <div className={styles.adiseventipBox}>
             <h3>Why Does Taking Space Help?</h3>
 
-            <ul>
+            <ul style={{ paddingLeft: "0px" }}>
               <li>
                 <strong>Better hazard detection</strong> (so you can react
                 early).
@@ -453,355 +415,430 @@ export default function AdiModuleTen() {
               }}
             />
           </div>
-        </section>
-        {/* ///////////////////////////////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              “Why does taking space help? Write down your reasoning:
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50 fade-up">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Why does taking space help? Write down your reasoning:
             </label>
             <textarea
               ref={textareaRef}
               value={text}
               onChange={handleChange}
-              rows="5"
-              cols="30"
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
               placeholder="Write your thoughts here..."
             />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+            <button
+              onClick={saveText}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
 
-            <div className={styles.thoughtsListArea}>
+            <div className="mt-6">
               {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
               ) : (
-                <ul>
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
                   {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
                           onClick={() => editText(index)}
-                          id={styles.editListIcon}
+                          className="cursor-pointer text-blue-500"
                         />
-
-                        <IoTrashBin
+                        <Trash2
                           onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
+                          className="cursor-pointer text-red-500"
                         />
-                      </span>
+                      </div>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
           </div>
-        </section>
-        {/* ///////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background:
-              "linear-gradient(135deg,rgb(32, 106, 138),rgb(4, 37, 146))",
-            marginTop: "1rem",
-          }}>
-          <div className={styles.adisevenheading}>
-            Use – Making the Most of the Road's Info 🔍
-          </div>
+        </div>
+      </section>
+
+      {/* ================= USE ================= */}
+      <section className="py-20 bg-gradient-to-br from-blue-700 to-indigo-800 text-white">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-4xl font-extrabold mb-8 flex items-center gap-4">
+            <Eye className="w-10 h-10" />
+            Use – Making the Most of Information
+          </h2>
           <p>
             "Use" means you’re actively soaking in everything around you—the
             road signs, the weather, the vehicles ahead, and those cyclists
             weaving in and out. Being a road detective helps you make the best
             choices on the fly! 🕵♂️
           </p>
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div className="bg-white/10 rounded-3xl p-8">
+              <h3 className="font-bold mb-4">Approaching a Roundabout:</h3>
+              <ul style={{ paddingLeft: "0px" }} className="space-y-2">
+                <li>
+                  ✔ Spot those road signs early to know which exit is yours.
+                </li>
+                <li>
+                  ✔ Observe the other drivers—are they indicating? What’s their
+                  position?
+                </li>
+              </ul>
+            </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(129, 242, 255)" }}>
-              How to Use Information:
-            </h3>
-
-            <ul>
-              <h4>
-                {" "}
-                <strong>1. Approaching a Roundabout:</strong>
-              </h4>
-              <li>Spot those road signs early to know which exit is yours.</li>
-              <li>
-                Observe the other drivers—are they indicating? What’s their
-                position?
-              </li>
-            </ul>
-
-            <ul>
-              <h4>
-                <strong>2. Urban Driving:</strong>
-              </h4>
-              <li>
-                Look out for parked cars, pedestrians, and cyclists. They’re
-                ready to pop up in your path, and you need to be ready!
-              </li>
-            </ul>
+            <div className="bg-white/10 rounded-3xl p-8">
+              <h3 className="font-bold mb-4">Urban Driving</h3>
+              <ul style={{ paddingLeft: "0px" }} className="space-y-2">
+                <li>
+                  ✔ Look out for parked cars, pedestrians, and cyclists. They’re
+                  ready to pop up in your path, and you need to be ready!
+                </li>
+              </ul>
+            </div>
           </div>
-        </section>
-        {/* //////////////////////////////////////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
+        </div>
+      </section>
+
+      <section className="py-20 bg-slate-50 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className=" p-8 rounded-3xl shadow-xl fade-up">
+            <label className="block mb-2 font-semibold">
               What are some ways you can give information to other road users?
             </label>
             <textarea
               ref={textareaRef2}
               value={text2}
               onChange={handleChange2}
-              rows="5"
-              cols="30"
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
               placeholder="Write your thoughts here..."
             />
-            <br />
-            <button onClick={saveText2}>
+            <button
+              onClick={saveText2}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
               {isEditing2 ? "Update" : "Save"}
             </button>
 
-            <div className={styles.thoughtsListArea}>
+            <div className="mt-6">
               {savedTexts2.length === 0 ? (
-                <p>No saved thoughts.</p>
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
               ) : (
-                <ul>
-                  {savedTexts2.map((savedText2, index) => (
-                    <li key={index}>
-                      <p>{savedText2}</p>
-                      <span>
-                        <FaEdit
+                <ul
+                  style={{ paddingLeft: "0px" }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  {savedTexts2.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
                           onClick={() => editText2(index)}
-                          id={styles.editListIcon}
+                          className="cursor-pointer text-blue-500"
                         />
-
-                        <IoTrashBin
+                        <Trash2
                           onClick={() => deleteText2(index)}
-                          id={styles.binListIcon}
+                          className="cursor-pointer text-red-500"
                         />
-                      </span>
+                      </div>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      {/* ================= GIVE ================= */}
+      <section className="py-20 bg-gradient-to-br from-rose-700 to-pink-700 text-white">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-4xl font-extrabold mb-8 flex items-center gap-4">
+            <Share2 className="w-10 h-10" />
+            Give – Let Others Know Your Moves
+          </h2>
 
-        {/* ///////////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background:
-              "linear-gradient(135deg,rgb(162, 0, 65),rgb(141, 4, 146))",
-            marginTop: "1rem",
-          }}>
-          <div className={styles.adisevenheading}>
-            Give – Let Others Know Your Moves 💬
-          </div>
-          <div className={styles.AdiModuleContentParaBox}>
+          <div className="bg-white/10 rounded-3xl p-8 space-y-4">
             <p>
               "Give" is all about communication! When you’re clear about your
               intentions, other drivers can adjust accordingly, making the road
-              safer for everyone. 🚦
+              safer for everyone.
             </p>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(255, 129, 165)" }}>
-              How to Give Information:
-            </h3>
 
-            <ul>
-              <li>
-                <strong> 1. Indicators:</strong> Signal early when changing
-                lanes or turning.
-              </li>
-              <li>
-                <strong>2. Brake Lights:</strong> Gradually press the brake to
-                warn the car behind that you’re slowing down.
-              </li>
-              <li>
-                <strong>3. Positioning:</strong> Move your car a little to the
-                side before turning to give others the heads-up.
-              </li>
-            </ul>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(255, 129, 165)" }}>
-              Example: Changing Lanes on the Motorway:
-            </h3>
+            <div className={styles.adiseventipBox}>
+              <h3 style={{ color: "rgb(255, 129, 165)" }}>
+                How to Give Information:
+              </h3>
 
-            <ul>
-              <li>
-                <strong> Signal early.</strong>
-              </li>
-              <li>
-                <strong>Check your mirrors and blind spots.</strong>
-              </li>
-              <li>
-                <strong>Change lanes smoothly</strong> so everyone’s on the same
-                page.
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <div
-          className={styles.AdiModuleOneTextBox}
-          style={{ marginTop: "2rem" }}>
-          <label>
-            Imagine you’re about to merge onto a busy motorway. Write out the
-            steps you’d take to signal, position, and change lanes safely and
-            clearly. Think about the other road users—how would you make sure
-            everyone knows your next move?
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
+              <ul style={{ paddingLeft: "0px" }}>
+                <li>
+                  <strong> 1. Indicators:</strong> Signal early when changing
+                  lanes or turning.
+                </li>
+                <li>
+                  <strong>2. Brake Lights:</strong> Gradually press the brake to
+                  warn the car behind that you’re slowing down.
+                </li>
+                <li>
+                  <strong>3. Positioning:</strong> Move your car a little to the
+                  side before turning to give others the heads-up.
+                </li>
               </ul>
-            )}
+            </div>
+            <div className={styles.adiseventipBox}>
+              <h3 style={{ color: "rgb(255, 129, 165)" }}>
+                Example: Changing Lanes on the Motorway:
+              </h3>
+
+              <ul style={{ paddingLeft: "0px" }}>
+                <li>
+                  <strong> Signal early.</strong>
+                </li>
+                <li>
+                  <strong>Check your mirrors and blind spots.</strong>
+                </li>
+                <li>
+                  <strong>Change lanes smoothly</strong> so everyone’s on the
+                  same page.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        {/* ///////////////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{ marginTop: "1rem" }}>
-          <div className={styles.adisevenheading}>
-            Final Activity: TUG in Action!
-          </div>
-          <p>
-            Put your TUG skills to the test! Imagine you’re driving on a rural
-            road, and there's a sharp bend ahead. An oncoming car is visible but
-            distant, and the road narrows right after the bend.
-          </p>
+      </section>
 
-          <div className={styles.adiseventipBox}>
-            <h3>Write down your response in a step-by-step format:</h3>
+      <section className="py-20 bg-slate-50 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <div className=" p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Imagine you’re about to merge onto a busy motorway. Write out the
+              steps you’d take to signal, position, and change lanes safely and
+              clearly. Think about the other road users—how would you make sure
+              everyone knows your next move?
+            </label>
+            <textarea
+              ref={textareaRef2}
+              value={text2}
+              onChange={handleChange2}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText2}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing2 ? "Update" : "Save"}
+            </button>
+
+            <div className="mt-6">
+              {savedTexts2.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts2.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText2(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText2(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FINAL ACTIVITY ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6  fade-up">
+          <h2 className="text-4xl font-extrabold mb-6 flex items-center gap-4">
+            <AlertTriangle className="w-10 h-10 text-purple-600" />
+            Final Activity: TUG in Action
+          </h2>
+
+          <div className="bg-white p-10 rounded-3xl shadow-xl space-y-4">
             <p>
-              <strong>1. How would you take space </strong> to maximise
-              visibility and safety?
+              Put your TUG skills to the test! Imagine you’re driving on a rural
+              road, and there's a sharp bend ahead. An oncoming car is visible
+              but distant, and the road narrows right after the bend.
             </p>
-            <p>
-              <strong>2. How would you use the information</strong> from the
-              road and other vehicles to make the best decision?
-            </p>
-            <p>
-              <strong>How would you give information</strong> to the oncoming
-              driver and other road users?
-            </p>
+            <div className={styles.adiseventipBox}>
+              <h3>Write down your response in a step-by-step format:</h3>
+              <p>
+                <strong>1. How would you take space </strong> to maximise
+                visibility and safety?
+              </p>
+              <p>
+                <strong>2. How would you use the information</strong> from the
+                road and other vehicles to make the best decision?
+              </p>
+              <p>
+                <strong>How would you give information</strong> to the oncoming
+                driver and other road users?
+              </p>
+            </div>
           </div>
 
-          <div style={{ textAlign: "center" }}>
+          <div className="mt-10 text-center">
             <img
               src={road2Img}
-              alt=""
-              style={{
-                marginTop: "1rem",
-                maxWidth: "350px",
-                width: "100%",
-              }}
+              alt="Final Scenario"
+              className="mx-auto max-w-sm rounded-xl shadow-lg"
             />
           </div>
-        </section>
-
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBoxm2}>
-            <p style={{ textAlign: "center", marginBottom: "0px" }}>
+        </div>
+      </section>
+      <section className="py-20 bg-slate-50 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className=" p-8 rounded-3xl shadow-xl fade-up">
+            <label className="block mb-2 font-semibold">
               Once you’ve written it, review your plan with an instructor or a
               fellow learner.
-            </p>
+            </label>
+            <textarea
+              ref={textareaRef3}
+              value={text3}
+              onChange={handleChange3}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText3}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing3 ? "Update" : "Save"}
+            </button>
+
+            <div className="mt-6">
+              {savedTexts3.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts3.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText3(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText3(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
-        {/* /////////////////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <textarea
-            ref={textareaRef4}
-            value={text4}
-            onChange={handleChange4}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText4}>{isEditing4 ? "Update" : "Save"}</button>
+      </section>
+      {/* ================= NAV + QUIZ ================= */}
+      <section className="py-16 bg-white text-center">
+        <Link to="/quizModuleEleven">
+          <button className="px-10 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold shadow-lg">
+            Next Page
+          </button>
+        </Link>
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts4.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts4.map((savedText4, index) => (
-                  <li key={index}>
-                    <p>{savedText4}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText4(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText4(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModuleEleven">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
+        <div className="mt-14 bg-slate-50 p-10 rounded-3xl max-w-xl mx-auto shadow-xl">
+          <h2 className="text-3xl font-extrabold mb-2">Start Quiz</h2>
+          <p className="mb-6">15 Questions</p>
+          <Link to="/takequizCatName/Mastering-the-TUG-Method">
+            <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full font-semibold">
+              Start Quiz
+            </button>
           </Link>
         </div>
-
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p></p>
-            <Link to="/takequizCatName/Mastering-the-TUG-Method">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
-        </div>
-        {/* /////////////////////////////////////////////////////////// */}
-      </div>
-    </>
+      </section>
+    </main>
   );
 }

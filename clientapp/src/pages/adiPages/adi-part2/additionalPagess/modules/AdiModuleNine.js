@@ -1,14 +1,47 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleOne.module.css";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import {
+  Clock,
+  AlertTriangle,
+  Timer,
+  Car,
+  ShieldCheck,
+  FilePenLine,
+  Trash2,
+  Eye,
+  Gauge,
+  Route,
+  Brain,
+  Trophy,
+} from "lucide-react";
+
 import backgroundImage from "../../../../../assets/images/time.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function AdiModuleNine() {
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
 
@@ -36,7 +69,7 @@ export default function AdiModuleNine() {
       }
       localStorage.setItem(
         `notepadTextspage9_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -58,7 +91,7 @@ export default function AdiModuleNine() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTextspage9_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -94,7 +127,7 @@ export default function AdiModuleNine() {
       }
       localStorage.setItem(
         `notepadText2spage9_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -116,7 +149,7 @@ export default function AdiModuleNine() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadText2spage9_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
@@ -128,184 +161,136 @@ export default function AdiModuleNine() {
   }, []);
 
   // /////////////////////////////////////////////////////////////////
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Time in the COAST Method for Advanced Driving"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
 
   return (
-    <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO BANNER ================= */}
+      <section className="relative h-[70vh] w-full">
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-        <div className={styles.videoContainer}>
-          <h2 className={styles.videotitle}>Watch Our Video</h2>
-          <div className={styles.videodesign}>
-            <iframe
-              width="100%"
-              height="300px"
-              src="https://www.youtube.com/embed/BNxcsHbxKv8"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white max-w-4xl leading-tight">
+              Time in the <span className="text-cyan-400">COAST</span> Method
+              for Advanced Driving
+            </h1>
           </div>
         </div>
+      </section>
 
-        {/* //////////////////////////////////////////////////// */}
-        <section className={styles.AdiModuleOneTextArea}>
-          {/* ////////////////////////////////////////////////////////////// */}
-          <div className={styles.AdiModuleOneTextBox}>
-            <label>
-              How could giving yourself more time help with your driving?
+      {/* ================= VIDEO SECTION ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up">
+          <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/BNxcsHbxKv8"
+                title="Time in the COAST Method"
+                frameBorder="0"
+                allowFullScreen
+              />
+            </div>
+
+            <div className="p-6">
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                <Clock className="text-cyan-500" />
+                Watch Our Video
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= TEXTAREA SECTION ================= */}
+      <section className="py-20 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="bg-white p-8 rounded-3xl shadow-xl fade-up">
+            <label className="block mb-2 font-semibold">
+              Why Does Space Matter?Write your thoughts below
             </label>
-            <label>Write your thoughts below</label>
             <textarea
               ref={textareaRef}
               value={text}
               onChange={handleChange}
-              rows="5"
-              cols="30"
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
               placeholder="Write your thoughts here..."
             />
-            <br />
-            <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+            <button
+              onClick={saveText}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
 
-            <div className={styles.thoughtsListArea}>
+            <div className="mt-6">
               {savedTexts.length === 0 ? (
-                <p>No saved thoughts.</p>
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
               ) : (
-                <ul>
+                <ul
+                  style={{ paddingLeft: "0px" }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
                   {savedTexts.map((savedText, index) => (
-                    <li key={index}>
-                      <p>{savedText}</p>
-                      <span>
-                        <FaEdit
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
                           onClick={() => editText(index)}
-                          id={styles.editListIcon}
+                          className="cursor-pointer text-blue-500"
                         />
-
-                        <IoTrashBin
+                        <Trash2
                           onClick={() => deleteText(index)}
-                          id={styles.binListIcon}
+                          className="cursor-pointer text-red-500"
                         />
-                      </span>
+                      </div>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
           </div>
-        </section>
-        {/* //////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background:
-              "linear-gradient(135deg,rgb(44, 3, 210),rgb(216, 27, 226))",
-          }}>
-          <div className={styles.adisevenheading}>
-            🚘 Why Does Time Matter in Driving?
+        </div>
+      </section>
+
+      {/* ================= WHY TIME MATTERS ================= */}
+
+      {/* ================= WHY TIME MATTERS ================= */}
+      <section className="py-20 bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600">
+        <div className="container mx-auto px-6">
+          {/* Heading */}
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <Clock className="w-10 h-10 text-cyan-300" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+              Why Does <span className="text-cyan-300">Time</span> Matter in
+              Driving?
+            </h2>
           </div>
-          <div className={styles.AdiModuleContentBox}>
-            <div className={styles.AdiModuleContentParaBox}>
-              <p>
+
+          {/* Intro Cards */}
+          <div className="grid lg:grid-cols-2 gap-8 fade-up">
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl text-white">
+              <p className="leading-relaxed">
                 Imagine driving is like playing chess—if you only focus on the
                 piece right in front of you, you’ll always be caught off guard.
                 But if you plan three moves ahead, you can anticipate, adapt,
@@ -313,10 +298,9 @@ export default function AdiModuleNine() {
                 driving is all about!
               </p>
             </div>
-            <div
-              className={styles.AdiModuleContentParaBox}
-              style={{ marginTop: "1rem" }}>
-              <p>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl text-white">
+              <p className="leading-relaxed">
                 Time isn’t just about how fast you go—it’s about how much room
                 you give yourself to think, react, and make the right decisions.
                 The more time you allow, the smoother, safer, and less stressful
@@ -327,21 +311,25 @@ export default function AdiModuleNine() {
             </div>
           </div>
 
-          <div
-            className={styles.adiseventipBox}
-            style={{
-              background:
-                "linear-gradient(135deg,rgb(198, 0, 145),rgb(99, 0, 26))",
-            }}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              More Time = Fewer Surprises
-            </h3>
-            <p>
+          {/* Highlight Card */}
+          <div className="mt-12 bg-gradient-to-br from-rose-600 to-red-900 p-10 rounded-3xl shadow-2xl fade-up">
+            <div className="flex items-center gap-4 mb-4">
+              <ShieldCheck className="w-9 h-9 text-cyan-300" />
+              <h3 className="text-2xl font-bold text-cyan-300">
+                More Time = Fewer Surprises
+              </h3>
+            </div>
+
+            <p className="text-white mb-4">
               Ever slammed on the brakes at the last second? Or misjudged a gap
               at a roundabout? That’s what happens when you don’t give yourself
               enough time. When you manage time well, you:
             </p>
-            <ul>
+
+            <ul
+              style={{ paddingLeft: "0px" }}
+              className="grid sm:grid-cols-2 gap-4 text-white list-disc list-inside"
+            >
               <li>
                 <strong>Spot hazards early</strong> and react before they become
                 a problem.
@@ -352,237 +340,285 @@ export default function AdiModuleNine() {
               </li>
               <li>
                 <strong>Glide through traffic</strong> smoothly, instead of
-                jerky stops and rushed maneuvers.{" "}
+                jerky stops.
               </li>
               <li>
-                <strong>Create a safety buffer,</strong> reducing the chances of
-                accidents or close calls.
+                <strong>Create a safety buffer</strong>, reducing close calls.
               </li>
             </ul>
-            <p>
+
+            <p className="mt-4 text-white">
               In short—time is your best tool for stress-free, professional
               driving.
             </p>
           </div>
-        </section>
-        {/* //////////////////////////////////////////////////////// */}
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background:
-              "linear-gradient(135deg,rgb(0, 198, 181),rgb(4, 63, 146))",
-            marginTop: "1rem",
-          }}>
-          <div className={styles.adisevenheading}>
-            How to Be a Time-Management Pro on the Road
+        </div>
+      </section>
+
+      {/* ================= TIME MANAGEMENT PRO ================= */}
+      <section className="py-20 bg-gradient-to-br from-teal-500 to-blue-900">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-12 fade-up">
+            <Gauge className="w-10 h-10 text-cyan-300" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+              How to Be a{" "}
+              <span className="text-cyan-300">Time-Management Pro</span> on the
+              Road
+            </h2>
           </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              🔭 Look Ahead to Your Limit Points
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card */}
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <Eye className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                Look Ahead to Your Limit Points
+              </h3>
+              <p className="text-white mt-2">
+                Think of your eyes like a radar scanning for threats far ahead.
+                By spotting bends, traffic lights, or merging vehicles early,
+                you can predict what’s coming and adjust your approach
+                smoothly—no more last-minute surprises!
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <Gauge className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                Adjust Speed to Conditions
+              </h3>
+              <p className="text-white mt-2">
+                Driving in heavy rain? Thick fog? Rush hour chaos? These
+                situations demand more reaction time. Slowing down slightly
+                gives you extra moments to process what’s happening, so you’re
+                never caught off guard.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <Route className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                Master the Art of a Smooth Approach
+              </h3>
+              <ul
+                style={{ paddingLeft: "0px" }}
+                className="text-white mt-2 list-disc list-inside space-y-2"
+              >
+                <li>
+                  <strong>Junctions</strong> – Slow down in advance so you don’t
+                  have to stop suddenly.
+                </li>
+                <li>
+                  <strong>Roundabouts</strong> – Use time to assess gaps and
+                  enter confidently.
+                </li>
+                <li>
+                  <strong>Traffic lights</strong> – If you see an amber light,
+                  use the extra seconds to decide whether to stop or go safely.
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <AlertTriangle className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                Give Hazards the Time They Deserve
+              </h3>
+              <p className="text-white mt-2">
+                People and cars can be unpredictable. A pedestrian might step
+                onto the road. A parked car could pull out. Instead of reacting
+                too late, give yourself extra time to observe and anticipate.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <Brain className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                More Space = More Time
+              </h3>
+              <p className="text-white mt-2">
+                Keeping a safe distance (like the 2-second rule) isn’t just
+                about avoiding crashes—it’s about buying yourself time to react.
+                The more space you create, the longer you have to make smart
+                decisions.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur p-8 rounded-3xl shadow-xl fade-up">
+              <Car className="w-8 h-8 text-cyan-300 mb-3" />
+              <h3 className="text-xl font-bold text-cyan-300">
+                When Time Management is a Game-Changer
+              </h3>
+              <ul
+                style={{ paddingLeft: "0px" }}
+                className="text-white list-disc list-inside space-y-2 mt-2"
+              >
+                <li>
+                  <strong>Merging Lanes</strong> – Don’t just squeeze in at the
+                  last second! Use time to assess gaps and merge smoothly.
+                </li>
+                <li>
+                  <strong>Overtaking</strong> – Rushed overtakes are risky. Take
+                  time to scan the road ahead and make sure there’s enough
+                  space.
+                </li>
+                <li>
+                  <strong>Bends & Corners</strong> – Approaching too fast? Bad
+                  move. Give yourself time to adjust speed and position before
+                  the bend.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CHALLENGE ================= */}
+      <section className="py-20 bg-gradient-to-br from-fuchsia-600 to-purple-900">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <AlertTriangle className="w-10 h-10 text-purple-200" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+              Ready for a <span className="text-purple-200">Challenge?</span>
+            </h2>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur p-10 rounded-3xl shadow-2xl fade-up">
+            <h3 className="text-2xl font-bold text-purple-200 mb-4">
+              Pre-Drive Planning
             </h3>
-            <p>
-              Think of your eyes like a radar scanning for threats far ahead. By
-              spotting bends, traffic lights, or merging vehicles early, you can
-              predict what’s coming and adjust your approach smoothly—no more
-              last-minute surprises!
-            </p>
-          </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              🏎 Adjust Speed to Conditions
-            </h3>
-            <p>
-              Driving in heavy rain? Thick fog? Rush hour chaos? These
-              situations demand more reaction time. Slowing down slightly gives
-              you extra moments to process what’s happening, so you’re never
-              caught off guard.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              🚦 Master the Art of a Smooth Approach
-            </h3>
-            <p>
-              Rushing toward a red light just to slam the brakes? Not a great
-              move. Instead, ease off the accelerator early when approaching:
-            </p>
-            <ul>
-              <li>
-                <strong>Junctions </strong> – Slow down in advance so you don’t
-                have to stop suddenly.
-              </li>
-              <li>
-                <strong>Roundabouts</strong> - Use time to assess gaps and enter
-                confidently.
-              </li>
-              <li>
-                <strong>Traffic lights </strong> - If you see an amber light,
-                use the extra seconds to decide whether to stop or go safely.
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              🛑 Give Hazards the Time They Deserve
-            </h3>
-            <p>
-              People and cars can be unpredictable. A pedestrian might step onto
-              the road. A parked car could pull out. Instead of reacting too
-              late, give yourself extra time to observe and anticipate.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              ⏳ More Space = More Time
-            </h3>
-            <p>
-              Keeping a safe distance (like the 2-second rule) isn’t just about
-              avoiding crashes—it’s about buying yourself time to react. The
-              more space you create, the longer you have to make smart
-              decisions.
-            </p>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(49, 234, 255)" }}>
-              When Time Management is a Game-Changer
-            </h3>
-
-            <ul>
-              <li>
-                <strong>1️⃣ Merging Lanes </strong> – Don’t just squeeze in at
-                the last second! Use time to assess gaps and merge smoothly.
-              </li>
-              <li>
-                <strong> 2️⃣ Overtaking –</strong> Rushed overtakes are risky.
-                Take time to scan the road ahead and make sure there’s enough
-                space.
-              </li>
-              <li>
-                <strong>3️⃣ Bends & Corners – </strong> - Approaching too fast?
-                Bad move. Give yourself time to adjust speed and position before
-                the bend.
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background:
-              "linear-gradient(135deg,rgb(219, 74, 255),rgb(99, 4, 146))",
-            marginTop: "1rem",
-          }}>
-          <div className={styles.adisevenheading}>
-            🚗 Ready for a Challenge? Test Your Time Awareness!
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(183, 129, 255)" }}>
-              📝 Pre-Drive Planning
-            </h3>
-            <p>Before you hit the road, ask yourself:</p>
-
-            <ul>
+            <ul
+              style={{ paddingLeft: "0px" }}
+              className="text-white list-disc list-inside space-y-2"
+            >
               <li>Do I know my route and any tricky areas I might face?</li>
               <li>Will weather or traffic affect my timing today?</li>
               <li>
                 Am I mentally prepared to stay calm and anticipate hazards?
               </li>
             </ul>
-            <p>
-              2️⃣ <strong>Smooth Approaches Challenge:</strong> For 10 minutes,
-              ease off the accelerator early when approaching junctions,
-              roundabouts, or traffic lights. Notice how much smoother and
-              stress-free your driving feels.
+
+            <p className="mt-4 text-white">
+              <strong>Smooth Approaches Challenge:</strong>For 10 minutes, ease
+              off the accelerator early when approaching junctions, roundabouts,
+              or traffic lights. Notice how much smoother and stress-free your
+              driving feels.
             </p>
           </div>
-        </section>
-        {/* //////////////////////////////////////////////////////////////// */}
-        <div
-          className={styles.AdiModuleOneTextBox}
-          style={{ marginTop: "1.5rem" }}>
-          <label>
-            Have you ever experienced a situation where better timing could have
-            improved your reaction or decision?
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
+        </div>
+      </section>
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
+      {/* ================= FINAL QUESTION ================= */}
+      <section className="py-20 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="bg-white p-8 rounded-3xl shadow-xl fade-up">
+            <label className="block mb-2 font-semibold">
+              Have you ever experienced a situation where better timing could
+              have improved your reaction or decision?
+            </label>
+            <textarea
+              ref={textareaRef2}
+              value={text2}
+              onChange={handleChange2}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText2}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing2 ? "Update" : "Save"}
+            </button>
 
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="mt-6">
+              {savedTexts2.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  style={{ paddingLeft: "0px" }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  {savedTexts2.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText2(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText2(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
-        {/* //////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextArea}>
-          <h2>
+      </section>
+
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-4xl text-center  fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
             Final Thought: Are You Controlling Time or Is It Controlling You?
           </h2>
-          <div className={styles.AdiModuleContentParaBox}>
-            <p>
-              Great drivers don’t just react —they stay ahead of the game.
-              Managing time well gives you the power to drive smoother, smarter,
-              and safer. So, next time you're behind the wheel, remember: more
-              time means more control! 🚗✨
-            </p>
-          </div>
+          <p>
+            Great drivers don’t just react —they stay ahead of the game.
+            Managing time well gives you the power to drive smoother, smarter,
+            and safer. So, next time you're behind the wheel, remember: more
+            time means more control!
+          </p>
         </div>
+      </section>
 
-        <div className={styles.adiLastNextbtn}>
-          <Link to="/quizModule-Ten">
-            {" "}
-            <button className={styles.adinextbtns}>Next Page</button>
+      {/* ================= QUIZ ================= */}
+
+      <section className="py-24 bg-gradient-to-br from-red-50 to-white">
+        <div className="container mx-auto px-6 text-center fade-up">
+          <Trophy className="w-14 h-14 text-red-600 mx-auto mb-4" />
+          <h2 className="text-4xl font-extrabold mb-2">Ready for the Quiz?</h2>
+          <p className="text-lg text-slate-700 mb-6">
+            Test your knowledge and see how well you understand observation.
+          </p>
+
+          <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
+            <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full text-lg">
+              Start Quiz
+            </button>
           </Link>
         </div>
+      </section>
 
-        <div className={styles.quizStartDiv}>
-          <section className={styles.startQuizSection}>
-            <h1>Start Quiz</h1>
-            <h3>15 Questions</h3>
-            <p></p>
-            <Link to="/takequizCatName/Time-in-the-COAST-Method-for-Advanced-Driving">
-              {" "}
-              <button>Start Quiz</button>
-            </Link>
-          </section>
-        </div>
+      {/* ================= NEXT PAGE ================= */}
+      <section className="py-12 bg-white text-center">
+        <Link to="/quizModule-Ten">
+          <button className="px-8 py-3 bg-slate-800 text-white rounded-full">
+            Next Page →
+          </button>
+        </Link>
+      </section>
 
-        {/* ////////////////////////////////////////////////////////// */}
-      </div>
-    </>
+      {/* ================= FINAL CTA ================= */}
+    </main>
   );
 }

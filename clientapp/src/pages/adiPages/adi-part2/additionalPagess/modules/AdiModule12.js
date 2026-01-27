@@ -1,324 +1,264 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import gsap from "gsap";
-import styles from "./AdiModuleOne.module.css";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  BookOpen,
+  CheckCircle,
+  Calendar,
+  Car,
+  FileText,
+  AlertTriangle,
+} from "lucide-react";
 
 import backgroundImage from "../../../../../assets/images/whatjpg.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function AdiModule12() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart =
-      "How to Book the ADI Part 2 Test and What to Bring: A Complete Guide"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
   return (
-    <>
-      {" "}
-      <div className={styles.AdiModuleOnecontainer}>
-        <section
-          className={styles.AdiModuleOneheader}
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-          }}>
-          <div className="opicity"></div>
-          <section className={styles.AdiModuleOneheading}>
-            {" "}
-            <h1 ref={textRef}>{splitText()}</h1>
-          </section>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO SECTION ================= */}
+      <section className="relative h-[70vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-        <div className={styles.AdiModuleContentBox}>
-          <div className={styles.AdiModuleContentParaBoxm2}>
-            <p>
-              Becoming an Approved Driving Instructor (ADI) is an exciting
-              journey that allows you to help others achieve a vital life skill.
-              One crucial step in this process is passing the ADI Part 2 test,
-              which assesses your driving ability to ensure you can drive at a
-              professional standard. In this blog post, we’ll cover everything
-              you need to know about booking the ADI Part 2 test and what to
-              bring on the day.
-            </p>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-4xl leading-tight">
+              How to Book the ADI Part 2 Test and What to Bring
+            </h1>
           </div>
         </div>
+      </section>
 
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            background: "linear-gradient(135deg, #037cd2 , #000240)",
-            marginTop: "1rem",
-          }}>
-          <div className={styles.adisevenheading}>
-            How to Book the ADI Part 2 Test
-          </div>
-          <p>
-            {" "}
-            Booking your ADI Part 2 test is straightforward, provided you’ve
-            completed the earlier steps in your instructor training journey.
-            Here’s a step-by-step guide:
+      {/* ================= INTRO ================= */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up max-w-4xl">
+          <p className="text-lg text-slate-700 leading-relaxed">
+            Becoming an Approved Driving Instructor (ADI) is an exciting journey
+            that allows you to help others achieve a vital life skill. One
+            crucial step in this process is passing the ADI Part 2 test, which
+            assesses your driving ability to ensure you can drive at a
+            professional standard. In this blog post, we’ll cover everything you
+            need to know about booking the ADI Part 2 test and what to bring on
+            the day.
           </p>
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(93, 225, 255)" }}>
-              1. Check Your Eligibility
-            </h3>
-            <p>
-              Before booking, ensure you’ve passed the
-              <strong>ADI Part 1 test </strong> (theory test) and have received
-              your
-              <strong> Personal Reference Number (PRN) </strong> from the DVSA.
-              This number is crucial as it identifies you throughout the ADI
-              qualification process.
-            </p>
+        </div>
+      </section>
+
+      {/* ================= BOOKING STEPS ================= */}
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-900 text-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <BookOpen className="w-10 h-10 text-cyan-300" />
+            <h2 className="text-3xl lg:text-4xl font-extrabold">
+              How to Book the ADI Part 2 Test
+            </h2>
           </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(93, 225, 255)" }}>
-              2. Visit the GOV.UK Website
-            </h3>
-            <p>
-              The easiest way to book your ADI Part 2 test is online via the
-              official GOV.UK website. This platform ensures secure payment and
-              access to all available test centre locations.
-            </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Check Your Eligibility",
+                icon: CheckCircle,
+                text: (
+                  <>
+                    Before booking, ensure you’ve passed the{" "}
+                    <strong>ADI Part 1 test</strong> (theory test) and have
+                    received your
+                    <strong> Personal Reference Number (PRN) </strong> from the
+                    DVSA. This number is crucial as it identifies you throughout
+                    the ADI qualification process.
+                  </>
+                ),
+              },
+              {
+                title: "Visit the GOV.UK Website",
+                icon: FileText,
+                text: "The easiest way to book your ADI Part 2 test is online via the official GOV.UK website. This platform ensures secure payment and access to all available test centre locations.",
+              },
+              {
+                title: "Choose a Test Centre",
+                icon: Car,
+                text: "Not every driving test centre offers ADI Part 2 tests, so you’ll need to find one that does. Use the DVSA’s list of test centres to find the most convenient option.",
+              },
+              {
+                title: "Provide Your Details",
+                icon: FileText,
+                text: (
+                  <ul
+                    style={{ paddingLeft: "0px" }}
+                    className="list-disc list-inside"
+                  >
+                    <li>Your driving licence details.</li>
+                    <li>Your PRN.</li>
+                    <li>
+                      Payment information for the £111 test fee (correct as of
+                      2024).
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                title: "Select a Test Date and Time",
+                icon: Calendar,
+                text: "ADI Part 2 tests are usually in high demand, so book well in advance to secure a slot that works for you. Consider your readiness and schedule plenty of practice before the test day.",
+              },
+              {
+                title: "Confirmation",
+                icon: CheckCircle,
+                text: "After booking, you’ll receive a confirmation email with your test details. Save this email—it may be requested on the day.",
+              },
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="fade-up bg-white/10 backdrop-blur p-6 rounded-2xl shadow-lg"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <step.icon className="w-6 h-6 text-cyan-300" />
+                  <h3 className="text-xl font-bold">{step.title}</h3>
+                </div>
+                <div className="text-slate-200">{step.text}</div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(93, 225, 255)" }}>
-              3. Choose a Test Centre
-            </h3>
-            <p>
-              Not every driving test centre offers ADI Part 2 tests, so you’ll
-              need to find one that does. Use the DVSA’s list of test centres to
-              find the most convenient option.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(93, 225, 255)" }}>
-              4. Provide Your Details
-            </h3>
-            <p>You’ll need:</p>
-            <ul>
-              <li>Your driving licence details.</li>
-              <li>Your PRN.</li>
-              <li>
-                Payment information for the £111 test fee (correct as of 2024).
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3 style={{ color: "rgb(93, 225, 255)" }}>
-              5. Select a Test Date and Time
-            </h3>
-            <p>
-              ADI Part 2 tests are usually in high demand, so book well in
-              advance to secure a slot that works for you. Consider your
-              readiness and schedule plenty of practice before the test day.
-            </p>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3>6. Confirmation</h3>
-            <p>
-              After booking, you’ll receive a confirmation email with your test
-              details. Save this email—it may be requested on the day.
-            </p>
-          </div>
-        </section>
-
-        <section
-          className={styles.adisevenhintsSection}
-          style={{
-            marginTop: "2rem",
-            background:
-              "linear-gradient(135deg,rgb(97, 1, 50), rgb(3, 79, 210))",
-          }}>
-          <div className={styles.adisevenheading}>
-            What to Bring to Your ADI Part 2 Test
+      {/* ================= WHAT TO BRING ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center gap-4 mb-10 fade-up">
+            <AlertTriangle className="w-10 h-10 text-red-600" />
+            <h2 className="text-3xl lg:text-4xl font-extrabold">
+              What to Bring to Your ADI Part 2 Test
+            </h2>
           </div>
           <p>
-            {" "}
             Preparation is key to a smooth test day. Make sure you bring the
             following:
           </p>
-          <div className={styles.adiseventipBox}>
-            <h3>1. Your Driving Licence</h3>
-            <p>Bring both parts of your licence:</p>
-            <ul>
-              <li>
-                <strong>Photocard licence</strong> (or a valid passport if you
-                still have the older-style paper licence).
-              </li>
-
-              <li>Paper counterpart (if applicable).</li>
-            </ul>
-            <p>Ensure your licence is up to date and not expired.</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <InfoCard
+              title="Your Driving Licence"
+              content={
+                <>
+                  <p>Bring both parts of your licence:</p>
+                  <ul
+                    style={{ paddingLeft: "0px" }}
+                    className="list-disc list-inside"
+                  >
+                    <li>
+                      Photocard licence (or a valid passport if you still have
+                      the older-style paper licence).
+                    </li>
+                    <li>Paper counterpart (if applicable).</li>
+                  </ul>
+                  <p>Ensure your licence is up to date and not expired.</p>
+                </>
+              }
+            />
+            <InfoCard
+              title="Your Appointment Confirmation"
+              content="Bring a printed or digital copy of your booking confirmation email. This serves as proof of your appointment."
+            />
+            <InfoCard
+              title="A Suitable Car"
+              content={
+                <>
+                  <p>Your car must meet the DVSA’s requirements:</p>
+                  <ul
+                    style={{ paddingLeft: "0px" }}
+                    className="list-disc list-inside"
+                  >
+                    <li>Taxed, insured & MOT valid</li>
+                    <li>Manual or automatic</li>
+                    <li>Clear windows & mirrors</li>
+                    <li>No warning lights</li>
+                  </ul>
+                  <p>
+                    You can check on the government website which cars are
+                    accepted and which aren’t.
+                  </p>
+                </>
+              }
+            />
+            <InfoCard
+              title="Glasses or Contact Lenses"
+              content="If you need corrective lenses to drive, don’t forget them. You’ll need them for the eyesight test and the driving portion of the test."
+            />{" "}
+            <InfoCard
+              title="A Final Checklist"
+              content={
+                <>
+                  <p>
+                    Before heading to your ADI Part 2 test, double-check the
+                    following:
+                  </p>
+                  <ul
+                    style={{ paddingLeft: "0px" }}
+                    className="list-disc list-inside"
+                  >
+                    <li>Have you practiced all the required manoeuvres?</li>
+                    <li>
+                      Is your car clean, roadworthy, and stocked with necessary
+                      documents (e.g., insurance and MOT)?
+                    </li>
+                    <li>
+                      Do you have all required items (licence, confirmation,
+                      glasses)?
+                    </li>
+                  </ul>
+                </>
+              }
+            />
           </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3>2. Your Appointment Confirmation</h3>
-            <p>
-              Bring a printed or digital copy of your booking confirmation
-              email. This serves as proof of your appointment.
+          <div className="mt-12 bg-red-50 border-l-8 border-red-500 p-8 rounded-xl fade-up">
+            <h3 className="text-xl font-bold mb-2">Why Preparation Matters</h3>
+            <p className="text-slate-700">
+              The ADI Part 2 test reflects your readiness to teach
+              professionally. Booking is simple—but preparation makes the
+              difference. You have <strong>three attempts</strong> at this test.
             </p>
           </div>
 
-          <div className={styles.adiseventipBox}>
-            <h3>3. A Suitable Car</h3>
-            <p>Your car must meet the DVSA’s requirements:</p>
-            <ul>
-              <li>
-                <strong>Roadworthy and safe: </strong> The car should be taxed,
-                insured, and have a valid MOT (if applicable).
-              </li>
+          <h2 className="text-center text-red-600 font-extrabold text-2xl mt-10 fade-up">
+            Good luck! 🚗
+          </h2>
+        </div>
+      </section>
+    </main>
+  );
+}
 
-              <li>
-                {" "}
-                <strong>Manual or automatic: </strong> You can use either
-              </li>
-              <li>
-                <strong>Clear windows and mirrors: </strong> Ensure nothing
-                obstructs visibility.
-              </li>
-              <li>No Warning lights, appropriate tyres etc.</li>
-            </ul>
-            <p>
-              You can check on the government website which cars are accepted
-              and which aren’t.
-            </p>
-          </div>
-          <div className={styles.adiseventipBox}>
-            <h3>4. Glasses or Contact Lenses</h3>
-            <p>
-              If you need corrective lenses to drive, don’t forget them. You’ll
-              need them for the eyesight test and the driving portion of the
-              test.
-            </p>
-          </div>
-
-          <div className={styles.adiseventipBox}>
-            <h3>A Final Checklist</h3>
-            <p>
-              Before heading to your ADI Part 2 test, double-check the
-              following:
-            </p>
-            <ul>
-              <li>Have you practiced all the required manoeuvres?</li>
-
-              <li>
-                {" "}
-                Is your car clean, roadworthy, and stocked with necessary
-                documents (e.g., insurance and MOT)?
-              </li>
-              <li>
-                Do you have all required items (licence, confirmation, glasses)?
-              </li>
-            </ul>
-            <h3>Why Preparation Matters</h3>
-            <p>
-              The ADI Part 2 test is more than a driving assessment—it’s a
-              reflection of your readiness to teach driving professionally.
-              Booking the test is simple, but showing up fully prepared requires
-              careful planning. You have three attempts at this test.
-            </p>
-          </div>
-          <h1
-            style={{
-              textAlign: "center",
-              color: "red",
-              fontSize: "1.5rem",
-              margin: "1.5rem 1rem",
-            }}>
-            Good luck!
-          </h1>
-        </section>
-
-        {/* //////////////////////////////////////////////////////////// */}
-      </div>
-    </>
+function InfoCard({ title, content }) {
+  return (
+    <div className="fade-up bg-slate-50 p-6 rounded-2xl shadow-lg">
+      <h3 className="text-xl font-bold mb-3">{title}</h3>
+      <div className="text-slate-700">{content}</div>
+    </div>
   );
 }

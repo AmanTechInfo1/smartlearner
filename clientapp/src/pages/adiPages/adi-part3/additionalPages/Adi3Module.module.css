@@ -668,7 +668,7 @@
 /* InstructorImpact.module.css */
 .Adiparttwowrapper {
   padding: 4rem 2rem;
-  color: #ffffff;
+  color: #000000;
   display: flex;
   justify-content: center;
 }
@@ -676,7 +676,7 @@
 .Adiparttwocontainer {
   max-width: 1240px;
   width: 100%;
-  background: linear-gradient(145deg, #010809, #292929);
+  background: linear-gradient(145deg, #ebebeb, #cacaca);
   border-radius: 20px;
   padding: 3rem;
 
@@ -822,7 +822,7 @@
 /* ///////////////////////////////////////////////////////////////// */
 /* LegalActs.module.css */
 .adipart3threecontainer {
-  color: #e0e0e0;
+  color: #000000;
   padding: 2rem;
   min-height: 100vh;
   max-width: 1440px;
@@ -833,7 +833,7 @@
 
 .adipart3threeheading {
   font-size: 2.5rem;
-  color: #00ffff;
+  color: #000000;
   text-align: center;
   margin-bottom: 1rem;
   animation: fadeInDown1 1s ease-out;
@@ -843,7 +843,7 @@
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: #ccc;
+  color: #808080;
   animation: fadeIn1 2s ease-in-out;
 }
 
@@ -854,7 +854,7 @@
 }
 
 .adipart3threecard {
-  background: linear-gradient(145deg, #010809, #292929);
+  background: linear-gradient(145deg, #ffffff, #dbdbdb);
   padding: 1.5rem;
   border: 2px solid;
   border-radius: 15px;
@@ -872,7 +872,7 @@
 .adipart3threetitle {
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
-  color: #ffffff;
+  color: #000000;
 }
 
 .adipart3threelist {
@@ -883,7 +883,7 @@
 
 .licenseSection {
   margin-top: 4rem;
-  background: linear-gradient(145deg, #010809, #292929);
+  background: linear-gradient(145deg, #e0e0e0, #dddddd);
   padding: 2rem;
   border-radius: 15px;
   animation: fadeInUp1 1.5s ease-out;
@@ -891,18 +891,18 @@
 
 .licenseHeading {
   font-size: 1.8rem;
-  color: #66ffcc;
+  color: #191919;
   margin-bottom: 1rem;
 }
 
 .licenseText {
   font-size: 1rem;
-  color: #cccccc;
+  color: #505050;
   line-height: 1.8;
 }
 
 .licenseText a {
-  color: #66ffff;
+  color: #ff6666;
   text-decoration: underline;
   display: block;
   margin-top: 0.5rem;

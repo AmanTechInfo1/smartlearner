@@ -793,7 +793,7 @@ class UserSubscriptionService {
       service: "gmail",
       auth: {
         user: "Smartlearnerdrivingschool@gmail.com", // Your email
-        pass: "cbsb ueih dxqm zdhd",
+        pass: "ghzf dspi ndeg ryqw",
       },
     });
 
