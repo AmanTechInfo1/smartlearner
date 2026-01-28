@@ -25,7 +25,38 @@ import MockTests from "../../../../assets/images/Mock-testsp3.png";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../../../assets/images/lessonStructure.jpg";
 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Layers,
+  BookOpen,
+  Brain,
+  HelpCircle,
+  ArrowRight,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Adi3Modulefive() {
+  useEffect(() => {
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const skills = [
     { title: "Moving off Stopping", img: movingOff },
     { title: "Forward Bay Park", img: forwordbaypark },
@@ -55,37 +86,6 @@ export default function Adi3Modulefive() {
   const [editIndex, setEditIndex] = useState(null);
   const textareaRef = useRef(null);
 
-  const [typedText, setTypedText] = useState("");
-  const [colorIndex, setColorIndex] = useState(0);
-
-  const fullText = "Write your thoughts here...";
-  const colors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF"];
-
-  useEffect(() => {
-    let charIndex = 0;
-    let currentText = "";
-    let isClearing = false;
-    const interval = setInterval(() => {
-      if (!isClearing) {
-        currentText += fullText[charIndex];
-        setTypedText(currentText);
-        charIndex++;
-        if (charIndex >= fullText.length) {
-          isClearing = true;
-          setTimeout(() => {
-            currentText = "";
-            setTypedText("");
-            charIndex = 0;
-            isClearing = false;
-            setColorIndex((prev) => (prev + 1) % colors.length);
-          }, 1000); // pause after full text
-        }
-      }
-    }, 120);
-
-    return () => clearInterval(interval);
-  }, [colorIndex]);
-
   const handleChange = (e) => {
     setText(e.target.value);
   };
@@ -104,7 +104,7 @@ export default function Adi3Modulefive() {
       }
       localStorage.setItem(
         `notepadTexts1Part3page5_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -126,7 +126,7 @@ export default function Adi3Modulefive() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3page5_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -162,7 +162,7 @@ export default function Adi3Modulefive() {
       }
       localStorage.setItem(
         `notepadTexts2Part3pagew7_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -184,108 +184,17 @@ export default function Adi3Modulefive() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadTexts2Part3pagew7_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
   useEffect(() => {
     const savedData2 = localStorage.getItem(
-      `notepadTexts2Part3pagew7_${userId}`
+      `notepadTexts2Part3pagew7_${userId}`,
     );
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
     }
-  }, []);
-
-  // ///////////////////////////////////////////////
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Lesson Structure"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
   }, []);
 
   const fadeUp = {
@@ -323,461 +232,507 @@ export default function Adi3Modulefive() {
   //   /////////////////////////////////////////////////////////////////
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= BANNER ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
+              Lesson <span className="text-orange-500">Structure</span>
+            </h1>
+
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />
+              Learn how to structure driving lessons effectively using a
+              layered, learner-focused approach.
+            </p>
+
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
+
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-orange-500 hover:bg-orange-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
       </section>
-
-      {/* ///////////////////////////////////////// */}
-      <section className={styles.adiModuleSectionPart}>
-        <section className={styles.firstLessonModulecontainer}>
-          <motion.div
-            className={styles.firstLessonModulecard}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}>
-            <h2 className={styles.firstLessonModuletitle}>
-              How do you determine what to teach?
-            </h2>
-            <p className={styles.firstLessonModuletext}>
-              Before starting a lesson, it's crucial to touch base with the
-              learner to confirm their booking time, obtain their license
-              number, and inquire about their prior driving experience. This
-              helps you gauge where to begin in the curriculum. For example, if
-              a learner recently failed their driving test due to a serious
-              fault, you likely won't need to revisit the basics like moving off
-              and stopping, as you would with someone who's never driven before.
-            </p>
-            <p className={styles.firstLessonModuletext}>
-              It's also important to ask the learner what they aim to achieve in
-              the lesson. Do they want an assessment to understand their current
-              driving skills? Or are they looking to start from scratch?
-            </p>
-            <p className={styles.firstLessonModuletext}>
-              If they claim to have experience in certain areas, assess their
-              abilities firsthand. You can adjust their existing knowledge
-              rather than going over the fundamentals again.
-            </p>
-          </motion.div>
-        </section>
-      </section>
-
-      {/* ///////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        <h2>What are the key topics to cover?</h2>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Take some time to think about the essential skills every learner
-            should master. Write down as many topics as you can think of, and
-            use this as a reference point for your lessons.
-          </label>
-
-          <div className={styles.textareaWrapper}>
-            {/* Colorful typing effect behind transparent textarea */}
-            {text.length === 0 && (
-              <div
-                className={styles.fakePlaceholder}
-                style={{ color: colors[colorIndex] }}>
-                {typedText}
+      <section className="bg-white">
+        {/* ================= INTRO ================= */}
+        <section className="py-24 bg-slate-50">
+          <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center fade-up">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <BookOpen className="w-8 h-8 text-red-600" />
+                <h2 className="text-3xl md:text-4xl font-extrabold">
+                  How do you determine what to teach?
+                </h2>
               </div>
-            )}
+
+              <p className="text-slate-700 leading-relaxed">
+                Before starting a lesson, it's crucial to touch base with the
+                learner to confirm their booking time, obtain their license
+                number, and inquire about their prior driving experience. This
+                helps you gauge where to begin in the curriculum. For example,
+                if a learner recently failed their driving test due to a serious
+                fault, you likely won't need to revisit the basics like moving
+                off and stopping, as you would with someone who's never driven
+                before.
+              </p>
+
+              <p className="mt-4 text-slate-700 leading-relaxed">
+                It's also important to ask the learner what they aim to achieve
+                in the lesson. Do they want an assessment to understand their
+                current driving skills? Or are they looking to start from
+                scratch?
+              </p>
+
+              <p className="mt-4 text-slate-700 leading-relaxed">
+                If they claim to have experience in certain areas, assess their
+                abilities firsthand. You can adjust their existing knowledge
+                rather than going over the fundamentals again.
+              </p>
+            </div>
+
+            {/* VIDEO */}
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border">
+              <div className="relative aspect-video">
+                <img
+                  className="absolute inset-0 w-full h-full"
+                  src={backgroundImage}
+                  alt="Lesson Structure"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
-
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
-      {/* ///////////////////////////////////////////////////////// */}
-      <section className={styles.adi5SectionPage}>
-        <div className={styles.adi5Imgcontainer}>
-          {skills.map((skill, index) => (
-            <div className={styles.adi5Imgcard} key={index}>
-              <img
-                src={skill.img}
-                alt={skill.title}
-                className={styles.adi5Imgimage}
+        </section>{" "}
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-6">
+              What are the key topics to cover?
+            </h2>
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Take some time to think about the essential skills every learner
+                should master. Write down as many topics as you can think of,
+                and use this as a reference point for your lessons.
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
               />
-              <p className={styles.adi5Imgtitle}>{skill.title}</p>
-            </div>
-          ))}
-        </div>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            color: "#dddddd",
-            textAlign: "center",
-            maxWidth: "1240px",
-            width: "100%",
-            margin: "2rem auto",
-          }}>
-          While these topics serve as a solid foundation, keep in mind that the
-          order and focus may vary based on your learner's needs and
-          preferences. This is simply a guide to help structure your lessons. It
-          is imperative you have excellent knowledge and understanding in all
-          subjects, how can you teach someone else something you don’t know?
-        </p>
-      </section>
+              <button
+                onClick={saveText}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
 
-      {/* ///////////////////////////////////////////// */}
-
-      <div className={styles.Adi3Module22container}>
-        <motion.h1
-          className={styles.Adi3Module22title}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          custom={0}>
-          Subjects vs Skill Sets
-        </motion.h1>
-
-        <motion.p
-          className={styles.Adi3Module22para}
-          variants={fadeUp}
-          custom={1}
-          initial="hidden"
-          animate="visible">
-          When planning a lesson, it’s essential to have a clear idea of what
-          your learner would benefit from. However, it’s equally important to
-          remember that lesson plans should be flexible. Think of your lesson
-          plan as a guide rather than a rigid structure—something that can
-          evolve based on your student’s needs. There is no one-size-fits-all
-          ABCD format that works for every learner or every session. Instead,
-          you should develop your own approach that’s adaptable and
-          student-centered.
-        </motion.p>
-
-        <motion.div
-          className={styles.Adi3Module22box}
-          variants={fadeUp}
-          custom={2}
-          initial="hidden"
-          animate="visible">
-          <strong>
-            What do you think the difference between subjects vs skillsets is?
-          </strong>
-          <div className={styles.AdiModuleOneTextBox}>
-            <textarea
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                marginTop: "1rem",
-              }}
-              ref={textareaRef2}
-              value={text2}
-              onChange={handleChange2}
-              rows="5"
-              cols="30"
-              placeholder="Write your thoughts here..."
-            />
-            <br />
-            <button onClick={saveText2}>
-              {isEditing2 ? "Update" : "Save"}
-            </button>
-
-            <div className={styles.thoughtsListArea}>
-              {savedTexts2.length === 0 ? (
-                <p style={{ color: "black" }}>No saved thoughts.</p>
-              ) : (
-                <ul>
-                  {savedTexts2.map((savedText2, index) => (
-                    <li key={index}>
-                      <p>{savedText2}</p>
-                      <span>
-                        <FaEdit
-                          onClick={() => editText2(index)}
-                          id={styles.editListIcon}
-                        />
-
-                        <IoTrashBin
-                          onClick={() => deleteText2(index)}
-                          id={styles.binListIcon}
-                        />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
-        </motion.div>
-
-        <motion.h2
-          className={styles.Adi3Module22subTitle}
-          variants={fadeUp}
-          custom={3}
-          initial="hidden"
-          animate="visible">
-          Let’s explore an important distinction:
-        </motion.h2>
-
-        <motion.div
-          className={styles.Adi3Module22table}
-          variants={fadeUp}
-          custom={4}
-          initial="hidden"
-          animate="visible">
-          <div className={styles.Adi3Module22column}>
-            <h3>Subjects</h3>
-            <p>
-              Subjects are the broader topics or goals of a lesson. For example:{" "}
-              <em>
-                Forward Bay Parking, Emergency Stop, Moving Off and Stopping.
-              </em>
-            </p>
-          </div>
-          <div className={styles.Adi3Module22column}>
-            <h3>Skill Sets</h3>
-            <p>
-              Skill sets are the specific skills needed to achieve the overall
-              subject. For example:{" "}
-              <em>
-                How to find the biting point, how to move the car in a straight
-                line, how to steer accurately into a bay.
-              </em>
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.p
-          className={styles.Adi3Module22para}
-          variants={fadeUp}
-          custom={5}
-          initial="hidden"
-          animate="visible">
-          Your lesson should be designed to break down each subject into
-          manageable, bite-sized chunks. These chunks are the individual skills
-          that, when combined, lead to mastery of the subject.
-        </motion.p>
-
-        <motion.p
-          className={styles.Adi3Module22para}
-          variants={fadeUp}
-          custom={6}
-          initial="hidden"
-          animate="visible">
-          We don’t just teach <strong>what</strong> to do—we focus on{" "}
-          <strong>how</strong>, <strong>why</strong>, and <strong>when</strong>{" "}
-          to do it. We also develop the behaviours that support those skills,
-          which leads to a deeper, more practical understanding.
-        </motion.p>
-
-        <motion.h2
-          className={styles.Adi3Module22subTitle}
-          variants={fadeUp}
-          custom={7}
-          initial="hidden"
-          animate="visible">
-          The Importance of Structure and Simplicity
-        </motion.h2>
-
-        <motion.div
-          className={styles.Adi3Module22scenario}
-          variants={fadeUp}
-          custom={8}
-          initial="hidden"
-          animate="visible">
-          <p>
-            Now imagine this scenario: It’s your first day training for your
-            Part 3 exam to become a driving instructor. Your trainer bombards
-            you with a list of instructions:
-          </p>
-          <blockquote>
-            “First ask the student this, then say that, now tell them to do
-            this, and then... go!”
-          </blockquote>
-          <p>
-            How would you feel? Overwhelmed? Confused? Unprepared? Probably.
-          </p>
-          <p>
-            This is exactly why we break things down. Teaching should be
-            delivered in clear, manageable steps so learners can absorb and
-            apply what they're being taught. It’s more important that a student
-            understands the
-            <strong> why</strong>, <strong>how</strong>, and{" "}
-            <strong>when</strong> than simply ticking off tasks.
-          </p>
-          <p>
-            You may not complete an entire subject in one lesson—and that’s
-            absolutely okay. As long as the learner is developing the necessary
-            skills, they’re making progress.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className={styles.Adi3Module22scenario}
-          variants={fadeUp}
-          custom={8}
-          initial="hidden"
-          animate="visible">
-          <p>
-            <strong>So, How Do You Plan a Lesson?</strong>
-          </p>
-          <p>Start with this key question:</p>
-          <p>
-            <strong>
-              “What skills do I need to teach in order to cover this subject?”
-            </strong>
-          </p>
-          <p>
-            We like to refer to this as building your{" "}
-            <strong>“Lesson Plan Cake”</strong> —a layered approach to
-            structuring learning in a way that is digestible, logical, and
-            effective.
-          </p>
-        </motion.div>
-
-        <div className={styles.Adi3Module22container2}>
-          <h1 className={styles.Adi3Module22heading2}>Lesson Plan Cake</h1>
-          <div className={styles.Adi3Module22cakeWrapper}>
-            {cakeLayers.map((layer, index) => (
-              <motion.div
-                key={index}
-                className={styles.Adi3Module22layer}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.3 }}>
-                <h2 className={styles.Adi3Module22layerTitle}>{layer.title}</h2>
-                <p className={styles.Adi3Module22description}>
-                  {layer.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        <motion.div
-          className={styles.Adi3Module22scenario}
-          variants={fadeUp}
-          custom={8}
-          initial="hidden"
-          animate="visible">
-          <p>
-            Remember, When teaching, always focus on the{" "}
-            <blockquote>
-              <strong>whys, hows, and whens</strong>
-            </blockquote>{" "}
-            of each skill. Help your learners understand the reasoning behind
-            what they’re doing—not just the actions themselves.
-          </p>
-
-          <p>
-            Avoid simply giving them all the answers. Instead, use open
-            questions and guided discovery to encourage them to think for
-            themselves. This builds real understanding and confidence.
-          </p>
-          <p>
-            <strong> Never say things like:</strong>
-          </p>
-          <ul>
-            <li>✅ “Because I said so.”</li>
-            <li>✅ “That’s just what you have to do to pass the test.”</li>
-          </ul>
-          <p>
-            These responses shut down learning and don’t support long-term
-            development. Your goal is to help learners understand{" "}
-            <strong>whys</strong> something matters, <strong> hows </strong> to
-            do it effectively, and <strong>whens</strong> to apply it in
-            real-world situations. That’s what creates a safe, skilled, and
-            independent driver.
-          </p>
-          <p>
-            This is why it's essential for you, as an instructor, to fully
-            understand the individual skills required within each subject—so you
-            can teach them effectively and at the right pace.
-          </p>
-          <p>
-            Also, remember:{" "}
-            <strong>
-              not every learner will start at the bottom layer of your cake.
-            </strong>
-            Some may already have prior knowledge or experience and could begin
-            at the second, third, or even top layer. You’ll discover this
-            through the effective use of open questions during your lesson.
-          </p>
-          <p>
-            <strong>Task:</strong>
-          </p>
-          <p>
-            For each driving topic, create your own Lesson Plan Cake. <br />
-            Ask yourself:
-          </p>
-          <p>
-            <strong>
-              What specific skills are required to complete this subject?
-            </strong>
-          </p>
-          <p>
-            Break the subject down into clear, progressive layers—starting from
-            foundational skills up to full independence.
-          </p>
-        </motion.div>
-      </div>
-
-      {/* //////////////////////////////////////////////////// */}
-
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/gde-matrix-grow">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-      {/* ///////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            Lesson Structure the lesson before setting off
-          </p>
-          <Link to="/takequizCatName/lesson-structure">
-            {" "}
-            <button>Start Quiz</button>
-          </Link>
         </section>
-      </div>
-    </div>
+        {/* ================= SKILLS GRID ================= */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="flex items-center gap-4 mb-12 fade-up">
+              <Brain className="w-10 h-10 text-red-600" />
+              <h2 className="text-3xl md:text-4xl font-extrabold">
+                Key Skills to Cover
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {skills.map((skill, i) => (
+                <div
+                  key={i}
+                  className="fade-up bg-slate-50 rounded-2xl shadow-xl p-6 text-center hover:scale-[1.03] transition"
+                >
+                  <img
+                    src={skill.img}
+                    alt={skill.title}
+                    className="h-32 mx-auto object-contain"
+                  />
+                  <p className="mt-4 font-semibold">{skill.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="fade-up mt-14 max-w-4xl mx-auto text-center text-slate-600">
+              While these topics serve as a solid foundation, keep in mind that
+              the order and focus may vary based on your learner's needs and
+              preferences. This is simply a guide to help structure your
+              lessons. It is imperative you have excellent knowledge and
+              understanding in all subjects, how can you teach someone else
+              something you don’t know?
+            </p>
+          </div>
+        </section>
+        {/* ================= SUBJECT VS SKILLSETS ================= */}
+        <section className="py-12 bg-gradient-to-br from-slate-50 to-white">
+          <div className="container mx-auto px-6 fade-up">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+              Subjects vs Skill Sets
+            </h2>
+
+            <p className="text-slate-700 max-w-4xl mb-2">
+              When planning a lesson, it’s essential to have a clear idea of
+              what your learner would benefit from. However, it’s equally
+              important to remember that lesson plans should be flexible. Think
+              of your lesson plan as a guide rather than a rigid
+              structure—something that can evolve based on your student’s needs.
+              There is no one-size-fits-all ABCD format that works for every
+              learner or every session. Instead, you should develop your own
+              approach that’s adaptable and student-centered.
+            </p>
+
+            <section className="py-10 bg-slate-50 fade-up">
+              <div className="container mx-auto px-6 max-w-4xl">
+                <div className="bg-white p-8 rounded-3xl shadow-xl">
+                  <label className="block mb-2 font-semibold">
+                    What do you think the difference between subjects vs
+                    skillsets is?
+                  </label>
+                  <textarea
+                    ref={textareaRef2}
+                    value={text2}
+                    onChange={handleChange2}
+                    rows={5}
+                    className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                    placeholder="Write your thoughts here..."
+                  />
+                  <button
+                    onClick={saveText2}
+                    className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                  >
+                    {isEditing2 ? "Update" : "Save"}
+                  </button>
+
+                  <div className="mt-6">
+                    {savedTexts2.length === 0 ? (
+                      <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                        <p
+                          className="text-gray-500 text-sm"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          No saved thoughts yet ✍️
+                        </p>
+                      </div>
+                    ) : (
+                      <ul
+                        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                        style={{ paddingLeft: "0px" }}
+                      >
+                        {savedTexts2.map((savedText, index) => (
+                          <li
+                            key={index}
+                            className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                          >
+                            <p
+                              className="text-gray-700 text-sm pr-10"
+                              style={{ marginBottom: "0px" }}
+                            >
+                              {savedText}
+                            </p>
+                            <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                              <FilePenLine
+                                onClick={() => editText2(index)}
+                                className="cursor-pointer text-blue-500"
+                              />
+                              <Trash2
+                                onClick={() => deleteText2(index)}
+                                className="cursor-pointer text-red-500"
+                              />
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+            <motion.h2
+              className={styles.Adi3Module22subTitle}
+              variants={fadeUp}
+              custom={7}
+              initial="hidden"
+              animate="visible"
+            >
+              Let’s explore an important distinction:
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-10">
+              <div className="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-red-500">
+                <h3 className="text-xl font-bold mb-3">Subjects</h3>
+                <p className="text-slate-700">
+                  Subjects are the broader topics or goals of a lesson. For
+                  example: Forward Bay Parking, Emergency Stop, Moving Off and
+                  Stopping.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-red-500">
+                <h3 className="text-xl font-bold mb-3">Skill Sets</h3>
+                <p className="text-slate-700">
+                  Skill sets are the specific skills needed to achieve the
+                  overall subject. For example: How to find the biting point,
+                  how to move the car in a straight line, how to steer
+                  accurately into a bay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-12 bg-gradient-to-br from-slate-50 to-white">
+          <div className="container mx-auto px-6 fade-up">
+            {" "}
+            <motion.h2
+              className={styles.Adi3Module22subTitle}
+              variants={fadeUp}
+              custom={7}
+              initial="hidden"
+              animate="visible"
+            >
+              The Importance of Structure and Simplicity
+            </motion.h2>
+            <motion.div
+              className={styles.Adi3Module22scenario}
+              variants={fadeUp}
+              custom={8}
+              initial="hidden"
+              animate="visible"
+            >
+              <p>
+                Now imagine this scenario: It’s your first day training for your
+                Part 3 exam to become a driving instructor. Your trainer
+                bombards you with a list of instructions:
+              </p>
+              <blockquote>
+                “First ask the student this, then say that, now tell them to do
+                this, and then... go!”
+              </blockquote>
+              <p>
+                How would you feel? Overwhelmed? Confused? Unprepared? Probably.
+              </p>
+              <p>
+                This is exactly why we break things down. Teaching should be
+                delivered in clear, manageable steps so learners can absorb and
+                apply what they're being taught. It’s more important that a
+                student understands the
+                <strong> why</strong>, <strong>how</strong>, and{" "}
+                <strong>when</strong> than simply ticking off tasks.
+              </p>
+              <p>
+                You may not complete an entire subject in one lesson—and that’s
+                absolutely okay. As long as the learner is developing the
+                necessary skills, they’re making progress.
+              </p>
+            </motion.div>{" "}
+            <motion.div
+              className={styles.Adi3Module22scenario}
+              variants={fadeUp}
+              custom={8}
+              initial="hidden"
+              animate="visible"
+            >
+              <p>
+                <strong>So, How Do You Plan a Lesson?</strong>
+              </p>
+              <p>Start with this key question:</p>
+              <p>
+                <strong>
+                  “What skills do I need to teach in order to cover this
+                  subject?”
+                </strong>
+              </p>
+              <p>
+                We like to refer to this as building your{" "}
+                <strong>“Lesson Plan Cake”</strong> —a layered approach to
+                structuring learning in a way that is digestible, logical, and
+                effective.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+        {/* ================= LESSON PLAN CAKE ================= */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="flex items-center gap-4 mb-12 fade-up">
+              <Layers className="w-10 h-10 text-red-600" />
+              <h2 className="text-3xl md:text-4xl font-extrabold">
+                Lesson Plan Cake
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-10">
+              {cakeLayers.map((layer, i) => (
+                <div
+                  key={i}
+                  className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl"
+                >
+                  <h3 className="font-bold mb-3">{layer.title}</h3>
+                  <p className="text-slate-700">{layer.description}</p>
+                </div>
+              ))}
+            </div>
+            <motion.div
+              className="mt-10 bg-white rounded-2xl p-8 shadow-lg space-y-4"
+              variants={fadeUp}
+              custom={8}
+              initial="hidden"
+              animate="visible"
+            >
+              <p>
+                Remember, When teaching, always focus on the{" "}
+                <blockquote className="my-3 pl-4 border-l-4 border-blue-500 italic text-gray-700">
+                  <strong>whys, hows, and whens</strong>
+                </blockquote>{" "}
+                of each skill. Help your learners understand the reasoning
+                behind what they’re doing—not just the actions themselves.
+              </p>
+
+              <p>
+                Avoid simply giving them all the answers. Instead, use open
+                questions and guided discovery to encourage them to think for
+                themselves. This builds real understanding and confidence.
+              </p>
+
+              <p>
+                <strong> Never say things like:</strong>
+              </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>✅ “Because I said so.”</li>
+                <li>✅ “That’s just what you have to do to pass the test.”</li>
+              </ul>
+
+              <p>
+                These responses shut down learning and don’t support long-term
+                development. Your goal is to help learners understand{" "}
+                <strong>whys</strong> something matters, <strong> hows </strong>{" "}
+                to do it effectively, and <strong>whens</strong> to apply it in
+                real-world situations. That’s what creates a safe, skilled, and
+                independent driver.
+              </p>
+
+              <p>
+                This is why it's essential for you, as an instructor, to fully
+                understand the individual skills required within each subject—so
+                you can teach them effectively and at the right pace.
+              </p>
+
+              <p>
+                Also, remember:{" "}
+                <strong>
+                  not every learner will start at the bottom layer of your cake.
+                </strong>
+                Some may already have prior knowledge or experience and could
+                begin at the second, third, or even top layer. You’ll discover
+                this through the effective use of open questions during your
+                lesson.
+              </p>
+
+              <p>
+                <strong>Task:</strong>
+              </p>
+
+              <p>
+                For each driving topic, create your own Lesson Plan Cake. <br />
+                Ask yourself:
+              </p>
+
+              <p>
+                <strong>
+                  What specific skills are required to complete this subject?
+                </strong>
+              </p>
+
+              <p>
+                Break the subject down into clear, progressive layers—starting
+                from foundational skills up to full independence.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+        {/* ================= NEXT + QUIZ ================= */}
+        <section className="py-24 bg-gradient-to-br from-red-50 to-white">
+          <div className="container mx-auto px-6 text-center fade-up">
+            <Link to="/gde-matrix-grow">
+              <button className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold inline-flex items-center gap-3 shadow-xl">
+                Next Page <ArrowRight />
+              </button>
+            </Link>
+
+            <div className="mt-16 bg-white p-10 rounded-3xl shadow-2xl max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold mb-2">Start Quiz</h3>
+              <p className="text-slate-600 mb-6">
+                Test your understanding of Lesson Structure
+              </p>
+
+              <Link to="/takequizCatName/lesson-structure">
+                <button className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-semibold">
+                  Start Quiz
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
   );
 }

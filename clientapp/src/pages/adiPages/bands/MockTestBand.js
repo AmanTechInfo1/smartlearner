@@ -12,11 +12,10 @@ export default function PublicationTechBand() {
             <BookMarked className="w-8 h-8 text-indigo-600" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
-              Band Four Mock Test
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-800">Mock Test</h1>
             <p className="text-rose-600 font-medium">
-              Publications & Instructional Techniques • Exam Mode
+              The ADI Part 1 test consists of two sections: the multiple-choice
+              questions and the hazard perception test.
             </p>
           </div>
         </div>
@@ -27,7 +26,7 @@ export default function PublicationTechBand() {
             <BookMarked className="w-6 h-6 text-indigo-600" />
             <div>
               <p className="text-sm text-gray-500">Questions</p>
-              <p className="font-semibold text-gray-800">25 MCQs</p>
+              <p className="font-semibold text-gray-800">100 MCQs</p>
             </div>
           </div>
 
@@ -35,7 +34,7 @@ export default function PublicationTechBand() {
             <Timer className="w-6 h-6 text-rose-600" />
             <div>
               <p className="text-sm text-gray-500">Time Limit</p>
-              <p className="font-semibold text-gray-800">15 Minutes</p>
+              <p className="font-semibold text-gray-800">60 Minutes</p>
             </div>
           </div>
 
@@ -43,24 +42,27 @@ export default function PublicationTechBand() {
             <CheckCircle2 className="w-6 h-6 text-slate-600" />
             <div>
               <p className="text-sm text-gray-500">Pass Mark</p>
-              <p className="font-semibold text-gray-800">20 / 25</p>
+              <p className="font-semibold text-gray-800">85 / 100</p>
             </div>
           </div>
         </div>
 
         {/* Description */}
         <p className="text-gray-600 leading-relaxed mb-8">
-          This mock test quickly reviews your knowledge of official publications
-          and instructional techniques. You’ll face{" "}
-          <span className="font-semibold">25 questions</span>
-          in <span className="font-semibold">15 minutes</span> and must score at
-          least
-          <span className="font-semibold text-rose-600"> 20/25</span> to pass.
-          Perfect for evaluating your teaching exam readiness.
+          The ADI Part 1 test consists of two sections: the multiple-choice
+          questions and the hazard perception test. The multiple-choice section
+          includes <span className="font-semibold">100 questions</span> to be
+          answered within <span className="font-semibold">60 minutes</span>,
+          covering four key categories: road procedure; traffic signs and
+          signals, car control, pedestrians, and mechanical knowledge; driving
+          test, disabilities, and the law; and publications and instructional
+          techniques. To pass, candidates must achieve a minimum of{" "}
+          <span className="font-semibold text-rose-600"> 85/100</span>, with at
+          least 20 correct answers in each category.
         </p>
 
         {/* CTA */}
-        <Link to="/takequizCatName/band-four-test">
+        <Link to="/takequizCatName/Mock--Tests">
           <button
             className="w-full md:w-auto inline-flex items-center justify-center gap-3
                        bg-gradient-to-r from-indigo-600 to-rose-500

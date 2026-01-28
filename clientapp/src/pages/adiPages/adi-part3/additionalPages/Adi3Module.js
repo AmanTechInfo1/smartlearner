@@ -64,28 +64,40 @@ export default function Adi3Module() {
 
   return (
     <main className="w-full overflow-hidden font-sans">
-      {/* ================= BANNER ================= */}
-      <section className="relative h-[70vh] sm:h-[85vh] w-full overflow-hidden">
+      <section className="relative h-[75vh] w-full">
         <div
-          className="absolute inset-0 bg-fixed bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
         <div className="absolute inset-0 bg-black/60" />
 
         <div className="relative z-10 h-full flex items-center">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
               The <span className="text-red-500">National Standard</span> for
               Driver & Rider Training
             </h1>
 
-            <p className="mt-6 text-slate-200 text-base sm:text-lg">
-              A professional framework for becoming a confident, responsible and
-              fully qualified driving instructor.
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />A professional framework for becoming a confident,
+              responsible and fully qualified driving instructor.
             </p>
+
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
+
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-indigo-500 hover:bg-indigo-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>
+      {/* ================= BANNER ================= */}
 
       {/* ================= INTRO ================= */}
       <section className="py-20 bg-slate-50">

@@ -8,96 +8,47 @@ import backgroundImage from "../../../../assets/images/gde-matrix.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function () {
-  const textRef = useRef(null);
+import {
+  Layers,
+  Car,
+  Map,
+  Target,
+  HeartHandshake,
+  ShieldAlert,
+  Brain,
+  ArrowRight,
+  Download,
+  Users,
+  MapPin,
+  CheckCircle,
+  TrafficCone,
+  ShieldCheck,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
 
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "GDE MATRIX and GROW Model"; // First part before "Driving"
+gsap.registerPlugin(ScrollTrigger);
 
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
+export default function AdiModule() {
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
   //   ///////////////////////////////////////////////////////////////
@@ -171,7 +122,7 @@ export default function () {
       }
       localStorage.setItem(
         `notepadTexts1Part3page6_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -193,7 +144,7 @@ export default function () {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3page6_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
@@ -228,7 +179,7 @@ export default function () {
       }
       localStorage.setItem(
         `notepadTexts2Part3page6_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -250,13 +201,13 @@ export default function () {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadTexts2Part3page6_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
   useEffect(() => {
     const savedData2 = localStorage.getItem(
-      `notepadTexts2Part3page6_${userId}`
+      `notepadTexts2Part3page6_${userId}`,
     );
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
@@ -350,7 +301,7 @@ export default function () {
       }
       localStorage.setItem(
         `notepadTexts3Part3page6_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -372,13 +323,13 @@ export default function () {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadTexts3Part3page6_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
   useEffect(() => {
     const savedData3 = localStorage.getItem(
-      `notepadTexts3Part3page6_${userId}`
+      `notepadTexts3Part3page6_${userId}`,
     );
     if (savedData3) {
       setSavedTexts3(JSON.parse(savedData3));
@@ -410,7 +361,7 @@ export default function () {
       }
       localStorage.setItem(
         `notepadTexts4Part3page6_${userId}`,
-        JSON.stringify([...savedTexts4, text4])
+        JSON.stringify([...savedTexts4, text4]),
       );
 
       setText4("");
@@ -432,13 +383,13 @@ export default function () {
     setSavedTexts4(updatedTexts4);
     localStorage.setItem(
       `notepadTexts4Part3page6_${userId}`,
-      JSON.stringify(updatedTexts4)
+      JSON.stringify(updatedTexts4),
     );
   };
 
   useEffect(() => {
     const savedData4 = localStorage.getItem(
-      `notepadTexts4Part3page6_${userId}`
+      `notepadTexts4Part3page6_${userId}`,
     );
     if (savedData4) {
       setSavedTexts4(JSON.parse(savedData4));
@@ -469,7 +420,7 @@ export default function () {
       }
       localStorage.setItem(
         `notepadTexts5Part3page6_${userId}`,
-        JSON.stringify([...savedTexts5, text5])
+        JSON.stringify([...savedTexts5, text5]),
       );
 
       setText5("");
@@ -491,13 +442,13 @@ export default function () {
     setSavedTexts5(updatedTexts5);
     localStorage.setItem(
       `notepadTexts5Part3page6_${userId}`,
-      JSON.stringify(updatedTexts5)
+      JSON.stringify(updatedTexts5),
     );
   };
 
   useEffect(() => {
     const savedData5 = localStorage.getItem(
-      `notepadTexts5Part3page6_${userId}`
+      `notepadTexts5Part3page6_${userId}`,
     );
     if (savedData5) {
       setSavedTexts5(JSON.parse(savedData5));
@@ -505,510 +456,750 @@ export default function () {
   }, []);
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
-      </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO BANNER ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
 
-      {/* ////////////////////////////////////////////////////////////// */}
-      <div className={styles.adiSixModule1stcontainer}>
-        <h1 className={styles.adiSix1sttitle}>How the GDE Matrix Works</h1>
-        <p className={styles.adiSix1stdescription}>
-          The Goals for Driver Education (GDE) Matrix structures driver
-          education into different hierarchical levels and addresses key
-          influencing factors shaping a driver's decisions.
-        </p>
-        <p className={styles.adiSix1stdescription}>
-          {" "}
-          By combining these elements, it ensures that driver training is not
-          just about technical skills, but also about understanding risks,
-          personal decision-making, and external influences.
-        </p>
-        <section className={styles.adiSix1stsection}>
-          <h2 className={styles.adiSix1stsubTitle}>
-            1. Breaking Down Driving into Four Levels
-          </h2>
-          <p>
-            Each level in the matrix represents a different aspect of driving,
-            from basic control to personal attitudes:
-          </p>
-          <ul className={styles.adiSix1stlist}>
-            <li>
-              <span>Vehicle Control (Basic Skills)</span> – Learning how to
-              physically operate a car.
-            </li>
-            <li>
-              <span>Traffic Situations (Tactical Decision-Making)</span> –
-              Applying skills to navigate real-world traffic.
-            </li>
-            <li>
-              <span>Goals and Context of Driving (Strategic Planning)</span> –
-              Making choices about when, where, and how to drive.
-            </li>
-            <li>
-              <span>
-                Goals for Life and Skills for Living (Personal Influence)
-              </span>{" "}
-              – Understanding how personal values and emotions impact driving
-              behaviour.
-            </li>
-          </ul>
-        </section>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl">
+              GDE Matrix & <span className="text-red-500">GROW Coaching </span>{" "}
+              Model
+            </h1>
 
-        <section className={styles.adiSix1stsection}>
-          <h2 className={styles.adiSix1stsubTitle}>
-            2. Addressing Three Key Influencing Factors
-          </h2>
-          <ul className={styles.adiSix1stlist}>
-            <li>
-              <span>Knowledge and Skills</span> – Teaching essential driving
-              rules, techniques, and mechanics.
-            </li>
-            <li>
-              <span>Risk Awareness and Assessment</span> – Training drivers to
-              recognize and manage dangers.
-            </li>
-            <li>
-              <span>Self-Evaluation and Personal Factors</span> – Encouraging
-              self-reflection and responsible decision-making.
-            </li>
-          </ul>
-        </section>
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />A structured approach to building safer, more self-aware and
+              confident drivers.
+            </p>
 
-        <section className={styles.adiSix1stsection}>
-          <h2 className={styles.adiSix1stsubTitle}>
-            Why the GDE Matrix is Important
-          </h2>
-          <p className={styles.adiSix1stparagraph}>
-            Traditional driver education often focuses only on vehicle control
-            and traffic rules. The GDE Matrix expands this by addressing why
-            drivers make certain decisions and how personal factors influence
-            their behaviour.
-          </p>
-          <p className={styles.adiSix1stparagraph}>
-            It emphasises risk awareness. Many accidents happen not due to lack
-            of skill, but because drivers fail to recognize dangers or make poor
-            decisions.
-          </p>
-          <p className={styles.adiSix1stparagraph}>
-            It encourages self-reflection. By understanding their own
-            tendencies, biases, and emotions, drivers can avoid overconfidence
-            and risky behavior.
-          </p>
-          <p className={styles.adiSix1stparagraph}>
-            It accounts for personal and societal influences. Peer pressure,
-            fatigue, distractions, and emotional states all impact driving, and
-            the GDE Matrix helps drivers manage these factors.
-          </p>
-        </section>
-      </div>
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
 
-      {/* /////////////////////////////////////////////////////////////////////// */}
-      <div className={styles.adisix2ndcontainer}>
-        <h1 className={styles.adisix2ndheading}>GDE Matrix in Action</h1>
-
-        <div className={styles.adisix2ndintro}>
-          <h2>
-            Lesson Topic: <span>Navigating Urban Traffic</span>
-          </h2>
-          <p>
-            <strong>Scenario:</strong> The student will drive through a busy
-            city area, dealing with intersections, pedestrians, cyclists, and
-            traffic lights.
-          </p>
-        </div>
-
-        <div className={styles.adisix2ndlevels}>
-          {levels.map((item, index) => (
-            <div className={styles.adisix2ndlevelCard} key={index}>
-              <h3 className={styles.adisix2ndlevelTitle}>{item.level}</h3>
-              <p className={styles.adisix2ndfocus}>{item.focus}</p>
-              <ul className={styles.adisix2ndteachingList}>
-                {item.teaching.map((point, idx) => (
-                  <li key={idx} className={styles.adisix2ndteachingPoint}>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* ////////////////////////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Now try and write an example for a lesson on Pedestrian crossings
-          </label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-orange-500 hover:bg-orange-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>
-      {/* ////////////////////////////////////////////////////////////////// */}
-      <div className={styles.AdiModuleOneTextBox} style={{ marginTop: "2rem" }}>
-        <label>
-          What were your results and how will you use this during your own
-          learning ?
-        </label>
-        <textarea
-          ref={textareaRef2}
-          value={text2}
-          onChange={handleChange2}
-          rows="5"
-          cols="30"
-          placeholder="Write your thoughts here..."
-        />
-        <br />
-        <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
 
-        <div className={styles.thoughtsListArea}>
-          {savedTexts2.length === 0 ? (
-            <p>No saved thoughts.</p>
-          ) : (
-            <ul>
-              {savedTexts2.map((savedText2, index) => (
-                <li key={index}>
-                  <p>{savedText2}</p>
-                  <span>
-                    <FaEdit
-                      onClick={() => editText2(index)}
-                      id={styles.editListIcon}
-                    />
+      {/* ================= INTRO ================= */}
+      <section className="bg-white">
+        <section className="bg-slate-50 py-20 lg:py-28">
+          <div className="container mx-auto px-6 max-w-6xl">
+            {/* ================= HEADER ================= */}
+            <div className="text-center mb-16 fade-up">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+                How the <span className="text-red-600">GDE Matrix</span> Works
+              </h1>
 
-                    <IoTrashBin
-                      onClick={() => deleteText2(index)}
-                      id={styles.binListIcon}
-                    />
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-
-      {/* //////////////////////////////////////////////////////////////// */}
-      <div className={styles.adiSix3rdcontainer}>
-        <h1 className={styles.adiSix3rdmainHeading}>
-          How the <span className={styles.adiSix3rdglowText}>GROW</span>{" "}
-          Coaching Model Enhances Driver Instruction
-        </h1>
-        <p className={styles.adiSix1stdescription}>
-          The GROW coaching model (Goal, Reality, Options, Will) is a powerful
-          framework used in coaching and education to guide individuals toward
-          achieving their objectives. It is particularly effective in driver
-          instruction, as it encourages learners to take ownership of their
-          progress, reflect on their development, and actively engage in
-          problem-solving.
-        </p>
-
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            className={`${styles.adiSix3rdstepCard} ${
-              styles[`adiSix3rdstep${index}`]
-            }`}>
-            <h2 className={styles.adiSix3rdstepTitle}>{step.title}</h2>
-            {step.content.map((para, idx) => (
-              <p key={idx} className={styles.adiSix3rdstepContent}>
-                {para}
+              <p className="mt-6 text-slate-700 text-base sm:text-lg max-w-3xl mx-auto">
+                The Goals for Driver Education (GDE) Matrix structures driver
+                education into different hierarchical levels and addresses key
+                influencing factors shaping a driver's decisions.
               </p>
-            ))}
-            <h3 className={styles.adiSix3rdquestionHeading}>
-              ✅ Key Questions:
-            </h3>
-            <ul className={styles.adiSix3rdquestionList}>
-              {step.questions.map((question, qIndex) => (
-                <li key={qIndex} className={styles.adiSix3rdquestionItem}>
-                  {question}
-                </li>
-              ))}
-            </ul>
+
+              <p className="mt-4 text-slate-600 max-w-3xl mx-auto">
+                By combining these elements, it ensures that driver training is
+                not just about technical skills, but also about understanding
+                risks, personal decision-making, and external influences.
+              </p>
+            </div>
+
+            {/* ================= FOUR LEVELS ================= */}
+            <div className="mb-20 fade-up">
+              <div className="flex items-center gap-4 mb-8">
+                <Layers className="w-10 h-10 text-red-600" />
+                <h2 className="text-2xl sm:text-3xl font-bold">
+                  Breaking Down Driving into Four Levels
+                </h2>
+              </div>
+
+              <p className="text-slate-700 mb-10">
+                Each level in the matrix represents a different aspect of
+                driving, from basic control to personal attitudes:
+              </p>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* LEVEL 1 */}
+                <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-red-500">
+                  <Car className="w-8 h-8 text-red-600 mb-4" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Vehicle Control
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Learning how to physically operate a car.
+                  </p>
+                </div>
+
+                {/* LEVEL 2 */}
+                <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-red-500">
+                  <Map className="w-8 h-8 text-red-600 mb-4" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Traffic Situations
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Applying skills to navigate real-world traffic.
+                  </p>
+                </div>
+
+                {/* LEVEL 3 */}
+                <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-red-500">
+                  <Target className="w-8 h-8 text-red-600 mb-4" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Goals & Context
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Making choices about when, where, and how to drive.
+                  </p>
+                </div>
+
+                {/* LEVEL 4 */}
+                <div className="bg-white p-6 rounded-3xl shadow-xl border-t-8 border-red-500">
+                  <HeartHandshake className="w-8 h-8 text-red-600 mb-4" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Personal Influence
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Understanding how values and emotions affect driving
+                    behaviour.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* ================= INFLUENCING FACTORS ================= */}
+            <div className="mb-20 fade-up">
+              <div className="flex items-center gap-4 mb-8">
+                <ShieldAlert className="w-10 h-10 text-red-600" />
+                <h2 className="text-2xl sm:text-3xl font-bold">
+                  Addressing Three Key Influencing Factors
+                </h2>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-white p-7 rounded-3xl shadow-xl">
+                  <Brain className="w-7 h-7 text-red-500 mb-3" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Knowledge & Skills
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Teaching essential driving rules, techniques, and mechanics.
+                  </p>
+                </div>
+
+                <div className="bg-white p-7 rounded-3xl shadow-xl">
+                  <ShieldAlert className="w-7 h-7 text-red-500 mb-3" />
+                  <h4 className="font-semibold text-lg mb-2">Risk Awareness</h4>
+                  <p className="text-sm text-slate-600">
+                    Training drivers to recognize and manage dangers.
+                  </p>
+                </div>
+
+                <div className="bg-white p-7 rounded-3xl shadow-xl">
+                  <Users className="w-7 h-7 text-red-500 mb-3" />
+                  <h4 className="font-semibold text-lg mb-2">
+                    Self-Evaluation
+                  </h4>
+                  <p className="text-sm text-slate-600">
+                    Encouraging reflection and responsible decision-making.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* ================= WHY IMPORTANT ================= */}
+            <div className="fade-up">
+              <div className="bg-white p-10 rounded-3xl shadow-2xl border-l-8 border-red-500">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+                  Why the GDE Matrix is Important
+                </h2>
+
+                <div className="space-y-4 text-slate-700 text-base sm:text-lg">
+                  <p>
+                    Traditional driver education often focuses only on vehicle
+                    control and traffic rules. The GDE Matrix expands this by
+                    addressing why drivers make certain decisions and how
+                    personal factors influence their behaviour.
+                  </p>
+
+                  <p>
+                    It emphasises risk awareness. Many accidents happen not due
+                    to lack of skill, but because drivers fail to recognize
+                    dangers or make poor decisions.
+                  </p>
+
+                  <p>
+                    It encourages self-reflection. By understanding their own
+                    tendencies, biases, and emotions, drivers can avoid
+                    overconfidence and risky behavior.
+                  </p>
+
+                  <p>
+                    It accounts for personal and societal influences. Peer
+                    pressure, fatigue, distractions, and emotional states all
+                    impact driving, and the GDE Matrix helps drivers manage
+                    these factors.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
-      {/* ////////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            How might using the GROW model help a learner feel more involved and
-            motivated during a lesson? Can you think of a goal-setting question
-            you might ask to help a future pupil identify what they want to
-            achieve?"
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-        {/* /////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            what ways do you think shifting from giving instructions to using a
-            coaching approach—like the GROW model—might change how a learner
-            experiences a driving lesson?
-          </label>
-          <textarea
-            ref={textareaRef4}
-            value={text4}
-            onChange={handleChange4}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText4}>{isEditing4 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts4.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts4.map((savedText4, index) => (
-                  <li key={index}>
-                    <p>{savedText4}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText4(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText4(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
-      {/* ////////////////////////////////////////////////////////////////////// */}
-
-      {/* //////////////////////////////////////////////////// */}
-      <div className={styles.adiSixModule1stcontainer}>
-        <p className={styles.adiSix1stdescription}>
-          By using the GROW coaching model, driving instructors shift from
-          simply giving instructions to empowering learners. This approach
-          fosters:
-        </p>
-
-        <section className={styles.adiSix1stsection}>
-          <ul className={styles.adiSix1stlist}>
-            <li>
-              <span>🚗 Active Learning –</span> Encouraging students to
-              problem-solve and reflect on their own progress.
-            </li>
-            <li>
-              <span>🚦 Self-Awareness –</span> Helping learners understand their
-              strengths, weaknesses, and mindset.
-            </li>
-            <li>
-              <span>🔑 Confidence & Responsibility </span> Giving drivers
-              control over their development, leading to safer and more
-              independent driving.
-            </li>
-          </ul>
         </section>
-      </div>
-      {/* //////////////////////////////////////////////////////// */}
-      <div className={styles.AdiModuleOneTextBox}>
-        <label>
-          You notice the learner you are teaching tends to speed on lessons. You
-          have mentioned this before, but the pupil continues to do it. What
-          type of questions could you ask using the grow model?
-        </label>
-        <textarea
-          ref={textareaRef5}
-          value={text5}
-          onChange={handleChange5}
-          rows="5"
-          cols="30"
-          placeholder="Write your thoughts here..."
-        />
-        <br />
-        <button onClick={saveText5}>{isEditing5 ? "Update" : "Save"}</button>
 
-        <div className={styles.thoughtsListArea}>
-          {savedTexts5.length === 0 ? (
-            <p>No saved thoughts.</p>
-          ) : (
-            <ul>
-              {savedTexts5.map((savedText5, index) => (
-                <li key={index}>
-                  <p>{savedText5}</p>
-                  <span>
-                    <FaEdit
-                      onClick={() => editText5(index)}
-                      id={styles.editListIcon}
-                    />
+        {/* ================= GDE LEVELS ================= */}
 
-                    <IoTrashBin
-                      onClick={() => deleteText5(index)}
-                      id={styles.binListIcon}
-                    />
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          {/* Section Heading */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-bold text-gray-900">
+              GDE Matrix in Action
+            </h1>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+              See how the GDE Matrix translates theory into real-world driving
+              lessons.
+            </p>
+          </div>
+
+          {/* Scenario Intro Card */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-8 mb-10 shadow-sm">
+            <div className="flex items-center gap-3 mb-2">
+              <MapPin className="w-6 h-6 text-indigo-600" />
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Lesson Topic:{" "}
+                <span className="text-indigo-600">
+                  Navigating Urban Traffic
+                </span>
+              </h2>
+            </div>
+
+            <p
+              className="text-gray-700 leading-relaxed"
+              style={{ marginBottom: "0px" }}
+            >
+              <strong>Scenario:</strong> The student will drive through a busy
+              city area, dealing with intersections, pedestrians, cyclists, and
+              traffic lights.
+            </p>
+          </div>
+
+          {/* Levels Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {levels.map((item, index) => (
+              <div
+                key={index}
+                className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                {/* Level Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <Layers className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition" />
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.level}
+                  </h3>
+                </div>
+
+                {/* Focus */}
+                <p className="text-sm text-gray-600 mb-3">
+                  <span className="font-semibold text-gray-800">Focus:</span>{" "}
+                  {item.focus}
+                </p>
+
+                {/* Teaching Points */}
+                <ul style={{ paddingLeft: "0px" }} className="space-y-3">
+                  {item.teaching.map((point, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-gray-700"
+                    >
+                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div style={style.adiDownLoadcontainer}>
-        <h2 style={style.adiDownLoadheading}>
-          Get Your Lesson Planning Documents
-        </h2>
-        <p style={style.adiDownLoadsubtext}>
-          Click below to download all documents as a ZIP file.
-        </p>
-        <a
-          href="/Lessonsubjectsskillsets.zip"
-          download
-          style={style.adiDownLoadbutton}>
-          <FaDownload style={style.adiDownLoadicon} />
-          Download ZIP
-        </a>
-      </div>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                Now try and write an example for a lesson on Pedestrian
+                crossings
+              </label>
+              <textarea
+                ref={textareaRef}
+                value={text}
+                onChange={handleChange}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing ? "Update" : "Save"}
+              </button>
 
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/lesson-planning">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
+              <div className="mt-6">
+                {savedTexts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* ///////////////////////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            GDE MATRIX and GROW Model the lesson before setting off
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                What were your results and how will you use this during your own
+                learning ?
+              </label>
+              <textarea
+                ref={textareaRef2}
+                value={text2}
+                onChange={handleChange2}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText2}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing2 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts2.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts2.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText2(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText2(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ================= GROW MODEL ================= */}
+        <section className="py-24 bg-gradient-to-br from-red-50 to-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-extrabold mb-12 fade-up">
+              How the <span className="text-red-600">GROW Coaching Model</span>{" "}
+              Enhances Driver Instruction
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-10">
+              {steps.map((step, i) => (
+                <div
+                  key={i}
+                  className="fade-up bg-white p-8 rounded-3xl shadow-2xl border-l-8 border-red-500"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <Target className="w-7 h-7 text-red-600" />
+                    <h3 className="text-2xl font-bold">{step.title}</h3>
+                  </div>
+                  <p className="text-slate-700 mb-4">{step.content}</p>
+                  <ul
+                    style={{ paddingLeft: "0px" }}
+                    className="list-disc list-inside text-slate-600 space-y-2"
+                  >
+                    {step.questions.map((p, idx) => (
+                      <li key={idx}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                How might using the GROW model help a learner feel more involved
+                and motivated during a lesson? Can you think of a goal-setting
+                question you might ask to help a future pupil identify what they
+                want to achieve?
+              </label>
+              <textarea
+                ref={textareaRef3}
+                value={text3}
+                onChange={handleChange3}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText3}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing3 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts3.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts3.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText3(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText3(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                what ways do you think shifting from giving instructions to
+                using a coaching approach—like the GROW model—might change how a
+                learner experiences a driving lesson?
+              </label>
+              <textarea
+                ref={textareaRef4}
+                value={text4}
+                onChange={handleChange4}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText4}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing4 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts4.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts4.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText4(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText4(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-6xl mx-auto px-6 py-20">
+          {/* Intro Text */}
+          <p className="text-center text-gray-700 max-w-3xl mx-auto mb-16 text-lg">
+            By using the GROW coaching model, driving instructors shift from
+            simply giving instructions to empowering learners. This approach
+            fosters:
           </p>
-          <Link to="/takequizCatName/gde-matrix">
-            {" "}
-            <button>Start Quiz</button>
+
+          {/* Benefits */}
+          <div className="grid md:grid-cols-3 gap-10">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-100 mb-6">
+                <Brain className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Active Learning
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Encouraging students to problem-solve and reflect on their own
+                progress.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-yellow-100 mb-6">
+                <TrafficCone className="w-7 h-7 text-yellow-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Self-Awareness
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Helping learners understand their strengths, weaknesses, and
+                mindset.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition">
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-green-100 mb-6">
+                <ShieldCheck className="w-7 h-7 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Confidence & Responsibility
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Giving drivers control over their development, leading to safer
+                and more independent driving.
+              </p>
+            </div>
+          </div>
+        </div>
+        <section className="py-20 bg-slate-50 fade-up">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <div className="bg-white p-8 rounded-3xl shadow-xl">
+              <label className="block mb-2 font-semibold">
+                You notice the learner you are teaching tends to speed on
+                lessons. You have mentioned this before, but the pupil continues
+                to do it. What type of questions could you ask using the grow
+                model?
+              </label>
+              <textarea
+                ref={textareaRef5}
+                value={text5}
+                onChange={handleChange5}
+                rows={5}
+                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                placeholder="Write your thoughts here..."
+              />
+              <button
+                onClick={saveText5}
+                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+              >
+                {isEditing5 ? "Update" : "Save"}
+              </button>
+
+              <div className="mt-6">
+                {savedTexts5.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                    <p
+                      className="text-gray-500 text-sm"
+                      style={{ marginBottom: "0px" }}
+                    >
+                      No saved thoughts yet ✍️
+                    </p>
+                  </div>
+                ) : (
+                  <ul
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    style={{ paddingLeft: "0px" }}
+                  >
+                    {savedTexts5.map((savedText, index) => (
+                      <li
+                        key={index}
+                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                      >
+                        <p
+                          className="text-gray-700 text-sm pr-10"
+                          style={{ marginBottom: "0px" }}
+                        >
+                          {savedText}
+                        </p>
+                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                          <FilePenLine
+                            onClick={() => editText5(index)}
+                            className="cursor-pointer text-blue-500"
+                          />
+                          <Trash2
+                            onClick={() => deleteText5(index)}
+                            className="cursor-pointer text-red-500"
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ================= DOWNLOAD ================= */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-blue-600 py-20 px-6 rounded-3xl mx-6 mb-12 text-center text-white">
+          {/* Decorative blur */}
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+
+          <h2 className="text-3xl font-bold mb-4">
+            Get Your Lesson Planning Documents
+          </h2>
+
+          <p className="text-white/90 max-w-xl mx-auto mb-10">
+            Click below to download all documents as a ZIP file.
+          </p>
+
+          <a
+            style={{ textDecoration: "none" }}
+            href="/Lessonsubjectsskillsets.zip"
+            download
+            className="inline-flex items-center gap-3 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform"
+          >
+            <Download className="w-5 h-5" />
+            Download ZIP
+          </a>
+        </div>
+
+        {/* ================= NAVIGATION ================= */}
+        <section className="py-12 bg-white text-center fade-up">
+          <Link to="/lesson-planning">
+            <button className="inline-flex items-center gap-3 px-8 py-3 bg-black text-white rounded-full hover:bg-slate-800 transition">
+              Next Page <ArrowRight />
+            </button>
           </Link>
         </section>
-      </div>
-    </div>
+
+        {/* ================= QUIZ ================= */}
+        <section className="py-24 bg-slate-50 fade-up">
+          <div className="max-w-xl mx-auto bg-white p-10 rounded-3xl shadow-2xl text-center">
+            <Brain className="w-12 h-12 text-red-600 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold mb-2">Start Quiz</h2>
+            <p className="text-slate-600 mb-6">
+              Test your understanding of the GDE Matrix and GROW model.
+            </p>
+            <Link to="/takequizCatName/gde-matrix">
+              <button className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full transition">
+                Start Quiz
+              </button>
+            </Link>
+          </div>
+        </section>
+      </section>
+    </main>
   );
 }
-const style = {
-  adiDownLoadcontainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "50vh",
-    background: "linear-gradient(135deg,rgb(125, 0, 67),rgb(3, 27, 94))",
-    padding: "40px",
-    borderRadius: "12px",
-    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
-    margin: "50px auto",
-    maxWidth: "600px",
-  },
-  adiDownLoadheading: {
-    fontSize: "2rem",
-    marginBottom: "10px",
-    color: "white",
-  },
-  adiDownLoadsubtext: {
-    fontSize: "1rem",
-    marginBottom: "30px",
-    color: "white",
-  },
-  adiDownLoadbutton: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    padding: "12px 24px",
-    backgroundColor: "#007BFF",
-    color: "#fff",
-    fontSize: "1rem",
-    fontWeight: "bold",
-    borderRadius: "8px",
-    textDecoration: "none",
-    transition: "background-color 0.3s ease",
-  },
-  adiDownLoadicon: {
-    fontSize: "1.2rem",
-  },
-};
