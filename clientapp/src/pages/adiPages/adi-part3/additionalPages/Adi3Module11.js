@@ -1,105 +1,57 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import styles from "./Adi3Module.module.css";
+
 import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Eye,
+  Smile,
+  Hand,
+  AlertTriangle,
+  Laugh,
+  PlayCircle,
+  ArrowRight,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import backgroundImage from "../../../../assets/images/bodylanguage.jpg";
 
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+gsap.registerPlugin(ScrollTrigger);
 
-export default function Adi3Module11() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Body Language"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
+export default function AdiModuleBodyLanguage() {
+  const heroRef = useRef(null);
 
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
+    gsap.fromTo(
+      heroRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
 
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
-
   //   ///////////////////////////////////////////////////////////////////
   const { userDetails } = useSelector((state) => state.auth);
   const userId = userDetails?._id;
@@ -128,7 +80,7 @@ export default function Adi3Module11() {
       }
       localStorage.setItem(
         `notepadTexts1Part3page11_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -150,13 +102,13 @@ export default function Adi3Module11() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3page11_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
   useEffect(() => {
     const savedData = localStorage.getItem(
-      `notepadTexts1Part3page11_${userId}`
+      `notepadTexts1Part3page11_${userId}`,
     );
     if (savedData) {
       setSavedTexts(JSON.parse(savedData));
@@ -166,195 +118,288 @@ export default function Adi3Module11() {
   //   ///////////////////////////////////////////////////
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div ref={heroRef} className="container mx-auto px-6 max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+              Body Language
+              <br />
+              <span className="text-teal-400">Your Silent Superpower</span>
+            </h1>
+
+            <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+              <strong>Well done!</strong>
+              <br />
+              What you don’t say often speaks the loudest.
+            </p>
+
+            <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+              Your hard work has paid off — now you're ready for{" "}
+              <strong>Part 3</strong>.
+            </p>
+
+            <Link to="/Contact-Us">
+              <button className="mt-8 px-8 py-3 bg-teal-500 hover:bg-orange-600 transition rounded-full text-white font-semibold shadow-xl">
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* ////////////////////////////////////////////////////// */}
-      <div className={styles.adi11Modulecontainer}>
-        <h1 className={styles.adi11Moduleheading}>
-          🎭 Body Language: <span>Your Silent Superpower</span>
-        </h1>
-
-        <div className={styles.adi11Modulecontent}>
-          <p className={styles.adi11Moduleparagraph}>
+      {/* ================= INTRO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <p className="text-lg text-slate-700 leading-relaxed">
             Could you ever tell from someone's body language they weren’t happy
             with something you said, or just weren’t listening to you?
           </p>
 
-          <p className={styles.adi11Moduleparagraph}>
+          <p className="mt-6 text-slate-700">
             Imagine this: your learner stalls at a busy junction. Their heart’s
             racing, they’re gripping the wheel, and they glance at you, hoping
             for some kind of sign that the world isn’t ending.
           </p>
-          <p>
+          <p className="mt-6 text-slate-700">
             Now, you don’t even need to say a word—because your face, your
             posture, your energy? That is the message.
           </p>
 
-          <div className={styles.adi11ModulehighlightBox}>
-            <p>
-              Your face, your posture, your energy?{" "}
-              <strong>That is the message.</strong>
+          <div className="mt-8 bg-teal-50 border-l-4 border-teal-500 p-6 rounded-xl">
+            <p className="text-lg font-semibold text-teal-700">
+              Your face, posture, and energy{" "}
+              <span className="font-bold">are</span> the message.
             </p>
           </div>
-
-          <p className={styles.adi11Moduleparagraph}>
+          <p className="mt-6 text-slate-700">
             When you’re{" "}
-            <span className={styles.adi11Modulebold}>
-              calm, confident, and open
-            </span>
-            , your learner feels safe. When you tense up, flinch, or raise your
+            <strong className="text-teal-600">
+              calm, confident, and open,
+            </strong>{" "}
+            your learner feels safe. When you tense up, flinch, or raise your
             eyebrows at the wrong time... oof. You’ve just spoken volumes, even
             if your mouth said nothing.
           </p>
+        </div>
+      </section>
 
-          <div className={styles.adi11ModuletipBox}>
-            <h2>✨ So how do you harness that silent superpower?</h2>
-            <ul>
-              <h3>🧍‍♂️ Posture = Presence</h3>
-              <li>
-                ✨ Start by becoming aware of what your body’s saying. Sit tall
-                but relaxed, like you’re in control but not on edge. When they
-                nail a manoeuvre, give a genuine smile or even a celebratory
-                “nice one!” with a little fist bump. That little moment will
-                stick in their memory way more than a tick in a box.
-              </li>
-                <h3>👁️ Active Listening Through Body Language</h3>
-              <li>
-                ✨ When you’re asking reflective questions—especially the deeper
+      {/* ================= KEY PRINCIPLES ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 fade-up">
+            So How do you{" "}
+            <span className="text-indigo-600">
+              {" "}
+              harness that silent superpower?
+            </span>
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card */}
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-teal-500">
+              <Smile className="w-10 h-10 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Posture = Presence</h3>
+              <p className="text-slate-700">
+                Start by becoming aware of what your body’s saying. Sit tall but
+                relaxed, like you’re in control but not on edge. When they nail
+                a manoeuvre, give a genuine smile or even a celebratory “nice
+                one!” with a little fist bump. That little moment will stick in
+                their memory way more than a tick in a box.
+              </p>
+            </div>
+
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-indigo-500">
+              <Eye className="w-10 h-10 text-indigo-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">
+                Active Listening Through Body Language
+              </h3>
+              <p className="text-slate-700">
+                When you’re asking reflective questions—especially the deeper
                 ones like “What were you thinking as you approached that?” Make
                 eye contact if you’re stationary, and let your body show that
                 you’re listening, not judging. A nod here, a smile there, a
                 simple "hmm" of encouragement—these micro-movements tell your
                 learner: I'm with you.
-              </li>
-                <h3>👐 Visual Learning = Gestures Matter</h3>
-              <li>
-                ✨ Got a visual learner? Break out the hand gestures. Use your
+              </p>
+            </div>
+
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-amber-400">
+              <Hand className="w-10 h-10 text-amber-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">
+                {" "}
+                Visual Learning = Gestures Matter
+              </h3>
+              <p className="text-slate-700">
+                Got a visual learner? Break out the hand gestures. Use your
                 hands to show a lane change or the movement of a car at a
                 roundabout. These little “air diagrams” help them see the
                 situation, not just hear about it.
-              </li>
-              <h3>😬 Mistakes? Stay Chill</h3>
-              <li>
-                ✨ Now let’s talk nerves. You know that moment when your learner
+              </p>
+            </div>
+
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-teal-500">
+              <AlertTriangle className="w-10 h-10 text-teal-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3"> Mistakes? Stay Chill</h3>
+              <p className="text-slate-700">
+                Now let’s talk nerves. You know that moment when your learner
                 misses a gear and panic creeps in? They’ll be watching you to
                 see how bad it was. If your shoulders rise and you tense up like
                 a startled meerkat, they’ll feel like they just failed. But if
                 you keep your cool, smile, and calmly help them recover, they’ll
                 learn that mistakes aren’t disasters—they’re part of the
                 process.
-              </li>
-                <h3>😄 Lighten the Mood</h3>
-              <li>
-                ✨ And hey, sometimes your body language can lighten the mood. A
+              </p>
+            </div>
+
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-indigo-500">
+              <Laugh className="w-10 h-10 text-indigo-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Lighten the Mood</h3>
+              <p className="text-slate-700">
+                And hey, sometimes your body language can lighten the mood. A
                 playful raise of the eyebrow when they forget to cancel the
                 indicator for the fifth time or a mock gasp when they finally
                 nail that parallel park can create shared laughs—and that builds
                 trust.
-              </li>
-              <h3>⚠️ What NOT to Do</h3>
-              <li>
-                ✨ But a little warning: learners pick up on everything. Crossed
+              </p>
+            </div>
+
+            <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl border-t-8 border-red-400">
+              <AlertTriangle className="w-10 h-10 text-red-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">What Not To Do</h3>
+              <p className="text-slate-700">
+                But a little warning: learners pick up on everything. Crossed
                 arms, tapping your pen, checking your watch—it can come off as
                 disapproval or impatience, even if that’s not your intent. So
                 check in with yourself from time to time. Are you showing up
                 with the same presence you’d want from a mentor?
-              </li>
-            </ul>
-          </div>
-
-          <p className={styles.adi11Moduleparagraph}>
-            But remember, learners notice everything. Crossed arms? Tapping
-            pens? Checking watches?{" "}
-            <span className={styles.adi11Modulewarning}>
-              It speaks louder than you think.
-            </span>
-          </p>
-
-          <p className={styles.adi11Moduleparagraph}>
-            So check yourself often: Are you showing up with the presence of the
-            mentor you would want?
-          </p>
-        </div>
-      </div>
-
-      {/* /////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Have a think about types of positive and negative body language and
-            write them below:
-          </label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+              </p>
+            </div>
           </div>
         </div>
       </section>
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/giving-instruction-and-feedback">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-      {/* //////////////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            Body Language before setting off
-          </p>
-          <Link to="/takequizCatName/body-language">
-            {" "}
-            <button>Start Quiz</button>
+
+      {/* ================= VIDEO ================= */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up">
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="relative aspect-video">
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/-bsLPF0Q35Y"
+                title="Body Language Training"
+                allowFullScreen
+              />
+            </div>
+            <div className="p-6 flex items-center gap-3">
+              <PlayCircle className="text-teal-500" />
+              <p className="font-semibold">Watch & Learn</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Have a think about types of positive and negative body language
+              and write them below:
+            </label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
+
+            <div className="mt-6">
+              {savedTexts.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ================= NEXT + QUIZ ================= */}
+      <section className="py-20 bg-gradient-to-br from-indigo-600 to-teal-600 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          Ready to Continue?
+        </h2>
+        <p className="text-slate-200 mb-8">
+          Move on or test your understanding before setting off.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <Link
+            to="/giving-instruction-and-feedback"
+            style={{ textDecoration: "0px" }}
+          >
+            <button className="px-10 py-4 rounded-full bg-white text-indigo-700 font-semibold shadow-xl hover:scale-105 transition">
+              Next Page
+            </button>
           </Link>
-        </section>
-      </div>
-    </div>
+
+          <Link
+            to="/takequizCatName/body-language"
+            style={{ textDecoration: "0px" }}
+          >
+            <button className="px-10 py-4 rounded-full bg-amber-400 text-black font-semibold shadow-xl hover:scale-105 transition flex items-center gap-2">
+              Start Quiz <ArrowRight />
+            </button>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

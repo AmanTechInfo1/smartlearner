@@ -1,230 +1,210 @@
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import styles from "./Adi3Module.module.css";
-import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  CalendarCheck,
+  CreditCard,
+  Lightbulb,
+  CheckCircle2,
+  PhoneCall,
+  ArrowRight,
+} from "lucide-react";
 import backgroundImage from "../../../../assets/images/bookpart3.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Adi3Module18() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Book Your Part 3 Test"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
+  const heroRef = useRef(null);
 
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
+    gsap.fromTo(
+      heroRef.current.children,
+      { opacity: 0, y: 80 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      }
+    );
 
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
   }, []);
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroRef} className="max-w-3xl space-y-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+                Book Your <span className="text-emerald-400">ADI</span>
+                <br />
+                <span className="text-cyan-300">Part 3 Test</span>
+              </h1>
+              <p className="text-slate-200 text-lg">
+                Your final step toward becoming a fully qualified Approved
+                Driving Instructor.
+              </p>
+              <div className="flex gap-4 pt-4">
+                <Link to="/Contact-Us">
+                  <button className="px-8 py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-xl transition">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      {/* ////////////////////////////////////////// */}
 
-      <div className={styles.adi3module18container}>
-        <h1 className={styles.adi3module18mainHeading}>
-          💻 How to Book Your Part 3 Test
-        </h1>
-
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18adi3module18subHeading}>
-            Step 1: Head to the Booking Website
+      {/* ================= CONTENT ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-12 fade-up">
+            💻 How to <span className="text-emerald-500">Book Your Test</span>
           </h2>
-          <p>
-            Visit the official{" "}
-            <a
-              href="https://www.gov.uk/adi-part-3-test"
-              target="_blank"
-              rel="noopener noreferrer">
-              GOV.UK ADI Part 3 booking page
-            </a>
-          </p>
-        </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>Step 2: Log In</h2>
-          <p>You’ll need:</p>
-          <ul className={styles.adi3module18list}>
-            <li>Your ADI personal reference number</li>
-            <li>Your driving licence number</li>
-          </ul>
-        </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* STEP 1 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-emerald-500">
+              <CalendarCheck className="w-10 h-10 text-emerald-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Step 1: Booking Website</h3>
+              <p className="text-slate-700">
+                Visit the official GOV.UK ADI Part 3 booking page to begin your
+                application.
+              </p>
+              <a
+                href="https://www.gov.uk/adi-part-3-test"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-3 text-emerald-600 font-semibold"
+              >
+                Open GOV.UK ↗
+              </a>
+            </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>
-            Step 3: Choose Your Test Centre
-          </h2>
-          <p>Pick a centre authorised for Part 3 exams.</p>
-        </div>
+            {/* STEP 2 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-cyan-500">
+              <CheckCircle2 className="w-10 h-10 text-cyan-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Step 2: Log In</h3>
+              <ul style={{padding:"0px"}} className="list-disc list-inside text-slate-700">
+                <li>ADI personal reference number</li>
+                <li>Driving licence number</li>
+              </ul>
+            </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>
-            Step 4: Select a Date and Time
-          </h2>
-          <p>
-            Book early and be flexible. Use the HOLD service if no dates are
-            available.
-          </p>
-        </div>
+            {/* STEP 3 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-indigo-500">
+              <CalendarCheck className="w-10 h-10 text-indigo-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Step 3: Test Centre</h3>
+              <p className="text-slate-700">
+                Choose an authorised test centre for your ADI Part 3 exam.
+              </p>
+            </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>
-            Step 5: Prepare Your Candidate
-          </h2>
-          <p>
-            Bring a real pupil (learner or full licence holder) with valid
-            insurance. No charging unless on a trainee licence.
-          </p>
-        </div>
+            {/* STEP 4 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-orange-500">
+              <CalendarCheck className="w-10 h-10 text-orange-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Step 4: Date & Time</h3>
+              <p className="text-slate-700">
+                Book early and stay flexible. Use the HOLD service if needed.
+              </p>
+            </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>💳 Cost of the Test</h2>
-          <p>
-            The Part 3 exam costs{" "}
-            <span className={styles.adi3module18price}>£111</span> (as of 2024).
-          </p>
-        </div>
+            {/* STEP 5 */}
+            <div className="fade-up bg-white p-8 rounded-3xl shadow-xl border-t-8 border-pink-500">
+              <CheckCircle2 className="w-10 h-10 text-pink-500 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Step 5: Candidate</h3>
+              <p className="text-slate-700">
+                Bring a real pupil with valid insurance. No charging unless on a
+                trainee licence.
+              </p>
+            </div>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>
-            🧠 Quick Tips for Success
-          </h2>
-          <ul className={styles.adi3module18list}>
-            <li>Practice with real learners and mock scenarios.</li>
-            <li>Keep a lesson diary (especially if on a pink badge).</li>
-            <li>Request backseat feedback sessions with your trainer.</li>
-            <li>Consider a mock Part 3 test.</li>
-          </ul>
+            {/* COST */}
+            <div className="fade-up bg-gradient-to-br from-emerald-500 to-cyan-500 text-white p-8 rounded-3xl shadow-2xl">
+              <CreditCard className="w-10 h-10 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Test Cost</h3>
+              <p className="text-lg font-semibold">£111 (as of 2024)</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.adi3module18section}>
-          <h2 className={styles.adi3module18subHeading}>
-            📅 Rescheduling or Cancelling
-          </h2>
-          <p>
-            Reschedule or cancel up to 3 working days before your test via the
-            GOV.UK portal.
-          </p>
+      {/* ================= TIPS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12">
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <Lightbulb className="text-emerald-500" />
+              <h3 className="text-2xl font-bold">Quick Tips for Success</h3>
+            </div>
+            <ul style={{padding:"0px"}} className="space-y-2 text-slate-700">
+              <li>Practice with real learners</li>
+              <li>Keep a lesson diary (pink badge)</li>
+              <li>Request backseat feedback</li>
+              <li>Attempt a mock Part 3 test</li>
+            </ul>
+          </div>
+
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <div className="flex items-center gap-3 mb-4">
+              <CalendarCheck className="text-cyan-500" />
+              <h3 className="text-2xl font-bold">Reschedule or Cancel</h3>
+            </div>
+            <p className="text-slate-700">
+              You can reschedule or cancel up to 3 working days before your test
+              through the GOV.UK portal.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.adi3module18finalMessage}>
-          <p>
-            The Part 3 exam is your final step to becoming a qualified
-            instructor! 🌟 With preparation, trainer support, and confidence —
-            you will succeed!
-          </p>
-          <p>
-            Need help?{" "}
-            <a href="tel:+4402475092784" style={{ textDecoration: "none" }}>
-              {" "}
-              <span className={styles.adi3module18highlight}>
-                Reach out to us anytime!
-              </span>{" "}
-            </a>
-            🚀
-          </p>
+      {/* ================= FINAL CTA ================= */}
+      <section className="py-20 bg-slate-900 text-white text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          You’re Almost There 🚀
+        </h2>
+        <p className="text-slate-300 max-w-2xl mx-auto mb-8">
+          The Part 3 exam is your final step to becoming a qualified instructor.
+          With preparation and confidence, success is within reach.
+        </p>
+        <a href="tel:+4402475092784" className="inline-flex items-center gap-2 text-emerald-400 font-semibold mb-6">
+          <PhoneCall /> Reach out to us anytime
+        </a>
+        <div>
+          <Link to="/adi-videos">
+            <button className="px-10 py-4 rounded-full bg-emerald-500 hover:bg-emerald-600 font-semibold shadow-xl transition inline-flex items-center gap-2">
+              Next Page <ArrowRight />
+            </button>
+          </Link>
         </div>
-      </div>
-
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/adi-videos">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

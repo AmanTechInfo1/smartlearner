@@ -1,105 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import styles from "./Adi3Module.module.css";
-import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  BadgeCheck,
+  AlertTriangle,
+  Scale,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import backgroundImage from "../../../../assets/images/traineebadges.jpg";
 
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Adi3Module16() {
-  const textRef = useRef(null);
+  const heroRef = useRef(null);
 
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Trainee Badge"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
-  // /////////////////////////////////////////////////
   const data = [
     {
       aspect: "Experience",
@@ -127,28 +43,78 @@ export default function Adi3Module16() {
       part3: "Must provide your own pupil for the test",
     },
   ];
-  ///////////////////////////////////////////////////////
+
+  useEffect(() => {
+    gsap.fromTo(
+      heroRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
+
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
+
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundPosition: "top",
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full overflow-hidden font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-top"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-slate-900/70" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroRef} className="max-w-3xl space-y-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+                Trainee <span className="text-emerald-400">Badge</span>
+              </h1>
+              <p className="text-slate-200 text-lg">
+                Understand your options before stepping into Part 3 — with
+                clarity, confidence, and strategy.
+              </p>
+              <div className="flex gap-4 pt-4">
+                <Link to="/Contact-Us">
+                  <button className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold shadow-xl transition">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      {/* ///////////////////////////////////////////////// */}
-      <div className={styles.Adi3Module161stcontainer}>
-        <section className={styles.Adi3Module161stheaderSection}>
-          <h1 className={styles.Adi3Module161stmainHeading}>
-            Trainee Badge <span>vs</span> Going Straight to the Part 3 Test
-          </h1>
-          <p className={styles.Adi3Module161stdescription}>
+
+      {/* ================= INTRO ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
+            Trainee Badge <span className="text-emerald-500">vs</span> Going
+            Straight to Part 3
+          </h2>
+          <p className="text-slate-700 text-lg leading-relaxed max-w-4xl">
             Once you've completed at least 40 hours of Part 3 training, your
             sponsoring driving school can sign off your progress if they're
             confident that you've understood the required curriculum. At this
@@ -156,145 +122,167 @@ export default function Adi3Module16() {
             trainee licence (commonly known as the pink badge) or to go straight
             to the Part 3 test.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <section className={styles.Adi3Module161stdecisionSection}>
-          <div className={styles.Adi3Module161stcard}>
-            <h2 className={styles.Adi3Module161stcardTitle}>
+      {/* ================= DECISION CARDS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10">
+          {/* Trainee Badge */}
+          <div className="fade-up bg-slate-50 p-10 rounded-3xl shadow-2xl border-t-8 border-emerald-500">
+            <BadgeCheck className="w-10 h-10 text-emerald-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-4">
               Trainee Licence (PDI Badge)
-            </h2>
-            <p className={styles.Adi3Module161stcardContent}>
+            </h3>
+            <p className="text-slate-700 mb-4">
               The trainee badge is designed to give you real-world experience as
               you continue to learn. It costs £140 and is valid for six months.
               This route allows you to teach actual learners and earn money
               while still under supervision.
             </p>
-            <ul className={styles.Adi3Module161stlist}>
-              <li>A supply of learners</li>
-              <li>Ongoing support</li>
-              <li>Structured guidance</li>
+
+            <ul
+              style={{ padding: "0px" }}
+              className="space-y-2 text-slate-700 mb-4"
+            >
+              <li>• Supply of learners</li>
+              <li>• Ongoing support</li>
+              <li>• Structured guidance</li>
             </ul>
-            <p className={styles.Adi3Module161stwarning}>
+
+            <p className="text-amber-700 font-semibold mb-3">
               ⚠️ However, it’s crucial to remember that this badge is a training
               tool, not a qualification. Too often, trainees become overly
               focused on pupil pass rates and treat the badge as a full-time
               job, losing sight of their own development.
             </p>
-            <p className={styles.Adi3Module161stimportant}>
-              <strong>
-                **Passing Part 3 requires more than helping learners pass—**you
-                need to demonstrate your ability to deliver structured, safe,
-                and reflective instruction.
-              </strong>
+            <p className="font-bold text-slate-900">
+              Passing Part 3 requires more than helping learners pass—**you need
+              to demonstrate your ability to deliver structured, safe, and
+              reflective instruction.
             </p>
           </div>
 
-          <div className={styles.Adi3Module161stcard}>
-            <h2 className={styles.Adi3Module161stcardTitle}>
-              Legal & Practical Notes
-            </h2>
-            <ul className={styles.Adi3Module161stlist}>
+          {/* Legal Notes */}
+          <div className="fade-up bg-slate-50 p-10 rounded-3xl shadow-2xl border-t-8 border-cyan-500">
+            <ShieldCheck className="w-10 h-10 text-cyan-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-4">Legal & Practical Notes</h3>
+
+            <ul
+              style={{ padding: "0px" }}
+              className="space-y-2 text-slate-700 mb-6"
+            >
               <li>
-                You can only apply for the badge through a registered driving
+                • You can only apply for the badge through a registered driving
                 school.
               </li>
               <li>
-                Only the school can advertise you as a driving instructor—you
+                • Only the school can advertise you as a driving instructor—you
                 cannot promote yourself independently.
               </li>
               <li>
-                You cannot legally accept payment for lessons unless you hold
+                • You cannot legally accept payment for lessons unless you hold
                 the trainee badge.
               </li>
             </ul>
 
-            <h3 className={styles.Adi3Module161stsubHeading}>
-              Extra Training Requirement
-            </h3>
-            <p className={styles.Adi3Module161stcardContent}>
+            <h4 className="font-bold mb-2">Extra Training Requirement</h4>
+            <p className="text-slate-700 mb-3">
               Once you’ve received your trainee licence, you are legally
               required by the DVSA to complete an additional 20 hours of
               supervised training within the first three months.
             </p>
-            <ul className={styles.Adi3Module161stlist}>
-              <li>Observed lessons</li>
-              <li>Feedback sessions</li>
-              <li>Mock test preparation</li>
+
+            <ul style={{ padding: "0px" }} className="space-y-1 text-slate-700">
+              <li>• Observed lessons</li>
+              <li>• Feedback sessions</li>
+              <li>• Mock tests preparation</li>
             </ul>
-            <p className={styles.Adi3Module161stwarning}>
+
+            <p className="text-red-600 font-semibold mt-4">
               🚫 Failure to complete this training can result in the DVSA
               refusing to book your Part 3 test or denying future trainee
               licence support.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className={styles.Adi3Module161stalternativeSection}>
-          <h2 className={styles.Adi3Module161stalternativeHeading}>
+      {/* ================= ALTERNATIVE ================= */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 fade-up max-w-4xl">
+          <Scale className="w-10 h-10 text-emerald-500 mb-4" />
+          <h2 className="text-3xl font-extrabold mb-4">
             Going Straight to the Part 3 Test
           </h2>
-          <p className={styles.Adi3Module161stalternativeContent}>
+          <p className="text-slate-700 mb-4">
             If you choose not to apply for the pink badge, your alternative is
             to go straight to the Part 3 test after your initial training. The
             exam itself is the same, but you won’t have had the benefit of real
             teaching experience.
           </p>
-          <ul className={styles.Adi3Module161stlist}>
-            <li>Provide your own pupil (a learner or full licence holder)</li>
-            <li>Ensure they have valid insurance and a suitable vehicle</li>
+
+          <ul
+            style={{ padding: "0px" }}
+            className="space-y-2 text-slate-700 mb-4"
+          >
+            <li>• Provide your own pupil (a learner or full licence holder)</li>
+            <li>• Ensure they have valid insurance and a suitable vehicle</li>
             <li>
-              Not accept any form of payment, as this is illegal without a
+              • Not accept any form of payment, as this is illegal without a
               licence
             </li>
           </ul>
-          <p className={styles.Adi3Module161stimportant}>
+
+          <p className="font-semibold text-emerald-600">
             🌟 This option may suit you if you have a supportive friend or
             family member to practice with. It also avoids the costs and
             obligations of the trainee badge route.
           </p>
-        </section>
-      </div>
-
-      {/* /////////////////////////////////////////////////////////// */}
-      <div className={styles.adi3partlastcontainer}>
-        <h2 className={styles.adi3partlastheading}>Summary: Pros and Cons</h2>
-        <div className={styles.adi3partlasttable}>
-          <div
-            className={`${styles.adi3partlastrow} ${styles.adi3partlastheader}`}>
-            <div className={styles.adi3partlastcell}>Aspect</div>
-            <div className={styles.adi3partlastcell}>
-              Trainee Licence (PDI Badge)
-            </div>
-            <div className={styles.adi3partlastcell}>Go Straight to Part 3</div>
-          </div>
-          {data.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.adi3partlastrow} ${styles.adi3partlastfadeIn}`}>
-              <div className={styles.adi3partlastcell} data-label="Aspect">
-                {item.aspect}
-              </div>
-              <div
-                className={styles.adi3partlastcell}
-                data-label="Trainee Licence (PDI Badge)">
-                {item.trainee}
-              </div>
-              <div
-                className={styles.adi3partlastcell}
-                data-label="Go Straight to Part 3">
-                {item.part3}
-              </div>
-            </div>
-          ))}
         </div>
-      </div>
+      </section>
 
-      <div className={styles.adiLastNextbtn}>
+      {/* ================= COMPARISON TABLE ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-extrabold mb-10 fade-up">
+            Summary: <span className="text-emerald-500">Pros & Cons</span>
+          </h2>
+
+          <div className="overflow-x-auto fade-up">
+            <table className="w-full border-collapse rounded-2xl overflow-hidden shadow-xl">
+              <thead className="bg-slate-900 text-white">
+                <tr>
+                  <th className="p-4 text-left">Aspect</th>
+                  <th className="p-4 text-left">Trainee Licence</th>
+                  <th className="p-4 text-left">Go Straight to Part 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, i) => (
+                  <tr key={i} className="odd:bg-slate-50">
+                    <td className="p-4 font-semibold">{item.aspect}</td>
+                    <td className="p-4">{item.trainee}</td>
+                    <td className="p-4">{item.part3}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= NEXT ================= */}
+      <section className="py-20 bg-slate-900 text-center">
+        <h2 className="text-3xl font-extrabold text-white mb-4">
+          Ready for the Next Step?
+        </h2>
         <Link to="/book-adi-part-3">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
+          <button className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-xl transition">
+            NEXT PAGE <ArrowRight />
+          </button>
         </Link>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

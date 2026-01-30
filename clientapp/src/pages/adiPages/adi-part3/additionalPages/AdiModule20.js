@@ -1,8 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
+
 import styles from "./Adi3Module.module.css";
 import backgroundImage from "../../../../assets/images/control-junction.jpg";
-import { motion } from "framer-motion";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ShieldAlert,
+  Navigation,
+  Table,
+} from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faultData = [
   {
@@ -11,7 +22,7 @@ const faultData = [
       "Reasons to record a fault under ‘awareness / planning’ include:",
     shortDec: (
       <>
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             1. not considering the actions of vulnerable road users such as
             pedestrians, cyclists, motorcyclists and horse riders
@@ -48,7 +59,7 @@ const faultData = [
       "The pupil should allow plenty of room when passing stationary vehicles and obstructions. They should be able to display the readiness to be prepared to slow down or stop, as a door may open, a child may run out or a vehicle may pull out without warning.",
     shortDec: (
       <>
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             Record a fault under ‘clearance’ if the pupil drives too close to
             stationary vehicles and obstructions.
@@ -81,7 +92,7 @@ const faultData = [
       <>
         The car must always be a safe distance between the pupil and other
         vehicles.
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. On wet or slippery roads it takes much longer to stop.</li>
           <li>
             2. When the car has stopped in traffic queues, sufficient space
@@ -93,7 +104,7 @@ const faultData = [
     shortDec: (
       <>
         Reasons to record a fault under ‘following distance’ include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. getting too close to moving vehicles</li>
           <li>2. pulling up too close to vehicle ahead</li>
         </ul>
@@ -122,7 +133,7 @@ const faultData = [
     description: (
       <>
         Reasons to record a fault under ‘use of speed’ include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             1. driving too fast for prevailing road traffic and weather
             conditions
@@ -155,11 +166,12 @@ const faultData = [
     description: (
       <>
         On the form you need to record any faults made related to:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking"
+            >
               {" "}
               appropriate speed
             </a>
@@ -167,7 +179,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking"
+            >
               {" "}
               undue hesitation
             </a>
@@ -182,7 +195,7 @@ const faultData = [
         speeds and there will be occasions where pupils need to reduce their
         speed to deal safely with situations such as narrow residential streets
         or busy high streets - this should not be considered as a fault.
-        <ul>
+        <ul style={{ padding: "0px" }}>
           Appropriate speed <br />
           Reasons to record a fault under ‘appropriate speed’ include:
           <li>
@@ -217,7 +230,7 @@ const faultData = [
     description: (
       <>
         Reasons to record a fault under ‘undue hesitation’ include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             1. stopping unnecessarily at junctions (except traffic light
             controlled junctions) and other hazards
@@ -250,11 +263,12 @@ const faultData = [
     description: (
       <>
         On the form you need to record any faults made related to:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-signs-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-signs-marking"
+            >
               {" "}
               traffic signs
             </a>
@@ -262,7 +276,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#road-markings-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#road-markings-marking"
+            >
               {" "}
               road markings
             </a>
@@ -270,7 +285,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-lights-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-lights-marking"
+            >
               {" "}
               traffic lights
             </a>
@@ -278,7 +294,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-controllers-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#traffic-controllers-marking"
+            >
               {" "}
               traffic controllers
             </a>
@@ -286,7 +303,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#other-road-users-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#other-road-users-marking"
+            >
               {" "}
               other road users
             </a>
@@ -316,7 +334,7 @@ const faultData = [
       <>
         Traffic signs <br />
         Reasons to record a fault under ‘traffic signs’ include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. going to the wrong side of a keep left sign</li>
           <li>2. not complying with a stop sign</li>
           <li>3. not complying with a no entry sign</li>
@@ -352,7 +370,7 @@ const faultData = [
     description: (
       <>
         Reasons to record a fault under ‘road markings’ include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. crossing the solid white centre lines unnecessarily</li>
           <li>2. not conforming to directional arrows</li>
           <li>
@@ -386,7 +404,7 @@ const faultData = [
     description: (
       <>
         Reasons to record a fault under ‘traffic lights include:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. waiting at a green filter light when safe to proceed</li>
           <li>
             2. waiting to turn right in a junction, when the red repeater light
@@ -428,7 +446,7 @@ const faultData = [
       <>
         Record a fault under ‘traffic controllers’ if the pupil fails to respond
         to:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. police</li>
           <li>2. traffic warden</li>
           <li>3. traffic warden</li>
@@ -492,7 +510,7 @@ const faultData = [
       <>
         Record a fault under ‘ETA’ if at any point your pupil’s driving becomes
         dangerous and you have to take action to correct it. This action may be:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. physical</li>
           <li>2. verbal</li>
 
@@ -502,7 +520,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#appropriate-speed-marking"
+            >
               {" "}
               control
             </a>
@@ -510,7 +529,8 @@ const faultData = [
           <li>
             <a
               className={styles.Adi3Module19link}
-              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking">
+              href="https://www.gov.uk/guidance/carry-out-mock-driving-tests-for-your-pupils#undue-hesitation-marking"
+            >
               {" "}
               planning
             </a>
@@ -522,7 +542,7 @@ const faultData = [
       <>
         The pupil should drive in an eco friendly manner to reduce pollution and
         save fuel. They should:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. plan well ahead and choose appropriate gears</li>
           <li>
             2. avoid heavy braking and over revving of the engine, particularly
@@ -549,7 +569,7 @@ const faultData = [
     description: (
       <>
         The pupil will pass the test if they make:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. no more than 15 driving faults (sometimes called ‘minors’)</li>
           <li>2. no serious or dangerous faults (sometimes called ‘majors’)</li>
         </ul>
@@ -558,7 +578,7 @@ const faultData = [
     shortDec: (
       <>
         When giving the feedback at the end of the test, you could either:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>1. give the feedback as though you’re the examiner</li>
           <li>2. ask their pupil how they think they did</li>
         </ul>
@@ -575,7 +595,7 @@ const faultData = [
         You could give the result and feedback while still roleplaying as the
         examiner. This will give the pupil a feel for how much feedback the
         examiner will give.
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             Offer the pupil a brief explanation of the faults that you have
             recorded on the marking sheet. Explain all serious and dangerous
@@ -593,7 +613,7 @@ const faultData = [
         <h2>End the mock test and give feedback</h2>
         When the mock test is finished, you can stop roleplaying as the examiner
         and:
-        <ul>
+        <ul style={{ padding: "0px" }}>
           <li>
             1. give more feedback about their driving during the mock test
           </li>
@@ -609,199 +629,193 @@ const faultData = [
       </>
     ),
   },
-  //////////////////////////////////////
-
-  //////////////////////////////////////
 ];
 
-const colors = ["#4db6ac", "#7986cb", "#ba68c8", "#ffb74d", "#81c784"];
-
 const Adi3Module20 = () => {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Awareness"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
+  const headerRef = useRef(null);
 
   useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
+    gsap.fromTo(
+      headerRef.current.children,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
 
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
   }, []);
 
-  const handleClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  const handleScroll = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
+    <main className="w-full bg-slate-50 overflow-hidden">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[70vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6" ref={headerRef}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+              <span className="text-emerald-400">Awareness</span>
+            </h1>
+            <p className="text-slate-200 max-w-2xl">
+              A complete breakdown of control-related faults assessed during
+              junction work in the ADI Part 3 test.
+            </p>
+            <div className="mt-6">
+              <Link to="/Contact-Us">
+                <button className="px-8 py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-xl transition">
+                  Contact Us
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
-      <div className={styles.Adi3Module19container}>
-        <div className={styles.Adi3Module19header}>
-          {faultData?.map((section, idx) => (
+
+      {/* ================= STICKY NAV ================= */}
+      <section className="sticky top-0 z-20 bg-white/90 backdrop-blur border-b">
+        <div className="container mx-auto px-6 py-3 flex gap-3 overflow-x-auto">
+          {faultData.map((item, idx) => (
             <button
               key={idx}
-              className={styles.Adi3Module19navButton}
-              onClick={() => handleClick(`section-${idx}`)}>
-              {section.title}
+              onClick={() => handleScroll(`section-${idx}`)}
+              className="whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold bg-slate-100 hover:bg-emerald-100 text-slate-700 transition"
+            >
+              {item.title}
             </button>
           ))}
         </div>
+      </section>
 
-        {faultData?.map((section, idx) => (
-          <motion.div
-            id={`section-${idx}`}
-            key={idx}
-            className={styles.Adi3Module19card}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: idx * 0.2 }}>
-            <h2 className={styles.Adi3Module19title}>{section.title}</h2>
-            <p className={styles.Adi3Module19description}>
-              {section.description}
-            </p>
-            <p className={styles.Adi3Module19description}>{section.shortDec}</p>
-            <div className={styles.tableWrapper3}>
-              <table className={styles.Adi3Module19table}>
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {section?.faults?.map((fault, i) => (
-                    <tr
-                      key={i}
-                      className={styles.Adi3Module19row}
-                      style={{
-                        backgroundColor: colors[i % colors.length],
-                      }}>
-                      <td className={styles.Adi3Module19faultType}>
-                        {fault.type}
-                      </td>
-                      <td className={styles.Adi3Module19faultExample}>
-                        {fault.example}
-                      </td>
-                    </tr>
-                  ))}
-                  {section?.links2?.map((link, i) => (
-                    <tr
-                      key={`link-${i}`}
-                      className={styles.Adi3Module19row}
-                      style={{ backgroundColor: "#689f38" }}>
-                      <td className={styles.Adi3Module19faultType}>
-                        {link.title}
-                      </td>
-                      <td className={styles.Adi3Module19faultExample}>
-                        <a
-                          href={link.link}
-                          className={styles.Adi3Module19link}
-                          target="_blank"
-                          rel="noopener noreferrer">
-                          {link.title}
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      {/* ================= CONTENT ================= */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 space-y-16">
+          {faultData.map((section, idx) => (
+            <div
+              key={idx}
+              id={`section-${idx}`}
+              className="fade-up bg-white rounded-3xl shadow-xl p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Navigation className="text-emerald-500" />
+                <h2 className="text-2xl font-bold">{section.title}</h2>
+              </div>
+
+              {section.description && (
+                <div className="prose max-w-none text-slate-700">
+                  {section.description}
+                </div>
+              )}
+
+              {section.shortDec && (
+                <div className="mt-4 p-4 rounded-2xl bg-slate-50 prose max-w-none">
+                  {section.shortDec}
+                </div>
+              )}
+
+              {/* ================= TABLE ================= */}
+              {section.faults && (
+                <div className="mt-8 overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-slate-900 text-white">
+                        <th className="p-3 text-left">Fault Type</th>
+                        <th className="p-3 text-left">Example</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.faults.map((fault, i) => (
+                        <tr
+                          key={i}
+                          className="border-b last:border-none hover:bg-slate-50 transition"
+                        >
+                          <td className="p-3 font-semibold flex items-center gap-2">
+                            {fault.type === "Driving fault" && (
+                              <CheckCircle2 className="text-emerald-500" />
+                            )}
+                            {fault.type === "Serious fault" && (
+                              <AlertTriangle className="text-amber-500" />
+                            )}
+                            {fault.type === "Dangerous fault" && (
+                              <ShieldAlert className="text-red-500" />
+                            )}
+                            {fault.type}
+                          </td>
+                          <td className="p-3 text-slate-700">
+                            {fault.example}
+                          </td>
+                        </tr>
+                      ))}{" "}
+                      {section.links2?.map((link, i) => (
+                        <tr key={i} className="bg-emerald-50">
+                          <td className="p-3 font-semibold">Reference</td>
+                          <td className="p-3">
+                            <a
+                              href={link.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-emerald-600 font-semibold hover:underline"
+                            >
+                              {link.title}
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= FOOTER CTA ================= */}
+      <section className="py-20 bg-slate-900 text-center text-white">
+        <h2 className="text-3xl font-extrabold mb-4">
+          Teach Control with Confidence 🚗
+        </h2>
+        <p className="text-slate-300 max-w-2xl mx-auto mb-8">
+          Understanding how control faults are assessed at junctions helps you
+          guide learners more effectively and pass ADI Part 3 first time.
+        </p>
+        <Link to="/adi-videos">
+          <button className="px-10 py-4 rounded-full bg-emerald-500 hover:bg-emerald-600 font-semibold shadow-xl transition">
+            Continue Learning
+          </button>
+        </Link>
+      </section>
+    </main>
   );
 };
 

@@ -301,10 +301,14 @@
 
 @keyframes glow2 {
   from {
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff0004;
+    text-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #ff0004;
   }
   to {
-    text-shadow: 0 0 20px #ff00d4, 0 0 30px #00ffcc;
+    text-shadow:
+      0 0 20px #ff00d4,
+      0 0 30px #00ffcc;
   }
 }
 
@@ -1229,7 +1233,9 @@
   padding: 3rem 1rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   animation: floatCard 3s ease-in-out infinite;
   border: 2px solid transparent;
 }
@@ -1358,7 +1364,9 @@
   background: linear-gradient(145deg, #010809, #292929);
   padding: 2rem;
   border-radius: 15px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .adiSix1stsection:hover {
@@ -1572,7 +1580,9 @@
   padding: 2rem;
   border: 1px solid #00ffe1;
   box-shadow: 0 0 20px rgba(0, 195, 255, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   animation: fadeInUpj 1.5s ease both;
 }
 
@@ -1718,7 +1728,9 @@
   padding: 2rem;
   margin-bottom: 3rem;
   box-shadow: 0px 4px 20px rgba(255, 0, 255, 0.2);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
 .adiSix3rdstepCard:hover {
@@ -1780,10 +1792,14 @@
 
 @keyframes glowPulsei {
   0% {
-    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+    text-shadow:
+      0 0 5px #00ffcc,
+      0 0 10px #00ffcc;
   }
   100% {
-    text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+    text-shadow:
+      0 0 15px #00ffcc,
+      0 0 30px #00ffcc;
   }
 }
 
@@ -2158,13 +2174,19 @@
 
 @keyframes pulsedd {
   0% {
-    text-shadow: 0 0 5px #00ffe1, 0 0 7px #00ffe1;
+    text-shadow:
+      0 0 5px #00ffe1,
+      0 0 7px #00ffe1;
   }
   50% {
-    text-shadow: 0 0 10px #00ffe1, 0 0 20px #ff0066;
+    text-shadow:
+      0 0 10px #00ffe1,
+      0 0 20px #ff0066;
   }
   100% {
-    text-shadow: 0 0 5px #00ffe1, 0 0 8px #00ffe1;
+    text-shadow:
+      0 0 5px #00ffe1,
+      0 0 8px #00ffe1;
   }
 }
 
@@ -2421,7 +2443,9 @@
   padding: 1.5rem;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   animation: fadeSlideup 1.2s ease forwards;
   max-width: 1640px;
   width: 100%;
@@ -2534,7 +2558,9 @@
   padding: 30px 20px;
 
   text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   animation: popInnn 1s ease forwards;
 }
 
@@ -3725,7 +3751,9 @@
   backface-visibility: hidden;
   background: #1a1a2e;
   color: #e0e0e0;
-  box-shadow: 0 0 15px #003a3a, 0 0 30px #002c56;
+  box-shadow:
+    0 0 15px #003a3a,
+    0 0 30px #002c56;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -4010,7 +4038,9 @@
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(255, 99, 132, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   animation: fadeInUpww 2s ease;
 }
 
@@ -4189,12 +4219,16 @@
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .adi3Module153rdbutton:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #ff00c8, 0 0 30px #00eaff;
+  box-shadow:
+    0 0 20px #ff00c8,
+    0 0 30px #00eaff;
 }
 
 /* Animations */
@@ -4296,7 +4330,9 @@
   border: 1px solid #161616;
   border-radius: 1rem;
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .Adi3Module161stcard:hover {
@@ -4597,10 +4633,16 @@
 
 @keyframes textGlowr {
   0% {
-    text-shadow: 0 0 20px #ff3f3f, 0 0 30px #ff3f3f, 0 0 40px #ff3f3f;
+    text-shadow:
+      0 0 20px #ff3f3f,
+      0 0 30px #ff3f3f,
+      0 0 40px #ff3f3f;
   }
   100% {
-    text-shadow: 0 0 10px #ff3f3f, 0 0 15px #ff3f3f, 0 0 30px #ff3f3f;
+    text-shadow:
+      0 0 10px #ff3f3f,
+      0 0 15px #ff3f3f,
+      0 0 30px #ff3f3f;
   }
 }
 
@@ -4822,7 +4864,9 @@
   margin: 1rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .adi3module7firststep:hover {
@@ -4954,7 +4998,9 @@
   width: 90%;
   max-width: 800px;
   backdrop-filter: blur(10px);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .adi3module72ndsection:hover {
@@ -5246,7 +5292,7 @@
   align-items: center;
   padding: 2rem;
   gap: 2rem;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+
   border-radius: 10px;
 }
 
@@ -5263,10 +5309,10 @@
   font-size: 1.8rem;
   text-align: center;
   font-weight: 500;
-  color: white;
+  color: black;
 }
 .adaptingLessonsflowchart em {
-  color: white;
+  color: black;
 }
 .adaptingLessonsbox {
   padding: 1.5rem;
@@ -5315,7 +5361,7 @@
 
 .adaptingLessonsarrow {
   font-size: 2rem;
-  color: white;
+  color: teal;
   animation: bouncewa 1.2s infinite;
   text-align: center;
 }
@@ -5426,7 +5472,9 @@
   border-radius: 1.2rem;
   padding: 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .Adi3Module19card:hover {
@@ -5916,7 +5964,7 @@ blockquote {
   background: linear-gradient(135deg, #56042a, #2f045b, #14067a);
   background-size: 400% 400%;
   animation: gradientShiftr 15s ease infinite;
-  
+
   font-family: "Segoe UI", sans-serif;
   color: #f2f2f2;
 }
@@ -6024,7 +6072,9 @@ blockquote {
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .loadMoreBtnVideo:hover {

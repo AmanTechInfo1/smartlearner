@@ -2,14 +2,62 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 import { useSelector } from "react-redux";
-import { FaEdit } from "react-icons/fa";
-import { IoTrashBin } from "react-icons/io5";
-import backgroundImage from "../../../../assets/images/drivinglessons.jpg";
+
+import bannerImg from "../../../../assets/images/drivinglessons.jpg";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  RefreshCcw,
+  Compass,
+  Target,
+  CloudRain,
+  TrafficCone,
+  Smile,
+  TrendingUp,
+  AlertCircle,
+  PlayCircle,
+  ArrowRight,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
 
-export default function Adi3Module13() {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function AdiModule() {
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      heroRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
+
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
   const Box = ({ title, content, color, className }) => (
     <motion.div
       className={`${styles.adaptingLessonsbox} ${styles[className]}`}
@@ -17,7 +65,8 @@ export default function Adi3Module13() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}>
+      transition={{ duration: 0.6 }}
+    >
       <h3>{title}</h3>
       <div>{content}</div>
     </motion.div>
@@ -29,95 +78,6 @@ export default function Adi3Module13() {
     </div>
   );
 
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Adapting the lesson"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
   // ///////////////////////////////////////////////////////////////////////////
 
   const { userDetails } = useSelector((state) => state.auth);
@@ -147,7 +107,7 @@ export default function Adi3Module13() {
       }
       localStorage.setItem(
         `notepadTexts1Part3page13_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -169,13 +129,13 @@ export default function Adi3Module13() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3page13_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
   useEffect(() => {
     const savedData = localStorage.getItem(
-      `notepadTexts1Part3page13_${userId}`
+      `notepadTexts1Part3page13_${userId}`,
     );
     if (savedData) {
       setSavedTexts(JSON.parse(savedData));
@@ -207,7 +167,7 @@ export default function Adi3Module13() {
       }
       localStorage.setItem(
         `notepadTexts2Part3page13_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -229,13 +189,13 @@ export default function Adi3Module13() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadTexts2Part3page13_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
   useEffect(() => {
     const savedData2 = localStorage.getItem(
-      `notepadTexts2Part3page13_${userId}`
+      `notepadTexts2Part3page13_${userId}`,
     );
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
@@ -267,7 +227,7 @@ export default function Adi3Module13() {
       }
       localStorage.setItem(
         `notepadTexts3Part3page13_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -289,13 +249,13 @@ export default function Adi3Module13() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadTexts3Part3page13_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
   useEffect(() => {
     const savedData3 = localStorage.getItem(
-      `notepadTexts3Part3page13_${userId}`
+      `notepadTexts3Part3page13_${userId}`,
     );
     if (savedData3) {
       setSavedTexts3(JSON.parse(savedData3));
@@ -305,329 +265,516 @@ export default function Adi3Module13() {
   //   ////////////////////////////////////////////
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
-      </section>
-      {/* ///////////////////////////////////////// */}
-      <div className={styles.adi3Module13container}>
-        <motion.h1
-          className={styles.adi3Module13mainTitle}
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}>
-          🔄 Responsive Teaching: The Art of Adapting a Driving Lesson
-        </motion.h1>
+    <main className="w-full overflow-hidden font-sans bg-slate-50">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[75vh] w-full">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bannerImg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 to-emerald-900/70" />
 
-        <motion.section
-          className={styles.adi3Module13sectionAlt}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}>
-          <h2>📘 Introduction: Planning with Flexibility</h2>
-          <p>
-            As driving instructors, we start every lesson with a structure —
-            clear route, defined objectives, and strategy tailored to
-            development.
-          </p>
-          <p> But real-life doesn’t always follow the script.</p>
-          <p>
-            An effective lesson plan must be flexible. Because true
-            learner-centred instruction doesn’t just focus on ticking boxes — it
-            focuses on progress, confidence, and safety. That means knowing when
-            to adapt, shift, or even scrap your plan entirely for the benefit of
-            the learner.
-          </p>
-        </motion.section>
-      </div>
-      {/* //////////////////////////////////////////////////////////////////////// */}
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Why do you think receiving feedback during a driving lesson is
-            important, and how might it help you improve as a instructor ?
-          </label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroRef} className="max-w-3xl space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                Adapting the
+                <span className="text-emerald-400"> Lesson</span>
+              </h1>
+              <p className="text-slate-200 text-lg">
+                Responsive teaching is not about abandoning plans — it’s about
+                shaping lessons around real learners, real conditions, and real
+                progress.
+              </p>
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+              <div className="flex gap-4 pt-4">
+                <Link to="/Contact-Us">
+                  <button className="px-8 py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-xl transition">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className={styles.adi3Module13container}>
-        <motion.section
-          className={styles.adi3Module13sectionAlt}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}>
-          <h2>🧭 Scenario 1: When the Lesson Shouldn’t Begin</h2>
-          <p>
-            You arrive for an 8 AM lesson. The pupil takes ages to answer the
-            door, eventually picks up the phone groggy and disoriented, and
-            shows up late, yawning, confused, and apologetic.
-          </p>
-          <p>
-            Rather than jumping into the car and pushing ahead with the original
-            plan, take a step back.
-          </p>
-          <p>
-            Would they be able to safely assess a junction? React to hazards?
-            Maintain focus in a busy environment?
-          </p>
-          <p>
-            You have a duty of care — not just to your pupil, but to yourself,
-            and other road users. Being flexible here isn’t a compromise; it’s
-            professionalism in action.
-          </p>
-        </motion.section>
-      </div>
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            What were your results and how will you use this during your own
-            learning ?
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+      {/* ================= INTRO ================= */}
+      <section className="py-10">
+        <div className="container mx-auto px-6 fade-up">
+          <div className="bg-white p-10 rounded-3xl shadow-2xl">
+            <div className="flex items-center gap-4 mb-4">
+              <RefreshCcw className="w-10 h-10 text-emerald-500" />
+              <h2 className="text-3xl font-extrabold">
+                Responsive Teaching: The Art of Adapting
+              </h2>
+            </div>
+            <strong>📘 Introduction: Planning with Flexibility</strong>
+            <p className="text-slate-700 leading-relaxed mb-1">
+              As driving instructors, we start every lesson with a structure —
+              clear route, defined objectives, and strategy tailored to
+              development.
+            </p>
+            <p className="text-slate-700 leading-relaxed mb-1">
+              But real-life doesn’t always follow the script.
+            </p>{" "}
+            <p className="text-slate-700 leading-relaxed mb-1">
+              An effective lesson plan must be flexible. Because true
+              learner-centred instruction doesn’t just focus on ticking boxes —
+              it focuses on progress, confidence, and safety. That means knowing
+              when to adapt, shift, or even scrap your plan entirely for the
+              benefit of the learner.
+            </p>
           </div>
         </div>
       </section>
+      <section className="py-10 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-4xl  fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Why do you think receiving feedback during a driving lesson is
+              important, and how might it help you improve as a instructor ?
+            </label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
 
-      <div className={styles.adi3Module13container}>
-        <motion.section
-          className={styles.adi3Module13section}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.4 }}>
-          <h2>🧭 Scenario 2: Correcting Course Midway</h2>
-          <p>
-            Your pupil has been progressing steadily. Today, you’ve planned to
-            tackle more complex roundabouts. But on the way there, they begin
-            stalling repeatedly at basic junctions — which is unusual for them.
-          </p>
-          <p>
-            You pull over, have a chat, and agree to revisit clutch control.
-            Still, the issue continues... until you notice they didn’t adjust
-            the seat when they got in. Once adjusted, everything improves
-            dramatically.
-          </p>
-          <p className={styles.adi3Module13keyTakeaway}>
-            {" "}
-            Sometimes what appears to be a skill problem is actually a comfort
-            or setup issue. Being observant, communicative, and flexible turns
-            frustration into progress.
-          </p>
-        </motion.section>
-
-        <motion.section
-          className={styles.adi3Module13section}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.4 }}>
-          <h2>🎯 Scenario 3: When the Lesson Needs a New Goal</h2>
-          <p>
-            You’ve planned to build confidence with a specific manoeuvre, based
-            on last week’s feedback. But within 10 minutes, your pupil is
-            handling it confidently, showing control, composure, and a clear
-            understanding of the skill.
-          </p>
-          <p>
-            After a brief discussion, they reveal they’ve been out with a family
-            member practising the same subject. Now they’re bored and
-            under-stimulated.
-          </p>
-        </motion.section>
-      </div>
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>What would you do?</label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="mt-6">
+              {savedTexts.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul style={{padding:"0px"}}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                 
+                >
+                  {savedTexts.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
       </section>
+      {/* ================= SCENARIOS ================= */}
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-6 space-y-12">
+          {/* Scenario 1 */}
+          <div className="fade-up bg-slate-50 p-10 rounded-3xl shadow-xl">
+            <div className="flex items-center gap-4 mb-4">
+              <Compass className="w-8 h-8 text-emerald-500" />
+              <h3 className="text-2xl font-bold">
+                Scenario 1: When the Lesson Shouldn’t Begin
+              </h3>
+            </div>
+            <p className="text-slate-700  mb-1">
+              You arrive for an 8 AM lesson. The pupil takes ages to answer the
+              door, eventually picks up the phone groggy and disoriented, and
+              shows up late, yawning, confused, and apologetic.
+            </p>{" "}
+            <p className="text-slate-700 leading-relaxed mb-1">
+              Rather than jumping into the car and pushing ahead with the
+              original plan, take a step back.
+            </p>{" "}
+            <p className="text-slate-700 leading-relaxed mb-1">
+              Would they be able to safely assess a junction? React to hazards?
+              Maintain focus in a busy environment?
+            </p>{" "}
+            <p className="text-slate-700 leading-relaxed mb-1">
+              You have a duty of care — not just to your pupil, but to yourself,
+              and other road users. Being flexible here isn’t a compromise; it’s
+              professionalism in action.
+            </p>
+          </div>
+          <section className="py-10 ">
+            <div className="container mx-auto px-6 max-w-4xl fade-up">
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  What were your results and how will you use this during your
+                  own learning ?
+                </label>
+                <textarea
+                  ref={textareaRef2}
+                  value={text2}
+                  onChange={handleChange2}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText2}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing2 ? "Update" : "Save"}
+                </button>
 
-      <div className={styles.adi3Module13container}>
+                <div className="mt-6">
+                  {savedTexts2.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul style={{padding:"0px"}}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      
+                    >
+                      {savedTexts2.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                        >
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText2(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText2(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* Scenario 2 */}
+          <div className="max-w-6xl mx-auto px-6 space-y-10">
+            {/* ================= SCENARIO 2 ================= */}
+            <motion.section
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9 }}
+              viewport={{ once: true }}
+              className="relative bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200 overflow-hidden"
+            >
+              {/* Accent strip */}
+              <div className="absolute left-0 top-0 h-full w-2 bg-emerald-500" />
+
+              <div className="flex items-start gap-5">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 text-2xl">
+                  🧭
+                </div>
+
+                <div className="flex-1">
+                  <h2 className="text-2xl font-extrabold text-slate-900 mb-4">
+                    Scenario 2: Correcting Course Midway
+                  </h2>
+
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    Your pupil has been progressing steadily. Today, you’ve
+                    planned to tackle more complex roundabouts. But on the way
+                    there, they begin stalling repeatedly at basic junctions —
+                    which is unusual for them.
+                  </p>
+
+                  <p className="text-slate-700 leading-relaxed mb-6">
+                    You pull over, have a chat, and agree to revisit clutch
+                    control. Still, the issue continues... until you notice they
+                    didn’t adjust the seat when they got in. Once adjusted,
+                    everything improves dramatically.
+                  </p>
+
+                  {/* Key takeaway */}
+                  <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-xl">
+                    <p className="font-semibold text-emerald-900">
+                      Key takeaway:
+                    </p>
+                    <p className="text-slate-800">
+                      Sometimes what appears to be a skill problem is actually a
+                      comfort or setup issue. Being observant, communicative,
+                      and flexible turns frustration into progress.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+
+            {/* ================= SCENARIO 3 ================= */}
+            <motion.section
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9 }}
+              viewport={{ once: true }}
+              className="relative bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200 overflow-hidden"
+            >
+              {/* Accent strip */}
+              <div className="absolute left-0 top-0 h-full w-2 bg-cyan-500" />
+
+              <div className="flex items-start gap-5">
+                {/* Icon */}
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-cyan-100 text-cyan-600 text-2xl">
+                  🎯
+                </div>
+
+                <div className="flex-1">
+                  <h2 className="text-2xl font-extrabold text-slate-900 mb-4">
+                    Scenario 3: When the Lesson Needs a New Goal
+                  </h2>
+
+                  <p className="text-slate-700 leading-relaxed mb-4">
+                    You’ve planned to build confidence with a specific
+                    manoeuvre, based on last week’s feedback. But within 10
+                    minutes, your pupil is handling it confidently, showing
+                    control, composure, and a clear understanding of the skill.
+                  </p>
+
+                  <p className="text-slate-700 leading-relaxed">
+                    After a brief discussion, they reveal they’ve been out with
+                    a family member practising the same subject. Now they’re
+                    bored and under-stimulated.
+                  </p>
+                </div>
+              </div>
+            </motion.section>
+          </div>
+        </div>
+      </section>
+      <section className="py-10 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              What would you do?
+            </label>
+            <textarea
+              ref={textareaRef3}
+              value={text3}
+              onChange={handleChange3}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText3}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing3 ? "Update" : "Save"}
+            </button>
+
+            <div className="mt-6">
+              {savedTexts3.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul style={{padding:"0px"}}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                 
+                >
+                  {savedTexts3.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText3(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText3(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ================= TRIGGERS ================= */}
+      <div className="max-w-6xl mx-auto px-4 py-16 space-y-16">
+        {/* Everyday Adaptation Triggers */}
         <motion.section
-          className={styles.adi3Module13triggersSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.6 }}>
-          <h2>🚗 Everyday Adaptation Triggers</h2>
-          <p>
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 shadow-lg"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            🚗 Everyday Adaptation Triggers
+          </h2>
+
+          <p className="text-gray-600 mb-6 max-w-3xl">
             Adaptation doesn’t always stem from dramatic changes. Here are
             common, everyday reasons for changing your plan:
           </p>
-          <ul>
-            <li>
-              🌧️ <strong>Weather Conditions</strong> Heavy rain or fog may limit
-              visibility, making certain goals unsafe.
-            </li>
-            <li>
-              🚧 <strong>Traffic Incidents</strong> Accidents or road closures
-              can block access to planned routes.
-            </li>
-            <li>
-              😟 <strong>Emotional State</strong> A pupil may be anxious due to
-              school exams, personal stress, or even an argument before the
-              lesson.
-            </li>
-            <li>
-              🔄 <strong>Plateau or Setback</strong> Sometimes a previously
-              mastered skill seems to regress. That’s okay — it may need a brief
-              revisit.
-            </li>
-            <li>
-              🚀 <strong>Overconfidence</strong> A pupil performing far better
-              than expected may need the lesson to evolve in real time.
-            </li>
-            <li>
-              🚦 <strong>Unexpected Behaviours</strong> If your pupil is overly
-              hesitant, distracted, or panicked by a road event (like an
-              aggressive driver), the goal may need to shift toward calming
-              strategies or simpler skills.
-            </li>
+
+          <ul style={{padding:"0px"}} className="grid sm:grid-cols-2 gap-5">
+            {[
+              {
+                icon: "🌧️",
+                title: "Weather Conditions",
+                text: "Heavy rain or fog may limit visibility, making certain goals unsafe.",
+              },
+              {
+                icon: "🚧",
+                title: "Traffic Incidents",
+                text: "Accidents or road closures can block access to planned routes.",
+              },
+              {
+                icon: "😟",
+                title: "Emotional State",
+                text: "A pupil may be anxious due to school exams, personal stress, or even an argument before the lesson.",
+              },
+              {
+                icon: "🔄",
+                title: "Plateau or Setback",
+                text: "Sometimes a previously mastered skill seems to regress. That’s okay — it may need a brief revisit.",
+              },
+              {
+                icon: "🚀",
+                title: "Overconfidence",
+                text: "A pupil performing far better than expected may need the lesson to evolve in real time.",
+              },
+              {
+                icon: "🚦",
+                title: "Unexpected Behaviours",
+                text: "If your pupil is overly hesitant, distracted, or panicked by a road event (like an aggressive driver), the goal may need to shift toward calming strategies or simpler skills.",
+              },
+            ].map((item, i) => (
+              <li
+                key={i}
+                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">{item.icon}</span>
+                  <div>
+                    <h4 className="font-semibold text-gray-800">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 mt-1">{item.text}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
           </ul>
         </motion.section>
 
+        {/* Adaptation ≠ Abandoning */}
         <motion.section
-          className={styles.adi3Module13adaptationSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.8 }}>
-          <h2>🔁 Adaptation ≠ Abandoning the Plan</h2>
-          <p>Adaptation is intentional and discussed:</p>
-          <ol>
-            <li>
-              <strong>Pause and reflect</strong> Is the current plan still
-              useful?
-            </li>
-            <li>
-              <strong>Discuss with the learner</strong> what are they feeling?
-              Are they still on track for the original goal?
-            </li>
-            <li>
-              <strong>Agree a new direction </strong> Clearly define what the
-              updated goal is and how it benefits them.
-            </li>
-            <li>
-              {" "}
-              <strong>Debrief at the end</strong> Reinforce how the decision to
-              adapt helped their learning and confidence.
-            </li>
-          </ol>
-          <p className={styles.adi3Module13finalNote}>
-            This learner-centred approach keeps motivation high and makes every
-            lesson feel tailored — because it is.
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl p-8 shadow-xl border-l-4 border-green-500"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            🔁 Adaptation ≠ Abandoning the Plan
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            Adaptation is intentional, learner-focused, and always discussed:
           </p>
+
+          <ol className="space-y-4">
+            {[
+              {
+                title: "Pause and reflect",
+                text: "Is the current plan still useful?",
+              },
+              {
+                title: "Discuss with the learner",
+                text: "What are they feeling? Are they still on track for the original goal?",
+              },
+              {
+                title: "Agree a new direction",
+                text: " Clearly define what the updated goal is and how it benefits them.",
+              },
+              {
+                title: "Debrief at the end",
+                text: "Reinforce how the decision to adapt helped their learning and confidence.",
+              },
+            ].map((step, i) => (
+              <li key={i} className="flex gap-4">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold flex items-center justify-center">
+                  {i + 1}
+                </span>
+                <div>
+                  <h4 className="font-semibold text-gray-800">{step.title}</h4>
+                  <p className="text-sm text-gray-600">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-8 bg-green-50 border border-green-200 rounded-xl p-5">
+            <p className="text-green-800 font-medium">
+              This learner-centred approach keeps motivation high and makes
+              every lesson feel tailored — because it is.
+            </p>
+          </div>
         </motion.section>
       </div>
 
-      {/* //////////////////////////////////////////////////////// */}
+      {/* ================= VIDEO ================= */}
       <div className={styles.adaptingLessonsflowchart}>
         <h2>CAUSE (KUSA)</h2>
         <div className={styles.adaptingLessonsrow}>
@@ -651,7 +798,7 @@ export default function Adi3Module13() {
             color="#d4fdd9"
             content={
               <>
-                <ul>
+                <ul style={{padding:"0px"}}>
                   <li>
                     <strong>Knowledge</strong> - Do they know{" "}
                     <strong>how</strong> to do this?
@@ -744,29 +891,25 @@ export default function Adi3Module13() {
         />
       </div>
 
-      {/* //////////////////////////////////////////////////////// */}
+      <section className="py-10 bg-slate-900 text-center text-white">
+        <h2 className="text-4xl font-extrabold mb-6">
+          Ready to Continue Learning?
+        </h2>
 
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/risk-management-and-responsibility">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
-        </Link>
-      </div>
-      {/* /////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            Adapting the lesson before setting off
-          </p>
-          <Link to="/takequizCatName/adapting">
-            {" "}
-            <button>Start Quiz</button>
+        <div className="flex justify-center gap-6">
+          <Link to="/risk-management-and-responsibility">
+            <button className="px-10 py-4 rounded-full bg-teal-500 hover:bg-teal-600 font-semibold shadow-xl">
+              Next Page
+            </button>
           </Link>
-        </section>
-      </div>
-    </div>
+
+          <Link to="/takequizCatName/adapting">
+            <button className="px-10 py-4 rounded-full bg-indigo-500 hover:bg-indigo-600 font-semibold shadow-xl">
+              Start Quiz
+            </button>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

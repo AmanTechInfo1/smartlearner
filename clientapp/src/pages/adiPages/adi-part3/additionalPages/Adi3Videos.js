@@ -2,98 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import styles from "./Adi3Module.module.css";
 import backgroundImage from "../../../../assets/images/adi3videos.jpg";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+  Route,
+  Eye,
+  ParkingSquare,
+  Navigation,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
+gsap.registerPlugin(ScrollTrigger);
 export default function Adi3Videos() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Adi part 3 Videos"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
-
   const videoURLs = [
     "https://www.youtube.com/embed/voP165d_Vak",
     "https://www.youtube.com/embed/5TejFMpXXdk",
@@ -220,42 +144,119 @@ export default function Adi3Videos() {
     setVisibleCount((prev) => prev + 10);
   };
 
-  return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
-      </section>
-      <h2 className={styles.videotitle2}>Watch Our Video</h2>
+  const heroRef = useRef(null);
 
-      <div className={styles.videoContainer2}>
-        {videoURLs.slice(0, visibleCount).map((url, index) => (
-          <div className={styles.videodesign2} key={index}>
-            <iframe
-              width="100%"
-              height="270px"
-              src={url}
-              title={`YouTube video ${index}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen></iframe>
+  useEffect(() => {
+    gsap.fromTo(
+      heroRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
+
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
+
+  return (
+    <main className="w-full overflow-hidden font-sans">
+      <section className="relative h-[70vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-teal-900/50" />
+
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroRef} className="max-w-3xl space-y-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                Adi <span className="text-teal-400"> part 3 </span> Videos
+              </h1>
+
+              <p className="mt-6 text-slate-200 text-sm sm:text-lg leading-relaxed">
+                <strong>Well done!</strong>
+                <br />
+              </p>
+
+              <p className="mt-4 text-slate-200 text-sm sm:text-lg">
+                Your hard work has paid off — now you're ready for{" "}
+                <strong>Part 3</strong>.
+              </p>
+
+              <Link to="/Contact-Us">
+                <button className="mt-8 px-8 py-3 bg-teal-500 hover:bg-orange-600 transition rounded-full text-white font-semibold shadow-xl">
+                  Contact Us
+                </button>
+              </Link>
+            </div>
           </div>
-        ))}
-      </div>
-      {visibleCount < videoURLs.length && (
-        <div className={styles.loadMoreWrapperVideo}>
-          <button className={styles.loadMoreBtnVideo} onClick={loadMore}>
-            Load More Videos
-          </button>
         </div>
-      )}
-    </div>
+      </section>
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-teal-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8  fade-up">
+          <h2
+            className="font-extrabold text-center mb-4"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+            }}
+          >
+            Watch <span className="text-teal-600"> Our Video</span>
+          </h2>
+
+          <p
+            className="text-center text-slate-600 mb-10 max-w-3xl mx-auto"
+            style={{
+              fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)",
+            }}
+          >
+            Below we have created videos to guide you through Adi part 3 Videos
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videoURLs.slice(0, visibleCount).map((url, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-[1.02] transition"
+              >
+                <div className="relative aspect-video">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={url}
+                    title={`Adi Video ${index + 1}`}
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>{" "}
+        {visibleCount < videoURLs.length && (
+          <div className={styles.loadMoreWrapperVideo}>
+            <button className={styles.loadMoreBtnVideo} onClick={loadMore}>
+              Load More Videos
+            </button>
+          </div>
+        )}
+      </section>
+    </main>
   );
 }

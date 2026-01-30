@@ -5,100 +5,25 @@ import { useSelector } from "react-redux";
 import { FaEdit } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import backgroundImage from "../../../../assets/images/interventionbanner.jpg";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import {
+  ShieldAlert,
+  Hand,
+  MessageCircle,
+  Eye,
+  Brain,
+  CheckCircle2,
+  ArrowRight,
+  PlayCircle,
+  FilePenLine,
+  Trash2,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+gsap.registerPlugin(ScrollTrigger);
 export default function Adi3Module15() {
-  const textRef = useRef(null);
-
-  // Function to split the text into individual letters wrapped in <span>
-  const splitText = () => {
-    const firstPart = "Intervention"; // First part before "Driving"
-
-    // Split both parts into individual characters and map them to <span>
-    const firstLine = firstPart
-      .split("")
-      .map((char, index) => <span key={`first-${index}`}>{char}</span>);
-
-    // Return the first line, a <br>, and then the second line
-    return <>{firstLine}</>;
-  };
-
-  useEffect(() => {
-    const letters = textRef.current.querySelectorAll("span");
-
-    // GSAP Timeline for the text animation
-    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
-
-    tl.from(letters, {
-      opacity: 0.6,
-      y: 100,
-      ease: "bounce.out", // Start from below
-      stagger: 0.1, // Stagger the animation for each letter
-      rotationX: 90, // Initial rotation effect
-      transformOrigin: "bottom center", // Center for rotation
-      scale: 0.5,
-    })
-      .to(letters, {
-        scale: 1, // Scale to normal size
-        opacity: 1, // Fade in to full opacity
-        rotationX: 0, // Reset rotation
-        y: 0, // Move to original position
-        stagger: 0.1, // Slight stagger for each letter
-        duration: 0.8, // Smooth transition duration
-      })
-      .to(letters, {
-        color: "#fd9235", // Change text color to red
-        rotationY: 360, // Apply rotation on the Y-axis
-        stagger: 0.1,
-        duration: 1, // Rotate each letter over 1 second
-      })
-      .to(letters, {
-        scale: 1.2, // Slightly enlarge text
-        opacity: 0.8, // Reduce opacity slightly
-        rotationX: -10, // Slight tilt effect
-        stagger: 0.1, // Stagger the scaling
-        duration: 1, // Animation duration
-      })
-      .to(letters, {
-        scale: 1, // Return to original scale
-        opacity: 1, // Full opacity
-        rotationX: 0, // Reset rotation
-        color: "#04fad4", // Reset color to black
-        stagger: 0.1, // Maintain stagger effect
-        duration: 1, // Final duration
-      })
-      .to(letters, {
-        rotation: 10, // Add shake effect
-        x: -5, // Horizontal shake
-        yoyo: true, // Yoyo effect for shake (goes back and forth)
-        repeat: 2, // Repeat the shake twice
-        duration: 0.1, // Short shake duration
-        stagger: 0.05, // Stagger shake on each letter
-      })
-      .to(letters, {
-        scale: 1.3, // Increase size slightly for bounce effect
-        opacity: 1, // Ensure opacity stays full
-        ease: "bounce.out", // Bounce easing for effect
-        stagger: 0.05, // Stagger bounce
-        duration: 1, // Bounce duration
-      })
-      .to(letters, {
-        scale: 1, // Reset scale
-        opacity: 1, // Reset opacity
-        y: -30, // Vertical movement for final bounce
-        duration: 0.5, // Short duration for final bounce
-      })
-      // Infinite color change with loop
-      .to(letters, {
-        color: "#ff54d7", // Change color to a pinkish hue
-        duration: 2, // Duration of color change
-        repeat: -1, // Repeat infinitely
-        yoyo: true, // Reverse color change for alternating effect
-        stagger: 0.1, // Stagger the color change for each letter
-      });
-  }, []);
   //   ///////////////////////////////////////////////////////////////////
 
   const { userDetails } = useSelector((state) => state.auth);
@@ -128,7 +53,7 @@ export default function Adi3Module15() {
       }
       localStorage.setItem(
         `notepadTexts1Part3page15_${userId}`,
-        JSON.stringify([...savedTexts, text])
+        JSON.stringify([...savedTexts, text]),
       );
 
       setText("");
@@ -150,13 +75,13 @@ export default function Adi3Module15() {
     setSavedTexts(updatedTexts);
     localStorage.setItem(
       `notepadTexts1Part3page15_${userId}`,
-      JSON.stringify(updatedTexts)
+      JSON.stringify(updatedTexts),
     );
   };
 
   useEffect(() => {
     const savedData = localStorage.getItem(
-      `notepadTexts1Part3page15_${userId}`
+      `notepadTexts1Part3page15_${userId}`,
     );
     if (savedData) {
       setSavedTexts(JSON.parse(savedData));
@@ -188,7 +113,7 @@ export default function Adi3Module15() {
       }
       localStorage.setItem(
         `notepadTexts2Part3page15_${userId}`,
-        JSON.stringify([...savedTexts2, text2])
+        JSON.stringify([...savedTexts2, text2]),
       );
 
       setText2("");
@@ -210,13 +135,13 @@ export default function Adi3Module15() {
     setSavedTexts2(updatedTexts2);
     localStorage.setItem(
       `notepadTexts2Part3page15_${userId}`,
-      JSON.stringify(updatedTexts2)
+      JSON.stringify(updatedTexts2),
     );
   };
 
   useEffect(() => {
     const savedData2 = localStorage.getItem(
-      `notepadTexts2Part3page15_${userId}`
+      `notepadTexts2Part3page15_${userId}`,
     );
     if (savedData2) {
       setSavedTexts2(JSON.parse(savedData2));
@@ -248,7 +173,7 @@ export default function Adi3Module15() {
       }
       localStorage.setItem(
         `notepadTexts3Part3page15_${userId}`,
-        JSON.stringify([...savedTexts3, text3])
+        JSON.stringify([...savedTexts3, text3]),
       );
 
       setText3("");
@@ -270,13 +195,13 @@ export default function Adi3Module15() {
     setSavedTexts3(updatedTexts3);
     localStorage.setItem(
       `notepadTexts3Part3page15_${userId}`,
-      JSON.stringify(updatedTexts3)
+      JSON.stringify(updatedTexts3),
     );
   };
 
   useEffect(() => {
     const savedData3 = localStorage.getItem(
-      `notepadTexts3Part3page15_${userId}`
+      `notepadTexts3Part3page15_${userId}`,
     );
     if (savedData3) {
       setSavedTexts3(JSON.parse(savedData3));
@@ -284,414 +209,589 @@ export default function Adi3Module15() {
   }, []);
 
   //   ////////////////////////////////////////////////////////////////////////////////
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      heroRef.current.children,
+      { y: 80, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "power4.out",
+      },
+    );
+
+    gsap.utils.toArray(".fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    });
+  }, []);
 
   return (
-    <div className={styles.AdiModuleOnecontainer}>
-      <section
-        className={styles.AdiModuleOneheader}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-        }}>
-        <div className="opicity"></div>
-        <section className={styles.AdiModuleOneheading}>
-          {" "}
-          <h1 ref={textRef}>{splitText()}</h1>
-        </section>
-      </section>
+    <main className="w-full overflow-hidden bg-slate-50 font-sans">
+      {/* ================= HERO ================= */}
+      <section className="relative h-[75vh]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/80 to-cyan-900/70" />
 
-      {/* ////////////////////////////////////////////////////// */}
-      <div className={styles.adi3module151stcontainer}>
-        <div className={styles.adi3module151stheader}>
-          <h1>When and Why Should a Driving Instructor Intervene?</h1>
-          <p>
-            Intervention, whether verbal or physical, is a critical tool for
-            driving instructors—but it must be applied with care, precision, and
-            purpose. A well-timed, necessary intervention can protect both
-            learner and public safety. However, overusing it, or stepping in
-            unnecessarily, can undermine the learner’s confidence, hinder
-            progress, and damage trust in the instructor-learner relationship.
-          </p>
-        </div>
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div ref={heroRef} className="max-w-3xl space-y-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white">
+                Intervention
+              </h1>
 
-        <div className={styles.adi3module151stsection}>
-          <h2>🚦 Importance of Balanced Intervention</h2>
-          <p>
-            How would you feel if your partner, son daughter or loved one had
-            paid £35+ for an hour lesson with an instructor that didn’t let them
-            drive? The instructor used the brakes for them, changed the gears
-            for them and constantly had one hand on the wheel. When asked what
-            they learned, they said nothing.
-          </p>
-          <p className={styles.adi3module151sthighlight}>
-            This is what happens when you over intervene, controlling everything
-            for the learner.
-          </p>
-        </div>
-      </div>
-      <section className={styles.AdiModuleOneTextArea}>
-        {/* ////////////////////////////////////////////////////////////// */}
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            What do you think is meant by Risk Management and Responsibility?
-          </label>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText}>{isEditing ? "Update" : "Save"}</button>
+              <p className="text-slate-200 text-lg">
+                Knowing when to step in — and when to step back — is a core
+                skill of an effective driving instructor.
+              </p>
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts.map((savedText, index) => (
-                  <li key={index}>
-                    <p>{savedText}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+              <div className="flex gap-4 pt-4">
+                <Link to="/Contact-Us">
+                  <button className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold shadow-xl transition">
+                    Contact Us
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className={styles.adi3module151stcontainer}>
-        <div className={styles.adi3module151stsection}>
-          <h2>
-            ✋ Physical vs Verbal Intervention: Both Are Powerful, But Use
-            Wisely
-          </h2>
-          <p>
-            Physical intervention—like using the dual controls or grabbing the
-            steering wheel—should be a last resort and always followed by clear
-            explanation. If you do need to step in physically, make your learner
-            aware of it immediately or as soon as it’s safe to do so. Otherwise,
-            it may confuse them or give a false impression of their ability.
-          </p>
-          <p className={styles.adi3module151sttip}>
-            💡 Golden Rule: Intervene only when necessary, and always with clear
-            instruction and reasoning.
-          </p>
-        </div>
+      {/* ================= INTRO ================= */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 fade-up max-w-4xl">
+          <div className="bg-white rounded-3xl shadow-2xl p-10">
+            <div className="flex items-center gap-4 mb-6">
+              <ShieldAlert className="w-10 h-10 text-indigo-600" />
+              <h2 className="text-3xl font-extrabold">
+                When and Why Should a Driving Instructor Intervene?
+              </h2>
+            </div>
 
-        <div className={styles.adi3module151stsection}>
-          <h2>🧠 Understanding Context: When is Intervention Justified?</h2>
-          <p>
-            <strong>Example: The "Empty Road" Left Turn</strong>
-            <br />
-            You’ve agreed your learner is driving independently. They approach a
-            left turn perfectly—except they forget to indicate.
-          </p>
-          <ul>
-            <li>You verbally prompt: “What signal should you use?”</li>
-            <li>You activate the indicator yourself.</li>
-          </ul>
-        </div>
-      </div>
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Write down how you would manage responsibility and what potential
-            risks there could be.
-          </label>
-          <textarea
-            ref={textareaRef2}
-            value={text2}
-            onChange={handleChange2}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText2}>{isEditing2 ? "Update" : "Save"}</button>
-
-          <div className={styles.thoughtsListArea}>
-            {savedTexts2.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts2.map((savedText2, index) => (
-                  <li key={index}>
-                    <p>{savedText2}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText2(index)}
-                        id={styles.editListIcon}
-                      />
-
-                      <IoTrashBin
-                        onClick={() => deleteText2(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <p className="text-slate-700 leading-relaxed">
+              Intervention, whether verbal or physical, is a critical tool for
+              driving instructors—but it must be applied with care, precision,
+              and purpose. A well-timed, necessary intervention can protect both
+              learner and public safety. However, overusing it, or stepping in
+              unnecessarily, can undermine the learner’s confidence, hinder
+              progress, and damage trust in the instructor-learner relationship.
+            </p>
           </div>
         </div>
       </section>
-      <div style={{ maxWidth: "1640px", margin: "1rem auto" }}>
-        <div className={styles.adisix2ndintro}>
-          <p>
-            Once an answer has been submitted, reveal this text below <br />
-            You could have allowed the action to play out and used it as a
-            reflective moment afterward. The learner might even self-identify
-            the missed signal. Or they may have consciously decided it wasn’t
-            needed due to the absence of other road users. That opens up
-            valuable discussion about judgment, risk, and situational awareness.
-          </p>
-        </div>
-      </div>
 
-      <div className={styles.adi3module151stcontainer}>
-        <div className={styles.adi3module151stsection}>
-          <p>
-            <strong>Example 2: The Busy Junction Signal Miss</strong>
-            <br />
-            Same scenario—independent driving, missed signal—but this time:
-          </p>
-          <ul>
-            <li>Oncoming traffic.</li>
-            <li>Vehicles behind and at the junction.</li>
-          </ul>
-        </div>
-      </div>
-      <section className={styles.AdiModuleOneTextArea}>
-        <div className={styles.AdiModuleOneTextBox}>
-          <label>
-            Write your thoughts about how you would physically or verbally
-            intervene if needed on a lesson, how would you do it and what would
-            you say to ensure it is communicated correctly and effectively?
-          </label>
-          <textarea
-            ref={textareaRef3}
-            value={text3}
-            onChange={handleChange3}
-            rows="5"
-            cols="30"
-            placeholder="Write your thoughts here..."
-          />
-          <br />
-          <button onClick={saveText3}>{isEditing3 ? "Update" : "Save"}</button>
+      {/* ================= BALANCE ================= */}
+      <section className="py-16 bg-gradient-to-br from-indigo-50 to-cyan-50">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-10">
+          <div className="fade-up bg-white p-8 rounded-3xl shadow-xl">
+            <h3 className="text-2xl font-bold mb-4 flex gap-3 items-center">
+              🚦 Importance of Balanced Intervention
+            </h3>
+            <p className="text-slate-700">
+              How would you feel if your partner, son daughter or loved one had
+              paid £35+ for an hour lesson with an instructor that didn’t let
+              them drive? The instructor used the brakes for them, changed the
+              gears for them and constantly had one hand on the wheel. When
+              asked what they learned, they said nothing.
+            </p>
 
-          <div className={styles.thoughtsListArea}>
-            {savedTexts3.length === 0 ? (
-              <p>No saved thoughts.</p>
-            ) : (
-              <ul>
-                {savedTexts3.map((savedText3, index) => (
-                  <li key={index}>
-                    <p>{savedText3}</p>
-                    <span>
-                      <FaEdit
-                        onClick={() => editText3(index)}
-                        id={styles.editListIcon}
-                      />
+            <p className="mt-4 text-indigo-600 font-semibold">
+              This is what happens when you over intervene, controlling
+              everything for the learner.
+            </p>
+          </div>
 
-                      <IoTrashBin
-                        onClick={() => deleteText3(index)}
-                        id={styles.binListIcon}
-                      />
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <div className="fade-up bg-white p-8 rounded-3xl shadow-xl">
+            <h3 className="text-2xl font-bold mb-4 flex gap-3 items-center">
+              ✋Physical vs Verbal Intervention: Both Are Powerful, But Use
+              Wisely
+            </h3>
+            <p className="text-slate-700">
+              Physical intervention—like using the dual controls or grabbing the
+              steering wheel—should be a last resort and always followed by
+              clear explanation. If you do need to step in physically, make your
+              learner aware of it immediately or as soon as it’s safe to do so.
+              Otherwise, it may confuse them or give a false impression of their
+              ability.
+            </p>
+
+            <p className="mt-4 text-cyan-700 font-semibold">
+              💡 Golden Rule: Intervene only when necessary, and always with
+              clear instruction and reasoning.
+            </p>
           </div>
         </div>
       </section>
-      {/* ///////////////////////////////////////////////////////////////// */}
-      <div className={styles.adi3Module153rdcontainer}>
-        <h1 className={styles.adi3Module153rdmainHeading}>
-          Mastering Intervention and Communication
-        </h1>
 
-        <div className={styles.adi3Module153rdsection}>
-          <p className={styles.adi3Module153rdtext}>
-            Here, a{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              Missed signals
-            </span>{" "}
-            creates risk. Intervention—at least verbal—is warranted. If the
-            learner fails to react,
-            <span className={styles.adi3Module153rdhighlight}>
-              - physical intervention
-            </span>{" "}
-            may be essential.
-          </p>
-          <p className={styles.adi3Module153rdtext}>
-            This scenario justifies a deeper discussion
-            <span className={styles.adi3Module153rdhighlight}>
-              - post-manoeuvre
-            </span>{" "}
-            about{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              communication
-            </span>{" "}
-            with other road users and why timing and visibility matter.
-          </p>
-          <p className={styles.adi3Module153rdtext}>
-            Many instructors feel they must talk constantly to demonstrate
-            value. But silence can be golden. Excessive instruction can lead to
-            cognitive overload, especially in the intense environment of a
-            moving vehicle.
-          </p>
-          <p>
-            Sometimes, allowing space and silence allows learners to process,
-            reflect, and act independently. It sends a powerful message:{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              {" "}
-              “You’ve got this.”
-            </span>
-          </p>
+      <section className="py-20 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              What do you think is meant by Risk Management and Responsibility?
+            </label>
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={handleChange}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing ? "Update" : "Save"}
+            </button>
+
+            <div className="mt-6">
+              {savedTexts.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
+      </section>
+      {/* ================= SCENARIOS ================= */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl space-y-10">
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <h3 className="text-xl font-bold mb-2">
+              🧠 Understanding Context: When is Intervention Justified?
+            </h3>
+            <p className="text-slate-700">
+              <strong>Example: The "Empty Road" Left Turn</strong>
+            </p>
+            <p>
+              You’ve agreed your learner is driving independently. They approach
+              a left turn perfectly—except they forget to indicate.
+            </p>
+            <ul
+              style={{ padding: "0px" }}
+              className="list-disc ml-6 text-slate-700 mt-3"
+            >
+              <li>You verbally prompt: “What signal should you use?”</li>
+              <li>You activate the indicator yourself.</li>
+            </ul>
+          </div>
 
-        <div className={styles.adi3Module153rdsection}>
-          <h2 className={styles.adi3Module153rdsubHeading}>
-            What Are You Nonverbally Communicating?
-          </h2>
-          <p className={styles.adi3Module153rdtext}>
-            Learners are highly tuned in to your cues. If you're hovering over
-            the pedals or inching your hand toward the wheel,
-            <span className={styles.adi3Module153rdhighlight}>
-              they may assume you expect something to go wrong.
-            </span>
-            This creates tension and undermines their confidence,
-            <span className={styles.adi3Module153rdquote}>
-              - even if you never intervene.
-            </span>
-          </p>
-          <p className={styles.adi3Module153rdtext}>
-            Show calmness and trust through your posture and gestures.{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              {" "}
-              Let the learner lead,{" "}
-            </span>{" "}
-            and step in only when risk demands it.
-          </p>
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <p className="text-slate-700">
+              Once an answer has been submitted, reveal this text below
+              <br />
+              You could have allowed the action to play out and used it as a
+              reflective moment afterward. The learner might even self-identify
+              the missed signal. Or they may have consciously decided it wasn’t
+              needed due to the absence of other road users. That opens up
+              valuable discussion about judgment, risk, and situational
+              awareness.
+            </p>
+          </div>
+
+          <div className="fade-up bg-slate-50 p-8 rounded-3xl shadow-xl">
+            <p className="text-slate-700">
+              <strong>Example 2: The Busy Junction Signal Miss</strong>
+            </p>
+            <p>
+              Same scenario—independent driving, missed signal—but this time:
+            </p>
+            <ul
+              style={{ padding: "0px" }}
+              className="list-disc ml-6 text-slate-700 mt-3"
+            >
+              <li>Oncoming traffic</li>
+              <li>Vehicles behind and at the junction</li>
+            </ul>
+          </div>
         </div>
+      </section>
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-4xl  fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Write down how you would manage responsibility and what potential
+              risks there could be.
+            </label>
+            <textarea
+              ref={textareaRef2}
+              value={text2}
+              onChange={handleChange2}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText2}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing2 ? "Update" : "Save"}
+            </button>
 
-        <div className={styles.adi3Module153rdsection}>
-          <h2 className={styles.adi3Module153rdsubHeading}>
-            Getting the Balance Right: Intervention as a Learning Tool
-          </h2>
-          <p className={styles.adi3Module153rdtext}>
-            The goal is{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              minimal, meaningful intervention.
-            </span>
-            Every time you step in unnecessarily, you set your pupil
-            back—sometimes literally. But{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              strategic, justified intervention
-            </span>{" "}
-            followed by a reflective conversation enhances their understanding
-            and growth.
-          </p>
+            <div className="mt-6">
+              {savedTexts2.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts2.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText2(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText2(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.adi3Module153rdsection}>
-          <h2 className={styles.adi3Module153rdsubHeading}>Key principles:</h2>
+      <section className="py-20 bg-slate-50 ">
+        <div className="container mx-auto px-6 max-w-4xl fade-up">
+          <div className="bg-white p-8 rounded-3xl shadow-xl">
+            <label className="block mb-2 font-semibold">
+              Write your thoughts about how you would physically or verbally
+              intervene if needed on a lesson, how would you do it and what
+              would you say to ensure it is communicated correctly and
+              effectively?
+            </label>
+            <textarea
+              ref={textareaRef3}
+              value={text3}
+              onChange={handleChange3}
+              rows={5}
+              className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+              placeholder="Write your thoughts here..."
+            />
+            <button
+              onClick={saveText3}
+              className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+            >
+              {isEditing3 ? "Update" : "Save"}
+            </button>
 
-          <ul className={styles.adi3Module153rdlist}>
-            <li>Use verbal cues first.</li>
-            <li>Explain physical interventions immediately after.</li>
-            <li>Adjust based on your pupil’s capabilities.</li>
-          </ul>
+            <div className="mt-6">
+              {savedTexts3.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                  <p
+                    className="text-gray-500 text-sm"
+                    style={{ marginBottom: "0px" }}
+                  >
+                    No saved thoughts yet ✍️
+                  </p>
+                </div>
+              ) : (
+                <ul
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  {savedTexts3.map((savedText, index) => (
+                    <li
+                      key={index}
+                      className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                    >
+                      <p
+                        className="text-gray-700 text-sm pr-10"
+                        style={{ marginBottom: "0px" }}
+                      >
+                        {savedText}
+                      </p>
+                      <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                        <FilePenLine
+                          onClick={() => editText3(index)}
+                          className="cursor-pointer text-blue-500"
+                        />
+                        <Trash2
+                          onClick={() => deleteText3(index)}
+                          className="cursor-pointer text-red-500"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.adi3Module153rdsection}>
-          <h2 className={styles.adi3Module153rdsubHeading}>
-            Teach the "What If" Mindset
-          </h2>
-          <p className={styles.adi3Module153rdtext}>
-            Help your learners think beyond the moment. What if the brakes
-            failed? What if someone emerged suddenly from a hidden junction?
-          </p>
-          <p>
-            Many young drivers operate with a sense of invincibility. Fostering
-            realistic risk awareness—without fear-mongering—instils safer
-            driving habits.
-          </p>
-          <p>
-            Share personal experiences if relevant. For example, I once
-            approached a motorway roundabout at 70mph, only to discover complete
-            brake failure. Thanks to sheer luck, I avoided disaster—but the
-            memory stays with me, and I use it to highlight why proactive risk
-            management matters.
-          </p>
+      {/* ================= MASTERING ================= */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 text-white">
+        <div className="container mx-auto px-6 max-w-6xl space-y-16">
+          {/* ================= MAIN HEADING ================= */}
+          <div className="text-center fade-up">
+            <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
+              Mastering <span className="text-cyan-400">Intervention</span> &
+              Communication
+            </h1>
+            <p className="text-slate-300 max-w-3xl mx-auto">
+              The art of knowing when to speak, when to act, and when to stay
+              silent.
+            </p>
+          </div>
+
+          {/* ================= CORE MESSAGE ================= */}
+          <div className="fade-up bg-white/10 backdrop-blur-md rounded-3xl p-8 shadow-xl space-y-4">
+            <p className="text-slate-200 leading-relaxed">
+              Here, a{" "}
+              <span className="text-cyan-300 font-semibold">missed signal</span>{" "}
+              creates risk. Intervention—at least verbal—is warranted. If the
+              learner fails to react,
+              <span className="text-cyan-300 font-semibold">
+                {" "}
+                physical intervention
+              </span>{" "}
+              may be essential.
+            </p>
+
+            <p className="text-slate-200 leading-relaxed">
+              This scenario justifies a deeper discussion
+              <span className="text-cyan-300 font-semibold">
+                {" "}
+                post-manoeuvre
+              </span>{" "}
+              about{" "}
+              <span className="text-cyan-300 font-semibold">
+                communication
+              </span>{" "}
+              with other road users and why timing and visibility matter.
+            </p>
+
+            <p className="text-slate-300">
+              Many instructors feel they must talk constantly to demonstrate
+              value. But silence can be golden. Excessive instruction can lead
+              to cognitive overload, especially in the intense environment of a
+              moving vehicle.
+            </p>
+
+            <p className="text-slate-100 font-semibold">
+              Sometimes, allowing space sends a powerful message:{" "}
+              <span className="text-cyan-300">“You’ve got this.”</span>
+            </p>
+          </div>
+
+          {/* ================= NON-VERBAL COMMUNICATION ================= */}
+          <div className="fade-up bg-white rounded-3xl p-8 shadow-2xl text-slate-800">
+            <h2 className="text-2xl font-bold mb-4 text-indigo-700">
+              What Are You Nonverbally Communicating?
+            </h2>
+
+            <p className="leading-relaxed mb-4">
+              Learners are highly tuned in to your cues. If you're hovering over
+              the pedals or inching your hand toward the wheel,
+              <span className="font-semibold text-indigo-600">
+                {" "}
+                they may assume you expect something to go wrong.
+              </span>
+              This creates tension and undermines their confidence,
+              <span className="italic"> even if you never intervene.</span>
+            </p>
+
+            <p>
+              Show calmness and trust through your posture and gestures.{" "}
+              <span className="font-semibold text-indigo-600">
+                Let the learner lead
+              </span>
+              , and step in only when risk demands it.
+            </p>
+          </div>
+
+          {/* ================= BALANCE AS A TOOL ================= */}
+          <div className="fade-up bg-slate-50 rounded-3xl p-8 shadow-xl text-slate-800">
+            <h2 className="text-2xl font-bold mb-4">
+              Getting the Balance Right: Intervention as a Learning Tool
+            </h2>
+
+            <p className="leading-relaxed">
+              The goal is{" "}
+              <span className="font-semibold text-indigo-600">
+                minimal, meaningful intervention.
+              </span>{" "}
+              Every time you step in unnecessarily, you set your pupil
+              back—sometimes literally. But{" "}
+              <span className="font-semibold text-indigo-600">
+                strategic, justified intervention
+              </span>{" "}
+              followed by reflective conversation enhances understanding and
+              growth.
+            </p>
+          </div>
+
+          {/* ================= KEY PRINCIPLES ================= */}
+          <div className="fade-up bg-white rounded-3xl p-8 shadow-xl text-slate-800">
+            <h2 className="text-2xl font-bold mb-4">Key Principles</h2>
+
+            <ul style={{ padding: "0px" }} className="space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-cyan-500 font-bold">✔</span>
+                Use verbal cues first.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-cyan-500 font-bold">✔</span>
+                Explain physical interventions immediately after.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-cyan-500 font-bold">✔</span>
+                Adjust based on your pupil’s capabilities.
+              </li>
+            </ul>
+          </div>
+
+          {/* ================= WHAT IF MINDSET ================= */}
+          <div className="fade-up bg-indigo-50 rounded-3xl p-8 shadow-xl text-slate-800">
+            <h2 className="text-2xl font-bold mb-4">
+              Teach the “What If” Mindset
+            </h2>
+
+            <p className="mb-3">
+              Help your learners think beyond the moment. What if the brakes
+              failed? What if someone emerged suddenly from a hidden junction?
+            </p>
+
+            <p className="mb-3">
+              Many young drivers operate with a sense of invincibility.
+              Fostering realistic risk awareness—without fear-mongering—instils
+              safer driving habits.
+            </p>
+
+            <p className="italic">
+              Share personal experiences if relevant. These real stories anchor
+              theory into reality and highlight why proactive risk management
+              matters.
+            </p>
+          </div>
+
+          {/* ================= INDEPENDENT LEARNING ================= */}
+          <div className="fade-up bg-white rounded-3xl p-8 shadow-2xl text-slate-800">
+            <h2 className="text-2xl font-bold mb-4">
+              Promote Safe, Independent Learning
+            </h2>
+
+            <p className="mb-3">
+              Interventions may include non-driving elements—like switching on
+              lights or demisting windows. Early assistance is fine, but always
+              transition responsibility back to the learner.
+            </p>
+
+            <p className="mb-3">
+              Your role isn’t just to teach driving. It’s to build a safe,
+              self-aware driver who takes responsibility confidently—knowing{" "}
+              <span className="font-semibold text-indigo-600">
+                when to step in, and when to step back.
+              </span>
+            </p>
+
+            <p className="font-semibold text-indigo-700">
+              Progressive independence within a safe learning environment is
+              always the goal.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className={styles.adi3Module153rdsection}>
-          <h2 className={styles.adi3Module153rdsubHeading}>
-            Promote Safe, Independent Learning
-          </h2>
-          <p className={styles.adi3Module153rdtext}>
-            Interventions may also include non-driving elements—like switching
-            on lights or demisting windows. In early stages, it’s fine to
-            assist. But always transition those tasks back to the learner as
-            soon as they’re ready.
-          </p>
-          <p>
-            Your role isn’t just to teach driving. It’s to build a safe,
-            self-aware driver who takes responsibility confidently. That means
-            knowing{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              {" "}
-              when to step in, and when to step back.
-            </span>{" "}
-          </p>
-          <p>
-            Your interventions—whether verbal, physical, or silent—should always
-            serve one goal:{" "}
-            <span className={styles.adi3Module153rdhighlight}>
-              {" "}
-              progressive independence within a safe learning environment.
-            </span>
-          </p>
-        </div>
-      </div>
+      {/* ================= QUIZ ================= */}
+      <section className="py-20 bg-slate-900 text-white text-center">
+        <h2 className="text-3xl font-extrabold mb-4">Start Quiz</h2>
+        <p className="text-slate-300 mb-6">
+          15 questions to test your understanding of intervention.
+        </p>
 
-      <div className={styles.adiLastNextbtn}>
-        <Link to="/trainee-badge">
-          {" "}
-          <button className={styles.adinextbtns}>Next Page</button>
+        <Link to="/takequizCatName/intervention">
+          <button className="px-10 py-4 rounded-full bg-cyan-500 hover:bg-cyan-600 font-semibold shadow-xl transition">
+            Start Quiz
+          </button>
         </Link>
-      </div>
+      </section>
 
-      {/* ///////////////////////////////////////////////////////// */}
-      <div className={styles.quizStartDiv}>
-        <section className={styles.startQuizSection}>
-          <h1>Start Quiz</h1>
-          <h3>15 Questions</h3>
-          <p>
-            Here’s a quick summary quiz to test your understanding of of Part 3:
-            intervention the lesson before setting off
-          </p>
-          <Link to="/takequizCatName/intervention">
-            {" "}
-            <button>Start Quiz</button>
-          </Link>
-        </section>
-      </div>
-    </div>
+      {/* ================= NEXT ================= */}
+      <section className="py-10 text-center bg-white">
+        <Link to="/trainee-badge">
+          <button className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-xl">
+            Next Page <ArrowRight />
+          </button>
+        </Link>
+      </section>
+    </main>
   );
 }

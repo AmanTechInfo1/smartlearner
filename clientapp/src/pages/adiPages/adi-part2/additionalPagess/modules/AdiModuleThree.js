@@ -736,74 +736,74 @@ export default function AdiModuleThree() {
             </div>
           </div>
         </section>
-        <section className="py-20 bg-slate-50 fade-up">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-6">
-              After the activity, answer these questions:
-            </h2>
-            <div className="bg-white p-8 rounded-3xl shadow-xl">
-              <label className="block mb-2 font-semibold">
-                1. What was your biggest strength in advanced driving?
-              </label>
-              <textarea
-                ref={textareaRef2}
-                value={text2}
-                onChange={handleChange2}
-                rows={5}
-                className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
-                placeholder="Write your thoughts here..."
-              />
-              <button
-                onClick={saveText2}
-                className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
-              >
-                {isEditing2 ? "Update" : "Save"}
-              </button>
+          <section className="py-20 bg-slate-50 fade-up">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <h2 className="text-2xl lg:text-3xl font-bold mb-6">
+                After the activity, answer these questions:
+              </h2>
+              <div className="bg-white p-8 rounded-3xl shadow-xl">
+                <label className="block mb-2 font-semibold">
+                  1. What was your biggest strength in advanced driving?
+                </label>
+                <textarea
+                  ref={textareaRef2}
+                  value={text2}
+                  onChange={handleChange2}
+                  rows={5}
+                  className="w-full border rounded-xl p-4 focus:ring-2 focus:ring-emerald-500"
+                  placeholder="Write your thoughts here..."
+                />
+                <button
+                  onClick={saveText2}
+                  className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-emerald-700"
+                >
+                  {isEditing2 ? "Update" : "Save"}
+                </button>
 
-              <div className="mt-6">
-                {savedTexts2.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
-                    <p
-                      className="text-gray-500 text-sm"
-                      style={{ marginBottom: "0px" }}
-                    >
-                      No saved thoughts yet ✍️
-                    </p>
-                  </div>
-                ) : (
-                  <ul
-                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                    style={{ paddingLeft: "0px" }}
-                  >
-                    {savedTexts2.map((savedText, index) => (
-                      <li
-                        key={index}
-                        className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
+                <div className="mt-6">
+                  {savedTexts2.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-10 border border-dashed rounded-xl bg-gray-50">
+                      <p
+                        className="text-gray-500 text-sm"
+                        style={{ marginBottom: "0px" }}
                       >
-                        <p
-                          className="text-gray-700 text-sm pr-10"
-                          style={{ marginBottom: "0px" }}
+                        No saved thoughts yet ✍️
+                      </p>
+                    </div>
+                  ) : (
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                      style={{ paddingLeft: "0px" }}
+                    >
+                      {savedTexts2.map((savedText, index) => (
+                        <li
+                          key={index}
+                          className="group relative p-4 bg-white rounded-xl border shadow-sm hover:shadow-md transition"
                         >
-                          {savedText}
-                        </p>
-                        <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
-                          <FilePenLine
-                            onClick={() => editText2(index)}
-                            className="cursor-pointer text-blue-500"
-                          />
-                          <Trash2
-                            onClick={() => deleteText2(index)}
-                            className="cursor-pointer text-red-500"
-                          />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                          <p
+                            className="text-gray-700 text-sm pr-10"
+                            style={{ marginBottom: "0px" }}
+                          >
+                            {savedText}
+                          </p>
+                          <div className="absolute top-4 right-4 flex gap-3 opacity-70 group-hover:opacity-100">
+                            <FilePenLine
+                              onClick={() => editText2(index)}
+                              className="cursor-pointer text-blue-500"
+                            />
+                            <Trash2
+                              onClick={() => deleteText2(index)}
+                              className="cursor-pointer text-red-500"
+                            />
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
         <section className="py-20 bg-slate-50 fade-up">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="bg-white p-8 rounded-3xl shadow-xl">
