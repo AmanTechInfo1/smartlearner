@@ -64,6 +64,7 @@ const Cart = () => {
               <div className={styles.emptyCartMessage}>Your cart is empty</div>
             ) : (
               <table className={styles.cartTable}>
+                {" "}
                 <thead>
                   <tr>
                     <th>Item</th>
@@ -107,6 +108,11 @@ const Cart = () => {
                 margin: "0px auto",
               }}
             >
+              {" "}
+              <p>
+                One time discount offer and cannot be purchased with another
+                discount offer
+              </p>
               <li>
                 The Beginners Package is non-refundable and only instructor
                 transferable.
