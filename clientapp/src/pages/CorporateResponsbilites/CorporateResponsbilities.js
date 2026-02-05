@@ -26,6 +26,7 @@ import eclectricImg from "../../assets/images/electric wave.png";
 import BuildingImg from "../../assets/images/buliding img.png";
 import treeImg from "../../assets/images/tree img.png";
 import handShake from "../../assets/images/hand shake.png";
+import UKBranchMap from "../AddOns/UKBranchMap";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -280,8 +281,10 @@ export default function CorporateResponsibilities() {
           </div>
         </div>
       </section>
-
-      {/* Initiatives Section */}
+      {/* <section style={{ maxWidth: "1640px", margin: "0rem auto" }}>
+        <UKBranchMap />{" "}
+      </section> */}
+     
       <section
         ref={cardsRef}
         className="py-20 px-6 bg-gradient-to-b from-slate-50 to-white"

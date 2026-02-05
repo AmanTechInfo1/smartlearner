@@ -16,6 +16,83 @@ html {
 body {
   background-color: #000000;
 }
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, 50px) scale(1.05);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-tip {
+  display: none;
+}
+
+.custom-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+}
+/* ADD THIS (global CSS) */
+.custom-leaflet-marker {
+  position: relative;
+}
+
+.marker-pin {
+  position: absolute;
+  inset: 0;
+  width: 22px;
+  height: 22px;
+  background: red;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.marker-pin:hover {
+  transform: scale(1.15);
+}
+
 .Container {
   background-image: url("./assets/images/andybannerforwebsite-1-1.png");
   padding: 20px;
@@ -24,7 +101,6 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  
 }
 .active {
   color: rgb(255, 148, 148);
@@ -565,7 +641,9 @@ ul {
 .areaImage {
   width: 100%;
   height: auto;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .areaColumn:hover .areaImage {
