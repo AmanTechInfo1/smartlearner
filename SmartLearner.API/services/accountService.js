@@ -75,7 +75,7 @@ class AccountService {
       } else {
         const isPasswordValid = passwordHash.CheckPassword(
           password,
-          user.password
+          user.password,
         );
         if (!isPasswordValid) {
           throw new Error("Invalid Password");
@@ -105,7 +105,7 @@ class AccountService {
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET || "SMARTLEARNERJWT",
-        { expiresIn: jwtAge }
+        { expiresIn: jwtAge },
       );
 
       return {
@@ -323,7 +323,7 @@ class AccountService {
       let userRole = await UserRole.findOneAndUpdate(
         { userId: roleId }, // Find UserRole by userId
         { roleId: roleData.roleId }, // Update the roleId
-        { new: true } // Return the updated userRole
+        { new: true }, // Return the updated userRole
       );
 
       if (!userRole) {
@@ -398,7 +398,7 @@ class AccountService {
         service: "Gmail",
         auth: {
           user: "Smartlearnerdrivingschool@gmail.com", // Your email
-          pass: "cbsb ueih dxqm zdhd",
+          pass: "ghzf dspi ndeg ryqw",
         },
       });
 
