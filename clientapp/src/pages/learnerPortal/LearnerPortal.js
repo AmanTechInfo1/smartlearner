@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./LearnerPortal.module.css";
 import table from "../../assets/images/tableImg.png";
+import { Link } from "react-router-dom";
 
 const Section = ({ title, paragraphs = [], list = [], steps = [], note }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -172,9 +173,9 @@ const LearnerPortal = () => {
         </div>
       </header>
       {/* /////////////////////////////////////////////// */}
-      <div className={styles.tableImgBanner}>
+      {/* <div className={styles.tableImgBanner}>
         <img src={table} alt="table" />
-      </div>
+      </div> */}
 
       {/* /////////////////////////////////////////////////// */}
 
@@ -300,7 +301,9 @@ test.
           <strong> confidence</strong> and a clear direction.
         </p>
         <div className={styles.learnerPortal2ndcta}>
-          🎯 Book your assessment today for peace of mind!
+          <Link to="/Contact-Us">
+            🎯 Book your assessment today for peace of mind!
+          </Link>
         </div>
 
         <h3 className={styles.learnerPortal2ndsubheading}>
@@ -389,9 +392,9 @@ test.
             need. You'll receive personalised feedback and a tailored plan to
             get you test-ready.
           </p>
-          <p className={styles.learnerPortal3rdcta}>
+          <Link to="/Contact-Us">
             🎯 Book your assessment today for peace of mind!
-          </p>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -400,7 +403,13 @@ test.
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
         >
-          <h2>Learning Your Way: The VARK Approach</h2>
+          {" "}
+          <a
+            href="https://vark-learn.com/the-vark-questionnaire/"
+            target="_blank"
+          >
+            <h2>Learning Your Way: The VARK Approach</h2>
+          </a>
           <p>
             Everyone learns differently—and that’s totally okay! At{" "}
             <strong>SmartLearner Driving School</strong>, we use the VARK
