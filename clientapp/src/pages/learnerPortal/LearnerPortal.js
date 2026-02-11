@@ -409,7 +409,7 @@ test.
             target="_blank"
           >
             <h2>Learning Your Way: The VARK Approach</h2>
-          </a>
+          </a>  
           <p>
             Everyone learns differently—and that’s totally okay! At{" "}
             <strong>SmartLearner Driving School</strong>, we use the VARK
