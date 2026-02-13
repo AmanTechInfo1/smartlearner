@@ -422,7 +422,7 @@ class UserSubscriptionService {
       // Get the two specific plans by plan name or other unique criteria
       const plans = await Plans.find({
         planname: {
-          $in: ["Lifetime Theory Portal Access £30.00"],
+          $in: ["Lifetime Theory Portal Access £4.99"],
         },
       });
 

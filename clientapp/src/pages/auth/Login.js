@@ -52,7 +52,7 @@ export default function Login() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const text = "WelCome Back To Smartlearner";
+    const text = "Welcome Back To Smartlearner";
     return text.split("").map((char, index) => <span key={index}>{char}</span>);
   };
 

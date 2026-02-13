@@ -52,7 +52,7 @@ export default function PdiLogin() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const text = "WelCome Back To PDI PORTAL";
+    const text = "Welcome Back To PDI PORTAL";
     return text.split("").map((char, index) => <span key={index}>{char}</span>);
   };
 

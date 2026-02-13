@@ -52,7 +52,7 @@ export default function TheoryLogin() {
 
   // Function to split the text into individual letters wrapped in <span>
   const splitText = () => {
-    const text = "WelCome Back To Theory Portal";
+    const text = "Welcome Back To Theory Portal";
     return text.split("").map((char, index) => <span key={index}>{char}</span>);
   };
 
