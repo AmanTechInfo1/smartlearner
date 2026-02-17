@@ -290,9 +290,9 @@ const ProductShowcase = () => {
                         className="absolute top-3 left-3 bg-red-500 text-white font-bold px-3 py-1 rounded-full shadow-lg text-xs z-20 animate-bounce"
                       >
                         {product.originCategory === "offers manual"
-                          ? "🔥 Valentine special offer"
+                          ? "🔥 special offer"
                           : product.originCategory === "offers automatic"
-                          ? "✨ Valentine special offer"
+                          ? "✨ special offer"
                           : ""}
                       </motion.div>
                     )}
