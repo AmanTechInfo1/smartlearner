@@ -90,11 +90,12 @@ export default function Home() {
       {/* <NewYearBanner /> */}
       {/* <ChristmasBanner />
      
-      <SpringBanner />          
+             <VelentineDayBanner />   
       <AprilBanner />
       <RabbitBanner /> */}
       <section>
-        <VelentineDayBanner />
+        <SpringBanner />  
+      
       </section>
 
       <div className={styles.homepageContainerDiv}>
@@ -102,7 +103,7 @@ export default function Home() {
         <Element name="our-courses-section">
           <section
             style={{
-              background: "linear-gradient(180deg, rgb(230, 24, 161), rgb(227, 19, 113))",
+              background: "linear-gradient(180deg, rgb(216, 184, 0), rgb(227, 196, 19))",
             }}
             className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
           >

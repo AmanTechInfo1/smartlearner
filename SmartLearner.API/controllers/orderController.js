@@ -478,7 +478,7 @@ class OrderController {
           .json({ success: false, message: "Order not found" });
       }
       const email = order.email;
-      console.log("email", email);
+      
 
       const response = await orderService.createRevoultOrder(
         amount,

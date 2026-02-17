@@ -103,9 +103,9 @@ body {
   background-size: 100% auto;
 }
 .active {
-  color: rgb(255, 148, 148);
-  border: 1px solid rgb(255, 24, 105);
-  background-color: rgba(72, 0, 31, 0.957);
+  color: rgb(255, 218, 148);
+  border: 1px solid rgb(128, 49, 0);
+  background-color: rgba(72, 48, 0, 0.957);
 }
 .es-header-btn {
   display: none;

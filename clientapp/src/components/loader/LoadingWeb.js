@@ -30,7 +30,7 @@ export default function LoadingWeb() {
               cy="53"
               rx="12"
               ry="12"
-              fill="rgb(211, 0, 95)"
+              fill="rgb(153, 153, 0)"
             />
             <ellipse
               className="car__wheel--right"
@@ -39,7 +39,7 @@ export default function LoadingWeb() {
               cy="53"
               rx="12"
               ry="12"
-              fill="rgb(163, 0, 82)"
+              fill="rgb(124, 140, 0)"
             />
             <path
               className="car__line car__line--top"
