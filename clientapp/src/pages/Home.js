@@ -20,6 +20,7 @@ import VelentineDayBanner from "../components/ui/newHomeBanner/VelentineDayBanne
 import SpringBanner from "../components/ui/newHomeBanner/SpringBanner";
 import AprilBanner from "../components/ui/newHomeBanner/AprilBanner";
 import RabbitBanner from "../components/ui/newHomeBanner/RabbitBanner";
+import UKBranchMap from "./AddOns/UKBranchMap";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -89,13 +90,12 @@ export default function Home() {
       </Helmet>
       {/* <NewYearBanner /> */}
       {/* <ChristmasBanner />
-     
+      <SpringBanner />  
              <VelentineDayBanner />   
-      <AprilBanner />
+   
       <RabbitBanner /> */}
       <section>
-        <SpringBanner />  
-      
+        <AprilBanner />
       </section>
 
       <div className={styles.homepageContainerDiv}>
@@ -103,7 +103,8 @@ export default function Home() {
         <Element name="our-courses-section">
           <section
             style={{
-              background: "linear-gradient(180deg, rgb(216, 184, 0), rgb(227, 196, 19))",
+              background:
+                "linear-gradient(180deg, rgb(216, 184, 0), rgb(227, 196, 19))",
             }}
             className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
           >
