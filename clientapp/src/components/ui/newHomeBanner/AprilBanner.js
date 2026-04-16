@@ -55,7 +55,7 @@ export default function AprilBanner() {
       </motion.div>
 
       <div className={styles.headingName}>
-        <h1>IT'S FRESH</h1>
+        <h1>IT'S A FRESH</h1>
         <br />
         <img src={Start} alt="startImg" />
       </div>
