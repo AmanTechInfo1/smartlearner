@@ -3,8 +3,12 @@ const Order = require("../models/orderModel");
 const Paypalorder = require("../models/paypalOrderModel");
 const axios = require("axios");
 const { getAccessToken, PAYPAL_API_BASE } = require("../config/paypal");
+const productEmailService = require("./productEmailService");
 
 const nodemailer = require("nodemailer");
+
+const Stripe = require("stripe");
+const stripe = Stripe("");
 
 const baseUrl = process.env.REVOLUT_API_URL;
 const secretKey = process.env.REVOLUT_API_SECRET_KEY;
@@ -608,6 +612,180 @@ class OrderService {
     }
 
     return data;
+  }
+
+// /////////////////////////////klarna/////////////////////////////////
+
+ async createPaymentIntent(orderData) {
+    // Save order to DB with pending status
+    const order = new Paypalorder({
+      firstName: orderData.firstName,
+      lastName: orderData.lastName,
+      city: orderData.city,
+      email: orderData.email,
+      myCart: orderData.myCart,
+      ordernotes: orderData.ordernotes || "",
+      phoneNumber: orderData.phoneNumber,
+      postcode: orderData.postcode,
+      serviceCharge: parseFloat(orderData.serviceCharge) || 0,
+      streetAddress1: orderData.streetAddress1,
+      streetAddress2: orderData.streetAddress2 || "",
+      subtotal: parseFloat(orderData.subtotal) || 0,
+      total: parseFloat(orderData.total),
+      status: "pending",
+      paymentMethod: "klarna",
+    });
+
+    await order.save();
+
+    // Create Stripe PaymentIntent with Klarna
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(parseFloat(orderData.total) * 100), // pence (GBP)
+      currency: "gbp",
+     automatic_payment_methods: {
+    enabled: true,
+    allow_redirects: "always", // Required for Klarna (redirect-based)
+  },
+
+      metadata: {
+        orderId: order._id.toString(),
+        customerEmail: orderData.email,
+        customerName: `${orderData.firstName} ${orderData.lastName}`,
+      },
+      shipping: {
+        name: `${orderData.firstName} ${orderData.lastName}`,
+        phone: orderData.phoneNumber,
+        address: {
+          line1: orderData.streetAddress1,
+          line2: orderData.streetAddress2 || "",
+          city: orderData.city,
+          postal_code: orderData.postcode,
+          country: "GB",
+        },
+      },
+    });
+
+    // Store paymentIntent ID in order
+    order.paymentToken = paymentIntent.id;
+    await order.save();
+
+    // Send "payment initiated" email
+    try {
+      const emailService = new productEmailService();
+      await emailService.sendEmail(order, "Initiated", "Klarna");
+    } catch (emailErr) {
+      console.error("Initiation email error:", emailErr.message);
+    }
+
+    return {
+      clientSecret: paymentIntent.client_secret,
+      orderId: order._id.toString(),
+    
+    };
+  }
+
+   async verifyPaymentStatus(paymentIntentId) {
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+    const orderId = paymentIntent.metadata?.orderId;
+
+    if (!orderId) throw new Error("Order ID not found in PaymentIntent metadata");
+
+    const newStatus =
+      paymentIntent.status === "succeeded" ? "completed" : "failed";
+
+    const order = await Paypalorder.findByIdAndUpdate(
+      orderId,
+      {
+        status: newStatus,
+        paymentDetails: paymentIntent,
+      },
+      { new: true }
+    );
+
+    if (!order) throw new Error("Order not found");
+
+    // Send success/fail email
+    try {
+      const emailService = new productEmailService();
+      const emailStatus = newStatus === "completed" ? "Successful" : "Failed";
+      await emailService.sendEmail(order, emailStatus, "Klarna");
+    } catch (emailErr) {
+      console.error("Status email error:", emailErr.message);
+    }
+
+    return { order, paymentIntent };
+  }
+
+async handleWebhook(rawBody, sig) {
+    const webhookSecret = "";
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
+    } catch (err) {
+      throw new Error(`Webhook signature verification failed: ${err.message}`);
+    }
+
+    switch (event.type) {
+      case "payment_intent.succeeded":
+        await this._onPaymentSucceeded(event.data.object);
+        break;
+
+      case "payment_intent.payment_failed":
+        await this._onPaymentFailed(event.data.object);
+        break;
+
+      case "payment_intent.created":
+        console.log(`PaymentIntent created: ${event.data.object.id}`);
+        break;
+
+      default:
+        console.log(`Unhandled webhook event: ${event.type}`);
+    }
+
+    return { received: true };
+  }
+
+
+  async _onPaymentSucceeded(paymentIntent) {
+    const orderId = paymentIntent.metadata?.orderId;
+    if (!orderId) return;
+
+    const order = await Paypalorder.findByIdAndUpdate(
+      orderId,
+      { status: "completed", paymentDetails: paymentIntent },
+      { new: true }
+    );
+
+    if (order) {
+      try {
+        const emailService = new EmailService();
+        await emailService.sendEmail(order, "Successful", "Klarna");
+      } catch (err) {
+        console.error("Webhook success email error:", err.message);
+      }
+    }
+  }
+
+  // ─── Private: Handle Failed Webhook ─────────────────────────────────────────
+  async _onPaymentFailed(paymentIntent) {
+    const orderId = paymentIntent.metadata?.orderId;
+    if (!orderId) return;
+
+    const order = await Paypalorder.findByIdAndUpdate(
+      orderId,
+      { status: "failed", paymentDetails: paymentIntent },
+      { new: true }
+    );
+
+    if (order) {
+      try {
+        const emailService = new productEmailService();
+        await emailService.sendEmail(order, "Failed", "Klarna");
+      } catch (err) {
+        console.error("Webhook failed email error:", err.message);
+      }
+    }
   }
 
   ///////////////////////////////////////////////////////////

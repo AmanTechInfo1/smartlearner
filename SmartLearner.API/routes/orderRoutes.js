@@ -76,4 +76,19 @@ router.post("/revolut-payment-failure", OrderController.revolutPaymentFailure);
 
 // router.post("/verify-payment", OrderController.verifyOrderStatus);
 
+router.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  (req, res) => OrderController.webhook(req, res)
+);
+
+// Standard JSON routes
+router.post("/create-payment-intent", (req, res) =>
+  OrderController.createPaymentIntent(req, res)
+);
+
+router.get("/verify/:paymentIntentId", (req, res) =>
+  OrderController.verifyKlarnaPayment(req, res)
+);
+
 module.exports = router;
