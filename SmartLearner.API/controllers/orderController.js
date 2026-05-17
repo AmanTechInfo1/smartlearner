@@ -569,6 +569,82 @@ class OrderController {
       });
     }
   }
+/////////////////////////////////////////////////////
+///////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+   async createPaymentIntent(req, res) {
+    try {
+      const orderData = req.body;
+
+      // Basic validation
+      const requiredFields = [
+        "firstName", "lastName", "email", "phoneNumber",
+        "streetAddress1", "city", "postcode", "total", "myCart", "subtotal", "serviceCharge",
+      ];
+      const missing = requiredFields.filter((f) => !orderData[f]);
+      if (missing.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message: `Missing required fields: ${missing.join(", ")}`,
+        });
+      }
+
+      if (!Array.isArray(orderData.myCart) || orderData.myCart.length === 0) {
+        return res.status(400).json({ success: false, message: "Cart is empty" });
+      }
+
+      const result = await orderService.createPaymentIntent(orderData);
+
+      return res.status(200).json({ success: true, ...result });
+    } catch (error) {
+      console.error("createPaymentIntent error:", error);
+      return res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
+  // GET /api/stripe-klarna/verify/:paymentIntentId
+  async verifyKlarnaPayment(req, res) {
+    try {
+      const { paymentIntentId } = req.params;
+
+      console.log("Verifying Klarna payment for PaymentIntent ID:", paymentIntentId);
+      console.log("Request params:", req);
+
+      if (!paymentIntentId) {
+        return res.status(400).json({ success: false, message: "paymentIntentId is required" });
+      }
+
+      const { order, paymentIntent } = await orderService.verifyPaymentStatus(paymentIntentId);
+
+      return res.status(200).json({
+        success: true,
+        status: order.status,
+        orderId: order._id,
+        paymentStatus: paymentIntent.status,
+        order,
+      });
+    } catch (error) {
+      console.error("verifyPayment error:", error);
+      return res.status(500).json({ success: false, message: error.message });
+    }
+  }
+
+  // POST /api/stripe-klarna/webhook  ← raw body, no JSON middleware
+  async webhook(req, res) {
+    const sig = req.headers["stripe-signature"];
+    if (!sig) {
+      return res.status(400).json({ message: "Missing stripe-signature header" });
+    }
+
+    try {
+      const result = await orderService.handleWebhook(req.body, sig);
+      return res.status(200).json(result);
+    } catch (error) {
+      console.error("Webhook error:", error.message);
+      return res.status(400).json({ message: error.message });
+    }
+  }
 }
 
 module.exports = new OrderController();

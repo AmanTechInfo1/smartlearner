@@ -201,6 +201,7 @@ import AdminPaymentProcessing from "./containers/Payments/AdminPaymentProcessing
 import WorkshopTransmission from "./pages/Transmission/WorkshopTransmission";
 import BusinessMentoringPage from "./pages/AddOns/BusinessMentoring";
 import BusinessSubs from "./pages/adiPages/adi-Subscription/BusinessSubs";
+import KlarnaReturn from "./pages/shop/checkout/KlarnaReturn";
 
 export const router = createBrowserRouter([
   {
@@ -324,6 +325,7 @@ export const router = createBrowserRouter([
       { path: "email", element: <Email /> },
       { path: "hazard-preception-part-2", element: <HazardPreceptions /> },
       { path: "business-mentoring", element: <BusinessMentoringPage /> },
+      { path: "klarna-return", element: <KlarnaReturn /> },
       {
         path: "driving-instructor-training-part-one",
         element: <PartOneSubscription />,
