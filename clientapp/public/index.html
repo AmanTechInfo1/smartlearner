@@ -1,644 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Level 8 — Trainer Resources</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon-32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="google-site-verification"
+      content="hISPC6PJBsLfoiLpMqRqKdUQDtv9-gUKqRHZoufen-g" />
 
-  <style>
-    :root {
-      --white:      #ffffff;
-      --cream:      #faf8f5;
-      --parchment:  #f3efe8;
-      --rule:       #ddd6c8;
-      --rule-light: #ede9e1;
-      --navy:       #1a2744;
-      --navy-mid:   #2d3f6b;
-      --navy-light: #3d5488;
-      --burgundy:   #7b1d2e;
-      --gold:       #b8860b;
-      --gold-light: #d4a017;
-      --text:       #1e1e1e;
-      --text-mid:   #4a4a4a;
-      --text-muted: #8a7f70;
-      --shadow-soft: 0 2px 16px rgba(26,39,68,0.08);
-      --shadow-card: 0 4px 32px rgba(26,39,68,0.10);
-      --radius:     4px;
-    }
+    <link rel="apple-touch-icon" href="/favicon-32x32.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    .resourcepagebody {
-      font-family: 'Crimson Pro', Georgia, serif;
-      background: var(--cream);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Smartlearner Driving School</title>
+  </head>
+  <body>
+    <noscript>SmartLearner</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-  
- 
-    /* ══════════ Resourcehero ══════════ */
-    .Resourcehero-banner { background: var(--white); border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
-    .Resourcehero-banner::after {
-      content: '';
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 420px;
-      background: repeating-linear-gradient(0deg, transparent, transparent 28px, var(--rule-light) 28px, var(--rule-light) 29px);
-      opacity: .6;
-      pointer-events: none;
-    }
-    .Resourcehero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3.5rem 2.5rem 3rem;
-      position: relative; z-index: 1;
-    }
-    .Resourcehero-kicker {
-      display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--parchment);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--burgundy);
-      padding: .35rem 1rem;
-      border-radius: 2px;
-      font-family: 'IM Fell English SC', serif;
-      font-size: .72rem; color: var(--burgundy);
-      letter-spacing: .12em;
-      margin-bottom: 1.5rem;
-    }
-    .Resourcehero-inner h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      font-weight: 700; color: var(--navy);
-      line-height: 1.12; letter-spacing: -.01em; max-width: 640px;
-    }
-    .Resourcehero-inner h1 em { font-style: italic; color: var(--burgundy); }
-    .Resourcehero-rule { width: 64px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin: 1.5rem 0; border-radius: 2px; }
-    .Resourcehero-inner p { font-size: 1.15rem; color: var(--text-mid); max-width: 520px; line-height: 1.7; font-weight: 300; }
-    .Resourcehero-stats { display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule-light); }
-    .stat-item { display: flex; flex-direction: column; gap: .2rem; }
-    .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; }
-    .stat-label  { font-family: 'Crimson Pro', serif; font-size: .78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    /* ══════════ ADMIN PANEL ══════════ */
-    .Resourceadmin-bar { max-width: 1200px; margin: 2rem auto 0; padding: 0 2.5rem; }
-    .Resourceadmin-panel {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-left: 4px solid var(--navy);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.75rem;
-      display: flex; align-items: center; gap: 1.5rem;
-      box-shadow: var(--shadow-soft);
-      animation: slideIn .5s ease both;
-    }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-    .Resourceadmin-icon {
-      width: 46px; height: 46px;
-      background: var(--navy);
-      border-radius: 3px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
-    }
-    .Resourceadmin-text-block h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
-    .Resourceadmin-text-block p  { font-size: .88rem; color: var(--text-muted); line-height: 1.4; }
-    .Resourceadmin-Resourcebtns { margin-left: auto; display: flex; gap: .6rem; flex-shrink: 0; }
-    .Resourcebtn {
-      font-family: 'Crimson Pro', serif; font-size: .9rem; font-weight: 600;
-      padding: .55rem 1.2rem; border-radius: var(--radius);
-      border: none; cursor: pointer; transition: all .2s;
-      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; letter-spacing: .02em;
-    }
-    .Resourcebtn-navy { background: var(--navy); color: #fff; }
-    .Resourcebtn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,39,68,0.25); }
-    .Resourcebtn-outline { background: transparent; border: 1px solid var(--rule); color: var(--text-muted); }
-    .Resourcebtn-outline:hover { border-color: var(--navy); color: var(--navy); }
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
 
-    /* ══════════ SECTION HEADER + SEARCH ══════════ */
-    .Resourcesection-head {
-      max-width: 1200px; margin: 2.5rem auto 0;
-      padding: 0 2.5rem 1.5rem;
-      display: flex; align-items: center; gap: 1.25rem;
-    }
-    .Resourcesection-head h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); white-space: nowrap; }
-    .Resourcesection-rule { flex: 1; height: 1px; background: var(--rule); }
-    .ResourceResourceunit-counter { font-family: 'Crimson Pro', serif; font-size: .82rem; color: var(--text-muted); white-space: nowrap; letter-spacing: .04em; }
+    <!-- //////////////////////////////////////////////////// -->
 
-    .search-row { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 1.75rem; }
-    .search-field {
-      display: flex; align-items: center; gap: .75rem;
-      background: var(--white);
-      border: 1px solid var(--rule); border-radius: var(--radius);
-      padding: .6rem 1.1rem; max-width: 400px;
-      box-shadow: var(--shadow-soft); transition: border-color .2s, box-shadow .2s;
-    }
-    .search-field:focus-within { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,39,68,0.08); }
-    .search-field svg { color: var(--text-muted); flex-shrink: 0; }
-    .search-field input { flex: 1; border: none; outline: none; font-family: 'Crimson Pro', serif; font-size: .95rem; color: var(--text); background: transparent; }
-    .search-field input::placeholder { color: var(--text-muted); }
+    <!-- /////////////////////////////////////// -->
+    <div id="arrow" class="arrow"></div>
 
-    /* ══════════ UNITS GRID ══════════ */
-    .Resourceunits-grid {
-      max-width: 1200px; margin: 0 auto;
-      padding: 0 2.5rem 5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(348px, 1fr));
-      gap: 1.5rem;
-    }
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=MjKK8YL0"></script>
 
-    /* ══════════ UNIT CARD ══════════ */
-    .Resourceunit-card {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: transform .25s, box-shadow .25s, border-color .25s;
-      animation: riseUp .5s ease both;
-    }
-    @keyframes riseUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    .Resourceunit-card:nth-child(1)  { animation-delay: .04s; }
-    .Resourceunit-card:nth-child(2)  { animation-delay: .08s; }
-    .Resourceunit-card:nth-child(3)  { animation-delay: .12s; }
-    .Resourceunit-card:nth-child(4)  { animation-delay: .16s; }
-    .Resourceunit-card:nth-child(5)  { animation-delay: .20s; }
-    .Resourceunit-card:nth-child(6)  { animation-delay: .24s; }
-    .Resourceunit-card:nth-child(7)  { animation-delay: .28s; }
-    .Resourceunit-card:nth-child(8)  { animation-delay: .32s; }
-    .Resourceunit-card:nth-child(9)  { animation-delay: .36s; }
-    .Resourceunit-card:nth-child(10) { animation-delay: .40s; }
-    .Resourceunit-card:nth-child(11) { animation-delay: .44s; }
-    .Resourceunit-card:nth-child(12) { animation-delay: .48s; }
-    .Resourceunit-card:nth-child(13) { animation-delay: .52s; }
-    .Resourceunit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); border-color: var(--navy-light); }
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2BN7ZRZZ71"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    .Resourcecard-stripe { height: 4px; }
-    .Resourceunit-card:nth-child(3n+1) .Resourcecard-stripe { background: var(--navy); }
-    .Resourceunit-card:nth-child(3n+2) .Resourcecard-stripe { background: var(--burgundy); }
-    .Resourceunit-card:nth-child(3n+3) .Resourcecard-stripe { background: var(--gold); }
+      gtag("config", "G-2BN7ZRZZ71");
+    </script>
 
-    .Resourcecard-top {
-      padding: 1.25rem 1.5rem 1rem;
-      display: flex; align-items: flex-start; gap: 1rem;
-      border-bottom: 1px solid var(--rule-light);
-    }
-    .Resourceunit-badge {
-      flex-shrink: 0;
-      background: var(--navy); color: #fff;
-      font-family: 'IM Fell English SC', serif;
-      font-size: .68rem; letter-spacing: .08em;
-      padding: .5rem .65rem; border-radius: 2px;
-      text-align: center; line-height: 1.2; min-width: 42px;
-    }
-    .Resourceunit-card:nth-child(3n+2) .Resourceunit-badge { background: var(--burgundy); }
-    .Resourceunit-card:nth-child(3n+3) .Resourceunit-badge { background: var(--gold); color: var(--navy); }
-
-    .Resourcecard-meta { flex: 1; min-width: 0; }
-    .Resourcecard-label { font-family: 'IM Fell English SC', serif; font-size: .66rem; letter-spacing: .12em; color: var(--text-muted); }
-    .Resourcecard-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-top: .25rem; line-height: 1.3; }
-    .Resourcefile-pill {
-      flex-shrink: 0;
-      font-family: 'Crimson Pro', serif; font-size: .75rem; font-weight: 600;
-      color: var(--text-muted);
-      background: var(--parchment); border: 1px solid var(--rule);
-      padding: .2rem .6rem; border-radius: 20px; white-space: nowrap; letter-spacing: .03em;
-    }
-
-    .Resourcefile-list { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .55rem; }
-
-    .Resourcefile-row {
-      display: flex; align-items: center; gap: .85rem;
-      background: var(--cream); border: 1px solid var(--rule-light);
-      border-radius: var(--radius);
-      padding: .7rem .9rem;
-      text-decoration: none; color: var(--text);
-      transition: all .2s; position: relative; overflow: hidden; cursor: pointer;
-    }
-    .Resourcefile-row::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 0; background: var(--navy); transition: width .2s;
-    }
-    .Resourcefile-row:hover::before { width: 3px; }
-    .Resourcefile-row:hover { background: var(--white); border-color: var(--navy-light); box-shadow: 0 2px 12px rgba(26,39,68,0.09); color: var(--navy); }
-
-    .Resourcefile-type-icon {
-      width: 34px; height: 34px; border-radius: 3px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .95rem; flex-shrink: 0; border: 1px solid var(--rule);
-    }
-    .Resourcefile-type-icon.zip  { background: #fff8e7; }
-    .Resourcefile-type-icon.docx { background: #e8f0ff; }
-    .Resourcefile-type-icon.pptx { background: #fff0ee; }
-
-    .Resourcefile-details { flex: 1; min-width: 0; }
-    .Resourcefile-name { font-family: 'Crimson Pro', serif; font-size: .92rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); transition: color .2s; }
-    .Resourcefile-row:hover .Resourcefile-name { color: var(--navy); }
-    .Resourcefile-sub { display: flex; align-items: center; gap: .5rem; margin-top: .12rem; }
-    .Resourcefile-tag {
-      font-family: 'IM Fell English SC', serif; font-size: .6rem; letter-spacing: .1em;
-      color: var(--text-muted); background: var(--white); border: 1px solid var(--rule);
-      padding: .08rem .4rem; border-radius: 2px;
-    }
-    .Resourcefile-desc { font-size: .78rem; color: var(--text-muted); font-style: italic; }
-    .dl-arrow { flex-shrink: 0; color: var(--text-muted); opacity: .5; transition: all .2s; }
-    .Resourcefile-row:hover .dl-arrow { opacity: 1; color: var(--navy); transform: translateY(2px); }
-
-    /* ══════════ TOAST ══════════ */
-    #toast {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-      background: var(--navy); color: #fff;
-      font-family: 'Crimson Pro', serif; font-size: .95rem; font-weight: 500;
-      padding: .8rem 1.4rem; border-radius: var(--radius);
-      border-left: 4px solid var(--gold);
-      box-shadow: 0 8px 32px rgba(26,39,68,0.25);
-      transform: translateY(80px); opacity: 0;
-      transition: all .35s cubic-bezier(.34,1.4,.64,1);
-      display: flex; align-items: center; gap: .6rem;
-    }
-    #toast.show { transform: translateY(0); opacity: 1; }
-
-    /* ══════════ FOOTER ══════════ */
-  
-
-    @media (max-width: 680px) {
-      .header-inner, .Resourcehero-inner, .Resourceadmin-bar, .Resourcesection-head, .search-row, .Resourceunits-grid, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .Resourceunits-grid { grid-template-columns: 1fr; }
-      .Resourcehero-stats { gap: 1.75rem; flex-wrap: wrap; }
-      .Resourceadmin-panel { flex-direction: column; align-items: flex-start; }
-      .Resourceadmin-Resourcebtns { margin-left: 0; }
-      .Resourcehero-banner::after { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-<div class="resourcepagebody">
-
-<section class="Resourcehero-banner">
-  <div class="Resourcehero-inner">
-    <div class="Resourcehero-kicker">DTIDEA · Level 8 Training Programme</div>
-    <h1>Instructor <em>Resource</em><br/>Library</h1>
-    <div class="Resourcehero-rule"></div>
-    <p>All unit materials, presentations, and practical activities — organised and ready for download. Select any file below to begin.</p>
-    <div class="Resourcehero-stats">
-      <div class="stat-item"><span class="stat-number">13</span><span class="stat-label">Units</span></div>
-      <div class="stat-item"><span class="stat-number">18</span><span class="stat-label">Files</span></div>
-      <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Formats</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- <div class="Resourceadmin-bar">
-  <div class="Resourceadmin-panel">
-    <div class="Resourceadmin-icon">📦</div>
-    <div class="Resourceadmin-text-block">
-      <h3>Admin — Upload New Unit Resources</h3>
-      <p>Add or replace materials for any unit. Supported: ZIP, DOCX, PPTX. Changes appear immediately for all instructors.</p>
-    </div>
-    <div class="Resourceadmin-Resourcebtns">
-      <button class="Resourcebtn Resourcebtn-outline" onclick="showToast('📋 Upload history')">History</button>
-      <button class="Resourcebtn Resourcebtn-navy" onclick="showToast('🔒 Admin login required to upload')">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        Upload Files
-      </button>
-    </div>
-  </div>
-</div> -->
-
-<div class="Resourcesection-head">
-  <h2>All Units</h2>
-  <div class="Resourcesection-rule"></div>
-  <span class="ResourceResourceunit-counter" id="countLabel">Showing 13 units · 18 files</span>
-</div>
-
-<!-- <div class="search-row">
-  <div class="search-field">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="text" placeholder="Search units or files…" id="searchInput" oninput="filterUnits(this.value)" />
-  </div>
-</div> -->
-
-<main class="Resourceunits-grid" id="unitsGrid">
-
-  <!-- UNIT 1 -->
-  <article class="Resourceunit-card" data-unit="unit 1 foundations introduction">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>01</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 1</div><div class="Resourcecard-title">Introduction &amp; Foundations</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T135351Z-3-001.zip" download="Unit1-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 1 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 2 -->
-  <article class="Resourceunit-card" data-unit="unit 2 core principles methodology">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>02</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 2</div><div class="Resourcecard-title">Core Principles &amp; Methodology</div></div>
-      <span class="Resourcefile-pill">2 files</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T135609Z-3-0011.zip" download="Unit2-Resources-Part1.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 2 — Resources Package, Part 1</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Primary bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T135609Z-3-001.zip" download="Unit2-Resources-Part2.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 2 — Resources Package, Part 2</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Supplementary bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 3 -->
-  <article class="Resourceunit-card" data-unit="unit 3 training design structure">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>03</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 3</div><div class="Resourcecard-title">Training Design &amp; Structure</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T135900Z-3-001.zip" download="Unit3-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 3 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 4 -->
-  <article class="Resourceunit-card" data-unit="unit 4 route planning fault finding practical">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>04</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 4</div><div class="Resourcecard-title">Route Planning &amp; Fault-Finding</div></div>
-      <span class="Resourcefile-pill">2 files</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140020Z-3-001.zip" download="Unit4-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 4 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/6.1-Practical-Activity.-DTIDEA-Unit-4-Delivering-training-for-effective-route-planning-and-fault-finding.docx" download="Unit4-Practical-Activity-6.1.docx">
-        <div class="Resourcefile-type-icon docx">📄</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">6.1 Practical Activity — Route Planning &amp; Fault-Finding</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">DOCX</span><span class="Resourcefile-desc">Practical activity worksheet</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 5 -->
-  <article class="Resourceunit-card" data-unit="unit 5 practical application activities">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>05</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 5</div><div class="Resourcecard-title">Practical Application &amp; Activities</div></div>
-      <span class="Resourcefile-pill">2 files</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140122Z-3-001.zip" download="Unit5-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 5 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/5.1-Practical-activity-.docx" download="Unit5-Practical-Activity-5.1.docx">
-        <div class="Resourcefile-type-icon docx">📄</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">5.1 Practical Activity Worksheet</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">DOCX</span><span class="Resourcefile-desc">Practical activity sheet</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 6 -->
-  <article class="Resourceunit-card" data-unit="unit 6 extended activities resources practical">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>06</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 6</div><div class="Resourcecard-title">Extended Activities &amp; Resources</div></div>
-      <span class="Resourcefile-pill">3 files</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140020Z-3-001-1.zip" download="Unit6-Resources-PackA.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 6 — Resources Pack A</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140122Z-3-001-1.zip" download="Unit6-Resources-PackB.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 6 — Resources Pack B</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Supplementary bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/5.1-Practical-activity-1-1.docx" download="Unit6-Practical-Activity-5.1.docx">
-        <div class="Resourcefile-type-icon docx">📄</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">5.1 Practical Activity Worksheet</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">DOCX</span><span class="Resourcefile-desc">Practical activity sheet</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 7 -->
-  <article class="Resourceunit-card" data-unit="unit 7 presentation dtidea trainer">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>07</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 7</div><div class="Resourcecard-title">Trainer Presentation — DTIDEA</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/Trainers-DTIDEA-Unit-7-Presentation-.pptx" download="Unit7-Trainers-DTIDEA-Presentation.pptx">
-        <div class="Resourcefile-type-icon pptx">📊</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Trainers DTIDEA — Unit 7 Presentation</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">PPTX</span><span class="Resourcefile-desc">Slideshow presentation</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 8 -->
-  <article class="Resourceunit-card" data-unit="unit 8 advanced training techniques">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>08</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 8</div><div class="Resourcecard-title">Advanced Training Techniques</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140500Z-3-001.zip" download="Unit8-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 8 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 9 -->
-  <article class="Resourceunit-card" data-unit="unit 9 safeguarding introduction">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>09</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 9</div><div class="Resourcecard-title">Introduction to Safeguarding</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/DTIDEA-Unit-9-introduction-to-Safeguarding-.pptx" download="Unit9-Safeguarding-Presentation.pptx">
-        <div class="Resourcefile-type-icon pptx">📊</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">DTIDEA — Introduction to Safeguarding</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">PPTX</span><span class="Resourcefile-desc">Safeguarding slideshow</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 10 -->
-  <article class="Resourceunit-card" data-unit="unit 10 comprehensive study materials">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>10</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 10</div><div class="Resourcecard-title">Comprehensive Study Materials</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140801Z-3-001.zip" download="Unit10-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 10 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 11 -->
-  <article class="Resourceunit-card" data-unit="unit 11 assessment evaluation methods">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>11</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 11</div><div class="Resourcecard-title">Assessment &amp; Evaluation Methods</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140909Z-3-001.zip" download="Unit11-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 11 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 12 -->
-  <article class="Resourceunit-card" data-unit="unit 12 professional development">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>12</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 12</div><div class="Resourcecard-title">Professional Development</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140909Z-3-001-1.zip" download="Unit12-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 12 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-  <!-- UNIT 13 -->
-  <article class="Resourceunit-card" data-unit="unit 13 capstone final review">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>13</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">Unit 13</div><div class="Resourcecard-title">Capstone &amp; Final Review</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/04/drive-download-20260424T140909Z-3-001-2.zip" download="Unit13-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">Unit 13 — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
-</main>
-
-
-<div class="Resourcesection-head">
-  <h2>All 13 Units</h2>
-  <div class="Resourcesection-rule"></div>
-  <span class="ResourceResourceunit-counter" id="countLabel">All 13 units · 1 file</span>
-</div>
-
-<!-- <div class="search-row">
-  <div class="search-field">
-    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="text" placeholder="Search units or files…" id="searchInput" oninput="filterUnits(this.value)" />
-  </div>
-</div> -->
-
-<main class="Resourceunits-grid" id="unitsGrid">
-
-  <!-- UNIT 1 -->
-  <article class="Resourceunit-card" data-unit="unit 1 foundations introduction">
-    <div class="Resourcecard-stripe"></div>
-    <div class="Resourcecard-top">
-      <div class="Resourceunit-badge">U<br/>01</div>
-      <div class="Resourcecard-meta"><div class="Resourcecard-label">All Units</div><div class="Resourcecard-title">IDEA UNITS</div></div>
-      <span class="Resourcefile-pill">1 file</span>
-    </div>
-    <div class="Resourcefile-list">
-      <a class="Resourcefile-row" href="https://innovativedrivingeducationacademy.co.uk/wp-content/uploads/2026/05/IDEA-Units-Materials-20260515T170111Z-3-001.zip" download="Unit1-Resources.zip">
-        <div class="Resourcefile-type-icon zip">📦</div>
-        <div class="Resourcefile-details"><div class="Resourcefile-name">All Units — Resources Package</div><div class="Resourcefile-sub"><span class="Resourcefile-tag">ZIP</span><span class="Resourcefile-desc">Course materials bundle</span></div></div>
-        <svg class="dl-arrow" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-    </div>
-  </article>
-
- 
-
-</main>
-
-<div id="toast"><span id="toastMsg">⬇ Download started</span></div>
-</div>
-
-
-
-
-<script>
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    document.getElementById('toastMsg').textContent = msg || '⬇ Download started';
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3200);
-  }
-  document.querySelectorAll('.Resourcefile-row').forEach(row => {
-    row.addEventListener('click', () => {
-      showToast('⬇ Downloading: ' + row.querySelector('.Resourcefile-name').textContent);
-    });
-  });
-  function filterUnits(q) {
-    q = q.toLowerCase().trim();
-    const cards = document.querySelectorAll('.Resourceunit-card');
-    let vis = 0;
-    cards.forEach(c => {
-      const show = !q || c.dataset.unit.includes(q) || c.textContent.toLowerCase().includes(q);
-      c.style.display = show ? '' : 'none';
-      if (show) vis++;
-    });
-    document.getElementById('countLabel').textContent = 'Showing ' + vis + ' unit' + (vis !== 1 ? 's' : '') + ' · 18 files';
-  }
-</script>
-</body>
+    <script
+      id="Cookiebot"
+      src="https://consent.cookiebot.com/uc.js"
+      data-cbid="479a7363-b926-4d50-84ea-e7de1241119c"
+      type="text/javascript"
+      async></script>
+  </body>
 </html>
