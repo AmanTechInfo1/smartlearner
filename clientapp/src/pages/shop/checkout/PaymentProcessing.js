@@ -19,7 +19,7 @@ import axios from "axios";
 
 
  const stripePromise = loadStripe(
-    "pk_live_51PQp7rGITSItbYlE7c48E6BLOgWncmPmUIG8a1Hrc799fTpVVclF2U5Cha3ucBOw7QcPq9DkUn4EKynJQqZvJRqx00CsIVcuL2",
+    "pk_test_51PQp7rGITSItbYlEoh5owALNcneWCAQmlnmBqgmomLvZWkW1kXRCrJKC5zTqacbG8q1Oqtic5Mn53DLTjXVROFES00vcofWeCI",
   );
 
 export default function PaymentProcessing() {
