@@ -8,7 +8,7 @@ const productEmailService = require("./productEmailService");
 const nodemailer = require("nodemailer");
 
 const Stripe = require("stripe");
-const stripe = Stripe("");
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const baseUrl = process.env.REVOLUT_API_URL;
 const secretKey = process.env.REVOLUT_API_SECRET_KEY;
@@ -717,7 +717,7 @@ class OrderService {
   }
 
 async handleWebhook(rawBody, sig) {
-    const webhookSecret = "whsec_RbOSxn7dyXfMm2oioQ78NBvApzeRe4g3";
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
     let event;
 
     try {
