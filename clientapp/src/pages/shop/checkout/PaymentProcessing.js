@@ -180,124 +180,140 @@ export default function PaymentProcessing() {
   ///////////////////Klarna Payment Handler/////////////////
 
  
-
 const handleKlarnaPayment = async () => {
-    setLoading(true);
-    setError("");
+  setLoading(true);
 
-    // ── Guard: minimum Klarna order is £1.00 (Stripe requires integer pence) ──
-    const totalAmount = parseFloat(carting?.total);
-    if (!totalAmount || totalAmount < 1) {
-      setError("Order total is too low for Klarna. Minimum is £1.00.");
+  // SHOW FULL SCREEN LOADER
+  setWebLoading(true);
+
+  setError("");
+
+  // ── Guard: minimum Klarna order is £1.00 ──
+  const totalAmount = parseFloat(carting?.total);
+
+  if (!totalAmount || totalAmount < 1) {
+    setError("Order total is too low for Klarna. Minimum is £1.00.");
+    setLoading(false);
+    setWebLoading(false);
+    return;
+  }
+
+  try {
+    const stripe = await stripePromise;
+
+    if (!stripe) {
+      setError(
+        "Stripe failed to load. Check your publishable key in .env"
+      );
+
       setLoading(false);
+      setWebLoading(false);
       return;
     }
 
-    try {
-      const stripe = await stripePromise;
+    // ── 1. Create PaymentIntent on backend ──
+    console.log("[Klarna] Sending order to backend…");
 
-      if (!stripe) {
-        setError(
-          "Stripe failed to load. Check your publishable key in .env"
-        );
-        setLoading(false);
-        return;
+    const { data } = await axios.post(
+      `https://api.smartlearner.com/api/order/create-payment-intent`,
+      {
+        firstName: carting.firstName,
+        lastName: carting.lastName,
+        city: carting.city,
+        email: carting.email,
+        myCart: carting.myCart,
+        ordernotes: carting.ordernotes || "",
+        phoneNumber: carting.phoneNumber,
+        postcode: carting.postcode,
+        serviceCharge: carting.serviceCharge,
+        streetAddress1: carting.streetAddress1,
+        streetAddress2: carting.streetAddress2 || "",
+        subtotal: carting.subtotal,
+        total: totalAmount.toFixed(2),
       }
+    );
 
-      // ── 1. Create PaymentIntent on your backend ──────────────────────────
-      console.log("[Klarna] Sending order to backend…");
-      const { data } = await axios.post(
-        `https://api.smartlearner.com/api/order/create-payment-intent`,
-        {
-          firstName:     carting.firstName,
-          lastName:      carting.lastName,
-          city:          carting.city,
-          email:         carting.email,
-          myCart:        carting.myCart,
-          ordernotes:    carting.ordernotes || "",
-          phoneNumber:   carting.phoneNumber,
-          postcode:      carting.postcode,
-          serviceCharge: carting.serviceCharge,
-          streetAddress1: carting.streetAddress1,
-          streetAddress2: carting.streetAddress2 || "",
-          subtotal:      carting.subtotal,
-          total:         totalAmount.toFixed(2),
-        }
-      );
+    console.log("[Klarna] Backend response:", data);
 
-      console.log("[Klarna] Backend response:", data);
-
-      if (!data.success || !data.clientSecret) {
-        setError(data.message || "Failed to create payment. Try again.");
-        setLoading(false);
-        return;
-      }
-
-      // ── 2. Confirm Klarna — this redirects away to Klarna ────────────────
-      console.log("[Klarna] Redirecting to Klarna…");
-      const { error: stripeError } = await stripe.confirmKlarnaPayment(
-        data.clientSecret,
-        {
-          payment_method: {
-            billing_details: {
-              name:  `${carting.firstName} ${carting.lastName}`,
-              email: carting.email,
-              phone: carting.phoneNumber,
-              address: {
-                line1:       carting.streetAddress1,
-                line2:       carting.streetAddress2 || "",
-                city:        carting.city,
-                postal_code: carting.postcode,
-                country:     "GB",
-              },
-            },
-          },
-          return_url: `${window.location.origin}/klarna-return`,
-        }
-      );
-
-      // Only runs if redirect FAILED (normal success = page leaves)
-      if (stripeError) {
-        console.error("[Klarna] Stripe error:", stripeError);
-
-        // ── Translate common Stripe error codes into plain English ──────────
-        const friendlyErrors = {
-          payment_intent_unexpected_state:
-            "This payment has already been processed.",
-          payment_method_not_available:
-            "Klarna is not available right now. Please try another payment method.",
-          amount_too_small:
-            "Order total is too small for Klarna. Minimum is £35.",
-          country_unsupported:
-            "Klarna is not available in your country.",
-        };
-
-        setError(
-          friendlyErrors[stripeError.code] ||
-          stripeError.message ||
-          "Payment failed. Please try again."
-        );
-        setLoading(false);
-      }
-
-      // ✅ If no error here → browser is already navigating to Klarna
-    } catch (err) {
-      console.error("[Klarna] Unexpected error:", err);
-
-      if (err?.response?.status === 400) {
-        setError(err.response.data?.message || "Invalid order data.");
-      } else if (err?.response?.status === 500) {
-        setError("Server error. Please contact support.");
-      } else if (err?.code === "ERR_NETWORK") {
-        setError("Cannot reach server. Check your backend is running.");
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
+    if (!data.success || !data.clientSecret) {
+      setError(data.message || "Failed to create payment. Try again.");
 
       setLoading(false);
+      setWebLoading(false);
+      return;
     }
-  };
 
+    // OPTIONAL:
+    // Hide loader before redirecting to Klarna
+    setWebLoading(false);
+
+    // ── 2. Confirm Klarna ──
+    console.log("[Klarna] Redirecting to Klarna…");
+
+    const { error: stripeError } =
+      await stripe.confirmKlarnaPayment(data.clientSecret, {
+        payment_method: {
+          billing_details: {
+            name: `${carting.firstName} ${carting.lastName}`,
+            email: carting.email,
+            phone: carting.phoneNumber,
+            address: {
+              line1: carting.streetAddress1,
+              line2: carting.streetAddress2 || "",
+              city: carting.city,
+              postal_code: carting.postcode,
+              country: "GB",
+            },
+          },
+        },
+
+        return_url: `${window.location.origin}/klarna-return`,
+      });
+
+    // Only runs if redirect FAILED
+    if (stripeError) {
+      console.error("[Klarna] Stripe error:", stripeError);
+
+      const friendlyErrors = {
+        payment_intent_unexpected_state:
+          "This payment has already been processed.",
+
+        payment_method_not_available:
+          "Klarna is not available right now. Please try another payment method.",
+
+        amount_too_small:
+          "Order total is too small for Klarna. Minimum is £35.",
+
+        country_unsupported:
+          "Klarna is not available in your country.",
+      };
+
+      setError(
+        friendlyErrors[stripeError.code] ||
+          stripeError.message ||
+          "Payment failed. Please try again."
+      );
+
+      setLoading(false);
+      setWebLoading(false);
+    }
+  } catch (err) {
+    console.error("[Klarna] Unexpected error:", err);
+
+    if (err?.response?.status === 400) {
+      setError(err.response.data?.message || "Invalid order data.");
+    } else if (err?.response?.status === 500) {
+      setError("Server error. Please contact support.");
+    } else if (err?.code === "ERR_NETWORK") {
+      setError("Cannot reach server. Check your backend is running.");
+    } else {
+      setError("Something went wrong. Please try again.");
+    }
+
+    setLoading(false);
+    setWebLoading(false);
+  }
+};
 
   ///////////////////////////////////////////////////////////
 

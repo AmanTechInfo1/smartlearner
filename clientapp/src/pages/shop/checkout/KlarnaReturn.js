@@ -168,9 +168,7 @@ const KlarnaReturn = () => {
             <button style={s.btnPrimary} onClick={() => navigate("/")}>
               Back to Home
             </button>
-            <button style={s.btnSecondary} onClick={() => navigate("/orders")}>
-              View Orders
-            </button>
+           
           </div>
         </div>
       </div>
@@ -195,7 +193,7 @@ const KlarnaReturn = () => {
         </div>
 
         <div style={s.btnGroup}>
-          <button style={s.btnPrimary} onClick={() => navigate(-1)}>
+          <button style={s.btnPrimary} onClick={() => navigate("/")}>
             Try Again
           </button>
           <button style={s.btnSecondary} onClick={() => navigate("/")}>
