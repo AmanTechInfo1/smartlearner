@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 class productEmailService {
 
   // ─── Helper: Build Klarna Installment Schedule ──────────────────────────────
-  _buildInstallmentSchedule(total, klarnaData = null) {
+  _buildInstallmentSchedule(total, klarnaData = null, paymentStatus = "") {
     const now = new Date();
 
     // If Stripe returned real Klarna installment data, use it
@@ -32,7 +32,9 @@ class productEmailService {
         installmentNumber: 1,
         amount: perInstallment,
         dueDate: now,                                    // Today (paid now)
-        status: "Paid Today",
+       status: paymentStatus === "Initiated"
+    ? "Initiated"
+    : "Paid Today",
       },
       {
         installmentNumber: 2,
@@ -100,39 +102,64 @@ class productEmailService {
     if (isKlarna) {
       const schedule = this._buildInstallmentSchedule(
         orderDetails.total,
-        klarnaPaymentDetails
+        klarnaPaymentDetails,status
       );
 
       const startDate   = schedule[0].dueDate;
       const nextDate    = schedule.find((s) => s.status === "Upcoming")?.dueDate;
       const finalDate   = schedule[schedule.length - 1].dueDate;
 
-      const installmentRows = schedule
-        .map((inst) => {
-          const isPaid     = inst.status === "Paid Today";
-          const rowBg      = isPaid ? "#f0fff4" : "#ffffff";
-          const statusBadge = isPaid
-            ? `<span style="background:#4CAF50;color:#fff;padding:2px 10px;border-radius:12px;font-size:12px;">✔ Paid</span>`
-            : `<span style="background:#FFF3CD;color:#856404;padding:2px 10px;border-radius:12px;font-size:12px;">⏳ Upcoming</span>`;
+     const installmentRows = schedule
+  .map((inst) => {
+    const isPaid = inst.status === "Paid Today";
+    const isProcessing = inst.status === "Initiated";
+    
+    const rowBg = isPaid
+      ? "#f0fff4"
+      : isProcessing
+      ? "#e3f2fd"
+      : "#ffffff";
 
-          return `
-            <tr style="background:${rowBg};">
-              <td style="padding:12px 10px; border:1px solid #ddd; font-weight:600;">
-                Installment ${inst.installmentNumber} of ${schedule.length}
-              </td>
-              <td style="padding:12px 10px; border:1px solid #ddd; font-weight:700; color:#1a1a1a;">
-                £ ${inst.amount}
-              </td>
-              <td style="padding:12px 10px; border:1px solid #ddd; color:#555;">
-                ${this._formatDate(inst.dueDate)}
-              </td>
-              <td style="padding:12px 10px; border:1px solid #ddd; text-align:center;">
-                ${statusBadge}
-              </td>
-            </tr>
-          `;
-        })
-        .join("");
+    let statusBadge = "";
+
+    if (isPaid) {
+      statusBadge = `
+        <span style="background:#4CAF50;color:#fff;padding:2px 10px;border-radius:12px;font-size:12px;">
+          ✔ Paid
+        </span>
+      `;
+    } else if (isProcessing) {
+      statusBadge = `
+        <span style="background:#2196F3;color:#fff;padding:2px 10px;border-radius:12px;font-size:12px;">
+          ⏳ Processing
+        </span>
+      `;
+    } else {
+      statusBadge = `
+        <span style="background:#FFF3CD;color:#856404;padding:2px 10px;border-radius:12px;font-size:12px;">
+          ⏳ Upcoming
+        </span>
+      `;
+    }
+
+    return `
+      <tr style="background:${rowBg};">
+        <td style="padding:12px 10px; border:1px solid #ddd; font-weight:600;">
+          Installment ${inst.installmentNumber} of ${schedule.length}
+        </td>
+        <td style="padding:12px 10px; border:1px solid #ddd; font-weight:700; color:#1a1a1a;">
+          £ ${inst.amount}
+        </td>
+        <td style="padding:12px 10px; border:1px solid #ddd; color:#555;">
+          ${this._formatDate(inst.dueDate)}
+        </td>
+        <td style="padding:12px 10px; border:1px solid #ddd; text-align:center;">
+          ${statusBadge}
+        </td>
+      </tr>
+    `;
+  })
+  .join("");
 
       installmentSection = `
         <!-- ═══ KLARNA INSTALLMENT SECTION ═══ -->

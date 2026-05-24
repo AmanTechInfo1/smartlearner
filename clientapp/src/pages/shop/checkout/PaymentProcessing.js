@@ -492,10 +492,10 @@ const handleKlarnaPayment = async () => {
 
                   <button
                     onClick={handleKlarnaPayment}
-                    disabled={loading}
+                    disabled={webloading}
                     className={styles.klarnaButton}
                   >
-                    {loading ? (
+                    {webloading ? (
                       <span className={styles.loadingRow}>
                         <span className={styles.spinner} />
                         Redirecting to Klarna…
@@ -526,7 +526,7 @@ const handleKlarnaPayment = async () => {
                   </p>
                 </div>
 {/* ///////////////////////klarna payment//////////////////////////////// */}
-                <div style={{ marginTop: "20px" }}>
+                {/* <div style={{ marginTop: "20px" }}>
                   <button className={styles.revolutbutton} onClick={revolutbtn}>
                     Pay with debit/credit card
                   </button>
@@ -537,7 +537,7 @@ const handleKlarnaPayment = async () => {
                       className="revolut-pay-button"
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
 
