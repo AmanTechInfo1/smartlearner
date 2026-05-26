@@ -483,7 +483,7 @@ const handleKlarnaPayment = async () => {
                 </button>
               </div> */}
               {/* ///////////////////////klarna payment//////////////////////////////// */}
-                <div className={styles.Klarnawrapper}>
+                {/* <div className={styles.Klarnawrapper}>
                   {error && (
                     <div className={styles.errorBox}>
                       <span>⚠️</span> {error}
@@ -502,7 +502,7 @@ const handleKlarnaPayment = async () => {
                       </span>
                     ) : (
                       <span className={styles.buttonRow}>
-                        {/* Klarna SVG Pink Logo */}
+                       
                         <svg
                           width="60"
                           height="20"
@@ -524,9 +524,9 @@ const handleKlarnaPayment = async () => {
                     🛡️ Pay later or split into 3 interest-free installments with
                     Klarna. Redirects to Klarna for authentication.
                   </p>
-                </div>
+                </div> */}
 {/* ///////////////////////klarna payment//////////////////////////////// */}
-                {/* <div style={{ marginTop: "20px" }}>
+                <div style={{ marginTop: "20px" }}>
                   <button className={styles.revolutbutton} onClick={revolutbtn}>
                     Pay with debit/credit card
                   </button>
@@ -537,7 +537,7 @@ const handleKlarnaPayment = async () => {
                       className="revolut-pay-button"
                     />
                   </div>
-                </div> */}
+                </div>
               </div>
             )}
 
