@@ -21,6 +21,11 @@ import SpringBanner from "../components/ui/newHomeBanner/SpringBanner";
 import AprilBanner from "../components/ui/newHomeBanner/AprilBanner";
 import RabbitBanner from "../components/ui/newHomeBanner/RabbitBanner";
 import UKBranchMap from "./AddOns/UKBranchMap";
+import Newbanner1 from "../components/ui/newHomeBanner/Newbanner1";
+import NewBanner2 from "../components/ui/newHomeBanner/NewBanner2";
+import NewBanner3 from "../components/ui/newHomeBanner/NewBanner3";
+import NewBanner4 from "../components/ui/newHomeBanner/NewBanner4";
+import NewBanner5 from "../components/ui/newHomeBanner/NewBanner5";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -95,7 +100,7 @@ export default function Home() {
    
       <RabbitBanner /> */}
       <section>
-        <AprilBanner />
+        <Newbanner1/>
       </section>
 
       <div className={styles.homepageContainerDiv}>
