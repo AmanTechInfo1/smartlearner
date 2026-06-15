@@ -1,2 +1,2 @@
-export const baseUrl = "https://api.smartlearners.com";
+export const baseUrl = "https://api.smartlearner.com";
 export const imageBaseUrl = "https://api.smartlearner.com/uploads/";
