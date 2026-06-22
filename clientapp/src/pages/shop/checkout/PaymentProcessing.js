@@ -19,7 +19,7 @@ import axios from "axios";
 
 
  const stripePromise = loadStripe(
-    "pk_test_51PQp7rGITSItbYlEoh5owALNcneWCAQmlnmBqgmomLvZWkW1kXRCrJKC5zTqacbG8q1Oqtic5Mn53DLTjXVROFES00vcofWeCI",
+    "pk_live_51ThTSzGUAXUVrBdDTImZOY9l3jO6iOgFLKEj28hST52gOoY1LO0C09jJ0iHVHq4bRFCBcBhyNrnpvTpkuAQtzEUO00ucf6IvQU",
   );
 
 export default function PaymentProcessing() {
@@ -483,7 +483,7 @@ const handleKlarnaPayment = async () => {
                 </button>
               </div> */}
               {/* ///////////////////////klarna payment//////////////////////////////// */}
-                {/* <div className={styles.Klarnawrapper}>
+                <div className={styles.Klarnawrapper}>
                   {error && (
                     <div className={styles.errorBox}>
                       <span>⚠️</span> {error}
@@ -524,7 +524,7 @@ const handleKlarnaPayment = async () => {
                     🛡️ Pay later or split into 3 interest-free installments with
                     Klarna. Redirects to Klarna for authentication.
                   </p>
-                </div> */}
+                </div>
 {/* ///////////////////////klarna payment//////////////////////////////// */}
                 <div style={{ marginTop: "20px" }}>
                   <button className={styles.revolutbutton} onClick={revolutbtn}>
