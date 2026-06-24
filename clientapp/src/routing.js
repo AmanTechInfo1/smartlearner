@@ -202,6 +202,7 @@ import WorkshopTransmission from "./pages/Transmission/WorkshopTransmission";
 import BusinessMentoringPage from "./pages/AddOns/BusinessMentoring";
 import BusinessSubs from "./pages/adiPages/adi-Subscription/BusinessSubs";
 import KlarnaReturn from "./pages/shop/checkout/KlarnaReturn";
+import SpecialProductQrCodePage from "./pages/AddOns/SpecialProductQrCodePage";
 
 export const router = createBrowserRouter([
   {
@@ -333,6 +334,10 @@ export const router = createBrowserRouter([
       {
         path: "driving-instructor-training-part-two",
         element: <PartTwoSubscription />,
+      },
+      {
+        path: "Special-Product-Page",
+        element: <SpecialProductQrCodePage />,
       },
       {
         path: "driving-instructor-training-part-three",
