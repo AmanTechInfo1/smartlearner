@@ -759,7 +759,7 @@ async handleWebhook(rawBody, sig) {
 
     if (order) {
       try {
-        const emailService = new EmailService();
+        const emailService = new productEmailService();
         await emailService.sendEmail(order, "Successful", "Klarna");
       } catch (err) {
         console.error("Webhook success email error:", err.message);
