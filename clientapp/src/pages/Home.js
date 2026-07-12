@@ -98,9 +98,12 @@ export default function Home() {
       <SpringBanner />  
              <VelentineDayBanner />   
    
-      <RabbitBanner /> */}
+      <RabbitBanner /> 
+       <Newbanner1/>
+      
+      */}
       <section>
-        <Newbanner1/>
+        <NewBanner2/>
       </section>
 
       <div className={styles.homepageContainerDiv}>
