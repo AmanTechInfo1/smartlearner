@@ -98,7 +98,7 @@ const ProductShowcase = () => {
 
     if (selectedCategory === "manual_combined") {
       const offersManual =
-        data.find((item) => item._id === "offers manual")?.data || [];
+        data.find((item) => item._id === "offers manuals")?.data || [];
       const manual = data.find((item) => item._id === "manual")?.data || [];
 
       // Add category info to each product
@@ -116,7 +116,7 @@ const ProductShowcase = () => {
 
     if (selectedCategory === "automatic_combined") {
       const offersAutomatic =
-        data.find((item) => item._id === "offers automatic")?.data || [];
+        data.find((item) => item._id === "offers automatics")?.data || [];
       const automatic =
         data.find((item) => item._id === "automatic")?.data || [];
 

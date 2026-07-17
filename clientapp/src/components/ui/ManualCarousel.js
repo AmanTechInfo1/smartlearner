@@ -36,7 +36,7 @@ function ManualCarousel() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState("offers manual");
+  const [selectedCategory, setSelectedCategory] = useState("manual");
   const [showAll, setShowAll] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
 
@@ -95,7 +95,7 @@ function ManualCarousel() {
     ? filteredProducts
     : filteredProducts.slice(0, 3);
 
-  const isOfferManual = selectedCategory === "offers manual";
+  const isOfferManual = selectedCategory === "offers manuals";
 
   return (
     <section className="py-10 bg-gradient-to-b from-blue-100">
@@ -107,7 +107,7 @@ function ManualCarousel() {
         {/* Category Buttons */}
         <div className="flex justify-center flex-wrap gap-4 mb-10">
           {[
-            { id: "offers manual", label: "🔥 Offers Manual", special: true },
+            // { id: "offers manual", label: "🔥 Offers Manual", special: true },
             { id: "manual", label: "📘 Regular Manual" },
           ].map(({ id, label, special }) => {
             const isSelected = selectedCategory === id;

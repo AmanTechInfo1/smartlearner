@@ -36,7 +36,7 @@ function AutomaticCarousel() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState("offers automatic");
+  const [selectedCategory, setSelectedCategory] = useState("automatic");
   const [showAll, setShowAll] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
 
@@ -95,7 +95,7 @@ function AutomaticCarousel() {
     ? filteredProducts
     : filteredProducts.slice(0, 3);
 
-  const isOfferAutomatic = selectedCategory === "offers automatic";
+  const isOfferAutomatic = selectedCategory === "offers automatics";
 
   return (
     <section className="py-10 bg-gradient-to-b from-blue-100">
@@ -107,11 +107,11 @@ function AutomaticCarousel() {
         {/* Category Buttons */}
         <div className="flex justify-center flex-wrap gap-4 mb-10">
           {[
-            {
-              id: "offers automatic",
-              label: "🔥 Offers automatic",
-              special: true,
-            },
+            // {
+            //   id: "offers automatic",
+            //   label: "🔥 Offers automatic",
+            //   special: true,
+            // },
             { id: "automatic", label: "📘 Regular automatic" },
           ].map(({ id, label, special }) => {
             const isSelected = selectedCategory === id;
