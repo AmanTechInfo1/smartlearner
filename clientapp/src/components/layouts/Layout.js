@@ -8,6 +8,7 @@ import Scroll from "../Scroll";
 
 import usePageTracking from "../../usePageTracking";
 import ChatLauncher from "../chatbot/ChatLauncher";
+import OnboardingWizard from "../onboardingWizard/OnboardingWizard";
 
 function Layout() {
   usePageTracking();
@@ -40,6 +41,7 @@ function Layout() {
         <LoadingWeb />
       ) : (
         <>
+          <OnboardingWizard />
           <Navbar />
           {loading ? (
             <LoadingWeb />

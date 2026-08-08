@@ -11,7 +11,7 @@
 }
 
 .Footer {
-  background: linear-gradient(180deg, #b78a20, #6a3500);
+  background: linear-gradient(180deg, rgb(255 59 59), rgb(255 76 37));
   padding: 4rem 0 0;
   filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
   color: white;

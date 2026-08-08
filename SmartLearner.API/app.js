@@ -19,6 +19,7 @@ const blogRoutes = require("./routes/blogRoutes");
 const notepadRoutes = require("./routes/notepadRoutes");
 const openaiRoutes = require("./routes/openaiRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const onboardingRoutes = require('./routes/onboardingRoutes');
 
 const http = require("http");
 const { Server } = require("socket.io");
@@ -27,7 +28,7 @@ const chatSocket = require("./socket/chatSocket");
 const path = require("path");
 
 const cors = require("cors");
-const prerender = require("prerender-node");
+
 
 const app = express();
 connectDB();
@@ -36,8 +37,7 @@ app.use(express.json());
 
 app.use(cors());
 
-prerender.set("prerenderToken", "1GUqcwJ5AHPJmlN0w5q5");
-app.use(prerender);
+
 
 app.use((req, res, next) => {
   console.log(`Request Method: ${req.method}, Request URL: ${req.url}`);
@@ -63,6 +63,8 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/notepad", notepadRoutes);
+app.use('/api/onboarding', onboardingRoutes);
+
 
 app.use("/api/chatbot", openaiRoutes);
 app.use("/api/chat-all", chatRoutes);

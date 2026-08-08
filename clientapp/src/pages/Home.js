@@ -103,7 +103,7 @@ export default function Home() {
       
       */}
       <section>
-        <NewBanner2/>
+        <NewBanner3/>
       </section>
 
       <div className={styles.homepageContainerDiv}>
@@ -112,7 +112,7 @@ export default function Home() {
           <section
             style={{
               background:
-                "linear-gradient(180deg, rgb(216, 184, 0), rgb(227, 196, 19))",
+                "linear-gradient(180deg, rgb(255, 120, 67), rgb(255, 66, 66))",
             }}
             className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
           >
