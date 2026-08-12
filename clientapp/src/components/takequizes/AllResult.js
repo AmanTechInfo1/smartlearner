@@ -14,7 +14,7 @@ const AllResult = () => {
   const itemsPerPage = 20;
   const { quizResult } = useSelector((state) => state.quiz);
   const navigate = useNavigate();
-  const userId = useSelector((state) => state.auth.userDetails._id);
+const userId = useSelector((state) => state.auth.userDetails?._id);
   const url = window.location.pathname.split("/").pop();
 
   useEffect(() => {
@@ -70,15 +70,19 @@ const AllResult = () => {
     .flat()
     .slice(indexOfFirstItem, indexOfLastItem);
 
-  const truncateQuizName = (name) => {
-    const words = name.split(" ");
-    return words.length > 5 ? `${words.slice(0, 4).join(" ")}...` : name;
-  };
+  
+const truncateQuizName = (name) => {
+  if (!name) return "Unnamed";
+  const words = name.split(" ");
+  return words.length > 5 ? `${words.slice(0, 4).join(" ")}...` : name;
+};
 
-  const getAnswerText = (question, answer) => {
-    const answerIndex = parseInt(answer.replace("Option", "")) - 1;
-    return question?.option[answerIndex] || "N/A";
-  };
+  
+const getAnswerText = (question, answer) => {
+  if (!question || !answer || !question.option) return "N/A";
+  const answerIndex = parseInt(answer.replace("Option", "")) - 1;
+  return question.option[answerIndex] || "N/A";
+};
 
   const getAnswer2Text = (question, answer) => {
     if (!question || !answer || !question.option) return "N/A"; // Safe check for undefined question or answer

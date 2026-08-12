@@ -389,23 +389,13 @@ class quizService {
 
   async getQuizResultAsync(userId, pageNumber, pageSize, query, resType) {
     try {
-      const skip = (pageNumber - 1) * (pageSize || 20);
-      let filter = {};
-      if (query) {
-        const regex = new RegExp(query, "i");
-        filter.$or = [{ code: regex }, { area: regex }];
+      if (!ObjectId.isValid(userId)) {
+        throw new Error("Invalid user id");
       }
 
-      let aggr = [];
-      if (resType == "quizResult" || "all-results") {
-        aggr.push({
-          $match: {
-            userId: new ObjectId(userId),
-          },
-        });
-      }
-
-      aggr.push(
+      const aggr = [
+        { $match: { userId: new ObjectId(userId) } },
+        { $sort: { createdOn: -1 } }, // moved up — uses the index, sorts small docs
         {
           $lookup: {
             from: "quizquestions",
@@ -414,80 +404,44 @@ class quizService {
             as: "question",
           },
         },
-        {
-          $unwind: {
-            path: "$question",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $addFields: {
-            questioncategory: "$question.category",
-            questionmodule: "$question.module",
-          },
-        },
+        { $unwind: { path: "$question", preserveNullAndEmptyArrays: true } },
         {
           $lookup: {
             from: "quizcategories",
-            localField: "questioncategory",
+            localField: "question.category",
             foreignField: "_id",
             as: "result",
           },
         },
+        { $unwind: { path: "$result", preserveNullAndEmptyArrays: true } },
         {
-          $unwind: {
-            path: "$result",
-            preserveNullAndEmptyArrays: true,
+          $project: {
+            answer: 1,
+            answerAttempt: 1,
+            createdOn: 1,
+            "question.question": 1,
+            "question.option": 1,
+            "question.answer": 1,
+            "question.band": 1,
+            "result._id": 1,
+            "result.name": 1,
           },
         },
-        {
-          $lookup: {
-            from: "quizmodules",
-            localField: "questionmodule",
-            foreignField: "_id",
-            as: "moduleresult",
-          },
-        },
-        {
-          $unwind: {
-            path: "$moduleresult",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $lookup: {
-            from: "users",
-            localField: "userId",
-            foreignField: "_id",
-            as: "user",
-          },
-        },
-        {
-          $unwind: {
-            path: "$user",
-            preserveNullAndEmptyArrays: true,
-          },
-        }
-      );
+      ];
 
-      // const quizResult2 = await AttemptQuizQuestion.aggregate(aggr);
-      // const totalCount2 = await AttemptQuizQuestion.countDocuments(filter);
+      const quizResult = await ResultQuizQuestion.aggregate(aggr).option({
+        maxTimeMS: 20000,
+      });
 
-      // const quizzes = await QuizQuestion.find(filter).skip(skip).limit(pageSize || 20);
-      const quizResult = await ResultQuizQuestion.aggregate(aggr);
-      console.log(quizResult);
-      const totalCount = await ResultQuizQuestion.countDocuments(filter);
-
-      const resultObject = {
+      return {
         message: "Fetched successfully",
         statusCode: 200,
         success: true,
-        data: { quizResult, totalCount },
+        data: { quizResult },
       };
-
-      return resultObject;
     } catch (err) {
-      throw new Error("Could not fetch postcodes");
+      console.error("getQuizResultAsync error:", err.message);
+      throw new Error("Could not fetch quiz results");
     }
   }
 
@@ -973,7 +927,7 @@ class quizService {
             sizeRes: 0,
             _id: 0,
           },
-        }
+        },
       );
 
       const products = await QuizQuestion.aggregate(aggr);
@@ -1298,7 +1252,7 @@ class quizService {
         });
 
         const attemptedCount = attemptedIds.filter(
-          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1,
         ).length;
         const attemptedData = attemptedQuestionData.length;
         const totalQuestiondata = totalQuestionsData.length;
@@ -1384,7 +1338,7 @@ class quizService {
         const totalQuestionsCount = 25;
 
         const attemptedCount = attemptedIds.filter(
-          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1,
         ).length;
 
         return {
@@ -1468,7 +1422,7 @@ class quizService {
         const totalQuestionsCount = 25;
 
         const attemptedCount = attemptedIds.filter(
-          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1,
         ).length;
 
         return {
@@ -1552,7 +1506,7 @@ class quizService {
         const totalQuestionsCount = 25;
 
         const attemptedCount = attemptedIds.filter(
-          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1
+          (id) => data.findIndex((q) => q.questionId === id.toString()) === -1,
         ).length;
 
         return {
@@ -1724,7 +1678,7 @@ class quizService {
       const newQuestion = await this.getRandomQuizCatName(
         userId,
         cid,
-        moduleId
+        moduleId,
       );
       return newQuestion; // Return the new question or a message if there are no questions
     } catch (err) {
@@ -1823,7 +1777,7 @@ class quizService {
     // Step 3: Merge both
     const merged = results.map((item) => {
       const totalCat = categoryStats.find(
-        (c) => c._id.toString() === item.categoryId.toString()
+        (c) => c._id.toString() === item.categoryId.toString(),
       );
       const total = totalCat?.totalQuestions || 0;
       const scorePercent =

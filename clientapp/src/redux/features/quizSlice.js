@@ -266,11 +266,13 @@ export const getQuizResult = (userId, type) => async (dispatch) => {
     if (response.data.success) {
       dispatch(getQuizResultSuccess(response.data.data.quizResult));
     } else {
-      toast.error(response.data.message);
+      toast.error(response.data.message || "Failed to load results");
       dispatch(getQuizResultFailure());
     }
   } catch (error) {
-    toast.error(error.message);
+    toast.error(
+      error?.response?.data?.message || error.message || "Failed to load results"
+    );
     dispatch(getQuizResultFailure());
   }
 };
