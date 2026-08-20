@@ -41,7 +41,7 @@ function Layout() {
         <LoadingWeb />
       ) : (
         <>
-          <OnboardingWizard />
+          {/* <OnboardingWizard /> */}
           <Navbar />
           {loading ? (
             <LoadingWeb />
