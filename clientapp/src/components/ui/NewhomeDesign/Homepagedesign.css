@@ -1,0 +1,332 @@
+/* src/pages/home/Homepagedesign.css */
+/* ============================================
+   1. CSS VARIABLES — exact match to HTML
+   ============================================ */
+:root {
+  --color-bg: #0c1310;
+  --color-surface: #162320;
+  --color-surface-muted: #1f302b;
+  --color-fg: #f2ebde;
+  --color-muted: #9a8e7c;
+  --color-brand: #0b5d45;
+  --color-brand-fg: #f2ebde;
+  --color-accent: #e4b45a;
+  --color-accent-fg: #0c1310;
+  --color-border: #243a33;
+  --color-ring: #e4b45a;
+  --color-success: #5e8c3c;
+  --color-danger: #c8311f;
+
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --font-heading: var(--font-display);
+  --font-body: var(--font-sans);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+
+  --spacing: 0.25rem;
+}
+
+/* ============================================
+   3. BASE STYLES — match HTML
+   ============================================ */
+.homepage-design-scope {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-design-scope h1,
+.homepage-design-scope h2,
+.homepage-design-scope h3,
+.homepage-design-scope h4,
+.homepage-design-scope h5,
+.homepage-design-scope h6,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.02;
+  margin: 0;
+}
+
+.homepage-design-scope h1 {
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 100,
+    "WONK" 1;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "zero";
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-muted);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border);
+}
+
+/* Scope all custom styles to this page */
+.homepage-design-scope {
+  /* All Tailwind utility classes already apply globally */
+}
+
+/* === RISE ANIMATIONS (match HTML .rise, .rise-1, etc.) === */
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.homepage-design-scope .rise {
+  animation: 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98) both rise;
+}
+
+.homepage-design-scope .rise-1 {
+  animation-delay: 50ms;
+}
+.homepage-design-scope .rise-2 {
+  animation-delay: 0.18s;
+}
+.homepage-design-scope .rise-3 {
+  animation-delay: 0.32s;
+}
+.homepage-design-scope .rise-4 {
+  animation-delay: 0.48s;
+}
+.homepage-design-scope .rise-5 {
+  animation-delay: 0.65s;
+}
+
+/* === SECTION REVEAL ON SCROLL (replaces Next.js Reveal component) === */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+    transform 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+.reveal-hidden.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays (matches HTML Reveal delay prop) */
+.reveal-delay-0 {
+  transition-delay: 0s;
+}
+.reveal-delay-006 {
+  transition-delay: 0.06s;
+}
+.reveal-delay-012 {
+  transition-delay: 0.12s;
+}
+.reveal-delay-04 {
+  transition-delay: 0.04s;
+}
+.reveal-delay-08 {
+  transition-delay: 0.08s;
+}
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-15 {
+  transition-delay: 0.15s;
+}
+.reveal-delay-16 {
+  transition-delay: 0.16s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-24 {
+  transition-delay: 0.24s;
+}
+
+/* === HOVER UNDERLINE (from CSS) === */
+.homepage-design-scope .hover-underline {
+  display: inline-block;
+  position: relative;
+}
+.homepage-design-scope .hover-underline:after {
+  content: "";
+  background: var(--color-accent);
+  transform-origin: 0;
+  height: 2px;
+  transition: transform 0.4s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+}
+.homepage-design-scope .hover-underline:hover:after {
+  transform: scaleX(1);
+}
+
+/* === CUSTOM TAILWIND UTILITIES USED IN HTML (h-13 not in default Tailwind) === */
+.homepage-design-scope .h-13 {
+  height: calc(var(--spacing) * 13);
+}
+
+/* === RISE (banner fade-up on mount) === */
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98) both rise;
+}
+
+.rise1 {
+  animation-delay: 50ms;
+}
+.rise2 {
+  animation-delay: 0.18s;
+}
+.rise3 {
+  animation-delay: 0.32s;
+}
+.rise4 {
+  animation-delay: 0.48s;
+}
+.rise5 {
+  animation-delay: 0.65s;
+}
+
+/* === REVEAL (fade-in on scroll — replaces Next.js Reveal) === */
+.revealHidden {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98),
+    transform 0.75s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+.revealHidden.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays (match HTML Reveal delay prop) */
+.d0 {
+  transition-delay: 0s;
+}
+.d04 {
+  transition-delay: 0.04s;
+}
+.d05 {
+  transition-delay: 0.05s;
+}
+.d06 {
+  transition-delay: 0.06s;
+}
+.d08 {
+  transition-delay: 0.08s;
+}
+.d1 {
+  transition-delay: 0.1s;
+}
+.d12 {
+  transition-delay: 0.12s;
+}
+.d15 {
+  transition-delay: 0.15s;
+}
+.d16 {
+  transition-delay: 0.16s;
+}
+.d2 {
+  transition-delay: 0.2s;
+}
+.d24 {
+  transition-delay: 0.24s;
+}
+
+/* === HOVER UNDERLINE (custom — not in Tailwind) === */
+.hoverUnderline {
+  display: inline-block;
+  position: relative;
+}
+.hoverUnderline:after {
+  content: "";
+  background: var(--color-accent);
+  transform-origin: 0;
+  height: 2px;
+  transition: transform 0.4s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+}
+.hoverUnderline:hover:after {
+  transform: scaleX(1);
+}
+
+/* === CUSTOM TAILWIND VALUE: h-13 (52px) === */
+.h13 {
+  height: calc(var(--spacing, 0.25rem) * 13);
+}
+
+/* === NOISE OVERLAY (subtle grain — matches body:before in HTML) === */
+.noiseOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}

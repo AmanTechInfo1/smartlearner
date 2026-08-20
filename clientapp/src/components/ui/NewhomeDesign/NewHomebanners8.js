@@ -57,10 +57,10 @@ const categories = [
   },
   {
     icon: Grid3x3,
-    label: "Practice quizzes",
-    sub: "Free, by topic",
+    label: "WorkShop",
+    sub: "workshop for driving",
     accent: "red",
-    link: "/practice-quizzes",
+    link: "/workshop",
   },
   {
     icon: ShieldCheck,
@@ -69,54 +69,54 @@ const categories = [
     accent: "rose",
     link: "/driving-instructor-packages/instructor-packages",
   },
+  {
+    icon: BookOpen,
+    label: "PDI Portal",
+    sub: "PDI Course for driving Part 1, Part 2 and Part 3",
+    accent: "red",
+    link: "/ADI-Training-Portal",
+  },
+  {
+    icon: BookOpen,
+    label: "Theory Portal",
+    sub: "Theory Course for driving",
+    accent: "rose",
+    link: "/Theory-Portal",
+  },
 ];
 
 const towns = [
-  { name: "Coventry", link: "/driving-lessons/coventry" },
-  { name: "Nuneaton", link: "/driving-lessons/nuneaton" },
-  { name: "Bedworth", link: "/driving-lessons/bedworth" },
-  { name: "Rugby", link: "/driving-lessons/rugby" },
-  { name: "Leamington", link: "/driving-lessons/leamington" },
-  { name: "Warwick", link: "/driving-lessons/warwick" },
-  { name: "Solihull", link: "/driving-lessons/solihull" },
+  { name: "Coventry", link: "/coventry" },
+  { name: "Nuneaton", link: "/nuneaton" },
+  { name: "Bedworth", link: "/bedworth" },
+  { name: "Rugby", link: "/rugby" },
+  { name: "Leamington", link: "/leamington" },
+  { name: "Warwick", link: "/warwick" },
+  { name: "Solihull", link: "/solihull" },
 ];
 
 const extraItems = [
-  {
-    label: "Refresher lessons",
-    link: "/refresher-lessons",
-  },
   {
     label: "Pass Plus",
     link: "/pass-plus",
   },
   {
-    label: "Motorway confidence",
-    link: "/motorway-confidence",
+    label: "Corporate Responsbilities",
+    link: "/Corporate-Responsbilities",
   },
-  {
-    label: "Gift vouchers",
-    link: "/gift-vouchers",
-  },
-  {
-    label: "Fleet & corporate",
-    link: "/fleet-corporate",
-  },
+
   {
     label: "FAQs",
     link: "/faqs",
   },
   {
     label: "Contact & locations",
-    link: "/contact",
+    link: "/Contact-Us",
   },
-  {
-    label: "Reviews",
-    link: "/reviews",
-  },
+
   {
     label: "Blog",
-    link: "/blog",
+    link: "/blogs",
   },
 ];
 
@@ -2032,13 +2032,17 @@ export default function NewHomebanners8() {
 
           <div className="chip-row">
             {towns.map((town) => (
-              // <a href={town.link}  key={town.name}>
-              <p className="chip">
-                <MapPin size={11} />
+              <a
+                href={town.link}
+                key={town.name}
+                style={{ textDecoration: "none" }}
+              >
+                <p className="chip">
+                  <MapPin size={11} />
 
-                {town.name}
-              </p>
-              // </a>
+                  {town.name}
+                </p>
+              </a>
             ))}
           </div>
 
@@ -2049,17 +2053,13 @@ export default function NewHomebanners8() {
             onClick={() => setShowAll((s) => !s)}
           >
             <ChevronDown size={15} />
-            Everything else (18)
+            Everything else
           </button>
           <div className={`more-panel ${showAll ? "open" : ""}`}>
             <div className="more-list">
-              Refresher lessons &nbsp;·&nbsp; Pass Plus &nbsp;·&nbsp; Motorway
-              confidence
+              Refresher lessons &nbsp;·&nbsp; Pass Plus &nbsp;·&nbsp; FAQs
               <br />
-              Gift vouchers &nbsp;·&nbsp; Fleet &amp; corporate &nbsp;·&nbsp;
-              FAQs
-              <br />
-              Contact &amp; locations &nbsp;·&nbsp; Reviews &nbsp;·&nbsp; Blog
+              Contact &amp; locations &nbsp;·&nbsp; Blog
             </div>
           </div>
         </div>
