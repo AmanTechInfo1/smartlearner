@@ -131,7 +131,7 @@ function Banner({ data }) {
         }}
       />
 
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl relative pt-20 pb-24 sm:pt-28 sm:pb-32">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll relative pt-20 pb-24 sm:pt-28 sm:pb-32">
         <div className="grid items-end gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <div className="rise rise-1">
@@ -163,7 +163,7 @@ function Banner({ data }) {
               </Link>
               <Link to={data.secondaryButton?.link || "/contact"}>
                 <button
-                  style={{ color: "gold" }}
+                  style={{ color: "#d88c00" }}
                   className="inline-flex items-center justify-center font-medium rounded-[var(--radius-md)] transition-[background,color,transform,box-shadow,filter] duration-200 ease-out active:scale-[0.97] active:duration-[80ms] disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-fg)] hover:bg-[var(--color-surface)] hover:border-[var(--color-fg)]/40 active:translate-y-[1px] h-13 px-7 text-base"
                 >
                   {data.secondaryButton?.text || "Talk to us first"}
@@ -224,7 +224,7 @@ function Banner({ data }) {
             {data.trustItems.map((t, i) => (
               <span key={i} className="flex items-center gap-2">
                 <span className="hidden sm:inline opacity-40">·</span>
-                <span>{t}</span>
+                <span>{t.value}</span>
               </span>
             ))}
           </div>
@@ -244,7 +244,7 @@ function HowItWorks({ data }) {
 
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
             {data.label || "How it works"}
@@ -284,7 +284,7 @@ function HowItWorks({ data }) {
 function PackagesSection({ data }) {
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
@@ -341,7 +341,7 @@ function WhySmartLearner({ data }) {
 
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <Reveal>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
@@ -394,10 +394,10 @@ function Locations({ data }) {
 
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
-            Where we teach
+            {data.subHeading || "Our locations"}
           </span>
           <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl">
             {data.heading || "Seven local areas, one phone number."}
@@ -426,7 +426,8 @@ function Locations({ data }) {
             >
               <Link
                 to={loc.link || "#"}
-                className="group flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 transition-all hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-surface-muted)]"
+              style={{textDecoration:'none', color:'white'
+              }}  className="group flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 transition-all hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-surface-muted)]"
               >
                 <div className="flex items-center gap-3">
                   <MapPin className="h-4 w-4 text-[var(--color-accent)]" />
@@ -457,7 +458,7 @@ function RecentPasses({ data }) {
 
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
             {data.subHeading || "Recent passes"}
@@ -519,7 +520,7 @@ function Testimonials({ data }) {
 
   return (
     <section className="py-20 sm:py-28 border-b border-[var(--color-border)]">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
             {data.subHeading || "What pupils say"}
@@ -585,7 +586,7 @@ function CtaSection({ data }) {
 
   return (
     <section className="py-20 sm:py-28 pb-24">
-      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xl">
+      <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <div
           className="relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface)] p-10 sm:p-16"
           style={{
@@ -615,7 +616,7 @@ function CtaSection({ data }) {
                   </button>
                 </Link>
                 <Link to={data.secondaryButton?.link || "/contact"}>
-                  <button className="inline-flex items-center justify-center font-medium rounded-[var(--radius-md)] transition-[background,color,transform,box-shadow,filter] duration-200 ease-out active:scale-[0.97] active:duration-[80ms] disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-fg)] hover:bg-[var(--color-surface)] hover:border-[var(--color-fg)]/40 active:translate-y-[1px] h-13 px-7 text-base">
+                  <button style={{color:'#d88c00'}} className="inline-flex items-center justify-center font-medium rounded-[var(--radius-md)] transition-[background,color,transform,box-shadow,filter] duration-200 ease-out active:scale-[0.97] active:duration-[80ms] disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-fg)] hover:bg-[var(--color-surface)] hover:border-[var(--color-fg)]/40 active:translate-y-[1px] h-13 px-7 text-base">
                     {data.secondaryButton?.text || "Or get in touch"}
                   </button>
                 </Link>

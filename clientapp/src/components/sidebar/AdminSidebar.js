@@ -28,7 +28,8 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
     <>
       <aside
         id={styles.adminSidebar}
-        className={openSidebarToggle ? styles.sidebarResponsive : ""}>
+        className={openSidebarToggle ? styles.sidebarResponsive : ""}
+      >
         <div className={styles.adminSidebarTitle}>
           <div className={styles.adminSidebarBrand}>
             <FaUserTie
@@ -38,7 +39,8 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
           </div>
           <span
             className={`${styles.adminIcon} ${styles.adminCloseIcon}`}
-            onClick={OpenSidebar}>
+            onClick={OpenSidebar}
+          >
             X
           </span>
         </div>
@@ -57,7 +59,8 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/users"
-                className={`${styles.link} ${styles.admainLink}`}>
+                className={`${styles.link} ${styles.admainLink}`}
+              >
                 <BsPeopleFill className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Users
@@ -79,7 +82,8 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/products"
-                className={`${styles.link} ${styles.admainLink}`}>
+                className={`${styles.link} ${styles.admainLink}`}
+              >
                 <AiOutlineProduct className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Products
@@ -109,7 +113,8 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
             <div className={styles.addropdown}>
               <Link
                 to="/admin/quiz"
-                className={`${styles.link} ${styles.admainLink}`}>
+                className={`${styles.link} ${styles.admainLink}`}
+              >
                 <MdQuiz className={styles.adminIcon} />
                 <span id={styles.DodownSpan}>
                   Quizes
@@ -183,6 +188,13 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               </div>
             </div>
           </li>
+
+          <Link to="/admin/home-edit-page">
+            <li className={styles.adminSidebarListItem}>
+              <MdArrowDropDownCircle className={styles.adminIcon} />
+              HomePage
+            </li>
+          </Link>
         </ul>
       </aside>
     </>

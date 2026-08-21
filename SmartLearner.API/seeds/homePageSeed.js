@@ -111,6 +111,11 @@ const seedHome = async () => {
 
       phoneDescription:
         "We phone within one working day to arrange lessons. No calendar maths, no scheduling apps.",
+      trustItems: [
+        {
+          value: "DVSA",
+        },
+      ],
     });
 
     /*
@@ -129,18 +134,18 @@ const seedHome = async () => {
       steps: [
         {
           number: "01",
-          title: "Pick your package",
+          heading: "Pick your package",
           description:
             "Choose the driving package that suits your goals, experience and preferred transmission.",
         },
         {
           number: "02",
-          title: "Buy online",
+          heading: "Buy online",
           description: "Choose your package and complete your purchase online.",
         },
         {
           number: "03",
-          title: "Answer the phone",
+          heading: "Answer the phone",
           description:
             "We'll phone within one working day to arrange your lessons and get you started.",
         },
@@ -226,6 +231,7 @@ const seedHome = async () => {
 */
 
     const locations = await HomeLocations.create({
+      homeId: home._id,
       subheading: "Where we teach",
 
       heading: "Seven local areas, one phone number.",
@@ -367,7 +373,7 @@ const seedHome = async () => {
 
           rating: 5,
 
-          review:
+          message:
             "The theory portal alone is worth it. Way better than the random apps I was using before.",
         },
 
@@ -378,7 +384,7 @@ const seedHome = async () => {
 
           rating: 5,
 
-          review:
+          message:
             "Honestly the best decision. My instructor was patient, the lessons felt structured, and I passed first time.",
         },
       ],

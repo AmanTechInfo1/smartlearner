@@ -104,10 +104,7 @@
   background: var(--color-border);
 }
 
-/* Scope all custom styles to this page */
-.homepage-design-scope {
-  /* All Tailwind utility classes already apply globally */
-}
+
 
 /* === RISE ANIMATIONS (match HTML .rise, .rise-1, etc.) === */
 @keyframes rise {
@@ -294,6 +291,10 @@
   transition-delay: 0.24s;
 }
 
+
+.max-w-6xll{
+  max-width: 1600px;
+}
 /* === HOVER UNDERLINE (custom — not in Tailwind) === */
 .hoverUnderline {
   display: inline-block;

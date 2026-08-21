@@ -70,7 +70,10 @@ const homeBannerSchema = new mongoose.Schema(
 
     trustItems: [
       {
-        type: String,
+        value: {
+          type: String,
+          required: true,
+        },
       },
     ],
   },

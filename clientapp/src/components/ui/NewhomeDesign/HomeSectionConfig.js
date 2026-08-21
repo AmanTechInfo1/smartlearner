@@ -12,6 +12,11 @@ import {
   Menu,
   X,
   CheckCircle2,
+  Plus,
+  Trash2,
+  ArrowLeft,
+  Upload,
+  Save,
 } from "lucide-react";
 
 export const icons = {
@@ -27,6 +32,11 @@ export const icons = {
   Menu,
   X,
   CheckCircle2,
+  Plus,
+  Trash2,
+  ArrowLeft,
+  Upload,
+  Save,
 };
 
 export const FALLBACK_FEATURES = [

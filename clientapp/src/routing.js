@@ -203,6 +203,7 @@ import BusinessMentoringPage from "./pages/AddOns/BusinessMentoring";
 import BusinessSubs from "./pages/adiPages/adi-Subscription/BusinessSubs";
 import KlarnaReturn from "./pages/shop/checkout/KlarnaReturn";
 import SpecialProductQrCodePage from "./pages/AddOns/SpecialProductQrCodePage";
+import AdminContentHome from "./components/admin/AdminContentPages/AdminContentHome";
 
 export const router = createBrowserRouter([
   {
@@ -342,9 +343,10 @@ export const router = createBrowserRouter([
       {
         path: "driving-instructor-training-part-three",
         element: <PartThreeSubscription />,
-      }, {
+      },
+      {
         path: "businessSubs-cart",
-        element: <BusinessSubs/>,
+        element: <BusinessSubs />,
       },
       {
         path: "driving-instructor-training-full-course",
@@ -594,7 +596,8 @@ export const router = createBrowserRouter([
     element: (
       <RequireAuth
         allowedRoles={[ROLES.ADMIN]}
-        element={<AdminLayout />}></RequireAuth>
+        element={<AdminLayout />}
+      ></RequireAuth>
     ),
     children: [
       {
@@ -605,6 +608,14 @@ export const router = createBrowserRouter([
       {
         path: "/admin/roles",
         element: <Roles />,
+      },
+      {
+        path: "/admin/home-edit-page",
+        element: <AdminContentHome pageId="home" />,
+      },
+      {
+        path: "/admin/home-edit-page/:sectionKey",
+        element: <AdminContentHome pageId="home" />,
       },
       {
         path: "/admin/users",

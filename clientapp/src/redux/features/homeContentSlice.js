@@ -396,6 +396,7 @@ export const getHomePage = () => async (dispatch) => {
     const response = await httpHandler.get(`/api/home/home`);
     if (response.data.success) {
       dispatch(getHomePageSuccess(response.data.data));
+      console.log("thunk fired, response =", response?.data);
     } else {
       toast.error(response.data.message);
       dispatch(getHomePageFailure());
