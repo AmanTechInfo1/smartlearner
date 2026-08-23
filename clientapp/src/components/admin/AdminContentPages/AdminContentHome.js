@@ -240,7 +240,7 @@ const FIELD_SCHEMAS = {
   ],
 
   packagesSection: [
-    {
+     {
       name: "subHeading",
       label: "Eyebrow Text",
       type: "text",
@@ -259,6 +259,62 @@ const FIELD_SCHEMAS = {
       label: "Button Link",
       type: "text",
       placeholder: "/courses",
+    },
+    {
+      name: "packages",
+      label: "Package Cards",
+      type: "array",
+      itemFields: [
+        {
+          name: "category",
+          label: "Category",
+          type: "select",
+          options: ["Automatic", "Manual", "Instructor", "Intensive"],
+        },
+        {
+          name: "tag",
+          label: "Tag (e.g. POPULAR)",
+          type: "text",
+          placeholder: "POPULAR",
+        },
+        { name: "title", label: "Title", type: "text", required: true },
+        { name: "description", label: "Description", type: "textarea" },
+        {
+          name: "price",
+          label: "Price",
+          type: "text",
+          placeholder: "£120",
+          required: true,
+        },
+        {
+          name: "originalPrice",
+          label: "Original Price (optional)",
+          type: "text",
+          placeholder: "£180",
+        },
+        {
+          name: "duration",
+          label: "Duration",
+          type: "text",
+          placeholder: "5 hours",
+        },
+        {
+          name: "link",
+          label: "Link",
+          type: "text",
+          placeholder: "/courses/automatic-starter",
+        },
+      ],
+      defaultItem: {
+        category: "",
+        tag: "",
+        title: "",
+        description: "",
+        price: "",
+        originalPrice: "",
+        duration: "",
+        link: "",
+      },
     },
   ],
 
@@ -464,7 +520,7 @@ function SectionsList({ pageId }) {
   const navigate = useNavigate();
 
   const page = CMS_PAGES.find((p) => p.id === pageId);
-  const homeState = useSelector((s) => s.home); 
+  const homeState = useSelector((s) => s.home);
   const homeLoading = useSelector((s) => s.home.homeLoading);
 
   useEffect(() => {
@@ -513,7 +569,10 @@ function SectionsList({ pageId }) {
                     <p>{section.description}</p>
                   </div>
                 </div>
-                <Link to={`/admin/home-edit-page/${section.key}`} className={styles.editBtn}>
+                <Link
+                  to={`/admin/home-edit-page/${section.key}`}
+                  className={styles.editBtn}
+                >
                   {hasData ? "Edit" : "Create"}
                   <ArrowRight className="h-3 w-3" />
                 </Link>
@@ -618,7 +677,6 @@ function EditSection({ pageId, sectionKey }) {
     const previewUrl = URL.createObjectURL(file);
     handleArrayItemChange(arrayName, index, "image", previewUrl);
     // TODO: Replace with actual upload call using imageSaverMiddleware
-    
   };
 
   const handleSubmit = async (e) => {
