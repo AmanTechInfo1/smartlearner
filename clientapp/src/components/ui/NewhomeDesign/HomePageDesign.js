@@ -8,6 +8,40 @@ import { getHomePage } from "../../../redux/features/homeContentSlice";
 import { icons, FALLBACK_FEATURES, FALLBACK_STATS } from "./HomeSectionConfig";
 import { IoIosMap, IoIosRibbon } from "react-icons/io";
 import { IoShieldOutline } from "react-icons/io5";
+
+import Slider from "react-slick";
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  arrows: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
+
 const {
   Sparkles, // <-- was Sparkle — corrected to match HTML "lucide-sparkles"
   Star,
@@ -136,7 +170,10 @@ function Banner({ data }) {
           <div>
             <div className="rise rise-1">
               <span className="badgePill">
-                <Sparkles className="h-3 w-3" style={{ color: "var(--color-accent)" }} />
+                <Sparkles
+                  className="h-3 w-3"
+                  style={{ color: "var(--color-accent)" }}
+                />
                 {data.badge}
               </span>
             </div>
@@ -151,7 +188,10 @@ function Banner({ data }) {
               {data.heading}
             </h1>
 
-            <p className="rise rise-3 mt-7 max-w-xl text-lg leading-relaxed" style={{ color: "var(--color-muted)" }}>
+            <p
+              className="rise rise-3 mt-7 max-w-xl text-lg leading-relaxed"
+              style={{ color: "var(--color-muted)" }}
+            >
               {data.description}
             </p>
 
@@ -177,7 +217,10 @@ function Banner({ data }) {
                   <div key={i} className="flex flex-col gap-1">
                     <span
                       className="statValue"
-                      style={{ fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1' }}
+                      style={{
+                        fontVariationSettings:
+                          '"opsz" 144, "SOFT" 100, "WONK" 1',
+                      }}
                     >
                       {s.value}
                     </span>
@@ -188,12 +231,21 @@ function Banner({ data }) {
 
               {data.contactInfo && (
                 <div className="contactInfoRow">
-                  <Phone className="mt-0.5 h-4 w-4 flex-none" style={{ color: "var(--color-accent)" }} />
+                  <Phone
+                    className="mt-0.5 h-4 w-4 flex-none"
+                    style={{ color: "var(--color-accent)" }}
+                  />
                   <div>
-                    <div className="text-sm font-medium" style={{ color: "var(--color-fg)" }}>
+                    <div
+                      className="text-sm font-medium"
+                      style={{ color: "var(--color-fg)" }}
+                    >
                       {data.contactInfo.heading}
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                    <p
+                      className="mt-1 text-xs leading-relaxed"
+                      style={{ color: "var(--color-muted)" }}
+                    >
                       {data.contactInfo.description}
                     </p>
                   </div>
@@ -237,7 +289,10 @@ function HowItWorks({ data }) {
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
           <span className="sectionEyebrow">{data.label || "How it works"}</span>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+          <h2
+            className="mt-3 max-w-3xl font-display text-4xl tracking-tight sm:text-5xl"
+            style={{ color: "var(--color-fg)" }}
+          >
             {data.heading}
           </h2>
         </Reveal>
@@ -270,16 +325,27 @@ function PackagesSection({ data }) {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <span className="sectionEyebrow">{data?.subHeading || "Our packages"}</span>
-              <h2 className="mt-3 max-w-2xl font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+              <span className="sectionEyebrow">
+                {data?.subHeading || "Our packages"}
+              </span>
+              <h2
+                className="mt-3 max-w-2xl font-display text-4xl tracking-tight sm:text-5xl"
+                style={{ color: "var(--color-fg)" }}
+              >
                 {data?.heading || "Pick the way that suits you."}
               </h2>
-              <p className="mt-3 max-w-xl" style={{ color: "var(--color-muted)" }}>
+              <p
+                className="mt-3 max-w-xl"
+                style={{ color: "var(--color-muted)" }}
+              >
                 {data?.description}
               </p>
             </div>
 
-            <Link to={data?.buttonLink || "/courses"} className="pkgSeeAllLink hoverUnderline">
+            <Link
+              to={data?.buttonLink || "/courses"}
+              className="pkgSeeAllLink hoverUnderline"
+            >
               {data?.buttonText || "See all packages →"}
             </Link>
           </div>
@@ -288,10 +354,17 @@ function PackagesSection({ data }) {
         {packages.length > 0 && (
           <div className="pkgGrid">
             {packages.map((pkg, i) => (
-              <Reveal key={i} delay={i % 3 === 1 ? 0.05 : i % 3 === 2 ? 0.1 : 0}>
-                <div className={`pkgCard ${pkg.featured ? "pkgCard--featured" : ""}`}>
+              <Reveal
+                key={i}
+                delay={i % 3 === 1 ? 0.05 : i % 3 === 2 ? 0.1 : 0}
+              >
+                <div
+                  className={`pkgCard ${pkg.featured ? "pkgCard--featured" : ""}`}
+                >
                   <div className="pkgTopRow">
-                    {pkg.category && <span className="pkgCategory">{pkg.category}</span>}
+                    {pkg.category && (
+                      <span className="pkgCategory">{pkg.category}</span>
+                    )}
                     {pkg.tag && <span className="pkgTag">{pkg.tag}</span>}
                   </div>
 
@@ -302,7 +375,11 @@ function PackagesSection({ data }) {
                     <div>
                       <div className="pkgPriceRow">
                         <span className="pkgPrice">{pkg.price}</span>
-                        {pkg.originalPrice && <span className="pkgOriginalPrice">{pkg.originalPrice}</span>}
+                        {pkg.originalPrice && (
+                          <span className="pkgOriginalPrice">
+                            {pkg.originalPrice}
+                          </span>
+                        )}
                       </div>
                       {pkg.duration && (
                         <div className="pkgDuration">
@@ -352,11 +429,19 @@ function WhySmartLearner({ data }) {
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <Reveal>
-            <span className="sectionEyebrow">{data.subHeading || "Why SmartLearner"}</span>
-            <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+            <span className="sectionEyebrow">
+              {data.subHeading || "Why SmartLearner"}
+            </span>
+            <h2
+              className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
+              style={{ color: "var(--color-fg)" }}
+            >
               {data.heading}
             </h2>
-            <p className="mt-4 max-w-md" style={{ color: "var(--color-muted)" }}>
+            <p
+              className="mt-4 max-w-md"
+              style={{ color: "var(--color-muted)" }}
+            >
               {data.description}
             </p>
           </Reveal>
@@ -365,7 +450,10 @@ function WhySmartLearner({ data }) {
             {features.map((f, i) => {
               const Icon = resolveIcon(f.icon);
               return (
-                <Reveal key={i} delay={i === 1 ? 0.05 : i === 2 ? 0.1 : i * 0.05}>
+                <Reveal
+                  key={i}
+                  delay={i === 1 ? 0.05 : i === 2 ? 0.1 : i * 0.05}
+                >
                   <div className="featureCard">
                     <div className="p-6 pt-6">
                       <div className="featureIconWrap">
@@ -395,8 +483,13 @@ function Locations({ data }) {
     <section className="py-20 sm:py-28 sectionBorder">
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
-          <span className="sectionEyebrow">{data.subHeading || "Our locations"}</span>
-          <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+          <span className="sectionEyebrow">
+            {data.subHeading || "Our locations"}
+          </span>
+          <h2
+            className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
+            style={{ color: "var(--color-fg)" }}
+          >
             {data.heading || "Seven local areas, one phone number."}
           </h2>
         </Reveal>
@@ -406,7 +499,19 @@ function Locations({ data }) {
             <Reveal
               key={i}
               delay={
-                i === 1 ? 0.04 : i === 2 ? 0.08 : i === 3 ? 0.12 : i === 4 ? 0.16 : i === 5 ? 0.2 : i === 6 ? 0.24 : 0
+                i === 1
+                  ? 0.04
+                  : i === 2
+                    ? 0.08
+                    : i === 3
+                      ? 0.12
+                      : i === 4
+                        ? 0.16
+                        : i === 5
+                          ? 0.2
+                          : i === 6
+                            ? 0.24
+                            : 0
               }
             >
               <Link to={loc.link || "#"} className="locationLink">
@@ -437,8 +542,13 @@ function RecentPasses({ data }) {
     <section className="py-20 sm:py-28 sectionBorder">
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
-          <span className="sectionEyebrow">{data.subHeading || "Recent passes"}</span>
-          <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+          <span className="sectionEyebrow">
+            {data.subHeading || "Recent passes"}
+          </span>
+          <h2
+            className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
+            style={{ color: "var(--color-fg)" }}
+          >
             {data.heading || "Real pupils. Real passes."}
           </h2>
           <p className="mt-3 max-w-xl" style={{ color: "var(--color-muted)" }}>
@@ -446,25 +556,41 @@ function RecentPasses({ data }) {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {data.students?.map((s, i) => (
-            <Reveal key={i} delay={i === 1 ? 0.04 : i === 2 ? 0.08 : i === 3 ? 0.12 : 0}>
-              <figure className="passCard">
-                <div className="passImageWrap">
-                  {s.image ? (
-                    <img src={s.image} alt={s.message || s.name} loading="lazy" className="passImage" />
-                  ) : (
-                    <div className="passFallback">{s.name?.[0]}</div>
-                  )}
-                </div>
-                <figcaption className="passCaption">
-                  <div className="passName">{s.name}</div>
-                  <div className="passLocation">{s.location}</div>
-                  {s.message && <p className="passMessage">"{s.message}"</p>}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+        <div className="mt-12">
+          <Slider {...sliderSettings}>
+            {data.students?.map((s, i) => (
+              <div key={i} className="px-2">
+                <Reveal
+                  delay={i === 1 ? 0.04 : i === 2 ? 0.08 : i === 3 ? 0.12 : 0}
+                >
+                  <figure className="passCard">
+                    <div className="passImageWrap">
+                      {s.image ? (
+                        <img
+                          src={s.image}
+                          alt={s.message || s.name}
+                          loading="lazy"
+                          className="passImage"
+                        />
+                      ) : (
+                        <div className="passFallback">{s.name?.[0]}</div>
+                      )}
+                    </div>
+
+                    <figcaption className="passCaption">
+                      <div className="passName">{s.name}</div>
+
+                      <div className="passLocation">{s.location}</div>
+
+                      {s.message && (
+                        <p className="passMessage">"{s.message}"</p>
+                      )}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>
@@ -481,8 +607,13 @@ function Testimonials({ data }) {
     <section className="py-20 sm:py-28 sectionBorder">
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
         <Reveal>
-          <span className="sectionEyebrow">{data.subHeading || "What pupils say"}</span>
-          <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+          <span className="sectionEyebrow">
+            {data.subHeading || "What pupils say"}
+          </span>
+          <h2
+            className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
+            style={{ color: "var(--color-fg)" }}
+          >
             {data.heading || "Passed first time, with a smile."}
           </h2>
         </Reveal>
@@ -492,7 +623,10 @@ function Testimonials({ data }) {
             <Reveal key={i} delay={i === 1 ? 0.05 : i === 2 ? 0.1 : 0}>
               <div className="testimonialCard">
                 <div className="p-6 pt-6">
-                  <div className="flex" aria-label={`${t.rating || 5} out of 5 stars`}>
+                  <div
+                    className="flex"
+                    aria-label={`${t.rating || 5} out of 5 stars`}
+                  >
                     {[...Array(t.rating || 5)].map((_, j) => (
                       <Star key={j} className="starIcon" />
                     ))}
@@ -500,9 +634,15 @@ function Testimonials({ data }) {
                   <p className="testimonialMessage">"{t.message}"</p>
                   <div className="testimonialFooter">
                     {t.avatar ? (
-                      <img src={t.avatar} alt={t.name} className="testimonialAvatar" />
+                      <img
+                        src={t.avatar}
+                        alt={t.name}
+                        className="testimonialAvatar"
+                      />
                     ) : (
-                      <div className="testimonialAvatarFallback">{t.name?.[0]}</div>
+                      <div className="testimonialAvatarFallback">
+                        {t.name?.[0]}
+                      </div>
                     )}
                     <div>
                       <div className="testimonialName">{t.name}</div>
@@ -531,22 +671,33 @@ function CtaSection({ data }) {
         <div className="ctaCard">
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              {data.subHeading && <span className="sectionEyebrow">{data.subHeading}</span>}
-              <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl" style={{ color: "var(--color-fg)" }}>
+              {data.subHeading && (
+                <span className="sectionEyebrow">{data.subHeading}</span>
+              )}
+              <h2
+                className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
+                style={{ color: "var(--color-fg)" }}
+              >
                 {data.heading}
               </h2>
-              <p className="mt-3 max-w-md" style={{ color: "var(--color-muted)" }}>
+              <p
+                className="mt-3 max-w-md"
+                style={{ color: "var(--color-muted)" }}
+              >
                 {data.description}
               </p>
 
               <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                 <Link to={data.primaryButton?.link || "/courses"}>
                   <button className="btnPrimary">
-                    {data.primaryButton?.text || "Reserve a taster"} <ArrowRight className="h-4 w-4" />
+                    {data.primaryButton?.text || "Reserve a taster"}{" "}
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                 </Link>
                 <Link to={data.secondaryButton?.link || "/contact"}>
-                  <button className="btnSecondary">{data.secondaryButton?.text || "Or get in touch"}</button>
+                  <button className="btnSecondary">
+                    {data.secondaryButton?.text || "Or get in touch"}
+                  </button>
                 </Link>
               </div>
             </div>

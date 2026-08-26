@@ -195,6 +195,12 @@ function AdminSidebar({ openSidebarToggle, OpenSidebar }) {
               HomePage
             </li>
           </Link>
+           <Link to="/admin/manual-course-edit-page">
+            <li className={styles.adminSidebarListItem}>
+              <MdArrowDropDownCircle className={styles.adminIcon} />
+              All Course Pages
+            </li>
+          </Link>
         </ul>
       </aside>
     </>

@@ -27,6 +27,7 @@ import NewBanner3 from "../components/ui/newHomeBanner/NewBanner3";
 import NewBanner4 from "../components/ui/newHomeBanner/NewBanner4";
 import NewBanner5 from "../components/ui/newHomeBanner/NewBanner5";
 import NewHomebanners8 from "../components/ui/NewhomeDesign/NewHomebanners8";
+import HomePageDesign from "../components/ui/NewhomeDesign/HomePageDesign";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(null);
@@ -94,7 +95,9 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
+      {/* <HomePageDesign /> */}
       <NewHomebanners8 />
+
       {/* <NewYearBanner /> */}
       {/* <ChristmasBanner />
       <SpringBanner />  

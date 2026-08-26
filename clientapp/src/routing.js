@@ -204,6 +204,26 @@ import BusinessSubs from "./pages/adiPages/adi-Subscription/BusinessSubs";
 import KlarnaReturn from "./pages/shop/checkout/KlarnaReturn";
 import SpecialProductQrCodePage from "./pages/AddOns/SpecialProductQrCodePage";
 import AdminContentHome from "./components/admin/AdminContentPages/AdminContentHome";
+import AdminManualCoursePage from "./components/admin/AdminContentPages/CoursesPages/AdminManualCoursePage";
+import ManualCoursePageDesign from "./components/ui/CoursePageDesign/ManualCoursePageDesign";
+import ManualTesterLesson from "./components/ui/CoursePageDesign/othercoursePages/ManualTesterLesson";
+import ManualHourLesson from "./components/ui/CoursePageDesign/othercoursePages/ManualHourLesson";
+import AutomaticTesterLesson from "./components/ui/CoursePageDesign/othercoursePages/AutomaticTesterLesson";
+import AutomaticStarter from "./components/ui/CoursePageDesign/othercoursePages/AutomaticStarter";
+import AutomaticHourLesson from "./components/ui/CoursePageDesign/othercoursePages/AutomaticHourLesson";
+import IntensiveWeek from "./components/ui/CoursePageDesign/othercoursePages/IntensiveWeek";
+import TheorySupportContent from "./components/ui/CoursePageDesign/othercoursePages/TheorySupportContent";
+import SimulatorContentPage from "./components/ui/CoursePageDesign/othercoursePages/SimulatorContentPage";
+import LearnerTheoryLifetime from "./components/ui/CoursePageDesign/othercoursePages/LearnerTheoryLifetime";
+import PassPlusContentChange from "./components/ui/CoursePageDesign/othercoursePages/PassPlusContentChange";
+import PdiPartOneTraining from "./components/ui/CoursePageDesign/othercoursePages/PdiPartOneTraining";
+import PdiPartTwoTraining from "./components/ui/CoursePageDesign/othercoursePages/PdiPartTwoTraining";
+import PdiPartThreeTraining from "./components/ui/CoursePageDesign/othercoursePages/PdiPartThreeTraining";
+import PdiBusinessMentoring from "./components/ui/CoursePageDesign/othercoursePages/PdiBusinessMentoring";
+import OfferAutomaticContent from "./components/ui/CoursePageDesign/othercoursePages/OfferAutomaticContent";
+import OfferManualContent from "./components/ui/CoursePageDesign/othercoursePages/OfferManualContent";
+import WorkShopContentPage from "./components/ui/CoursePageDesign/othercoursePages/WorkShopContentPage";
+import CoursesPage from "./components/ui/CoursePageDesign/CoursesPage";
 
 export const router = createBrowserRouter([
   {
@@ -361,6 +381,40 @@ export const router = createBrowserRouter([
       { path: "automatic-transmisson", element: <AutomaticTransmission /> },
       { path: "pass-plus", element: <PassPlusTransmission /> },
       { path: "workshop", element: <WorkshopTransmission /> },
+
+      // /////////////////////////////////////////////////
+
+      { path: "manual-taster-course", element: <ManualTesterLesson /> },
+      { path: "manual-beginner-course", element: <ManualCoursePageDesign /> },
+      { path: "manual-hourly-lesson-course", element: <ManualHourLesson /> },
+
+      { path: "automatic-taster-course", element: <AutomaticTesterLesson /> },
+      { path: "automatic-beginner-course", element: <AutomaticStarter /> },
+      { path: "automatic-hourly-lesson-course", element: <AutomaticHourLesson /> },
+
+      { path: "intensive-course", element: <IntensiveWeek /> },
+
+      { path: "theory-support-course", element: <TheorySupportContent /> },
+      { path: "simulator-session-course", element: <SimulatorContentPage /> },
+      { path: "lifetime-theory-portal", element: <LearnerTheoryLifetime /> },
+
+      { path: "pass-plus-course", element: <PassPlusContentChange /> },
+
+      { path: "instructor-training-part-one-course", element: <PdiPartOneTraining /> },
+      { path: "instructor-training-part-two-course", element: <PdiPartTwoTraining /> },
+      {
+        path: "instructor-training-part-three-course",
+        element: <PdiPartThreeTraining />,
+      },
+
+      { path: "business-mentoring-course", element: <PdiBusinessMentoring /> },
+      { path: "workshop-course", element: <WorkShopContentPage /> },
+
+      { path: "offer-automatic-course", element: <OfferAutomaticContent /> },
+      { path: "offer-manual-course", element: <OfferManualContent /> },
+      { path: "courses", element: <CoursesPage /> },
+
+      // ////////////////////////////////////////
       {
         path: "quizModuleOne",
         element: <AdiModuleOne />,
@@ -617,6 +671,20 @@ export const router = createBrowserRouter([
         path: "/admin/home-edit-page/:sectionKey",
         element: <AdminContentHome pageId="home" />,
       },
+
+      {
+        path: "/admin/manual-course-edit-page",
+        element: <AdminManualCoursePage />,
+      },
+      {
+        path: "/admin/manual-course-edit-page/new",
+        element: <AdminManualCoursePage />,
+      },
+      {
+        path: "/admin/manual-course-edit-page/:id",
+        element: <AdminManualCoursePage />,
+      },
+
       {
         path: "/admin/users",
         element: <Users />,

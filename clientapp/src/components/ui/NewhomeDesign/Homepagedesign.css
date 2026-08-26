@@ -509,7 +509,6 @@
   color: var(--color-fg);
 }
 
-
 /* ============================================
    SHARED
    ============================================ */
@@ -551,7 +550,10 @@
   padding: 0 1.75rem;
   font-size: 1rem;
   border: 1px solid var(--color-accent);
-  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .btnPrimary:hover {
   filter: brightness(1.08);
@@ -574,7 +576,11 @@
   height: 3.25rem;
   padding: 0 1.75rem;
   font-size: 1rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 .btnSecondary:hover {
   background: var(--color-surface);
@@ -709,7 +715,10 @@
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-fg);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .featureCard:hover {
   border-color: var(--color-accent);
@@ -756,10 +765,17 @@
   padding: 0.75rem 1rem;
   text-decoration: none;
   color: var(--color-fg);
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
 }
 .locationLink:hover {
-  border-color: color-mix(in oklab, var(--color-accent) 60%, var(--color-border));
+  border-color: color-mix(
+    in oklab,
+    var(--color-accent) 60%,
+    var(--color-border)
+  );
   background: var(--color-surface-muted);
   transform: translateY(-1px);
 }
@@ -786,7 +802,9 @@
   height: 1rem;
   width: 1rem;
   color: var(--color-muted);
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
 }
 .locationLink:hover .locationArrow {
   transform: translateX(4px);
@@ -805,7 +823,11 @@
   transition: border-color 0.3s ease;
 }
 .passCard:hover {
-  border-color: color-mix(in oklab, var(--color-accent) 50%, var(--color-border));
+  border-color: color-mix(
+    in oklab,
+    var(--color-accent) 50%,
+    var(--color-border)
+  );
 }
 
 .passImageWrap {
@@ -841,7 +863,12 @@
   inset-inline: 0;
   bottom: 0;
   padding: 3rem 1rem 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4) 60%, transparent);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent
+  );
   color: #fff;
 }
 
@@ -875,10 +902,16 @@
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-fg);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 .testimonialCard:hover {
-  border-color: color-mix(in oklab, var(--color-accent) 45%, var(--color-border));
+  border-color: color-mix(
+    in oklab,
+    var(--color-accent) 45%,
+    var(--color-border)
+  );
   transform: translateY(-2px);
 }
 
@@ -975,4 +1008,24 @@
   width: 1rem;
   flex: none;
   color: var(--color-accent);
+}
+
+.slick-slide {
+  padding: 0 6px;
+}
+
+.slick-list {
+  margin: 0 -6px;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-slide .passCard {
+  height: 100%;
 }

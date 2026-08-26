@@ -21,7 +21,7 @@ const openaiRoutes = require("./routes/openaiRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const onboardingRoutes = require('./routes/onboardingRoutes');
 const homePageRoutes = require("./routes/homePageRoutes");
-
+const manualCoursePageRoutes = require("./routes/manualCoursePageRoutes");
 
 const http = require("http");
 const { Server } = require("socket.io");
@@ -72,6 +72,7 @@ app.use("/api/chatbot", openaiRoutes);
 app.use("/api/chat-all", chatRoutes);
 
 app.use("/api/home", homePageRoutes);
+app.use("/api/manual-course-page", manualCoursePageRoutes);
 
 
 
