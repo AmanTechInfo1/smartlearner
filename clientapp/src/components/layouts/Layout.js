@@ -49,7 +49,7 @@ function Layout() {
             <>
               <Scroll />
 
-              <main style={{ paddingTop: "150px", backgroundColor: "#000" }}>
+              <main style={{  backgroundColor: "#000" }}>
                 <Outlet />
               </main>
               <Footer />

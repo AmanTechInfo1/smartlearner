@@ -1,187 +1,419 @@
-#navContainer {
-  position: relative;
-  z-index: 100000;
-}
-.navContainer1 {
-  background: linear-gradient(180deg, rgb(255 59 59), rgb(195, 13, 0));
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1;
-}
-.headerContainer {
-  display: flex;
-  justify-content: space-between;
+/* ============================================================
+   Design tokens
+   ============================================================ */
+.root {
+  --bg-0: #0b0e13;
+  --bg-1: #11151d;
+  --bg-glass: rgba(17, 21, 29, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e9edf3;
+  --text-muted: #8892a0;
+  --accent: #3ecbff;
+  --accent-soft: rgba(62, 203, 255, 0.16);
+  --accent-2: #ffb020;
+  --radius: 10px;
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: var(--font-body);
+  color: var(--text);
+  perspective: 1000px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Utility bar
+   ============================================================ */
+.utilityBar {
+  background: var(--bg-0);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+
+.utilityInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.4rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contactInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+}
+
+.contactInfo a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactInfo a:hover,
+.contactInfo a:focus-visible {
+  color: var(--accent);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  display: inline-block;
+}
+
+.utilityActions {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.accountTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accountTrigger:hover,
+.accountTrigger:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  outline: none;
+}
+
+.accountMenuRow {
+  display: flex;
   align-items: center;
   gap: 10px;
-
-  padding: 15px 20px;
-  width: 100%;
-}
-.headerLinksSection {
-  width: 100%;
-}
-.navLinks {
-  display: flex;
-  justify-content: flex-end;
-}
-.imgLogoSection {
-  text-align: center;
-  width: 30%;
-}
-.imgLogoSection .imgLogoSection1 img {
-  max-width: 70px;
-  width: 100%;
-  border-radius: 50%;
-}
-.imgLogoSection .imgLogoSection2 img {
-  max-width: 300px;
-  width: 100%;
-}
-#navLinksUl {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.contactInfo span {
-  font-size: 1.2rem;
-  color: white;
-  padding: 0px 1rem;
-}
-.contactInfo a {
-  position: relative;
-  display: inline-block;
-  font-size: 1.2rem;
-  color: rgb(235, 243, 253);
-  font-weight: 500;
+  cursor: pointer;
   text-decoration: none;
+  color: inherit;
 }
-.contactInfo a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  margin-top: 5px;
-  left: 0;
-  width: 0;
-  height: 2px; /* Line thickness */
-  background-color: rgb(122, 78, 0);
-  /* Line color */
-  transition: width 0.3s ease; /* Controls the speed of the animation */
-}
-.contactInfo a:hover {
-  color: rgb(148, 191, 255);
-}
-.contactInfo a:hover::after {
-  width: 100%;
 
-  /* Full width on hover */
-}
-.navLinks ul {
-  padding-left: 0;
-}
-.navLinks ul li {
+.accountMenuIcon {
   font-size: 1.2rem;
-  color: rgb(235, 243, 253);
-  font-weight: 500;
-}
-.navShoppingCart {
-  font-size: 1.7rem;
-  color: rgb(235, 243, 253);
-  font-weight: 500;
-}
-.navLinks ul button {
-  padding: 2px 12px;
-  background-color: rgba(1, 19, 30, 0.944);
-  border: 1px solid rgba(145, 97, 0, 0.642);
-  border-radius: 6px;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.navLinks ul button:hover {
-  border: 1px solid rgb(110, 2, 61);
-}
-.navShoppingCart {
-  display: inline-block;
-  position: relative;
 }
 
-.navShoppingCart a {
-  display: inline-block;
-  position: relative;
-  color: white;
-  padding: 3px 9px;
-  border: 1px solid rgb(56, 83, 117);
-  border-radius: 50%;
+.cartLink {
+  color: var(--text);
+  font-size: 1.05rem;
+  display: inline-flex;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.shoppincartIcon {
-  font-size: 28px; /* Adjust the size of the icon */
-  color: inherit; /* Icon color, inherited from parent */
+.cartLink:hover,
+.cartLink:focus-visible {
+  color: var(--accent-2);
+  transform: translateY(-1px);
 }
 
-.navShoppingCart a::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border: 2px solid rgb(2, 54, 86); /* Circle color */
-  border-radius: 50%;
-  transition: width 0.3s ease, height 0.3s ease; /* Smoothly animate the size */
-  transform: translate(-50%, -50%); /* Center the circle */
+/* ============================================================
+   Main bar
+   ============================================================ */
+.mainBar {
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(62, 203, 255, 0.15), 0 12px 30px -18px rgba(0, 0, 0, 0.8);
 }
 
-.navShoppingCart a:hover::before {
-  width: 120%; /* Circle size increases on hover */
-  height: 120%;
-}
-@media (max-width: 1068px) {
-  .contactInfo a {
-    font-size: 17px;
-  }
-  .navLinks ul button {
-    font-size: 17px;
-  }
-}
-@media (max-width: 950px) {
-  .imgLogoSection {
-    display: none;
-  }
-}
-@media (max-width: 668px) {
-  .contactInfo a {
-    font-size: 16px;
-  }
-  .navLinks ul button {
-    font-size: 16px;
-  }
-  .contactInfo span {
-    font-size: 1rem;
-    color: white;
-    padding: 0px 8px;
-  }
-  .navLinks ul {
-    margin-bottom: 0px;
-  }
-}
-@media (max-width: 520px) {
-  .contactInfo span {
-    display: none;
-  }
-  .navShoppingCart {
-    font-size: 17px;
-  }
-}
-@media (max-width: 400px) {
-  .contactInfo a {
-    font-size: 14px;
-  }
-}
-
-#accountDropDown {
+.mainInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
   display: flex;
   align-items: center;
+  gap: 2rem;
+}
+
+/* Logo with 3D tilt-on-hover */
+.logoWrap {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.logoLink {
+  display: inline-flex;
+  transform: translateZ(0);
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(62, 203, 255, 0.25));
+}
+
+/* ============================================================
+   Desktop nav
+   ============================================================ */
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  border-radius: var(--radius);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+}
+
+.navLinkActive {
+  color: var(--accent);
+}
+
+/* Signature motif: dashed "lane marking" that streaks in under the link,
+   echoing the driving-school L-plate identity. */
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0.8rem;
+  right: 0.8rem;
+  bottom: 0.28rem;
+  height: 2px;
+  background-image: linear-gradient(90deg, var(--accent) 55%, transparent 0);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after,
+.navLinkActive::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.caret {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.navItem:hover .caret {
+  transform: rotate(180deg);
+}
+
+/* Mega-menu dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 240px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(62, 203, 255, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+}
+
+.dropdownLink {
+  list-style: none;
+}
+
+.dropdownAnchor {
+  display: block;
+  padding: 0.55rem 0.7rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.86rem;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.dropdownAnchor:hover,
+.dropdownAnchor:focus-visible {
+  color: var(--text);
+  background: var(--accent-soft);
+  transform: translateX(3px);
+  outline: none;
+}
+
+.dropdownAnchorActive {
+  color: var(--accent);
+}
+
+/* ============================================================
+   Mobile toggle + drawer
+   ============================================================ */
+.menuToggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.menuToggle:hover,
+.menuToggle:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+.drawer {
+  display: none;
+  overflow: hidden;
+  height: 0;
+  background: var(--bg-1);
+  border-top: 1px solid var(--border);
+}
+
+.mobileList {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem 1.2rem 1.2rem;
+}
+
+.mobileGroup {
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0;
+}
+
+.mobileGroup:last-child {
+  border-bottom: none;
+}
+
+.mobileLink {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  padding: 0.2rem 0;
+}
+
+.mobileSublist {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0 0 0 0.9rem;
+  border-left: 2px dashed rgba(62, 203, 255, 0.35);
+}
+
+.mobileSublink {
+  display: block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 0.35rem 0;
+  transition: color 0.2s ease;
+}
+
+.mobileSublink:hover,
+.mobileSublink:focus-visible {
+  color: var(--accent);
+}
+
+/* ============================================================
+   Antd account overlay (dark override)
+   ============================================================ */
+:global(.ant-dropdown) .accountOverlay,
+.accountOverlay {
+  color: var(--text);
+}
+
+.accountOverlay :global(.ant-dropdown-menu) {
+  background: var(--bg-1) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius) !important;
+}
+
+.accountOverlay :global(.ant-dropdown-menu-item) {
+  color: var(--text) !important;
+}
+
+.accountOverlay :global(.ant-dropdown-menu-item:hover) {
+  background: var(--accent-soft) !important;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 960px) {
+  .navList {
+    display: none;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .drawer {
+    display: block;
+  }
+
+  .utilityInner {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactInfo a:last-child {
+    display: none;
+  }
+
+  .dot {
+    display: none;
+  }
 }
