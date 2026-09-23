@@ -3,7 +3,7 @@ const router = express.Router();
 
 const homeController = require("../controllers/homePageController");
 const { requireAuth } = require("../middlewares/authMiddleware");
-const { imageSaverMiddleware } = require("../middlewares/imageSaverMiddleware");
+const { imageSaverMiddleware, recentPassesImageSaver } = require("../middlewares/imageSaverMiddleware");
 
 const multer = require("multer");
 const upload = multer(); // memory storage
@@ -216,7 +216,7 @@ router.post(
   "/add-recent-passes",
   requireAuth,
   upload.any(),
-  imageSaverMiddleware,
+  recentPassesImageSaver,
   homeController.createRecentPasses,
 );
 
@@ -224,7 +224,7 @@ router.post(
   "/update-recent-passes/:id",
   requireAuth,
   upload.any(),
-  imageSaverMiddleware,
+  recentPassesImageSaver,
   homeController.updateRecentPasses,
 );
 

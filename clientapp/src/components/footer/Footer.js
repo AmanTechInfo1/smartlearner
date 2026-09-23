@@ -187,14 +187,14 @@ function Footer() {
                 </p>
                 <p className="flex items-center gap-3">
                   <FaPhoneAlt className="text-[#2FBE73]/80" aria-hidden="true" />
-                  <a style={{textDecoration:"none", color:'white'}}  href="tel:+441000000000" className="transition-colors hover:text-[#EAF3EC]">
-                    01000 000 000
+                  <a style={{textDecoration:"none", color:'white'}}  href="tel:+4402475092784" className="transition-colors hover:text-[#EAF3EC]">
+                    02475 092 784
                   </a>
                 </p>
                 <p className="flex items-center gap-3">
                   <FaEnvelope className="text-[#2FBE73]/80" aria-hidden="true" />
-                  <a style={{textDecoration:"none",color:'white'}}  href="mailto:hello@smartlearner.com" className="transition-colors hover:text-[#EAF3EC]">
-                    hello@smartlearner.com
+                  <a style={{textDecoration:"none",color:'white'}}  href="mailto:admin@smartlearner.com" className="transition-colors hover:text-[#EAF3EC]">
+                    admin@smartlearner.com
                   </a>
                 </p>
               </address>

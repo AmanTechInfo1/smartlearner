@@ -668,15 +668,30 @@ function EditSection({ pageId, sectionKey }) {
     if (!file) return;
     // File upload via imageSaverMiddleware backend endpoint
     const formDataUpload = new FormData();
-    formDataUpload.append("image", file);
-    formDataUpload.append("section", sectionKey);
-    formDataUpload.append("field", arrayName);
+   
 
-    // Upload to backend (configure endpoint as needed)
-    // For now, just use object URL for preview
-    const previewUrl = URL.createObjectURL(file);
-    handleArrayItemChange(arrayName, index, "image", previewUrl);
-    // TODO: Replace with actual upload call using imageSaverMiddleware
+  // Send actual image file
+  formDataUpload.append(
+    `students[${index}].image`,
+    file
+  );
+
+  // Send students data if needed
+  formDataUpload.append(
+    "students",
+    JSON.stringify(formData[arrayName])
+  );
+
+  // Preview only — NOT saved to database
+  const previewUrl = URL.createObjectURL(file);
+
+  handleArrayItemChange(
+    arrayName,
+    index,
+    "image",
+    previewUrl
+  );
+
   };
 
   const handleSubmit = async (e) => {

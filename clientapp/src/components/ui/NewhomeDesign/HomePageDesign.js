@@ -45,6 +45,37 @@ const sliderSettings = {
   ],
 };
 
+const sliderSettings2 = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  arrows: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
+
 const {
   Sparkles, // <-- was Sparkle — corrected to match HTML "lucide-sparkles"
   Star,
@@ -903,8 +934,10 @@ function Testimonials({ data }) {
         </Reveal>
 
         {/* Existing Testimonials */}
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div className="mt-12 ">
+          <Slider {...sliderSettings2}>
           {data.testimonials?.map((t, i) => (
+            <div key={i} className="py-2">
             <Reveal
               key={i}
               delay={i === 1 ? 0.05 : i === 2 ? 0.1 : 0}
@@ -952,7 +985,9 @@ function Testimonials({ data }) {
                 </div>
               </div>
             </Reveal>
+            </div>
           ))}
+          </Slider>
         </div>
 
         

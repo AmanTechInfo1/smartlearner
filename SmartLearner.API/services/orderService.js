@@ -8,7 +8,7 @@ const productEmailService = require("./productEmailService");
 const nodemailer = require("nodemailer");
 
 const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe("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");
 
 const baseUrl = process.env.REVOLUT_API_URL;
 const secretKey = process.env.REVOLUT_API_SECRET_KEY;

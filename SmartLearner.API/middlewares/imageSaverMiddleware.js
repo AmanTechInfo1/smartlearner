@@ -28,7 +28,48 @@ const imageSaverMiddleware = (req, res, next) => {
     });
 };
 
+const recentPassesImageSaver = (req, res, next) => {
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "uploads/");
+        },
 
+        filename: function (req, file, cb) {
+            const ext = path.extname(file.originalname);
+            cb(null, `${uuidv4()}${ext}`);
+        },
+    });
+
+    const upload = multer({
+        storage: storage,
+    }).any();
+
+    upload(req, res, function (err) {
+        try {
+            if (err) {
+                return res.status(400).json({
+                    error: "File upload failed.",
+                    details: err.message,
+                });
+            }
+
+            // req.files contains all uploaded images
+            if (req.files && req.files.length > 0) {
+                req.files.forEach((file) => {
+                    console.log(
+                        "Recent Passes Image:",
+                        file.fieldname,
+                        file.filename
+                    );
+                });
+            }
+
+            next();
+        } catch (err) {
+            next(err);
+        }
+    });
+};
 
 
 const multipleimageSaverMiddleware = (req, res, next) => {
@@ -75,4 +116,4 @@ const multipleimageSaverMiddleware = (req, res, next) => {
         }
     });
 };
-module.exports = { imageSaverMiddleware, multipleimageSaverMiddleware };
+module.exports = { imageSaverMiddleware,recentPassesImageSaver, multipleimageSaverMiddleware };
