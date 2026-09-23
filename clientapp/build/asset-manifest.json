@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ecada366.css",
-    "main.js": "/static/js/main.1a89b2f3.js",
+    "main.css": "/static/css/main.c017761a.css",
+    "main.js": "/static/js/main.3a9c4df4.js",
     "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
@@ -13,7 +13,6 @@
     "static/media/automaticround.jpg": "/static/media/automaticround.bf477bac8170d3177a82.jpg",
     "static/media/vehicleLoadingBanner.jpg": "/static/media/vehicleLoadingBanner.004ad9615dc8f1e23cf0.jpg",
     "static/media/theory-banner.jpg": "/static/media/theory-banner.47a267a480740b34a34a.jpg",
-    "static/media/contact-banner2.png": "/static/media/contact-banner2.684e276d92e370cec21e.png",
     "static/media/showme.jpg": "/static/media/showme.44c36e240b0b58e78464.jpg",
     "static/media/aboutusBanner.jpg": "/static/media/aboutusBanner.5c7703f9373297d1bf34.jpg",
     "static/media/gde-matrix.jpg": "/static/media/gde-matrix.0c12cae38e2caa366e49.jpg",
@@ -412,12 +411,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.ecada366.css.map": "/static/css/main.ecada366.css.map",
-    "main.1a89b2f3.js.map": "/static/js/main.1a89b2f3.js.map",
+    "main.c017761a.css.map": "/static/css/main.c017761a.css.map",
+    "main.3a9c4df4.js.map": "/static/js/main.3a9c4df4.js.map",
     "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ecada366.css",
-    "static/js/main.1a89b2f3.js"
+    "static/css/main.c017761a.css",
+    "static/js/main.3a9c4df4.js"
   ]
 }
