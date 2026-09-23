@@ -95,8 +95,8 @@ export default function Home() {
           content="SmartLearner Driving School, established in 2004, offers expert driving lessons in the West Midlands with advanced technology. "
         />
       </Helmet>
-      {/* <HomePageDesign /> */}
-      <NewHomebanners8 />
+      <HomePageDesign />
+      {/* <NewHomebanners8 /> */}
 
       {/* <NewYearBanner /> */}
       {/* <ChristmasBanner />
