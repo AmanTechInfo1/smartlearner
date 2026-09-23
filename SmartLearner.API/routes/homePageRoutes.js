@@ -215,7 +215,7 @@ router.get("/recent-passes", homeController.getRecentPasses);
 router.post(
   "/add-recent-passes",
   requireAuth,
-  upload.any(),
+  
   recentPassesImageSaver,
   homeController.createRecentPasses,
 );
@@ -223,7 +223,7 @@ router.post(
 router.post(
   "/update-recent-passes/:id",
   requireAuth,
-  upload.any(),
+ 
   recentPassesImageSaver,
   homeController.updateRecentPasses,
 );
