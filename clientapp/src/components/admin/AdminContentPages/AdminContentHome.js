@@ -665,26 +665,12 @@ function EditSection({ pageId, sectionKey }) {
   };
 
   const handleImageChange = (arrayName, index, file) => {
-    if (!file) return;
-    // File upload via imageSaverMiddleware backend endpoint
-    const formDataUpload = new FormData();
-   
+  if (!file) return;
 
-  // Send actual image file
-  formDataUpload.append(
-    `students[${index}].image`,
-    file
-  );
-
-  // Send students data if needed
-  formDataUpload.append(
-    "students",
-    JSON.stringify(formData[arrayName])
-  );
-
-  // Preview only — NOT saved to database
+  // Create temporary preview URL
   const previewUrl = URL.createObjectURL(file);
 
+  // Store preview URL for displaying the image
   handleArrayItemChange(
     arrayName,
     index,
@@ -692,52 +678,102 @@ function EditSection({ pageId, sectionKey }) {
     previewUrl
   );
 
-  };
+  // Store the actual File object separately.
+  // This will be added to FormData when Save is clicked.
+  handleArrayItemChange(
+    arrayName,
+    index,
+    "_imageFile",
+    file
+  );
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
 
-    // Validate required fields
-    for (const field of fields) {
-      if (field.required && !formData[field.name]?.toString().trim()) {
-        setError(`${field.label} is required`);
-        return;
-      }
-    }
-
-    const thunks = THUNK_MAP[sectionKey];
-    if (!thunks) {
-      setError("No thunk mapped for this section");
+  // Validate required fields
+  for (const field of fields) {
+    if (field.required && !formData[field.name]?.toString().trim()) {
+      setError(`${field.label} is required`);
       return;
     }
+  }
 
-    try {
-      if (sectionData && sectionData._id) {
-        // Update existing
-        const result = await dispatch(
-          thunks.update(sectionData._id, formData, () =>
-            navigate(`/admin/home-edit-page`),
-          ),
+  const thunks = THUNK_MAP[sectionKey];
+
+  if (!thunks) {
+    setError("No thunk mapped for this section");
+    return;
+  }
+
+  try {
+    const submitData = new FormData();
+
+    Object.entries(formData).forEach(([key, value]) => {
+      if (key === "students") {
+        // Remove temporary _imageFile before sending JSON
+        const studentsData = value.map((student) => {
+          const { _imageFile, ...studentData } = student;
+
+          return {
+            ...studentData,
+
+            // Don't send blob URL to backend
+            image: studentData.image?.startsWith("blob:")
+              ? ""
+              : studentData.image || "",
+          };
+        });
+
+        submitData.append(
+          "students",
+          JSON.stringify(studentsData),
         );
-        if (result.meta.requestStatus === "fulfilled") {
-          toast.success("Section updated successfully");
-        }
+
+        // Add actual image files separately
+        value.forEach((student, index) => {
+          if (student._imageFile instanceof File) {
+            submitData.append(
+              `students[${index}].image`,
+              student._imageFile,
+            );
+          }
+        });
       } else {
-        // Create new
-        const result = await dispatch(
-          thunks.create(formData, () => {
-            // reset form, do not navigate (so admin can verify)
-          }),
-        );
-        if (result.meta.requestStatus === "fulfilled") {
-          toast.success("Section created successfully");
-        }
+        submitData.append(key, value);
       }
-    } catch (err) {
-      setError(err.message || "Failed to save section");
+    });
+
+    if (sectionData && sectionData._id) {
+      // Update existing
+      const result = await dispatch(
+        thunks.update(sectionData._id, submitData, () =>
+          navigate(`/admin/home-edit-page`),
+        ),
+      );
+
+      if (result.meta.requestStatus === "fulfilled") {
+        toast.success("Section updated successfully");
+      }
+    } else {
+      // Create new
+      const result = await dispatch(
+        thunks.create(submitData, () => {
+          // reset form, do not navigate
+        }),
+      );
+
+      if (result.meta.requestStatus === "fulfilled") {
+        toast.success("Section created successfully");
+      }
     }
-  };
+  } catch (err) {
+    setError(err.message || "Failed to save section");
+  }
+};
+
+
 
   return (
     <div className={styles.adminPage}>

@@ -556,7 +556,33 @@ const getRecentPasses = async (req, res) => {
 
 const createRecentPasses = async (req, res) => {
   try {
-    const data = await homeService.createRecentPasses(req.body);
+    let students = [];
+
+    if (req.body.students) {
+      students = JSON.parse(req.body.students);
+    }
+
+    // Attach uploaded images to corresponding students
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file) => {
+        const match = file.fieldname.match(
+          /^students\[(\d+)\]\.image$/
+        );
+
+        if (match) {
+          const index = Number(match[1]);
+
+          if (students[index]) {
+            students[index].image = file.filename;
+          }
+        }
+      });
+    }
+
+    const data = await homeService.createRecentPasses({
+      ...req.body,
+      students,
+    });
 
     return res.status(201).json({
       success: true,
@@ -570,7 +596,36 @@ const createRecentPasses = async (req, res) => {
 
 const updateRecentPasses = async (req, res) => {
   try {
-    const data = await homeService.updateRecentPasses(req.params.id, req.body);
+    let students = [];
+
+    if (req.body.students) {
+      students = JSON.parse(req.body.students);
+    }
+
+    // Attach uploaded images to corresponding students
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file) => {
+        const match = file.fieldname.match(
+          /^students\[(\d+)\]\.image$/
+        );
+
+        if (match) {
+          const index = Number(match[1]);
+
+          if (students[index]) {
+            students[index].image = file.filename;
+          }
+        }
+      });
+    }
+
+    const data = await homeService.updateRecentPasses(
+      req.params.id,
+      {
+        ...req.body,
+        students,
+      },
+    );
 
     if (!data) {
       return res.status(404).json({
