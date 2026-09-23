@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Homepagedesign.css";
 
-import { getHomePage } from "../../../redux/features/homeContentSlice";
+import {
+  getHomePage,
+  createTestimonial,
+} from "../../../redux/features/homeContentSlice";
 import { icons, FALLBACK_FEATURES, FALLBACK_STATS } from "./HomeSectionConfig";
 import { IoIosMap, IoIosRibbon } from "react-icons/io";
 import { IoShieldOutline } from "react-icons/io5";
@@ -601,28 +604,314 @@ function RecentPasses({ data }) {
    TESTIMONIALS
    ======================================================================== */
 function Testimonials({ data }) {
+  const dispatch = useDispatch();
+
+  const [showForm, setShowForm] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    location: "",
+    message: "",
+    rating: 0,
+  });
+
   if (!data) return null;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleRating = (rating) => {
+    setFormData((prev) => ({
+      ...prev,
+      rating,
+    }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      location: "",
+      message: "",
+      rating: 0,
+    });
+
+    setShowForm(false);
+    setSubmitting(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.name.trim()) {
+      return;
+    }
+
+    if (!formData.location.trim()) {
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      return;
+    }
+
+    setSubmitting(true);
+
+    dispatch(
+      createTestimonial(
+        {
+          name: formData.name.trim(),
+          location: formData.location.trim(),
+          message: formData.message.trim(),
+          rating: Number(formData.rating),
+          avatar: "",
+        },
+        resetForm,
+        () => setSubmitting(false),
+      ),
+    );
+  };
 
   return (
     <section className="py-20 sm:py-28 sectionBorder">
       <div className="mx-auto w-full px-6 sm:px-10 max-w-6xll">
+
+        {/* Heading */}
         <Reveal>
           <span className="sectionEyebrow">
             {data.subHeading || "What pupils say"}
           </span>
+
           <h2
             className="mt-3 font-display text-4xl tracking-tight sm:text-5xl"
             style={{ color: "var(--color-fg)" }}
           >
             {data.heading || "Passed first time, with a smile."}
           </h2>
+
+          {data.description && (
+            <p
+              className="mt-3 max-w-xl"
+              style={{ color: "var(--color-muted)" }}
+            >
+              {data.description}
+            </p>
+          )}
         </Reveal>
 
+        {/* Add Testimonial */}
+        <Reveal delay={0.12}>
+          <div className="testimonialSubmitWrap">
+
+            {!showForm ? (
+              <div className="testimonialSubmitIntro">
+                <div>
+                  <span className="sectionEyebrow">
+                    Your experience matters
+                  </span>
+
+                  <h3 className="testimonialSubmitTitle">
+                    Learned with SmartLearner?
+                  </h3>
+
+                  <p className="testimonialSubmitDescription">
+                    Share your experience and help other learners choose
+                    SmartLearner with confidence.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="testimonialSubmitButton"
+                  onClick={() => setShowForm(true)}
+                >
+                  <Star className="h-4 w-4" />
+                  Share Your Review
+                </button>
+              </div>
+            ) : (
+              <form
+                className="testimonialForm"
+                onSubmit={handleSubmit}
+              >
+                <div className="testimonialFormHeader">
+                  <div>
+                    <span className="sectionEyebrow">
+                      Share your experience
+                    </span>
+
+                    <h3 className="testimonialSubmitTitle">
+                      Tell us about your SmartLearner experience
+                    </h3>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="testimonialCloseButton"
+                    onClick={resetForm}
+                    aria-label="Close testimonial form"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                {/* Rating */}
+                <div className="testimonialRatingField">
+                  <label className="testimonialFormLabel">
+                    Your rating
+                  </label>
+
+                  <div className="testimonialRatingSelector">
+  {[1, 2, 3, 4, 5].map((rating) => {
+    const isActive =
+      formData.rating > 0 && rating <= formData.rating;
+
+    return (
+      <button
+        key={rating}
+        type="button"
+        className={`testimonialRatingStar ${
+          isActive ? "testimonialRatingStar--active" : ""
+        }`}
+        onClick={() => handleRating(rating)}
+        aria-label={`${rating} star${rating > 1 ? "s" : ""}`}
+      >
+        <Star />
+      </button>
+    );
+  })}
+</div>
+                </div>
+
+                {/* Name + Location */}
+                <div className="testimonialFormGrid">
+
+                  <div className="testimonialFormField">
+                    <label
+                      htmlFor="testimonial-name"
+                      className="testimonialFormLabel"
+                    >
+                      Your name
+                    </label>
+
+                    <input
+                      id="testimonial-name"
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="e.g. James Wilson"
+                      maxLength={80}
+                      required
+                      className="testimonialFormInput"
+                    />
+                  </div>
+
+                  <div className="testimonialFormField">
+                    <label
+                      htmlFor="testimonial-location"
+                      className="testimonialFormLabel"
+                    >
+                      Location
+                    </label>
+
+                    <input
+                      id="testimonial-location"
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      placeholder="e.g. Birmingham"
+                      maxLength={80}
+                      required
+                      className="testimonialFormInput"
+                    />
+                  </div>
+
+                </div>
+
+                {/* Message */}
+                <div className="testimonialFormField">
+                  <label
+                    htmlFor="testimonial-message"
+                    className="testimonialFormLabel"
+                  >
+                    Your review
+                  </label>
+
+                  <textarea
+                    id="testimonial-message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your experience with SmartLearner..."
+                    maxLength={500}
+                    rows={5}
+                    required
+                    className="testimonialFormTextarea"
+                  />
+
+                  <div className="testimonialCharacterCount">
+                    {formData.message.length}/500
+                  </div>
+                </div>
+
+                {/* Buttons */}
+                <div className="testimonialFormActions">
+                  <button
+                    type="button"
+                    className="testimonialCancelButton"
+                    onClick={resetForm}
+                    disabled={submitting}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="testimonialSubmitButton"
+                    disabled={submitting}
+                  >
+                    {submitting ? (
+                      <>
+                        <span className="testimonialSpinner" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Review
+                        <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                <p className="testimonialFormNote">
+                  By submitting your review, you agree that SmartLearner
+                  may display your review on its website.
+                </p>
+              </form>
+            )}
+
+          </div>
+        </Reveal>
+
+        {/* Existing Testimonials */}
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {data.testimonials?.map((t, i) => (
-            <Reveal key={i} delay={i === 1 ? 0.05 : i === 2 ? 0.1 : 0}>
+            <Reveal
+              key={i}
+              delay={i === 1 ? 0.05 : i === 2 ? 0.1 : 0}
+            >
               <div className="testimonialCard">
                 <div className="p-6 pt-6">
+
                   <div
                     className="flex"
                     aria-label={`${t.rating || 5} out of 5 stars`}
@@ -631,7 +920,11 @@ function Testimonials({ data }) {
                       <Star key={j} className="starIcon" />
                     ))}
                   </div>
-                  <p className="testimonialMessage">"{t.message}"</p>
+
+                  <p className="testimonialMessage">
+                    "{t.message}"
+                  </p>
+
                   <div className="testimonialFooter">
                     {t.avatar ? (
                       <img
@@ -644,16 +937,26 @@ function Testimonials({ data }) {
                         {t.name?.[0]}
                       </div>
                     )}
+
                     <div>
-                      <div className="testimonialName">{t.name}</div>
-                      <div className="testimonialLocation">{t.location}</div>
+                      <div className="testimonialName">
+                        {t.name}
+                      </div>
+
+                      <div className="testimonialLocation">
+                        {t.location}
+                      </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
+
+        
+
       </div>
     </section>
   );

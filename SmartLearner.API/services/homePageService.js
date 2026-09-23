@@ -213,6 +213,32 @@ const createSection = async (sectionName, data) => {
   });
 };
 
+////////////////////new////////////////////
+const addTestimonial = async (data) => {
+  const Model = getSectionModel("testimonials");
+
+  const home = await getActiveHome();
+
+  if (!home) {
+    throw new Error("Homepage not found");
+  }
+
+  const existingSection = await Model.findOne({
+    homeId: home._id,
+  });
+
+  if (!existingSection) {
+    throw new Error("Testimonials section not found");
+  }
+
+  existingSection.testimonials.push(data);
+
+  await existingSection.save();
+
+  return existingSection;
+};
+
+
 /**
  * Update Section
  */
@@ -421,6 +447,7 @@ module.exports = {
   // Testimonials
   getTestimonials,
   createTestimonials,
+  addTestimonial,
   updateTestimonials,
   deleteTestimonials,
 

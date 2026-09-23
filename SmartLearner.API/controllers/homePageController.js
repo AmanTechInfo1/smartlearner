@@ -649,6 +649,20 @@ const createTestimonials = async (req, res) => {
   }
 };
 
+const addTestimonial = async (req, res) => {
+  try {
+    const data = await homeService.addTestimonial(req.body);
+
+    return res.status(201).json({
+      success: true,
+      message: "Review submitted successfully",
+      data,
+    });
+  } catch (error) {
+    return handleError(res, error, "Failed to submit review");
+  }
+};
+
 const updateTestimonials = async (req, res) => {
   try {
     const data = await homeService.updateTestimonials(req.params.id, req.body);
@@ -823,6 +837,7 @@ module.exports = {
   // Testimonials
   getTestimonials,
   createTestimonials,
+  addTestimonial,
   updateTestimonials,
   deleteTestimonials,
 

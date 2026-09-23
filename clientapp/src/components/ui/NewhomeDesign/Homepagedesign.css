@@ -1029,3 +1029,332 @@
 .slick-slide .passCard {
   height: 100%;
 }
+/* ============================================
+   ADD TESTIMONIAL
+   ============================================ */
+
+.testimonialSubmitWrap {
+  margin-top: 3rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--color-brand) 12%, var(--color-surface)),
+      var(--color-surface)
+    );
+  overflow: hidden;
+}
+
+.testimonialSubmitIntro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.testimonialSubmitTitle {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+}
+
+.testimonialSubmitDescription {
+  margin-top: 0.5rem;
+  max-width: 620px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.testimonialSubmitButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.testimonialSubmitButton:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 0 24px -6px var(--color-accent);
+}
+
+.testimonialSubmitButton:active {
+  transform: translateY(1px);
+}
+
+.testimonialSubmitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.testimonialForm {
+  padding: 2rem;
+}
+
+.testimonialFormHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.testimonialCloseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.testimonialCloseButton:hover {
+  color: var(--color-fg);
+  border-color: var(--color-accent);
+  background: var(--color-surface-muted);
+}
+
+.testimonialRatingField {
+  margin-top: 1.5rem;
+}
+
+.testimonialFormLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-fg);
+}
+
+.testimonialRatingSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.testimonialRatingStar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-border);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.testimonialRatingStar svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.testimonialRatingStar:hover {
+  color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.testimonialRatingStar--active {
+  color: var(--color-accent);
+}
+
+.testimonialRatingStar--active svg {
+  fill: var(--color-accent);
+}
+
+.testimonialFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.testimonialFormField {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.testimonialFormGrid .testimonialFormField {
+  margin-top: 0;
+}
+
+.testimonialFormInput,
+.testimonialFormTextarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.testimonialFormInput {
+  height: 3rem;
+  padding: 0 0.875rem;
+}
+
+.testimonialFormTextarea {
+  min-height: 8rem;
+  resize: vertical;
+  padding: 0.875rem;
+  line-height: 1.6;
+}
+
+.testimonialFormInput::placeholder,
+.testimonialFormTextarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.65;
+}
+
+.testimonialFormInput:focus,
+.testimonialFormTextarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px
+    color-mix(in oklab, var(--color-accent) 15%, transparent);
+}
+
+.testimonialCharacterCount {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.testimonialFormActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.testimonialCancelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.testimonialCancelButton:hover {
+  color: var(--color-fg);
+  border-color: var(--color-accent);
+  background: var(--color-surface-muted);
+}
+
+.testimonialCancelButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.testimonialSpinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: testimonialSpin 0.7s linear infinite;
+}
+
+@keyframes testimonialSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.testimonialFormNote {
+  margin-top: 1rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .testimonialSubmitIntro {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+
+  .testimonialSubmitButton {
+    width: 100%;
+  }
+
+  .testimonialForm {
+    padding: 1.5rem;
+  }
+
+  .testimonialFormGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialFormGrid .testimonialFormField {
+    margin-top: 1.25rem;
+  }
+
+  .testimonialFormActions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .testimonialCancelButton,
+  .testimonialFormActions .testimonialSubmitButton {
+    width: 100%;
+  }
+}

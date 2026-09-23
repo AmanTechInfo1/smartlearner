@@ -1004,6 +1004,32 @@ export const createTestimonials =
     }
   };
 
+
+  export const createTestimonial =
+  (data, reset, toggleModal) => async (dispatch) => {
+    try {
+      dispatch(setTestimonialsLoading());
+
+      const response = await httpHandler.post(
+        `/api/home/add-user-testimonials`,
+        data,
+      );
+
+      if (response.data.success) {
+        reset?.();
+        toggleModal?.();
+        dispatch(createTestimonialsSuccess(response.data.data));
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+        dispatch(createTestimonialsFailure());
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || error.message);
+      dispatch(createTestimonialsFailure());
+    }
+  };
+
 export const updateTestimonials =
   (id, data, toggleModal) => async (dispatch) => {
     try {

@@ -253,6 +253,14 @@ router.post(
 );
 
 router.post(
+  "/add-user-testimonials",
+  requireAuth,
+  upload.any(),
+  imageSaverMiddleware,
+  homeController.addTestimonial,
+);
+
+router.post(
   "/update-testimonials/:id",
   requireAuth,
   upload.any(),
