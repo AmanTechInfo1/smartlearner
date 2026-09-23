@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.885d2918.css",
-    "main.js": "/static/js/main.526e40ea.js",
-    "static/js/453.3e45edb3.chunk.js": "/static/js/453.3e45edb3.chunk.js",
+    "main.css": "/static/css/main.47ffee91.css",
+    "main.js": "/static/js/main.b86fc787.js",
+    "static/js/453.e1e0bccf.chunk.js": "/static/js/453.e1e0bccf.chunk.js",
     "static/media/drivingInstructorBanner.jpg": "/static/media/drivingInstructorBanner.62849a9f27b4bdd7e8ea.jpg",
     "static/media/intensivebannerImg.jpg": "/static/media/intensivebannerImg.5e74103306c55cb042e9.jpg",
     "static/media/vehicalchecksbg.jpg": "/static/media/vehicalchecksbg.60e067abd446e8e5ae00.jpg",
@@ -126,7 +126,6 @@
     "static/media/puffin.png": "/static/media/puffin.d84e0c9cd53f2f9e3454.png",
     "static/media/dashboardImg.png": "/static/media/dashboardImg.ae965c38de144e6ebcdd.png",
     "static/media/pelican.png": "/static/media/pelican.7dd6c93cf8b185f61acc.png",
-    "static/media/manualBanner.webp": "/static/media/manualBanner.89134f082b6e81c69789.webp",
     "static/media/temptation.png": "/static/media/temptation.064ad4d26c58bc4acc8c.png",
     "static/media/ElectronicParkingImg.png": "/static/media/ElectronicParkingImg.a22a5bbb2c8d3ebc2d7e.png",
     "static/media/cimg12.jpg": "/static/media/cimg12.a82a5ce045178f28b0ca.jpg",
@@ -330,7 +329,6 @@
     "static/media/CChampion-10.jpg": "/static/media/CChampion-10.04196d0a701f91613e02.jpg",
     "static/media/Electric-Fleet.jpg": "/static/media/Electric-Fleet.3a68ee3afa1408baab58.jpg",
     "static/media/one-wayStreet.jpg": "/static/media/one-wayStreet.b0fad5e1da67d3998a88.jpg",
-    "static/media/ssl-logo.png": "/static/media/ssl-logo.8c174247fbd59801e088.png",
     "static/media/CChampion-13.jpg": "/static/media/CChampion-13.18c884883d32dd747096.jpg",
     "static/media/mobileRoad.png": "/static/media/mobileRoad.4edfb8b1afd254ab7060.png",
     "static/media/endDual.png": "/static/media/endDual.049d4b5733be4cee25b9.png",
@@ -340,7 +338,6 @@
     "static/media/RevolutLogo.png": "/static/media/RevolutLogo.cb6578976e775ba92002.png",
     "static/media/trees-img.png": "/static/media/trees-img.f02e43363d7a8c4c0c40.png",
     "static/media/bgimg11123.webp": "/static/media/bgimg11123.53e63bb83d7e0e5ea50c.webp",
-    "static/media/footerImgs.png": "/static/media/footerImgs.24c9c0ec49cdc2d3a71e.png",
     "static/media/IntensiveCrousalImg.jpg": "/static/media/IntensiveCrousalImg.948b34d3079a76c472ec.jpg",
     "static/media/Highways_England.jpg": "/static/media/Highways_England.ffe794fd0e8108d07d2d.jpg",
     "static/media/cartIcon1.png": "/static/media/cartIcon1.132bea975b266bc3806d.png",
@@ -415,12 +412,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.885d2918.css.map": "/static/css/main.885d2918.css.map",
-    "main.526e40ea.js.map": "/static/js/main.526e40ea.js.map",
-    "453.3e45edb3.chunk.js.map": "/static/js/453.3e45edb3.chunk.js.map"
+    "main.47ffee91.css.map": "/static/css/main.47ffee91.css.map",
+    "main.b86fc787.js.map": "/static/js/main.b86fc787.js.map",
+    "453.e1e0bccf.chunk.js.map": "/static/js/453.e1e0bccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.885d2918.css",
-    "static/js/main.526e40ea.js"
+    "static/css/main.47ffee91.css",
+    "static/js/main.b86fc787.js"
   ]
 }
