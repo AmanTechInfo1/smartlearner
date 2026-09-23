@@ -115,7 +115,7 @@ export default function ManualCoursePageDesign() {
   if (courseLoading && !course) {
     return (
       <div className="coursePageScope min-h-screen flex items-center justify-center">
-        <div style={{ color: "var(--color-muted)" }}>Loading course…</div>
+        <div style={{ color: "var(--color-muted)",height:'100%' }}>Loading course…</div>
       </div>
     );
   }

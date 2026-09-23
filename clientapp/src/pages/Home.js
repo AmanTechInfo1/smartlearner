@@ -111,7 +111,200 @@ export default function Home() {
         <NewBanner3 />
       </section> */}
 
-     
+      {/* <div className={styles.homepageContainerDiv}>
+        <Element name="our-courses-section">
+          <section
+            style={{
+              background:
+                "linear-gradient(180deg, rgb(255, 120, 67), rgb(255, 66, 66))",
+            }}
+            className="relative flex flex-col items-center justify-center py-24 px-6 overflow-hidden  text-gray-900"
+          >
+            <motion.div className="absolute -top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
+            <motion.div className="absolute bottom-0 right-10 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gray-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
+
+            <motion.h2
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              style={{ color: "white" }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 drop-shadow-md text-center z-10"
+            >
+              Ready to Elevate Your Skills?
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              style={{ color: "white" }}
+              className="text-base sm:text-lg md:text-xl text-white-700 mb-10 text-center max-w-2xl z-10"
+            >
+              Choose your path below — whether you’re booking personalized
+              lessons or a PDI session, we’ve got you covered.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center items-center z-10"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <button
+                  style={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
+                  }}
+                  onClick={() => handleShow("theory")}
+                  className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-md transition-all duration-300
+          ${
+            activeSection === "theory"
+              ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
+              : "bg-white text-black hover:bg-yellow-100"
+          }`}
+                >
+                  <BookOpenText className="w-6 h-6" />
+                  Book Theory
+                </button>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <button
+                  style={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
+                  }}
+                  onClick={() => handleShow("lessons")}
+                  className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-md transition-all duration-300
+          ${
+            activeSection === "lessons"
+              ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
+              : "bg-white text-black hover:bg-yellow-100"
+          }`}
+                >
+                  <Calendar className="w-6 h-6" />
+                  Book Lessons
+                </button>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <button
+                  style={{
+                    flexDirection: "row",
+                    gap: "10px",
+                    alignItems: "center",
+                  }}
+                  onClick={() => handleShow("pdi")}
+                  className={`flex flex-col items-center justify-center w-64 sm:w-auto font-bold rounded-2xl px-8 py-6 text-lg shadow-md transition-all duration-300
+          ${
+            activeSection === "pdi"
+              ? "bg-yellow-400 text-black shadow-yellow-200 shadow-xl scale-105"
+              : "bg-white text-black hover:bg-yellow-100"
+          }`}
+                >
+                  <Sparkles className="w-6 h-6" />
+                  Become an Instructor
+                </button>
+              </motion.div>
+            </motion.div>
+          </section>
+        </Element>
+        <section className={styles.bgColore}>
+          <AnimatePresence mode="wait">
+            {activeSection === "lessons" && (
+              <motion.section
+                key="lessons"
+                ref={lessonsRefCallback}
+                variants={sectionVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.6 }}
+                className="w-full"
+              >
+                <ProductShowcase />
+              </motion.section>
+            )}
+
+            {activeSection === "pdi" && (
+              <motion.section
+                key="pdi"
+                ref={pdiRefCallback}
+                variants={sectionVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.6 }}
+                className="w-full"
+              >
+                <SubscriptionPdi />
+              </motion.section>
+            )}
+
+            {activeSection === "theory" && (
+              <motion.section
+                key="theory"
+                ref={theoryRefCallback}
+                variants={sectionVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.6 }}
+                className="w-full"
+              >
+                <TheoryProductShowCase />
+              </motion.section>
+            )}
+          </AnimatePresence>
+
+          <section>
+            <DrivingLessonsCarousel />
+          </section>
+
+
+          <section className={styles.heroSection12345}>
+            <div className={styles.callbackformflex}>
+              <section>
+                <CallBackForm />
+              </section>
+
+              <section>
+                <img src={callbackimg} alt="callbackimg" />
+              </section>
+            </div>
+            <motion.h1
+              className={styles.heroText12345}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+            >
+              See Why People Choose{" "}
+              <span className={styles.highlight12345}>SmartLearner</span> to
+              <span className={styles.pass12345}> PASS </span> Their Driving
+              Test.
+            </motion.h1>
+          </section>
+          <div>
+            <ImagesCarousel />
+          </div>
+          <section>
+            <StaticTestimonial />
+          </section>
+        </section>
+      </div> */} 
     </div>
   );
 }
