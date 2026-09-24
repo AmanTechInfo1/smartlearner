@@ -691,8 +691,32 @@ const getTestimonials = async (req, res) => {
 };
 
 const createTestimonials = async (req, res) => {
-  try {
-    const data = await homeService.createTestimonials(req.body);
+   try {
+    let students = [];
+
+    if (req.body.students) {
+      students = JSON.parse(req.body.students);
+    }
+
+    // Attach uploaded images to corresponding students
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file) => {
+        const match = file.fieldname.match(
+          /^students\[(\d+)\]\.image$/
+        );
+
+        if (match) {
+          const index = Number(match[1]);
+
+          if (students[index]) {
+            students[index].image = file.filename;
+          }
+        }
+      });
+    }
+
+    const data = await homeService.createTestimonials(...req.body,
+      students,);
 
     return res.status(201).json({
       success: true,
@@ -720,7 +744,33 @@ const addTestimonial = async (req, res) => {
 
 const updateTestimonials = async (req, res) => {
   try {
-    const data = await homeService.updateTestimonials(req.params.id, req.body);
+     let students = [];
+
+    if (req.body.students) {
+      students = JSON.parse(req.body.students);
+    }
+
+    // Attach uploaded images to corresponding students
+    if (req.files && req.files.length > 0) {
+      req.files.forEach((file) => {
+        const match = file.fieldname.match(
+          /^students\[(\d+)\]\.image$/
+        );
+
+        if (match) {
+          const index = Number(match[1]);
+
+          if (students[index]) {
+            students[index].image = file.filename;
+          }
+        }
+      });
+    }
+
+    const data = await homeService.updateTestimonials(req.params.id,  {
+        ...req.body,
+        students,
+      },);
 
     if (!data) {
       return res.status(404).json({
