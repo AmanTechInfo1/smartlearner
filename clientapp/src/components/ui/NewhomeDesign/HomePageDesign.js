@@ -961,7 +961,8 @@ function Testimonials({ data }) {
                   <div className="testimonialFooter">
                     {t.avatar ? (
                       <img
-                        src={t.avatar}
+                      src={`https://api.smartlearner.com/uploads/${t.avatar}`}
+                        
                         alt={t.name}
                         className="testimonialAvatar"
                       />
