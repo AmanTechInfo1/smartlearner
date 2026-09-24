@@ -951,7 +951,7 @@ function FieldRenderer({
         <label className={styles.formLabel}>{field.label}</label>
         <div className={styles.imageUpload}>
           {value ? (
-            <img src={value} alt="Preview" className={styles.imagePreview} />
+            <img src={`https://api.smartlearner.com/uploads/{value}`} alt="Preview" className={styles.imagePreview} />
           ) : (
             <div className={styles.imagePreview} />
           )}

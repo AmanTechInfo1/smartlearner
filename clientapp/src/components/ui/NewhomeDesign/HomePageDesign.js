@@ -601,7 +601,7 @@ function RecentPasses({ data }) {
                     <div className="passImageWrap">
                       {s.image ? (
                         <img
-                          src={s.image}
+                          src={`https://api.smartlearner.com/uploads/${s.image}`}
                           alt={s.message || s.name}
                           loading="lazy"
                           className="passImage"
