@@ -690,43 +690,9 @@ const getTestimonials = async (req, res) => {
   }
 };
 
-const createTestimonials = async (req, res) => {
-   try {
-    let students = [];
 
-    if (req.body.students) {
-      students = JSON.parse(req.body.students);
-    }
 
-    // Attach uploaded images to corresponding students
-    if (req.files && req.files.length > 0) {
-      req.files.forEach((file) => {
-        const match = file.fieldname.match(
-          /^students\[(\d+)\]\.image$/
-        );
 
-        if (match) {
-          const index = Number(match[1]);
-
-          if (students[index]) {
-            students[index].image = file.filename;
-          }
-        }
-      });
-    }
-
-    const data = await homeService.createTestimonials(...req.body,
-      students,);
-
-    return res.status(201).json({
-      success: true,
-      message: "Testimonials created successfully",
-      data,
-    });
-  } catch (error) {
-    return handleError(res, error, "Failed to create testimonials");
-  }
-};
 
 const addTestimonial = async (req, res) => {
   try {
@@ -742,41 +708,56 @@ const addTestimonial = async (req, res) => {
   }
 };
 
+const parseTestimonials = (req) => {
+  let testimonials = [];
+
+  if (req.body.testimonials) {
+    testimonials =
+      typeof req.body.testimonials === "string"
+        ? JSON.parse(req.body.testimonials)
+        : req.body.testimonials;
+  }
+
+  // Attach uploaded avatars: fieldname is "testimonials[0].avatar"
+  (req.files || []).forEach((file) => {
+    const match = file.fieldname.match(/^testimonials\[(\d+)\]\.avatar$/);
+    if (match) {
+      const index = Number(match[1]);
+      if (testimonials[index]) testimonials[index].avatar = file.filename;
+    }
+  });
+
+  return testimonials;
+};
+
+const createTestimonials = async (req, res) => {
+  try {
+    const testimonials = parseTestimonials(req);
+    const data = await homeService.createTestimonials({
+      ...req.body,
+      testimonials,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "Testimonials created successfully",
+      data,
+    });
+  } catch (error) {
+    return handleError(res, error, "Failed to create testimonials");
+  }
+};
+
 const updateTestimonials = async (req, res) => {
   try {
-     let students = [];
-
-    if (req.body.students) {
-      students = JSON.parse(req.body.students);
-    }
-
-    // Attach uploaded images to corresponding students
-    if (req.files && req.files.length > 0) {
-      req.files.forEach((file) => {
-        const match = file.fieldname.match(
-          /^students\[(\d+)\]\.image$/
-        );
-
-        if (match) {
-          const index = Number(match[1]);
-
-          if (students[index]) {
-            students[index].image = file.filename;
-          }
-        }
-      });
-    }
-
-    const data = await homeService.updateTestimonials(req.params.id,  {
-        ...req.body,
-        students,
-      },);
+    const testimonials = parseTestimonials(req);
+    const data = await homeService.updateTestimonials(req.params.id, {
+      ...req.body,
+      testimonials,
+    });
 
     if (!data) {
-      return res.status(404).json({
-        success: false,
-        message: "Testimonials not found",
-      });
+      return res.status(404).json({ success: false, message: "Testimonials not found" });
     }
 
     return res.status(200).json({
