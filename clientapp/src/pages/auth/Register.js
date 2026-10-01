@@ -70,24 +70,19 @@ export default function Register() {
           <div className="opicity"></div>
           <section className={styles.loginRegisterSection}>
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <Link to="/">
-                {" "}
-                <img
-                  src={smartlearnerLogo}
-                  alt="logo"
-                  style={{ maxWidth: "400px" }}
-                />
-              </Link>
-            </div>
+                               <Link to="/">
+                                 {" "}
+                                 <img
+                                   src={smartlearnerLogo}
+                                   alt="logo"
+                                   style={{ maxWidth: "300px" }}
+                                 />
+                               </Link>
+                             </div>
             <div className={styles.ImageDisplayFlex}>
               <div className={styles.loginformContainer}>
                 <section className={styles.loginRegistration}>
-                  <div className={styles.loginLogo}>
-                    <iframe
-                      style={{ height: "150px" }}
-                      src="https://lottie.host/embed/804d6f1b-6e4a-47cd-aedb-37d125ce5e3d/pyEvumb4lL.lottie"
-                    ></iframe>
-                  </div>
+                 
 
                   <h2>Create Account</h2>
                   <form onSubmit={handleSubmit(handleRegistration)}>
@@ -306,7 +301,7 @@ export default function Register() {
                 </section>
               </div>
               <section className={styles.loginDisplayflexImage}>
-                <h2>Benifits to Join SmartLearner</h2>
+                <h2><span>Benifits</span> to Join <span>SmartLearner</span></h2>
 
                 <div className={styles.registerBenefitsfeature}>
                   <div className={styles.registerBenefitsfeatureicon}>🎓</div>

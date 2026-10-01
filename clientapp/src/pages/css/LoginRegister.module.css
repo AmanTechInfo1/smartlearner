@@ -1,457 +1,547 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* src/pages/css/LoginRegister.module.css */
+/* ============================================================
+   DESIGN TOKENS — copied 1:1 from Homepagedesign.css so this
+   page always matches the site palette, even if that file
+   hasn't been loaded yet on this route.
+   ============================================================ */
 :root {
-  --pink: hsl(329, 83%, 61%);
-  --purple: hsl(274, 83%, 61%);
+  --color-bg: #0c1310;
+  --color-surface: #162320;
+  --color-surface-muted: #1f302b;
+  --color-fg: #f2ebde;
+  --color-muted: #9a8e7c;
+  --color-brand: #0b5d45;
+  --color-brand-fg: #f2ebde;
+  --color-accent: #e4b45a;
+  --color-accent-fg: #0c1310;
+  --color-border: #243a33;
+  --color-ring: #e4b45a;
+  --color-success: #5e8c3c;
+  --color-danger: #c8311f;
+
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
 }
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
 .loginRegisterPage {
-  background-image: url(../../assets/images/bgDark.jpg);
-  background-size: cover;
-  font-family: "Roboto", Sans-serif;
   position: relative;
-}
-#whiteLogo {
-  max-width: 300px;
-  width: 100%;
-}
-.loginRegisterSection2 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 1140px;
-
-  margin-left: auto;
-  margin-right: auto;
-}
-.loginRegisterSection {
-  max-width: 1140px;
   min-height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-  position: sticky;
-}
-
-.loginheading {
-  width: 100%;
-  padding: 10px 10px 10px 10px;
-  text-align: center;
-}
-.loginheading h1 {
-  font-size: 4em;
-  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-weight: 600;
-}
-.loginheading P {
-  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 1.2rem;
-}
-.ImageDisplayFlex {
-  padding: 2rem 1rem;
-  display: flex;
-  border-radius: 30px;
-  gap: 20px;
-  animation: slideFromLeft 1s ease-out;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-}
-@keyframes slideFromLeft {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.loginDisplayflexImage {
-  width: 100%;
-  max-width: 53%;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
-}
-.loginDisplayflexImage h2 {
-  font-size: 2.7rem;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  padding: 1rem;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 900px 520px at 12% -10%, color-mix(in oklab, var(--color-brand) 38%, transparent), transparent),
+    radial-gradient(ellipse 700px 520px at 100% 110%, color-mix(in oklab, var(--color-accent) 14%, transparent), transparent);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  padding: 3rem 1.25rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.loginDisplayflexImage img {
-  max-width: 640px;
+.loginRegisterSection {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
-.loginDisplayflextext p {
-  color: #b6b6b6;
+
+/* Brand logo row (was inline style) */
+.brandRow {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brandLogo {
+  max-width: 210px;
+  width: 100%;
+  height: auto;
+}
+
+/* Top shortcut nav — Login page only */
+.buttonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+}
+
+.buttonsGrid a {
+  text-decoration: none;
+  display: block;
+}
+
+.buttonsGrid button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.75rem;
+  padding: 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-fg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.buttonsGrid button:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-muted);
+  transform: translateY(-1px);
+}
+
+.gradientIcon {
+  color: var(--color-accent);
   font-size: 1rem;
 }
-.loginDisplayflextext a {
-  text-align: center;
-  text-decoration: none;
-  background: #5e5df0;
-  border-radius: 999px;
-  box-shadow: #5e5df0 0 10px 20px -10px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
-    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
-    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
-    "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  opacity: 1;
-  outline: 0 solid transparent;
-  padding: 10px 22px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: fit-content;
-  word-break: break-word;
-  border: 0;
+
+@media (max-width: 520px) {
+  .buttonsGrid {
+    grid-template-columns: 1fr;
+  }
 }
-.loginDisplayflextext a:hover {
-  box-shadow: #d4d4ff 0 10px 20px -10px;
-  background: #fbfbfd;
-  border: 1px solid #5e5df0;
-  color: #5e5df0;
-  transition: ease-in-out 0.2s;
+
+/* ============================================================
+   MAIN CARD — form panel + side panel
+   ============================================================ */
+.ImageDisplayFlex {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -32px rgba(0, 0, 0, 0.65);
 }
-.loginLogo {
-  text-align: center;
+
+@media (min-width: 900px) {
+  .ImageDisplayFlex {
+    flex-direction: row;
+  }
 }
-#loginLogo {
-  max-width: 100px;
-  border-radius: 50%;
-  box-shadow: 0px 8px 16px rgba(204, 204, 204, 0.3);
-}
+
 .loginformContainer {
-  width: 100%;
-  max-width: 47%;
-  border: 1px solid rgba(47, 85, 103, 0.853);
-  background-color: #0002094f;
-  border-radius: 15px;
+  flex: 1 1 52%;
+  display: flex;
+  align-items: center;
 }
 
 .loginRegistration {
-  padding: 20px 20px 20px 20px;
+  width: 100%;
+  padding: 3rem 2.75rem;
 }
 
-.loginRegistration form {
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px 0px;
+@media (max-width: 560px) {
+  .loginRegistration {
+    padding: 2.25rem 1.5rem;
+  }
 }
 
 .loginRegistration h2 {
-  color: rgb(255, 255, 255);
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 2rem;
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-fg);
+  margin: 0 0 1.5rem;
 }
 
-.loginRegistration #level {
+.loginLogo {
   display: flex;
-  align-items: center;
-}
-.formControlWithIcon {
-  max-width: 400px; /* Adjust space for the icon */
-  width: 100%;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+  opacity: 0.92;
 }
 
+.loginLogo iframe {
+  height: 110px;
+  border: 0;
+  pointer-events: none;
+}
+
+.casesensetive {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin: 0 0 0.5rem;
+}
+
+/* Decorative standalone icon (ForgotPassword) */
+.formIcon {
+  display: inline-flex;
+  color: var(--color-accent);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   BOOTSTRAP FORM OVERRIDES (FloatingLabel / Form.Control / Form.Select)
+   ============================================================ */
+.loginRegistration form :global(.form-floating) {
+  position: relative;
+  margin-top: 1.1rem;
+}
+
+.loginRegistration form > :global(.form-floating):first-child,
+.loginRegistration form > *:first-child :global(.form-floating) {
+  margin-top: 0;
+}
+
+.loginRegistration form :global(.form-control),
+.loginRegistration form :global(.form-select) {
+  width: 100%;
+  height: 3.25rem;
+  padding: 1rem 0.9rem 0.4rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loginRegistration form :global(.form-control:focus),
+.loginRegistration form :global(.form-select:focus) {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 18%, transparent);
+}
+
+.loginRegistration form :global(.form-floating > label) {
+  padding: 1rem 0.9rem;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+.loginRegistration form :global(.form-floating > .form-control:focus ~ label),
+.loginRegistration form :global(.form-floating > .form-control:not(:placeholder-shown) ~ label) {
+  color: var(--color-accent);
+  opacity: 1;
+  transform: scale(0.72) translateY(-0.6rem) translateX(0.2rem);
+}
+
+.loginRegistration form :global(.form-select) {
+  padding-top: 0;
+  padding-bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%23e4b45a' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 11px;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Password field wrapper (was id={styles.level}) */
+.level {
+  position: relative;
+  margin-top: 1.1rem;
+}
+
+.level :global(.form-floating) {
+  margin-top: 0;
+}
+
+/* Icon-adjacent input wrapper */
+.formControlWithIcon {
+  position: relative;
+}
+
+/* Password visibility toggle */
 .loginFormsIcons {
   position: absolute;
   top: 50%;
-  left: 370px; /* Position the icon */
+  right: 0.9rem;
   transform: translateY(-50%);
-  z-index: 1;
-  color: #0009b3;
-  font-size: 18px;
-  cursor: pointer; /* Ensure the icon is on top */
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: color 0.2s ease;
 }
 
-#registerAccount select {
-  border: none;
-  width: 100%;
+.loginFormsIcons:hover {
+  color: var(--color-accent);
+}
+
+/* Account type select wrapper (was id={styles.registerAccount}) */
+.registerAccount {
+  margin-top: 1.1rem;
+}
+
+/* Error text */
+.errorText {
+  margin: 0.4rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-danger);
+}
+
+.termsError {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-danger);
+}
+
+/* Forgot-password row */
+.forgotRow {
+  text-align: right;
+  margin: 1rem 0 0.375rem;
+}
+
+.forgotRow a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
   text-decoration: none;
-  outline: none;
-  padding: 10px;
-  color: #000000;
 }
-#registerAccount select option {
-  background-color: #02001c;
-  color: white;
+
+.forgotRow a:hover {
+  text-decoration: underline;
 }
+
+/* Remember me / terms switch row */
 .formPrivacyPolicies {
   display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 1.25rem 0 0.25rem;
+}
 
-  margin-bottom: 1rem;
-}
-.formPrivacyPolicies input {
-  cursor: pointer;
-  color: #000000;
-}
 .formPrivacyPolicies p {
-  margin-bottom: 0;
-  color: #aaa;
-  padding-left: 10px;
-  font-size: 18px;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
 }
+
+.formPrivacyPolicies :global(.form-check-input) {
+  width: 2.25rem;
+  height: 1.25rem;
+  background-color: var(--color-surface-muted);
+  border-color: var(--color-border);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%239a8e7c'/%3E%3C/svg%3E");
+}
+
+.formPrivacyPolicies :global(.form-check-input:checked) {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%230c1310'/%3E%3C/svg%3E");
+}
+
+.formPrivacyPolicies :global(.form-check-input:focus) {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 25%, transparent);
+  border-color: var(--color-accent);
+}
+
+/* Submit button */
 .loginFormBtn {
-  text-align: center;
+  margin-top: 1.75rem;
 }
+
 .loginFormBtn button {
-  padding: 14px 80px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: #ffffff;
-  border-radius: 5px;
-  color: #000000;
-  border: none;
   width: 100%;
+  height: 3.25rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
+
 .loginFormBtn button:hover {
-  background-color: #090909;
-  color: white;
-  transition: ease-in-out 0.2s;
+  filter: brightness(1.08);
+  box-shadow: 0 0 24px -6px var(--color-accent);
 }
+
+.loginFormBtn button:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}
+
+.loginFormBtn button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Footer switch-page row */
 .formFooter {
-  margin-bottom: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
   text-align: center;
-  padding: 10px;
 }
 
 .formFooter p {
-  margin-bottom: 0;
-  color: #757575;
-  font-family: "Roboto", Sans-serif;
-  font-weight: 500;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
 }
+
 .formFooter button {
-  color: #fff;
-  font-family: "Roboto", Sans-serif;
-  font-weight: 500;
+  display: inline;
+  background: none;
   border: none;
-  background-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  padding-left: 10px;
+  padding: 0;
+  margin-left: 0.25rem;
+  cursor: pointer;
+  font: inherit;
 }
+
 .formFooter a {
-  color: #fff;
+  color: var(--color-accent);
+  font-weight: 600;
   text-decoration: none;
 }
+
 .formFooter a:hover {
-  color: #dadada;
-}
-.casesensetive {
-  display: none;
-}
-@media (max-width: 967px) {
-  .loginheading {
-    width: 100%;
-    padding: 15px;
-  }
-  .loginformContainer {
-    max-width: 50%;
-    width: 100%;
-  }
-  .loginFormsIcons {
-    left: 330px;
-  }
-}
-@media (max-width: 767px) {
-  .loginRegisterSection2 {
-    display: block;
-  }
-  .loginFormsIcons {
-    left: 370px;
-  }
-  .loginheading {
-    max-width: 100%;
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-  }
-  .loginformContainer {
-    max-width: 600px;
-    margin-top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-}
-@media (max-width: 768px) {
-  .ImageDisplayFlex {
-    flex-direction: column;
-  }
-  .loginDisplayflexImage {
-    max-width: 100%;
-    width: 100%;
-  }
-  .casesensetive {
-    display: block;
-    color: white;
-  }
-}
-@media (max-width: 458px) {
-  .loginFormsIcons {
-    left: 340px;
-  }
-}
-@media (max-width: 438px) {
-  .loginFormsIcons {
-    left: 320px;
-  }
-}
-@media (max-width: 410px) {
-  .loginFormsIcons {
-    left: 300px;
-  }
-}
-@media (max-width: 390px) {
-  .loginFormsIcons {
-    left: 270px;
-  }
-}
-@media (max-width: 370px) {
-  .loginFormsIcons {
-    left: 250px;
-  }
-}
-.allbtns {
-  margin: 2rem 0px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 10px;
-  place-items: center;
+  text-decoration: underline;
 }
 
-.allbtns a button {
-  font-size: 20px;
-  font-weight: 800;
-  min-width: 420px;
-  cursor: pointer;
-  letter-spacing: 0px;
-  background-color: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  background: linear-gradient(45deg, var(--pink), var(--purple) 60%);
-  padding: 18px 80px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
-}
-
-.allbtns a button:hover {
-  background-color: #dd0000af;
-  transform: scale(1.1);
-  animation: bounce 0.3s alternate;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(1); /* Original size */
-  }
-  100% {
-    transform: scale(1.05); /* Slightly bigger size */
-  }
-}
-
-.buttonsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  place-items: center;
-  gap: 20px;
-}
-.buttonsGrid a {
-  text-decoration: none;
-}
-.buttonsGrid a button {
+/* ============================================================
+   SIDE PANEL (welcome text / benefits / illustration)
+   ============================================================ */
+.loginDisplayflexImage {
+  position: relative;
+  flex: 1 1 48%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-  min-width: 220px;
-  cursor: pointer;
-  letter-spacing: 0px;
+  padding: 3rem 2.75rem;
+   text-align: center;
+   color: var(--color-brand);
+  border-top: 1px solid var(--color-border);
+}
+.loginDisplayflexImage span{
+  color: burlywood;
+}
 
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  background: linear-gradient(
-    135deg,
-    #ff6347,
-    #ff1493
-  ); /* Apply the gradient */
-  -webkit-background-clip: text; /* Clip the background to the text */
-  background-clip: text; /* For non-webkit browsers */
-  color: transparent;
-  padding: 12px 50px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
-}
-.buttonsGrid a button .gradientIcon {
-  color: #ff7300;
-  font-size: 30px; /* Apply the gradient */
-}
-.buttonsGrid a button .gradientIcon:hover {
-  color: white;
-}
-.buttonsGrid a button:hover {
-  transition: ease-in-out 0.2s;
-  transform: scale(1.1);
-  color: white;
-}
-@media (max-width: 767px) {
-  .buttonsGrid a button {
-    font-size: 16px;
-    font-weight: 500;
-    padding: 10px 30px;
-    min-width: 170px;
-  }
-  .buttonsGrid a button .gradientIcon {
-    font-size: 20px; /* Apply the gradient */
+@media (min-width: 900px) {
+  .loginDisplayflexImage {
+    border-top: none;
+    border-left: 1px solid var(--color-border);
   }
 }
 
+@media (max-width: 560px) {
+  .loginDisplayflexImage {
+    padding: 2.25rem 1.5rem;
+  }
+}
+
+.loginDisplayflexImage h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+  margin: 0;
+}
+
+.loginDisplayflexImage h2 span {
+  display: inline-block;
+}
+
+.loginDisplayflexImage iframe {
+  width: 100%;
+  max-width: 480px;
+  height: 320px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: var(--radius-md);
+}
+
+/* Register benefits list */
 .registerBenefitsfeature {
   display: flex;
+  gap: 1rem;
   align-items: flex-start;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid color-mix(in oklab, var(--color-fg) 12%, transparent);
+}
 
-  margin-bottom: 20px;
+.registerBenefitsfeature:first-of-type {
+  margin-top: 2rem;
 }
 
 .registerBenefitsfeatureicon {
-  font-size: 30px;
-  margin-right: 15px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--color-accent) 18%, transparent);
+  font-size: 1.15rem;
 }
 
 .registerBenefitsfeaturecontent {
-  max-width: 600px;
+  flex: 1;
 }
 
 .registerBenefitsfeaturetitle {
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0 0 5px;
-  color: white;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
 }
 
 .registerBenefitsfeaturedescription {
-  margin: 0;
-  color: #d7f2ff;
+  margin: 0.375rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: color-mix(in oklab, var(--color-fg) 65%, var(--color-muted));
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+.loginRegisterPage a:focus-visible,
+.loginRegisterPage button:focus-visible,
+.loginRegistration form :global(.form-control:focus-visible),
+.loginRegistration form :global(.form-select:focus-visible) {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loginRegisterPage * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

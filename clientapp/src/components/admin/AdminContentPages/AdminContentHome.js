@@ -463,6 +463,15 @@ const FIELD_SCHEMAS = {
   ],
 };
 
+
+const FILE_SECTIONS = {
+  recentPasses: { arrayName: "students", fileKey: "image" },
+  testimonials: { arrayName: "testimonials", fileKey: "avatar" },
+};
+
+
+const SERVER_FIELDS = ["_id", "homeId", "createdAt", "updatedAt", "__v"];
+
 /* ============================================================
    MAIN COMPONENT — Routes between 3 views
    ============================================================ */
@@ -664,35 +673,18 @@ function EditSection({ pageId, sectionKey }) {
     }));
   };
 
-  const handleImageChange = (arrayName, index, file) => {
+const handleImageChange = (arrayName, index, file) => {
   if (!file) return;
-
-  // Create temporary preview URL
-  const previewUrl = URL.createObjectURL(file);
-
-  // Store preview URL for displaying the image
-  handleArrayItemChange(
-    arrayName,
-    index,
-    "image",
-    previewUrl
-  );
-
-  // Store the actual File object separately.
-  // This will be added to FormData when Save is clicked.
-  handleArrayItemChange(
-    arrayName,
-    index,
-    "_imageFile",
-    file
-  );
+  const fileKey = FILE_SECTIONS[sectionKey]?.fileKey || "image";
+  handleArrayItemChange(arrayName, index, fileKey, URL.createObjectURL(file));
+  handleArrayItemChange(arrayName, index, "_file", file);
 };
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
   setError("");
 
-  // Validate required fields
   for (const field of fields) {
     if (field.required && !formData[field.name]?.toString().trim()) {
       setError(`${field.label} is required`);
@@ -701,72 +693,58 @@ const handleSubmit = async (e) => {
   }
 
   const thunks = THUNK_MAP[sectionKey];
+  if (!thunks) return setError("No thunk mapped for this section");
 
-  if (!thunks) {
-    setError("No thunk mapped for this section");
-    return;
+  // Strip server-managed fields
+  const clean = { ...formData };
+  SERVER_FIELDS.forEach((k) => delete clean[k]);
+
+  const fileCfg = FILE_SECTIONS[sectionKey];
+  let payload;
+
+  if (fileCfg) {
+    // multipart: JSON for data, files separately
+    const { arrayName, fileKey } = fileCfg;
+    payload = new FormData();
+
+    Object.entries(clean).forEach(([key, value]) => {
+      if (key === arrayName) return;
+      payload.append(
+        key,
+        typeof value === "object" ? JSON.stringify(value) : value ?? "",
+      );
+    });
+
+    const items = (clean[arrayName] || []).map(({ _file, ...item }) => ({
+      ...item,
+      [fileKey]: item[fileKey]?.startsWith("blob:") ? "" : item[fileKey] || "",
+    }));
+    payload.append(arrayName, JSON.stringify(items));
+
+    (clean[arrayName] || []).forEach((item, i) => {
+      if (item._file instanceof File) {
+        payload.append(`${arrayName}[${i}].${fileKey}`, item._file);
+      }
+    });
+  } else {
+    // plain JSON for everything else
+    payload = clean;
   }
 
   try {
-    const submitData = new FormData();
-
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key === "students") {
-        // Remove temporary _imageFile before sending JSON
-        const studentsData = value.map((student) => {
-          const { _imageFile, ...studentData } = student;
-
-          return {
-            ...studentData,
-
-            // Don't send blob URL to backend
-            image: studentData.image?.startsWith("blob:")
-              ? ""
-              : studentData.image || "",
-          };
-        });
-
-        submitData.append(
-          "students",
-          JSON.stringify(studentsData),
-        );
-
-        // Add actual image files separately
-        value.forEach((student, index) => {
-          if (student._imageFile instanceof File) {
-            submitData.append(
-              `students[${index}].image`,
-              student._imageFile,
-            );
-          }
-        });
-      } else {
-        submitData.append(key, value);
-      }
-    });
-
-    if (sectionData && sectionData._id) {
-      // Update existing
-      const result = await dispatch(
-        thunks.update(sectionData._id, submitData, () =>
-          navigate(`/admin/home-edit-page`),
+    let result;
+    if (sectionData?._id) {
+      result = await dispatch(
+        thunks.update(sectionData._id, payload, () =>
+          navigate("/admin/home-edit-page"),
         ),
       );
-
-      if (result.meta.requestStatus === "fulfilled") {
+      if (result?.meta?.requestStatus === "fulfilled")
         toast.success("Section updated successfully");
-      }
     } else {
-      // Create new
-      const result = await dispatch(
-        thunks.create(submitData, () => {
-          // reset form, do not navigate
-        }),
-      );
-
-      if (result.meta.requestStatus === "fulfilled") {
+      result = await dispatch(thunks.create(payload, () => {}));
+      if (result?.meta?.requestStatus === "fulfilled")
         toast.success("Section created successfully");
-      }
     }
   } catch (err) {
     setError(err.message || "Failed to save section");
@@ -850,7 +828,7 @@ const handleSubmit = async (e) => {
                     )
                   ) {
                     dispatch(THUNK_MAP[sectionKey].delete(sectionData._id));
-                    navigate(`/admin/home-edit-page/${pageId}`);
+                    navigate(`/admin/home-edit-page`);
                   }
                 }}
               >
@@ -951,7 +929,10 @@ function FieldRenderer({
         <label className={styles.formLabel}>{field.label}</label>
         <div className={styles.imageUpload}>
           {value ? (
-            <img src={`https://api.smartlearner.com/uploads/{value}`} alt="Preview" className={styles.imagePreview} />
+            <img
+  src={value.startsWith("blob:") ? value : `https://api.smartlearner.com/uploads/${value}`}
+  alt="Preview"
+/>
           ) : (
             <div className={styles.imagePreview} />
           )}

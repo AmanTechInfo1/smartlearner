@@ -231,8 +231,8 @@ router.post(
 router.post(
   "/delete-recent-passes/:id",
   requireAuth,
-  upload.any(),
-  imageSaverMiddleware,
+  
+ recentPassesImageSaver,
   homeController.deleteRecentPasses,
 );
 
@@ -246,33 +246,32 @@ router.get("/testimonials", homeController.getTestimonials);
 
 router.post(
   "/add-testimonials",
-  requireAuth,
-  upload.any(),
-  imageSaverMiddleware,
+  
+ recentPassesImageSaver,
   homeController.createTestimonials,
 );
 
 router.post(
   "/add-user-testimonials",
   requireAuth,
-  upload.any(),
-  imageSaverMiddleware,
+  
+  recentPassesImageSaver,
   homeController.addTestimonial,
 );
 
 router.post(
   "/update-testimonials/:id",
   requireAuth,
-  upload.any(),
-  imageSaverMiddleware,
+  
+  recentPassesImageSaver,
   homeController.updateTestimonials,
 );
 
 router.post(
   "/delete-testimonials/:id",
   requireAuth,
-  upload.any(),
-  imageSaverMiddleware,
+  
+  recentPassesImageSaver,
   homeController.deleteTestimonials,
 );
 
